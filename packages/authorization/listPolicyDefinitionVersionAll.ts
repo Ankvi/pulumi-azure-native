@@ -9,7 +9,6 @@ import * as types from "./types";
  */
 export function listPolicyDefinitionVersionAll(args?: ListPolicyDefinitionVersionAllArgs, opts?: pulumi.InvokeOptions): Promise<ListPolicyDefinitionVersionAllResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:authorization:listPolicyDefinitionVersionAll", {
     }, opts);
@@ -38,5 +37,7 @@ export interface ListPolicyDefinitionVersionAllResult {
  * Other available API versions: 2024-05-01.
  */
 export function listPolicyDefinitionVersionAllOutput(opts?: pulumi.InvokeOptions): pulumi.Output<ListPolicyDefinitionVersionAllResult> {
-    return pulumi.output(listPolicyDefinitionVersionAll(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:authorization:listPolicyDefinitionVersionAll", {
+    }, opts);
 }

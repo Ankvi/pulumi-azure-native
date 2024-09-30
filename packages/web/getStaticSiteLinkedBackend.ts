@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Static Site Linked Backend ARM resource.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01, 2023-12-01.
+ * Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getStaticSiteLinkedBackend(args: GetStaticSiteLinkedBackendArgs, opts?: pulumi.InvokeOptions): Promise<GetStaticSiteLinkedBackendResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:getStaticSiteLinkedBackend", {
         "linkedBackendName": args.linkedBackendName,
@@ -72,10 +71,15 @@ export interface GetStaticSiteLinkedBackendResult {
  * Static Site Linked Backend ARM resource.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01, 2023-12-01.
+ * Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getStaticSiteLinkedBackendOutput(args: GetStaticSiteLinkedBackendOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStaticSiteLinkedBackendResult> {
-    return pulumi.output(args).apply((a: any) => getStaticSiteLinkedBackend(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:getStaticSiteLinkedBackend", {
+        "linkedBackendName": args.linkedBackendName,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetStaticSiteLinkedBackendOutputArgs {

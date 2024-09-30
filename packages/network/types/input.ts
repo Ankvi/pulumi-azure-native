@@ -2348,6 +2348,20 @@ export interface DnsConfigArgs {
 }
 
 /**
+ * The action to take on DNS requests that match the DNS security rule.
+ */
+export interface DnsSecurityRuleActionArgs {
+    /**
+     * The type of action to take.
+     */
+    actionType?: pulumi.Input<string | enums.ActionType>;
+    /**
+     * The response code for block actions.
+     */
+    blockResponseCode?: pulumi.Input<string | enums.BlockResponseCode>;
+}
+
+/**
  * DNS Proxy Settings in Firewall Policy.
  */
 export interface DnsSettingsArgs {
@@ -4757,6 +4771,16 @@ export interface NetworkManagerPropertiesNetworkManagerScopesArgs {
 }
 
 /**
+ * Network manager routing group item.
+ */
+export interface NetworkManagerRoutingGroupItemArgs {
+    /**
+     * Network manager group Id.
+     */
+    networkGroupId: pulumi.Input<string>;
+}
+
+/**
  * Network manager security group item.
  */
 export interface NetworkManagerSecurityGroupItemArgs {
@@ -5894,10 +5918,6 @@ export interface RouteArgs {
      */
     etag?: pulumi.Input<string>;
     /**
-     * A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
-     */
-    hasBgpOverride?: pulumi.Input<boolean>;
-    /**
      * Resource ID.
      */
     id?: pulumi.Input<string>;
@@ -6096,6 +6116,34 @@ export interface RoutingRuleArgs {
 }
 
 /**
+ * Next hop.
+ */
+export interface RoutingRuleNextHopArgs {
+    /**
+     * Next hop address. Only required if the next hop type is VirtualAppliance.
+     */
+    nextHopAddress?: pulumi.Input<string>;
+    /**
+     * Next hop type.
+     */
+    nextHopType: pulumi.Input<string | enums.RoutingRuleNextHopType>;
+}
+
+/**
+ * Route destination.
+ */
+export interface RoutingRuleRouteDestinationArgs {
+    /**
+     * Destination address.
+     */
+    destinationAddress: pulumi.Input<string>;
+    /**
+     * Destination type.
+     */
+    type: pulumi.Input<string | enums.RoutingRuleDestinationType>;
+}
+
+/**
  * Defines the Web Application Firewall policy for each routing rule (if applicable)
  */
 export interface RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs {
@@ -6263,6 +6311,16 @@ export interface SecurityRuleArgs {
      * The type of the resource.
      */
     type?: pulumi.Input<string>;
+}
+
+/**
+ * Network manager security user group item.
+ */
+export interface SecurityUserGroupItemArgs {
+    /**
+     * Network manager group Id.
+     */
+    networkGroupId: pulumi.Input<string>;
 }
 
 /**
@@ -7746,6 +7804,7 @@ export interface WebApplicationFirewallScrubbingRulesArgs {
      */
     state?: pulumi.Input<string | enums.ScrubbingRuleEntryState>;
 }
+
 
 
 

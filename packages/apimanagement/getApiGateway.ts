@@ -4,9 +4,10 @@ import * as types from "./types";
 /**
  * Gets an API Management gateway resource description.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getApiGateway(args: GetApiGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetApiGatewayResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apimanagement:getApiGateway", {
         "gatewayName": args.gatewayName,
@@ -93,9 +94,15 @@ export interface GetApiGatewayResult {
 /**
  * Gets an API Management gateway resource description.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getApiGatewayOutput(args: GetApiGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiGatewayResult> {
-    return pulumi.output(args).apply((a: any) => getApiGateway(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:getApiGateway", {
+        "gatewayName": args.gatewayName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetApiGatewayOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-04-05.
  */
 export function getGuestConfigurationAssignment(args: GetGuestConfigurationAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetGuestConfigurationAssignmentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:guestconfiguration:getGuestConfigurationAssignment", {
         "guestConfigurationAssignmentName": args.guestConfigurationAssignmentName,
@@ -68,7 +67,12 @@ export interface GetGuestConfigurationAssignmentResult {
  * Other available API versions: 2024-04-05.
  */
 export function getGuestConfigurationAssignmentOutput(args: GetGuestConfigurationAssignmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGuestConfigurationAssignmentResult> {
-    return pulumi.output(args).apply((a: any) => getGuestConfigurationAssignment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:guestconfiguration:getGuestConfigurationAssignment", {
+        "guestConfigurationAssignmentName": args.guestConfigurationAssignmentName,
+        "resourceGroupName": args.resourceGroupName,
+        "vmName": args.vmName,
+    }, opts);
 }
 
 export interface GetGuestConfigurationAssignmentOutputArgs {

@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Description for Retrieves a specific Service Bus Hybrid Connection used by this Web App.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getWebAppHybridConnection(args: GetWebAppHybridConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppHybridConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:getWebAppHybridConnection", {
         "name": args.name,
@@ -94,10 +93,16 @@ export interface GetWebAppHybridConnectionResult {
  * Description for Retrieves a specific Service Bus Hybrid Connection used by this Web App.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getWebAppHybridConnectionOutput(args: GetWebAppHybridConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppHybridConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getWebAppHybridConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:getWebAppHybridConnection", {
+        "name": args.name,
+        "namespaceName": args.namespaceName,
+        "relayName": args.relayName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetWebAppHybridConnectionOutputArgs {

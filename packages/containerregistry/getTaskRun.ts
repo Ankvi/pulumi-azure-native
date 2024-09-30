@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2019-06-01-preview.
  */
 export function getTaskRun(args: GetTaskRunArgs, opts?: pulumi.InvokeOptions): Promise<GetTaskRunResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:containerregistry:getTaskRun", {
         "registryName": args.registryName,
@@ -81,7 +80,12 @@ export interface GetTaskRunResult {
  * Azure REST API version: 2019-06-01-preview.
  */
 export function getTaskRunOutput(args: GetTaskRunOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaskRunResult> {
-    return pulumi.output(args).apply((a: any) => getTaskRun(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:containerregistry:getTaskRun", {
+        "registryName": args.registryName,
+        "resourceGroupName": args.resourceGroupName,
+        "taskRunName": args.taskRunName,
+    }, opts);
 }
 
 export interface GetTaskRunOutputArgs {

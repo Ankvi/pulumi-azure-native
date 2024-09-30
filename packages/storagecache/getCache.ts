@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2020-10-01, 2021-03-01, 2023-03-01-preview, 2023-11-01-preview, 2024-03-01.
  */
 export function getCache(args: GetCacheArgs, opts?: pulumi.InvokeOptions): Promise<GetCacheResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:storagecache:getCache", {
         "cacheName": args.cacheName,
@@ -127,7 +126,11 @@ export interface GetCacheResult {
  * Other available API versions: 2020-10-01, 2021-03-01, 2023-03-01-preview, 2023-11-01-preview, 2024-03-01.
  */
 export function getCacheOutput(args: GetCacheOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCacheResult> {
-    return pulumi.output(args).apply((a: any) => getCache(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:storagecache:getCache", {
+        "cacheName": args.cacheName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetCacheOutputArgs {

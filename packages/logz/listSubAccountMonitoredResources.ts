@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2022-01-01-preview.
  */
 export function listSubAccountMonitoredResources(args: ListSubAccountMonitoredResourcesArgs, opts?: pulumi.InvokeOptions): Promise<ListSubAccountMonitoredResourcesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:logz:listSubAccountMonitoredResources", {
         "monitorName": args.monitorName,
@@ -48,7 +47,12 @@ export interface ListSubAccountMonitoredResourcesResult {
  * Azure REST API version: 2022-01-01-preview.
  */
 export function listSubAccountMonitoredResourcesOutput(args: ListSubAccountMonitoredResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListSubAccountMonitoredResourcesResult> {
-    return pulumi.output(args).apply((a: any) => listSubAccountMonitoredResources(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:logz:listSubAccountMonitoredResources", {
+        "monitorName": args.monitorName,
+        "resourceGroupName": args.resourceGroupName,
+        "subAccountName": args.subAccountName,
+    }, opts);
 }
 
 export interface ListSubAccountMonitoredResourcesOutputArgs {

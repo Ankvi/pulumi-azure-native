@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets a hunt comment
  * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview.
+ * Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview.
  */
 export function getHuntComment(args: GetHuntCommentArgs, opts?: pulumi.InvokeOptions): Promise<GetHuntCommentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:securityinsights:getHuntComment", {
         "huntCommentId": args.huntCommentId,
@@ -46,7 +45,7 @@ export interface GetHuntCommentResult {
      */
     readonly etag?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -70,10 +69,16 @@ export interface GetHuntCommentResult {
  * Gets a hunt comment
  * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview.
+ * Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview.
  */
 export function getHuntCommentOutput(args: GetHuntCommentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHuntCommentResult> {
-    return pulumi.output(args).apply((a: any) => getHuntComment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:securityinsights:getHuntComment", {
+        "huntCommentId": args.huntCommentId,
+        "huntId": args.huntId,
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetHuntCommentOutputArgs {

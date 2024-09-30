@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2015-08-01-preview.
  */
 export function listConnectionConsentLinks(args: ListConnectionConsentLinksArgs, opts?: pulumi.InvokeOptions): Promise<ListConnectionConsentLinksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:listConnectionConsentLinks", {
         "connectionName": args.connectionName,
@@ -53,7 +52,13 @@ export interface ListConnectionConsentLinksResult {
  * Other available API versions: 2015-08-01-preview.
  */
 export function listConnectionConsentLinksOutput(args: ListConnectionConsentLinksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListConnectionConsentLinksResult> {
-    return pulumi.output(args).apply((a: any) => listConnectionConsentLinks(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:listConnectionConsentLinks", {
+        "connectionName": args.connectionName,
+        "parameters": args.parameters,
+        "resourceGroupName": args.resourceGroupName,
+        "subscriptionId": args.subscriptionId,
+    }, opts);
 }
 
 export interface ListConnectionConsentLinksOutputArgs {

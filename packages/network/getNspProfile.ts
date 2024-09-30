@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2023-07-01-preview, 2023-08-01-preview.
  */
 export function getNspProfile(args: GetNspProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetNspProfileResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getNspProfile", {
         "networkSecurityPerimeterName": args.networkSecurityPerimeterName,
@@ -71,7 +70,12 @@ export interface GetNspProfileResult {
  * Other available API versions: 2023-07-01-preview, 2023-08-01-preview.
  */
 export function getNspProfileOutput(args: GetNspProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNspProfileResult> {
-    return pulumi.output(args).apply((a: any) => getNspProfile(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getNspProfile", {
+        "networkSecurityPerimeterName": args.networkSecurityPerimeterName,
+        "profileName": args.profileName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNspProfileOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2018-02-01, 2023-07-01, 2024-03-01, 2024-07-01.
  */
 export function getResourceGroup(args: GetResourceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:resources:getResourceGroup", {
         "resourceGroupName": args.resourceGroupName,
@@ -62,7 +61,10 @@ export interface GetResourceGroupResult {
  * Other available API versions: 2018-02-01, 2023-07-01, 2024-03-01, 2024-07-01.
  */
 export function getResourceGroupOutput(args: GetResourceGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceGroupResult> {
-    return pulumi.output(args).apply((a: any) => getResourceGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:resources:getResourceGroup", {
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetResourceGroupOutputArgs {

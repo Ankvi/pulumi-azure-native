@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2016-06-01.
  */
 export function getCustomApi(args: GetCustomApiArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomApiResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:getCustomApi", {
         "apiName": args.apiName,
@@ -68,7 +67,12 @@ export interface GetCustomApiResult {
  * Azure REST API version: 2016-06-01.
  */
 export function getCustomApiOutput(args: GetCustomApiOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomApiResult> {
-    return pulumi.output(args).apply((a: any) => getCustomApi(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:getCustomApi", {
+        "apiName": args.apiName,
+        "resourceGroupName": args.resourceGroupName,
+        "subscriptionId": args.subscriptionId,
+    }, opts);
 }
 
 export interface GetCustomApiOutputArgs {

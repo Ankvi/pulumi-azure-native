@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2016-06-01.
  */
 export function getRosettaNetProcessConfiguration(args: GetRosettaNetProcessConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetRosettaNetProcessConfigurationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:logic:getRosettaNetProcessConfiguration", {
         "integrationAccountName": args.integrationAccountName,
@@ -100,7 +99,12 @@ export interface GetRosettaNetProcessConfigurationResult {
  * Azure REST API version: 2016-06-01.
  */
 export function getRosettaNetProcessConfigurationOutput(args: GetRosettaNetProcessConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRosettaNetProcessConfigurationResult> {
-    return pulumi.output(args).apply((a: any) => getRosettaNetProcessConfiguration(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:logic:getRosettaNetProcessConfiguration", {
+        "integrationAccountName": args.integrationAccountName,
+        "resourceGroupName": args.resourceGroupName,
+        "rosettaNetProcessConfigurationName": args.rosettaNetProcessConfigurationName,
+    }, opts);
 }
 
 export interface GetRosettaNetProcessConfigurationOutputArgs {

@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2019-05-01.
  */
 export function getIntegrationAccountAssembly(args: GetIntegrationAccountAssemblyArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationAccountAssemblyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:logic:getIntegrationAccountAssembly", {
         "assemblyArtifactName": args.assemblyArtifactName,
@@ -64,7 +63,12 @@ export interface GetIntegrationAccountAssemblyResult {
  * Azure REST API version: 2019-05-01.
  */
 export function getIntegrationAccountAssemblyOutput(args: GetIntegrationAccountAssemblyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationAccountAssemblyResult> {
-    return pulumi.output(args).apply((a: any) => getIntegrationAccountAssembly(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:logic:getIntegrationAccountAssembly", {
+        "assemblyArtifactName": args.assemblyArtifactName,
+        "integrationAccountName": args.integrationAccountName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetIntegrationAccountAssemblyOutputArgs {

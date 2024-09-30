@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2020-04-01-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview.
  */
 export function getTopic(args: GetTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:eventgrid:getTopic", {
         "resourceGroupName": args.resourceGroupName,
@@ -105,7 +104,11 @@ export interface GetTopicResult {
  * Other available API versions: 2020-04-01-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview.
  */
 export function getTopicOutput(args: GetTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicResult> {
-    return pulumi.output(args).apply((a: any) => getTopic(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:eventgrid:getTopic", {
+        "resourceGroupName": args.resourceGroupName,
+        "topicName": args.topicName,
+    }, opts);
 }
 
 export interface GetTopicOutputArgs {

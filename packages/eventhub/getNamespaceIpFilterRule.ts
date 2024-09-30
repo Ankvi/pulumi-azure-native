@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2018-01-01-preview.
  */
 export function getNamespaceIpFilterRule(args: GetNamespaceIpFilterRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceIpFilterRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:eventhub:getNamespaceIpFilterRule", {
         "ipFilterRuleName": args.ipFilterRuleName,
@@ -63,7 +62,12 @@ export interface GetNamespaceIpFilterRuleResult {
  * Azure REST API version: 2018-01-01-preview.
  */
 export function getNamespaceIpFilterRuleOutput(args: GetNamespaceIpFilterRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespaceIpFilterRuleResult> {
-    return pulumi.output(args).apply((a: any) => getNamespaceIpFilterRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:eventhub:getNamespaceIpFilterRule", {
+        "ipFilterRuleName": args.ipFilterRuleName,
+        "namespaceName": args.namespaceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNamespaceIpFilterRuleOutputArgs {

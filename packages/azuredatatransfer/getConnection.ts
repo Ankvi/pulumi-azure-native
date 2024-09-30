@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets connection resource.
  * Azure REST API version: 2023-10-11-preview.
  *
- * Other available API versions: 2024-01-25, 2024-05-07.
+ * Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11.
  */
 export function getConnection(args: GetConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:azuredatatransfer:getConnection", {
         "connectionName": args.connectionName,
@@ -64,10 +63,14 @@ export interface GetConnectionResult {
  * Gets connection resource.
  * Azure REST API version: 2023-10-11-preview.
  *
- * Other available API versions: 2024-01-25, 2024-05-07.
+ * Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11.
  */
 export function getConnectionOutput(args: GetConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:azuredatatransfer:getConnection", {
+        "connectionName": args.connectionName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetConnectionOutputArgs {

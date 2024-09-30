@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets information about a database in a RedisEnterprise cluster.
  * Azure REST API version: 2023-03-01-preview.
  *
- * Other available API versions: 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview, 2024-09-01-preview.
  */
 export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:cache:getDatabase", {
         "clusterName": args.clusterName,
@@ -93,10 +92,15 @@ export interface GetDatabaseResult {
  * Gets information about a database in a RedisEnterprise cluster.
  * Azure REST API version: 2023-03-01-preview.
  *
- * Other available API versions: 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview, 2024-09-01-preview.
  */
 export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseResult> {
-    return pulumi.output(args).apply((a: any) => getDatabase(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:cache:getDatabase", {
+        "clusterName": args.clusterName,
+        "databaseName": args.databaseName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetDatabaseOutputArgs {

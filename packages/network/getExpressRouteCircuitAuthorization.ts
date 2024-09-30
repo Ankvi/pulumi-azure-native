@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the specified authorization from the specified express route circuit.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getExpressRouteCircuitAuthorization(args: GetExpressRouteCircuitAuthorizationArgs, opts?: pulumi.InvokeOptions): Promise<GetExpressRouteCircuitAuthorizationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getExpressRouteCircuitAuthorization", {
         "authorizationName": args.authorizationName,
@@ -68,10 +67,15 @@ export interface GetExpressRouteCircuitAuthorizationResult {
  * Gets the specified authorization from the specified express route circuit.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getExpressRouteCircuitAuthorizationOutput(args: GetExpressRouteCircuitAuthorizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExpressRouteCircuitAuthorizationResult> {
-    return pulumi.output(args).apply((a: any) => getExpressRouteCircuitAuthorization(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getExpressRouteCircuitAuthorization", {
+        "authorizationName": args.authorizationName,
+        "circuitName": args.circuitName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetExpressRouteCircuitAuthorizationOutputArgs {

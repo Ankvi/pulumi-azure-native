@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview.
  */
 export function getFqdnListLocalRulestack(args: GetFqdnListLocalRulestackArgs, opts?: pulumi.InvokeOptions): Promise<GetFqdnListLocalRulestackResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:cloudngfw:getFqdnListLocalRulestack", {
         "localRulestackName": args.localRulestackName,
@@ -80,7 +79,12 @@ export interface GetFqdnListLocalRulestackResult {
  * Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview.
  */
 export function getFqdnListLocalRulestackOutput(args: GetFqdnListLocalRulestackOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFqdnListLocalRulestackResult> {
-    return pulumi.output(args).apply((a: any) => getFqdnListLocalRulestack(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:cloudngfw:getFqdnListLocalRulestack", {
+        "localRulestackName": args.localRulestackName,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetFqdnListLocalRulestackOutputArgs {

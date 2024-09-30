@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get a draft Firewall Policy.
  * Azure REST API version: 2023-11-01.
  *
- * Other available API versions: 2024-01-01.
+ * Other available API versions: 2024-01-01, 2024-03-01.
  */
 export function getFirewallPolicyDraft(args: GetFirewallPolicyDraftArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallPolicyDraftResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getFirewallPolicyDraft", {
         "firewallPolicyName": args.firewallPolicyName,
@@ -92,10 +91,14 @@ export interface GetFirewallPolicyDraftResult {
  * Get a draft Firewall Policy.
  * Azure REST API version: 2023-11-01.
  *
- * Other available API versions: 2024-01-01.
+ * Other available API versions: 2024-01-01, 2024-03-01.
  */
 export function getFirewallPolicyDraftOutput(args: GetFirewallPolicyDraftOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallPolicyDraftResult> {
-    return pulumi.output(args).apply((a: any) => getFirewallPolicyDraft(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getFirewallPolicyDraft", {
+        "firewallPolicyName": args.firewallPolicyName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetFirewallPolicyDraftOutputArgs {

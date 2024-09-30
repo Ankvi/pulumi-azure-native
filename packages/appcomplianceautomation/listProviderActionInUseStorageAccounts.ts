@@ -7,7 +7,6 @@ import * as types from "./types";
  */
 export function listProviderActionInUseStorageAccounts(args?: ListProviderActionInUseStorageAccountsArgs, opts?: pulumi.InvokeOptions): Promise<ListProviderActionInUseStorageAccountsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:appcomplianceautomation:listProviderActionInUseStorageAccounts", {
         "subscriptionIds": args.subscriptionIds,
@@ -35,7 +34,11 @@ export interface ListProviderActionInUseStorageAccountsResult {
  * Azure REST API version: 2024-06-27.
  */
 export function listProviderActionInUseStorageAccountsOutput(args?: ListProviderActionInUseStorageAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListProviderActionInUseStorageAccountsResult> {
-    return pulumi.output(args).apply((a: any) => listProviderActionInUseStorageAccounts(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:appcomplianceautomation:listProviderActionInUseStorageAccounts", {
+        "subscriptionIds": args.subscriptionIds,
+    }, opts);
 }
 
 export interface ListProviderActionInUseStorageAccountsOutputArgs {

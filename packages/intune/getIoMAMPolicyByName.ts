@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2015-01-14-privatepreview.
  */
 export function getIoMAMPolicyByName(args: GetIoMAMPolicyByNameArgs, opts?: pulumi.InvokeOptions): Promise<GetIoMAMPolicyByNameResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:intune:getIoMAMPolicyByName", {
         "hostName": args.hostName,
@@ -83,7 +82,12 @@ export interface GetIoMAMPolicyByNameResult {
  * Other available API versions: 2015-01-14-privatepreview.
  */
 export function getIoMAMPolicyByNameOutput(args: GetIoMAMPolicyByNameOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIoMAMPolicyByNameResult> {
-    return pulumi.output(args).apply((a: any) => getIoMAMPolicyByName(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:intune:getIoMAMPolicyByName", {
+        "hostName": args.hostName,
+        "policyName": args.policyName,
+        "select": args.select,
+    }, opts);
 }
 
 export interface GetIoMAMPolicyByNameOutputArgs {

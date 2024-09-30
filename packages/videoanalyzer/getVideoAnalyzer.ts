@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2021-05-01-preview.
  */
 export function getVideoAnalyzer(args: GetVideoAnalyzerArgs, opts?: pulumi.InvokeOptions): Promise<GetVideoAnalyzerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:videoanalyzer:getVideoAnalyzer", {
         "accountName": args.accountName,
@@ -99,7 +98,11 @@ export interface GetVideoAnalyzerResult {
  * Other available API versions: 2021-05-01-preview.
  */
 export function getVideoAnalyzerOutput(args: GetVideoAnalyzerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVideoAnalyzerResult> {
-    return pulumi.output(args).apply((a: any) => getVideoAnalyzer(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:videoanalyzer:getVideoAnalyzer", {
+        "accountName": args.accountName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetVideoAnalyzerOutputArgs {

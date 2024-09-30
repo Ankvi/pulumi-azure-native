@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2016-03-01.
  */
 export function getJobCollection(args: GetJobCollectionArgs, opts?: pulumi.InvokeOptions): Promise<GetJobCollectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:scheduler:getJobCollection", {
         "jobCollectionName": args.jobCollectionName,
@@ -56,7 +55,11 @@ export interface GetJobCollectionResult {
  * Azure REST API version: 2016-03-01.
  */
 export function getJobCollectionOutput(args: GetJobCollectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobCollectionResult> {
-    return pulumi.output(args).apply((a: any) => getJobCollection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:scheduler:getJobCollection", {
+        "jobCollectionName": args.jobCollectionName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetJobCollectionOutputArgs {

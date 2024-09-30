@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview.
  */
 export function getPostRule(args: GetPostRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetPostRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:cloudngfw:getPostRule", {
         "globalRulestackName": args.globalRulestackName,
@@ -132,7 +131,11 @@ export interface GetPostRuleResult {
  * Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview.
  */
 export function getPostRuleOutput(args: GetPostRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPostRuleResult> {
-    return pulumi.output(args).apply((a: any) => getPostRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:cloudngfw:getPostRule", {
+        "globalRulestackName": args.globalRulestackName,
+        "priority": args.priority,
+    }, opts);
 }
 
 export interface GetPostRuleOutputArgs {

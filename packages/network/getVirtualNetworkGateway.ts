@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets the specified virtual network gateway by resource group.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2016-06-01, 2016-09-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2016-06-01, 2016-09-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getVirtualNetworkGateway(args: GetVirtualNetworkGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualNetworkGatewayResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getVirtualNetworkGateway", {
         "resourceGroupName": args.resourceGroupName,
@@ -160,10 +159,14 @@ export interface GetVirtualNetworkGatewayResult {
  * Gets the specified virtual network gateway by resource group.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2016-06-01, 2016-09-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2016-06-01, 2016-09-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getVirtualNetworkGatewayOutput(args: GetVirtualNetworkGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualNetworkGatewayResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualNetworkGateway(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getVirtualNetworkGateway", {
+        "resourceGroupName": args.resourceGroupName,
+        "virtualNetworkGatewayName": args.virtualNetworkGatewayName,
+    }, opts);
 }
 
 export interface GetVirtualNetworkGatewayOutputArgs {

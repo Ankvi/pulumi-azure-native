@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2015-03-20.
  */
 export function getSavedSearch(args: GetSavedSearchArgs, opts?: pulumi.InvokeOptions): Promise<GetSavedSearchResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:operationalinsights:getSavedSearch", {
         "resourceGroupName": args.resourceGroupName,
@@ -88,7 +87,12 @@ export interface GetSavedSearchResult {
  * Other available API versions: 2015-03-20.
  */
 export function getSavedSearchOutput(args: GetSavedSearchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSavedSearchResult> {
-    return pulumi.output(args).apply((a: any) => getSavedSearch(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:operationalinsights:getSavedSearch", {
+        "resourceGroupName": args.resourceGroupName,
+        "savedSearchId": args.savedSearchId,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetSavedSearchOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-01-01-preview, 2024-05-01-preview.
  */
 export function getApplicationLiveView(args: GetApplicationLiveViewArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationLiveViewResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:appplatform:getApplicationLiveView", {
         "applicationLiveViewName": args.applicationLiveViewName,
@@ -64,7 +63,12 @@ export interface GetApplicationLiveViewResult {
  * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-01-01-preview, 2024-05-01-preview.
  */
 export function getApplicationLiveViewOutput(args: GetApplicationLiveViewOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationLiveViewResult> {
-    return pulumi.output(args).apply((a: any) => getApplicationLiveView(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:appplatform:getApplicationLiveView", {
+        "applicationLiveViewName": args.applicationLiveViewName,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 export interface GetApplicationLiveViewOutputArgs {

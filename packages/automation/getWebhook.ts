@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-05-15-preview.
  */
 export function getWebhook(args: GetWebhookArgs, opts?: pulumi.InvokeOptions): Promise<GetWebhookResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:automation:getWebhook", {
         "automationAccountName": args.automationAccountName,
@@ -100,7 +99,12 @@ export interface GetWebhookResult {
  * Other available API versions: 2023-05-15-preview.
  */
 export function getWebhookOutput(args: GetWebhookOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebhookResult> {
-    return pulumi.output(args).apply((a: any) => getWebhook(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:automation:getWebhook", {
+        "automationAccountName": args.automationAccountName,
+        "resourceGroupName": args.resourceGroupName,
+        "webhookName": args.webhookName,
+    }, opts);
 }
 
 export interface GetWebhookOutputArgs {

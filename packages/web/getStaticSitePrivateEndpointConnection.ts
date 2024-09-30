@@ -5,10 +5,9 @@ import * as types from "./types";
  * Description for Gets a private endpoint connection
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01, 2023-12-01.
+ * Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getStaticSitePrivateEndpointConnection(args: GetStaticSitePrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetStaticSitePrivateEndpointConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:getStaticSitePrivateEndpointConnection", {
         "name": args.name,
@@ -70,10 +69,15 @@ export interface GetStaticSitePrivateEndpointConnectionResult {
  * Description for Gets a private endpoint connection
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01, 2023-12-01.
+ * Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getStaticSitePrivateEndpointConnectionOutput(args: GetStaticSitePrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStaticSitePrivateEndpointConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getStaticSitePrivateEndpointConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:getStaticSitePrivateEndpointConnection", {
+        "name": args.name,
+        "privateEndpointConnectionName": args.privateEndpointConnectionName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetStaticSitePrivateEndpointConnectionOutputArgs {

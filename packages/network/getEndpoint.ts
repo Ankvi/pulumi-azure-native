@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2017-03-01, 2018-02-01, 2022-04-01-preview.
  */
 export function getEndpoint(args: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getEndpoint", {
         "endpointName": args.endpointName,
@@ -117,7 +116,13 @@ export interface GetEndpointResult {
  * Other available API versions: 2017-03-01, 2018-02-01, 2022-04-01-preview.
  */
 export function getEndpointOutput(args: GetEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointResult> {
-    return pulumi.output(args).apply((a: any) => getEndpoint(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getEndpoint", {
+        "endpointName": args.endpointName,
+        "endpointType": args.endpointType,
+        "profileName": args.profileName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetEndpointOutputArgs {

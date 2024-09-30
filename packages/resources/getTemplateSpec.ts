@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2022-02-01.
  */
 export function getTemplateSpec(args: GetTemplateSpecArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateSpecResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:resources:getTemplateSpec", {
         "expand": args.expand,
@@ -80,7 +79,12 @@ export interface GetTemplateSpecResult {
  * Azure REST API version: 2022-02-01.
  */
 export function getTemplateSpecOutput(args: GetTemplateSpecOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateSpecResult> {
-    return pulumi.output(args).apply((a: any) => getTemplateSpec(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:resources:getTemplateSpec", {
+        "expand": args.expand,
+        "resourceGroupName": args.resourceGroupName,
+        "templateSpecName": args.templateSpecName,
+    }, opts);
 }
 
 export interface GetTemplateSpecOutputArgs {

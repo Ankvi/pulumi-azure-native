@@ -5,10 +5,9 @@ import * as types from "./types";
  * Retrieves the requested ExpressRoutePort resource.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getExpressRoutePort(args: GetExpressRoutePortArgs, opts?: pulumi.InvokeOptions): Promise<GetExpressRoutePortResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getExpressRoutePort", {
         "expressRoutePortName": args.expressRoutePortName,
@@ -112,10 +111,14 @@ export interface GetExpressRoutePortResult {
  * Retrieves the requested ExpressRoutePort resource.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getExpressRoutePortOutput(args: GetExpressRoutePortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExpressRoutePortResult> {
-    return pulumi.output(args).apply((a: any) => getExpressRoutePort(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getExpressRoutePort", {
+        "expressRoutePortName": args.expressRoutePortName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetExpressRoutePortOutputArgs {

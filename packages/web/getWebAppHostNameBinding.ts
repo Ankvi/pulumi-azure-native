@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Description for Get the named hostname binding for an app (or deployment slot, if specified).
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getWebAppHostNameBinding(args: GetWebAppHostNameBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppHostNameBindingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:getWebAppHostNameBinding", {
         "hostName": args.hostName,
@@ -92,10 +91,15 @@ export interface GetWebAppHostNameBindingResult {
  * Description for Get the named hostname binding for an app (or deployment slot, if specified).
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getWebAppHostNameBindingOutput(args: GetWebAppHostNameBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppHostNameBindingResult> {
-    return pulumi.output(args).apply((a: any) => getWebAppHostNameBinding(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:getWebAppHostNameBinding", {
+        "hostName": args.hostName,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetWebAppHostNameBindingOutputArgs {

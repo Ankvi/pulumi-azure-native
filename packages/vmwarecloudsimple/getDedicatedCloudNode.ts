@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2019-04-01.
  */
 export function getDedicatedCloudNode(args: GetDedicatedCloudNodeArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedCloudNodeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:vmwarecloudsimple:getDedicatedCloudNode", {
         "dedicatedCloudNodeName": args.dedicatedCloudNodeName,
@@ -111,7 +110,11 @@ export interface GetDedicatedCloudNodeResult {
  * Azure REST API version: 2019-04-01.
  */
 export function getDedicatedCloudNodeOutput(args: GetDedicatedCloudNodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedCloudNodeResult> {
-    return pulumi.output(args).apply((a: any) => getDedicatedCloudNode(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:vmwarecloudsimple:getDedicatedCloudNode", {
+        "dedicatedCloudNodeName": args.dedicatedCloudNodeName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetDedicatedCloudNodeOutputArgs {

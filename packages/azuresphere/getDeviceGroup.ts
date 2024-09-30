@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-04-01.
  */
 export function getDeviceGroup(args: GetDeviceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:azuresphere:getDeviceGroup", {
         "catalogName": args.catalogName,
@@ -93,7 +92,13 @@ export interface GetDeviceGroupResult {
  * Other available API versions: 2024-04-01.
  */
 export function getDeviceGroupOutput(args: GetDeviceGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceGroupResult> {
-    return pulumi.output(args).apply((a: any) => getDeviceGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:azuresphere:getDeviceGroup", {
+        "catalogName": args.catalogName,
+        "deviceGroupName": args.deviceGroupName,
+        "productName": args.productName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetDeviceGroupOutputArgs {

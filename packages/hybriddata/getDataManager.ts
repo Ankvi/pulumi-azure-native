@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2019-06-01.
  */
 export function getDataManager(args: GetDataManagerArgs, opts?: pulumi.InvokeOptions): Promise<GetDataManagerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:hybriddata:getDataManager", {
         "dataManagerName": args.dataManagerName,
@@ -66,7 +65,11 @@ export interface GetDataManagerResult {
  * Azure REST API version: 2019-06-01.
  */
 export function getDataManagerOutput(args: GetDataManagerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataManagerResult> {
-    return pulumi.output(args).apply((a: any) => getDataManager(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:hybriddata:getDataManager", {
+        "dataManagerName": args.dataManagerName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetDataManagerOutputArgs {

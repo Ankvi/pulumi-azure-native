@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2016-01-29.
  */
 export function getWorkspaceCollection(args: GetWorkspaceCollectionArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceCollectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:powerbi:getWorkspaceCollection", {
         "resourceGroupName": args.resourceGroupName,
@@ -54,7 +53,11 @@ export interface GetWorkspaceCollectionResult {
  * Azure REST API version: 2016-01-29.
  */
 export function getWorkspaceCollectionOutput(args: GetWorkspaceCollectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceCollectionResult> {
-    return pulumi.output(args).apply((a: any) => getWorkspaceCollection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:powerbi:getWorkspaceCollection", {
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceCollectionName": args.workspaceCollectionName,
+    }, opts);
 }
 
 export interface GetWorkspaceCollectionOutputArgs {

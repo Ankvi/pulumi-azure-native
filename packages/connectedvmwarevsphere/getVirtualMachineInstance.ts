@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-10-01, 2023-12-01.
  */
 export function getVirtualMachineInstance(args: GetVirtualMachineInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineInstanceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:connectedvmwarevsphere:getVirtualMachineInstance", {
         "resourceUri": args.resourceUri,
@@ -98,7 +97,10 @@ export interface GetVirtualMachineInstanceResult {
  * Other available API versions: 2023-10-01, 2023-12-01.
  */
 export function getVirtualMachineInstanceOutput(args: GetVirtualMachineInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineInstanceResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualMachineInstance(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:connectedvmwarevsphere:getVirtualMachineInstance", {
+        "resourceUri": args.resourceUri,
+    }, opts);
 }
 
 export interface GetVirtualMachineInstanceOutputArgs {

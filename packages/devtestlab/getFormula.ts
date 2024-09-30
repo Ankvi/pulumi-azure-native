@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2016-05-15.
  */
 export function getFormula(args: GetFormulaArgs, opts?: pulumi.InvokeOptions): Promise<GetFormulaResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:devtestlab:getFormula", {
         "expand": args.expand,
@@ -101,7 +100,13 @@ export interface GetFormulaResult {
  * Other available API versions: 2016-05-15.
  */
 export function getFormulaOutput(args: GetFormulaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFormulaResult> {
-    return pulumi.output(args).apply((a: any) => getFormula(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:devtestlab:getFormula", {
+        "expand": args.expand,
+        "labName": args.labName,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetFormulaOutputArgs {

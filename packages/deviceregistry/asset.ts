@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Asset definition.
  * Azure REST API version: 2023-11-01-preview.
+ *
+ * Other available API versions: 2024-09-01-preview.
  */
 export class Asset extends pulumi.CustomResource {
     /**
@@ -45,15 +47,15 @@ export class Asset extends pulumi.CustomResource {
      */
     public readonly attributes!: pulumi.Output<any | undefined>;
     /**
-     * Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration. See below for more details for the definition of the dataPoints element.
+     * Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration.
      */
     public readonly dataPoints!: pulumi.Output<types.outputs.DataPointResponse[] | undefined>;
     /**
-     * Protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
+     * Stringified JSON that contains protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here.
      */
     public readonly defaultDataPointsConfiguration!: pulumi.Output<string | undefined>;
     /**
-     * Protocol-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
+     * Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
      */
     public readonly defaultEventsConfiguration!: pulumi.Output<string | undefined>;
     /**
@@ -73,7 +75,7 @@ export class Asset extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Array of events that are part of the asset. Each event can reference an asset type capability and have per-event configuration. See below for more details about the definition of the events element.
+     * Array of events that are part of the asset. Each event can have per-event configuration.
      */
     public readonly events!: pulumi.Output<types.outputs.EventResponse[] | undefined>;
     /**
@@ -232,7 +234,7 @@ export class Asset extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:deviceregistry/v20231101preview:Asset" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:deviceregistry/v20231101preview:Asset" }, { type: "azure-native:deviceregistry/v20240901preview:Asset" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Asset.__pulumiType, name, resourceInputs, opts);
     }
@@ -259,15 +261,15 @@ export interface AssetArgs {
      */
     attributes?: any;
     /**
-     * Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration. See below for more details for the definition of the dataPoints element.
+     * Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration.
      */
     dataPoints?: pulumi.Input<pulumi.Input<types.inputs.DataPointArgs>[]>;
     /**
-     * Protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
+     * Stringified JSON that contains protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here.
      */
     defaultDataPointsConfiguration?: pulumi.Input<string>;
     /**
-     * Protocol-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
+     * Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
      */
     defaultEventsConfiguration?: pulumi.Input<string>;
     /**
@@ -287,7 +289,7 @@ export interface AssetArgs {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Array of events that are part of the asset. Each event can reference an asset type capability and have per-event configuration. See below for more details about the definition of the events element.
+     * Array of events that are part of the asset. Each event can have per-event configuration.
      */
     events?: pulumi.Input<pulumi.Input<types.inputs.EventArgs>[]>;
     /**

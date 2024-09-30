@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2018-10-15.
  */
 export function getGlobalUserPersonalPreferences(args: GetGlobalUserPersonalPreferencesArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalUserPersonalPreferencesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:labservices:getGlobalUserPersonalPreferences", {
         "addRemove": args.addRemove,
@@ -53,7 +52,13 @@ export interface GetGlobalUserPersonalPreferencesResult {
  * Azure REST API version: 2018-10-15.
  */
 export function getGlobalUserPersonalPreferencesOutput(args: GetGlobalUserPersonalPreferencesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalUserPersonalPreferencesResult> {
-    return pulumi.output(args).apply((a: any) => getGlobalUserPersonalPreferences(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:labservices:getGlobalUserPersonalPreferences", {
+        "addRemove": args.addRemove,
+        "labAccountResourceId": args.labAccountResourceId,
+        "labResourceId": args.labResourceId,
+        "userName": args.userName,
+    }, opts);
 }
 
 export interface GetGlobalUserPersonalPreferencesOutputArgs {

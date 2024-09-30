@@ -5,10 +5,9 @@ import * as types from "./types";
  * get a dryrun job
  * Azure REST API version: 2022-11-01-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2024-04-01.
+ * Other available API versions: 2023-04-01-preview, 2024-04-01, 2024-07-01-preview.
  */
 export function getLinkerDryrun(args: GetLinkerDryrunArgs, opts?: pulumi.InvokeOptions): Promise<GetLinkerDryrunResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:servicelinker:getLinkerDryrun", {
         "dryrunName": args.dryrunName,
@@ -68,10 +67,14 @@ export interface GetLinkerDryrunResult {
  * get a dryrun job
  * Azure REST API version: 2022-11-01-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2024-04-01.
+ * Other available API versions: 2023-04-01-preview, 2024-04-01, 2024-07-01-preview.
  */
 export function getLinkerDryrunOutput(args: GetLinkerDryrunOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLinkerDryrunResult> {
-    return pulumi.output(args).apply((a: any) => getLinkerDryrun(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:servicelinker:getLinkerDryrun", {
+        "dryrunName": args.dryrunName,
+        "resourceUri": args.resourceUri,
+    }, opts);
 }
 
 export interface GetLinkerDryrunOutputArgs {

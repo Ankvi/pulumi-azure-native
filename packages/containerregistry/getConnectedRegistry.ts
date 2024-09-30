@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview.
  */
 export function getConnectedRegistry(args: GetConnectedRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectedRegistryResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:containerregistry:getConnectedRegistry", {
         "connectedRegistryName": args.connectedRegistryName,
@@ -108,7 +107,12 @@ export interface GetConnectedRegistryResult {
  * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview.
  */
 export function getConnectedRegistryOutput(args: GetConnectedRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectedRegistryResult> {
-    return pulumi.output(args).apply((a: any) => getConnectedRegistry(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:containerregistry:getConnectedRegistry", {
+        "connectedRegistryName": args.connectedRegistryName,
+        "registryName": args.registryName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetConnectedRegistryOutputArgs {

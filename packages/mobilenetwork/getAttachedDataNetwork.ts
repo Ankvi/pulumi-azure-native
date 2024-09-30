@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
  */
 export function getAttachedDataNetwork(args: GetAttachedDataNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachedDataNetworkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:mobilenetwork:getAttachedDataNetwork", {
         "attachedDataNetworkName": args.attachedDataNetworkName,
@@ -102,7 +101,13 @@ export interface GetAttachedDataNetworkResult {
  * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
  */
 export function getAttachedDataNetworkOutput(args: GetAttachedDataNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachedDataNetworkResult> {
-    return pulumi.output(args).apply((a: any) => getAttachedDataNetwork(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:mobilenetwork:getAttachedDataNetwork", {
+        "attachedDataNetworkName": args.attachedDataNetworkName,
+        "packetCoreControlPlaneName": args.packetCoreControlPlaneName,
+        "packetCoreDataPlaneName": args.packetCoreDataPlaneName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetAttachedDataNetworkOutputArgs {

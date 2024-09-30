@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2018-11-01, 2023-01-01, 2023-04-01, 2023-05-01.
  */
 export function listStorageAccountSAS(args: ListStorageAccountSASArgs, opts?: pulumi.InvokeOptions): Promise<ListStorageAccountSASResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:storage:listStorageAccountSAS", {
         "accountName": args.accountName,
@@ -83,7 +82,19 @@ export interface ListStorageAccountSASResult {
  * Other available API versions: 2018-11-01, 2023-01-01, 2023-04-01, 2023-05-01.
  */
 export function listStorageAccountSASOutput(args: ListStorageAccountSASOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListStorageAccountSASResult> {
-    return pulumi.output(args).apply((a: any) => listStorageAccountSAS(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:storage:listStorageAccountSAS", {
+        "accountName": args.accountName,
+        "iPAddressOrRange": args.iPAddressOrRange,
+        "keyToSign": args.keyToSign,
+        "permissions": args.permissions,
+        "protocols": args.protocols,
+        "resourceGroupName": args.resourceGroupName,
+        "resourceTypes": args.resourceTypes,
+        "services": args.services,
+        "sharedAccessExpiryTime": args.sharedAccessExpiryTime,
+        "sharedAccessStartTime": args.sharedAccessStartTime,
+    }, opts);
 }
 
 export interface ListStorageAccountSASOutputArgs {

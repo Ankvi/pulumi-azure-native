@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2021-02-16-preview.
  */
 export function getReplicationExtension(args: GetReplicationExtensionArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationExtensionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:datareplication:getReplicationExtension", {
         "replicationExtensionName": args.replicationExtensionName,
@@ -57,7 +56,12 @@ export interface GetReplicationExtensionResult {
  * Azure REST API version: 2021-02-16-preview.
  */
 export function getReplicationExtensionOutput(args: GetReplicationExtensionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplicationExtensionResult> {
-    return pulumi.output(args).apply((a: any) => getReplicationExtension(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:datareplication:getReplicationExtension", {
+        "replicationExtensionName": args.replicationExtensionName,
+        "resourceGroupName": args.resourceGroupName,
+        "vaultName": args.vaultName,
+    }, opts);
 }
 
 export interface GetReplicationExtensionOutputArgs {

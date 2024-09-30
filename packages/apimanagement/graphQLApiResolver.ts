@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * GraphQL API Resolver details.
  * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export class GraphQLApiResolver extends pulumi.CustomResource {
     /**
@@ -91,7 +91,7 @@ export class GraphQLApiResolver extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220801:GraphQLApiResolver" }, { type: "azure-native:apimanagement/v20220901preview:GraphQLApiResolver" }, { type: "azure-native:apimanagement/v20230301preview:GraphQLApiResolver" }, { type: "azure-native:apimanagement/v20230501preview:GraphQLApiResolver" }, { type: "azure-native:apimanagement/v20230901preview:GraphQLApiResolver" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220801:GraphQLApiResolver" }, { type: "azure-native:apimanagement/v20220901preview:GraphQLApiResolver" }, { type: "azure-native:apimanagement/v20230301preview:GraphQLApiResolver" }, { type: "azure-native:apimanagement/v20230501preview:GraphQLApiResolver" }, { type: "azure-native:apimanagement/v20230901preview:GraphQLApiResolver" }, { type: "azure-native:apimanagement/v20240501:GraphQLApiResolver" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GraphQLApiResolver.__pulumiType, name, resourceInputs, opts);
     }

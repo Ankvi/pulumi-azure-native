@@ -734,6 +734,36 @@ export interface InstructionStepDetailsArgs {
 }
 
 /**
+ * Describes a log.
+ */
+export interface LogArgs {
+    /**
+     * The bulk size for the log.
+     */
+    bulkSize?: pulumi.Input<number>;
+    /**
+     * The filters for the log.
+     */
+    filters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Types of ingestion.
+     */
+    ingestionType?: pulumi.Input<string | enums.IngestionType>;
+    /**
+     * The schedule interval in seconds.
+     */
+    scheduleInterval?: pulumi.Input<number>;
+    /**
+     * Types of log status.
+     */
+    status?: pulumi.Input<string | enums.LogStatusType>;
+    /**
+     * Types of logs and tables.
+     */
+    type: pulumi.Input<string | enums.LogType>;
+}
+
+/**
  * The available data types for MCAS (Microsoft Cloud App Security) data connector.
  */
 export interface MCASDataConnectorDataTypesArgs {
@@ -1012,6 +1042,61 @@ export interface ResourceProviderRequiredPermissionsArgs {
 }
 
 /**
+ * Describes the Rfc connector.
+ */
+export interface RfcConnectorArgs {
+    /**
+     * FQDN, hostname, or IP address of the ABAP server.
+     */
+    abapServerHost?: pulumi.Input<string>;
+    /**
+     * The authentication type to SAP.
+     */
+    authenticationType?: pulumi.Input<string | enums.SapAuthenticationType>;
+    /**
+     * Client number of the ABAP server.
+     * Example - 001
+     */
+    client: pulumi.Input<string>;
+    /**
+     * The SAP code page used for character encoding.
+     * Example - 1100
+     */
+    codePage?: pulumi.Input<string>;
+    /**
+     * Logon group of the message server.
+     */
+    group?: pulumi.Input<string>;
+    /**
+     * FQDN, hostname, or IP address of the Message server.
+     */
+    messageServerHost?: pulumi.Input<string>;
+    /**
+     * Port number, or service name (from /etc/services) of the message server.
+     */
+    messageServerService?: pulumi.Input<string>;
+    /**
+     * SNC QOP.
+     * Options are 1, 2, 3, 8, 9.
+     */
+    sncQop?: pulumi.Input<string>;
+    /**
+     * System ID of the ABAP server.
+     * Example - A4H
+     */
+    systemId: pulumi.Input<string>;
+    /**
+     * System number of the ABAP server.
+     */
+    systemNumber: pulumi.Input<string>;
+    /**
+     * Represents the types of SAP systems.
+     * Expected value is 'Rfc'.
+     */
+    type: pulumi.Input<"Rfc">;
+}
+
+/**
  * The sample queries for the connector.
  */
 export interface SampleQueryArgs {
@@ -1023,6 +1108,115 @@ export interface SampleQueryArgs {
      * Gets or sets the KQL sample query.
      */
     query: pulumi.Input<string>;
+}
+
+/**
+ * Describes the configuration of a SAP Docker agent.
+ */
+export interface SapAgentConfigurationArgs {
+    /**
+     * The name of the docker agent.
+     * only letters with numbers, underscores and hyphens are allowed
+     * example: "my-agent"
+     */
+    agentContainerName?: pulumi.Input<string>;
+    /**
+     * The key mode of the agent.
+     * ManagedIdentity|ApplicationIdentity are the options
+     */
+    keyVaultAuthenticationMode?: pulumi.Input<string | enums.KeyVaultAuthenticationMode>;
+    /**
+     * The key vault resource id to access the key vault.
+     * example: "/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.KeyVault/vaults/myVault"
+     */
+    keyVaultResourceId?: pulumi.Input<string>;
+    /**
+     * The SDK path (a file not a folder) on the agent machine.
+     * example: "/path/to/nwrfc750P_8-70002755.zip"
+     */
+    sdkPath?: pulumi.Input<string>;
+    /**
+     * The secret source of the agent.
+     * AzureKeyVault is the option
+     */
+    secretSource?: pulumi.Input<string | enums.SecretSource>;
+    /**
+     * The SNC path (a folder not a file) on the agent machine.
+     * example: "/path/to/snc"
+     */
+    sncPath?: pulumi.Input<string>;
+    /**
+     * Type of the agent
+     * Expected value is 'SAP'.
+     */
+    type: pulumi.Input<"SAP">;
+}
+
+/**
+ * Describes the SapControl connector configuration.
+ */
+export interface SapControlConnectorArgs {
+    /**
+     * Represents the types of HTTPS configuration to connect to the SapControl service.
+     */
+    httpsConfiguration?: pulumi.Input<string | enums.HttpsConfigurationType>;
+    /**
+     * The instance number. Only 2 digits are allowed.
+     */
+    instance: pulumi.Input<string>;
+    /**
+     * The port of the SOAP connection to SAP Control.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * The server name.
+     * FQDN or IP address.
+     */
+    server: pulumi.Input<string>;
+    /**
+     * The timezone.
+     * example: "GMT+0" or "GMT-8"
+     * default: "GMT+0"
+     */
+    timezone?: pulumi.Input<string>;
+    /**
+     * Represents the types of SAP systems.
+     * Expected value is 'SapControl'.
+     */
+    type: pulumi.Input<"SapControl">;
+}
+/**
+ * sapControlConnectorArgsProvideDefaults sets the appropriate defaults for SapControlConnectorArgs
+ */
+export function sapControlConnectorArgsProvideDefaults(val: SapControlConnectorArgs): SapControlConnectorArgs {
+    return {
+        ...val,
+        timezone: (val.timezone) ?? "GMT+0",
+    };
+}
+
+/**
+ * Describes the SAP configuration.
+ */
+export interface SapSystemsConfigurationArgs {
+    /**
+     * azure resource id
+     * example: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
+     */
+    azureResourceId?: pulumi.Input<string>;
+    /**
+     * Base Model for SAP System Connector.
+     */
+    connector: pulumi.Input<RfcConnectorArgs | SapControlConnectorArgs>;
+    /**
+     * The logs configuration.
+     */
+    logs?: pulumi.Input<pulumi.Input<LogArgs>[]>;
+    /**
+     * Represents the types of configuration for a system.
+     * Expected value is 'SAP'.
+     */
+    type: pulumi.Input<"SAP">;
 }
 
 /**
@@ -1186,6 +1380,7 @@ export interface WebhookArgs {
      */
     webhookUrl?: pulumi.Input<string>;
 }
+
 
 
 

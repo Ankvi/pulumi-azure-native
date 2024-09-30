@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-10-04-preview.
  */
 export function getDiagnosticService(args: GetDiagnosticServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetDiagnosticServiceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:iotoperationsmq:getDiagnosticService", {
         "diagnosticServiceName": args.diagnosticServiceName,
@@ -104,7 +103,12 @@ export interface GetDiagnosticServiceResult {
  * Azure REST API version: 2023-10-04-preview.
  */
 export function getDiagnosticServiceOutput(args: GetDiagnosticServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiagnosticServiceResult> {
-    return pulumi.output(args).apply((a: any) => getDiagnosticService(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:iotoperationsmq:getDiagnosticService", {
+        "diagnosticServiceName": args.diagnosticServiceName,
+        "mqName": args.mqName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetDiagnosticServiceOutputArgs {

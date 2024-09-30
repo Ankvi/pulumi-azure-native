@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Web app Assessment REST resource.
  * Azure REST API version: 2023-04-01-preview.
+ *
+ * Other available API versions: 2023-05-01-preview.
  */
 export class WebAppAssessmentV2Operation extends pulumi.CustomResource {
     /**
@@ -250,7 +252,7 @@ export class WebAppAssessmentV2Operation extends pulumi.CustomResource {
             resourceInputs["updatedTimestamp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20230401preview:WebAppAssessmentV2Operation" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20230401preview:WebAppAssessmentV2Operation" }, { type: "azure-native:migrate/v20230501preview:WebAppAssessmentV2Operation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebAppAssessmentV2Operation.__pulumiType, name, resourceInputs, opts);
     }

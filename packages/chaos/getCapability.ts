@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-03-22-preview.
  */
 export function getCapability(args: GetCapabilityArgs, opts?: pulumi.InvokeOptions): Promise<GetCapabilityResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:chaos:getCapability", {
         "capabilityName": args.capabilityName,
@@ -79,7 +78,15 @@ export interface GetCapabilityResult {
  * Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-03-22-preview.
  */
 export function getCapabilityOutput(args: GetCapabilityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCapabilityResult> {
-    return pulumi.output(args).apply((a: any) => getCapability(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:chaos:getCapability", {
+        "capabilityName": args.capabilityName,
+        "parentProviderNamespace": args.parentProviderNamespace,
+        "parentResourceName": args.parentResourceName,
+        "parentResourceType": args.parentResourceType,
+        "resourceGroupName": args.resourceGroupName,
+        "targetName": args.targetName,
+    }, opts);
 }
 
 export interface GetCapabilityOutputArgs {

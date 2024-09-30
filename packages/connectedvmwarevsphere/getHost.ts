@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
  */
 export function getHost(args: GetHostArgs, opts?: pulumi.InvokeOptions): Promise<GetHostResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:connectedvmwarevsphere:getHost", {
         "hostName": args.hostName,
@@ -111,7 +110,11 @@ export interface GetHostResult {
  * Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
  */
 export function getHostOutput(args: GetHostOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostResult> {
-    return pulumi.output(args).apply((a: any) => getHost(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:connectedvmwarevsphere:getHost", {
+        "hostName": args.hostName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetHostOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-06-15.
  */
 export function getL2IsolationDomain(args: GetL2IsolationDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetL2IsolationDomainResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:managednetworkfabric:getL2IsolationDomain", {
         "l2IsolationDomainName": args.l2IsolationDomainName,
@@ -91,7 +90,11 @@ export interface GetL2IsolationDomainResult {
  * Other available API versions: 2023-06-15.
  */
 export function getL2IsolationDomainOutput(args: GetL2IsolationDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetL2IsolationDomainResult> {
-    return pulumi.output(args).apply((a: any) => getL2IsolationDomain(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:managednetworkfabric:getL2IsolationDomain", {
+        "l2IsolationDomainName": args.l2IsolationDomainName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetL2IsolationDomainOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01.
  */
 export function getDppResourceGuardProxy(args: GetDppResourceGuardProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetDppResourceGuardProxyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:dataprotection:getDppResourceGuardProxy", {
         "resourceGroupName": args.resourceGroupName,
@@ -64,7 +63,12 @@ export interface GetDppResourceGuardProxyResult {
  * Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01.
  */
 export function getDppResourceGuardProxyOutput(args: GetDppResourceGuardProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDppResourceGuardProxyResult> {
-    return pulumi.output(args).apply((a: any) => getDppResourceGuardProxy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:dataprotection:getDppResourceGuardProxy", {
+        "resourceGroupName": args.resourceGroupName,
+        "resourceGuardProxyName": args.resourceGuardProxyName,
+        "vaultName": args.vaultName,
+    }, opts);
 }
 
 export interface GetDppResourceGuardProxyOutputArgs {

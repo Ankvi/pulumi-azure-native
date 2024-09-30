@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2021-08-01.
  */
 export function getScheduledSynchronizationSetting(args: GetScheduledSynchronizationSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduledSynchronizationSettingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:datashare:getScheduledSynchronizationSetting", {
         "accountName": args.accountName,
@@ -86,7 +85,13 @@ export interface GetScheduledSynchronizationSettingResult {
  * Azure REST API version: 2021-08-01.
  */
 export function getScheduledSynchronizationSettingOutput(args: GetScheduledSynchronizationSettingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScheduledSynchronizationSettingResult> {
-    return pulumi.output(args).apply((a: any) => getScheduledSynchronizationSetting(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:datashare:getScheduledSynchronizationSetting", {
+        "accountName": args.accountName,
+        "resourceGroupName": args.resourceGroupName,
+        "shareName": args.shareName,
+        "synchronizationSettingName": args.synchronizationSettingName,
+    }, opts);
 }
 
 export interface GetScheduledSynchronizationSettingOutputArgs {

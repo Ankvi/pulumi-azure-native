@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2018-06-01.
  */
 export function getLinkedService(args: GetLinkedServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetLinkedServiceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:datafactory:getLinkedService", {
         "factoryName": args.factoryName,
@@ -60,7 +59,12 @@ export interface GetLinkedServiceResult {
  * Azure REST API version: 2018-06-01.
  */
 export function getLinkedServiceOutput(args: GetLinkedServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLinkedServiceResult> {
-    return pulumi.output(args).apply((a: any) => getLinkedService(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:datafactory:getLinkedService", {
+        "factoryName": args.factoryName,
+        "linkedServiceName": args.linkedServiceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetLinkedServiceOutputArgs {

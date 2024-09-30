@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2016-05-15.
  */
 export function listScheduleApplicable(args: ListScheduleApplicableArgs, opts?: pulumi.InvokeOptions): Promise<ListScheduleApplicableResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:devtestlab:listScheduleApplicable", {
         "labName": args.labName,
@@ -52,7 +51,12 @@ export interface ListScheduleApplicableResult {
  * Other available API versions: 2016-05-15.
  */
 export function listScheduleApplicableOutput(args: ListScheduleApplicableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListScheduleApplicableResult> {
-    return pulumi.output(args).apply((a: any) => listScheduleApplicable(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:devtestlab:listScheduleApplicable", {
+        "labName": args.labName,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListScheduleApplicableOutputArgs {

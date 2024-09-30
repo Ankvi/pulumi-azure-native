@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2015-10-01.
  */
 export function listMediaServiceKeys(args: ListMediaServiceKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListMediaServiceKeysResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:media:listMediaServiceKeys", {
         "mediaServiceName": args.mediaServiceName,
@@ -54,7 +53,11 @@ export interface ListMediaServiceKeysResult {
  * Azure REST API version: 2015-10-01.
  */
 export function listMediaServiceKeysOutput(args: ListMediaServiceKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListMediaServiceKeysResult> {
-    return pulumi.output(args).apply((a: any) => listMediaServiceKeys(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:media:listMediaServiceKeys", {
+        "mediaServiceName": args.mediaServiceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListMediaServiceKeysOutputArgs {

@@ -22,6 +22,10 @@ export interface CIAMResourceSKUArgs {
      * The name of the SKU for the tenant.
      */
     name: pulumi.Input<string | enums.CIAMResourceSKUName>;
+    /**
+     * The tier of the tenant.
+     */
+    tier: pulumi.Input<string | enums.CIAMResourceSKUTier>;
 }
 
 /**

@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2021-08-01.
  */
 export function getBlobContainerDataSet(args: GetBlobContainerDataSetArgs, opts?: pulumi.InvokeOptions): Promise<GetBlobContainerDataSetResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:datashare:getBlobContainerDataSet", {
         "accountName": args.accountName,
@@ -86,7 +85,13 @@ export interface GetBlobContainerDataSetResult {
  * Azure REST API version: 2021-08-01.
  */
 export function getBlobContainerDataSetOutput(args: GetBlobContainerDataSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBlobContainerDataSetResult> {
-    return pulumi.output(args).apply((a: any) => getBlobContainerDataSet(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:datashare:getBlobContainerDataSet", {
+        "accountName": args.accountName,
+        "dataSetName": args.dataSetName,
+        "resourceGroupName": args.resourceGroupName,
+        "shareName": args.shareName,
+    }, opts);
 }
 
 export interface GetBlobContainerDataSetOutputArgs {

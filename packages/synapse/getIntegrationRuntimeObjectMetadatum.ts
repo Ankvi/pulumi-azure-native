@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2021-06-01-preview.
  */
 export function getIntegrationRuntimeObjectMetadatum(args: GetIntegrationRuntimeObjectMetadatumArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationRuntimeObjectMetadatumResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:synapse:getIntegrationRuntimeObjectMetadatum", {
         "integrationRuntimeName": args.integrationRuntimeName,
@@ -57,7 +56,13 @@ export interface GetIntegrationRuntimeObjectMetadatumResult {
  * Other available API versions: 2021-06-01-preview.
  */
 export function getIntegrationRuntimeObjectMetadatumOutput(args: GetIntegrationRuntimeObjectMetadatumOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationRuntimeObjectMetadatumResult> {
-    return pulumi.output(args).apply((a: any) => getIntegrationRuntimeObjectMetadatum(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:synapse:getIntegrationRuntimeObjectMetadatum", {
+        "integrationRuntimeName": args.integrationRuntimeName,
+        "metadataPath": args.metadataPath,
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetIntegrationRuntimeObjectMetadatumOutputArgs {

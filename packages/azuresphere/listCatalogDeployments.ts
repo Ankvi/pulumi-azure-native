@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-04-01.
  */
 export function listCatalogDeployments(args: ListCatalogDeploymentsArgs, opts?: pulumi.InvokeOptions): Promise<ListCatalogDeploymentsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:azuresphere:listCatalogDeployments", {
         "catalogName": args.catalogName,
@@ -67,7 +66,15 @@ export interface ListCatalogDeploymentsResult {
  * Other available API versions: 2024-04-01.
  */
 export function listCatalogDeploymentsOutput(args: ListCatalogDeploymentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListCatalogDeploymentsResult> {
-    return pulumi.output(args).apply((a: any) => listCatalogDeployments(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:azuresphere:listCatalogDeployments", {
+        "catalogName": args.catalogName,
+        "filter": args.filter,
+        "maxpagesize": args.maxpagesize,
+        "resourceGroupName": args.resourceGroupName,
+        "skip": args.skip,
+        "top": args.top,
+    }, opts);
 }
 
 export interface ListCatalogDeploymentsOutputArgs {

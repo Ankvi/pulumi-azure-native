@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2021-10-31-preview.
  */
 export function getAppliance(args: GetApplianceArgs, opts?: pulumi.InvokeOptions): Promise<GetApplianceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:resourceconnector:getAppliance", {
         "resourceGroupName": args.resourceGroupName,
@@ -91,7 +90,11 @@ export interface GetApplianceResult {
  * Other available API versions: 2021-10-31-preview.
  */
 export function getApplianceOutput(args: GetApplianceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplianceResult> {
-    return pulumi.output(args).apply((a: any) => getAppliance(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:resourceconnector:getAppliance", {
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface GetApplianceOutputArgs {

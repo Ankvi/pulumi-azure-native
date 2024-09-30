@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get properties of the provided bare metal machine.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01.
  */
 export function getBareMetalMachine(args: GetBareMetalMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetBareMetalMachineResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:networkcloud:getBareMetalMachine", {
         "bareMetalMachineName": args.bareMetalMachineName,
@@ -181,10 +180,14 @@ export interface GetBareMetalMachineResult {
  * Get properties of the provided bare metal machine.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01.
  */
 export function getBareMetalMachineOutput(args: GetBareMetalMachineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBareMetalMachineResult> {
-    return pulumi.output(args).apply((a: any) => getBareMetalMachine(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:networkcloud:getBareMetalMachine", {
+        "bareMetalMachineName": args.bareMetalMachineName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetBareMetalMachineOutputArgs {

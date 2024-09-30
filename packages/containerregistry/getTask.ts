@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2018-09-01, 2019-04-01.
  */
 export function getTask(args: GetTaskArgs, opts?: pulumi.InvokeOptions): Promise<GetTaskResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:containerregistry:getTask", {
         "registryName": args.registryName,
@@ -121,7 +120,12 @@ export interface GetTaskResult {
  * Other available API versions: 2018-09-01, 2019-04-01.
  */
 export function getTaskOutput(args: GetTaskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaskResult> {
-    return pulumi.output(args).apply((a: any) => getTask(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:containerregistry:getTask", {
+        "registryName": args.registryName,
+        "resourceGroupName": args.resourceGroupName,
+        "taskName": args.taskName,
+    }, opts);
 }
 
 export interface GetTaskOutputArgs {

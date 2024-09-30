@@ -4,9 +4,10 @@ import * as types from "./types";
 /**
  * Get a AssetEndpointProfile
  * Azure REST API version: 2023-11-01-preview.
+ *
+ * Other available API versions: 2024-09-01-preview.
  */
 export function getAssetEndpointProfile(args: GetAssetEndpointProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetAssetEndpointProfileResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:deviceregistry:getAssetEndpointProfile", {
         "assetEndpointProfileName": args.assetEndpointProfileName,
@@ -30,7 +31,7 @@ export interface GetAssetEndpointProfileArgs {
  */
 export interface GetAssetEndpointProfileResult {
     /**
-     * Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
+     * Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
      */
     readonly additionalConfiguration?: string;
     /**
@@ -85,9 +86,15 @@ export interface GetAssetEndpointProfileResult {
 /**
  * Get a AssetEndpointProfile
  * Azure REST API version: 2023-11-01-preview.
+ *
+ * Other available API versions: 2024-09-01-preview.
  */
 export function getAssetEndpointProfileOutput(args: GetAssetEndpointProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssetEndpointProfileResult> {
-    return pulumi.output(args).apply((a: any) => getAssetEndpointProfile(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:deviceregistry:getAssetEndpointProfile", {
+        "assetEndpointProfileName": args.assetEndpointProfileName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetAssetEndpointProfileOutputArgs {

@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2018-10-01.
  */
 export function getUserSettingsWithLocation(args: GetUserSettingsWithLocationArgs, opts?: pulumi.InvokeOptions): Promise<GetUserSettingsWithLocationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:portal:getUserSettingsWithLocation", {
         "location": args.location,
@@ -39,7 +38,11 @@ export interface GetUserSettingsWithLocationResult {
  * Azure REST API version: 2018-10-01.
  */
 export function getUserSettingsWithLocationOutput(args: GetUserSettingsWithLocationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserSettingsWithLocationResult> {
-    return pulumi.output(args).apply((a: any) => getUserSettingsWithLocation(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:portal:getUserSettingsWithLocation", {
+        "location": args.location,
+        "userSettingsName": args.userSettingsName,
+    }, opts);
 }
 
 export interface GetUserSettingsWithLocationOutputArgs {

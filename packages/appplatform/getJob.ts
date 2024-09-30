@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2024-05-01-preview.
  */
 export function getJob(args: GetJobArgs, opts?: pulumi.InvokeOptions): Promise<GetJobResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:appplatform:getJob", {
         "jobName": args.jobName,
@@ -60,7 +59,12 @@ export interface GetJobResult {
  * Azure REST API version: 2024-05-01-preview.
  */
 export function getJobOutput(args: GetJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobResult> {
-    return pulumi.output(args).apply((a: any) => getJob(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:appplatform:getJob", {
+        "jobName": args.jobName,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 export interface GetJobOutputArgs {

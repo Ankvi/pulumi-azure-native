@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2019-06-01.
  */
 export function getJobDefinition(args: GetJobDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetJobDefinitionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:hybriddata:getJobDefinition", {
         "dataManagerName": args.dataManagerName,
@@ -93,7 +92,13 @@ export interface GetJobDefinitionResult {
  * Azure REST API version: 2019-06-01.
  */
 export function getJobDefinitionOutput(args: GetJobDefinitionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobDefinitionResult> {
-    return pulumi.output(args).apply((a: any) => getJobDefinition(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:hybriddata:getJobDefinition", {
+        "dataManagerName": args.dataManagerName,
+        "dataServiceName": args.dataServiceName,
+        "jobDefinitionName": args.jobDefinitionName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetJobDefinitionOutputArgs {

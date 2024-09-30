@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2014-04-01.
  */
 export function getDisasterRecoveryConfiguration(args: GetDisasterRecoveryConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetDisasterRecoveryConfigurationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:sql:getDisasterRecoveryConfiguration", {
         "disasterRecoveryConfigurationName": args.disasterRecoveryConfigurationName,
@@ -83,7 +82,12 @@ export interface GetDisasterRecoveryConfigurationResult {
  * Azure REST API version: 2014-04-01.
  */
 export function getDisasterRecoveryConfigurationOutput(args: GetDisasterRecoveryConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDisasterRecoveryConfigurationResult> {
-    return pulumi.output(args).apply((a: any) => getDisasterRecoveryConfiguration(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:sql:getDisasterRecoveryConfiguration", {
+        "disasterRecoveryConfigurationName": args.disasterRecoveryConfigurationName,
+        "resourceGroupName": args.resourceGroupName,
+        "serverName": args.serverName,
+    }, opts);
 }
 
 export interface GetDisasterRecoveryConfigurationOutputArgs {

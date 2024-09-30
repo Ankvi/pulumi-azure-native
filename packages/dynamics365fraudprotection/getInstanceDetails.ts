@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2021-02-01-preview.
  */
 export function getInstanceDetails(args: GetInstanceDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceDetailsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:dynamics365fraudprotection:getInstanceDetails", {
         "instanceName": args.instanceName,
@@ -67,7 +66,11 @@ export interface GetInstanceDetailsResult {
  * Azure REST API version: 2021-02-01-preview.
  */
 export function getInstanceDetailsOutput(args: GetInstanceDetailsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceDetailsResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceDetails(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:dynamics365fraudprotection:getInstanceDetails", {
+        "instanceName": args.instanceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetInstanceDetailsOutputArgs {

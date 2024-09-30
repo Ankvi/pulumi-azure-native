@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01.
  */
 export function getJob(args: GetJobArgs, opts?: pulumi.InvokeOptions): Promise<GetJobResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:app:getJob", {
         "jobName": args.jobName,
@@ -95,7 +94,11 @@ export interface GetJobResult {
  * Other available API versions: 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01.
  */
 export function getJobOutput(args: GetJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobResult> {
-    return pulumi.output(args).apply((a: any) => getJob(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:app:getJob", {
+        "jobName": args.jobName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetJobOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2019-06-01-preview.
  */
 export function getTemplateSpecVersion(args: GetTemplateSpecVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateSpecVersionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:resources:getTemplateSpecVersion", {
         "resourceGroupName": args.resourceGroupName,
@@ -88,7 +87,12 @@ export interface GetTemplateSpecVersionResult {
  * Other available API versions: 2019-06-01-preview.
  */
 export function getTemplateSpecVersionOutput(args: GetTemplateSpecVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateSpecVersionResult> {
-    return pulumi.output(args).apply((a: any) => getTemplateSpecVersion(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:resources:getTemplateSpecVersion", {
+        "resourceGroupName": args.resourceGroupName,
+        "templateSpecName": args.templateSpecName,
+        "templateSpecVersion": args.templateSpecVersion,
+    }, opts);
 }
 
 export interface GetTemplateSpecVersionOutputArgs {

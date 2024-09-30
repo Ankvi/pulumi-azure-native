@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-05-01-preview, 2024-04-01-preview.
  */
 export function getKafkaConfiguration(args: GetKafkaConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaConfigurationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:purview:getKafkaConfiguration", {
         "accountName": args.accountName,
@@ -85,7 +84,12 @@ export interface GetKafkaConfigurationResult {
  * Other available API versions: 2023-05-01-preview, 2024-04-01-preview.
  */
 export function getKafkaConfigurationOutput(args: GetKafkaConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaConfigurationResult> {
-    return pulumi.output(args).apply((a: any) => getKafkaConfiguration(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:purview:getKafkaConfiguration", {
+        "accountName": args.accountName,
+        "kafkaConfigurationName": args.kafkaConfigurationName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetKafkaConfigurationOutputArgs {

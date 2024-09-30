@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2021-12-01, 2022-03-01, 2022-09-01.
  */
 export function listPrivateStoreNewPlansNotifications(args: ListPrivateStoreNewPlansNotificationsArgs, opts?: pulumi.InvokeOptions): Promise<ListPrivateStoreNewPlansNotificationsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:marketplace:listPrivateStoreNewPlansNotifications", {
         "privateStoreId": args.privateStoreId,
@@ -35,7 +34,10 @@ export interface ListPrivateStoreNewPlansNotificationsResult {
  * Other available API versions: 2021-12-01, 2022-03-01, 2022-09-01.
  */
 export function listPrivateStoreNewPlansNotificationsOutput(args: ListPrivateStoreNewPlansNotificationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListPrivateStoreNewPlansNotificationsResult> {
-    return pulumi.output(args).apply((a: any) => listPrivateStoreNewPlansNotifications(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:marketplace:listPrivateStoreNewPlansNotifications", {
+        "privateStoreId": args.privateStoreId,
+    }, opts);
 }
 
 export interface ListPrivateStoreNewPlansNotificationsOutputArgs {

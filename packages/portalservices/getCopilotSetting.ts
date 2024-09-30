@@ -7,7 +7,6 @@ import * as types from "./types";
  */
 export function getCopilotSetting(args?: GetCopilotSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetCopilotSettingResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:portalservices:getCopilotSetting", {
     }, opts);
@@ -50,5 +49,7 @@ export interface GetCopilotSettingResult {
  * Azure REST API version: 2024-04-01-preview.
  */
 export function getCopilotSettingOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCopilotSettingResult> {
-    return pulumi.output(getCopilotSetting(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:portalservices:getCopilotSetting", {
+    }, opts);
 }

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2017-06-01.
  */
 export function getDomainService(args: GetDomainServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainServiceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:aad:getDomainService", {
         "domainServiceName": args.domainServiceName,
@@ -139,7 +138,11 @@ export interface GetDomainServiceResult {
  * Other available API versions: 2017-06-01.
  */
 export function getDomainServiceOutput(args: GetDomainServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainServiceResult> {
-    return pulumi.output(args).apply((a: any) => getDomainService(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:aad:getDomainService", {
+        "domainServiceName": args.domainServiceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetDomainServiceOutputArgs {

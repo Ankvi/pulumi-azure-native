@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-06-01-preview.
  */
 export function getDataConnector(args: GetDataConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetDataConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:agfoodplatform:getDataConnector", {
         "dataConnectorName": args.dataConnectorName,
@@ -64,7 +63,12 @@ export interface GetDataConnectorResult {
  * Azure REST API version: 2023-06-01-preview.
  */
 export function getDataConnectorOutput(args: GetDataConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getDataConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:agfoodplatform:getDataConnector", {
+        "dataConnectorName": args.dataConnectorName,
+        "dataManagerForAgricultureResourceName": args.dataManagerForAgricultureResourceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetDataConnectorOutputArgs {

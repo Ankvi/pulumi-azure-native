@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01.
  */
 export function getFileShare(args: GetFileShareArgs, opts?: pulumi.InvokeOptions): Promise<GetFileShareResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:storage:getFileShare", {
         "accountName": args.accountName,
@@ -137,7 +136,13 @@ export interface GetFileShareResult {
  * Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01.
  */
 export function getFileShareOutput(args: GetFileShareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileShareResult> {
-    return pulumi.output(args).apply((a: any) => getFileShare(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:storage:getFileShare", {
+        "accountName": args.accountName,
+        "expand": args.expand,
+        "resourceGroupName": args.resourceGroupName,
+        "shareName": args.shareName,
+    }, opts);
 }
 
 export interface GetFileShareOutputArgs {

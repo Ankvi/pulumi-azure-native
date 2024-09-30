@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function getAutomationAccount(args: GetAutomationAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAutomationAccountResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:automation:getAutomationAccount", {
         "automationAccountName": args.automationAccountName,
@@ -115,7 +114,11 @@ export interface GetAutomationAccountResult {
  * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function getAutomationAccountOutput(args: GetAutomationAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutomationAccountResult> {
-    return pulumi.output(args).apply((a: any) => getAutomationAccount(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:automation:getAutomationAccount", {
+        "automationAccountName": args.automationAccountName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetAutomationAccountOutputArgs {

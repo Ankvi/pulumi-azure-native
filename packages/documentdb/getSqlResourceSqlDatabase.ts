@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets the SQL database under an existing Azure Cosmos DB database account with the provided name.
  * Azure REST API version: 2023-04-15.
  *
- * Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+ * Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
  */
 export function getSqlResourceSqlDatabase(args: GetSqlResourceSqlDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlResourceSqlDatabaseResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:documentdb:getSqlResourceSqlDatabase", {
         "accountName": args.accountName,
@@ -63,10 +62,15 @@ export interface GetSqlResourceSqlDatabaseResult {
  * Gets the SQL database under an existing Azure Cosmos DB database account with the provided name.
  * Azure REST API version: 2023-04-15.
  *
- * Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+ * Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
  */
 export function getSqlResourceSqlDatabaseOutput(args: GetSqlResourceSqlDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlResourceSqlDatabaseResult> {
-    return pulumi.output(args).apply((a: any) => getSqlResourceSqlDatabase(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:documentdb:getSqlResourceSqlDatabase", {
+        "accountName": args.accountName,
+        "databaseName": args.databaseName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetSqlResourceSqlDatabaseOutputArgs {

@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2021-03-01-preview.
  */
 export function getObjectAnchorsAccount(args: GetObjectAnchorsAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectAnchorsAccountResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:mixedreality:getObjectAnchorsAccount", {
         "accountName": args.accountName,
@@ -84,7 +83,11 @@ export interface GetObjectAnchorsAccountResult {
  * Azure REST API version: 2021-03-01-preview.
  */
 export function getObjectAnchorsAccountOutput(args: GetObjectAnchorsAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetObjectAnchorsAccountResult> {
-    return pulumi.output(args).apply((a: any) => getObjectAnchorsAccount(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:mixedreality:getObjectAnchorsAccount", {
+        "accountName": args.accountName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetObjectAnchorsAccountOutputArgs {

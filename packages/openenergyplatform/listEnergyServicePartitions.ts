@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2022-04-04-preview.
  */
 export function listEnergyServicePartitions(args: ListEnergyServicePartitionsArgs, opts?: pulumi.InvokeOptions): Promise<ListEnergyServicePartitionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:openenergyplatform:listEnergyServicePartitions", {
         "resourceGroupName": args.resourceGroupName,
@@ -39,7 +38,11 @@ export interface ListEnergyServicePartitionsResult {
  * Azure REST API version: 2022-04-04-preview.
  */
 export function listEnergyServicePartitionsOutput(args: ListEnergyServicePartitionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListEnergyServicePartitionsResult> {
-    return pulumi.output(args).apply((a: any) => listEnergyServicePartitions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:openenergyplatform:listEnergyServicePartitions", {
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface ListEnergyServicePartitionsOutputArgs {

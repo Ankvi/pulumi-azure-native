@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets the details of the Gateway specified by its identifier.
  * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getGateway(args: GetGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apimanagement:getGateway", {
         "gatewayId": args.gatewayId,
@@ -61,10 +60,15 @@ export interface GetGatewayResult {
  * Gets the details of the Gateway specified by its identifier.
  * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getGatewayOutput(args: GetGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayResult> {
-    return pulumi.output(args).apply((a: any) => getGateway(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:getGateway", {
+        "gatewayId": args.gatewayId,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 export interface GetGatewayOutputArgs {

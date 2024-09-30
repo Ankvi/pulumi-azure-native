@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get the metadata of the provisioning service without SAS keys.
  * Azure REST API version: 2022-12-12.
  *
- * Other available API versions: 2020-09-01-preview, 2023-03-01-preview.
+ * Other available API versions: 2020-09-01-preview, 2023-03-01-preview, 2025-02-01-preview.
  */
 export function getIotDpsResource(args: GetIotDpsResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetIotDpsResourceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:devices:getIotDpsResource", {
         "provisioningServiceName": args.provisioningServiceName,
@@ -80,10 +79,14 @@ export interface GetIotDpsResourceResult {
  * Get the metadata of the provisioning service without SAS keys.
  * Azure REST API version: 2022-12-12.
  *
- * Other available API versions: 2020-09-01-preview, 2023-03-01-preview.
+ * Other available API versions: 2020-09-01-preview, 2023-03-01-preview, 2025-02-01-preview.
  */
 export function getIotDpsResourceOutput(args: GetIotDpsResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIotDpsResourceResult> {
-    return pulumi.output(args).apply((a: any) => getIotDpsResource(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:devices:getIotDpsResource", {
+        "provisioningServiceName": args.provisioningServiceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetIotDpsResourceOutputArgs {

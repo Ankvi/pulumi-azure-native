@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2018-07-01-preview.
  */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:servicefabricmesh:getVolume", {
         "resourceGroupName": args.resourceGroupName,
@@ -83,7 +82,11 @@ export interface GetVolumeResult {
  * Other available API versions: 2018-07-01-preview.
  */
 export function getVolumeOutput(args: GetVolumeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeResult> {
-    return pulumi.output(args).apply((a: any) => getVolume(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:servicefabricmesh:getVolume", {
+        "resourceGroupName": args.resourceGroupName,
+        "volumeResourceName": args.volumeResourceName,
+    }, opts);
 }
 
 export interface GetVolumeOutputArgs {

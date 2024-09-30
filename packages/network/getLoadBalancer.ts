@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets the specified load balancer.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2015-05-01-preview, 2018-06-01, 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2015-05-01-preview, 2018-06-01, 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getLoadBalancer", {
         "expand": args.expand,
@@ -109,10 +108,15 @@ export interface GetLoadBalancerResult {
  * Gets the specified load balancer.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2015-05-01-preview, 2018-06-01, 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2015-05-01-preview, 2018-06-01, 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getLoadBalancerOutput(args: GetLoadBalancerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancerResult> {
-    return pulumi.output(args).apply((a: any) => getLoadBalancer(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getLoadBalancer", {
+        "expand": args.expand,
+        "loadBalancerName": args.loadBalancerName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetLoadBalancerOutputArgs {

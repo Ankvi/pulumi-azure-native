@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview.
  */
 export function getPreRule(args: GetPreRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetPreRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:cloudngfw:getPreRule", {
         "globalRulestackName": args.globalRulestackName,
@@ -132,7 +131,11 @@ export interface GetPreRuleResult {
  * Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview.
  */
 export function getPreRuleOutput(args: GetPreRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPreRuleResult> {
-    return pulumi.output(args).apply((a: any) => getPreRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:cloudngfw:getPreRule", {
+        "globalRulestackName": args.globalRulestackName,
+        "priority": args.priority,
+    }, opts);
 }
 
 export interface GetPreRuleOutputArgs {

@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets the details of the Wiki for a Product specified by its identifier.
  * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getProductWiki(args: GetProductWikiArgs, opts?: pulumi.InvokeOptions): Promise<GetProductWikiResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apimanagement:getProductWiki", {
         "productId": args.productId,
@@ -57,10 +56,15 @@ export interface GetProductWikiResult {
  * Gets the details of the Wiki for a Product specified by its identifier.
  * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getProductWikiOutput(args: GetProductWikiOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductWikiResult> {
-    return pulumi.output(args).apply((a: any) => getProductWiki(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:getProductWiki", {
+        "productId": args.productId,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 export interface GetProductWikiOutputArgs {

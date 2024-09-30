@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01.
  */
 export function getDeploymentAtSubscriptionScope(args: GetDeploymentAtSubscriptionScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetDeploymentAtSubscriptionScopeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:resources:getDeploymentAtSubscriptionScope", {
         "deploymentName": args.deploymentName,
@@ -58,7 +57,10 @@ export interface GetDeploymentAtSubscriptionScopeResult {
  * Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01.
  */
 export function getDeploymentAtSubscriptionScopeOutput(args: GetDeploymentAtSubscriptionScopeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeploymentAtSubscriptionScopeResult> {
-    return pulumi.output(args).apply((a: any) => getDeploymentAtSubscriptionScope(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:resources:getDeploymentAtSubscriptionScope", {
+        "deploymentName": args.deploymentName,
+    }, opts);
 }
 
 export interface GetDeploymentAtSubscriptionScopeOutputArgs {

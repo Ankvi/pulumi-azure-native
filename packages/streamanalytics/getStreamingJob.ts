@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2017-04-01-preview, 2021-10-01-preview.
  */
 export function getStreamingJob(args: GetStreamingJobArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamingJobResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:streamanalytics:getStreamingJob", {
         "expand": args.expand,
@@ -160,7 +159,12 @@ export interface GetStreamingJobResult {
  * Other available API versions: 2017-04-01-preview, 2021-10-01-preview.
  */
 export function getStreamingJobOutput(args: GetStreamingJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStreamingJobResult> {
-    return pulumi.output(args).apply((a: any) => getStreamingJob(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:streamanalytics:getStreamingJob", {
+        "expand": args.expand,
+        "jobName": args.jobName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetStreamingJobOutputArgs {

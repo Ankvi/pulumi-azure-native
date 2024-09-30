@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-09-15-preview.
  */
 export function getBotConnection(args: GetBotConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetBotConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:botservice:getBotConnection", {
         "connectionName": args.connectionName,
@@ -84,7 +83,12 @@ export interface GetBotConnectionResult {
  * Other available API versions: 2023-09-15-preview.
  */
 export function getBotConnectionOutput(args: GetBotConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBotConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getBotConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:botservice:getBotConnection", {
+        "connectionName": args.connectionName,
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface GetBotConnectionOutputArgs {

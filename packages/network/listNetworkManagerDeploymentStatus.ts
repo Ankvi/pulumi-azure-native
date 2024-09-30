@@ -5,10 +5,9 @@ import * as types from "./types";
  * Post to List of Network Manager Deployment Status.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview.
+ * Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview, 2024-03-01.
  */
 export function listNetworkManagerDeploymentStatus(args: ListNetworkManagerDeploymentStatusArgs, opts?: pulumi.InvokeOptions): Promise<ListNetworkManagerDeploymentStatusResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:listNetworkManagerDeploymentStatus", {
         "deploymentTypes": args.deploymentTypes,
@@ -64,10 +63,18 @@ export interface ListNetworkManagerDeploymentStatusResult {
  * Post to List of Network Manager Deployment Status.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview.
+ * Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview, 2024-03-01.
  */
 export function listNetworkManagerDeploymentStatusOutput(args: ListNetworkManagerDeploymentStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListNetworkManagerDeploymentStatusResult> {
-    return pulumi.output(args).apply((a: any) => listNetworkManagerDeploymentStatus(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:listNetworkManagerDeploymentStatus", {
+        "deploymentTypes": args.deploymentTypes,
+        "networkManagerName": args.networkManagerName,
+        "regions": args.regions,
+        "resourceGroupName": args.resourceGroupName,
+        "skipToken": args.skipToken,
+        "top": args.top,
+    }, opts);
 }
 
 export interface ListNetworkManagerDeploymentStatusOutputArgs {

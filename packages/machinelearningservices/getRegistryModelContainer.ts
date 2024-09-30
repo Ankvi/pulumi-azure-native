@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview.
  */
 export function getRegistryModelContainer(args: GetRegistryModelContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryModelContainerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:machinelearningservices:getRegistryModelContainer", {
         "modelName": args.modelName,
@@ -64,7 +63,12 @@ export interface GetRegistryModelContainerResult {
  * Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview.
  */
 export function getRegistryModelContainerOutput(args: GetRegistryModelContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryModelContainerResult> {
-    return pulumi.output(args).apply((a: any) => getRegistryModelContainer(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:machinelearningservices:getRegistryModelContainer", {
+        "modelName": args.modelName,
+        "registryName": args.registryName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetRegistryModelContainerOutputArgs {

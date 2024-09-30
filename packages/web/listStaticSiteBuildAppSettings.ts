@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Description for Gets the application settings of a static site build.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2021-02-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2021-02-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function listStaticSiteBuildAppSettings(args: ListStaticSiteBuildAppSettingsArgs, opts?: pulumi.InvokeOptions): Promise<ListStaticSiteBuildAppSettingsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:listStaticSiteBuildAppSettings", {
         "environmentName": args.environmentName,
@@ -60,10 +59,15 @@ export interface ListStaticSiteBuildAppSettingsResult {
  * Description for Gets the application settings of a static site build.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2021-02-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2021-02-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function listStaticSiteBuildAppSettingsOutput(args: ListStaticSiteBuildAppSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListStaticSiteBuildAppSettingsResult> {
-    return pulumi.output(args).apply((a: any) => listStaticSiteBuildAppSettings(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:listStaticSiteBuildAppSettings", {
+        "environmentName": args.environmentName,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListStaticSiteBuildAppSettingsOutputArgs {

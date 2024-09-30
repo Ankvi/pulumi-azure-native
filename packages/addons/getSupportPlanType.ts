@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2018-03-01.
  */
 export function getSupportPlanType(args: GetSupportPlanTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetSupportPlanTypeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:addons:getSupportPlanType", {
         "planTypeName": args.planTypeName,
@@ -50,7 +49,11 @@ export interface GetSupportPlanTypeResult {
  * Azure REST API version: 2018-03-01.
  */
 export function getSupportPlanTypeOutput(args: GetSupportPlanTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSupportPlanTypeResult> {
-    return pulumi.output(args).apply((a: any) => getSupportPlanType(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:addons:getSupportPlanType", {
+        "planTypeName": args.planTypeName,
+        "providerName": args.providerName,
+    }, opts);
 }
 
 export interface GetSupportPlanTypeOutputArgs {

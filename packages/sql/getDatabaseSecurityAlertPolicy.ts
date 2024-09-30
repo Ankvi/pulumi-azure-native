@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets a database's security alert policy.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2018-06-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview.
+ * Other available API versions: 2018-06-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
  */
 export function getDatabaseSecurityAlertPolicy(args: GetDatabaseSecurityAlertPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseSecurityAlertPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:sql:getDatabaseSecurityAlertPolicy", {
         "databaseName": args.databaseName,
@@ -94,10 +93,16 @@ export interface GetDatabaseSecurityAlertPolicyResult {
  * Gets a database's security alert policy.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2018-06-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview.
+ * Other available API versions: 2018-06-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
  */
 export function getDatabaseSecurityAlertPolicyOutput(args: GetDatabaseSecurityAlertPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseSecurityAlertPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getDatabaseSecurityAlertPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:sql:getDatabaseSecurityAlertPolicy", {
+        "databaseName": args.databaseName,
+        "resourceGroupName": args.resourceGroupName,
+        "securityAlertPolicyName": args.securityAlertPolicyName,
+        "serverName": args.serverName,
+    }, opts);
 }
 
 export interface GetDatabaseSecurityAlertPolicyOutputArgs {

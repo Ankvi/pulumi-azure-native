@@ -5,10 +5,9 @@ import * as types from "./types";
  * Retrieves the properties of an existing Azure Cosmos DB Throughput Pool
  * Azure REST API version: 2023-11-15-preview.
  *
- * Other available API versions: 2024-02-15-preview, 2024-05-15-preview.
+ * Other available API versions: 2024-02-15-preview, 2024-05-15-preview, 2024-09-01-preview.
  */
 export function getThroughputPoolAccount(args: GetThroughputPoolAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetThroughputPoolAccountResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:documentdb:getThroughputPoolAccount", {
         "resourceGroupName": args.resourceGroupName,
@@ -73,10 +72,15 @@ export interface GetThroughputPoolAccountResult {
  * Retrieves the properties of an existing Azure Cosmos DB Throughput Pool
  * Azure REST API version: 2023-11-15-preview.
  *
- * Other available API versions: 2024-02-15-preview, 2024-05-15-preview.
+ * Other available API versions: 2024-02-15-preview, 2024-05-15-preview, 2024-09-01-preview.
  */
 export function getThroughputPoolAccountOutput(args: GetThroughputPoolAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetThroughputPoolAccountResult> {
-    return pulumi.output(args).apply((a: any) => getThroughputPoolAccount(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:documentdb:getThroughputPoolAccount", {
+        "resourceGroupName": args.resourceGroupName,
+        "throughputPoolAccountName": args.throughputPoolAccountName,
+        "throughputPoolName": args.throughputPoolName,
+    }, opts);
 }
 
 export interface GetThroughputPoolAccountOutputArgs {

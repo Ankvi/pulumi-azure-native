@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2016-03-01, 2021-10-01-preview.
  */
 export function getFunction(args: GetFunctionArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:streamanalytics:getFunction", {
         "functionName": args.functionName,
@@ -60,7 +59,12 @@ export interface GetFunctionResult {
  * Other available API versions: 2016-03-01, 2021-10-01-preview.
  */
 export function getFunctionOutput(args: GetFunctionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionResult> {
-    return pulumi.output(args).apply((a: any) => getFunction(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:streamanalytics:getFunction", {
+        "functionName": args.functionName,
+        "jobName": args.jobName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetFunctionOutputArgs {

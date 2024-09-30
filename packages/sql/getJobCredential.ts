@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets a jobs credential.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview.
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
  */
 export function getJobCredential(args: GetJobCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetJobCredentialResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:sql:getJobCredential", {
         "credentialName": args.credentialName,
@@ -61,10 +60,16 @@ export interface GetJobCredentialResult {
  * Gets a jobs credential.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview.
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
  */
 export function getJobCredentialOutput(args: GetJobCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobCredentialResult> {
-    return pulumi.output(args).apply((a: any) => getJobCredential(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:sql:getJobCredential", {
+        "credentialName": args.credentialName,
+        "jobAgentName": args.jobAgentName,
+        "resourceGroupName": args.resourceGroupName,
+        "serverName": args.serverName,
+    }, opts);
 }
 
 export interface GetJobCredentialOutputArgs {

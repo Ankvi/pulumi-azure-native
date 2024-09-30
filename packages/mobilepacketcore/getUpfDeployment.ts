@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-10-15-preview.
  */
 export function getUpfDeployment(args: GetUpfDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetUpfDeploymentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:mobilepacketcore:getUpfDeployment", {
         "resourceGroupName": args.resourceGroupName,
@@ -83,7 +82,11 @@ export interface GetUpfDeploymentResult {
  * Azure REST API version: 2023-10-15-preview.
  */
 export function getUpfDeploymentOutput(args: GetUpfDeploymentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUpfDeploymentResult> {
-    return pulumi.output(args).apply((a: any) => getUpfDeployment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:mobilepacketcore:getUpfDeployment", {
+        "resourceGroupName": args.resourceGroupName,
+        "upfDeploymentName": args.upfDeploymentName,
+    }, opts);
 }
 
 export interface GetUpfDeploymentOutputArgs {

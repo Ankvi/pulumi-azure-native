@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview.
  */
 export function getVirtualHardDisk(args: GetVirtualHardDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualHardDiskResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:azurestackhci:getVirtualHardDisk", {
         "resourceGroupName": args.resourceGroupName,
@@ -98,7 +97,11 @@ export interface GetVirtualHardDiskResult {
  * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview.
  */
 export function getVirtualHardDiskOutput(args: GetVirtualHardDiskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualHardDiskResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualHardDisk(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:azurestackhci:getVirtualHardDisk", {
+        "resourceGroupName": args.resourceGroupName,
+        "virtualHardDiskName": args.virtualHardDiskName,
+    }, opts);
 }
 
 export interface GetVirtualHardDiskOutputArgs {

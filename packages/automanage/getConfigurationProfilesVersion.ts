@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2022-05-04.
  */
 export function getConfigurationProfilesVersion(args: GetConfigurationProfilesVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigurationProfilesVersionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:automanage:getConfigurationProfilesVersion", {
         "configurationProfileName": args.configurationProfileName,
@@ -68,7 +67,12 @@ export interface GetConfigurationProfilesVersionResult {
  * Azure REST API version: 2022-05-04.
  */
 export function getConfigurationProfilesVersionOutput(args: GetConfigurationProfilesVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigurationProfilesVersionResult> {
-    return pulumi.output(args).apply((a: any) => getConfigurationProfilesVersion(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:automanage:getConfigurationProfilesVersion", {
+        "configurationProfileName": args.configurationProfileName,
+        "resourceGroupName": args.resourceGroupName,
+        "versionName": args.versionName,
+    }, opts);
 }
 
 export interface GetConfigurationProfilesVersionOutputArgs {

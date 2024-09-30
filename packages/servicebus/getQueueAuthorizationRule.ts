@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets an authorization rule for a queue by rule name.
  * Azure REST API version: 2022-01-01-preview.
  *
- * Other available API versions: 2014-09-01, 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
+ * Other available API versions: 2014-09-01, 2015-08-01, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
  */
 export function getQueueAuthorizationRule(args: GetQueueAuthorizationRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetQueueAuthorizationRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:servicebus:getQueueAuthorizationRule", {
         "authorizationRuleName": args.authorizationRuleName,
@@ -70,10 +69,16 @@ export interface GetQueueAuthorizationRuleResult {
  * Gets an authorization rule for a queue by rule name.
  * Azure REST API version: 2022-01-01-preview.
  *
- * Other available API versions: 2014-09-01, 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
+ * Other available API versions: 2014-09-01, 2015-08-01, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
  */
 export function getQueueAuthorizationRuleOutput(args: GetQueueAuthorizationRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueueAuthorizationRuleResult> {
-    return pulumi.output(args).apply((a: any) => getQueueAuthorizationRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:servicebus:getQueueAuthorizationRule", {
+        "authorizationRuleName": args.authorizationRuleName,
+        "namespaceName": args.namespaceName,
+        "queueName": args.queueName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetQueueAuthorizationRuleOutputArgs {

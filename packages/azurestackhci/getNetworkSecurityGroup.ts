@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-05-01-preview.
  */
 export function getNetworkSecurityGroup(args: GetNetworkSecurityGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkSecurityGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:azurestackhci:getNetworkSecurityGroup", {
         "networkSecurityGroupName": args.networkSecurityGroupName,
@@ -83,7 +82,11 @@ export interface GetNetworkSecurityGroupResult {
  * Other available API versions: 2024-05-01-preview.
  */
 export function getNetworkSecurityGroupOutput(args: GetNetworkSecurityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkSecurityGroupResult> {
-    return pulumi.output(args).apply((a: any) => getNetworkSecurityGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:azurestackhci:getNetworkSecurityGroup", {
+        "networkSecurityGroupName": args.networkSecurityGroupName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNetworkSecurityGroupOutputArgs {

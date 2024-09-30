@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-03-22-preview.
  */
 export function getTarget(args: GetTargetArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:chaos:getTarget", {
         "parentProviderNamespace": args.parentProviderNamespace,
@@ -78,7 +77,14 @@ export interface GetTargetResult {
  * Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-03-22-preview.
  */
 export function getTargetOutput(args: GetTargetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetResult> {
-    return pulumi.output(args).apply((a: any) => getTarget(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:chaos:getTarget", {
+        "parentProviderNamespace": args.parentProviderNamespace,
+        "parentResourceName": args.parentResourceName,
+        "parentResourceType": args.parentResourceType,
+        "resourceGroupName": args.resourceGroupName,
+        "targetName": args.targetName,
+    }, opts);
 }
 
 export interface GetTargetOutputArgs {

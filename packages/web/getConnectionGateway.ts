@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2016-06-01.
  */
 export function getConnectionGateway(args: GetConnectionGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionGatewayResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:getConnectionGateway", {
         "connectionGatewayName": args.connectionGatewayName,
@@ -65,7 +64,12 @@ export interface GetConnectionGatewayResult {
  * Azure REST API version: 2016-06-01.
  */
 export function getConnectionGatewayOutput(args: GetConnectionGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionGatewayResult> {
-    return pulumi.output(args).apply((a: any) => getConnectionGateway(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:getConnectionGateway", {
+        "connectionGatewayName": args.connectionGatewayName,
+        "resourceGroupName": args.resourceGroupName,
+        "subscriptionId": args.subscriptionId,
+    }, opts);
 }
 
 export interface GetConnectionGatewayOutputArgs {

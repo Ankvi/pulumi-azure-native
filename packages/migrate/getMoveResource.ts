@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-08-01.
  */
 export function getMoveResource(args: GetMoveResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetMoveResourceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:migrate:getMoveResource", {
         "moveCollectionName": args.moveCollectionName,
@@ -64,7 +63,12 @@ export interface GetMoveResourceResult {
  * Other available API versions: 2023-08-01.
  */
 export function getMoveResourceOutput(args: GetMoveResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMoveResourceResult> {
-    return pulumi.output(args).apply((a: any) => getMoveResource(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:migrate:getMoveResource", {
+        "moveCollectionName": args.moveCollectionName,
+        "moveResourceName": args.moveResourceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetMoveResourceOutputArgs {

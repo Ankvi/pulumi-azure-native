@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2024-01-01-preview.
  */
 export function getIpamPoolUsage(args: GetIpamPoolUsageArgs, opts?: pulumi.InvokeOptions): Promise<GetIpamPoolUsageResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getIpamPoolUsage", {
         "networkManagerName": args.networkManagerName,
@@ -76,7 +75,12 @@ export interface GetIpamPoolUsageResult {
  * Azure REST API version: 2024-01-01-preview.
  */
 export function getIpamPoolUsageOutput(args: GetIpamPoolUsageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpamPoolUsageResult> {
-    return pulumi.output(args).apply((a: any) => getIpamPoolUsage(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getIpamPoolUsage", {
+        "networkManagerName": args.networkManagerName,
+        "poolName": args.poolName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetIpamPoolUsageOutputArgs {

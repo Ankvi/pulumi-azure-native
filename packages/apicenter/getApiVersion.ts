@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-03-15-preview.
  */
 export function getApiVersion(args: GetApiVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetApiVersionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apicenter:getApiVersion", {
         "apiName": args.apiName,
@@ -78,7 +77,14 @@ export interface GetApiVersionResult {
  * Other available API versions: 2024-03-15-preview.
  */
 export function getApiVersionOutput(args: GetApiVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiVersionResult> {
-    return pulumi.output(args).apply((a: any) => getApiVersion(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apicenter:getApiVersion", {
+        "apiName": args.apiName,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+        "versionName": args.versionName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetApiVersionOutputArgs {

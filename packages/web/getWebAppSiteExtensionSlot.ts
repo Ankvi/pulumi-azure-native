@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Description for Get site extension information by its ID for a web site, or a deployment slot.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getWebAppSiteExtensionSlot(args: GetWebAppSiteExtensionSlotArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppSiteExtensionSlotResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:getWebAppSiteExtensionSlot", {
         "name": args.name,
@@ -138,10 +137,16 @@ export interface GetWebAppSiteExtensionSlotResult {
  * Description for Get site extension information by its ID for a web site, or a deployment slot.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getWebAppSiteExtensionSlotOutput(args: GetWebAppSiteExtensionSlotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppSiteExtensionSlotResult> {
-    return pulumi.output(args).apply((a: any) => getWebAppSiteExtensionSlot(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:getWebAppSiteExtensionSlot", {
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+        "siteExtensionId": args.siteExtensionId,
+        "slot": args.slot,
+    }, opts);
 }
 
 export interface GetWebAppSiteExtensionSlotOutputArgs {

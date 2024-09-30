@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2018-06-01.
  */
 export function getIntegrationRuntime(args: GetIntegrationRuntimeArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationRuntimeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:datafactory:getIntegrationRuntime", {
         "factoryName": args.factoryName,
@@ -60,7 +59,12 @@ export interface GetIntegrationRuntimeResult {
  * Azure REST API version: 2018-06-01.
  */
 export function getIntegrationRuntimeOutput(args: GetIntegrationRuntimeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationRuntimeResult> {
-    return pulumi.output(args).apply((a: any) => getIntegrationRuntime(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:datafactory:getIntegrationRuntime", {
+        "factoryName": args.factoryName,
+        "integrationRuntimeName": args.integrationRuntimeName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetIntegrationRuntimeOutputArgs {

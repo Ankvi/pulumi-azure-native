@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2023-11-01-preview.
  */
 export function getTestResultDownloadURL(args: GetTestResultDownloadURLArgs, opts?: pulumi.InvokeOptions): Promise<GetTestResultDownloadURLResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:testbase:getTestResultDownloadURL", {
         "packageName": args.packageName,
@@ -56,7 +55,13 @@ export interface GetTestResultDownloadURLResult {
  * Other available API versions: 2023-11-01-preview.
  */
 export function getTestResultDownloadURLOutput(args: GetTestResultDownloadURLOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTestResultDownloadURLResult> {
-    return pulumi.output(args).apply((a: any) => getTestResultDownloadURL(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:testbase:getTestResultDownloadURL", {
+        "packageName": args.packageName,
+        "resourceGroupName": args.resourceGroupName,
+        "testBaseAccountName": args.testBaseAccountName,
+        "testResultName": args.testResultName,
+    }, opts);
 }
 
 export interface GetTestResultDownloadURLOutputArgs {

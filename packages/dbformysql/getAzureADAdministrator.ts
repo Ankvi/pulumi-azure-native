@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-06-01-preview, 2023-06-30, 2023-12-30.
  */
 export function getAzureADAdministrator(args: GetAzureADAdministratorArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureADAdministratorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:dbformysql:getAzureADAdministrator", {
         "administratorName": args.administratorName,
@@ -80,7 +79,12 @@ export interface GetAzureADAdministratorResult {
  * Other available API versions: 2023-06-01-preview, 2023-06-30, 2023-12-30.
  */
 export function getAzureADAdministratorOutput(args: GetAzureADAdministratorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureADAdministratorResult> {
-    return pulumi.output(args).apply((a: any) => getAzureADAdministrator(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:dbformysql:getAzureADAdministrator", {
+        "administratorName": args.administratorName,
+        "resourceGroupName": args.resourceGroupName,
+        "serverName": args.serverName,
+    }, opts);
 }
 
 export interface GetAzureADAdministratorOutputArgs {

@@ -5,10 +5,9 @@ import * as types from "./types";
  * Retrieves the details of a nat ruleGet.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getNatRule(args: GetNatRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetNatRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getNatRule", {
         "gatewayName": args.gatewayName,
@@ -85,10 +84,15 @@ export interface GetNatRuleResult {
  * Retrieves the details of a nat ruleGet.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getNatRuleOutput(args: GetNatRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatRuleResult> {
-    return pulumi.output(args).apply((a: any) => getNatRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getNatRule", {
+        "gatewayName": args.gatewayName,
+        "natRuleName": args.natRuleName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNatRuleOutputArgs {

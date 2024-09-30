@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2021-06-01-preview.
  */
 export function getIntegrationRuntimeStatus(args: GetIntegrationRuntimeStatusArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationRuntimeStatusResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:synapse:getIntegrationRuntimeStatus", {
         "integrationRuntimeName": args.integrationRuntimeName,
@@ -52,7 +51,12 @@ export interface GetIntegrationRuntimeStatusResult {
  * Other available API versions: 2021-06-01-preview.
  */
 export function getIntegrationRuntimeStatusOutput(args: GetIntegrationRuntimeStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationRuntimeStatusResult> {
-    return pulumi.output(args).apply((a: any) => getIntegrationRuntimeStatus(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:synapse:getIntegrationRuntimeStatus", {
+        "integrationRuntimeName": args.integrationRuntimeName,
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetIntegrationRuntimeStatusOutputArgs {

@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2021-06-01.
  */
 export function getAssessmentMetadataInSubscription(args: GetAssessmentMetadataInSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetAssessmentMetadataInSubscriptionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:security:getAssessmentMetadataInSubscription", {
         "assessmentMetadataName": args.assessmentMetadataName,
@@ -88,7 +87,10 @@ export interface GetAssessmentMetadataInSubscriptionResult {
  * Azure REST API version: 2021-06-01.
  */
 export function getAssessmentMetadataInSubscriptionOutput(args: GetAssessmentMetadataInSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssessmentMetadataInSubscriptionResult> {
-    return pulumi.output(args).apply((a: any) => getAssessmentMetadataInSubscription(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:security:getAssessmentMetadataInSubscription", {
+        "assessmentMetadataName": args.assessmentMetadataName,
+    }, opts);
 }
 
 export interface GetAssessmentMetadataInSubscriptionOutputArgs {

@@ -7,11 +7,11 @@ export interface AssetStatusErrorResponse {
     /**
      * Error code for classification of errors (ex: 400, 404, 500, etc.).
      */
-    code?: number;
+    code: number;
     /**
      * Human readable helpful error message to provide additional context for error (ex: “capability Id 'foo' does not exist”).
      */
-    message?: string;
+    message: string;
 }
 
 /**
@@ -21,11 +21,11 @@ export interface AssetStatusResponse {
     /**
      * Array object to transfer and persist errors that originate from the Edge.
      */
-    errors?: AssetStatusErrorResponse[];
+    errors: AssetStatusErrorResponse[];
     /**
      * A read only incremental counter indicating the number of times the configuration has been modified from the perspective of the current actual (Edge) state of the Asset. Edge would be the only writer of this value and would sync back up to the cloud. In steady state, this should equal version.
      */
-    version?: number;
+    version: number;
 }
 
 /**
@@ -37,7 +37,7 @@ export interface DataPointResponse {
      */
     capabilityId?: string;
     /**
-     * Protocol-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+     * Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
      */
     dataPointConfiguration?: string;
     /**
@@ -64,6 +64,94 @@ export function dataPointResponseProvideDefaults(val: DataPointResponse): DataPo
 }
 
 /**
+ * Defines the data point properties.
+ */
+export interface DiscoveredDataPointResponse {
+    /**
+     * Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+     */
+    dataPointConfiguration?: string;
+    /**
+     * The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+     */
+    dataSource: string;
+    /**
+     * UTC timestamp indicating when the data point was added or modified.
+     */
+    lastUpdatedOn?: string;
+    /**
+     * The name of the data point.
+     */
+    name: string;
+}
+
+/**
+ * Defines the dataset properties.
+ */
+export interface DiscoveredDatasetResponse {
+    /**
+     * Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+     */
+    dataPoints?: DiscoveredDataPointResponse[];
+    /**
+     * Stringified JSON that contains connector-specific properties that describes configuration for the specific dataset.
+     */
+    datasetConfiguration?: string;
+    /**
+     * Name of the dataset.
+     */
+    name: string;
+    /**
+     * Object that describes the topic information for the specific dataset.
+     */
+    topic?: TopicResponse;
+}
+/**
+ * discoveredDatasetResponseProvideDefaults sets the appropriate defaults for DiscoveredDatasetResponse
+ */
+export function discoveredDatasetResponseProvideDefaults(val: DiscoveredDatasetResponse): DiscoveredDatasetResponse {
+    return {
+        ...val,
+        topic: (val.topic ? topicResponseProvideDefaults(val.topic) : undefined),
+    };
+}
+
+/**
+ * Defines the event properties.
+ */
+export interface DiscoveredEventResponse {
+    /**
+     * Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+     */
+    eventConfiguration?: string;
+    /**
+     * The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
+     */
+    eventNotifier: string;
+    /**
+     * UTC timestamp indicating when the event was added or modified.
+     */
+    lastUpdatedOn?: string;
+    /**
+     * The name of the event.
+     */
+    name: string;
+    /**
+     * Object that describes the topic information for the specific event.
+     */
+    topic?: TopicResponse;
+}
+/**
+ * discoveredEventResponseProvideDefaults sets the appropriate defaults for DiscoveredEventResponse
+ */
+export function discoveredEventResponseProvideDefaults(val: DiscoveredEventResponse): DiscoveredEventResponse {
+    return {
+        ...val,
+        topic: (val.topic ? topicResponseProvideDefaults(val.topic) : undefined),
+    };
+}
+
+/**
  * Defines the event properties.
  */
 export interface EventResponse {
@@ -72,7 +160,7 @@ export interface EventResponse {
      */
     capabilityId?: string;
     /**
-     * Protocol-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+     * Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
      */
     eventConfiguration?: string;
     /**
@@ -131,6 +219,24 @@ export interface OwnCertificateResponse {
 }
 
 /**
+ * Managed service identity (either system assigned, or none)
+ */
+export interface SystemAssignedServiceIdentityResponse {
+    /**
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity (either system assigned, or none).
+     */
+    type: string;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -161,6 +267,29 @@ export interface SystemDataResponse {
 }
 
 /**
+ * Object that describes the topic information.
+ */
+export interface TopicResponse {
+    /**
+     * The topic path for messages published to an MQTT broker.
+     */
+    path: string;
+    /**
+     * When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
+     */
+    retain?: string;
+}
+/**
+ * topicResponseProvideDefaults sets the appropriate defaults for TopicResponse
+ */
+export function topicResponseProvideDefaults(val: TopicResponse): TopicResponse {
+    return {
+        ...val,
+        retain: (val.retain) ?? "Never",
+    };
+}
+
+/**
  * Definition of the authentication mechanism for the southbound connector.
  */
 export interface TransportAuthenticationResponse {
@@ -175,7 +304,7 @@ export interface TransportAuthenticationResponse {
  */
 export interface UserAuthenticationResponse {
     /**
-     * Defines the mode to authenticate the user of the client at the server.
+     * Defines the method to authenticate the user of the client at the server.
      */
     mode: string;
     /**
@@ -220,3 +349,4 @@ export interface X509CredentialsResponse {
      */
     certificateReference: string;
 }
+

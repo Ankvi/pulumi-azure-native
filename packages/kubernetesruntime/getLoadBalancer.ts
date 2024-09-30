@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-10-01-preview.
  */
 export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:kubernetesruntime:getLoadBalancer", {
         "loadBalancerName": args.loadBalancerName,
@@ -75,7 +74,11 @@ export interface GetLoadBalancerResult {
  * Other available API versions: 2023-10-01-preview.
  */
 export function getLoadBalancerOutput(args: GetLoadBalancerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancerResult> {
-    return pulumi.output(args).apply((a: any) => getLoadBalancer(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:kubernetesruntime:getLoadBalancer", {
+        "loadBalancerName": args.loadBalancerName,
+        "resourceUri": args.resourceUri,
+    }, opts);
 }
 
 export interface GetLoadBalancerOutputArgs {

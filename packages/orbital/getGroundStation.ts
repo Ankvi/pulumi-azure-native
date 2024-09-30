@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-03-01.
  */
 export function getGroundStation(args: GetGroundStationArgs, opts?: pulumi.InvokeOptions): Promise<GetGroundStationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:orbital:getGroundStation", {
         "groundStationName": args.groundStationName,
@@ -95,7 +94,11 @@ export interface GetGroundStationResult {
  * Other available API versions: 2024-03-01.
  */
 export function getGroundStationOutput(args: GetGroundStationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroundStationResult> {
-    return pulumi.output(args).apply((a: any) => getGroundStation(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:orbital:getGroundStation", {
+        "groundStationName": args.groundStationName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetGroundStationOutputArgs {

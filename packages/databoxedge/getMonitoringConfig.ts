@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
  */
 export function getMonitoringConfig(args: GetMonitoringConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitoringConfigResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:databoxedge:getMonitoringConfig", {
         "deviceName": args.deviceName,
@@ -64,7 +63,12 @@ export interface GetMonitoringConfigResult {
  * Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
  */
 export function getMonitoringConfigOutput(args: GetMonitoringConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMonitoringConfigResult> {
-    return pulumi.output(args).apply((a: any) => getMonitoringConfig(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:databoxedge:getMonitoringConfig", {
+        "deviceName": args.deviceName,
+        "resourceGroupName": args.resourceGroupName,
+        "roleName": args.roleName,
+    }, opts);
 }
 
 export interface GetMonitoringConfigOutputArgs {

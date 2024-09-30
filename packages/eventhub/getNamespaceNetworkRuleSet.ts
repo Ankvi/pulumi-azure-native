@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
  */
 export function getNamespaceNetworkRuleSet(args: GetNamespaceNetworkRuleSetArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceNetworkRuleSetResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:eventhub:getNamespaceNetworkRuleSet", {
         "namespaceName": args.namespaceName,
@@ -79,7 +78,11 @@ export interface GetNamespaceNetworkRuleSetResult {
  * Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
  */
 export function getNamespaceNetworkRuleSetOutput(args: GetNamespaceNetworkRuleSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespaceNetworkRuleSetResult> {
-    return pulumi.output(args).apply((a: any) => getNamespaceNetworkRuleSet(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:eventhub:getNamespaceNetworkRuleSet", {
+        "namespaceName": args.namespaceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNamespaceNetworkRuleSetOutputArgs {

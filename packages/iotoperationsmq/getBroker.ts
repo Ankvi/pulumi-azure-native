@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-10-04-preview.
  */
 export function getBroker(args: GetBrokerArgs, opts?: pulumi.InvokeOptions): Promise<GetBrokerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:iotoperationsmq:getBroker", {
         "brokerName": args.brokerName,
@@ -120,7 +119,12 @@ export interface GetBrokerResult {
  * Azure REST API version: 2023-10-04-preview.
  */
 export function getBrokerOutput(args: GetBrokerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBrokerResult> {
-    return pulumi.output(args).apply((a: any) => getBroker(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:iotoperationsmq:getBroker", {
+        "brokerName": args.brokerName,
+        "mqName": args.mqName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetBrokerOutputArgs {

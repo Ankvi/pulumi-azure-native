@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2024-05-01-preview.
  */
 export function listJobExecutionEnvSecrets(args: ListJobExecutionEnvSecretsArgs, opts?: pulumi.InvokeOptions): Promise<ListJobExecutionEnvSecretsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:appplatform:listJobExecutionEnvSecrets", {
         "jobExecutionName": args.jobExecutionName,
@@ -49,7 +48,13 @@ export interface ListJobExecutionEnvSecretsResult {
  * Azure REST API version: 2024-05-01-preview.
  */
 export function listJobExecutionEnvSecretsOutput(args: ListJobExecutionEnvSecretsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListJobExecutionEnvSecretsResult> {
-    return pulumi.output(args).apply((a: any) => listJobExecutionEnvSecrets(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:appplatform:listJobExecutionEnvSecrets", {
+        "jobExecutionName": args.jobExecutionName,
+        "jobName": args.jobName,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 export interface ListJobExecutionEnvSecretsOutputArgs {

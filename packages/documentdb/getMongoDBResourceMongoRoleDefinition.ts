@@ -5,10 +5,9 @@ import * as types from "./types";
  * Retrieves the properties of an existing Azure Cosmos DB Mongo Role Definition with the given Id.
  * Azure REST API version: 2023-04-15.
  *
- * Other available API versions: 2023-03-01-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
  */
 export function getMongoDBResourceMongoRoleDefinition(args: GetMongoDBResourceMongoRoleDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoDBResourceMongoRoleDefinitionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:documentdb:getMongoDBResourceMongoRoleDefinition", {
         "accountName": args.accountName,
@@ -69,10 +68,15 @@ export interface GetMongoDBResourceMongoRoleDefinitionResult {
  * Retrieves the properties of an existing Azure Cosmos DB Mongo Role Definition with the given Id.
  * Azure REST API version: 2023-04-15.
  *
- * Other available API versions: 2023-03-01-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
  */
 export function getMongoDBResourceMongoRoleDefinitionOutput(args: GetMongoDBResourceMongoRoleDefinitionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMongoDBResourceMongoRoleDefinitionResult> {
-    return pulumi.output(args).apply((a: any) => getMongoDBResourceMongoRoleDefinition(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:documentdb:getMongoDBResourceMongoRoleDefinition", {
+        "accountName": args.accountName,
+        "mongoRoleDefinitionId": args.mongoRoleDefinitionId,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetMongoDBResourceMongoRoleDefinitionOutputArgs {

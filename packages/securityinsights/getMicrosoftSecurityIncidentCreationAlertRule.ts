@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-02-01.
  */
 export function getMicrosoftSecurityIncidentCreationAlertRule(args: GetMicrosoftSecurityIncidentCreationAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetMicrosoftSecurityIncidentCreationAlertRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:securityinsights:getMicrosoftSecurityIncidentCreationAlertRule", {
         "resourceGroupName": args.resourceGroupName,
@@ -63,7 +62,7 @@ export interface GetMicrosoftSecurityIncidentCreationAlertRuleResult {
      */
     readonly etag?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -101,7 +100,12 @@ export interface GetMicrosoftSecurityIncidentCreationAlertRuleResult {
  * Azure REST API version: 2023-02-01.
  */
 export function getMicrosoftSecurityIncidentCreationAlertRuleOutput(args: GetMicrosoftSecurityIncidentCreationAlertRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMicrosoftSecurityIncidentCreationAlertRuleResult> {
-    return pulumi.output(args).apply((a: any) => getMicrosoftSecurityIncidentCreationAlertRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:securityinsights:getMicrosoftSecurityIncidentCreationAlertRule", {
+        "resourceGroupName": args.resourceGroupName,
+        "ruleId": args.ruleId,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetMicrosoftSecurityIncidentCreationAlertRuleOutputArgs {

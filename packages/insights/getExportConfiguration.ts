@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2015-05-01.
  */
 export function getExportConfiguration(args: GetExportConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetExportConfigurationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:insights:getExportConfiguration", {
         "exportId": args.exportId,
@@ -115,7 +114,12 @@ export interface GetExportConfigurationResult {
  * Azure REST API version: 2015-05-01.
  */
 export function getExportConfigurationOutput(args: GetExportConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExportConfigurationResult> {
-    return pulumi.output(args).apply((a: any) => getExportConfiguration(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:insights:getExportConfiguration", {
+        "exportId": args.exportId,
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface GetExportConfigurationOutputArgs {

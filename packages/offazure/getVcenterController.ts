@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-10-01-preview.
  */
 export function getVcenterController(args: GetVcenterControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetVcenterControllerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:offazure:getVcenterController", {
         "resourceGroupName": args.resourceGroupName,
@@ -104,7 +103,12 @@ export interface GetVcenterControllerResult {
  * Other available API versions: 2023-10-01-preview.
  */
 export function getVcenterControllerOutput(args: GetVcenterControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVcenterControllerResult> {
-    return pulumi.output(args).apply((a: any) => getVcenterController(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:offazure:getVcenterController", {
+        "resourceGroupName": args.resourceGroupName,
+        "siteName": args.siteName,
+        "vcenterName": args.vcenterName,
+    }, opts);
 }
 
 export interface GetVcenterControllerOutputArgs {

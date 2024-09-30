@@ -9,7 +9,7 @@ export interface DataPointArgs {
      */
     capabilityId?: pulumi.Input<string>;
     /**
-     * Protocol-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+     * Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
      */
     dataPointConfiguration?: pulumi.Input<string>;
     /**
@@ -36,6 +36,94 @@ export function dataPointArgsProvideDefaults(val: DataPointArgs): DataPointArgs 
 }
 
 /**
+ * Defines the data point properties.
+ */
+export interface DiscoveredDataPointArgs {
+    /**
+     * Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+     */
+    dataPointConfiguration?: pulumi.Input<string>;
+    /**
+     * The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
+     */
+    dataSource: pulumi.Input<string>;
+    /**
+     * UTC timestamp indicating when the data point was added or modified.
+     */
+    lastUpdatedOn?: pulumi.Input<string>;
+    /**
+     * The name of the data point.
+     */
+    name: pulumi.Input<string>;
+}
+
+/**
+ * Defines the dataset properties.
+ */
+export interface DiscoveredDatasetArgs {
+    /**
+     * Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+     */
+    dataPoints?: pulumi.Input<pulumi.Input<DiscoveredDataPointArgs>[]>;
+    /**
+     * Stringified JSON that contains connector-specific properties that describes configuration for the specific dataset.
+     */
+    datasetConfiguration?: pulumi.Input<string>;
+    /**
+     * Name of the dataset.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Object that describes the topic information for the specific dataset.
+     */
+    topic?: pulumi.Input<TopicArgs>;
+}
+/**
+ * discoveredDatasetArgsProvideDefaults sets the appropriate defaults for DiscoveredDatasetArgs
+ */
+export function discoveredDatasetArgsProvideDefaults(val: DiscoveredDatasetArgs): DiscoveredDatasetArgs {
+    return {
+        ...val,
+        topic: (val.topic ? pulumi.output(val.topic).apply(topicArgsProvideDefaults) : undefined),
+    };
+}
+
+/**
+ * Defines the event properties.
+ */
+export interface DiscoveredEventArgs {
+    /**
+     * Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+     */
+    eventConfiguration?: pulumi.Input<string>;
+    /**
+     * The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
+     */
+    eventNotifier: pulumi.Input<string>;
+    /**
+     * UTC timestamp indicating when the event was added or modified.
+     */
+    lastUpdatedOn?: pulumi.Input<string>;
+    /**
+     * The name of the event.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Object that describes the topic information for the specific event.
+     */
+    topic?: pulumi.Input<TopicArgs>;
+}
+/**
+ * discoveredEventArgsProvideDefaults sets the appropriate defaults for DiscoveredEventArgs
+ */
+export function discoveredEventArgsProvideDefaults(val: DiscoveredEventArgs): DiscoveredEventArgs {
+    return {
+        ...val,
+        topic: (val.topic ? pulumi.output(val.topic).apply(topicArgsProvideDefaults) : undefined),
+    };
+}
+
+/**
  * Defines the event properties.
  */
 export interface EventArgs {
@@ -44,7 +132,7 @@ export interface EventArgs {
      */
     capabilityId?: pulumi.Input<string>;
     /**
-     * Protocol-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+     * Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
      */
     eventConfiguration?: pulumi.Input<string>;
     /**
@@ -103,6 +191,39 @@ export interface OwnCertificateArgs {
 }
 
 /**
+ * Managed service identity (either system assigned, or none)
+ */
+export interface SystemAssignedServiceIdentityArgs {
+    /**
+     * Type of managed service identity (either system assigned, or none).
+     */
+    type: pulumi.Input<string | enums.SystemAssignedServiceIdentityType>;
+}
+
+/**
+ * Object that describes the topic information.
+ */
+export interface TopicArgs {
+    /**
+     * The topic path for messages published to an MQTT broker.
+     */
+    path: pulumi.Input<string>;
+    /**
+     * When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
+     */
+    retain?: pulumi.Input<string | enums.TopicRetainType>;
+}
+/**
+ * topicArgsProvideDefaults sets the appropriate defaults for TopicArgs
+ */
+export function topicArgsProvideDefaults(val: TopicArgs): TopicArgs {
+    return {
+        ...val,
+        retain: (val.retain) ?? "Never",
+    };
+}
+
+/**
  * Definition of the authentication mechanism for the southbound connector.
  */
 export interface TransportAuthenticationArgs {
@@ -117,7 +238,7 @@ export interface TransportAuthenticationArgs {
  */
 export interface UserAuthenticationArgs {
     /**
-     * Defines the mode to authenticate the user of the client at the server.
+     * Defines the method to authenticate the user of the client at the server.
      */
     mode: pulumi.Input<string | enums.UserAuthenticationMode>;
     /**
@@ -162,3 +283,4 @@ export interface X509CredentialsArgs {
      */
     certificateReference: pulumi.Input<string>;
 }
+

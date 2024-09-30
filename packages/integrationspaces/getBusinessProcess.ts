@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-11-14-preview.
  */
 export function getBusinessProcess(args: GetBusinessProcessArgs, opts?: pulumi.InvokeOptions): Promise<GetBusinessProcessResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:integrationspaces:getBusinessProcess", {
         "applicationName": args.applicationName,
@@ -93,7 +92,13 @@ export interface GetBusinessProcessResult {
  * Azure REST API version: 2023-11-14-preview.
  */
 export function getBusinessProcessOutput(args: GetBusinessProcessOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBusinessProcessResult> {
-    return pulumi.output(args).apply((a: any) => getBusinessProcess(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:integrationspaces:getBusinessProcess", {
+        "applicationName": args.applicationName,
+        "businessProcessName": args.businessProcessName,
+        "resourceGroupName": args.resourceGroupName,
+        "spaceName": args.spaceName,
+    }, opts);
 }
 
 export interface GetBusinessProcessOutputArgs {

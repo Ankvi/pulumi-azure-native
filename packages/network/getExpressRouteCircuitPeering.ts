@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets the specified peering for the express route circuit.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2017-09-01, 2019-02-01, 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2017-09-01, 2019-02-01, 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getExpressRouteCircuitPeering(args: GetExpressRouteCircuitPeeringArgs, opts?: pulumi.InvokeOptions): Promise<GetExpressRouteCircuitPeeringResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getExpressRouteCircuitPeering", {
         "circuitName": args.circuitName,
@@ -137,10 +136,15 @@ export interface GetExpressRouteCircuitPeeringResult {
  * Gets the specified peering for the express route circuit.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2017-09-01, 2019-02-01, 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2017-09-01, 2019-02-01, 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getExpressRouteCircuitPeeringOutput(args: GetExpressRouteCircuitPeeringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExpressRouteCircuitPeeringResult> {
-    return pulumi.output(args).apply((a: any) => getExpressRouteCircuitPeering(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getExpressRouteCircuitPeering", {
+        "circuitName": args.circuitName,
+        "peeringName": args.peeringName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetExpressRouteCircuitPeeringOutputArgs {

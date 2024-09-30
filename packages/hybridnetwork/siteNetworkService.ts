@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Site network service resource.
  * Azure REST API version: 2023-09-01.
+ *
+ * Other available API versions: 2024-04-15.
  */
 export class SiteNetworkService extends pulumi.CustomResource {
     /**
@@ -100,7 +102,7 @@ export class SiteNetworkService extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:hybridnetwork/v20230901:SiteNetworkService" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:hybridnetwork/v20230901:SiteNetworkService" }, { type: "azure-native:hybridnetwork/v20240415:SiteNetworkService" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SiteNetworkService.__pulumiType, name, resourceInputs, opts);
     }

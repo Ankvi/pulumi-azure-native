@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-05-18-preview, 2023-06-27-preview.
  */
 export function getOrchestratorInstanceServiceDetails(args: GetOrchestratorInstanceServiceDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetOrchestratorInstanceServiceDetailsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:delegatednetwork:getOrchestratorInstanceServiceDetails", {
         "resourceGroupName": args.resourceGroupName,
@@ -99,7 +98,11 @@ export interface GetOrchestratorInstanceServiceDetailsResult {
  * Other available API versions: 2023-05-18-preview, 2023-06-27-preview.
  */
 export function getOrchestratorInstanceServiceDetailsOutput(args: GetOrchestratorInstanceServiceDetailsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrchestratorInstanceServiceDetailsResult> {
-    return pulumi.output(args).apply((a: any) => getOrchestratorInstanceServiceDetails(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:delegatednetwork:getOrchestratorInstanceServiceDetails", {
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface GetOrchestratorInstanceServiceDetailsOutputArgs {

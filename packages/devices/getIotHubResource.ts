@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2017-07-01, 2022-11-15-preview, 2023-06-30, 2023-06-30-preview.
  */
 export function getIotHubResource(args: GetIotHubResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetIotHubResourceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:devices:getIotHubResource", {
         "resourceGroupName": args.resourceGroupName,
@@ -79,7 +78,11 @@ export interface GetIotHubResourceResult {
  * Other available API versions: 2017-07-01, 2022-11-15-preview, 2023-06-30, 2023-06-30-preview.
  */
 export function getIotHubResourceOutput(args: GetIotHubResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIotHubResourceResult> {
-    return pulumi.output(args).apply((a: any) => getIotHubResource(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:devices:getIotHubResource", {
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface GetIotHubResourceOutputArgs {

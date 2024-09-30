@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets the details of the Diagnostic for an API specified by its identifier.
  * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2018-01-01, 2019-01-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2018-01-01, 2019-01-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getApiDiagnostic(args: GetApiDiagnosticArgs, opts?: pulumi.InvokeOptions): Promise<GetApiDiagnosticResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apimanagement:getApiDiagnostic", {
         "apiId": args.apiId,
@@ -98,10 +97,16 @@ export interface GetApiDiagnosticResult {
  * Gets the details of the Diagnostic for an API specified by its identifier.
  * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2018-01-01, 2019-01-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2018-01-01, 2019-01-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getApiDiagnosticOutput(args: GetApiDiagnosticOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiDiagnosticResult> {
-    return pulumi.output(args).apply((a: any) => getApiDiagnostic(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:getApiDiagnostic", {
+        "apiId": args.apiId,
+        "diagnosticId": args.diagnosticId,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 export interface GetApiDiagnosticOutputArgs {

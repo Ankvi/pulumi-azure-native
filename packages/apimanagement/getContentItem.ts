@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Returns the developer portal's content item specified by its identifier.
  * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getContentItem(args: GetContentItemArgs, opts?: pulumi.InvokeOptions): Promise<GetContentItemResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apimanagement:getContentItem", {
         "contentItemId": args.contentItemId,
@@ -61,10 +60,16 @@ export interface GetContentItemResult {
  * Returns the developer portal's content item specified by its identifier.
  * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getContentItemOutput(args: GetContentItemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContentItemResult> {
-    return pulumi.output(args).apply((a: any) => getContentItem(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:getContentItem", {
+        "contentItemId": args.contentItemId,
+        "contentTypeId": args.contentTypeId,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 export interface GetContentItemOutputArgs {

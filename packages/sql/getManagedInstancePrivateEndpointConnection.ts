@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets a private endpoint connection.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview.
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
  */
 export function getManagedInstancePrivateEndpointConnection(args: GetManagedInstancePrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedInstancePrivateEndpointConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:sql:getManagedInstancePrivateEndpointConnection", {
         "managedInstanceName": args.managedInstanceName,
@@ -65,10 +64,15 @@ export interface GetManagedInstancePrivateEndpointConnectionResult {
  * Gets a private endpoint connection.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview.
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
  */
 export function getManagedInstancePrivateEndpointConnectionOutput(args: GetManagedInstancePrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedInstancePrivateEndpointConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getManagedInstancePrivateEndpointConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:sql:getManagedInstancePrivateEndpointConnection", {
+        "managedInstanceName": args.managedInstanceName,
+        "privateEndpointConnectionName": args.privateEndpointConnectionName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetManagedInstancePrivateEndpointConnectionOutputArgs {

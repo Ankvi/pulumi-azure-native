@@ -5,7 +5,7 @@ import * as types from "./types";
  * A hostname binding object.
  * Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
  *
- * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export class WebAppHostNameBindingSlot extends pulumi.CustomResource {
     /**
@@ -133,7 +133,7 @@ export class WebAppHostNameBindingSlot extends pulumi.CustomResource {
             resourceInputs["virtualIP"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20150801:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20160801:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20180201:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20181101:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20190801:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20200601:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20200901:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20201001:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20201201:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20210101:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20210115:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20210201:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20210301:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20220301:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20220901:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20230101:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20231201:WebAppHostNameBindingSlot" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20150801:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20160801:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20180201:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20181101:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20190801:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20200601:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20200901:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20201001:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20201201:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20210101:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20210115:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20210201:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20210301:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20220301:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20220901:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20230101:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20231201:WebAppHostNameBindingSlot" }, { type: "azure-native:web/v20240401:WebAppHostNameBindingSlot" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebAppHostNameBindingSlot.__pulumiType, name, resourceInputs, opts);
     }

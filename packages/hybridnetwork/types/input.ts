@@ -1302,3 +1302,4 @@ export interface VirtualNetworkFunctionNetworkFunctionDefinitionVersionArgs {
     networkFunctionType: pulumi.Input<"VirtualNetworkFunction">;
 }
 
+

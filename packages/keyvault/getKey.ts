@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-07-01, 2024-04-01-preview.
  */
 export function getKey(args: GetKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:keyvault:getKey", {
         "keyName": args.keyName,
@@ -97,7 +96,12 @@ export interface GetKeyResult {
  * Other available API versions: 2023-07-01, 2024-04-01-preview.
  */
 export function getKeyOutput(args: GetKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyResult> {
-    return pulumi.output(args).apply((a: any) => getKey(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:keyvault:getKey", {
+        "keyName": args.keyName,
+        "resourceGroupName": args.resourceGroupName,
+        "vaultName": args.vaultName,
+    }, opts);
 }
 
 export interface GetKeyOutputArgs {

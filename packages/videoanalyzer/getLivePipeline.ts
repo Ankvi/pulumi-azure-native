@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2021-11-01-preview.
  */
 export function getLivePipeline(args: GetLivePipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetLivePipelineResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:videoanalyzer:getLivePipeline", {
         "accountName": args.accountName,
@@ -76,7 +75,12 @@ export interface GetLivePipelineResult {
  * Azure REST API version: 2021-11-01-preview.
  */
 export function getLivePipelineOutput(args: GetLivePipelineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLivePipelineResult> {
-    return pulumi.output(args).apply((a: any) => getLivePipeline(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:videoanalyzer:getLivePipeline", {
+        "accountName": args.accountName,
+        "livePipelineName": args.livePipelineName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetLivePipelineOutputArgs {

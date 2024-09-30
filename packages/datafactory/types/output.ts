@@ -6418,7 +6418,7 @@ export interface CopyActivityResponse {
     /**
      * Copy activity sink.
      */
-    sink: AvroSinkResponse | AzureBlobFSSinkResponse | AzureDataExplorerSinkResponse | AzureDataLakeStoreSinkResponse | AzureDatabricksDeltaLakeSinkResponse | AzureMySqlSinkResponse | AzurePostgreSqlSinkResponse | AzureQueueSinkResponse | AzureSearchIndexSinkResponse | AzureSqlSinkResponse | AzureTableSinkResponse | BinarySinkResponse | BlobSinkResponse | CommonDataServiceForAppsSinkResponse | CosmosDbMongoDbApiSinkResponse | CosmosDbSqlApiSinkResponse | DelimitedTextSinkResponse | DocumentDbCollectionSinkResponse | DynamicsCrmSinkResponse | DynamicsSinkResponse | FileSystemSinkResponse | InformixSinkResponse | JsonSinkResponse | LakeHouseTableSinkResponse | MicrosoftAccessSinkResponse | MongoDbAtlasSinkResponse | MongoDbV2SinkResponse | OdbcSinkResponse | OracleSinkResponse | OrcSinkResponse | ParquetSinkResponse | RestSinkResponse | SalesforceServiceCloudSinkResponse | SalesforceServiceCloudV2SinkResponse | SalesforceSinkResponse | SalesforceV2SinkResponse | SapCloudForCustomerSinkResponse | SnowflakeSinkResponse | SnowflakeV2SinkResponse | SqlDWSinkResponse | SqlMISinkResponse | SqlServerSinkResponse | SqlSinkResponse | WarehouseSinkResponse;
+    sink: AvroSinkResponse | AzureBlobFSSinkResponse | AzureDataExplorerSinkResponse | AzureDataLakeStoreSinkResponse | AzureDatabricksDeltaLakeSinkResponse | AzureMySqlSinkResponse | AzurePostgreSqlSinkResponse | AzureQueueSinkResponse | AzureSearchIndexSinkResponse | AzureSqlSinkResponse | AzureTableSinkResponse | BinarySinkResponse | BlobSinkResponse | CommonDataServiceForAppsSinkResponse | CosmosDbMongoDbApiSinkResponse | CosmosDbSqlApiSinkResponse | DelimitedTextSinkResponse | DocumentDbCollectionSinkResponse | DynamicsCrmSinkResponse | DynamicsSinkResponse | FileSystemSinkResponse | IcebergSinkResponse | InformixSinkResponse | JsonSinkResponse | LakeHouseTableSinkResponse | MicrosoftAccessSinkResponse | MongoDbAtlasSinkResponse | MongoDbV2SinkResponse | OdbcSinkResponse | OracleSinkResponse | OrcSinkResponse | ParquetSinkResponse | RestSinkResponse | SalesforceServiceCloudSinkResponse | SalesforceServiceCloudV2SinkResponse | SalesforceSinkResponse | SalesforceV2SinkResponse | SapCloudForCustomerSinkResponse | SnowflakeSinkResponse | SnowflakeV2SinkResponse | SqlDWSinkResponse | SqlMISinkResponse | SqlServerSinkResponse | SqlSinkResponse | WarehouseSinkResponse;
     /**
      * Specify the fault tolerance for data consistency.
      */
@@ -12726,6 +12726,103 @@ export interface HubspotSourceResponse {
 }
 
 /**
+ * Iceberg dataset.
+ */
+export interface IcebergDatasetResponse {
+    /**
+     * List of tags that can be used for describing the Dataset.
+     */
+    annotations?: any[];
+    /**
+     * Dataset description.
+     */
+    description?: string;
+    /**
+     * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+     */
+    folder?: DatasetResponseFolder;
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName: LinkedServiceReferenceResponse;
+    /**
+     * The location of the iceberg storage. Setting a file name is not allowed for iceberg format.
+     */
+    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | LakeHouseLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
+    /**
+     * Parameters for dataset.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+     */
+    schema?: any;
+    /**
+     * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+     */
+    structure?: any;
+    /**
+     * Type of dataset.
+     * Expected value is 'Iceberg'.
+     */
+    type: "Iceberg";
+}
+
+/**
+ * A copy activity Iceberg sink.
+ */
+export interface IcebergSinkResponse {
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * Iceberg format settings.
+     */
+    formatSettings?: IcebergWriteSettingsResponse;
+    /**
+     * The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Sink retry count. Type: integer (or Expression with resultType integer).
+     */
+    sinkRetryCount?: any;
+    /**
+     * Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sinkRetryWait?: any;
+    /**
+     * Iceberg store settings.
+     */
+    storeSettings?: AzureBlobFSWriteSettingsResponse | AzureBlobStorageWriteSettingsResponse | AzureDataLakeStoreWriteSettingsResponse | AzureFileStorageWriteSettingsResponse | FileServerWriteSettingsResponse | LakeHouseWriteSettingsResponse | SftpWriteSettingsResponse;
+    /**
+     * Copy sink type.
+     * Expected value is 'IcebergSink'.
+     */
+    type: "IcebergSink";
+    /**
+     * Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+     */
+    writeBatchSize?: any;
+    /**
+     * Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    writeBatchTimeout?: any;
+}
+
+/**
+ * Iceberg write settings.
+ */
+export interface IcebergWriteSettingsResponse {
+    /**
+     * The write setting type.
+     * Expected value is 'IcebergWriteSettings'.
+     */
+    type: "IcebergWriteSettings";
+}
+
+/**
  * This activity evaluates a boolean expression and executes either the activities under the ifTrueActivities property or the ifFalseActivities property depending on the result of the expression.
  */
 export interface IfConditionActivityResponse {
@@ -14777,7 +14874,7 @@ export interface MariaDBLinkedServiceResponse {
      */
     description?: string;
     /**
-     * The version of the MariaDB driver. Type: string. V1 or empty for legacy driver, V2 for new driver. V1 can support connection string and property bag, V2 can only support connection string.
+     * The version of the MariaDB driver. Type: string. V1 or empty for legacy driver, V2 for new driver. V1 can support connection string and property bag, V2 can only support connection string. The legacy driver is scheduled for deprecation by October 2024.
      */
     driverVersion?: any;
     /**
@@ -14801,10 +14898,18 @@ export interface MariaDBLinkedServiceResponse {
      */
     server?: any;
     /**
+     * This option specifies whether the driver uses TLS encryption and verification when connecting to MariaDB. E.g., SSLMode=<0/1/2/3/4>. Options: DISABLED (0) / PREFERRED (1) (Default) / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4), REQUIRED (2) is recommended to only allow connections encrypted with SSL/TLS.
+     */
+    sslMode?: any;
+    /**
      * Type of linked service.
      * Expected value is 'MariaDB'.
      */
     type: "MariaDB";
+    /**
+     * This option specifies whether to use a CA certificate from the system trust store, or from a specified PEM file. E.g. UseSystemTrustStore=<0/1>; Options: Enabled (1) / Disabled (0) (Default)
+     */
+    useSystemTrustStore?: any;
     /**
      * Username for authentication. Type: string.
      */
@@ -17954,6 +18059,10 @@ export interface PostgreSqlV2LinkedServiceResponse {
      * List of tags that can be used for describing the linked service.
      */
     annotations?: any[];
+    /**
+     * The authentication type to use. Type: string.
+     */
+    authenticationType: any;
     /**
      * The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
      */
@@ -22229,6 +22338,10 @@ export interface ServiceNowV2SourceResponse {
      * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
      */
     maxConcurrentConnections?: any;
+    /**
+     * Page size of the result. Type: integer (or Expression with resultType integer).
+     */
+    pageSize?: any;
     /**
      * Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
      */

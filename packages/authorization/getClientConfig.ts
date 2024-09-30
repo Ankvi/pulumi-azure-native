@@ -4,7 +4,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Use this function to access the current configuration of the native Azure provider.
  */
 export function getClientConfig(opts?: pulumi.InvokeOptions): Promise<GetClientConfigResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:authorization:getClientConfig", {
     }, opts);
@@ -35,5 +34,7 @@ export interface GetClientConfigResult {
  * Use this function to access the current configuration of the native Azure provider.
  */
 export function getClientConfigOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetClientConfigResult> {
-    return pulumi.output(getClientConfig(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:authorization:getClientConfig", {
+    }, opts);
 }

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2015-08-01-preview.
  */
 export function getIntegrationAccountMap(args: GetIntegrationAccountMapArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationAccountMapResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:logic:getIntegrationAccountMap", {
         "integrationAccountName": args.integrationAccountName,
@@ -96,7 +95,12 @@ export interface GetIntegrationAccountMapResult {
  * Other available API versions: 2015-08-01-preview.
  */
 export function getIntegrationAccountMapOutput(args: GetIntegrationAccountMapOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationAccountMapResult> {
-    return pulumi.output(args).apply((a: any) => getIntegrationAccountMap(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:logic:getIntegrationAccountMap", {
+        "integrationAccountName": args.integrationAccountName,
+        "mapName": args.mapName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetIntegrationAccountMapOutputArgs {

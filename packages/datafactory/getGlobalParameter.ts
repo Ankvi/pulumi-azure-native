@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2018-06-01.
  */
 export function getGlobalParameter(args: GetGlobalParameterArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalParameterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:datafactory:getGlobalParameter", {
         "factoryName": args.factoryName,
@@ -60,7 +59,12 @@ export interface GetGlobalParameterResult {
  * Azure REST API version: 2018-06-01.
  */
 export function getGlobalParameterOutput(args: GetGlobalParameterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalParameterResult> {
-    return pulumi.output(args).apply((a: any) => getGlobalParameter(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:datafactory:getGlobalParameter", {
+        "factoryName": args.factoryName,
+        "globalParameterName": args.globalParameterName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetGlobalParameterOutputArgs {

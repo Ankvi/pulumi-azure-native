@@ -5,7 +5,7 @@ import * as types from "./types";
  * Machine assessment resource.
  * Azure REST API version: 2023-04-01-preview.
  *
- * Other available API versions: 2023-03-15.
+ * Other available API versions: 2023-03-15, 2023-05-01-preview.
  */
 export class AssessmentsOperation extends pulumi.CustomResource {
     /**
@@ -344,7 +344,7 @@ export class AssessmentsOperation extends pulumi.CustomResource {
             resourceInputs["vmUptime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:AssessmentsOperation" }, { type: "azure-native:migrate/v20230315:AssessmentsOperation" }, { type: "azure-native:migrate/v20230401preview:AssessmentsOperation" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:AssessmentsOperation" }, { type: "azure-native:migrate/v20230315:AssessmentsOperation" }, { type: "azure-native:migrate/v20230401preview:AssessmentsOperation" }, { type: "azure-native:migrate/v20230501preview:AssessmentsOperation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AssessmentsOperation.__pulumiType, name, resourceInputs, opts);
     }

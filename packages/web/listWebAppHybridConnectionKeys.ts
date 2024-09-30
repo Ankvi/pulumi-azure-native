@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2018-11-01.
  */
 export function listWebAppHybridConnectionKeys(args: ListWebAppHybridConnectionKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppHybridConnectionKeysResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:listWebAppHybridConnectionKeys", {
         "name": args.name,
@@ -68,7 +67,13 @@ export interface ListWebAppHybridConnectionKeysResult {
  * Azure REST API version: 2018-11-01.
  */
 export function listWebAppHybridConnectionKeysOutput(args: ListWebAppHybridConnectionKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWebAppHybridConnectionKeysResult> {
-    return pulumi.output(args).apply((a: any) => listWebAppHybridConnectionKeys(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:listWebAppHybridConnectionKeys", {
+        "name": args.name,
+        "namespaceName": args.namespaceName,
+        "relayName": args.relayName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListWebAppHybridConnectionKeysOutputArgs {

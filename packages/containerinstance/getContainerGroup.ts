@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2017-08-01-preview, 2017-12-01-preview, 2021-03-01, 2021-07-01, 2023-02-01-preview, 2024-05-01-preview.
  */
 export function getContainerGroup(args: GetContainerGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:containerinstance:getContainerGroup", {
         "containerGroupName": args.containerGroupName,
@@ -138,7 +137,11 @@ export interface GetContainerGroupResult {
  * Other available API versions: 2017-08-01-preview, 2017-12-01-preview, 2021-03-01, 2021-07-01, 2023-02-01-preview, 2024-05-01-preview.
  */
 export function getContainerGroupOutput(args: GetContainerGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerGroupResult> {
-    return pulumi.output(args).apply((a: any) => getContainerGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:containerinstance:getContainerGroup", {
+        "containerGroupName": args.containerGroupName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetContainerGroupOutputArgs {

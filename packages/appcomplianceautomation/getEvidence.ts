@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2024-06-27.
  */
 export function getEvidence(args: GetEvidenceArgs, opts?: pulumi.InvokeOptions): Promise<GetEvidenceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:appcomplianceautomation:getEvidence", {
         "evidenceName": args.evidenceName,
@@ -75,7 +74,11 @@ export interface GetEvidenceResult {
  * Azure REST API version: 2024-06-27.
  */
 export function getEvidenceOutput(args: GetEvidenceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEvidenceResult> {
-    return pulumi.output(args).apply((a: any) => getEvidence(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:appcomplianceautomation:getEvidence", {
+        "evidenceName": args.evidenceName,
+        "reportName": args.reportName,
+    }, opts);
 }
 
 export interface GetEvidenceOutputArgs {

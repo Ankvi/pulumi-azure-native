@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2021-05-01-preview.
  */
 export function getDiagnosticSetting(args: GetDiagnosticSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetDiagnosticSettingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:insights:getDiagnosticSetting", {
         "name": args.name,
@@ -87,7 +86,11 @@ export interface GetDiagnosticSettingResult {
  * Azure REST API version: 2021-05-01-preview.
  */
 export function getDiagnosticSettingOutput(args: GetDiagnosticSettingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiagnosticSettingResult> {
-    return pulumi.output(args).apply((a: any) => getDiagnosticSetting(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:insights:getDiagnosticSetting", {
+        "name": args.name,
+        "resourceUri": args.resourceUri,
+    }, opts);
 }
 
 export interface GetDiagnosticSettingOutputArgs {

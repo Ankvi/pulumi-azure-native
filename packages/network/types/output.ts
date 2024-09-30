@@ -3748,6 +3748,20 @@ export interface DnsResourceReferenceResponse {
 }
 
 /**
+ * The action to take on DNS requests that match the DNS security rule.
+ */
+export interface DnsSecurityRuleActionResponse {
+    /**
+     * The type of action to take.
+     */
+    actionType?: string;
+    /**
+     * The response code for block actions.
+     */
+    blockResponseCode?: string;
+}
+
+/**
  * DNS Proxy Settings in Firewall Policy.
  */
 export interface DnsSettingsResponse {
@@ -7231,6 +7245,16 @@ export interface NetworkManagerPropertiesResponseNetworkManagerScopes {
 }
 
 /**
+ * Network manager routing group item.
+ */
+export interface NetworkManagerRoutingGroupItemResponse {
+    /**
+     * Network manager group Id.
+     */
+    networkGroupId: string;
+}
+
+/**
  * Network manager security group item.
  */
 export interface NetworkManagerSecurityGroupItemResponse {
@@ -8975,7 +8999,7 @@ export interface RouteResponse {
     /**
      * A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
      */
-    hasBgpOverride?: boolean;
+    hasBgpOverride: boolean;
     /**
      * Resource ID.
      */
@@ -9107,6 +9131,20 @@ export interface RoutingRuleLinkResponse {
 }
 
 /**
+ * Next hop.
+ */
+export interface RoutingRuleNextHopResponse {
+    /**
+     * Next hop address. Only required if the next hop type is VirtualAppliance.
+     */
+    nextHopAddress?: string;
+    /**
+     * Next hop type.
+     */
+    nextHopType: string;
+}
+
+/**
  * A routing rule represents a specification for traffic to treat and where to send it, along with health probe information.
  */
 export interface RoutingRuleResponse {
@@ -9154,6 +9192,20 @@ export interface RoutingRuleResponse {
      * Defines the Web Application Firewall policy for each routing rule (if applicable)
      */
     webApplicationFirewallPolicyLink?: RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink;
+}
+
+/**
+ * Route destination.
+ */
+export interface RoutingRuleRouteDestinationResponse {
+    /**
+     * Destination address.
+     */
+    destinationAddress: string;
+    /**
+     * Destination type.
+     */
+    type: string;
 }
 
 /**
@@ -9363,6 +9415,16 @@ export interface SecurityRuleResponse {
 }
 
 /**
+ * Network manager security user group item.
+ */
+export interface SecurityUserGroupItemResponse {
+    /**
+     * Network manager group Id.
+     */
+    networkGroupId: string;
+}
+
+/**
  * ServiceAssociationLink resource.
  */
 export interface ServiceAssociationLinkResponse {
@@ -9516,6 +9578,24 @@ export interface ServiceEndpointPropertiesFormatResponse {
      * The type of the endpoint service.
      */
     service?: string;
+}
+
+/**
+ * Parameters for SharedKey.
+ */
+export interface SharedKeyPropertiesResponse {
+    /**
+     * The provisioning state of the SharedKey resource.
+     */
+    provisioningState: string;
+    /**
+     * The value of the shared key for the vpn link connection.
+     */
+    sharedKey?: string;
+    /**
+     * The length of the shared key for the vpn link connection.
+     */
+    sharedKeyLength?: number;
 }
 
 export interface SingleQueryResultResponse {
@@ -11366,6 +11446,7 @@ export interface WebApplicationFirewallScrubbingRulesResponse {
      */
     state?: string;
 }
+
 
 
 

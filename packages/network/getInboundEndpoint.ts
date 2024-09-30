@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets properties of an inbound endpoint for a DNS resolver.
  * Azure REST API version: 2022-07-01.
  *
- * Other available API versions: 2020-04-01-preview.
+ * Other available API versions: 2020-04-01-preview, 2023-07-01-preview.
  */
 export function getInboundEndpoint(args: GetInboundEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetInboundEndpointResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getInboundEndpoint", {
         "dnsResolverName": args.dnsResolverName,
@@ -81,10 +80,15 @@ export interface GetInboundEndpointResult {
  * Gets properties of an inbound endpoint for a DNS resolver.
  * Azure REST API version: 2022-07-01.
  *
- * Other available API versions: 2020-04-01-preview.
+ * Other available API versions: 2020-04-01-preview, 2023-07-01-preview.
  */
 export function getInboundEndpointOutput(args: GetInboundEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInboundEndpointResult> {
-    return pulumi.output(args).apply((a: any) => getInboundEndpoint(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getInboundEndpoint", {
+        "dnsResolverName": args.dnsResolverName,
+        "inboundEndpointName": args.inboundEndpointName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetInboundEndpointOutputArgs {

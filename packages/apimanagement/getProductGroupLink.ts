@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the group link for the product.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getProductGroupLink(args: GetProductGroupLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetProductGroupLinkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apimanagement:getProductGroupLink", {
         "groupLinkId": args.groupLinkId,
@@ -61,10 +60,16 @@ export interface GetProductGroupLinkResult {
  * Gets the group link for the product.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getProductGroupLinkOutput(args: GetProductGroupLinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductGroupLinkResult> {
-    return pulumi.output(args).apply((a: any) => getProductGroupLink(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:getProductGroupLink", {
+        "groupLinkId": args.groupLinkId,
+        "productId": args.productId,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 export interface GetProductGroupLinkOutputArgs {

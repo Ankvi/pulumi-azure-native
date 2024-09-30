@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-01-01-preview.
  */
 export function getCloudConnection(args: GetCloudConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:hybridcloud:getCloudConnection", {
         "cloudConnectionName": args.cloudConnectionName,
@@ -83,7 +82,11 @@ export interface GetCloudConnectionResult {
  * Azure REST API version: 2023-01-01-preview.
  */
 export function getCloudConnectionOutput(args: GetCloudConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getCloudConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:hybridcloud:getCloudConnection", {
+        "cloudConnectionName": args.cloudConnectionName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetCloudConnectionOutputArgs {

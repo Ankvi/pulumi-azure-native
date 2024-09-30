@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
  */
 export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:compute:getVirtualMachine", {
         "expand": args.expand,
@@ -188,7 +187,12 @@ export interface GetVirtualMachineResult {
  * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
  */
 export function getVirtualMachineOutput(args: GetVirtualMachineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualMachine(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:compute:getVirtualMachine", {
+        "expand": args.expand,
+        "resourceGroupName": args.resourceGroupName,
+        "vmName": args.vmName,
+    }, opts);
 }
 
 export interface GetVirtualMachineOutputArgs {

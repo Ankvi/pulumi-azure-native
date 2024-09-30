@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get properties of the provided the Kubernetes cluster.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01.
  */
 export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClusterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:networkcloud:getKubernetesCluster", {
         "kubernetesClusterName": args.kubernetesClusterName,
@@ -129,10 +128,14 @@ export interface GetKubernetesClusterResult {
  * Get properties of the provided the Kubernetes cluster.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01.
  */
 export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesClusterResult> {
-    return pulumi.output(args).apply((a: any) => getKubernetesCluster(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:networkcloud:getKubernetesCluster", {
+        "kubernetesClusterName": args.kubernetesClusterName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetKubernetesClusterOutputArgs {

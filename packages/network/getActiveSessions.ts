@@ -5,10 +5,9 @@ import * as types from "./types";
  * Returns the list of currently active sessions on the Bastion.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getActiveSessions(args: GetActiveSessionsArgs, opts?: pulumi.InvokeOptions): Promise<GetActiveSessionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getActiveSessions", {
         "bastionHostName": args.bastionHostName,
@@ -44,10 +43,14 @@ export interface GetActiveSessionsResult {
  * Returns the list of currently active sessions on the Bastion.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getActiveSessionsOutput(args: GetActiveSessionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetActiveSessionsResult> {
-    return pulumi.output(args).apply((a: any) => getActiveSessions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getActiveSessions", {
+        "bastionHostName": args.bastionHostName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetActiveSessionsOutputArgs {

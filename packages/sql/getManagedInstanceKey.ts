@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets a managed instance key.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview.
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
  */
 export function getManagedInstanceKey(args: GetManagedInstanceKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedInstanceKeyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:sql:getManagedInstanceKey", {
         "keyName": args.keyName,
@@ -68,10 +67,15 @@ export interface GetManagedInstanceKeyResult {
  * Gets a managed instance key.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview.
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
  */
 export function getManagedInstanceKeyOutput(args: GetManagedInstanceKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedInstanceKeyResult> {
-    return pulumi.output(args).apply((a: any) => getManagedInstanceKey(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:sql:getManagedInstanceKey", {
+        "keyName": args.keyName,
+        "managedInstanceName": args.managedInstanceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetManagedInstanceKeyOutputArgs {

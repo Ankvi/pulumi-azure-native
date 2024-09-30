@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2022-05-04.
  */
 export function getConfigurationProfileAssignment(args: GetConfigurationProfileAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigurationProfileAssignmentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:automanage:getConfigurationProfileAssignment", {
         "configurationProfileAssignmentName": args.configurationProfileAssignmentName,
@@ -64,7 +63,12 @@ export interface GetConfigurationProfileAssignmentResult {
  * Azure REST API version: 2022-05-04.
  */
 export function getConfigurationProfileAssignmentOutput(args: GetConfigurationProfileAssignmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigurationProfileAssignmentResult> {
-    return pulumi.output(args).apply((a: any) => getConfigurationProfileAssignment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:automanage:getConfigurationProfileAssignment", {
+        "configurationProfileAssignmentName": args.configurationProfileAssignmentName,
+        "resourceGroupName": args.resourceGroupName,
+        "vmName": args.vmName,
+    }, opts);
 }
 
 export interface GetConfigurationProfileAssignmentOutputArgs {

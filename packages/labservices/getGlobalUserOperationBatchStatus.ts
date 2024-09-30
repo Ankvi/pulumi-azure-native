@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2018-10-15.
  */
 export function getGlobalUserOperationBatchStatus(args: GetGlobalUserOperationBatchStatusArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalUserOperationBatchStatusResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:labservices:getGlobalUserOperationBatchStatus", {
         "urls": args.urls,
@@ -39,7 +38,11 @@ export interface GetGlobalUserOperationBatchStatusResult {
  * Azure REST API version: 2018-10-15.
  */
 export function getGlobalUserOperationBatchStatusOutput(args: GetGlobalUserOperationBatchStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalUserOperationBatchStatusResult> {
-    return pulumi.output(args).apply((a: any) => getGlobalUserOperationBatchStatus(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:labservices:getGlobalUserOperationBatchStatus", {
+        "urls": args.urls,
+        "userName": args.userName,
+    }, opts);
 }
 
 export interface GetGlobalUserOperationBatchStatusOutputArgs {

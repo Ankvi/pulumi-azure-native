@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview.
  */
 export function listVolumeReplications(args: ListVolumeReplicationsArgs, opts?: pulumi.InvokeOptions): Promise<ListVolumeReplicationsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:netapp:listVolumeReplications", {
         "accountName": args.accountName,
@@ -53,7 +52,13 @@ export interface ListVolumeReplicationsResult {
  * Other available API versions: 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview.
  */
 export function listVolumeReplicationsOutput(args: ListVolumeReplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListVolumeReplicationsResult> {
-    return pulumi.output(args).apply((a: any) => listVolumeReplications(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:netapp:listVolumeReplications", {
+        "accountName": args.accountName,
+        "poolName": args.poolName,
+        "resourceGroupName": args.resourceGroupName,
+        "volumeName": args.volumeName,
+    }, opts);
 }
 
 export interface ListVolumeReplicationsOutputArgs {

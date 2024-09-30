@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Primary and secondary connection strings to the namespace.
  * Azure REST API version: 2021-11-01.
+ *
+ * Other available API versions: 2024-01-01.
  */
 export function listNamespaceKeys(args: ListNamespaceKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListNamespaceKeysResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:relay:listNamespaceKeys", {
         "authorizationRuleName": args.authorizationRuleName,
@@ -57,9 +58,16 @@ export interface ListNamespaceKeysResult {
 /**
  * Primary and secondary connection strings to the namespace.
  * Azure REST API version: 2021-11-01.
+ *
+ * Other available API versions: 2024-01-01.
  */
 export function listNamespaceKeysOutput(args: ListNamespaceKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListNamespaceKeysResult> {
-    return pulumi.output(args).apply((a: any) => listNamespaceKeys(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:relay:listNamespaceKeys", {
+        "authorizationRuleName": args.authorizationRuleName,
+        "namespaceName": args.namespaceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListNamespaceKeysOutputArgs {

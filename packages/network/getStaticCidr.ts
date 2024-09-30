@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2024-01-01-preview.
  */
 export function getStaticCidr(args: GetStaticCidrArgs, opts?: pulumi.InvokeOptions): Promise<GetStaticCidrResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getStaticCidr", {
         "networkManagerName": args.networkManagerName,
@@ -65,7 +64,13 @@ export interface GetStaticCidrResult {
  * Azure REST API version: 2024-01-01-preview.
  */
 export function getStaticCidrOutput(args: GetStaticCidrOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStaticCidrResult> {
-    return pulumi.output(args).apply((a: any) => getStaticCidr(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getStaticCidr", {
+        "networkManagerName": args.networkManagerName,
+        "poolName": args.poolName,
+        "resourceGroupName": args.resourceGroupName,
+        "staticCidrName": args.staticCidrName,
+    }, opts);
 }
 
 export interface GetStaticCidrOutputArgs {

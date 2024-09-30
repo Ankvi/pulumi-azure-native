@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-11-01-preview.
  */
 export function getFleet(args: GetFleetArgs, opts?: pulumi.InvokeOptions): Promise<GetFleetResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:azurefleet:getFleet", {
         "fleetName": args.fleetName,
@@ -103,7 +102,11 @@ export interface GetFleetResult {
  * Other available API versions: 2023-11-01-preview.
  */
 export function getFleetOutput(args: GetFleetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFleetResult> {
-    return pulumi.output(args).apply((a: any) => getFleet(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:azurefleet:getFleet", {
+        "fleetName": args.fleetName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetFleetOutputArgs {

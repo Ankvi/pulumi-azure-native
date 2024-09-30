@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-11-01-preview.
  */
 export function getCustomImage(args: GetCustomImageArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomImageResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:testbase:getCustomImage", {
         "customImageName": args.customImageName,
@@ -108,7 +107,12 @@ export interface GetCustomImageResult {
  * Azure REST API version: 2023-11-01-preview.
  */
 export function getCustomImageOutput(args: GetCustomImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomImageResult> {
-    return pulumi.output(args).apply((a: any) => getCustomImage(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:testbase:getCustomImage", {
+        "customImageName": args.customImageName,
+        "resourceGroupName": args.resourceGroupName,
+        "testBaseAccountName": args.testBaseAccountName,
+    }, opts);
 }
 
 export interface GetCustomImageOutputArgs {

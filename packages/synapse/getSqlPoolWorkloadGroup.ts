@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2021-06-01-preview.
  */
 export function getSqlPoolWorkloadGroup(args: GetSqlPoolWorkloadGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlPoolWorkloadGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:synapse:getSqlPoolWorkloadGroup", {
         "resourceGroupName": args.resourceGroupName,
@@ -84,7 +83,13 @@ export interface GetSqlPoolWorkloadGroupResult {
  * Other available API versions: 2021-06-01-preview.
  */
 export function getSqlPoolWorkloadGroupOutput(args: GetSqlPoolWorkloadGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlPoolWorkloadGroupResult> {
-    return pulumi.output(args).apply((a: any) => getSqlPoolWorkloadGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:synapse:getSqlPoolWorkloadGroup", {
+        "resourceGroupName": args.resourceGroupName,
+        "sqlPoolName": args.sqlPoolName,
+        "workloadGroupName": args.workloadGroupName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetSqlPoolWorkloadGroupOutputArgs {

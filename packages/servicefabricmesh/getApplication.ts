@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2018-07-01-preview.
  */
 export function getApplication(args: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:servicefabricmesh:getApplication", {
         "applicationResourceName": args.applicationResourceName,
@@ -99,7 +98,11 @@ export interface GetApplicationResult {
  * Other available API versions: 2018-07-01-preview.
  */
 export function getApplicationOutput(args: GetApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationResult> {
-    return pulumi.output(args).apply((a: any) => getApplication(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:servicefabricmesh:getApplication", {
+        "applicationResourceName": args.applicationResourceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetApplicationOutputArgs {

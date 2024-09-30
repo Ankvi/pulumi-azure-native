@@ -5,10 +5,9 @@ import * as types from "./types";
  * Retrieves the details of a vpn connection.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2018-04-01, 2018-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2018-04-01, 2018-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getVpnConnection(args: GetVpnConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getVpnConnection", {
         "connectionName": args.connectionName,
@@ -129,10 +128,15 @@ export interface GetVpnConnectionResult {
  * Retrieves the details of a vpn connection.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2018-04-01, 2018-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2018-04-01, 2018-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getVpnConnectionOutput(args: GetVpnConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpnConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getVpnConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getVpnConnection", {
+        "connectionName": args.connectionName,
+        "gatewayName": args.gatewayName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetVpnConnectionOutputArgs {

@@ -5,10 +5,9 @@ import * as types from "./types";
  * Returns Connector resource for a given name.
  * Azure REST API version: 2022-11-01-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2024-04-01.
+ * Other available API versions: 2023-04-01-preview, 2024-04-01, 2024-07-01-preview.
  */
 export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:servicelinker:getConnector", {
         "connectorName": args.connectorName,
@@ -98,10 +97,16 @@ export interface GetConnectorResult {
  * Returns Connector resource for a given name.
  * Azure REST API version: 2022-11-01-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2024-04-01.
+ * Other available API versions: 2023-04-01-preview, 2024-04-01, 2024-07-01-preview.
  */
 export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:servicelinker:getConnector", {
+        "connectorName": args.connectorName,
+        "location": args.location,
+        "resourceGroupName": args.resourceGroupName,
+        "subscriptionId": args.subscriptionId,
+    }, opts);
 }
 
 export interface GetConnectorOutputArgs {

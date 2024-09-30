@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-05-01.
  */
 export function getAzureServersSetting(args: GetAzureServersSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureServersSettingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:security:getAzureServersSetting", {
         "settingKind": args.settingKind,
@@ -55,7 +54,10 @@ export interface GetAzureServersSettingResult {
  * Azure REST API version: 2023-05-01.
  */
 export function getAzureServersSettingOutput(args: GetAzureServersSettingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureServersSettingResult> {
-    return pulumi.output(args).apply((a: any) => getAzureServersSetting(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:security:getAzureServersSetting", {
+        "settingKind": args.settingKind,
+    }, opts);
 }
 
 export interface GetAzureServersSettingOutputArgs {

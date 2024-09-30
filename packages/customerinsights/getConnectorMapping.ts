@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2017-04-26.
  */
 export function getConnectorMapping(args: GetConnectorMappingArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorMappingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:customerinsights:getConnectorMapping", {
         "connectorName": args.connectorName,
@@ -117,7 +116,13 @@ export interface GetConnectorMappingResult {
  * Azure REST API version: 2017-04-26.
  */
 export function getConnectorMappingOutput(args: GetConnectorMappingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorMappingResult> {
-    return pulumi.output(args).apply((a: any) => getConnectorMapping(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:customerinsights:getConnectorMapping", {
+        "connectorName": args.connectorName,
+        "hubName": args.hubName,
+        "mappingName": args.mappingName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetConnectorMappingOutputArgs {

@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-11-15.
  */
 export function listDataProductRolesAssignments(args: ListDataProductRolesAssignmentsArgs, opts?: pulumi.InvokeOptions): Promise<ListDataProductRolesAssignmentsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:networkanalytics:listDataProductRolesAssignments", {
         "dataProductName": args.dataProductName,
@@ -43,7 +42,11 @@ export interface ListDataProductRolesAssignmentsResult {
  * Azure REST API version: 2023-11-15.
  */
 export function listDataProductRolesAssignmentsOutput(args: ListDataProductRolesAssignmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListDataProductRolesAssignmentsResult> {
-    return pulumi.output(args).apply((a: any) => listDataProductRolesAssignments(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:networkanalytics:listDataProductRolesAssignments", {
+        "dataProductName": args.dataProductName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListDataProductRolesAssignmentsOutputArgs {

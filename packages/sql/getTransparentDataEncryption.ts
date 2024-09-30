@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets a logical database's transparent data encryption.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview.
+ * Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
  */
 export function getTransparentDataEncryption(args: GetTransparentDataEncryptionArgs, opts?: pulumi.InvokeOptions): Promise<GetTransparentDataEncryptionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:sql:getTransparentDataEncryption", {
         "databaseName": args.databaseName,
@@ -61,10 +60,16 @@ export interface GetTransparentDataEncryptionResult {
  * Gets a logical database's transparent data encryption.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview.
+ * Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
  */
 export function getTransparentDataEncryptionOutput(args: GetTransparentDataEncryptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransparentDataEncryptionResult> {
-    return pulumi.output(args).apply((a: any) => getTransparentDataEncryption(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:sql:getTransparentDataEncryption", {
+        "databaseName": args.databaseName,
+        "resourceGroupName": args.resourceGroupName,
+        "serverName": args.serverName,
+        "tdeName": args.tdeName,
+    }, opts);
 }
 
 export interface GetTransparentDataEncryptionOutputArgs {

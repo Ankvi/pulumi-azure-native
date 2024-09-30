@@ -51,6 +51,24 @@ export interface DashboardLensResponse {
 }
 
 /**
+ * A dashboard part metadata.
+ */
+export interface DashboardPartMetadataResponse {
+    /**
+     * Inputs to dashboard part.
+     */
+    inputs?: any[];
+    /**
+     * Settings of dashboard part.
+     */
+    settings?: {[key: string]: any};
+    /**
+     * The type of dashboard part.
+     */
+    type: string;
+}
+
+/**
  * The dashboard's part position.
  */
 export interface DashboardPartsPositionResponse {
@@ -81,9 +99,9 @@ export interface DashboardPartsPositionResponse {
  */
 export interface DashboardPartsResponse {
     /**
-     * The dashboard part's metadata.
+     * The dashboard's part metadata.
      */
-    metadata?: MarkdownPartMetadataResponse;
+    metadata?: DashboardPartMetadataResponse;
     /**
      * The dashboard's part position.
      */
@@ -106,71 +124,6 @@ export interface DashboardPropertiesWithProvisioningStateResponse {
      * The status of the last operation.
      */
     provisioningState: string;
-}
-
-/**
- * Markdown part metadata.
- */
-export interface MarkdownPartMetadataResponse {
-    /**
-     * Input to dashboard part.
-     */
-    inputs?: any[];
-    /**
-     * Markdown part settings.
-     */
-    settings?: MarkdownPartMetadataSettingsResponse;
-    /**
-     * The dashboard part metadata type.
-     * Expected value is 'Extension/HubsExtension/PartType/MarkdownPart'.
-     */
-    type: "Extension/HubsExtension/PartType/MarkdownPart";
-}
-
-/**
- * The content of markdown part.
- */
-export interface MarkdownPartMetadataSettingsContentResponse {
-    /**
-     * The setting of the content of markdown part.
-     */
-    settings?: MarkdownPartMetadataSettingsContentSettingsResponse;
-}
-
-/**
- * The setting of the content of markdown part.
- */
-export interface MarkdownPartMetadataSettingsContentSettingsResponse {
-    /**
-     * The content of the markdown part.
-     */
-    content?: string;
-    /**
-     * The source of the content of the markdown part.
-     */
-    markdownSource?: number;
-    /**
-     * The uri of markdown content.
-     */
-    markdownUri?: string;
-    /**
-     * The subtitle of the markdown part.
-     */
-    subtitle?: string;
-    /**
-     * The title of the markdown part.
-     */
-    title?: string;
-}
-
-/**
- * Markdown part settings.
- */
-export interface MarkdownPartMetadataSettingsResponse {
-    /**
-     * The content of markdown part.
-     */
-    content?: MarkdownPartMetadataSettingsContentResponse;
 }
 
 /**

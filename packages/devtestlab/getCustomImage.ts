@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2016-05-15.
  */
 export function getCustomImage(args: GetCustomImageArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomImageResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:devtestlab:getCustomImage", {
         "expand": args.expand,
@@ -117,7 +116,13 @@ export interface GetCustomImageResult {
  * Other available API versions: 2016-05-15.
  */
 export function getCustomImageOutput(args: GetCustomImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomImageResult> {
-    return pulumi.output(args).apply((a: any) => getCustomImage(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:devtestlab:getCustomImage", {
+        "expand": args.expand,
+        "labName": args.labName,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetCustomImageOutputArgs {

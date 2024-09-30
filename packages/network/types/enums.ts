@@ -420,6 +420,15 @@ export const BastionHostSkuName = {
  */
 export type BastionHostSkuName = (typeof BastionHostSkuName)[keyof typeof BastionHostSkuName];
 
+export const BlockResponseCode = {
+    SERVFAIL: "SERVFAIL",
+} as const;
+
+/**
+ * The response code for block actions.
+ */
+export type BlockResponseCode = (typeof BlockResponseCode)[keyof typeof BlockResponseCode];
+
 export const CommissionedState = {
     Provisioning: "Provisioning",
     Provisioned: "Provisioned",
@@ -586,6 +595,26 @@ export const DhGroup = {
  * The DH Group used in IKE Phase 1 for initial SA.
  */
 export type DhGroup = (typeof DhGroup)[keyof typeof DhGroup];
+
+export const DisableBgpRoutePropagation = {
+    False: "False",
+    True: "True",
+} as const;
+
+/**
+ * Determines whether BGP route propagation is enabled. Defaults to true.
+ */
+export type DisableBgpRoutePropagation = (typeof DisableBgpRoutePropagation)[keyof typeof DisableBgpRoutePropagation];
+
+export const DnsSecurityRuleState = {
+    Enabled: "Enabled",
+    Disabled: "Disabled",
+} as const;
+
+/**
+ * The state of DNS security rule.
+ */
+export type DnsSecurityRuleState = (typeof DnsSecurityRuleState)[keyof typeof DnsSecurityRuleState];
 
 export const DynamicCompressionEnabled = {
     Enabled: "Enabled",
@@ -1780,6 +1809,16 @@ export const RouteNextHopType = {
  */
 export type RouteNextHopType = (typeof RouteNextHopType)[keyof typeof RouteNextHopType];
 
+export const RoutingRuleDestinationType = {
+    AddressPrefix: "AddressPrefix",
+    ServiceTag: "ServiceTag",
+} as const;
+
+/**
+ * Destination type.
+ */
+export type RoutingRuleDestinationType = (typeof RoutingRuleDestinationType)[keyof typeof RoutingRuleDestinationType];
+
 export const RoutingRuleEnabledState = {
     Enabled: "Enabled",
     Disabled: "Disabled",
@@ -1789,6 +1828,19 @@ export const RoutingRuleEnabledState = {
  * Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
  */
 export type RoutingRuleEnabledState = (typeof RoutingRuleEnabledState)[keyof typeof RoutingRuleEnabledState];
+
+export const RoutingRuleNextHopType = {
+    Internet: "Internet",
+    NoNextHop: "NoNextHop",
+    VirtualAppliance: "VirtualAppliance",
+    VirtualNetworkGateway: "VirtualNetworkGateway",
+    VnetLocal: "VnetLocal",
+} as const;
+
+/**
+ * Next hop type.
+ */
+export type RoutingRuleNextHopType = (typeof RoutingRuleNextHopType)[keyof typeof RoutingRuleNextHopType];
 
 export const RuleType = {
     MatchRule: "MatchRule",

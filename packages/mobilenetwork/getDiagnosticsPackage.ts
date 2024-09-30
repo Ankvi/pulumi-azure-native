@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-09-01, 2024-02-01, 2024-04-01.
  */
 export function getDiagnosticsPackage(args: GetDiagnosticsPackageArgs, opts?: pulumi.InvokeOptions): Promise<GetDiagnosticsPackageResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:mobilenetwork:getDiagnosticsPackage", {
         "diagnosticsPackageName": args.diagnosticsPackageName,
@@ -72,7 +71,12 @@ export interface GetDiagnosticsPackageResult {
  * Other available API versions: 2023-09-01, 2024-02-01, 2024-04-01.
  */
 export function getDiagnosticsPackageOutput(args: GetDiagnosticsPackageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiagnosticsPackageResult> {
-    return pulumi.output(args).apply((a: any) => getDiagnosticsPackage(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:mobilenetwork:getDiagnosticsPackage", {
+        "diagnosticsPackageName": args.diagnosticsPackageName,
+        "packetCoreControlPlaneName": args.packetCoreControlPlaneName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetDiagnosticsPackageOutputArgs {

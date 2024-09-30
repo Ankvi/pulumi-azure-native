@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get the specified private endpoint connection
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview.
  */
 export function getWebPubSubPrivateEndpointConnection(args: GetWebPubSubPrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetWebPubSubPrivateEndpointConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:webpubsub:getWebPubSubPrivateEndpointConnection", {
         "privateEndpointConnectionName": args.privateEndpointConnectionName,
@@ -73,10 +72,15 @@ export interface GetWebPubSubPrivateEndpointConnectionResult {
  * Get the specified private endpoint connection
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview.
  */
 export function getWebPubSubPrivateEndpointConnectionOutput(args: GetWebPubSubPrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebPubSubPrivateEndpointConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getWebPubSubPrivateEndpointConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:webpubsub:getWebPubSubPrivateEndpointConnection", {
+        "privateEndpointConnectionName": args.privateEndpointConnectionName,
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface GetWebPubSubPrivateEndpointConnectionOutputArgs {

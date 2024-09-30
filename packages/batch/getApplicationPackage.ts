@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2017-09-01, 2023-11-01, 2024-02-01, 2024-07-01.
  */
 export function getApplicationPackage(args: GetApplicationPackageArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationPackageResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:batch:getApplicationPackage", {
         "accountName": args.accountName,
@@ -84,7 +83,13 @@ export interface GetApplicationPackageResult {
  * Other available API versions: 2017-09-01, 2023-11-01, 2024-02-01, 2024-07-01.
  */
 export function getApplicationPackageOutput(args: GetApplicationPackageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationPackageResult> {
-    return pulumi.output(args).apply((a: any) => getApplicationPackage(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:batch:getApplicationPackage", {
+        "accountName": args.accountName,
+        "applicationName": args.applicationName,
+        "resourceGroupName": args.resourceGroupName,
+        "versionName": args.versionName,
+    }, opts);
 }
 
 export interface GetApplicationPackageOutputArgs {

@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-10-15-preview.
  */
 export function getNrfDeployment(args: GetNrfDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetNrfDeploymentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:mobilepacketcore:getNrfDeployment", {
         "nrfDeploymentName": args.nrfDeploymentName,
@@ -83,7 +82,11 @@ export interface GetNrfDeploymentResult {
  * Azure REST API version: 2023-10-15-preview.
  */
 export function getNrfDeploymentOutput(args: GetNrfDeploymentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNrfDeploymentResult> {
-    return pulumi.output(args).apply((a: any) => getNrfDeployment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:mobilepacketcore:getNrfDeployment", {
+        "nrfDeploymentName": args.nrfDeploymentName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNrfDeploymentOutputArgs {

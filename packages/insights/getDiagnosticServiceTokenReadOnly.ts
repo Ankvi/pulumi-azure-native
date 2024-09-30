@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2021-03-03-preview.
  */
 export function getDiagnosticServiceTokenReadOnly(args: GetDiagnosticServiceTokenReadOnlyArgs, opts?: pulumi.InvokeOptions): Promise<GetDiagnosticServiceTokenReadOnlyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:insights:getDiagnosticServiceTokenReadOnly", {
         "resourceUri": args.resourceUri,
@@ -33,7 +32,10 @@ export interface GetDiagnosticServiceTokenReadOnlyResult {
  * Azure REST API version: 2021-03-03-preview.
  */
 export function getDiagnosticServiceTokenReadOnlyOutput(args: GetDiagnosticServiceTokenReadOnlyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiagnosticServiceTokenReadOnlyResult> {
-    return pulumi.output(args).apply((a: any) => getDiagnosticServiceTokenReadOnly(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:insights:getDiagnosticServiceTokenReadOnly", {
+        "resourceUri": args.resourceUri,
+    }, opts);
 }
 
 export interface GetDiagnosticServiceTokenReadOnlyOutputArgs {

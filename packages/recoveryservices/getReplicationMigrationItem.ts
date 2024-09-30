@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01.
  */
 export function getReplicationMigrationItem(args: GetReplicationMigrationItemArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationMigrationItemResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:recoveryservices:getReplicationMigrationItem", {
         "fabricName": args.fabricName,
@@ -74,7 +73,14 @@ export interface GetReplicationMigrationItemResult {
  * Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01.
  */
 export function getReplicationMigrationItemOutput(args: GetReplicationMigrationItemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplicationMigrationItemResult> {
-    return pulumi.output(args).apply((a: any) => getReplicationMigrationItem(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:recoveryservices:getReplicationMigrationItem", {
+        "fabricName": args.fabricName,
+        "migrationItemName": args.migrationItemName,
+        "protectionContainerName": args.protectionContainerName,
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface GetReplicationMigrationItemOutputArgs {

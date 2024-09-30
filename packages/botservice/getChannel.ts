@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-09-15-preview.
  */
 export function getChannel(args: GetChannelArgs, opts?: pulumi.InvokeOptions): Promise<GetChannelResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:botservice:getChannel", {
         "channelName": args.channelName,
@@ -84,7 +83,12 @@ export interface GetChannelResult {
  * Other available API versions: 2023-09-15-preview.
  */
 export function getChannelOutput(args: GetChannelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChannelResult> {
-    return pulumi.output(args).apply((a: any) => getChannel(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:botservice:getChannel", {
+        "channelName": args.channelName,
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface GetChannelOutputArgs {

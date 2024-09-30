@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2020-07-07.
  */
 export function getSite(args: GetSiteArgs, opts?: pulumi.InvokeOptions): Promise<GetSiteResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:offazure:getSite", {
         "resourceGroupName": args.resourceGroupName,
@@ -64,7 +63,11 @@ export interface GetSiteResult {
  * Azure REST API version: 2020-07-07.
  */
 export function getSiteOutput(args: GetSiteOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSiteResult> {
-    return pulumi.output(args).apply((a: any) => getSite(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:offazure:getSite", {
+        "resourceGroupName": args.resourceGroupName,
+        "siteName": args.siteName,
+    }, opts);
 }
 
 export interface GetSiteOutputArgs {

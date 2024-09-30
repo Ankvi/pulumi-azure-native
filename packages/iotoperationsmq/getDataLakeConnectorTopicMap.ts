@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-10-04-preview.
  */
 export function getDataLakeConnectorTopicMap(args: GetDataLakeConnectorTopicMapArgs, opts?: pulumi.InvokeOptions): Promise<GetDataLakeConnectorTopicMapResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:iotoperationsmq:getDataLakeConnectorTopicMap", {
         "dataLakeConnectorName": args.dataLakeConnectorName,
@@ -85,7 +84,13 @@ export interface GetDataLakeConnectorTopicMapResult {
  * Azure REST API version: 2023-10-04-preview.
  */
 export function getDataLakeConnectorTopicMapOutput(args: GetDataLakeConnectorTopicMapOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataLakeConnectorTopicMapResult> {
-    return pulumi.output(args).apply((a: any) => getDataLakeConnectorTopicMap(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:iotoperationsmq:getDataLakeConnectorTopicMap", {
+        "dataLakeConnectorName": args.dataLakeConnectorName,
+        "mqName": args.mqName,
+        "resourceGroupName": args.resourceGroupName,
+        "topicMapName": args.topicMapName,
+    }, opts);
 }
 
 export interface GetDataLakeConnectorTopicMapOutputArgs {

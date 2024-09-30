@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-01-01.
  */
 export function getAccountFilter(args: GetAccountFilterArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountFilterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:media:getAccountFilter", {
         "accountName": args.accountName,
@@ -68,7 +67,12 @@ export interface GetAccountFilterResult {
  * Azure REST API version: 2023-01-01.
  */
 export function getAccountFilterOutput(args: GetAccountFilterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountFilterResult> {
-    return pulumi.output(args).apply((a: any) => getAccountFilter(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:media:getAccountFilter", {
+        "accountName": args.accountName,
+        "filterName": args.filterName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetAccountFilterOutputArgs {

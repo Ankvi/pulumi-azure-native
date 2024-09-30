@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-01-01.
  */
 export function getSolutionsControllerSolution(args: GetSolutionsControllerSolutionArgs, opts?: pulumi.InvokeOptions): Promise<GetSolutionsControllerSolutionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:migrate:getSolutionsControllerSolution", {
         "migrateProjectName": args.migrateProjectName,
@@ -60,7 +59,12 @@ export interface GetSolutionsControllerSolutionResult {
  * Azure REST API version: 2023-01-01.
  */
 export function getSolutionsControllerSolutionOutput(args: GetSolutionsControllerSolutionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSolutionsControllerSolutionResult> {
-    return pulumi.output(args).apply((a: any) => getSolutionsControllerSolution(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:migrate:getSolutionsControllerSolution", {
+        "migrateProjectName": args.migrateProjectName,
+        "resourceGroupName": args.resourceGroupName,
+        "solutionName": args.solutionName,
+    }, opts);
 }
 
 export interface GetSolutionsControllerSolutionOutputArgs {

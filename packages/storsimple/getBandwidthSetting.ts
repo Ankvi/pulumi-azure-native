@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2017-06-01.
  */
 export function getBandwidthSetting(args: GetBandwidthSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthSettingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:storsimple:getBandwidthSetting", {
         "bandwidthSettingName": args.bandwidthSettingName,
@@ -64,7 +63,12 @@ export interface GetBandwidthSettingResult {
  * Azure REST API version: 2017-06-01.
  */
 export function getBandwidthSettingOutput(args: GetBandwidthSettingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBandwidthSettingResult> {
-    return pulumi.output(args).apply((a: any) => getBandwidthSetting(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:storsimple:getBandwidthSetting", {
+        "bandwidthSettingName": args.bandwidthSettingName,
+        "managerName": args.managerName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetBandwidthSettingOutputArgs {

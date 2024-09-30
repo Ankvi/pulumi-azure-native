@@ -5,10 +5,9 @@ import * as types from "./types";
  * Static Site Database Connection resource.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01, 2023-12-01.
+ * Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getStaticSiteBuildDatabaseConnection(args: GetStaticSiteBuildDatabaseConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetStaticSiteBuildDatabaseConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:getStaticSiteBuildDatabaseConnection", {
         "databaseConnectionName": args.databaseConnectionName,
@@ -82,10 +81,16 @@ export interface GetStaticSiteBuildDatabaseConnectionResult {
  * Static Site Database Connection resource.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01, 2023-12-01.
+ * Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getStaticSiteBuildDatabaseConnectionOutput(args: GetStaticSiteBuildDatabaseConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStaticSiteBuildDatabaseConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getStaticSiteBuildDatabaseConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:getStaticSiteBuildDatabaseConnection", {
+        "databaseConnectionName": args.databaseConnectionName,
+        "environmentName": args.environmentName,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetStaticSiteBuildDatabaseConnectionOutputArgs {

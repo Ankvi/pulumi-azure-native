@@ -4,9 +4,10 @@ import * as types from "./types";
 /**
  * Gets the details of the Diagnostic specified by its identifier.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getWorkspaceDiagnostic(args: GetWorkspaceDiagnosticArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceDiagnosticResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apimanagement:getWorkspaceDiagnostic", {
         "diagnosticId": args.diagnosticId,
@@ -95,9 +96,17 @@ export interface GetWorkspaceDiagnosticResult {
 /**
  * Gets the details of the Diagnostic specified by its identifier.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getWorkspaceDiagnosticOutput(args: GetWorkspaceDiagnosticOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceDiagnosticResult> {
-    return pulumi.output(args).apply((a: any) => getWorkspaceDiagnostic(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:getWorkspaceDiagnostic", {
+        "diagnosticId": args.diagnosticId,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+        "workspaceId": args.workspaceId,
+    }, opts);
 }
 
 export interface GetWorkspaceDiagnosticOutputArgs {

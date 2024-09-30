@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2022-10-01.
  */
 export function getTable(args: GetTableArgs, opts?: pulumi.InvokeOptions): Promise<GetTableResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:operationalinsights:getTable", {
         "resourceGroupName": args.resourceGroupName,
@@ -104,7 +103,12 @@ export interface GetTableResult {
  * Azure REST API version: 2022-10-01.
  */
 export function getTableOutput(args: GetTableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTableResult> {
-    return pulumi.output(args).apply((a: any) => getTable(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:operationalinsights:getTable", {
+        "resourceGroupName": args.resourceGroupName,
+        "tableName": args.tableName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetTableOutputArgs {

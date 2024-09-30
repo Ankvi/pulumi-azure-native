@@ -5,10 +5,9 @@ import * as types from "./types";
  * Workflow properties definition.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01, 2023-12-01.
+ * Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function listWebAppWorkflowsConnections(args: ListWebAppWorkflowsConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppWorkflowsConnectionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:listWebAppWorkflowsConnections", {
         "name": args.name,
@@ -60,10 +59,14 @@ export interface ListWebAppWorkflowsConnectionsResult {
  * Workflow properties definition.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01, 2023-12-01.
+ * Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function listWebAppWorkflowsConnectionsOutput(args: ListWebAppWorkflowsConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWebAppWorkflowsConnectionsResult> {
-    return pulumi.output(args).apply((a: any) => listWebAppWorkflowsConnections(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:listWebAppWorkflowsConnections", {
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListWebAppWorkflowsConnectionsOutputArgs {

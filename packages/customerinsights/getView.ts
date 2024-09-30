@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2017-04-26.
  */
 export function getView(args: GetViewArgs, opts?: pulumi.InvokeOptions): Promise<GetViewResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:customerinsights:getView", {
         "hubName": args.hubName,
@@ -84,7 +83,13 @@ export interface GetViewResult {
  * Azure REST API version: 2017-04-26.
  */
 export function getViewOutput(args: GetViewOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetViewResult> {
-    return pulumi.output(args).apply((a: any) => getView(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:customerinsights:getView", {
+        "hubName": args.hubName,
+        "resourceGroupName": args.resourceGroupName,
+        "userId": args.userId,
+        "viewName": args.viewName,
+    }, opts);
 }
 
 export interface GetViewOutputArgs {

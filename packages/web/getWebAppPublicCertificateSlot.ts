@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Description for Get the named public certificate for an app (or deployment slot, if specified).
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getWebAppPublicCertificateSlot(args: GetWebAppPublicCertificateSlotArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppPublicCertificateSlotResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:getWebAppPublicCertificateSlot", {
         "name": args.name,
@@ -73,10 +72,16 @@ export interface GetWebAppPublicCertificateSlotResult {
  * Description for Get the named public certificate for an app (or deployment slot, if specified).
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getWebAppPublicCertificateSlotOutput(args: GetWebAppPublicCertificateSlotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppPublicCertificateSlotResult> {
-    return pulumi.output(args).apply((a: any) => getWebAppPublicCertificateSlot(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:getWebAppPublicCertificateSlot", {
+        "name": args.name,
+        "publicCertificateName": args.publicCertificateName,
+        "resourceGroupName": args.resourceGroupName,
+        "slot": args.slot,
+    }, opts);
 }
 
 export interface GetWebAppPublicCertificateSlotOutputArgs {

@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2019-05-01.
  */
 export function getIntegrationServiceEnvironmentManagedApi(args: GetIntegrationServiceEnvironmentManagedApiArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationServiceEnvironmentManagedApiResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:logic:getIntegrationServiceEnvironmentManagedApi", {
         "apiName": args.apiName,
@@ -112,7 +111,12 @@ export interface GetIntegrationServiceEnvironmentManagedApiResult {
  * Azure REST API version: 2019-05-01.
  */
 export function getIntegrationServiceEnvironmentManagedApiOutput(args: GetIntegrationServiceEnvironmentManagedApiOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationServiceEnvironmentManagedApiResult> {
-    return pulumi.output(args).apply((a: any) => getIntegrationServiceEnvironmentManagedApi(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:logic:getIntegrationServiceEnvironmentManagedApi", {
+        "apiName": args.apiName,
+        "integrationServiceEnvironmentName": args.integrationServiceEnvironmentName,
+        "resourceGroup": args.resourceGroup,
+    }, opts);
 }
 
 export interface GetIntegrationServiceEnvironmentManagedApiOutputArgs {

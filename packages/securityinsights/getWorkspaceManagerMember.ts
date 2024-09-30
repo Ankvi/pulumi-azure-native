@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets a workspace manager member
  * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview.
+ * Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview.
  */
 export function getWorkspaceManagerMember(args: GetWorkspaceManagerMemberArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceManagerMemberResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:securityinsights:getWorkspaceManagerMember", {
         "resourceGroupName": args.resourceGroupName,
@@ -69,10 +68,15 @@ export interface GetWorkspaceManagerMemberResult {
  * Gets a workspace manager member
  * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview.
+ * Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview.
  */
 export function getWorkspaceManagerMemberOutput(args: GetWorkspaceManagerMemberOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceManagerMemberResult> {
-    return pulumi.output(args).apply((a: any) => getWorkspaceManagerMember(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:securityinsights:getWorkspaceManagerMember", {
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceManagerMemberName": args.workspaceManagerMemberName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetWorkspaceManagerMemberOutputArgs {

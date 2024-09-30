@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2020-05-01.
  */
 export function getPrivateLinkAssociation(args: GetPrivateLinkAssociationArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateLinkAssociationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:authorization:getPrivateLinkAssociation", {
         "groupId": args.groupId,
@@ -48,7 +47,11 @@ export interface GetPrivateLinkAssociationResult {
  * Azure REST API version: 2020-05-01.
  */
 export function getPrivateLinkAssociationOutput(args: GetPrivateLinkAssociationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateLinkAssociationResult> {
-    return pulumi.output(args).apply((a: any) => getPrivateLinkAssociation(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:authorization:getPrivateLinkAssociation", {
+        "groupId": args.groupId,
+        "plaId": args.plaId,
+    }, opts);
 }
 
 export interface GetPrivateLinkAssociationOutputArgs {

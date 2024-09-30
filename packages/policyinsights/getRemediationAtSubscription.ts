@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2018-07-01-preview.
  */
 export function getRemediationAtSubscription(args: GetRemediationAtSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetRemediationAtSubscriptionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:policyinsights:getRemediationAtSubscription", {
         "remediationName": args.remediationName,
@@ -102,7 +101,10 @@ export interface GetRemediationAtSubscriptionResult {
  * Other available API versions: 2018-07-01-preview.
  */
 export function getRemediationAtSubscriptionOutput(args: GetRemediationAtSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRemediationAtSubscriptionResult> {
-    return pulumi.output(args).apply((a: any) => getRemediationAtSubscription(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:policyinsights:getRemediationAtSubscription", {
+        "remediationName": args.remediationName,
+    }, opts);
 }
 
 export interface GetRemediationAtSubscriptionOutputArgs {

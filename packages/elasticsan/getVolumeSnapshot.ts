@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get a Volume Snapshot.
  * Azure REST API version: 2023-01-01.
  *
- * Other available API versions: 2024-05-01.
+ * Other available API versions: 2024-05-01, 2024-06-01-preview.
  */
 export function getVolumeSnapshot(args: GetVolumeSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeSnapshotResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:elasticsan:getVolumeSnapshot", {
         "elasticSanName": args.elasticSanName,
@@ -78,10 +77,16 @@ export interface GetVolumeSnapshotResult {
  * Get a Volume Snapshot.
  * Azure REST API version: 2023-01-01.
  *
- * Other available API versions: 2024-05-01.
+ * Other available API versions: 2024-05-01, 2024-06-01-preview.
  */
 export function getVolumeSnapshotOutput(args: GetVolumeSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeSnapshotResult> {
-    return pulumi.output(args).apply((a: any) => getVolumeSnapshot(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:elasticsan:getVolumeSnapshot", {
+        "elasticSanName": args.elasticSanName,
+        "resourceGroupName": args.resourceGroupName,
+        "snapshotName": args.snapshotName,
+        "volumeGroupName": args.volumeGroupName,
+    }, opts);
 }
 
 export interface GetVolumeSnapshotOutputArgs {

@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-02-01.
  */
 export function getScheduledAlertRule(args: GetScheduledAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduledAlertRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:securityinsights:getScheduledAlertRule", {
         "resourceGroupName": args.resourceGroupName,
@@ -71,7 +70,7 @@ export interface GetScheduledAlertRuleResult {
      */
     readonly eventGroupingSettings?: types.outputs.EventGroupingSettingsResponse;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -149,7 +148,12 @@ export interface GetScheduledAlertRuleResult {
  * Azure REST API version: 2023-02-01.
  */
 export function getScheduledAlertRuleOutput(args: GetScheduledAlertRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScheduledAlertRuleResult> {
-    return pulumi.output(args).apply((a: any) => getScheduledAlertRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:securityinsights:getScheduledAlertRule", {
+        "resourceGroupName": args.resourceGroupName,
+        "ruleId": args.ruleId,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetScheduledAlertRuleOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-11-02-preview, 2024-02-02-preview.
  */
 export function getBuild(args: GetBuildArgs, opts?: pulumi.InvokeOptions): Promise<GetBuildResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:app:getBuild", {
         "buildName": args.buildName,
@@ -88,7 +87,12 @@ export interface GetBuildResult {
  * Other available API versions: 2023-11-02-preview, 2024-02-02-preview.
  */
 export function getBuildOutput(args: GetBuildOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBuildResult> {
-    return pulumi.output(args).apply((a: any) => getBuild(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:app:getBuild", {
+        "buildName": args.buildName,
+        "builderName": args.builderName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetBuildOutputArgs {

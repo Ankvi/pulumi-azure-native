@@ -5,7 +5,7 @@ import * as types from "./types";
  * Network function resource response.
  * Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2020-01-01-preview.
  *
- * Other available API versions: 2023-09-01.
+ * Other available API versions: 2023-09-01, 2024-04-15.
  */
 export class NetworkFunction extends pulumi.CustomResource {
     /**
@@ -156,7 +156,7 @@ export class NetworkFunction extends pulumi.CustomResource {
             resourceInputs["vendorProvisioningState"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:hybridnetwork/v20200101preview:NetworkFunction" }, { type: "azure-native:hybridnetwork/v20210501:NetworkFunction" }, { type: "azure-native:hybridnetwork/v20220101preview:NetworkFunction" }, { type: "azure-native:hybridnetwork/v20230901:NetworkFunction" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:hybridnetwork/v20200101preview:NetworkFunction" }, { type: "azure-native:hybridnetwork/v20210501:NetworkFunction" }, { type: "azure-native:hybridnetwork/v20220101preview:NetworkFunction" }, { type: "azure-native:hybridnetwork/v20230901:NetworkFunction" }, { type: "azure-native:hybridnetwork/v20240415:NetworkFunction" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkFunction.__pulumiType, name, resourceInputs, opts);
     }

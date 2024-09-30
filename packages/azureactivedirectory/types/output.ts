@@ -36,6 +36,10 @@ export interface CIAMResourceSKUResponse {
      * The name of the SKU for the tenant.
      */
     name: string;
+    /**
+     * The tier of the tenant.
+     */
+    tier: string;
 }
 
 /**

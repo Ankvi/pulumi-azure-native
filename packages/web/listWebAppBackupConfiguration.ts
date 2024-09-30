@@ -5,10 +5,9 @@ import * as types from "./types";
  * Description for Gets the backup configuration of an app.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function listWebAppBackupConfiguration(args: ListWebAppBackupConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppBackupConfigurationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:listWebAppBackupConfiguration", {
         "name": args.name,
@@ -72,10 +71,14 @@ export interface ListWebAppBackupConfigurationResult {
  * Description for Gets the backup configuration of an app.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function listWebAppBackupConfigurationOutput(args: ListWebAppBackupConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWebAppBackupConfigurationResult> {
-    return pulumi.output(args).apply((a: any) => listWebAppBackupConfiguration(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:listWebAppBackupConfiguration", {
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListWebAppBackupConfigurationOutputArgs {

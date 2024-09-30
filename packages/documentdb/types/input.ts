@@ -1233,3 +1233,5 @@ export interface VirtualNetworkRuleArgs {
 
 
 
+
+

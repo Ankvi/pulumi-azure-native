@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2017-04-26.
  */
 export function getPredictionModelStatus(args: GetPredictionModelStatusArgs, opts?: pulumi.InvokeOptions): Promise<GetPredictionModelStatusResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:customerinsights:getPredictionModelStatus", {
         "hubName": args.hubName,
@@ -83,7 +82,12 @@ export interface GetPredictionModelStatusResult {
  * Azure REST API version: 2017-04-26.
  */
 export function getPredictionModelStatusOutput(args: GetPredictionModelStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPredictionModelStatusResult> {
-    return pulumi.output(args).apply((a: any) => getPredictionModelStatus(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:customerinsights:getPredictionModelStatus", {
+        "hubName": args.hubName,
+        "predictionName": args.predictionName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetPredictionModelStatusOutputArgs {

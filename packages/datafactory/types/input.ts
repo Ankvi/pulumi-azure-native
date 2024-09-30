@@ -6367,7 +6367,7 @@ export interface CopyActivityArgs {
     /**
      * Copy activity sink.
      */
-    sink: pulumi.Input<AvroSinkArgs | AzureBlobFSSinkArgs | AzureDataExplorerSinkArgs | AzureDataLakeStoreSinkArgs | AzureDatabricksDeltaLakeSinkArgs | AzureMySqlSinkArgs | AzurePostgreSqlSinkArgs | AzureQueueSinkArgs | AzureSearchIndexSinkArgs | AzureSqlSinkArgs | AzureTableSinkArgs | BinarySinkArgs | BlobSinkArgs | CommonDataServiceForAppsSinkArgs | CosmosDbMongoDbApiSinkArgs | CosmosDbSqlApiSinkArgs | DelimitedTextSinkArgs | DocumentDbCollectionSinkArgs | DynamicsCrmSinkArgs | DynamicsSinkArgs | FileSystemSinkArgs | InformixSinkArgs | JsonSinkArgs | LakeHouseTableSinkArgs | MicrosoftAccessSinkArgs | MongoDbAtlasSinkArgs | MongoDbV2SinkArgs | OdbcSinkArgs | OracleSinkArgs | OrcSinkArgs | ParquetSinkArgs | RestSinkArgs | SalesforceServiceCloudSinkArgs | SalesforceServiceCloudV2SinkArgs | SalesforceSinkArgs | SalesforceV2SinkArgs | SapCloudForCustomerSinkArgs | SnowflakeSinkArgs | SnowflakeV2SinkArgs | SqlDWSinkArgs | SqlMISinkArgs | SqlServerSinkArgs | SqlSinkArgs | WarehouseSinkArgs>;
+    sink: pulumi.Input<AvroSinkArgs | AzureBlobFSSinkArgs | AzureDataExplorerSinkArgs | AzureDataLakeStoreSinkArgs | AzureDatabricksDeltaLakeSinkArgs | AzureMySqlSinkArgs | AzurePostgreSqlSinkArgs | AzureQueueSinkArgs | AzureSearchIndexSinkArgs | AzureSqlSinkArgs | AzureTableSinkArgs | BinarySinkArgs | BlobSinkArgs | CommonDataServiceForAppsSinkArgs | CosmosDbMongoDbApiSinkArgs | CosmosDbSqlApiSinkArgs | DelimitedTextSinkArgs | DocumentDbCollectionSinkArgs | DynamicsCrmSinkArgs | DynamicsSinkArgs | FileSystemSinkArgs | IcebergSinkArgs | InformixSinkArgs | JsonSinkArgs | LakeHouseTableSinkArgs | MicrosoftAccessSinkArgs | MongoDbAtlasSinkArgs | MongoDbV2SinkArgs | OdbcSinkArgs | OracleSinkArgs | OrcSinkArgs | ParquetSinkArgs | RestSinkArgs | SalesforceServiceCloudSinkArgs | SalesforceServiceCloudV2SinkArgs | SalesforceSinkArgs | SalesforceV2SinkArgs | SapCloudForCustomerSinkArgs | SnowflakeSinkArgs | SnowflakeV2SinkArgs | SqlDWSinkArgs | SqlMISinkArgs | SqlServerSinkArgs | SqlSinkArgs | WarehouseSinkArgs>;
     /**
      * Specify the fault tolerance for data consistency.
      */
@@ -12691,6 +12691,103 @@ export interface HubspotSourceArgs {
 }
 
 /**
+ * Iceberg dataset.
+ */
+export interface IcebergDatasetArgs {
+    /**
+     * List of tags that can be used for describing the Dataset.
+     */
+    annotations?: pulumi.Input<any[]>;
+    /**
+     * Dataset description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+     */
+    folder?: pulumi.Input<DatasetFolderArgs>;
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName: pulumi.Input<LinkedServiceReferenceArgs>;
+    /**
+     * The location of the iceberg storage. Setting a file name is not allowed for iceberg format.
+     */
+    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | LakeHouseLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
+    /**
+     * Parameters for dataset.
+     */
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
+    /**
+     * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+     */
+    schema?: any;
+    /**
+     * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+     */
+    structure?: any;
+    /**
+     * Type of dataset.
+     * Expected value is 'Iceberg'.
+     */
+    type: pulumi.Input<"Iceberg">;
+}
+
+/**
+ * A copy activity Iceberg sink.
+ */
+export interface IcebergSinkArgs {
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * Iceberg format settings.
+     */
+    formatSettings?: pulumi.Input<IcebergWriteSettingsArgs>;
+    /**
+     * The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Sink retry count. Type: integer (or Expression with resultType integer).
+     */
+    sinkRetryCount?: any;
+    /**
+     * Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sinkRetryWait?: any;
+    /**
+     * Iceberg store settings.
+     */
+    storeSettings?: pulumi.Input<AzureBlobFSWriteSettingsArgs | AzureBlobStorageWriteSettingsArgs | AzureDataLakeStoreWriteSettingsArgs | AzureFileStorageWriteSettingsArgs | FileServerWriteSettingsArgs | LakeHouseWriteSettingsArgs | SftpWriteSettingsArgs>;
+    /**
+     * Copy sink type.
+     * Expected value is 'IcebergSink'.
+     */
+    type: pulumi.Input<"IcebergSink">;
+    /**
+     * Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+     */
+    writeBatchSize?: any;
+    /**
+     * Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    writeBatchTimeout?: any;
+}
+
+/**
+ * Iceberg write settings.
+ */
+export interface IcebergWriteSettingsArgs {
+    /**
+     * The write setting type.
+     * Expected value is 'IcebergWriteSettings'.
+     */
+    type: pulumi.Input<"IcebergWriteSettings">;
+}
+
+/**
  * This activity evaluates a boolean expression and executes either the activities under the ifTrueActivities property or the ifFalseActivities property depending on the result of the expression.
  */
 export interface IfConditionActivityArgs {
@@ -14595,7 +14692,7 @@ export interface MariaDBLinkedServiceArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The version of the MariaDB driver. Type: string. V1 or empty for legacy driver, V2 for new driver. V1 can support connection string and property bag, V2 can only support connection string.
+     * The version of the MariaDB driver. Type: string. V1 or empty for legacy driver, V2 for new driver. V1 can support connection string and property bag, V2 can only support connection string. The legacy driver is scheduled for deprecation by October 2024.
      */
     driverVersion?: any;
     /**
@@ -14619,10 +14716,18 @@ export interface MariaDBLinkedServiceArgs {
      */
     server?: any;
     /**
+     * This option specifies whether the driver uses TLS encryption and verification when connecting to MariaDB. E.g., SSLMode=<0/1/2/3/4>. Options: DISABLED (0) / PREFERRED (1) (Default) / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4), REQUIRED (2) is recommended to only allow connections encrypted with SSL/TLS.
+     */
+    sslMode?: any;
+    /**
      * Type of linked service.
      * Expected value is 'MariaDB'.
      */
     type: pulumi.Input<"MariaDB">;
+    /**
+     * This option specifies whether to use a CA certificate from the system trust store, or from a specified PEM file. E.g. UseSystemTrustStore=<0/1>; Options: Enabled (1) / Disabled (0) (Default)
+     */
+    useSystemTrustStore?: any;
     /**
      * Username for authentication. Type: string.
      */
@@ -17768,6 +17873,10 @@ export interface PostgreSqlV2LinkedServiceArgs {
      * List of tags that can be used for describing the linked service.
      */
     annotations?: pulumi.Input<any[]>;
+    /**
+     * The authentication type to use. Type: string.
+     */
+    authenticationType: any;
     /**
      * The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
      */
@@ -21879,6 +21988,10 @@ export interface ServiceNowV2SourceArgs {
      * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
      */
     maxConcurrentConnections?: any;
+    /**
+     * Page size of the result. Type: integer (or Expression with resultType integer).
+     */
+    pageSize?: any;
     /**
      * Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
      */

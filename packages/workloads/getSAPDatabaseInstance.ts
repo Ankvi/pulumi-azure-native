@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-10-01-preview.
  */
 export function getSAPDatabaseInstance(args: GetSAPDatabaseInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetSAPDatabaseInstanceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:workloads:getSAPDatabaseInstance", {
         "databaseInstanceName": args.databaseInstanceName,
@@ -104,7 +103,12 @@ export interface GetSAPDatabaseInstanceResult {
  * Other available API versions: 2023-10-01-preview.
  */
 export function getSAPDatabaseInstanceOutput(args: GetSAPDatabaseInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSAPDatabaseInstanceResult> {
-    return pulumi.output(args).apply((a: any) => getSAPDatabaseInstance(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:workloads:getSAPDatabaseInstance", {
+        "databaseInstanceName": args.databaseInstanceName,
+        "resourceGroupName": args.resourceGroupName,
+        "sapVirtualInstanceName": args.sapVirtualInstanceName,
+    }, opts);
 }
 
 export interface GetSAPDatabaseInstanceOutputArgs {

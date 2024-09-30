@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2014-09-01, 2016-03-01, 2017-04-01, 2023-09-01, 2023-10-01-preview.
  */
 export function listNamespaceKeys(args: ListNamespaceKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListNamespaceKeysResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:notificationhubs:listNamespaceKeys", {
         "authorizationRuleName": args.authorizationRuleName,
@@ -64,7 +63,12 @@ export interface ListNamespaceKeysResult {
  * Other available API versions: 2014-09-01, 2016-03-01, 2017-04-01, 2023-09-01, 2023-10-01-preview.
  */
 export function listNamespaceKeysOutput(args: ListNamespaceKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListNamespaceKeysResult> {
-    return pulumi.output(args).apply((a: any) => listNamespaceKeys(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:notificationhubs:listNamespaceKeys", {
+        "authorizationRuleName": args.authorizationRuleName,
+        "namespaceName": args.namespaceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListNamespaceKeysOutputArgs {

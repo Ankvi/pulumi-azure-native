@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function getSchedule(args: GetScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:automation:getSchedule", {
         "automationAccountName": args.automationAccountName,
@@ -112,7 +111,12 @@ export interface GetScheduleResult {
  * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function getScheduleOutput(args: GetScheduleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScheduleResult> {
-    return pulumi.output(args).apply((a: any) => getSchedule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:automation:getSchedule", {
+        "automationAccountName": args.automationAccountName,
+        "resourceGroupName": args.resourceGroupName,
+        "scheduleName": args.scheduleName,
+    }, opts);
 }
 
 export interface GetScheduleOutputArgs {

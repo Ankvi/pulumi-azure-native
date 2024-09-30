@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2024-07-19-preview.
  */
 export function getAlertRuleResource(args: GetAlertRuleResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertRuleResourceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:databasewatcher:getAlertRuleResource", {
         "alertRuleResourceName": args.alertRuleResourceName,
@@ -80,7 +79,12 @@ export interface GetAlertRuleResourceResult {
  * Azure REST API version: 2024-07-19-preview.
  */
 export function getAlertRuleResourceOutput(args: GetAlertRuleResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertRuleResourceResult> {
-    return pulumi.output(args).apply((a: any) => getAlertRuleResource(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:databasewatcher:getAlertRuleResource", {
+        "alertRuleResourceName": args.alertRuleResourceName,
+        "resourceGroupName": args.resourceGroupName,
+        "watcherName": args.watcherName,
+    }, opts);
 }
 
 export interface GetAlertRuleResourceOutputArgs {

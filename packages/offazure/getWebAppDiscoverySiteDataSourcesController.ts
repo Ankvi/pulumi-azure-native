@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-10-01-preview.
  */
 export function getWebAppDiscoverySiteDataSourcesController(args: GetWebAppDiscoverySiteDataSourcesControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppDiscoverySiteDataSourcesControllerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:offazure:getWebAppDiscoverySiteDataSourcesController", {
         "discoverySiteDataSourceName": args.discoverySiteDataSourceName,
@@ -73,7 +72,13 @@ export interface GetWebAppDiscoverySiteDataSourcesControllerResult {
  * Other available API versions: 2023-10-01-preview.
  */
 export function getWebAppDiscoverySiteDataSourcesControllerOutput(args: GetWebAppDiscoverySiteDataSourcesControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppDiscoverySiteDataSourcesControllerResult> {
-    return pulumi.output(args).apply((a: any) => getWebAppDiscoverySiteDataSourcesController(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:offazure:getWebAppDiscoverySiteDataSourcesController", {
+        "discoverySiteDataSourceName": args.discoverySiteDataSourceName,
+        "resourceGroupName": args.resourceGroupName,
+        "siteName": args.siteName,
+        "webAppSiteName": args.webAppSiteName,
+    }, opts);
 }
 
 export interface GetWebAppDiscoverySiteDataSourcesControllerOutputArgs {

@@ -4,9 +4,10 @@ import * as types from "./types";
 /**
  * Returns the description for the specified hybrid connection.
  * Azure REST API version: 2021-11-01.
+ *
+ * Other available API versions: 2024-01-01.
  */
 export function getHybridConnection(args: GetHybridConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:relay:getHybridConnection", {
         "hybridConnectionName": args.hybridConnectionName,
@@ -78,9 +79,16 @@ export interface GetHybridConnectionResult {
 /**
  * Returns the description for the specified hybrid connection.
  * Azure REST API version: 2021-11-01.
+ *
+ * Other available API versions: 2024-01-01.
  */
 export function getHybridConnectionOutput(args: GetHybridConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getHybridConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:relay:getHybridConnection", {
+        "hybridConnectionName": args.hybridConnectionName,
+        "namespaceName": args.namespaceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetHybridConnectionOutputArgs {

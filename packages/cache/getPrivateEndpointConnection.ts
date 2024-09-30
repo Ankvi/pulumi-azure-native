@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-05-01-preview, 2023-08-01, 2024-03-01, 2024-04-01-preview.
  */
 export function getPrivateEndpointConnection(args: GetPrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateEndpointConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:cache:getPrivateEndpointConnection", {
         "cacheName": args.cacheName,
@@ -68,7 +67,12 @@ export interface GetPrivateEndpointConnectionResult {
  * Other available API versions: 2023-05-01-preview, 2023-08-01, 2024-03-01, 2024-04-01-preview.
  */
 export function getPrivateEndpointConnectionOutput(args: GetPrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateEndpointConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getPrivateEndpointConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:cache:getPrivateEndpointConnection", {
+        "cacheName": args.cacheName,
+        "privateEndpointConnectionName": args.privateEndpointConnectionName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetPrivateEndpointConnectionOutputArgs {

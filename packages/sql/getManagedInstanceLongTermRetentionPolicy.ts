@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets a managed database's long term retention policy.
  * Azure REST API version: 2022-11-01-preview.
  *
- * Other available API versions: 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview.
+ * Other available API versions: 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
  */
 export function getManagedInstanceLongTermRetentionPolicy(args: GetManagedInstanceLongTermRetentionPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedInstanceLongTermRetentionPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:sql:getManagedInstanceLongTermRetentionPolicy", {
         "databaseName": args.databaseName,
@@ -73,10 +72,16 @@ export interface GetManagedInstanceLongTermRetentionPolicyResult {
  * Gets a managed database's long term retention policy.
  * Azure REST API version: 2022-11-01-preview.
  *
- * Other available API versions: 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview.
+ * Other available API versions: 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
  */
 export function getManagedInstanceLongTermRetentionPolicyOutput(args: GetManagedInstanceLongTermRetentionPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedInstanceLongTermRetentionPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getManagedInstanceLongTermRetentionPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:sql:getManagedInstanceLongTermRetentionPolicy", {
+        "databaseName": args.databaseName,
+        "managedInstanceName": args.managedInstanceName,
+        "policyName": args.policyName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetManagedInstanceLongTermRetentionPolicyOutputArgs {

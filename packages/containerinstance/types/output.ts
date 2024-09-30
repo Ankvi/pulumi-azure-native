@@ -33,6 +33,16 @@ export interface ConfidentialComputePropertiesResponse {
 }
 
 /**
+ * The container config map.
+ */
+export interface ConfigMapResponse {
+    /**
+     * The key value pairs dictionary in the config map.
+     */
+    keyValuePairs?: {[key: string]: string};
+}
+
+/**
  * The container execution command, for liveness or readiness probe
  */
 export interface ContainerExecResponse {
@@ -203,13 +213,17 @@ export interface ContainerResponse {
      */
     command?: string[];
     /**
+     * The config map.
+     */
+    configMap?: ConfigMapResponse;
+    /**
      * The environment variables to set in the container instance.
      */
     environmentVariables?: EnvironmentVariableResponse[];
     /**
      * The name of the image used to create the container instance.
      */
-    image: string;
+    image?: string;
     /**
      * The instance view of the container instance. Only valid in response.
      */
@@ -233,7 +247,7 @@ export interface ContainerResponse {
     /**
      * The resource requirements of the container instance.
      */
-    resources: ResourceRequirementsResponse;
+    resources?: ResourceRequirementsResponse;
     /**
      * The container security properties.
      */

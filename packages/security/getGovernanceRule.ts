@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2022-01-01-preview.
  */
 export function getGovernanceRule(args: GetGovernanceRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetGovernanceRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:security:getGovernanceRule", {
         "ruleId": args.ruleId,
@@ -103,7 +102,11 @@ export interface GetGovernanceRuleResult {
  * Azure REST API version: 2022-01-01-preview.
  */
 export function getGovernanceRuleOutput(args: GetGovernanceRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGovernanceRuleResult> {
-    return pulumi.output(args).apply((a: any) => getGovernanceRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:security:getGovernanceRule", {
+        "ruleId": args.ruleId,
+        "scope": args.scope,
+    }, opts);
 }
 
 export interface GetGovernanceRuleOutputArgs {

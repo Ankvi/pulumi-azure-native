@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2018-11-01-preview.
  */
 export function getRoleAssignmentArtifact(args: GetRoleAssignmentArtifactArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleAssignmentArtifactResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:blueprint:getRoleAssignmentArtifact", {
         "artifactName": args.artifactName,
@@ -80,7 +79,12 @@ export interface GetRoleAssignmentArtifactResult {
  * Azure REST API version: 2018-11-01-preview.
  */
 export function getRoleAssignmentArtifactOutput(args: GetRoleAssignmentArtifactOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleAssignmentArtifactResult> {
-    return pulumi.output(args).apply((a: any) => getRoleAssignmentArtifact(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:blueprint:getRoleAssignmentArtifact", {
+        "artifactName": args.artifactName,
+        "blueprintName": args.blueprintName,
+        "resourceScope": args.resourceScope,
+    }, opts);
 }
 
 export interface GetRoleAssignmentArtifactOutputArgs {

@@ -4,9 +4,10 @@ import * as types from "./types";
 /**
  * Gets the details of the backend specified by its identifier.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getWorkspaceBackend(args: GetWorkspaceBackendArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceBackendResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apimanagement:getWorkspaceBackend", {
         "backendId": args.backendId,
@@ -96,9 +97,17 @@ export interface GetWorkspaceBackendResult {
 /**
  * Gets the details of the backend specified by its identifier.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getWorkspaceBackendOutput(args: GetWorkspaceBackendOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceBackendResult> {
-    return pulumi.output(args).apply((a: any) => getWorkspaceBackend(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:getWorkspaceBackend", {
+        "backendId": args.backendId,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+        "workspaceId": args.workspaceId,
+    }, opts);
 }
 
 export interface GetWorkspaceBackendOutputArgs {

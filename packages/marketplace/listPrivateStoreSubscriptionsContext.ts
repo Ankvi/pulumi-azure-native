@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2021-12-01, 2022-03-01, 2022-09-01.
  */
 export function listPrivateStoreSubscriptionsContext(args: ListPrivateStoreSubscriptionsContextArgs, opts?: pulumi.InvokeOptions): Promise<ListPrivateStoreSubscriptionsContextResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:marketplace:listPrivateStoreSubscriptionsContext", {
         "privateStoreId": args.privateStoreId,
@@ -34,7 +33,10 @@ export interface ListPrivateStoreSubscriptionsContextResult {
  * Other available API versions: 2021-12-01, 2022-03-01, 2022-09-01.
  */
 export function listPrivateStoreSubscriptionsContextOutput(args: ListPrivateStoreSubscriptionsContextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListPrivateStoreSubscriptionsContextResult> {
-    return pulumi.output(args).apply((a: any) => listPrivateStoreSubscriptionsContext(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:marketplace:listPrivateStoreSubscriptionsContext", {
+        "privateStoreId": args.privateStoreId,
+    }, opts);
 }
 
 export interface ListPrivateStoreSubscriptionsContextOutputArgs {

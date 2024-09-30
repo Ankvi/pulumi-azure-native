@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-12-01-preview, 2024-03-01-preview.
  */
 export function getVirtualEndpoint(args: GetVirtualEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualEndpointResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:dbforpostgresql:getVirtualEndpoint", {
         "resourceGroupName": args.resourceGroupName,
@@ -72,7 +71,12 @@ export interface GetVirtualEndpointResult {
  * Other available API versions: 2023-12-01-preview, 2024-03-01-preview.
  */
 export function getVirtualEndpointOutput(args: GetVirtualEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualEndpointResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualEndpoint(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:dbforpostgresql:getVirtualEndpoint", {
+        "resourceGroupName": args.resourceGroupName,
+        "serverName": args.serverName,
+        "virtualEndpointName": args.virtualEndpointName,
+    }, opts);
 }
 
 export interface GetVirtualEndpointOutputArgs {

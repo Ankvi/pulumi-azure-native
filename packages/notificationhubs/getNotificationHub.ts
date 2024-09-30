@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2014-09-01, 2016-03-01, 2017-04-01, 2023-09-01, 2023-10-01-preview.
  */
 export function getNotificationHub(args: GetNotificationHubArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationHubResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:notificationhubs:getNotificationHub", {
         "namespaceName": args.namespaceName,
@@ -76,7 +75,12 @@ export interface GetNotificationHubResult {
  * Other available API versions: 2014-09-01, 2016-03-01, 2017-04-01, 2023-09-01, 2023-10-01-preview.
  */
 export function getNotificationHubOutput(args: GetNotificationHubOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationHubResult> {
-    return pulumi.output(args).apply((a: any) => getNotificationHub(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:notificationhubs:getNotificationHub", {
+        "namespaceName": args.namespaceName,
+        "notificationHubName": args.notificationHubName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNotificationHubOutputArgs {

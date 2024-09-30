@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-07-31-preview.
  */
 export function getFederatedIdentityCredential(args: GetFederatedIdentityCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetFederatedIdentityCredentialResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:managedidentity:getFederatedIdentityCredential", {
         "federatedIdentityCredentialResourceName": args.federatedIdentityCredentialResourceName,
@@ -72,7 +71,12 @@ export interface GetFederatedIdentityCredentialResult {
  * Other available API versions: 2023-07-31-preview.
  */
 export function getFederatedIdentityCredentialOutput(args: GetFederatedIdentityCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFederatedIdentityCredentialResult> {
-    return pulumi.output(args).apply((a: any) => getFederatedIdentityCredential(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:managedidentity:getFederatedIdentityCredential", {
+        "federatedIdentityCredentialResourceName": args.federatedIdentityCredentialResourceName,
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface GetFederatedIdentityCredentialOutputArgs {

@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2018-08-01-preview.
  */
 export function getReportByBillingAccount(args: GetReportByBillingAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetReportByBillingAccountResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:costmanagement:getReportByBillingAccount", {
         "billingAccountId": args.billingAccountId,
@@ -67,7 +66,11 @@ export interface GetReportByBillingAccountResult {
  * Azure REST API version: 2018-08-01-preview.
  */
 export function getReportByBillingAccountOutput(args: GetReportByBillingAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReportByBillingAccountResult> {
-    return pulumi.output(args).apply((a: any) => getReportByBillingAccount(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:costmanagement:getReportByBillingAccount", {
+        "billingAccountId": args.billingAccountId,
+        "reportName": args.reportName,
+    }, opts);
 }
 
 export interface GetReportByBillingAccountOutputArgs {

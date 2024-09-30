@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-03-15-preview.
  */
 export function getApiDefinition(args: GetApiDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetApiDefinitionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apicenter:getApiDefinition", {
         "apiName": args.apiName,
@@ -87,7 +86,15 @@ export interface GetApiDefinitionResult {
  * Other available API versions: 2024-03-15-preview.
  */
 export function getApiDefinitionOutput(args: GetApiDefinitionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiDefinitionResult> {
-    return pulumi.output(args).apply((a: any) => getApiDefinition(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apicenter:getApiDefinition", {
+        "apiName": args.apiName,
+        "definitionName": args.definitionName,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+        "versionName": args.versionName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetApiDefinitionOutputArgs {

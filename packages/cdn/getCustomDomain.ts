@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets an existing custom domain within an endpoint.
  * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2016-10-02, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2016-10-02, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
  */
 export function getCustomDomain(args: GetCustomDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomDomainResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:cdn:getCustomDomain", {
         "customDomainName": args.customDomainName,
@@ -90,10 +89,16 @@ export interface GetCustomDomainResult {
  * Gets an existing custom domain within an endpoint.
  * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2016-10-02, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2016-10-02, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
  */
 export function getCustomDomainOutput(args: GetCustomDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomDomainResult> {
-    return pulumi.output(args).apply((a: any) => getCustomDomain(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:cdn:getCustomDomain", {
+        "customDomainName": args.customDomainName,
+        "endpointName": args.endpointName,
+        "profileName": args.profileName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetCustomDomainOutputArgs {

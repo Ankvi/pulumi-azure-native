@@ -84,6 +84,10 @@ export interface IacTemplatePropertiesArgs {
      */
     instanceStage?: pulumi.Input<string>;
     /**
+     * Determines the authorization status of requests.
+     */
+    quickStartTemplateType?: pulumi.Input<string | enums.QuickStartTemplateType>;
+    /**
      * the source store of the template
      */
     sourceResourceId?: pulumi.Input<string>;
@@ -112,5 +116,6 @@ export interface WorkflowRunArgs {
      */
     workflowRunStatus?: pulumi.Input<string | enums.WorkflowRunStatus>;
 }
+
 
 

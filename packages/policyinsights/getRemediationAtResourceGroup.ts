@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2018-07-01-preview.
  */
 export function getRemediationAtResourceGroup(args: GetRemediationAtResourceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRemediationAtResourceGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:policyinsights:getRemediationAtResourceGroup", {
         "remediationName": args.remediationName,
@@ -107,7 +106,11 @@ export interface GetRemediationAtResourceGroupResult {
  * Other available API versions: 2018-07-01-preview.
  */
 export function getRemediationAtResourceGroupOutput(args: GetRemediationAtResourceGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRemediationAtResourceGroupResult> {
-    return pulumi.output(args).apply((a: any) => getRemediationAtResourceGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:policyinsights:getRemediationAtResourceGroup", {
+        "remediationName": args.remediationName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetRemediationAtResourceGroupOutputArgs {

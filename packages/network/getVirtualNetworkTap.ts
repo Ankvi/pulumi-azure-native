@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets information about the specified virtual network tap.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getVirtualNetworkTap(args: GetVirtualNetworkTapArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualNetworkTapResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getVirtualNetworkTap", {
         "resourceGroupName": args.resourceGroupName,
@@ -84,10 +83,14 @@ export interface GetVirtualNetworkTapResult {
  * Gets information about the specified virtual network tap.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getVirtualNetworkTapOutput(args: GetVirtualNetworkTapOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualNetworkTapResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualNetworkTap(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getVirtualNetworkTap", {
+        "resourceGroupName": args.resourceGroupName,
+        "tapName": args.tapName,
+    }, opts);
 }
 
 export interface GetVirtualNetworkTapOutputArgs {

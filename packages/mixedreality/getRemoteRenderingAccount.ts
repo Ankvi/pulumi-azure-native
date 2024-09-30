@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2021-03-01-preview.
  */
 export function getRemoteRenderingAccount(args: GetRemoteRenderingAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetRemoteRenderingAccountResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:mixedreality:getRemoteRenderingAccount", {
         "accountName": args.accountName,
@@ -91,7 +90,11 @@ export interface GetRemoteRenderingAccountResult {
  * Other available API versions: 2021-03-01-preview.
  */
 export function getRemoteRenderingAccountOutput(args: GetRemoteRenderingAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRemoteRenderingAccountResult> {
-    return pulumi.output(args).apply((a: any) => getRemoteRenderingAccount(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:mixedreality:getRemoteRenderingAccount", {
+        "accountName": args.accountName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetRemoteRenderingAccountOutputArgs {

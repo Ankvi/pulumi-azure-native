@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2022-03-01.
  */
 export function getPeriodicTimerEventTrigger(args: GetPeriodicTimerEventTriggerArgs, opts?: pulumi.InvokeOptions): Promise<GetPeriodicTimerEventTriggerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:databoxedge:getPeriodicTimerEventTrigger", {
         "deviceName": args.deviceName,
@@ -73,7 +72,12 @@ export interface GetPeriodicTimerEventTriggerResult {
  * Azure REST API version: 2022-03-01.
  */
 export function getPeriodicTimerEventTriggerOutput(args: GetPeriodicTimerEventTriggerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeriodicTimerEventTriggerResult> {
-    return pulumi.output(args).apply((a: any) => getPeriodicTimerEventTrigger(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:databoxedge:getPeriodicTimerEventTrigger", {
+        "deviceName": args.deviceName,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetPeriodicTimerEventTriggerOutputArgs {

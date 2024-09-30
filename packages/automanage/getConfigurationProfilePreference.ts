@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2020-06-30-preview.
  */
 export function getConfigurationProfilePreference(args: GetConfigurationProfilePreferenceArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigurationProfilePreferenceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:automanage:getConfigurationProfilePreference", {
         "configurationProfilePreferenceName": args.configurationProfilePreferenceName,
@@ -59,7 +58,11 @@ export interface GetConfigurationProfilePreferenceResult {
  * Azure REST API version: 2020-06-30-preview.
  */
 export function getConfigurationProfilePreferenceOutput(args: GetConfigurationProfilePreferenceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigurationProfilePreferenceResult> {
-    return pulumi.output(args).apply((a: any) => getConfigurationProfilePreference(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:automanage:getConfigurationProfilePreference", {
+        "configurationProfilePreferenceName": args.configurationProfilePreferenceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetConfigurationProfilePreferenceOutputArgs {

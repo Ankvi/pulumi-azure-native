@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2016-01-29.
  */
 export function listWorkspaceCollectionAccessKeys(args: ListWorkspaceCollectionAccessKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListWorkspaceCollectionAccessKeysResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:powerbi:listWorkspaceCollectionAccessKeys", {
         "resourceGroupName": args.resourceGroupName,
@@ -39,7 +38,11 @@ export interface ListWorkspaceCollectionAccessKeysResult {
  * Azure REST API version: 2016-01-29.
  */
 export function listWorkspaceCollectionAccessKeysOutput(args: ListWorkspaceCollectionAccessKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWorkspaceCollectionAccessKeysResult> {
-    return pulumi.output(args).apply((a: any) => listWorkspaceCollectionAccessKeys(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:powerbi:listWorkspaceCollectionAccessKeys", {
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceCollectionName": args.workspaceCollectionName,
+    }, opts);
 }
 
 export interface ListWorkspaceCollectionAccessKeysOutputArgs {

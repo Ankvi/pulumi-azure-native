@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview.
  */
 export function getProtectionContainer(args: GetProtectionContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetProtectionContainerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:recoveryservices:getProtectionContainer", {
         "containerName": args.containerName,
@@ -77,7 +76,13 @@ export interface GetProtectionContainerResult {
  * Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview.
  */
 export function getProtectionContainerOutput(args: GetProtectionContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProtectionContainerResult> {
-    return pulumi.output(args).apply((a: any) => getProtectionContainer(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:recoveryservices:getProtectionContainer", {
+        "containerName": args.containerName,
+        "fabricName": args.fabricName,
+        "resourceGroupName": args.resourceGroupName,
+        "vaultName": args.vaultName,
+    }, opts);
 }
 
 export interface GetProtectionContainerOutputArgs {

@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets the association of the Cognitive Services commitment plan.
  * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01.
  */
 export function getCommitmentPlanAssociation(args: GetCommitmentPlanAssociationArgs, opts?: pulumi.InvokeOptions): Promise<GetCommitmentPlanAssociationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:cognitiveservices:getCommitmentPlanAssociation", {
         "commitmentPlanAssociationName": args.commitmentPlanAssociationName,
@@ -65,10 +64,15 @@ export interface GetCommitmentPlanAssociationResult {
  * Gets the association of the Cognitive Services commitment plan.
  * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01.
  */
 export function getCommitmentPlanAssociationOutput(args: GetCommitmentPlanAssociationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCommitmentPlanAssociationResult> {
-    return pulumi.output(args).apply((a: any) => getCommitmentPlanAssociation(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:cognitiveservices:getCommitmentPlanAssociation", {
+        "commitmentPlanAssociationName": args.commitmentPlanAssociationName,
+        "commitmentPlanName": args.commitmentPlanName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetCommitmentPlanAssociationOutputArgs {

@@ -33,6 +33,16 @@ export interface ConfidentialComputePropertiesArgs {
 }
 
 /**
+ * The container config map.
+ */
+export interface ConfigMapArgs {
+    /**
+     * The key value pairs dictionary in the config map.
+     */
+    keyValuePairs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+/**
  * A container instance.
  */
 export interface ContainerArgs {
@@ -41,13 +51,17 @@ export interface ContainerArgs {
      */
     command?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The config map.
+     */
+    configMap?: pulumi.Input<ConfigMapArgs>;
+    /**
      * The environment variables to set in the container instance.
      */
     environmentVariables?: pulumi.Input<pulumi.Input<EnvironmentVariableArgs>[]>;
     /**
      * The name of the image used to create the container instance.
      */
-    image: pulumi.Input<string>;
+    image?: pulumi.Input<string>;
     /**
      * The liveness probe.
      */
@@ -67,7 +81,7 @@ export interface ContainerArgs {
     /**
      * The resource requirements of the container instance.
      */
-    resources: pulumi.Input<ResourceRequirementsArgs>;
+    resources?: pulumi.Input<ResourceRequirementsArgs>;
     /**
      * The container security properties.
      */

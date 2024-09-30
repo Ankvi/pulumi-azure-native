@@ -86,7 +86,7 @@ export interface IacTemplatePropertiesResponse {
     /**
      * Determines the authorization status of requests.
      */
-    quickStartTemplateType: string;
+    quickStartTemplateType?: string;
     /**
      * the source store of the template
      */
@@ -158,5 +158,6 @@ export interface WorkflowRunResponse {
      */
     workflowRunURL: string;
 }
+
 
 

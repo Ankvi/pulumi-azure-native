@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets the specified network group.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2022-04-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2022-04-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getNetworkGroup(args: GetNetworkGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getNetworkGroup", {
         "networkGroupName": args.networkGroupName,
@@ -73,10 +72,15 @@ export interface GetNetworkGroupResult {
  * Gets the specified network group.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2022-04-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2022-04-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getNetworkGroupOutput(args: GetNetworkGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkGroupResult> {
-    return pulumi.output(args).apply((a: any) => getNetworkGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getNetworkGroup", {
+        "networkGroupName": args.networkGroupName,
+        "networkManagerName": args.networkManagerName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNetworkGroupOutputArgs {

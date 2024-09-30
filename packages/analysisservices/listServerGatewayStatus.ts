@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2017-08-01-beta.
  */
 export function listServerGatewayStatus(args: ListServerGatewayStatusArgs, opts?: pulumi.InvokeOptions): Promise<ListServerGatewayStatusResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:analysisservices:listServerGatewayStatus", {
         "resourceGroupName": args.resourceGroupName,
@@ -42,7 +41,11 @@ export interface ListServerGatewayStatusResult {
  * Other available API versions: 2017-08-01-beta.
  */
 export function listServerGatewayStatusOutput(args: ListServerGatewayStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListServerGatewayStatusResult> {
-    return pulumi.output(args).apply((a: any) => listServerGatewayStatus(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:analysisservices:listServerGatewayStatus", {
+        "resourceGroupName": args.resourceGroupName,
+        "serverName": args.serverName,
+    }, opts);
 }
 
 export interface ListServerGatewayStatusOutputArgs {

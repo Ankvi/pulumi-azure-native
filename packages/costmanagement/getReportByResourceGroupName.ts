@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2018-08-01-preview.
  */
 export function getReportByResourceGroupName(args: GetReportByResourceGroupNameArgs, opts?: pulumi.InvokeOptions): Promise<GetReportByResourceGroupNameResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:costmanagement:getReportByResourceGroupName", {
         "reportName": args.reportName,
@@ -67,7 +66,11 @@ export interface GetReportByResourceGroupNameResult {
  * Azure REST API version: 2018-08-01-preview.
  */
 export function getReportByResourceGroupNameOutput(args: GetReportByResourceGroupNameOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReportByResourceGroupNameResult> {
-    return pulumi.output(args).apply((a: any) => getReportByResourceGroupName(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:costmanagement:getReportByResourceGroupName", {
+        "reportName": args.reportName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetReportByResourceGroupNameOutputArgs {

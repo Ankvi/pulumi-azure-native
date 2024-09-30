@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2021-05-01-preview.
  */
 export function getUserRule(args: GetUserRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetUserRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getUserRule", {
         "configurationName": args.configurationName,
@@ -111,7 +110,14 @@ export interface GetUserRuleResult {
  * Other available API versions: 2021-05-01-preview.
  */
 export function getUserRuleOutput(args: GetUserRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserRuleResult> {
-    return pulumi.output(args).apply((a: any) => getUserRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getUserRule", {
+        "configurationName": args.configurationName,
+        "networkManagerName": args.networkManagerName,
+        "resourceGroupName": args.resourceGroupName,
+        "ruleCollectionName": args.ruleCollectionName,
+        "ruleName": args.ruleName,
+    }, opts);
 }
 
 export interface GetUserRuleOutputArgs {

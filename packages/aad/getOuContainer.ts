@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2022-12-01.
  */
 export function getOuContainer(args: GetOuContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetOuContainerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:aad:getOuContainer", {
         "domainServiceName": args.domainServiceName,
@@ -100,7 +99,12 @@ export interface GetOuContainerResult {
  * Azure REST API version: 2022-12-01.
  */
 export function getOuContainerOutput(args: GetOuContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOuContainerResult> {
-    return pulumi.output(args).apply((a: any) => getOuContainer(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:aad:getOuContainer", {
+        "domainServiceName": args.domainServiceName,
+        "ouContainerName": args.ouContainerName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetOuContainerOutputArgs {

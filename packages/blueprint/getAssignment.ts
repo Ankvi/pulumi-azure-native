@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2017-11-11-preview.
  */
 export function getAssignment(args: GetAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetAssignmentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:blueprint:getAssignment", {
         "assignmentName": args.assignmentName,
@@ -95,7 +94,11 @@ export interface GetAssignmentResult {
  * Other available API versions: 2017-11-11-preview.
  */
 export function getAssignmentOutput(args: GetAssignmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssignmentResult> {
-    return pulumi.output(args).apply((a: any) => getAssignment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:blueprint:getAssignment", {
+        "assignmentName": args.assignmentName,
+        "resourceScope": args.resourceScope,
+    }, opts);
 }
 
 export interface GetAssignmentOutputArgs {

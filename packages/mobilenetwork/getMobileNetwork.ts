@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
  */
 export function getMobileNetwork(args: GetMobileNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetMobileNetworkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:mobilenetwork:getMobileNetwork", {
         "mobileNetworkName": args.mobileNetworkName,
@@ -75,7 +74,11 @@ export interface GetMobileNetworkResult {
  * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
  */
 export function getMobileNetworkOutput(args: GetMobileNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMobileNetworkResult> {
-    return pulumi.output(args).apply((a: any) => getMobileNetwork(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:mobilenetwork:getMobileNetwork", {
+        "mobileNetworkName": args.mobileNetworkName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetMobileNetworkOutputArgs {

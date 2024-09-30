@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2021-11-01-preview.
  */
 export function listEdgeModuleProvisioningToken(args: ListEdgeModuleProvisioningTokenArgs, opts?: pulumi.InvokeOptions): Promise<ListEdgeModuleProvisioningTokenResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:videoanalyzer:listEdgeModuleProvisioningToken", {
         "accountName": args.accountName,
@@ -52,7 +51,13 @@ export interface ListEdgeModuleProvisioningTokenResult {
  * Azure REST API version: 2021-11-01-preview.
  */
 export function listEdgeModuleProvisioningTokenOutput(args: ListEdgeModuleProvisioningTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListEdgeModuleProvisioningTokenResult> {
-    return pulumi.output(args).apply((a: any) => listEdgeModuleProvisioningToken(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:videoanalyzer:listEdgeModuleProvisioningToken", {
+        "accountName": args.accountName,
+        "edgeModuleName": args.edgeModuleName,
+        "expirationDate": args.expirationDate,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListEdgeModuleProvisioningTokenOutputArgs {

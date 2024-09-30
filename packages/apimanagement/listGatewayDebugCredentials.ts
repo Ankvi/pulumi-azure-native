@@ -5,10 +5,9 @@ import * as types from "./types";
  * Create new debug credentials for gateway.
  * Azure REST API version: 2023-03-01-preview.
  *
- * Other available API versions: 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function listGatewayDebugCredentials(args: ListGatewayDebugCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<ListGatewayDebugCredentialsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apimanagement:listGatewayDebugCredentials", {
         "apiId": args.apiId,
@@ -60,10 +59,18 @@ export interface ListGatewayDebugCredentialsResult {
  * Create new debug credentials for gateway.
  * Azure REST API version: 2023-03-01-preview.
  *
- * Other available API versions: 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function listGatewayDebugCredentialsOutput(args: ListGatewayDebugCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListGatewayDebugCredentialsResult> {
-    return pulumi.output(args).apply((a: any) => listGatewayDebugCredentials(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:listGatewayDebugCredentials", {
+        "apiId": args.apiId,
+        "credentialsExpireAfter": args.credentialsExpireAfter,
+        "gatewayId": args.gatewayId,
+        "purposes": args.purposes,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 export interface ListGatewayDebugCredentialsOutputArgs {

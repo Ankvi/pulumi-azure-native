@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-06-01-preview.
  */
 export function getAnomalies(args: GetAnomaliesArgs, opts?: pulumi.InvokeOptions): Promise<GetAnomaliesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:securityinsights:getAnomalies", {
         "resourceGroupName": args.resourceGroupName,
@@ -39,7 +38,7 @@ export interface GetAnomaliesResult {
      */
     readonly etag?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -69,7 +68,12 @@ export interface GetAnomaliesResult {
  * Azure REST API version: 2023-06-01-preview.
  */
 export function getAnomaliesOutput(args: GetAnomaliesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAnomaliesResult> {
-    return pulumi.output(args).apply((a: any) => getAnomalies(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:securityinsights:getAnomalies", {
+        "resourceGroupName": args.resourceGroupName,
+        "settingsName": args.settingsName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetAnomaliesOutputArgs {

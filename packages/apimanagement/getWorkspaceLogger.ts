@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the details of the logger specified by its identifier.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getWorkspaceLogger(args: GetWorkspaceLoggerArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceLoggerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apimanagement:getWorkspaceLogger", {
         "loggerId": args.loggerId,
@@ -75,9 +76,17 @@ export interface GetWorkspaceLoggerResult {
 /**
  * Gets the details of the logger specified by its identifier.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getWorkspaceLoggerOutput(args: GetWorkspaceLoggerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceLoggerResult> {
-    return pulumi.output(args).apply((a: any) => getWorkspaceLogger(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:getWorkspaceLogger", {
+        "loggerId": args.loggerId,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+        "workspaceId": args.workspaceId,
+    }, opts);
 }
 
 export interface GetWorkspaceLoggerOutputArgs {

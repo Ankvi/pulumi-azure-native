@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2017-01-01.
  */
 export function getRelationshipLink(args: GetRelationshipLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetRelationshipLinkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:customerinsights:getRelationshipLink", {
         "hubName": args.hubName,
@@ -100,7 +99,12 @@ export interface GetRelationshipLinkResult {
  * Other available API versions: 2017-01-01.
  */
 export function getRelationshipLinkOutput(args: GetRelationshipLinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRelationshipLinkResult> {
-    return pulumi.output(args).apply((a: any) => getRelationshipLink(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:customerinsights:getRelationshipLink", {
+        "hubName": args.hubName,
+        "relationshipLinkName": args.relationshipLinkName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetRelationshipLinkOutputArgs {

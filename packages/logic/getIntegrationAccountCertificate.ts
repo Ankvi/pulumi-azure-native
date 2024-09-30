@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2015-08-01-preview.
  */
 export function getIntegrationAccountCertificate(args: GetIntegrationAccountCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationAccountCertificateResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:logic:getIntegrationAccountCertificate", {
         "certificateName": args.certificateName,
@@ -84,7 +83,12 @@ export interface GetIntegrationAccountCertificateResult {
  * Other available API versions: 2015-08-01-preview.
  */
 export function getIntegrationAccountCertificateOutput(args: GetIntegrationAccountCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationAccountCertificateResult> {
-    return pulumi.output(args).apply((a: any) => getIntegrationAccountCertificate(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:logic:getIntegrationAccountCertificate", {
+        "certificateName": args.certificateName,
+        "integrationAccountName": args.integrationAccountName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetIntegrationAccountCertificateOutputArgs {

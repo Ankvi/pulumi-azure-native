@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-03-11.
  */
 export function getDataCollectionEndpoint(args: GetDataCollectionEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetDataCollectionEndpointResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:insights:getDataCollectionEndpoint", {
         "dataCollectionEndpointName": args.dataCollectionEndpointName,
@@ -115,7 +114,11 @@ export interface GetDataCollectionEndpointResult {
  * Other available API versions: 2023-03-11.
  */
 export function getDataCollectionEndpointOutput(args: GetDataCollectionEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataCollectionEndpointResult> {
-    return pulumi.output(args).apply((a: any) => getDataCollectionEndpoint(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:insights:getDataCollectionEndpoint", {
+        "dataCollectionEndpointName": args.dataCollectionEndpointName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetDataCollectionEndpointOutputArgs {

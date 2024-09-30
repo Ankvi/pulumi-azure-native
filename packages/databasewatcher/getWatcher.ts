@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-07-19-preview.
  */
 export function getWatcher(args: GetWatcherArgs, opts?: pulumi.InvokeOptions): Promise<GetWatcherResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:databasewatcher:getWatcher", {
         "resourceGroupName": args.resourceGroupName,
@@ -79,7 +78,11 @@ export interface GetWatcherResult {
  * Other available API versions: 2024-07-19-preview.
  */
 export function getWatcherOutput(args: GetWatcherOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWatcherResult> {
-    return pulumi.output(args).apply((a: any) => getWatcher(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:databasewatcher:getWatcher", {
+        "resourceGroupName": args.resourceGroupName,
+        "watcherName": args.watcherName,
+    }, opts);
 }
 
 export interface GetWatcherOutputArgs {

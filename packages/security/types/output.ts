@@ -123,6 +123,16 @@ export interface AssessmentStatusResponseResponse {
 }
 
 /**
+ * Describe the properties of a security assessment object reference (by key)
+ */
+export interface AssignedAssessmentItemResponse {
+    /**
+     * Unique key to a security assessment object
+     */
+    assessmentKey?: string;
+}
+
+/**
  * describe the properties of a security assessment object reference (by key)
  */
 export interface AssignedComponentItemResponse {
@@ -133,11 +143,11 @@ export interface AssignedComponentItemResponse {
 }
 
 /**
- * describe the properties of a of a security standard object reference
+ * Describe the properties of a of a standard assignments object reference
  */
 export interface AssignedStandardItemResponse {
     /**
-     * full resourceId of the Microsoft.Security/standard object
+     * Full resourceId of the Microsoft.Security/standard object
      */
     id?: string;
 }
@@ -150,6 +160,20 @@ export interface AssignmentPropertiesResponseAdditionalData {
      * Exemption category of this assignment
      */
     exemptionCategory?: string;
+}
+
+/**
+ * Describe the properties of a assignment attestation
+ */
+export interface AttestationEvidenceResponse {
+    /**
+     * The description of the evidence
+     */
+    description?: string;
+    /**
+     * The source url of the evidence
+     */
+    sourceUrl?: string;
 }
 
 /**
@@ -2265,6 +2289,16 @@ export interface OperationStatusResponse {
 }
 
 /**
+ * Describes properties of an assessment as related to the standard
+ */
+export interface PartialAssessmentPropertiesResponse {
+    /**
+     * The assessment key
+     */
+    assessmentKey?: string;
+}
+
+/**
  * For a non-Azure machine that is not connected directly to the internet, specify a proxy server that the non-Azure machine can use.
  */
 export interface ProxyServerPropertiesResponse {
@@ -2478,6 +2512,64 @@ export interface ServicePrincipalPropertiesResponse {
 }
 
 /**
+ * The standard assignment metadata
+ */
+export interface StandardAssignmentMetadataResponse {
+    /**
+     * Standard assignment Created by object id (GUID)
+     */
+    createdBy: string;
+    /**
+     * Standard assignment creation date
+     */
+    createdOn: string;
+    /**
+     * Standard assignment last updated by object id (GUID)
+     */
+    lastUpdatedBy: string;
+    /**
+     * Standard assignment last update date
+     */
+    lastUpdatedOn: string;
+}
+
+/**
+ * Additional data about assignment that has Attest effect
+ */
+export interface StandardAssignmentPropertiesResponseAttestationData {
+    /**
+     * Component item with key as applied to this standard assignment over the given scope
+     */
+    assignedAssessment?: AssignedAssessmentItemResponse;
+    /**
+     * Attestation compliance date
+     */
+    complianceDate: string;
+    /**
+     * Attest category of this assignment
+     */
+    complianceState?: string;
+    /**
+     * Array of links to attestation evidence
+     */
+    evidence?: AttestationEvidenceResponse[];
+}
+
+/**
+ * Additional data about assignment that has Exempt effect
+ */
+export interface StandardAssignmentPropertiesResponseExemptionData {
+    /**
+     * Component item with key as applied to this standard assignment over the given scope
+     */
+    assignedAssessment?: AssignedAssessmentItemResponse;
+    /**
+     * Exemption category of this assignment
+     */
+    exemptionCategory?: string;
+}
+
+/**
  * Describes properties of an component as related to the standard
  */
 export interface StandardComponentPropertiesResponse {
@@ -2485,6 +2577,28 @@ export interface StandardComponentPropertiesResponse {
      * Component Key matching componentMetadata
      */
     key?: string;
+}
+
+/**
+ * The standard metadata
+ */
+export interface StandardMetadataResponse {
+    /**
+     * Standard Created by object id (GUID)
+     */
+    createdBy: string;
+    /**
+     * Standard creation date
+     */
+    createdOn: string;
+    /**
+     * Standard last updated by object id (GUID)
+     */
+    lastUpdatedBy: string;
+    /**
+     * Standard last update date
+     */
+    lastUpdatedOn: string;
 }
 
 export interface SuppressionAlertsScopeResponse {
@@ -2620,6 +2734,7 @@ export interface UserDefinedResourcesPropertiesResponse {
      */
     querySubscriptions: string[];
 }
+
 
 
 

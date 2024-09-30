@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get a server's security alert policy.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2017-03-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview.
+ * Other available API versions: 2017-03-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
  */
 export function getServerSecurityAlertPolicy(args: GetServerSecurityAlertPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetServerSecurityAlertPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:sql:getServerSecurityAlertPolicy", {
         "resourceGroupName": args.resourceGroupName,
@@ -89,10 +88,15 @@ export interface GetServerSecurityAlertPolicyResult {
  * Get a server's security alert policy.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2017-03-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview.
+ * Other available API versions: 2017-03-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
  */
 export function getServerSecurityAlertPolicyOutput(args: GetServerSecurityAlertPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerSecurityAlertPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getServerSecurityAlertPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:sql:getServerSecurityAlertPolicy", {
+        "resourceGroupName": args.resourceGroupName,
+        "securityAlertPolicyName": args.securityAlertPolicyName,
+        "serverName": args.serverName,
+    }, opts);
 }
 
 export interface GetServerSecurityAlertPolicyOutputArgs {

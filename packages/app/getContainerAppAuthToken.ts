@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01.
  */
 export function getContainerAppAuthToken(args: GetContainerAppAuthTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerAppAuthTokenResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:app:getContainerAppAuthToken", {
         "containerAppName": args.containerAppName,
@@ -71,7 +70,11 @@ export interface GetContainerAppAuthTokenResult {
  * Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01.
  */
 export function getContainerAppAuthTokenOutput(args: GetContainerAppAuthTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerAppAuthTokenResult> {
-    return pulumi.output(args).apply((a: any) => getContainerAppAuthToken(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:app:getContainerAppAuthToken", {
+        "containerAppName": args.containerAppName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetContainerAppAuthTokenOutputArgs {

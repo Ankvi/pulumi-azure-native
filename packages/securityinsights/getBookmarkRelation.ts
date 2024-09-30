@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets a bookmark relation.
  * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2019-01-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview.
+ * Other available API versions: 2019-01-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview.
  */
 export function getBookmarkRelation(args: GetBookmarkRelationArgs, opts?: pulumi.InvokeOptions): Promise<GetBookmarkRelationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:securityinsights:getBookmarkRelation", {
         "bookmarkId": args.bookmarkId,
@@ -46,7 +45,7 @@ export interface GetBookmarkRelationResult {
      */
     readonly etag?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -82,10 +81,16 @@ export interface GetBookmarkRelationResult {
  * Gets a bookmark relation.
  * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2019-01-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview.
+ * Other available API versions: 2019-01-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview.
  */
 export function getBookmarkRelationOutput(args: GetBookmarkRelationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBookmarkRelationResult> {
-    return pulumi.output(args).apply((a: any) => getBookmarkRelation(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:securityinsights:getBookmarkRelation", {
+        "bookmarkId": args.bookmarkId,
+        "relationName": args.relationName,
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetBookmarkRelationOutputArgs {

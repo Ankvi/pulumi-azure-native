@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2020-10-01-preview, 2024-02-01-preview.
  */
 export function getRoleManagementPolicyAssignment(args: GetRoleManagementPolicyAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleManagementPolicyAssignmentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:authorization:getRoleManagementPolicyAssignment", {
         "roleManagementPolicyAssignmentName": args.roleManagementPolicyAssignmentName,
@@ -71,7 +70,11 @@ export interface GetRoleManagementPolicyAssignmentResult {
  * Other available API versions: 2020-10-01-preview, 2024-02-01-preview.
  */
 export function getRoleManagementPolicyAssignmentOutput(args: GetRoleManagementPolicyAssignmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleManagementPolicyAssignmentResult> {
-    return pulumi.output(args).apply((a: any) => getRoleManagementPolicyAssignment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:authorization:getRoleManagementPolicyAssignment", {
+        "roleManagementPolicyAssignmentName": args.roleManagementPolicyAssignmentName,
+        "scope": args.scope,
+    }, opts);
 }
 
 export interface GetRoleManagementPolicyAssignmentOutputArgs {

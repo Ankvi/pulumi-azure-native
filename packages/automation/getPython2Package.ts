@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function getPython2Package(args: GetPython2PackageArgs, opts?: pulumi.InvokeOptions): Promise<GetPython2PackageResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:automation:getPython2Package", {
         "automationAccountName": args.automationAccountName,
@@ -112,7 +111,12 @@ export interface GetPython2PackageResult {
  * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function getPython2PackageOutput(args: GetPython2PackageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPython2PackageResult> {
-    return pulumi.output(args).apply((a: any) => getPython2Package(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:automation:getPython2Package", {
+        "automationAccountName": args.automationAccountName,
+        "packageName": args.packageName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetPython2PackageOutputArgs {

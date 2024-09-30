@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2022-12-29.
  */
 export function getEventHubDataConnection(args: GetEventHubDataConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetEventHubDataConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:kusto:getEventHubDataConnection", {
         "clusterName": args.clusterName,
@@ -113,7 +112,13 @@ export interface GetEventHubDataConnectionResult {
  * Azure REST API version: 2022-12-29.
  */
 export function getEventHubDataConnectionOutput(args: GetEventHubDataConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventHubDataConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getEventHubDataConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:kusto:getEventHubDataConnection", {
+        "clusterName": args.clusterName,
+        "dataConnectionName": args.dataConnectionName,
+        "databaseName": args.databaseName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetEventHubDataConnectionOutputArgs {

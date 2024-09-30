@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2016-04-01, 2018-05-01, 2019-06-01, 2023-04-01, 2024-05-01.
  */
 export function getPolicyDefinition(args: GetPolicyDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyDefinitionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:authorization:getPolicyDefinition", {
         "policyDefinitionName": args.policyDefinitionName,
@@ -78,7 +77,10 @@ export interface GetPolicyDefinitionResult {
  * Other available API versions: 2016-04-01, 2018-05-01, 2019-06-01, 2023-04-01, 2024-05-01.
  */
 export function getPolicyDefinitionOutput(args: GetPolicyDefinitionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyDefinitionResult> {
-    return pulumi.output(args).apply((a: any) => getPolicyDefinition(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:authorization:getPolicyDefinition", {
+        "policyDefinitionName": args.policyDefinitionName,
+    }, opts);
 }
 
 export interface GetPolicyDefinitionOutputArgs {

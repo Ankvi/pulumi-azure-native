@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets the specified load balancer inbound NAT rule.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getInboundNatRule(args: GetInboundNatRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetInboundNatRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getInboundNatRule", {
         "expand": args.expand,
@@ -110,10 +109,16 @@ export interface GetInboundNatRuleResult {
  * Gets the specified load balancer inbound NAT rule.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getInboundNatRuleOutput(args: GetInboundNatRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInboundNatRuleResult> {
-    return pulumi.output(args).apply((a: any) => getInboundNatRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getInboundNatRule", {
+        "expand": args.expand,
+        "inboundNatRuleName": args.inboundNatRuleName,
+        "loadBalancerName": args.loadBalancerName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetInboundNatRuleOutputArgs {

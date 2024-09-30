@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-02-13.
  */
 export function listAccessRoleBindings(args: ListAccessRoleBindingsArgs, opts?: pulumi.InvokeOptions): Promise<ListAccessRoleBindingsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:confluent:listAccessRoleBindings", {
         "organizationName": args.organizationName,
@@ -56,7 +55,12 @@ export interface ListAccessRoleBindingsResult {
  * Other available API versions: 2024-02-13.
  */
 export function listAccessRoleBindingsOutput(args: ListAccessRoleBindingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListAccessRoleBindingsResult> {
-    return pulumi.output(args).apply((a: any) => listAccessRoleBindings(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:confluent:listAccessRoleBindings", {
+        "organizationName": args.organizationName,
+        "resourceGroupName": args.resourceGroupName,
+        "searchFilters": args.searchFilters,
+    }, opts);
 }
 
 export interface ListAccessRoleBindingsOutputArgs {

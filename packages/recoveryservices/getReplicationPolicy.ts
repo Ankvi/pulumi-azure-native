@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01.
  */
 export function getReplicationPolicy(args: GetReplicationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:recoveryservices:getReplicationPolicy", {
         "policyName": args.policyName,
@@ -64,7 +63,12 @@ export interface GetReplicationPolicyResult {
  * Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01.
  */
 export function getReplicationPolicyOutput(args: GetReplicationPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplicationPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getReplicationPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:recoveryservices:getReplicationPolicy", {
+        "policyName": args.policyName,
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface GetReplicationPolicyOutputArgs {

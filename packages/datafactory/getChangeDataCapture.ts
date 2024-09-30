@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2018-06-01.
  */
 export function getChangeDataCapture(args: GetChangeDataCaptureArgs, opts?: pulumi.InvokeOptions): Promise<GetChangeDataCaptureResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:datafactory:getChangeDataCapture", {
         "changeDataCaptureName": args.changeDataCaptureName,
@@ -84,7 +83,12 @@ export interface GetChangeDataCaptureResult {
  * Azure REST API version: 2018-06-01.
  */
 export function getChangeDataCaptureOutput(args: GetChangeDataCaptureOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChangeDataCaptureResult> {
-    return pulumi.output(args).apply((a: any) => getChangeDataCapture(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:datafactory:getChangeDataCapture", {
+        "changeDataCaptureName": args.changeDataCaptureName,
+        "factoryName": args.factoryName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetChangeDataCaptureOutputArgs {

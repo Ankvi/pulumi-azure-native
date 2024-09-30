@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2016-05-15.
  */
 export function getVirtualMachineSchedule(args: GetVirtualMachineScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineScheduleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:devtestlab:getVirtualMachineSchedule", {
         "expand": args.expand,
@@ -118,7 +117,14 @@ export interface GetVirtualMachineScheduleResult {
  * Other available API versions: 2016-05-15.
  */
 export function getVirtualMachineScheduleOutput(args: GetVirtualMachineScheduleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineScheduleResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualMachineSchedule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:devtestlab:getVirtualMachineSchedule", {
+        "expand": args.expand,
+        "labName": args.labName,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+        "virtualMachineName": args.virtualMachineName,
+    }, opts);
 }
 
 export interface GetVirtualMachineScheduleOutputArgs {

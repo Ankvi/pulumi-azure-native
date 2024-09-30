@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2023-11-02-preview, 2024-02-02-preview.
  */
 export function listBuildAuthToken(args: ListBuildAuthTokenArgs, opts?: pulumi.InvokeOptions): Promise<ListBuildAuthTokenResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:app:listBuildAuthToken", {
         "buildName": args.buildName,
@@ -51,7 +50,12 @@ export interface ListBuildAuthTokenResult {
  * Other available API versions: 2023-11-02-preview, 2024-02-02-preview.
  */
 export function listBuildAuthTokenOutput(args: ListBuildAuthTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListBuildAuthTokenResult> {
-    return pulumi.output(args).apply((a: any) => listBuildAuthToken(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:app:listBuildAuthToken", {
+        "buildName": args.buildName,
+        "builderName": args.builderName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListBuildAuthTokenOutputArgs {

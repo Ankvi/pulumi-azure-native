@@ -4,9 +4,10 @@ import * as types from "./types";
 /**
  * Gets information about the specified publisher.
  * Azure REST API version: 2023-09-01.
+ *
+ * Other available API versions: 2024-04-15.
  */
 export function getPublisher(args: GetPublisherArgs, opts?: pulumi.InvokeOptions): Promise<GetPublisherResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:hybridnetwork:getPublisher", {
         "publisherName": args.publisherName,
@@ -65,9 +66,15 @@ export interface GetPublisherResult {
 /**
  * Gets information about the specified publisher.
  * Azure REST API version: 2023-09-01.
+ *
+ * Other available API versions: 2024-04-15.
  */
 export function getPublisherOutput(args: GetPublisherOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPublisherResult> {
-    return pulumi.output(args).apply((a: any) => getPublisher(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:hybridnetwork:getPublisher", {
+        "publisherName": args.publisherName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetPublisherOutputArgs {

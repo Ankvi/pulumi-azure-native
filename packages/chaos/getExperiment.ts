@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-03-22-preview.
  */
 export function getExperiment(args: GetExperimentArgs, opts?: pulumi.InvokeOptions): Promise<GetExperimentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:chaos:getExperiment", {
         "experimentName": args.experimentName,
@@ -71,7 +70,11 @@ export interface GetExperimentResult {
  * Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-03-22-preview.
  */
 export function getExperimentOutput(args: GetExperimentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExperimentResult> {
-    return pulumi.output(args).apply((a: any) => getExperiment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:chaos:getExperiment", {
+        "experimentName": args.experimentName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetExperimentOutputArgs {

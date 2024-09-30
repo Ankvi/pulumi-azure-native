@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get the specific private end point connection by specific private link service in the resource group.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getPrivateLinkServicePrivateEndpointConnection(args: GetPrivateLinkServicePrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateLinkServicePrivateEndpointConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getPrivateLinkServicePrivateEndpointConnection", {
         "expand": args.expand,
@@ -82,10 +81,16 @@ export interface GetPrivateLinkServicePrivateEndpointConnectionResult {
  * Get the specific private end point connection by specific private link service in the resource group.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getPrivateLinkServicePrivateEndpointConnectionOutput(args: GetPrivateLinkServicePrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateLinkServicePrivateEndpointConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getPrivateLinkServicePrivateEndpointConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getPrivateLinkServicePrivateEndpointConnection", {
+        "expand": args.expand,
+        "peConnectionName": args.peConnectionName,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 export interface GetPrivateLinkServicePrivateEndpointConnectionOutputArgs {

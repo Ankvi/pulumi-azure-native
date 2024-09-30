@@ -4,9 +4,10 @@ import * as types from "./types";
 /**
  * Gets information about a network service design version.
  * Azure REST API version: 2023-09-01.
+ *
+ * Other available API versions: 2024-04-15.
  */
 export function getNetworkServiceDesignVersion(args: GetNetworkServiceDesignVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkServiceDesignVersionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:hybridnetwork:getNetworkServiceDesignVersion", {
         "networkServiceDesignGroupName": args.networkServiceDesignGroupName,
@@ -71,9 +72,17 @@ export interface GetNetworkServiceDesignVersionResult {
 /**
  * Gets information about a network service design version.
  * Azure REST API version: 2023-09-01.
+ *
+ * Other available API versions: 2024-04-15.
  */
 export function getNetworkServiceDesignVersionOutput(args: GetNetworkServiceDesignVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkServiceDesignVersionResult> {
-    return pulumi.output(args).apply((a: any) => getNetworkServiceDesignVersion(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:hybridnetwork:getNetworkServiceDesignVersion", {
+        "networkServiceDesignGroupName": args.networkServiceDesignGroupName,
+        "networkServiceDesignVersionName": args.networkServiceDesignVersionName,
+        "publisherName": args.publisherName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNetworkServiceDesignVersionOutputArgs {

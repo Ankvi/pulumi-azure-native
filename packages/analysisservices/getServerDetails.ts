@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2017-08-01-beta.
  */
 export function getServerDetails(args: GetServerDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerDetailsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:analysisservices:getServerDetails", {
         "resourceGroupName": args.resourceGroupName,
@@ -103,7 +102,11 @@ export interface GetServerDetailsResult {
  * Other available API versions: 2017-08-01-beta.
  */
 export function getServerDetailsOutput(args: GetServerDetailsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerDetailsResult> {
-    return pulumi.output(args).apply((a: any) => getServerDetails(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:analysisservices:getServerDetails", {
+        "resourceGroupName": args.resourceGroupName,
+        "serverName": args.serverName,
+    }, opts);
 }
 
 export interface GetServerDetailsOutputArgs {

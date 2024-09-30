@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2024-01-01-preview.
  */
 export function listIpamPoolAssociatedResources(args: ListIpamPoolAssociatedResourcesArgs, opts?: pulumi.InvokeOptions): Promise<ListIpamPoolAssociatedResourcesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:listIpamPoolAssociatedResources", {
         "networkManagerName": args.networkManagerName,
@@ -45,7 +44,12 @@ export interface ListIpamPoolAssociatedResourcesResult {
  * Azure REST API version: 2024-01-01-preview.
  */
 export function listIpamPoolAssociatedResourcesOutput(args: ListIpamPoolAssociatedResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListIpamPoolAssociatedResourcesResult> {
-    return pulumi.output(args).apply((a: any) => listIpamPoolAssociatedResources(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:listIpamPoolAssociatedResources", {
+        "networkManagerName": args.networkManagerName,
+        "poolName": args.poolName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListIpamPoolAssociatedResourcesOutputArgs {

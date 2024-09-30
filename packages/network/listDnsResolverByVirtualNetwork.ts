@@ -5,10 +5,9 @@ import * as types from "./types";
  * Lists DNS resolver resource IDs linked to a virtual network.
  * Azure REST API version: 2022-07-01.
  *
- * Other available API versions: 2020-04-01-preview.
+ * Other available API versions: 2020-04-01-preview, 2023-07-01-preview.
  */
 export function listDnsResolverByVirtualNetwork(args: ListDnsResolverByVirtualNetworkArgs, opts?: pulumi.InvokeOptions): Promise<ListDnsResolverByVirtualNetworkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:listDnsResolverByVirtualNetwork", {
         "resourceGroupName": args.resourceGroupName,
@@ -49,10 +48,15 @@ export interface ListDnsResolverByVirtualNetworkResult {
  * Lists DNS resolver resource IDs linked to a virtual network.
  * Azure REST API version: 2022-07-01.
  *
- * Other available API versions: 2020-04-01-preview.
+ * Other available API versions: 2020-04-01-preview, 2023-07-01-preview.
  */
 export function listDnsResolverByVirtualNetworkOutput(args: ListDnsResolverByVirtualNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListDnsResolverByVirtualNetworkResult> {
-    return pulumi.output(args).apply((a: any) => listDnsResolverByVirtualNetwork(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:listDnsResolverByVirtualNetwork", {
+        "resourceGroupName": args.resourceGroupName,
+        "top": args.top,
+        "virtualNetworkName": args.virtualNetworkName,
+    }, opts);
 }
 
 export interface ListDnsResolverByVirtualNetworkOutputArgs {

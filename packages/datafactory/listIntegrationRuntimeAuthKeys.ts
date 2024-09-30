@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2018-06-01.
  */
 export function listIntegrationRuntimeAuthKeys(args: ListIntegrationRuntimeAuthKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListIntegrationRuntimeAuthKeysResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:datafactory:listIntegrationRuntimeAuthKeys", {
         "factoryName": args.factoryName,
@@ -47,7 +46,12 @@ export interface ListIntegrationRuntimeAuthKeysResult {
  * Azure REST API version: 2018-06-01.
  */
 export function listIntegrationRuntimeAuthKeysOutput(args: ListIntegrationRuntimeAuthKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListIntegrationRuntimeAuthKeysResult> {
-    return pulumi.output(args).apply((a: any) => listIntegrationRuntimeAuthKeys(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:datafactory:listIntegrationRuntimeAuthKeys", {
+        "factoryName": args.factoryName,
+        "integrationRuntimeName": args.integrationRuntimeName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListIntegrationRuntimeAuthKeysOutputArgs {

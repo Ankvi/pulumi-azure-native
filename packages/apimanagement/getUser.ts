@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets the details of the user specified by its identifier.
  * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2016-07-07, 2016-10-10, 2017-03-01, 2018-01-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2016-07-07, 2016-10-10, 2017-03-01, 2018-01-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apimanagement:getUser", {
         "resourceGroupName": args.resourceGroupName,
@@ -85,10 +84,15 @@ export interface GetUserResult {
  * Gets the details of the user specified by its identifier.
  * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2016-07-07, 2016-10-10, 2017-03-01, 2018-01-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2016-07-07, 2016-10-10, 2017-03-01, 2018-01-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
-    return pulumi.output(args).apply((a: any) => getUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:getUser", {
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+        "userId": args.userId,
+    }, opts);
 }
 
 export interface GetUserOutputArgs {

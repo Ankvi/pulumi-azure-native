@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-04-05.
  */
 export function getGuestConfigurationConnectedVMwarevSphereAssignment(args: GetGuestConfigurationConnectedVMwarevSphereAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetGuestConfigurationConnectedVMwarevSphereAssignmentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:guestconfiguration:getGuestConfigurationConnectedVMwarevSphereAssignment", {
         "guestConfigurationAssignmentName": args.guestConfigurationAssignmentName,
@@ -68,7 +67,12 @@ export interface GetGuestConfigurationConnectedVMwarevSphereAssignmentResult {
  * Other available API versions: 2024-04-05.
  */
 export function getGuestConfigurationConnectedVMwarevSphereAssignmentOutput(args: GetGuestConfigurationConnectedVMwarevSphereAssignmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGuestConfigurationConnectedVMwarevSphereAssignmentResult> {
-    return pulumi.output(args).apply((a: any) => getGuestConfigurationConnectedVMwarevSphereAssignment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:guestconfiguration:getGuestConfigurationConnectedVMwarevSphereAssignment", {
+        "guestConfigurationAssignmentName": args.guestConfigurationAssignmentName,
+        "resourceGroupName": args.resourceGroupName,
+        "vmName": args.vmName,
+    }, opts);
 }
 
 export interface GetGuestConfigurationConnectedVMwarevSphereAssignmentOutputArgs {

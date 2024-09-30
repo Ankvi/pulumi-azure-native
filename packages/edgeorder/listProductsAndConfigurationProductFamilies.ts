@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-02-01.
  */
 export function listProductsAndConfigurationProductFamilies(args: ListProductsAndConfigurationProductFamiliesArgs, opts?: pulumi.InvokeOptions): Promise<ListProductsAndConfigurationProductFamiliesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:edgeorder:listProductsAndConfigurationProductFamilies", {
         "customerSubscriptionDetails": args.customerSubscriptionDetails,
@@ -57,7 +56,13 @@ export interface ListProductsAndConfigurationProductFamiliesResult {
  * Other available API versions: 2024-02-01.
  */
 export function listProductsAndConfigurationProductFamiliesOutput(args: ListProductsAndConfigurationProductFamiliesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListProductsAndConfigurationProductFamiliesResult> {
-    return pulumi.output(args).apply((a: any) => listProductsAndConfigurationProductFamilies(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:edgeorder:listProductsAndConfigurationProductFamilies", {
+        "customerSubscriptionDetails": args.customerSubscriptionDetails,
+        "expand": args.expand,
+        "filterableProperties": args.filterableProperties,
+        "skipToken": args.skipToken,
+    }, opts);
 }
 
 export interface ListProductsAndConfigurationProductFamiliesOutputArgs {

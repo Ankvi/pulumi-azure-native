@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-01-01.
  */
 export function getFailoverGroup(args: GetFailoverGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetFailoverGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:azurearcdata:getFailoverGroup", {
         "failoverGroupName": args.failoverGroupName,
@@ -64,7 +63,12 @@ export interface GetFailoverGroupResult {
  * Other available API versions: 2024-01-01.
  */
 export function getFailoverGroupOutput(args: GetFailoverGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFailoverGroupResult> {
-    return pulumi.output(args).apply((a: any) => getFailoverGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:azurearcdata:getFailoverGroup", {
+        "failoverGroupName": args.failoverGroupName,
+        "resourceGroupName": args.resourceGroupName,
+        "sqlManagedInstanceName": args.sqlManagedInstanceName,
+    }, opts);
 }
 
 export interface GetFailoverGroupOutputArgs {

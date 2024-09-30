@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2020-06-01-preview.
  */
 export function getRegistrationActivationKey(args: GetRegistrationActivationKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistrationActivationKeyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:azurestack:getRegistrationActivationKey", {
         "registrationName": args.registrationName,
@@ -42,7 +41,11 @@ export interface GetRegistrationActivationKeyResult {
  * Other available API versions: 2020-06-01-preview.
  */
 export function getRegistrationActivationKeyOutput(args: GetRegistrationActivationKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistrationActivationKeyResult> {
-    return pulumi.output(args).apply((a: any) => getRegistrationActivationKey(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:azurestack:getRegistrationActivationKey", {
+        "registrationName": args.registrationName,
+        "resourceGroup": args.resourceGroup,
+    }, opts);
 }
 
 export interface GetRegistrationActivationKeyOutputArgs {

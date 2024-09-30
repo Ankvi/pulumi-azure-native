@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2019-04-01.
  */
 export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:vmwarecloudsimple:getVirtualMachine", {
         "resourceGroupName": args.resourceGroupName,
@@ -143,7 +142,11 @@ export interface GetVirtualMachineResult {
  * Azure REST API version: 2019-04-01.
  */
 export function getVirtualMachineOutput(args: GetVirtualMachineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualMachine(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:vmwarecloudsimple:getVirtualMachine", {
+        "resourceGroupName": args.resourceGroupName,
+        "virtualMachineName": args.virtualMachineName,
+    }, opts);
 }
 
 export interface GetVirtualMachineOutputArgs {

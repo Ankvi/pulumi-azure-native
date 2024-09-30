@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2024-06-01.
  */
 export function getPrivateZone(args: GetPrivateZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateZoneResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getPrivateZone", {
         "privateZoneName": args.privateZoneName,
@@ -94,7 +93,11 @@ export interface GetPrivateZoneResult {
  * Other available API versions: 2024-06-01.
  */
 export function getPrivateZoneOutput(args: GetPrivateZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateZoneResult> {
-    return pulumi.output(args).apply((a: any) => getPrivateZone(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getPrivateZone", {
+        "privateZoneName": args.privateZoneName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetPrivateZoneOutputArgs {

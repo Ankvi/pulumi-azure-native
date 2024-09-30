@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview.
  */
 export function getMongoClusterFirewallRule(args: GetMongoClusterFirewallRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoClusterFirewallRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:documentdb:getMongoClusterFirewallRule", {
         "firewallRuleName": args.firewallRuleName,
@@ -72,7 +71,12 @@ export interface GetMongoClusterFirewallRuleResult {
  * Other available API versions: 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview.
  */
 export function getMongoClusterFirewallRuleOutput(args: GetMongoClusterFirewallRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMongoClusterFirewallRuleResult> {
-    return pulumi.output(args).apply((a: any) => getMongoClusterFirewallRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:documentdb:getMongoClusterFirewallRule", {
+        "firewallRuleName": args.firewallRuleName,
+        "mongoClusterName": args.mongoClusterName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetMongoClusterFirewallRuleOutputArgs {

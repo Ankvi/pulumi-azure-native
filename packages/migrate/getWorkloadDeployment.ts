@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2022-05-01-preview.
  */
 export function getWorkloadDeployment(args: GetWorkloadDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadDeploymentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:migrate:getWorkloadDeployment", {
         "modernizeProjectName": args.modernizeProjectName,
@@ -66,7 +65,13 @@ export interface GetWorkloadDeploymentResult {
  * Azure REST API version: 2022-05-01-preview.
  */
 export function getWorkloadDeploymentOutput(args: GetWorkloadDeploymentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkloadDeploymentResult> {
-    return pulumi.output(args).apply((a: any) => getWorkloadDeployment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:migrate:getWorkloadDeployment", {
+        "modernizeProjectName": args.modernizeProjectName,
+        "resourceGroupName": args.resourceGroupName,
+        "subscriptionId": args.subscriptionId,
+        "workloadDeploymentName": args.workloadDeploymentName,
+    }, opts);
 }
 
 export interface GetWorkloadDeploymentOutputArgs {

@@ -1,6 +1,16 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * cloud profile for AWS.
+ */
+export interface AwsCloudProfileResponse {
+    /**
+     * List of AWS accounts which need to be excluded.
+     */
+    excludedAccounts?: string[];
+}
+
+/**
  * Endpoint details
  */
 export interface EndpointPropertiesResponse {
@@ -16,6 +26,54 @@ export interface EndpointPropertiesResponse {
      * The type of endpoint.
      */
     type: string;
+}
+
+/**
+ * Properties of public cloud connectors.
+ */
+export interface PublicCloudConnectorPropertiesResponse {
+    /**
+     * Cloud profile for AWS.
+     */
+    awsCloudProfile: AwsCloudProfileResponse;
+    /**
+     * Connector primary identifier.
+     */
+    connectorPrimaryIdentifier: string;
+    /**
+     * The resource provisioning state.
+     */
+    provisioningState: string;
+}
+
+/**
+ * Solution configuration resource.
+ */
+export interface SolutionConfigurationPropertiesResponse {
+    /**
+     * The last time resources were inventoried
+     */
+    lastSyncTime: string;
+    /**
+     * The resource provisioning state.
+     */
+    provisioningState: string;
+    /**
+     * Solution settings
+     */
+    solutionSettings?: {[key: string]: string};
+    /**
+     * The type of the solution
+     */
+    solutionType: string;
+    /**
+     * The status of solution configurations
+     */
+    status: string;
+    /**
+     * The detailed message of status details
+     */
+    statusDetails: string;
 }
 
 /**

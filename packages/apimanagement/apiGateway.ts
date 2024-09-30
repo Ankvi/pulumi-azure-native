@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * A single API Management gateway resource in List or Get response.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export class ApiGateway extends pulumi.CustomResource {
     /**
@@ -139,7 +141,7 @@ export class ApiGateway extends pulumi.CustomResource {
             resourceInputs["virtualNetworkType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:ApiGateway" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:ApiGateway" }, { type: "azure-native:apimanagement/v20240501:ApiGateway" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ApiGateway.__pulumiType, name, resourceInputs, opts);
     }

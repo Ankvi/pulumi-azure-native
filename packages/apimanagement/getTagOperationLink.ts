@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the operation link for the tag.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getTagOperationLink(args: GetTagOperationLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetTagOperationLinkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apimanagement:getTagOperationLink", {
         "operationLinkId": args.operationLinkId,
@@ -61,10 +60,16 @@ export interface GetTagOperationLinkResult {
  * Gets the operation link for the tag.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getTagOperationLinkOutput(args: GetTagOperationLinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagOperationLinkResult> {
-    return pulumi.output(args).apply((a: any) => getTagOperationLink(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:getTagOperationLink", {
+        "operationLinkId": args.operationLinkId,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+        "tagId": args.tagId,
+    }, opts);
 }
 
 export interface GetTagOperationLinkOutputArgs {

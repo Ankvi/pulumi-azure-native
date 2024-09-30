@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get properties of the provided cluster.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01.
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:networkcloud:getCluster", {
         "clusterName": args.clusterName,
@@ -166,10 +165,14 @@ export interface GetClusterResult {
  * Get properties of the provided cluster.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01.
  */
 export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
-    return pulumi.output(args).apply((a: any) => getCluster(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:networkcloud:getCluster", {
+        "clusterName": args.clusterName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetClusterOutputArgs {

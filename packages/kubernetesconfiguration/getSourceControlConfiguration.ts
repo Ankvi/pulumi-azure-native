@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2019-11-01-preview.
  */
 export function getSourceControlConfiguration(args: GetSourceControlConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetSourceControlConfigurationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:kubernetesconfiguration:getSourceControlConfiguration", {
         "clusterName": args.clusterName,
@@ -122,7 +121,14 @@ export interface GetSourceControlConfigurationResult {
  * Other available API versions: 2019-11-01-preview.
  */
 export function getSourceControlConfigurationOutput(args: GetSourceControlConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSourceControlConfigurationResult> {
-    return pulumi.output(args).apply((a: any) => getSourceControlConfiguration(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:kubernetesconfiguration:getSourceControlConfiguration", {
+        "clusterName": args.clusterName,
+        "clusterResourceName": args.clusterResourceName,
+        "clusterRp": args.clusterRp,
+        "resourceGroupName": args.resourceGroupName,
+        "sourceControlConfigurationName": args.sourceControlConfigurationName,
+    }, opts);
 }
 
 export interface GetSourceControlConfigurationOutputArgs {

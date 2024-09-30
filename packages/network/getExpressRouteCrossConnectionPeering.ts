@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets the specified peering for the ExpressRouteCrossConnection.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getExpressRouteCrossConnectionPeering(args: GetExpressRouteCrossConnectionPeeringArgs, opts?: pulumi.InvokeOptions): Promise<GetExpressRouteCrossConnectionPeeringResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getExpressRouteCrossConnectionPeering", {
         "crossConnectionName": args.crossConnectionName,
@@ -113,10 +112,15 @@ export interface GetExpressRouteCrossConnectionPeeringResult {
  * Gets the specified peering for the ExpressRouteCrossConnection.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getExpressRouteCrossConnectionPeeringOutput(args: GetExpressRouteCrossConnectionPeeringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExpressRouteCrossConnectionPeeringResult> {
-    return pulumi.output(args).apply((a: any) => getExpressRouteCrossConnectionPeering(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getExpressRouteCrossConnectionPeering", {
+        "crossConnectionName": args.crossConnectionName,
+        "peeringName": args.peeringName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetExpressRouteCrossConnectionPeeringOutputArgs {

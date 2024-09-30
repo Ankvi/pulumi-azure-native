@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get properties of the provided cloud services network.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01.
  */
 export function getCloudServicesNetwork(args: GetCloudServicesNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudServicesNetworkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:networkcloud:getCloudServicesNetwork", {
         "cloudServicesNetworkName": args.cloudServicesNetworkName,
@@ -111,10 +110,14 @@ export interface GetCloudServicesNetworkResult {
  * Get properties of the provided cloud services network.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01.
  */
 export function getCloudServicesNetworkOutput(args: GetCloudServicesNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudServicesNetworkResult> {
-    return pulumi.output(args).apply((a: any) => getCloudServicesNetwork(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:networkcloud:getCloudServicesNetwork", {
+        "cloudServicesNetworkName": args.cloudServicesNetworkName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetCloudServicesNetworkOutputArgs {

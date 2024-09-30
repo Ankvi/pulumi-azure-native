@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2017-06-01.
  */
 export function listManagerPublicEncryptionKey(args: ListManagerPublicEncryptionKeyArgs, opts?: pulumi.InvokeOptions): Promise<ListManagerPublicEncryptionKeyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:storsimple:listManagerPublicEncryptionKey", {
         "managerName": args.managerName,
@@ -46,7 +45,11 @@ export interface ListManagerPublicEncryptionKeyResult {
  * Azure REST API version: 2017-06-01.
  */
 export function listManagerPublicEncryptionKeyOutput(args: ListManagerPublicEncryptionKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListManagerPublicEncryptionKeyResult> {
-    return pulumi.output(args).apply((a: any) => listManagerPublicEncryptionKey(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:storsimple:listManagerPublicEncryptionKey", {
+        "managerName": args.managerName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListManagerPublicEncryptionKeyOutputArgs {

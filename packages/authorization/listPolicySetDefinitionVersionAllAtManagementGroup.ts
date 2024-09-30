@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-05-01.
  */
 export function listPolicySetDefinitionVersionAllAtManagementGroup(args: ListPolicySetDefinitionVersionAllAtManagementGroupArgs, opts?: pulumi.InvokeOptions): Promise<ListPolicySetDefinitionVersionAllAtManagementGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:authorization:listPolicySetDefinitionVersionAllAtManagementGroup", {
         "managementGroupName": args.managementGroupName,
@@ -42,7 +41,10 @@ export interface ListPolicySetDefinitionVersionAllAtManagementGroupResult {
  * Other available API versions: 2024-05-01.
  */
 export function listPolicySetDefinitionVersionAllAtManagementGroupOutput(args: ListPolicySetDefinitionVersionAllAtManagementGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListPolicySetDefinitionVersionAllAtManagementGroupResult> {
-    return pulumi.output(args).apply((a: any) => listPolicySetDefinitionVersionAllAtManagementGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:authorization:listPolicySetDefinitionVersionAllAtManagementGroup", {
+        "managementGroupName": args.managementGroupName,
+    }, opts);
 }
 
 export interface ListPolicySetDefinitionVersionAllAtManagementGroupOutputArgs {

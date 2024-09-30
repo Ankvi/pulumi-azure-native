@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the primary and secondary connection strings for the topic.
  * Azure REST API version: 2022-01-01-preview.
  *
- * Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
+ * Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
  */
 export function listTopicKeys(args: ListTopicKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListTopicKeysResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:servicebus:listTopicKeys", {
         "authorizationRuleName": args.authorizationRuleName,
@@ -73,10 +72,16 @@ export interface ListTopicKeysResult {
  * Gets the primary and secondary connection strings for the topic.
  * Azure REST API version: 2022-01-01-preview.
  *
- * Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
+ * Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
  */
 export function listTopicKeysOutput(args: ListTopicKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListTopicKeysResult> {
-    return pulumi.output(args).apply((a: any) => listTopicKeys(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:servicebus:listTopicKeys", {
+        "authorizationRuleName": args.authorizationRuleName,
+        "namespaceName": args.namespaceName,
+        "resourceGroupName": args.resourceGroupName,
+        "topicName": args.topicName,
+    }, opts);
 }
 
 export interface ListTopicKeysOutputArgs {

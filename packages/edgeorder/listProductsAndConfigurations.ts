@@ -9,7 +9,6 @@ import * as types from "./types";
  */
 export function listProductsAndConfigurations(args?: ListProductsAndConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<ListProductsAndConfigurationsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:edgeorder:listProductsAndConfigurations", {
         "configurationFilter": args.configurationFilter,
@@ -53,7 +52,13 @@ export interface ListProductsAndConfigurationsResult {
  * Other available API versions: 2024-02-01.
  */
 export function listProductsAndConfigurationsOutput(args?: ListProductsAndConfigurationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListProductsAndConfigurationsResult> {
-    return pulumi.output(args).apply((a: any) => listProductsAndConfigurations(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:edgeorder:listProductsAndConfigurations", {
+        "configurationFilter": args.configurationFilter,
+        "customerSubscriptionDetails": args.customerSubscriptionDetails,
+        "skipToken": args.skipToken,
+    }, opts);
 }
 
 export interface ListProductsAndConfigurationsOutputArgs {

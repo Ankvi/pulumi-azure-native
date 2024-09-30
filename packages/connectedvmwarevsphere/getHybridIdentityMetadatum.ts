@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-03-01-preview.
  */
 export function getHybridIdentityMetadatum(args: GetHybridIdentityMetadatumArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridIdentityMetadatumResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:connectedvmwarevsphere:getHybridIdentityMetadatum", {
         "metadataName": args.metadataName,
@@ -76,7 +75,12 @@ export interface GetHybridIdentityMetadatumResult {
  * Other available API versions: 2023-03-01-preview.
  */
 export function getHybridIdentityMetadatumOutput(args: GetHybridIdentityMetadatumOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridIdentityMetadatumResult> {
-    return pulumi.output(args).apply((a: any) => getHybridIdentityMetadatum(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:connectedvmwarevsphere:getHybridIdentityMetadatum", {
+        "metadataName": args.metadataName,
+        "resourceGroupName": args.resourceGroupName,
+        "virtualMachineName": args.virtualMachineName,
+    }, opts);
 }
 
 export interface GetHybridIdentityMetadatumOutputArgs {

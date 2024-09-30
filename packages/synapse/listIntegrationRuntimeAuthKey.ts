@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2021-06-01-preview.
  */
 export function listIntegrationRuntimeAuthKey(args: ListIntegrationRuntimeAuthKeyArgs, opts?: pulumi.InvokeOptions): Promise<ListIntegrationRuntimeAuthKeyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:synapse:listIntegrationRuntimeAuthKey", {
         "integrationRuntimeName": args.integrationRuntimeName,
@@ -51,7 +50,12 @@ export interface ListIntegrationRuntimeAuthKeyResult {
  * Other available API versions: 2021-06-01-preview.
  */
 export function listIntegrationRuntimeAuthKeyOutput(args: ListIntegrationRuntimeAuthKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListIntegrationRuntimeAuthKeyResult> {
-    return pulumi.output(args).apply((a: any) => listIntegrationRuntimeAuthKey(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:synapse:listIntegrationRuntimeAuthKey", {
+        "integrationRuntimeName": args.integrationRuntimeName,
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface ListIntegrationRuntimeAuthKeyOutputArgs {

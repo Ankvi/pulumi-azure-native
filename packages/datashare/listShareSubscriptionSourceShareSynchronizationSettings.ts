@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2021-08-01.
  */
 export function listShareSubscriptionSourceShareSynchronizationSettings(args: ListShareSubscriptionSourceShareSynchronizationSettingsArgs, opts?: pulumi.InvokeOptions): Promise<ListShareSubscriptionSourceShareSynchronizationSettingsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:datashare:listShareSubscriptionSourceShareSynchronizationSettings", {
         "accountName": args.accountName,
@@ -53,7 +52,13 @@ export interface ListShareSubscriptionSourceShareSynchronizationSettingsResult {
  * Azure REST API version: 2021-08-01.
  */
 export function listShareSubscriptionSourceShareSynchronizationSettingsOutput(args: ListShareSubscriptionSourceShareSynchronizationSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListShareSubscriptionSourceShareSynchronizationSettingsResult> {
-    return pulumi.output(args).apply((a: any) => listShareSubscriptionSourceShareSynchronizationSettings(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:datashare:listShareSubscriptionSourceShareSynchronizationSettings", {
+        "accountName": args.accountName,
+        "resourceGroupName": args.resourceGroupName,
+        "shareSubscriptionName": args.shareSubscriptionName,
+        "skipToken": args.skipToken,
+    }, opts);
 }
 
 export interface ListShareSubscriptionSourceShareSynchronizationSettingsOutputArgs {

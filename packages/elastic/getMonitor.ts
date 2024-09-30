@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-03-01, 2024-05-01-preview, 2024-06-15-preview.
  */
 export function getMonitor(args: GetMonitorArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:elastic:getMonitor", {
         "monitorName": args.monitorName,
@@ -75,7 +74,11 @@ export interface GetMonitorResult {
  * Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-03-01, 2024-05-01-preview, 2024-06-15-preview.
  */
 export function getMonitorOutput(args: GetMonitorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMonitorResult> {
-    return pulumi.output(args).apply((a: any) => getMonitor(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:elastic:getMonitor", {
+        "monitorName": args.monitorName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetMonitorOutputArgs {

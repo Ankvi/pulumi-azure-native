@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2021-09-01-preview.
  */
 export function getResourceTypeRegistration(args: GetResourceTypeRegistrationArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceTypeRegistrationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:providerhub:getResourceTypeRegistration", {
         "providerNamespace": args.providerNamespace,
@@ -49,7 +48,11 @@ export interface GetResourceTypeRegistrationResult {
  * Azure REST API version: 2021-09-01-preview.
  */
 export function getResourceTypeRegistrationOutput(args: GetResourceTypeRegistrationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceTypeRegistrationResult> {
-    return pulumi.output(args).apply((a: any) => getResourceTypeRegistration(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:providerhub:getResourceTypeRegistration", {
+        "providerNamespace": args.providerNamespace,
+        "resourceType": args.resourceType,
+    }, opts);
 }
 
 export interface GetResourceTypeRegistrationOutputArgs {

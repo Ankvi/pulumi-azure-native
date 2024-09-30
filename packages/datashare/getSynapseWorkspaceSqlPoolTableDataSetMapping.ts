@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2021-08-01.
  */
 export function getSynapseWorkspaceSqlPoolTableDataSetMapping(args: GetSynapseWorkspaceSqlPoolTableDataSetMappingArgs, opts?: pulumi.InvokeOptions): Promise<GetSynapseWorkspaceSqlPoolTableDataSetMappingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:datashare:getSynapseWorkspaceSqlPoolTableDataSetMapping", {
         "accountName": args.accountName,
@@ -82,7 +81,13 @@ export interface GetSynapseWorkspaceSqlPoolTableDataSetMappingResult {
  * Azure REST API version: 2021-08-01.
  */
 export function getSynapseWorkspaceSqlPoolTableDataSetMappingOutput(args: GetSynapseWorkspaceSqlPoolTableDataSetMappingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSynapseWorkspaceSqlPoolTableDataSetMappingResult> {
-    return pulumi.output(args).apply((a: any) => getSynapseWorkspaceSqlPoolTableDataSetMapping(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:datashare:getSynapseWorkspaceSqlPoolTableDataSetMapping", {
+        "accountName": args.accountName,
+        "dataSetMappingName": args.dataSetMappingName,
+        "resourceGroupName": args.resourceGroupName,
+        "shareSubscriptionName": args.shareSubscriptionName,
+    }, opts);
 }
 
 export interface GetSynapseWorkspaceSqlPoolTableDataSetMappingOutputArgs {

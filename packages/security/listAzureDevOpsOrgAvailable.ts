@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-04-01, 2024-05-15-preview.
  */
 export function listAzureDevOpsOrgAvailable(args: ListAzureDevOpsOrgAvailableArgs, opts?: pulumi.InvokeOptions): Promise<ListAzureDevOpsOrgAvailableResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:security:listAzureDevOpsOrgAvailable", {
         "resourceGroupName": args.resourceGroupName,
@@ -47,7 +46,11 @@ export interface ListAzureDevOpsOrgAvailableResult {
  * Other available API versions: 2024-04-01, 2024-05-15-preview.
  */
 export function listAzureDevOpsOrgAvailableOutput(args: ListAzureDevOpsOrgAvailableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListAzureDevOpsOrgAvailableResult> {
-    return pulumi.output(args).apply((a: any) => listAzureDevOpsOrgAvailable(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:security:listAzureDevOpsOrgAvailable", {
+        "resourceGroupName": args.resourceGroupName,
+        "securityConnectorName": args.securityConnectorName,
+    }, opts);
 }
 
 export interface ListAzureDevOpsOrgAvailableOutputArgs {

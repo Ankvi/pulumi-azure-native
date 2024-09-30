@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-01-01-preview.
  */
 export function getSpringbootserver(args: GetSpringbootserverArgs, opts?: pulumi.InvokeOptions): Promise<GetSpringbootserverResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:offazurespringboot:getSpringbootserver", {
         "resourceGroupName": args.resourceGroupName,
@@ -64,7 +63,12 @@ export interface GetSpringbootserverResult {
  * Azure REST API version: 2023-01-01-preview.
  */
 export function getSpringbootserverOutput(args: GetSpringbootserverOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpringbootserverResult> {
-    return pulumi.output(args).apply((a: any) => getSpringbootserver(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:offazurespringboot:getSpringbootserver", {
+        "resourceGroupName": args.resourceGroupName,
+        "siteName": args.siteName,
+        "springbootserversName": args.springbootserversName,
+    }, opts);
 }
 
 export interface GetSpringbootserverOutputArgs {

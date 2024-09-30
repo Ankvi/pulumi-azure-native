@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-10-15-preview.
  */
 export function getAmfDeployment(args: GetAmfDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetAmfDeploymentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:mobilepacketcore:getAmfDeployment", {
         "amfDeploymentName": args.amfDeploymentName,
@@ -83,7 +82,11 @@ export interface GetAmfDeploymentResult {
  * Azure REST API version: 2023-10-15-preview.
  */
 export function getAmfDeploymentOutput(args: GetAmfDeploymentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAmfDeploymentResult> {
-    return pulumi.output(args).apply((a: any) => getAmfDeployment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:mobilepacketcore:getAmfDeployment", {
+        "amfDeploymentName": args.amfDeploymentName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetAmfDeploymentOutputArgs {

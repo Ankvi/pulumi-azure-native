@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function listKeyByAutomationAccount(args: ListKeyByAutomationAccountArgs, opts?: pulumi.InvokeOptions): Promise<ListKeyByAutomationAccountResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:automation:listKeyByAutomationAccount", {
         "automationAccountName": args.automationAccountName,
@@ -40,7 +39,11 @@ export interface ListKeyByAutomationAccountResult {
  * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function listKeyByAutomationAccountOutput(args: ListKeyByAutomationAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListKeyByAutomationAccountResult> {
-    return pulumi.output(args).apply((a: any) => listKeyByAutomationAccount(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:automation:listKeyByAutomationAccount", {
+        "automationAccountName": args.automationAccountName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListKeyByAutomationAccountOutputArgs {

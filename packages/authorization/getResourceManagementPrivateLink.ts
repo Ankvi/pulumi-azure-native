@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2020-05-01.
  */
 export function getResourceManagementPrivateLink(args: GetResourceManagementPrivateLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceManagementPrivateLinkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:authorization:getResourceManagementPrivateLink", {
         "resourceGroupName": args.resourceGroupName,
@@ -49,7 +48,11 @@ export interface GetResourceManagementPrivateLinkResult {
  * Azure REST API version: 2020-05-01.
  */
 export function getResourceManagementPrivateLinkOutput(args: GetResourceManagementPrivateLinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceManagementPrivateLinkResult> {
-    return pulumi.output(args).apply((a: any) => getResourceManagementPrivateLink(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:authorization:getResourceManagementPrivateLink", {
+        "resourceGroupName": args.resourceGroupName,
+        "rmplName": args.rmplName,
+    }, opts);
 }
 
 export interface GetResourceManagementPrivateLinkOutputArgs {

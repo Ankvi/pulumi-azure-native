@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2022-10-01.
  */
 export function getRegisteredPrefix(args: GetRegisteredPrefixArgs, opts?: pulumi.InvokeOptions): Promise<GetRegisteredPrefixResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:peering:getRegisteredPrefix", {
         "peeringName": args.peeringName,
@@ -71,7 +70,12 @@ export interface GetRegisteredPrefixResult {
  * Azure REST API version: 2022-10-01.
  */
 export function getRegisteredPrefixOutput(args: GetRegisteredPrefixOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegisteredPrefixResult> {
-    return pulumi.output(args).apply((a: any) => getRegisteredPrefix(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:peering:getRegisteredPrefix", {
+        "peeringName": args.peeringName,
+        "registeredPrefixName": args.registeredPrefixName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetRegisteredPrefixOutputArgs {

@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2024-02-13.
  */
 export function listOrganizationRegions(args: ListOrganizationRegionsArgs, opts?: pulumi.InvokeOptions): Promise<ListOrganizationRegionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:confluent:listOrganizationRegions", {
         "organizationName": args.organizationName,
@@ -44,7 +43,12 @@ export interface ListOrganizationRegionsResult {
  * Azure REST API version: 2024-02-13.
  */
 export function listOrganizationRegionsOutput(args: ListOrganizationRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListOrganizationRegionsResult> {
-    return pulumi.output(args).apply((a: any) => listOrganizationRegions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:confluent:listOrganizationRegions", {
+        "organizationName": args.organizationName,
+        "resourceGroupName": args.resourceGroupName,
+        "searchFilters": args.searchFilters,
+    }, opts);
 }
 
 export interface ListOrganizationRegionsOutputArgs {

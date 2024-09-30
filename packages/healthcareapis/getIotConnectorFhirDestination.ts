@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2024-03-31.
  */
 export function getIotConnectorFhirDestination(args: GetIotConnectorFhirDestinationArgs, opts?: pulumi.InvokeOptions): Promise<GetIotConnectorFhirDestinationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:healthcareapis:getIotConnectorFhirDestination", {
         "fhirDestinationName": args.fhirDestinationName,
@@ -85,7 +84,13 @@ export interface GetIotConnectorFhirDestinationResult {
  * Other available API versions: 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2024-03-31.
  */
 export function getIotConnectorFhirDestinationOutput(args: GetIotConnectorFhirDestinationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIotConnectorFhirDestinationResult> {
-    return pulumi.output(args).apply((a: any) => getIotConnectorFhirDestination(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:healthcareapis:getIotConnectorFhirDestination", {
+        "fhirDestinationName": args.fhirDestinationName,
+        "iotConnectorName": args.iotConnectorName,
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetIotConnectorFhirDestinationOutputArgs {

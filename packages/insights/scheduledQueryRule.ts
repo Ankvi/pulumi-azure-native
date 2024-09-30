@@ -5,7 +5,7 @@ import * as types from "./types";
  * The scheduled query rule resource.
  * Azure REST API version: 2023-03-15-preview. Prior API version in Azure Native 1.x: 2018-04-16.
  *
- * Other available API versions: 2018-04-16, 2020-05-01-preview, 2022-08-01-preview, 2023-12-01.
+ * Other available API versions: 2018-04-16, 2020-05-01-preview, 2022-08-01-preview, 2023-12-01, 2024-01-01-preview.
  */
 export class ScheduledQueryRule extends pulumi.CustomResource {
     /**
@@ -109,7 +109,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
     /**
      * Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
      */
-    public readonly ruleResolveConfiguration!: pulumi.Output<types.outputs.RuleResolveConfigurationResponse | undefined>;
+    public readonly resolveConfiguration!: pulumi.Output<types.outputs.RuleResolveConfigurationResponse | undefined>;
     /**
      * The list of resource id's that this scheduled query rule is scoped to.
      */
@@ -179,9 +179,9 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["muteActionsDuration"] = args ? args.muteActionsDuration : undefined;
             resourceInputs["overrideQueryTimeRange"] = args ? args.overrideQueryTimeRange : undefined;
+            resourceInputs["resolveConfiguration"] = args ? args.resolveConfiguration : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["ruleResolveConfiguration"] = args ? args.ruleResolveConfiguration : undefined;
             resourceInputs["scopes"] = args ? args.scopes : undefined;
             resourceInputs["severity"] = args ? args.severity : undefined;
             resourceInputs["skipQueryValidation"] = args ? args.skipQueryValidation : undefined;
@@ -214,7 +214,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
             resourceInputs["muteActionsDuration"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["overrideQueryTimeRange"] = undefined /*out*/;
-            resourceInputs["ruleResolveConfiguration"] = undefined /*out*/;
+            resourceInputs["resolveConfiguration"] = undefined /*out*/;
             resourceInputs["scopes"] = undefined /*out*/;
             resourceInputs["severity"] = undefined /*out*/;
             resourceInputs["skipQueryValidation"] = undefined /*out*/;
@@ -225,7 +225,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
             resourceInputs["windowSize"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:insights/v20180416:ScheduledQueryRule" }, { type: "azure-native:insights/v20200501preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20210201preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20210801:ScheduledQueryRule" }, { type: "azure-native:insights/v20220615:ScheduledQueryRule" }, { type: "azure-native:insights/v20220801preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20230315preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20231201:ScheduledQueryRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:insights/v20180416:ScheduledQueryRule" }, { type: "azure-native:insights/v20200501preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20210201preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20210801:ScheduledQueryRule" }, { type: "azure-native:insights/v20220615:ScheduledQueryRule" }, { type: "azure-native:insights/v20220801preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20230315preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20231201:ScheduledQueryRule" }, { type: "azure-native:insights/v20240101preview:ScheduledQueryRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ScheduledQueryRule.__pulumiType, name, resourceInputs, opts);
     }
@@ -288,6 +288,10 @@ export interface ScheduledQueryRuleArgs {
      */
     overrideQueryTimeRange?: pulumi.Input<string>;
     /**
+     * Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
+     */
+    resolveConfiguration?: pulumi.Input<types.inputs.RuleResolveConfigurationArgs>;
+    /**
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
@@ -295,10 +299,6 @@ export interface ScheduledQueryRuleArgs {
      * The name of the rule.
      */
     ruleName?: pulumi.Input<string>;
-    /**
-     * Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
-     */
-    ruleResolveConfiguration?: pulumi.Input<types.inputs.RuleResolveConfigurationArgs>;
     /**
      * The list of resource id's that this scheduled query rule is scoped to.
      */

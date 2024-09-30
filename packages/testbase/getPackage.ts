@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-11-01-preview.
  */
 export function getPackage(args: GetPackageArgs, opts?: pulumi.InvokeOptions): Promise<GetPackageResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:testbase:getPackage", {
         "packageName": args.packageName,
@@ -120,7 +119,12 @@ export interface GetPackageResult {
  * Other available API versions: 2023-11-01-preview.
  */
 export function getPackageOutput(args: GetPackageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPackageResult> {
-    return pulumi.output(args).apply((a: any) => getPackage(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:testbase:getPackage", {
+        "packageName": args.packageName,
+        "resourceGroupName": args.resourceGroupName,
+        "testBaseAccountName": args.testBaseAccountName,
+    }, opts);
 }
 
 export interface GetPackageOutputArgs {

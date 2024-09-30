@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
  */
 export function getVirtualMachineScaleSetVMRunCommand(args: GetVirtualMachineScaleSetVMRunCommandArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineScaleSetVMRunCommandResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:compute:getVirtualMachineScaleSetVMRunCommand", {
         "expand": args.expand,
@@ -130,7 +129,14 @@ export interface GetVirtualMachineScaleSetVMRunCommandResult {
  * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
  */
 export function getVirtualMachineScaleSetVMRunCommandOutput(args: GetVirtualMachineScaleSetVMRunCommandOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineScaleSetVMRunCommandResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualMachineScaleSetVMRunCommand(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:compute:getVirtualMachineScaleSetVMRunCommand", {
+        "expand": args.expand,
+        "instanceId": args.instanceId,
+        "resourceGroupName": args.resourceGroupName,
+        "runCommandName": args.runCommandName,
+        "vmScaleSetName": args.vmScaleSetName,
+    }, opts);
 }
 
 export interface GetVirtualMachineScaleSetVMRunCommandOutputArgs {

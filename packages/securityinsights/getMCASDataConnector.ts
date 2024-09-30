@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-02-01.
  */
 export function getMCASDataConnector(args: GetMCASDataConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetMCASDataConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:securityinsights:getMCASDataConnector", {
         "dataConnectorId": args.dataConnectorId,
@@ -43,7 +42,7 @@ export interface GetMCASDataConnectorResult {
      */
     readonly etag?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -73,7 +72,12 @@ export interface GetMCASDataConnectorResult {
  * Azure REST API version: 2023-02-01.
  */
 export function getMCASDataConnectorOutput(args: GetMCASDataConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMCASDataConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getMCASDataConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:securityinsights:getMCASDataConnector", {
+        "dataConnectorId": args.dataConnectorId,
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetMCASDataConnectorOutputArgs {

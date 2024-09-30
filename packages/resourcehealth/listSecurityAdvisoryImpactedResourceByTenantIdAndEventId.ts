@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-10-01-preview, 2023-07-01-preview, 2023-10-01-preview, 2024-02-01.
  */
 export function listSecurityAdvisoryImpactedResourceByTenantIdAndEventId(args: ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs, opts?: pulumi.InvokeOptions): Promise<ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:resourcehealth:listSecurityAdvisoryImpactedResourceByTenantIdAndEventId", {
         "eventTrackingId": args.eventTrackingId,
@@ -47,7 +46,11 @@ export interface ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult 
  * Other available API versions: 2022-10-01-preview, 2023-07-01-preview, 2023-10-01-preview, 2024-02-01.
  */
 export function listSecurityAdvisoryImpactedResourceByTenantIdAndEventIdOutput(args: ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult> {
-    return pulumi.output(args).apply((a: any) => listSecurityAdvisoryImpactedResourceByTenantIdAndEventId(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:resourcehealth:listSecurityAdvisoryImpactedResourceByTenantIdAndEventId", {
+        "eventTrackingId": args.eventTrackingId,
+        "filter": args.filter,
+    }, opts);
 }
 
 export interface ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdOutputArgs {

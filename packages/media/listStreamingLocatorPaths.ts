@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-01-01.
  */
 export function listStreamingLocatorPaths(args: ListStreamingLocatorPathsArgs, opts?: pulumi.InvokeOptions): Promise<ListStreamingLocatorPathsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:media:listStreamingLocatorPaths", {
         "accountName": args.accountName,
@@ -48,7 +47,12 @@ export interface ListStreamingLocatorPathsResult {
  * Azure REST API version: 2023-01-01.
  */
 export function listStreamingLocatorPathsOutput(args: ListStreamingLocatorPathsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListStreamingLocatorPathsResult> {
-    return pulumi.output(args).apply((a: any) => listStreamingLocatorPaths(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:media:listStreamingLocatorPaths", {
+        "accountName": args.accountName,
+        "resourceGroupName": args.resourceGroupName,
+        "streamingLocatorName": args.streamingLocatorName,
+    }, opts);
 }
 
 export interface ListStreamingLocatorPathsOutputArgs {

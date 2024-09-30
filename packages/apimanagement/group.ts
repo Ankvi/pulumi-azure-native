@@ -5,7 +5,7 @@ import * as types from "./types";
  * Contract details.
  * Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
  *
- * Other available API versions: 2016-07-07, 2016-10-10, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2016-07-07, 2016-10-10, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export class Group extends pulumi.CustomResource {
     /**
@@ -97,7 +97,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20160707:Group" }, { type: "azure-native:apimanagement/v20161010:Group" }, { type: "azure-native:apimanagement/v20170301:Group" }, { type: "azure-native:apimanagement/v20180101:Group" }, { type: "azure-native:apimanagement/v20180601preview:Group" }, { type: "azure-native:apimanagement/v20190101:Group" }, { type: "azure-native:apimanagement/v20191201:Group" }, { type: "azure-native:apimanagement/v20191201preview:Group" }, { type: "azure-native:apimanagement/v20200601preview:Group" }, { type: "azure-native:apimanagement/v20201201:Group" }, { type: "azure-native:apimanagement/v20210101preview:Group" }, { type: "azure-native:apimanagement/v20210401preview:Group" }, { type: "azure-native:apimanagement/v20210801:Group" }, { type: "azure-native:apimanagement/v20211201preview:Group" }, { type: "azure-native:apimanagement/v20220401preview:Group" }, { type: "azure-native:apimanagement/v20220801:Group" }, { type: "azure-native:apimanagement/v20220901preview:Group" }, { type: "azure-native:apimanagement/v20230301preview:Group" }, { type: "azure-native:apimanagement/v20230501preview:Group" }, { type: "azure-native:apimanagement/v20230901preview:Group" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20160707:Group" }, { type: "azure-native:apimanagement/v20161010:Group" }, { type: "azure-native:apimanagement/v20170301:Group" }, { type: "azure-native:apimanagement/v20180101:Group" }, { type: "azure-native:apimanagement/v20180601preview:Group" }, { type: "azure-native:apimanagement/v20190101:Group" }, { type: "azure-native:apimanagement/v20191201:Group" }, { type: "azure-native:apimanagement/v20191201preview:Group" }, { type: "azure-native:apimanagement/v20200601preview:Group" }, { type: "azure-native:apimanagement/v20201201:Group" }, { type: "azure-native:apimanagement/v20210101preview:Group" }, { type: "azure-native:apimanagement/v20210401preview:Group" }, { type: "azure-native:apimanagement/v20210801:Group" }, { type: "azure-native:apimanagement/v20211201preview:Group" }, { type: "azure-native:apimanagement/v20220401preview:Group" }, { type: "azure-native:apimanagement/v20220801:Group" }, { type: "azure-native:apimanagement/v20220901preview:Group" }, { type: "azure-native:apimanagement/v20230301preview:Group" }, { type: "azure-native:apimanagement/v20230501preview:Group" }, { type: "azure-native:apimanagement/v20230901preview:Group" }, { type: "azure-native:apimanagement/v20240501:Group" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Group.__pulumiType, name, resourceInputs, opts);
     }

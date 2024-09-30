@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-12-15-preview, 2024-06-01-preview.
  */
 export function getTopicSpace(args: GetTopicSpaceArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicSpaceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:eventgrid:getTopicSpace", {
         "namespaceName": args.namespaceName,
@@ -76,7 +75,12 @@ export interface GetTopicSpaceResult {
  * Other available API versions: 2023-12-15-preview, 2024-06-01-preview.
  */
 export function getTopicSpaceOutput(args: GetTopicSpaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicSpaceResult> {
-    return pulumi.output(args).apply((a: any) => getTopicSpace(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:eventgrid:getTopicSpace", {
+        "namespaceName": args.namespaceName,
+        "resourceGroupName": args.resourceGroupName,
+        "topicSpaceName": args.topicSpaceName,
+    }, opts);
 }
 
 export interface GetTopicSpaceOutputArgs {

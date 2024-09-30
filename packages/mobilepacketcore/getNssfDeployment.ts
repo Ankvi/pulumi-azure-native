@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-10-15-preview.
  */
 export function getNssfDeployment(args: GetNssfDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetNssfDeploymentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:mobilepacketcore:getNssfDeployment", {
         "nssfDeploymentName": args.nssfDeploymentName,
@@ -83,7 +82,11 @@ export interface GetNssfDeploymentResult {
  * Azure REST API version: 2023-10-15-preview.
  */
 export function getNssfDeploymentOutput(args: GetNssfDeploymentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNssfDeploymentResult> {
-    return pulumi.output(args).apply((a: any) => getNssfDeployment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:mobilepacketcore:getNssfDeployment", {
+        "nssfDeploymentName": args.nssfDeploymentName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNssfDeploymentOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function getDscNodeConfiguration(args: GetDscNodeConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetDscNodeConfigurationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:automation:getDscNodeConfiguration", {
         "automationAccountName": args.automationAccountName,
@@ -80,7 +79,12 @@ export interface GetDscNodeConfigurationResult {
  * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function getDscNodeConfigurationOutput(args: GetDscNodeConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDscNodeConfigurationResult> {
-    return pulumi.output(args).apply((a: any) => getDscNodeConfiguration(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:automation:getDscNodeConfiguration", {
+        "automationAccountName": args.automationAccountName,
+        "nodeConfigurationName": args.nodeConfigurationName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetDscNodeConfigurationOutputArgs {

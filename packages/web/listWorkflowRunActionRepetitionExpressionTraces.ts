@@ -5,10 +5,9 @@ import * as types from "./types";
  * Lists a workflow run expression trace.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01, 2023-12-01.
+ * Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function listWorkflowRunActionRepetitionExpressionTraces(args: ListWorkflowRunActionRepetitionExpressionTracesArgs, opts?: pulumi.InvokeOptions): Promise<ListWorkflowRunActionRepetitionExpressionTracesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:listWorkflowRunActionRepetitionExpressionTraces", {
         "actionName": args.actionName,
@@ -62,10 +61,18 @@ export interface ListWorkflowRunActionRepetitionExpressionTracesResult {
  * Lists a workflow run expression trace.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01, 2023-12-01.
+ * Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function listWorkflowRunActionRepetitionExpressionTracesOutput(args: ListWorkflowRunActionRepetitionExpressionTracesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWorkflowRunActionRepetitionExpressionTracesResult> {
-    return pulumi.output(args).apply((a: any) => listWorkflowRunActionRepetitionExpressionTraces(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:listWorkflowRunActionRepetitionExpressionTraces", {
+        "actionName": args.actionName,
+        "name": args.name,
+        "repetitionName": args.repetitionName,
+        "resourceGroupName": args.resourceGroupName,
+        "runName": args.runName,
+        "workflowName": args.workflowName,
+    }, opts);
 }
 
 export interface ListWorkflowRunActionRepetitionExpressionTracesOutputArgs {

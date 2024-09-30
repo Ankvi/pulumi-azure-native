@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-06-01-preview.
  */
 export function getGroupQuota(args: GetGroupQuotaArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupQuotaResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:quota:getGroupQuota", {
         "groupQuotaName": args.groupQuotaName,
@@ -55,7 +54,11 @@ export interface GetGroupQuotaResult {
  * Azure REST API version: 2023-06-01-preview.
  */
 export function getGroupQuotaOutput(args: GetGroupQuotaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupQuotaResult> {
-    return pulumi.output(args).apply((a: any) => getGroupQuota(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:quota:getGroupQuota", {
+        "groupQuotaName": args.groupQuotaName,
+        "managementGroupId": args.managementGroupId,
+    }, opts);
 }
 
 export interface GetGroupQuotaOutputArgs {

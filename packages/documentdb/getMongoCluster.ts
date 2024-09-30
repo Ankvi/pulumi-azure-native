@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview, 2024-03-01-preview, 2024-06-01-preview, 2024-07-01.
  */
 export function getMongoCluster(args: GetMongoClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoClusterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:documentdb:getMongoCluster", {
         "mongoClusterName": args.mongoClusterName,
@@ -91,7 +90,11 @@ export interface GetMongoClusterResult {
  * Other available API versions: 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview, 2024-03-01-preview, 2024-06-01-preview, 2024-07-01.
  */
 export function getMongoClusterOutput(args: GetMongoClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMongoClusterResult> {
-    return pulumi.output(args).apply((a: any) => getMongoCluster(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:documentdb:getMongoCluster", {
+        "mongoClusterName": args.mongoClusterName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetMongoClusterOutputArgs {

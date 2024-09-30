@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get authorizationRule for a WCF relay by name.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2017-04-01.
+ * Other available API versions: 2017-04-01, 2024-01-01.
  */
 export function getWCFRelayAuthorizationRule(args: GetWCFRelayAuthorizationRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetWCFRelayAuthorizationRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:relay:getWCFRelayAuthorizationRule", {
         "authorizationRuleName": args.authorizationRuleName,
@@ -70,10 +69,16 @@ export interface GetWCFRelayAuthorizationRuleResult {
  * Get authorizationRule for a WCF relay by name.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2017-04-01.
+ * Other available API versions: 2017-04-01, 2024-01-01.
  */
 export function getWCFRelayAuthorizationRuleOutput(args: GetWCFRelayAuthorizationRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWCFRelayAuthorizationRuleResult> {
-    return pulumi.output(args).apply((a: any) => getWCFRelayAuthorizationRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:relay:getWCFRelayAuthorizationRule", {
+        "authorizationRuleName": args.authorizationRuleName,
+        "namespaceName": args.namespaceName,
+        "relayName": args.relayName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetWCFRelayAuthorizationRuleOutputArgs {

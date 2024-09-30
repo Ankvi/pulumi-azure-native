@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2021-01-01.
  */
 export function listBitLockerKey(args: ListBitLockerKeyArgs, opts?: pulumi.InvokeOptions): Promise<ListBitLockerKeyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:importexport:listBitLockerKey", {
         "jobName": args.jobName,
@@ -39,7 +38,11 @@ export interface ListBitLockerKeyResult {
  * Azure REST API version: 2021-01-01.
  */
 export function listBitLockerKeyOutput(args: ListBitLockerKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListBitLockerKeyResult> {
-    return pulumi.output(args).apply((a: any) => listBitLockerKey(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:importexport:listBitLockerKey", {
+        "jobName": args.jobName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListBitLockerKeyOutputArgs {

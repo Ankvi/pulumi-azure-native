@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Logger details.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export class WorkspaceLogger extends pulumi.CustomResource {
     /**
@@ -106,7 +108,7 @@ export class WorkspaceLogger extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:WorkspaceLogger" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:WorkspaceLogger" }, { type: "azure-native:apimanagement/v20240501:WorkspaceLogger" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkspaceLogger.__pulumiType, name, resourceInputs, opts);
     }

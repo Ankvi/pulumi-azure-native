@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Primary and secondary connection strings to the hybrid connection.
  * Azure REST API version: 2021-11-01.
+ *
+ * Other available API versions: 2024-01-01.
  */
 export function listHybridConnectionKeys(args: ListHybridConnectionKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListHybridConnectionKeysResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:relay:listHybridConnectionKeys", {
         "authorizationRuleName": args.authorizationRuleName,
@@ -62,9 +63,17 @@ export interface ListHybridConnectionKeysResult {
 /**
  * Primary and secondary connection strings to the hybrid connection.
  * Azure REST API version: 2021-11-01.
+ *
+ * Other available API versions: 2024-01-01.
  */
 export function listHybridConnectionKeysOutput(args: ListHybridConnectionKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListHybridConnectionKeysResult> {
-    return pulumi.output(args).apply((a: any) => listHybridConnectionKeys(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:relay:listHybridConnectionKeys", {
+        "authorizationRuleName": args.authorizationRuleName,
+        "hybridConnectionName": args.hybridConnectionName,
+        "namespaceName": args.namespaceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListHybridConnectionKeysOutputArgs {

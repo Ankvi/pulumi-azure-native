@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2017-12-30-preview, 2018-10-01, 2019-05-01, 2019-06-01, 2023-11-01, 2024-08-01.
  */
 export function getBudget(args: GetBudgetArgs, opts?: pulumi.InvokeOptions): Promise<GetBudgetResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:consumption:getBudget", {
         "budgetName": args.budgetName,
@@ -87,7 +86,11 @@ export interface GetBudgetResult {
  * Other available API versions: 2017-12-30-preview, 2018-10-01, 2019-05-01, 2019-06-01, 2023-11-01, 2024-08-01.
  */
 export function getBudgetOutput(args: GetBudgetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBudgetResult> {
-    return pulumi.output(args).apply((a: any) => getBudget(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:consumption:getBudget", {
+        "budgetName": args.budgetName,
+        "scope": args.scope,
+    }, opts);
 }
 
 export interface GetBudgetOutputArgs {

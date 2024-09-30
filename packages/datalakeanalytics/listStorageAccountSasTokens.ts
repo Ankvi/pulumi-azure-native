@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2019-11-01-preview.
  */
 export function listStorageAccountSasTokens(args: ListStorageAccountSasTokensArgs, opts?: pulumi.InvokeOptions): Promise<ListStorageAccountSasTokensResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:datalakeanalytics:listStorageAccountSasTokens", {
         "accountName": args.accountName,
@@ -53,7 +52,13 @@ export interface ListStorageAccountSasTokensResult {
  * Azure REST API version: 2019-11-01-preview.
  */
 export function listStorageAccountSasTokensOutput(args: ListStorageAccountSasTokensOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListStorageAccountSasTokensResult> {
-    return pulumi.output(args).apply((a: any) => listStorageAccountSasTokens(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:datalakeanalytics:listStorageAccountSasTokens", {
+        "accountName": args.accountName,
+        "containerName": args.containerName,
+        "resourceGroupName": args.resourceGroupName,
+        "storageAccountName": args.storageAccountName,
+    }, opts);
 }
 
 export interface ListStorageAccountSasTokensOutputArgs {

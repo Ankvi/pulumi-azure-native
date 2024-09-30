@@ -4,9 +4,10 @@ import * as types from "./types";
 /**
  * Gets properties of a forwarding rule in a DNS forwarding ruleset.
  * Azure REST API version: 2022-07-01.
+ *
+ * Other available API versions: 2023-07-01-preview.
  */
 export function getForwardingRule(args: GetForwardingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardingRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getForwardingRule", {
         "dnsForwardingRulesetName": args.dnsForwardingRulesetName,
@@ -78,9 +79,16 @@ export interface GetForwardingRuleResult {
 /**
  * Gets properties of a forwarding rule in a DNS forwarding ruleset.
  * Azure REST API version: 2022-07-01.
+ *
+ * Other available API versions: 2023-07-01-preview.
  */
 export function getForwardingRuleOutput(args: GetForwardingRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardingRuleResult> {
-    return pulumi.output(args).apply((a: any) => getForwardingRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getForwardingRule", {
+        "dnsForwardingRulesetName": args.dnsForwardingRulesetName,
+        "forwardingRuleName": args.forwardingRuleName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetForwardingRuleOutputArgs {

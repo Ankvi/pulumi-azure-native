@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-12-10-preview, 2024-06-30-preview.
  */
 export function getCloudHsmCluster(args: GetCloudHsmClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudHsmClusterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:hardwaresecuritymodules:getCloudHsmCluster", {
         "cloudHsmClusterName": args.cloudHsmClusterName,
@@ -91,7 +90,11 @@ export interface GetCloudHsmClusterResult {
  * Other available API versions: 2023-12-10-preview, 2024-06-30-preview.
  */
 export function getCloudHsmClusterOutput(args: GetCloudHsmClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudHsmClusterResult> {
-    return pulumi.output(args).apply((a: any) => getCloudHsmCluster(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:hardwaresecuritymodules:getCloudHsmCluster", {
+        "cloudHsmClusterName": args.cloudHsmClusterName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetCloudHsmClusterOutputArgs {

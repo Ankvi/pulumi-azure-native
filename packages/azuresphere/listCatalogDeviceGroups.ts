@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-04-01.
  */
 export function listCatalogDeviceGroups(args: ListCatalogDeviceGroupsArgs, opts?: pulumi.InvokeOptions): Promise<ListCatalogDeviceGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:azuresphere:listCatalogDeviceGroups", {
         "catalogName": args.catalogName,
@@ -72,7 +71,16 @@ export interface ListCatalogDeviceGroupsResult {
  * Other available API versions: 2024-04-01.
  */
 export function listCatalogDeviceGroupsOutput(args: ListCatalogDeviceGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListCatalogDeviceGroupsResult> {
-    return pulumi.output(args).apply((a: any) => listCatalogDeviceGroups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:azuresphere:listCatalogDeviceGroups", {
+        "catalogName": args.catalogName,
+        "deviceGroupName": args.deviceGroupName,
+        "filter": args.filter,
+        "maxpagesize": args.maxpagesize,
+        "resourceGroupName": args.resourceGroupName,
+        "skip": args.skip,
+        "top": args.top,
+    }, opts);
 }
 
 export interface ListCatalogDeviceGroupsOutputArgs {

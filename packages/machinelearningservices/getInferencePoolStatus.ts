@@ -6,7 +6,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2024-01-01-preview, 2024-04-01-preview.
  */
 export function getInferencePoolStatus(args: GetInferencePoolStatusArgs, opts?: pulumi.InvokeOptions): Promise<GetInferencePoolStatusResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:machinelearningservices:getInferencePoolStatus", {
         "inferencePoolName": args.inferencePoolName,
@@ -54,7 +53,12 @@ export interface GetInferencePoolStatusResult {
  * Other available API versions: 2024-01-01-preview, 2024-04-01-preview.
  */
 export function getInferencePoolStatusOutput(args: GetInferencePoolStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInferencePoolStatusResult> {
-    return pulumi.output(args).apply((a: any) => getInferencePoolStatus(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:machinelearningservices:getInferencePoolStatus", {
+        "inferencePoolName": args.inferencePoolName,
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetInferencePoolStatusOutputArgs {

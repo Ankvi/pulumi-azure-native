@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-10-04-preview.
  */
 export function getMq(args: GetMqArgs, opts?: pulumi.InvokeOptions): Promise<GetMqResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:iotoperationsmq:getMq", {
         "mqName": args.mqName,
@@ -67,7 +66,11 @@ export interface GetMqResult {
  * Azure REST API version: 2023-10-04-preview.
  */
 export function getMqOutput(args: GetMqOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMqResult> {
-    return pulumi.output(args).apply((a: any) => getMq(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:iotoperationsmq:getMq", {
+        "mqName": args.mqName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetMqOutputArgs {

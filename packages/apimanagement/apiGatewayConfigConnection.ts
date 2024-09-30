@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * A single API Management gateway resource in List or Get response.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export class ApiGatewayConfigConnection extends pulumi.CustomResource {
     /**
@@ -97,7 +99,7 @@ export class ApiGatewayConfigConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:ApiGatewayConfigConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:ApiGatewayConfigConnection" }, { type: "azure-native:apimanagement/v20240501:ApiGatewayConfigConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ApiGatewayConfigConnection.__pulumiType, name, resourceInputs, opts);
     }

@@ -5,10 +5,9 @@ import * as types from "./types";
  * Retrieves a network manager security admin configuration.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2021-05-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview.
+ * Other available API versions: 2021-05-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview, 2024-03-01.
  */
 export function getSecurityAdminConfiguration(args: GetSecurityAdminConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityAdminConfigurationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getSecurityAdminConfiguration", {
         "configurationName": args.configurationName,
@@ -77,10 +76,15 @@ export interface GetSecurityAdminConfigurationResult {
  * Retrieves a network manager security admin configuration.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2021-05-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview.
+ * Other available API versions: 2021-05-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview, 2024-03-01.
  */
 export function getSecurityAdminConfigurationOutput(args: GetSecurityAdminConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityAdminConfigurationResult> {
-    return pulumi.output(args).apply((a: any) => getSecurityAdminConfiguration(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getSecurityAdminConfiguration", {
+        "configurationName": args.configurationName,
+        "networkManagerName": args.networkManagerName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetSecurityAdminConfigurationOutputArgs {

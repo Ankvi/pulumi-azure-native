@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-11-01.
  */
 export function getFabricCapacity(args: GetFabricCapacityArgs, opts?: pulumi.InvokeOptions): Promise<GetFabricCapacityResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:fabric:getFabricCapacity", {
         "capacityName": args.capacityName,
@@ -75,7 +74,11 @@ export interface GetFabricCapacityResult {
  * Azure REST API version: 2023-11-01.
  */
 export function getFabricCapacityOutput(args: GetFabricCapacityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFabricCapacityResult> {
-    return pulumi.output(args).apply((a: any) => getFabricCapacity(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:fabric:getFabricCapacity", {
+        "capacityName": args.capacityName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetFabricCapacityOutputArgs {

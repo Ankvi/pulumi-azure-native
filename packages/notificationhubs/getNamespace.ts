@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2014-09-01, 2016-03-01, 2017-04-01, 2023-09-01, 2023-10-01-preview.
  */
 export function getNamespace(args: GetNamespaceArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:notificationhubs:getNamespace", {
         "namespaceName": args.namespaceName,
@@ -71,7 +70,11 @@ export interface GetNamespaceResult {
  * Other available API versions: 2014-09-01, 2016-03-01, 2017-04-01, 2023-09-01, 2023-10-01-preview.
  */
 export function getNamespaceOutput(args: GetNamespaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespaceResult> {
-    return pulumi.output(args).apply((a: any) => getNamespace(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:notificationhubs:getNamespace", {
+        "namespaceName": args.namespaceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNamespaceOutputArgs {

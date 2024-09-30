@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2021-06-01.
  */
 export function getFrontDoor(args: GetFrontDoorArgs, opts?: pulumi.InvokeOptions): Promise<GetFrontDoorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getFrontDoor", {
         "frontDoorName": args.frontDoorName,
@@ -111,7 +110,11 @@ export interface GetFrontDoorResult {
  * Azure REST API version: 2021-06-01.
  */
 export function getFrontDoorOutput(args: GetFrontDoorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFrontDoorResult> {
-    return pulumi.output(args).apply((a: any) => getFrontDoor(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getFrontDoor", {
+        "frontDoorName": args.frontDoorName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetFrontDoorOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-01-26-preview, 2023-06-28-preview, 2024-07-09-preview.
  */
 export function getLedger(args: GetLedgerArgs, opts?: pulumi.InvokeOptions): Promise<GetLedgerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:confidentialledger:getLedger", {
         "ledgerName": args.ledgerName,
@@ -67,7 +66,11 @@ export interface GetLedgerResult {
  * Other available API versions: 2023-01-26-preview, 2023-06-28-preview, 2024-07-09-preview.
  */
 export function getLedgerOutput(args: GetLedgerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLedgerResult> {
-    return pulumi.output(args).apply((a: any) => getLedger(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:confidentialledger:getLedger", {
+        "ledgerName": args.ledgerName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetLedgerOutputArgs {

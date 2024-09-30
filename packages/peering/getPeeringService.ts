@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2022-10-01.
  */
 export function getPeeringService(args: GetPeeringServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringServiceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:peering:getPeeringService", {
         "peeringServiceName": args.peeringServiceName,
@@ -83,7 +82,11 @@ export interface GetPeeringServiceResult {
  * Azure REST API version: 2022-10-01.
  */
 export function getPeeringServiceOutput(args: GetPeeringServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringServiceResult> {
-    return pulumi.output(args).apply((a: any) => getPeeringService(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:peering:getPeeringService", {
+        "peeringServiceName": args.peeringServiceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetPeeringServiceOutputArgs {

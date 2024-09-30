@@ -4,9 +4,10 @@ import * as types from "./types";
 /**
  * Gets the details of the Diagnostic for an API specified by its identifier.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getWorkspaceApiDiagnostic(args: GetWorkspaceApiDiagnosticArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceApiDiagnosticResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apimanagement:getWorkspaceApiDiagnostic", {
         "apiId": args.apiId,
@@ -100,9 +101,18 @@ export interface GetWorkspaceApiDiagnosticResult {
 /**
  * Gets the details of the Diagnostic for an API specified by its identifier.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getWorkspaceApiDiagnosticOutput(args: GetWorkspaceApiDiagnosticOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceApiDiagnosticResult> {
-    return pulumi.output(args).apply((a: any) => getWorkspaceApiDiagnostic(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:getWorkspaceApiDiagnostic", {
+        "apiId": args.apiId,
+        "diagnosticId": args.diagnosticId,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+        "workspaceId": args.workspaceId,
+    }, opts);
 }
 
 export interface GetWorkspaceApiDiagnosticOutputArgs {

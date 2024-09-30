@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01.
  */
 export function getEncryptionScope(args: GetEncryptionScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetEncryptionScopeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:storage:getEncryptionScope", {
         "accountName": args.accountName,
@@ -80,7 +79,12 @@ export interface GetEncryptionScopeResult {
  * Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01.
  */
 export function getEncryptionScopeOutput(args: GetEncryptionScopeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEncryptionScopeResult> {
-    return pulumi.output(args).apply((a: any) => getEncryptionScope(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:storage:getEncryptionScope", {
+        "accountName": args.accountName,
+        "encryptionScopeName": args.encryptionScopeName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetEncryptionScopeOutputArgs {

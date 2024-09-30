@@ -65,6 +65,16 @@ export interface AssessmentStatusArgs {
 }
 
 /**
+ * Describe the properties of a security assessment object reference (by key)
+ */
+export interface AssignedAssessmentItemArgs {
+    /**
+     * Unique key to a security assessment object
+     */
+    assessmentKey?: pulumi.Input<string>;
+}
+
+/**
  * describe the properties of a security assessment object reference (by key)
  */
 export interface AssignedComponentItemArgs {
@@ -75,11 +85,11 @@ export interface AssignedComponentItemArgs {
 }
 
 /**
- * describe the properties of a of a security standard object reference
+ * Describe the properties of a of a standard assignments object reference
  */
 export interface AssignedStandardItemArgs {
     /**
-     * full resourceId of the Microsoft.Security/standard object
+     * Full resourceId of the Microsoft.Security/standard object
      */
     id?: pulumi.Input<string>;
 }
@@ -92,6 +102,20 @@ export interface AssignmentPropertiesAdditionalDataArgs {
      * Exemption category of this assignment
      */
     exemptionCategory?: pulumi.Input<string>;
+}
+
+/**
+ * Describe the properties of a assignment attestation
+ */
+export interface AttestationEvidenceArgs {
+    /**
+     * The description of the evidence
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The source url of the evidence
+     */
+    sourceUrl?: pulumi.Input<string>;
 }
 
 /**
@@ -1746,6 +1770,16 @@ export interface OnUploadPropertiesArgs {
 }
 
 /**
+ * Describes properties of an assessment as related to the standard
+ */
+export interface PartialAssessmentPropertiesArgs {
+    /**
+     * The assessment key
+     */
+    assessmentKey?: pulumi.Input<string>;
+}
+
+/**
  * For a non-Azure machine that is not connected directly to the internet, specify a proxy server that the non-Azure machine can use.
  */
 export interface ProxyServerPropertiesArgs {
@@ -1940,6 +1974,38 @@ export interface ServicePrincipalPropertiesArgs {
 }
 
 /**
+ * Additional data about assignment that has Attest effect
+ */
+export interface StandardAssignmentPropertiesAttestationDataArgs {
+    /**
+     * Component item with key as applied to this standard assignment over the given scope
+     */
+    assignedAssessment?: pulumi.Input<AssignedAssessmentItemArgs>;
+    /**
+     * Attest category of this assignment
+     */
+    complianceState?: pulumi.Input<string | enums.AttestationComplianceState>;
+    /**
+     * Array of links to attestation evidence
+     */
+    evidence?: pulumi.Input<pulumi.Input<AttestationEvidenceArgs>[]>;
+}
+
+/**
+ * Additional data about assignment that has Exempt effect
+ */
+export interface StandardAssignmentPropertiesExemptionDataArgs {
+    /**
+     * Component item with key as applied to this standard assignment over the given scope
+     */
+    assignedAssessment?: pulumi.Input<AssignedAssessmentItemArgs>;
+    /**
+     * Exemption category of this assignment
+     */
+    exemptionCategory?: pulumi.Input<string | enums.ExemptionCategory>;
+}
+
+/**
  * Describes properties of an component as related to the standard
  */
 export interface StandardComponentPropertiesArgs {
@@ -2019,6 +2085,7 @@ export interface UserDefinedResourcesPropertiesArgs {
      */
     querySubscriptions: pulumi.Input<pulumi.Input<string>[]>;
 }
+
 
 
 

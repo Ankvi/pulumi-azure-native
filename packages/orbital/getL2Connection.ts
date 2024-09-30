@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-03-01.
  */
 export function getL2Connection(args: GetL2ConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetL2ConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:orbital:getL2Connection", {
         "l2ConnectionName": args.l2ConnectionName,
@@ -79,7 +78,11 @@ export interface GetL2ConnectionResult {
  * Other available API versions: 2024-03-01.
  */
 export function getL2ConnectionOutput(args: GetL2ConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetL2ConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getL2Connection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:orbital:getL2Connection", {
+        "l2ConnectionName": args.l2ConnectionName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetL2ConnectionOutputArgs {

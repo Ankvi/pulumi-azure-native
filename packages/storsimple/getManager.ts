@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2016-10-01.
  */
 export function getManager(args: GetManagerArgs, opts?: pulumi.InvokeOptions): Promise<GetManagerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:storsimple:getManager", {
         "managerName": args.managerName,
@@ -75,7 +74,11 @@ export interface GetManagerResult {
  * Other available API versions: 2016-10-01.
  */
 export function getManagerOutput(args: GetManagerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagerResult> {
-    return pulumi.output(args).apply((a: any) => getManager(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:storsimple:getManager", {
+        "managerName": args.managerName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetManagerOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2015-05-21-preview, 2016-05-15.
  */
 export function listLabVhds(args: ListLabVhdsArgs, opts?: pulumi.InvokeOptions): Promise<ListLabVhdsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:devtestlab:listLabVhds", {
         "name": args.name,
@@ -47,7 +46,11 @@ export interface ListLabVhdsResult {
  * Other available API versions: 2015-05-21-preview, 2016-05-15.
  */
 export function listLabVhdsOutput(args: ListLabVhdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListLabVhdsResult> {
-    return pulumi.output(args).apply((a: any) => listLabVhds(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:devtestlab:listLabVhds", {
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListLabVhdsOutputArgs {

@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2023-11-01-preview.
  */
 export function getTestBaseAccountFileUploadUrl(args: GetTestBaseAccountFileUploadUrlArgs, opts?: pulumi.InvokeOptions): Promise<GetTestBaseAccountFileUploadUrlResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:testbase:getTestBaseAccountFileUploadUrl", {
         "blobName": args.blobName,
@@ -51,7 +50,12 @@ export interface GetTestBaseAccountFileUploadUrlResult {
  * Other available API versions: 2023-11-01-preview.
  */
 export function getTestBaseAccountFileUploadUrlOutput(args: GetTestBaseAccountFileUploadUrlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTestBaseAccountFileUploadUrlResult> {
-    return pulumi.output(args).apply((a: any) => getTestBaseAccountFileUploadUrl(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:testbase:getTestBaseAccountFileUploadUrl", {
+        "blobName": args.blobName,
+        "resourceGroupName": args.resourceGroupName,
+        "testBaseAccountName": args.testBaseAccountName,
+    }, opts);
 }
 
 export interface GetTestBaseAccountFileUploadUrlOutputArgs {

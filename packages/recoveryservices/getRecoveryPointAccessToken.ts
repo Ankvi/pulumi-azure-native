@@ -7,7 +7,6 @@ import * as types from "./types";
  * Other available API versions: 2018-12-20, 2021-11-15.
  */
 export function getRecoveryPointAccessToken(args: GetRecoveryPointAccessTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetRecoveryPointAccessTokenResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:recoveryservices:getRecoveryPointAccessToken", {
         "containerName": args.containerName,
@@ -102,7 +101,19 @@ export interface GetRecoveryPointAccessTokenResult {
  * Other available API versions: 2018-12-20, 2021-11-15.
  */
 export function getRecoveryPointAccessTokenOutput(args: GetRecoveryPointAccessTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecoveryPointAccessTokenResult> {
-    return pulumi.output(args).apply((a: any) => getRecoveryPointAccessToken(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:recoveryservices:getRecoveryPointAccessToken", {
+        "containerName": args.containerName,
+        "eTag": args.eTag,
+        "fabricName": args.fabricName,
+        "location": args.location,
+        "properties": args.properties,
+        "protectedItemName": args.protectedItemName,
+        "recoveryPointId": args.recoveryPointId,
+        "resourceGroupName": args.resourceGroupName,
+        "tags": args.tags,
+        "vaultName": args.vaultName,
+    }, opts);
 }
 
 export interface GetRecoveryPointAccessTokenOutputArgs {

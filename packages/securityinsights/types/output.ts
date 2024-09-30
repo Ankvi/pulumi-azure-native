@@ -50,6 +50,14 @@ export interface ActivityTimelineItemResponse {
 }
 
 /**
+ * Describes the configuration of a system inside the agent.
+ */
+export interface AgentSystemResponse {
+    systemDisplayName?: string;
+    systemResourceName?: string;
+}
+
+/**
  * Settings for how to dynamically override alert static details
  */
 export interface AlertDetailsOverrideResponse {
@@ -1126,6 +1134,55 @@ export interface InstructionStepResponse {
 }
 
 /**
+ * Represents lock user action.
+ */
+export interface LockUserActionResponse {
+    /**
+     * The reason of the failure of the action. Empty if the action is successful.
+     */
+    failureReason?: string;
+    /**
+     * The kind of the action
+     * Expected value is 'LockUser'.
+     */
+    kind: "LockUser";
+    /**
+     * The user to lock
+     */
+    user?: string;
+}
+
+/**
+ * Describes a log.
+ */
+export interface LogResponse {
+    /**
+     * The bulk size for the log.
+     */
+    bulkSize?: number;
+    /**
+     * The filters for the log.
+     */
+    filters?: string[];
+    /**
+     * Types of ingestion.
+     */
+    ingestionType?: string;
+    /**
+     * The schedule interval in seconds.
+     */
+    scheduleInterval?: number;
+    /**
+     * Types of log status.
+     */
+    status?: string;
+    /**
+     * Types of logs and tables.
+     */
+    type: string;
+}
+
+/**
  * The available data types for MCAS (Microsoft Cloud App Security) data connector.
  */
 export interface MCASDataConnectorDataTypesResponse {
@@ -1422,6 +1479,61 @@ export interface ResourceProviderRequiredPermissionsResponse {
 }
 
 /**
+ * Describes the Rfc connector.
+ */
+export interface RfcConnectorResponse {
+    /**
+     * FQDN, hostname, or IP address of the ABAP server.
+     */
+    abapServerHost?: string;
+    /**
+     * The authentication type to SAP.
+     */
+    authenticationType?: string;
+    /**
+     * Client number of the ABAP server.
+     * Example - 001
+     */
+    client: string;
+    /**
+     * The SAP code page used for character encoding.
+     * Example - 1100
+     */
+    codePage?: string;
+    /**
+     * Logon group of the message server.
+     */
+    group?: string;
+    /**
+     * FQDN, hostname, or IP address of the Message server.
+     */
+    messageServerHost?: string;
+    /**
+     * Port number, or service name (from /etc/services) of the message server.
+     */
+    messageServerService?: string;
+    /**
+     * SNC QOP.
+     * Options are 1, 2, 3, 8, 9.
+     */
+    sncQop?: string;
+    /**
+     * System ID of the ABAP server.
+     * Example - A4H
+     */
+    systemId: string;
+    /**
+     * System number of the ABAP server.
+     */
+    systemNumber: string;
+    /**
+     * Represents the types of SAP systems.
+     * Expected value is 'Rfc'.
+     */
+    type: "Rfc";
+}
+
+/**
  * The sample queries for the connector.
  */
 export interface SampleQueryResponse {
@@ -1433,6 +1545,115 @@ export interface SampleQueryResponse {
      * Gets or sets the KQL sample query.
      */
     query: string;
+}
+
+/**
+ * Describes the configuration of a SAP Docker agent.
+ */
+export interface SapAgentConfigurationResponse {
+    /**
+     * The name of the docker agent.
+     * only letters with numbers, underscores and hyphens are allowed
+     * example: "my-agent"
+     */
+    agentContainerName?: string;
+    /**
+     * The key mode of the agent.
+     * ManagedIdentity|ApplicationIdentity are the options
+     */
+    keyVaultAuthenticationMode?: string;
+    /**
+     * The key vault resource id to access the key vault.
+     * example: "/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.KeyVault/vaults/myVault"
+     */
+    keyVaultResourceId?: string;
+    /**
+     * The SDK path (a file not a folder) on the agent machine.
+     * example: "/path/to/nwrfc750P_8-70002755.zip"
+     */
+    sdkPath?: string;
+    /**
+     * The secret source of the agent.
+     * AzureKeyVault is the option
+     */
+    secretSource?: string;
+    /**
+     * The SNC path (a folder not a file) on the agent machine.
+     * example: "/path/to/snc"
+     */
+    sncPath?: string;
+    /**
+     * Type of the agent
+     * Expected value is 'SAP'.
+     */
+    type: "SAP";
+}
+
+/**
+ * Describes the SapControl connector configuration.
+ */
+export interface SapControlConnectorResponse {
+    /**
+     * Represents the types of HTTPS configuration to connect to the SapControl service.
+     */
+    httpsConfiguration?: string;
+    /**
+     * The instance number. Only 2 digits are allowed.
+     */
+    instance: string;
+    /**
+     * The port of the SOAP connection to SAP Control.
+     */
+    port?: string;
+    /**
+     * The server name.
+     * FQDN or IP address.
+     */
+    server: string;
+    /**
+     * The timezone.
+     * example: "GMT+0" or "GMT-8"
+     * default: "GMT+0"
+     */
+    timezone?: string;
+    /**
+     * Represents the types of SAP systems.
+     * Expected value is 'SapControl'.
+     */
+    type: "SapControl";
+}
+/**
+ * sapControlConnectorResponseProvideDefaults sets the appropriate defaults for SapControlConnectorResponse
+ */
+export function sapControlConnectorResponseProvideDefaults(val: SapControlConnectorResponse): SapControlConnectorResponse {
+    return {
+        ...val,
+        timezone: (val.timezone) ?? "GMT+0",
+    };
+}
+
+/**
+ * Describes the SAP configuration.
+ */
+export interface SapSystemsConfigurationResponse {
+    /**
+     * azure resource id
+     * example: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
+     */
+    azureResourceId?: string;
+    /**
+     * Base Model for SAP System Connector.
+     */
+    connector: RfcConnectorResponse | SapControlConnectorResponse;
+    /**
+     * The logs configuration.
+     */
+    logs?: LogResponse[];
+    /**
+     * Represents the types of configuration for a system.
+     * Expected value is 'SAP'.
+     */
+    type: "SAP";
 }
 
 /**
@@ -1605,6 +1826,25 @@ export interface TimelineResultsMetadataResponse {
 }
 
 /**
+ * Represents an unlock user action.
+ */
+export interface UnlockUserActionResponse {
+    /**
+     * The reason of the failure of the action. Empty if the action is successful.
+     */
+    failureReason?: string;
+    /**
+     * The kind of the action
+     * Expected value is 'UnlockUser'.
+     */
+    kind: "UnlockUser";
+    /**
+     * The user to unlock
+     */
+    user?: string;
+}
+
+/**
  * User information that made some action
  */
 export interface UserInfoResponse {
@@ -1675,6 +1915,7 @@ export interface WebhookResponse {
      */
     webhookUrl?: string;
 }
+
 
 
 

@@ -5,7 +5,7 @@ import * as types from "./types";
  * Cognitive Services RaiBlocklist.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2024-04-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2024-04-01-preview, 2024-06-01-preview, 2024-10-01.
  */
 export class RaiBlocklist extends pulumi.CustomResource {
     /**
@@ -94,7 +94,7 @@ export class RaiBlocklist extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20231001preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20240401preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20240601preview:RaiBlocklist" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20231001preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20240401preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20240601preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20241001:RaiBlocklist" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RaiBlocklist.__pulumiType, name, resourceInputs, opts);
     }

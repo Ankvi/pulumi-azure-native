@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-03-01.
  */
 export function getSpacecraft(args: GetSpacecraftArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacecraftResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:orbital:getSpacecraft", {
         "resourceGroupName": args.resourceGroupName,
@@ -83,7 +82,11 @@ export interface GetSpacecraftResult {
  * Other available API versions: 2022-03-01.
  */
 export function getSpacecraftOutput(args: GetSpacecraftOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacecraftResult> {
-    return pulumi.output(args).apply((a: any) => getSpacecraft(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:orbital:getSpacecraft", {
+        "resourceGroupName": args.resourceGroupName,
+        "spacecraftName": args.spacecraftName,
+    }, opts);
 }
 
 export interface GetSpacecraftOutputArgs {

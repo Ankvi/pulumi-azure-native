@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Tag-operation link details.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export class WorkspaceTagOperationLink extends pulumi.CustomResource {
     /**
@@ -86,7 +86,7 @@ export class WorkspaceTagOperationLink extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspaceTagOperationLink" }, { type: "azure-native:apimanagement/v20230301preview:WorkspaceTagOperationLink" }, { type: "azure-native:apimanagement/v20230501preview:WorkspaceTagOperationLink" }, { type: "azure-native:apimanagement/v20230901preview:WorkspaceTagOperationLink" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspaceTagOperationLink" }, { type: "azure-native:apimanagement/v20230301preview:WorkspaceTagOperationLink" }, { type: "azure-native:apimanagement/v20230501preview:WorkspaceTagOperationLink" }, { type: "azure-native:apimanagement/v20230901preview:WorkspaceTagOperationLink" }, { type: "azure-native:apimanagement/v20240501:WorkspaceTagOperationLink" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkspaceTagOperationLink.__pulumiType, name, resourceInputs, opts);
     }

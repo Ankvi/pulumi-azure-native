@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the details of the Schema specified by its identifier.
  * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getGlobalSchema(args: GetGlobalSchemaArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalSchemaResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apimanagement:getGlobalSchema", {
         "resourceGroupName": args.resourceGroupName,
@@ -64,10 +63,15 @@ export interface GetGlobalSchemaResult {
  * Gets the details of the Schema specified by its identifier.
  * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getGlobalSchemaOutput(args: GetGlobalSchemaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalSchemaResult> {
-    return pulumi.output(args).apply((a: any) => getGlobalSchema(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:getGlobalSchema", {
+        "resourceGroupName": args.resourceGroupName,
+        "schemaId": args.schemaId,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 export interface GetGlobalSchemaOutputArgs {

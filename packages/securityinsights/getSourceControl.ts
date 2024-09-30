@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2021-03-01-preview.
  */
 export function getSourceControl(args: GetSourceControlArgs, opts?: pulumi.InvokeOptions): Promise<GetSourceControlResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:securityinsights:getSourceControl", {
         "resourceGroupName": args.resourceGroupName,
@@ -53,7 +52,7 @@ export interface GetSourceControlResult {
      */
     readonly etag?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -96,7 +95,12 @@ export interface GetSourceControlResult {
  * Other available API versions: 2021-03-01-preview.
  */
 export function getSourceControlOutput(args: GetSourceControlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSourceControlResult> {
-    return pulumi.output(args).apply((a: any) => getSourceControl(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:securityinsights:getSourceControl", {
+        "resourceGroupName": args.resourceGroupName,
+        "sourceControlId": args.sourceControlId,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetSourceControlOutputArgs {

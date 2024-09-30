@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets the properties of the specified replica.
  * Azure REST API version: 2023-03-01.
  *
- * Other available API versions: 2023-08-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2023-08-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getReplica(args: GetReplicaArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicaResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:appconfiguration:getReplica", {
         "configStoreName": args.configStoreName,
@@ -69,10 +68,15 @@ export interface GetReplicaResult {
  * Gets the properties of the specified replica.
  * Azure REST API version: 2023-03-01.
  *
- * Other available API versions: 2023-08-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2023-08-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getReplicaOutput(args: GetReplicaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplicaResult> {
-    return pulumi.output(args).apply((a: any) => getReplica(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:appconfiguration:getReplica", {
+        "configStoreName": args.configStoreName,
+        "replicaName": args.replicaName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetReplicaOutputArgs {

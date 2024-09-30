@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-02-01.
  */
 export function getFusionAlertRule(args: GetFusionAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetFusionAlertRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:securityinsights:getFusionAlertRule", {
         "resourceGroupName": args.resourceGroupName,
@@ -55,7 +54,7 @@ export interface GetFusionAlertRuleResult {
      */
     readonly etag?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -97,7 +96,12 @@ export interface GetFusionAlertRuleResult {
  * Azure REST API version: 2023-02-01.
  */
 export function getFusionAlertRuleOutput(args: GetFusionAlertRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFusionAlertRuleResult> {
-    return pulumi.output(args).apply((a: any) => getFusionAlertRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:securityinsights:getFusionAlertRule", {
+        "resourceGroupName": args.resourceGroupName,
+        "ruleId": args.ruleId,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetFusionAlertRuleOutputArgs {

@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-07-07-preview.
  */
 export function getManagedGateway(args: GetManagedGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedGatewayResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:scom:getManagedGateway", {
         "instanceName": args.instanceName,
@@ -60,7 +59,12 @@ export interface GetManagedGatewayResult {
  * Azure REST API version: 2023-07-07-preview.
  */
 export function getManagedGatewayOutput(args: GetManagedGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedGatewayResult> {
-    return pulumi.output(args).apply((a: any) => getManagedGateway(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:scom:getManagedGateway", {
+        "instanceName": args.instanceName,
+        "managedGatewayName": args.managedGatewayName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetManagedGatewayOutputArgs {

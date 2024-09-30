@@ -5,7 +5,6 @@ import * as types from "./types";
  * Azure REST API version: 2022-01-01-preview.
  */
 export function getMetricsSource(args: GetMetricsSourceArgs, opts?: pulumi.InvokeOptions): Promise<GetMetricsSourceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:logz:getMetricsSource", {
         "metricsSourceName": args.metricsSourceName,
@@ -58,7 +57,12 @@ export interface GetMetricsSourceResult {
  * Azure REST API version: 2022-01-01-preview.
  */
 export function getMetricsSourceOutput(args: GetMetricsSourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetricsSourceResult> {
-    return pulumi.output(args).apply((a: any) => getMetricsSource(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:logz:getMetricsSource", {
+        "metricsSourceName": args.metricsSourceName,
+        "monitorName": args.monitorName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetMetricsSourceOutputArgs {

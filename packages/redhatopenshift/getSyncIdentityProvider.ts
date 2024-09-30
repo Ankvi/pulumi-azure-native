@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22.
  */
 export function getSyncIdentityProvider(args: GetSyncIdentityProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetSyncIdentityProviderResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:redhatopenshift:getSyncIdentityProvider", {
         "childResourceName": args.childResourceName,
@@ -61,7 +60,12 @@ export interface GetSyncIdentityProviderResult {
  * Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22.
  */
 export function getSyncIdentityProviderOutput(args: GetSyncIdentityProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSyncIdentityProviderResult> {
-    return pulumi.output(args).apply((a: any) => getSyncIdentityProvider(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:redhatopenshift:getSyncIdentityProvider", {
+        "childResourceName": args.childResourceName,
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface GetSyncIdentityProviderOutputArgs {

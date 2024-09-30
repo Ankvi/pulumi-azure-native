@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get properties of the provided layer 3 (L3) network.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01.
  */
 export function getL3Network(args: GetL3NetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetL3NetworkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:networkcloud:getL3Network", {
         "l3NetworkName": args.l3NetworkName,
@@ -123,10 +122,14 @@ export interface GetL3NetworkResult {
  * Get properties of the provided layer 3 (L3) network.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01.
  */
 export function getL3NetworkOutput(args: GetL3NetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetL3NetworkResult> {
-    return pulumi.output(args).apply((a: any) => getL3Network(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:networkcloud:getL3Network", {
+        "l3NetworkName": args.l3NetworkName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetL3NetworkOutputArgs {

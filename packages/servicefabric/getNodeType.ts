@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get a Service Fabric node type of a given managed cluster.
  * Azure REST API version: 2023-03-01-preview.
  *
- * Other available API versions: 2021-09-01-privatepreview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-04-01.
+ * Other available API versions: 2021-09-01-privatepreview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-04-01, 2024-06-01-preview.
  */
 export function getNodeType(args: GetNodeTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTypeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:servicefabric:getNodeType", {
         "clusterName": args.clusterName,
@@ -237,10 +236,15 @@ export interface GetNodeTypeResult {
  * Get a Service Fabric node type of a given managed cluster.
  * Azure REST API version: 2023-03-01-preview.
  *
- * Other available API versions: 2021-09-01-privatepreview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-04-01.
+ * Other available API versions: 2021-09-01-privatepreview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-04-01, 2024-06-01-preview.
  */
 export function getNodeTypeOutput(args: GetNodeTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTypeResult> {
-    return pulumi.output(args).apply((a: any) => getNodeType(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:servicefabric:getNodeType", {
+        "clusterName": args.clusterName,
+        "nodeTypeName": args.nodeTypeName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNodeTypeOutputArgs {

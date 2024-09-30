@@ -7,7 +7,6 @@ import * as types from "./types";
  * Azure REST API version: 2024-08-01-preview.
  */
 export function getAzureLargeStorageInstance(args: GetAzureLargeStorageInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureLargeStorageInstanceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:azurelargeinstance:getAzureLargeStorageInstance", {
         "azureLargeStorageInstanceName": args.azureLargeStorageInstanceName,
@@ -74,7 +73,11 @@ export interface GetAzureLargeStorageInstanceResult {
  * Azure REST API version: 2024-08-01-preview.
  */
 export function getAzureLargeStorageInstanceOutput(args: GetAzureLargeStorageInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureLargeStorageInstanceResult> {
-    return pulumi.output(args).apply((a: any) => getAzureLargeStorageInstance(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:azurelargeinstance:getAzureLargeStorageInstance", {
+        "azureLargeStorageInstanceName": args.azureLargeStorageInstanceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetAzureLargeStorageInstanceOutputArgs {

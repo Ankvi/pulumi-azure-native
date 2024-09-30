@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview.
  */
 export function getPreRuleCounters(args: GetPreRuleCountersArgs, opts?: pulumi.InvokeOptions): Promise<GetPreRuleCountersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:cloudngfw:getPreRuleCounters", {
         "firewallName": args.firewallName,
@@ -81,7 +80,12 @@ export interface GetPreRuleCountersResult {
  * Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview.
  */
 export function getPreRuleCountersOutput(args: GetPreRuleCountersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPreRuleCountersResult> {
-    return pulumi.output(args).apply((a: any) => getPreRuleCounters(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:cloudngfw:getPreRuleCounters", {
+        "firewallName": args.firewallName,
+        "globalRulestackName": args.globalRulestackName,
+        "priority": args.priority,
+    }, opts);
 }
 
 export interface GetPreRuleCountersOutputArgs {

@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2021-06-01-preview.
  */
 export function getIotHubDataConnection(args: GetIotHubDataConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetIotHubDataConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:synapse:getIotHubDataConnection", {
         "dataConnectionName": args.dataConnectionName,
@@ -107,7 +106,14 @@ export interface GetIotHubDataConnectionResult {
  * Azure REST API version: 2021-06-01-preview.
  */
 export function getIotHubDataConnectionOutput(args: GetIotHubDataConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIotHubDataConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getIotHubDataConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:synapse:getIotHubDataConnection", {
+        "dataConnectionName": args.dataConnectionName,
+        "databaseName": args.databaseName,
+        "kustoPoolName": args.kustoPoolName,
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetIotHubDataConnectionOutputArgs {

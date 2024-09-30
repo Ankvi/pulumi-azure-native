@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview.
  */
 export function getRegistryEnvironmentContainer(args: GetRegistryEnvironmentContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnvironmentContainerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:machinelearningservices:getRegistryEnvironmentContainer", {
         "environmentName": args.environmentName,
@@ -64,7 +63,12 @@ export interface GetRegistryEnvironmentContainerResult {
  * Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview.
  */
 export function getRegistryEnvironmentContainerOutput(args: GetRegistryEnvironmentContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnvironmentContainerResult> {
-    return pulumi.output(args).apply((a: any) => getRegistryEnvironmentContainer(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:machinelearningservices:getRegistryEnvironmentContainer", {
+        "environmentName": args.environmentName,
+        "registryName": args.registryName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetRegistryEnvironmentContainerOutputArgs {

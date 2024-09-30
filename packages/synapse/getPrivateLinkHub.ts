@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2021-06-01-preview.
  */
 export function getPrivateLinkHub(args: GetPrivateLinkHubArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateLinkHubResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:synapse:getPrivateLinkHub", {
         "privateLinkHubName": args.privateLinkHubName,
@@ -67,7 +66,11 @@ export interface GetPrivateLinkHubResult {
  * Other available API versions: 2021-06-01-preview.
  */
 export function getPrivateLinkHubOutput(args: GetPrivateLinkHubOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateLinkHubResult> {
-    return pulumi.output(args).apply((a: any) => getPrivateLinkHub(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:synapse:getPrivateLinkHub", {
+        "privateLinkHubName": args.privateLinkHubName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetPrivateLinkHubOutputArgs {

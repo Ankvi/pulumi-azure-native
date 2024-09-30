@@ -7,7 +7,6 @@ import * as types from "./types";
  * Other available API versions: 2024-01-01-preview, 2024-04-01-preview.
  */
 export function getInferenceGroupStatus(args: GetInferenceGroupStatusArgs, opts?: pulumi.InvokeOptions): Promise<GetInferenceGroupStatusResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:machinelearningservices:getInferenceGroupStatus", {
         "groupName": args.groupName,
@@ -60,7 +59,13 @@ export interface GetInferenceGroupStatusResult {
  * Other available API versions: 2024-01-01-preview, 2024-04-01-preview.
  */
 export function getInferenceGroupStatusOutput(args: GetInferenceGroupStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInferenceGroupStatusResult> {
-    return pulumi.output(args).apply((a: any) => getInferenceGroupStatus(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:machinelearningservices:getInferenceGroupStatus", {
+        "groupName": args.groupName,
+        "poolName": args.poolName,
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetInferenceGroupStatusOutputArgs {

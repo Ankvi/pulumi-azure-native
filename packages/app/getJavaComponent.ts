@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-02-02-preview.
  */
 export function getJavaComponent(args: GetJavaComponentArgs, opts?: pulumi.InvokeOptions): Promise<GetJavaComponentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:app:getJavaComponent", {
         "environmentName": args.environmentName,
@@ -76,7 +75,12 @@ export interface GetJavaComponentResult {
  * Other available API versions: 2024-02-02-preview.
  */
 export function getJavaComponentOutput(args: GetJavaComponentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJavaComponentResult> {
-    return pulumi.output(args).apply((a: any) => getJavaComponent(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:app:getJavaComponent", {
+        "environmentName": args.environmentName,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetJavaComponentOutputArgs {

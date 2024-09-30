@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-06-15.
  */
 export function getNeighborGroup(args: GetNeighborGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNeighborGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:managednetworkfabric:getNeighborGroup", {
         "neighborGroupName": args.neighborGroupName,
@@ -79,7 +78,11 @@ export interface GetNeighborGroupResult {
  * Azure REST API version: 2023-06-15.
  */
 export function getNeighborGroupOutput(args: GetNeighborGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNeighborGroupResult> {
-    return pulumi.output(args).apply((a: any) => getNeighborGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:managednetworkfabric:getNeighborGroup", {
+        "neighborGroupName": args.neighborGroupName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNeighborGroupOutputArgs {

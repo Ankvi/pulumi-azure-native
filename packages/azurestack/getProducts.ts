@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2020-06-01-preview.
  */
 export function getProducts(args: GetProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetProductsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:azurestack:getProducts", {
         "productName": args.productName,
@@ -52,7 +51,12 @@ export interface GetProductsResult {
  * Other available API versions: 2020-06-01-preview.
  */
 export function getProductsOutput(args: GetProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductsResult> {
-    return pulumi.output(args).apply((a: any) => getProducts(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:azurestack:getProducts", {
+        "productName": args.productName,
+        "registrationName": args.registrationName,
+        "resourceGroup": args.resourceGroup,
+    }, opts);
 }
 
 export interface GetProductsOutputArgs {

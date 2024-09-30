@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2017-06-01.
  */
 export function getBackupSchedule(args: GetBackupScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupScheduleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:storsimple:getBackupSchedule", {
         "backupPolicyName": args.backupPolicyName,
@@ -90,7 +89,14 @@ export interface GetBackupScheduleResult {
  * Azure REST API version: 2017-06-01.
  */
 export function getBackupScheduleOutput(args: GetBackupScheduleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupScheduleResult> {
-    return pulumi.output(args).apply((a: any) => getBackupSchedule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:storsimple:getBackupSchedule", {
+        "backupPolicyName": args.backupPolicyName,
+        "backupScheduleName": args.backupScheduleName,
+        "deviceName": args.deviceName,
+        "managerName": args.managerName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetBackupScheduleOutputArgs {

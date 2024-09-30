@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-03-01.
  */
 export function getContact(args: GetContactArgs, opts?: pulumi.InvokeOptions): Promise<GetContactResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:orbital:getContact", {
         "contactName": args.contactName,
@@ -124,7 +123,12 @@ export interface GetContactResult {
  * Other available API versions: 2022-03-01.
  */
 export function getContactOutput(args: GetContactOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContactResult> {
-    return pulumi.output(args).apply((a: any) => getContact(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:orbital:getContact", {
+        "contactName": args.contactName,
+        "resourceGroupName": args.resourceGroupName,
+        "spacecraftName": args.spacecraftName,
+    }, opts);
 }
 
 export interface GetContactOutputArgs {

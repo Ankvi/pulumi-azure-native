@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Get the policy configuration at the API Operation level.
  * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2018-06-01-preview, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2018-06-01-preview, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getApiOperationPolicy(args: GetApiOperationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetApiOperationPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apimanagement:getApiOperationPolicy", {
         "apiId": args.apiId,
@@ -75,10 +74,18 @@ export interface GetApiOperationPolicyResult {
  * Get the policy configuration at the API Operation level.
  * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2018-06-01-preview, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2018-06-01-preview, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getApiOperationPolicyOutput(args: GetApiOperationPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiOperationPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getApiOperationPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:getApiOperationPolicy", {
+        "apiId": args.apiId,
+        "format": args.format,
+        "operationId": args.operationId,
+        "policyId": args.policyId,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 export interface GetApiOperationPolicyOutputArgs {

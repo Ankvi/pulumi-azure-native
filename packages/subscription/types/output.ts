@@ -87,4 +87,26 @@ export interface SystemDataResponse {
     lastModifiedByType?: string;
 }
 
+/**
+ * Properties of subscription Response for Changed Target Directory.
+ */
+export interface TargetDirectoryResultPropertiesResponse {
+    /**
+     * Destination Owner Id where Subscription will be accepted.
+     */
+    destinationOwnerId: string;
+    /**
+     * Destination Tenant Id where Subscription will be accepted.
+     */
+    destinationTenantId: string;
+    /**
+     * Subscription Initiate Request Expiry time
+     */
+    expiresOn: string;
+    /**
+     * Subscription Status.
+     */
+    status: string;
+}
+
 

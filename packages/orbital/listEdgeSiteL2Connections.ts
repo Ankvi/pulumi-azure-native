@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-03-01.
  */
 export function listEdgeSiteL2Connections(args: ListEdgeSiteL2ConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<ListEdgeSiteL2ConnectionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:orbital:listEdgeSiteL2Connections", {
         "edgeSiteName": args.edgeSiteName,
@@ -47,7 +46,11 @@ export interface ListEdgeSiteL2ConnectionsResult {
  * Other available API versions: 2024-03-01.
  */
 export function listEdgeSiteL2ConnectionsOutput(args: ListEdgeSiteL2ConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListEdgeSiteL2ConnectionsResult> {
-    return pulumi.output(args).apply((a: any) => listEdgeSiteL2Connections(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:orbital:listEdgeSiteL2Connections", {
+        "edgeSiteName": args.edgeSiteName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListEdgeSiteL2ConnectionsOutputArgs {

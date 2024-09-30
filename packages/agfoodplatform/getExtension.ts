@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2021-09-01-preview.
  */
 export function getExtension(args: GetExtensionArgs, opts?: pulumi.InvokeOptions): Promise<GetExtensionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:agfoodplatform:getExtension", {
         "dataManagerForAgricultureResourceName": args.dataManagerForAgricultureResourceName,
@@ -88,7 +87,12 @@ export interface GetExtensionResult {
  * Other available API versions: 2021-09-01-preview.
  */
 export function getExtensionOutput(args: GetExtensionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExtensionResult> {
-    return pulumi.output(args).apply((a: any) => getExtension(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:agfoodplatform:getExtension", {
+        "dataManagerForAgricultureResourceName": args.dataManagerForAgricultureResourceName,
+        "extensionId": args.extensionId,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetExtensionOutputArgs {

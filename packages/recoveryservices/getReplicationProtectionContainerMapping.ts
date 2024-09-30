@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01.
  */
 export function getReplicationProtectionContainerMapping(args: GetReplicationProtectionContainerMappingArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationProtectionContainerMappingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:recoveryservices:getReplicationProtectionContainerMapping", {
         "fabricName": args.fabricName,
@@ -74,7 +73,14 @@ export interface GetReplicationProtectionContainerMappingResult {
  * Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01.
  */
 export function getReplicationProtectionContainerMappingOutput(args: GetReplicationProtectionContainerMappingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplicationProtectionContainerMappingResult> {
-    return pulumi.output(args).apply((a: any) => getReplicationProtectionContainerMapping(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:recoveryservices:getReplicationProtectionContainerMapping", {
+        "fabricName": args.fabricName,
+        "mappingName": args.mappingName,
+        "protectionContainerName": args.protectionContainerName,
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface GetReplicationProtectionContainerMappingOutputArgs {

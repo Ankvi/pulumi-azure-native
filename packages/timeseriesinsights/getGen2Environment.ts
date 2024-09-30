@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2020-05-15.
  */
 export function getGen2Environment(args: GetGen2EnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetGen2EnvironmentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:timeseriesinsights:getGen2Environment", {
         "environmentName": args.environmentName,
@@ -101,7 +100,12 @@ export interface GetGen2EnvironmentResult {
  * Azure REST API version: 2020-05-15.
  */
 export function getGen2EnvironmentOutput(args: GetGen2EnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGen2EnvironmentResult> {
-    return pulumi.output(args).apply((a: any) => getGen2Environment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:timeseriesinsights:getGen2Environment", {
+        "environmentName": args.environmentName,
+        "expand": args.expand,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetGen2EnvironmentOutputArgs {

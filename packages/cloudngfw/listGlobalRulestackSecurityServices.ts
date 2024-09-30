@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview.
  */
 export function listGlobalRulestackSecurityServices(args: ListGlobalRulestackSecurityServicesArgs, opts?: pulumi.InvokeOptions): Promise<ListGlobalRulestackSecurityServicesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:cloudngfw:listGlobalRulestackSecurityServices", {
         "globalRulestackName": args.globalRulestackName,
@@ -48,7 +47,13 @@ export interface ListGlobalRulestackSecurityServicesResult {
  * Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview.
  */
 export function listGlobalRulestackSecurityServicesOutput(args: ListGlobalRulestackSecurityServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListGlobalRulestackSecurityServicesResult> {
-    return pulumi.output(args).apply((a: any) => listGlobalRulestackSecurityServices(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:cloudngfw:listGlobalRulestackSecurityServices", {
+        "globalRulestackName": args.globalRulestackName,
+        "skip": args.skip,
+        "top": args.top,
+        "type": args.type,
+    }, opts);
 }
 
 export interface ListGlobalRulestackSecurityServicesOutputArgs {

@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-02-01.
  */
 export function getOfficeDataConnector(args: GetOfficeDataConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetOfficeDataConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:securityinsights:getOfficeDataConnector", {
         "dataConnectorId": args.dataConnectorId,
@@ -43,7 +42,7 @@ export interface GetOfficeDataConnectorResult {
      */
     readonly etag?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -73,7 +72,12 @@ export interface GetOfficeDataConnectorResult {
  * Azure REST API version: 2023-02-01.
  */
 export function getOfficeDataConnectorOutput(args: GetOfficeDataConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOfficeDataConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getOfficeDataConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:securityinsights:getOfficeDataConnector", {
+        "dataConnectorId": args.dataConnectorId,
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetOfficeDataConnectorOutputArgs {

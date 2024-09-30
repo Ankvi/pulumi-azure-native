@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2017-11-15, 2021-06-30-preview.
  */
 export function getAccessPolicy(args: GetAccessPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:timeseriesinsights:getAccessPolicy", {
         "accessPolicyName": args.accessPolicyName,
@@ -67,7 +66,12 @@ export interface GetAccessPolicyResult {
  * Other available API versions: 2017-11-15, 2021-06-30-preview.
  */
 export function getAccessPolicyOutput(args: GetAccessPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getAccessPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:timeseriesinsights:getAccessPolicy", {
+        "accessPolicyName": args.accessPolicyName,
+        "environmentName": args.environmentName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetAccessPolicyOutputArgs {

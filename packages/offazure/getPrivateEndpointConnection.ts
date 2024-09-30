@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2020-07-07.
  */
 export function getPrivateEndpointConnection(args: GetPrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateEndpointConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:offazure:getPrivateEndpointConnection", {
         "peConnectionName": args.peConnectionName,
@@ -64,7 +63,12 @@ export interface GetPrivateEndpointConnectionResult {
  * Azure REST API version: 2020-07-07.
  */
 export function getPrivateEndpointConnectionOutput(args: GetPrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateEndpointConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getPrivateEndpointConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:offazure:getPrivateEndpointConnection", {
+        "peConnectionName": args.peConnectionName,
+        "resourceGroupName": args.resourceGroupName,
+        "siteName": args.siteName,
+    }, opts);
 }
 
 export interface GetPrivateEndpointConnectionOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2018-06-01-preview.
  */
 export function getStreamingEndpoint(args: GetStreamingEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamingEndpointResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:media:getStreamingEndpoint", {
         "accountName": args.accountName,
@@ -136,7 +135,12 @@ export interface GetStreamingEndpointResult {
  * Other available API versions: 2018-06-01-preview.
  */
 export function getStreamingEndpointOutput(args: GetStreamingEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStreamingEndpointResult> {
-    return pulumi.output(args).apply((a: any) => getStreamingEndpoint(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:media:getStreamingEndpoint", {
+        "accountName": args.accountName,
+        "resourceGroupName": args.resourceGroupName,
+        "streamingEndpointName": args.streamingEndpointName,
+    }, opts);
 }
 
 export interface GetStreamingEndpointOutputArgs {

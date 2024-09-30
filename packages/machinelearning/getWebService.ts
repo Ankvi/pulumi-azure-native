@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2016-05-01-preview.
  */
 export function getWebService(args: GetWebServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetWebServiceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:machinelearning:getWebService", {
         "region": args.region,
@@ -68,7 +67,12 @@ export interface GetWebServiceResult {
  * Other available API versions: 2016-05-01-preview.
  */
 export function getWebServiceOutput(args: GetWebServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebServiceResult> {
-    return pulumi.output(args).apply((a: any) => getWebService(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:machinelearning:getWebService", {
+        "region": args.region,
+        "resourceGroupName": args.resourceGroupName,
+        "webServiceName": args.webServiceName,
+    }, opts);
 }
 
 export interface GetWebServiceOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview.
  */
 export function getOpenAI(args: GetOpenAIArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenAIResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:elastic:getOpenAI", {
         "integrationName": args.integrationName,
@@ -60,7 +59,12 @@ export interface GetOpenAIResult {
  * Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview.
  */
 export function getOpenAIOutput(args: GetOpenAIOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenAIResult> {
-    return pulumi.output(args).apply((a: any) => getOpenAI(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:elastic:getOpenAI", {
+        "integrationName": args.integrationName,
+        "monitorName": args.monitorName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetOpenAIOutputArgs {

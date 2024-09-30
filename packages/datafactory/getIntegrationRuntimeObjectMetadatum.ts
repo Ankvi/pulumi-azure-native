@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2018-06-01.
  */
 export function getIntegrationRuntimeObjectMetadatum(args: GetIntegrationRuntimeObjectMetadatumArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationRuntimeObjectMetadatumResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:datafactory:getIntegrationRuntimeObjectMetadatum", {
         "factoryName": args.factoryName,
@@ -53,7 +52,13 @@ export interface GetIntegrationRuntimeObjectMetadatumResult {
  * Azure REST API version: 2018-06-01.
  */
 export function getIntegrationRuntimeObjectMetadatumOutput(args: GetIntegrationRuntimeObjectMetadatumOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationRuntimeObjectMetadatumResult> {
-    return pulumi.output(args).apply((a: any) => getIntegrationRuntimeObjectMetadatum(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:datafactory:getIntegrationRuntimeObjectMetadatum", {
+        "factoryName": args.factoryName,
+        "integrationRuntimeName": args.integrationRuntimeName,
+        "metadataPath": args.metadataPath,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetIntegrationRuntimeObjectMetadatumOutputArgs {

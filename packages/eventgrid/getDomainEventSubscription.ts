@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview.
  */
 export function getDomainEventSubscription(args: GetDomainEventSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainEventSubscriptionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:eventgrid:getDomainEventSubscription", {
         "domainName": args.domainName,
@@ -108,7 +107,12 @@ export interface GetDomainEventSubscriptionResult {
  * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview.
  */
 export function getDomainEventSubscriptionOutput(args: GetDomainEventSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainEventSubscriptionResult> {
-    return pulumi.output(args).apply((a: any) => getDomainEventSubscription(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:eventgrid:getDomainEventSubscription", {
+        "domainName": args.domainName,
+        "eventSubscriptionName": args.eventSubscriptionName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetDomainEventSubscriptionOutputArgs {

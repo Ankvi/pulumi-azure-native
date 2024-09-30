@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2024-05-15-preview.
  */
 export function getDevOpsPolicyAssignment(args: GetDevOpsPolicyAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetDevOpsPolicyAssignmentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:security:getDevOpsPolicyAssignment", {
         "policyAssignmentId": args.policyAssignmentId,
@@ -60,7 +59,12 @@ export interface GetDevOpsPolicyAssignmentResult {
  * Azure REST API version: 2024-05-15-preview.
  */
 export function getDevOpsPolicyAssignmentOutput(args: GetDevOpsPolicyAssignmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevOpsPolicyAssignmentResult> {
-    return pulumi.output(args).apply((a: any) => getDevOpsPolicyAssignment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:security:getDevOpsPolicyAssignment", {
+        "policyAssignmentId": args.policyAssignmentId,
+        "resourceGroupName": args.resourceGroupName,
+        "securityConnectorName": args.securityConnectorName,
+    }, opts);
 }
 
 export interface GetDevOpsPolicyAssignmentOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-02-01.
  */
 export function getOrderItem(args: GetOrderItemArgs, opts?: pulumi.InvokeOptions): Promise<GetOrderItemResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:edgeorder:getOrderItem", {
         "expand": args.expand,
@@ -84,7 +83,12 @@ export interface GetOrderItemResult {
  * Other available API versions: 2024-02-01.
  */
 export function getOrderItemOutput(args: GetOrderItemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrderItemResult> {
-    return pulumi.output(args).apply((a: any) => getOrderItem(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:edgeorder:getOrderItem", {
+        "expand": args.expand,
+        "orderItemName": args.orderItemName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetOrderItemOutputArgs {

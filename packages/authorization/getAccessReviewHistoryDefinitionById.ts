@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2021-12-01-preview.
  */
 export function getAccessReviewHistoryDefinitionById(args: GetAccessReviewHistoryDefinitionByIdArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessReviewHistoryDefinitionByIdResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:authorization:getAccessReviewHistoryDefinitionById", {
         "historyDefinitionId": args.historyDefinitionId,
@@ -106,7 +105,10 @@ export interface GetAccessReviewHistoryDefinitionByIdResult {
  * Azure REST API version: 2021-12-01-preview.
  */
 export function getAccessReviewHistoryDefinitionByIdOutput(args: GetAccessReviewHistoryDefinitionByIdOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessReviewHistoryDefinitionByIdResult> {
-    return pulumi.output(args).apply((a: any) => getAccessReviewHistoryDefinitionById(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:authorization:getAccessReviewHistoryDefinitionById", {
+        "historyDefinitionId": args.historyDefinitionId,
+    }, opts);
 }
 
 export interface GetAccessReviewHistoryDefinitionByIdOutputArgs {

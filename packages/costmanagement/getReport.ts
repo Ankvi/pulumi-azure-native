@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2018-08-01-preview.
  */
 export function getReport(args: GetReportArgs, opts?: pulumi.InvokeOptions): Promise<GetReportResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:costmanagement:getReport", {
         "reportName": args.reportName,
@@ -62,7 +61,10 @@ export interface GetReportResult {
  * Azure REST API version: 2018-08-01-preview.
  */
 export function getReportOutput(args: GetReportOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReportResult> {
-    return pulumi.output(args).apply((a: any) => getReport(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:costmanagement:getReport", {
+        "reportName": args.reportName,
+    }, opts);
 }
 
 export interface GetReportOutputArgs {

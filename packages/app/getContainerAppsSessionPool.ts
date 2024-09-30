@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2024-02-02-preview.
  */
 export function getContainerAppsSessionPool(args: GetContainerAppsSessionPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerAppsSessionPoolResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:app:getContainerAppsSessionPool", {
         "resourceGroupName": args.resourceGroupName,
@@ -103,7 +102,11 @@ export interface GetContainerAppsSessionPoolResult {
  * Azure REST API version: 2024-02-02-preview.
  */
 export function getContainerAppsSessionPoolOutput(args: GetContainerAppsSessionPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerAppsSessionPoolResult> {
-    return pulumi.output(args).apply((a: any) => getContainerAppsSessionPool(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:app:getContainerAppsSessionPool", {
+        "resourceGroupName": args.resourceGroupName,
+        "sessionPoolName": args.sessionPoolName,
+    }, opts);
 }
 
 export interface GetContainerAppsSessionPoolOutputArgs {

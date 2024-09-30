@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview.
  */
 export function listComputeKeys(args: ListComputeKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListComputeKeysResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:machinelearningservices:listComputeKeys", {
         "computeName": args.computeName,
@@ -47,7 +46,12 @@ export interface ListComputeKeysResult {
  * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview.
  */
 export function listComputeKeysOutput(args: ListComputeKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListComputeKeysResult> {
-    return pulumi.output(args).apply((a: any) => listComputeKeys(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:machinelearningservices:listComputeKeys", {
+        "computeName": args.computeName,
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface ListComputeKeysOutputArgs {

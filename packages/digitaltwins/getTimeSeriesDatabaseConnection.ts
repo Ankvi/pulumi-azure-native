@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-01-31.
  */
 export function getTimeSeriesDatabaseConnection(args: GetTimeSeriesDatabaseConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetTimeSeriesDatabaseConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:digitaltwins:getTimeSeriesDatabaseConnection", {
         "resourceGroupName": args.resourceGroupName,
@@ -60,7 +59,12 @@ export interface GetTimeSeriesDatabaseConnectionResult {
  * Azure REST API version: 2023-01-31.
  */
 export function getTimeSeriesDatabaseConnectionOutput(args: GetTimeSeriesDatabaseConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTimeSeriesDatabaseConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getTimeSeriesDatabaseConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:digitaltwins:getTimeSeriesDatabaseConnection", {
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+        "timeSeriesDatabaseConnectionName": args.timeSeriesDatabaseConnectionName,
+    }, opts);
 }
 
 export interface GetTimeSeriesDatabaseConnectionOutputArgs {

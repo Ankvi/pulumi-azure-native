@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets information about a server.
  * Azure REST API version: 2022-01-01.
  *
- * Other available API versions: 2017-12-01, 2018-06-01-privatepreview, 2020-07-01-preview, 2020-07-01-privatepreview, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-02-01-preview.
+ * Other available API versions: 2017-12-01, 2018-06-01-privatepreview, 2020-07-01-preview, 2020-07-01-privatepreview, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-02-01-preview, 2024-06-01-preview.
  */
 export function getServer(args: GetServerArgs, opts?: pulumi.InvokeOptions): Promise<GetServerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:dbformysql:getServer", {
         "resourceGroupName": args.resourceGroupName,
@@ -124,10 +123,14 @@ export interface GetServerResult {
  * Gets information about a server.
  * Azure REST API version: 2022-01-01.
  *
- * Other available API versions: 2017-12-01, 2018-06-01-privatepreview, 2020-07-01-preview, 2020-07-01-privatepreview, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-02-01-preview.
+ * Other available API versions: 2017-12-01, 2018-06-01-privatepreview, 2020-07-01-preview, 2020-07-01-privatepreview, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-02-01-preview, 2024-06-01-preview.
  */
 export function getServerOutput(args: GetServerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerResult> {
-    return pulumi.output(args).apply((a: any) => getServer(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:dbformysql:getServer", {
+        "resourceGroupName": args.resourceGroupName,
+        "serverName": args.serverName,
+    }, opts);
 }
 
 export interface GetServerOutputArgs {

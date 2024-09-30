@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-06-15.
  */
 export function getNetworkRack(args: GetNetworkRackArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkRackResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:managednetworkfabric:getNetworkRack", {
         "networkRackName": args.networkRackName,
@@ -83,7 +82,11 @@ export interface GetNetworkRackResult {
  * Other available API versions: 2023-06-15.
  */
 export function getNetworkRackOutput(args: GetNetworkRackOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkRackResult> {
-    return pulumi.output(args).apply((a: any) => getNetworkRack(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:managednetworkfabric:getNetworkRack", {
+        "networkRackName": args.networkRackName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNetworkRackOutputArgs {

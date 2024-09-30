@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-04-01.
  */
 export function getCatalog(args: GetCatalogArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:azuresphere:getCatalog", {
         "catalogName": args.catalogName,
@@ -67,7 +66,11 @@ export interface GetCatalogResult {
  * Other available API versions: 2024-04-01.
  */
 export function getCatalogOutput(args: GetCatalogOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogResult> {
-    return pulumi.output(args).apply((a: any) => getCatalog(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:azuresphere:getCatalog", {
+        "catalogName": args.catalogName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetCatalogOutputArgs {

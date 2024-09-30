@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2016-05-15.
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:devtestlab:getUser", {
         "expand": args.expand,
@@ -89,7 +88,13 @@ export interface GetUserResult {
  * Other available API versions: 2016-05-15.
  */
 export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
-    return pulumi.output(args).apply((a: any) => getUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:devtestlab:getUser", {
+        "expand": args.expand,
+        "labName": args.labName,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetUserOutputArgs {

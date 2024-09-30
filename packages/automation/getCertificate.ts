@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:automation:getCertificate", {
         "automationAccountName": args.automationAccountName,
@@ -79,7 +78,12 @@ export interface GetCertificateResult {
  * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function getCertificateOutput(args: GetCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateResult> {
-    return pulumi.output(args).apply((a: any) => getCertificate(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:automation:getCertificate", {
+        "automationAccountName": args.automationAccountName,
+        "certificateName": args.certificateName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetCertificateOutputArgs {

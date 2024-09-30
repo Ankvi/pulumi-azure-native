@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-01-01.
  */
 export function getContentKeyPolicyPropertiesWithSecrets(args: GetContentKeyPolicyPropertiesWithSecretsArgs, opts?: pulumi.InvokeOptions): Promise<GetContentKeyPolicyPropertiesWithSecretsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:media:getContentKeyPolicyPropertiesWithSecrets", {
         "accountName": args.accountName,
@@ -60,7 +59,12 @@ export interface GetContentKeyPolicyPropertiesWithSecretsResult {
  * Azure REST API version: 2023-01-01.
  */
 export function getContentKeyPolicyPropertiesWithSecretsOutput(args: GetContentKeyPolicyPropertiesWithSecretsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContentKeyPolicyPropertiesWithSecretsResult> {
-    return pulumi.output(args).apply((a: any) => getContentKeyPolicyPropertiesWithSecrets(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:media:getContentKeyPolicyPropertiesWithSecrets", {
+        "accountName": args.accountName,
+        "contentKeyPolicyName": args.contentKeyPolicyName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetContentKeyPolicyPropertiesWithSecretsOutputArgs {

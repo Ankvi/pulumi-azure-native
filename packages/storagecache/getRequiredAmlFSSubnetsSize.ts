@@ -9,7 +9,6 @@ import * as types from "./types";
  */
 export function getRequiredAmlFSSubnetsSize(args?: GetRequiredAmlFSSubnetsSizeArgs, opts?: pulumi.InvokeOptions): Promise<GetRequiredAmlFSSubnetsSizeResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:storagecache:getRequiredAmlFSSubnetsSize", {
         "sku": args.sku,
@@ -44,7 +43,12 @@ export interface GetRequiredAmlFSSubnetsSizeResult {
  * Other available API versions: 2023-03-01-preview, 2023-11-01-preview, 2024-03-01.
  */
 export function getRequiredAmlFSSubnetsSizeOutput(args?: GetRequiredAmlFSSubnetsSizeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRequiredAmlFSSubnetsSizeResult> {
-    return pulumi.output(args).apply((a: any) => getRequiredAmlFSSubnetsSize(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:storagecache:getRequiredAmlFSSubnetsSize", {
+        "sku": args.sku,
+        "storageCapacityTiB": args.storageCapacityTiB,
+    }, opts);
 }
 
 export interface GetRequiredAmlFSSubnetsSizeOutputArgs {

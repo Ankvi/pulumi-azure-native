@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2018-11-01-preview.
  */
 export function getShareSubscription(args: GetShareSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetShareSubscriptionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:datashare:getShareSubscription", {
         "accountName": args.accountName,
@@ -120,7 +119,12 @@ export interface GetShareSubscriptionResult {
  * Other available API versions: 2018-11-01-preview.
  */
 export function getShareSubscriptionOutput(args: GetShareSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShareSubscriptionResult> {
-    return pulumi.output(args).apply((a: any) => getShareSubscription(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:datashare:getShareSubscription", {
+        "accountName": args.accountName,
+        "resourceGroupName": args.resourceGroupName,
+        "shareSubscriptionName": args.shareSubscriptionName,
+    }, opts);
 }
 
 export interface GetShareSubscriptionOutputArgs {

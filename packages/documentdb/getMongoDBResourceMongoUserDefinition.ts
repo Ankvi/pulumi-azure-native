@@ -5,10 +5,9 @@ import * as types from "./types";
  * Retrieves the properties of an existing Azure Cosmos DB Mongo User Definition with the given Id.
  * Azure REST API version: 2023-04-15.
  *
- * Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+ * Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
  */
 export function getMongoDBResourceMongoUserDefinition(args: GetMongoDBResourceMongoUserDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoDBResourceMongoUserDefinitionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:documentdb:getMongoDBResourceMongoUserDefinition", {
         "accountName": args.accountName,
@@ -77,10 +76,15 @@ export interface GetMongoDBResourceMongoUserDefinitionResult {
  * Retrieves the properties of an existing Azure Cosmos DB Mongo User Definition with the given Id.
  * Azure REST API version: 2023-04-15.
  *
- * Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+ * Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
  */
 export function getMongoDBResourceMongoUserDefinitionOutput(args: GetMongoDBResourceMongoUserDefinitionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMongoDBResourceMongoUserDefinitionResult> {
-    return pulumi.output(args).apply((a: any) => getMongoDBResourceMongoUserDefinition(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:documentdb:getMongoDBResourceMongoUserDefinition", {
+        "accountName": args.accountName,
+        "mongoUserDefinitionId": args.mongoUserDefinitionId,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetMongoDBResourceMongoUserDefinitionOutputArgs {

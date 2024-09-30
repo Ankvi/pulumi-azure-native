@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2021-11-01, 2022-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
  */
 export function getRestorePoint(args: GetRestorePointArgs, opts?: pulumi.InvokeOptions): Promise<GetRestorePointResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:compute:getRestorePoint", {
         "expand": args.expand,
@@ -89,7 +88,13 @@ export interface GetRestorePointResult {
  * Other available API versions: 2021-11-01, 2022-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
  */
 export function getRestorePointOutput(args: GetRestorePointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRestorePointResult> {
-    return pulumi.output(args).apply((a: any) => getRestorePoint(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:compute:getRestorePoint", {
+        "expand": args.expand,
+        "resourceGroupName": args.resourceGroupName,
+        "restorePointCollectionName": args.restorePointCollectionName,
+        "restorePointName": args.restorePointName,
+    }, opts);
 }
 
 export interface GetRestorePointOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-05-01-preview, 2023-08-01, 2024-03-01, 2024-04-01-preview.
  */
 export function getPatchSchedule(args: GetPatchScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetPatchScheduleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:cache:getPatchSchedule", {
         "default": args.default,
@@ -64,7 +63,12 @@ export interface GetPatchScheduleResult {
  * Other available API versions: 2023-05-01-preview, 2023-08-01, 2024-03-01, 2024-04-01-preview.
  */
 export function getPatchScheduleOutput(args: GetPatchScheduleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPatchScheduleResult> {
-    return pulumi.output(args).apply((a: any) => getPatchSchedule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:cache:getPatchSchedule", {
+        "default": args.default,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetPatchScheduleOutputArgs {

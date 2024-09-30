@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Diagnostic details.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export class WorkspaceDiagnostic extends pulumi.CustomResource {
     /**
@@ -135,7 +137,7 @@ export class WorkspaceDiagnostic extends pulumi.CustomResource {
             resourceInputs["verbosity"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:WorkspaceDiagnostic" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:WorkspaceDiagnostic" }, { type: "azure-native:apimanagement/v20240501:WorkspaceDiagnostic" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkspaceDiagnostic.__pulumiType, name, resourceInputs, opts);
     }

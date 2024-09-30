@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2018-09-01, 2019-04-01.
  */
 export function listRegistryBuildSourceUploadUrl(args: ListRegistryBuildSourceUploadUrlArgs, opts?: pulumi.InvokeOptions): Promise<ListRegistryBuildSourceUploadUrlResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:containerregistry:listRegistryBuildSourceUploadUrl", {
         "registryName": args.registryName,
@@ -46,7 +45,11 @@ export interface ListRegistryBuildSourceUploadUrlResult {
  * Other available API versions: 2018-09-01, 2019-04-01.
  */
 export function listRegistryBuildSourceUploadUrlOutput(args: ListRegistryBuildSourceUploadUrlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListRegistryBuildSourceUploadUrlResult> {
-    return pulumi.output(args).apply((a: any) => listRegistryBuildSourceUploadUrl(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:containerregistry:listRegistryBuildSourceUploadUrl", {
+        "registryName": args.registryName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListRegistryBuildSourceUploadUrlOutputArgs {

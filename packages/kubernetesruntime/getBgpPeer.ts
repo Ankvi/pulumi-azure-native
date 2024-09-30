@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-10-01-preview.
  */
 export function getBgpPeer(args: GetBgpPeerArgs, opts?: pulumi.InvokeOptions): Promise<GetBgpPeerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:kubernetesruntime:getBgpPeer", {
         "bgpPeerName": args.bgpPeerName,
@@ -71,7 +70,11 @@ export interface GetBgpPeerResult {
  * Other available API versions: 2023-10-01-preview.
  */
 export function getBgpPeerOutput(args: GetBgpPeerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBgpPeerResult> {
-    return pulumi.output(args).apply((a: any) => getBgpPeer(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:kubernetesruntime:getBgpPeer", {
+        "bgpPeerName": args.bgpPeerName,
+        "resourceUri": args.resourceUri,
+    }, opts);
 }
 
 export interface GetBgpPeerOutputArgs {

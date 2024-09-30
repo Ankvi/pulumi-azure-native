@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-09-01.
  */
 export function getIscsiPath(args: GetIscsiPathArgs, opts?: pulumi.InvokeOptions): Promise<GetIscsiPathResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:avs:getIscsiPath", {
         "privateCloudName": args.privateCloudName,
@@ -59,7 +58,11 @@ export interface GetIscsiPathResult {
  * Azure REST API version: 2023-09-01.
  */
 export function getIscsiPathOutput(args: GetIscsiPathOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIscsiPathResult> {
-    return pulumi.output(args).apply((a: any) => getIscsiPath(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:avs:getIscsiPath", {
+        "privateCloudName": args.privateCloudName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetIscsiPathOutputArgs {

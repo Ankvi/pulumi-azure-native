@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
  */
 export function getVirtualMachineScaleSetVM(args: GetVirtualMachineScaleSetVMArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineScaleSetVMResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:compute:getVirtualMachineScaleSetVM", {
         "expand": args.expand,
@@ -161,7 +160,13 @@ export interface GetVirtualMachineScaleSetVMResult {
  * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
  */
 export function getVirtualMachineScaleSetVMOutput(args: GetVirtualMachineScaleSetVMOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineScaleSetVMResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualMachineScaleSetVM(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:compute:getVirtualMachineScaleSetVM", {
+        "expand": args.expand,
+        "instanceId": args.instanceId,
+        "resourceGroupName": args.resourceGroupName,
+        "vmScaleSetName": args.vmScaleSetName,
+    }, opts);
 }
 
 export interface GetVirtualMachineScaleSetVMOutputArgs {

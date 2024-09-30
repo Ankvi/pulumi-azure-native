@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-07-01-preview, 2023-10-01, 2024-07-01.
  */
 export function getEndpoint(args: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:storagemover:getEndpoint", {
         "endpointName": args.endpointName,
@@ -64,7 +63,12 @@ export interface GetEndpointResult {
  * Other available API versions: 2023-07-01-preview, 2023-10-01, 2024-07-01.
  */
 export function getEndpointOutput(args: GetEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointResult> {
-    return pulumi.output(args).apply((a: any) => getEndpoint(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:storagemover:getEndpoint", {
+        "endpointName": args.endpointName,
+        "resourceGroupName": args.resourceGroupName,
+        "storageMoverName": args.storageMoverName,
+    }, opts);
 }
 
 export interface GetEndpointOutputArgs {

@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get properties of the provided rack.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01.
  */
 export function getRack(args: GetRackArgs, opts?: pulumi.InvokeOptions): Promise<GetRackResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:networkcloud:getRack", {
         "rackName": args.rackName,
@@ -93,10 +92,14 @@ export interface GetRackResult {
  * Get properties of the provided rack.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01.
  */
 export function getRackOutput(args: GetRackOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRackResult> {
-    return pulumi.output(args).apply((a: any) => getRack(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:networkcloud:getRack", {
+        "rackName": args.rackName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetRackOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01.
  */
 export function getReplicationProtectedItem(args: GetReplicationProtectedItemArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationProtectedItemResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:recoveryservices:getReplicationProtectedItem", {
         "fabricName": args.fabricName,
@@ -74,7 +73,14 @@ export interface GetReplicationProtectedItemResult {
  * Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01.
  */
 export function getReplicationProtectedItemOutput(args: GetReplicationProtectedItemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplicationProtectedItemResult> {
-    return pulumi.output(args).apply((a: any) => getReplicationProtectedItem(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:recoveryservices:getReplicationProtectedItem", {
+        "fabricName": args.fabricName,
+        "protectionContainerName": args.protectionContainerName,
+        "replicatedProtectedItemName": args.replicatedProtectedItemName,
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface GetReplicationProtectedItemOutputArgs {

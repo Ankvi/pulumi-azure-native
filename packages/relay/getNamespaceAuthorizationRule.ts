@@ -5,10 +5,9 @@ import * as types from "./types";
  * Authorization rule for a namespace by name.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2017-04-01.
+ * Other available API versions: 2017-04-01, 2024-01-01.
  */
 export function getNamespaceAuthorizationRule(args: GetNamespaceAuthorizationRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceAuthorizationRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:relay:getNamespaceAuthorizationRule", {
         "authorizationRuleName": args.authorizationRuleName,
@@ -65,10 +64,15 @@ export interface GetNamespaceAuthorizationRuleResult {
  * Authorization rule for a namespace by name.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2017-04-01.
+ * Other available API versions: 2017-04-01, 2024-01-01.
  */
 export function getNamespaceAuthorizationRuleOutput(args: GetNamespaceAuthorizationRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespaceAuthorizationRuleResult> {
-    return pulumi.output(args).apply((a: any) => getNamespaceAuthorizationRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:relay:getNamespaceAuthorizationRule", {
+        "authorizationRuleName": args.authorizationRuleName,
+        "namespaceName": args.namespaceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNamespaceAuthorizationRuleOutputArgs {

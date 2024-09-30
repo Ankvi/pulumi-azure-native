@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-03-01.
  */
 export function getPrometheusRuleGroup(args: GetPrometheusRuleGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetPrometheusRuleGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:alertsmanagement:getPrometheusRuleGroup", {
         "resourceGroupName": args.resourceGroupName,
@@ -83,7 +82,11 @@ export interface GetPrometheusRuleGroupResult {
  * Azure REST API version: 2023-03-01.
  */
 export function getPrometheusRuleGroupOutput(args: GetPrometheusRuleGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheusRuleGroupResult> {
-    return pulumi.output(args).apply((a: any) => getPrometheusRuleGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:alertsmanagement:getPrometheusRuleGroup", {
+        "resourceGroupName": args.resourceGroupName,
+        "ruleGroupName": args.ruleGroupName,
+    }, opts);
 }
 
 export interface GetPrometheusRuleGroupOutputArgs {

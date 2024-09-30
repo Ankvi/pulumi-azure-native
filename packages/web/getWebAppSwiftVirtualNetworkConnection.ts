@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Description for Gets a Swift Virtual Network connection.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getWebAppSwiftVirtualNetworkConnection(args: GetWebAppSwiftVirtualNetworkConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppSwiftVirtualNetworkConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:getWebAppSwiftVirtualNetworkConnection", {
         "name": args.name,
@@ -59,10 +58,14 @@ export interface GetWebAppSwiftVirtualNetworkConnectionResult {
  * Description for Gets a Swift Virtual Network connection.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getWebAppSwiftVirtualNetworkConnectionOutput(args: GetWebAppSwiftVirtualNetworkConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppSwiftVirtualNetworkConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getWebAppSwiftVirtualNetworkConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:getWebAppSwiftVirtualNetworkConnection", {
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetWebAppSwiftVirtualNetworkConnectionOutputArgs {

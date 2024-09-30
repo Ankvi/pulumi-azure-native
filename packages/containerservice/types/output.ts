@@ -11,6 +11,16 @@ export interface AgentPoolUpgradeSettingsResponse {
 }
 
 /**
+ * The node image upgrade to be applied to the target clusters in auto upgrade.
+ */
+export interface AutoUpgradeNodeImageSelectionResponse {
+    /**
+     * The node image upgrade type.
+     */
+    type: string;
+}
+
+/**
  * Azure Key Vault key management service settings for the security profile.
  */
 export interface AzureKeyVaultKmsResponse {
@@ -2005,6 +2015,9 @@ export interface WindowsGmsaProfileResponse {
      */
     rootDomainName?: string;
 }
+
+
+
 
 
 

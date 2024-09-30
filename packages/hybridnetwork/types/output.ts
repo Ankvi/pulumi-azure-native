@@ -84,6 +84,26 @@ export interface ArtifactManifestPropertiesFormatResponse {
 }
 
 /**
+ * List of network fabric controller ids.
+ */
+export interface ArtifactStoreNetworkFabricControllerEndPointsResponse {
+    /**
+     * list of network fabric controllers.
+     */
+    networkFabricControllerIds?: ReferencedResourceResponse[];
+}
+
+/**
+ * List of manual private endpoints.
+ */
+export interface ArtifactStorePrivateEndPointsFormatResponse {
+    /**
+     * list of private endpoints.
+     */
+    manualPrivateEndPointConnections?: ReferencedResourceResponse[];
+}
+
+/**
  * Artifact store properties.
  */
 export interface ArtifactStorePropertiesFormatResponse {
@@ -1472,4 +1492,5 @@ export interface VirtualNetworkFunctionNetworkFunctionDefinitionVersionResponse 
      */
     versionState: string;
 }
+
 

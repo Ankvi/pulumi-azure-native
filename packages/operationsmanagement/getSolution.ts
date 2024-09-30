@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2015-11-01-preview.
  */
 export function getSolution(args: GetSolutionArgs, opts?: pulumi.InvokeOptions): Promise<GetSolutionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:operationsmanagement:getSolution", {
         "resourceGroupName": args.resourceGroupName,
@@ -63,7 +62,11 @@ export interface GetSolutionResult {
  * Azure REST API version: 2015-11-01-preview.
  */
 export function getSolutionOutput(args: GetSolutionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSolutionResult> {
-    return pulumi.output(args).apply((a: any) => getSolution(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:operationsmanagement:getSolution", {
+        "resourceGroupName": args.resourceGroupName,
+        "solutionName": args.solutionName,
+    }, opts);
 }
 
 export interface GetSolutionOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-10-01-preview.
  */
 export function getStorageClass(args: GetStorageClassArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageClassResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:kubernetesruntime:getStorageClass", {
         "resourceUri": args.resourceUri,
@@ -103,7 +102,11 @@ export interface GetStorageClassResult {
  * Other available API versions: 2023-10-01-preview.
  */
 export function getStorageClassOutput(args: GetStorageClassOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStorageClassResult> {
-    return pulumi.output(args).apply((a: any) => getStorageClass(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:kubernetesruntime:getStorageClass", {
+        "resourceUri": args.resourceUri,
+        "storageClassName": args.storageClassName,
+    }, opts);
 }
 
 export interface GetStorageClassOutputArgs {

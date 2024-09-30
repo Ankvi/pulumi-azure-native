@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get a AssessmentProject
  * Azure REST API version: 2023-03-15.
  *
- * Other available API versions: 2023-04-01-preview.
+ * Other available API versions: 2023-04-01-preview, 2023-05-01-preview.
  */
 export function getAssessmentProjectsOperation(args: GetAssessmentProjectsOperationArgs, opts?: pulumi.InvokeOptions): Promise<GetAssessmentProjectsOperationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:migrate:getAssessmentProjectsOperation", {
         "projectName": args.projectName,
@@ -109,10 +108,14 @@ export interface GetAssessmentProjectsOperationResult {
  * Get a AssessmentProject
  * Azure REST API version: 2023-03-15.
  *
- * Other available API versions: 2023-04-01-preview.
+ * Other available API versions: 2023-04-01-preview, 2023-05-01-preview.
  */
 export function getAssessmentProjectsOperationOutput(args: GetAssessmentProjectsOperationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssessmentProjectsOperationResult> {
-    return pulumi.output(args).apply((a: any) => getAssessmentProjectsOperation(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:migrate:getAssessmentProjectsOperation", {
+        "projectName": args.projectName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetAssessmentProjectsOperationOutputArgs {

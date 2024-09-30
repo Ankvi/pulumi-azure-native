@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-08-01.
  */
 export function getAzureTrafficCollector(args: GetAzureTrafficCollectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureTrafficCollectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:networkfunction:getAzureTrafficCollector", {
         "azureTrafficCollectorName": args.azureTrafficCollectorName,
@@ -79,7 +78,11 @@ export interface GetAzureTrafficCollectorResult {
  * Other available API versions: 2022-08-01.
  */
 export function getAzureTrafficCollectorOutput(args: GetAzureTrafficCollectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureTrafficCollectorResult> {
-    return pulumi.output(args).apply((a: any) => getAzureTrafficCollector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:networkfunction:getAzureTrafficCollector", {
+        "azureTrafficCollectorName": args.azureTrafficCollectorName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetAzureTrafficCollectorOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-01-01-preview, 2023-10-01.
  */
 export function getSqlVirtualMachineGroup(args: GetSqlVirtualMachineGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlVirtualMachineGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:sqlvirtualmachine:getSqlVirtualMachineGroup", {
         "resourceGroupName": args.resourceGroupName,
@@ -91,7 +90,11 @@ export interface GetSqlVirtualMachineGroupResult {
  * Other available API versions: 2023-01-01-preview, 2023-10-01.
  */
 export function getSqlVirtualMachineGroupOutput(args: GetSqlVirtualMachineGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlVirtualMachineGroupResult> {
-    return pulumi.output(args).apply((a: any) => getSqlVirtualMachineGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:sqlvirtualmachine:getSqlVirtualMachineGroup", {
+        "resourceGroupName": args.resourceGroupName,
+        "sqlVirtualMachineGroupName": args.sqlVirtualMachineGroupName,
+    }, opts);
 }
 
 export interface GetSqlVirtualMachineGroupOutputArgs {

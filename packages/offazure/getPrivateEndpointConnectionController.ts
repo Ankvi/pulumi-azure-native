@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-10-01-preview.
  */
 export function getPrivateEndpointConnectionController(args: GetPrivateEndpointConnectionControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateEndpointConnectionControllerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:offazure:getPrivateEndpointConnectionController", {
         "peConnectionName": args.peConnectionName,
@@ -76,7 +75,12 @@ export interface GetPrivateEndpointConnectionControllerResult {
  * Other available API versions: 2023-10-01-preview.
  */
 export function getPrivateEndpointConnectionControllerOutput(args: GetPrivateEndpointConnectionControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateEndpointConnectionControllerResult> {
-    return pulumi.output(args).apply((a: any) => getPrivateEndpointConnectionController(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:offazure:getPrivateEndpointConnectionController", {
+        "peConnectionName": args.peConnectionName,
+        "resourceGroupName": args.resourceGroupName,
+        "siteName": args.siteName,
+    }, opts);
 }
 
 export interface GetPrivateEndpointConnectionControllerOutputArgs {

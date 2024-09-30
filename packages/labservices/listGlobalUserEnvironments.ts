@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2018-10-15.
  */
 export function listGlobalUserEnvironments(args: ListGlobalUserEnvironmentsArgs, opts?: pulumi.InvokeOptions): Promise<ListGlobalUserEnvironmentsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:labservices:listGlobalUserEnvironments", {
         "labId": args.labId,
@@ -39,7 +38,11 @@ export interface ListGlobalUserEnvironmentsResult {
  * Azure REST API version: 2018-10-15.
  */
 export function listGlobalUserEnvironmentsOutput(args: ListGlobalUserEnvironmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListGlobalUserEnvironmentsResult> {
-    return pulumi.output(args).apply((a: any) => listGlobalUserEnvironments(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:labservices:listGlobalUserEnvironments", {
+        "labId": args.labId,
+        "userName": args.userName,
+    }, opts);
 }
 
 export interface ListGlobalUserEnvironmentsOutputArgs {

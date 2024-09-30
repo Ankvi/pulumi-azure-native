@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-02-01.
  */
 export function getTIDataConnector(args: GetTIDataConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetTIDataConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:securityinsights:getTIDataConnector", {
         "dataConnectorId": args.dataConnectorId,
@@ -43,7 +42,7 @@ export interface GetTIDataConnectorResult {
      */
     readonly etag?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -77,7 +76,12 @@ export interface GetTIDataConnectorResult {
  * Azure REST API version: 2023-02-01.
  */
 export function getTIDataConnectorOutput(args: GetTIDataConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTIDataConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getTIDataConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:securityinsights:getTIDataConnector", {
+        "dataConnectorId": args.dataConnectorId,
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetTIDataConnectorOutputArgs {

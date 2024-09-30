@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview.
  */
 export function getProjectInheritedSettings(args: GetProjectInheritedSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectInheritedSettingsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:devcenter:getProjectInheritedSettings", {
         "projectName": args.projectName,
@@ -47,7 +46,11 @@ export interface GetProjectInheritedSettingsResult {
  * Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview.
  */
 export function getProjectInheritedSettingsOutput(args: GetProjectInheritedSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectInheritedSettingsResult> {
-    return pulumi.output(args).apply((a: any) => getProjectInheritedSettings(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:devcenter:getProjectInheritedSettings", {
+        "projectName": args.projectName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetProjectInheritedSettingsOutputArgs {

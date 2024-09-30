@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Lists the access keys for the specified Azure Cosmos DB database account.
  * Azure REST API version: 2023-04-15.
  *
- * Other available API versions: 2020-03-01, 2020-06-01-preview, 2020-09-01, 2021-04-01-preview, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+ * Other available API versions: 2020-03-01, 2020-06-01-preview, 2020-09-01, 2021-04-01-preview, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
  */
 export function listDatabaseAccountKeys(args: ListDatabaseAccountKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListDatabaseAccountKeysResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:documentdb:listDatabaseAccountKeys", {
         "accountName": args.accountName,
@@ -51,10 +50,14 @@ export interface ListDatabaseAccountKeysResult {
  * Lists the access keys for the specified Azure Cosmos DB database account.
  * Azure REST API version: 2023-04-15.
  *
- * Other available API versions: 2020-03-01, 2020-06-01-preview, 2020-09-01, 2021-04-01-preview, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+ * Other available API versions: 2020-03-01, 2020-06-01-preview, 2020-09-01, 2021-04-01-preview, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
  */
 export function listDatabaseAccountKeysOutput(args: ListDatabaseAccountKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListDatabaseAccountKeysResult> {
-    return pulumi.output(args).apply((a: any) => listDatabaseAccountKeys(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:documentdb:listDatabaseAccountKeys", {
+        "accountName": args.accountName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListDatabaseAccountKeysOutputArgs {

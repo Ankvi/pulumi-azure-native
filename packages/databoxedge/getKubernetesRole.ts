@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2022-03-01.
  */
 export function getKubernetesRole(args: GetKubernetesRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesRoleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:databoxedge:getKubernetesRole", {
         "deviceName": args.deviceName,
@@ -92,7 +91,12 @@ export interface GetKubernetesRoleResult {
  * Azure REST API version: 2022-03-01.
  */
 export function getKubernetesRoleOutput(args: GetKubernetesRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesRoleResult> {
-    return pulumi.output(args).apply((a: any) => getKubernetesRole(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:databoxedge:getKubernetesRole", {
+        "deviceName": args.deviceName,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetKubernetesRoleOutputArgs {

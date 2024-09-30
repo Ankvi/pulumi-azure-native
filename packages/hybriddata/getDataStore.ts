@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2019-06-01.
  */
 export function getDataStore(args: GetDataStoreArgs, opts?: pulumi.InvokeOptions): Promise<GetDataStoreResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:hybriddata:getDataStore", {
         "dataManagerName": args.dataManagerName,
@@ -72,7 +71,12 @@ export interface GetDataStoreResult {
  * Azure REST API version: 2019-06-01.
  */
 export function getDataStoreOutput(args: GetDataStoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataStoreResult> {
-    return pulumi.output(args).apply((a: any) => getDataStore(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:hybriddata:getDataStore", {
+        "dataManagerName": args.dataManagerName,
+        "dataStoreName": args.dataStoreName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetDataStoreOutputArgs {

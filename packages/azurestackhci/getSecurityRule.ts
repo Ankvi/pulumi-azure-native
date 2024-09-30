@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-05-01-preview.
  */
 export function getSecurityRule(args: GetSecurityRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:azurestackhci:getSecurityRule", {
         "networkSecurityGroupName": args.networkSecurityGroupName,
@@ -104,7 +103,12 @@ export interface GetSecurityRuleResult {
  * Other available API versions: 2024-05-01-preview.
  */
 export function getSecurityRuleOutput(args: GetSecurityRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityRuleResult> {
-    return pulumi.output(args).apply((a: any) => getSecurityRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:azurestackhci:getSecurityRule", {
+        "networkSecurityGroupName": args.networkSecurityGroupName,
+        "resourceGroupName": args.resourceGroupName,
+        "securityRuleName": args.securityRuleName,
+    }, opts);
 }
 
 export interface GetSecurityRuleOutputArgs {

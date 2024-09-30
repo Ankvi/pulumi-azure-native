@@ -5,10 +5,9 @@ import * as types from "./types";
  * Description for Gets status of a web app backup that may be in progress, including secrets associated with the backup, such as the Azure Storage SAS URL. Also can be used to update the SAS URL for the backup if a new URL is passed in the request body.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2018-11-01, 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2016-08-01, 2018-11-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function listWebAppBackupStatusSecretsSlot(args: ListWebAppBackupStatusSecretsSlotArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppBackupStatusSecretsSlotResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:listWebAppBackupStatusSecretsSlot", {
         "backupId": args.backupId,
@@ -144,10 +143,22 @@ export interface ListWebAppBackupStatusSecretsSlotResult {
  * Description for Gets status of a web app backup that may be in progress, including secrets associated with the backup, such as the Azure Storage SAS URL. Also can be used to update the SAS URL for the backup if a new URL is passed in the request body.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2018-11-01, 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2016-08-01, 2018-11-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function listWebAppBackupStatusSecretsSlotOutput(args: ListWebAppBackupStatusSecretsSlotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWebAppBackupStatusSecretsSlotResult> {
-    return pulumi.output(args).apply((a: any) => listWebAppBackupStatusSecretsSlot(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:listWebAppBackupStatusSecretsSlot", {
+        "backupId": args.backupId,
+        "backupName": args.backupName,
+        "backupSchedule": args.backupSchedule ? pulumi.output(args.backupSchedule).apply(types.inputs.backupScheduleProvideDefaults) : undefined,
+        "databases": args.databases,
+        "enabled": args.enabled,
+        "kind": args.kind,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+        "slot": args.slot,
+        "storageAccountUrl": args.storageAccountUrl,
+    }, opts);
 }
 
 export interface ListWebAppBackupStatusSecretsSlotOutputArgs {

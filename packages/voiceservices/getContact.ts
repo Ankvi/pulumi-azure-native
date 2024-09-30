@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2022-12-01-preview.
  */
 export function getContact(args: GetContactArgs, opts?: pulumi.InvokeOptions): Promise<GetContactResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:voiceservices:getContact", {
         "communicationsGatewayName": args.communicationsGatewayName,
@@ -84,7 +83,12 @@ export interface GetContactResult {
  * Azure REST API version: 2022-12-01-preview.
  */
 export function getContactOutput(args: GetContactOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContactResult> {
-    return pulumi.output(args).apply((a: any) => getContact(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:voiceservices:getContact", {
+        "communicationsGatewayName": args.communicationsGatewayName,
+        "contactName": args.contactName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetContactOutputArgs {

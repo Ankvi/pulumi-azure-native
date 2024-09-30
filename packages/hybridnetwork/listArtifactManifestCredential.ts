@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * List credential for publishing artifacts defined in artifact manifest.
  * Azure REST API version: 2023-09-01.
+ *
+ * Other available API versions: 2024-04-15.
  */
 export function listArtifactManifestCredential(args: ListArtifactManifestCredentialArgs, opts?: pulumi.InvokeOptions): Promise<ListArtifactManifestCredentialResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:hybridnetwork:listArtifactManifestCredential", {
         "artifactManifestName": args.artifactManifestName,
@@ -46,9 +47,17 @@ export interface ListArtifactManifestCredentialResult {
 /**
  * List credential for publishing artifacts defined in artifact manifest.
  * Azure REST API version: 2023-09-01.
+ *
+ * Other available API versions: 2024-04-15.
  */
 export function listArtifactManifestCredentialOutput(args: ListArtifactManifestCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListArtifactManifestCredentialResult> {
-    return pulumi.output(args).apply((a: any) => listArtifactManifestCredential(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:hybridnetwork:listArtifactManifestCredential", {
+        "artifactManifestName": args.artifactManifestName,
+        "artifactStoreName": args.artifactStoreName,
+        "publisherName": args.publisherName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListArtifactManifestCredentialOutputArgs {

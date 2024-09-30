@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-12-01.
  */
 export function getServiceConfiguration(args: GetServiceConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceConfigurationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:hybridconnectivity:getServiceConfiguration", {
         "endpointName": args.endpointName,
@@ -100,7 +99,12 @@ export interface GetServiceConfigurationResult {
  * Other available API versions: 2024-12-01.
  */
 export function getServiceConfigurationOutput(args: GetServiceConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceConfigurationResult> {
-    return pulumi.output(args).apply((a: any) => getServiceConfiguration(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:hybridconnectivity:getServiceConfiguration", {
+        "endpointName": args.endpointName,
+        "resourceUri": args.resourceUri,
+        "serviceConfigurationName": args.serviceConfigurationName,
+    }, opts);
 }
 
 export interface GetServiceConfigurationOutputArgs {

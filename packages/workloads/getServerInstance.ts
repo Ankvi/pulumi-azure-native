@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-10-01-preview.
  */
 export function getServerInstance(args: GetServerInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetServerInstanceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:workloads:getServerInstance", {
         "resourceGroupName": args.resourceGroupName,
@@ -101,7 +100,13 @@ export interface GetServerInstanceResult {
  * Azure REST API version: 2023-10-01-preview.
  */
 export function getServerInstanceOutput(args: GetServerInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerInstanceResult> {
-    return pulumi.output(args).apply((a: any) => getServerInstance(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:workloads:getServerInstance", {
+        "resourceGroupName": args.resourceGroupName,
+        "sapDiscoverySiteName": args.sapDiscoverySiteName,
+        "sapInstanceName": args.sapInstanceName,
+        "serverInstanceName": args.serverInstanceName,
+    }, opts);
 }
 
 export interface GetServerInstanceOutputArgs {

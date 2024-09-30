@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01.
  */
 export function getReplicationFabric(args: GetReplicationFabricArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationFabricResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:recoveryservices:getReplicationFabric", {
         "fabricName": args.fabricName,
@@ -69,7 +68,13 @@ export interface GetReplicationFabricResult {
  * Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01.
  */
 export function getReplicationFabricOutput(args: GetReplicationFabricOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplicationFabricResult> {
-    return pulumi.output(args).apply((a: any) => getReplicationFabric(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:recoveryservices:getReplicationFabric", {
+        "fabricName": args.fabricName,
+        "filter": args.filter,
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface GetReplicationFabricOutputArgs {

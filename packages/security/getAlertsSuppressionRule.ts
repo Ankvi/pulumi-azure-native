@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2019-01-01-preview.
  */
 export function getAlertsSuppressionRule(args: GetAlertsSuppressionRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertsSuppressionRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:security:getAlertsSuppressionRule", {
         "alertsSuppressionRuleName": args.alertsSuppressionRuleName,
@@ -70,7 +69,10 @@ export interface GetAlertsSuppressionRuleResult {
  * Azure REST API version: 2019-01-01-preview.
  */
 export function getAlertsSuppressionRuleOutput(args: GetAlertsSuppressionRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertsSuppressionRuleResult> {
-    return pulumi.output(args).apply((a: any) => getAlertsSuppressionRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:security:getAlertsSuppressionRule", {
+        "alertsSuppressionRuleName": args.alertsSuppressionRuleName,
+    }, opts);
 }
 
 export interface GetAlertsSuppressionRuleOutputArgs {

@@ -5,10 +5,9 @@ import * as types from "./types";
  * get a dryrun job
  * Azure REST API version: 2022-11-01-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2024-04-01.
+ * Other available API versions: 2023-04-01-preview, 2024-04-01, 2024-07-01-preview.
  */
 export function getConnectorDryrun(args: GetConnectorDryrunArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorDryrunResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:servicelinker:getConnectorDryrun", {
         "dryrunName": args.dryrunName,
@@ -78,10 +77,16 @@ export interface GetConnectorDryrunResult {
  * get a dryrun job
  * Azure REST API version: 2022-11-01-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2024-04-01.
+ * Other available API versions: 2023-04-01-preview, 2024-04-01, 2024-07-01-preview.
  */
 export function getConnectorDryrunOutput(args: GetConnectorDryrunOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorDryrunResult> {
-    return pulumi.output(args).apply((a: any) => getConnectorDryrun(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:servicelinker:getConnectorDryrun", {
+        "dryrunName": args.dryrunName,
+        "location": args.location,
+        "resourceGroupName": args.resourceGroupName,
+        "subscriptionId": args.subscriptionId,
+    }, opts);
 }
 
 export interface GetConnectorDryrunOutputArgs {

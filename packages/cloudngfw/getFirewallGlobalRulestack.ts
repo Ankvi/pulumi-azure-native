@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview.
  */
 export function getFirewallGlobalRulestack(args: GetFirewallGlobalRulestackArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallGlobalRulestackResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:cloudngfw:getFirewallGlobalRulestack", {
         "firewallName": args.firewallName,
@@ -42,7 +41,11 @@ export interface GetFirewallGlobalRulestackResult {
  * Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview.
  */
 export function getFirewallGlobalRulestackOutput(args: GetFirewallGlobalRulestackOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallGlobalRulestackResult> {
-    return pulumi.output(args).apply((a: any) => getFirewallGlobalRulestack(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:cloudngfw:getFirewallGlobalRulestack", {
+        "firewallName": args.firewallName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetFirewallGlobalRulestackOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-03-01, 2024-03-01-preview.
  */
 export function getStandbyContainerGroupPool(args: GetStandbyContainerGroupPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetStandbyContainerGroupPoolResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:standbypool:getStandbyContainerGroupPool", {
         "resourceGroupName": args.resourceGroupName,
@@ -75,7 +74,11 @@ export interface GetStandbyContainerGroupPoolResult {
  * Other available API versions: 2024-03-01, 2024-03-01-preview.
  */
 export function getStandbyContainerGroupPoolOutput(args: GetStandbyContainerGroupPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStandbyContainerGroupPoolResult> {
-    return pulumi.output(args).apply((a: any) => getStandbyContainerGroupPool(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:standbypool:getStandbyContainerGroupPool", {
+        "resourceGroupName": args.resourceGroupName,
+        "standbyContainerGroupPoolName": args.standbyContainerGroupPoolName,
+    }, opts);
 }
 
 export interface GetStandbyContainerGroupPoolOutputArgs {

@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Lists the account keys for the specified Cognitive Services account.
  * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2017-04-18, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2017-04-18, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01.
  */
 export function listAccountKeys(args: ListAccountKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListAccountKeysResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:cognitiveservices:listAccountKeys", {
         "accountName": args.accountName,
@@ -43,10 +42,14 @@ export interface ListAccountKeysResult {
  * Lists the account keys for the specified Cognitive Services account.
  * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2017-04-18, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2017-04-18, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01.
  */
 export function listAccountKeysOutput(args: ListAccountKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListAccountKeysResult> {
-    return pulumi.output(args).apply((a: any) => listAccountKeys(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:cognitiveservices:listAccountKeys", {
+        "accountName": args.accountName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListAccountKeysOutputArgs {

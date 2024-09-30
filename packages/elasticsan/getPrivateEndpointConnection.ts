@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets the specified private endpoint connection associated with the Elastic San
  * Azure REST API version: 2022-12-01-preview.
  *
- * Other available API versions: 2023-01-01, 2024-05-01.
+ * Other available API versions: 2023-01-01, 2024-05-01, 2024-06-01-preview.
  */
 export function getPrivateEndpointConnection(args: GetPrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateEndpointConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:elasticsan:getPrivateEndpointConnection", {
         "elasticSanName": args.elasticSanName,
@@ -73,10 +72,15 @@ export interface GetPrivateEndpointConnectionResult {
  * Gets the specified private endpoint connection associated with the Elastic San
  * Azure REST API version: 2022-12-01-preview.
  *
- * Other available API versions: 2023-01-01, 2024-05-01.
+ * Other available API versions: 2023-01-01, 2024-05-01, 2024-06-01-preview.
  */
 export function getPrivateEndpointConnectionOutput(args: GetPrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateEndpointConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getPrivateEndpointConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:elasticsan:getPrivateEndpointConnection", {
+        "elasticSanName": args.elasticSanName,
+        "privateEndpointConnectionName": args.privateEndpointConnectionName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetPrivateEndpointConnectionOutputArgs {

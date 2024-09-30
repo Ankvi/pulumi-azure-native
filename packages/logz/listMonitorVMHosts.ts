@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2022-01-01-preview.
  */
 export function listMonitorVMHosts(args: ListMonitorVMHostsArgs, opts?: pulumi.InvokeOptions): Promise<ListMonitorVMHostsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:logz:listMonitorVMHosts", {
         "monitorName": args.monitorName,
@@ -43,7 +42,11 @@ export interface ListMonitorVMHostsResult {
  * Azure REST API version: 2022-01-01-preview.
  */
 export function listMonitorVMHostsOutput(args: ListMonitorVMHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListMonitorVMHostsResult> {
-    return pulumi.output(args).apply((a: any) => listMonitorVMHosts(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:logz:listMonitorVMHosts", {
+        "monitorName": args.monitorName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListMonitorVMHostsOutputArgs {

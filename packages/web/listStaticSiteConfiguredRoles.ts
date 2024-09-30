@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Description for Lists the roles configured for the static site.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2021-02-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2021-02-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function listStaticSiteConfiguredRoles(args: ListStaticSiteConfiguredRolesArgs, opts?: pulumi.InvokeOptions): Promise<ListStaticSiteConfiguredRolesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:listStaticSiteConfiguredRoles", {
         "name": args.name,
@@ -55,10 +54,14 @@ export interface ListStaticSiteConfiguredRolesResult {
  * Description for Lists the roles configured for the static site.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2021-02-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2021-02-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function listStaticSiteConfiguredRolesOutput(args: ListStaticSiteConfiguredRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListStaticSiteConfiguredRolesResult> {
-    return pulumi.output(args).apply((a: any) => listStaticSiteConfiguredRoles(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:listStaticSiteConfiguredRoles", {
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListStaticSiteConfiguredRolesOutputArgs {

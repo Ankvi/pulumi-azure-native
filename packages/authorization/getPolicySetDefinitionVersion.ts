@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-05-01.
  */
 export function getPolicySetDefinitionVersion(args: GetPolicySetDefinitionVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicySetDefinitionVersionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:authorization:getPolicySetDefinitionVersion", {
         "policyDefinitionVersion": args.policyDefinitionVersion,
@@ -87,7 +86,11 @@ export interface GetPolicySetDefinitionVersionResult {
  * Other available API versions: 2024-05-01.
  */
 export function getPolicySetDefinitionVersionOutput(args: GetPolicySetDefinitionVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicySetDefinitionVersionResult> {
-    return pulumi.output(args).apply((a: any) => getPolicySetDefinitionVersion(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:authorization:getPolicySetDefinitionVersion", {
+        "policyDefinitionVersion": args.policyDefinitionVersion,
+        "policySetDefinitionName": args.policySetDefinitionName,
+    }, opts);
 }
 
 export interface GetPolicySetDefinitionVersionOutputArgs {

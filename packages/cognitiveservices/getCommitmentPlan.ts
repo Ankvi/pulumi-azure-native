@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets the specified commitmentPlans associated with the Cognitive Services account.
  * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01.
  */
 export function getCommitmentPlan(args: GetCommitmentPlanArgs, opts?: pulumi.InvokeOptions): Promise<GetCommitmentPlanResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:cognitiveservices:getCommitmentPlan", {
         "accountName": args.accountName,
@@ -81,10 +80,15 @@ export interface GetCommitmentPlanResult {
  * Gets the specified commitmentPlans associated with the Cognitive Services account.
  * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01.
  */
 export function getCommitmentPlanOutput(args: GetCommitmentPlanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCommitmentPlanResult> {
-    return pulumi.output(args).apply((a: any) => getCommitmentPlan(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:cognitiveservices:getCommitmentPlan", {
+        "accountName": args.accountName,
+        "commitmentPlanName": args.commitmentPlanName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetCommitmentPlanOutputArgs {

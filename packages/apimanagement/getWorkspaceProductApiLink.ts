@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the API link for the product.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getWorkspaceProductApiLink(args: GetWorkspaceProductApiLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceProductApiLinkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:apimanagement:getWorkspaceProductApiLink", {
         "apiLinkId": args.apiLinkId,
@@ -66,10 +65,17 @@ export interface GetWorkspaceProductApiLinkResult {
  * Gets the API link for the product.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
  */
 export function getWorkspaceProductApiLinkOutput(args: GetWorkspaceProductApiLinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceProductApiLinkResult> {
-    return pulumi.output(args).apply((a: any) => getWorkspaceProductApiLink(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:getWorkspaceProductApiLink", {
+        "apiLinkId": args.apiLinkId,
+        "productId": args.productId,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+        "workspaceId": args.workspaceId,
+    }, opts);
 }
 
 export interface GetWorkspaceProductApiLinkOutputArgs {

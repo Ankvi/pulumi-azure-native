@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2020-03-20, 2021-06-01, 2023-03-01, 2023-09-01.
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:avs:getCluster", {
         "clusterName": args.clusterName,
@@ -76,7 +75,12 @@ export interface GetClusterResult {
  * Other available API versions: 2020-03-20, 2021-06-01, 2023-03-01, 2023-09-01.
  */
 export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
-    return pulumi.output(args).apply((a: any) => getCluster(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:avs:getCluster", {
+        "clusterName": args.clusterName,
+        "privateCloudName": args.privateCloudName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetClusterOutputArgs {

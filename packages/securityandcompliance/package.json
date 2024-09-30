@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-securityandcompliance",
-    "version": "2.58.0",
+    "version": "2.63.0",
     "description": "Pulumi Azure Native package for securityandcompliance",
     "keywords": [
         "pulumi",

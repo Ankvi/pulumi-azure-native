@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-01-01.
  */
 export function getAssetEncryptionKey(args: GetAssetEncryptionKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAssetEncryptionKeyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:media:getAssetEncryptionKey", {
         "accountName": args.accountName,
@@ -48,7 +47,12 @@ export interface GetAssetEncryptionKeyResult {
  * Azure REST API version: 2023-01-01.
  */
 export function getAssetEncryptionKeyOutput(args: GetAssetEncryptionKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssetEncryptionKeyResult> {
-    return pulumi.output(args).apply((a: any) => getAssetEncryptionKey(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:media:getAssetEncryptionKey", {
+        "accountName": args.accountName,
+        "assetName": args.assetName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetAssetEncryptionKeyOutputArgs {

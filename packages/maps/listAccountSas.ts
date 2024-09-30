@@ -9,10 +9,9 @@ import * as types from "./types";
  * 2. Create or update an Azure Map account with the same Azure region as the User Assigned Managed Identity is placed.
  *    Azure REST API version: 2021-12-01-preview.
  *
- * Other available API versions: 2023-06-01, 2023-08-01-preview, 2023-12-01-preview, 2024-01-01-preview.
+ * Other available API versions: 2023-06-01, 2023-08-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-07-01-preview.
  */
 export function listAccountSas(args: ListAccountSasArgs, opts?: pulumi.InvokeOptions): Promise<ListAccountSasResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:maps:listAccountSas", {
         "accountName": args.accountName,
@@ -78,10 +77,20 @@ export interface ListAccountSasResult {
  * 2. Create or update an Azure Map account with the same Azure region as the User Assigned Managed Identity is placed.
  *    Azure REST API version: 2021-12-01-preview.
  *
- * Other available API versions: 2023-06-01, 2023-08-01-preview, 2023-12-01-preview, 2024-01-01-preview.
+ * Other available API versions: 2023-06-01, 2023-08-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-07-01-preview.
  */
 export function listAccountSasOutput(args: ListAccountSasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListAccountSasResult> {
-    return pulumi.output(args).apply((a: any) => listAccountSas(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:maps:listAccountSas", {
+        "accountName": args.accountName,
+        "expiry": args.expiry,
+        "maxRatePerSecond": args.maxRatePerSecond,
+        "principalId": args.principalId,
+        "regions": args.regions,
+        "resourceGroupName": args.resourceGroupName,
+        "signingKey": args.signingKey,
+        "start": args.start,
+    }, opts);
 }
 
 export interface ListAccountSasOutputArgs {

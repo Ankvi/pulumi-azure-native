@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2022-12-29.
  */
 export function getIotHubDataConnection(args: GetIotHubDataConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetIotHubDataConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:kusto:getIotHubDataConnection", {
         "clusterName": args.clusterName,
@@ -105,7 +104,13 @@ export interface GetIotHubDataConnectionResult {
  * Azure REST API version: 2022-12-29.
  */
 export function getIotHubDataConnectionOutput(args: GetIotHubDataConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIotHubDataConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getIotHubDataConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:kusto:getIotHubDataConnection", {
+        "clusterName": args.clusterName,
+        "dataConnectionName": args.dataConnectionName,
+        "databaseName": args.databaseName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetIotHubDataConnectionOutputArgs {

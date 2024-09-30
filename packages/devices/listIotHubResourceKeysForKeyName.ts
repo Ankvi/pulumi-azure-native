@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2017-07-01, 2022-11-15-preview, 2023-06-30, 2023-06-30-preview.
  */
 export function listIotHubResourceKeysForKeyName(args: ListIotHubResourceKeysForKeyNameArgs, opts?: pulumi.InvokeOptions): Promise<ListIotHubResourceKeysForKeyNameResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:devices:listIotHubResourceKeysForKeyName", {
         "keyName": args.keyName,
@@ -59,7 +58,12 @@ export interface ListIotHubResourceKeysForKeyNameResult {
  * Other available API versions: 2017-07-01, 2022-11-15-preview, 2023-06-30, 2023-06-30-preview.
  */
 export function listIotHubResourceKeysForKeyNameOutput(args: ListIotHubResourceKeysForKeyNameOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListIotHubResourceKeysForKeyNameResult> {
-    return pulumi.output(args).apply((a: any) => listIotHubResourceKeysForKeyName(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:devices:listIotHubResourceKeysForKeyName", {
+        "keyName": args.keyName,
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface ListIotHubResourceKeysForKeyNameOutputArgs {

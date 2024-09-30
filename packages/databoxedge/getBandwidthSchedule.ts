@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
  */
 export function getBandwidthSchedule(args: GetBandwidthScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthScheduleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:databoxedge:getBandwidthSchedule", {
         "deviceName": args.deviceName,
@@ -76,7 +75,12 @@ export interface GetBandwidthScheduleResult {
  * Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
  */
 export function getBandwidthScheduleOutput(args: GetBandwidthScheduleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBandwidthScheduleResult> {
-    return pulumi.output(args).apply((a: any) => getBandwidthSchedule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:databoxedge:getBandwidthSchedule", {
+        "deviceName": args.deviceName,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetBandwidthScheduleOutputArgs {

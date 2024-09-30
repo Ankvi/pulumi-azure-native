@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2015-08-01, 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
  */
 export function getEventHub(args: GetEventHubArgs, opts?: pulumi.InvokeOptions): Promise<GetEventHubResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:eventhub:getEventHub", {
         "eventHubName": args.eventHubName,
@@ -96,7 +95,12 @@ export interface GetEventHubResult {
  * Other available API versions: 2015-08-01, 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
  */
 export function getEventHubOutput(args: GetEventHubOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventHubResult> {
-    return pulumi.output(args).apply((a: any) => getEventHub(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:eventhub:getEventHub", {
+        "eventHubName": args.eventHubName,
+        "namespaceName": args.namespaceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetEventHubOutputArgs {

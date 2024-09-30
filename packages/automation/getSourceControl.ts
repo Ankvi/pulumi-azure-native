@@ -7,7 +7,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function getSourceControl(args: GetSourceControlArgs, opts?: pulumi.InvokeOptions): Promise<GetSourceControlResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:automation:getSourceControl", {
         "automationAccountName": args.automationAccountName,
@@ -91,7 +90,12 @@ export interface GetSourceControlResult {
  * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function getSourceControlOutput(args: GetSourceControlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSourceControlResult> {
-    return pulumi.output(args).apply((a: any) => getSourceControl(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:automation:getSourceControl", {
+        "automationAccountName": args.automationAccountName,
+        "resourceGroupName": args.resourceGroupName,
+        "sourceControlName": args.sourceControlName,
+    }, opts);
 }
 
 export interface GetSourceControlOutputArgs {

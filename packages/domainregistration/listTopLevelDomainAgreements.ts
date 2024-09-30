@@ -5,10 +5,9 @@ import * as types from "./types";
  * Description for Gets all legal agreements that user needs to accept before purchasing a domain.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2015-04-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2015-04-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function listTopLevelDomainAgreements(args: ListTopLevelDomainAgreementsArgs, opts?: pulumi.InvokeOptions): Promise<ListTopLevelDomainAgreementsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:domainregistration:listTopLevelDomainAgreements", {
         "forTransfer": args.forTransfer,
@@ -49,10 +48,15 @@ export interface ListTopLevelDomainAgreementsResult {
  * Description for Gets all legal agreements that user needs to accept before purchasing a domain.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2015-04-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2015-04-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function listTopLevelDomainAgreementsOutput(args: ListTopLevelDomainAgreementsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListTopLevelDomainAgreementsResult> {
-    return pulumi.output(args).apply((a: any) => listTopLevelDomainAgreements(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:domainregistration:listTopLevelDomainAgreements", {
+        "forTransfer": args.forTransfer,
+        "includePrivacy": args.includePrivacy,
+        "name": args.name,
+    }, opts);
 }
 
 export interface ListTopLevelDomainAgreementsOutputArgs {

@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get a AvsAssessment
  * Azure REST API version: 2023-03-15.
  *
- * Other available API versions: 2023-04-01-preview.
+ * Other available API versions: 2023-04-01-preview, 2023-05-01-preview.
  */
 export function getAvsAssessmentsOperation(args: GetAvsAssessmentsOperationArgs, opts?: pulumi.InvokeOptions): Promise<GetAvsAssessmentsOperationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:migrate:getAvsAssessmentsOperation", {
         "assessmentName": args.assessmentName,
@@ -232,10 +231,16 @@ export interface GetAvsAssessmentsOperationResult {
  * Get a AvsAssessment
  * Azure REST API version: 2023-03-15.
  *
- * Other available API versions: 2023-04-01-preview.
+ * Other available API versions: 2023-04-01-preview, 2023-05-01-preview.
  */
 export function getAvsAssessmentsOperationOutput(args: GetAvsAssessmentsOperationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvsAssessmentsOperationResult> {
-    return pulumi.output(args).apply((a: any) => getAvsAssessmentsOperation(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:migrate:getAvsAssessmentsOperation", {
+        "assessmentName": args.assessmentName,
+        "groupName": args.groupName,
+        "projectName": args.projectName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetAvsAssessmentsOperationOutputArgs {

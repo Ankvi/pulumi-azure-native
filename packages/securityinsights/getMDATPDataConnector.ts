@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-02-01.
  */
 export function getMDATPDataConnector(args: GetMDATPDataConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetMDATPDataConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:securityinsights:getMDATPDataConnector", {
         "dataConnectorId": args.dataConnectorId,
@@ -43,7 +42,7 @@ export interface GetMDATPDataConnectorResult {
      */
     readonly etag?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -73,7 +72,12 @@ export interface GetMDATPDataConnectorResult {
  * Azure REST API version: 2023-02-01.
  */
 export function getMDATPDataConnectorOutput(args: GetMDATPDataConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMDATPDataConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getMDATPDataConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:securityinsights:getMDATPDataConnector", {
+        "dataConnectorId": args.dataConnectorId,
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetMDATPDataConnectorOutputArgs {

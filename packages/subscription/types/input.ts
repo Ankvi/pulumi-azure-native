@@ -55,4 +55,18 @@ export interface PutAliasRequestPropertiesArgs {
     workload?: pulumi.Input<string | enums.Workload>;
 }
 
+/**
+ * Properties of subscription Request for Changed Target Directory.
+ */
+export interface TargetDirectoryRequestPropertiesArgs {
+    /**
+     * The destination OwnerId, can be object id or email address
+     */
+    destinationOwnerId?: pulumi.Input<string>;
+    /**
+     * The destination Tenant id where subscription needs to be accepted
+     */
+    destinationTenantId?: pulumi.Input<string>;
+}
+
 

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-08-01, 2023-01-01.
  */
 export function listMonitorLinkedResources(args: ListMonitorLinkedResourcesArgs, opts?: pulumi.InvokeOptions): Promise<ListMonitorLinkedResourcesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:datadog:listMonitorLinkedResources", {
         "monitorName": args.monitorName,
@@ -47,7 +46,11 @@ export interface ListMonitorLinkedResourcesResult {
  * Other available API versions: 2022-08-01, 2023-01-01.
  */
 export function listMonitorLinkedResourcesOutput(args: ListMonitorLinkedResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListMonitorLinkedResourcesResult> {
-    return pulumi.output(args).apply((a: any) => listMonitorLinkedResources(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:datadog:listMonitorLinkedResources", {
+        "monitorName": args.monitorName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListMonitorLinkedResourcesOutputArgs {

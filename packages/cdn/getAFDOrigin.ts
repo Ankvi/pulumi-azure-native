@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets an existing origin within an origin group.
  * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
  */
 export function getAFDOrigin(args: GetAFDOriginArgs, opts?: pulumi.InvokeOptions): Promise<GetAFDOriginResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:cdn:getAFDOrigin", {
         "originGroupName": args.originGroupName,
@@ -111,10 +110,16 @@ export interface GetAFDOriginResult {
  * Gets an existing origin within an origin group.
  * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
  */
 export function getAFDOriginOutput(args: GetAFDOriginOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAFDOriginResult> {
-    return pulumi.output(args).apply((a: any) => getAFDOrigin(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:cdn:getAFDOrigin", {
+        "originGroupName": args.originGroupName,
+        "originName": args.originName,
+        "profileName": args.profileName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetAFDOriginOutputArgs {

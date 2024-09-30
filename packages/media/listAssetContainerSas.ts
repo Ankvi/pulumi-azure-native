@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-01-01.
  */
 export function listAssetContainerSas(args: ListAssetContainerSasArgs, opts?: pulumi.InvokeOptions): Promise<ListAssetContainerSasResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:media:listAssetContainerSas", {
         "accountName": args.accountName,
@@ -54,7 +53,14 @@ export interface ListAssetContainerSasResult {
  * Azure REST API version: 2023-01-01.
  */
 export function listAssetContainerSasOutput(args: ListAssetContainerSasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListAssetContainerSasResult> {
-    return pulumi.output(args).apply((a: any) => listAssetContainerSas(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:media:listAssetContainerSas", {
+        "accountName": args.accountName,
+        "assetName": args.assetName,
+        "expiryTime": args.expiryTime,
+        "permissions": args.permissions,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListAssetContainerSasOutputArgs {

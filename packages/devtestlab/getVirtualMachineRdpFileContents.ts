@@ -5,7 +5,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Azure REST API version: 2018-09-15.
  */
 export function getVirtualMachineRdpFileContents(args: GetVirtualMachineRdpFileContentsArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineRdpFileContentsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:devtestlab:getVirtualMachineRdpFileContents", {
         "labName": args.labName,
@@ -43,7 +42,12 @@ export interface GetVirtualMachineRdpFileContentsResult {
  * Azure REST API version: 2018-09-15.
  */
 export function getVirtualMachineRdpFileContentsOutput(args: GetVirtualMachineRdpFileContentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineRdpFileContentsResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualMachineRdpFileContents(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:devtestlab:getVirtualMachineRdpFileContents", {
+        "labName": args.labName,
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetVirtualMachineRdpFileContentsOutputArgs {

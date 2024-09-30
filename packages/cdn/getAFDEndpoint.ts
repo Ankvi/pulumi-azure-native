@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
  * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
  */
 export function getAFDEndpoint(args: GetAFDEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetAFDEndpointResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:cdn:getAFDEndpoint", {
         "endpointName": args.endpointName,
@@ -86,10 +85,15 @@ export interface GetAFDEndpointResult {
  * Gets an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
  * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
  */
 export function getAFDEndpointOutput(args: GetAFDEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAFDEndpointResult> {
-    return pulumi.output(args).apply((a: any) => getAFDEndpoint(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:cdn:getAFDEndpoint", {
+        "endpointName": args.endpointName,
+        "profileName": args.profileName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetAFDEndpointOutputArgs {

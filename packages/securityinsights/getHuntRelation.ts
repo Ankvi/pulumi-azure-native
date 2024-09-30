@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets a hunt relation
  * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview.
+ * Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview.
  */
 export function getHuntRelation(args: GetHuntRelationArgs, opts?: pulumi.InvokeOptions): Promise<GetHuntRelationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:securityinsights:getHuntRelation", {
         "huntId": args.huntId,
@@ -46,7 +45,7 @@ export interface GetHuntRelationResult {
      */
     readonly etag?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -86,10 +85,16 @@ export interface GetHuntRelationResult {
  * Gets a hunt relation
  * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview.
+ * Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview.
  */
 export function getHuntRelationOutput(args: GetHuntRelationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHuntRelationResult> {
-    return pulumi.output(args).apply((a: any) => getHuntRelation(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:securityinsights:getHuntRelation", {
+        "huntId": args.huntId,
+        "huntRelationId": args.huntRelationId,
+        "resourceGroupName": args.resourceGroupName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetHuntRelationOutputArgs {

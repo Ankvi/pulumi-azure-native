@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * A job agent private endpoint.
  * Azure REST API version: 2023-05-01-preview.
  *
- * Other available API versions: 2023-08-01-preview.
+ * Other available API versions: 2023-08-01-preview, 2024-05-01-preview.
  */
 export class JobPrivateEndpoint extends pulumi.CustomResource {
     /**
@@ -88,7 +88,7 @@ export class JobPrivateEndpoint extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20230501preview:JobPrivateEndpoint" }, { type: "azure-native:sql/v20230801preview:JobPrivateEndpoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20230501preview:JobPrivateEndpoint" }, { type: "azure-native:sql/v20230801preview:JobPrivateEndpoint" }, { type: "azure-native:sql/v20240501preview:JobPrivateEndpoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(JobPrivateEndpoint.__pulumiType, name, resourceInputs, opts);
     }

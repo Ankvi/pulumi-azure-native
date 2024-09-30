@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2020-01-01-preview.
  */
 export function getManagementGroupDiagnosticSetting(args: GetManagementGroupDiagnosticSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetManagementGroupDiagnosticSettingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:insights:getManagementGroupDiagnosticSetting", {
         "managementGroupId": args.managementGroupId,
@@ -83,7 +82,11 @@ export interface GetManagementGroupDiagnosticSettingResult {
  * Other available API versions: 2020-01-01-preview.
  */
 export function getManagementGroupDiagnosticSettingOutput(args: GetManagementGroupDiagnosticSettingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagementGroupDiagnosticSettingResult> {
-    return pulumi.output(args).apply((a: any) => getManagementGroupDiagnosticSetting(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:insights:getManagementGroupDiagnosticSetting", {
+        "managementGroupId": args.managementGroupId,
+        "name": args.name,
+    }, opts);
 }
 
 export interface GetManagementGroupDiagnosticSettingOutputArgs {

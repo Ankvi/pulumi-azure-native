@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2018-09-30-preview.
  */
 export function getOpenShiftManagedCluster(args: GetOpenShiftManagedClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenShiftManagedClusterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:containerservice:getOpenShiftManagedCluster", {
         "resourceGroupName": args.resourceGroupName,
@@ -111,7 +110,11 @@ export interface GetOpenShiftManagedClusterResult {
  * Other available API versions: 2018-09-30-preview.
  */
 export function getOpenShiftManagedClusterOutput(args: GetOpenShiftManagedClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenShiftManagedClusterResult> {
-    return pulumi.output(args).apply((a: any) => getOpenShiftManagedCluster(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:containerservice:getOpenShiftManagedCluster", {
+        "resourceGroupName": args.resourceGroupName,
+        "resourceName": args.resourceName,
+    }, opts);
 }
 
 export interface GetOpenShiftManagedClusterOutputArgs {

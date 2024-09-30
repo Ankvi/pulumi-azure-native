@@ -5,10 +5,9 @@ import * as types from "./types";
  * Description for Get a certificate.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2015-08-01, 2016-03-01, 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2015-08-01, 2016-03-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:getCertificate", {
         "name": args.name,
@@ -140,10 +139,14 @@ export interface GetCertificateResult {
  * Description for Get a certificate.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2015-08-01, 2016-03-01, 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2015-08-01, 2016-03-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getCertificateOutput(args: GetCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateResult> {
-    return pulumi.output(args).apply((a: any) => getCertificate(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:getCertificate", {
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetCertificateOutputArgs {

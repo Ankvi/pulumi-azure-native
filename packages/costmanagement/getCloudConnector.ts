@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2019-03-01-preview.
  */
 export function getCloudConnector(args: GetCloudConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:costmanagement:getCloudConnector", {
         "connectorName": args.connectorName,
@@ -107,7 +106,11 @@ export interface GetCloudConnectorResult {
  * Azure REST API version: 2019-03-01-preview.
  */
 export function getCloudConnectorOutput(args: GetCloudConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getCloudConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:costmanagement:getCloudConnector", {
+        "connectorName": args.connectorName,
+        "expand": args.expand,
+    }, opts);
 }
 
 export interface GetCloudConnectorOutputArgs {

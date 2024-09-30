@@ -5,10 +5,9 @@ import * as types from "./types";
  * Description for Gets the connection strings of an app.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function listWebAppConnectionStrings(args: ListWebAppConnectionStringsArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppConnectionStringsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:listWebAppConnectionStrings", {
         "name": args.name,
@@ -56,10 +55,14 @@ export interface ListWebAppConnectionStringsResult {
  * Description for Gets the connection strings of an app.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01.
+ * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function listWebAppConnectionStringsOutput(args: ListWebAppConnectionStringsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWebAppConnectionStringsResult> {
-    return pulumi.output(args).apply((a: any) => listWebAppConnectionStrings(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:listWebAppConnectionStrings", {
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListWebAppConnectionStringsOutputArgs {

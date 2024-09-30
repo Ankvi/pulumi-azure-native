@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Azure REST API version: 2024-06-01-preview.
+ *
+ * Other available API versions: 2024-07-01.
  */
 export class KubernetesClusterFeature extends pulumi.CustomResource {
     /**
@@ -127,7 +129,7 @@ export class KubernetesClusterFeature extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20240601preview:KubernetesClusterFeature" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20240601preview:KubernetesClusterFeature" }, { type: "azure-native:networkcloud/v20240701:KubernetesClusterFeature" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(KubernetesClusterFeature.__pulumiType, name, resourceInputs, opts);
     }

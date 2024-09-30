@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-04-01-preview, 2024-05-01, 2024-09-01-preview.
  */
 export function getAccessConnector(args: GetAccessConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:databricks:getAccessConnector", {
         "connectorName": args.connectorName,
@@ -71,7 +70,11 @@ export interface GetAccessConnectorResult {
  * Other available API versions: 2022-04-01-preview, 2024-05-01, 2024-09-01-preview.
  */
 export function getAccessConnectorOutput(args: GetAccessConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getAccessConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:databricks:getAccessConnector", {
+        "connectorName": args.connectorName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetAccessConnectorOutputArgs {

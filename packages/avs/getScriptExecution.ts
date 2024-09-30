@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-03-01, 2023-09-01.
  */
 export function getScriptExecution(args: GetScriptExecutionArgs, opts?: pulumi.InvokeOptions): Promise<GetScriptExecutionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:avs:getScriptExecution", {
         "privateCloudName": args.privateCloudName,
@@ -116,7 +115,12 @@ export interface GetScriptExecutionResult {
  * Other available API versions: 2023-03-01, 2023-09-01.
  */
 export function getScriptExecutionOutput(args: GetScriptExecutionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScriptExecutionResult> {
-    return pulumi.output(args).apply((a: any) => getScriptExecution(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:avs:getScriptExecution", {
+        "privateCloudName": args.privateCloudName,
+        "resourceGroupName": args.resourceGroupName,
+        "scriptExecutionName": args.scriptExecutionName,
+    }, opts);
 }
 
 export interface GetScriptExecutionOutputArgs {

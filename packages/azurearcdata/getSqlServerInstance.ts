@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2024-01-01.
  */
 export function getSqlServerInstance(args: GetSqlServerInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlServerInstanceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:azurearcdata:getSqlServerInstance", {
         "resourceGroupName": args.resourceGroupName,
@@ -67,7 +66,11 @@ export interface GetSqlServerInstanceResult {
  * Other available API versions: 2024-01-01.
  */
 export function getSqlServerInstanceOutput(args: GetSqlServerInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlServerInstanceResult> {
-    return pulumi.output(args).apply((a: any) => getSqlServerInstance(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:azurearcdata:getSqlServerInstance", {
+        "resourceGroupName": args.resourceGroupName,
+        "sqlServerInstanceName": args.sqlServerInstanceName,
+    }, opts);
 }
 
 export interface GetSqlServerInstanceOutputArgs {

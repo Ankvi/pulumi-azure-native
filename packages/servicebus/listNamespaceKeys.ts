@@ -4,10 +4,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the primary and secondary connection strings for the namespace.
  * Azure REST API version: 2022-01-01-preview.
  *
- * Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
+ * Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
  */
 export function listNamespaceKeys(args: ListNamespaceKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListNamespaceKeysResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:servicebus:listNamespaceKeys", {
         "authorizationRuleName": args.authorizationRuleName,
@@ -68,10 +67,15 @@ export interface ListNamespaceKeysResult {
  * Gets the primary and secondary connection strings for the namespace.
  * Azure REST API version: 2022-01-01-preview.
  *
- * Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
+ * Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
  */
 export function listNamespaceKeysOutput(args: ListNamespaceKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListNamespaceKeysResult> {
-    return pulumi.output(args).apply((a: any) => listNamespaceKeys(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:servicebus:listNamespaceKeys", {
+        "authorizationRuleName": args.authorizationRuleName,
+        "namespaceName": args.namespaceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListNamespaceKeysOutputArgs {

@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01.
  */
 export function getDeploymentAtManagementGroupScope(args: GetDeploymentAtManagementGroupScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetDeploymentAtManagementGroupScopeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:resources:getDeploymentAtManagementGroupScope", {
         "deploymentName": args.deploymentName,
@@ -63,7 +62,11 @@ export interface GetDeploymentAtManagementGroupScopeResult {
  * Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01.
  */
 export function getDeploymentAtManagementGroupScopeOutput(args: GetDeploymentAtManagementGroupScopeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeploymentAtManagementGroupScopeResult> {
-    return pulumi.output(args).apply((a: any) => getDeploymentAtManagementGroupScope(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:resources:getDeploymentAtManagementGroupScope", {
+        "deploymentName": args.deploymentName,
+        "groupId": args.groupId,
+    }, opts);
 }
 
 export interface GetDeploymentAtManagementGroupScopeOutputArgs {

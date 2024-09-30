@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-07-01-preview, 2023-08-01-preview.
  */
 export function getNspAssociation(args: GetNspAssociationArgs, opts?: pulumi.InvokeOptions): Promise<GetNspAssociationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getNspAssociation", {
         "associationName": args.associationName,
@@ -84,7 +83,12 @@ export interface GetNspAssociationResult {
  * Other available API versions: 2023-07-01-preview, 2023-08-01-preview.
  */
 export function getNspAssociationOutput(args: GetNspAssociationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNspAssociationResult> {
-    return pulumi.output(args).apply((a: any) => getNspAssociation(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getNspAssociation", {
+        "associationName": args.associationName,
+        "networkSecurityPerimeterName": args.networkSecurityPerimeterName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNspAssociationOutputArgs {

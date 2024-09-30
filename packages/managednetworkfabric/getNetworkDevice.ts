@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-06-15.
  */
 export function getNetworkDevice(args: GetNetworkDeviceArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkDeviceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:managednetworkfabric:getNetworkDevice", {
         "networkDeviceName": args.networkDeviceName,
@@ -95,7 +94,11 @@ export interface GetNetworkDeviceResult {
  * Other available API versions: 2023-06-15.
  */
 export function getNetworkDeviceOutput(args: GetNetworkDeviceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkDeviceResult> {
-    return pulumi.output(args).apply((a: any) => getNetworkDevice(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:managednetworkfabric:getNetworkDevice", {
+        "networkDeviceName": args.networkDeviceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetNetworkDeviceOutputArgs {

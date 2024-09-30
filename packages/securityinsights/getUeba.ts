@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-06-01-preview.
  */
 export function getUeba(args: GetUebaArgs, opts?: pulumi.InvokeOptions): Promise<GetUebaResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:securityinsights:getUeba", {
         "resourceGroupName": args.resourceGroupName,
@@ -43,7 +42,7 @@ export interface GetUebaResult {
      */
     readonly etag?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -69,7 +68,12 @@ export interface GetUebaResult {
  * Azure REST API version: 2023-06-01-preview.
  */
 export function getUebaOutput(args: GetUebaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUebaResult> {
-    return pulumi.output(args).apply((a: any) => getUeba(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:securityinsights:getUeba", {
+        "resourceGroupName": args.resourceGroupName,
+        "settingsName": args.settingsName,
+        "workspaceName": args.workspaceName,
+    }, opts);
 }
 
 export interface GetUebaOutputArgs {

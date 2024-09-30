@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview.
  */
 export function getScalingPlanPersonalSchedule(args: GetScalingPlanPersonalScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetScalingPlanPersonalScheduleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:desktopvirtualization:getScalingPlanPersonalSchedule", {
         "resourceGroupName": args.resourceGroupName,
@@ -164,7 +163,12 @@ export interface GetScalingPlanPersonalScheduleResult {
  * Other available API versions: 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview.
  */
 export function getScalingPlanPersonalScheduleOutput(args: GetScalingPlanPersonalScheduleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScalingPlanPersonalScheduleResult> {
-    return pulumi.output(args).apply((a: any) => getScalingPlanPersonalSchedule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:desktopvirtualization:getScalingPlanPersonalSchedule", {
+        "resourceGroupName": args.resourceGroupName,
+        "scalingPlanName": args.scalingPlanName,
+        "scalingPlanScheduleName": args.scalingPlanScheduleName,
+    }, opts);
 }
 
 export interface GetScalingPlanPersonalScheduleOutputArgs {

@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2023-10-04-preview.
  */
 export function getTarget(args: GetTargetArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:iotoperationsorchestrator:getTarget", {
         "name": args.name,
@@ -87,7 +86,11 @@ export interface GetTargetResult {
  * Azure REST API version: 2023-10-04-preview.
  */
 export function getTargetOutput(args: GetTargetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetResult> {
-    return pulumi.output(args).apply((a: any) => getTarget(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:iotoperationsorchestrator:getTarget", {
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetTargetOutputArgs {

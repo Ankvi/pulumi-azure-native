@@ -5,10 +5,9 @@ import * as types from "./types";
  * Description for Get the properties of a Kubernetes Environment.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01, 2023-12-01.
+ * Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getKubeEnvironment(args: GetKubeEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeEnvironmentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:web:getKubeEnvironment", {
         "name": args.name,
@@ -105,10 +104,14 @@ export interface GetKubeEnvironmentResult {
  * Description for Get the properties of a Kubernetes Environment.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01, 2023-12-01.
+ * Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
  */
 export function getKubeEnvironmentOutput(args: GetKubeEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeEnvironmentResult> {
-    return pulumi.output(args).apply((a: any) => getKubeEnvironment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:getKubeEnvironment", {
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetKubeEnvironmentOutputArgs {

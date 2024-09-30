@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-03-01.
  */
 export function getContactProfile(args: GetContactProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetContactProfileResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:orbital:getContactProfile", {
         "contactProfileName": args.contactProfileName,
@@ -91,7 +90,11 @@ export interface GetContactProfileResult {
  * Other available API versions: 2022-03-01.
  */
 export function getContactProfileOutput(args: GetContactProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContactProfileResult> {
-    return pulumi.output(args).apply((a: any) => getContactProfile(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:orbital:getContactProfile", {
+        "contactProfileName": args.contactProfileName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetContactProfileOutputArgs {

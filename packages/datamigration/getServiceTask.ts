@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-03-30-preview, 2023-07-15-preview.
  */
 export function getServiceTask(args: GetServiceTaskArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceTaskResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:datamigration:getServiceTask", {
         "expand": args.expand,
@@ -73,7 +72,13 @@ export interface GetServiceTaskResult {
  * Other available API versions: 2022-03-30-preview, 2023-07-15-preview.
  */
 export function getServiceTaskOutput(args: GetServiceTaskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceTaskResult> {
-    return pulumi.output(args).apply((a: any) => getServiceTask(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:datamigration:getServiceTask", {
+        "expand": args.expand,
+        "groupName": args.groupName,
+        "serviceName": args.serviceName,
+        "taskName": args.taskName,
+    }, opts);
 }
 
 export interface GetServiceTaskOutputArgs {

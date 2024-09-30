@@ -7,7 +7,6 @@ import * as types from "./types";
  * Other available API versions: 2023-11-01-preview.
  */
 export function getBillingHubServiceFreeHourBalance(args: GetBillingHubServiceFreeHourBalanceArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingHubServiceFreeHourBalanceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:testbase:getBillingHubServiceFreeHourBalance", {
         "resourceGroupName": args.resourceGroupName,
@@ -36,7 +35,11 @@ export interface GetBillingHubServiceFreeHourBalanceResult {
  * Other available API versions: 2023-11-01-preview.
  */
 export function getBillingHubServiceFreeHourBalanceOutput(args: GetBillingHubServiceFreeHourBalanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingHubServiceFreeHourBalanceResult> {
-    return pulumi.output(args).apply((a: any) => getBillingHubServiceFreeHourBalance(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:testbase:getBillingHubServiceFreeHourBalance", {
+        "resourceGroupName": args.resourceGroupName,
+        "testBaseAccountName": args.testBaseAccountName,
+    }, opts);
 }
 
 export interface GetBillingHubServiceFreeHourBalanceOutputArgs {

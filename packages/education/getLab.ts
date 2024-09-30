@@ -6,7 +6,6 @@ import * as types from "./types";
  * Azure REST API version: 2021-12-01-preview.
  */
 export function getLab(args: GetLabArgs, opts?: pulumi.InvokeOptions): Promise<GetLabResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:education:getLab", {
         "billingAccountName": args.billingAccountName,
@@ -101,7 +100,13 @@ export interface GetLabResult {
  * Azure REST API version: 2021-12-01-preview.
  */
 export function getLabOutput(args: GetLabOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLabResult> {
-    return pulumi.output(args).apply((a: any) => getLab(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:education:getLab", {
+        "billingAccountName": args.billingAccountName,
+        "billingProfileName": args.billingProfileName,
+        "includeBudget": args.includeBudget,
+        "invoiceSectionName": args.invoiceSectionName,
+    }, opts);
 }
 
 export interface GetLabOutputArgs {

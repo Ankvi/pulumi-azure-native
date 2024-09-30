@@ -11,6 +11,16 @@ export interface AgentPoolUpgradeSettingsArgs {
 }
 
 /**
+ * The node image upgrade to be applied to the target clusters in auto upgrade.
+ */
+export interface AutoUpgradeNodeImageSelectionArgs {
+    /**
+     * The node image upgrade type.
+     */
+    type: pulumi.Input<string | enums.AutoUpgradeNodeImageSelectionType>;
+}
+
+/**
  * Azure Key Vault key management service settings for the security profile.
  */
 export interface AzureKeyVaultKmsArgs {
@@ -1626,6 +1636,9 @@ export interface WindowsGmsaProfileArgs {
      */
     rootDomainName?: pulumi.Input<string>;
 }
+
+
+
 
 
 

@@ -5,10 +5,9 @@ import * as types from "./types";
  * Get baseboard management controller key set of the provided cluster.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01.
  */
 export function getBmcKeySet(args: GetBmcKeySetArgs, opts?: pulumi.InvokeOptions): Promise<GetBmcKeySetResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:networkcloud:getBmcKeySet", {
         "bmcKeySetName": args.bmcKeySetName,
@@ -102,10 +101,15 @@ export interface GetBmcKeySetResult {
  * Get baseboard management controller key set of the provided cluster.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01.
  */
 export function getBmcKeySetOutput(args: GetBmcKeySetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBmcKeySetResult> {
-    return pulumi.output(args).apply((a: any) => getBmcKeySet(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:networkcloud:getBmcKeySet", {
+        "bmcKeySetName": args.bmcKeySetName,
+        "clusterName": args.clusterName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetBmcKeySetOutputArgs {

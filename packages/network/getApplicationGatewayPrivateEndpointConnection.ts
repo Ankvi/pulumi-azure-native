@@ -5,10 +5,9 @@ import * as types from "./types";
  * Gets the specified private endpoint connection on application gateway.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getApplicationGatewayPrivateEndpointConnection(args: GetApplicationGatewayPrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationGatewayPrivateEndpointConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:network:getApplicationGatewayPrivateEndpointConnection", {
         "applicationGatewayName": args.applicationGatewayName,
@@ -73,10 +72,15 @@ export interface GetApplicationGatewayPrivateEndpointConnectionResult {
  * Gets the specified private endpoint connection on application gateway.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01.
+ * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01.
  */
 export function getApplicationGatewayPrivateEndpointConnectionOutput(args: GetApplicationGatewayPrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationGatewayPrivateEndpointConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getApplicationGatewayPrivateEndpointConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getApplicationGatewayPrivateEndpointConnection", {
+        "applicationGatewayName": args.applicationGatewayName,
+        "connectionName": args.connectionName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface GetApplicationGatewayPrivateEndpointConnectionOutputArgs {

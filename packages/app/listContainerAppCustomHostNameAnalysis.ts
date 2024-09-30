@@ -8,7 +8,6 @@ import * as types from "./types";
  * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01.
  */
 export function listContainerAppCustomHostNameAnalysis(args: ListContainerAppCustomHostNameAnalysisArgs, opts?: pulumi.InvokeOptions): Promise<ListContainerAppCustomHostNameAnalysisResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:app:listContainerAppCustomHostNameAnalysis", {
         "containerAppName": args.containerAppName,
@@ -92,7 +91,12 @@ export interface ListContainerAppCustomHostNameAnalysisResult {
  * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01.
  */
 export function listContainerAppCustomHostNameAnalysisOutput(args: ListContainerAppCustomHostNameAnalysisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListContainerAppCustomHostNameAnalysisResult> {
-    return pulumi.output(args).apply((a: any) => listContainerAppCustomHostNameAnalysis(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:app:listContainerAppCustomHostNameAnalysis", {
+        "containerAppName": args.containerAppName,
+        "customHostname": args.customHostname,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
 }
 
 export interface ListContainerAppCustomHostNameAnalysisOutputArgs {
