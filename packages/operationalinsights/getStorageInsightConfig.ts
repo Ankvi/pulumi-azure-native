@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a storage insight instance.
  * Azure REST API version: 2020-08-01.
+ *
+ * Other available API versions: 2023-09-01.
  */
 export function getStorageInsightConfig(args: GetStorageInsightConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageInsightConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -73,6 +75,8 @@ export interface GetStorageInsightConfigResult {
 /**
  * Gets a storage insight instance.
  * Azure REST API version: 2020-08-01.
+ *
+ * Other available API versions: 2023-09-01.
  */
 export function getStorageInsightConfigOutput(args: GetStorageInsightConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStorageInsightConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

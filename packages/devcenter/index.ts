@@ -156,6 +156,11 @@ export const getProjectInheritedSettings: typeof import("./getProjectInheritedSe
 export const getProjectInheritedSettingsOutput: typeof import("./getProjectInheritedSettings").getProjectInheritedSettingsOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectInheritedSettings","getProjectInheritedSettingsOutput"], () => require("./getProjectInheritedSettings"));
 
+export { GetProjectPolicyArgs, GetProjectPolicyResult, GetProjectPolicyOutputArgs } from "./getProjectPolicy";
+export const getProjectPolicy: typeof import("./getProjectPolicy").getProjectPolicy = null as any;
+export const getProjectPolicyOutput: typeof import("./getProjectPolicy").getProjectPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectPolicy","getProjectPolicyOutput"], () => require("./getProjectPolicy"));
+
 export { GetScheduleArgs, GetScheduleResult, GetScheduleOutputArgs } from "./getSchedule";
 export const getSchedule: typeof import("./getSchedule").getSchedule = null as any;
 export const getScheduleOutput: typeof import("./getSchedule").getScheduleOutput = null as any;
@@ -200,6 +205,11 @@ export { ProjectEnvironmentTypeArgs } from "./projectEnvironmentType";
 export type ProjectEnvironmentType = import("./projectEnvironmentType").ProjectEnvironmentType;
 export const ProjectEnvironmentType: typeof import("./projectEnvironmentType").ProjectEnvironmentType = null as any;
 utilities.lazyLoad(exports, ["ProjectEnvironmentType"], () => require("./projectEnvironmentType"));
+
+export { ProjectPolicyArgs } from "./projectPolicy";
+export type ProjectPolicy = import("./projectPolicy").ProjectPolicy;
+export const ProjectPolicy: typeof import("./projectPolicy").ProjectPolicy = null as any;
+utilities.lazyLoad(exports, ["ProjectPolicy"], () => require("./projectPolicy"));
 
 export { ScheduleArgs } from "./schedule";
 export type Schedule = import("./schedule").Schedule;
@@ -246,6 +256,8 @@ const _module = {
                 return new ProjectCatalog(name, <any>undefined, { urn })
             case "azure-native:devcenter:ProjectEnvironmentType":
                 return new ProjectEnvironmentType(name, <any>undefined, { urn })
+            case "azure-native:devcenter:ProjectPolicy":
+                return new ProjectPolicy(name, <any>undefined, { urn })
             case "azure-native:devcenter:Schedule":
                 return new Schedule(name, <any>undefined, { urn })
             default:

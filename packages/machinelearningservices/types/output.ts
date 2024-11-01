@@ -1567,6 +1567,54 @@ export interface CallRateLimitResponse {
     rules?: ThrottlingRuleResponse[];
 }
 
+export interface CapabilityHostResponse {
+    /**
+     * List of AI services connections.
+     */
+    aiServicesConnections?: string[];
+    /**
+     * Kind of this capability host.
+     */
+    capabilityHostKind?: string;
+    /**
+     * Customer subnet info to help set up this capability host.
+     */
+    customerSubnet?: string;
+    /**
+     * The asset description text.
+     */
+    description?: string;
+    /**
+     * The asset property dictionary.
+     */
+    properties?: {[key: string]: string};
+    /**
+     * Provisioning state for the CapabilityHost.
+     */
+    provisioningState: string;
+    /**
+     * List of Storage connections.
+     */
+    storageConnections?: string[];
+    /**
+     * Tag dictionary. Tags can be added, removed, and updated.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * List of VectorStore connections.
+     */
+    vectorStoreConnections?: string[];
+}
+/**
+ * capabilityHostResponseProvideDefaults sets the appropriate defaults for CapabilityHostResponse
+ */
+export function capabilityHostResponseProvideDefaults(val: CapabilityHostResponse): CapabilityHostResponse {
+    return {
+        ...val,
+        capabilityHostKind: (val.capabilityHostKind) ?? "Agents",
+    };
+}
+
 /**
  * The capacity configuration.
  */
@@ -3471,6 +3519,33 @@ export interface DefaultScaleSettingsResponse {
      * Expected value is 'Default'.
      */
     scaleType: "Default";
+}
+
+/**
+ * Contract for DeltaModelCurrentState.
+ */
+export interface DeltaModelCurrentStateResponse {
+    /**
+     * Gets or sets Count of instances with model.
+     */
+    count?: number;
+    /**
+     * Gets or sets sample of instances with model.
+     */
+    sampleInstanceID?: string;
+    /**
+     * Gets or sets status.
+     */
+    status?: string;
+}
+/**
+ * deltaModelCurrentStateResponseProvideDefaults sets the appropriate defaults for DeltaModelCurrentStateResponse
+ */
+export function deltaModelCurrentStateResponseProvideDefaults(val: DeltaModelCurrentStateResponse): DeltaModelCurrentStateResponse {
+    return {
+        ...val,
+        count: (val.count) ?? 0,
+    };
 }
 
 /**
@@ -10370,6 +10445,8 @@ export interface WorkspaceConnectionUsernamePasswordResponse {
     password?: string;
     username?: string;
 }
+
+
 
 
 

@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets a devcenter plan.
  * Azure REST API version: 2024-05-01-preview.
  *
- * Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview.
+ * Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
  */
 export function getPlan(args: GetPlanArgs, opts?: pulumi.InvokeOptions): Promise<GetPlanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -67,7 +67,7 @@ export interface GetPlanResult {
  * Gets a devcenter plan.
  * Azure REST API version: 2024-05-01-preview.
  *
- * Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview.
+ * Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
  */
 export function getPlanOutput(args: GetPlanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

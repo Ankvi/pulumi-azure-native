@@ -8,6 +8,16 @@ export const AccountProvisioningMode = {
  */
 export type AccountProvisioningMode = (typeof AccountProvisioningMode)[keyof typeof AccountProvisioningMode];
 
+export const ActivationState = {
+    Activated: "Activated",
+    Deactivated: "Deactivated",
+} as const;
+
+/**
+ * The activation state of the license.
+ */
+export type ActivationState = (typeof ActivationState)[keyof typeof ActivationState];
+
 export const AggregationType = {
     Average: "Average",
     Minimum: "Minimum",
@@ -46,6 +56,16 @@ export const ArcSqlServerLicenseType = {
  * SQL Server license type.
  */
 export type ArcSqlServerLicenseType = (typeof ArcSqlServerLicenseType)[keyof typeof ArcSqlServerLicenseType];
+
+export const BillingPlan = {
+    PAYG: "PAYG",
+    Paid: "Paid",
+} as const;
+
+/**
+ * SQL Server license type.
+ */
+export type BillingPlan = (typeof BillingPlan)[keyof typeof BillingPlan];
 
 export const ConnectionStatus = {
     Connected: "Connected",
@@ -168,6 +188,15 @@ export const InstanceFailoverGroupRole = {
  */
 export type InstanceFailoverGroupRole = (typeof InstanceFailoverGroupRole)[keyof typeof InstanceFailoverGroupRole];
 
+export const LicenseCategory = {
+    Core: "Core",
+} as const;
+
+/**
+ * This property represents the choice between SQL Server Core and ESU licenses.
+ */
+export type LicenseCategory = (typeof LicenseCategory)[keyof typeof LicenseCategory];
+
 export const PostgresInstanceSkuTier = {
     Hyperscale: "Hyperscale",
 } as const;
@@ -187,6 +216,17 @@ export const RecoveryMode = {
  * Status of the database.
  */
 export type RecoveryMode = (typeof RecoveryMode)[keyof typeof RecoveryMode];
+
+export const ScopeType = {
+    Tenant: "Tenant",
+    Subscription: "Subscription",
+    ResourceGroup: "ResourceGroup",
+} as const;
+
+/**
+ * The Azure scope to which the license will apply.
+ */
+export type ScopeType = (typeof ScopeType)[keyof typeof ScopeType];
 
 export const SqlManagedInstanceSkuName = {
     VCore: "vCore",
@@ -221,3 +261,24 @@ export const SqlVersion = {
  * SQL Server version.
  */
 export type SqlVersion = (typeof SqlVersion)[keyof typeof SqlVersion];
+
+export const State = {
+    Inactive: "Inactive",
+    Active: "Active",
+    Terminated: "Terminated",
+} as const;
+
+/**
+ * The activation state of the license.
+ */
+export type State = (typeof State)[keyof typeof State];
+
+export const Version = {
+    SQL_Server_2012: "SQL Server 2012",
+    SQL_Server_2014: "SQL Server 2014",
+} as const;
+
+/**
+ * The SQL Server version the license covers.
+ */
+export type Version = (typeof Version)[keyof typeof Version];

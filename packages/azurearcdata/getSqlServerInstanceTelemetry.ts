@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieves SQL Server instance telemetry
  * Azure REST API version: 2024-01-01.
+ *
+ * Other available API versions: 2024-05-01-preview.
  */
 export function getSqlServerInstanceTelemetry(args: GetSqlServerInstanceTelemetryArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlServerInstanceTelemetryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -74,6 +76,8 @@ export interface GetSqlServerInstanceTelemetryResult {
 /**
  * Retrieves SQL Server instance telemetry
  * Azure REST API version: 2024-01-01.
+ *
+ * Other available API versions: 2024-05-01-preview.
  */
 export function getSqlServerInstanceTelemetryOutput(args: GetSqlServerInstanceTelemetryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlServerInstanceTelemetryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

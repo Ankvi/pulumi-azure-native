@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Holder for private endpoint connections
  * Azure REST API version: 2024-02-28-preview.
+ *
+ * Other available API versions: 2024-09-20.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -80,7 +82,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:healthdataaiservices/v20240228preview:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:healthdataaiservices/v20240228preview:PrivateEndpointConnection" }, { type: "azure-native:healthdataaiservices/v20240920:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }

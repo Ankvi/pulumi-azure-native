@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets flow resource.
  * Azure REST API version: 2023-10-11-preview.
  *
- * Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11.
+ * Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27.
  */
 export function getFlow(args: GetFlowArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -76,7 +76,7 @@ export interface GetFlowResult {
  * Gets flow resource.
  * Azure REST API version: 2023-10-11-preview.
  *
- * Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11.
+ * Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27.
  */
 export function getFlowOutput(args: GetFlowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

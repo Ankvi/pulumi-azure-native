@@ -9,3 +9,4 @@ export interface AccountSkuArgs {
      */
     name: pulumi.Input<string | enums.SkuName>;
 }
+

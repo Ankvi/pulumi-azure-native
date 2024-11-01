@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets an environment type.
  * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview.
+ * Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
  */
 export function getEnvironmentType(args: GetEnvironmentTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentTypeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -64,7 +64,7 @@ export interface GetEnvironmentTypeResult {
  * Gets an environment type.
  * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview.
+ * Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
  */
 export function getEnvironmentTypeOutput(args: GetEnvironmentTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentTypeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

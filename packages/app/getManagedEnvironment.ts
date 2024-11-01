@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get the properties of a Managed Environment used to host container apps.
  * Azure REST API version: 2022-10-01.
  *
- * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01.
+ * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview.
  */
 export function getManagedEnvironment(args: GetManagedEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedEnvironmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,9 +31,7 @@ export interface GetManagedEnvironmentArgs {
  */
 export interface GetManagedEnvironmentResult {
     /**
-     * Cluster configuration which enables the log daemon to export
-     * app logs to a destination. Currently only "log-analytics" is
-     * supported
+     * Cluster configuration which enables the log daemon to export app logs to configured destination.
      */
     readonly appLogsConfiguration?: types.outputs.AppLogsConfigurationResponse;
     /**
@@ -117,7 +115,7 @@ export interface GetManagedEnvironmentResult {
  * Get the properties of a Managed Environment used to host container apps.
  * Azure REST API version: 2022-10-01.
  *
- * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01.
+ * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview.
  */
 export function getManagedEnvironmentOutput(args: GetManagedEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedEnvironmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

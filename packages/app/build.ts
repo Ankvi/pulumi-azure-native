@@ -5,7 +5,7 @@ import * as types from "./types";
  * Information pertaining to an individual build.
  * Azure REST API version: 2023-08-01-preview.
  *
- * Other available API versions: 2023-11-02-preview, 2024-02-02-preview.
+ * Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview.
  */
 export class Build extends pulumi.CustomResource {
     /**
@@ -118,7 +118,7 @@ export class Build extends pulumi.CustomResource {
             resourceInputs["uploadEndpoint"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20230801preview:Build" }, { type: "azure-native:app/v20231102preview:Build" }, { type: "azure-native:app/v20240202preview:Build" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20230801preview:Build" }, { type: "azure-native:app/v20231102preview:Build" }, { type: "azure-native:app/v20240202preview:Build" }, { type: "azure-native:app/v20240802preview:Build" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Build.__pulumiType, name, resourceInputs, opts);
     }

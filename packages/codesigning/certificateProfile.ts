@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Certificate profile resource.
  * Azure REST API version: 2024-02-05-preview.
+ *
+ * Other available API versions: 2024-09-30-preview.
  */
 export class CertificateProfile extends pulumi.CustomResource {
     /**
@@ -185,7 +187,7 @@ export class CertificateProfile extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:codesigning/v20240205preview:CertificateProfile" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:codesigning/v20240205preview:CertificateProfile" }, { type: "azure-native:codesigning/v20240930preview:CertificateProfile" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CertificateProfile.__pulumiType, name, resourceInputs, opts);
     }

@@ -66,6 +66,11 @@ export const getGuestAgent: typeof import("./getGuestAgent").getGuestAgent = nul
 export const getGuestAgentOutput: typeof import("./getGuestAgent").getGuestAgentOutput = null as any;
 utilities.lazyLoad(exports, ["getGuestAgent","getGuestAgentOutput"], () => require("./getGuestAgent"));
 
+export { GetHciEdgeDeviceJobArgs, GetHciEdgeDeviceJobResult, GetHciEdgeDeviceJobOutputArgs } from "./getHciEdgeDeviceJob";
+export const getHciEdgeDeviceJob: typeof import("./getHciEdgeDeviceJob").getHciEdgeDeviceJob = null as any;
+export const getHciEdgeDeviceJobOutput: typeof import("./getHciEdgeDeviceJob").getHciEdgeDeviceJobOutput = null as any;
+utilities.lazyLoad(exports, ["getHciEdgeDeviceJob","getHciEdgeDeviceJobOutput"], () => require("./getHciEdgeDeviceJob"));
+
 export { GetHybridIdentityMetadatumArgs, GetHybridIdentityMetadatumResult, GetHybridIdentityMetadatumOutputArgs } from "./getHybridIdentityMetadatum";
 export const getHybridIdentityMetadatum: typeof import("./getHybridIdentityMetadatum").getHybridIdentityMetadatum = null as any;
 export const getHybridIdentityMetadatumOutput: typeof import("./getHybridIdentityMetadatum").getHybridIdentityMetadatumOutput = null as any;
@@ -150,6 +155,11 @@ export { GuestAgentArgs } from "./guestAgent";
 export type GuestAgent = import("./guestAgent").GuestAgent;
 export const GuestAgent: typeof import("./guestAgent").GuestAgent = null as any;
 utilities.lazyLoad(exports, ["GuestAgent"], () => require("./guestAgent"));
+
+export { HciEdgeDeviceJobArgs } from "./hciEdgeDeviceJob";
+export type HciEdgeDeviceJob = import("./hciEdgeDeviceJob").HciEdgeDeviceJob;
+export const HciEdgeDeviceJob: typeof import("./hciEdgeDeviceJob").HciEdgeDeviceJob = null as any;
+utilities.lazyLoad(exports, ["HciEdgeDeviceJob"], () => require("./hciEdgeDeviceJob"));
 
 export { HybridIdentityMetadatumArgs } from "./hybridIdentityMetadatum";
 export type HybridIdentityMetadatum = import("./hybridIdentityMetadatum").HybridIdentityMetadatum;
@@ -255,6 +265,8 @@ const _module = {
                 return new GalleryImage(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:GuestAgent":
                 return new GuestAgent(name, <any>undefined, { urn })
+            case "azure-native:azurestackhci:HciEdgeDeviceJob":
+                return new HciEdgeDeviceJob(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:HybridIdentityMetadatum":
                 return new HybridIdentityMetadatum(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:LogicalNetwork":

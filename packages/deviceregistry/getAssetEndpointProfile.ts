@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get a AssetEndpointProfile
  * Azure REST API version: 2023-11-01-preview.
  *
- * Other available API versions: 2024-09-01-preview.
+ * Other available API versions: 2024-09-01-preview, 2024-11-01.
  */
 export function getAssetEndpointProfile(args: GetAssetEndpointProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetAssetEndpointProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -87,7 +87,7 @@ export interface GetAssetEndpointProfileResult {
  * Get a AssetEndpointProfile
  * Azure REST API version: 2023-11-01-preview.
  *
- * Other available API versions: 2024-09-01-preview.
+ * Other available API versions: 2024-09-01-preview, 2024-11-01.
  */
 export function getAssetEndpointProfileOutput(args: GetAssetEndpointProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssetEndpointProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get a BrokerAuthorizationResource
  * Azure REST API version: 2024-07-01-preview.
  *
- * Other available API versions: 2024-08-15-preview.
+ * Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01.
  */
 export function getBrokerAuthorization(args: GetBrokerAuthorizationArgs, opts?: pulumi.InvokeOptions): Promise<GetBrokerAuthorizationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -69,7 +69,7 @@ export interface GetBrokerAuthorizationResult {
  * Get a BrokerAuthorizationResource
  * Azure REST API version: 2024-07-01-preview.
  *
- * Other available API versions: 2024-08-15-preview.
+ * Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01.
  */
 export function getBrokerAuthorizationOutput(args: GetBrokerAuthorizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBrokerAuthorizationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

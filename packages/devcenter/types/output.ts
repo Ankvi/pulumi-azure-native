@@ -316,7 +316,7 @@ export interface ResourcePolicyResponse {
      */
     filter?: string;
     /**
-     * Resources that are included and shared as a part of a curation profile.
+     * Resources that are included and shared as a part of a project policy.
      */
     resources?: string;
 }
@@ -448,6 +448,7 @@ export interface UserRoleAssignmentResponse {
      */
     roles?: {[key: string]: EnvironmentRoleResponse};
 }
+
 
 
 

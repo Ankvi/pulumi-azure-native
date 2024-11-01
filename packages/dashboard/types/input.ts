@@ -17,6 +17,21 @@ export interface GrafanaIntegrationsArgs {
     azureMonitorWorkspaceIntegrations?: pulumi.Input<pulumi.Input<AzureMonitorWorkspaceIntegrationArgs>[]>;
 }
 
+export interface IntegrationFabricPropertiesArgs {
+    /**
+     * The resource Id of the Azure resource which is used to configure Grafana data source. E.g., an Azure Monitor Workspace, an Azure Data Explorer cluster, etc.
+     */
+    dataSourceResourceId?: pulumi.Input<string>;
+    /**
+     * A list of integration scenarios covered by this integration fabric
+     */
+    scenarios?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The resource Id of the Azure resource being integrated with Azure Managed Grafana. E.g., an Azure Kubernetes Service cluster.
+     */
+    targetResourceId?: pulumi.Input<string>;
+}
+
 /**
  * Properties specific to the grafana resource.
  */
@@ -82,6 +97,7 @@ export interface PrivateLinkServiceConnectionStateArgs {
 export interface ResourceSkuArgs {
     name: pulumi.Input<string>;
 }
+
 
 
 

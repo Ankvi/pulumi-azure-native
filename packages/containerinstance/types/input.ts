@@ -1,6 +1,16 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * The API entity reference.
+ */
+export interface ApiEntityReferenceArgs {
+    /**
+     * The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+     */
+    id?: pulumi.Input<string>;
+}
+
+/**
  * The properties of the Azure File volume. Azure File shares are mounted as volumes.
  */
 export interface AzureFileVolumeArgs {
@@ -124,6 +134,16 @@ export interface ContainerGroupIdentityArgs {
      * The list of user identities associated with the container group.
      */
     userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * The object that contains a reference to a Container Group Profile
+ */
+export interface ContainerGroupProfileStubArgs {
+    /**
+     * The API entity reference.
+     */
+    resource?: pulumi.Input<ApiEntityReferenceArgs>;
 }
 
 /**
@@ -252,6 +272,13 @@ export interface DnsConfigurationArgs {
      * The DNS search domains for hostname lookup in the container group.
      */
     searchDomains?: pulumi.Input<string>;
+}
+
+/**
+ * Describes the elastic profile of the Container Scale Set
+ */
+export interface ElasticProfileArgs {
+    desiredCount?: pulumi.Input<number>;
 }
 
 /**
@@ -458,6 +485,20 @@ export interface LogAnalyticsArgs {
 }
 
 /**
+ * Identity for the nGroup.
+ */
+export interface NGroupIdentityArgs {
+    /**
+     * The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
+     */
+    type?: pulumi.Input<enums.ResourceIdentityType>;
+    /**
+     * The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
  * The port exposed on the container group.
  */
 export interface PortArgs {
@@ -608,6 +649,8 @@ export interface VolumeMountArgs {
      */
     readOnly?: pulumi.Input<boolean>;
 }
+
+
 
 
 

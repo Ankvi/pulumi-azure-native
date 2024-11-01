@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets an outbound rule from the managed network of a machine learning workspace.
  * Azure REST API version: 2023-04-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview.
+ * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview.
  */
 export function getManagedNetworkSettingsRule(args: GetManagedNetworkSettingsRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedNetworkSettingsRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -60,7 +60,7 @@ export interface GetManagedNetworkSettingsRuleResult {
  * Gets an outbound rule from the managed network of a machine learning workspace.
  * Azure REST API version: 2023-04-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview.
+ * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview.
  */
 export function getManagedNetworkSettingsRuleOutput(args: GetManagedNetworkSettingsRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedNetworkSettingsRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

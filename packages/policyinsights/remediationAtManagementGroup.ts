@@ -5,7 +5,7 @@ import * as types from "./types";
  * The remediation definition.
  * Azure REST API version: 2021-10-01. Prior API version in Azure Native 1.x: 2019-07-01.
  *
- * Other available API versions: 2018-07-01-preview.
+ * Other available API versions: 2018-07-01-preview, 2024-10-01.
  */
 export class RemediationAtManagementGroup extends pulumi.CustomResource {
     /**
@@ -154,7 +154,7 @@ export class RemediationAtManagementGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:policyinsights/v20180701preview:RemediationAtManagementGroup" }, { type: "azure-native:policyinsights/v20190701:RemediationAtManagementGroup" }, { type: "azure-native:policyinsights/v20211001:RemediationAtManagementGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:policyinsights/v20180701preview:RemediationAtManagementGroup" }, { type: "azure-native:policyinsights/v20190701:RemediationAtManagementGroup" }, { type: "azure-native:policyinsights/v20211001:RemediationAtManagementGroup" }, { type: "azure-native:policyinsights/v20241001:RemediationAtManagementGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RemediationAtManagementGroup.__pulumiType, name, resourceInputs, opts);
     }

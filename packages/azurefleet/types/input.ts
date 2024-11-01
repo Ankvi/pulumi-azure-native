@@ -1597,3 +1597,4 @@ export interface WindowsVMGuestPatchAutomaticByPlatformSettingsArgs {
     rebootSetting?: pulumi.Input<string | enums.WindowsVMGuestPatchAutomaticByPlatformRebootSetting>;
 }
 
+

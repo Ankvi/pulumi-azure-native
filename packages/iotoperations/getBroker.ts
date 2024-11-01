@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get a BrokerResource
  * Azure REST API version: 2024-07-01-preview.
  *
- * Other available API versions: 2024-08-15-preview.
+ * Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01.
  */
 export function getBroker(args: GetBrokerArgs, opts?: pulumi.InvokeOptions): Promise<GetBrokerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -64,7 +64,7 @@ export interface GetBrokerResult {
  * Get a BrokerResource
  * Azure REST API version: 2024-07-01-preview.
  *
- * Other available API versions: 2024-08-15-preview.
+ * Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01.
  */
 export function getBrokerOutput(args: GetBrokerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBrokerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

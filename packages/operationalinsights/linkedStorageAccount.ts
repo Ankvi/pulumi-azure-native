@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Linked storage accounts top level resource container.
  * Azure REST API version: 2020-08-01. Prior API version in Azure Native 1.x: 2020-08-01.
+ *
+ * Other available API versions: 2023-09-01.
  */
 export class LinkedStorageAccount extends pulumi.CustomResource {
     /**
@@ -78,7 +80,7 @@ export class LinkedStorageAccount extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:operationalinsights/v20190801preview:LinkedStorageAccount" }, { type: "azure-native:operationalinsights/v20200301preview:LinkedStorageAccount" }, { type: "azure-native:operationalinsights/v20200801:LinkedStorageAccount" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:operationalinsights/v20190801preview:LinkedStorageAccount" }, { type: "azure-native:operationalinsights/v20200301preview:LinkedStorageAccount" }, { type: "azure-native:operationalinsights/v20200801:LinkedStorageAccount" }, { type: "azure-native:operationalinsights/v20230901:LinkedStorageAccount" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LinkedStorageAccount.__pulumiType, name, resourceInputs, opts);
     }

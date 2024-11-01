@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets an existing attestation at resource group scope.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2024-10-01.
  */
 export function getAttestationAtResourceGroup(args: GetAttestationAtResourceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetAttestationAtResourceGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -92,6 +94,8 @@ export interface GetAttestationAtResourceGroupResult {
 /**
  * Gets an existing attestation at resource group scope.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2024-10-01.
  */
 export function getAttestationAtResourceGroupOutput(args: GetAttestationAtResourceGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttestationAtResourceGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

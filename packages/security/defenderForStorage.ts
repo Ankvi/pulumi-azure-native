@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The Defender for Storage resource.
  * Azure REST API version: 2022-12-01-preview.
+ *
+ * Other available API versions: 2024-10-01-preview.
  */
 export class DefenderForStorage extends pulumi.CustomResource {
     /**
@@ -70,7 +72,7 @@ export class DefenderForStorage extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:security/v20221201preview:DefenderForStorage" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:security/v20221201preview:DefenderForStorage" }, { type: "azure-native:security/v20241001preview:DefenderForStorage" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DefenderForStorage.__pulumiType, name, resourceInputs, opts);
     }

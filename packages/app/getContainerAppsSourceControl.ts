@@ -5,7 +5,7 @@ import * as types from "./types";
  * Container App SourceControl.
  * Azure REST API version: 2022-10-01.
  *
- * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01.
+ * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview.
  */
 export function getContainerAppsSourceControl(args: GetContainerAppsSourceControlArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerAppsSourceControlResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -74,7 +74,7 @@ export interface GetContainerAppsSourceControlResult {
  * Container App SourceControl.
  * Azure REST API version: 2022-10-01.
  *
- * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01.
+ * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview.
  */
 export function getContainerAppsSourceControlOutput(args: GetContainerAppsSourceControlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerAppsSourceControlResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -5,9 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
  */
 export interface AwsCloudProfileResponse {
     /**
+     * Account id for the AWS account.
+     */
+    accountId: string;
+    /**
      * List of AWS accounts which need to be excluded.
      */
     excludedAccounts?: string[];
+    /**
+     * Boolean value that indicates whether the account is organizational or not. True represents organization account, whereas false represents a single account.
+     */
+    isOrganizationalAccount?: boolean;
+}
+/**
+ * awsCloudProfileResponseProvideDefaults sets the appropriate defaults for AwsCloudProfileResponse
+ */
+export function awsCloudProfileResponseProvideDefaults(val: AwsCloudProfileResponse): AwsCloudProfileResponse {
+    return {
+        ...val,
+        isOrganizationalAccount: (val.isOrganizationalAccount) ?? false,
+    };
 }
 
 /**
@@ -41,9 +58,22 @@ export interface PublicCloudConnectorPropertiesResponse {
      */
     connectorPrimaryIdentifier: string;
     /**
+     * Host cloud the public cloud connector.
+     */
+    hostType: string;
+    /**
      * The resource provisioning state.
      */
     provisioningState: string;
+}
+/**
+ * publicCloudConnectorPropertiesResponseProvideDefaults sets the appropriate defaults for PublicCloudConnectorPropertiesResponse
+ */
+export function publicCloudConnectorPropertiesResponseProvideDefaults(val: PublicCloudConnectorPropertiesResponse): PublicCloudConnectorPropertiesResponse {
+    return {
+        ...val,
+        awsCloudProfile: awsCloudProfileResponseProvideDefaults(val.awsCloudProfile),
+    };
 }
 
 /**

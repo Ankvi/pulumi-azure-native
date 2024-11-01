@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the list of assignments for an access policy of a redis cache
  * Azure REST API version: 2023-05-01-preview.
  *
- * Other available API versions: 2023-08-01, 2024-03-01, 2024-04-01-preview, 2024-09-01-preview.
+ * Other available API versions: 2023-08-01, 2024-03-01, 2024-04-01-preview, 2024-09-01-preview, 2024-11-01.
  */
 export function getAccessPolicyAssignment(args: GetAccessPolicyAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPolicyAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -67,7 +67,7 @@ export interface GetAccessPolicyAssignmentResult {
  * Gets the list of assignments for an access policy of a redis cache
  * Azure REST API version: 2023-05-01-preview.
  *
- * Other available API versions: 2023-08-01, 2024-03-01, 2024-04-01-preview, 2024-09-01-preview.
+ * Other available API versions: 2023-08-01, 2024-03-01, 2024-04-01-preview, 2024-09-01-preview, 2024-11-01.
  */
 export function getAccessPolicyAssignmentOutput(args: GetAccessPolicyAssignmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPolicyAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

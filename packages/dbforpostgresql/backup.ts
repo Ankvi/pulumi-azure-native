@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Server backup properties
  * Azure REST API version: 2024-03-01-preview.
+ *
+ * Other available API versions: 2024-08-01, 2024-11-01-preview.
  */
 export class Backup extends pulumi.CustomResource {
     /**
@@ -92,7 +94,7 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20240301preview:Backup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20240301preview:Backup" }, { type: "azure-native:dbforpostgresql/v20240801:Backup" }, { type: "azure-native:dbforpostgresql/v20241101preview:Backup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Backup.__pulumiType, name, resourceInputs, opts);
     }

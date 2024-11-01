@@ -320,6 +320,36 @@ export interface AvailabilityGroupStateResponse {
 }
 
 /**
+ * The background job details.
+ */
+export interface BackgroundJobResponse {
+    /**
+     * The end time of the background job.
+     */
+    endTime?: string;
+    /**
+     * The execution state of the background job.
+     */
+    executionState?: string;
+    /**
+     * The last execution status of the background job.
+     */
+    lastExecutionStatus?: string;
+    /**
+     * The last execution time of the background job.
+     */
+    lastExecutionTime?: string;
+    /**
+     * The start time of the background job.
+     */
+    startTime?: string;
+    /**
+     * The state of the background job.
+     */
+    state?: string;
+}
+
+/**
  * Username and password for basic login authentication.
  */
 export interface BasicLoginInformationResponse {
@@ -712,6 +742,24 @@ export function postgresInstanceSkuResponseProvideDefaults(val: PostgresInstance
 }
 
 /**
+ * The sequencer action details.
+ */
+export interface SequencerActionResponse {
+    /**
+     * The unique identifier of the sequencer action.
+     */
+    actionId?: string;
+    /**
+     * The result of the sequencer action.
+     */
+    result?: string;
+    /**
+     * The state of the sequencer action.
+     */
+    state?: string;
+}
+
+/**
  * The properties of Arc Sql availability group database replica resource
  */
 export interface SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse {
@@ -1049,6 +1097,78 @@ export interface SqlServerDatabaseResourcePropertiesResponseDatabaseOptions {
 }
 
 /**
+ * Properties of SQL Server ESU license.
+ */
+export interface SqlServerEsuLicensePropertiesResponse {
+    /**
+     * The timestamp of the activation of the SqlServerEsuLicense in ISO 8601 date-time format.
+     */
+    activatedAt: string;
+    /**
+     * The activation state of the license.
+     */
+    activationState: string;
+    /**
+     * SQL Server ESU license type.
+     */
+    billingPlan: string;
+    /**
+     * The number of total cores of the license covers.
+     */
+    physicalCores: number;
+    /**
+     * The Azure scope to which the license will apply.
+     */
+    scopeType: string;
+    /**
+     * The tenantId the SQL Server ESU license resource subscription resides in.
+     */
+    tenantId: string;
+    /**
+     * The timestamp of the termination of the SqlServerEsuLicense in ISO 8601 date-time format.
+     */
+    terminatedAt: string;
+    /**
+     * The unique ID of this license. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+     */
+    uniqueId: string;
+    /**
+     * The SQL Server version the license covers.
+     */
+    version: string;
+}
+
+/**
+ * The status of the job running on the SQL Server instance.
+ */
+export interface SqlServerInstanceJobStatusResponse {
+    /**
+     * The background job details.
+     */
+    backgroundJob?: BackgroundJobResponse;
+    /**
+     * The unique identifier of the job.
+     */
+    id?: string;
+    /**
+     * The name of the SQL Server instance.
+     */
+    instanceName?: string;
+    /**
+     * The exception message if the job failed.
+     */
+    jobException?: string;
+    /**
+     * The status of the job.
+     */
+    jobStatus?: string;
+    /**
+     * The list of sequencer actions.
+     */
+    sequencerActions?: SequencerActionResponse[];
+}
+
+/**
  * Properties of SqlServerInstance.
  */
 export interface SqlServerInstancePropertiesResponse {
@@ -1145,6 +1265,44 @@ export interface SqlServerInstanceTelemetryColumnResponse {
 }
 
 /**
+ * Properties of SQL Server License.
+ */
+export interface SqlServerLicensePropertiesResponse {
+    /**
+     * The activation state of the license.
+     */
+    activationState: string;
+    /**
+     * SQL Server license type.
+     */
+    billingPlan: string;
+    /**
+     * The timestamp of the most recent activation of the SqlServerLicense.
+     */
+    lastActivatedAt: string;
+    /**
+     * The timestamp of the most recent deactivation of the SqlServerLicense.
+     */
+    lastDeactivatedAt: string;
+    /**
+     * This property represents the choice between SQL Server Core and ESU licenses.
+     */
+    licenseCategory: string;
+    /**
+     * The number of total cores of the license covers.
+     */
+    physicalCores: number;
+    /**
+     * The Azure scope to which the license will apply.
+     */
+    scopeType: string;
+    /**
+     * The tenantId the SQL Server license resource subscription resides in.
+     */
+    tenantId: string;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -1209,4 +1367,5 @@ export interface UploadWatermarkResponse {
      */
     usages?: string;
 }
+
 

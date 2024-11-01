@@ -117,6 +117,15 @@ export const BlockedTransformers = {
  */
 export type BlockedTransformers = (typeof BlockedTransformers)[keyof typeof BlockedTransformers];
 
+export const CapabilityHostKind = {
+    Agents: "Agents",
+} as const;
+
+/**
+ * Kind of this capability host.
+ */
+export type CapabilityHostKind = (typeof CapabilityHostKind)[keyof typeof CapabilityHostKind];
+
 export const ClassificationModels = {
     /**
      * Logistic regression is a fundamental classification technique.

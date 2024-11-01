@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a DeidService
  * Azure REST API version: 2024-02-28-preview.
+ *
+ * Other available API versions: 2024-09-20.
  */
 export function getDeidService(args: GetDeidServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetDeidServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -64,6 +66,8 @@ export interface GetDeidServiceResult {
 /**
  * Get a DeidService
  * Azure REST API version: 2024-02-28-preview.
+ *
+ * Other available API versions: 2024-09-20.
  */
 export function getDeidServiceOutput(args: GetDeidServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeidServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

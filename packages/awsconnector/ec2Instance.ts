@@ -1,0 +1,96 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * A Microsoft.AwsConnector resource
+ * Azure REST API version: 2024-12-01.
+ */
+export class Ec2Instance extends pulumi.CustomResource {
+    /**
+     * Get an existing Ec2Instance resource's state with the given name, ID, and optional extra
+     * properties used to qualify the lookup.
+     *
+     * @param name The _unique_ name of the resulting resource.
+     * @param id The _unique_ provider ID of the resource to lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): Ec2Instance {
+        return new Ec2Instance(name, undefined as any, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'azure-native:awsconnector:Ec2Instance';
+
+    /**
+     * Returns true if the given object is an instance of Ec2Instance.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Ec2Instance {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Ec2Instance.__pulumiType;
+    }
+
+    /**
+     * The name of the resource
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The resource-specific properties for this resource.
+     */
+    public readonly properties!: pulumi.Output<types.outputs.Ec2InstancePropertiesResponse>;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    public /*out*/ readonly type!: pulumi.Output<string>;
+
+    /**
+     * Create a Ec2Instance resource with the given unique name, arguments, and options.
+     *
+     * @param name The _unique_ name of the resource.
+     * @param args The arguments to use to populate this resource's properties.
+     * @param opts A bag of options that control this resource's behavior.
+     */
+    constructor(name: string, args: Ec2InstanceArgs, opts?: pulumi.CustomResourceOptions) {
+        let resourceInputs: pulumi.Inputs = {};
+        opts = opts || {};
+        if (!opts.id) {
+            if ((!args || args.resourceUri === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'resourceUri'");
+            }
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.ec2InstancePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["resourceUri"] = args ? args.resourceUri : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+        } else {
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["properties"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "azure-native:awsconnector/v20241201:Ec2Instance" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
+        super(Ec2Instance.__pulumiType, name, resourceInputs, opts);
+    }
+}
+
+/**
+ * The set of arguments for constructing a Ec2Instance resource.
+ */
+export interface Ec2InstanceArgs {
+    /**
+     * The resource-specific properties for this resource.
+     */
+    properties?: pulumi.Input<types.inputs.Ec2InstancePropertiesArgs>;
+    /**
+     * The fully qualified Azure Resource manager identifier of the resource.
+     */
+    resourceUri: pulumi.Input<string>;
+}

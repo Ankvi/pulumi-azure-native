@@ -219,6 +219,56 @@ export interface GuestCredentialArgs {
 }
 
 /**
+ * Represents the properties of an HCI Collect Log job.
+ */
+export interface HciCollectLogJobPropertiesArgs {
+    /**
+     * Deployment mode to trigger job.
+     */
+    deploymentMode?: pulumi.Input<string | enums.DeploymentMode>;
+    /**
+     * From date for log collection.
+     */
+    fromDate: pulumi.Input<string>;
+    /**
+     * Job Type supported.
+     * Expected value is 'CollectLog'.
+     */
+    jobType: pulumi.Input<"CollectLog">;
+    /**
+     * To date for log collection.
+     */
+    toDate: pulumi.Input<string>;
+}
+
+/**
+ * Represents the properties of a remote support job for HCI.
+ */
+export interface HciRemoteSupportJobPropertiesArgs {
+    /**
+     * Remote support access level.
+     */
+    accessLevel: pulumi.Input<string | enums.RemoteSupportAccessLevel>;
+    /**
+     * Deployment mode to trigger job.
+     */
+    deploymentMode?: pulumi.Input<string | enums.DeploymentMode>;
+    /**
+     * Remote support expiration timestamp.
+     */
+    expirationTimestamp: pulumi.Input<string>;
+    /**
+     * Job Type supported.
+     * Expected value is 'RemoteSupport'.
+     */
+    jobType: pulumi.Input<"RemoteSupport">;
+    /**
+     * Remote support type.
+     */
+    type: pulumi.Input<string | enums.RemoteSupportType>;
+}
+
+/**
  * The HostNetwork of a cluster.
  */
 export interface HostNetworkArgs {
@@ -1448,6 +1498,9 @@ export interface VirtualSwitchConfigurationOverridesArgs {
      */
     loadBalancingAlgorithm?: pulumi.Input<string>;
 }
+
+
+
 
 
 

@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get a ServerCollector
  * Azure REST API version: 2023-03-15.
  *
- * Other available API versions: 2023-04-01-preview, 2023-05-01-preview.
+ * Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview.
  */
 export function getServerCollectorsOperation(args: GetServerCollectorsOperationArgs, opts?: pulumi.InvokeOptions): Promise<GetServerCollectorsOperationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -76,7 +76,7 @@ export interface GetServerCollectorsOperationResult {
  * Get a ServerCollector
  * Azure REST API version: 2023-03-15.
  *
- * Other available API versions: 2023-04-01-preview, 2023-05-01-preview.
+ * Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview.
  */
 export function getServerCollectorsOperationOutput(args: GetServerCollectorsOperationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerCollectorsOperationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

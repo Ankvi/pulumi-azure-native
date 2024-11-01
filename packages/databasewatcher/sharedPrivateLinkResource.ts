@@ -5,7 +5,7 @@ import * as types from "./types";
  * Concrete proxy resource types can be created by aliasing this type using a specific property type.
  * Azure REST API version: 2023-09-01-preview.
  *
- * Other available API versions: 2024-07-19-preview.
+ * Other available API versions: 2024-07-19-preview, 2024-10-01-preview.
  */
 export class SharedPrivateLinkResource extends pulumi.CustomResource {
     /**
@@ -35,7 +35,7 @@ export class SharedPrivateLinkResource extends pulumi.CustomResource {
     }
 
     /**
-     * The DNS zone to be included in the DNS name of the shared private link. Value is service-specific.
+     * The DNS zone to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances. The value to use is the second segment of the host FQDN name of the resource that the shared private link resource is for.
      */
     public readonly dnsZone!: pulumi.Output<string | undefined>;
     /**
@@ -121,7 +121,7 @@ export class SharedPrivateLinkResource extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:databasewatcher/v20230901preview:SharedPrivateLinkResource" }, { type: "azure-native:databasewatcher/v20240719preview:SharedPrivateLinkResource" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:databasewatcher/v20230901preview:SharedPrivateLinkResource" }, { type: "azure-native:databasewatcher/v20240719preview:SharedPrivateLinkResource" }, { type: "azure-native:databasewatcher/v20241001preview:SharedPrivateLinkResource" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SharedPrivateLinkResource.__pulumiType, name, resourceInputs, opts);
     }
@@ -132,7 +132,7 @@ export class SharedPrivateLinkResource extends pulumi.CustomResource {
  */
 export interface SharedPrivateLinkResourceArgs {
     /**
-     * The DNS zone to be included in the DNS name of the shared private link. Value is service-specific.
+     * The DNS zone to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances. The value to use is the second segment of the host FQDN name of the resource that the shared private link resource is for.
      */
     dnsZone?: pulumi.Input<string>;
     /**

@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the shared keys for a workspace.
  * Azure REST API version: 2020-08-01.
+ *
+ * Other available API versions: 2023-09-01.
  */
 export function getSharedKeys(args: GetSharedKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetSharedKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,6 +41,8 @@ export interface GetSharedKeysResult {
 /**
  * Gets the shared keys for a workspace.
  * Azure REST API version: 2020-08-01.
+ *
+ * Other available API versions: 2023-09-01.
  */
 export function getSharedKeysOutput(args: GetSharedKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSharedKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

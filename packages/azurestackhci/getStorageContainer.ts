@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets a storage container
  * Azure REST API version: 2022-12-15-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview.
+ * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview.
  */
 export function getStorageContainer(args: GetStorageContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageContainerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -75,7 +75,7 @@ export interface GetStorageContainerResult {
  * Gets a storage container
  * Azure REST API version: 2022-12-15-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview.
+ * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview.
  */
 export function getStorageContainerOutput(args: GetStorageContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStorageContainerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

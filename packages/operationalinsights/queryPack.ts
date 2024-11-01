@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * An Log Analytics QueryPack definition.
  * Azure REST API version: 2019-09-01. Prior API version in Azure Native 1.x: 2019-09-01.
  *
- * Other available API versions: 2019-09-01-preview.
+ * Other available API versions: 2019-09-01-preview, 2023-09-01.
  */
 export class QueryPack extends pulumi.CustomResource {
     /**
@@ -101,7 +101,7 @@ export class QueryPack extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:operationalinsights/v20190901:QueryPack" }, { type: "azure-native:operationalinsights/v20190901preview:QueryPack" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:operationalinsights/v20190901:QueryPack" }, { type: "azure-native:operationalinsights/v20190901preview:QueryPack" }, { type: "azure-native:operationalinsights/v20230901:QueryPack" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(QueryPack.__pulumiType, name, resourceInputs, opts);
     }

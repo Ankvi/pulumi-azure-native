@@ -280,7 +280,7 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
-  packages/autonomousdevelopmentplatform:
+  packages/avs:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
         specifier: workspace:*
@@ -296,7 +296,7 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
-  packages/avs:
+  packages/awsconnector:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
         specifier: workspace:*
@@ -761,6 +761,22 @@ importers:
         version: 5.2.2
 
   packages/confluent:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.0.0
+        version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
+
+  packages/connectedcache:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
         specifier: workspace:*
@@ -1446,6 +1462,22 @@ importers:
         version: 5.2.2
 
   packages/easm:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.0.0
+        version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
+
+  packages/edge:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
         specifier: workspace:*
@@ -3062,6 +3094,22 @@ importers:
         version: 5.2.2
 
   packages/search:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.0.0
+        version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
+
+  packages/secretsynccontroller:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
         specifier: workspace:*

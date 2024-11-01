@@ -894,6 +894,32 @@ export interface SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs {
 }
 
 /**
+ * Properties of SQL Server ESU license.
+ */
+export interface SqlServerEsuLicensePropertiesArgs {
+    /**
+     * The activation state of the license.
+     */
+    activationState: pulumi.Input<string | enums.State>;
+    /**
+     * SQL Server ESU license type.
+     */
+    billingPlan: pulumi.Input<string | enums.BillingPlan>;
+    /**
+     * The number of total cores of the license covers.
+     */
+    physicalCores: pulumi.Input<number>;
+    /**
+     * The Azure scope to which the license will apply.
+     */
+    scopeType: pulumi.Input<string | enums.ScopeType>;
+    /**
+     * The SQL Server version the license covers.
+     */
+    version: pulumi.Input<string | enums.Version>;
+}
+
+/**
  * Properties of SqlServerInstance.
  */
 export interface SqlServerInstancePropertiesArgs {
@@ -968,6 +994,32 @@ export interface SqlServerInstancePropertiesArgs {
 }
 
 /**
+ * Properties of SQL Server License.
+ */
+export interface SqlServerLicensePropertiesArgs {
+    /**
+     * The activation state of the license.
+     */
+    activationState: pulumi.Input<string | enums.ActivationState>;
+    /**
+     * SQL Server license type.
+     */
+    billingPlan: pulumi.Input<string | enums.BillingPlan>;
+    /**
+     * This property represents the choice between SQL Server Core and ESU licenses.
+     */
+    licenseCategory: pulumi.Input<string | enums.LicenseCategory>;
+    /**
+     * The number of total cores of the license covers.
+     */
+    physicalCores: pulumi.Input<number>;
+    /**
+     * The Azure scope to which the license will apply.
+     */
+    scopeType: pulumi.Input<string | enums.ScopeType>;
+}
+
+/**
  * Service principal for uploading billing, metrics and logs.
  */
 export interface UploadServicePrincipalArgs {
@@ -1006,4 +1058,5 @@ export interface UploadWatermarkArgs {
      */
     usages?: pulumi.Input<string>;
 }
+
 

@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Azure REST API version: 2023-08-01-preview.
  *
- * Other available API versions: 2024-01-01-preview, 2024-04-01-preview.
+ * Other available API versions: 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview.
  */
 export function getInferenceEndpoint(args: GetInferenceEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetInferenceEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -80,7 +80,7 @@ export interface GetInferenceEndpointResult {
 /**
  * Azure REST API version: 2023-08-01-preview.
  *
- * Other available API versions: 2024-01-01-preview, 2024-04-01-preview.
+ * Other available API versions: 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview.
  */
 export function getInferenceEndpointOutput(args: GetInferenceEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInferenceEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

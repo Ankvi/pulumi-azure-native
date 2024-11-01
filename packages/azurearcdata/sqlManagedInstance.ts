@@ -5,7 +5,7 @@ import * as types from "./types";
  * A SqlManagedInstance.
  * Azure REST API version: 2023-01-15-preview. Prior API version in Azure Native 1.x: 2021-06-01-preview.
  *
- * Other available API versions: 2024-01-01.
+ * Other available API versions: 2024-01-01, 2024-05-01-preview.
  */
 export class SqlManagedInstance extends pulumi.CustomResource {
     /**
@@ -105,7 +105,7 @@ export class SqlManagedInstance extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurearcdata/v20210601preview:SqlManagedInstance" }, { type: "azure-native:azurearcdata/v20210701preview:SqlManagedInstance" }, { type: "azure-native:azurearcdata/v20210801:SqlManagedInstance" }, { type: "azure-native:azurearcdata/v20211101:SqlManagedInstance" }, { type: "azure-native:azurearcdata/v20220301preview:SqlManagedInstance" }, { type: "azure-native:azurearcdata/v20220615preview:SqlManagedInstance" }, { type: "azure-native:azurearcdata/v20230115preview:SqlManagedInstance" }, { type: "azure-native:azurearcdata/v20240101:SqlManagedInstance" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurearcdata/v20210601preview:SqlManagedInstance" }, { type: "azure-native:azurearcdata/v20210701preview:SqlManagedInstance" }, { type: "azure-native:azurearcdata/v20210801:SqlManagedInstance" }, { type: "azure-native:azurearcdata/v20211101:SqlManagedInstance" }, { type: "azure-native:azurearcdata/v20220301preview:SqlManagedInstance" }, { type: "azure-native:azurearcdata/v20220615preview:SqlManagedInstance" }, { type: "azure-native:azurearcdata/v20230115preview:SqlManagedInstance" }, { type: "azure-native:azurearcdata/v20240101:SqlManagedInstance" }, { type: "azure-native:azurearcdata/v20240501preview:SqlManagedInstance" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SqlManagedInstance.__pulumiType, name, resourceInputs, opts);
     }

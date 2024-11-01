@@ -5,7 +5,7 @@ import * as types from "./types";
  * Dapr Component Resiliency Policy.
  * Azure REST API version: 2023-08-01-preview.
  *
- * Other available API versions: 2023-11-02-preview, 2024-02-02-preview.
+ * Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview.
  */
 export class DaprComponentResiliencyPolicy extends pulumi.CustomResource {
     /**
@@ -91,7 +91,7 @@ export class DaprComponentResiliencyPolicy extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20230801preview:DaprComponentResiliencyPolicy" }, { type: "azure-native:app/v20231102preview:DaprComponentResiliencyPolicy" }, { type: "azure-native:app/v20240202preview:DaprComponentResiliencyPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20230801preview:DaprComponentResiliencyPolicy" }, { type: "azure-native:app/v20231102preview:DaprComponentResiliencyPolicy" }, { type: "azure-native:app/v20240202preview:DaprComponentResiliencyPolicy" }, { type: "azure-native:app/v20240802preview:DaprComponentResiliencyPolicy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DaprComponentResiliencyPolicy.__pulumiType, name, resourceInputs, opts);
     }

@@ -65,7 +65,7 @@ export interface ResourcePolicyArgs {
      */
     filter?: pulumi.Input<string>;
     /**
-     * Resources that are included and shared as a part of a curation profile.
+     * Resources that are included and shared as a part of a project policy.
      */
     resources?: pulumi.Input<string>;
 }
@@ -119,6 +119,7 @@ export interface UserRoleAssignmentArgs {
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
 }
+
 
 
 

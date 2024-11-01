@@ -1788,3 +1788,5 @@ export interface X509ManualCertificateArgs {
     secretRef: pulumi.Input<string>;
 }
 
+
+

@@ -5,7 +5,7 @@ import * as types from "./types";
  * Asset Endpoint Profile definition.
  * Azure REST API version: 2023-11-01-preview.
  *
- * Other available API versions: 2024-09-01-preview.
+ * Other available API versions: 2024-09-01-preview, 2024-11-01.
  */
 export class AssetEndpointProfile extends pulumi.CustomResource {
     /**
@@ -132,7 +132,7 @@ export class AssetEndpointProfile extends pulumi.CustomResource {
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:deviceregistry/v20231101preview:AssetEndpointProfile" }, { type: "azure-native:deviceregistry/v20240901preview:AssetEndpointProfile" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:deviceregistry/v20231101preview:AssetEndpointProfile" }, { type: "azure-native:deviceregistry/v20240901preview:AssetEndpointProfile" }, { type: "azure-native:deviceregistry/v20241101:AssetEndpointProfile" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AssetEndpointProfile.__pulumiType, name, resourceInputs, opts);
     }

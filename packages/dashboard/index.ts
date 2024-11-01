@@ -6,6 +6,11 @@ export const getGrafana: typeof import("./getGrafana").getGrafana = null as any;
 export const getGrafanaOutput: typeof import("./getGrafana").getGrafanaOutput = null as any;
 utilities.lazyLoad(exports, ["getGrafana","getGrafanaOutput"], () => require("./getGrafana"));
 
+export { GetIntegrationFabricArgs, GetIntegrationFabricResult, GetIntegrationFabricOutputArgs } from "./getIntegrationFabric";
+export const getIntegrationFabric: typeof import("./getIntegrationFabric").getIntegrationFabric = null as any;
+export const getIntegrationFabricOutput: typeof import("./getIntegrationFabric").getIntegrationFabricOutput = null as any;
+utilities.lazyLoad(exports, ["getIntegrationFabric","getIntegrationFabricOutput"], () => require("./getIntegrationFabric"));
+
 export { GetManagedPrivateEndpointArgs, GetManagedPrivateEndpointResult, GetManagedPrivateEndpointOutputArgs } from "./getManagedPrivateEndpoint";
 export const getManagedPrivateEndpoint: typeof import("./getManagedPrivateEndpoint").getManagedPrivateEndpoint = null as any;
 export const getManagedPrivateEndpointOutput: typeof import("./getManagedPrivateEndpoint").getManagedPrivateEndpointOutput = null as any;
@@ -20,6 +25,11 @@ export { GrafanaArgs } from "./grafana";
 export type Grafana = import("./grafana").Grafana;
 export const Grafana: typeof import("./grafana").Grafana = null as any;
 utilities.lazyLoad(exports, ["Grafana"], () => require("./grafana"));
+
+export { IntegrationFabricArgs } from "./integrationFabric";
+export type IntegrationFabric = import("./integrationFabric").IntegrationFabric;
+export const IntegrationFabric: typeof import("./integrationFabric").IntegrationFabric = null as any;
+utilities.lazyLoad(exports, ["IntegrationFabric"], () => require("./integrationFabric"));
 
 export { ManagedPrivateEndpointArgs } from "./managedPrivateEndpoint";
 export type ManagedPrivateEndpoint = import("./managedPrivateEndpoint").ManagedPrivateEndpoint;
@@ -43,6 +53,8 @@ const _module = {
         switch (type) {
             case "azure-native:dashboard:Grafana":
                 return new Grafana(name, <any>undefined, { urn })
+            case "azure-native:dashboard:IntegrationFabric":
+                return new IntegrationFabric(name, <any>undefined, { urn })
             case "azure-native:dashboard:ManagedPrivateEndpoint":
                 return new ManagedPrivateEndpoint(name, <any>undefined, { urn })
             case "azure-native:dashboard:PrivateEndpointConnection":

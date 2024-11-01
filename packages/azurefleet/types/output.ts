@@ -1635,3 +1635,4 @@ export interface WindowsVMGuestPatchAutomaticByPlatformSettingsResponse {
     rebootSetting?: string;
 }
 
+

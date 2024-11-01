@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieves detailed properties of the Availability Group.
  * Azure REST API version: 2024-01-01.
+ *
+ * Other available API versions: 2024-05-01-preview.
  */
 export function getSqlServerAvailabilityGroupDetailView(args: GetSqlServerAvailabilityGroupDetailViewArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlServerAvailabilityGroupDetailViewResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -65,6 +67,8 @@ export interface GetSqlServerAvailabilityGroupDetailViewResult {
 /**
  * Retrieves detailed properties of the Availability Group.
  * Azure REST API version: 2024-01-01.
+ *
+ * Other available API versions: 2024-05-01-preview.
  */
 export function getSqlServerAvailabilityGroupDetailViewOutput(args: GetSqlServerAvailabilityGroupDetailViewOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlServerAvailabilityGroupDetailViewResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

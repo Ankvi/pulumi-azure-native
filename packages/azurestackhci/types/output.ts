@@ -285,6 +285,44 @@ export interface DeploymentStatusResponse {
 }
 
 /**
+ * The Step of AzureStackHCI Cluster.
+ */
+export interface DeploymentStepResponse {
+    /**
+     * Description of step.
+     */
+    description: string;
+    /**
+     * End time of step.
+     */
+    endTimeUtc: string;
+    /**
+     * List of exceptions in AzureStackHCI Cluster Deployment.
+     */
+    exception: string[];
+    /**
+     * FullStepIndex of step.
+     */
+    fullStepIndex: string;
+    /**
+     * Name of step.
+     */
+    name: string;
+    /**
+     * Start time of step.
+     */
+    startTimeUtc: string;
+    /**
+     * Status of step. Allowed values are 'Error', 'Success', 'InProgress'
+     */
+    status: string;
+    /**
+     * List of nested steps of AzureStackHCI Cluster Deployment.
+     */
+    steps: DeploymentStepResponse[];
+}
+
+/**
  * The device Configuration of a device.
  */
 export interface DeviceConfigurationResponse {
@@ -296,6 +334,20 @@ export interface DeviceConfigurationResponse {
      * NIC Details of device
      */
     nicDetails: NicDetailResponse[];
+}
+
+/**
+ * The ECE action plan deployment status for AzureStackHCI Cluster.
+ */
+export interface EceActionStatusResponse {
+    /**
+     * Status of ECE action AzureStackHCI Cluster Deployment.
+     */
+    status: string;
+    /**
+     * List of steps of AzureStackHCI Cluster Deployment.
+     */
+    steps: DeploymentStepResponse[];
 }
 
 /**
@@ -559,6 +611,108 @@ export interface GuestCredentialResponse {
 }
 
 /**
+ * Represents the properties of an HCI Collect Log job.
+ */
+export interface HciCollectLogJobPropertiesResponse {
+    /**
+     * Deployment mode to trigger job.
+     */
+    deploymentMode?: string;
+    /**
+     * The UTC date and time at which the job completed.
+     */
+    endTimeUtc: string;
+    /**
+     * From date for log collection.
+     */
+    fromDate: string;
+    /**
+     * Unique, immutable job id.
+     */
+    jobId: string;
+    /**
+     * Job Type supported.
+     * Expected value is 'CollectLog'.
+     */
+    jobType: "CollectLog";
+    /**
+     * To date for log collection.
+     */
+    lastLogGenerated: string;
+    /**
+     * Job provisioning state
+     */
+    provisioningState: string;
+    /**
+     * log collection job reported properties.
+     */
+    reportedProperties: LogCollectionReportedPropertiesResponse;
+    /**
+     * The UTC date and time at which the job started.
+     */
+    startTimeUtc: string;
+    /**
+     * Status of Edge device job.
+     */
+    status: string;
+    /**
+     * To date for log collection.
+     */
+    toDate: string;
+}
+
+/**
+ * Represents the properties of a remote support job for HCI.
+ */
+export interface HciRemoteSupportJobPropertiesResponse {
+    /**
+     * Remote support access level.
+     */
+    accessLevel: string;
+    /**
+     * Deployment mode to trigger job.
+     */
+    deploymentMode?: string;
+    /**
+     * The UTC date and time at which the job completed.
+     */
+    endTimeUtc: string;
+    /**
+     * Remote support expiration timestamp.
+     */
+    expirationTimestamp: string;
+    /**
+     * Unique, immutable job id.
+     */
+    jobId: string;
+    /**
+     * Job Type supported.
+     * Expected value is 'RemoteSupport'.
+     */
+    jobType: "RemoteSupport";
+    /**
+     * Job provisioning state
+     */
+    provisioningState: string;
+    /**
+     * log collection job reported properties.
+     */
+    reportedProperties: RemoteSupportJobReportedPropertiesResponse;
+    /**
+     * The UTC date and time at which the job started.
+     */
+    startTimeUtc: string;
+    /**
+     * Status of Edge device job.
+     */
+    status: string;
+    /**
+     * Remote support type.
+     */
+    type: string;
+}
+
+/**
  * The HostNetwork of a cluster.
  */
 export interface HostNetworkResponse {
@@ -819,6 +973,58 @@ export interface IpPoolsResponse {
      * Starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
      */
     startingAddress?: string;
+}
+
+/**
+ * Represents a session for collecting logs from an edge device.
+ */
+export interface LogCollectionJobSessionResponse {
+    /**
+     * A unique identifier for correlating this log collection session with other operations or sessions.
+     */
+    correlationId: string;
+    /**
+     * The timestamp when log collection ended, in ISO 8601 format.
+     */
+    endTime: string;
+    /**
+     * The size of the collected logs in bytes.
+     */
+    logSize: number;
+    /**
+     * The timestamp when log collection started, in ISO 8601 format.
+     */
+    startTime: string;
+    /**
+     * The status of the log collection session.
+     */
+    status: string;
+    /**
+     * The total time logs were collected for, in ISO 8601 duration format.
+     */
+    timeCollected: string;
+}
+
+/**
+ * Represents the reported properties of a log collection job.
+ */
+export interface LogCollectionReportedPropertiesResponse {
+    /**
+     * Deployment status of job.
+     */
+    deploymentStatus: EceActionStatusResponse;
+    /**
+     * Details of the log collection session.
+     */
+    logCollectionSessionDetails: LogCollectionJobSessionResponse[];
+    /**
+     * The percentage of the job that is complete.
+     */
+    percentComplete: number;
+    /**
+     * Validation status of job.
+     */
+    validationStatus: EceActionStatusResponse;
 }
 
 /**
@@ -1150,6 +1356,84 @@ export interface QosPolicyOverridesResponse {
      * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
      */
     priorityValue8021ActionSMB?: string;
+}
+
+/**
+ * Represents the settings of a remote support node.
+ */
+export interface RemoteSupportJobNodeSettingsResponse {
+    /**
+     * The error message, if any, from the last connection attempt.
+     */
+    connectionErrorMessage: string;
+    /**
+     * The current connection status of the remote support session.
+     */
+    connectionStatus: string;
+    /**
+     * The timestamp when the node settings were created, in UTC.
+     */
+    createdAt: string;
+    /**
+     * The state of the remote support node.
+     */
+    state: string;
+    /**
+     * The timestamp when the node settings were last updated, in UTC.
+     */
+    updatedAt: string;
+}
+
+/**
+ * Represents the reported properties of a remote support job.
+ */
+export interface RemoteSupportJobReportedPropertiesResponse {
+    /**
+     * Deployment status of job.
+     */
+    deploymentStatus: EceActionStatusResponse;
+    /**
+     * Optional settings for configuring the node for remote support.
+     */
+    nodeSettings: RemoteSupportJobNodeSettingsResponse;
+    /**
+     * The percentage of the job that is complete.
+     */
+    percentComplete: number;
+    /**
+     * Details of the remote support session.
+     */
+    sessionDetails: RemoteSupportSessionResponse[];
+    /**
+     * Validation status of job.
+     */
+    validationStatus: EceActionStatusResponse;
+}
+
+/**
+ * Represents a remote support session.
+ */
+export interface RemoteSupportSessionResponse {
+    /**
+     * The level of access granted during the remote support session.
+     */
+    accessLevel: string;
+    /**
+     * The end time of the remote support session, in UTC.
+     */
+    sessionEndTime: string;
+    /**
+     * Unique session Id.
+     */
+    sessionId: string;
+    /**
+     * The start time of the remote support session, in UTC.
+     */
+    sessionStartTime: string;
+    /**
+     * The location where the session transcript is stored.
+     */
+    transcriptLocation: string;
 }
 
 /**
@@ -2326,6 +2610,9 @@ export interface VirtualSwitchConfigurationOverridesResponse {
      */
     loadBalancingAlgorithm?: string;
 }
+
+
+
 
 
 

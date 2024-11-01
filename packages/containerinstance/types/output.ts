@@ -1,6 +1,16 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * The API entity reference.
+ */
+export interface ApiEntityReferenceResponse {
+    /**
+     * The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+     */
+    id?: string;
+}
+
+/**
  * The properties of the Azure File volume. Azure File shares are mounted as volumes.
  */
 export interface AzureFileVolumeResponse {
@@ -82,6 +92,16 @@ export interface ContainerGroupIdentityResponse {
      * The list of user identities associated with the container group.
      */
     userAssignedIdentities?: {[key: string]: UserAssignedIdentitiesResponse};
+}
+
+/**
+ * The object that contains a reference to a Container Group Profile
+ */
+export interface ContainerGroupProfileStubResponse {
+    /**
+     * The API entity reference.
+     */
+    resource?: ApiEntityReferenceResponse;
 }
 
 /**
@@ -326,6 +346,13 @@ export interface DnsConfigurationResponse {
      * The DNS search domains for hostname lookup in the container group.
      */
     searchDomains?: string;
+}
+
+/**
+ * Describes the elastic profile of the Container Scale Set
+ */
+export interface ElasticProfileResponse {
+    desiredCount?: number;
 }
 
 /**
@@ -592,6 +619,28 @@ export interface LogAnalyticsResponse {
 }
 
 /**
+ * Identity for the nGroup.
+ */
+export interface NGroupIdentityResponse {
+    /**
+     * The principal id of the nGroup identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant id associated with the nGroup. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
+     */
+    type?: string;
+    /**
+     * The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
  * The port exposed on the container group.
  */
 export interface PortResponse {
@@ -700,6 +749,36 @@ export interface SecurityContextDefinitionResponse {
 }
 
 /**
+ * Metadata pertaining to creation and last modification of the resource.
+ */
+export interface SystemDataResponse {
+    /**
+     * The timestamp of resource creation (UTC).
+     */
+    createdAt?: string;
+    /**
+     * The identity that created the resource.
+     */
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
+}
+
+/**
  * The list of user identities associated with the container group. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  */
 export interface UserAssignedIdentitiesResponse {
@@ -709,6 +788,20 @@ export interface UserAssignedIdentitiesResponse {
     clientId: string;
     /**
      * The principal id of user assigned identity.
+     */
+    principalId: string;
+}
+
+/**
+ * User assigned identity properties
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the assigned identity.
      */
     principalId: string;
 }
@@ -756,6 +849,8 @@ export interface VolumeResponse {
      */
     secret?: {[key: string]: string};
 }
+
+
 
 
 

@@ -34,3 +34,4 @@ export interface RemediationPropertiesFailureThresholdArgs {
     percentage?: pulumi.Input<number>;
 }
 
+

@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets information about a configuration of server.
  * Azure REST API version: 2022-12-01.
  *
- * Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview.
+ * Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
  */
 export function getConfiguration(args: GetConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -76,7 +76,7 @@ export interface GetConfigurationResult {
      */
     readonly name: string;
     /**
-     * Source of the configuration.
+     * Source of the configuration. Required to update the configuration.
      */
     readonly source?: string;
     /**
@@ -92,7 +92,7 @@ export interface GetConfigurationResult {
      */
     readonly unit: string;
     /**
-     * Value of the configuration.
+     * Value of the configuration. Required to update the configuration.
      */
     readonly value?: string;
 }
@@ -100,7 +100,7 @@ export interface GetConfigurationResult {
  * Gets information about a configuration of server.
  * Azure REST API version: 2022-12-01.
  *
- * Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview.
+ * Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
  */
 export function getConfigurationOutput(args: GetConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

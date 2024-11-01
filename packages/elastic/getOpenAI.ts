@@ -5,7 +5,7 @@ import * as types from "./types";
  * Capture properties of Open AI resource Integration.
  * Azure REST API version: 2024-03-01.
  *
- * Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview.
+ * Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview.
  */
 export function getOpenAI(args: GetOpenAIArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenAIResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -56,7 +56,7 @@ export interface GetOpenAIResult {
  * Capture properties of Open AI resource Integration.
  * Azure REST API version: 2024-03-01.
  *
- * Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview.
+ * Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview.
  */
 export function getOpenAIOutput(args: GetOpenAIOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenAIResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Represents an curation profile resource.
  * Azure REST API version: 2024-08-01-preview.
+ *
+ * Other available API versions: 2024-10-01-preview.
  */
 export class CurationProfile extends pulumi.CustomResource {
     /**
@@ -92,7 +94,7 @@ export class CurationProfile extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:devcenter/v20240801preview:CurationProfile" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:devcenter/v20240801preview:CurationProfile" }, { type: "azure-native:devcenter/v20241001preview:CurationProfile" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CurationProfile.__pulumiType, name, resourceInputs, opts);
     }

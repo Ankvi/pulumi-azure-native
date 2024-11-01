@@ -17,6 +17,25 @@ export interface GrafanaIntegrationsResponse {
     azureMonitorWorkspaceIntegrations?: AzureMonitorWorkspaceIntegrationResponse[];
 }
 
+export interface IntegrationFabricPropertiesResponse {
+    /**
+     * The resource Id of the Azure resource which is used to configure Grafana data source. E.g., an Azure Monitor Workspace, an Azure Data Explorer cluster, etc.
+     */
+    dataSourceResourceId?: string;
+    /**
+     * Provisioning state of the resource.
+     */
+    provisioningState: string;
+    /**
+     * A list of integration scenarios covered by this integration fabric
+     */
+    scenarios?: string[];
+    /**
+     * The resource Id of the Azure resource being integrated with Azure Managed Grafana. E.g., an Azure Kubernetes Service cluster.
+     */
+    targetResourceId?: string;
+}
+
 /**
  * Properties specific to the grafana resource.
  */
@@ -216,6 +235,7 @@ export interface UserAssignedIdentityResponse {
      */
     principalId: string;
 }
+
 
 
 

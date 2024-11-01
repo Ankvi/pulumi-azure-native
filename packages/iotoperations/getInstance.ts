@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get a InstanceResource
  * Azure REST API version: 2024-07-01-preview.
  *
- * Other available API versions: 2024-08-15-preview.
+ * Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01.
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -67,7 +67,7 @@ export interface GetInstanceResult {
  * Get a InstanceResource
  * Azure REST API version: 2024-07-01-preview.
  *
- * Other available API versions: 2024-08-15-preview.
+ * Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01.
  */
 export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

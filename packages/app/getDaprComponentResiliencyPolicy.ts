@@ -5,7 +5,7 @@ import * as types from "./types";
  * Dapr Component Resiliency Policy.
  * Azure REST API version: 2023-08-01-preview.
  *
- * Other available API versions: 2023-11-02-preview, 2024-02-02-preview.
+ * Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview.
  */
 export function getDaprComponentResiliencyPolicy(args: GetDaprComponentResiliencyPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDaprComponentResiliencyPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -69,7 +69,7 @@ export interface GetDaprComponentResiliencyPolicyResult {
  * Dapr Component Resiliency Policy.
  * Azure REST API version: 2023-08-01-preview.
  *
- * Other available API versions: 2023-11-02-preview, 2024-02-02-preview.
+ * Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview.
  */
 export function getDaprComponentResiliencyPolicyOutput(args: GetDaprComponentResiliencyPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDaprComponentResiliencyPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

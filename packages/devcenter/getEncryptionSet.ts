@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets a devcenter encryption set.
  * Azure REST API version: 2024-05-01-preview.
  *
- * Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview.
+ * Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
  */
 export function getEncryptionSet(args: GetEncryptionSetArgs, opts?: pulumi.InvokeOptions): Promise<GetEncryptionSetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -80,7 +80,7 @@ export interface GetEncryptionSetResult {
  * Gets a devcenter encryption set.
  * Azure REST API version: 2024-05-01-preview.
  *
- * Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview.
+ * Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
  */
 export function getEncryptionSetOutput(args: GetEncryptionSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEncryptionSetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -948,6 +948,50 @@ export function buildContextArgsProvideDefaults(val: BuildContextArgs): BuildCon
     };
 }
 
+export interface CapabilityHostArgs {
+    /**
+     * List of AI services connections.
+     */
+    aiServicesConnections?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Kind of this capability host.
+     */
+    capabilityHostKind?: pulumi.Input<string | enums.CapabilityHostKind>;
+    /**
+     * Customer subnet info to help set up this capability host.
+     */
+    customerSubnet?: pulumi.Input<string>;
+    /**
+     * The asset description text.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The asset property dictionary.
+     */
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * List of Storage connections.
+     */
+    storageConnections?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Tag dictionary. Tags can be added, removed, and updated.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * List of VectorStore connections.
+     */
+    vectorStoreConnections?: pulumi.Input<pulumi.Input<string>[]>;
+}
+/**
+ * capabilityHostArgsProvideDefaults sets the appropriate defaults for CapabilityHostArgs
+ */
+export function capabilityHostArgsProvideDefaults(val: CapabilityHostArgs): CapabilityHostArgs {
+    return {
+        ...val,
+        capabilityHostKind: (val.capabilityHostKind) ?? "Agents",
+    };
+}
+
 export interface CapacityReservationGroupArgs {
     /**
      * Offer used by this capacity reservation group.
@@ -8006,6 +8050,8 @@ export interface WorkspaceConnectionUsernamePasswordArgs {
     password?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
 }
+
+
 
 
 

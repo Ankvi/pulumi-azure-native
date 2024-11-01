@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a Log Analytics workspace table.
  * Azure REST API version: 2022-10-01.
+ *
+ * Other available API versions: 2023-09-01.
  */
 export function getTable(args: GetTableArgs, opts?: pulumi.InvokeOptions): Promise<GetTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -101,6 +103,8 @@ export interface GetTableResult {
 /**
  * Gets a Log Analytics workspace table.
  * Azure REST API version: 2022-10-01.
+ *
+ * Other available API versions: 2023-09-01.
  */
 export function getTableOutput(args: GetTableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

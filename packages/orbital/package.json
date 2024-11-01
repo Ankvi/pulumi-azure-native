@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-orbital",
-    "version": "2.63.0",
+    "version": "2.69.0",
     "description": "Pulumi Azure Native package for orbital",
     "keywords": [
         "pulumi",

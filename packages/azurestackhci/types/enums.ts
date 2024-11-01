@@ -37,17 +37,17 @@ export type ComplianceAssignmentType = (typeof ComplianceAssignmentType)[keyof t
 
 export const DeploymentMode = {
     /**
-     * Validate deployment settings for cluster.
+     * Validate ECE action deployment for a cluster.
      */
     Validate: "Validate",
     /**
-     * Deploy cluster using deployment settings.
+     * Deploy ECE action deployment for a cluster.
      */
     Deploy: "Deploy",
 } as const;
 
 /**
- * The deployment mode for cluster deployment.
+ * Deployment mode to trigger job.
  */
 export type DeploymentMode = (typeof DeploymentMode)[keyof typeof DeploymentMode];
 
@@ -72,6 +72,18 @@ export const DiskFileFormat = {
  */
 export type DiskFileFormat = (typeof DiskFileFormat)[keyof typeof DiskFileFormat];
 
+export const EdgeDeviceKind = {
+    /**
+     * Arc-enabled edge device with HCI OS.
+     */
+    HCI: "HCI",
+} as const;
+
+/**
+ * Edge Solution type to support polymorphic resource.
+ */
+export type EdgeDeviceKind = (typeof EdgeDeviceKind)[keyof typeof EdgeDeviceKind];
+
 export const ExtendedLocationTypes = {
     CustomLocation: "CustomLocation",
 } as const;
@@ -80,6 +92,22 @@ export const ExtendedLocationTypes = {
  * The type of the extended location.
  */
 export type ExtendedLocationTypes = (typeof ExtendedLocationTypes)[keyof typeof ExtendedLocationTypes];
+
+export const HciEdgeDeviceJobType = {
+    /**
+     * Job to collect logs from the device.
+     */
+    CollectLog: "CollectLog",
+    /**
+     * Job to provide remote support to the device.
+     */
+    RemoteSupport: "RemoteSupport",
+} as const;
+
+/**
+ * Job Type to support polymorphic resource.
+ */
+export type HciEdgeDeviceJobType = (typeof HciEdgeDeviceJobType)[keyof typeof HciEdgeDeviceJobType];
 
 export const HyperVGeneration = {
     V1: "V1",
@@ -180,6 +208,42 @@ export const ProvisioningAction = {
  * The guest agent provisioning action.
  */
 export type ProvisioningAction = (typeof ProvisioningAction)[keyof typeof ProvisioningAction];
+
+export const RemoteSupportAccessLevel = {
+    /**
+     * No remote support access is granted.
+     */
+    None: "None",
+    /**
+     * Access is limited to diagnostics information only.
+     */
+    Diagnostics: "Diagnostics",
+    /**
+     * Access includes diagnostics information and the ability to perform repairs.
+     */
+    DiagnosticsAndRepair: "DiagnosticsAndRepair",
+} as const;
+
+/**
+ * Remote support access level.
+ */
+export type RemoteSupportAccessLevel = (typeof RemoteSupportAccessLevel)[keyof typeof RemoteSupportAccessLevel];
+
+export const RemoteSupportType = {
+    /**
+     * Enables remote support for the edge device.
+     */
+    Enable: "Enable",
+    /**
+     * Revokes previously granted remote support access for the edge device.
+     */
+    Revoke: "Revoke",
+} as const;
+
+/**
+ * Remote support type.
+ */
+export type RemoteSupportType = (typeof RemoteSupportType)[keyof typeof RemoteSupportType];
 
 export const ResourceIdentityType = {
     SystemAssigned: "SystemAssigned",
