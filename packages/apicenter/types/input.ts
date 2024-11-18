@@ -1,6 +1,20 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * API source configuration for Azure API Management.
+ */
+export interface AzureApiManagementSourceArgs {
+    /**
+     * The resource ID of the managed identity that has access to the API Management instance.
+     */
+    msiResourceId?: pulumi.Input<string>;
+    /**
+     * API Management service resource ID.
+     */
+    resourceId: pulumi.Input<string>;
+}
+
+/**
  * Contact information
  */
 export interface ContactArgs {
@@ -135,5 +149,6 @@ export interface TermsOfServiceArgs {
      */
     url: pulumi.Input<string>;
 }
+
 
 

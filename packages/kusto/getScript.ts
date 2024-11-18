@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets a Kusto cluster database script.
  * Azure REST API version: 2022-12-29.
  *
- * Other available API versions: 2021-08-27, 2023-05-02, 2023-08-15.
+ * Other available API versions: 2021-08-27, 2023-05-02, 2023-08-15, 2024-04-13.
  */
 export function getScript(args: GetScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetScriptResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -77,7 +77,7 @@ export interface GetScriptResult {
  * Gets a Kusto cluster database script.
  * Azure REST API version: 2022-12-29.
  *
- * Other available API versions: 2021-08-27, 2023-05-02, 2023-08-15.
+ * Other available API versions: 2021-08-27, 2023-05-02, 2023-08-15, 2024-04-13.
  */
 export function getScriptOutput(args: GetScriptOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScriptResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

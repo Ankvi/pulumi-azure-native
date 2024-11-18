@@ -106,6 +106,26 @@ export const EnvironmentServerType = {
  */
 export type EnvironmentServerType = (typeof EnvironmentServerType)[keyof typeof EnvironmentServerType];
 
+export const ImportSpecificationOptions = {
+    /**
+     * Indicates that the specification should be never be imported.
+     */
+    Never: "never",
+    /**
+     * Indicates that the specification should be imported only by request.
+     */
+    OnDemand: "ondemand",
+    /**
+     * Indicates that the specification should always be imported along with metadata.
+     */
+    Always: "always",
+} as const;
+
+/**
+ * Indicates if the specification should be imported along with metadata.
+ */
+export type ImportSpecificationOptions = (typeof ImportSpecificationOptions)[keyof typeof ImportSpecificationOptions];
+
 export const LifecycleStage = {
     /**
      * design stage

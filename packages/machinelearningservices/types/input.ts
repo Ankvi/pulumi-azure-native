@@ -126,10 +126,6 @@ export interface AcrDetailsArgs {
      * Details of system created ACR account to be used for the Registry
      */
     systemCreatedAcrAccount?: pulumi.Input<SystemCreatedAcrAccountArgs>;
-    /**
-     * Details of user created ACR account to be used for the Registry
-     */
-    userCreatedAcrAccount?: pulumi.Input<UserCreatedAcrAccountArgs>;
 }
 
 /**
@@ -6924,10 +6920,6 @@ export interface StorageAccountDetailsArgs {
      * Details of system created storage account to be used for the registry
      */
     systemCreatedStorageAccount?: pulumi.Input<SystemCreatedStorageAccountArgs>;
-    /**
-     * Details of user created storage account to be used for the registry
-     */
-    userCreatedStorageAccount?: pulumi.Input<UserCreatedStorageAccountArgs>;
 }
 
 /**
@@ -7840,20 +7832,6 @@ export interface UserAccountCredentialsArgs {
      * SSH public key of the administrator user account.
      */
     adminUserSshPublicKey?: pulumi.Input<string>;
-}
-
-export interface UserCreatedAcrAccountArgs {
-    /**
-     * ARM ResourceId of a resource
-     */
-    armResourceId?: pulumi.Input<ArmResourceIdArgs>;
-}
-
-export interface UserCreatedStorageAccountArgs {
-    /**
-     * ARM ResourceId of a resource
-     */
-    armResourceId?: pulumi.Input<ArmResourceIdArgs>;
 }
 
 /**

@@ -5,7 +5,7 @@ import * as types from "./types";
  * Returns details of the API version.
  * Azure REST API version: 2024-03-01.
  *
- * Other available API versions: 2024-03-15-preview.
+ * Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
  */
 export function getApiVersion(args: GetApiVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetApiVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -74,7 +74,7 @@ export interface GetApiVersionResult {
  * Returns details of the API version.
  * Azure REST API version: 2024-03-01.
  *
- * Other available API versions: 2024-03-15-preview.
+ * Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
  */
 export function getApiVersionOutput(args: GetApiVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -5,7 +5,7 @@ import * as types from "./types";
  * Returns details of the workspace.
  * Azure REST API version: 2024-03-01.
  *
- * Other available API versions: 2024-03-15-preview.
+ * Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
  */
 export function getWorkspace(args: GetWorkspaceArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -64,7 +64,7 @@ export interface GetWorkspaceResult {
  * Returns details of the workspace.
  * Azure REST API version: 2024-03-01.
  *
- * Other available API versions: 2024-03-15-preview.
+ * Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
  */
 export function getWorkspaceOutput(args: GetWorkspaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

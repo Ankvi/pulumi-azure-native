@@ -5,7 +5,7 @@ import * as types from "./types";
  * Returns a list of databases that are owned by this cluster and were followed by another cluster.
  * Azure REST API version: 2022-12-29.
  *
- * Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15.
+ * Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15, 2024-04-13.
  */
 export function listClusterFollowerDatabases(args: ListClusterFollowerDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<ListClusterFollowerDatabasesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,7 +39,7 @@ export interface ListClusterFollowerDatabasesResult {
  * Returns a list of databases that are owned by this cluster and were followed by another cluster.
  * Azure REST API version: 2022-12-29.
  *
- * Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15.
+ * Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15, 2024-04-13.
  */
 export function listClusterFollowerDatabasesOutput(args: ListClusterFollowerDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListClusterFollowerDatabasesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

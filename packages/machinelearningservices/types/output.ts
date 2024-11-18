@@ -214,10 +214,6 @@ export interface AcrDetailsResponse {
      * Details of system created ACR account to be used for the Registry
      */
     systemCreatedAcrAccount?: SystemCreatedAcrAccountResponse;
-    /**
-     * Details of user created ACR account to be used for the Registry
-     */
-    userCreatedAcrAccount?: UserCreatedAcrAccountResponse;
 }
 
 export interface ActualCapacityInfoResponse {
@@ -9086,10 +9082,6 @@ export interface StorageAccountDetailsResponse {
      * Details of system created storage account to be used for the registry
      */
     systemCreatedStorageAccount?: SystemCreatedStorageAccountResponse;
-    /**
-     * Details of user created storage account to be used for the registry
-     */
-    userCreatedStorageAccount?: UserCreatedStorageAccountResponse;
 }
 
 /**
@@ -10111,20 +10103,6 @@ export interface UserAssignedIdentityResponse {
      * The tenant ID of the user assigned identity.
      */
     tenantId?: string;
-}
-
-export interface UserCreatedAcrAccountResponse {
-    /**
-     * ARM ResourceId of a resource
-     */
-    armResourceId?: ArmResourceIdResponse;
-}
-
-export interface UserCreatedStorageAccountResponse {
-    /**
-     * ARM ResourceId of a resource
-     */
-    armResourceId?: ArmResourceIdResponse;
 }
 
 /**

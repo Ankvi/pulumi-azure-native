@@ -5,7 +5,7 @@ import * as types from "./types";
  * Replication protection Cluster.
  * Azure REST API version: 2024-02-01.
  *
- * Other available API versions: 2024-04-01.
+ * Other available API versions: 2024-04-01, 2024-10-01.
  */
 export class ReplicationProtectionCluster extends pulumi.CustomResource {
     /**
@@ -84,7 +84,7 @@ export class ReplicationProtectionCluster extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:recoveryservices/v20240201:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20240401:ReplicationProtectionCluster" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:recoveryservices/v20240201:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20240401:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20241001:ReplicationProtectionCluster" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ReplicationProtectionCluster.__pulumiType, name, resourceInputs, opts);
     }

@@ -11,6 +11,11 @@ export type ApiDefinition = import("./apiDefinition").ApiDefinition;
 export const ApiDefinition: typeof import("./apiDefinition").ApiDefinition = null as any;
 utilities.lazyLoad(exports, ["ApiDefinition"], () => require("./apiDefinition"));
 
+export { ApiSourceArgs } from "./apiSource";
+export type ApiSource = import("./apiSource").ApiSource;
+export const ApiSource: typeof import("./apiSource").ApiSource = null as any;
+utilities.lazyLoad(exports, ["ApiSource"], () => require("./apiSource"));
+
 export { ApiVersionArgs } from "./apiVersion";
 export type ApiVersion = import("./apiVersion").ApiVersion;
 export const ApiVersion: typeof import("./apiVersion").ApiVersion = null as any;
@@ -35,6 +40,11 @@ export { GetApiDefinitionArgs, GetApiDefinitionResult, GetApiDefinitionOutputArg
 export const getApiDefinition: typeof import("./getApiDefinition").getApiDefinition = null as any;
 export const getApiDefinitionOutput: typeof import("./getApiDefinition").getApiDefinitionOutput = null as any;
 utilities.lazyLoad(exports, ["getApiDefinition","getApiDefinitionOutput"], () => require("./getApiDefinition"));
+
+export { GetApiSourceArgs, GetApiSourceResult, GetApiSourceOutputArgs } from "./getApiSource";
+export const getApiSource: typeof import("./getApiSource").getApiSource = null as any;
+export const getApiSourceOutput: typeof import("./getApiSource").getApiSourceOutput = null as any;
+utilities.lazyLoad(exports, ["getApiSource","getApiSourceOutput"], () => require("./getApiSource"));
 
 export { GetApiVersionArgs, GetApiVersionResult, GetApiVersionOutputArgs } from "./getApiVersion";
 export const getApiVersion: typeof import("./getApiVersion").getApiVersion = null as any;
@@ -95,6 +105,8 @@ const _module = {
                 return new Api(name, <any>undefined, { urn })
             case "azure-native:apicenter:ApiDefinition":
                 return new ApiDefinition(name, <any>undefined, { urn })
+            case "azure-native:apicenter:ApiSource":
+                return new ApiSource(name, <any>undefined, { urn })
             case "azure-native:apicenter:ApiVersion":
                 return new ApiVersion(name, <any>undefined, { urn })
             case "azure-native:apicenter:Deployment":

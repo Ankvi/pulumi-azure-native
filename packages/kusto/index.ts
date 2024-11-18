@@ -121,6 +121,11 @@ export type IotHubDataConnection = import("./iotHubDataConnection").IotHubDataCo
 export const IotHubDataConnection: typeof import("./iotHubDataConnection").IotHubDataConnection = null as any;
 utilities.lazyLoad(exports, ["IotHubDataConnection"], () => require("./iotHubDataConnection"));
 
+export { ListClusterCalloutPoliciesArgs, ListClusterCalloutPoliciesResult, ListClusterCalloutPoliciesOutputArgs } from "./listClusterCalloutPolicies";
+export const listClusterCalloutPolicies: typeof import("./listClusterCalloutPolicies").listClusterCalloutPolicies = null as any;
+export const listClusterCalloutPoliciesOutput: typeof import("./listClusterCalloutPolicies").listClusterCalloutPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["listClusterCalloutPolicies","listClusterCalloutPoliciesOutput"], () => require("./listClusterCalloutPolicies"));
+
 export { ListClusterFollowerDatabasesArgs, ListClusterFollowerDatabasesResult, ListClusterFollowerDatabasesOutputArgs } from "./listClusterFollowerDatabases";
 export const listClusterFollowerDatabases: typeof import("./listClusterFollowerDatabases").listClusterFollowerDatabases = null as any;
 export const listClusterFollowerDatabasesOutput: typeof import("./listClusterFollowerDatabases").listClusterFollowerDatabasesOutput = null as any;

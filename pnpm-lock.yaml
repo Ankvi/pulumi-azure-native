@@ -1445,6 +1445,22 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
+  packages/durabletask:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.136.0
+        version: 3.137.0(ts-node@7.0.1)(typescript@5.2.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
+
   packages/dynamics365fraudprotection:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -1894,6 +1910,22 @@ importers:
         version: 5.2.2
 
   packages/hybridnetwork:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.136.0
+        version: 3.137.0(ts-node@7.0.1)(typescript@5.2.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
+
+  packages/impact:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
         specifier: workspace:*
@@ -2454,22 +2486,6 @@ importers:
         version: 5.2.2
 
   packages/mobilenetwork:
-    dependencies:
-      '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:*
-        version: link:../core
-      '@pulumi/pulumi':
-        specifier: ^3.136.0
-        version: 3.137.0(ts-node@7.0.1)(typescript@5.2.2)
-    devDependencies:
-      '@types/node':
-        specifier: ^20.0.0
-        version: 20.6.2
-      typescript:
-        specifier: ^5.0.0
-        version: 5.2.2
-
-  packages/mobilepacketcore:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
         specifier: workspace:*

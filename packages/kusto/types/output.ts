@@ -29,6 +29,28 @@ export interface AzureSkuResponse {
 }
 
 /**
+ * Configuration for external callout policies, including URI patterns, access types, and service types.
+ */
+export interface CalloutPolicyResponse {
+    /**
+     * Unique identifier for the callout configuration.
+     */
+    calloutId: string;
+    /**
+     * Type of the callout service, specifying the kind of external resource or service being accessed.
+     */
+    calloutType?: string;
+    /**
+     * Regular expression or FQDN pattern for the callout URI.
+     */
+    calloutUriRegex?: string;
+    /**
+     * Indicates whether outbound access is permitted for the specified URI pattern.
+     */
+    outboundAccess?: string;
+}
+
+/**
  * A class representing database principal entity.
  */
 export interface DatabasePrincipalResponse {
@@ -360,6 +382,7 @@ export interface VirtualNetworkConfigurationResponse {
      */
     subnetId: string;
 }
+
 
 
 

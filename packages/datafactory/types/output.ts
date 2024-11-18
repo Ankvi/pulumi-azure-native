@@ -3976,6 +3976,10 @@ export interface AzurePostgreSqlLinkedServiceResponse {
      */
     annotations?: any[];
     /**
+     * The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
+     */
+    commandTimeout?: any;
+    /**
      * The integration runtime reference.
      */
     connectVia?: IntegrationRuntimeReferenceResponse;
@@ -3984,9 +3988,17 @@ export interface AzurePostgreSqlLinkedServiceResponse {
      */
     connectionString?: any;
     /**
+     * Database name for connection. Type: string.
+     */
+    database?: any;
+    /**
      * Linked service description.
      */
     description?: string;
+    /**
+     * Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data. Type: string
+     */
+    encoding?: any;
     /**
      * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
      */
@@ -4000,10 +4012,42 @@ export interface AzurePostgreSqlLinkedServiceResponse {
      */
     password?: AzureKeyVaultSecretReferenceResponse;
     /**
+     * The port for the connection. Type: integer.
+     */
+    port?: any;
+    /**
+     * Determines the size of the internal buffer uses when reading. Increasing may improve performance if transferring large values from the database. Type: integer.
+     */
+    readBufferSize?: any;
+    /**
+     * Server name for connection. Type: string.
+     */
+    server?: any;
+    /**
+     * SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
+     */
+    sslMode?: any;
+    /**
+     * The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
+     */
+    timeout?: any;
+    /**
+     * Gets or sets the session timezone. Type: string.
+     */
+    timezone?: any;
+    /**
+     * Whether to trust the server certificate without validating it. Type: boolean.
+     */
+    trustServerCertificate?: any;
+    /**
      * Type of linked service.
      * Expected value is 'AzurePostgreSql'.
      */
     type: "AzurePostgreSql";
+    /**
+     * Username for authentication. Type: string.
+     */
+    username?: any;
     /**
      * Version of the linked service.
      */
@@ -15872,6 +15916,10 @@ export interface MultiplePipelineTriggerResponse {
  */
 export interface MySqlLinkedServiceResponse {
     /**
+     * This allows the special “zero” date value 0000-00-00 to be retrieved from the database. Type: boolean.
+     */
+    allowZeroDateTime?: any;
+    /**
      * List of tags that can be used for describing the linked service.
      */
     annotations?: any[];
@@ -15883,6 +15931,14 @@ export interface MySqlLinkedServiceResponse {
      * The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
      */
     connectionString?: any;
+    /**
+     * The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error. Type: integer.
+     */
+    connectionTimeout?: any;
+    /**
+     * True to return DateTime.MinValue for date or datetime columns that have disallowed values. Type: boolean.
+     */
+    convertZeroDateTime?: any;
     /**
      * Database name for connection. Type: string.
      */
@@ -15900,6 +15956,10 @@ export interface MySqlLinkedServiceResponse {
      */
     encryptedCredential?: string;
     /**
+     * Determines which column type (if any) should be read as a GUID. Type: string. None: No column types are automatically read as a Guid; Char36: All CHAR(36) columns are read/written as a Guid using lowercase hex with hyphens, which matches UUID.
+     */
+    guidFormat?: any;
+    /**
      * Parameters for linked service.
      */
     parameters?: {[key: string]: ParameterSpecificationResponse};
@@ -15916,9 +15976,21 @@ export interface MySqlLinkedServiceResponse {
      */
     server?: any;
     /**
+     * The path to the client’s SSL certificate file in PEM format. SslKey must also be specified. Type: string.
+     */
+    sslCert?: any;
+    /**
+     * The path to the client’s SSL private key in PEM format. SslCert must also be specified. Type: string.
+     */
+    sslKey?: any;
+    /**
      * SSL mode for connection. Type: integer. 0: disable, 1: prefer, 2: require, 3: verify-ca, 4: verify-full.
      */
     sslMode?: any;
+    /**
+     * When set to true, TINYINT(1) values are returned as booleans. Type: bool.
+     */
+    treatTinyAsBoolean?: any;
     /**
      * Type of linked service.
      * Expected value is 'MySql'.

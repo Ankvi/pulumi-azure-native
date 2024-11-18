@@ -5,7 +5,7 @@ import * as types from "./types";
  * A private endpoint connection
  * Azure REST API version: 2022-12-29. Prior API version in Azure Native 1.x: 2021-08-27.
  *
- * Other available API versions: 2023-05-02, 2023-08-15.
+ * Other available API versions: 2023-05-02, 2023-08-15, 2024-04-13.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -103,7 +103,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:kusto/v20210827:PrivateEndpointConnection" }, { type: "azure-native:kusto/v20220201:PrivateEndpointConnection" }, { type: "azure-native:kusto/v20220707:PrivateEndpointConnection" }, { type: "azure-native:kusto/v20221111:PrivateEndpointConnection" }, { type: "azure-native:kusto/v20221229:PrivateEndpointConnection" }, { type: "azure-native:kusto/v20230502:PrivateEndpointConnection" }, { type: "azure-native:kusto/v20230815:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:kusto/v20210827:PrivateEndpointConnection" }, { type: "azure-native:kusto/v20220201:PrivateEndpointConnection" }, { type: "azure-native:kusto/v20220707:PrivateEndpointConnection" }, { type: "azure-native:kusto/v20221111:PrivateEndpointConnection" }, { type: "azure-native:kusto/v20221229:PrivateEndpointConnection" }, { type: "azure-native:kusto/v20230502:PrivateEndpointConnection" }, { type: "azure-native:kusto/v20230815:PrivateEndpointConnection" }, { type: "azure-native:kusto/v20240413:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }

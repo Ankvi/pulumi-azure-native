@@ -15,6 +15,20 @@ export interface ApiDefinitionPropertiesSpecificationResponse {
 }
 
 /**
+ * API source configuration for Azure API Management.
+ */
+export interface AzureApiManagementSourceResponse {
+    /**
+     * The resource ID of the managed identity that has access to the API Management instance.
+     */
+    msiResourceId?: string;
+    /**
+     * API Management service resource ID.
+     */
+    resourceId: string;
+}
+
+/**
  * Contact information
  */
 export interface ContactResponse {
@@ -92,6 +106,24 @@ export interface LicenseResponse {
      * identifier field.
      */
     url?: string;
+}
+
+/**
+ * The link state.
+ */
+export interface LinkStateResponse {
+    /**
+     * The timestamp of the last update of the link state.
+     */
+    lastUpdatedOn: string;
+    /**
+     * The state message.
+     */
+    message?: string;
+    /**
+     * The state of the link.
+     */
+    state?: string;
 }
 
 /**
@@ -201,5 +233,6 @@ export interface UserAssignedIdentityResponse {
      */
     principalId: string;
 }
+
 
 
