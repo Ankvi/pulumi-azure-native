@@ -1,6 +1,78 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Defines the Alert Query Parameter.
+ */
+export interface AlertQueryParameterResponse {
+    /**
+     * The name of the alert query parameter.
+     */
+    name?: string;
+    /**
+     * The value of the alert query parameter.
+     */
+    value?: string;
+}
+
+/**
+ * Describes the properties of an alert.
+ */
+export interface AlertRulePropertiesResponse {
+    /**
+     * Action Group resource Ids to invoke when the alert fires
+     */
+    actionGroups?: string[];
+    /**
+     * The alert query parameters.
+     */
+    alertQueryParameters?: AlertQueryParameterResponse[];
+    /**
+     * The value that indicates whether the alert should be automatically resolved or not. The default is Disable.
+     */
+    autoMitigate?: string;
+    /**
+     * Evaluation of metric on a particular column.
+     */
+    dimension?: string;
+    /**
+     * How often the scheduled query rule is evaluated.
+     */
+    evaluationFrequency?: number;
+    /**
+     * The operator for failing periods.
+     */
+    failingPeriodsOperator?: string;
+    /**
+     * The number of failing periods to trigger an alert.
+     */
+    failingPeriodsToAlert?: number;
+    /**
+     * Mute actions for the chosen period of time after the alert is fired.
+     */
+    muteActionsDuration?: number;
+    /**
+     * Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest.
+     */
+    severity?: number;
+    /**
+     * Indicates whether the alert is in an enabled state.
+     */
+    status?: string;
+    /**
+     * The threshold of the alert.
+     */
+    threshold?: number;
+    /**
+     * The threshold operator of the alert.
+     */
+    thresholdOperator?: string;
+    /**
+     * The period of time on which the Alert query will be executed.
+     */
+    windowSize?: number;
+}
+
+/**
  * Gets or sets the application server configuration.
  */
 export interface ApplicationServerConfigurationResponse {
@@ -608,6 +680,20 @@ export interface EnqueueServerPropertiesResponse {
 }
 
 /**
+ * The resource management error additional info.
+ */
+export interface ErrorAdditionalInfoResponse {
+    /**
+     * The additional info.
+     */
+    info: any;
+    /**
+     * The additional info type.
+     */
+    type: string;
+}
+
+/**
  * Error definition.
  */
 export interface ErrorDefinitionResponse {
@@ -627,6 +713,32 @@ export interface ErrorDefinitionResponse {
      * Description of the recommendation.
      */
     recommendation: string;
+}
+
+/**
+ * The error detail.
+ */
+export interface ErrorDetailResponse {
+    /**
+     * The error additional info.
+     */
+    additionalInfo: ErrorAdditionalInfoResponse[];
+    /**
+     * The error code.
+     */
+    code: string;
+    /**
+     * The error details.
+     */
+    details: ErrorDetailResponse[];
+    /**
+     * The error message.
+     */
+    message: string;
+    /**
+     * The error target.
+     */
+    target: string;
 }
 
 /**
@@ -2318,6 +2430,7 @@ export interface YearlyRetentionScheduleResponse {
      */
     retentionTimes?: string[];
 }
+
 
 
 

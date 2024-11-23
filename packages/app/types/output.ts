@@ -706,7 +706,7 @@ export interface CustomDomainResponse {
      */
     bindingType?: string;
     /**
-     * Resource Id of the Certificate to be bound to this hostname.
+     * Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
      */
     certificateId?: string;
     /**
@@ -1353,6 +1353,132 @@ export interface HttpRetryPolicyResponse {
      * Maximum number of times a request will retry
      */
     maxRetries?: number;
+}
+
+/**
+ * Action to perform once matching of routes is done
+ */
+export interface HttpRouteActionResponse {
+    /**
+     * Rewrite prefix, default is no rewrites
+     */
+    prefixRewrite?: string;
+}
+
+/**
+ * Http Route Config properties
+ */
+export interface HttpRouteConfigResponseProperties {
+    /**
+     * Custom domain bindings for http Routes' hostnames.
+     */
+    customDomains?: CustomDomainResponse[];
+    /**
+     * FQDN of the route resource.
+     */
+    fqdn: string;
+    /**
+     * List of errors when trying to reconcile http routes
+     */
+    provisioningErrors: HttpRouteProvisioningErrorsResponse[];
+    /**
+     * The provisioning state of the Http Route Config in cluster
+     */
+    provisioningState: string;
+    /**
+     * Routing Rules for http route resource.
+     */
+    rules?: HttpRouteRuleResponse[];
+}
+
+/**
+ * Criteria to match on
+ */
+export interface HttpRouteMatchResponse {
+    /**
+     * path case sensitive, default is true
+     */
+    caseSensitive?: boolean;
+    /**
+     * match on exact path
+     */
+    path?: string;
+    /**
+     * match on all prefix's. Not exact
+     */
+    pathSeparatedPrefix?: string;
+    /**
+     * match on all prefix's. Not exact
+     */
+    prefix?: string;
+}
+
+/**
+ * List of provisioning errors for a http route config object
+ */
+export interface HttpRouteProvisioningErrorsResponse {
+    /**
+     * Description or error message
+     */
+    message: string;
+    /**
+     * Timestamp error occured at
+     */
+    timestamp: string;
+}
+
+/**
+ * Http Routes configuration, including paths to match on and whether or not rewrites are to be done.
+ */
+export interface HttpRouteResponse {
+    /**
+     * Once route is matched, what is the desired action
+     */
+    action?: HttpRouteActionResponse;
+    /**
+     * Conditions route will match on
+     */
+    match?: HttpRouteMatchResponse;
+}
+
+/**
+ * Http Route rule.
+ */
+export interface HttpRouteRuleResponse {
+    /**
+     * Description of rule. Optional.
+     */
+    description?: string;
+    /**
+     * Routing configuration that will allow matches on specific paths/headers.
+     */
+    routes?: HttpRouteResponse[];
+    /**
+     * Targets- container apps, revisions, labels
+     */
+    targets?: HttpRouteTargetResponse[];
+}
+
+/**
+ * Targets - Container App Names, Revision Names, Labels.
+ */
+export interface HttpRouteTargetResponse {
+    /**
+     * Container App Name to route requests to
+     */
+    containerApp: string;
+    /**
+     * Label/Revision to route requests to
+     */
+    label?: string;
+    /**
+     * Revision to route requests to
+     */
+    revision?: string;
+    /**
+     * Weighted routing
+     */
+    weight?: number;
 }
 
 /**
@@ -2173,6 +2299,24 @@ export interface ScaleRuleResponse {
 }
 
 /**
+ * Maintenance schedule entry for a managed environment.
+ */
+export interface ScheduledEntryResponse {
+    /**
+     * Length of maintenance window range from 8 to 24 hours.
+     */
+    durationHours: number;
+    /**
+     * Start hour after which managed environment maintenance can start from 0 to 23 hour.
+     */
+    startHourUtc: number;
+    /**
+     * Day of the week when a managed environment can be patched.
+     */
+    weekDay: string;
+}
+
+/**
  * Secret definition.
  */
 export interface SecretResponse {
@@ -2614,6 +2758,7 @@ export interface WorkloadProfileResponse {
      */
     workloadProfileType: string;
 }
+
 
 
 

@@ -948,6 +948,10 @@ export interface PermissionArgs {
      */
     dataActions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The id for the permission.
+     */
+    id?: pulumi.Input<string>;
+    /**
      * An array of data actions that are denied.
      */
     notDataActions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1219,6 +1223,7 @@ export interface VirtualNetworkRuleArgs {
      */
     ignoreMissingVNetServiceEndpoint?: pulumi.Input<boolean>;
 }
+
 
 
 

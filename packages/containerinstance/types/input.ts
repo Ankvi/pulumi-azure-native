@@ -27,6 +27,10 @@ export interface AzureFileVolumeArgs {
      */
     storageAccountKey?: pulumi.Input<string>;
     /**
+     * The reference to the storage account access key used to access the Azure File share.
+     */
+    storageAccountKeyReference?: pulumi.Input<string>;
+    /**
      * The name of the storage account that contains the Azure File share.
      */
     storageAccountName: pulumi.Input<string>;
@@ -316,6 +320,10 @@ export interface EnvironmentVariableArgs {
      */
     secureValue?: pulumi.Input<string>;
     /**
+     * The reference of the secure environment variable.
+     */
+    secureValueReference?: pulumi.Input<string>;
+    /**
      * The value of the environment variable.
      */
     value?: pulumi.Input<string>;
@@ -383,6 +391,10 @@ export interface ImageRegistryCredentialArgs {
      * The password for the private registry.
      */
     password?: pulumi.Input<string>;
+    /**
+     * The reference for the private registry password.
+     */
+    passwordReference?: pulumi.Input<string>;
     /**
      * The Docker image registry server without a protocol such as "http" and "https".
      */
@@ -630,6 +642,10 @@ export interface VolumeArgs {
      * The secret volume.
      */
     secret?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The secret reference volume.
+     */
+    secretReference?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -649,6 +665,7 @@ export interface VolumeMountArgs {
      */
     readOnly?: pulumi.Input<boolean>;
 }
+
 
 
 

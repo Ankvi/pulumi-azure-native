@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get the properties of the specified n group.
  * Azure REST API version: 2024-09-01-preview.
+ *
+ * Other available API versions: 2024-11-01-preview.
  */
 export function getNGroup(args: GetNGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -76,6 +78,8 @@ export interface GetNGroupResult {
 /**
  * Get the properties of the specified n group.
  * Azure REST API version: 2024-09-01-preview.
+ *
+ * Other available API versions: 2024-11-01-preview.
  */
 export function getNGroupOutput(args: GetNGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

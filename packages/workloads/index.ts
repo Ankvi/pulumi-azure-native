@@ -6,6 +6,11 @@ export type ACSSBackupConnection = import("./acssbackupConnection").ACSSBackupCo
 export const ACSSBackupConnection: typeof import("./acssbackupConnection").ACSSBackupConnection = null as any;
 utilities.lazyLoad(exports, ["ACSSBackupConnection"], () => require("./acssbackupConnection"));
 
+export { AlertArgs } from "./alert";
+export type Alert = import("./alert").Alert;
+export const Alert: typeof import("./alert").Alert = null as any;
+utilities.lazyLoad(exports, ["Alert"], () => require("./alert"));
+
 export { ConnectorArgs } from "./connector";
 export type Connector = import("./connector").Connector;
 export const Connector: typeof import("./connector").Connector = null as any;
@@ -15,6 +20,11 @@ export { GetACSSBackupConnectionArgs, GetACSSBackupConnectionResult, GetACSSBack
 export const getACSSBackupConnection: typeof import("./getACSSBackupConnection").getACSSBackupConnection = null as any;
 export const getACSSBackupConnectionOutput: typeof import("./getACSSBackupConnection").getACSSBackupConnectionOutput = null as any;
 utilities.lazyLoad(exports, ["getACSSBackupConnection","getACSSBackupConnectionOutput"], () => require("./getACSSBackupConnection"));
+
+export { GetAlertArgs, GetAlertResult, GetAlertOutputArgs } from "./getAlert";
+export const getAlert: typeof import("./getAlert").getAlert = null as any;
+export const getAlertOutput: typeof import("./getAlert").getAlertOutput = null as any;
+utilities.lazyLoad(exports, ["getAlert","getAlertOutput"], () => require("./getAlert"));
 
 export { GetConnectorArgs, GetConnectorResult, GetConnectorOutputArgs } from "./getConnector";
 export const getConnector: typeof import("./getConnector").getConnector = null as any;
@@ -173,6 +183,8 @@ const _module = {
         switch (type) {
             case "azure-native:workloads:ACSSBackupConnection":
                 return new ACSSBackupConnection(name, <any>undefined, { urn })
+            case "azure-native:workloads:Alert":
+                return new Alert(name, <any>undefined, { urn })
             case "azure-native:workloads:Connector":
                 return new Connector(name, <any>undefined, { urn })
             case "azure-native:workloads:Monitor":

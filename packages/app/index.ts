@@ -171,6 +171,11 @@ export const getDotNetComponent: typeof import("./getDotNetComponent").getDotNet
 export const getDotNetComponentOutput: typeof import("./getDotNetComponent").getDotNetComponentOutput = null as any;
 utilities.lazyLoad(exports, ["getDotNetComponent","getDotNetComponentOutput"], () => require("./getDotNetComponent"));
 
+export { GetHttpRouteConfigArgs, GetHttpRouteConfigResult, GetHttpRouteConfigOutputArgs } from "./getHttpRouteConfig";
+export const getHttpRouteConfig: typeof import("./getHttpRouteConfig").getHttpRouteConfig = null as any;
+export const getHttpRouteConfigOutput: typeof import("./getHttpRouteConfig").getHttpRouteConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getHttpRouteConfig","getHttpRouteConfigOutput"], () => require("./getHttpRouteConfig"));
+
 export { GetJavaComponentArgs, GetJavaComponentResult, GetJavaComponentOutputArgs } from "./getJavaComponent";
 export const getJavaComponent: typeof import("./getJavaComponent").getJavaComponent = null as any;
 export const getJavaComponentOutput: typeof import("./getJavaComponent").getJavaComponentOutput = null as any;
@@ -185,6 +190,11 @@ export { GetLogicAppArgs, GetLogicAppResult, GetLogicAppOutputArgs } from "./get
 export const getLogicApp: typeof import("./getLogicApp").getLogicApp = null as any;
 export const getLogicAppOutput: typeof import("./getLogicApp").getLogicAppOutput = null as any;
 utilities.lazyLoad(exports, ["getLogicApp","getLogicAppOutput"], () => require("./getLogicApp"));
+
+export { GetMaintenanceConfigurationArgs, GetMaintenanceConfigurationResult, GetMaintenanceConfigurationOutputArgs } from "./getMaintenanceConfiguration";
+export const getMaintenanceConfiguration: typeof import("./getMaintenanceConfiguration").getMaintenanceConfiguration = null as any;
+export const getMaintenanceConfigurationOutput: typeof import("./getMaintenanceConfiguration").getMaintenanceConfigurationOutput = null as any;
+utilities.lazyLoad(exports, ["getMaintenanceConfiguration","getMaintenanceConfigurationOutput"], () => require("./getMaintenanceConfiguration"));
 
 export { GetManagedCertificateArgs, GetManagedCertificateResult, GetManagedCertificateOutputArgs } from "./getManagedCertificate";
 export const getManagedCertificate: typeof import("./getManagedCertificate").getManagedCertificate = null as any;
@@ -210,6 +220,11 @@ export { GetManagedEnvironmentsStorageArgs, GetManagedEnvironmentsStorageResult,
 export const getManagedEnvironmentsStorage: typeof import("./getManagedEnvironmentsStorage").getManagedEnvironmentsStorage = null as any;
 export const getManagedEnvironmentsStorageOutput: typeof import("./getManagedEnvironmentsStorage").getManagedEnvironmentsStorageOutput = null as any;
 utilities.lazyLoad(exports, ["getManagedEnvironmentsStorage","getManagedEnvironmentsStorageOutput"], () => require("./getManagedEnvironmentsStorage"));
+
+export { HttpRouteConfigArgs } from "./httpRouteConfig";
+export type HttpRouteConfig = import("./httpRouteConfig").HttpRouteConfig;
+export const HttpRouteConfig: typeof import("./httpRouteConfig").HttpRouteConfig = null as any;
+utilities.lazyLoad(exports, ["HttpRouteConfig"], () => require("./httpRouteConfig"));
 
 export { JavaComponentArgs } from "./javaComponent";
 export type JavaComponent = import("./javaComponent").JavaComponent;
@@ -260,6 +275,11 @@ export { LogicAppArgs } from "./logicApp";
 export type LogicApp = import("./logicApp").LogicApp;
 export const LogicApp: typeof import("./logicApp").LogicApp = null as any;
 utilities.lazyLoad(exports, ["LogicApp"], () => require("./logicApp"));
+
+export { MaintenanceConfigurationArgs } from "./maintenanceConfiguration";
+export type MaintenanceConfiguration = import("./maintenanceConfiguration").MaintenanceConfiguration;
+export const MaintenanceConfiguration: typeof import("./maintenanceConfiguration").MaintenanceConfiguration = null as any;
+utilities.lazyLoad(exports, ["MaintenanceConfiguration"], () => require("./maintenanceConfiguration"));
 
 export { ManagedCertificateArgs } from "./managedCertificate";
 export type ManagedCertificate = import("./managedCertificate").ManagedCertificate;
@@ -323,12 +343,16 @@ const _module = {
                 return new DaprSubscription(name, <any>undefined, { urn })
             case "azure-native:app:DotNetComponent":
                 return new DotNetComponent(name, <any>undefined, { urn })
+            case "azure-native:app:HttpRouteConfig":
+                return new HttpRouteConfig(name, <any>undefined, { urn })
             case "azure-native:app:JavaComponent":
                 return new JavaComponent(name, <any>undefined, { urn })
             case "azure-native:app:Job":
                 return new Job(name, <any>undefined, { urn })
             case "azure-native:app:LogicApp":
                 return new LogicApp(name, <any>undefined, { urn })
+            case "azure-native:app:MaintenanceConfiguration":
+                return new MaintenanceConfiguration(name, <any>undefined, { urn })
             case "azure-native:app:ManagedCertificate":
                 return new ManagedCertificate(name, <any>undefined, { urn })
             case "azure-native:app:ManagedEnvironment":

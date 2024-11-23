@@ -1360,6 +1360,10 @@ export interface PermissionResponse {
      */
     dataActions?: string[];
     /**
+     * The id for the permission.
+     */
+    id?: string;
+    /**
      * An array of data actions that are denied.
      */
     notDataActions?: string[];
@@ -1851,6 +1855,7 @@ export interface VirtualNetworkRuleResponse {
      */
     ignoreMissingVNetServiceEndpoint?: boolean;
 }
+
 
 
 

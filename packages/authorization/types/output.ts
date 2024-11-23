@@ -478,9 +478,17 @@ export interface PolicyDefinitionReferenceResponse {
      */
     definitionVersion?: string;
     /**
+     * The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
+     */
+    effectiveDefinitionVersion: string;
+    /**
      * The name of the groups that this policy definition reference belongs to.
      */
     groupNames?: string[];
+    /**
+     * The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+     */
+    latestDefinitionVersion: string;
     /**
      * The parameter values for the referenced policy rule. The keys are the parameter names.
      */

@@ -638,7 +638,7 @@ export interface CustomDomainArgs {
      */
     bindingType?: pulumi.Input<string | enums.BindingType>;
     /**
-     * Resource Id of the Certificate to be bound to this hostname.
+     * Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
      */
     certificateId?: pulumi.Input<string>;
     /**
@@ -1211,6 +1211,106 @@ export interface HttpRetryPolicyArgs {
      * Maximum number of times a request will retry
      */
     maxRetries?: pulumi.Input<number>;
+}
+
+/**
+ * Http Routes configuration, including paths to match on and whether or not rewrites are to be done.
+ */
+export interface HttpRouteArgs {
+    /**
+     * Once route is matched, what is the desired action
+     */
+    action?: pulumi.Input<HttpRouteActionArgs>;
+    /**
+     * Conditions route will match on
+     */
+    match?: pulumi.Input<HttpRouteMatchArgs>;
+}
+
+/**
+ * Action to perform once matching of routes is done
+ */
+export interface HttpRouteActionArgs {
+    /**
+     * Rewrite prefix, default is no rewrites
+     */
+    prefixRewrite?: pulumi.Input<string>;
+}
+
+/**
+ * Http Route Config properties
+ */
+export interface HttpRouteConfigPropertiesArgs {
+    /**
+     * Custom domain bindings for http Routes' hostnames.
+     */
+    customDomains?: pulumi.Input<pulumi.Input<CustomDomainArgs>[]>;
+    /**
+     * Routing Rules for http route resource.
+     */
+    rules?: pulumi.Input<pulumi.Input<HttpRouteRuleArgs>[]>;
+}
+
+/**
+ * Criteria to match on
+ */
+export interface HttpRouteMatchArgs {
+    /**
+     * path case sensitive, default is true
+     */
+    caseSensitive?: pulumi.Input<boolean>;
+    /**
+     * match on exact path
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * match on all prefix's. Not exact
+     */
+    pathSeparatedPrefix?: pulumi.Input<string>;
+    /**
+     * match on all prefix's. Not exact
+     */
+    prefix?: pulumi.Input<string>;
+}
+
+/**
+ * Http Route rule.
+ */
+export interface HttpRouteRuleArgs {
+    /**
+     * Description of rule. Optional.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Routing configuration that will allow matches on specific paths/headers.
+     */
+    routes?: pulumi.Input<pulumi.Input<HttpRouteArgs>[]>;
+    /**
+     * Targets- container apps, revisions, labels
+     */
+    targets?: pulumi.Input<pulumi.Input<HttpRouteTargetArgs>[]>;
+}
+
+/**
+ * Targets - Container App Names, Revision Names, Labels.
+ */
+export interface HttpRouteTargetArgs {
+    /**
+     * Container App Name to route requests to
+     */
+    containerApp: pulumi.Input<string>;
+    /**
+     * Label/Revision to route requests to
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * Revision to route requests to
+     */
+    revision?: pulumi.Input<string>;
+    /**
+     * Weighted routing
+     */
+    weight?: pulumi.Input<number>;
 }
 
 /**
@@ -2005,6 +2105,24 @@ export interface ScaleRuleAuthArgs {
 }
 
 /**
+ * Maintenance schedule entry for a managed environment.
+ */
+export interface ScheduledEntryArgs {
+    /**
+     * Length of maintenance window range from 8 to 24 hours.
+     */
+    durationHours: pulumi.Input<number>;
+    /**
+     * Start hour after which managed environment maintenance can start from 0 to 23 hour.
+     */
+    startHourUtc: pulumi.Input<number>;
+    /**
+     * Day of the week when a managed environment can be patched.
+     */
+    weekDay: pulumi.Input<enums.WeekDay>;
+}
+
+/**
  * Secret definition.
  */
 export interface SecretArgs {
@@ -2378,6 +2496,7 @@ export interface WorkloadProfileArgs {
      */
     workloadProfileType: pulumi.Input<string>;
 }
+
 
 
 

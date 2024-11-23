@@ -1,6 +1,78 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Defines the Alert Query Parameter.
+ */
+export interface AlertQueryParameterArgs {
+    /**
+     * The name of the alert query parameter.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The value of the alert query parameter.
+     */
+    value?: pulumi.Input<string>;
+}
+
+/**
+ * Describes the properties of an alert.
+ */
+export interface AlertRulePropertiesArgs {
+    /**
+     * Action Group resource Ids to invoke when the alert fires
+     */
+    actionGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The alert query parameters.
+     */
+    alertQueryParameters?: pulumi.Input<pulumi.Input<AlertQueryParameterArgs>[]>;
+    /**
+     * The value that indicates whether the alert should be automatically resolved or not. The default is Disable.
+     */
+    autoMitigate?: pulumi.Input<string | enums.AlertAutoMitigate>;
+    /**
+     * Evaluation of metric on a particular column.
+     */
+    dimension?: pulumi.Input<string>;
+    /**
+     * How often the scheduled query rule is evaluated.
+     */
+    evaluationFrequency?: pulumi.Input<number>;
+    /**
+     * The operator for failing periods.
+     */
+    failingPeriodsOperator?: pulumi.Input<string | enums.ConditionalOperator>;
+    /**
+     * The number of failing periods to trigger an alert.
+     */
+    failingPeriodsToAlert?: pulumi.Input<number>;
+    /**
+     * Mute actions for the chosen period of time after the alert is fired.
+     */
+    muteActionsDuration?: pulumi.Input<number>;
+    /**
+     * Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest.
+     */
+    severity?: pulumi.Input<number>;
+    /**
+     * Indicates whether the alert is in an enabled state.
+     */
+    status?: pulumi.Input<string | enums.AlertRuleStatus>;
+    /**
+     * The threshold of the alert.
+     */
+    threshold?: pulumi.Input<number>;
+    /**
+     * The threshold operator of the alert.
+     */
+    thresholdOperator?: pulumi.Input<string | enums.ConditionalOperator>;
+    /**
+     * The period of time on which the Alert query will be executed.
+     */
+    windowSize?: pulumi.Input<number>;
+}
+
+/**
  * Gets or sets the application server configuration.
  */
 export interface ApplicationServerConfigurationArgs {
@@ -1787,6 +1859,7 @@ export interface YearlyRetentionScheduleArgs {
      */
     retentionTimes?: pulumi.Input<pulumi.Input<string>[]>;
 }
+
 
 
 

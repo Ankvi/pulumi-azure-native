@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-appplatform",
-    "version": "2.72.0",
+    "version": "2.73.1",
     "description": "Pulumi Azure Native package for appplatform",
     "keywords": [
         "pulumi",

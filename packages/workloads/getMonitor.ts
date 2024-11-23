@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets properties of a SAP monitor for the specified subscription, resource group, and resource name.
  * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2023-12-01-preview.
+ * Other available API versions: 2023-12-01-preview, 2024-02-01-preview.
  */
 export function getMonitor(args: GetMonitorArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -103,7 +103,7 @@ export interface GetMonitorResult {
  * Gets properties of a SAP monitor for the specified subscription, resource group, and resource name.
  * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2023-12-01-preview.
+ * Other available API versions: 2023-12-01-preview, 2024-02-01-preview.
  */
 export function getMonitorOutput(args: GetMonitorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMonitorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

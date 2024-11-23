@@ -5,7 +5,7 @@ import * as types from "./types";
  * Container App SourceControl.
  * Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2022-03-01.
  *
- * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview.
+ * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview.
  */
 export class ContainerAppsSourceControl extends pulumi.CustomResource {
     /**
@@ -102,7 +102,7 @@ export class ContainerAppsSourceControl extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20220101preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20220301:ContainerAppsSourceControl" }, { type: "azure-native:app/v20220601preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20221001:ContainerAppsSourceControl" }, { type: "azure-native:app/v20221101preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20230401preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20230501:ContainerAppsSourceControl" }, { type: "azure-native:app/v20230502preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20230801preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20231102preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20240202preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20240301:ContainerAppsSourceControl" }, { type: "azure-native:app/v20240802preview:ContainerAppsSourceControl" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20220101preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20220301:ContainerAppsSourceControl" }, { type: "azure-native:app/v20220601preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20221001:ContainerAppsSourceControl" }, { type: "azure-native:app/v20221101preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20230401preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20230501:ContainerAppsSourceControl" }, { type: "azure-native:app/v20230502preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20230801preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20231102preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20240202preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20240301:ContainerAppsSourceControl" }, { type: "azure-native:app/v20240802preview:ContainerAppsSourceControl" }, { type: "azure-native:app/v20241002preview:ContainerAppsSourceControl" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ContainerAppsSourceControl.__pulumiType, name, resourceInputs, opts);
     }

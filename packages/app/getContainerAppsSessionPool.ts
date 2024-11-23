@@ -5,7 +5,7 @@ import * as types from "./types";
  * Container App session pool.
  * Azure REST API version: 2024-02-02-preview.
  *
- * Other available API versions: 2024-08-02-preview.
+ * Other available API versions: 2024-08-02-preview, 2024-10-02-preview.
  */
 export function getContainerAppsSessionPool(args: GetContainerAppsSessionPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerAppsSessionPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -103,7 +103,7 @@ export interface GetContainerAppsSessionPoolResult {
  * Container App session pool.
  * Azure REST API version: 2024-02-02-preview.
  *
- * Other available API versions: 2024-08-02-preview.
+ * Other available API versions: 2024-08-02-preview, 2024-10-02-preview.
  */
 export function getContainerAppsSessionPoolOutput(args: GetContainerAppsSessionPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerAppsSessionPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

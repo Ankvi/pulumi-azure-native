@@ -5,7 +5,7 @@ import * as types from "./types";
  * Container App session pool.
  * Azure REST API version: 2024-02-02-preview.
  *
- * Other available API versions: 2024-08-02-preview.
+ * Other available API versions: 2024-08-02-preview, 2024-10-02-preview.
  */
 export class ContainerAppsSessionPool extends pulumi.CustomResource {
     /**
@@ -150,7 +150,7 @@ export class ContainerAppsSessionPool extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20240202preview:ContainerAppsSessionPool" }, { type: "azure-native:app/v20240802preview:ContainerAppsSessionPool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20240202preview:ContainerAppsSessionPool" }, { type: "azure-native:app/v20240802preview:ContainerAppsSessionPool" }, { type: "azure-native:app/v20241002preview:ContainerAppsSessionPool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ContainerAppsSessionPool.__pulumiType, name, resourceInputs, opts);
     }
