@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-datalakeanalytics",
-    "version": "2.73.1",
+    "version": "2.74.0",
     "description": "Pulumi Azure Native package for datalakeanalytics",
     "keywords": [
         "pulumi",

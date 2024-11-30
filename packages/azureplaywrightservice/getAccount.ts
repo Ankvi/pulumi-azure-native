@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get a Account
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2024-02-01-preview, 2024-08-01-preview.
+ * Other available API versions: 2024-02-01-preview, 2024-08-01-preview, 2024-12-01.
  */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -79,7 +79,7 @@ export interface GetAccountResult {
  * Get a Account
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2024-02-01-preview, 2024-08-01-preview.
+ * Other available API versions: 2024-02-01-preview, 2024-08-01-preview, 2024-12-01.
  */
 export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

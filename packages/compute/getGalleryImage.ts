@@ -5,7 +5,7 @@ import * as types from "./types";
  * Retrieves information about a gallery image definition.
  * Azure REST API version: 2022-03-03.
  *
- * Other available API versions: 2022-08-03, 2023-07-03.
+ * Other available API versions: 2022-08-03, 2023-07-03, 2024-03-03.
  */
 export function getGalleryImage(args: GetGalleryImageArgs, opts?: pulumi.InvokeOptions): Promise<GetGalleryImageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -120,7 +120,7 @@ export interface GetGalleryImageResult {
  * Retrieves information about a gallery image definition.
  * Azure REST API version: 2022-03-03.
  *
- * Other available API versions: 2022-08-03, 2023-07-03.
+ * Other available API versions: 2022-08-03, 2023-07-03, 2024-03-03.
  */
 export function getGalleryImageOutput(args: GetGalleryImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGalleryImageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

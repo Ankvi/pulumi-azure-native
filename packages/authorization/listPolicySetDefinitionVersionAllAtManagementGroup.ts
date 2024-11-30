@@ -5,7 +5,7 @@ import * as types from "./types";
  * This operation lists all the policy set definition versions for all policy set definitions at the management group scope.
  * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2024-05-01.
+ * Other available API versions: 2024-05-01, 2025-01-01.
  */
 export function listPolicySetDefinitionVersionAllAtManagementGroup(args: ListPolicySetDefinitionVersionAllAtManagementGroupArgs, opts?: pulumi.InvokeOptions): Promise<ListPolicySetDefinitionVersionAllAtManagementGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,7 +38,7 @@ export interface ListPolicySetDefinitionVersionAllAtManagementGroupResult {
  * This operation lists all the policy set definition versions for all policy set definitions at the management group scope.
  * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2024-05-01.
+ * Other available API versions: 2024-05-01, 2025-01-01.
  */
 export function listPolicySetDefinitionVersionAllAtManagementGroupOutput(args: ListPolicySetDefinitionVersionAllAtManagementGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListPolicySetDefinitionVersionAllAtManagementGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

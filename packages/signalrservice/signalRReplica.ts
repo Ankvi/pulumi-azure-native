@@ -5,7 +5,7 @@ import * as types from "./types";
  * A class represent a replica resource.
  * Azure REST API version: 2023-03-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview.
+ * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview.
  */
 export class SignalRReplica extends pulumi.CustomResource {
     /**
@@ -100,7 +100,7 @@ export class SignalRReplica extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:signalrservice/v20230301preview:SignalRReplica" }, { type: "azure-native:signalrservice/v20230601preview:SignalRReplica" }, { type: "azure-native:signalrservice/v20230801preview:SignalRReplica" }, { type: "azure-native:signalrservice/v20240101preview:SignalRReplica" }, { type: "azure-native:signalrservice/v20240301:SignalRReplica" }, { type: "azure-native:signalrservice/v20240401preview:SignalRReplica" }, { type: "azure-native:signalrservice/v20240801preview:SignalRReplica" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:signalrservice/v20230301preview:SignalRReplica" }, { type: "azure-native:signalrservice/v20230601preview:SignalRReplica" }, { type: "azure-native:signalrservice/v20230801preview:SignalRReplica" }, { type: "azure-native:signalrservice/v20240101preview:SignalRReplica" }, { type: "azure-native:signalrservice/v20240301:SignalRReplica" }, { type: "azure-native:signalrservice/v20240401preview:SignalRReplica" }, { type: "azure-native:signalrservice/v20240801preview:SignalRReplica" }, { type: "azure-native:signalrservice/v20241001preview:SignalRReplica" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SignalRReplica.__pulumiType, name, resourceInputs, opts);
     }

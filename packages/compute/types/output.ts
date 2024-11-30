@@ -1,6 +1,100 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * The properties of an Access Control Rule Identity.
+ */
+export interface AccessControlRulesIdentityResponse {
+    /**
+     * The path to the executable.
+     */
+    exePath?: string;
+    /**
+     * The groupName corresponding to this identity.
+     */
+    groupName?: string;
+    /**
+     * The name of the identity.
+     */
+    name: string;
+    /**
+     * The process name of the executable.
+     */
+    processName?: string;
+    /**
+     * The username corresponding to this identity.
+     */
+    userName?: string;
+}
+
+/**
+ * The properties of an Access Control Rule Privilege.
+ */
+export interface AccessControlRulesPrivilegeResponse {
+    /**
+     * The name of the privilege.
+     */
+    name: string;
+    /**
+     * The HTTP path corresponding to the privilege.
+     */
+    path: string;
+    /**
+     * The query parameters to match in the path.
+     */
+    queryParameters?: {[key: string]: string};
+}
+
+/**
+ * This is the Access Control Rules specification for an inVMAccessControlProfile version.
+ */
+export interface AccessControlRulesResponse {
+    /**
+     * A list of identities.
+     */
+    identities?: AccessControlRulesIdentityResponse[];
+    /**
+     * A list of privileges.
+     */
+    privileges?: AccessControlRulesPrivilegeResponse[];
+    /**
+     * A list of role assignments.
+     */
+    roleAssignments?: AccessControlRulesRoleAssignmentResponse[];
+    /**
+     * A list of roles.
+     */
+    roles?: AccessControlRulesRoleResponse[];
+}
+
+/**
+ * The properties of an Access Control Rule RoleAssignment.
+ */
+export interface AccessControlRulesRoleAssignmentResponse {
+    /**
+     * A list of identities that can access the privileges defined by the role.
+     */
+    identities: string[];
+    /**
+     * The name of the role.
+     */
+    role: string;
+}
+
+/**
+ * The properties of an Access Control Rule Role.
+ */
+export interface AccessControlRulesRoleResponse {
+    /**
+     * The name of the role.
+     */
+    name: string;
+    /**
+     * A list of privileges needed by this role.
+     */
+    privileges: string[];
+}
+
+/**
  * Enables or disables a capability on the virtual machine or virtual machine scale set.
  */
 export interface AdditionalCapabilitiesResponse {
@@ -12,6 +106,20 @@ export interface AdditionalCapabilitiesResponse {
      * The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled.
      */
     ultraSSDEnabled?: boolean;
+}
+
+/**
+ * Describes the additional replica set information.
+ */
+export interface AdditionalReplicaSetResponse {
+    /**
+     * The number of direct drive replicas of the Image Version to be created.This Property is updatable
+     */
+    regionalReplicaCount?: number;
+    /**
+     * Specifies the storage account type to be used to create the direct drive replicas
+     */
+    storageAccountType?: string;
 }
 
 /**
@@ -1320,6 +1428,28 @@ export interface GalleryImageVersionStorageProfileResponse {
      * The source of the gallery artifact version.
      */
     source?: GalleryArtifactVersionFullSourceResponse;
+}
+
+/**
+ * Describes the properties of a gallery inVMAccessControlProfile.
+ */
+export interface GalleryInVMAccessControlProfilePropertiesResponse {
+    /**
+     * This property allows you to specify the Endpoint type for which this profile is defining the access control for. Possible values are: 'WireServer' or 'IMDS'
+     */
+    applicableHostEndpoint: string;
+    /**
+     * The description of this gallery inVMAccessControlProfile resources. This property is updatable.
+     */
+    description?: string;
+    /**
+     * This property allows you to specify the OS type of the VMs/VMSS for which this profile can be used against. Possible values are: 'Windows' or 'Linux'
+     */
+    osType: string;
+    /**
+     * The provisioning state, which only appears in the response.
+     */
+    provisioningState: string;
 }
 
 /**
@@ -2916,6 +3046,10 @@ export interface SystemDataResponse {
  */
 export interface TargetRegionResponse {
     /**
+     * List of storage sku with replica count to create direct drive replicas.
+     */
+    additionalReplicaSets?: AdditionalReplicaSetResponse[];
+    /**
      * Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the gallery artifact.
      */
     encryption?: EncryptionImagesResponse;
@@ -4307,6 +4441,7 @@ export interface WindowsVMGuestPatchAutomaticByPlatformSettingsResponse {
      */
     rebootSetting?: string;
 }
+
 
 
 

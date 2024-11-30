@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Instance of Pool resource.
  * Azure REST API version: 2024-01-01-preview.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getIpamPool(args: GetIpamPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetIpamPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -65,6 +67,8 @@ export interface GetIpamPoolResult {
 /**
  * Instance of Pool resource.
  * Azure REST API version: 2024-01-01-preview.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getIpamPoolOutput(args: GetIpamPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpamPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

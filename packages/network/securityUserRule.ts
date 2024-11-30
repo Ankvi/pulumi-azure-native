@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Network security user rule.
  * Azure REST API version: 2024-03-01.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export class SecurityUserRule extends pulumi.CustomResource {
     /**
@@ -148,7 +150,7 @@ export class SecurityUserRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:SecurityUserRule" }, { type: "azure-native:network/v20210501preview:SecurityUserRule" }, { type: "azure-native:network/v20220201preview:SecurityUserRule" }, { type: "azure-native:network/v20220401preview:SecurityUserRule" }, { type: "azure-native:network/v20240301:SecurityUserRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:SecurityUserRule" }, { type: "azure-native:network/v20210501preview:SecurityUserRule" }, { type: "azure-native:network/v20220201preview:SecurityUserRule" }, { type: "azure-native:network/v20220401preview:SecurityUserRule" }, { type: "azure-native:network/v20240301:SecurityUserRule" }, { type: "azure-native:network/v20240501:SecurityUserRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SecurityUserRule.__pulumiType, name, resourceInputs, opts);
     }

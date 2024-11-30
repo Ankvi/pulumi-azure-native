@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get Rule Collection Group Draft.
  * Azure REST API version: 2023-11-01.
  *
- * Other available API versions: 2024-01-01, 2024-03-01.
+ * Other available API versions: 2024-01-01, 2024-03-01, 2024-05-01.
  */
 export function getFirewallPolicyRuleCollectionGroupDraft(args: GetFirewallPolicyRuleCollectionGroupDraftArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallPolicyRuleCollectionGroupDraftResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -64,7 +64,7 @@ export interface GetFirewallPolicyRuleCollectionGroupDraftResult {
  * Get Rule Collection Group Draft.
  * Azure REST API version: 2023-11-01.
  *
- * Other available API versions: 2024-01-01, 2024-03-01.
+ * Other available API versions: 2024-01-01, 2024-03-01, 2024-05-01.
  */
 export function getFirewallPolicyRuleCollectionGroupDraftOutput(args: GetFirewallPolicyRuleCollectionGroupDraftOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallPolicyRuleCollectionGroupDraftResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

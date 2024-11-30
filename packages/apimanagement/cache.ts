@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Cache details.
  * Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
  *
- * Other available API versions: 2019-12-01-preview, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
+ * Other available API versions: 2019-12-01-preview, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
  */
 export class Cache extends pulumi.CustomResource {
     /**
@@ -99,7 +99,7 @@ export class Cache extends pulumi.CustomResource {
             resourceInputs["useFromLocation"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20180601preview:Cache" }, { type: "azure-native:apimanagement/v20190101:Cache" }, { type: "azure-native:apimanagement/v20191201:Cache" }, { type: "azure-native:apimanagement/v20191201preview:Cache" }, { type: "azure-native:apimanagement/v20200601preview:Cache" }, { type: "azure-native:apimanagement/v20201201:Cache" }, { type: "azure-native:apimanagement/v20210101preview:Cache" }, { type: "azure-native:apimanagement/v20210401preview:Cache" }, { type: "azure-native:apimanagement/v20210801:Cache" }, { type: "azure-native:apimanagement/v20211201preview:Cache" }, { type: "azure-native:apimanagement/v20220401preview:Cache" }, { type: "azure-native:apimanagement/v20220801:Cache" }, { type: "azure-native:apimanagement/v20220901preview:Cache" }, { type: "azure-native:apimanagement/v20230301preview:Cache" }, { type: "azure-native:apimanagement/v20230501preview:Cache" }, { type: "azure-native:apimanagement/v20230901preview:Cache" }, { type: "azure-native:apimanagement/v20240501:Cache" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20180601preview:Cache" }, { type: "azure-native:apimanagement/v20190101:Cache" }, { type: "azure-native:apimanagement/v20191201:Cache" }, { type: "azure-native:apimanagement/v20191201preview:Cache" }, { type: "azure-native:apimanagement/v20200601preview:Cache" }, { type: "azure-native:apimanagement/v20201201:Cache" }, { type: "azure-native:apimanagement/v20210101preview:Cache" }, { type: "azure-native:apimanagement/v20210401preview:Cache" }, { type: "azure-native:apimanagement/v20210801:Cache" }, { type: "azure-native:apimanagement/v20211201preview:Cache" }, { type: "azure-native:apimanagement/v20220401preview:Cache" }, { type: "azure-native:apimanagement/v20220801:Cache" }, { type: "azure-native:apimanagement/v20220901preview:Cache" }, { type: "azure-native:apimanagement/v20230301preview:Cache" }, { type: "azure-native:apimanagement/v20230501preview:Cache" }, { type: "azure-native:apimanagement/v20230901preview:Cache" }, { type: "azure-native:apimanagement/v20240501:Cache" }, { type: "azure-native:apimanagement/v20240601preview:Cache" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Cache.__pulumiType, name, resourceInputs, opts);
     }

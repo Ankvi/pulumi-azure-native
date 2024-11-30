@@ -1,6 +1,100 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * This is the Access Control Rules specification for an inVMAccessControlProfile version.
+ */
+export interface AccessControlRulesArgs {
+    /**
+     * A list of identities.
+     */
+    identities?: pulumi.Input<pulumi.Input<AccessControlRulesIdentityArgs>[]>;
+    /**
+     * A list of privileges.
+     */
+    privileges?: pulumi.Input<pulumi.Input<AccessControlRulesPrivilegeArgs>[]>;
+    /**
+     * A list of role assignments.
+     */
+    roleAssignments?: pulumi.Input<pulumi.Input<AccessControlRulesRoleAssignmentArgs>[]>;
+    /**
+     * A list of roles.
+     */
+    roles?: pulumi.Input<pulumi.Input<AccessControlRulesRoleArgs>[]>;
+}
+
+/**
+ * The properties of an Access Control Rule Identity.
+ */
+export interface AccessControlRulesIdentityArgs {
+    /**
+     * The path to the executable.
+     */
+    exePath?: pulumi.Input<string>;
+    /**
+     * The groupName corresponding to this identity.
+     */
+    groupName?: pulumi.Input<string>;
+    /**
+     * The name of the identity.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The process name of the executable.
+     */
+    processName?: pulumi.Input<string>;
+    /**
+     * The username corresponding to this identity.
+     */
+    userName?: pulumi.Input<string>;
+}
+
+/**
+ * The properties of an Access Control Rule Privilege.
+ */
+export interface AccessControlRulesPrivilegeArgs {
+    /**
+     * The name of the privilege.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The HTTP path corresponding to the privilege.
+     */
+    path: pulumi.Input<string>;
+    /**
+     * The query parameters to match in the path.
+     */
+    queryParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+/**
+ * The properties of an Access Control Rule Role.
+ */
+export interface AccessControlRulesRoleArgs {
+    /**
+     * The name of the role.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of privileges needed by this role.
+     */
+    privileges: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * The properties of an Access Control Rule RoleAssignment.
+ */
+export interface AccessControlRulesRoleAssignmentArgs {
+    /**
+     * A list of identities that can access the privileges defined by the role.
+     */
+    identities: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the role.
+     */
+    role: pulumi.Input<string>;
+}
+
+/**
  * Enables or disables a capability on the virtual machine or virtual machine scale set.
  */
 export interface AdditionalCapabilitiesArgs {
@@ -12,6 +106,20 @@ export interface AdditionalCapabilitiesArgs {
      * The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled.
      */
     ultraSSDEnabled?: pulumi.Input<boolean>;
+}
+
+/**
+ * Describes the additional replica set information.
+ */
+export interface AdditionalReplicaSetArgs {
+    /**
+     * The number of direct drive replicas of the Image Version to be created.This Property is updatable
+     */
+    regionalReplicaCount?: pulumi.Input<number>;
+    /**
+     * Specifies the storage account type to be used to create the direct drive replicas
+     */
+    storageAccountType?: pulumi.Input<string | enums.StorageAccountType>;
 }
 
 /**
@@ -972,6 +1080,24 @@ export interface GalleryImageVersionStorageProfileArgs {
      * The source of the gallery artifact version.
      */
     source?: pulumi.Input<GalleryArtifactVersionFullSourceArgs>;
+}
+
+/**
+ * Describes the properties of a gallery inVMAccessControlProfile.
+ */
+export interface GalleryInVMAccessControlProfilePropertiesArgs {
+    /**
+     * This property allows you to specify the Endpoint type for which this profile is defining the access control for. Possible values are: 'WireServer' or 'IMDS'
+     */
+    applicableHostEndpoint: pulumi.Input<enums.EndpointTypes>;
+    /**
+     * The description of this gallery inVMAccessControlProfile resources. This property is updatable.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * This property allows you to specify the OS type of the VMs/VMSS for which this profile can be used against. Possible values are: 'Windows' or 'Linux'
+     */
+    osType: pulumi.Input<enums.OperatingSystemTypes>;
 }
 
 /**
@@ -2118,6 +2244,10 @@ export interface SupportedCapabilitiesArgs {
  */
 export interface TargetRegionArgs {
     /**
+     * List of storage sku with replica count to create direct drive replicas.
+     */
+    additionalReplicaSets?: pulumi.Input<pulumi.Input<AdditionalReplicaSetArgs>[]>;
+    /**
      * Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the gallery artifact.
      */
     encryption?: pulumi.Input<EncryptionImagesArgs>;
@@ -3220,6 +3350,7 @@ export interface WindowsVMGuestPatchAutomaticByPlatformSettingsArgs {
      */
     rebootSetting?: pulumi.Input<string | enums.WindowsVMGuestPatchAutomaticByPlatformRebootSetting>;
 }
+
 
 
 

@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets the details of the Diagnostic for an API specified by its identifier.
  * Azure REST API version: 2023-09-01-preview.
  *
- * Other available API versions: 2024-05-01.
+ * Other available API versions: 2024-05-01, 2024-06-01-preview.
  */
 export function getWorkspaceApiDiagnostic(args: GetWorkspaceApiDiagnosticArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceApiDiagnosticResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -102,7 +102,7 @@ export interface GetWorkspaceApiDiagnosticResult {
  * Gets the details of the Diagnostic for an API specified by its identifier.
  * Azure REST API version: 2023-09-01-preview.
  *
- * Other available API versions: 2024-05-01.
+ * Other available API versions: 2024-05-01, 2024-06-01-preview.
  */
 export function getWorkspaceApiDiagnosticOutput(args: GetWorkspaceApiDiagnosticOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceApiDiagnosticResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

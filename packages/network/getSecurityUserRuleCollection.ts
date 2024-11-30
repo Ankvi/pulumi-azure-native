@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a network manager security user configuration rule collection.
  * Azure REST API version: 2024-03-01.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getSecurityUserRuleCollection(args: GetSecurityUserRuleCollectionArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityUserRuleCollectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -78,6 +80,8 @@ export interface GetSecurityUserRuleCollectionResult {
 /**
  * Gets a network manager security user configuration rule collection.
  * Azure REST API version: 2024-03-01.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getSecurityUserRuleCollectionOutput(args: GetSecurityUserRuleCollectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityUserRuleCollectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
