@@ -5,7 +5,7 @@ import * as types from "./types";
  * The operation to get a run command.
  * Azure REST API version: 2023-10-03-preview.
  *
- * Other available API versions: 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview.
+ * Other available API versions: 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview.
  */
 export function getMachineRunCommand(args: GetMachineRunCommandArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineRunCommandResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -116,9 +116,9 @@ export interface GetMachineRunCommandResult {
  * The operation to get a run command.
  * Azure REST API version: 2023-10-03-preview.
  *
- * Other available API versions: 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview.
+ * Other available API versions: 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview.
  */
-export function getMachineRunCommandOutput(args: GetMachineRunCommandOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachineRunCommandResult> {
+export function getMachineRunCommandOutput(args: GetMachineRunCommandOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMachineRunCommandResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:hybridcompute:getMachineRunCommand", {
         "machineName": args.machineName,

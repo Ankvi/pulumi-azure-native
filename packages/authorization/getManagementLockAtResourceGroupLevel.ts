@@ -4,8 +4,6 @@ import * as types from "./types";
 /**
  * Gets a management lock at the resource group level.
  * Azure REST API version: 2020-05-01.
- *
- * Other available API versions: 2015-01-01.
  */
 export function getManagementLockAtResourceGroupLevel(args: GetManagementLockAtResourceGroupLevelArgs, opts?: pulumi.InvokeOptions): Promise<GetManagementLockAtResourceGroupLevelResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -62,10 +60,8 @@ export interface GetManagementLockAtResourceGroupLevelResult {
 /**
  * Gets a management lock at the resource group level.
  * Azure REST API version: 2020-05-01.
- *
- * Other available API versions: 2015-01-01.
  */
-export function getManagementLockAtResourceGroupLevelOutput(args: GetManagementLockAtResourceGroupLevelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagementLockAtResourceGroupLevelResult> {
+export function getManagementLockAtResourceGroupLevelOutput(args: GetManagementLockAtResourceGroupLevelOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManagementLockAtResourceGroupLevelResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:authorization:getManagementLockAtResourceGroupLevel", {
         "lockName": args.lockName,

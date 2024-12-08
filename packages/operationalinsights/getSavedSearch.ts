@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets the specified saved search for a given workspace.
  * Azure REST API version: 2020-08-01.
  *
- * Other available API versions: 2015-03-20, 2023-09-01.
+ * Other available API versions: 2023-09-01.
  */
 export function getSavedSearch(args: GetSavedSearchArgs, opts?: pulumi.InvokeOptions): Promise<GetSavedSearchResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -84,9 +84,9 @@ export interface GetSavedSearchResult {
  * Gets the specified saved search for a given workspace.
  * Azure REST API version: 2020-08-01.
  *
- * Other available API versions: 2015-03-20, 2023-09-01.
+ * Other available API versions: 2023-09-01.
  */
-export function getSavedSearchOutput(args: GetSavedSearchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSavedSearchResult> {
+export function getSavedSearchOutput(args: GetSavedSearchOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSavedSearchResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:operationalinsights:getSavedSearch", {
         "resourceGroupName": args.resourceGroupName,

@@ -4,8 +4,6 @@ import * as types from "./types";
 /**
  * Domain service.
  * Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2021-03-01.
- *
- * Other available API versions: 2017-06-01.
  */
 export class DomainService extends pulumi.CustomResource {
     /**

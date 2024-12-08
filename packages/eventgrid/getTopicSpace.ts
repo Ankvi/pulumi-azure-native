@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get properties of a topic space.
  * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2023-12-15-preview, 2024-06-01-preview.
+ * Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview.
  */
 export function getTopicSpace(args: GetTopicSpaceArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicSpaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -72,9 +72,9 @@ export interface GetTopicSpaceResult {
  * Get properties of a topic space.
  * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2023-12-15-preview, 2024-06-01-preview.
+ * Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview.
  */
-export function getTopicSpaceOutput(args: GetTopicSpaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicSpaceResult> {
+export function getTopicSpaceOutput(args: GetTopicSpaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTopicSpaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:eventgrid:getTopicSpace", {
         "namespaceName": args.namespaceName,

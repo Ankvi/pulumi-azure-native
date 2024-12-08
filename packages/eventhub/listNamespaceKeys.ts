@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the primary and secondary connection strings for the Namespace.
  * Azure REST API version: 2022-10-01-preview.
  *
- * Other available API versions: 2015-08-01, 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+ * Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
  */
 export function listNamespaceKeys(args: ListNamespaceKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListNamespaceKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -67,9 +67,9 @@ export interface ListNamespaceKeysResult {
  * Gets the primary and secondary connection strings for the Namespace.
  * Azure REST API version: 2022-10-01-preview.
  *
- * Other available API versions: 2015-08-01, 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+ * Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
  */
-export function listNamespaceKeysOutput(args: ListNamespaceKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListNamespaceKeysResult> {
+export function listNamespaceKeysOutput(args: ListNamespaceKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListNamespaceKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:eventhub:listNamespaceKeys", {
         "authorizationRuleName": args.authorizationRuleName,

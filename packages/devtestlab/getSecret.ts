@@ -3,8 +3,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get secret.
  * Azure REST API version: 2018-09-15.
- *
- * Other available API versions: 2016-05-15.
  */
 export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -80,10 +78,8 @@ export interface GetSecretResult {
 /**
  * Get secret.
  * Azure REST API version: 2018-09-15.
- *
- * Other available API versions: 2016-05-15.
  */
-export function getSecretOutput(args: GetSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretResult> {
+export function getSecretOutput(args: GetSecretOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:devtestlab:getSecret", {
         "expand": args.expand,

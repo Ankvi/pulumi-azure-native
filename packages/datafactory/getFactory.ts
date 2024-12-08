@@ -4,8 +4,6 @@ import * as types from "./types";
 /**
  * Gets a factory.
  * Azure REST API version: 2018-06-01.
- *
- * Other available API versions: 2017-09-01-preview.
  */
 export function getFactory(args: GetFactoryArgs, opts?: pulumi.InvokeOptions): Promise<GetFactoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -94,10 +92,8 @@ export interface GetFactoryResult {
 /**
  * Gets a factory.
  * Azure REST API version: 2018-06-01.
- *
- * Other available API versions: 2017-09-01-preview.
  */
-export function getFactoryOutput(args: GetFactoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFactoryResult> {
+export function getFactoryOutput(args: GetFactoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFactoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:datafactory:getFactory", {
         "factoryName": args.factoryName,

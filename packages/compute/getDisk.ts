@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets information about a disk.
  * Azure REST API version: 2022-07-02.
  *
- * Other available API versions: 2016-04-30-preview, 2018-06-01, 2019-07-01, 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+ * Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
  */
 export function getDisk(args: GetDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -199,9 +199,9 @@ export interface GetDiskResult {
  * Gets information about a disk.
  * Azure REST API version: 2022-07-02.
  *
- * Other available API versions: 2016-04-30-preview, 2018-06-01, 2019-07-01, 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+ * Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
  */
-export function getDiskOutput(args: GetDiskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskResult> {
+export function getDiskOutput(args: GetDiskOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiskResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:compute:getDisk", {
         "diskName": args.diskName,

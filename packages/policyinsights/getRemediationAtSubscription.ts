@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets an existing remediation at subscription scope.
  * Azure REST API version: 2021-10-01.
  *
- * Other available API versions: 2018-07-01-preview, 2024-10-01.
+ * Other available API versions: 2024-10-01.
  */
 export function getRemediationAtSubscription(args: GetRemediationAtSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetRemediationAtSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -98,9 +98,9 @@ export interface GetRemediationAtSubscriptionResult {
  * Gets an existing remediation at subscription scope.
  * Azure REST API version: 2021-10-01.
  *
- * Other available API versions: 2018-07-01-preview, 2024-10-01.
+ * Other available API versions: 2024-10-01.
  */
-export function getRemediationAtSubscriptionOutput(args: GetRemediationAtSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRemediationAtSubscriptionResult> {
+export function getRemediationAtSubscriptionOutput(args: GetRemediationAtSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRemediationAtSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:policyinsights:getRemediationAtSubscription", {
         "remediationName": args.remediationName,

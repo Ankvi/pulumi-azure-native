@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets information about a snapshot.
  * Azure REST API version: 2022-07-02.
  *
- * Other available API versions: 2016-04-30-preview, 2017-03-30, 2018-06-01, 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+ * Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
  */
 export function getSnapshot(args: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -159,9 +159,9 @@ export interface GetSnapshotResult {
  * Gets information about a snapshot.
  * Azure REST API version: 2022-07-02.
  *
- * Other available API versions: 2016-04-30-preview, 2017-03-30, 2018-06-01, 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+ * Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
  */
-export function getSnapshotOutput(args: GetSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotResult> {
+export function getSnapshotOutput(args: GetSnapshotOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSnapshotResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:compute:getSnapshot", {
         "resourceGroupName": args.resourceGroupName,

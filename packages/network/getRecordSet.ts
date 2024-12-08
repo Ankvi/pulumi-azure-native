@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets a record set.
  * Azure REST API version: 2018-05-01.
  *
- * Other available API versions: 2015-05-04-preview, 2016-04-01, 2023-07-01-preview.
+ * Other available API versions: 2023-07-01-preview.
  */
 export function getRecordSet(args: GetRecordSetArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordSetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -121,9 +121,9 @@ export interface GetRecordSetResult {
  * Gets a record set.
  * Azure REST API version: 2018-05-01.
  *
- * Other available API versions: 2015-05-04-preview, 2016-04-01, 2023-07-01-preview.
+ * Other available API versions: 2023-07-01-preview.
  */
-export function getRecordSetOutput(args: GetRecordSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordSetResult> {
+export function getRecordSetOutput(args: GetRecordSetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRecordSetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:network:getRecordSet", {
         "recordType": args.recordType,

@@ -4,8 +4,6 @@ import * as types from "./types";
 /**
  * Gets details of the specified Data Lake Analytics account.
  * Azure REST API version: 2019-11-01-preview.
- *
- * Other available API versions: 2015-10-01-preview.
  */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -174,10 +172,8 @@ export interface GetAccountResult {
 /**
  * Gets details of the specified Data Lake Analytics account.
  * Azure REST API version: 2019-11-01-preview.
- *
- * Other available API versions: 2015-10-01-preview.
  */
-export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
+export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:datalakeanalytics:getAccount", {
         "accountName": args.accountName,

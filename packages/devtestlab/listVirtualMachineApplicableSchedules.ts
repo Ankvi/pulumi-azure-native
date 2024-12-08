@@ -4,8 +4,6 @@ import * as types from "./types";
 /**
  * Lists the applicable start/stop schedules, if any.
  * Azure REST API version: 2018-09-15.
- *
- * Other available API versions: 2016-05-15.
  */
 export function listVirtualMachineApplicableSchedules(args: ListVirtualMachineApplicableSchedulesArgs, opts?: pulumi.InvokeOptions): Promise<ListVirtualMachineApplicableSchedulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -67,10 +65,8 @@ export interface ListVirtualMachineApplicableSchedulesResult {
 /**
  * Lists the applicable start/stop schedules, if any.
  * Azure REST API version: 2018-09-15.
- *
- * Other available API versions: 2016-05-15.
  */
-export function listVirtualMachineApplicableSchedulesOutput(args: ListVirtualMachineApplicableSchedulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListVirtualMachineApplicableSchedulesResult> {
+export function listVirtualMachineApplicableSchedulesOutput(args: ListVirtualMachineApplicableSchedulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListVirtualMachineApplicableSchedulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:devtestlab:listVirtualMachineApplicableSchedules", {
         "labName": args.labName,

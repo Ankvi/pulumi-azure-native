@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the accessProfile for the specified role name of the managed cluster with a specified resource group and name.
  * Azure REST API version: 2020-03-01.
  *
- * Other available API versions: 2017-08-31, 2019-02-01, 2019-06-01.
+ * Other available API versions: 2019-06-01.
  */
 export function listManagedClusterAccessProfile(args: ListManagedClusterAccessProfileArgs, opts?: pulumi.InvokeOptions): Promise<ListManagedClusterAccessProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -63,9 +63,9 @@ export interface ListManagedClusterAccessProfileResult {
  * Gets the accessProfile for the specified role name of the managed cluster with a specified resource group and name.
  * Azure REST API version: 2020-03-01.
  *
- * Other available API versions: 2017-08-31, 2019-02-01, 2019-06-01.
+ * Other available API versions: 2019-06-01.
  */
-export function listManagedClusterAccessProfileOutput(args: ListManagedClusterAccessProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListManagedClusterAccessProfileResult> {
+export function listManagedClusterAccessProfileOutput(args: ListManagedClusterAccessProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListManagedClusterAccessProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:containerservice:listManagedClusterAccessProfile", {
         "resourceGroupName": args.resourceGroupName,

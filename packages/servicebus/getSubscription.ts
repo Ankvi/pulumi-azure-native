@@ -5,7 +5,7 @@ import * as types from "./types";
  * Returns a subscription description for the specified topic.
  * Azure REST API version: 2022-01-01-preview.
  *
- * Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+ * Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
  */
 export function getSubscription(args: GetSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -141,9 +141,9 @@ export interface GetSubscriptionResult {
  * Returns a subscription description for the specified topic.
  * Azure REST API version: 2022-01-01-preview.
  *
- * Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+ * Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
  */
-export function getSubscriptionOutput(args: GetSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionResult> {
+export function getSubscriptionOutput(args: GetSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:servicebus:getSubscription", {
         "namespaceName": args.namespaceName,

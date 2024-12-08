@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Get the full endpoint URL for a nested event subscription for domain topic.
  * Azure REST API version: 2022-06-15.
  *
- * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview.
+ * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview.
  */
 export function getDomainTopicEventSubscriptionFullUrl(args: GetDomainTopicEventSubscriptionFullUrlArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainTopicEventSubscriptionFullUrlResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -48,9 +48,9 @@ export interface GetDomainTopicEventSubscriptionFullUrlResult {
  * Get the full endpoint URL for a nested event subscription for domain topic.
  * Azure REST API version: 2022-06-15.
  *
- * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview.
+ * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview.
  */
-export function getDomainTopicEventSubscriptionFullUrlOutput(args: GetDomainTopicEventSubscriptionFullUrlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainTopicEventSubscriptionFullUrlResult> {
+export function getDomainTopicEventSubscriptionFullUrlOutput(args: GetDomainTopicEventSubscriptionFullUrlOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainTopicEventSubscriptionFullUrlResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:eventgrid:getDomainTopicEventSubscriptionFullUrl", {
         "domainName": args.domainName,

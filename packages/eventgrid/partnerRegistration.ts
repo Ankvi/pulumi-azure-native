@@ -5,7 +5,7 @@ import * as types from "./types";
  * Information about a partner registration.
  * Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2021-06-01-preview.
  *
- * Other available API versions: 2021-10-15-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview.
+ * Other available API versions: 2021-10-15-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview.
  */
 export class PartnerRegistration extends pulumi.CustomResource {
     /**
@@ -97,7 +97,7 @@ export class PartnerRegistration extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20200401preview:PartnerRegistration" }, { type: "azure-native:eventgrid/v20201015preview:PartnerRegistration" }, { type: "azure-native:eventgrid/v20210601preview:PartnerRegistration" }, { type: "azure-native:eventgrid/v20211015preview:PartnerRegistration" }, { type: "azure-native:eventgrid/v20220615:PartnerRegistration" }, { type: "azure-native:eventgrid/v20230601preview:PartnerRegistration" }, { type: "azure-native:eventgrid/v20231215preview:PartnerRegistration" }, { type: "azure-native:eventgrid/v20240601preview:PartnerRegistration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20200401preview:PartnerRegistration" }, { type: "azure-native:eventgrid/v20201015preview:PartnerRegistration" }, { type: "azure-native:eventgrid/v20210601preview:PartnerRegistration" }, { type: "azure-native:eventgrid/v20211015preview:PartnerRegistration" }, { type: "azure-native:eventgrid/v20220615:PartnerRegistration" }, { type: "azure-native:eventgrid/v20230601preview:PartnerRegistration" }, { type: "azure-native:eventgrid/v20231215preview:PartnerRegistration" }, { type: "azure-native:eventgrid/v20240601preview:PartnerRegistration" }, { type: "azure-native:eventgrid/v20241215preview:PartnerRegistration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PartnerRegistration.__pulumiType, name, resourceInputs, opts);
     }

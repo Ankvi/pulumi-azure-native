@@ -3,8 +3,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get policy.
  * Azure REST API version: 2018-09-15.
- *
- * Other available API versions: 2016-05-15.
  */
 export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -104,10 +102,8 @@ export interface GetPolicyResult {
 /**
  * Get policy.
  * Azure REST API version: 2018-09-15.
- *
- * Other available API versions: 2016-05-15.
  */
-export function getPolicyOutput(args: GetPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyResult> {
+export function getPolicyOutput(args: GetPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:devtestlab:getPolicy", {
         "expand": args.expand,

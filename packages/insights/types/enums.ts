@@ -504,19 +504,6 @@ export const TimeAggregation = {
  */
 export type TimeAggregation = (typeof TimeAggregation)[keyof typeof TimeAggregation];
 
-export const TimeAggregationOperator = {
-    Average: "Average",
-    Minimum: "Minimum",
-    Maximum: "Maximum",
-    Total: "Total",
-    Last: "Last",
-} as const;
-
-/**
- * the time aggregation operator. How the data that are collected should be combined over time. The default value is the PrimaryAggregationType of the Metric.
- */
-export type TimeAggregationOperator = (typeof TimeAggregationOperator)[keyof typeof TimeAggregationOperator];
-
 export const TimeAggregationType = {
     Average: "Average",
     Minimum: "Minimum",

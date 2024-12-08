@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets all deployments for a remediation at resource scope.
  * Azure REST API version: 2021-10-01.
  *
- * Other available API versions: 2018-07-01-preview, 2024-10-01.
+ * Other available API versions: 2024-10-01.
  */
 export function listRemediationDeploymentsAtResource(args: ListRemediationDeploymentsAtResourceArgs, opts?: pulumi.InvokeOptions): Promise<ListRemediationDeploymentsAtResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -48,9 +48,9 @@ export interface ListRemediationDeploymentsAtResourceResult {
  * Gets all deployments for a remediation at resource scope.
  * Azure REST API version: 2021-10-01.
  *
- * Other available API versions: 2018-07-01-preview, 2024-10-01.
+ * Other available API versions: 2024-10-01.
  */
-export function listRemediationDeploymentsAtResourceOutput(args: ListRemediationDeploymentsAtResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListRemediationDeploymentsAtResourceResult> {
+export function listRemediationDeploymentsAtResourceOutput(args: ListRemediationDeploymentsAtResourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListRemediationDeploymentsAtResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:policyinsights:listRemediationDeploymentsAtResource", {
         "remediationName": args.remediationName,

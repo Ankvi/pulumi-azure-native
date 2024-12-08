@@ -4,8 +4,6 @@ import * as types from "./types";
 /**
  * Obtains the details of a suppression.
  * Azure REST API version: 2023-01-01.
- *
- * Other available API versions: 2016-07-12-preview.
  */
 export function getSuppression(args: GetSuppressionArgs, opts?: pulumi.InvokeOptions): Promise<GetSuppressionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -67,10 +65,8 @@ export interface GetSuppressionResult {
 /**
  * Obtains the details of a suppression.
  * Azure REST API version: 2023-01-01.
- *
- * Other available API versions: 2016-07-12-preview.
  */
-export function getSuppressionOutput(args: GetSuppressionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSuppressionResult> {
+export function getSuppressionOutput(args: GetSuppressionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSuppressionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:advisor:getSuppression", {
         "name": args.name,

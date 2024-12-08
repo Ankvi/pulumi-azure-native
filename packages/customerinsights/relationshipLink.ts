@@ -4,8 +4,6 @@ import * as types from "./types";
 /**
  * The relationship link resource format.
  * Azure REST API version: 2017-04-26. Prior API version in Azure Native 1.x: 2017-04-26.
- *
- * Other available API versions: 2017-01-01.
  */
 export class RelationshipLink extends pulumi.CustomResource {
     /**

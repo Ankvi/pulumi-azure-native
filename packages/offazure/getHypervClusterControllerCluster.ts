@@ -94,7 +94,7 @@ export interface GetHypervClusterControllerClusterResult {
  *
  * Other available API versions: 2023-10-01-preview.
  */
-export function getHypervClusterControllerClusterOutput(args: GetHypervClusterControllerClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHypervClusterControllerClusterResult> {
+export function getHypervClusterControllerClusterOutput(args: GetHypervClusterControllerClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHypervClusterControllerClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:offazure:getHypervClusterControllerCluster", {
         "clusterName": args.clusterName,

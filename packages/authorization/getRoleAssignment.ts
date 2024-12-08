@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Get a role assignment by scope and name.
  * Azure REST API version: 2022-04-01.
  *
- * Other available API versions: 2015-07-01, 2017-10-01-preview, 2020-03-01-preview, 2020-04-01-preview.
+ * Other available API versions: 2017-10-01-preview, 2020-03-01-preview, 2020-04-01-preview.
  */
 export function getRoleAssignment(args: GetRoleAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -99,9 +99,9 @@ export interface GetRoleAssignmentResult {
  * Get a role assignment by scope and name.
  * Azure REST API version: 2022-04-01.
  *
- * Other available API versions: 2015-07-01, 2017-10-01-preview, 2020-03-01-preview, 2020-04-01-preview.
+ * Other available API versions: 2017-10-01-preview, 2020-03-01-preview, 2020-04-01-preview.
  */
-export function getRoleAssignmentOutput(args: GetRoleAssignmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleAssignmentResult> {
+export function getRoleAssignmentOutput(args: GetRoleAssignmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoleAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:authorization:getRoleAssignment", {
         "roleAssignmentName": args.roleAssignmentName,

@@ -4,8 +4,6 @@ import * as types from "./types";
 /**
  * Returns the properties of the specified manager name.
  * Azure REST API version: 2017-06-01.
- *
- * Other available API versions: 2016-10-01.
  */
 export function getManager(args: GetManagerArgs, opts?: pulumi.InvokeOptions): Promise<GetManagerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -70,10 +68,8 @@ export interface GetManagerResult {
 /**
  * Returns the properties of the specified manager name.
  * Azure REST API version: 2017-06-01.
- *
- * Other available API versions: 2016-10-01.
  */
-export function getManagerOutput(args: GetManagerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagerResult> {
+export function getManagerOutput(args: GetManagerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManagerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:storsimple:getManager", {
         "managerName": args.managerName,

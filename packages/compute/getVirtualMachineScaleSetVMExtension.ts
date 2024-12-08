@@ -5,7 +5,7 @@ import * as types from "./types";
  * The operation to get the VMSS VM extension.
  * Azure REST API version: 2023-03-01.
  *
- * Other available API versions: 2019-12-01, 2021-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+ * Other available API versions: 2021-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
  */
 export function getVirtualMachineScaleSetVMExtension(args: GetVirtualMachineScaleSetVMExtensionArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineScaleSetVMExtensionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -114,9 +114,9 @@ export interface GetVirtualMachineScaleSetVMExtensionResult {
  * The operation to get the VMSS VM extension.
  * Azure REST API version: 2023-03-01.
  *
- * Other available API versions: 2019-12-01, 2021-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+ * Other available API versions: 2021-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
  */
-export function getVirtualMachineScaleSetVMExtensionOutput(args: GetVirtualMachineScaleSetVMExtensionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineScaleSetVMExtensionResult> {
+export function getVirtualMachineScaleSetVMExtensionOutput(args: GetVirtualMachineScaleSetVMExtensionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVirtualMachineScaleSetVMExtensionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:compute:getVirtualMachineScaleSetVMExtension", {
         "expand": args.expand,

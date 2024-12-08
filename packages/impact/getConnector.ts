@@ -48,7 +48,7 @@ export interface GetConnectorResult {
  * Get a Connector
  * Azure REST API version: 2024-05-01-preview.
  */
-export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorResult> {
+export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:impact:getConnector", {
         "connectorName": args.connectorName,

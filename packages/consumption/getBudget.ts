@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets the budget for the scope by budget name.
  * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2017-12-30-preview, 2018-10-01, 2019-05-01, 2019-06-01, 2023-11-01, 2024-08-01.
+ * Other available API versions: 2023-11-01, 2024-08-01.
  */
 export function getBudget(args: GetBudgetArgs, opts?: pulumi.InvokeOptions): Promise<GetBudgetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -83,9 +83,9 @@ export interface GetBudgetResult {
  * Gets the budget for the scope by budget name.
  * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2017-12-30-preview, 2018-10-01, 2019-05-01, 2019-06-01, 2023-11-01, 2024-08-01.
+ * Other available API versions: 2023-11-01, 2024-08-01.
  */
-export function getBudgetOutput(args: GetBudgetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBudgetResult> {
+export function getBudgetOutput(args: GetBudgetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBudgetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:consumption:getBudget", {
         "budgetName": args.budgetName,

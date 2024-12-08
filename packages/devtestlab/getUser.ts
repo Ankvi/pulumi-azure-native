@@ -4,8 +4,6 @@ import * as types from "./types";
 /**
  * Get user profile.
  * Azure REST API version: 2018-09-15.
- *
- * Other available API versions: 2016-05-15.
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -84,10 +82,8 @@ export interface GetUserResult {
 /**
  * Get user profile.
  * Azure REST API version: 2018-09-15.
- *
- * Other available API versions: 2016-05-15.
  */
-export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
+export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:devtestlab:getUser", {
         "expand": args.expand,

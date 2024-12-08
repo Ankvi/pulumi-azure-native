@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets the properties of the import pipeline.
  * Azure REST API version: 2023-01-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview.
+ * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
  */
 export function getImportPipeline(args: GetImportPipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetImportPipelineResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -80,9 +80,9 @@ export interface GetImportPipelineResult {
  * Gets the properties of the import pipeline.
  * Azure REST API version: 2023-01-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview.
+ * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
  */
-export function getImportPipelineOutput(args: GetImportPipelineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImportPipelineResult> {
+export function getImportPipelineOutput(args: GetImportPipelineOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImportPipelineResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:containerregistry:getImportPipeline", {
         "importPipelineName": args.importPipelineName,

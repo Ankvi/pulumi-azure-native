@@ -4,8 +4,6 @@ import * as types from "./types";
 /**
  * Gets information about the specified relationship Link.
  * Azure REST API version: 2017-04-26.
- *
- * Other available API versions: 2017-01-01.
  */
 export function getRelationshipLink(args: GetRelationshipLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetRelationshipLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -95,10 +93,8 @@ export interface GetRelationshipLinkResult {
 /**
  * Gets information about the specified relationship Link.
  * Azure REST API version: 2017-04-26.
- *
- * Other available API versions: 2017-01-01.
  */
-export function getRelationshipLinkOutput(args: GetRelationshipLinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRelationshipLinkResult> {
+export function getRelationshipLinkOutput(args: GetRelationshipLinkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRelationshipLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:customerinsights:getRelationshipLink", {
         "hubName": args.hubName,

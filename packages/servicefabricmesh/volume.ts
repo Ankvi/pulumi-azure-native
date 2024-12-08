@@ -4,8 +4,6 @@ import * as types from "./types";
 /**
  * This type describes a volume resource.
  * Azure REST API version: 2018-09-01-preview. Prior API version in Azure Native 1.x: 2018-09-01-preview.
- *
- * Other available API versions: 2018-07-01-preview.
  */
 export class Volume extends pulumi.CustomResource {
     /**

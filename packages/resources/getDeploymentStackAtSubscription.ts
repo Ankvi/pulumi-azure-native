@@ -120,7 +120,7 @@ export interface GetDeploymentStackAtSubscriptionResult {
  *
  * Other available API versions: 2024-03-01.
  */
-export function getDeploymentStackAtSubscriptionOutput(args: GetDeploymentStackAtSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeploymentStackAtSubscriptionResult> {
+export function getDeploymentStackAtSubscriptionOutput(args: GetDeploymentStackAtSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDeploymentStackAtSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:resources:getDeploymentStackAtSubscription", {
         "deploymentStackName": args.deploymentStackName,

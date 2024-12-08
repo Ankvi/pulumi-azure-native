@@ -5,7 +5,7 @@ import * as types from "./types";
  * Describes an Arc Gateway.
  * Azure REST API version: 2024-03-31-preview.
  *
- * Other available API versions: 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview.
+ * Other available API versions: 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview.
  */
 export class Gateway extends pulumi.CustomResource {
     /**
@@ -114,7 +114,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:hybridcompute/v20240331preview:Gateway" }, { type: "azure-native:hybridcompute/v20240520preview:Gateway" }, { type: "azure-native:hybridcompute/v20240731preview:Gateway" }, { type: "azure-native:hybridcompute/v20240910preview:Gateway" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:hybridcompute/v20240331preview:Gateway" }, { type: "azure-native:hybridcompute/v20240520preview:Gateway" }, { type: "azure-native:hybridcompute/v20240731preview:Gateway" }, { type: "azure-native:hybridcompute/v20240910preview:Gateway" }, { type: "azure-native:hybridcompute/v20241110preview:Gateway" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Gateway.__pulumiType, name, resourceInputs, opts);
     }

@@ -65,7 +65,7 @@ export interface GetIpFirewallRuleResult {
  *
  * Other available API versions: 2021-06-01-preview.
  */
-export function getIpFirewallRuleOutput(args: GetIpFirewallRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpFirewallRuleResult> {
+export function getIpFirewallRuleOutput(args: GetIpFirewallRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpFirewallRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:synapse:getIpFirewallRule", {
         "resourceGroupName": args.resourceGroupName,

@@ -4,8 +4,6 @@ import * as types from "./types";
 /**
  * Gets cluster user credentials of the connected cluster with a specified resource group and name.
  * Azure REST API version: 2021-04-01-preview.
- *
- * Other available API versions: 2020-01-01-preview.
  */
 export function listConnectedClusterUserCredentials(args: ListConnectedClusterUserCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<ListConnectedClusterUserCredentialsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -52,10 +50,8 @@ export interface ListConnectedClusterUserCredentialsResult {
 /**
  * Gets cluster user credentials of the connected cluster with a specified resource group and name.
  * Azure REST API version: 2021-04-01-preview.
- *
- * Other available API versions: 2020-01-01-preview.
  */
-export function listConnectedClusterUserCredentialsOutput(args: ListConnectedClusterUserCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListConnectedClusterUserCredentialsResult> {
+export function listConnectedClusterUserCredentialsOutput(args: ListConnectedClusterUserCredentialsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListConnectedClusterUserCredentialsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:kubernetes:listConnectedClusterUserCredentials", {
         "authenticationMethod": args.authenticationMethod,

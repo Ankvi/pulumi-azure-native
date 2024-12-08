@@ -4,8 +4,6 @@ import * as types from "./types";
 /**
  * This method provides the list of configurations for the given product family, product line and product under subscription.
  * Azure REST API version: 2021-12-01.
- *
- * Other available API versions: 2020-12-01-preview.
  */
 export function listConfigurations(args: ListConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<ListConfigurationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -47,10 +45,8 @@ export interface ListConfigurationsResult {
 /**
  * This method provides the list of configurations for the given product family, product line and product under subscription.
  * Azure REST API version: 2021-12-01.
- *
- * Other available API versions: 2020-12-01-preview.
  */
-export function listConfigurationsOutput(args: ListConfigurationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListConfigurationsResult> {
+export function listConfigurationsOutput(args: ListConfigurationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListConfigurationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azure-native:edgeorder:listConfigurations", {
         "configurationFilters": args.configurationFilters,
