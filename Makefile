@@ -11,7 +11,7 @@ build:
 	pnpm -r run build
 
 publish:
-	pnpm -r publish
+	pnpm -r publish --no-git-checks
 
 clean:
 	rm -f scripts/pulumi-azure-native-version.cache
