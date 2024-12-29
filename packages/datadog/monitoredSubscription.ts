@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The request to update subscriptions needed to be monitored by the Datadog monitor resource.
  * Azure REST API version: 2023-01-01.
+ *
+ * Other available API versions: 2023-07-07, 2023-10-20.
  */
 export class MonitoredSubscription extends pulumi.CustomResource {
     /**
@@ -74,7 +76,7 @@ export class MonitoredSubscription extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:datadog/v20230101:MonitoredSubscription" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:datadog/v20230101:MonitoredSubscription" }, { type: "azure-native:datadog/v20230707:MonitoredSubscription" }, { type: "azure-native:datadog/v20231020:MonitoredSubscription" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(MonitoredSubscription.__pulumiType, name, resourceInputs, opts);
     }

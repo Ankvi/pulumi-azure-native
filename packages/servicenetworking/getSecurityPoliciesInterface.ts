@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a SecurityPolicy
  * Azure REST API version: 2024-05-01-preview.
+ *
+ * Other available API versions: 2025-01-01.
  */
 export function getSecurityPoliciesInterface(args: GetSecurityPoliciesInterfaceArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityPoliciesInterfaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -73,6 +75,8 @@ export interface GetSecurityPoliciesInterfaceResult {
 /**
  * Get a SecurityPolicy
  * Azure REST API version: 2024-05-01-preview.
+ *
+ * Other available API versions: 2025-01-01.
  */
 export function getSecurityPoliciesInterfaceOutput(args: GetSecurityPoliciesInterfaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecurityPoliciesInterfaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

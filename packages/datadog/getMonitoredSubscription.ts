@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The request to update subscriptions needed to be monitored by the Datadog monitor resource.
  * Azure REST API version: 2023-01-01.
+ *
+ * Other available API versions: 2023-07-07, 2023-10-20.
  */
 export function getMonitoredSubscription(args: GetMonitoredSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitoredSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -53,6 +55,8 @@ export interface GetMonitoredSubscriptionResult {
 /**
  * The request to update subscriptions needed to be monitored by the Datadog monitor resource.
  * Azure REST API version: 2023-01-01.
+ *
+ * Other available API versions: 2023-07-07, 2023-10-20.
  */
 export function getMonitoredSubscriptionOutput(args: GetMonitoredSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMonitoredSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

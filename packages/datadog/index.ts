@@ -1,6 +1,11 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 // Export members:
+export { GetBillingInfoArgs, GetBillingInfoResult, GetBillingInfoOutputArgs } from "./getBillingInfo";
+export const getBillingInfo: typeof import("./getBillingInfo").getBillingInfo = null as any;
+export const getBillingInfoOutput: typeof import("./getBillingInfo").getBillingInfoOutput = null as any;
+utilities.lazyLoad(exports, ["getBillingInfo","getBillingInfoOutput"], () => require("./getBillingInfo"));
+
 export { GetMonitorArgs, GetMonitorResult, GetMonitorOutputArgs } from "./getMonitor";
 export const getMonitor: typeof import("./getMonitor").getMonitor = null as any;
 export const getMonitorOutput: typeof import("./getMonitor").getMonitorOutput = null as any;

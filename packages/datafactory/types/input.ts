@@ -20970,7 +20970,7 @@ export interface SapOdpLinkedServiceArgs {
      */
     sncLibraryPath?: any;
     /**
-     * SNC activation indicator to access the SAP server where the table is located. Must be either 0 (off) or 1 (on). Type: string (or Expression with resultType string).
+     * SNC activation flag (Boolean) to access the SAP server where the table is located. Type: boolean (or Expression with resultType boolean).
      */
     sncMode?: any;
     /**
@@ -21348,7 +21348,7 @@ export interface SapTableLinkedServiceArgs {
      */
     sncLibraryPath?: any;
     /**
-     * SNC activation indicator to access the SAP server where the table is located. Must be either 0 (off) or 1 (on). Type: string (or Expression with resultType string).
+     * SNC activation flag (Boolean) to access the SAP server where the table is located. Type: boolean (or Expression with resultType boolean).
      */
     sncMode?: any;
     /**
@@ -21633,6 +21633,10 @@ export interface ScriptActivityArgs {
      * Activity policy.
      */
     policy?: pulumi.Input<ActivityPolicyArgs>;
+    /**
+     * Enable to retrieve result sets from multiple SQL statements and the number of rows affected by the DML statement. Supported connector: SnowflakeV2. Type: boolean (or Expression with resultType boolean).
+     */
+    returnMultistatementResult?: any;
     /**
      * ScriptBlock execution timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
      */

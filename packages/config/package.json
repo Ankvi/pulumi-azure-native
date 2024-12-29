@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-config",
-    "version": "2.76.0",
+    "version": "2.79.0",
     "description": "Pulumi Azure Native package for config",
     "keywords": [
         "pulumi",
@@ -27,6 +27,7 @@
     },
     "scripts": {
         "build": "tsc",
+        "clean": "tsc --build --clean",
         "lint": "tsc --noEmit",
         "prepublishOnly": "./prepublish.sh"
     }

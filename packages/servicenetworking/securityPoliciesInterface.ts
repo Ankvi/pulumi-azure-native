@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * SecurityPolicy Subresource of Traffic Controller.
  * Azure REST API version: 2024-05-01-preview.
+ *
+ * Other available API versions: 2025-01-01.
  */
 export class SecurityPoliciesInterface extends pulumi.CustomResource {
     /**
@@ -104,7 +106,7 @@ export class SecurityPoliciesInterface extends pulumi.CustomResource {
             resourceInputs["wafPolicy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:servicenetworking/v20240501preview:SecurityPoliciesInterface" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:servicenetworking/v20240501preview:SecurityPoliciesInterface" }, { type: "azure-native:servicenetworking/v20250101:SecurityPoliciesInterface" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SecurityPoliciesInterface.__pulumiType, name, resourceInputs, opts);
     }

@@ -5,7 +5,7 @@ import * as types from "./types";
  * Retrieve a hybrid runbook worker.
  * Azure REST API version: 2022-08-08.
  *
- * Other available API versions: 2023-05-15-preview, 2023-11-01.
+ * Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
  */
 export function getHybridRunbookWorker(args: GetHybridRunbookWorkerArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridRunbookWorkerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -85,7 +85,7 @@ export interface GetHybridRunbookWorkerResult {
  * Retrieve a hybrid runbook worker.
  * Azure REST API version: 2022-08-08.
  *
- * Other available API versions: 2023-05-15-preview, 2023-11-01.
+ * Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
  */
 export function getHybridRunbookWorkerOutput(args: GetHybridRunbookWorkerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHybridRunbookWorkerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Definition of the Runtime Environment type.
  * Azure REST API version: 2023-05-15-preview.
+ *
+ * Other available API versions: 2024-10-23.
  */
 export class RuntimeEnvironment extends pulumi.CustomResource {
     /**
@@ -110,7 +112,7 @@ export class RuntimeEnvironment extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:automation/v20230515preview:RuntimeEnvironment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:automation/v20230515preview:RuntimeEnvironment" }, { type: "azure-native:automation/v20241023:RuntimeEnvironment" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RuntimeEnvironment.__pulumiType, name, resourceInputs, opts);
     }

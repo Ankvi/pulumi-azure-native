@@ -146,6 +146,32 @@ export interface LogRulesResponse {
 }
 
 /**
+ * Marketplace SAAS Info of the resource.
+ */
+export interface MarketplaceSaaSInfoResponse {
+    /**
+     * The Azure Subscription ID to which the Marketplace Subscription belongs and gets billed into.
+     */
+    billedAzureSubscriptionId?: string;
+    /**
+     * Marketplace Subscription Details: SAAS Name
+     */
+    marketplaceName?: string;
+    /**
+     * Marketplace Subscription Details: SaaS Subscription Status
+     */
+    marketplaceStatus?: string;
+    /**
+     * Marketplace Subscription Id. This is a GUID-formatted string.
+     */
+    marketplaceSubscriptionId?: string;
+    /**
+     * Flag specifying if the Marketplace status is subscribed or not.
+     */
+    subscribed?: boolean;
+}
+
+/**
  * Set of rules for sending metrics for the Monitor resource.
  */
 export interface MetricRulesResponse {
@@ -250,6 +276,24 @@ export interface MonitoringTagRulesPropertiesResponse {
     provisioningState: string;
 }
 
+/**
+ * Partner Billing details associated with the resource.
+ */
+export interface PartnerBillingEntityResponse {
+    /**
+     * The Datadog Organization Id.
+     */
+    id?: string;
+    /**
+     * The Datadog Organization Name.
+     */
+    name?: string;
+    /**
+     * Link to the datadog organization page
+     */
+    partnerEntityUri?: string;
+}
+
 export interface ResourceSkuResponse {
     /**
      * Name of the SKU.
@@ -314,5 +358,7 @@ export interface UserInfoResponse {
      */
     phoneNumber?: string;
 }
+
+
 
 

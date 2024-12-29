@@ -5,7 +5,7 @@ import * as types from "./types";
  * A vcenter resource belonging to a site resource.
  * Azure REST API version: 2023-06-06.
  *
- * Other available API versions: 2023-10-01-preview.
+ * Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
  */
 export class VcenterController extends pulumi.CustomResource {
     /**
@@ -142,7 +142,7 @@ export class VcenterController extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20200101:VcenterController" }, { type: "azure-native:offazure/v20200707:VcenterController" }, { type: "azure-native:offazure/v20230606:VcenterController" }, { type: "azure-native:offazure/v20231001preview:VcenterController" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20200101:VcenterController" }, { type: "azure-native:offazure/v20200707:VcenterController" }, { type: "azure-native:offazure/v20230606:VcenterController" }, { type: "azure-native:offazure/v20231001preview:VcenterController" }, { type: "azure-native:offazure/v20240501preview:VcenterController" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VcenterController.__pulumiType, name, resourceInputs, opts);
     }

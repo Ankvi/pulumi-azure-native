@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets a deployment.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01.
+ * Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01, 2024-11-01.
  */
 export function getDeploymentAtScope(args: GetDeploymentAtScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetDeploymentAtScopeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +59,7 @@ export interface GetDeploymentAtScopeResult {
  * Gets a deployment.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01.
+ * Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01, 2024-11-01.
  */
 export function getDeploymentAtScopeOutput(args: GetDeploymentAtScopeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDeploymentAtScopeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -5,7 +5,7 @@ import * as types from "./types";
  * A HyperV SiteResource
  * Azure REST API version: 2023-06-06.
  *
- * Other available API versions: 2023-10-01-preview.
+ * Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
  */
 export class HypervSitesController extends pulumi.CustomResource {
     /**
@@ -128,7 +128,7 @@ export class HypervSitesController extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20200101:HypervSitesController" }, { type: "azure-native:offazure/v20200707:HypervSitesController" }, { type: "azure-native:offazure/v20230606:HypervSitesController" }, { type: "azure-native:offazure/v20231001preview:HypervSitesController" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20200101:HypervSitesController" }, { type: "azure-native:offazure/v20200707:HypervSitesController" }, { type: "azure-native:offazure/v20230606:HypervSitesController" }, { type: "azure-native:offazure/v20231001preview:HypervSitesController" }, { type: "azure-native:offazure/v20240501preview:HypervSitesController" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(HypervSitesController.__pulumiType, name, resourceInputs, opts);
     }

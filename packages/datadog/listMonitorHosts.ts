@@ -5,7 +5,7 @@ import * as types from "./types";
  * Response of a list operation.
  * Azure REST API version: 2022-06-01.
  *
- * Other available API versions: 2022-08-01, 2023-01-01.
+ * Other available API versions: 2022-08-01, 2023-01-01, 2023-07-07, 2023-10-20.
  */
 export function listMonitorHosts(args: ListMonitorHostsArgs, opts?: pulumi.InvokeOptions): Promise<ListMonitorHostsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -43,7 +43,7 @@ export interface ListMonitorHostsResult {
  * Response of a list operation.
  * Azure REST API version: 2022-06-01.
  *
- * Other available API versions: 2022-08-01, 2023-01-01.
+ * Other available API versions: 2022-08-01, 2023-01-01, 2023-07-07, 2023-10-20.
  */
 export function listMonitorHostsOutput(args: ListMonitorHostsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListMonitorHostsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
