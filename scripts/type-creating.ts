@@ -92,8 +92,7 @@ function splitTypeFile(filePath: string): Promise<SplitTypesResult> {
                 const formatted = line
                     .replace("    ", "") // Remove first tab to compensate for missing namespace
                     .replaceAll(
-                        `${
-                            inputs ? "inputs" : "outputs"
+                        `${inputs ? "inputs" : "outputs"
                         }.${currentModuleName}.${currentSubModuleName}.`,
                         "",
                     )
@@ -212,7 +211,7 @@ export async function createModuleTypeFiles(): Promise<void> {
         const tasks: Promise<void>[] = [
             writeModuleTypeFiles({
                 enumSourcePath: `${AZURE_PATH}/types/enums/${key}/index.ts`,
-                outputTypesPath: `${config.getOutputPath()}/${key}/types`,
+                outputTypesPath: `${config.outputPath}/${key}/types`,
                 inputs: input?.lines,
                 outputs: output?.lines,
             }),
@@ -242,7 +241,7 @@ export async function createSubModuleTypeFiles(): Promise<void> {
             Object.keys(subVersions).map((subVersion) =>
                 writeModuleTypeFiles({
                     enumSourcePath: `${AZURE_PATH}/types/enums/${key}/${subVersion}/index.ts`,
-                    outputTypesPath: `${config.getOutputPath()}/${key}/${subVersion}/types`,
+                    outputTypesPath: `${config.outputPath}/${key}/${subVersion}/types`,
                     inputs: input?.subVersions?.get(subVersion)?.lines,
                     outputs: output?.subVersions?.get(subVersion)?.lines,
                 }),

@@ -6,6 +6,7 @@ import { writeChangelogToOutput } from "./changelog";
 import { config } from "./config";
 import { createCorePackage, createModules } from "./modules";
 import { createModuleTypeFiles, createSubModuleTypeFiles } from "./type-creating";
+import log from "loglevel";
 
 export type BuildOptions = {
     commit?: boolean;
@@ -24,18 +25,18 @@ export class Runner {
     public async build(options: BuildOptions) {
         await this.prepareOutputPath();
 
-        console.log("Creating type files");
+        log.info("Creating type files");
         await createModuleTypeFiles();
 
         if (options.submodules) {
-            console.log("Creating submodule files");
+            log.info("Creating submodule files");
             await createSubModuleTypeFiles();
         }
 
-        console.log("Creating core module");
+        log.info("Creating core module");
         await createCorePackage();
 
-        console.log("Creating other modules");
+        log.info("Creating other modules");
         await createModules(options.submodules);
 
         await writeChangelogToOutput();
@@ -48,15 +49,15 @@ export class Runner {
     private async prepareOutputPath() {
         await this.$`git pull`;
 
-        console.log("Removing old output");
-        await rm(config.getOutputPath(), { recursive: true });
+        log.info("Removing old output");
+        await rm(config.outputPath, { recursive: true });
     }
 
-    private async commitOutput() {
+    public async commitOutput() {
         const version = config.getOutputVersion();
 
-        console.log("Committing result to GitHub");
-        console.log("Current working directory:", this.outputBasePath);
+        log.info("Committing result to GitHub");
+        log.info("Current working directory:", this.outputBasePath);
 
         try {
             const tag = `v${version}`;
@@ -68,7 +69,7 @@ export class Runner {
             await this.$`git tag ${tag}`;
             await this.$`git push --tags`;
         } catch (err) {
-            console.error(err);
+            log.error(err);
             exit(1);
         }
     }

@@ -10,7 +10,7 @@ async function getChangelog() {
 export async function writeChangelogToOutput() {
     const changelog = await getChangelog();
     const releaseTag = config.getAzureNativeVersion();
-    const outputChangelog = resolve(`${config.getOutputPath()}/../CHANGELOG.md`);
+    const outputChangelog = resolve(`${config.outputPath}/../CHANGELOG.md`);
     if (changelog) {
         await Bun.write(outputChangelog, changelog);
     } else {

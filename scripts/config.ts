@@ -21,7 +21,7 @@ export interface ConfigOptions {
 class Config {
     private azureNativeVersion?: string;
     private outputVersion?: string;
-    private outputPath: string;
+    public readonly outputPath: string;
     private useCache = true;
 
     constructor() {
@@ -104,10 +104,6 @@ class Config {
             throw new Error("Config has not been initialized");
         }
         return this.outputVersion;
-    }
-
-    public getOutputPath(): string {
-        return this.outputPath;
     }
 }
 

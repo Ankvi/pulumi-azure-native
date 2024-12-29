@@ -1,0 +1,33 @@
+name: Update version if needed
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check-pulumi-repo-releases:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-node
+
+      - name: Check if @pulumi/azure-native has been updated
+        continue-on-error: true
+        run: |
+          make check-version
+
+      - name: Setup PNPM for submodule
+        if: success()
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+
+      - name: Build new version without cache and commit
+        run: |
+          make output/update-and-commit

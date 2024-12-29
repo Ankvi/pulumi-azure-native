@@ -31,7 +31,7 @@ export class Module implements IModule {
         private readonly includeSubmodules: boolean = false,
     ) {
         this.path = `${AZURE_PATH}/${this.name}`;
-        this.outputPath = `${config.getOutputPath()}/${this.name}`;
+        this.outputPath = `${config.outputPath}/${this.name}`;
         this.fullName = `${MODULE_PREFIX}${this.name}`;
     }
 

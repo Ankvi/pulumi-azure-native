@@ -21,6 +21,13 @@ export async function build(options: BuildOptions) {
     await runner.build(options);
 }
 
+export async function commitAndPush(options: ActionOptions & ConfigOptions) {
+    await config.initialize(options)
+
+    const runner = new Runner();
+    await runner.commitOutput();
+}
+
 export type PublishOptions = {
     dryRun?: boolean;
     logErrors?: boolean;

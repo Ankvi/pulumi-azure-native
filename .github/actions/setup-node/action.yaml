@@ -4,41 +4,22 @@ description: Sets up Node.js with pnpm dependencies and cache
 runs:
   using: composite
   steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 20
-          registry-url: https://registry.npmjs.org
+    - uses: pnpm/action-setup@v4
+      name: Install pnpm
+      with:
+        run_install: false
 
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        with:
-          run_install: false
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: pnpm
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> "$GITHUB_ENV"
+    - uses: oven-sh/setup-bun@v1
+      with:
+        bun-version: latest
 
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-
-      - name: Install bun dependencies
-        shell: bash
-        run: |
-          bun install
-        working-directory: scripts
-
-      - name: Install pnpm dependencies
-        shell: bash
-        run: pnpm install
-        env:
-          IGNORE_PULUMI_SCRIPTS: "1"
+    - name: Install pnpm dependencies
+      shell: bash
+      run: pnpm install
+      env:
+        IGNORE_PULUMI_SCRIPTS: "1"
