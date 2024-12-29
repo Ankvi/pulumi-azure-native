@@ -40,6 +40,7 @@ class TemplateLoader {
             },
             scripts: {
                 build: "tsc",
+                clean: "tsc --build --clean",
                 lint: "tsc --noEmit",
                 prepublishOnly: "./prepublish.sh",
             },
