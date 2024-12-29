@@ -1,4 +1,7 @@
 node_modules
+azure-native
 **/*.js
 !**/scripts/*.js
 **/*.d.ts
+*.cache
+dist

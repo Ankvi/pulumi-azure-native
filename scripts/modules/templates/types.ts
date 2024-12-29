@@ -8,7 +8,7 @@ export type PackageJson = {
         url: string;
         type: string;
     };
-    publishConfig?: {
+    publishConfig: {
         access: "public" | "restricted";
     };
     dependencies: { [key: string]: string };

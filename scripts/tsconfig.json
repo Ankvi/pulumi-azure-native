@@ -1,26 +1,21 @@
 {
     "compilerOptions": {
-        // add Bun type definitions
-        "types": [
-            "bun-types"
-        ],
-        // enable latest features
         "lib": [
             "esnext"
         ],
-        "module": "esnext",
-        "target": "esnext",
-        // if TS 5.x+
+        "target": "ESNext",
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true,
         "moduleResolution": "bundler",
+        "module": "esnext",
         "noEmit": true,
-        "allowImportingTsExtensions": true,
-        "moduleDetection": "force",
-        // best practices
         "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "skipLibCheck": true
     },
     "include": [
         "**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.template.ts",
     ]
 }
