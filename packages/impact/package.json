@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-impact",
-    "version": "2.79.0",
+    "version": "2.81.0",
     "description": "Pulumi Azure Native package for impact",
     "keywords": [
         "pulumi",

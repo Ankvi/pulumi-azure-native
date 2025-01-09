@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview.
  */
 export class KubernetesCluster extends pulumi.CustomResource {
     /**
@@ -206,7 +206,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:KubernetesCluster" }, { type: "azure-native:networkcloud/v20231001preview:KubernetesCluster" }, { type: "azure-native:networkcloud/v20240601preview:KubernetesCluster" }, { type: "azure-native:networkcloud/v20240701:KubernetesCluster" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:KubernetesCluster" }, { type: "azure-native:networkcloud/v20231001preview:KubernetesCluster" }, { type: "azure-native:networkcloud/v20240601preview:KubernetesCluster" }, { type: "azure-native:networkcloud/v20240701:KubernetesCluster" }, { type: "azure-native:networkcloud/v20241001preview:KubernetesCluster" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(KubernetesCluster.__pulumiType, name, resourceInputs, opts);
     }

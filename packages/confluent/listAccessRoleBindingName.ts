@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Details of the role binding names returned on successful response
  * Azure REST API version: 2024-02-13.
+ *
+ * Other available API versions: 2024-07-01.
  */
 export function listAccessRoleBindingName(args: ListAccessRoleBindingNameArgs, opts?: pulumi.InvokeOptions): Promise<ListAccessRoleBindingNameResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -49,6 +51,8 @@ export interface ListAccessRoleBindingNameResult {
 /**
  * Details of the role binding names returned on successful response
  * Azure REST API version: 2024-02-13.
+ *
+ * Other available API versions: 2024-07-01.
  */
 export function listAccessRoleBindingNameOutput(args: ListAccessRoleBindingNameOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListAccessRoleBindingNameResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
