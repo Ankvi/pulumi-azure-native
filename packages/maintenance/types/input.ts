@@ -31,7 +31,7 @@ export interface ConfigurationAssignmentFilterPropertiesArgs {
  */
 export interface InputLinuxParametersArgs {
     /**
-     * Classification category of patches to be patched
+     * Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'.
      */
     classificationsToInclude?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -84,7 +84,7 @@ export function inputPatchConfigurationArgsProvideDefaults(val: InputPatchConfig
  */
 export interface InputWindowsParametersArgs {
     /**
-     * Classification category of patches to be patched
+     * Classification category of patches to be patched. Allowed values are 'Critical', 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools', and 'Updates'.
      */
     classificationsToInclude?: pulumi.Input<pulumi.Input<string>[]>;
     /**
