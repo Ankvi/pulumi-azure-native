@@ -62,11 +62,15 @@ export class Runner {
 
         try {
             const tag = `v${version}`;
+            const message = `Bumped to ${tag}`;
+            const branch = `release/${tag}`;
             await this.$`pnpm install`;
             await this.$`make lint`;
+            await this.$`git checkout -b ${branch}`;
             await this.$`git add -A`;
-            await this.$`git commit -m "Bumped to ${tag}"`;
-            await this.$`git push`;
+            await this.$`git commit -m "${message}"`;
+            await this.$`git push -u origin ${branch}`;
+            await this.$`gh pr create --title "${tag}" --body "${message}"`;
             // await this.$`git tag ${tag}`;
             // await this.$`git push --tags`;
         } catch (err) {
