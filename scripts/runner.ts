@@ -67,8 +67,8 @@ export class Runner {
             await this.$`git add -A`;
             await this.$`git commit -m "Bumped to ${tag}"`;
             await this.$`git push`;
-            await this.$`git tag ${tag}`;
-            await this.$`git push --tags`;
+            // await this.$`git tag ${tag}`;
+            // await this.$`git push --tags`;
         } catch (err) {
             log.error(err);
             exit(1);
