@@ -26,4 +26,4 @@ jobs:
 
       - name: Generate new versions for packages without cache and commit
         run: |
-          make generate-packages
+          make generate-packages/push
