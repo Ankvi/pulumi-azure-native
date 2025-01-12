@@ -24,6 +24,10 @@ jobs:
         run: |
           make check-version
 
+      - run: |
+          git config --global user.email "${{ vars.GIT_EMAIL }}"
+          git config --global user.name "${{ vars.GIT_NAME }}"
+
       - name: Generate new versions for packages without cache and commit
         run: |
           make generate-packages/push
