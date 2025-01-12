@@ -3,7 +3,7 @@
     "private": true,
     "scripts": {
         "build": "bun index.ts build --no-submodules",
-        "build-and-publish": "bun index.ts build --commit --no-submodules",
+        "commit-and-push": "bun index.ts commit-and-push",
         "list-module-names": "bun index.ts list-module-names",
         "check-version": "bun index.ts check-version",
         "lint": "tsc --noEmit"

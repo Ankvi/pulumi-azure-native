@@ -11,7 +11,6 @@ program.option("-v, --verbose", "Display debug log statements");
 
 program
     .command("build")
-    .option("-o, --output-path <path>", "Output path")
     .option(
         "-a, --azure-native-version <version>",
         "Version of @pulumi/azure-native to use. E.g. v2.8.0",
@@ -21,6 +20,8 @@ program
     .option("--no-submodules", "Do not output the submodules (e.g. v20220101 or v20220101preview)")
     .option("--commit", "Commits and pushes the generated output")
     .action(actions.build);
+
+program.command("commit-and-push").action(actions.commitAndPush);
 
 program.command("list-module-names").action(actions.listModuleNames);
 

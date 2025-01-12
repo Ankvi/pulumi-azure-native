@@ -39,5 +39,5 @@ check-version: node_modules
 output: clean azure-native/pull node_modules
 	pnpm --filter scripts build
 
-output/update-and-commit: clean azure-native/pull node_modules
-	pnpm --filter scripts build-and-publish
+output/update-and-commit: output
+	pnpm --filter scripts commit-and-push

@@ -2,11 +2,11 @@ import { rm } from "node:fs/promises";
 import { resolve } from "node:path";
 import { exit } from "node:process";
 import type { Shell } from "bun";
+import log from "loglevel";
 import { writeChangelogToOutput } from "./changelog";
 import { config } from "./config";
 import { createCorePackage, createModules } from "./modules";
 import { createModuleTypeFiles, createSubModuleTypeFiles } from "./type-creating";
-import log from "loglevel";
 
 export type BuildOptions = {
     commit?: boolean;
@@ -54,7 +54,8 @@ export class Runner {
     }
 
     public async commitOutput() {
-        const version = config.getOutputVersion();
+        const corePackage = await import("../packages/core/package.json");
+        const { version } = corePackage;
 
         log.info("Committing result to GitHub");
         log.info("Current working directory:", this.outputBasePath);
