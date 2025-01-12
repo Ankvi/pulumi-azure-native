@@ -1,7 +1,7 @@
 import { rm } from "node:fs/promises";
 import { resolve } from "node:path";
 import { exit } from "node:process";
-import type { Shell } from "bun";
+import { type Shell, ShellError } from "bun";
 import log from "loglevel";
 import { writeChangelogToOutput } from "./changelog";
 import { config } from "./config";
@@ -74,7 +74,10 @@ export class Runner {
             // await this.$`git tag ${tag}`;
             // await this.$`git push --tags`;
         } catch (err) {
-            log.error(err);
+            log.error(`Error while committing: ${(err as Error).message}`);
+            if (err instanceof ShellError) {
+                log.error(err.stderr);
+            }
             exit(1);
         }
     }
