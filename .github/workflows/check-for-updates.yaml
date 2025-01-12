@@ -24,6 +24,6 @@ jobs:
         run: |
           make check-version
 
-      - name: Build new version without cache and commit
+      - name: Generate new versions for packages without cache and commit
         run: |
-          make output/update-and-commit
+          make generate-packages

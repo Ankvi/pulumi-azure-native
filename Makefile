@@ -36,8 +36,8 @@ list-module-names: azure-native/pull  node_modules
 check-version: node_modules
 	pnpm --filter scripts check-version
 
-output: clean azure-native/pull node_modules
-	pnpm --filter scripts build
+generate-packages: clean azure-native/pull node_modules
+	pnpm --filter scripts generate-packages
 
-output/update-and-commit: output
+generate-packages/push: generate-packages
 	pnpm --filter scripts commit-and-push

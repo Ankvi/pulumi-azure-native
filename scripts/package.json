@@ -2,7 +2,7 @@
     "name": "scripts",
     "private": true,
     "scripts": {
-        "build": "bun index.ts build --no-submodules",
+        "generate-packages": "bun index.ts build --no-submodules",
         "commit-and-push": "bun index.ts commit-and-push",
         "list-module-names": "bun index.ts list-module-names",
         "check-version": "bun index.ts check-version",
