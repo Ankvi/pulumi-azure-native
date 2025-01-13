@@ -42,6 +42,8 @@ jobs:
 
       - name: Checkout main branch
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Add release tag
         run: |
