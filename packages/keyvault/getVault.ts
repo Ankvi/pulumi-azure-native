@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets the specified Azure key vault.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2023-07-01, 2024-04-01-preview.
+ * Other available API versions: 2023-07-01, 2024-04-01-preview, 2024-11-01, 2024-12-01-preview.
  */
 export function getVault(args: GetVaultArgs, opts?: pulumi.InvokeOptions): Promise<GetVaultResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -63,7 +63,7 @@ export interface GetVaultResult {
  * Gets the specified Azure key vault.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2023-07-01, 2024-04-01-preview.
+ * Other available API versions: 2023-07-01, 2024-04-01-preview, 2024-11-01, 2024-12-01-preview.
  */
 export function getVaultOutput(args: GetVaultOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVaultResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
