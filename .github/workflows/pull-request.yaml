@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   run-if:
-    if: startsWith(github.head_ref, 'releases/v')
+    if: startsWith(github.head_ref, 'release/v')
     runs-on: ubuntu-latest
     steps:
       - run: echo "Version release branch detected"
