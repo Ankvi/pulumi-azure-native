@@ -11129,6 +11129,14 @@ export interface GreenplumLinkedServiceArgs {
      */
     annotations?: pulumi.Input<any[]>;
     /**
+     * The authentication type to use. Type: string. Only used for V2.
+     */
+    authenticationType?: pulumi.Input<string | enums.GreenplumAuthenticationType>;
+    /**
+     * The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer. Only used for V2.
+     */
+    commandTimeout?: any;
+    /**
      * The integration runtime reference.
      */
     connectVia?: pulumi.Input<IntegrationRuntimeReferenceArgs>;
@@ -11136,6 +11144,14 @@ export interface GreenplumLinkedServiceArgs {
      * An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
      */
     connectionString?: any;
+    /**
+     * The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer. Only used for V2.
+     */
+    connectionTimeout?: any;
+    /**
+     * Database name for connection. Type: string. Only used for V2.
+     */
+    database?: any;
     /**
      * Linked service description.
      */
@@ -11145,18 +11161,38 @@ export interface GreenplumLinkedServiceArgs {
      */
     encryptedCredential?: pulumi.Input<string>;
     /**
+     * Host name for connection. Type: string. Only used for V2.
+     */
+    host?: any;
+    /**
      * Parameters for linked service.
      */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
+    /**
+     * The Azure key vault secret reference of password in connection string. Type: string. Only used for V2.
+     */
+    password?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
+     * The port for the connection. Type: integer. Only used for V2.
+     */
+    port?: any;
     /**
      * The Azure key vault secret reference of password in connection string.
      */
     pwd?: pulumi.Input<AzureKeyVaultSecretReferenceArgs>;
     /**
+     * SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer. Only used for V2.
+     */
+    sslMode?: any;
+    /**
      * Type of linked service.
      * Expected value is 'Greenplum'.
      */
     type: pulumi.Input<"Greenplum">;
+    /**
+     * Username for authentication. Type: string. Only used for V2.
+     */
+    username?: any;
     /**
      * Version of the linked service.
      */

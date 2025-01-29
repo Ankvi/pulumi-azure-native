@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The integration fabric resource type.
  * Azure REST API version: 2023-10-01-preview.
+ *
+ * Other available API versions: 2024-10-01.
  */
 export function getIntegrationFabric(args: GetIntegrationFabricArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationFabricResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -62,6 +64,8 @@ export interface GetIntegrationFabricResult {
 /**
  * The integration fabric resource type.
  * Azure REST API version: 2023-10-01-preview.
+ *
+ * Other available API versions: 2024-10-01.
  */
 export function getIntegrationFabricOutput(args: GetIntegrationFabricOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIntegrationFabricResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

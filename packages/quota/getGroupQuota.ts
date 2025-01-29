@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets the GroupQuotas for the name passed. It will return the GroupQuotas properties only. The details on group quota can be access from the group quota APIs.
  * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2024-10-15-preview, 2024-12-18-preview.
+ * Other available API versions: 2024-10-15-preview, 2024-12-18-preview, 2025-03-01.
  */
 export function getGroupQuota(args: GetGroupQuotaArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupQuotaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,7 +55,7 @@ export interface GetGroupQuotaResult {
  * Gets the GroupQuotas for the name passed. It will return the GroupQuotas properties only. The details on group quota can be access from the group quota APIs.
  * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2024-10-15-preview, 2024-12-18-preview.
+ * Other available API versions: 2024-10-15-preview, 2024-12-18-preview, 2025-03-01.
  */
 export function getGroupQuotaOutput(args: GetGroupQuotaOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupQuotaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

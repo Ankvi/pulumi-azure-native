@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-web",
-    "version": "2.82.0",
+    "version": "2.84.0",
     "description": "Pulumi Azure Native package for web",
     "keywords": [
         "pulumi",

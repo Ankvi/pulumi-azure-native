@@ -3688,6 +3688,24 @@ export interface DelegationResponse {
 }
 
 /**
+ * The delegation signer information.
+ */
+export interface DelegationSignerInfoResponse {
+    /**
+     * The digest algorithm type represents the standard digest algorithm number used to construct the digest. See: https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml
+     */
+    digestAlgorithmType: number;
+    /**
+     * The digest value is a cryptographic hash value of the referenced DNSKEY Resource Record.
+     */
+    digestValue: string;
+    /**
+     * The record represents a delegation signer (DS) record.
+     */
+    record: string;
+}
+
+/**
  * List of properties of the device.
  */
 export interface DevicePropertiesResponse {
@@ -9596,6 +9614,36 @@ export interface SharedKeyPropertiesResponse {
      * The length of the shared key for the vpn link connection.
      */
     sharedKeyLength?: number;
+}
+
+/**
+ * Represents the signing key.
+ */
+export interface SigningKeyResponse {
+    /**
+     * The delegation signer information.
+     */
+    delegationSignerInfo: DelegationSignerInfoResponse[];
+    /**
+     * The flags specifies how the key is used.
+     */
+    flags: number;
+    /**
+     * The key tag value of the DNSKEY Resource Record.
+     */
+    keyTag: number;
+    /**
+     * The protocol value. The value is always 3.
+     */
+    protocol: number;
+    /**
+     * The public key, represented as a Base64 encoding.
+     */
+    publicKey: string;
+    /**
+     * The security algorithm type represents the standard security algorithm number of the DNSKEY Resource Record. See: https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml
+     */
+    securityAlgorithmType: number;
 }
 
 export interface SingleQueryResultResponse {
