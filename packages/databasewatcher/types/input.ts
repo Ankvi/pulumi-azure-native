@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
  */
 export interface DatastoreArgs {
     /**
-     * The Azure ResourceId of an Azure Data Explorer cluster.
+     * The Azure resource ID of an Azure Data Explorer cluster.
      */
     adxClusterResourceId?: pulumi.Input<string>;
     /**
@@ -53,7 +53,7 @@ export interface ManagedServiceIdentityArgs {
  */
 export interface VaultSecretArgs {
     /**
-     * The Azure ResourceId of the Key Vault instance storing database authentication secrets.
+     * The Azure resource ID of the Key Vault instance storing database authentication secrets.
      */
     akvResourceId?: pulumi.Input<string>;
     /**
@@ -65,5 +65,6 @@ export interface VaultSecretArgs {
      */
     akvTargetUser?: pulumi.Input<string>;
 }
+
 
 

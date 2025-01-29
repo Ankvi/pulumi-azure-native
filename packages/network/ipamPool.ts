@@ -73,6 +73,9 @@ export class IpamPool extends pulumi.CustomResource {
             if ((!args || args.networkManagerName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkManagerName'");
             }
+            if ((!args || args.properties === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'properties'");
+            }
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
@@ -119,7 +122,7 @@ export interface IpamPoolArgs {
     /**
      * Properties of IpamPool resource properties which are specific to the Pool resource.
      */
-    properties?: pulumi.Input<types.inputs.IpamPoolPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.IpamPoolPropertiesArgs>;
     /**
      * The name of the resource group.
      */
