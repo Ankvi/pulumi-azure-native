@@ -23,3 +23,4 @@ export interface RpSkuArgs {
      */
     tier: pulumi.Input<string | enums.RpSkuTier>;
 }
+
