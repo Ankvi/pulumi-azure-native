@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * A object that represents a SuppressionList record.
  * Azure REST API version: 2023-06-01-preview.
+ *
+ * Other available API versions: 2024-09-01-preview.
  */
 export class SuppressionListAddress extends pulumi.CustomResource {
     /**
@@ -121,7 +123,7 @@ export class SuppressionListAddress extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:communication/v20230601preview:SuppressionListAddress" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:communication/v20230601preview:SuppressionListAddress" }, { type: "azure-native:communication/v20240901preview:SuppressionListAddress" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SuppressionListAddress.__pulumiType, name, resourceInputs, opts);
     }

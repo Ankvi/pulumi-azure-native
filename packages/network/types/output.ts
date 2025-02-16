@@ -7445,6 +7445,20 @@ export interface NsRecordResponse {
 }
 
 /**
+ * The NSP logging configuration properties.
+ */
+export interface NspLoggingConfigurationPropertiesResponse {
+    /**
+     * The log categories to enable in the NSP logging configuration.
+     */
+    enabledLogCategories?: string[];
+    /**
+     * The version of the NSP logging configuration.
+     */
+    version?: string;
+}
+
+/**
  * Office365 breakout categories.
  */
 export interface O365BreakOutCategoryPoliciesResponse {
@@ -11494,6 +11508,7 @@ export interface WebApplicationFirewallScrubbingRulesResponse {
      */
     state?: string;
 }
+
 
 
 

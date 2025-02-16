@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets the managementpolicy associated with the specified storage account.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01.
+ * Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
  */
 export function getManagementPolicy(args: GetManagementPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetManagementPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -60,7 +60,7 @@ export interface GetManagementPolicyResult {
  * Gets the managementpolicy associated with the specified storage account.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01.
+ * Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
  */
 export function getManagementPolicyOutput(args: GetManagementPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManagementPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

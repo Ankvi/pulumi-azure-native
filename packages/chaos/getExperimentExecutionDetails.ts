@@ -5,7 +5,7 @@ import * as types from "./types";
  * Execution details of an experiment resource.
  * Azure REST API version: 2023-11-01.
  *
- * Other available API versions: 2024-01-01, 2024-03-22-preview, 2024-11-01-preview.
+ * Other available API versions: 2024-01-01, 2024-03-22-preview, 2024-11-01-preview, 2025-01-01.
  */
 export function getExperimentExecutionDetails(args: GetExperimentExecutionDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetExperimentExecutionDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -76,7 +76,7 @@ export interface GetExperimentExecutionDetailsResult {
  * Execution details of an experiment resource.
  * Azure REST API version: 2023-11-01.
  *
- * Other available API versions: 2024-01-01, 2024-03-22-preview, 2024-11-01-preview.
+ * Other available API versions: 2024-01-01, 2024-03-22-preview, 2024-11-01-preview, 2025-01-01.
  */
 export function getExperimentExecutionDetailsOutput(args: GetExperimentExecutionDetailsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExperimentExecutionDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
