@@ -2,7 +2,7 @@ import { exit } from "node:process";
 import { type ConfigOptions, config } from "./config";
 import { getLatestBuildVersion, getLatestRelease } from "./github";
 import { getOutputModules } from "./modules";
-import { Runner } from "./runner";
+import * as runner from "./runner";
 
 export type ActionOptions = {
     verbose?: boolean;
@@ -17,12 +17,10 @@ type BuildOptions = ActionOptions &
 export async function build(options: BuildOptions) {
     await config.initialize(options);
 
-    const runner = new Runner();
     await runner.build(options);
 }
 
 export async function commitAndPush() {
-    const runner = new Runner();
     await runner.commitOutput();
 }
 

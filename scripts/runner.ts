@@ -1,7 +1,7 @@
 import { rm } from "node:fs/promises";
 import { resolve } from "node:path";
 import { exit } from "node:process";
-import type { Shell, ShellError } from "bun";
+import type { ShellError } from "bun";
 import log from "loglevel";
 import { writeChangelogToOutput } from "./changelog";
 import { config } from "./config";
@@ -13,73 +13,66 @@ export type BuildOptions = {
     submodules?: boolean;
 };
 
-export class Runner {
-    private outputBasePath: string;
-    private $: Shell;
+const outputBasePath = resolve(import.meta.dir, "..");
+const $ = Bun.$.cwd(outputBasePath).throws(true);
 
-    constructor() {
-        this.outputBasePath = resolve(import.meta.dir, "..");
-        this.$ = Bun.$.cwd(this.outputBasePath).throws(true);
+export async function build(options: BuildOptions) {
+    await prepareOutputPath();
+
+    log.info("Creating type files");
+    await createModuleTypeFiles();
+
+    if (options.submodules) {
+        log.info("Creating submodule files");
+        await createSubModuleTypeFiles();
     }
 
-    public async build(options: BuildOptions) {
-        await this.prepareOutputPath();
+    log.info("Creating core module");
+    await createCorePackage();
 
-        log.info("Creating type files");
-        await createModuleTypeFiles();
+    log.info("Creating other modules");
+    await createModules(options.submodules);
 
-        if (options.submodules) {
-            log.info("Creating submodule files");
-            await createSubModuleTypeFiles();
-        }
+    await writeChangelogToOutput();
 
-        log.info("Creating core module");
-        await createCorePackage();
-
-        log.info("Creating other modules");
-        await createModules(options.submodules);
-
-        await writeChangelogToOutput();
-
-        if (options.commit) {
-            await this.commitOutput();
-        }
+    if (options.commit) {
+        await commitOutput();
     }
+}
 
-    private async prepareOutputPath() {
-        await this.$`git pull`;
+async function prepareOutputPath() {
+    await $`git pull`;
 
-        log.info("Removing old output");
-        await rm(config.outputPath, { recursive: true });
-    }
+    log.info("Removing old output");
+    await rm(config.outputPath, { recursive: true });
+}
 
-    public async commitOutput() {
-        const corePackage = await import("../packages/core/package.json");
-        const { version } = corePackage;
+export async function commitOutput() {
+    const corePackage = await import("../packages/core/package.json");
+    const { version } = corePackage;
 
-        log.info("Committing result to GitHub");
-        log.info("Current working directory:", this.outputBasePath);
+    log.info("Committing result to GitHub");
+    log.info("Current working directory:", outputBasePath);
 
-        try {
-            const tag = `v${version}`;
-            const message = `Bumped to ${tag}`;
-            const branch = `release/${tag}`;
-            await this.$`pnpm install`;
-            await this.$`make lint`;
-            await this.$`git checkout -b ${branch}`;
-            await this.$`git add -A`;
-            await this.$`git commit -m "${message}"`;
-            await this.$`git push -u origin ${branch}`;
-            await this.$`gh pr create --title "${tag}" --body "${message}"`;
-            // await this.$`git tag ${tag}`;
-            // await this.$`git push --tags`;
-        } catch (err) {
-            log.error(`Error while committing: ${(err as Error).message}`);
-            const stderr = (err as ShellError).stderr;
-            if (stderr) {
-                log.error(stderr);
-            }
-            exit(1);
+    try {
+        const tag = `v${version}`;
+        const message = `Bumped to ${tag}`;
+        const branch = `release/${tag}`;
+        await $`pnpm install --no-frozen-lockfile`;
+        await $`make lint`;
+        await $`git checkout -b ${branch}`;
+        await $`git add -A`;
+        await $`git commit -m "${message}"`;
+        await $`git push -u origin ${branch}`;
+        await $`gh pr create --title "${tag}" --body "${message}"`;
+        // await this.$`git tag ${tag}`;
+        // await this.$`git push --tags`;
+    } catch (err) {
+        log.error(`Error while committing: ${(err as Error).message}`);
+        const stderr = (err as ShellError).stderr;
+        if (stderr) {
+            log.error(stderr);
         }
+        exit(1);
     }
 }
