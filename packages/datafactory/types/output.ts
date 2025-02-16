@@ -3976,6 +3976,10 @@ export interface AzurePostgreSqlLinkedServiceResponse {
      */
     annotations?: any[];
     /**
+     * Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
+     */
+    azureCloudType?: any;
+    /**
      * The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
      */
     commandTimeout?: any;
@@ -3987,6 +3991,10 @@ export interface AzurePostgreSqlLinkedServiceResponse {
      * An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
      */
     connectionString?: any;
+    /**
+     * The credential reference containing authentication information.
+     */
+    credential?: CredentialReferenceResponse;
     /**
      * Database name for connection. Type: string.
      */
@@ -4024,9 +4032,33 @@ export interface AzurePostgreSqlLinkedServiceResponse {
      */
     server?: any;
     /**
+     * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalCredentialType?: any;
+    /**
+     * Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalEmbeddedCert?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalEmbeddedCertPassword?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * The ID of the service principal used to authenticate against Azure Database for PostgreSQL Flexible server. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalId?: any;
+    /**
+     * The key of the service principal used to authenticate against Azure Database for PostgreSQL Flexible server.
+     */
+    servicePrincipalKey?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
      * SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
      */
     sslMode?: any;
+    /**
+     * The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+     */
+    tenant?: any;
     /**
      * The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
      */
@@ -6462,7 +6494,7 @@ export interface CopyActivityResponse {
     /**
      * Copy activity sink.
      */
-    sink: AvroSinkResponse | AzureBlobFSSinkResponse | AzureDataExplorerSinkResponse | AzureDataLakeStoreSinkResponse | AzureDatabricksDeltaLakeSinkResponse | AzureMySqlSinkResponse | AzurePostgreSqlSinkResponse | AzureQueueSinkResponse | AzureSearchIndexSinkResponse | AzureSqlSinkResponse | AzureTableSinkResponse | BinarySinkResponse | BlobSinkResponse | CommonDataServiceForAppsSinkResponse | CosmosDbMongoDbApiSinkResponse | CosmosDbSqlApiSinkResponse | DelimitedTextSinkResponse | DocumentDbCollectionSinkResponse | DynamicsCrmSinkResponse | DynamicsSinkResponse | FileSystemSinkResponse | IcebergSinkResponse | InformixSinkResponse | JsonSinkResponse | LakeHouseTableSinkResponse | MicrosoftAccessSinkResponse | MongoDbAtlasSinkResponse | MongoDbV2SinkResponse | OdbcSinkResponse | OracleSinkResponse | OrcSinkResponse | ParquetSinkResponse | RestSinkResponse | SalesforceServiceCloudSinkResponse | SalesforceServiceCloudV2SinkResponse | SalesforceSinkResponse | SalesforceV2SinkResponse | SapCloudForCustomerSinkResponse | SnowflakeSinkResponse | SnowflakeV2SinkResponse | SqlDWSinkResponse | SqlMISinkResponse | SqlServerSinkResponse | SqlSinkResponse | WarehouseSinkResponse;
+    sink: AvroSinkResponse | AzureBlobFSSinkResponse | AzureDataExplorerSinkResponse | AzureDataLakeStoreSinkResponse | AzureDatabricksDeltaLakeSinkResponse | AzureMySqlSinkResponse | AzurePostgreSqlSinkResponse | AzureQueueSinkResponse | AzureSearchIndexSinkResponse | AzureSqlSinkResponse | AzureTableSinkResponse | BinarySinkResponse | BlobSinkResponse | CommonDataServiceForAppsSinkResponse | CosmosDbMongoDbApiSinkResponse | CosmosDbSqlApiSinkResponse | DelimitedTextSinkResponse | DocumentDbCollectionSinkResponse | DynamicsCrmSinkResponse | DynamicsSinkResponse | FileSystemSinkResponse | IcebergSinkResponse | InformixSinkResponse | JsonSinkResponse | LakeHouseTableSinkResponse | MicrosoftAccessSinkResponse | MongoDbAtlasSinkResponse | MongoDbV2SinkResponse | OdbcSinkResponse | OracleSinkResponse | OrcSinkResponse | ParquetSinkResponse | RestSinkResponse | SalesforceServiceCloudSinkResponse | SalesforceServiceCloudV2SinkResponse | SalesforceSinkResponse | SalesforceV2SinkResponse | SapCloudForCustomerSinkResponse | SnowflakeSinkResponse | SnowflakeV2SinkResponse | SqlDWSinkResponse | SqlMISinkResponse | SqlServerSinkResponse | SqlSinkResponse | TeradataSinkResponse | WarehouseSinkResponse;
     /**
      * Specify the fault tolerance for data consistency.
      */
@@ -16925,7 +16957,7 @@ export interface OracleCloudStorageReadSettingsResponse {
 }
 
 /**
- * Oracle database.
+ * Oracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
  */
 export interface OracleLinkedServiceResponse {
     /**
@@ -16933,21 +16965,61 @@ export interface OracleLinkedServiceResponse {
      */
     annotations?: any[];
     /**
+     * Authentication type for connecting to the Oracle database. Only used for Version 2.0.
+     */
+    authenticationType?: string;
+    /**
      * The integration runtime reference.
      */
     connectVia?: IntegrationRuntimeReferenceResponse;
     /**
-     * The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+     * The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
      */
     connectionString: any;
+    /**
+     * Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+     */
+    cryptoChecksumClient?: any;
+    /**
+     * Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+     */
+    cryptoChecksumTypesClient?: any;
     /**
      * Linked service description.
      */
     description?: string;
     /**
+     * Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+     */
+    enableBulkLoad?: any;
+    /**
      * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
      */
     encryptedCredential?: string;
+    /**
+     * Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+     */
+    encryptionClient?: any;
+    /**
+     * Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+     */
+    encryptionTypesClient?: any;
+    /**
+     * Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+     */
+    fetchSize?: any;
+    /**
+     * Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+     */
+    fetchTswtzAsTimestamp?: any;
+    /**
+     * Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+     */
+    initialLobFetchSize?: any;
+    /**
+     * Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+     */
+    initializationString?: any;
     /**
      * Parameters for linked service.
      */
@@ -16957,10 +17029,26 @@ export interface OracleLinkedServiceResponse {
      */
     password?: AzureKeyVaultSecretReferenceResponse;
     /**
+     * The location of Oracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+     */
+    server?: any;
+    /**
+     * Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+     */
+    statementCacheSize?: any;
+    /**
+     * Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+     */
+    supportV1DataTypes?: any;
+    /**
      * Type of linked service.
      * Expected value is 'Oracle'.
      */
     type: "Oracle";
+    /**
+     * The Oracle database username. Type: string. Only used for Version 2.0.
+     */
+    username?: any;
     /**
      * Version of the linked service.
      */
@@ -25475,6 +25563,21 @@ export interface TeamDeskLinkedServiceResponse {
 }
 
 /**
+ * Teradata import command settings.
+ */
+export interface TeradataImportCommandResponse {
+    /**
+     * Additional format options for Teradata Copy Command. The format options only applies to direct copy from CSV source. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "timeFormat": "HHhMImSSs" }
+     */
+    additionalFormatOptions?: any;
+    /**
+     * The import setting type.
+     * Expected value is 'TeradataImportCommand'.
+     */
+    type: "TeradataImportCommand";
+}
+
+/**
  * Linked service for Teradata data source.
  */
 export interface TeradataLinkedServiceResponse {
@@ -25487,11 +25590,15 @@ export interface TeradataLinkedServiceResponse {
      */
     authenticationType?: string;
     /**
+     * The character set to use for the connection. Type: string (or Expression with resultType string). Only applied for version 2.0.
+     */
+    characterSet?: any;
+    /**
      * The integration runtime reference.
      */
     connectVia?: IntegrationRuntimeReferenceResponse;
     /**
-     * Teradata ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+     * Teradata ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only applied for version 1.0.
      */
     connectionString?: any;
     /**
@@ -25503,6 +25610,14 @@ export interface TeradataLinkedServiceResponse {
      */
     encryptedCredential?: string;
     /**
+     * The port numbers when connecting to server through HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only applied for version 2.0.
+     */
+    httpsPortNumber?: any;
+    /**
+     * The maximum size of the response buffer for SQL requests, in bytes. Type: integer. Only applied for version 2.0.
+     */
+    maxRespSize?: any;
+    /**
      * Parameters for linked service.
      */
     parameters?: {[key: string]: ParameterSpecificationResponse};
@@ -25511,14 +25626,26 @@ export interface TeradataLinkedServiceResponse {
      */
     password?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
     /**
+     * The port numbers when connecting to server through non HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only used for V2. Only applied for version 2.0.
+     */
+    portNumber?: any;
+    /**
      * Server name for connection. Type: string (or Expression with resultType string).
      */
     server?: any;
+    /**
+     * SSL mode for connection. Valid values including: “Disable”, “Allow”, “Prefer”, “Require”, “Verify-CA”, “Verify-Full”. Default value is “Verify-Full”. Type: string (or Expression with resultType string). Only applied for version 2.0.
+     */
+    sslMode?: any;
     /**
      * Type of linked service.
      * Expected value is 'Teradata'.
      */
     type: "Teradata";
+    /**
+     * Specifies whether to encrypt all communication with the Teradata database. Allowed values are 0 or 1. This setting will be ignored for HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only applied for version 2.0.
+     */
+    useDataEncryption?: any;
     /**
      * Username for authentication. Type: string (or Expression with resultType string).
      */
@@ -25545,6 +25672,45 @@ export interface TeradataPartitionSettingsResponse {
      * The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
      */
     partitionUpperBound?: any;
+}
+
+/**
+ * A copy activity Teradata sink.
+ */
+export interface TeradataSinkResponse {
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * Teradata import settings.
+     */
+    importSettings?: TeradataImportCommandResponse;
+    /**
+     * The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Sink retry count. Type: integer (or Expression with resultType integer).
+     */
+    sinkRetryCount?: any;
+    /**
+     * Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sinkRetryWait?: any;
+    /**
+     * Copy sink type.
+     * Expected value is 'TeradataSink'.
+     */
+    type: "TeradataSink";
+    /**
+     * Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+     */
+    writeBatchSize?: any;
+    /**
+     * Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    writeBatchTimeout?: any;
 }
 
 /**
