@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-confidentialledger",
-    "version": "2.85.0",
+    "version": "2.88.0",
     "description": "Pulumi Azure Native package for confidentialledger",
     "keywords": [
         "pulumi",

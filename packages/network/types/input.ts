@@ -4933,6 +4933,20 @@ export interface NsRecordArgs {
 }
 
 /**
+ * The NSP logging configuration properties.
+ */
+export interface NspLoggingConfigurationPropertiesArgs {
+    /**
+     * The log categories to enable in the NSP logging configuration.
+     */
+    enabledLogCategories?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The version of the NSP logging configuration.
+     */
+    version?: pulumi.Input<string>;
+}
+
+/**
  * Office365 breakout categories.
  */
 export interface O365BreakOutCategoryPoliciesArgs {
@@ -7804,6 +7818,7 @@ export interface WebApplicationFirewallScrubbingRulesArgs {
      */
     state?: pulumi.Input<string | enums.ScrubbingRuleEntryState>;
 }
+
 
 
 

@@ -1,7 +1,7 @@
 {
-    "name": "@kengachu-pulumi/azure-native-networkanalytics",
-    "version": "2.85.0",
-    "description": "Pulumi Azure Native package for networkanalytics",
+    "name": "@kengachu-pulumi/azure-native-weightsandbiases",
+    "version": "2.88.0",
+    "description": "Pulumi Azure Native package for weightsandbiases",
     "keywords": [
         "pulumi",
         "azure",

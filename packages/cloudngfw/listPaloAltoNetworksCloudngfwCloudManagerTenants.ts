@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Cloud Manager Tenant
  * Azure REST API version: 2024-02-07-preview.
+ *
+ * Other available API versions: 2025-02-06-preview.
  */
 export function listPaloAltoNetworksCloudngfwCloudManagerTenants(args?: ListPaloAltoNetworksCloudngfwCloudManagerTenantsArgs, opts?: pulumi.InvokeOptions): Promise<ListPaloAltoNetworksCloudngfwCloudManagerTenantsResult> {
     args = args || {};
@@ -26,6 +28,8 @@ export interface ListPaloAltoNetworksCloudngfwCloudManagerTenantsResult {
 /**
  * Cloud Manager Tenant
  * Azure REST API version: 2024-02-07-preview.
+ *
+ * Other available API versions: 2025-02-06-preview.
  */
 export function listPaloAltoNetworksCloudngfwCloudManagerTenantsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListPaloAltoNetworksCloudngfwCloudManagerTenantsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

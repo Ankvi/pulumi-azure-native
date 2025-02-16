@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a SuppressionListAddress.
  * Azure REST API version: 2023-06-01-preview.
+ *
+ * Other available API versions: 2024-09-01-preview.
  */
 export function getSuppressionListAddress(args: GetSuppressionListAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetSuppressionListAddressResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -87,6 +89,8 @@ export interface GetSuppressionListAddressResult {
 /**
  * Get a SuppressionListAddress.
  * Azure REST API version: 2023-06-01-preview.
+ *
+ * Other available API versions: 2024-09-01-preview.
  */
 export function getSuppressionListAddressOutput(args: GetSuppressionListAddressOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSuppressionListAddressResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

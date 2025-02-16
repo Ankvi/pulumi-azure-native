@@ -21,6 +21,11 @@ export const getManagedClusterApplicationTypeVersion: typeof import("./getManage
 export const getManagedClusterApplicationTypeVersionOutput: typeof import("./getManagedClusterApplicationTypeVersion").getManagedClusterApplicationTypeVersionOutput = null as any;
 utilities.lazyLoad(exports, ["getManagedClusterApplicationTypeVersion","getManagedClusterApplicationTypeVersionOutput"], () => require("./getManagedClusterApplicationTypeVersion"));
 
+export { GetManagedClusterFaultSimulationArgs, GetManagedClusterFaultSimulationResult, GetManagedClusterFaultSimulationOutputArgs } from "./getManagedClusterFaultSimulation";
+export const getManagedClusterFaultSimulation: typeof import("./getManagedClusterFaultSimulation").getManagedClusterFaultSimulation = null as any;
+export const getManagedClusterFaultSimulationOutput: typeof import("./getManagedClusterFaultSimulation").getManagedClusterFaultSimulationOutput = null as any;
+utilities.lazyLoad(exports, ["getManagedClusterFaultSimulation","getManagedClusterFaultSimulationOutput"], () => require("./getManagedClusterFaultSimulation"));
+
 export { GetManagedClusterServiceArgs, GetManagedClusterServiceResult, GetManagedClusterServiceOutputArgs } from "./getManagedClusterService";
 export const getManagedClusterService: typeof import("./getManagedClusterService").getManagedClusterService = null as any;
 export const getManagedClusterServiceOutput: typeof import("./getManagedClusterService").getManagedClusterServiceOutput = null as any;
@@ -31,6 +36,11 @@ export const getNodeType: typeof import("./getNodeType").getNodeType = null as a
 export const getNodeTypeOutput: typeof import("./getNodeType").getNodeTypeOutput = null as any;
 utilities.lazyLoad(exports, ["getNodeType","getNodeTypeOutput"], () => require("./getNodeType"));
 
+export { GetNodeTypeFaultSimulationArgs, GetNodeTypeFaultSimulationResult, GetNodeTypeFaultSimulationOutputArgs } from "./getNodeTypeFaultSimulation";
+export const getNodeTypeFaultSimulation: typeof import("./getNodeTypeFaultSimulation").getNodeTypeFaultSimulation = null as any;
+export const getNodeTypeFaultSimulationOutput: typeof import("./getNodeTypeFaultSimulation").getNodeTypeFaultSimulationOutput = null as any;
+utilities.lazyLoad(exports, ["getNodeTypeFaultSimulation","getNodeTypeFaultSimulationOutput"], () => require("./getNodeTypeFaultSimulation"));
+
 export { GetmanagedAzResiliencyStatusArgs, GetmanagedAzResiliencyStatusResult, GetmanagedAzResiliencyStatusOutputArgs } from "./getmanagedAzResiliencyStatus";
 export const getmanagedAzResiliencyStatus: typeof import("./getmanagedAzResiliencyStatus").getmanagedAzResiliencyStatus = null as any;
 export const getmanagedAzResiliencyStatusOutput: typeof import("./getmanagedAzResiliencyStatus").getmanagedAzResiliencyStatusOutput = null as any;
@@ -40,6 +50,16 @@ export { GetmanagedMaintenanceWindowStatusArgs, GetmanagedMaintenanceWindowStatu
 export const getmanagedMaintenanceWindowStatus: typeof import("./getmanagedMaintenanceWindowStatus").getmanagedMaintenanceWindowStatus = null as any;
 export const getmanagedMaintenanceWindowStatusOutput: typeof import("./getmanagedMaintenanceWindowStatus").getmanagedMaintenanceWindowStatusOutput = null as any;
 utilities.lazyLoad(exports, ["getmanagedMaintenanceWindowStatus","getmanagedMaintenanceWindowStatusOutput"], () => require("./getmanagedMaintenanceWindowStatus"));
+
+export { ListManagedClusterFaultSimulationArgs, ListManagedClusterFaultSimulationResult, ListManagedClusterFaultSimulationOutputArgs } from "./listManagedClusterFaultSimulation";
+export const listManagedClusterFaultSimulation: typeof import("./listManagedClusterFaultSimulation").listManagedClusterFaultSimulation = null as any;
+export const listManagedClusterFaultSimulationOutput: typeof import("./listManagedClusterFaultSimulation").listManagedClusterFaultSimulationOutput = null as any;
+utilities.lazyLoad(exports, ["listManagedClusterFaultSimulation","listManagedClusterFaultSimulationOutput"], () => require("./listManagedClusterFaultSimulation"));
+
+export { ListNodeTypeFaultSimulationArgs, ListNodeTypeFaultSimulationResult, ListNodeTypeFaultSimulationOutputArgs } from "./listNodeTypeFaultSimulation";
+export const listNodeTypeFaultSimulation: typeof import("./listNodeTypeFaultSimulation").listNodeTypeFaultSimulation = null as any;
+export const listNodeTypeFaultSimulationOutput: typeof import("./listNodeTypeFaultSimulation").listNodeTypeFaultSimulationOutput = null as any;
+utilities.lazyLoad(exports, ["listNodeTypeFaultSimulation","listNodeTypeFaultSimulationOutput"], () => require("./listNodeTypeFaultSimulation"));
 
 export { ManagedClusterArgs } from "./managedCluster";
 export type ManagedCluster = import("./managedCluster").ManagedCluster;

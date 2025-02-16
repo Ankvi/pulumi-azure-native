@@ -499,7 +499,7 @@ export const ConfigurationType = {
 export type ConfigurationType = (typeof ConfigurationType)[keyof typeof ConfigurationType];
 
 export const ContentType = {
-    AnalyticRule: "AnalyticRule",
+    AnalyticsRule: "AnalyticsRule",
     Workbook: "Workbook",
 } as const;
 

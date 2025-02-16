@@ -284,6 +284,24 @@ export interface OverrideResponse {
 }
 
 /**
+ * The PIM Only Mode settings.
+ */
+export interface PIMOnlyModeSettingsResponse {
+    /**
+     * The list of excluded assignment types allowed.
+     */
+    excludedAssignmentTypes?: string[];
+    /**
+     * The list of excluded entities that the rule does not apply to.
+     */
+    excludes?: UsersOrServicePrincipalSetResponse[];
+    /**
+     * Determines whether the setting is enabled, disabled or report only.
+     */
+    mode?: string;
+}
+
+/**
  * The definition of a parameter that can be provided to the policy.
  */
 export interface ParameterDefinitionsValueResponse {
@@ -567,6 +585,34 @@ export function policyDefinitionVersionResponseProvideDefaults(val: PolicyDefini
 }
 
 /**
+ * Expanded info of resource scope
+ */
+export interface PolicyPropertiesResponse {
+    /**
+     * Details of the resource scope
+     */
+    scope: PolicyPropertiesResponseScope;
+}
+
+/**
+ * Details of the resource scope
+ */
+export interface PolicyPropertiesResponseScope {
+    /**
+     * Display name of the resource
+     */
+    displayName?: string;
+    /**
+     * Scope id of the resource
+     */
+    id?: string;
+    /**
+     * Type of the resource
+     */
+    type?: string;
+}
+
+/**
  * The policy set definition version.
  */
 export interface PolicySetDefinitionVersionResponse {
@@ -784,6 +830,10 @@ export interface RoleManagementPolicyEnablementRuleResponse {
  */
 export interface RoleManagementPolicyExpirationRuleResponse {
     /**
+     * The members not restricted by expiration rule.
+     */
+    exceptionMembers?: UserSetResponse[];
+    /**
      * The id of the rule.
      */
     id?: string;
@@ -839,6 +889,29 @@ export interface RoleManagementPolicyNotificationRuleResponse {
      * Expected value is 'RoleManagementPolicyNotificationRule'.
      */
     ruleType: "RoleManagementPolicyNotificationRule";
+    /**
+     * The target of the current rule.
+     */
+    target?: RoleManagementPolicyRuleTargetResponse;
+}
+
+/**
+ * The role management policy PIM only mode rule.
+ */
+export interface RoleManagementPolicyPimOnlyModeRuleResponse {
+    /**
+     * The id of the rule.
+     */
+    id?: string;
+    /**
+     * The PIM Only Mode settings
+     */
+    pimOnlyModeSettings?: PIMOnlyModeSettingsResponse;
+    /**
+     * The type of rule
+     * Expected value is 'RoleManagementPolicyPimOnlyModeRule'.
+     */
+    ruleType: "RoleManagementPolicyPimOnlyModeRule";
     /**
      * The target of the current rule.
      */
@@ -943,6 +1016,24 @@ export interface UserSetResponse {
      * The type of user.
      */
     userType?: string;
+}
+
+/**
+ * The detail of a subject.
+ */
+export interface UsersOrServicePrincipalSetResponse {
+    /**
+     * The display Name of the entity.
+     */
+    displayName?: string;
+    /**
+     * The object id of the entity.
+     */
+    id?: string;
+    /**
+     * The type of user.
+     */
+    type?: string;
 }
 
 

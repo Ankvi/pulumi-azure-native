@@ -5,7 +5,7 @@ import * as types from "./types";
  * The logical network resource definition.
  * Azure REST API version: 2023-09-01-preview.
  *
- * Other available API versions: 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview.
+ * Other available API versions: 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview.
  */
 export function getLogicalNetwork(args: GetLogicalNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetLogicalNetworkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -83,7 +83,7 @@ export interface GetLogicalNetworkResult {
  * The logical network resource definition.
  * Azure REST API version: 2023-09-01-preview.
  *
- * Other available API versions: 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview.
+ * Other available API versions: 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview.
  */
 export function getLogicalNetworkOutput(args: GetLogicalNetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogicalNetworkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
