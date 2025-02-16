@@ -25,7 +25,9 @@ jobs:
         run: |
           make check-version
 
-      - run: |
+      - name: Set git config
+        if: success()
+        run: |
           git config --global user.email "${{ vars.GIT_EMAIL }}"
           git config --global user.name "${{ vars.GIT_NAME }}"
 
