@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets Business Application Agent.
  * Azure REST API version: 2024-04-01-preview.
  *
- * Other available API versions: 2024-10-01-preview.
+ * Other available API versions: 2024-10-01-preview, 2025-01-01-preview.
  */
 export function getBusinessApplicationAgent(args: GetBusinessApplicationAgentArgs, opts?: pulumi.InvokeOptions): Promise<GetBusinessApplicationAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -67,7 +67,7 @@ export interface GetBusinessApplicationAgentResult {
  * Gets Business Application Agent.
  * Azure REST API version: 2024-04-01-preview.
  *
- * Other available API versions: 2024-10-01-preview.
+ * Other available API versions: 2024-10-01-preview, 2025-01-01-preview.
  */
 export function getBusinessApplicationAgentOutput(args: GetBusinessApplicationAgentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBusinessApplicationAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

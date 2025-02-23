@@ -5,7 +5,7 @@ import * as types from "./types";
  * List SSH authorized keys and shared key of the local user.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01.
+ * Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
  */
 export function listLocalUserKeys(args: ListLocalUserKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListLocalUserKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -48,7 +48,7 @@ export interface ListLocalUserKeysResult {
  * List SSH authorized keys and shared key of the local user.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01.
+ * Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
  */
 export function listLocalUserKeysOutput(args: ListLocalUserKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListLocalUserKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

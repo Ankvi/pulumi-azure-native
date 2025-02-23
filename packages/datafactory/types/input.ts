@@ -13852,7 +13852,7 @@ export interface JsonWriteSettingsArgs {
 }
 
 /**
- * Microsoft Fabric LakeHouse linked service.
+ * Microsoft Fabric Lakehouse linked service.
  */
 export interface LakeHouseLinkedServiceArgs {
     /**
@@ -13860,7 +13860,7 @@ export interface LakeHouseLinkedServiceArgs {
      */
     annotations?: pulumi.Input<any[]>;
     /**
-     * The ID of Microsoft Fabric LakeHouse artifact. Type: string (or Expression with resultType string).
+     * The ID of Microsoft Fabric Lakehouse artifact. Type: string (or Expression with resultType string).
      */
     artifactId?: any;
     /**
@@ -13888,11 +13888,11 @@ export interface LakeHouseLinkedServiceArgs {
      */
     servicePrincipalCredentialType?: any;
     /**
-     * The ID of the application used to authenticate against Microsoft Fabric LakeHouse. Type: string (or Expression with resultType string).
+     * The ID of the application used to authenticate against Microsoft Fabric Lakehouse. Type: string (or Expression with resultType string).
      */
     servicePrincipalId?: any;
     /**
-     * The Key of the application used to authenticate against Microsoft Fabric LakeHouse.
+     * The Key of the application used to authenticate against Microsoft Fabric Lakehouse.
      */
     servicePrincipalKey?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
     /**
@@ -13901,9 +13901,9 @@ export interface LakeHouseLinkedServiceArgs {
     tenant?: any;
     /**
      * Type of linked service.
-     * Expected value is 'LakeHouse'.
+     * Expected value is 'Lakehouse'.
      */
-    type: pulumi.Input<"LakeHouse">;
+    type: pulumi.Input<"Lakehouse">;
     /**
      * Version of the linked service.
      */
@@ -13915,7 +13915,7 @@ export interface LakeHouseLinkedServiceArgs {
 }
 
 /**
- * The location of Microsoft Fabric LakeHouse Files dataset.
+ * The location of Microsoft Fabric Lakehouse Files dataset.
  */
 export interface LakeHouseLocationArgs {
     /**
@@ -13934,7 +13934,7 @@ export interface LakeHouseLocationArgs {
 }
 
 /**
- * Microsoft Fabric LakeHouse Files read settings.
+ * Microsoft Fabric Lakehouse Files read settings.
  */
 export interface LakeHouseReadSettingsArgs {
     /**
@@ -13979,17 +13979,17 @@ export interface LakeHouseReadSettingsArgs {
      */
     type: pulumi.Input<"LakeHouseReadSettings">;
     /**
-     * Microsoft Fabric LakeHouse Files wildcardFileName. Type: string (or Expression with resultType string).
+     * Microsoft Fabric Lakehouse Files wildcardFileName. Type: string (or Expression with resultType string).
      */
     wildcardFileName?: any;
     /**
-     * Microsoft Fabric LakeHouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
+     * Microsoft Fabric Lakehouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
      */
     wildcardFolderPath?: any;
 }
 
 /**
- * Microsoft Fabric LakeHouse Table.
+ * Microsoft Fabric Lakehouse Table.
  */
 export interface LakeHouseTableDatasetArgs {
     /**
@@ -14021,18 +14021,18 @@ export interface LakeHouseTableDatasetArgs {
      */
     structure?: any;
     /**
-     * The name of Microsoft Fabric LakeHouse Table. Type: string (or Expression with resultType string).
+     * The name of Microsoft Fabric Lakehouse Table. Type: string (or Expression with resultType string).
      */
     table?: any;
     /**
      * Type of dataset.
-     * Expected value is 'LakeHouseTable'.
+     * Expected value is 'LakehouseTable'.
      */
-    type: pulumi.Input<"LakeHouseTable">;
+    type: pulumi.Input<"LakehouseTable">;
 }
 
 /**
- * A copy activity for Microsoft Fabric LakeHouse Table sink.
+ * A copy activity for Microsoft Fabric Lakehouse Table sink.
  */
 export interface LakeHouseTableSinkArgs {
     /**
@@ -14060,7 +14060,7 @@ export interface LakeHouseTableSinkArgs {
      */
     sinkRetryWait?: any;
     /**
-     * The type of table action for LakeHouse Table sink. Possible values include: "None", "Append", "Overwrite".
+     * The type of table action for Lakehouse Table sink. Possible values include: "None", "Append", "Overwrite".
      */
     tableActionOption?: any;
     /**
@@ -14079,7 +14079,7 @@ export interface LakeHouseTableSinkArgs {
 }
 
 /**
- * A copy activity source for Microsoft Fabric LakeHouse Table.
+ * A copy activity source for Microsoft Fabric Lakehouse Table.
  */
 export interface LakeHouseTableSourceArgs {
     /**
@@ -14118,7 +14118,7 @@ export interface LakeHouseTableSourceArgs {
 }
 
 /**
- * Microsoft Fabric LakeHouse Files write settings.
+ * Microsoft Fabric Lakehouse Files write settings.
  */
 export interface LakeHouseWriteSettingsArgs {
     /**

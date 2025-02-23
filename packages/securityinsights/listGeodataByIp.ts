@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Get geodata for a single IP address
  * Azure REST API version: 2024-01-01-preview.
  *
- * Other available API versions: 2024-04-01-preview, 2024-10-01-preview.
+ * Other available API versions: 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
  */
 export function listGeodataByIp(args: ListGeodataByIpArgs, opts?: pulumi.InvokeOptions): Promise<ListGeodataByIpResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -112,7 +112,7 @@ export interface ListGeodataByIpResult {
  * Get geodata for a single IP address
  * Azure REST API version: 2024-01-01-preview.
  *
- * Other available API versions: 2024-04-01-preview, 2024-10-01-preview.
+ * Other available API versions: 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
  */
 export function listGeodataByIpOutput(args: ListGeodataByIpOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListGeodataByIpResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

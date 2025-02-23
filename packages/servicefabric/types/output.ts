@@ -216,6 +216,64 @@ export interface EndpointRangeDescriptionResponse {
 }
 
 /**
+ * Constraints for Fault Simulation action.
+ */
+export interface FaultSimulationConstraintsResponse {
+    /**
+     * The absolute expiration timestamp (UTC) after which this fault simulation should be stopped if it's still active.
+     */
+    expirationTime?: string;
+}
+
+/**
+ * Details for Fault Simulation.
+ */
+export interface FaultSimulationDetailsResponse {
+    /**
+     * unique identifier for the cluster resource.
+     */
+    clusterId?: string;
+    /**
+     * List of node type simulations associated with the cluster fault simulation.
+     */
+    nodeTypeFaultSimulation?: NodeTypeFaultSimulationResponse[];
+    /**
+     * unique identifier for the operation associated with the fault simulation.
+     */
+    operationId?: string;
+    /**
+     * Fault simulation parameters.
+     */
+    parameters?: ZoneFaultSimulationParametersResponse;
+}
+
+/**
+ * Fault simulation object with status.
+ */
+export interface FaultSimulationResponse {
+    /**
+     * Fault simulation details
+     */
+    details?: FaultSimulationDetailsResponse;
+    /**
+     * The end time of the fault simulation.
+     */
+    endTime?: string;
+    /**
+     * unique identifier for the fault simulation.
+     */
+    simulationId?: string;
+    /**
+     * The start time of the fault simulation.
+     */
+    startTime?: string;
+    /**
+     * Fault simulation status
+     */
+    status?: string;
+}
+
+/**
  * Describes the frontend configurations for the node type.
  */
 export interface FrontendConfigurationResponse {
@@ -383,6 +441,28 @@ export interface NetworkSecurityRuleResponse {
      * The source port ranges.
      */
     sourcePortRanges?: string[];
+}
+
+/**
+ * Node type fault simulation object with status.
+ */
+export interface NodeTypeFaultSimulationResponse {
+    /**
+     * Node type name.
+     */
+    nodeTypeName?: string;
+    /**
+     * Current or latest asynchronous operation identifier on the node type.
+     */
+    operationId?: string;
+    /**
+     * Current or latest asynchronous operation status on the node type
+     */
+    operationStatus?: string;
+    /**
+     * Fault simulation status
+     */
+    status?: string;
 }
 
 /**
@@ -1097,6 +1177,30 @@ export interface VmssDataDiskResponse {
      */
     lun: number;
 }
+
+/**
+ * Parameters for Zone Fault Simulation action.
+ */
+export interface ZoneFaultSimulationParametersResponse {
+    /**
+     * Constraints for Fault Simulation action.
+     */
+    constraints?: FaultSimulationConstraintsResponse;
+    /**
+     * The kind of fault simulation.
+     * Expected value is 'Zone'.
+     */
+    faultKind: "Zone";
+    /**
+     * Force the action to go through without any check on the cluster.
+     */
+    force?: boolean;
+    /**
+     * Indicates the zones of the fault simulation.
+     */
+    zones?: string[];
+}
+
 
 
 

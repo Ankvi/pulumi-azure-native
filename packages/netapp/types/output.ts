@@ -271,6 +271,20 @@ export interface HourlyScheduleResponse {
 }
 
 /**
+ * Pairs of virtual network ID and private endpoint ID. Every virtual network that has volumes encrypted with customer-managed keys needs its own key vault private endpoint.
+ */
+export interface KeyVaultPrivateEndpointResponse {
+    /**
+     * Identifier of the private endpoint to reach the Azure Key Vault
+     */
+    privateEndpointId?: string;
+    /**
+     * Identifier for the virtual network id
+     */
+    virtualNetworkId?: string;
+}
+
+/**
  * Properties of key vault.
  */
 export interface KeyVaultPropertiesResponse {
@@ -924,6 +938,7 @@ export interface WeeklyScheduleResponse {
      */
     usedBytes?: number;
 }
+
 
 
 
