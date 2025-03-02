@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-storageactions",
-    "version": "2.88.0",
+    "version": "2.89.0",
     "description": "Pulumi Azure Native package for storageactions",
     "keywords": [
         "pulumi",

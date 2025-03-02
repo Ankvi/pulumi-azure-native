@@ -209,6 +209,82 @@ export interface ApprovalStageResponse {
 }
 
 /**
+ * Expanded info of resource, role and principal
+ */
+export interface ExpandedPropertiesResponse {
+    /**
+     * Details of the principal
+     */
+    principal?: ExpandedPropertiesResponsePrincipal;
+    /**
+     * Details of role definition
+     */
+    roleDefinition?: ExpandedPropertiesResponseRoleDefinition;
+    /**
+     * Details of the resource scope
+     */
+    scope?: ExpandedPropertiesResponseScope;
+}
+
+/**
+ * Details of the principal
+ */
+export interface ExpandedPropertiesResponsePrincipal {
+    /**
+     * Display name of the principal
+     */
+    displayName?: string;
+    /**
+     * Email id of the principal
+     */
+    email?: string;
+    /**
+     * Id of the principal
+     */
+    id?: string;
+    /**
+     * Type of the principal
+     */
+    type?: string;
+}
+
+/**
+ * Details of role definition
+ */
+export interface ExpandedPropertiesResponseRoleDefinition {
+    /**
+     * Display name of the role definition
+     */
+    displayName?: string;
+    /**
+     * Id of the role definition
+     */
+    id?: string;
+    /**
+     * Type of the role definition
+     */
+    type?: string;
+}
+
+/**
+ * Details of the resource scope
+ */
+export interface ExpandedPropertiesResponseScope {
+    /**
+     * Display name of the resource
+     */
+    displayName?: string;
+    /**
+     * Scope id of the resource
+     */
+    id?: string;
+    /**
+     * Type of the resource
+     */
+    type?: string;
+}
+
+/**
  * Identity for the resource.  Policy assignments support a maximum of one identity.  That is either a system assigned identity or a single user assigned identity.
  */
 export interface IdentityResponse {
@@ -750,6 +826,52 @@ export interface ResourceSelectorResponse {
      * The list of the selector expressions.
      */
     selectors?: SelectorResponse[];
+}
+
+/**
+ * Expiration of the role eligibility schedule
+ */
+export interface RoleEligibilityScheduleRequestPropertiesResponseExpiration {
+    /**
+     * Duration of the role eligibility schedule in TimeSpan.
+     */
+    duration?: string;
+    /**
+     * End DateTime of the role eligibility schedule.
+     */
+    endDateTime?: string;
+    /**
+     * Type of the role eligibility schedule expiration
+     */
+    type?: string;
+}
+
+/**
+ * Schedule info of the role eligibility schedule
+ */
+export interface RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo {
+    /**
+     * Expiration of the role eligibility schedule
+     */
+    expiration?: RoleEligibilityScheduleRequestPropertiesResponseExpiration;
+    /**
+     * Start DateTime of the role eligibility schedule.
+     */
+    startDateTime?: string;
+}
+
+/**
+ * Ticket Info of the role eligibility
+ */
+export interface RoleEligibilityScheduleRequestPropertiesResponseTicketInfo {
+    /**
+     * Ticket number for the role eligibility
+     */
+    ticketNumber?: string;
+    /**
+     * Ticket system name for the role eligibility
+     */
+    ticketSystem?: string;
 }
 
 /**

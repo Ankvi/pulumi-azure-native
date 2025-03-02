@@ -401,6 +401,52 @@ export interface ResourceSelectorArgs {
 }
 
 /**
+ * Expiration of the role eligibility schedule
+ */
+export interface RoleEligibilityScheduleRequestPropertiesExpirationArgs {
+    /**
+     * Duration of the role eligibility schedule in TimeSpan.
+     */
+    duration?: pulumi.Input<string>;
+    /**
+     * End DateTime of the role eligibility schedule.
+     */
+    endDateTime?: pulumi.Input<string>;
+    /**
+     * Type of the role eligibility schedule expiration
+     */
+    type?: pulumi.Input<string | enums.Type>;
+}
+
+/**
+ * Schedule info of the role eligibility schedule
+ */
+export interface RoleEligibilityScheduleRequestPropertiesScheduleInfoArgs {
+    /**
+     * Expiration of the role eligibility schedule
+     */
+    expiration?: pulumi.Input<RoleEligibilityScheduleRequestPropertiesExpirationArgs>;
+    /**
+     * Start DateTime of the role eligibility schedule.
+     */
+    startDateTime?: pulumi.Input<string>;
+}
+
+/**
+ * Ticket Info of the role eligibility
+ */
+export interface RoleEligibilityScheduleRequestPropertiesTicketInfoArgs {
+    /**
+     * Ticket number for the role eligibility
+     */
+    ticketNumber?: pulumi.Input<string>;
+    /**
+     * Ticket system name for the role eligibility
+     */
+    ticketSystem?: pulumi.Input<string>;
+}
+
+/**
  * The role management policy approval rule.
  */
 export interface RoleManagementPolicyApprovalRuleArgs {
