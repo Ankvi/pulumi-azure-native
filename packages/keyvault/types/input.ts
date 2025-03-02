@@ -467,10 +467,6 @@ export interface VaultPropertiesArgs {
      */
     networkAcls?: pulumi.Input<NetworkRuleSetArgs>;
     /**
-     * Provisioning state of the vault.
-     */
-    provisioningState?: pulumi.Input<string | enums.VaultProvisioningState>;
-    /**
      * Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.
      */
     publicNetworkAccess?: pulumi.Input<string>;
@@ -486,10 +482,6 @@ export interface VaultPropertiesArgs {
      * The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
      */
     tenantId: pulumi.Input<string>;
-    /**
-     * The URI of the vault for performing operations on keys and secrets.
-     */
-    vaultUri?: pulumi.Input<string>;
 }
 /**
  * vaultPropertiesArgsProvideDefaults sets the appropriate defaults for VaultPropertiesArgs
