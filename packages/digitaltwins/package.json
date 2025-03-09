@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-digitaltwins",
-    "version": "2.89.0",
+    "version": "2.89.1",
     "description": "Pulumi Azure Native package for digitaltwins",
     "keywords": [
         "pulumi",
