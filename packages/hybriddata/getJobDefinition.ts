@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * This method gets job definition object by name.
- * Azure REST API version: 2019-06-01.
+ *
+ * Uses Azure REST API version 2019-06-01.
  */
 export function getJobDefinition(args: GetJobDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetJobDefinitionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -89,7 +90,8 @@ export interface GetJobDefinitionResult {
 }
 /**
  * This method gets job definition object by name.
- * Azure REST API version: 2019-06-01.
+ *
+ * Uses Azure REST API version 2019-06-01.
  */
 export function getJobDefinitionOutput(args: GetJobDefinitionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetJobDefinitionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

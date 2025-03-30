@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets Topology of the underlying resources in the given Network Fabric instance.
- * Azure REST API version: 2023-06-15.
+ *
+ * Uses Azure REST API version 2023-06-15.
  */
 export function getNetworkFabricTopology(args: GetNetworkFabricTopologyArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkFabricTopologyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -43,7 +44,8 @@ export interface GetNetworkFabricTopologyResult {
 }
 /**
  * Gets Topology of the underlying resources in the given Network Fabric instance.
- * Azure REST API version: 2023-06-15.
+ *
+ * Uses Azure REST API version 2023-06-15.
  */
 export function getNetworkFabricTopologyOutput(args: GetNetworkFabricTopologyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkFabricTopologyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

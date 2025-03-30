@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
- * Azure REST API version: 2021-03-01-preview.
+ *
+ * Uses Azure REST API version 2021-03-01-preview.
  */
 export function getEnvironmentSpecificationVersion(args: GetEnvironmentSpecificationVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentSpecificationVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -61,7 +62,8 @@ export interface GetEnvironmentSpecificationVersionResult {
 }
 /**
  * Azure Resource Manager resource envelope.
- * Azure REST API version: 2021-03-01-preview.
+ *
+ * Uses Azure REST API version 2021-03-01-preview.
  */
 export function getEnvironmentSpecificationVersionOutput(args: GetEnvironmentSpecificationVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnvironmentSpecificationVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

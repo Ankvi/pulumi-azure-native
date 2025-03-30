@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The metric alert resource.
- * Azure REST API version: 2018-03-01. Prior API version in Azure Native 1.x: 2018-03-01.
+ *
+ * Uses Azure REST API version 2018-03-01. In version 1.x of the Azure Native provider, it used API version 2018-03-01.
  */
 export class MetricAlert extends pulumi.CustomResource {
     /**
@@ -73,7 +74,7 @@ export class MetricAlert extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * the list of resource id's that this metric alert is scoped to.
+     * the list of resource id's that this metric alert is scoped to. You cannot change the scope of a metric rule based on logs.
      */
     public readonly scopes!: pulumi.Output<string[]>;
     /**
@@ -219,7 +220,7 @@ export interface MetricAlertArgs {
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * the list of resource id's that this metric alert is scoped to.
+     * the list of resource id's that this metric alert is scoped to. You cannot change the scope of a metric rule based on logs.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
     /**

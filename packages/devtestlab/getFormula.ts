@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get formula.
- * Azure REST API version: 2018-09-15.
+ *
+ * Uses Azure REST API version 2018-09-15.
  */
 export function getFormula(args: GetFormulaArgs, opts?: pulumi.InvokeOptions): Promise<GetFormulaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -93,7 +94,8 @@ export interface GetFormulaResult {
 }
 /**
  * Get formula.
- * Azure REST API version: 2018-09-15.
+ *
+ * Uses Azure REST API version 2018-09-15.
  */
 export function getFormulaOutput(args: GetFormulaOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFormulaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

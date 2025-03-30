@@ -2,9 +2,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Azure REST API version: 2023-08-01-preview.
+ * Uses Azure REST API version 2023-08-01-preview.
  *
- * Other available API versions: 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview.
+ * Other available API versions: 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
  */
 export function getServerlessEndpoint(args: GetServerlessEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetServerlessEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -73,9 +73,9 @@ export interface GetServerlessEndpointResult {
     readonly type: string;
 }
 /**
- * Azure REST API version: 2023-08-01-preview.
+ * Uses Azure REST API version 2023-08-01-preview.
  *
- * Other available API versions: 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview.
+ * Other available API versions: 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
  */
 export function getServerlessEndpointOutput(args: GetServerlessEndpointOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerlessEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

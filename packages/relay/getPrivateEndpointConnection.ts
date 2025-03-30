@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a description for the specified Private Endpoint Connection name.
- * Azure REST API version: 2021-11-01.
+ *
+ * Uses Azure REST API version 2021-11-01.
  *
  * Other available API versions: 2018-01-01-preview, 2024-01-01.
  */
@@ -70,7 +71,8 @@ export interface GetPrivateEndpointConnectionResult {
 }
 /**
  * Gets a description for the specified Private Endpoint Connection name.
- * Azure REST API version: 2021-11-01.
+ *
+ * Uses Azure REST API version 2021-11-01.
  *
  * Other available API versions: 2018-01-01-preview, 2024-01-01.
  */

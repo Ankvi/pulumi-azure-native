@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Tunnel Policy maps domains to target endpoints to process traffic over the tunnelling protocol.
- * Azure REST API version: 2024-06-01-preview.
+ *
+ * Uses Azure REST API version 2024-06-01-preview.
  */
 export class TunnelPolicy extends pulumi.CustomResource {
     /**

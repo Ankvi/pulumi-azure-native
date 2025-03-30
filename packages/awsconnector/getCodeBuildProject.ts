@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a CodeBuildProject
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getCodeBuildProject(args: GetCodeBuildProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetCodeBuildProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetCodeBuildProjectResult {
 }
 /**
  * Get a CodeBuildProject
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getCodeBuildProjectOutput(args: GetCodeBuildProjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCodeBuildProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

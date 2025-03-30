@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * The set of available keys for this server.
- * Azure REST API version: 2022-06-01.
+ *
+ * Uses Azure REST API version 2022-06-01.
  */
 export function listFluidRelayServerKeys(args: ListFluidRelayServerKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListFluidRelayServerKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,7 +39,8 @@ export interface ListFluidRelayServerKeysResult {
 }
 /**
  * The set of available keys for this server.
- * Azure REST API version: 2022-06-01.
+ *
+ * Uses Azure REST API version 2022-06-01.
  */
 export function listFluidRelayServerKeysOutput(args: ListFluidRelayServerKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListFluidRelayServerKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

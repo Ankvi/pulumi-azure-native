@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a database's long term retention policy.
- * Azure REST API version: 2017-03-01-preview.
+ *
+ * Uses Azure REST API version 2017-03-01-preview.
  */
 export function getBackupLongTermRetentionPolicy(args: GetBackupLongTermRetentionPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupLongTermRetentionPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -68,7 +69,8 @@ export interface GetBackupLongTermRetentionPolicyResult {
 }
 /**
  * Gets a database's long term retention policy.
- * Azure REST API version: 2017-03-01-preview.
+ *
+ * Uses Azure REST API version 2017-03-01-preview.
  */
 export function getBackupLongTermRetentionPolicyOutput(args: GetBackupLongTermRetentionPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackupLongTermRetentionPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

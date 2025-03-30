@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A Microsoft.AwsConnector resource
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export class SageMakerNotebookInstanceSummary extends pulumi.CustomResource {
     /**

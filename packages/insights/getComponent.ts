@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns an Application Insights component.
- * Azure REST API version: 2020-02-02.
+ *
+ * Uses Azure REST API version 2020-02-02.
  *
  * Other available API versions: 2020-02-02-preview.
  */
@@ -157,7 +158,8 @@ export interface GetComponentResult {
 }
 /**
  * Returns an Application Insights component.
- * Azure REST API version: 2020-02-02.
+ *
+ * Uses Azure REST API version 2020-02-02.
  *
  * Other available API versions: 2020-02-02-preview.
  */

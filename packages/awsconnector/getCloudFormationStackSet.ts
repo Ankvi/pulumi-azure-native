@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a CloudFormationStackSet
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getCloudFormationStackSet(args: GetCloudFormationStackSetArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudFormationStackSetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetCloudFormationStackSetResult {
 }
 /**
  * Get a CloudFormationStackSet
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getCloudFormationStackSetOutput(args: GetCloudFormationStackSetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudFormationStackSetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

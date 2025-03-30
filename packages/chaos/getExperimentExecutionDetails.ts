@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Execution details of an experiment resource.
- * Azure REST API version: 2023-11-01.
+ *
+ * Uses Azure REST API version 2023-11-01.
  *
  * Other available API versions: 2024-01-01, 2024-03-22-preview, 2024-11-01-preview, 2025-01-01.
  */
@@ -74,7 +75,8 @@ export interface GetExperimentExecutionDetailsResult {
 }
 /**
  * Execution details of an experiment resource.
- * Azure REST API version: 2023-11-01.
+ *
+ * Uses Azure REST API version 2023-11-01.
  *
  * Other available API versions: 2024-01-01, 2024-03-22-preview, 2024-11-01-preview, 2025-01-01.
  */

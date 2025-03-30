@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Subscription Response for Changed Target Directory.
- * Azure REST API version: 2024-08-01-preview.
+ *
+ * Uses Azure REST API version 2024-08-01-preview.
  */
 export class SubscriptionTarDirectory extends pulumi.CustomResource {
     /**

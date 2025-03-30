@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Lists connection keys.
- * Azure REST API version: 2015-08-01-preview.
+ *
+ * Uses Azure REST API version 2015-08-01-preview.
  */
 export function listConnectionKeys(args: ListConnectionKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListConnectionKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -70,7 +71,8 @@ export interface ListConnectionKeysResult {
 }
 /**
  * Lists connection keys.
- * Azure REST API version: 2015-08-01-preview.
+ *
+ * Uses Azure REST API version 2015-08-01-preview.
  */
 export function listConnectionKeysOutput(args: ListConnectionKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListConnectionKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

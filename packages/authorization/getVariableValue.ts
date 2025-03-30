@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * This operation retrieves a single variable value; given its name, subscription it was created at and the variable it's created for.
- * Azure REST API version: 2022-08-01-preview.
+ *
+ * Uses Azure REST API version 2022-08-01-preview.
+ *
+ * Other available API versions: 2024-12-01-preview.
  */
 export function getVariableValue(args: GetVariableValueArgs, opts?: pulumi.InvokeOptions): Promise<GetVariableValueResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -51,7 +54,10 @@ export interface GetVariableValueResult {
 }
 /**
  * This operation retrieves a single variable value; given its name, subscription it was created at and the variable it's created for.
- * Azure REST API version: 2022-08-01-preview.
+ *
+ * Uses Azure REST API version 2022-08-01-preview.
+ *
+ * Other available API versions: 2024-12-01-preview.
  */
 export function getVariableValueOutput(args: GetVariableValueOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVariableValueResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

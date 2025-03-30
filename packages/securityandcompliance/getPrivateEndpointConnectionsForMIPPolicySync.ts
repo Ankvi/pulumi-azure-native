@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the specified private endpoint connection associated with the service.
- * Azure REST API version: 2021-03-08.
+ *
+ * Uses Azure REST API version 2021-03-08.
  */
 export function getPrivateEndpointConnectionsForMIPPolicySync(args: GetPrivateEndpointConnectionsForMIPPolicySyncArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateEndpointConnectionsForMIPPolicySyncResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -64,7 +65,8 @@ export interface GetPrivateEndpointConnectionsForMIPPolicySyncResult {
 }
 /**
  * Gets the specified private endpoint connection associated with the service.
- * Azure REST API version: 2021-03-08.
+ *
+ * Uses Azure REST API version 2021-03-08.
  */
 export function getPrivateEndpointConnectionsForMIPPolicySyncOutput(args: GetPrivateEndpointConnectionsForMIPPolicySyncOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateEndpointConnectionsForMIPPolicySyncResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get role definition by ID (GUID).
- * Azure REST API version: 2022-05-01-preview.
+ *
+ * Uses Azure REST API version 2022-05-01-preview.
  */
 export function getRoleDefinition(args: GetRoleDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleDefinitionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -79,7 +80,8 @@ export interface GetRoleDefinitionResult {
 }
 /**
  * Get role definition by ID (GUID).
- * Azure REST API version: 2022-05-01-preview.
+ *
+ * Uses Azure REST API version 2022-05-01-preview.
  */
 export function getRoleDefinitionOutput(args: GetRoleDefinitionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoleDefinitionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

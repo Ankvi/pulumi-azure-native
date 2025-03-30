@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A file resource
- * Azure REST API version: 2021-06-30. Prior API version in Azure Native 1.x: 2018-07-15-preview.
+ *
+ * Uses Azure REST API version 2021-06-30. In version 1.x of the Azure Native provider, it used API version 2018-07-15-preview.
  *
  * Other available API versions: 2022-03-30-preview, 2023-07-15-preview.
  */

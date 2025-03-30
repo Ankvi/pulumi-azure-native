@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * List all the subscriptions in the private store context
- * Azure REST API version: 2023-01-01.
+ *
+ * Uses Azure REST API version 2023-01-01.
  *
  * Other available API versions: 2021-12-01, 2022-03-01, 2022-09-01.
  */
@@ -28,7 +29,8 @@ export interface ListPrivateStoreSubscriptionsContextResult {
 }
 /**
  * List all the subscriptions in the private store context
- * Azure REST API version: 2023-01-01.
+ *
+ * Uses Azure REST API version 2023-01-01.
  *
  * Other available API versions: 2021-12-01, 2022-03-01, 2022-09-01.
  */

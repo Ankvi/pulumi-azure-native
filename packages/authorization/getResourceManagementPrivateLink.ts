@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a resource management private link(resource-level).
- * Azure REST API version: 2020-05-01.
+ *
+ * Uses Azure REST API version 2020-05-01.
  */
 export function getResourceManagementPrivateLink(args: GetResourceManagementPrivateLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceManagementPrivateLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -45,7 +46,8 @@ export interface GetResourceManagementPrivateLinkResult {
 }
 /**
  * Get a resource management private link(resource-level).
- * Azure REST API version: 2020-05-01.
+ *
+ * Uses Azure REST API version 2020-05-01.
  */
 export function getResourceManagementPrivateLinkOutput(args: GetResourceManagementPrivateLinkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceManagementPrivateLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

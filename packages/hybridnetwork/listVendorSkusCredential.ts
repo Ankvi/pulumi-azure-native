@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Generate credentials for publishing SKU images.
- * Azure REST API version: 2022-01-01-preview.
+ *
+ * Uses Azure REST API version 2022-01-01-preview.
  */
 export function listVendorSkusCredential(args: ListVendorSkusCredentialArgs, opts?: pulumi.InvokeOptions): Promise<ListVendorSkusCredentialResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -50,7 +51,8 @@ export interface ListVendorSkusCredentialResult {
 }
 /**
  * Generate credentials for publishing SKU images.
- * Azure REST API version: 2022-01-01-preview.
+ *
+ * Uses Azure REST API version 2022-01-01-preview.
  */
 export function listVendorSkusCredentialOutput(args: ListVendorSkusCredentialOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListVendorSkusCredentialResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a OrganizationsAccount
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getOrganizationsAccount(args: GetOrganizationsAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationsAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetOrganizationsAccountResult {
 }
 /**
  * Get a OrganizationsAccount
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getOrganizationsAccountOutput(args: GetOrganizationsAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationsAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

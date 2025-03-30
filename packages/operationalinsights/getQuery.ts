@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a specific Log Analytics Query defined within a Log Analytics QueryPack.
- * Azure REST API version: 2019-09-01.
  *
- * Other available API versions: 2019-09-01-preview, 2023-09-01.
+ * Uses Azure REST API version 2019-09-01.
+ *
+ * Other available API versions: 2019-09-01-preview, 2023-09-01, 2025-02-01.
  */
 export function getQuery(args: GetQueryArgs, opts?: pulumi.InvokeOptions): Promise<GetQueryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -90,9 +91,10 @@ export interface GetQueryResult {
 }
 /**
  * Gets a specific Log Analytics Query defined within a Log Analytics QueryPack.
- * Azure REST API version: 2019-09-01.
  *
- * Other available API versions: 2019-09-01-preview, 2023-09-01.
+ * Uses Azure REST API version 2019-09-01.
+ *
+ * Other available API versions: 2019-09-01-preview, 2023-09-01, 2025-02-01.
  */
 export function getQueryOutput(args: GetQueryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQueryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

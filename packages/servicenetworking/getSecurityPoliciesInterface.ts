@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a SecurityPolicy
- * Azure REST API version: 2024-05-01-preview.
  *
- * Other available API versions: 2025-01-01.
+ * Uses Azure REST API version 2024-05-01-preview.
+ *
+ * Other available API versions: 2025-01-01, 2025-03-01-preview.
  */
 export function getSecurityPoliciesInterface(args: GetSecurityPoliciesInterfaceArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityPoliciesInterfaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -68,15 +69,16 @@ export interface GetSecurityPoliciesInterfaceResult {
      */
     readonly type: string;
     /**
-     * Web Application Firewall Policy of the Traffic Controller Security Policy
+     * Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
      */
     readonly wafPolicy?: types.outputs.WafPolicyResponse;
 }
 /**
  * Get a SecurityPolicy
- * Azure REST API version: 2024-05-01-preview.
  *
- * Other available API versions: 2025-01-01.
+ * Uses Azure REST API version 2024-05-01-preview.
+ *
+ * Other available API versions: 2025-01-01, 2025-03-01-preview.
  */
 export function getSecurityPoliciesInterfaceOutput(args: GetSecurityPoliciesInterfaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecurityPoliciesInterfaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

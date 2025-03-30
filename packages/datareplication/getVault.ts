@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the details of the vault.
- * Azure REST API version: 2021-02-16-preview.
+ *
+ * Uses Azure REST API version 2021-02-16-preview.
+ *
+ * Other available API versions: 2024-09-01.
  */
 export function getVault(args: GetVaultArgs, opts?: pulumi.InvokeOptions): Promise<GetVaultResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -56,7 +59,10 @@ export interface GetVaultResult {
 }
 /**
  * Gets the details of the vault.
- * Azure REST API version: 2021-02-16-preview.
+ *
+ * Uses Azure REST API version 2021-02-16-preview.
+ *
+ * Other available API versions: 2024-09-01.
  */
 export function getVaultOutput(args: GetVaultOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVaultResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

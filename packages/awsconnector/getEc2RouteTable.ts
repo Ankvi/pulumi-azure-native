@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Ec2RouteTable
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getEc2RouteTable(args: GetEc2RouteTableArgs, opts?: pulumi.InvokeOptions): Promise<GetEc2RouteTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetEc2RouteTableResult {
 }
 /**
  * Get a Ec2RouteTable
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getEc2RouteTableOutput(args: GetEc2RouteTableOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEc2RouteTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

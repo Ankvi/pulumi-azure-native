@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a UpdateRun
- * Azure REST API version: 2023-03-15-preview.
+ *
+ * Uses Azure REST API version 2023-03-15-preview.
  *
  * Other available API versions: 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview, 2024-04-01, 2024-05-02-preview.
  */
@@ -76,7 +77,8 @@ export interface GetUpdateRunResult {
 }
 /**
  * Get a UpdateRun
- * Azure REST API version: 2023-03-15-preview.
+ *
+ * Uses Azure REST API version 2023-03-15-preview.
  *
  * Other available API versions: 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview, 2024-04-01, 2024-05-02-preview.
  */

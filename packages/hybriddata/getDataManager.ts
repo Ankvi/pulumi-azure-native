@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets information about the specified data manager resource.
- * Azure REST API version: 2019-06-01.
+ *
+ * Uses Azure REST API version 2019-06-01.
  */
 export function getDataManager(args: GetDataManagerArgs, opts?: pulumi.InvokeOptions): Promise<GetDataManagerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -62,7 +63,8 @@ export interface GetDataManagerResult {
 }
 /**
  * Gets information about the specified data manager resource.
- * Azure REST API version: 2019-06-01.
+ *
+ * Uses Azure REST API version 2019-06-01.
  */
 export function getDataManagerOutput(args: GetDataManagerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDataManagerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

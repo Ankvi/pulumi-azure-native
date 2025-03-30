@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The list business process development artifacts action.
- * Azure REST API version: 2023-11-14-preview.
+ *
+ * Uses Azure REST API version 2023-11-14-preview.
  */
 export function listApplicationBusinessProcessDevelopmentArtifacts(args: ListApplicationBusinessProcessDevelopmentArtifactsArgs, opts?: pulumi.InvokeOptions): Promise<ListApplicationBusinessProcessDevelopmentArtifactsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,7 +41,8 @@ export interface ListApplicationBusinessProcessDevelopmentArtifactsResult {
 }
 /**
  * The list business process development artifacts action.
- * Azure REST API version: 2023-11-14-preview.
+ *
+ * Uses Azure REST API version 2023-11-14-preview.
  */
 export function listApplicationBusinessProcessDevelopmentArtifactsOutput(args: ListApplicationBusinessProcessDevelopmentArtifactsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListApplicationBusinessProcessDevelopmentArtifactsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

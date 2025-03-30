@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the project with the specified name.
- * Azure REST API version: 2019-10-01.
+ *
+ * Uses Azure REST API version 2019-10-01.
  *
  * Other available API versions: 2018-02-02.
  */
@@ -61,7 +62,8 @@ export interface GetProjectResult {
 }
 /**
  * Get the project with the specified name.
- * Azure REST API version: 2019-10-01.
+ *
+ * Uses Azure REST API version 2019-10-01.
  *
  * Other available API versions: 2018-02-02.
  */

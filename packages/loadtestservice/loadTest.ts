@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * LoadTest details.
- * Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2021-12-01-preview.
  *
- * Other available API versions: 2021-12-01-preview, 2023-12-01-preview.
+ * Uses Azure REST API version 2022-12-01. In version 1.x of the Azure Native provider, it used API version 2021-12-01-preview.
+ *
+ * Other available API versions: 2021-12-01-preview, 2023-12-01-preview, 2024-12-01-preview.
  */
 export class LoadTest extends pulumi.CustomResource {
     /**
@@ -114,7 +115,7 @@ export class LoadTest extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:loadtestservice/v20211201preview:LoadTest" }, { type: "azure-native:loadtestservice/v20220415preview:LoadTest" }, { type: "azure-native:loadtestservice/v20221201:LoadTest" }, { type: "azure-native:loadtestservice/v20231201preview:LoadTest" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:loadtestservice/v20211201preview:LoadTest" }, { type: "azure-native:loadtestservice/v20220415preview:LoadTest" }, { type: "azure-native:loadtestservice/v20221201:LoadTest" }, { type: "azure-native:loadtestservice/v20231201preview:LoadTest" }, { type: "azure-native:loadtestservice/v20241201preview:LoadTest" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LoadTest.__pulumiType, name, resourceInputs, opts);
     }

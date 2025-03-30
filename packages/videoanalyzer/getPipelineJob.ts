@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Retrieves a specific pipeline job by name. If a pipeline job with that name has been previously created, the call will return the JSON representation of that instance.
- * Azure REST API version: 2021-11-01-preview.
+ *
+ * Uses Azure REST API version 2021-11-01-preview.
  */
 export function getPipelineJob(args: GetPipelineJobArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineJobResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -76,7 +77,8 @@ export interface GetPipelineJobResult {
 }
 /**
  * Retrieves a specific pipeline job by name. If a pipeline job with that name has been previously created, the call will return the JSON representation of that instance.
- * Azure REST API version: 2021-11-01-preview.
+ *
+ * Uses Azure REST API version 2021-11-01-preview.
  */
 export function getPipelineJobOutput(args: GetPipelineJobOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPipelineJobResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

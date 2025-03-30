@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get the URL for downloading the business case in a report format.
- * Azure REST API version: 2023-04-01-preview.
+ *
+ * Uses Azure REST API version 2023-04-01-preview.
  *
  * Other available API versions: 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
  */
@@ -45,7 +46,8 @@ export interface GetBusinessCaseOperationReportDownloadUrlResult {
 }
 /**
  * Get the URL for downloading the business case in a report format.
- * Azure REST API version: 2023-04-01-preview.
+ *
+ * Uses Azure REST API version 2023-04-01-preview.
  *
  * Other available API versions: 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
  */

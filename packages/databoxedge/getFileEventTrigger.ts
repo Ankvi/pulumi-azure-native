@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a specific trigger by name.
- * Azure REST API version: 2022-03-01.
+ *
+ * Uses Azure REST API version 2022-03-01.
  */
 export function getFileEventTrigger(args: GetFileEventTriggerArgs, opts?: pulumi.InvokeOptions): Promise<GetFileEventTriggerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -69,7 +70,8 @@ export interface GetFileEventTriggerResult {
 }
 /**
  * Get a specific trigger by name.
- * Azure REST API version: 2022-03-01.
+ *
+ * Uses Azure REST API version 2022-03-01.
  */
 export function getFileEventTriggerOutput(args: GetFileEventTriggerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFileEventTriggerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

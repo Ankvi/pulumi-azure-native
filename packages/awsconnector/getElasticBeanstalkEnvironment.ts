@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a ElasticBeanstalkEnvironment
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getElasticBeanstalkEnvironment(args: GetElasticBeanstalkEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticBeanstalkEnvironmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetElasticBeanstalkEnvironmentResult {
 }
 /**
  * Get a ElasticBeanstalkEnvironment
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getElasticBeanstalkEnvironmentOutput(args: GetElasticBeanstalkEnvironmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetElasticBeanstalkEnvironmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

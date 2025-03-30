@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the recommended SAP Availability Zone Pair Details for your region.
- * Azure REST API version: 2024-09-01.
+ *
+ * Uses Azure REST API version 2024-09-01.
  */
 export function getSapVirtualInstanceInvokeAvailabilityZoneDetails(args: GetSapVirtualInstanceInvokeAvailabilityZoneDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -45,7 +46,8 @@ export interface GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult {
 }
 /**
  * Get the recommended SAP Availability Zone Pair Details for your region.
- * Azure REST API version: 2024-09-01.
+ *
+ * Uses Azure REST API version 2024-09-01.
  */
 export function getSapVirtualInstanceInvokeAvailabilityZoneDetailsOutput(args: GetSapVirtualInstanceInvokeAvailabilityZoneDetailsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

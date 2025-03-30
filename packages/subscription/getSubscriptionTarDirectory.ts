@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The operation to view Initiator Subscription Changed Request
- * Azure REST API version: 2024-08-01-preview.
+ *
+ * Uses Azure REST API version 2024-08-01-preview.
  */
 export function getSubscriptionTarDirectory(args?: GetSubscriptionTarDirectoryArgs, opts?: pulumi.InvokeOptions): Promise<GetSubscriptionTarDirectoryResult> {
     args = args || {};
@@ -43,7 +44,8 @@ export interface GetSubscriptionTarDirectoryResult {
 }
 /**
  * The operation to view Initiator Subscription Changed Request
- * Azure REST API version: 2024-08-01-preview.
+ *
+ * Uses Azure REST API version 2024-08-01-preview.
  */
 export function getSubscriptionTarDirectoryOutput(args?: GetSubscriptionTarDirectoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSubscriptionTarDirectoryResult> {
     args = args || {};

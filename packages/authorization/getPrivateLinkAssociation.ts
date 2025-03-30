@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a single private link association
- * Azure REST API version: 2020-05-01.
+ *
+ * Uses Azure REST API version 2020-05-01.
  */
 export function getPrivateLinkAssociation(args: GetPrivateLinkAssociationArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateLinkAssociationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -44,7 +45,8 @@ export interface GetPrivateLinkAssociationResult {
 }
 /**
  * Get a single private link association
- * Azure REST API version: 2020-05-01.
+ *
+ * Uses Azure REST API version 2020-05-01.
  */
 export function getPrivateLinkAssociationOutput(args: GetPrivateLinkAssociationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateLinkAssociationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

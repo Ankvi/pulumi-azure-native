@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Retrieves the primary and secondary access keys for the specified Power BI Workspace Collection.
- * Azure REST API version: 2016-01-29.
+ *
+ * Uses Azure REST API version 2016-01-29.
  */
 export function listWorkspaceCollectionAccessKeys(args: ListWorkspaceCollectionAccessKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListWorkspaceCollectionAccessKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,7 +36,8 @@ export interface ListWorkspaceCollectionAccessKeysResult {
 }
 /**
  * Retrieves the primary and secondary access keys for the specified Power BI Workspace Collection.
- * Azure REST API version: 2016-01-29.
+ *
+ * Uses Azure REST API version 2016-01-29.
  */
 export function listWorkspaceCollectionAccessKeysOutput(args: ListWorkspaceCollectionAccessKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListWorkspaceCollectionAccessKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

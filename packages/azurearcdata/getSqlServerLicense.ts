@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Retrieves a SQL Server license resource
- * Azure REST API version: 2024-05-01-preview.
+ *
+ * Uses Azure REST API version 2024-05-01-preview.
+ *
+ * Other available API versions: 2025-03-01-preview.
  */
 export function getSqlServerLicense(args: GetSqlServerLicenseArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlServerLicenseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +62,10 @@ export interface GetSqlServerLicenseResult {
 }
 /**
  * Retrieves a SQL Server license resource
- * Azure REST API version: 2024-05-01-preview.
+ *
+ * Uses Azure REST API version 2024-05-01-preview.
+ *
+ * Other available API versions: 2025-03-01-preview.
  */
 export function getSqlServerLicenseOutput(args: GetSqlServerLicenseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSqlServerLicenseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

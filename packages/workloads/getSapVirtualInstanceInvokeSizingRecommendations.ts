@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the sizing recommendations.
- * Azure REST API version: 2024-09-01.
+ *
+ * Uses Azure REST API version 2024-09-01.
  */
 export function getSapVirtualInstanceInvokeSizingRecommendations(args: GetSapVirtualInstanceInvokeSizingRecommendationsArgs, opts?: pulumi.InvokeOptions): Promise<GetSapVirtualInstanceInvokeSizingRecommendationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -75,7 +76,8 @@ export interface GetSapVirtualInstanceInvokeSizingRecommendationsResult {
 }
 /**
  * Gets the sizing recommendations.
- * Azure REST API version: 2024-09-01.
+ *
+ * Uses Azure REST API version 2024-09-01.
  */
 export function getSapVirtualInstanceInvokeSizingRecommendationsOutput(args: GetSapVirtualInstanceInvokeSizingRecommendationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSapVirtualInstanceInvokeSizingRecommendationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

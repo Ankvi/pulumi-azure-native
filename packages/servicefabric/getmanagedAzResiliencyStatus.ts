@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Action to get Az Resiliency Status of all the Base resources constituting Service Fabric Managed Clusters.
- * Azure REST API version: 2023-03-01-preview.
+ *
+ * Uses Azure REST API version 2023-03-01-preview.
  *
  * Other available API versions: 2022-10-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-04-01, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview.
  */
@@ -41,7 +42,8 @@ export interface GetmanagedAzResiliencyStatusResult {
 }
 /**
  * Action to get Az Resiliency Status of all the Base resources constituting Service Fabric Managed Clusters.
- * Azure REST API version: 2023-03-01-preview.
+ *
+ * Uses Azure REST API version 2023-03-01-preview.
  *
  * Other available API versions: 2022-10-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-04-01, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview.
  */

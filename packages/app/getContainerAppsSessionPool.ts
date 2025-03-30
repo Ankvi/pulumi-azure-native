@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Container App session pool.
- * Azure REST API version: 2024-02-02-preview.
  *
- * Other available API versions: 2024-08-02-preview, 2024-10-02-preview.
+ * Uses Azure REST API version 2024-02-02-preview.
+ *
+ * Other available API versions: 2024-08-02-preview, 2024-10-02-preview, 2025-01-01.
  */
 export function getContainerAppsSessionPool(args: GetContainerAppsSessionPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerAppsSessionPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -101,9 +102,10 @@ export interface GetContainerAppsSessionPoolResult {
 }
 /**
  * Container App session pool.
- * Azure REST API version: 2024-02-02-preview.
  *
- * Other available API versions: 2024-08-02-preview, 2024-10-02-preview.
+ * Uses Azure REST API version 2024-02-02-preview.
+ *
+ * Other available API versions: 2024-08-02-preview, 2024-10-02-preview, 2025-01-01.
  */
 export function getContainerAppsSessionPoolOutput(args: GetContainerAppsSessionPoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContainerAppsSessionPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

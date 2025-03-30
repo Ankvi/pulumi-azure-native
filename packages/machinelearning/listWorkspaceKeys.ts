@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * List the authorization keys associated with this workspace.
- * Azure REST API version: 2019-10-01.
+ *
+ * Uses Azure REST API version 2019-10-01.
  */
 export function listWorkspaceKeys(args: ListWorkspaceKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListWorkspaceKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,7 +39,8 @@ export interface ListWorkspaceKeysResult {
 }
 /**
  * List the authorization keys associated with this workspace.
- * Azure REST API version: 2019-10-01.
+ *
+ * Uses Azure REST API version 2019-10-01.
  */
 export function listWorkspaceKeysOutput(args: ListWorkspaceKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListWorkspaceKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

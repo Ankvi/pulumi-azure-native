@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns RecommendationsService Account resource for a given name.
- * Azure REST API version: 2022-02-01.
+ *
+ * Uses Azure REST API version 2022-02-01.
  *
  * Other available API versions: 2022-03-01-preview.
  */
@@ -61,7 +62,8 @@ export interface GetAccountResult {
 }
 /**
  * Returns RecommendationsService Account resource for a given name.
- * Azure REST API version: 2022-02-01.
+ *
+ * Uses Azure REST API version 2022-02-01.
  *
  * Other available API versions: 2022-03-01-preview.
  */

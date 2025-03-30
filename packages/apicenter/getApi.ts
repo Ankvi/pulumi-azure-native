@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns details of the API.
- * Azure REST API version: 2024-03-01.
+ *
+ * Uses Azure REST API version 2024-03-01.
  *
  * Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
  */
@@ -99,7 +100,8 @@ export interface GetApiResult {
 }
 /**
  * Returns details of the API.
- * Azure REST API version: 2024-03-01.
+ *
+ * Uses Azure REST API version 2024-03-01.
  *
  * Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
  */

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Implements VirtualMachine GET method.
- * Azure REST API version: 2022-05-21-preview.
+ *
+ * Uses Azure REST API version 2022-05-21-preview.
  *
  * Other available API versions: 2023-04-01-preview.
  */
@@ -137,7 +138,8 @@ export interface GetVirtualMachineResult {
 }
 /**
  * Implements VirtualMachine GET method.
- * Azure REST API version: 2022-05-21-preview.
+ *
+ * Uses Azure REST API version 2022-05-21-preview.
  *
  * Other available API versions: 2023-04-01-preview.
  */

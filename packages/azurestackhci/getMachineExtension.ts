@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The operation to get the extension.
- * Azure REST API version: 2022-12-15-preview.
+ *
+ * Uses Azure REST API version 2022-12-15-preview.
  */
 export function getMachineExtension(args: GetMachineExtensionArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineExtensionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -92,7 +93,8 @@ export interface GetMachineExtensionResult {
 }
 /**
  * The operation to get the extension.
- * Azure REST API version: 2022-12-15-preview.
+ *
+ * Uses Azure REST API version 2022-12-15-preview.
  */
 export function getMachineExtensionOutput(args: GetMachineExtensionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMachineExtensionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

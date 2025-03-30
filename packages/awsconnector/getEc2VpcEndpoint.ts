@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Ec2VPCEndpoint
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getEc2VpcEndpoint(args: GetEc2VpcEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEc2VpcEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetEc2VpcEndpointResult {
 }
 /**
  * Get a Ec2VPCEndpoint
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getEc2VpcEndpointOutput(args: GetEc2VpcEndpointOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEc2VpcEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

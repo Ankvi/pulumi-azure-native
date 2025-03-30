@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets all the SIM groups assigned to a mobile network.
- * Azure REST API version: 2024-04-01.
+ *
+ * Uses Azure REST API version 2024-04-01.
  */
 export function listMobileNetworkSimGroups(args: ListMobileNetworkSimGroupsArgs, opts?: pulumi.InvokeOptions): Promise<ListMobileNetworkSimGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,7 +40,8 @@ export interface ListMobileNetworkSimGroupsResult {
 }
 /**
  * Gets all the SIM groups assigned to a mobile network.
- * Azure REST API version: 2024-04-01.
+ *
+ * Uses Azure REST API version 2024-04-01.
  */
 export function listMobileNetworkSimGroupsOutput(args: ListMobileNetworkSimGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListMobileNetworkSimGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

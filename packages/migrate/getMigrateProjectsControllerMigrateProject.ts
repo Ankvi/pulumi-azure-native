@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get information related to a specific migrate project. Returns a json object of type 'migrateProject' as specified in the models section.
- * Azure REST API version: 2020-05-01.
+ *
+ * Uses Azure REST API version 2020-05-01.
  *
  * Other available API versions: 2023-01-01.
  */
@@ -61,7 +62,8 @@ export interface GetMigrateProjectsControllerMigrateProjectResult {
 }
 /**
  * Get information related to a specific migrate project. Returns a json object of type 'migrateProject' as specified in the models section.
- * Azure REST API version: 2020-05-01.
+ *
+ * Uses Azure REST API version 2020-05-01.
  *
  * Other available API versions: 2023-01-01.
  */

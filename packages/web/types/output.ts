@@ -512,7 +512,7 @@ export interface AzureActiveDirectoryRegistrationResponse {
     clientSecretSettingName?: string;
     /**
      * The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
      * This URI is a case-sensitive identifier for the token issuer.
      * More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
      */
@@ -2397,8 +2397,7 @@ export interface RampUpRuleResponse {
      */
     actionHostName?: string;
     /**
-     * Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
-     * https://www.siteextensions.net/packages/TiPCallback/
+     * Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
      */
     changeDecisionCallbackUrl?: string;
     /**

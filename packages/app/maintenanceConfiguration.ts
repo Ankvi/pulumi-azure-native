@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Information about the Maintenance Configuration resource.
- * Azure REST API version: 2024-10-02-preview.
+ *
+ * Uses Azure REST API version 2024-10-02-preview.
  */
 export class MaintenanceConfiguration extends pulumi.CustomResource {
     /**

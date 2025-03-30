@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a Global parameter
- * Azure REST API version: 2018-06-01.
+ *
+ * Uses Azure REST API version 2018-06-01.
  */
 export function getGlobalParameter(args: GetGlobalParameterArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalParameterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -56,7 +57,8 @@ export interface GetGlobalParameterResult {
 }
 /**
  * Gets a Global parameter
- * Azure REST API version: 2018-06-01.
+ *
+ * Uses Azure REST API version 2018-06-01.
  */
 export function getGlobalParameterOutput(args: GetGlobalParameterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGlobalParameterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

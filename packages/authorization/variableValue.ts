@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The variable value.
- * Azure REST API version: 2022-08-01-preview.
+ *
+ * Uses Azure REST API version 2022-08-01-preview.
+ *
+ * Other available API versions: 2024-12-01-preview.
  */
 export class VariableValue extends pulumi.CustomResource {
     /**
@@ -79,7 +82,7 @@ export class VariableValue extends pulumi.CustomResource {
             resourceInputs["values"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:authorization/v20220801preview:VariableValue" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:authorization/v20220801preview:VariableValue" }, { type: "azure-native:authorization/v20241201preview:VariableValue" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VariableValue.__pulumiType, name, resourceInputs, opts);
     }

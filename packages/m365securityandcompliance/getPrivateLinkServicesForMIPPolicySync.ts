@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the metadata of a privateLinkServicesForMIPPolicySync resource.
- * Azure REST API version: 2021-03-25-preview.
+ *
+ * Uses Azure REST API version 2021-03-25-preview.
  */
 export function getPrivateLinkServicesForMIPPolicySync(args: GetPrivateLinkServicesForMIPPolicySyncArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateLinkServicesForMIPPolicySyncResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -71,7 +72,8 @@ export interface GetPrivateLinkServicesForMIPPolicySyncResult {
 }
 /**
  * Get the metadata of a privateLinkServicesForMIPPolicySync resource.
- * Azure REST API version: 2021-03-25-preview.
+ *
+ * Uses Azure REST API version 2021-03-25-preview.
  */
 export function getPrivateLinkServicesForMIPPolicySyncOutput(args: GetPrivateLinkServicesForMIPPolicySyncOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateLinkServicesForMIPPolicySyncResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

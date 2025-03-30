@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A Task Hub resource belonging to the scheduler
- * Azure REST API version: 2024-10-01-preview.
+ *
+ * Uses Azure REST API version 2024-10-01-preview.
  */
 export class TaskHub extends pulumi.CustomResource {
     /**

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a Test Base Draft Package.
- * Azure REST API version: 2023-11-01-preview.
+ *
+ * Uses Azure REST API version 2023-11-01-preview.
  */
 export function getDraftPackage(args: GetDraftPackageArgs, opts?: pulumi.InvokeOptions): Promise<GetDraftPackageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -160,7 +161,8 @@ export interface GetDraftPackageResult {
 }
 /**
  * Gets a Test Base Draft Package.
- * Azure REST API version: 2023-11-01-preview.
+ *
+ * Uses Azure REST API version 2023-11-01-preview.
  */
 export function getDraftPackageOutput(args: GetDraftPackageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDraftPackageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

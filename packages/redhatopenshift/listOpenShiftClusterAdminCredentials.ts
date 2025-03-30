@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * The operation returns the admin kubeconfig.
- * Azure REST API version: 2022-09-04.
+ *
+ * Uses Azure REST API version 2022-09-04.
  *
  * Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22, 2024-08-12-preview.
  */
@@ -36,7 +37,8 @@ export interface ListOpenShiftClusterAdminCredentialsResult {
 }
 /**
  * The operation returns the admin kubeconfig.
- * Azure REST API version: 2022-09-04.
+ *
+ * Uses Azure REST API version 2022-09-04.
  *
  * Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22, 2024-08-12-preview.
  */

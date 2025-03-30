@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Returns a file test result for the matching test
- * Azure REST API version: 2020-02-10-preview.
+ *
+ * Uses Azure REST API version 2020-02-10-preview.
  */
 export function getTestResultFile(args: GetTestResultFileArgs, opts?: pulumi.InvokeOptions): Promise<GetTestResultFileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -63,7 +64,8 @@ export interface GetTestResultFileResult {
 }
 /**
  * Returns a file test result for the matching test
- * Azure REST API version: 2020-02-10-preview.
+ *
+ * Uses Azure REST API version 2020-02-10-preview.
  */
 export function getTestResultFileOutput(args: GetTestResultFileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTestResultFileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

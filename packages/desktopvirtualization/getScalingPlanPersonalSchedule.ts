@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a ScalingPlanPersonalSchedule.
- * Azure REST API version: 2023-07-07-preview.
+ *
+ * Uses Azure REST API version 2024-11-01-preview.
  *
  * Other available API versions: 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview.
  */
@@ -38,9 +39,9 @@ export interface GetScalingPlanPersonalScheduleResult {
     /**
      * Set of days of the week on which this schedule is active.
      */
-    readonly daysOfWeek?: string[];
+    readonly daysOfWeek: string[];
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -66,7 +67,7 @@ export interface GetScalingPlanPersonalScheduleResult {
     /**
      * Starting time for off-peak period.
      */
-    readonly offPeakStartTime?: types.outputs.TimeResponse;
+    readonly offPeakStartTime: types.outputs.TimeResponse;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
      */
@@ -90,7 +91,7 @@ export interface GetScalingPlanPersonalScheduleResult {
     /**
      * Starting time for peak period.
      */
-    readonly peakStartTime?: types.outputs.TimeResponse;
+    readonly peakStartTime: types.outputs.TimeResponse;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the peak phase.
      */
@@ -114,7 +115,7 @@ export interface GetScalingPlanPersonalScheduleResult {
     /**
      * Starting time for ramp down period.
      */
-    readonly rampDownStartTime?: types.outputs.TimeResponse;
+    readonly rampDownStartTime: types.outputs.TimeResponse;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
      */
@@ -142,13 +143,13 @@ export interface GetScalingPlanPersonalScheduleResult {
     /**
      * Starting time for ramp up period.
      */
-    readonly rampUpStartTime?: types.outputs.TimeResponse;
+    readonly rampUpStartTime: types.outputs.TimeResponse;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
      */
     readonly rampUpStartVMOnConnect?: string;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
@@ -158,7 +159,8 @@ export interface GetScalingPlanPersonalScheduleResult {
 }
 /**
  * Get a ScalingPlanPersonalSchedule.
- * Azure REST API version: 2023-07-07-preview.
+ *
+ * Uses Azure REST API version 2024-11-01-preview.
  *
  * Other available API versions: 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview.
  */

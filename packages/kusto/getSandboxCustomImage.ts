@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Returns a sandbox custom image
- * Azure REST API version: 2023-08-15.
+ *
+ * Uses Azure REST API version 2023-08-15.
  *
  * Other available API versions: 2024-04-13.
  */
@@ -65,7 +66,8 @@ export interface GetSandboxCustomImageResult {
 }
 /**
  * Returns a sandbox custom image
- * Azure REST API version: 2023-08-15.
+ *
+ * Uses Azure REST API version 2023-08-15.
  *
  * Other available API versions: 2024-04-13.
  */

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Active directory connector resource
- * Azure REST API version: 2023-01-15-preview. Prior API version in Azure Native 1.x: 2022-03-01-preview.
  *
- * Other available API versions: 2024-01-01, 2024-05-01-preview.
+ * Uses Azure REST API version 2023-01-15-preview. In version 1.x of the Azure Native provider, it used API version 2022-03-01-preview.
+ *
+ * Other available API versions: 2024-01-01, 2024-05-01-preview, 2025-03-01-preview.
  */
 export class ActiveDirectoryConnector extends pulumi.CustomResource {
     /**
@@ -85,7 +86,7 @@ export class ActiveDirectoryConnector extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurearcdata/v20220301preview:ActiveDirectoryConnector" }, { type: "azure-native:azurearcdata/v20220615preview:ActiveDirectoryConnector" }, { type: "azure-native:azurearcdata/v20230115preview:ActiveDirectoryConnector" }, { type: "azure-native:azurearcdata/v20240101:ActiveDirectoryConnector" }, { type: "azure-native:azurearcdata/v20240501preview:ActiveDirectoryConnector" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurearcdata/v20220301preview:ActiveDirectoryConnector" }, { type: "azure-native:azurearcdata/v20220615preview:ActiveDirectoryConnector" }, { type: "azure-native:azurearcdata/v20230115preview:ActiveDirectoryConnector" }, { type: "azure-native:azurearcdata/v20240101:ActiveDirectoryConnector" }, { type: "azure-native:azurearcdata/v20240501preview:ActiveDirectoryConnector" }, { type: "azure-native:azurearcdata/v20250301preview:ActiveDirectoryConnector" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ActiveDirectoryConnector.__pulumiType, name, resourceInputs, opts);
     }

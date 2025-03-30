@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get track ingest heartbeat events telemetry of a live event.
- * Azure REST API version: 2022-11-01.
+ *
+ * Uses Azure REST API version 2022-11-01.
  */
 export function getLiveEventTrackIngestHeartbeats(args: GetLiveEventTrackIngestHeartbeatsArgs, opts?: pulumi.InvokeOptions): Promise<GetLiveEventTrackIngestHeartbeatsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,7 +41,8 @@ export interface GetLiveEventTrackIngestHeartbeatsResult {
 }
 /**
  * Get track ingest heartbeat events telemetry of a live event.
- * Azure REST API version: 2022-11-01.
+ *
+ * Uses Azure REST API version 2022-11-01.
  */
 export function getLiveEventTrackIngestHeartbeatsOutput(args: GetLiveEventTrackIngestHeartbeatsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLiveEventTrackIngestHeartbeatsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

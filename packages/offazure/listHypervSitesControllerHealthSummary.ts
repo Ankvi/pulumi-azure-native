@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Method to get site health summary.
- * Azure REST API version: 2023-06-06.
+ *
+ * Uses Azure REST API version 2023-06-06.
  *
  * Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
  */
@@ -41,7 +42,8 @@ export interface ListHypervSitesControllerHealthSummaryResult {
 }
 /**
  * Method to get site health summary.
- * Azure REST API version: 2023-06-06.
+ *
+ * Uses Azure REST API version 2023-06-06.
  *
  * Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
  */

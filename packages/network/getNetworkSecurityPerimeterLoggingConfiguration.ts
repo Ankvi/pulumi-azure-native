@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the NSP logging configuration.
- * Azure REST API version: 2024-06-01-preview.
+ *
+ * Uses Azure REST API version 2024-06-01-preview.
  */
 export function getNetworkSecurityPerimeterLoggingConfiguration(args: GetNetworkSecurityPerimeterLoggingConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkSecurityPerimeterLoggingConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -56,7 +57,8 @@ export interface GetNetworkSecurityPerimeterLoggingConfigurationResult {
 }
 /**
  * Gets the NSP logging configuration.
- * Azure REST API version: 2024-06-01-preview.
+ *
+ * Uses Azure REST API version 2024-06-01-preview.
  */
 export function getNetworkSecurityPerimeterLoggingConfigurationOutput(args: GetNetworkSecurityPerimeterLoggingConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkSecurityPerimeterLoggingConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * An Azure SQL managed instance.
- * Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
  *
- * Other available API versions: 2021-02-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+ * Uses Azure REST API version 2021-11-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01-preview.
+ *
+ * Other available API versions: 2021-02-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
  */
 export class ManagedInstance extends pulumi.CustomResource {
     /**
@@ -241,7 +242,7 @@ export class ManagedInstance extends pulumi.CustomResource {
             resourceInputs["zoneRedundant"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20150501preview:ManagedInstance" }, { type: "azure-native:sql/v20180601preview:ManagedInstance" }, { type: "azure-native:sql/v20200202preview:ManagedInstance" }, { type: "azure-native:sql/v20200801preview:ManagedInstance" }, { type: "azure-native:sql/v20201101preview:ManagedInstance" }, { type: "azure-native:sql/v20210201preview:ManagedInstance" }, { type: "azure-native:sql/v20210501preview:ManagedInstance" }, { type: "azure-native:sql/v20210801preview:ManagedInstance" }, { type: "azure-native:sql/v20211101:ManagedInstance" }, { type: "azure-native:sql/v20211101preview:ManagedInstance" }, { type: "azure-native:sql/v20220201preview:ManagedInstance" }, { type: "azure-native:sql/v20220501preview:ManagedInstance" }, { type: "azure-native:sql/v20220801preview:ManagedInstance" }, { type: "azure-native:sql/v20221101preview:ManagedInstance" }, { type: "azure-native:sql/v20230201preview:ManagedInstance" }, { type: "azure-native:sql/v20230501preview:ManagedInstance" }, { type: "azure-native:sql/v20230801preview:ManagedInstance" }, { type: "azure-native:sql/v20240501preview:ManagedInstance" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20150501preview:ManagedInstance" }, { type: "azure-native:sql/v20180601preview:ManagedInstance" }, { type: "azure-native:sql/v20200202preview:ManagedInstance" }, { type: "azure-native:sql/v20200801preview:ManagedInstance" }, { type: "azure-native:sql/v20201101preview:ManagedInstance" }, { type: "azure-native:sql/v20210201preview:ManagedInstance" }, { type: "azure-native:sql/v20210501preview:ManagedInstance" }, { type: "azure-native:sql/v20210801preview:ManagedInstance" }, { type: "azure-native:sql/v20211101:ManagedInstance" }, { type: "azure-native:sql/v20211101preview:ManagedInstance" }, { type: "azure-native:sql/v20220201preview:ManagedInstance" }, { type: "azure-native:sql/v20220501preview:ManagedInstance" }, { type: "azure-native:sql/v20220801preview:ManagedInstance" }, { type: "azure-native:sql/v20221101preview:ManagedInstance" }, { type: "azure-native:sql/v20230201preview:ManagedInstance" }, { type: "azure-native:sql/v20230501preview:ManagedInstance" }, { type: "azure-native:sql/v20230801:ManagedInstance" }, { type: "azure-native:sql/v20230801preview:ManagedInstance" }, { type: "azure-native:sql/v20240501preview:ManagedInstance" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedInstance.__pulumiType, name, resourceInputs, opts);
     }

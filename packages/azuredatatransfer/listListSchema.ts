@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Lists the schemas for the specified connection in a pipeline.
- * Azure REST API version: 2023-10-11-preview.
  *
- * Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27.
+ * Uses Azure REST API version 2023-10-11-preview.
+ *
+ * Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27, 2025-03-01-preview.
  */
 export function listListSchema(args: ListListSchemaArgs, opts?: pulumi.InvokeOptions): Promise<ListListSchemaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -62,9 +63,10 @@ export interface ListListSchemaResult {
 }
 /**
  * Lists the schemas for the specified connection in a pipeline.
- * Azure REST API version: 2023-10-11-preview.
  *
- * Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27.
+ * Uses Azure REST API version 2023-10-11-preview.
+ *
+ * Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27, 2025-03-01-preview.
  */
 export function listListSchemaOutput(args: ListListSchemaOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListListSchemaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the properties of the specified n group.
- * Azure REST API version: 2024-09-01-preview.
+ *
+ * Uses Azure REST API version 2024-09-01-preview.
  *
  * Other available API versions: 2024-11-01-preview.
  */
@@ -77,7 +78,8 @@ export interface GetNGroupResult {
 }
 /**
  * Get the properties of the specified n group.
- * Azure REST API version: 2024-09-01-preview.
+ *
+ * Uses Azure REST API version 2024-09-01-preview.
  *
  * Other available API versions: 2024-11-01-preview.
  */

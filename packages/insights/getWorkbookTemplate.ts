@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a single workbook template by its resourceName.
- * Azure REST API version: 2020-11-20.
+ *
+ * Uses Azure REST API version 2020-11-20.
  */
 export function getWorkbookTemplate(args: GetWorkbookTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkbookTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -71,7 +72,8 @@ export interface GetWorkbookTemplateResult {
 }
 /**
  * Get a single workbook template by its resourceName.
- * Azure REST API version: 2020-11-20.
+ *
+ * Uses Azure REST API version 2020-11-20.
  */
 export function getWorkbookTemplateOutput(args: GetWorkbookTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkbookTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a S3Bucket
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getS3Bucket(args: GetS3BucketArgs, opts?: pulumi.InvokeOptions): Promise<GetS3BucketResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetS3BucketResult {
 }
 /**
  * Get a S3Bucket
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getS3BucketOutput(args: GetS3BucketOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetS3BucketResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

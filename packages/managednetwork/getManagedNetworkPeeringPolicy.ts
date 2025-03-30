@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The Get ManagedNetworkPeeringPolicies operation gets a Managed Network Peering Policy resource, specified by the  resource group, Managed Network name, and peering policy name
- * Azure REST API version: 2019-06-01-preview.
+ *
+ * Uses Azure REST API version 2019-06-01-preview.
  */
 export function getManagedNetworkPeeringPolicy(args: GetManagedNetworkPeeringPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedNetworkPeeringPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -56,7 +57,8 @@ export interface GetManagedNetworkPeeringPolicyResult {
 }
 /**
  * The Get ManagedNetworkPeeringPolicies operation gets a Managed Network Peering Policy resource, specified by the  resource group, Managed Network name, and peering policy name
- * Azure REST API version: 2019-06-01-preview.
+ *
+ * Uses Azure REST API version 2019-06-01-preview.
  */
 export function getManagedNetworkPeeringPolicyOutput(args: GetManagedNetworkPeeringPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManagedNetworkPeeringPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

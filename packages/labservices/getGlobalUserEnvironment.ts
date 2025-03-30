@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the virtual machine details
- * Azure REST API version: 2018-10-15.
+ *
+ * Uses Azure REST API version 2018-10-15.
  */
 export function getGlobalUserEnvironment(args: GetGlobalUserEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalUserEnvironmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,7 +41,8 @@ export interface GetGlobalUserEnvironmentResult {
 }
 /**
  * Gets the virtual machine details
- * Azure REST API version: 2018-10-15.
+ *
+ * Uses Azure REST API version 2018-10-15.
  */
 export function getGlobalUserEnvironmentOutput(args: GetGlobalUserEnvironmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGlobalUserEnvironmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

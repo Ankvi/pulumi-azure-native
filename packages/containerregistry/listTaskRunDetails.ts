@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the detailed information for a given task run that includes all secrets.
- * Azure REST API version: 2019-06-01-preview.
+ *
+ * Uses Azure REST API version 2019-06-01-preview.
  */
 export function listTaskRunDetails(args: ListTaskRunDetailsArgs, opts?: pulumi.InvokeOptions): Promise<ListTaskRunDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -77,7 +78,8 @@ export interface ListTaskRunDetailsResult {
 }
 /**
  * Gets the detailed information for a given task run that includes all secrets.
- * Azure REST API version: 2019-06-01-preview.
+ *
+ * Uses Azure REST API version 2019-06-01-preview.
  */
 export function listTaskRunDetailsOutput(args: ListTaskRunDetailsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListTaskRunDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

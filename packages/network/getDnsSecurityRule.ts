@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets properties of a DNS security rule for a DNS resolver policy.
- * Azure REST API version: 2023-07-01-preview.
+ *
+ * Uses Azure REST API version 2023-07-01-preview.
  */
 export function getDnsSecurityRule(args: GetDnsSecurityRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsSecurityRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -84,7 +85,8 @@ export interface GetDnsSecurityRuleResult {
 }
 /**
  * Gets properties of a DNS security rule for a DNS resolver policy.
- * Azure REST API version: 2023-07-01-preview.
+ *
+ * Uses Azure REST API version 2023-07-01-preview.
  */
 export function getDnsSecurityRuleOutput(args: GetDnsSecurityRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsSecurityRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Definition of the configuration profile.
- * Azure REST API version: 2022-05-04.
+ *
+ * Uses Azure REST API version 2022-05-04.
  */
 export class ConfigurationProfile extends pulumi.CustomResource {
     /**

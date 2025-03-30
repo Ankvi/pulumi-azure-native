@@ -2,9 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Specifies information about the SSH public key.
- * Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
  *
- * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+ * Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+ *
+ * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
  */
 export class SshPublicKey extends pulumi.CustomResource {
     /**
@@ -83,7 +84,7 @@ export class SshPublicKey extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20191201:SshPublicKey" }, { type: "azure-native:compute/v20200601:SshPublicKey" }, { type: "azure-native:compute/v20201201:SshPublicKey" }, { type: "azure-native:compute/v20210301:SshPublicKey" }, { type: "azure-native:compute/v20210401:SshPublicKey" }, { type: "azure-native:compute/v20210701:SshPublicKey" }, { type: "azure-native:compute/v20211101:SshPublicKey" }, { type: "azure-native:compute/v20220301:SshPublicKey" }, { type: "azure-native:compute/v20220801:SshPublicKey" }, { type: "azure-native:compute/v20221101:SshPublicKey" }, { type: "azure-native:compute/v20230301:SshPublicKey" }, { type: "azure-native:compute/v20230701:SshPublicKey" }, { type: "azure-native:compute/v20230901:SshPublicKey" }, { type: "azure-native:compute/v20240301:SshPublicKey" }, { type: "azure-native:compute/v20240701:SshPublicKey" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20191201:SshPublicKey" }, { type: "azure-native:compute/v20200601:SshPublicKey" }, { type: "azure-native:compute/v20201201:SshPublicKey" }, { type: "azure-native:compute/v20210301:SshPublicKey" }, { type: "azure-native:compute/v20210401:SshPublicKey" }, { type: "azure-native:compute/v20210701:SshPublicKey" }, { type: "azure-native:compute/v20211101:SshPublicKey" }, { type: "azure-native:compute/v20220301:SshPublicKey" }, { type: "azure-native:compute/v20220801:SshPublicKey" }, { type: "azure-native:compute/v20221101:SshPublicKey" }, { type: "azure-native:compute/v20230301:SshPublicKey" }, { type: "azure-native:compute/v20230701:SshPublicKey" }, { type: "azure-native:compute/v20230901:SshPublicKey" }, { type: "azure-native:compute/v20240301:SshPublicKey" }, { type: "azure-native:compute/v20240701:SshPublicKey" }, { type: "azure-native:compute/v20241101:SshPublicKey" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SshPublicKey.__pulumiType, name, resourceInputs, opts);
     }

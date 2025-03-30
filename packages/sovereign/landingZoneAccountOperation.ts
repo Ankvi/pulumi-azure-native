@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The Landing zone account resource type. A Landing zone account is the container for configuring, deploying and managing multiple landing zones.
- * Azure REST API version: 2025-02-27-preview.
+ *
+ * Uses Azure REST API version 2025-02-27-preview.
  */
 export class LandingZoneAccountOperation extends pulumi.CustomResource {
     /**

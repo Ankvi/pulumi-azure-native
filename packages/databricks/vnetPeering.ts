@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Peerings in a VirtualNetwork resource
- * Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2018-04-01.
+ *
+ * Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2018-04-01.
  */
 export class VNetPeering extends pulumi.CustomResource {
     /**
@@ -131,7 +132,7 @@ export class VNetPeering extends pulumi.CustomResource {
             resourceInputs["useRemoteGateways"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:databricks/v20180401:VNetPeering" }, { type: "azure-native:databricks/v20180401:vNetPeering" }, { type: "azure-native:databricks/v20210401preview:VNetPeering" }, { type: "azure-native:databricks/v20210401preview:vNetPeering" }, { type: "azure-native:databricks/v20220401preview:VNetPeering" }, { type: "azure-native:databricks/v20220401preview:vNetPeering" }, { type: "azure-native:databricks/v20230201:VNetPeering" }, { type: "azure-native:databricks/v20230201:vNetPeering" }, { type: "azure-native:databricks/v20230915preview:VNetPeering" }, { type: "azure-native:databricks/v20230915preview:vNetPeering" }, { type: "azure-native:databricks/v20240501:VNetPeering" }, { type: "azure-native:databricks/v20240501:vNetPeering" }, { type: "azure-native:databricks/v20240901preview:VNetPeering" }, { type: "azure-native:databricks/v20240901preview:vNetPeering" }, { type: "azure-native:databricks:vNetPeering" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:databricks/v20180401:VNetPeering" }, { type: "azure-native:databricks/v20180401:vNetPeering" }, { type: "azure-native:databricks/v20210401preview:VNetPeering" }, { type: "azure-native:databricks/v20210401preview:vNetPeering" }, { type: "azure-native:databricks/v20220401preview:VNetPeering" }, { type: "azure-native:databricks/v20220401preview:vNetPeering" }, { type: "azure-native:databricks/v20230201:VNetPeering" }, { type: "azure-native:databricks/v20230201:vNetPeering" }, { type: "azure-native:databricks/v20230915preview:VNetPeering" }, { type: "azure-native:databricks/v20230915preview:vNetPeering" }, { type: "azure-native:databricks/v20240501:VNetPeering" }, { type: "azure-native:databricks/v20240501:vNetPeering" }, { type: "azure-native:databricks/v20240901preview:VNetPeering" }, { type: "azure-native:databricks/v20240901preview:vNetPeering" }, { type: "azure-native:databricks/v20250301preview:VNetPeering" }, { type: "azure-native:databricks/v20250301preview:vNetPeering" }, { type: "azure-native:databricks:vNetPeering" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VNetPeering.__pulumiType, name, resourceInputs, opts);
     }

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets information about the specified Private Endpoint.
- * Azure REST API version: 2020-03-01.
+ *
+ * Uses Azure REST API version 2020-03-01.
  *
  * Other available API versions: 2020-03-01-preview.
  */
@@ -62,7 +63,8 @@ export interface GetPrivateEndpointResult {
 }
 /**
  * Gets information about the specified Private Endpoint.
- * Azure REST API version: 2020-03-01.
+ *
+ * Uses Azure REST API version 2020-03-01.
  *
  * Other available API versions: 2020-03-01-preview.
  */

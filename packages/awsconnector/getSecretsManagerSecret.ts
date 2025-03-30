@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a SecretsManagerSecret
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getSecretsManagerSecret(args: GetSecretsManagerSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretsManagerSecretResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetSecretsManagerSecretResult {
 }
 /**
  * Get a SecretsManagerSecret
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getSecretsManagerSecretOutput(args: GetSecretsManagerSecretOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretsManagerSecretResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

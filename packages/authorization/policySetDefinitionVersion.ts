@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The policy set definition version.
- * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2024-05-01, 2025-01-01.
+ * Uses Azure REST API version 2023-04-01.
+ *
+ * Other available API versions: 2024-05-01, 2025-01-01, 2025-03-01.
  */
 export class PolicySetDefinitionVersion extends pulumi.CustomResource {
     /**
@@ -123,7 +124,7 @@ export class PolicySetDefinitionVersion extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:authorization/v20230401:PolicySetDefinitionVersion" }, { type: "azure-native:authorization/v20240501:PolicySetDefinitionVersion" }, { type: "azure-native:authorization/v20250101:PolicySetDefinitionVersion" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:authorization/v20230401:PolicySetDefinitionVersion" }, { type: "azure-native:authorization/v20240501:PolicySetDefinitionVersion" }, { type: "azure-native:authorization/v20250101:PolicySetDefinitionVersion" }, { type: "azure-native:authorization/v20250301:PolicySetDefinitionVersion" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PolicySetDefinitionVersion.__pulumiType, name, resourceInputs, opts);
     }

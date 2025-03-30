@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Class representing a CosmosDb data connection.
- * Azure REST API version: 2022-12-29. Prior API version in Azure Native 1.x: 2021-01-01.
+ *
+ * Uses Azure REST API version 2022-12-29. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
  */
 export class CosmosDbDataConnection extends pulumi.CustomResource {
     /**

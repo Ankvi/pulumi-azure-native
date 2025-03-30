@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * An Azure Cosmos DB Throughputpool.
- * Azure REST API version: 2023-11-15-preview.
+ *
+ * Uses Azure REST API version 2023-11-15-preview.
  *
  * Other available API versions: 2024-02-15-preview, 2024-05-15-preview, 2024-09-01-preview, 2024-12-01-preview.
  */

@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets an VirtualNetworkRule for a Namespace by rule name.
- * Azure REST API version: 2018-01-01-preview.
+ *
+ * Uses Azure REST API version 2018-01-01-preview.
  */
 export function getNamespaceVirtualNetworkRule(args: GetNamespaceVirtualNetworkRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceVirtualNetworkRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -51,7 +52,8 @@ export interface GetNamespaceVirtualNetworkRuleResult {
 }
 /**
  * Gets an VirtualNetworkRule for a Namespace by rule name.
- * Azure REST API version: 2018-01-01-preview.
+ *
+ * Uses Azure REST API version 2018-01-01-preview.
  */
 export function getNamespaceVirtualNetworkRuleOutput(args: GetNamespaceVirtualNetworkRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNamespaceVirtualNetworkRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

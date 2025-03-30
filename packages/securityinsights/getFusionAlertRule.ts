@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the alert rule.
- * Azure REST API version: 2023-02-01.
+ *
+ * Uses Azure REST API version 2023-02-01.
  */
 export function getFusionAlertRule(args: GetFusionAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetFusionAlertRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -93,7 +94,8 @@ export interface GetFusionAlertRuleResult {
 }
 /**
  * Gets the alert rule.
- * Azure REST API version: 2023-02-01.
+ *
+ * Uses Azure REST API version 2023-02-01.
  */
 export function getFusionAlertRuleOutput(args: GetFusionAlertRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFusionAlertRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

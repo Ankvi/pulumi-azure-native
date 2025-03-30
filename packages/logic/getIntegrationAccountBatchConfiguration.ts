@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a batch configuration for an integration account.
- * Azure REST API version: 2019-05-01.
+ *
+ * Uses Azure REST API version 2019-05-01.
  */
 export function getIntegrationAccountBatchConfiguration(args: GetIntegrationAccountBatchConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationAccountBatchConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -60,7 +61,8 @@ export interface GetIntegrationAccountBatchConfigurationResult {
 }
 /**
  * Get a batch configuration for an integration account.
- * Azure REST API version: 2019-05-01.
+ *
+ * Uses Azure REST API version 2019-05-01.
  */
 export function getIntegrationAccountBatchConfigurationOutput(args: GetIntegrationAccountBatchConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIntegrationAccountBatchConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Instance dataflowEndpoint resource
- * Azure REST API version: 2024-07-01-preview.
+ *
+ * Uses Azure REST API version 2024-07-01-preview.
  */
 export class DataFlowEndpoint extends pulumi.CustomResource {
     /**
@@ -89,7 +90,7 @@ export class DataFlowEndpoint extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20240701preview:DataFlowEndpoint" }, { type: "azure-native:iotoperations/v20240815preview:DataFlowEndpoint" }, { type: "azure-native:iotoperations/v20240915preview:DataFlowEndpoint" }, { type: "azure-native:iotoperations/v20241101:DataFlowEndpoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20240701preview:DataFlowEndpoint" }, { type: "azure-native:iotoperations/v20240815preview:DataFlowEndpoint" }, { type: "azure-native:iotoperations/v20240915preview:DataFlowEndpoint" }, { type: "azure-native:iotoperations/v20241101:DataFlowEndpoint" }, { type: "azure-native:iotoperations/v20250401:DataFlowEndpoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DataFlowEndpoint.__pulumiType, name, resourceInputs, opts);
     }

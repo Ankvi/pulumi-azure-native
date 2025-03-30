@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a DiscoveredAsset
- * Azure REST API version: 2024-09-01-preview.
+ *
+ * Uses Azure REST API version 2024-09-01-preview.
  */
 export function getDiscoveredAsset(args: GetDiscoveredAssetArgs, opts?: pulumi.InvokeOptions): Promise<GetDiscoveredAssetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -127,7 +128,8 @@ export interface GetDiscoveredAssetResult {
 }
 /**
  * Get a DiscoveredAsset
- * Azure REST API version: 2024-09-01-preview.
+ *
+ * Uses Azure REST API version 2024-09-01-preview.
  */
 export function getDiscoveredAssetOutput(args: GetDiscoveredAssetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiscoveredAssetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

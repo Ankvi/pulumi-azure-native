@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get all delivery attributes for an event subscription of a namespace topic.
- * Azure REST API version: 2023-12-15-preview.
+ *
+ * Uses Azure REST API version 2023-12-15-preview.
  *
  * Other available API versions: 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
  */
@@ -47,7 +48,8 @@ export interface GetNamespaceTopicEventSubscriptionDeliveryAttributesResult {
 }
 /**
  * Get all delivery attributes for an event subscription of a namespace topic.
- * Azure REST API version: 2023-12-15-preview.
+ *
+ * Uses Azure REST API version 2023-12-15-preview.
  *
  * Other available API versions: 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
  */

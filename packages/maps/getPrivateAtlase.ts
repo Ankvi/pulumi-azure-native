@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * [Deprecated] Get a Private Atlas resource.
- * Azure REST API version: 2020-02-01-preview.
+ *
+ * Uses Azure REST API version 2020-02-01-preview.
  */
 export function getPrivateAtlase(args: GetPrivateAtlaseArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateAtlaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -60,7 +61,8 @@ export interface GetPrivateAtlaseResult {
 }
 /**
  * [Deprecated] Get a Private Atlas resource.
- * Azure REST API version: 2020-02-01-preview.
+ *
+ * Uses Azure REST API version 2020-02-01-preview.
  */
 export function getPrivateAtlaseOutput(args: GetPrivateAtlaseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateAtlaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

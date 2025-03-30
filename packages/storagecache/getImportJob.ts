@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns an import job.
- * Azure REST API version: 2024-03-01.
+ *
+ * Uses Azure REST API version 2024-03-01.
  */
 export function getImportJob(args: GetImportJobArgs, opts?: pulumi.InvokeOptions): Promise<GetImportJobResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -116,7 +117,8 @@ export interface GetImportJobResult {
 }
 /**
  * Returns an import job.
- * Azure REST API version: 2024-03-01.
+ *
+ * Uses Azure REST API version 2024-03-01.
  */
 export function getImportJobOutput(args: GetImportJobOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImportJobResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

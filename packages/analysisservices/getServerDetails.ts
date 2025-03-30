@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets details about the specified Analysis Services server.
- * Azure REST API version: 2017-08-01.
+ *
+ * Uses Azure REST API version 2017-08-01.
  *
  * Other available API versions: 2017-08-01-beta.
  */
@@ -97,7 +98,8 @@ export interface GetServerDetailsResult {
 }
 /**
  * Gets details about the specified Analysis Services server.
- * Azure REST API version: 2017-08-01.
+ *
+ * Uses Azure REST API version 2017-08-01.
  *
  * Other available API versions: 2017-08-01-beta.
  */

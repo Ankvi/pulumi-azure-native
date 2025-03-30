@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns the specific pipeline group instance.
- * Azure REST API version: 2023-10-01-preview.
+ *
+ * Uses Azure REST API version 2023-10-01-preview.
  *
  * Other available API versions: 2024-10-01-preview.
  */
@@ -89,7 +90,8 @@ export interface GetPipelineGroupResult {
 }
 /**
  * Returns the specific pipeline group instance.
- * Azure REST API version: 2023-10-01-preview.
+ *
+ * Uses Azure REST API version 2023-10-01-preview.
  *
  * Other available API versions: 2024-10-01-preview.
  */

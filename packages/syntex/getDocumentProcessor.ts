@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns a document processor for a given name.
- * Azure REST API version: 2022-09-15-preview.
+ *
+ * Uses Azure REST API version 2022-09-15-preview.
  */
 export function getDocumentProcessor(args: GetDocumentProcessorArgs, opts?: pulumi.InvokeOptions): Promise<GetDocumentProcessorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetDocumentProcessorResult {
 }
 /**
  * Returns a document processor for a given name.
- * Azure REST API version: 2022-09-15-preview.
+ *
+ * Uses Azure REST API version 2022-09-15-preview.
  */
 export function getDocumentProcessorOutput(args: GetDocumentProcessorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDocumentProcessorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

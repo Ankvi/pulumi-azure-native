@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * SecurityPolicy Subresource of Traffic Controller.
- * Azure REST API version: 2024-05-01-preview.
  *
- * Other available API versions: 2025-01-01.
+ * Uses Azure REST API version 2024-05-01-preview.
+ *
+ * Other available API versions: 2025-01-01, 2025-03-01-preview.
  */
 export class SecurityPoliciesInterface extends pulumi.CustomResource {
     /**
@@ -63,7 +64,7 @@ export class SecurityPoliciesInterface extends pulumi.CustomResource {
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * Web Application Firewall Policy of the Traffic Controller Security Policy
+     * Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
      */
     public readonly wafPolicy!: pulumi.Output<types.outputs.WafPolicyResponse | undefined>;
 
@@ -106,7 +107,7 @@ export class SecurityPoliciesInterface extends pulumi.CustomResource {
             resourceInputs["wafPolicy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:servicenetworking/v20240501preview:SecurityPoliciesInterface" }, { type: "azure-native:servicenetworking/v20250101:SecurityPoliciesInterface" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:servicenetworking/v20240501preview:SecurityPoliciesInterface" }, { type: "azure-native:servicenetworking/v20250101:SecurityPoliciesInterface" }, { type: "azure-native:servicenetworking/v20250301preview:SecurityPoliciesInterface" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SecurityPoliciesInterface.__pulumiType, name, resourceInputs, opts);
     }
@@ -137,7 +138,7 @@ export interface SecurityPoliciesInterfaceArgs {
      */
     trafficControllerName: pulumi.Input<string>;
     /**
-     * Web Application Firewall Policy of the Traffic Controller Security Policy
+     * Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
      */
     wafPolicy?: pulumi.Input<types.inputs.WafPolicyArgs>;
 }

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a single custom assessment automation by name for the provided subscription and resource group.
- * Azure REST API version: 2021-07-01-preview.
+ *
+ * Uses Azure REST API version 2021-07-01-preview.
  */
 export function getCustomAssessmentAutomation(args: GetCustomAssessmentAutomationArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomAssessmentAutomationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -75,7 +76,8 @@ export interface GetCustomAssessmentAutomationResult {
 }
 /**
  * Gets a single custom assessment automation by name for the provided subscription and resource group.
- * Azure REST API version: 2021-07-01-preview.
+ *
+ * Uses Azure REST API version 2021-07-01-preview.
  */
 export function getCustomAssessmentAutomationOutput(args: GetCustomAssessmentAutomationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomAssessmentAutomationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

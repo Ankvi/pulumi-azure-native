@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Policies for protecting resources using Just-in-Time access control for the subscription, location
- * Azure REST API version: 2020-01-01.
+ *
+ * Uses Azure REST API version 2020-01-01.
  */
 export function getJitNetworkAccessPolicy(args: GetJitNetworkAccessPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetJitNetworkAccessPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -62,7 +63,8 @@ export interface GetJitNetworkAccessPolicyResult {
 }
 /**
  * Policies for protecting resources using Just-in-Time access control for the subscription, location
- * Azure REST API version: 2020-01-01.
+ *
+ * Uses Azure REST API version 2020-01-01.
  */
 export function getJitNetworkAccessPolicyOutput(args: GetJitNetworkAccessPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetJitNetworkAccessPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

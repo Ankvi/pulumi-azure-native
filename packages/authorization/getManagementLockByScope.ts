@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a management lock by scope.
- * Azure REST API version: 2020-05-01.
+ *
+ * Uses Azure REST API version 2020-05-01.
  */
 export function getManagementLockByScope(args: GetManagementLockByScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetManagementLockByScopeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetManagementLockByScopeResult {
 }
 /**
  * Get a management lock by scope.
- * Azure REST API version: 2020-05-01.
+ *
+ * Uses Azure REST API version 2020-05-01.
  */
 export function getManagementLockByScopeOutput(args: GetManagementLockByScopeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManagementLockByScopeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

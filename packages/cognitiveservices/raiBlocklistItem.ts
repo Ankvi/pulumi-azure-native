@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Cognitive Services RaiBlocklist Item.
- * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2024-04-01-preview, 2024-06-01-preview, 2024-10-01.
+ * Uses Azure REST API version 2023-10-01-preview.
+ *
+ * Other available API versions: 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview.
  */
 export class RaiBlocklistItem extends pulumi.CustomResource {
     /**
@@ -98,7 +99,7 @@ export class RaiBlocklistItem extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20231001preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20240401preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20240601preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20241001:RaiBlocklistItem" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20231001preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20240401preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20240601preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20241001:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20250401preview:RaiBlocklistItem" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RaiBlocklistItem.__pulumiType, name, resourceInputs, opts);
     }

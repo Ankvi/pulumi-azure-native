@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Lists the consent links of a connection
- * Azure REST API version: 2016-06-01.
+ *
+ * Uses Azure REST API version 2016-06-01.
  *
  * Other available API versions: 2015-08-01-preview.
  */
@@ -47,7 +48,8 @@ export interface ListConnectionConsentLinksResult {
 }
 /**
  * Lists the consent links of a connection
- * Azure REST API version: 2016-06-01.
+ *
+ * Uses Azure REST API version 2016-06-01.
  *
  * Other available API versions: 2015-08-01-preview.
  */

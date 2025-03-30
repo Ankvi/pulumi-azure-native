@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns the BitLocker Keys for all drives in the specified job.
- * Azure REST API version: 2021-01-01.
+ *
+ * Uses Azure REST API version 2021-01-01.
  */
 export function listBitLockerKey(args: ListBitLockerKeyArgs, opts?: pulumi.InvokeOptions): Promise<ListBitLockerKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,7 +36,8 @@ export interface ListBitLockerKeyResult {
 }
 /**
  * Returns the BitLocker Keys for all drives in the specified job.
- * Azure REST API version: 2021-01-01.
+ *
+ * Uses Azure REST API version 2021-01-01.
  */
 export function listBitLockerKeyOutput(args: ListBitLockerKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListBitLockerKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

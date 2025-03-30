@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Route53DomainsDomainSummary
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getRoute53DomainsDomainSummary(args: GetRoute53DomainsDomainSummaryArgs, opts?: pulumi.InvokeOptions): Promise<GetRoute53DomainsDomainSummaryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetRoute53DomainsDomainSummaryResult {
 }
 /**
  * Get a Route53DomainsDomainSummary
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getRoute53DomainsDomainSummaryOutput(args: GetRoute53DomainsDomainSummaryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoute53DomainsDomainSummaryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

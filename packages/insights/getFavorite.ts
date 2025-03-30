@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get a single favorite by its FavoriteId, defined within an Application Insights component.
- * Azure REST API version: 2015-05-01.
+ *
+ * Uses Azure REST API version 2015-05-01.
  */
 export function getFavorite(args: GetFavoriteArgs, opts?: pulumi.InvokeOptions): Promise<GetFavoriteResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -79,7 +80,8 @@ export interface GetFavoriteResult {
 }
 /**
  * Get a single favorite by its FavoriteId, defined within an Application Insights component.
- * Azure REST API version: 2015-05-01.
+ *
+ * Uses Azure REST API version 2015-05-01.
  */
 export function getFavoriteOutput(args: GetFavoriteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFavoriteResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * List mongo cluster connection strings. This includes the default connection string using SCRAM-SHA-256, as well as other connection strings supported by the cluster.
- * Azure REST API version: 2023-03-15-preview.
+ *
+ * Uses Azure REST API version 2023-03-15-preview.
  *
  * Other available API versions: 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview, 2024-03-01-preview, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview.
  */
@@ -37,7 +38,8 @@ export interface ListMongoClusterConnectionStringsResult {
 }
 /**
  * List mongo cluster connection strings. This includes the default connection string using SCRAM-SHA-256, as well as other connection strings supported by the cluster.
- * Azure REST API version: 2023-03-15-preview.
+ *
+ * Uses Azure REST API version 2023-03-15-preview.
  *
  * Other available API versions: 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview, 2024-03-01-preview, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview.
  */

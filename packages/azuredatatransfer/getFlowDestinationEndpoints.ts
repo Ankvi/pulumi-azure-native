@@ -2,7 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get the destination endpoints for the specified flow and stream ID.
- * Azure REST API version: 2024-09-27.
+ *
+ * Uses Azure REST API version 2024-09-27.
+ *
+ * Other available API versions: 2025-03-01-preview.
  */
 export function getFlowDestinationEndpoints(args: GetFlowDestinationEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowDestinationEndpointsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,7 +42,10 @@ export interface GetFlowDestinationEndpointsResult {
 }
 /**
  * Get the destination endpoints for the specified flow and stream ID.
- * Azure REST API version: 2024-09-27.
+ *
+ * Uses Azure REST API version 2024-09-27.
+ *
+ * Other available API versions: 2025-03-01-preview.
  */
 export function getFlowDestinationEndpointsOutput(args: GetFlowDestinationEndpointsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlowDestinationEndpointsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

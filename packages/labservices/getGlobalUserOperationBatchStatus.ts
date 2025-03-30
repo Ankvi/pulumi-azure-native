@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get batch operation status
- * Azure REST API version: 2018-10-15.
+ *
+ * Uses Azure REST API version 2018-10-15.
  */
 export function getGlobalUserOperationBatchStatus(args: GetGlobalUserOperationBatchStatusArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalUserOperationBatchStatusResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,7 +36,8 @@ export interface GetGlobalUserOperationBatchStatusResult {
 }
 /**
  * Get batch operation status
- * Azure REST API version: 2018-10-15.
+ *
+ * Uses Azure REST API version 2018-10-15.
  */
 export function getGlobalUserOperationBatchStatusOutput(args: GetGlobalUserOperationBatchStatusOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGlobalUserOperationBatchStatusResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

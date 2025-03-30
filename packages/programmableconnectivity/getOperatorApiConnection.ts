@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get an Operator API Connection.
- * Azure REST API version: 2024-01-15-preview.
+ *
+ * Uses Azure REST API version 2024-01-15-preview.
  */
 export function getOperatorApiConnection(args: GetOperatorApiConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetOperatorApiConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -95,7 +96,8 @@ export interface GetOperatorApiConnectionResult {
 }
 /**
  * Get an Operator API Connection.
- * Azure REST API version: 2024-01-15-preview.
+ *
+ * Uses Azure REST API version 2024-01-15-preview.
  */
 export function getOperatorApiConnectionOutput(args: GetOperatorApiConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOperatorApiConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

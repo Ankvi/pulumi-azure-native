@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a disaster recovery configuration.
- * Azure REST API version: 2014-04-01.
+ *
+ * Uses Azure REST API version 2014-04-01.
  */
 export function getDisasterRecoveryConfiguration(args: GetDisasterRecoveryConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetDisasterRecoveryConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -79,7 +80,8 @@ export interface GetDisasterRecoveryConfigurationResult {
 }
 /**
  * Gets a disaster recovery configuration.
- * Azure REST API version: 2014-04-01.
+ *
+ * Uses Azure REST API version 2014-04-01.
  */
 export function getDisasterRecoveryConfigurationOutput(args: GetDisasterRecoveryConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDisasterRecoveryConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

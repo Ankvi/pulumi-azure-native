@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets information about a database.
- * Azure REST API version: 2018-06-01.
+ *
+ * Uses Azure REST API version 2018-06-01.
  *
  * Other available API versions: 2018-06-01-preview.
  */
@@ -57,7 +58,8 @@ export interface GetDatabaseResult {
 }
 /**
  * Gets information about a database.
- * Azure REST API version: 2018-06-01.
+ *
+ * Uses Azure REST API version 2018-06-01.
  *
  * Other available API versions: 2018-06-01-preview.
  */

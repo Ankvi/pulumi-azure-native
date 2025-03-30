@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get a shared access policy by name from an IoT hub. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
- * Azure REST API version: 2022-04-30-preview.
+ *
+ * Uses Azure REST API version 2022-04-30-preview.
  *
  * Other available API versions: 2022-11-15-preview, 2023-06-30, 2023-06-30-preview.
  */
@@ -53,7 +54,8 @@ export interface ListIotHubResourceKeysForKeyNameResult {
 }
 /**
  * Get a shared access policy by name from an IoT hub. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
- * Azure REST API version: 2022-04-30-preview.
+ *
+ * Uses Azure REST API version 2022-04-30-preview.
  *
  * Other available API versions: 2022-11-15-preview, 2023-06-30, 2023-06-30-preview.
  */

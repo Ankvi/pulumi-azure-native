@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * List available models from all connections.
- * Azure REST API version: 2024-04-01-preview.
+ *
+ * Uses Azure REST API version 2024-04-01-preview.
  */
 export function listWorkspaceConnectionModels(args: ListWorkspaceConnectionModelsArgs, opts?: pulumi.InvokeOptions): Promise<ListWorkspaceConnectionModelsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,7 +37,8 @@ export interface ListWorkspaceConnectionModelsResult {
 }
 /**
  * List available models from all connections.
- * Azure REST API version: 2024-04-01-preview.
+ *
+ * Uses Azure REST API version 2024-04-01-preview.
  */
 export function listWorkspaceConnectionModelsOutput(args: ListWorkspaceConnectionModelsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListWorkspaceConnectionModelsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

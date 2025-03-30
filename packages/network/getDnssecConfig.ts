@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the DNSSEC configuration.
- * Azure REST API version: 2023-07-01-preview.
+ *
+ * Uses Azure REST API version 2023-07-01-preview.
  */
 export function getDnssecConfig(args: GetDnssecConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetDnssecConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetDnssecConfigResult {
 }
 /**
  * Gets the DNSSEC configuration.
- * Azure REST API version: 2023-07-01-preview.
+ *
+ * Uses Azure REST API version 2023-07-01-preview.
  */
 export function getDnssecConfigOutput(args: GetDnssecConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnssecConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

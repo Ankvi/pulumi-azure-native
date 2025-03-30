@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a LogsLogStream
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getLogsLogStream(args: GetLogsLogStreamArgs, opts?: pulumi.InvokeOptions): Promise<GetLogsLogStreamResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetLogsLogStreamResult {
 }
 /**
  * Get a LogsLogStream
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getLogsLogStreamOutput(args: GetLogsLogStreamOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogsLogStreamResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

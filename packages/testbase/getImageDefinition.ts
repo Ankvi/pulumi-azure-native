@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get image properties under the image definition name created by test base custom image which derived from 'VHD' source.
- * Azure REST API version: 2023-11-01-preview.
+ *
+ * Uses Azure REST API version 2023-11-01-preview.
  */
 export function getImageDefinition(args: GetImageDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetImageDefinitionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -65,7 +66,8 @@ export interface GetImageDefinitionResult {
 }
 /**
  * Get image properties under the image definition name created by test base custom image which derived from 'VHD' source.
- * Azure REST API version: 2023-11-01-preview.
+ *
+ * Uses Azure REST API version 2023-11-01-preview.
  */
 export function getImageDefinitionOutput(args: GetImageDefinitionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImageDefinitionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

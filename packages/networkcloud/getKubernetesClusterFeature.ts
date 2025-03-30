@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get properties of the provided the Kubernetes cluster feature.
- * Azure REST API version: 2024-06-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview.
+ * Uses Azure REST API version 2024-06-01-preview.
+ *
+ * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-02-01.
  */
 export function getKubernetesClusterFeature(args: GetKubernetesClusterFeatureArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClusterFeatureResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -87,9 +88,10 @@ export interface GetKubernetesClusterFeatureResult {
 }
 /**
  * Get properties of the provided the Kubernetes cluster feature.
- * Azure REST API version: 2024-06-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview.
+ * Uses Azure REST API version 2024-06-01-preview.
+ *
+ * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-02-01.
  */
 export function getKubernetesClusterFeatureOutput(args: GetKubernetesClusterFeatureOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesClusterFeatureResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

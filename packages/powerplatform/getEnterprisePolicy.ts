@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get information about an EnterprisePolicy
- * Azure REST API version: 2020-10-30-preview.
+ *
+ * Uses Azure REST API version 2020-10-30-preview.
  */
 export function getEnterprisePolicy(args: GetEnterprisePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterprisePolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -83,7 +84,8 @@ export interface GetEnterprisePolicyResult {
 }
 /**
  * Get information about an EnterprisePolicy
- * Azure REST API version: 2020-10-30-preview.
+ *
+ * Uses Azure REST API version 2020-10-30-preview.
  */
 export function getEnterprisePolicyOutput(args: GetEnterprisePolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnterprisePolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

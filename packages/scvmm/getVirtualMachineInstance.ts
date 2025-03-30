@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Retrieves information about a virtual machine instance.
- * Azure REST API version: 2023-04-01-preview.
+ *
+ * Uses Azure REST API version 2023-04-01-preview.
  *
  * Other available API versions: 2023-10-07, 2024-06-01.
  */
@@ -80,7 +81,8 @@ export interface GetVirtualMachineInstanceResult {
 }
 /**
  * Retrieves information about a virtual machine instance.
- * Azure REST API version: 2023-04-01-preview.
+ *
+ * Uses Azure REST API version 2023-04-01-preview.
  *
  * Other available API versions: 2023-10-07, 2024-06-01.
  */

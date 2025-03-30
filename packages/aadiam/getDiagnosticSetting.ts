@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the active diagnostic setting for AadIam.
- * Azure REST API version: 2017-04-01.
+ *
+ * Uses Azure REST API version 2017-04-01.
  *
  * Other available API versions: 2017-04-01-preview.
  */
@@ -64,7 +65,8 @@ export interface GetDiagnosticSettingResult {
 }
 /**
  * Gets the active diagnostic setting for AadIam.
- * Azure REST API version: 2017-04-01.
+ *
+ * Uses Azure REST API version 2017-04-01.
  *
  * Other available API versions: 2017-04-01-preview.
  */

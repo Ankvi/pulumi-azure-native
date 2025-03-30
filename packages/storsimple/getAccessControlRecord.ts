@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Returns the properties of the specified access control record name.
- * Azure REST API version: 2017-06-01.
+ *
+ * Uses Azure REST API version 2017-06-01.
  */
 export function getAccessControlRecord(args: GetAccessControlRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessControlRecordResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetAccessControlRecordResult {
 }
 /**
  * Returns the properties of the specified access control record name.
- * Azure REST API version: 2017-06-01.
+ *
+ * Uses Azure REST API version 2017-06-01.
  */
 export function getAccessControlRecordOutput(args: GetAccessControlRecordOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessControlRecordResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

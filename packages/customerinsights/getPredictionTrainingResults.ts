@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets training results.
- * Azure REST API version: 2017-04-26.
+ *
+ * Uses Azure REST API version 2017-04-26.
  */
 export function getPredictionTrainingResults(args: GetPredictionTrainingResultsArgs, opts?: pulumi.InvokeOptions): Promise<GetPredictionTrainingResultsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -56,7 +57,8 @@ export interface GetPredictionTrainingResultsResult {
 }
 /**
  * Gets training results.
- * Azure REST API version: 2017-04-26.
+ *
+ * Uses Azure REST API version 2017-04-26.
  */
 export function getPredictionTrainingResultsOutput(args: GetPredictionTrainingResultsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPredictionTrainingResultsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

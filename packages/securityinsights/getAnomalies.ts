@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a setting.
- * Azure REST API version: 2023-06-01-preview.
+ *
+ * Uses Azure REST API version 2023-06-01-preview.
  */
 export function getAnomalies(args: GetAnomaliesArgs, opts?: pulumi.InvokeOptions): Promise<GetAnomaliesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -65,7 +66,8 @@ export interface GetAnomaliesResult {
 }
 /**
  * Gets a setting.
- * Azure REST API version: 2023-06-01-preview.
+ *
+ * Uses Azure REST API version 2023-06-01-preview.
  */
 export function getAnomaliesOutput(args: GetAnomaliesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAnomaliesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

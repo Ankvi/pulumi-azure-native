@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The scheduled query rule resource.
- * Azure REST API version: 2023-03-15-preview. Prior API version in Azure Native 1.x: 2018-04-16.
  *
- * Other available API versions: 2018-04-16, 2020-05-01-preview, 2022-08-01-preview, 2023-12-01, 2024-01-01-preview.
+ * Uses Azure REST API version 2023-03-15-preview. In version 1.x of the Azure Native provider, it used API version 2018-04-16.
+ *
+ * Other available API versions: 2018-04-16, 2020-05-01-preview, 2022-08-01-preview, 2023-12-01, 2024-01-01-preview, 2025-01-01-preview.
  */
 export class ScheduledQueryRule extends pulumi.CustomResource {
     /**
@@ -225,7 +226,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
             resourceInputs["windowSize"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:insights/v20180416:ScheduledQueryRule" }, { type: "azure-native:insights/v20200501preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20210201preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20210801:ScheduledQueryRule" }, { type: "azure-native:insights/v20220615:ScheduledQueryRule" }, { type: "azure-native:insights/v20220801preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20230315preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20231201:ScheduledQueryRule" }, { type: "azure-native:insights/v20240101preview:ScheduledQueryRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:insights/v20180416:ScheduledQueryRule" }, { type: "azure-native:insights/v20200501preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20210201preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20210801:ScheduledQueryRule" }, { type: "azure-native:insights/v20220615:ScheduledQueryRule" }, { type: "azure-native:insights/v20220801preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20230315preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20231201:ScheduledQueryRule" }, { type: "azure-native:insights/v20240101preview:ScheduledQueryRule" }, { type: "azure-native:insights/v20250101preview:ScheduledQueryRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ScheduledQueryRule.__pulumiType, name, resourceInputs, opts);
     }

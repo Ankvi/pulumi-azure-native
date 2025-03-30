@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the specified NSP access rule by name.
- * Azure REST API version: 2021-02-01-preview.
+ *
+ * Uses Azure REST API version 2021-02-01-preview.
  *
  * Other available API versions: 2023-07-01-preview, 2023-08-01-preview.
  */
@@ -95,7 +96,8 @@ export interface GetNspAccessRuleResult {
 }
 /**
  * Gets the specified NSP access rule by name.
- * Azure REST API version: 2021-02-01-preview.
+ *
+ * Uses Azure REST API version 2021-02-01-preview.
  *
  * Other available API versions: 2023-07-01-preview, 2023-08-01-preview.
  */

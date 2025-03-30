@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Instance of Verifier Workspace.
- * Azure REST API version: 2024-01-01-preview.
+ *
+ * Uses Azure REST API version 2024-01-01-preview.
  *
  * Other available API versions: 2024-05-01.
  */

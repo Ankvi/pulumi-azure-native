@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Response for POST requests that return single SharedAccessAuthorizationRule.
- * Azure REST API version: 2023-01-01-preview.
+ *
+ * Uses Azure REST API version 2023-01-01-preview.
  *
  * Other available API versions: 2017-04-01, 2023-09-01, 2023-10-01-preview.
  */
@@ -71,7 +72,8 @@ export interface GetNotificationHubAuthorizationRuleResult {
 }
 /**
  * Response for POST requests that return single SharedAccessAuthorizationRule.
- * Azure REST API version: 2023-01-01-preview.
+ *
+ * Uses Azure REST API version 2023-01-01-preview.
  *
  * Other available API versions: 2017-04-01, 2023-09-01, 2023-10-01-preview.
  */

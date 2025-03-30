@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns the properties of a lab resource.
- * Azure REST API version: 2022-08-01.
+ *
+ * Uses Azure REST API version 2022-08-01.
  *
  * Other available API versions: 2018-10-15, 2023-06-07.
  */
@@ -101,7 +102,8 @@ export interface GetLabResult {
 }
 /**
  * Returns the properties of a lab resource.
- * Azure REST API version: 2022-08-01.
+ *
+ * Uses Azure REST API version 2022-08-01.
  *
  * Other available API versions: 2018-10-15, 2023-06-07.
  */

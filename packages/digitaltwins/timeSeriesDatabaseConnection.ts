@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Describes a time series database connection resource.
- * Azure REST API version: 2023-01-31. Prior API version in Azure Native 1.x: 2021-06-30-preview.
+ *
+ * Uses Azure REST API version 2023-01-31. In version 1.x of the Azure Native provider, it used API version 2021-06-30-preview.
  */
 export class TimeSeriesDatabaseConnection extends pulumi.CustomResource {
     /**

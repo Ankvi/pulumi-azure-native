@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a IamMFADevice
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getIamMfaDevice(args: GetIamMfaDeviceArgs, opts?: pulumi.InvokeOptions): Promise<GetIamMfaDeviceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetIamMfaDeviceResult {
 }
 /**
  * Get a IamMFADevice
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getIamMfaDeviceOutput(args: GetIamMfaDeviceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIamMfaDeviceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

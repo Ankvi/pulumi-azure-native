@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a deployment script with a given name.
- * Azure REST API version: 2020-10-01.
+ *
+ * Uses Azure REST API version 2020-10-01.
  */
 export function getAzureCliScript(args: GetAzureCliScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureCliScriptResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -124,7 +125,8 @@ export interface GetAzureCliScriptResult {
 }
 /**
  * Gets a deployment script with a given name.
- * Azure REST API version: 2020-10-01.
+ *
+ * Uses Azure REST API version 2020-10-01.
  */
 export function getAzureCliScriptOutput(args: GetAzureCliScriptOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzureCliScriptResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

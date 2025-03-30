@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a Traffic Manager endpoint.
- * Azure REST API version: 2022-04-01.
+ *
+ * Uses Azure REST API version 2022-04-01.
  *
  * Other available API versions: 2022-04-01-preview.
  */
@@ -111,7 +112,8 @@ export interface GetEndpointResult {
 }
 /**
  * Gets a Traffic Manager endpoint.
- * Azure REST API version: 2022-04-01.
+ *
+ * Uses Azure REST API version 2022-04-01.
  *
  * Other available API versions: 2022-04-01-preview.
  */

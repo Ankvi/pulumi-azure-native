@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get information about a configuration profile preference
- * Azure REST API version: 2020-06-30-preview.
+ *
+ * Uses Azure REST API version 2020-06-30-preview.
  */
 export function getConfigurationProfilePreference(args: GetConfigurationProfilePreferenceArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigurationProfilePreferenceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,7 +56,8 @@ export interface GetConfigurationProfilePreferenceResult {
 }
 /**
  * Get information about a configuration profile preference
- * Azure REST API version: 2020-06-30-preview.
+ *
+ * Uses Azure REST API version 2020-06-30-preview.
  */
 export function getConfigurationProfilePreferenceOutput(args: GetConfigurationProfilePreferenceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConfigurationProfilePreferenceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

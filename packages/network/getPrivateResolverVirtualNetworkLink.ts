@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets properties of a virtual network link to a DNS forwarding ruleset.
- * Azure REST API version: 2022-07-01.
+ *
+ * Uses Azure REST API version 2022-07-01.
  *
  * Other available API versions: 2020-04-01-preview, 2023-07-01-preview.
  */
@@ -70,7 +71,8 @@ export interface GetPrivateResolverVirtualNetworkLinkResult {
 }
 /**
  * Gets properties of a virtual network link to a DNS forwarding ruleset.
- * Azure REST API version: 2022-07-01.
+ *
+ * Uses Azure REST API version 2022-07-01.
  *
  * Other available API versions: 2020-04-01-preview, 2023-07-01-preview.
  */

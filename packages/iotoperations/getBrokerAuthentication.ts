@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a BrokerAuthenticationResource
- * Azure REST API version: 2024-07-01-preview.
  *
- * Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01.
+ * Uses Azure REST API version 2024-07-01-preview.
+ *
+ * Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01, 2025-04-01.
  */
 export function getBrokerAuthentication(args: GetBrokerAuthenticationArgs, opts?: pulumi.InvokeOptions): Promise<GetBrokerAuthenticationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -67,9 +68,10 @@ export interface GetBrokerAuthenticationResult {
 }
 /**
  * Get a BrokerAuthenticationResource
- * Azure REST API version: 2024-07-01-preview.
  *
- * Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01.
+ * Uses Azure REST API version 2024-07-01-preview.
+ *
+ * Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01, 2025-04-01.
  */
 export function getBrokerAuthenticationOutput(args: GetBrokerAuthenticationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBrokerAuthenticationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

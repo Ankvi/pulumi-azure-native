@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * This operation lists all the policy definition versions for all policy definitions within a subscription.
- * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2024-05-01, 2025-01-01.
+ * Uses Azure REST API version 2023-04-01.
+ *
+ * Other available API versions: 2024-05-01, 2025-01-01, 2025-03-01.
  */
 export function listPolicyDefinitionVersionAll(args?: ListPolicyDefinitionVersionAllArgs, opts?: pulumi.InvokeOptions): Promise<ListPolicyDefinitionVersionAllResult> {
     args = args || {};
@@ -32,9 +33,10 @@ export interface ListPolicyDefinitionVersionAllResult {
 }
 /**
  * This operation lists all the policy definition versions for all policy definitions within a subscription.
- * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2024-05-01, 2025-01-01.
+ * Uses Azure REST API version 2023-04-01.
+ *
+ * Other available API versions: 2024-05-01, 2025-01-01, 2025-03-01.
  */
 export function listPolicyDefinitionVersionAllOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListPolicyDefinitionVersionAllResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

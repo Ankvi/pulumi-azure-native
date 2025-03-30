@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Implements GuestAgent GET method.
- * Azure REST API version: 2023-04-01-preview.
+ *
+ * Uses Azure REST API version 2023-04-01-preview.
  */
 export function getVMInstanceGuestAgent(args: GetVMInstanceGuestAgentArgs, opts?: pulumi.InvokeOptions): Promise<GetVMInstanceGuestAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -70,7 +71,8 @@ export interface GetVMInstanceGuestAgentResult {
 }
 /**
  * Implements GuestAgent GET method.
- * Azure REST API version: 2023-04-01-preview.
+ *
+ * Uses Azure REST API version 2023-04-01-preview.
  */
 export function getVMInstanceGuestAgentOutput(args: GetVMInstanceGuestAgentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVMInstanceGuestAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

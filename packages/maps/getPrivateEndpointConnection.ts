@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the specified private endpoint connection associated with the Maps Account.
- * Azure REST API version: 2023-12-01-preview.
+ *
+ * Uses Azure REST API version 2023-12-01-preview.
  *
  * Other available API versions: 2024-01-01-preview.
  */
@@ -70,7 +71,8 @@ export interface GetPrivateEndpointConnectionResult {
 }
 /**
  * Gets the specified private endpoint connection associated with the Maps Account.
- * Azure REST API version: 2023-12-01-preview.
+ *
+ * Uses Azure REST API version 2023-12-01-preview.
  *
  * Other available API versions: 2024-01-01-preview.
  */

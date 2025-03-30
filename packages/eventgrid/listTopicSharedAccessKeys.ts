@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * List the two keys used to publish to a topic.
- * Azure REST API version: 2022-06-15.
+ *
+ * Uses Azure REST API version 2022-06-15.
  *
  * Other available API versions: 2020-04-01-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
  */
@@ -40,7 +41,8 @@ export interface ListTopicSharedAccessKeysResult {
 }
 /**
  * List the two keys used to publish to a topic.
- * Azure REST API version: 2022-06-15.
+ *
+ * Uses Azure REST API version 2022-06-15.
  *
  * Other available API versions: 2020-04-01-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
  */

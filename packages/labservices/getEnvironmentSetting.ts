@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get environment setting
- * Azure REST API version: 2018-10-15.
+ *
+ * Uses Azure REST API version 2018-10-15.
  */
 export function getEnvironmentSetting(args: GetEnvironmentSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentSettingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -106,7 +107,8 @@ export interface GetEnvironmentSettingResult {
 }
 /**
  * Get environment setting
- * Azure REST API version: 2018-10-15.
+ *
+ * Uses Azure REST API version 2018-10-15.
  */
 export function getEnvironmentSettingOutput(args: GetEnvironmentSettingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnvironmentSettingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

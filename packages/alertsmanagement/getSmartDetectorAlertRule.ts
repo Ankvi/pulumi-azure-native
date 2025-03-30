@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a specific Smart Detector alert rule.
- * Azure REST API version: 2021-04-01.
+ *
+ * Uses Azure REST API version 2021-04-01.
  */
 export function getSmartDetectorAlertRule(args: GetSmartDetectorAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetSmartDetectorAlertRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -88,7 +89,8 @@ export interface GetSmartDetectorAlertRuleResult {
 }
 /**
  * Get a specific Smart Detector alert rule.
- * Azure REST API version: 2021-04-01.
+ *
+ * Uses Azure REST API version 2021-04-01.
  */
 export function getSmartDetectorAlertRuleOutput(args: GetSmartDetectorAlertRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSmartDetectorAlertRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

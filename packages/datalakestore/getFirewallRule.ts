@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the specified Data Lake Store firewall rule.
- * Azure REST API version: 2016-11-01.
+ *
+ * Uses Azure REST API version 2016-11-01.
  */
 export function getFirewallRule(args: GetFirewallRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,7 +56,8 @@ export interface GetFirewallRuleResult {
 }
 /**
  * Gets the specified Data Lake Store firewall rule.
- * Azure REST API version: 2016-11-01.
+ *
+ * Uses Azure REST API version 2016-11-01.
  */
 export function getFirewallRuleOutput(args: GetFirewallRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFirewallRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

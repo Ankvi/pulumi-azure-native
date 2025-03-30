@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a scoped resource in a private link scope.
- * Azure REST API version: 2020-08-15-preview.
+ *
+ * Uses Azure REST API version 2020-08-15-preview.
  */
 export function getPrivateLinkScopedResource(args: GetPrivateLinkScopedResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateLinkScopedResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,7 +56,8 @@ export interface GetPrivateLinkScopedResourceResult {
 }
 /**
  * Gets a scoped resource in a private link scope.
- * Azure REST API version: 2020-08-15-preview.
+ *
+ * Uses Azure REST API version 2020-08-15-preview.
  */
 export function getPrivateLinkScopedResourceOutput(args: GetPrivateLinkScopedResourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateLinkScopedResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

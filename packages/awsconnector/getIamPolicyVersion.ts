@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a IamPolicyVersion
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getIamPolicyVersion(args: GetIamPolicyVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetIamPolicyVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetIamPolicyVersionResult {
 }
 /**
  * Get a IamPolicyVersion
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getIamPolicyVersionOutput(args: GetIamPolicyVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIamPolicyVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

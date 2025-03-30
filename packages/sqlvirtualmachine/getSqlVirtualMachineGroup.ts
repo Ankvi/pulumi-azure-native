@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a SQL virtual machine group.
- * Azure REST API version: 2022-02-01.
+ *
+ * Uses Azure REST API version 2022-02-01.
  *
  * Other available API versions: 2023-01-01-preview, 2023-10-01.
  */
@@ -85,7 +86,8 @@ export interface GetSqlVirtualMachineGroupResult {
 }
 /**
  * Gets a SQL virtual machine group.
- * Azure REST API version: 2022-02-01.
+ *
+ * Uses Azure REST API version 2022-02-01.
  *
  * Other available API versions: 2023-01-01-preview, 2023-10-01.
  */

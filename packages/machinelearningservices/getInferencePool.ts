@@ -2,9 +2,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Azure REST API version: 2023-08-01-preview.
+ * Uses Azure REST API version 2023-08-01-preview.
  *
- * Other available API versions: 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview.
+ * Other available API versions: 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
  */
 export function getInferencePool(args: GetInferencePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetInferencePoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -73,9 +73,9 @@ export interface GetInferencePoolResult {
     readonly type: string;
 }
 /**
- * Azure REST API version: 2023-08-01-preview.
+ * Uses Azure REST API version 2023-08-01-preview.
  *
- * Other available API versions: 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview.
+ * Other available API versions: 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
  */
 export function getInferencePoolOutput(args: GetInferencePoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInferencePoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

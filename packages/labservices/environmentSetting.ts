@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Represents settings of an environment, from which environment instances would be created
- * Azure REST API version: 2018-10-15. Prior API version in Azure Native 1.x: 2018-10-15.
+ *
+ * Uses Azure REST API version 2018-10-15. In version 1.x of the Azure Native provider, it used API version 2018-10-15.
  */
 export class EnvironmentSetting extends pulumi.CustomResource {
     /**

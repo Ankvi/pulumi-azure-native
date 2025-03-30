@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The springbootapps envelope resource definition.
- * Azure REST API version: 2024-04-01-preview.
+ *
+ * Uses Azure REST API version 2024-04-01-preview.
  */
 export class Springbootapp extends pulumi.CustomResource {
     /**

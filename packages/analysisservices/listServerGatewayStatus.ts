@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Return the gateway status of the specified Analysis Services server instance.
- * Azure REST API version: 2017-08-01.
+ *
+ * Uses Azure REST API version 2017-08-01.
  *
  * Other available API versions: 2017-08-01-beta.
  */
@@ -36,7 +37,8 @@ export interface ListServerGatewayStatusResult {
 }
 /**
  * Return the gateway status of the specified Analysis Services server instance.
- * Azure REST API version: 2017-08-01.
+ *
+ * Uses Azure REST API version 2017-08-01.
  *
  * Other available API versions: 2017-08-01-beta.
  */

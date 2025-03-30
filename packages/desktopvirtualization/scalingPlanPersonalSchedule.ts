@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Represents a ScalingPlanPersonalSchedule definition.
- * Azure REST API version: 2023-07-07-preview.
+ *
+ * Uses Azure REST API version 2024-11-01-preview.
  *
  * Other available API versions: 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview.
  */
@@ -37,7 +38,7 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     /**
      * Set of days of the week on which this schedule is active.
      */
-    public readonly daysOfWeek!: pulumi.Output<string[] | undefined>;
+    public readonly daysOfWeek!: pulumi.Output<string[]>;
     /**
      * The name of the resource
      */
@@ -61,7 +62,7 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     /**
      * Starting time for off-peak period.
      */
-    public readonly offPeakStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
+    public readonly offPeakStartTime!: pulumi.Output<types.outputs.TimeResponse>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
      */
@@ -85,7 +86,7 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     /**
      * Starting time for peak period.
      */
-    public readonly peakStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
+    public readonly peakStartTime!: pulumi.Output<types.outputs.TimeResponse>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the peak phase.
      */
@@ -109,7 +110,7 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     /**
      * Starting time for ramp down period.
      */
-    public readonly rampDownStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
+    public readonly rampDownStartTime!: pulumi.Output<types.outputs.TimeResponse>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
      */
@@ -137,13 +138,13 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     /**
      * Starting time for ramp up period.
      */
-    public readonly rampUpStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
+    public readonly rampUpStartTime!: pulumi.Output<types.outputs.TimeResponse>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
      */
     public readonly rampUpStartVMOnConnect!: pulumi.Output<string | undefined>;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -162,6 +163,21 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.daysOfWeek === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'daysOfWeek'");
+            }
+            if ((!args || args.offPeakStartTime === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'offPeakStartTime'");
+            }
+            if ((!args || args.peakStartTime === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'peakStartTime'");
+            }
+            if ((!args || args.rampDownStartTime === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'rampDownStartTime'");
+            }
+            if ((!args || args.rampUpStartTime === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'rampUpStartTime'");
+            }
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
@@ -232,7 +248,7 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:desktopvirtualization/v20230707preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20230905:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20231004preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20231101preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240116preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240306preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240403:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240408preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240808preview:ScalingPlanPersonalSchedule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:desktopvirtualization/v20230905:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20231004preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20231101preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240116preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240306preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240403:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240408preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240808preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20241101preview:ScalingPlanPersonalSchedule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ScalingPlanPersonalSchedule.__pulumiType, name, resourceInputs, opts);
     }
@@ -245,7 +261,7 @@ export interface ScalingPlanPersonalScheduleArgs {
     /**
      * Set of days of the week on which this schedule is active.
      */
-    daysOfWeek?: pulumi.Input<pulumi.Input<string | types.enums.DayOfWeek>[]>;
+    daysOfWeek: pulumi.Input<pulumi.Input<string | types.enums.DayOfWeek>[]>;
     /**
      * Action to be taken after a user disconnect during the off-peak period.
      */
@@ -265,7 +281,7 @@ export interface ScalingPlanPersonalScheduleArgs {
     /**
      * Starting time for off-peak period.
      */
-    offPeakStartTime?: pulumi.Input<types.inputs.TimeArgs>;
+    offPeakStartTime: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
      */
@@ -289,7 +305,7 @@ export interface ScalingPlanPersonalScheduleArgs {
     /**
      * Starting time for peak period.
      */
-    peakStartTime?: pulumi.Input<types.inputs.TimeArgs>;
+    peakStartTime: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the peak phase.
      */
@@ -313,7 +329,7 @@ export interface ScalingPlanPersonalScheduleArgs {
     /**
      * Starting time for ramp down period.
      */
-    rampDownStartTime?: pulumi.Input<types.inputs.TimeArgs>;
+    rampDownStartTime: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
      */
@@ -341,7 +357,7 @@ export interface ScalingPlanPersonalScheduleArgs {
     /**
      * Starting time for ramp up period.
      */
-    rampUpStartTime?: pulumi.Input<types.inputs.TimeArgs>;
+    rampUpStartTime: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
      */

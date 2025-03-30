@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Concrete tracked resource types can be created by aliasing this type using a specific property type.
- * Azure REST API version: 2024-09-18-preview.
+ *
+ * Uses Azure REST API version 2024-09-18-preview.
  */
 export class Instance extends pulumi.CustomResource {
     /**

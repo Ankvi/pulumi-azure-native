@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-sovereign",
-    "version": "2.89.3",
+    "version": "2.90.0",
     "description": "Pulumi Azure Native package for sovereign",
     "keywords": [
         "pulumi",

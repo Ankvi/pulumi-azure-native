@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a specific action rule
- * Azure REST API version: 2019-05-05-preview.
+ *
+ * Uses Azure REST API version 2019-05-05-preview.
  */
 export function getActionRuleByName(args: GetActionRuleByNameArgs, opts?: pulumi.InvokeOptions): Promise<GetActionRuleByNameResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,7 +56,8 @@ export interface GetActionRuleByNameResult {
 }
 /**
  * Get a specific action rule
- * Azure REST API version: 2019-05-05-preview.
+ *
+ * Uses Azure REST API version 2019-05-05-preview.
  */
 export function getActionRuleByNameOutput(args: GetActionRuleByNameOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetActionRuleByNameResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

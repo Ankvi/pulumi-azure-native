@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the management lock of a resource or any level below resource.
- * Azure REST API version: 2020-05-01.
+ *
+ * Uses Azure REST API version 2020-05-01.
  */
 export function getManagementLockAtResourceLevel(args: GetManagementLockAtResourceLevelArgs, opts?: pulumi.InvokeOptions): Promise<GetManagementLockAtResourceLevelResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -84,7 +85,8 @@ export interface GetManagementLockAtResourceLevelResult {
 }
 /**
  * Get the management lock of a resource or any level below resource.
- * Azure REST API version: 2020-05-01.
+ *
+ * Uses Azure REST API version 2020-05-01.
  */
 export function getManagementLockAtResourceLevelOutput(args: GetManagementLockAtResourceLevelOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManagementLockAtResourceLevelResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * List labs for the user.
- * Azure REST API version: 2018-10-15.
+ *
+ * Uses Azure REST API version 2018-10-15.
  */
 export function listGlobalUserLabs(args: ListGlobalUserLabsArgs, opts?: pulumi.InvokeOptions): Promise<ListGlobalUserLabsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,7 +31,8 @@ export interface ListGlobalUserLabsResult {
 }
 /**
  * List labs for the user.
- * Azure REST API version: 2018-10-15.
+ *
+ * Uses Azure REST API version 2018-10-15.
  */
 export function listGlobalUserLabsOutput(args: ListGlobalUserLabsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListGlobalUserLabsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

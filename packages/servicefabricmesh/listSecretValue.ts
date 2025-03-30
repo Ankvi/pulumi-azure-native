@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Lists the decrypted value of the specified named value of the secret resource. This is a privileged operation.
- * Azure REST API version: 2018-09-01-preview.
+ *
+ * Uses Azure REST API version 2018-09-01-preview.
  */
 export function listSecretValue(args: ListSecretValueArgs, opts?: pulumi.InvokeOptions): Promise<ListSecretValueResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,7 +40,8 @@ export interface ListSecretValueResult {
 }
 /**
  * Lists the decrypted value of the specified named value of the secret resource. This is a privileged operation.
- * Azure REST API version: 2018-09-01-preview.
+ *
+ * Uses Azure REST API version 2018-09-01-preview.
  */
 export function listSecretValueOutput(args: ListSecretValueOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListSecretValueResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

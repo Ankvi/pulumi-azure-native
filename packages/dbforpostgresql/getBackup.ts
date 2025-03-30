@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get specific backup for a given server.
- * Azure REST API version: 2024-03-01-preview.
+ *
+ * Uses Azure REST API version 2024-03-01-preview.
  *
  * Other available API versions: 2024-08-01, 2024-11-01-preview.
  */
@@ -66,7 +67,8 @@ export interface GetBackupResult {
 }
 /**
  * Get specific backup for a given server.
- * Azure REST API version: 2024-03-01-preview.
+ *
+ * Uses Azure REST API version 2024-03-01-preview.
  *
  * Other available API versions: 2024-08-01, 2024-11-01-preview.
  */

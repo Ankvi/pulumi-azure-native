@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a Kusto pool database principalAssignment.
- * Azure REST API version: 2021-04-01-preview.
+ *
+ * Uses Azure REST API version 2021-04-01-preview.
  */
 export function getDatabasePrincipalAssignment(args: GetDatabasePrincipalAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasePrincipalAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -90,7 +91,8 @@ export interface GetDatabasePrincipalAssignmentResult {
 }
 /**
  * Gets a Kusto pool database principalAssignment.
- * Azure REST API version: 2021-04-01-preview.
+ *
+ * Uses Azure REST API version 2021-04-01-preview.
  */
 export function getDatabasePrincipalAssignmentOutput(args: GetDatabasePrincipalAssignmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabasePrincipalAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
