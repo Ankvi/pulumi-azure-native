@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets an associated tenant by ID.
- * Azure REST API version: 2024-04-01.
+ *
+ * Uses Azure REST API version 2024-04-01.
  */
 export function getAssociatedTenant(args: GetAssociatedTenantArgs, opts?: pulumi.InvokeOptions): Promise<GetAssociatedTenantResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,7 +56,8 @@ export interface GetAssociatedTenantResult {
 }
 /**
  * Gets an associated tenant by ID.
- * Azure REST API version: 2024-04-01.
+ *
+ * Uses Azure REST API version 2024-04-01.
  */
 export function getAssociatedTenantOutput(args: GetAssociatedTenantOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAssociatedTenantResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

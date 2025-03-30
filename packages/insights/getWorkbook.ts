@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a single workbook by its resourceName.
- * Azure REST API version: 2022-04-01.
+ *
+ * Uses Azure REST API version 2022-04-01.
  *
  * Other available API versions: 2015-05-01, 2021-03-08, 2021-08-01, 2023-06-01.
  */
@@ -114,7 +115,8 @@ export interface GetWorkbookResult {
 }
 /**
  * Get a single workbook by its resourceName.
- * Azure REST API version: 2022-04-01.
+ *
+ * Uses Azure REST API version 2022-04-01.
  *
  * Other available API versions: 2015-05-01, 2021-03-08, 2021-08-01, 2023-06-01.
  */

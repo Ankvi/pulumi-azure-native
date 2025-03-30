@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get the full endpoint URL for an event subscription of a namespace topic.
- * Azure REST API version: 2024-06-01-preview.
+ *
+ * Uses Azure REST API version 2024-06-01-preview.
  *
  * Other available API versions: 2024-12-15-preview, 2025-02-15.
  */
@@ -46,7 +47,8 @@ export interface GetNamespaceTopicEventSubscriptionFullUrlResult {
 }
 /**
  * Get the full endpoint URL for an event subscription of a namespace topic.
- * Azure REST API version: 2024-06-01-preview.
+ *
+ * Uses Azure REST API version 2024-06-01-preview.
  *
  * Other available API versions: 2024-12-15-preview, 2025-02-15.
  */

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns oep resource for a given name.
- * Azure REST API version: 2022-04-04-preview.
+ *
+ * Uses Azure REST API version 2022-04-04-preview.
  */
 export function getEnergyService(args: GetEnergyServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetEnergyServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -53,7 +54,8 @@ export interface GetEnergyServiceResult {
 }
 /**
  * Returns oep resource for a given name.
- * Azure REST API version: 2022-04-04-preview.
+ *
+ * Uses Azure REST API version 2022-04-04-preview.
  */
 export function getEnergyServiceOutput(args: GetEnergyServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnergyServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

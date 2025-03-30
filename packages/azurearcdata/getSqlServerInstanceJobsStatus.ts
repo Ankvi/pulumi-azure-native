@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets jobs status details for sql arc resource
- * Azure REST API version: 2024-05-01-preview.
+ *
+ * Uses Azure REST API version 2024-05-01-preview.
+ *
+ * Other available API versions: 2025-03-01-preview.
  */
 export function getSqlServerInstanceJobsStatus(args: GetSqlServerInstanceJobsStatusArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlServerInstanceJobsStatusResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -45,7 +48,10 @@ export interface GetSqlServerInstanceJobsStatusResult {
 }
 /**
  * Gets jobs status details for sql arc resource
- * Azure REST API version: 2024-05-01-preview.
+ *
+ * Uses Azure REST API version 2024-05-01-preview.
+ *
+ * Other available API versions: 2025-03-01-preview.
  */
 export function getSqlServerInstanceJobsStatusOutput(args: GetSqlServerInstanceJobsStatusOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSqlServerInstanceJobsStatusResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

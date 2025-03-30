@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the send key name and value for a Hybrid Connection.
- * Azure REST API version: 2018-11-01.
+ *
+ * Uses Azure REST API version 2018-11-01.
  */
 export function listWebAppHybridConnectionKeysSlot(args: ListWebAppHybridConnectionKeysSlotArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppHybridConnectionKeysSlotResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -69,7 +70,8 @@ export interface ListWebAppHybridConnectionKeysSlotResult {
 }
 /**
  * Gets the send key name and value for a Hybrid Connection.
- * Azure REST API version: 2018-11-01.
+ *
+ * Uses Azure REST API version 2018-11-01.
  */
 export function listWebAppHybridConnectionKeysSlotOutput(args: ListWebAppHybridConnectionKeysSlotOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListWebAppHybridConnectionKeysSlotResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

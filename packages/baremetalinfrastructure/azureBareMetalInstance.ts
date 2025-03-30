@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * AzureBareMetal instance info on Azure (ARM properties and AzureBareMetal properties)
- * Azure REST API version: 2024-08-01-preview.
+ *
+ * Uses Azure REST API version 2024-08-01-preview.
  */
 export class AzureBareMetalInstance extends pulumi.CustomResource {
     /**

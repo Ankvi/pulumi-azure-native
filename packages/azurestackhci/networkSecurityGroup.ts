@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * NetworkSecurityGroup resource.
- * Azure REST API version: 2024-02-01-preview.
  *
- * Other available API versions: 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview.
+ * Uses Azure REST API version 2024-02-01-preview.
+ *
+ * Other available API versions: 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview, 2025-04-01-preview.
  */
 export class NetworkSecurityGroup extends pulumi.CustomResource {
     /**
@@ -114,7 +115,7 @@ export class NetworkSecurityGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20240201preview:NetworkSecurityGroup" }, { type: "azure-native:azurestackhci/v20240501preview:NetworkSecurityGroup" }, { type: "azure-native:azurestackhci/v20240715preview:NetworkSecurityGroup" }, { type: "azure-native:azurestackhci/v20240801preview:NetworkSecurityGroup" }, { type: "azure-native:azurestackhci/v20241001preview:NetworkSecurityGroup" }, { type: "azure-native:azurestackhci/v20250201preview:NetworkSecurityGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20240201preview:NetworkSecurityGroup" }, { type: "azure-native:azurestackhci/v20240501preview:NetworkSecurityGroup" }, { type: "azure-native:azurestackhci/v20240715preview:NetworkSecurityGroup" }, { type: "azure-native:azurestackhci/v20240801preview:NetworkSecurityGroup" }, { type: "azure-native:azurestackhci/v20241001preview:NetworkSecurityGroup" }, { type: "azure-native:azurestackhci/v20250201preview:NetworkSecurityGroup" }, { type: "azure-native:azurestackhci/v20250401preview:NetworkSecurityGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkSecurityGroup.__pulumiType, name, resourceInputs, opts);
     }

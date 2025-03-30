@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets information about a database.
- * Azure REST API version: 2022-12-01.
+ *
+ * Uses Azure REST API version 2022-12-01.
  *
  * Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
  */
@@ -62,7 +63,8 @@ export interface GetDatabaseResult {
 }
 /**
  * Gets information about a database.
- * Azure REST API version: 2022-12-01.
+ *
+ * Uses Azure REST API version 2022-12-01.
  *
  * Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
  */

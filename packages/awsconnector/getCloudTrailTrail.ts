@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a CloudTrailTrail
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getCloudTrailTrail(args: GetCloudTrailTrailArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudTrailTrailResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetCloudTrailTrailResult {
 }
 /**
  * Get a CloudTrailTrail
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getCloudTrailTrailOutput(args: GetCloudTrailTrailOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudTrailTrailResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -634,3 +634,4 @@ export interface VaultModelPropertiesArgs {
      */
     vaultType?: pulumi.Input<string | enums.ReplicationVaultType>;
 }
+

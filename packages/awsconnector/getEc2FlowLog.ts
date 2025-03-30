@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Ec2FlowLog
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getEc2FlowLog(args: GetEc2FlowLogArgs, opts?: pulumi.InvokeOptions): Promise<GetEc2FlowLogResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetEc2FlowLogResult {
 }
 /**
  * Get a Ec2FlowLog
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getEc2FlowLogOutput(args: GetEc2FlowLogOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEc2FlowLogResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

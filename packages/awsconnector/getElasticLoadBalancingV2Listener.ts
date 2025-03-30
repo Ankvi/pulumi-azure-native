@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a ElasticLoadBalancingV2Listener
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getElasticLoadBalancingV2Listener(args: GetElasticLoadBalancingV2ListenerArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticLoadBalancingV2ListenerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetElasticLoadBalancingV2ListenerResult {
 }
 /**
  * Get a ElasticLoadBalancingV2Listener
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getElasticLoadBalancingV2ListenerOutput(args: GetElasticLoadBalancingV2ListenerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetElasticLoadBalancingV2ListenerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

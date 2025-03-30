@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Retrieves the properties of an existing Azure Cosmos DB Table Role Definition with the given Id.
- * Azure REST API version: 2024-12-01-preview.
+ *
+ * Uses Azure REST API version 2024-12-01-preview.
  */
 export function getTableResourceTableRoleDefinition(args: GetTableResourceTableRoleDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetTableResourceTableRoleDefinitionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -64,7 +65,8 @@ export interface GetTableResourceTableRoleDefinitionResult {
 }
 /**
  * Retrieves the properties of an existing Azure Cosmos DB Table Role Definition with the given Id.
- * Azure REST API version: 2024-12-01-preview.
+ *
+ * Uses Azure REST API version 2024-12-01-preview.
  */
 export function getTableResourceTableRoleDefinitionOutput(args: GetTableResourceTableRoleDefinitionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTableResourceTableRoleDefinitionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

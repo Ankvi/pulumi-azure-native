@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Returns AndroidMAMPolicy with given name.
- * Azure REST API version: 2015-01-14-preview.
+ *
+ * Uses Azure REST API version 2015-01-14-preview.
  *
  * Other available API versions: 2015-01-14-privatepreview.
  */
@@ -77,7 +78,8 @@ export interface GetAndroidMAMPolicyByNameResult {
 }
 /**
  * Returns AndroidMAMPolicy with given name.
- * Azure REST API version: 2015-01-14-preview.
+ *
+ * Uses Azure REST API version 2015-01-14-preview.
  *
  * Other available API versions: 2015-01-14-privatepreview.
  */

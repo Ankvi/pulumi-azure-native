@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Returns the specified product.
- * Azure REST API version: 2022-06-01.
+ *
+ * Uses Azure REST API version 2022-06-01.
  *
  * Other available API versions: 2020-06-01-preview.
  */
@@ -57,7 +58,8 @@ export interface GetCustomerSubscriptionResult {
 }
 /**
  * Returns the specified product.
- * Azure REST API version: 2022-06-01.
+ *
+ * Uses Azure REST API version 2022-06-01.
  *
  * Other available API versions: 2020-06-01-preview.
  */

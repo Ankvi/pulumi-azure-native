@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Device. Use '.unassigned' or '.default' for the device group and product names when a device does not belong to a device group and product.
- * Azure REST API version: 2022-09-01-preview.
+ *
+ * Uses Azure REST API version 2022-09-01-preview.
  *
  * Other available API versions: 2024-04-01.
  */
@@ -92,7 +93,8 @@ export interface GetDeviceResult {
 }
 /**
  * Get a Device. Use '.unassigned' or '.default' for the device group and product names when a device does not belong to a device group and product.
- * Azure REST API version: 2022-09-01-preview.
+ *
+ * Uses Azure REST API version 2022-09-01-preview.
  *
  * Other available API versions: 2024-04-01.
  */

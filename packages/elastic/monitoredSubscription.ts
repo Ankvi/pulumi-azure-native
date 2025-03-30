@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The request to update subscriptions needed to be monitored by the Elastic monitor resource.
- * Azure REST API version: 2024-05-01-preview.
  *
- * Other available API versions: 2024-06-15-preview, 2024-10-01-preview.
+ * Uses Azure REST API version 2024-05-01-preview.
+ *
+ * Other available API versions: 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview.
  */
 export class MonitoredSubscription extends pulumi.CustomResource {
     /**
@@ -76,7 +77,7 @@ export class MonitoredSubscription extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:elastic/v20240501preview:MonitoredSubscription" }, { type: "azure-native:elastic/v20240615preview:MonitoredSubscription" }, { type: "azure-native:elastic/v20241001preview:MonitoredSubscription" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:elastic/v20240501preview:MonitoredSubscription" }, { type: "azure-native:elastic/v20240615preview:MonitoredSubscription" }, { type: "azure-native:elastic/v20241001preview:MonitoredSubscription" }, { type: "azure-native:elastic/v20250115preview:MonitoredSubscription" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(MonitoredSubscription.__pulumiType, name, resourceInputs, opts);
     }

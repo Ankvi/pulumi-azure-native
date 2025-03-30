@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a IamInstanceProfile
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getIamInstanceProfile(args: GetIamInstanceProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetIamInstanceProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetIamInstanceProfileResult {
 }
 /**
  * Get a IamInstanceProfile
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getIamInstanceProfileOutput(args: GetIamInstanceProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIamInstanceProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

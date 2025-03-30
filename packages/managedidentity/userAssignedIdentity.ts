@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Describes an identity resource.
- * Azure REST API version: 2023-01-31. Prior API version in Azure Native 1.x: 2018-11-30.
  *
- * Other available API versions: 2023-07-31-preview, 2024-11-30.
+ * Uses Azure REST API version 2023-01-31. In version 1.x of the Azure Native provider, it used API version 2018-11-30.
+ *
+ * Other available API versions: 2023-07-31-preview, 2024-11-30, 2025-01-31-preview.
  */
 export class UserAssignedIdentity extends pulumi.CustomResource {
     /**
@@ -102,7 +103,7 @@ export class UserAssignedIdentity extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:managedidentity/v20150831preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20181130:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20210930preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20220131preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20230131:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20230731preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20241130:UserAssignedIdentity" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:managedidentity/v20150831preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20181130:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20210930preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20220131preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20230131:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20230731preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20241130:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20250131preview:UserAssignedIdentity" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(UserAssignedIdentity.__pulumiType, name, resourceInputs, opts);
     }

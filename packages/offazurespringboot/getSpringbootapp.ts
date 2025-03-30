@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a springbootapps resource.
- * Azure REST API version: 2024-04-01-preview.
+ *
+ * Uses Azure REST API version 2024-04-01-preview.
  */
 export function getSpringbootapp(args: GetSpringbootappArgs, opts?: pulumi.InvokeOptions): Promise<GetSpringbootappResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -56,7 +57,8 @@ export interface GetSpringbootappResult {
 }
 /**
  * Get a springbootapps resource.
- * Azure REST API version: 2024-04-01-preview.
+ *
+ * Uses Azure REST API version 2024-04-01-preview.
  */
 export function getSpringbootappOutput(args: GetSpringbootappOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpringbootappResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A VerifiedId authority resource
- * Azure REST API version: 2024-01-26-preview.
+ *
+ * Uses Azure REST API version 2024-01-26-preview.
  */
 export class Authority extends pulumi.CustomResource {
     /**

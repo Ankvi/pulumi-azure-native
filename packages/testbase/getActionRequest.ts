@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the action request under the specified test base account.
- * Azure REST API version: 2023-11-01-preview.
+ *
+ * Uses Azure REST API version 2023-11-01-preview.
  */
 export function getActionRequest(args: GetActionRequestArgs, opts?: pulumi.InvokeOptions): Promise<GetActionRequestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -54,7 +55,8 @@ export interface GetActionRequestResult {
 }
 /**
  * Get the action request under the specified test base account.
- * Azure REST API version: 2023-11-01-preview.
+ *
+ * Uses Azure REST API version 2023-11-01-preview.
  */
 export function getActionRequestOutput(args: GetActionRequestOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetActionRequestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

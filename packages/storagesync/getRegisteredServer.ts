@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a given registered server.
- * Azure REST API version: 2022-06-01.
+ *
+ * Uses Azure REST API version 2022-06-01.
  *
  * Other available API versions: 2022-09-01.
  */
@@ -146,7 +147,8 @@ export interface GetRegisteredServerResult {
 }
 /**
  * Get a given registered server.
- * Azure REST API version: 2022-06-01.
+ *
+ * Uses Azure REST API version 2022-06-01.
  *
  * Other available API versions: 2022-09-01.
  */

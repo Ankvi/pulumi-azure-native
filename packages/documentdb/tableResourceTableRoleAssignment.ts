@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Parameters to create and update an Azure Cosmos DB Table Role Assignment.
- * Azure REST API version: 2024-12-01-preview.
+ *
+ * Uses Azure REST API version 2024-12-01-preview.
  */
 export class TableResourceTableRoleAssignment extends pulumi.CustomResource {
     /**

@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-kubernetesconfiguration",
-    "version": "2.89.3",
+    "version": "2.90.0",
     "description": "Pulumi Azure Native package for kubernetesconfiguration",
     "keywords": [
         "pulumi",

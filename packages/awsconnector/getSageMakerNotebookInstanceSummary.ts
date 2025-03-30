@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a SageMakerNotebookInstanceSummary
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getSageMakerNotebookInstanceSummary(args: GetSageMakerNotebookInstanceSummaryArgs, opts?: pulumi.InvokeOptions): Promise<GetSageMakerNotebookInstanceSummaryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetSageMakerNotebookInstanceSummaryResult {
 }
 /**
  * Get a SageMakerNotebookInstanceSummary
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getSageMakerNotebookInstanceSummaryOutput(args: GetSageMakerNotebookInstanceSummaryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSageMakerNotebookInstanceSummaryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

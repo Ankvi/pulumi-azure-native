@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Replication protection Cluster.
- * Azure REST API version: 2024-02-01.
+ *
+ * Uses Azure REST API version 2024-02-01.
  *
  * Other available API versions: 2024-04-01, 2024-10-01.
  */

@@ -2,9 +2,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Azure REST API version: 2023-01-01.
+ * Uses Azure REST API version 2023-01-01.
  *
- * Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-01-01.
+ * Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-01-01, 2025-02-01.
  */
 export function getResourceGuard(args: GetResourceGuardArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceGuardResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -60,9 +60,9 @@ export interface GetResourceGuardResult {
     readonly type: string;
 }
 /**
- * Azure REST API version: 2023-01-01.
+ * Uses Azure REST API version 2023-01-01.
  *
- * Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-01-01.
+ * Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-01-01, 2025-02-01.
  */
 export function getResourceGuardOutput(args: GetResourceGuardOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceGuardResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

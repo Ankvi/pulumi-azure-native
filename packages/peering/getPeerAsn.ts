@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the peer ASN with the specified name under the given subscription.
- * Azure REST API version: 2022-10-01.
+ *
+ * Uses Azure REST API version 2022-10-01.
  *
  * Other available API versions: 2021-01-01.
  */
@@ -60,7 +61,8 @@ export interface GetPeerAsnResult {
 }
 /**
  * Gets the peer ASN with the specified name under the given subscription.
- * Azure REST API version: 2022-10-01.
+ *
+ * Uses Azure REST API version 2022-10-01.
  *
  * Other available API versions: 2021-01-01.
  */

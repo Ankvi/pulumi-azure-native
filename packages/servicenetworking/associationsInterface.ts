@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Association Subresource of Traffic Controller
- * Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-10-01-preview.
  *
- * Other available API versions: 2022-10-01-preview, 2023-11-01, 2024-05-01-preview, 2025-01-01.
+ * Uses Azure REST API version 2023-05-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-10-01-preview.
+ *
+ * Other available API versions: 2022-10-01-preview, 2023-11-01, 2024-05-01-preview, 2025-01-01, 2025-03-01-preview.
  */
 export class AssociationsInterface extends pulumi.CustomResource {
     /**
@@ -109,7 +110,7 @@ export class AssociationsInterface extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:servicenetworking/v20221001preview:AssociationsInterface" }, { type: "azure-native:servicenetworking/v20230501preview:AssociationsInterface" }, { type: "azure-native:servicenetworking/v20231101:AssociationsInterface" }, { type: "azure-native:servicenetworking/v20240501preview:AssociationsInterface" }, { type: "azure-native:servicenetworking/v20250101:AssociationsInterface" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:servicenetworking/v20221001preview:AssociationsInterface" }, { type: "azure-native:servicenetworking/v20230501preview:AssociationsInterface" }, { type: "azure-native:servicenetworking/v20231101:AssociationsInterface" }, { type: "azure-native:servicenetworking/v20240501preview:AssociationsInterface" }, { type: "azure-native:servicenetworking/v20250101:AssociationsInterface" }, { type: "azure-native:servicenetworking/v20250301preview:AssociationsInterface" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AssociationsInterface.__pulumiType, name, resourceInputs, opts);
     }

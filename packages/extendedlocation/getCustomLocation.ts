@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the details of the customLocation with a specified resource group and name.
- * Azure REST API version: 2021-08-15.
+ *
+ * Uses Azure REST API version 2021-08-15.
  *
  * Other available API versions: 2021-08-31-preview.
  */
@@ -89,7 +90,8 @@ export interface GetCustomLocationResult {
 }
 /**
  * Gets the details of the customLocation with a specified resource group and name.
- * Azure REST API version: 2021-08-15.
+ *
+ * Uses Azure REST API version 2021-08-15.
  *
  * Other available API versions: 2021-08-31-preview.
  */

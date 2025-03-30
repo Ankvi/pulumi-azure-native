@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns the extended properties of a product.
- * Azure REST API version: 2022-06-01.
+ *
+ * Uses Azure REST API version 2022-06-01.
  *
  * Other available API versions: 2020-06-01-preview.
  */
@@ -82,7 +83,8 @@ export interface ListProductDetailsResult {
 }
 /**
  * Returns the extended properties of a product.
- * Azure REST API version: 2022-06-01.
+ *
+ * Uses Azure REST API version 2022-06-01.
  *
  * Other available API versions: 2020-06-01-preview.
  */

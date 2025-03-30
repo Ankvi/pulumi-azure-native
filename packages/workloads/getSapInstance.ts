@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the SAP Instance resource.
- * Azure REST API version: 2023-10-01-preview.
+ *
+ * Uses Azure REST API version 2023-10-01-preview.
  */
 export function getSapInstance(args: GetSapInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetSapInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -84,7 +85,8 @@ export interface GetSapInstanceResult {
 }
 /**
  * Gets the SAP Instance resource.
- * Azure REST API version: 2023-10-01-preview.
+ *
+ * Uses Azure REST API version 2023-10-01-preview.
  */
 export function getSapInstanceOutput(args: GetSapInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSapInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * DevOps Configuration resource.
- * Azure REST API version: 2023-09-01-preview.
  *
- * Other available API versions: 2024-04-01, 2024-05-15-preview.
+ * Uses Azure REST API version 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-04-01, 2024-05-15-preview, 2025-03-01.
  */
 export class DevOpsConfiguration extends pulumi.CustomResource {
     /**
@@ -81,7 +82,7 @@ export class DevOpsConfiguration extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:security/v20230901preview:DevOpsConfiguration" }, { type: "azure-native:security/v20240401:DevOpsConfiguration" }, { type: "azure-native:security/v20240515preview:DevOpsConfiguration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:security/v20230901preview:DevOpsConfiguration" }, { type: "azure-native:security/v20240401:DevOpsConfiguration" }, { type: "azure-native:security/v20240515preview:DevOpsConfiguration" }, { type: "azure-native:security/v20250301:DevOpsConfiguration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DevOpsConfiguration.__pulumiType, name, resourceInputs, opts);
     }

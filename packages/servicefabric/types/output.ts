@@ -244,7 +244,7 @@ export interface FaultSimulationDetailsResponse {
     /**
      * Fault simulation parameters.
      */
-    parameters?: ZoneFaultSimulationParametersResponse;
+    parameters?: ZoneFaultSimulationContentResponse;
 }
 
 /**
@@ -458,7 +458,7 @@ export interface NodeTypeFaultSimulationResponse {
     /**
      * Current or latest asynchronous operation status on the node type
      */
-    operationStatus?: string;
+    operationStatus: string;
     /**
      * Fault simulation status
      */
@@ -638,7 +638,7 @@ export interface ServicePlacementInvalidDomainPolicyResponse {
 }
 
 /**
- * The name of the domain that should used for placement as per this policy.
+ * The type of placement policy for a service fabric service. Following are the possible values.
  */
 export interface ServicePlacementNonPartiallyPlaceServicePolicyResponse {
     /**
@@ -649,7 +649,7 @@ export interface ServicePlacementNonPartiallyPlaceServicePolicyResponse {
 }
 
 /**
- * Describes the policy to be used for placement of a Service Fabric service where the service's 
+ * Describes the policy to be used for placement of a Service Fabric service where the service's
  * Primary replicas should optimally be placed in a particular domain.
  *
  * This placement policy is usually used with fault domains in scenarios where the Service Fabric
@@ -997,7 +997,7 @@ export interface SystemDataResponse {
      */
     createdByType?: string;
     /**
-     * The timestamp of resource last modification (UTC).
+     * The timestamp of resource last modification (UTC)
      */
     lastModifiedAt?: string;
     /**
@@ -1181,7 +1181,7 @@ export interface VmssDataDiskResponse {
 /**
  * Parameters for Zone Fault Simulation action.
  */
-export interface ZoneFaultSimulationParametersResponse {
+export interface ZoneFaultSimulationContentResponse {
     /**
      * Constraints for Fault Simulation action.
      */

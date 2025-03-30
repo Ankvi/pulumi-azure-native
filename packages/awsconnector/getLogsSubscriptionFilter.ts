@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a LogsSubscriptionFilter
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getLogsSubscriptionFilter(args: GetLogsSubscriptionFilterArgs, opts?: pulumi.InvokeOptions): Promise<GetLogsSubscriptionFilterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetLogsSubscriptionFilterResult {
 }
 /**
  * Get a LogsSubscriptionFilter
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getLogsSubscriptionFilterOutput(args: GetLogsSubscriptionFilterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogsSubscriptionFilterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

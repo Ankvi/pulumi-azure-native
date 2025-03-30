@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Employee resource
- * Azure REST API version: 2021-10-01-preview.
+ *
+ * Uses Azure REST API version 2021-10-01-preview.
+ *
+ * Other available API versions: 2021-11-01.
  */
 export class Employee extends pulumi.CustomResource {
     /**
@@ -88,7 +91,7 @@ export class Employee extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:contoso/v20211001preview:Employee" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:contoso/v20211001preview:Employee" }, { type: "azure-native:contoso/v20211101:Employee" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Employee.__pulumiType, name, resourceInputs, opts);
     }

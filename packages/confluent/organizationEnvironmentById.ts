@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Details about environment name, metadata and environment id of an environment
- * Azure REST API version: 2024-07-01.
+ *
+ * Uses Azure REST API version 2024-07-01.
  */
 export class OrganizationEnvironmentById extends pulumi.CustomResource {
     /**

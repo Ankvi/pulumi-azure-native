@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the environment with the specified name in the specified subscription and resource group.
- * Azure REST API version: 2020-05-15.
+ *
+ * Uses Azure REST API version 2020-05-15.
  */
 export function getGen1Environment(args: GetGen1EnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetGen1EnvironmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -97,7 +98,8 @@ export interface GetGen1EnvironmentResult {
 }
 /**
  * Gets the environment with the specified name in the specified subscription and resource group.
- * Azure REST API version: 2020-05-15.
+ *
+ * Uses Azure REST API version 2020-05-15.
  */
 export function getGen1EnvironmentOutput(args: GetGen1EnvironmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGen1EnvironmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

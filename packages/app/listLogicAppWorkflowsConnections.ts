@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Workflow properties definition.
- * Azure REST API version: 2024-02-02-preview.
+ *
+ * Uses Azure REST API version 2024-02-02-preview.
  *
  * Other available API versions: 2024-08-02-preview, 2024-10-02-preview.
  */
@@ -62,7 +63,8 @@ export interface ListLogicAppWorkflowsConnectionsResult {
 }
 /**
  * Workflow properties definition.
- * Azure REST API version: 2024-02-02-preview.
+ *
+ * Uses Azure REST API version 2024-02-02-preview.
  *
  * Other available API versions: 2024-08-02-preview, 2024-10-02-preview.
  */

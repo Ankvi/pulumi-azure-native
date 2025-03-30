@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a SAP Migration discovery site resource.
- * Azure REST API version: 2023-10-01-preview.
+ *
+ * Uses Azure REST API version 2023-10-01-preview.
  */
 export function getSapDiscoverySite(args: GetSapDiscoverySiteArgs, opts?: pulumi.InvokeOptions): Promise<GetSapDiscoverySiteResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -75,7 +76,8 @@ export interface GetSapDiscoverySiteResult {
 }
 /**
  * Gets a SAP Migration discovery site resource.
- * Azure REST API version: 2023-10-01-preview.
+ *
+ * Uses Azure REST API version 2023-10-01-preview.
  */
 export function getSapDiscoverySiteOutput(args: GetSapDiscoverySiteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSapDiscoverySiteResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

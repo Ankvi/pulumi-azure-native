@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get OuContainer in DomainService instance.
- * Azure REST API version: 2022-12-01.
+ *
+ * Uses Azure REST API version 2022-12-01.
  */
 export function getOuContainer(args: GetOuContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetOuContainerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -96,7 +97,8 @@ export interface GetOuContainerResult {
 }
 /**
  * Get OuContainer in DomainService instance.
- * Azure REST API version: 2022-12-01.
+ *
+ * Uses Azure REST API version 2022-12-01.
  */
 export function getOuContainerOutput(args: GetOuContainerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOuContainerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

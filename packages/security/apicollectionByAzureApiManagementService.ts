@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * An API collection as represented by Microsoft Defender for APIs.
- * Azure REST API version: 2023-11-15.
+ *
+ * Uses Azure REST API version 2023-11-15.
  */
 export class APICollectionByAzureApiManagementService extends pulumi.CustomResource {
     /**

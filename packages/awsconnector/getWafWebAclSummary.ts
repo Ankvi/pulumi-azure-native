@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a WafWebACLSummary
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getWafWebAclSummary(args: GetWafWebAclSummaryArgs, opts?: pulumi.InvokeOptions): Promise<GetWafWebAclSummaryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetWafWebAclSummaryResult {
 }
 /**
  * Get a WafWebACLSummary
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getWafWebAclSummaryOutput(args: GetWafWebAclSummaryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWafWebAclSummaryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a LightsailBucket
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getLightsailBucket(args: GetLightsailBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetLightsailBucketResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetLightsailBucketResult {
 }
 /**
  * Get a LightsailBucket
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getLightsailBucketOutput(args: GetLightsailBucketOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLightsailBucketResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

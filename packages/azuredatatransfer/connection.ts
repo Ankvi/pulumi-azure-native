@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The connection resource definition.
- * Azure REST API version: 2023-10-11-preview.
  *
- * Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27.
+ * Uses Azure REST API version 2023-10-11-preview.
+ *
+ * Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27, 2025-03-01-preview.
  */
 export class Connection extends pulumi.CustomResource {
     /**
@@ -90,7 +91,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azuredatatransfer/v20231011preview:Connection" }, { type: "azure-native:azuredatatransfer/v20240125:Connection" }, { type: "azure-native:azuredatatransfer/v20240507:Connection" }, { type: "azure-native:azuredatatransfer/v20240911:Connection" }, { type: "azure-native:azuredatatransfer/v20240927:Connection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azuredatatransfer/v20231011preview:Connection" }, { type: "azure-native:azuredatatransfer/v20240125:Connection" }, { type: "azure-native:azuredatatransfer/v20240507:Connection" }, { type: "azure-native:azuredatatransfer/v20240911:Connection" }, { type: "azure-native:azuredatatransfer/v20240927:Connection" }, { type: "azure-native:azuredatatransfer/v20250301preview:Connection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Connection.__pulumiType, name, resourceInputs, opts);
     }

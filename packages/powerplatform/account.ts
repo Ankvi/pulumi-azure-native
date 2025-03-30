@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Definition of the account.
- * Azure REST API version: 2020-10-30-preview. Prior API version in Azure Native 1.x: 2020-10-30-preview.
+ *
+ * Uses Azure REST API version 2020-10-30-preview. In version 1.x of the Azure Native provider, it used API version 2020-10-30-preview.
  */
 export class Account extends pulumi.CustomResource {
     /**

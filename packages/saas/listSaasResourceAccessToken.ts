@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the ISV access token for a SaaS resource.
- * Azure REST API version: 2018-03-01-beta.
+ *
+ * Uses Azure REST API version 2018-03-01-beta.
  */
 export function listSaasResourceAccessToken(args: ListSaasResourceAccessTokenArgs, opts?: pulumi.InvokeOptions): Promise<ListSaasResourceAccessTokenResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,7 +34,8 @@ export interface ListSaasResourceAccessTokenResult {
 }
 /**
  * Gets the ISV access token for a SaaS resource.
- * Azure REST API version: 2018-03-01-beta.
+ *
+ * Uses Azure REST API version 2018-03-01-beta.
  */
 export function listSaasResourceAccessTokenOutput(args: ListSaasResourceAccessTokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListSaasResourceAccessTokenResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

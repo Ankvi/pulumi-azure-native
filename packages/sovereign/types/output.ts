@@ -189,7 +189,7 @@ export interface LandingZoneRegistrationResourcePropertiesResponse {
     /**
      * The managed identity to be assigned to this landing zone registration.
      */
-    managedIdentity: ManagedIdentityPropertiesResponse;
+    managedIdentity?: ManagedIdentityPropertiesResponse;
     /**
      * The state that reflects the current stage in the creation, updating, or deletion process of the landing zone registration resource type.
      */

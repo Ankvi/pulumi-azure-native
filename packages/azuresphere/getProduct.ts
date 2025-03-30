@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
- * Azure REST API version: 2022-09-01-preview.
+ *
+ * Uses Azure REST API version 2022-09-01-preview.
  *
  * Other available API versions: 2024-04-01.
  */
@@ -62,7 +63,8 @@ export interface GetProductResult {
 }
 /**
  * Get a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
- * Azure REST API version: 2022-09-01-preview.
+ *
+ * Uses Azure REST API version 2022-09-01-preview.
  *
  * Other available API versions: 2024-04-01.
  */

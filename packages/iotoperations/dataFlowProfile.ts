@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Instance dataflowProfile resource
- * Azure REST API version: 2024-07-01-preview.
+ *
+ * Uses Azure REST API version 2024-07-01-preview.
  */
 export class DataFlowProfile extends pulumi.CustomResource {
     /**
@@ -89,7 +90,7 @@ export class DataFlowProfile extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20240701preview:DataFlowProfile" }, { type: "azure-native:iotoperations/v20240815preview:DataFlowProfile" }, { type: "azure-native:iotoperations/v20240915preview:DataFlowProfile" }, { type: "azure-native:iotoperations/v20241101:DataFlowProfile" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20240701preview:DataFlowProfile" }, { type: "azure-native:iotoperations/v20240815preview:DataFlowProfile" }, { type: "azure-native:iotoperations/v20240915preview:DataFlowProfile" }, { type: "azure-native:iotoperations/v20241101:DataFlowProfile" }, { type: "azure-native:iotoperations/v20250401:DataFlowProfile" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DataFlowProfile.__pulumiType, name, resourceInputs, opts);
     }

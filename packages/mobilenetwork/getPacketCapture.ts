@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets information about the specified packet capture session.
- * Azure REST API version: 2023-06-01.
+ *
+ * Uses Azure REST API version 2023-06-01.
  *
  * Other available API versions: 2023-09-01, 2024-02-01, 2024-04-01.
  */
@@ -86,7 +87,8 @@ export interface GetPacketCaptureResult {
 }
 /**
  * Gets information about the specified packet capture session.
- * Azure REST API version: 2023-06-01.
+ *
+ * Uses Azure REST API version 2023-06-01.
  *
  * Other available API versions: 2023-09-01, 2024-02-01, 2024-04-01.
  */

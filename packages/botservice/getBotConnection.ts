@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Connection Setting registration for a Bot Service
- * Azure REST API version: 2022-09-15.
+ *
+ * Uses Azure REST API version 2022-09-15.
  *
  * Other available API versions: 2023-09-15-preview.
  */
@@ -78,7 +79,8 @@ export interface GetBotConnectionResult {
 }
 /**
  * Get a Connection Setting registration for a Bot Service
- * Azure REST API version: 2022-09-15.
+ *
+ * Uses Azure REST API version 2022-09-15.
  *
  * Other available API versions: 2023-09-15-preview.
  */

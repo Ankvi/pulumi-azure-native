@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a link to download the run logs.
- * Azure REST API version: 2019-06-01-preview.
+ *
+ * Uses Azure REST API version 2019-06-01-preview.
  *
  * Other available API versions: 2018-09-01, 2019-04-01.
  */
@@ -45,7 +46,8 @@ export interface ListRunLogSasUrlResult {
 }
 /**
  * Gets a link to download the run logs.
- * Azure REST API version: 2019-06-01-preview.
+ *
+ * Uses Azure REST API version 2019-06-01-preview.
  *
  * Other available API versions: 2018-09-01, 2019-04-01.
  */

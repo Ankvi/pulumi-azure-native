@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the ISV access token for a specified Subscription Level SaaS.
- * Azure REST API version: 2018-03-01-beta.
+ *
+ * Uses Azure REST API version 2018-03-01-beta.
  */
 export function listSaasSubscriptionLevelAccessToken(args: ListSaasSubscriptionLevelAccessTokenArgs, opts?: pulumi.InvokeOptions): Promise<ListSaasSubscriptionLevelAccessTokenResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,7 +39,8 @@ export interface ListSaasSubscriptionLevelAccessTokenResult {
 }
 /**
  * Gets the ISV access token for a specified Subscription Level SaaS.
- * Azure REST API version: 2018-03-01-beta.
+ *
+ * Uses Azure REST API version 2018-03-01-beta.
  */
 export function listSaasSubscriptionLevelAccessTokenOutput(args: ListSaasSubscriptionLevelAccessTokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListSaasSubscriptionLevelAccessTokenResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

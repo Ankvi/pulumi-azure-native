@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a OpenSearchDomainStatus
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getOpenSearchDomainStatus(args: GetOpenSearchDomainStatusArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchDomainStatusResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetOpenSearchDomainStatusResult {
 }
 /**
  * Get a OpenSearchDomainStatus
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getOpenSearchDomainStatusOutput(args: GetOpenSearchDomainStatusOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOpenSearchDomainStatusResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

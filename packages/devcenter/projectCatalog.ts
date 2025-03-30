@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Represents a catalog.
- * Azure REST API version: 2024-02-01.
  *
- * Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+ * Uses Azure REST API version 2024-02-01.
+ *
+ * Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
  */
 export class ProjectCatalog extends pulumi.CustomResource {
     /**
@@ -136,7 +137,7 @@ export class ProjectCatalog extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:devcenter/v20240201:ProjectCatalog" }, { type: "azure-native:devcenter/v20240501preview:ProjectCatalog" }, { type: "azure-native:devcenter/v20240601preview:ProjectCatalog" }, { type: "azure-native:devcenter/v20240701preview:ProjectCatalog" }, { type: "azure-native:devcenter/v20240801preview:ProjectCatalog" }, { type: "azure-native:devcenter/v20241001preview:ProjectCatalog" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:devcenter/v20240201:ProjectCatalog" }, { type: "azure-native:devcenter/v20240501preview:ProjectCatalog" }, { type: "azure-native:devcenter/v20240601preview:ProjectCatalog" }, { type: "azure-native:devcenter/v20240701preview:ProjectCatalog" }, { type: "azure-native:devcenter/v20240801preview:ProjectCatalog" }, { type: "azure-native:devcenter/v20241001preview:ProjectCatalog" }, { type: "azure-native:devcenter/v20250201:ProjectCatalog" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ProjectCatalog.__pulumiType, name, resourceInputs, opts);
     }

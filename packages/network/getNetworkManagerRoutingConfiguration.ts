@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Retrieves a network manager routing configuration.
- * Azure REST API version: 2024-03-01.
+ *
+ * Uses Azure REST API version 2024-03-01.
  *
  * Other available API versions: 2024-05-01.
  */
@@ -70,7 +71,8 @@ export interface GetNetworkManagerRoutingConfigurationResult {
 }
 /**
  * Retrieves a network manager routing configuration.
- * Azure REST API version: 2024-03-01.
+ *
+ * Uses Azure REST API version 2024-03-01.
  *
  * Other available API versions: 2024-05-01.
  */

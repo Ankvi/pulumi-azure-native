@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The variable.
- * Azure REST API version: 2022-08-01-preview.
+ *
+ * Uses Azure REST API version 2022-08-01-preview.
+ *
+ * Other available API versions: 2024-12-01-preview.
  */
 export class VariableAtManagementGroup extends pulumi.CustomResource {
     /**
@@ -79,7 +82,7 @@ export class VariableAtManagementGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:authorization/v20220801preview:VariableAtManagementGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:authorization/v20220801preview:VariableAtManagementGroup" }, { type: "azure-native:authorization/v20241201preview:VariableAtManagementGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VariableAtManagementGroup.__pulumiType, name, resourceInputs, opts);
     }

@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * An Azure Arc PrivateLinkScope definition.
- * Azure REST API version: 2022-04-02-preview. Prior API version in Azure Native 1.x: 2022-04-02-preview.
+ *
+ * Uses Azure REST API version 2022-04-02-preview. In version 1.x of the Azure Native provider, it used API version 2022-04-02-preview.
+ *
+ * Other available API versions: 2024-11-01-preview.
  */
 export class PrivateLinkScope extends pulumi.CustomResource {
     /**
@@ -88,7 +91,7 @@ export class PrivateLinkScope extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:kubernetesconfiguration/v20220402preview:PrivateLinkScope" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:kubernetesconfiguration/v20220402preview:PrivateLinkScope" }, { type: "azure-native:kubernetesconfiguration/v20241101preview:PrivateLinkScope" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateLinkScope.__pulumiType, name, resourceInputs, opts);
     }

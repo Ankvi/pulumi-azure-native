@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Class representing the config for the solution in the migrate project.
- * Azure REST API version: 2023-01-01.
+ *
+ * Uses Azure REST API version 2023-01-01.
  */
 export function getSolutionsControllerConfig(args: GetSolutionsControllerConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetSolutionsControllerConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,7 +40,8 @@ export interface GetSolutionsControllerConfigResult {
 }
 /**
  * Class representing the config for the solution in the migrate project.
- * Azure REST API version: 2023-01-01.
+ *
+ * Uses Azure REST API version 2023-01-01.
  */
 export function getSolutionsControllerConfigOutput(args: GetSolutionsControllerConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSolutionsControllerConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

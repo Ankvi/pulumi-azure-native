@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Description for Gets the Azure storage account configurations of an app.
- * Azure REST API version: 2022-09-01.
+ *
+ * Uses Azure REST API version 2022-09-01.
  *
  * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
@@ -53,7 +54,8 @@ export interface ListWebAppAzureStorageAccountsResult {
 }
 /**
  * Description for Gets the Azure storage account configurations of an app.
- * Azure REST API version: 2022-09-01.
+ *
+ * Uses Azure REST API version 2022-09-01.
  *
  * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */

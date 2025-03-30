@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The operation to get a run command.
- * Azure REST API version: 2023-10-03-preview.
  *
- * Other available API versions: 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview.
+ * Uses Azure REST API version 2023-10-03-preview.
+ *
+ * Other available API versions: 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13.
  */
 export function getMachineRunCommand(args: GetMachineRunCommandArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineRunCommandResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -114,9 +115,10 @@ export interface GetMachineRunCommandResult {
 }
 /**
  * The operation to get a run command.
- * Azure REST API version: 2023-10-03-preview.
  *
- * Other available API versions: 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview.
+ * Uses Azure REST API version 2023-10-03-preview.
+ *
+ * Other available API versions: 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13.
  */
 export function getMachineRunCommandOutput(args: GetMachineRunCommandOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMachineRunCommandResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

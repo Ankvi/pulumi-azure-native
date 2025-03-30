@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Retrieve an alert rule definition.
- * Azure REST API version: 2018-03-01.
+ *
+ * Uses Azure REST API version 2018-03-01.
  */
 export function getMetricAlert(args: GetMetricAlertArgs, opts?: pulumi.InvokeOptions): Promise<GetMetricAlertResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -73,7 +74,7 @@ export interface GetMetricAlertResult {
      */
     readonly name: string;
     /**
-     * the list of resource id's that this metric alert is scoped to.
+     * the list of resource id's that this metric alert is scoped to. You cannot change the scope of a metric rule based on logs.
      */
     readonly scopes: string[];
     /**
@@ -103,7 +104,8 @@ export interface GetMetricAlertResult {
 }
 /**
  * Retrieve an alert rule definition.
- * Azure REST API version: 2018-03-01.
+ *
+ * Uses Azure REST API version 2018-03-01.
  */
 export function getMetricAlertOutput(args: GetMetricAlertOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetricAlertResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a specific standard assignment for the requested scope by resourceId
- * Azure REST API version: 2021-08-01-preview.
+ *
+ * Uses Azure REST API version 2021-08-01-preview.
  */
 export function getAssignment(args: GetAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -99,7 +100,8 @@ export interface GetAssignmentResult {
 }
 /**
  * Get a specific standard assignment for the requested scope by resourceId
- * Azure REST API version: 2021-08-01-preview.
+ *
+ * Uses Azure REST API version 2021-08-01-preview.
  */
 export function getAssignmentOutput(args: GetAssignmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

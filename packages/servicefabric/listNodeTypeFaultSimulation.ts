@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the list of recent fault simulations for the node type.
- * Azure REST API version: 2024-11-01-preview.
+ *
+ * Uses Azure REST API version 2024-11-01-preview.
  */
 export function listNodeTypeFaultSimulation(args: ListNodeTypeFaultSimulationArgs, opts?: pulumi.InvokeOptions): Promise<ListNodeTypeFaultSimulationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -24,7 +25,7 @@ export interface ListNodeTypeFaultSimulationArgs {
      */
     nodeTypeName: string;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
@@ -34,17 +35,18 @@ export interface ListNodeTypeFaultSimulationArgs {
  */
 export interface ListNodeTypeFaultSimulationResult {
     /**
-     * The URL to use for getting the next set of results.
+     * The link to the next page of items
      */
     readonly nextLink?: string;
     /**
-     * The list of fault simulations.
+     * The FaultSimulation items on this page
      */
-    readonly value?: types.outputs.FaultSimulationResponse[];
+    readonly value: types.outputs.FaultSimulationResponse[];
 }
 /**
  * Gets the list of recent fault simulations for the node type.
- * Azure REST API version: 2024-11-01-preview.
+ *
+ * Uses Azure REST API version 2024-11-01-preview.
  */
 export function listNodeTypeFaultSimulationOutput(args: ListNodeTypeFaultSimulationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListNodeTypeFaultSimulationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -65,7 +67,7 @@ export interface ListNodeTypeFaultSimulationOutputArgs {
      */
     nodeTypeName: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

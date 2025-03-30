@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Description for Gets the Authentication/Authorization settings of an app.
- * Azure REST API version: 2022-09-01.
+ *
+ * Uses Azure REST API version 2022-09-01.
  *
  * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */
@@ -169,7 +170,7 @@ export interface ListWebAppAuthSettingsResult {
     readonly isAuthFromFile?: string;
     /**
      * The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://sts.windows.net/{tenant-guid}/.
+     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://sts.windows.net/{tenant-guid}/`.
      * This URI is a case-sensitive identifier for the token issuer.
      * More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
      */
@@ -252,7 +253,8 @@ export interface ListWebAppAuthSettingsResult {
 }
 /**
  * Description for Gets the Authentication/Authorization settings of an app.
- * Azure REST API version: 2022-09-01.
+ *
+ * Uses Azure REST API version 2022-09-01.
  *
  * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
  */

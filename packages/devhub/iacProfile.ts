@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Resource representation of a IacProfile.
- * Azure REST API version: 2024-05-01-preview.
  *
- * Other available API versions: 2024-08-01-preview.
+ * Uses Azure REST API version 2024-05-01-preview.
+ *
+ * Other available API versions: 2024-08-01-preview, 2025-03-01-preview.
  */
 export class IacProfile extends pulumi.CustomResource {
     /**
@@ -162,7 +163,7 @@ export class IacProfile extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:devhub/v20240501preview:IacProfile" }, { type: "azure-native:devhub/v20240801preview:IacProfile" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:devhub/v20240501preview:IacProfile" }, { type: "azure-native:devhub/v20240801preview:IacProfile" }, { type: "azure-native:devhub/v20250301preview:IacProfile" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(IacProfile.__pulumiType, name, resourceInputs, opts);
     }

@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the download URL of the test execution screen recording.
- * Azure REST API version: 2022-04-01-preview.
+ *
+ * Uses Azure REST API version 2022-04-01-preview.
  *
  * Other available API versions: 2023-11-01-preview.
  */
@@ -50,7 +51,8 @@ export interface GetTestResultVideoDownloadURLResult {
 }
 /**
  * Gets the download URL of the test execution screen recording.
- * Azure REST API version: 2022-04-01-preview.
+ *
+ * Uses Azure REST API version 2022-04-01-preview.
  *
  * Other available API versions: 2023-11-01-preview.
  */

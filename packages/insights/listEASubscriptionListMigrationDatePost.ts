@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * list date to migrate to new pricing model.
- * Azure REST API version: 2017-10-01.
+ *
+ * Uses Azure REST API version 2017-10-01.
  */
 export function listEASubscriptionListMigrationDatePost(args?: ListEASubscriptionListMigrationDatePostArgs, opts?: pulumi.InvokeOptions): Promise<ListEASubscriptionListMigrationDatePostResult> {
     args = args || {};
@@ -29,7 +30,8 @@ export interface ListEASubscriptionListMigrationDatePostResult {
 }
 /**
  * list date to migrate to new pricing model.
- * Azure REST API version: 2017-10-01.
+ *
+ * Uses Azure REST API version 2017-10-01.
  */
 export function listEASubscriptionListMigrationDatePostOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListEASubscriptionListMigrationDatePostResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

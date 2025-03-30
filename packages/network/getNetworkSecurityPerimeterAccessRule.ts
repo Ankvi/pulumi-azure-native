@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the specified NSP access rule by name.
- * Azure REST API version: 2024-06-01-preview.
+ *
+ * Uses Azure REST API version 2024-06-01-preview.
  */
 export function getNetworkSecurityPerimeterAccessRule(args: GetNetworkSecurityPerimeterAccessRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkSecurityPerimeterAccessRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -97,7 +98,8 @@ export interface GetNetworkSecurityPerimeterAccessRuleResult {
 }
 /**
  * Gets the specified NSP access rule by name.
- * Azure REST API version: 2024-06-01-preview.
+ *
+ * Uses Azure REST API version 2024-06-01-preview.
  */
 export function getNetworkSecurityPerimeterAccessRuleOutput(args: GetNetworkSecurityPerimeterAccessRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkSecurityPerimeterAccessRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

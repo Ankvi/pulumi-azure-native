@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get an invitation in a share
- * Azure REST API version: 2021-08-01.
+ *
+ * Uses Azure REST API version 2021-08-01.
  */
 export function getInvitation(args: GetInvitationArgs, opts?: pulumi.InvokeOptions): Promise<GetInvitationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -99,7 +100,8 @@ export interface GetInvitationResult {
 }
 /**
  * Get an invitation in a share
- * Azure REST API version: 2021-08-01.
+ *
+ * Uses Azure REST API version 2021-08-01.
  */
 export function getInvitationOutput(args: GetInvitationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInvitationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Describes a VMSS VM Extension.
- * Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2021-03-01.
  *
- * Other available API versions: 2021-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+ * Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
+ *
+ * Other available API versions: 2021-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
  */
 export class VirtualMachineScaleSetVMExtension extends pulumi.CustomResource {
     /**
@@ -152,7 +153,7 @@ export class VirtualMachineScaleSetVMExtension extends pulumi.CustomResource {
             resourceInputs["typeHandlerVersion"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20190701:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20191201:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20200601:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20201201:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20210301:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20210401:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20210701:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20211101:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20220301:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20220801:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20221101:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20230301:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20230701:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20230901:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20240301:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20240701:VirtualMachineScaleSetVMExtension" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20190701:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20191201:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20200601:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20201201:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20210301:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20210401:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20210701:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20211101:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20220301:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20220801:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20221101:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20230301:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20230701:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20230901:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20240301:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20240701:VirtualMachineScaleSetVMExtension" }, { type: "azure-native:compute/v20241101:VirtualMachineScaleSetVMExtension" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualMachineScaleSetVMExtension.__pulumiType, name, resourceInputs, opts);
     }

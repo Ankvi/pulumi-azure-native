@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
- * Azure REST API version: 2024-01-01.
+ *
+ * Uses Azure REST API version 2024-01-01.
  */
 export class Pricing extends pulumi.CustomResource {
     /**

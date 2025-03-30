@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Disk pool.
- * Azure REST API version: 2021-08-01.
+ *
+ * Uses Azure REST API version 2021-08-01.
  *
  * Other available API versions: 2020-03-15-preview.
  */
@@ -93,7 +94,8 @@ export interface GetDiskPoolResult {
 }
 /**
  * Get a Disk pool.
- * Azure REST API version: 2021-08-01.
+ *
+ * Uses Azure REST API version 2021-08-01.
  *
  * Other available API versions: 2020-03-15-preview.
  */

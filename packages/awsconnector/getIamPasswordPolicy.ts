@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a IamPasswordPolicy
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getIamPasswordPolicy(args: GetIamPasswordPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIamPasswordPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetIamPasswordPolicyResult {
 }
 /**
  * Get a IamPasswordPolicy
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getIamPasswordPolicyOutput(args: GetIamPasswordPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIamPasswordPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

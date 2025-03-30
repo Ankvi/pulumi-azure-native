@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the Hybrid AKS provisioned cluster
- * Azure REST API version: 2022-09-01-preview.
+ *
+ * Uses Azure REST API version 2022-09-01-preview.
  *
  * Other available API versions: 2022-05-01-preview.
  */
@@ -63,7 +64,8 @@ export interface GetProvisionedClusterResult {
 }
 /**
  * Gets the Hybrid AKS provisioned cluster
- * Azure REST API version: 2022-09-01-preview.
+ *
+ * Uses Azure REST API version 2022-09-01-preview.
  *
  * Other available API versions: 2022-05-01-preview.
  */

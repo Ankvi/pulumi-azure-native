@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets properties of a DNS resolver domain list.
- * Azure REST API version: 2023-07-01-preview.
+ *
+ * Uses Azure REST API version 2023-07-01-preview.
  */
 export function getDnsResolverDomainList(args: GetDnsResolverDomainListArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsResolverDomainListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -71,7 +72,8 @@ export interface GetDnsResolverDomainListResult {
 }
 /**
  * Gets properties of a DNS resolver domain list.
- * Azure REST API version: 2023-07-01-preview.
+ *
+ * Uses Azure REST API version 2023-07-01-preview.
  */
 export function getDnsResolverDomainListOutput(args: GetDnsResolverDomainListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsResolverDomainListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

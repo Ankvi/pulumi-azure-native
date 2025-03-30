@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a RdsDBCluster
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getRdsDbCluster(args: GetRdsDbClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetRdsDbClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetRdsDbClusterResult {
 }
 /**
  * Get a RdsDBCluster
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getRdsDbClusterOutput(args: GetRdsDbClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRdsDbClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

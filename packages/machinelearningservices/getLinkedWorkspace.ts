@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the detail of a linked workspace.
- * Azure REST API version: 2020-05-15-preview.
+ *
+ * Uses Azure REST API version 2020-05-15-preview.
  */
 export function getLinkedWorkspace(args: GetLinkedWorkspaceArgs, opts?: pulumi.InvokeOptions): Promise<GetLinkedWorkspaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -52,7 +53,8 @@ export interface GetLinkedWorkspaceResult {
 }
 /**
  * Get the detail of a linked workspace.
- * Azure REST API version: 2020-05-15-preview.
+ *
+ * Uses Azure REST API version 2020-05-15-preview.
  */
 export function getLinkedWorkspaceOutput(args: GetLinkedWorkspaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLinkedWorkspaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the details of the fabric agent.
- * Azure REST API version: 2021-02-16-preview.
+ *
+ * Uses Azure REST API version 2021-02-16-preview.
  */
 export function getDra(args: GetDraArgs, opts?: pulumi.InvokeOptions): Promise<GetDraResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -53,7 +54,8 @@ export interface GetDraResult {
 }
 /**
  * Gets the details of the fabric agent.
- * Azure REST API version: 2021-02-16-preview.
+ *
+ * Uses Azure REST API version 2021-02-16-preview.
  */
 export function getDraOutput(args: GetDraOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDraResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

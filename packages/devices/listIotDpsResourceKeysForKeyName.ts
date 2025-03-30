@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * List primary and secondary keys for a specific key name
- * Azure REST API version: 2022-12-12.
+ *
+ * Uses Azure REST API version 2022-12-12.
  *
  * Other available API versions: 2020-09-01-preview, 2023-03-01-preview, 2025-02-01-preview.
  */
@@ -53,7 +54,8 @@ export interface ListIotDpsResourceKeysForKeyNameResult {
 }
 /**
  * List primary and secondary keys for a specific key name
- * Azure REST API version: 2022-12-12.
+ *
+ * Uses Azure REST API version 2022-12-12.
  *
  * Other available API versions: 2020-09-01-preview, 2023-03-01-preview, 2025-02-01-preview.
  */

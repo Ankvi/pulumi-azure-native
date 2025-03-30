@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * List users success response
- * Azure REST API version: 2023-08-22.
+ *
+ * Uses Azure REST API version 2023-08-22.
  *
  * Other available API versions: 2024-02-13, 2024-07-01.
  */
@@ -50,7 +51,8 @@ export interface ListAccessUsersResult {
 }
 /**
  * List users success response
- * Azure REST API version: 2023-08-22.
+ *
+ * Uses Azure REST API version 2023-08-22.
  *
  * Other available API versions: 2024-02-13, 2024-07-01.
  */

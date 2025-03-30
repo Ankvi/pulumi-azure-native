@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Resource representation of a workflow
- * Azure REST API version: 2022-10-11-preview.
  *
- * Other available API versions: 2023-08-01, 2024-05-01-preview, 2024-08-01-preview.
+ * Uses Azure REST API version 2022-10-11-preview.
+ *
+ * Other available API versions: 2023-08-01, 2024-05-01-preview, 2024-08-01-preview, 2025-03-01-preview.
  */
 export function getWorkflow(args: GetWorkflowArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -159,9 +160,10 @@ export interface GetWorkflowResult {
 }
 /**
  * Resource representation of a workflow
- * Azure REST API version: 2022-10-11-preview.
  *
- * Other available API versions: 2023-08-01, 2024-05-01-preview, 2024-08-01-preview.
+ * Uses Azure REST API version 2022-10-11-preview.
+ *
+ * Other available API versions: 2023-08-01, 2024-05-01-preview, 2024-08-01-preview, 2025-03-01-preview.
  */
 export function getWorkflowOutput(args: GetWorkflowOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkflowResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

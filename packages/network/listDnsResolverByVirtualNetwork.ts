@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Lists DNS resolver resource IDs linked to a virtual network.
- * Azure REST API version: 2022-07-01.
+ *
+ * Uses Azure REST API version 2022-07-01.
  *
  * Other available API versions: 2020-04-01-preview, 2023-07-01-preview.
  */
@@ -46,7 +47,8 @@ export interface ListDnsResolverByVirtualNetworkResult {
 }
 /**
  * Lists DNS resolver resource IDs linked to a virtual network.
- * Azure REST API version: 2022-07-01.
+ *
+ * Uses Azure REST API version 2022-07-01.
  *
  * Other available API versions: 2020-04-01-preview, 2023-07-01-preview.
  */
