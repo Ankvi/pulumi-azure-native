@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-syntex",
-    "version": "2.89.1",
+    "version": "2.89.3",
     "description": "Pulumi Azure Native package for syntex",
     "keywords": [
         "pulumi",
