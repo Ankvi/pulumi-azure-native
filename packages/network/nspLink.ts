@@ -2,9 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * The network security perimeter link resource
- * Azure REST API version: 2021-02-01-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2023-08-01-preview.
+ * Uses Azure REST API version 2023-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-02-01-preview.
+ *
+ * Other available API versions: 2021-02-01-preview, 2023-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NspLink extends pulumi.CustomResource {
     /**
@@ -38,6 +39,10 @@ export class NspLink extends pulumi.CustomResource {
      */
     public readonly autoApprovedRemotePerimeterResourceId!: pulumi.Output<string | undefined>;
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * A message passed to the owner of the remote NSP link resource with this connection request. In case of Auto-approved flow, it is default to 'Auto Approved'. Restricted to 140 chars.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -46,7 +51,7 @@ export class NspLink extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value is ['*'].
+     * Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
      */
     public readonly localInboundProfiles!: pulumi.Output<string[] | undefined>;
     /**
@@ -62,7 +67,7 @@ export class NspLink extends pulumi.CustomResource {
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
-     * Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode. It's default value is ['*'].
+     * Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
      */
     public readonly remoteInboundProfiles!: pulumi.Output<string[] | undefined>;
     /**
@@ -110,6 +115,7 @@ export class NspLink extends pulumi.CustomResource {
             resourceInputs["networkSecurityPerimeterName"] = args ? args.networkSecurityPerimeterName : undefined;
             resourceInputs["remoteInboundProfiles"] = args ? args.remoteInboundProfiles : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["localOutboundProfiles"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -121,6 +127,7 @@ export class NspLink extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["autoApprovedRemotePerimeterResourceId"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["localInboundProfiles"] = undefined /*out*/;
@@ -158,7 +165,7 @@ export interface NspLinkArgs {
      */
     linkName?: pulumi.Input<string>;
     /**
-     * Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value is ['*'].
+     * Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
      */
     localInboundProfiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -166,7 +173,7 @@ export interface NspLinkArgs {
      */
     networkSecurityPerimeterName: pulumi.Input<string>;
     /**
-     * Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode. It's default value is ['*'].
+     * Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
      */
     remoteInboundProfiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**

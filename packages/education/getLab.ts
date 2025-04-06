@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the details for a specific lab associated with the provided billing account name, billing profile name, and invoice section name.
- * Azure REST API version: 2021-12-01-preview.
+ *
+ * Uses Azure REST API version 2021-12-01-preview.
  */
 export function getLab(args: GetLabArgs, opts?: pulumi.InvokeOptions): Promise<GetLabResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,6 +39,10 @@ export interface GetLabArgs {
  * Lab details.
  */
 export interface GetLabResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Default monetary cap for each student in this lab
      */
@@ -87,6 +92,10 @@ export interface GetLabResult {
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
+     * Total budget
+     */
+    readonly totalBudget: types.outputs.AmountResponse;
+    /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
@@ -97,7 +106,8 @@ export interface GetLabResult {
 }
 /**
  * Get the details for a specific lab associated with the provided billing account name, billing profile name, and invoice section name.
- * Azure REST API version: 2021-12-01-preview.
+ *
+ * Uses Azure REST API version 2021-12-01-preview.
  */
 export function getLabOutput(args: GetLabOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLabResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the enterprise mcc customer resource information using this get call
- * Azure REST API version: 2023-05-01-preview.
+ *
+ * Uses Azure REST API version 2023-05-01-preview.
  */
 export function getEnterpriseMccCustomer(args: GetEnterpriseMccCustomerArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseMccCustomerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetEnterpriseMccCustomerArgs {
  * Represents the high level Nodes needed to provision customer resources
  */
 export interface GetEnterpriseMccCustomerResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetEnterpriseMccCustomerResult {
 }
 /**
  * Gets the enterprise mcc customer resource information using this get call
- * Azure REST API version: 2023-05-01-preview.
+ *
+ * Uses Azure REST API version 2023-05-01-preview.
  */
 export function getEnterpriseMccCustomerOutput(args: GetEnterpriseMccCustomerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnterpriseMccCustomerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

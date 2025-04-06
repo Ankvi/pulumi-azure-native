@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Describes a time series database connection resource.
- * Azure REST API version: 2023-01-31. Prior API version in Azure Native 1.x: 2021-06-30-preview.
+ *
+ * Uses Azure REST API version 2023-01-31. In version 2.x of the Azure Native provider, it used API version 2023-01-31.
  */
 export class TimeSeriesDatabaseConnection extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class TimeSeriesDatabaseConnection extends pulumi.CustomResource {
         return obj['__pulumiType'] === TimeSeriesDatabaseConnection.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Extension resource name.
      */
@@ -70,10 +75,12 @@ export class TimeSeriesDatabaseConnection extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceName"] = args ? args.resourceName : undefined;
             resourceInputs["timeSeriesDatabaseConnectionName"] = args ? args.timeSeriesDatabaseConnectionName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;

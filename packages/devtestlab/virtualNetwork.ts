@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A virtual network.
- * Azure REST API version: 2018-09-15. Prior API version in Azure Native 1.x: 2018-09-15.
+ *
+ * Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
  */
 export class VirtualNetwork extends pulumi.CustomResource {
     /**
@@ -36,6 +37,10 @@ export class VirtualNetwork extends pulumi.CustomResource {
      * The allowed subnets of the virtual network.
      */
     public readonly allowedSubnets!: pulumi.Output<types.outputs.SubnetResponse[] | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The creation date of the virtual network.
      */
@@ -107,6 +112,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["subnetOverrides"] = args ? args.subnetOverrides : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdDate"] = undefined /*out*/;
             resourceInputs["externalSubnets"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -114,6 +120,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
             resourceInputs["uniqueIdentifier"] = undefined /*out*/;
         } else {
             resourceInputs["allowedSubnets"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdDate"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["externalProviderResourceId"] = undefined /*out*/;

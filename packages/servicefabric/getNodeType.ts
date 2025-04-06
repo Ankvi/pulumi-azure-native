@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Service Fabric node type of a given managed cluster.
- * Azure REST API version: 2023-03-01-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-04-01, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview.
+ * Uses Azure REST API version 2024-04-01.
+ *
+ * Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNodeType(args: GetNodeTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTypeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,13 +41,25 @@ export interface GetNodeTypeResult {
      */
     readonly additionalDataDisks?: types.outputs.VmssDataDiskResponse[];
     /**
+     * Specifies the settings for any additional secondary network interfaces to attach to the node type.
+     */
+    readonly additionalNetworkInterfaceConfigurations?: types.outputs.AdditionalNetworkInterfaceConfigurationResponse[];
+    /**
      * The range of ports from which cluster assigned port to Service Fabric applications.
      */
     readonly applicationPorts?: types.outputs.EndpointRangeDescriptionResponse;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has.
      */
     readonly capacities?: {[key: string]: string};
+    /**
+     * Specifies the computer name prefix. Limited to 9 characters. If specified, allows for a longer name to be specified for the node type name.
+     */
+    readonly computerNamePrefix?: string;
     /**
      * Managed data disk letter. It can not use the reserved letter C or D and it can not change after created.
      */
@@ -60,6 +73,10 @@ export interface GetNodeTypeResult {
      */
     readonly dataDiskType?: string;
     /**
+     * Specifies the resource id of the DSCP configuration to apply to the node type network interface.
+     */
+    readonly dscpConfigurationId?: string;
+    /**
      * Specifies whether the network interface is accelerated networking-enabled.
      */
     readonly enableAcceleratedNetworking?: boolean;
@@ -68,9 +85,13 @@ export interface GetNodeTypeResult {
      */
     readonly enableEncryptionAtHost?: boolean;
     /**
-     * Specifies whether each node is allocated its own public IP address. This is only supported on secondary node types with custom Load Balancers.
+     * Specifies whether each node is allocated its own public IPv4 address. This is only supported on secondary node types with custom Load Balancers.
      */
     readonly enableNodePublicIP?: boolean;
+    /**
+     * Specifies whether each node is allocated its own public IPv6 address. This is only supported on secondary node types with custom Load Balancers.
+     */
+    readonly enableNodePublicIPv6?: boolean;
     /**
      * Specifies whether the node type should be overprovisioned. It is only allowed for stateless node types.
      */
@@ -116,6 +137,10 @@ export interface GetNodeTypeResult {
      */
     readonly name: string;
     /**
+     * Specifies the NAT configuration on default public Load Balancer for the node type. This is only supported for node types use the default public Load Balancer.
+     */
+    readonly natConfigurations?: types.outputs.NodeTypeNatConfigResponse[];
+    /**
      * Specifies the resource id of a NAT Gateway to attach to the subnet of this node type. Node type must use custom load balancer.
      */
     readonly natGatewayId?: string;
@@ -136,9 +161,13 @@ export interface GetNodeTypeResult {
      */
     readonly secureBootEnabled?: boolean;
     /**
-     * Specifies the security type of the nodeType. Only TrustedLaunch is currently supported
+     * Specifies the security type of the nodeType. Only Standard and TrustedLaunch are currently supported
      */
     readonly securityType?: string;
+    /**
+     * Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version.
+     */
+    readonly serviceArtifactReferenceId?: string;
     /**
      * The node type sku.
      */
@@ -234,9 +263,10 @@ export interface GetNodeTypeResult {
 }
 /**
  * Get a Service Fabric node type of a given managed cluster.
- * Azure REST API version: 2023-03-01-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-04-01, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview.
+ * Uses Azure REST API version 2024-04-01.
+ *
+ * Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNodeTypeOutput(args: GetNodeTypeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodeTypeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

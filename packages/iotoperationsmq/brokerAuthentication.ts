@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * MQ broker/authentication resource
- * Azure REST API version: 2023-10-04-preview.
+ *
+ * Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
  */
 export class BrokerAuthentication extends pulumi.CustomResource {
     /**
@@ -36,6 +37,10 @@ export class BrokerAuthentication extends pulumi.CustomResource {
      * The list of authentication methods supported by the Authentication Resource. For each array element, NOTE - Enum only authenticator type supported.
      */
     public readonly authenticationMethods!: pulumi.Output<types.outputs.BrokerAuthenticatorMethodsResponse[]>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Extended Location
      */
@@ -107,12 +112,14 @@ export class BrokerAuthentication extends pulumi.CustomResource {
             resourceInputs["mqName"] = args ? args.mqName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["authenticationMethods"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["extendedLocation"] = undefined /*out*/;
             resourceInputs["listenerRef"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the details of the Wiki for an API specified by its identifier.
- * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+ * Uses Azure REST API version 2022-09-01-preview.
+ *
+ * Other available API versions: 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getApiWiki(args: GetApiWikiArgs, opts?: pulumi.InvokeOptions): Promise<GetApiWikiResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +37,10 @@ export interface GetApiWikiArgs {
  */
 export interface GetApiWikiResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Collection wiki documents included into this wiki.
      */
     readonly documents?: types.outputs.WikiDocumentationContractResponse[];
@@ -54,9 +59,10 @@ export interface GetApiWikiResult {
 }
 /**
  * Gets the details of the Wiki for an API specified by its identifier.
- * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+ * Uses Azure REST API version 2022-09-01-preview.
+ *
+ * Other available API versions: 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getApiWikiOutput(args: GetApiWikiOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiWikiResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

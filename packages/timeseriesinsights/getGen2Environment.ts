@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the environment with the specified name in the specified subscription and resource group.
- * Azure REST API version: 2020-05-15.
+ *
+ * Uses Azure REST API version 2020-05-15.
  */
 export function getGen2Environment(args: GetGen2EnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetGen2EnvironmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetGen2EnvironmentArgs {
  * An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. Gen2 environments do not have set data retention limits.
  */
 export interface GetGen2EnvironmentResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The time the resource was created.
      */
@@ -97,7 +102,8 @@ export interface GetGen2EnvironmentResult {
 }
 /**
  * Gets the environment with the specified name in the specified subscription and resource group.
- * Azure REST API version: 2020-05-15.
+ *
+ * Uses Azure REST API version 2020-05-15.
  */
 export function getGen2EnvironmentOutput(args: GetGen2EnvironmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGen2EnvironmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Returns Dedicate Cloud Service
- * Azure REST API version: 2019-04-01.
+ *
+ * Uses Azure REST API version 2019-04-01.
  */
 export function getDedicatedCloudService(args: GetDedicatedCloudServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedCloudServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -27,6 +28,10 @@ export interface GetDedicatedCloudServiceArgs {
  * Dedicated cloud service model
  */
 export interface GetDedicatedCloudServiceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * gateway Subnet for the account. It will collect the subnet address and always treat it as /28
      */
@@ -66,7 +71,8 @@ export interface GetDedicatedCloudServiceResult {
 }
 /**
  * Returns Dedicate Cloud Service
- * Azure REST API version: 2019-04-01.
+ *
+ * Uses Azure REST API version 2019-04-01.
  */
 export function getDedicatedCloudServiceOutput(args: GetDedicatedCloudServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDedicatedCloudServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

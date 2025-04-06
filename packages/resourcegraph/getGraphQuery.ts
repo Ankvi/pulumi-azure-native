@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a single graph query by its resourceName.
- * Azure REST API version: 2020-04-01-preview.
  *
- * Other available API versions: 2018-09-01-preview, 2019-04-01, 2021-03-01, 2022-10-01, 2024-04-01.
+ * Uses Azure REST API version 2024-04-01.
+ *
+ * Other available API versions: 2020-04-01-preview, 2021-03-01, 2022-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourcegraph [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getGraphQuery(args: GetGraphQueryArgs, opts?: pulumi.InvokeOptions): Promise<GetGraphQueryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -17,7 +18,7 @@ export function getGraphQuery(args: GetGraphQueryArgs, opts?: pulumi.InvokeOptio
 
 export interface GetGraphQueryArgs {
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
@@ -31,11 +32,15 @@ export interface GetGraphQueryArgs {
  */
 export interface GetGraphQueryResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The description of a graph query.
      */
     readonly description?: string;
     /**
-     * This will be used to handle Optimistic Concurrency.
+     * This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.
      */
     readonly etag?: string;
     /**
@@ -45,7 +50,7 @@ export interface GetGraphQueryResult {
     /**
      * The location of the resource
      */
-    readonly location: string;
+    readonly location?: string;
     /**
      * Azure resource name. This is GUID value. The display name should be assigned within properties field.
      */
@@ -59,7 +64,7 @@ export interface GetGraphQueryResult {
      */
     readonly resultKind: string;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * The system metadata relating to this resource.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
@@ -77,9 +82,10 @@ export interface GetGraphQueryResult {
 }
 /**
  * Get a single graph query by its resourceName.
- * Azure REST API version: 2020-04-01-preview.
  *
- * Other available API versions: 2018-09-01-preview, 2019-04-01, 2021-03-01, 2022-10-01, 2024-04-01.
+ * Uses Azure REST API version 2024-04-01.
+ *
+ * Other available API versions: 2020-04-01-preview, 2021-03-01, 2022-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourcegraph [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getGraphQueryOutput(args: GetGraphQueryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGraphQueryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -91,7 +97,7 @@ export function getGraphQueryOutput(args: GetGraphQueryOutputArgs, opts?: pulumi
 
 export interface GetGraphQueryOutputArgs {
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

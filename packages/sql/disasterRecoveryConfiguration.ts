@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Represents a disaster recovery configuration.
- * Azure REST API version: 2014-04-01. Prior API version in Azure Native 1.x: 2014-04-01.
+ *
+ * Uses Azure REST API version 2014-04-01. In version 2.x of the Azure Native provider, it used API version 2014-04-01.
  */
 export class DisasterRecoveryConfiguration extends pulumi.CustomResource {
     /**
@@ -35,6 +36,10 @@ export class DisasterRecoveryConfiguration extends pulumi.CustomResource {
      * Whether or not failover can be done automatically.
      */
     public /*out*/ readonly autoFailover!: pulumi.Output<string>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * How aggressive the automatic failover should be.
      */
@@ -93,6 +98,7 @@ export class DisasterRecoveryConfiguration extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serverName"] = args ? args.serverName : undefined;
             resourceInputs["autoFailover"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["failoverPolicy"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["logicalServerName"] = undefined /*out*/;
@@ -104,6 +110,7 @@ export class DisasterRecoveryConfiguration extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["autoFailover"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["failoverPolicy"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["logicalServerName"] = undefined /*out*/;

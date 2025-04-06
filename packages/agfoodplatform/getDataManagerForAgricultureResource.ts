@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get DataManagerForAgriculture resource.
- * Azure REST API version: 2023-06-01-preview.
+ *
+ * Uses Azure REST API version 2023-06-01-preview.
  */
 export function getDataManagerForAgricultureResource(args: GetDataManagerForAgricultureResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetDataManagerForAgricultureResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetDataManagerForAgricultureResourceArgs {
  * Data Manager For Agriculture ARM Resource.
  */
 export interface GetDataManagerForAgricultureResourceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -79,7 +84,8 @@ export interface GetDataManagerForAgricultureResourceResult {
 }
 /**
  * Get DataManagerForAgriculture resource.
- * Azure REST API version: 2023-06-01-preview.
+ *
+ * Uses Azure REST API version 2023-06-01-preview.
  */
 export function getDataManagerForAgricultureResourceOutput(args: GetDataManagerForAgricultureResourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDataManagerForAgricultureResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

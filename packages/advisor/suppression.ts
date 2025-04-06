@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The details of the snoozed or dismissed rule; for example, the duration, name, and GUID associated with the rule.
- * Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2020-01-01.
+ *
+ * Uses Azure REST API version 2023-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
+ *
+ * Other available API versions: 2023-01-01, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native advisor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Suppression extends pulumi.CustomResource {
     /**
@@ -32,6 +35,10 @@ export class Suppression extends pulumi.CustomResource {
         return obj['__pulumiType'] === Suppression.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Gets or sets the expiration time stamp.
      */
@@ -79,10 +86,12 @@ export class Suppression extends pulumi.CustomResource {
             resourceInputs["resourceUri"] = args ? args.resourceUri : undefined;
             resourceInputs["suppressionId"] = args ? args.suppressionId : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["expirationTimeStamp"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["expirationTimeStamp"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["suppressionId"] = undefined /*out*/;
@@ -91,7 +100,7 @@ export class Suppression extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:advisor/v20160712preview:Suppression" }, { type: "azure-native:advisor/v20170331:Suppression" }, { type: "azure-native:advisor/v20170419:Suppression" }, { type: "azure-native:advisor/v20200101:Suppression" }, { type: "azure-native:advisor/v20220901:Suppression" }, { type: "azure-native:advisor/v20221001:Suppression" }, { type: "azure-native:advisor/v20230101:Suppression" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:advisor/v20160712preview:Suppression" }, { type: "azure-native:advisor/v20170331:Suppression" }, { type: "azure-native:advisor/v20170419:Suppression" }, { type: "azure-native:advisor/v20200101:Suppression" }, { type: "azure-native:advisor/v20220901:Suppression" }, { type: "azure-native:advisor/v20221001:Suppression" }, { type: "azure-native:advisor/v20230101:Suppression" }, { type: "azure-native:advisor/v20230901preview:Suppression" }, { type: "azure-native:advisor/v20250101:Suppression" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Suppression.__pulumiType, name, resourceInputs, opts);
     }

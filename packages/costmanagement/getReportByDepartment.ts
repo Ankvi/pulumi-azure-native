@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the report for a department by report name.
- * Azure REST API version: 2018-08-01-preview.
+ *
+ * Uses Azure REST API version 2018-08-01-preview.
  */
 export function getReportByDepartment(args: GetReportByDepartmentArgs, opts?: pulumi.InvokeOptions): Promise<GetReportByDepartmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetReportByDepartmentArgs {
  * A report resource.
  */
 export interface GetReportByDepartmentResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Has definition for the report.
      */
@@ -63,7 +68,8 @@ export interface GetReportByDepartmentResult {
 }
 /**
  * Gets the report for a department by report name.
- * Azure REST API version: 2018-08-01-preview.
+ *
+ * Uses Azure REST API version 2018-08-01-preview.
  */
 export function getReportByDepartmentOutput(args: GetReportByDepartmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReportByDepartmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

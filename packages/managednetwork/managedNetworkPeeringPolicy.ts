@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The Managed Network Peering Policy resource
- * Azure REST API version: 2019-06-01-preview. Prior API version in Azure Native 1.x: 2019-06-01-preview.
+ *
+ * Uses Azure REST API version 2019-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2019-06-01-preview.
  */
 export class ManagedNetworkPeeringPolicy extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class ManagedNetworkPeeringPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === ManagedNetworkPeeringPolicy.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The geo-location where the resource lives
      */
@@ -71,9 +76,11 @@ export class ManagedNetworkPeeringPolicy extends pulumi.CustomResource {
             resourceInputs["managedNetworkPeeringPolicyName"] = args ? args.managedNetworkPeeringPolicyName : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;

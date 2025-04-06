@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Implements host GET method.
- * Azure REST API version: 2022-07-15-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
+ * Uses Azure REST API version 2023-12-01.
+ *
+ * Other available API versions: 2022-07-15-preview, 2023-03-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getHost(args: GetHostArgs, opts?: pulumi.InvokeOptions): Promise<GetHostResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,11 +32,19 @@ export interface GetHostArgs {
  */
 export interface GetHostResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * Gets the max CPU usage across all cores in MHz.
+     */
+    readonly cpuMhz: number;
+    /**
      * Gets the name of the corresponding resource in Kubernetes.
      */
     readonly customResourceName: string;
     /**
-     * Gets or sets the datastore ARM ids.
+     * Gets the datastore ARM ids.
      */
     readonly datastoreIds: string[];
     /**
@@ -59,6 +68,10 @@ export interface GetHostResult {
      */
     readonly location: string;
     /**
+     * Gets the total amount of physical memory on the host in GB.
+     */
+    readonly memorySizeGB: number;
+    /**
      * Gets or sets the vCenter Managed Object name for the host.
      */
     readonly moName: string;
@@ -71,11 +84,19 @@ export interface GetHostResult {
      */
     readonly name: string;
     /**
-     * Gets or sets the network ARM ids.
+     * Gets the network ARM ids.
      */
     readonly networkIds: string[];
     /**
-     * Gets or sets the provisioning state.
+     * Gets the used CPU usage across all cores in MHz.
+     */
+    readonly overallCpuUsageMHz: number;
+    /**
+     * Gets the used physical memory on the host in GB.
+     */
+    readonly overallMemoryUsageGB: number;
+    /**
+     * Gets the provisioning state.
      */
     readonly provisioningState: string;
     /**
@@ -105,9 +126,10 @@ export interface GetHostResult {
 }
 /**
  * Implements host GET method.
- * Azure REST API version: 2022-07-15-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
+ * Uses Azure REST API version 2023-12-01.
+ *
+ * Other available API versions: 2022-07-15-preview, 2023-03-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getHostOutput(args: GetHostOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHostResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

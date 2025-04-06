@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * This operation retrieves the policy set definition version in the given management group with the given name and version.
- * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2024-05-01, 2025-01-01.
+ * Uses Azure REST API version 2025-01-01.
+ *
+ * Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPolicySetDefinitionVersionAtManagementGroup(args: GetPolicySetDefinitionVersionAtManagementGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicySetDefinitionVersionAtManagementGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,6 +41,10 @@ export interface GetPolicySetDefinitionVersionAtManagementGroupArgs {
  * The policy set definition version.
  */
 export interface GetPolicySetDefinitionVersionAtManagementGroupResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The policy set definition description.
      */
@@ -91,9 +96,10 @@ export interface GetPolicySetDefinitionVersionAtManagementGroupResult {
 }
 /**
  * This operation retrieves the policy set definition version in the given management group with the given name and version.
- * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2024-05-01, 2025-01-01.
+ * Uses Azure REST API version 2025-01-01.
+ *
+ * Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPolicySetDefinitionVersionAtManagementGroupOutput(args: GetPolicySetDefinitionVersionAtManagementGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicySetDefinitionVersionAtManagementGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

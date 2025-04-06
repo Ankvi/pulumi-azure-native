@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * List configurations for the given product family, product line and product for the given subscription.
- * Azure REST API version: 2022-05-01-preview.
  *
- * Other available API versions: 2024-02-01.
+ * Uses Azure REST API version 2024-02-01.
+ *
+ * Other available API versions: 2022-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edgeorder [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listProductsAndConfigurations(args?: ListProductsAndConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<ListProductsAndConfigurationsResult> {
     args = args || {};
@@ -47,9 +48,10 @@ export interface ListProductsAndConfigurationsResult {
 }
 /**
  * List configurations for the given product family, product line and product for the given subscription.
- * Azure REST API version: 2022-05-01-preview.
  *
- * Other available API versions: 2024-02-01.
+ * Uses Azure REST API version 2024-02-01.
+ *
+ * Other available API versions: 2022-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edgeorder [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listProductsAndConfigurationsOutput(args?: ListProductsAndConfigurationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListProductsAndConfigurationsResult> {
     args = args || {};

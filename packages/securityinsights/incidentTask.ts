@@ -2,9 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Azure REST API version: 2023-06-01-preview.
+ * Describes incident task properties
  *
- * Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview.
+ * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
+ *
+ * Other available API versions: 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class IncidentTask extends pulumi.CustomResource {
     /**
@@ -34,6 +36,10 @@ export class IncidentTask extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Information on the client (user or application) that made some action
      */
     public readonly createdBy!: pulumi.Output<types.outputs.ClientInfoResponse | undefined>;
@@ -61,6 +67,9 @@ export class IncidentTask extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The status of the task
+     */
     public readonly status!: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -110,6 +119,7 @@ export class IncidentTask extends pulumi.CustomResource {
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdTimeUtc"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["lastModifiedTimeUtc"] = undefined /*out*/;
@@ -117,6 +127,7 @@ export class IncidentTask extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["createdTimeUtc"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -130,7 +141,7 @@ export class IncidentTask extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20221201preview:IncidentTask" }, { type: "azure-native:securityinsights/v20230201preview:IncidentTask" }, { type: "azure-native:securityinsights/v20230301preview:IncidentTask" }, { type: "azure-native:securityinsights/v20230401preview:IncidentTask" }, { type: "azure-native:securityinsights/v20230501preview:IncidentTask" }, { type: "azure-native:securityinsights/v20230601preview:IncidentTask" }, { type: "azure-native:securityinsights/v20230701preview:IncidentTask" }, { type: "azure-native:securityinsights/v20230801preview:IncidentTask" }, { type: "azure-native:securityinsights/v20230901preview:IncidentTask" }, { type: "azure-native:securityinsights/v20231001preview:IncidentTask" }, { type: "azure-native:securityinsights/v20231201preview:IncidentTask" }, { type: "azure-native:securityinsights/v20240101preview:IncidentTask" }, { type: "azure-native:securityinsights/v20240301:IncidentTask" }, { type: "azure-native:securityinsights/v20240401preview:IncidentTask" }, { type: "azure-native:securityinsights/v20240901:IncidentTask" }, { type: "azure-native:securityinsights/v20241001preview:IncidentTask" }, { type: "azure-native:securityinsights/v20250101preview:IncidentTask" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20221201preview:IncidentTask" }, { type: "azure-native:securityinsights/v20230201preview:IncidentTask" }, { type: "azure-native:securityinsights/v20230301preview:IncidentTask" }, { type: "azure-native:securityinsights/v20230401preview:IncidentTask" }, { type: "azure-native:securityinsights/v20230501preview:IncidentTask" }, { type: "azure-native:securityinsights/v20230601preview:IncidentTask" }, { type: "azure-native:securityinsights/v20230701preview:IncidentTask" }, { type: "azure-native:securityinsights/v20230801preview:IncidentTask" }, { type: "azure-native:securityinsights/v20230901preview:IncidentTask" }, { type: "azure-native:securityinsights/v20231001preview:IncidentTask" }, { type: "azure-native:securityinsights/v20231201preview:IncidentTask" }, { type: "azure-native:securityinsights/v20240101preview:IncidentTask" }, { type: "azure-native:securityinsights/v20240301:IncidentTask" }, { type: "azure-native:securityinsights/v20240401preview:IncidentTask" }, { type: "azure-native:securityinsights/v20240901:IncidentTask" }, { type: "azure-native:securityinsights/v20241001preview:IncidentTask" }, { type: "azure-native:securityinsights/v20250101preview:IncidentTask" }, { type: "azure-native:securityinsights/v20250301:IncidentTask" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(IncidentTask.__pulumiType, name, resourceInputs, opts);
     }
@@ -164,6 +175,9 @@ export interface IncidentTaskArgs {
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
+    /**
+     * The status of the task
+     */
     status: pulumi.Input<string | types.enums.IncidentTaskStatus>;
     /**
      * The title of the task

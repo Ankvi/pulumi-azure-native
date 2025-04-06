@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a specific security standard for the requested scope
- * Azure REST API version: 2021-08-01-preview.
+ *
+ * Uses Azure REST API version 2021-08-01-preview.
  */
 export function getStandard(args: GetStandardArgs, opts?: pulumi.InvokeOptions): Promise<GetStandardResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetStandardArgs {
  * Security Standard on a resource
  */
 export interface GetStandardResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * category of the standard provided
      */
@@ -87,7 +92,8 @@ export interface GetStandardResult {
 }
 /**
  * Get a specific security standard for the requested scope
- * Azure REST API version: 2021-08-01-preview.
+ *
+ * Uses Azure REST API version 2021-08-01-preview.
  */
 export function getStandardOutput(args: GetStandardOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStandardResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

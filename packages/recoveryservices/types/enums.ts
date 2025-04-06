@@ -97,6 +97,16 @@ export const CreateMode = {
  */
 export type CreateMode = (typeof CreateMode)[keyof typeof CreateMode];
 
+export const CrossRegionRestore = {
+    Enabled: "Enabled",
+    Disabled: "Disabled",
+} as const;
+
+/**
+ * Flag to show if Cross Region Restore is enabled on the Vault or not
+ */
+export type CrossRegionRestore = (typeof CrossRegionRestore)[keyof typeof CrossRegionRestore];
+
 export const CrossSubscriptionRestoreState = {
     Enabled: "Enabled",
     Disabled: "Disabled",
@@ -121,12 +131,25 @@ export const DiskAccountType = {
     Standard_LRS: "Standard_LRS",
     Premium_LRS: "Premium_LRS",
     StandardSSD_LRS: "StandardSSD_LRS",
+    PremiumV2_LRS: "PremiumV2_LRS",
+    UltraSSD_LRS: "UltraSSD_LRS",
+    StandardSSD_ZRS: "StandardSSD_ZRS",
+    Premium_ZRS: "Premium_ZRS",
 } as const;
 
 /**
  * The disk type.
  */
 export type DiskAccountType = (typeof DiskAccountType)[keyof typeof DiskAccountType];
+
+export const EnhancedSecurityState = {
+    Invalid: "Invalid",
+    Enabled: "Enabled",
+    Disabled: "Disabled",
+    AlwaysON: "AlwaysON",
+} as const;
+
+export type EnhancedSecurityState = (typeof EnhancedSecurityState)[keyof typeof EnhancedSecurityState];
 
 export const ExtendedLocationType = {
     EdgeZone: "EdgeZone",
@@ -165,6 +188,12 @@ export const IAASVMPolicyType = {
 } as const;
 
 export type IAASVMPolicyType = (typeof IAASVMPolicyType)[keyof typeof IAASVMPolicyType];
+
+export const IaasVMSnapshotConsistencyType = {
+    OnlyCrashConsistent: "OnlyCrashConsistent",
+} as const;
+
+export type IaasVMSnapshotConsistencyType = (typeof IaasVMSnapshotConsistencyType)[keyof typeof IaasVMSnapshotConsistencyType];
 
 export const ImmutabilityState = {
     Disabled: "Disabled",
@@ -207,6 +236,17 @@ export const LicenseType = {
  */
 export type LicenseType = (typeof LicenseType)[keyof typeof LicenseType];
 
+export const LinuxLicenseType = {
+    NotSpecified: "NotSpecified",
+    NoLicenseType: "NoLicenseType",
+    LinuxServer: "LinuxServer",
+} as const;
+
+/**
+ * The license type for Linux VM's.
+ */
+export type LinuxLicenseType = (typeof LinuxLicenseType)[keyof typeof LinuxLicenseType];
+
 export const MonthOfYear = {
     Invalid: "Invalid",
     January: "January",
@@ -239,6 +279,7 @@ export const OperationType = {
     Invalid: "Invalid",
     Register: "Register",
     Reregister: "Reregister",
+    Rehydrate: "Rehydrate",
 } as const;
 
 /**
@@ -505,6 +546,16 @@ export const ScheduleRunType = {
  */
 export type ScheduleRunType = (typeof ScheduleRunType)[keyof typeof ScheduleRunType];
 
+export const SecurityConfiguration = {
+    Disabled: "Disabled",
+    Enabled: "Enabled",
+} as const;
+
+/**
+ * A value indicating whether trusted platform module to be enabled.
+ */
+export type SecurityConfiguration = (typeof SecurityConfiguration)[keyof typeof SecurityConfiguration];
+
 export const SecurityType = {
     None: "None",
     TrustedLaunch: "TrustedLaunch",
@@ -556,6 +607,18 @@ export const SqlServerLicenseType = {
  * The SQL Server license type.
  */
 export type SqlServerLicenseType = (typeof SqlServerLicenseType)[keyof typeof SqlServerLicenseType];
+
+export const StandardTierStorageRedundancy = {
+    Invalid: "Invalid",
+    LocallyRedundant: "LocallyRedundant",
+    GeoRedundant: "GeoRedundant",
+    ZoneRedundant: "ZoneRedundant",
+} as const;
+
+/**
+ * The storage redundancy setting of a vault
+ */
+export type StandardTierStorageRedundancy = (typeof StandardTierStorageRedundancy)[keyof typeof StandardTierStorageRedundancy];
 
 export const TieringMode = {
     Invalid: "Invalid",

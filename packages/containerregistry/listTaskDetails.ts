@@ -3,9 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns a task with extended information that includes all secrets.
- * Azure REST API version: 2019-06-01-preview.
  *
- * Other available API versions: 2018-09-01, 2019-04-01.
+ * Uses Azure REST API version 2019-06-01-preview.
  */
 export function listTaskDetails(args: ListTaskDetailsArgs, opts?: pulumi.InvokeOptions): Promise<ListTaskDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -115,9 +114,8 @@ export interface ListTaskDetailsResult {
 }
 /**
  * Returns a task with extended information that includes all secrets.
- * Azure REST API version: 2019-06-01-preview.
  *
- * Other available API versions: 2018-09-01, 2019-04-01.
+ * Uses Azure REST API version 2019-06-01-preview.
  */
 export function listTaskDetailsOutput(args: ListTaskDetailsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListTaskDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

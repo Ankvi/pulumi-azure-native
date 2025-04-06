@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the configured settings for a serial port
- * Azure REST API version: 2018-05-01.
+ *
+ * Uses Azure REST API version 2018-05-01.
  */
 export function getSerialPort(args: GetSerialPortArgs, opts?: pulumi.InvokeOptions): Promise<GetSerialPortResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -43,6 +44,10 @@ export interface GetSerialPortArgs {
  */
 export interface GetSerialPortResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Resource Id
      */
     readonly id: string;
@@ -61,7 +66,8 @@ export interface GetSerialPortResult {
 }
 /**
  * Gets the configured settings for a serial port
- * Azure REST API version: 2018-05-01.
+ *
+ * Uses Azure REST API version 2018-05-01.
  */
 export function getSerialPortOutput(args: GetSerialPortOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSerialPortResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

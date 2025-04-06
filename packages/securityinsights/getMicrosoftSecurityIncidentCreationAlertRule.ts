@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the alert rule.
- * Azure REST API version: 2023-02-01.
+ *
+ * Uses Azure REST API version 2024-09-01.
  */
 export function getMicrosoftSecurityIncidentCreationAlertRule(args: GetMicrosoftSecurityIncidentCreationAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetMicrosoftSecurityIncidentCreationAlertRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +38,10 @@ export interface GetMicrosoftSecurityIncidentCreationAlertRuleResult {
      * The Name of the alert rule template used to create this rule.
      */
     readonly alertRuleTemplateName?: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The description of the alert rule.
      */
@@ -97,7 +102,8 @@ export interface GetMicrosoftSecurityIncidentCreationAlertRuleResult {
 }
 /**
  * Gets the alert rule.
- * Azure REST API version: 2023-02-01.
+ *
+ * Uses Azure REST API version 2024-09-01.
  */
 export function getMicrosoftSecurityIncidentCreationAlertRuleOutput(args: GetMicrosoftSecurityIncidentCreationAlertRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMicrosoftSecurityIncidentCreationAlertRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

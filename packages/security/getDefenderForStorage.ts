@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the Defender for Storage settings for the specified storage account.
- * Azure REST API version: 2022-12-01-preview.
  *
- * Other available API versions: 2024-10-01-preview.
+ * Uses Azure REST API version 2024-10-01-preview.
+ *
+ * Other available API versions: 2022-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDefenderForStorage(args: GetDefenderForStorageArgs, opts?: pulumi.InvokeOptions): Promise<GetDefenderForStorageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +32,10 @@ export interface GetDefenderForStorageArgs {
  */
 export interface GetDefenderForStorageResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Resource Id
      */
     readonly id: string;
@@ -49,9 +54,10 @@ export interface GetDefenderForStorageResult {
 }
 /**
  * Gets the Defender for Storage settings for the specified storage account.
- * Azure REST API version: 2022-12-01-preview.
  *
- * Other available API versions: 2024-10-01-preview.
+ * Uses Azure REST API version 2024-10-01-preview.
+ *
+ * Other available API versions: 2022-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDefenderForStorageOutput(args: GetDefenderForStorageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDefenderForStorageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Hyper-V collector resource.
- * Azure REST API version: 2023-03-15.
  *
- * Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+ * Uses Azure REST API version 2024-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-15.
+ *
+ * Other available API versions: 2023-03-15, 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class HypervCollectorsOperation extends pulumi.CustomResource {
     /**
@@ -38,6 +39,10 @@ export class HypervCollectorsOperation extends pulumi.CustomResource {
      * Gets or sets the collector agent properties.
      */
     public readonly agentProperties!: pulumi.Output<types.outputs.CollectorAgentPropertiesBaseResponse | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Gets the Timestamp when collector was created.
      */
@@ -90,6 +95,7 @@ export class HypervCollectorsOperation extends pulumi.CustomResource {
             resourceInputs["projectName"] = args ? args.projectName : undefined;
             resourceInputs["provisioningState"] = args ? args.provisioningState : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdTimestamp"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -97,6 +103,7 @@ export class HypervCollectorsOperation extends pulumi.CustomResource {
             resourceInputs["updatedTimestamp"] = undefined /*out*/;
         } else {
             resourceInputs["agentProperties"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdTimestamp"] = undefined /*out*/;
             resourceInputs["discoverySiteId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -106,7 +113,7 @@ export class HypervCollectorsOperation extends pulumi.CustomResource {
             resourceInputs["updatedTimestamp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:HypervCollectorsOperation" }, { type: "azure-native:migrate/v20230315:HypervCollectorsOperation" }, { type: "azure-native:migrate/v20230401preview:HypervCollectorsOperation" }, { type: "azure-native:migrate/v20230501preview:HypervCollectorsOperation" }, { type: "azure-native:migrate/v20230909preview:HypervCollectorsOperation" }, { type: "azure-native:migrate/v20240101preview:HypervCollectorsOperation" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:HyperVCollector" }, { type: "azure-native:migrate/v20191001:HypervCollectorsOperation" }, { type: "azure-native:migrate/v20230315:HypervCollectorsOperation" }, { type: "azure-native:migrate/v20230401preview:HypervCollectorsOperation" }, { type: "azure-native:migrate/v20230501preview:HypervCollectorsOperation" }, { type: "azure-native:migrate/v20230909preview:HypervCollectorsOperation" }, { type: "azure-native:migrate/v20240101preview:HypervCollectorsOperation" }, { type: "azure-native:migrate:HyperVCollector" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(HypervCollectorsOperation.__pulumiType, name, resourceInputs, opts);
     }

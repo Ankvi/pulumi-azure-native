@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the budget for the scope by budget name.
- * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2023-11-01, 2024-08-01.
+ * Uses Azure REST API version 2024-08-01.
+ *
+ * Other available API versions: 2023-05-01, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native consumption [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getBudget(args: GetBudgetArgs, opts?: pulumi.InvokeOptions): Promise<GetBudgetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetBudgetResult {
      * The total amount of cost to track with the budget
      */
     readonly amount: number;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The category of the budget, whether the budget tracks cost or usage.
      */
@@ -81,9 +86,10 @@ export interface GetBudgetResult {
 }
 /**
  * Gets the budget for the scope by budget name.
- * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2023-11-01, 2024-08-01.
+ * Uses Azure REST API version 2024-08-01.
+ *
+ * Other available API versions: 2023-05-01, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native consumption [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getBudgetOutput(args: GetBudgetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBudgetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

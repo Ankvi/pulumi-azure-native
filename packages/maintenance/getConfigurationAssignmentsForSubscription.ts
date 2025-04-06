@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get configuration assignment for resource.
- * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2023-09-01-preview, 2023-10-01-preview.
+ * Uses Azure REST API version 2023-10-01-preview.
+ *
+ * Other available API versions: 2023-04-01, 2023-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getConfigurationAssignmentsForSubscription(args: GetConfigurationAssignmentsForSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigurationAssignmentsForSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -25,6 +26,10 @@ export interface GetConfigurationAssignmentsForSubscriptionArgs {
  * Configuration Assignment
  */
 export interface GetConfigurationAssignmentsForSubscriptionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Properties of the configuration assignment
      */
@@ -60,9 +65,10 @@ export interface GetConfigurationAssignmentsForSubscriptionResult {
 }
 /**
  * Get configuration assignment for resource.
- * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2023-09-01-preview, 2023-10-01-preview.
+ * Uses Azure REST API version 2023-10-01-preview.
+ *
+ * Other available API versions: 2023-04-01, 2023-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getConfigurationAssignmentsForSubscriptionOutput(args: GetConfigurationAssignmentsForSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConfigurationAssignmentsForSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

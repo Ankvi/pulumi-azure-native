@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Lab Plans act as a permission container for creating labs via labs.azure.com. Additionally, they can provide a set of default configurations that will apply at the time of creating a lab, but these defaults can still be overwritten.
- * Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2021-10-01-preview.
  *
- * Other available API versions: 2023-06-07.
+ * Uses Azure REST API version 2023-06-07. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+ *
+ * Other available API versions: 2021-10-01-preview, 2021-11-15-preview, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native labservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class LabPlan extends pulumi.CustomResource {
     /**
@@ -39,6 +40,10 @@ export class LabPlan extends pulumi.CustomResource {
      */
     public readonly allowedRegions!: pulumi.Output<string[] | undefined>;
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The default lab shutdown profile. This can be changed on a lab resource and only provides a default profile.
      */
     public readonly defaultAutoShutdownProfile!: pulumi.Output<types.outputs.AutoShutdownProfileResponse | undefined>;
@@ -70,6 +75,10 @@ export class LabPlan extends pulumi.CustomResource {
      * Current provisioning state of the lab plan.
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    /**
+     * Error details of last operation done on lab plan.
+     */
+    public /*out*/ readonly resourceOperationError!: pulumi.Output<types.outputs.ResourceOperationErrorResponse>;
     /**
      * Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
      */
@@ -117,12 +126,15 @@ export class LabPlan extends pulumi.CustomResource {
             resourceInputs["sharedGalleryId"] = args ? args.sharedGalleryId : undefined;
             resourceInputs["supportInfo"] = args ? args.supportInfo : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["resourceOperationError"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["allowedRegions"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["defaultAutoShutdownProfile"] = undefined /*out*/;
             resourceInputs["defaultConnectionProfile"] = undefined /*out*/;
             resourceInputs["defaultNetworkProfile"] = undefined /*out*/;
@@ -131,6 +143,7 @@ export class LabPlan extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["resourceOperationError"] = undefined /*out*/;
             resourceInputs["sharedGalleryId"] = undefined /*out*/;
             resourceInputs["supportInfo"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Backup policy information
- * Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2020-12-01.
  *
- * Other available API versions: 2021-04-01, 2021-04-01-preview, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01, 2024-09-01-preview.
+ * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
+ *
+ * Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class BackupPolicy extends pulumi.CustomResource {
     /**
@@ -35,7 +36,11 @@ export class BackupPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Backup Policy Resource ID
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
+     * Backup Policy GUID ID
      */
     public /*out*/ readonly backupPolicyId!: pulumi.Output<string>;
     /**
@@ -117,6 +122,7 @@ export class BackupPolicy extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["weeklyBackupsToKeep"] = args ? args.weeklyBackupsToKeep : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["backupPolicyId"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -126,6 +132,7 @@ export class BackupPolicy extends pulumi.CustomResource {
             resourceInputs["volumeBackups"] = undefined /*out*/;
             resourceInputs["volumesAssigned"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["backupPolicyId"] = undefined /*out*/;
             resourceInputs["dailyBackupsToKeep"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;

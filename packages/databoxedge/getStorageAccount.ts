@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Represents a Storage Account on the  Data Box Edge/Gateway device.
- * Azure REST API version: 2022-03-01.
  *
- * Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
+ * Uses Azure REST API version 2023-07-01.
+ *
+ * Other available API versions: 2022-03-01, 2022-04-01-preview, 2022-12-01-preview, 2023-01-01-preview, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databoxedge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getStorageAccount(args: GetStorageAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,6 +36,10 @@ export interface GetStorageAccountArgs {
  * Represents a Storage Account on the  Data Box Edge/Gateway device.
  */
 export interface GetStorageAccountResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * BlobEndpoint of Storage Account
      */
@@ -78,9 +83,10 @@ export interface GetStorageAccountResult {
 }
 /**
  * Represents a Storage Account on the  Data Box Edge/Gateway device.
- * Azure REST API version: 2022-03-01.
  *
- * Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
+ * Uses Azure REST API version 2023-07-01.
+ *
+ * Other available API versions: 2022-03-01, 2022-04-01-preview, 2022-12-01-preview, 2023-01-01-preview, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databoxedge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getStorageAccountOutput(args: GetStorageAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStorageAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

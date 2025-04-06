@@ -138,5 +138,3 @@ export function notificationResponseProvideDefaults(val: NotificationResponse): 
         thresholdType: (val.thresholdType) ?? "Actual",
     };
 }
-
-

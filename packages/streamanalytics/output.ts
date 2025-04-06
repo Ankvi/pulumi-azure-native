@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * An output object, containing all information associated with the named output. All outputs are contained under a streaming job.
- * Azure REST API version: 2020-03-01. Prior API version in Azure Native 1.x: 2016-03-01.
  *
- * Other available API versions: 2021-10-01-preview.
+ * Uses Azure REST API version 2020-03-01. In version 2.x of the Azure Native provider, it used API version 2020-03-01.
+ *
+ * Other available API versions: 2021-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native streamanalytics [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Output extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class Output extends pulumi.CustomResource {
         return obj['__pulumiType'] === Output.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
      */
@@ -92,10 +97,12 @@ export class Output extends pulumi.CustomResource {
             resourceInputs["serialization"] = args ? args.serialization : undefined;
             resourceInputs["sizeWindow"] = args ? args.sizeWindow : undefined;
             resourceInputs["timeWindow"] = args ? args.timeWindow : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["diagnostics"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["datasource"] = undefined /*out*/;
             resourceInputs["diagnostics"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

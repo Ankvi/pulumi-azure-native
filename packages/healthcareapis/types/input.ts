@@ -84,13 +84,23 @@ export interface CorsConfigurationArgs {
 }
 
 /**
- * An access policy entry.
+ * Settings to encrypt a service
  */
-export interface FhirServiceAccessPolicyEntryArgs {
+export interface EncryptionArgs {
     /**
-     * An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
+     * The encryption settings for the customer-managed key
      */
-    objectId: pulumi.Input<string>;
+    customerManagedKeyEncryption?: pulumi.Input<EncryptionCustomerManagedKeyEncryptionArgs>;
+}
+
+/**
+ * The encryption settings for the customer-managed key
+ */
+export interface EncryptionCustomerManagedKeyEncryptionArgs {
+    /**
+     * The URL of the key to use for encryption
+     */
+    keyEncryptionKeyUrl?: pulumi.Input<string>;
 }
 
 /**
@@ -119,6 +129,10 @@ export interface FhirServiceAuthenticationConfigurationArgs {
      * The authority url for the service
      */
     authority?: pulumi.Input<string>;
+    /**
+     * The array of identity provider configurations for SMART on FHIR authentication.
+     */
+    smartIdentityProviders?: pulumi.Input<pulumi.Input<SmartIdentityProviderConfigurationArgs>[]>;
     /**
      * If the SMART on FHIR proxy is enabled
      */
@@ -457,8 +471,48 @@ export interface ServicesResourceIdentityArgs {
     type?: pulumi.Input<string | enums.ManagedServiceIdentityType>;
 }
 
+/**
+ * An Application configured in the Identity Provider used to access FHIR resources.
+ */
+export interface SmartIdentityProviderApplicationArgs {
+    /**
+     * The actions that are permitted to be performed on FHIR resources for the application.
+     */
+    allowedDataActions?: pulumi.Input<pulumi.Input<string | enums.SmartDataActions>[]>;
+    /**
+     * The audience that will be used to validate bearer tokens against the given authority.
+     */
+    audience?: pulumi.Input<string>;
+    /**
+     * The application client id defined in the identity provider. This value will be used to validate bearer tokens against the given authority.
+     */
+    clientId?: pulumi.Input<string>;
+}
 
+/**
+ * An object to configure an identity provider for use with SMART on FHIR authentication.
+ */
+export interface SmartIdentityProviderConfigurationArgs {
+    /**
+     * The array of identity provider applications for SMART on FHIR authentication.
+     */
+    applications?: pulumi.Input<pulumi.Input<SmartIdentityProviderApplicationArgs>[]>;
+    /**
+     * The identity provider token authority also known as the token issuing authority.
+     */
+    authority?: pulumi.Input<string>;
+}
 
-
-
-
+/**
+ * The configuration of connected storage
+ */
+export interface StorageConfigurationArgs {
+    /**
+     * The filesystem name of connected storage account.
+     */
+    fileSystemName?: pulumi.Input<string>;
+    /**
+     * The resource id of connected storage account.
+     */
+    storageResourceId?: pulumi.Input<string>;
+}

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets an existing target group within a profile.
- * Azure REST API version: 2024-06-01-preview.
+ *
+ * Uses Azure REST API version 2024-06-01-preview.
  */
 export function getAFDTargetGroup(args: GetAFDTargetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetAFDTargetGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetAFDTargetGroupArgs {
  * AFDTargetGroup comprises a list of Endpoints that is used for tunnelling protocols to allow certain traffic.
  */
 export interface GetAFDTargetGroupResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     readonly deploymentStatus: string;
     /**
      * Resource ID.
@@ -61,7 +66,8 @@ export interface GetAFDTargetGroupResult {
 }
 /**
  * Gets an existing target group within a profile.
- * Azure REST API version: 2024-06-01-preview.
+ *
+ * Uses Azure REST API version 2024-06-01-preview.
  */
 export function getAFDTargetGroupOutput(args: GetAFDTargetGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAFDTargetGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

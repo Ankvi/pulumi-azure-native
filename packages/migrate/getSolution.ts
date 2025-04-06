@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Solution REST Resource.
- * Azure REST API version: 2018-09-01-preview.
+ *
+ * Uses Azure REST API version 2018-09-01-preview.
  */
 export function getSolution(args: GetSolutionArgs, opts?: pulumi.InvokeOptions): Promise<GetSolutionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetSolutionArgs {
  */
 export interface GetSolutionResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Gets or sets the ETAG for optimistic concurrency control.
      */
     readonly etag?: string;
@@ -56,7 +61,8 @@ export interface GetSolutionResult {
 }
 /**
  * Solution REST Resource.
- * Azure REST API version: 2018-09-01-preview.
+ *
+ * Uses Azure REST API version 2018-09-01-preview.
  */
 export function getSolutionOutput(args: GetSolutionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSolutionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

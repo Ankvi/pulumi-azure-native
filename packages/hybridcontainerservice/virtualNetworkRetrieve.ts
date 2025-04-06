@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The virtualNetworks resource definition.
- * Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 1.x: 2022-05-01-preview.
+ *
+ * Uses Azure REST API version 2022-09-01-preview.
+ *
+ * Other available API versions: 2023-11-15-preview, 2024-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcontainerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualNetworkRetrieve extends pulumi.CustomResource {
     /**
@@ -32,6 +35,10 @@ export class VirtualNetworkRetrieve extends pulumi.CustomResource {
         return obj['__pulumiType'] === VirtualNetworkRetrieve.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     public readonly extendedLocation!: pulumi.Output<types.outputs.VirtualNetworksResponseExtendedLocation | undefined>;
     /**
      * The geo-location where the resource lives
@@ -78,10 +85,12 @@ export class VirtualNetworkRetrieve extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["virtualNetworksName"] = args ? args.virtualNetworksName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["extendedLocation"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -91,7 +100,7 @@ export class VirtualNetworkRetrieve extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:hybridcontainerservice/v20220501preview:VirtualNetworkRetrieve" }, { type: "azure-native:hybridcontainerservice/v20220501preview:virtualNetworkRetrieve" }, { type: "azure-native:hybridcontainerservice/v20220901preview:VirtualNetworkRetrieve" }, { type: "azure-native:hybridcontainerservice/v20220901preview:virtualNetworkRetrieve" }, { type: "azure-native:hybridcontainerservice/v20231115preview:VirtualNetworkRetrieve" }, { type: "azure-native:hybridcontainerservice/v20231115preview:virtualNetworkRetrieve" }, { type: "azure-native:hybridcontainerservice/v20240101:VirtualNetworkRetrieve" }, { type: "azure-native:hybridcontainerservice/v20240101:virtualNetworkRetrieve" }, { type: "azure-native:hybridcontainerservice:virtualNetworkRetrieve" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:hybridcontainerservice/v20220501preview:VirtualNetworkRetrieve" }, { type: "azure-native:hybridcontainerservice/v20220901preview:VirtualNetworkRetrieve" }, { type: "azure-native:hybridcontainerservice/v20231115preview:VirtualNetworkRetrieve" }, { type: "azure-native:hybridcontainerservice/v20240101:VirtualNetworkRetrieve" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualNetworkRetrieve.__pulumiType, name, resourceInputs, opts);
     }

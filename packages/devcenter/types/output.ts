@@ -57,6 +57,38 @@ export interface CatalogSyncErrorResponse {
 }
 
 /**
+ * All Customer-managed key encryption properties for the resource.
+ */
+export interface CustomerManagedKeyEncryptionResponse {
+    /**
+     * All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+     */
+    keyEncryptionKeyIdentity?: CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity;
+    /**
+     * key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
+     */
+    keyEncryptionKeyUrl?: string;
+}
+
+/**
+ * All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+ */
+export interface CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity {
+    /**
+     * delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only.
+     */
+    delegatedIdentityClientId?: string;
+    /**
+     * Values can be systemAssignedIdentity or userAssignedIdentity
+     */
+    identityType?: string;
+    /**
+     * user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and delegatedResourceIdentity.
+     */
+    userAssignedIdentityResourceId?: string;
+}
+
+/**
  * Project catalog settings for project catalogs under a project associated to this dev center.
  */
 export interface DevCenterProjectCatalogSettingsResponse {
@@ -104,6 +136,13 @@ export interface DevCenterSkuResponse {
     tier?: string;
 }
 
+export interface EncryptionResponse {
+    /**
+     * All Customer-managed key encryption properties for the resource.
+     */
+    customerManagedKeyEncryption?: CustomerManagedKeyEncryptionResponse;
+}
+
 /**
  * A role that can be assigned to a user.
  */
@@ -116,6 +155,46 @@ export interface EnvironmentRoleResponse {
      * The common name of the Role Assignment. This is a descriptive name such as 'AcrPush'.
      */
     roleName: string;
+}
+
+/**
+ * The resource management error additional info.
+ */
+export interface ErrorAdditionalInfoResponse {
+    /**
+     * The additional info.
+     */
+    info: any;
+    /**
+     * The additional info type.
+     */
+    type: string;
+}
+
+/**
+ * The error detail.
+ */
+export interface ErrorDetailResponse {
+    /**
+     * The error additional info.
+     */
+    additionalInfo: ErrorAdditionalInfoResponse[];
+    /**
+     * The error code.
+     */
+    code: string;
+    /**
+     * The error details.
+     */
+    details: ErrorDetailResponse[];
+    /**
+     * The error message.
+     */
+    message: string;
+    /**
+     * The error target.
+     */
+    target: string;
 }
 
 /**
@@ -288,6 +367,34 @@ export interface ManagedServiceIdentityResponse {
 }
 
 /**
+ * The sync status of the plan member.
+ */
+export interface PlanMemberSyncStatusResponse {
+    /**
+     * Error response describing why the sync failed.
+     */
+    lastSyncError?: ErrorDetailResponse;
+    /**
+     * When the plan member was last synced.
+     */
+    lastSyncTime: string;
+    /**
+     * The synchronization state of the plan member.
+     */
+    syncState: string;
+}
+
+/**
+ * Settings to be used when associating a project with a catalog.
+ */
+export interface ProjectCatalogSettingsResponse {
+    /**
+     * Indicates catalog item types that can be synced.
+     */
+    catalogItemSyncTypes?: string[];
+}
+
+/**
  * The role definition assigned to the environment creator on backing resources.
  */
 export interface ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment {
@@ -448,12 +555,3 @@ export interface UserRoleAssignmentResponse {
      */
     roles?: {[key: string]: EnvironmentRoleResponse};
 }
-
-
-
-
-
-
-
-
-

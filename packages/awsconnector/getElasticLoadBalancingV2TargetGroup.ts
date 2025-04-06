@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a ElasticLoadBalancingV2TargetGroup
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getElasticLoadBalancingV2TargetGroup(args: GetElasticLoadBalancingV2TargetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticLoadBalancingV2TargetGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetElasticLoadBalancingV2TargetGroupArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetElasticLoadBalancingV2TargetGroupResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetElasticLoadBalancingV2TargetGroupResult {
 }
 /**
  * Get a ElasticLoadBalancingV2TargetGroup
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getElasticLoadBalancingV2TargetGroupOutput(args: GetElasticLoadBalancingV2TargetGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetElasticLoadBalancingV2TargetGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

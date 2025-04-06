@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Dataset by name.
- * Azure REST API version: 2020-05-01-preview.
+ *
+ * Uses Azure REST API version 2020-05-01-preview.
  */
 export function getMachineLearningDataset(args: GetMachineLearningDatasetArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineLearningDatasetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetMachineLearningDatasetArgs {
  * Machine Learning dataset object wrapped into ARM resource envelope.
  */
 export interface GetMachineLearningDatasetResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Specifies the resource ID.
      */
@@ -68,7 +73,8 @@ export interface GetMachineLearningDatasetResult {
 }
 /**
  * Get a Dataset by name.
- * Azure REST API version: 2020-05-01-preview.
+ *
+ * Uses Azure REST API version 2020-05-01-preview.
  */
 export function getMachineLearningDatasetOutput(args: GetMachineLearningDatasetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMachineLearningDatasetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

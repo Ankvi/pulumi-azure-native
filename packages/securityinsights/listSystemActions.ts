@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * List of actions for a business application system.
- * Azure REST API version: 2024-04-01-preview.
  *
- * Other available API versions: 2024-10-01-preview, 2025-01-01-preview.
+ * Uses Azure REST API version 2025-01-01-preview.
+ *
+ * Other available API versions: 2024-04-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listSystemActions(args: ListSystemActionsArgs, opts?: pulumi.InvokeOptions): Promise<ListSystemActionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -51,9 +52,10 @@ export interface ListSystemActionsResult {
 }
 /**
  * List of actions for a business application system.
- * Azure REST API version: 2024-04-01-preview.
  *
- * Other available API versions: 2024-10-01-preview, 2025-01-01-preview.
+ * Uses Azure REST API version 2025-01-01-preview.
+ *
+ * Other available API versions: 2024-04-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listSystemActionsOutput(args: ListSystemActionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListSystemActionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

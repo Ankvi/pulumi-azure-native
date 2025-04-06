@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the Server Instance resource.
- * Azure REST API version: 2023-10-01-preview.
+ *
+ * Uses Azure REST API version 2023-10-01-preview.
  */
 export function getServerInstance(args: GetServerInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetServerInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,6 +39,10 @@ export interface GetServerInstanceArgs {
  * Define the Server Instance resource.
  */
 export interface GetServerInstanceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Configuration data for this server instance.
      */
@@ -97,7 +102,8 @@ export interface GetServerInstanceResult {
 }
 /**
  * Gets the Server Instance resource.
- * Azure REST API version: 2023-10-01-preview.
+ *
+ * Uses Azure REST API version 2023-10-01-preview.
  */
 export function getServerInstanceOutput(args: GetServerInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

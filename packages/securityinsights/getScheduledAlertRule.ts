@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the alert rule.
- * Azure REST API version: 2023-02-01.
+ *
+ * Uses Azure REST API version 2024-09-01.
  */
 export function getScheduledAlertRule(args: GetScheduledAlertRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduledAlertRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,6 +42,10 @@ export interface GetScheduledAlertRuleResult {
      * The Name of the alert rule template used to create this rule.
      */
     readonly alertRuleTemplateName?: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Dictionary of string key-value pairs of columns to be attached to the alert
      */
@@ -145,7 +150,8 @@ export interface GetScheduledAlertRuleResult {
 }
 /**
  * Gets the alert rule.
- * Azure REST API version: 2023-02-01.
+ *
+ * Uses Azure REST API version 2024-09-01.
  */
 export function getScheduledAlertRuleOutput(args: GetScheduledAlertRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetScheduledAlertRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

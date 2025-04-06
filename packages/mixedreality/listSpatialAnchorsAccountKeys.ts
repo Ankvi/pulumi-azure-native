@@ -1,10 +1,17 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
- * List Both of the 2 Keys of a Spatial Anchors Account
- * Azure REST API version: 2021-01-01.
+ * > [!NOTE]
+ * > 
+ * > **Mixed Reality retirement**
+ * > 
+ * > The Mixed Reality service is now deprecated and will be retired.
  *
- * Other available API versions: 2021-03-01-preview.
+ *  List Both of the 2 Keys of a Spatial Anchors Account
+ *
+ * Uses Azure REST API version 2021-03-01-preview.
+ *
+ * Other available API versions: 2021-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mixedreality [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listSpatialAnchorsAccountKeys(args: ListSpatialAnchorsAccountKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListSpatialAnchorsAccountKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,10 +46,17 @@ export interface ListSpatialAnchorsAccountKeysResult {
     readonly secondaryKey: string;
 }
 /**
- * List Both of the 2 Keys of a Spatial Anchors Account
- * Azure REST API version: 2021-01-01.
+ * > [!NOTE]
+ * > 
+ * > **Mixed Reality retirement**
+ * > 
+ * > The Mixed Reality service is now deprecated and will be retired.
  *
- * Other available API versions: 2021-03-01-preview.
+ *  List Both of the 2 Keys of a Spatial Anchors Account
+ *
+ * Uses Azure REST API version 2021-03-01-preview.
+ *
+ * Other available API versions: 2021-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mixedreality [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listSpatialAnchorsAccountKeysOutput(args: ListSpatialAnchorsAccountKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListSpatialAnchorsAccountKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -1,13 +1,147 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Access profile for the Fleet hub API server.
+ */
+export interface APIServerAccessProfileArgs {
+    /**
+     * Whether to create the Fleet hub as a private cluster or not.
+     */
+    enablePrivateCluster?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable apiserver vnet integration for the Fleet hub or not.
+     */
+    enableVnetIntegration?: pulumi.Input<boolean>;
+    /**
+     * The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
+     */
+    subnetId?: pulumi.Input<string>;
+}
+
+/**
+ * For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
+ */
+export interface AbsoluteMonthlyScheduleArgs {
+    /**
+     * The date of the month.
+     */
+    dayOfMonth: pulumi.Input<number>;
+    /**
+     * Specifies the number of months between each set of occurrences.
+     */
+    intervalMonths: pulumi.Input<number>;
+}
+
+/**
+ * Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
+ */
+export interface AdvancedNetworkingArgs {
+    /**
+     * Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified, the default is false.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Observability profile to enable advanced network metrics and flow logs with historical contexts.
+     */
+    observability?: pulumi.Input<AdvancedNetworkingObservabilityArgs>;
+    /**
+     * Security profile to enable security features on cilium based cluster.
+     */
+    security?: pulumi.Input<AdvancedNetworkingSecurityArgs>;
+}
+
+/**
+ * Observability profile to enable advanced network metrics and flow logs with historical contexts.
+ */
+export interface AdvancedNetworkingObservabilityArgs {
+    /**
+     * Indicates the enablement of Advanced Networking observability functionalities on clusters.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+/**
+ * Security profile to enable security features on cilium based cluster.
+ */
+export interface AdvancedNetworkingSecurityArgs {
+    /**
+     * This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based clusters. If not specified, the default is false.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+/**
+ * Network settings of an agent pool.
+ */
+export interface AgentPoolNetworkProfileArgs {
+    /**
+     * The port ranges that are allowed to access. The specified ranges are allowed to overlap.
+     */
+    allowedHostPorts?: pulumi.Input<pulumi.Input<PortRangeArgs>[]>;
+    /**
+     * The IDs of the application security groups which agent pool will associate when created.
+     */
+    applicationSecurityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * IPTags of instance-level public IPs.
+     */
+    nodePublicIPTags?: pulumi.Input<pulumi.Input<IPTagArgs>[]>;
+}
+
+/**
+ * The security settings of an agent pool.
+ */
+export interface AgentPoolSecurityProfileArgs {
+    /**
+     * Secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and drivers can boot. For more details, see aka.ms/aks/trustedlaunch.  If not specified, the default is false.
+     */
+    enableSecureBoot?: pulumi.Input<boolean>;
+    /**
+     * vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
+     */
+    enableVTPM?: pulumi.Input<boolean>;
+}
+
+/**
  * Settings for upgrading an agentpool
  */
 export interface AgentPoolUpgradeSettingsArgs {
     /**
-     * This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+     * The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.
+     */
+    drainTimeoutInMinutes?: pulumi.Input<number>;
+    /**
+     * This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
      */
     maxSurge?: pulumi.Input<string>;
+    /**
+     * The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes.
+     */
+    nodeSoakDurationInMinutes?: pulumi.Input<number>;
+}
+
+/**
+ * The Windows agent pool's specific profile.
+ */
+export interface AgentPoolWindowsProfileArgs {
+    /**
+     * The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
+     */
+    disableOutboundNat?: pulumi.Input<boolean>;
+}
+
+/**
+ * Agent profile for the Fleet hub.
+ */
+export interface AgentProfileArgs {
+    /**
+     * The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
+     */
+    subnetId?: pulumi.Input<string>;
+    /**
+     * The virtual machine size of the Fleet hub.
+     */
+    vmSize?: pulumi.Input<string>;
 }
 
 /**
@@ -52,6 +186,16 @@ export function azureKeyVaultKmsArgsProvideDefaults(val: AzureKeyVaultKmsArgs): 
 }
 
 /**
+ * Settings for upgrading a cluster.
+ */
+export interface ClusterUpgradeSettingsArgs {
+    /**
+     * Settings for overrides.
+     */
+    overrideSettings?: pulumi.Input<UpgradeOverrideSettingsArgs>;
+}
+
+/**
  * Profile for Linux VMs in the container service cluster.
  */
 export interface ContainerServiceLinuxProfileArgs {
@@ -69,6 +213,10 @@ export interface ContainerServiceLinuxProfileArgs {
  * Profile of network configuration.
  */
 export interface ContainerServiceNetworkProfileArgs {
+    /**
+     * Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
+     */
+    advancedNetworking?: pulumi.Input<AdvancedNetworkingArgs>;
     /**
      * An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
      */
@@ -139,7 +287,6 @@ export function containerServiceNetworkProfileArgsProvideDefaults(val: Container
         dnsServiceIP: (val.dnsServiceIP) ?? "10.0.0.10",
         loadBalancerProfile: (val.loadBalancerProfile ? pulumi.output(val.loadBalancerProfile).apply(managedClusterLoadBalancerProfileArgsProvideDefaults) : undefined),
         natGatewayProfile: (val.natGatewayProfile ? pulumi.output(val.natGatewayProfile).apply(managedClusterNATGatewayProfileArgsProvideDefaults) : undefined),
-        networkPlugin: (val.networkPlugin) ?? "kubenet",
         outboundType: (val.outboundType) ?? "loadBalancer",
         podCidr: (val.podCidr) ?? "10.244.0.0/16",
         serviceCidr: (val.serviceCidr) ?? "10.0.0.0/16",
@@ -177,6 +324,52 @@ export interface CreationDataArgs {
 }
 
 /**
+ * For schedules like: 'recur every day' or 'recur every 3 days'.
+ */
+export interface DailyScheduleArgs {
+    /**
+     * Specifies the number of days between each set of occurrences.
+     */
+    intervalDays: pulumi.Input<number>;
+}
+
+/**
+ * For example, between '2022-12-23' and '2023-01-05'.
+ */
+export interface DateSpanArgs {
+    /**
+     * The end date of the date span.
+     */
+    end: pulumi.Input<string>;
+    /**
+     * The start date of the date span.
+     */
+    start: pulumi.Input<string>;
+}
+
+/**
+ * Delegated resource properties - internal use only.
+ */
+export interface DelegatedResourceArgs {
+    /**
+     * The source resource location - internal use only.
+     */
+    location?: pulumi.Input<string>;
+    /**
+     * The delegation id of the referral delegation (optional) - internal use only.
+     */
+    referralResource?: pulumi.Input<string>;
+    /**
+     * The ARM resource id of the delegated resource - internal use only.
+     */
+    resourceId?: pulumi.Input<string>;
+    /**
+     * The tenant id of the delegated resource - internal use only.
+     */
+    tenantId?: pulumi.Input<string>;
+}
+
+/**
  * The complex type of the extended location.
  */
 export interface ExtendedLocationArgs {
@@ -195,9 +388,123 @@ export interface ExtendedLocationArgs {
  */
 export interface FleetHubProfileArgs {
     /**
+     * The agent profile for the Fleet hub.
+     */
+    agentProfile?: pulumi.Input<AgentProfileArgs>;
+    /**
+     * The access profile for the Fleet hub API server.
+     */
+    apiServerAccessProfile?: pulumi.Input<APIServerAccessProfileArgs>;
+    /**
      * DNS prefix used to create the FQDN for the Fleet hub.
      */
     dnsPrefix?: pulumi.Input<string>;
+}
+
+/**
+ * Contains the IPTag associated with the object.
+ */
+export interface IPTagArgs {
+    /**
+     * The IP tag type. Example: RoutingPreference.
+     */
+    ipTagType?: pulumi.Input<string>;
+    /**
+     * The value of the IP tag associated with the public IP. Example: Internet.
+     */
+    tag?: pulumi.Input<string>;
+}
+
+/**
+ * Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
+ */
+export interface IstioCertificateAuthorityArgs {
+    /**
+     * Plugin certificates information for Service Mesh.
+     */
+    plugin?: pulumi.Input<IstioPluginCertificateAuthorityArgs>;
+}
+
+/**
+ * Istio components configuration.
+ */
+export interface IstioComponentsArgs {
+    /**
+     * Istio egress gateways.
+     */
+    egressGateways?: pulumi.Input<pulumi.Input<IstioEgressGatewayArgs>[]>;
+    /**
+     * Istio ingress gateways.
+     */
+    ingressGateways?: pulumi.Input<pulumi.Input<IstioIngressGatewayArgs>[]>;
+}
+
+/**
+ * Istio egress gateway configuration.
+ */
+export interface IstioEgressGatewayArgs {
+    /**
+     * Whether to enable the egress gateway.
+     */
+    enabled: pulumi.Input<boolean>;
+}
+
+/**
+ * Istio ingress gateway configuration. For now, we support up to one external ingress gateway named `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`.
+ */
+export interface IstioIngressGatewayArgs {
+    /**
+     * Whether to enable the ingress gateway.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Mode of an ingress gateway.
+     */
+    mode: pulumi.Input<string | enums.IstioIngressGatewayMode>;
+}
+
+/**
+ * Plugin certificates information for Service Mesh.
+ */
+export interface IstioPluginCertificateAuthorityArgs {
+    /**
+     * Certificate chain object name in Azure Key Vault.
+     */
+    certChainObjectName?: pulumi.Input<string>;
+    /**
+     * Intermediate certificate object name in Azure Key Vault.
+     */
+    certObjectName?: pulumi.Input<string>;
+    /**
+     * Intermediate certificate private key object name in Azure Key Vault.
+     */
+    keyObjectName?: pulumi.Input<string>;
+    /**
+     * The resource ID of the Key Vault.
+     */
+    keyVaultId?: pulumi.Input<string>;
+    /**
+     * Root certificate object name in Azure Key Vault.
+     */
+    rootCertObjectName?: pulumi.Input<string>;
+}
+
+/**
+ * Istio service mesh configuration.
+ */
+export interface IstioServiceMeshArgs {
+    /**
+     * Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
+     */
+    certificateAuthority?: pulumi.Input<IstioCertificateAuthorityArgs>;
+    /**
+     * Istio components configuration.
+     */
+    components?: pulumi.Input<IstioComponentsArgs>;
+    /**
+     * The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
+     */
+    revisions?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -305,6 +612,45 @@ export interface LinuxOSConfigArgs {
 }
 
 /**
+ * Maintenance window used to configure scheduled auto-upgrade for a Managed Cluster.
+ */
+export interface MaintenanceWindowArgs {
+    /**
+     * Length of maintenance window range from 4 to 24 hours.
+     */
+    durationHours: pulumi.Input<number>;
+    /**
+     * Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.
+     */
+    notAllowedDates?: pulumi.Input<pulumi.Input<DateSpanArgs>[]>;
+    /**
+     * Recurrence schedule for the maintenance window.
+     */
+    schedule: pulumi.Input<ScheduleArgs>;
+    /**
+     * The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive and will not be used for upgrades. If not specified, the maintenance window will be active right away.
+     */
+    startDate?: pulumi.Input<string>;
+    /**
+     * The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field. For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
+     */
+    startTime: pulumi.Input<string>;
+    /**
+     * The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is '+00:00'.
+     */
+    utcOffset?: pulumi.Input<string>;
+}
+/**
+ * maintenanceWindowArgsProvideDefaults sets the appropriate defaults for MaintenanceWindowArgs
+ */
+export function maintenanceWindowArgsProvideDefaults(val: MaintenanceWindowArgs): MaintenanceWindowArgs {
+    return {
+        ...val,
+        durationHours: (val.durationHours) ?? 24,
+    };
+}
+
+/**
  * For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
  */
 export interface ManagedClusterAADProfileArgs {
@@ -387,6 +733,10 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * AKS will associate the specified agent pool with the Capacity Reservation Group.
+     */
+    capacityReservationGroupID?: pulumi.Input<string>;
+    /**
      * Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1.
      */
     count?: pulumi.Input<number>;
@@ -443,6 +793,10 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     maxPods?: pulumi.Input<number>;
     /**
+     * A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).
+     */
+    messageOfTheDay?: pulumi.Input<string>;
+    /**
      * The minimum number of nodes for auto-scaling
      */
     minCount?: pulumi.Input<number>;
@@ -454,6 +808,10 @@ export interface ManagedClusterAgentPoolProfileArgs {
      * Windows agent pool names must be 6 characters or less.
      */
     name: pulumi.Input<string>;
+    /**
+     * Network-related settings of an agent pool.
+     */
+    networkProfile?: pulumi.Input<AgentPoolNetworkProfileArgs>;
     /**
      * The node labels to be persisted across all nodes in agent pool.
      */
@@ -511,6 +869,10 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     scaleSetPriority?: pulumi.Input<string | enums.ScaleSetPriority>;
     /**
+     * The security settings of an agent pool.
+     */
+    securityProfile?: pulumi.Input<AgentPoolSecurityProfileArgs>;
+    /**
      * Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
      */
     spotMaxPrice?: pulumi.Input<number>;
@@ -527,13 +889,17 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     upgradeSettings?: pulumi.Input<AgentPoolUpgradeSettingsArgs>;
     /**
-     * VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
+     * VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. If this field is not specified, AKS will attempt to find an appropriate VM SKU for your pool, based on quota and capacity. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
      */
     vmSize?: pulumi.Input<string>;
     /**
      * If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
      */
     vnetSubnetID?: pulumi.Input<string>;
+    /**
+     * The Windows agent pool's specific profile.
+     */
+    windowsProfile?: pulumi.Input<AgentPoolWindowsProfileArgs>;
     /**
      * Determines the type of workload a node can run.
      */
@@ -544,6 +910,10 @@ export interface ManagedClusterAgentPoolProfileArgs {
  * Auto upgrade profile for a managed cluster.
  */
 export interface ManagedClusterAutoUpgradeProfileArgs {
+    /**
+     * Manner in which the OS on your nodes is updated. The default is NodeImage.
+     */
+    nodeOSUpgradeChannel?: pulumi.Input<string | enums.NodeOSUpgradeChannel>;
     /**
      * For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
      */
@@ -589,6 +959,16 @@ export interface ManagedClusterAzureMonitorProfileMetricsArgs {
 }
 
 /**
+ * The cost analysis configuration for the cluster
+ */
+export interface ManagedClusterCostAnalysisArgs {
+    /**
+     * The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+/**
  * Cluster HTTP proxy configuration.
  */
 export interface ManagedClusterHTTPProxyConfigArgs {
@@ -615,6 +995,10 @@ export interface ManagedClusterHTTPProxyConfigArgs {
  */
 export interface ManagedClusterIdentityArgs {
     /**
+     * The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only.
+     */
+    delegatedResources?: pulumi.Input<{[key: string]: pulumi.Input<DelegatedResourceArgs>}>;
+    /**
      * For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
      */
     type?: pulumi.Input<enums.ResourceIdentityType>;
@@ -625,6 +1009,30 @@ export interface ManagedClusterIdentityArgs {
 }
 
 /**
+ * Ingress profile for the container service cluster.
+ */
+export interface ManagedClusterIngressProfileArgs {
+    /**
+     * App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
+     */
+    webAppRouting?: pulumi.Input<ManagedClusterIngressProfileWebAppRoutingArgs>;
+}
+
+/**
+ * Application Routing add-on settings for the ingress profile.
+ */
+export interface ManagedClusterIngressProfileWebAppRoutingArgs {
+    /**
+     * Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be in the same resource group and all private DNS zones must be in the same resource group.
+     */
+    dnsZoneResourceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to enable the Application Routing add-on.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+/**
  * Profile of the managed cluster load balancer.
  */
 export interface ManagedClusterLoadBalancerProfileArgs {
@@ -632,6 +1040,10 @@ export interface ManagedClusterLoadBalancerProfileArgs {
      * The desired number of allocated SNAT ports per VM. Allowed values are in the range of 0 to 64000 (inclusive). The default value is 0 which results in Azure dynamically allocating ports.
      */
     allocatedOutboundPorts?: pulumi.Input<number>;
+    /**
+     * The type of the managed inbound Load Balancer BackendPool.
+     */
+    backendPoolType?: pulumi.Input<string | enums.BackendPoolType>;
     /**
      * The effective outbound IP resources of the cluster load balancer.
      */
@@ -664,6 +1076,7 @@ export function managedClusterLoadBalancerProfileArgsProvideDefaults(val: Manage
     return {
         ...val,
         allocatedOutboundPorts: (val.allocatedOutboundPorts) ?? 0,
+        backendPoolType: (val.backendPoolType) ?? "NodeIPConfiguration",
         idleTimeoutInMinutes: (val.idleTimeoutInMinutes) ?? 30,
         managedOutboundIPs: (val.managedOutboundIPs ? pulumi.output(val.managedOutboundIPs).apply(managedClusterLoadBalancerProfileManagedOutboundIPsArgsProvideDefaults) : undefined),
     };
@@ -733,6 +1146,16 @@ export function managedClusterManagedOutboundIPProfileArgsProvideDefaults(val: M
 }
 
 /**
+ * The metrics profile for the ManagedCluster.
+ */
+export interface ManagedClusterMetricsProfileArgs {
+    /**
+     * The cost analysis configuration for the cluster
+     */
+    costAnalysis?: pulumi.Input<ManagedClusterCostAnalysisArgs>;
+}
+
+/**
  * Profile of the managed cluster NAT gateway.
  */
 export interface ManagedClusterNATGatewayProfileArgs {
@@ -758,6 +1181,16 @@ export function managedClusterNATGatewayProfileArgsProvideDefaults(val: ManagedC
         idleTimeoutInMinutes: (val.idleTimeoutInMinutes) ?? 4,
         managedOutboundIPProfile: (val.managedOutboundIPProfile ? pulumi.output(val.managedOutboundIPProfile).apply(managedClusterManagedOutboundIPProfileArgsProvideDefaults) : undefined),
     };
+}
+
+/**
+ * Node resource group lockdown profile for a managed cluster.
+ */
+export interface ManagedClusterNodeResourceGroupProfileArgs {
+    /**
+     * The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
+     */
+    restrictionLevel?: pulumi.Input<string | enums.RestrictionLevel>;
 }
 
 /**
@@ -841,9 +1274,21 @@ export interface ManagedClusterPropertiesAutoScalerProfileArgs {
      */
     balanceSimilarNodeGroups?: pulumi.Input<string>;
     /**
+     * If set to true, all daemonset pods on empty nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+     */
+    daemonsetEvictionForEmptyNodes?: pulumi.Input<boolean>;
+    /**
+     * If set to true, all daemonset pods on occupied nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+     */
+    daemonsetEvictionForOccupiedNodes?: pulumi.Input<boolean>;
+    /**
      * If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
      */
     expander?: pulumi.Input<string | enums.Expander>;
+    /**
+     * If set to true, the resources used by daemonset will be taken into account when making scaling down decisions.
+     */
+    ignoreDaemonsetsUtilization?: pulumi.Input<boolean>;
     /**
      * The default is 10.
      */
@@ -1080,6 +1525,10 @@ export interface ManagedClusterStorageProfileSnapshotControllerArgs {
  */
 export interface ManagedClusterUpdateArgs {
     /**
+     * The node image upgrade to be applied to the target nodes in update run.
+     */
+    nodeImageSelection?: pulumi.Input<NodeImageSelectionArgs>;
+    /**
      * The upgrade to apply to the ManagedClusters.
      */
     upgrade: pulumi.Input<ManagedClusterUpgradeSpecArgs>;
@@ -1133,6 +1582,19 @@ export interface ManagedClusterWorkloadAutoScalerProfileArgs {
      * KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
      */
     keda?: pulumi.Input<ManagedClusterWorkloadAutoScalerProfileKedaArgs>;
+    /**
+     * VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
+     */
+    verticalPodAutoscaler?: pulumi.Input<ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs>;
+}
+/**
+ * managedClusterWorkloadAutoScalerProfileArgsProvideDefaults sets the appropriate defaults for ManagedClusterWorkloadAutoScalerProfileArgs
+ */
+export function managedClusterWorkloadAutoScalerProfileArgsProvideDefaults(val: ManagedClusterWorkloadAutoScalerProfileArgs): ManagedClusterWorkloadAutoScalerProfileArgs {
+    return {
+        ...val,
+        verticalPodAutoscaler: (val.verticalPodAutoscaler ? pulumi.output(val.verticalPodAutoscaler).apply(managedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgsProvideDefaults) : undefined),
+    };
 }
 
 /**
@@ -1146,176 +1608,64 @@ export interface ManagedClusterWorkloadAutoScalerProfileKedaArgs {
 }
 
 /**
- * Represents the OpenShift networking configuration
+ * VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
  */
-export interface NetworkProfileArgs {
+export interface ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs {
     /**
-     * CIDR of subnet used to create PLS needed for management of the cluster
+     * Whether to enable VPA. Default value is false.
      */
-    managementSubnetCidr?: pulumi.Input<string>;
-    /**
-     * CIDR for the OpenShift Vnet.
-     */
-    vnetCidr?: pulumi.Input<string>;
-    /**
-     * ID of the Vnet created for OSA cluster.
-     */
-    vnetId?: pulumi.Input<string>;
+    enabled: pulumi.Input<boolean>;
 }
 /**
- * networkProfileArgsProvideDefaults sets the appropriate defaults for NetworkProfileArgs
+ * managedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgsProvideDefaults sets the appropriate defaults for ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs
  */
-export function networkProfileArgsProvideDefaults(val: NetworkProfileArgs): NetworkProfileArgs {
+export function managedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgsProvideDefaults(val: ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs): ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs {
     return {
         ...val,
-        vnetCidr: (val.vnetCidr) ?? "10.0.0.0/8",
+        enabled: (val.enabled) ?? false,
     };
 }
 
 /**
- * Defines further properties on the API.
+ * Managed service identity (system assigned and/or user assigned identities)
  */
-export interface OpenShiftAPIPropertiesArgs {
+export interface ManagedServiceIdentityArgs {
     /**
-     * Specifies if API server is public or private.
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
      */
-    privateApiServer?: pulumi.Input<boolean>;
+    type: pulumi.Input<string | enums.ManagedServiceIdentityType>;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
- * Defines the Identity provider for MS AAD.
+ * The node image upgrade to be applied to the target nodes in update run.
  */
-export interface OpenShiftManagedClusterAADIdentityProviderArgs {
+export interface NodeImageSelectionArgs {
     /**
-     * The clientId password associated with the provider.
+     * The node image upgrade type.
      */
-    clientId?: pulumi.Input<string>;
-    /**
-     * The groupId to be granted cluster admin role.
-     */
-    customerAdminGroupId?: pulumi.Input<string>;
-    /**
-     * The kind of the provider.
-     * Expected value is 'AADIdentityProvider'.
-     */
-    kind: pulumi.Input<"AADIdentityProvider">;
-    /**
-     * The secret password associated with the provider.
-     */
-    secret?: pulumi.Input<string>;
-    /**
-     * The tenantId associated with the provider.
-     */
-    tenantId?: pulumi.Input<string>;
+    type: pulumi.Input<string | enums.NodeImageSelectionType>;
 }
 
 /**
- * Defines the configuration of the OpenShift cluster VMs.
+ * The port range.
  */
-export interface OpenShiftManagedClusterAgentPoolProfileArgs {
+export interface PortRangeArgs {
     /**
-     * Number of agents (VMs) to host docker containers.
+     * The maximum port that is included in the range. It should be ranged from 1 to 65535, and be greater than or equal to portStart.
      */
-    count: pulumi.Input<number>;
+    portEnd?: pulumi.Input<number>;
     /**
-     * Unique name of the pool profile in the context of the subscription and resource group.
+     * The minimum port that is included in the range. It should be ranged from 1 to 65535, and be less than or equal to portEnd.
      */
-    name: pulumi.Input<string>;
+    portStart?: pulumi.Input<number>;
     /**
-     * OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
+     * The network protocol of the port.
      */
-    osType?: pulumi.Input<string | enums.OSType>;
-    /**
-     * Define the role of the AgentPoolProfile.
-     */
-    role?: pulumi.Input<string | enums.OpenShiftAgentPoolProfileRole>;
-    /**
-     * Subnet CIDR for the peering.
-     */
-    subnetCidr?: pulumi.Input<string>;
-    /**
-     * Size of agent VMs.
-     */
-    vmSize: pulumi.Input<string | enums.OpenShiftContainerServiceVMSize>;
-}
-/**
- * openShiftManagedClusterAgentPoolProfileArgsProvideDefaults sets the appropriate defaults for OpenShiftManagedClusterAgentPoolProfileArgs
- */
-export function openShiftManagedClusterAgentPoolProfileArgsProvideDefaults(val: OpenShiftManagedClusterAgentPoolProfileArgs): OpenShiftManagedClusterAgentPoolProfileArgs {
-    return {
-        ...val,
-        subnetCidr: (val.subnetCidr) ?? "10.0.0.0/24",
-    };
-}
-
-/**
- * Defines all possible authentication profiles for the OpenShift cluster.
- */
-export interface OpenShiftManagedClusterAuthProfileArgs {
-    /**
-     * Type of authentication profile to use.
-     */
-    identityProviders?: pulumi.Input<pulumi.Input<OpenShiftManagedClusterIdentityProviderArgs>[]>;
-}
-
-/**
- * Defines the configuration of the identity providers to be used in the OpenShift cluster.
- */
-export interface OpenShiftManagedClusterIdentityProviderArgs {
-    /**
-     * Name of the provider.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Configuration of the provider.
-     */
-    provider?: pulumi.Input<OpenShiftManagedClusterAADIdentityProviderArgs>;
-}
-
-/**
- * OpenShiftManagedClusterMaterPoolProfile contains configuration for OpenShift master VMs.
- */
-export interface OpenShiftManagedClusterMasterPoolProfileArgs {
-    /**
-     * Defines further properties on the API.
-     */
-    apiProperties?: pulumi.Input<OpenShiftAPIPropertiesArgs>;
-    /**
-     * Number of masters (VMs) to host docker containers. The default value is 3.
-     */
-    count: pulumi.Input<number>;
-    /**
-     * Subnet CIDR for the peering.
-     */
-    subnetCidr?: pulumi.Input<string>;
-    /**
-     * Size of agent VMs.
-     */
-    vmSize: pulumi.Input<string | enums.OpenShiftContainerServiceVMSize>;
-}
-
-/**
- * Defines the configuration for Log Analytics integration.
- */
-export interface OpenShiftManagedClusterMonitorProfileArgs {
-    /**
-     * If the Log analytics integration should be turned on or off
-     */
-    enabled?: pulumi.Input<boolean>;
-    /**
-     * Azure Resource Manager Resource ID for the Log Analytics workspace to integrate with.
-     */
-    workspaceResourceID?: pulumi.Input<string>;
-}
-
-/**
- * Represents an OpenShift router
- */
-export interface OpenShiftRouterProfileArgs {
-    /**
-     * Name of the router profile.
-     */
-    name?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | enums.Protocol>;
 }
 
 /**
@@ -1379,25 +1729,21 @@ export interface PrivateLinkServiceConnectionStateArgs {
 }
 
 /**
- * Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.
+ * For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
  */
-export interface PurchasePlanArgs {
+export interface RelativeMonthlyScheduleArgs {
     /**
-     * The plan ID.
+     * Specifies on which day of the week the maintenance occurs.
      */
-    name?: pulumi.Input<string>;
+    dayOfWeek: pulumi.Input<string | enums.WeekDay>;
     /**
-     * Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
+     * Specifies the number of months between each set of occurrences.
      */
-    product?: pulumi.Input<string>;
+    intervalMonths: pulumi.Input<number>;
     /**
-     * The promotion code.
+     * Specifies on which week of the month the dayOfWeek applies.
      */
-    promotionCode?: pulumi.Input<string>;
-    /**
-     * The plan ID.
-     */
-    publisher?: pulumi.Input<string>;
+    weekIndex: pulumi.Input<string | enums.Type>;
 }
 
 /**
@@ -1408,6 +1754,42 @@ export interface ResourceReferenceArgs {
      * The fully qualified Azure resource id.
      */
     id?: pulumi.Input<string>;
+}
+
+/**
+ * One and only one of the schedule types should be specified. Choose either 'daily', 'weekly', 'absoluteMonthly' or 'relativeMonthly' for your maintenance schedule.
+ */
+export interface ScheduleArgs {
+    /**
+     * For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
+     */
+    absoluteMonthly?: pulumi.Input<AbsoluteMonthlyScheduleArgs>;
+    /**
+     * For schedules like: 'recur every day' or 'recur every 3 days'.
+     */
+    daily?: pulumi.Input<DailyScheduleArgs>;
+    /**
+     * For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
+     */
+    relativeMonthly?: pulumi.Input<RelativeMonthlyScheduleArgs>;
+    /**
+     * For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
+     */
+    weekly?: pulumi.Input<WeeklyScheduleArgs>;
+}
+
+/**
+ * Service mesh profile for a managed cluster.
+ */
+export interface ServiceMeshProfileArgs {
+    /**
+     * Istio service mesh configuration.
+     */
+    istio?: pulumi.Input<IstioServiceMeshArgs>;
+    /**
+     * Mode of the service mesh.
+     */
+    mode: pulumi.Input<string | enums.ServiceMeshMode>;
 }
 
 /**
@@ -1602,6 +1984,20 @@ export interface UpdateStageArgs {
 }
 
 /**
+ * Settings for overrides when upgrading a cluster.
+ */
+export interface UpgradeOverrideSettingsArgs {
+    /**
+     * Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution.
+     */
+    forceUpgrade?: pulumi.Input<boolean>;
+    /**
+     * Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the effectiveness won't change once an upgrade starts even if the `until` expires as upgrade proceeds. This field is not set by default. It must be set for the overrides to take effect.
+     */
+    until?: pulumi.Input<string>;
+}
+
+/**
  * Details about a user assigned identity.
  */
 export interface UserAssignedIdentityArgs {
@@ -1617,6 +2013,20 @@ export interface UserAssignedIdentityArgs {
      * The resource ID of the user assigned identity.
      */
     resourceId?: pulumi.Input<string>;
+}
+
+/**
+ * For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
+ */
+export interface WeeklyScheduleArgs {
+    /**
+     * Specifies on which day of the week the maintenance occurs.
+     */
+    dayOfWeek: pulumi.Input<string | enums.WeekDay>;
+    /**
+     * Specifies the number of weeks between each set of occurrences.
+     */
+    intervalWeeks: pulumi.Input<number>;
 }
 
 /**
@@ -1636,44 +2046,3 @@ export interface WindowsGmsaProfileArgs {
      */
     rootDomainName?: pulumi.Input<string>;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

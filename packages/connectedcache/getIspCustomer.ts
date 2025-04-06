@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the ispCustomer resource information using this get call
- * Azure REST API version: 2023-05-01-preview.
+ *
+ * Uses Azure REST API version 2023-05-01-preview.
  */
 export function getIspCustomer(args: GetIspCustomerArgs, opts?: pulumi.InvokeOptions): Promise<GetIspCustomerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetIspCustomerArgs {
  * Represents the high level Nodes needed to provision isp customer resources
  */
 export interface GetIspCustomerResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetIspCustomerResult {
 }
 /**
  * Gets the ispCustomer resource information using this get call
- * Azure REST API version: 2023-05-01-preview.
+ *
+ * Uses Azure REST API version 2023-05-01-preview.
  */
 export function getIspCustomerOutput(args: GetIspCustomerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIspCustomerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

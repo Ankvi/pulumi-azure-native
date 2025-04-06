@@ -2,9 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Returns Intune iOS policies.
- * Azure REST API version: 2015-01-14-preview.
  *
- * Other available API versions: 2015-01-14-privatepreview.
+ * Uses Azure REST API version 2015-01-14-preview.
  */
 export function getIoMAMPolicyByName(args: GetIoMAMPolicyByNameArgs, opts?: pulumi.InvokeOptions): Promise<GetIoMAMPolicyByNameResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,6 +38,10 @@ export interface GetIoMAMPolicyByNameResult {
     readonly appSharingFromLevel?: string;
     readonly appSharingToLevel?: string;
     readonly authentication?: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     readonly clipboardSharingLevel?: string;
     readonly dataBackup?: string;
     readonly description?: string;
@@ -77,9 +80,8 @@ export interface GetIoMAMPolicyByNameResult {
 }
 /**
  * Returns Intune iOS policies.
- * Azure REST API version: 2015-01-14-preview.
  *
- * Other available API versions: 2015-01-14-privatepreview.
+ * Uses Azure REST API version 2015-01-14-preview.
  */
 export function getIoMAMPolicyByNameOutput(args: GetIoMAMPolicyByNameOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIoMAMPolicyByNameResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

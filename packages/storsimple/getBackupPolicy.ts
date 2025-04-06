@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the properties of the specified backup policy name.
- * Azure REST API version: 2017-06-01.
+ *
+ * Uses Azure REST API version 2017-06-01.
  */
 export function getBackupPolicy(args: GetBackupPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +38,10 @@ export interface GetBackupPolicyArgs {
  * The backup policy.
  */
 export interface GetBackupPolicyResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The backup policy creation type. Indicates whether this was created through SaaS or through StorSimple Snapshot Manager.
      */
@@ -84,7 +89,8 @@ export interface GetBackupPolicyResult {
 }
 /**
  * Gets the properties of the specified backup policy name.
- * Azure REST API version: 2017-06-01.
+ *
+ * Uses Azure REST API version 2017-06-01.
  */
 export function getBackupPolicyOutput(args: GetBackupPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackupPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

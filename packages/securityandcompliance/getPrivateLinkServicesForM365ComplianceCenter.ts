@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the metadata of a privateLinkServicesForM365ComplianceCenter resource.
- * Azure REST API version: 2021-03-08.
+ *
+ * Uses Azure REST API version 2021-03-08.
  */
 export function getPrivateLinkServicesForM365ComplianceCenter(args: GetPrivateLinkServicesForM365ComplianceCenterArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateLinkServicesForM365ComplianceCenterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetPrivateLinkServicesForM365ComplianceCenterArgs {
  * The description of the service.
  */
 export interface GetPrivateLinkServicesForM365ComplianceCenterResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * An etag associated with the resource, used for optimistic concurrency when editing it.
      */
@@ -71,7 +76,8 @@ export interface GetPrivateLinkServicesForM365ComplianceCenterResult {
 }
 /**
  * Get the metadata of a privateLinkServicesForM365ComplianceCenter resource.
- * Azure REST API version: 2021-03-08.
+ *
+ * Uses Azure REST API version 2021-03-08.
  */
 export function getPrivateLinkServicesForM365ComplianceCenterOutput(args: GetPrivateLinkServicesForM365ComplianceCenterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateLinkServicesForM365ComplianceCenterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

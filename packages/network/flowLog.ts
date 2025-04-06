@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A flow log resource.
- * Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
  *
- * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+ * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
+ *
+ * Other available API versions: 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FlowLog extends pulumi.CustomResource {
     /**
@@ -35,9 +36,17 @@ export class FlowLog extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Flag to enable/disable flow logging.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Optional field to filter network traffic logs based on SrcIP, SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not specified, all network traffic will be logged.
+     */
+    public readonly enabledFilteringCriteria!: pulumi.Output<string | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -50,6 +59,10 @@ export class FlowLog extends pulumi.CustomResource {
      * Parameters that define the flow log format.
      */
     public readonly format!: pulumi.Output<types.outputs.FlowLogFormatParametersResponse | undefined>;
+    /**
+     * FlowLog resource Managed Identity
+     */
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Resource location.
      */
@@ -111,10 +124,12 @@ export class FlowLog extends pulumi.CustomResource {
                 throw new Error("Missing required property 'targetResourceId'");
             }
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["enabledFilteringCriteria"] = args ? args.enabledFilteringCriteria : undefined;
             resourceInputs["flowAnalyticsConfiguration"] = args ? args.flowAnalyticsConfiguration : undefined;
             resourceInputs["flowLogName"] = args ? args.flowLogName : undefined;
             resourceInputs["format"] = args ? (args.format ? pulumi.output(args.format).apply(types.inputs.flowLogFormatParametersArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["networkWatcherName"] = args ? args.networkWatcherName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
@@ -122,16 +137,20 @@ export class FlowLog extends pulumi.CustomResource {
             resourceInputs["storageId"] = args ? args.storageId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["targetResourceId"] = args ? args.targetResourceId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["targetResourceGuid"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
+            resourceInputs["enabledFilteringCriteria"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["flowAnalyticsConfiguration"] = undefined /*out*/;
             resourceInputs["format"] = undefined /*out*/;
+            resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -158,6 +177,10 @@ export interface FlowLogArgs {
      */
     enabled?: pulumi.Input<boolean>;
     /**
+     * Optional field to filter network traffic logs based on SrcIP, SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not specified, all network traffic will be logged.
+     */
+    enabledFilteringCriteria?: pulumi.Input<string>;
+    /**
      * Parameters that define the configuration of traffic analytics.
      */
     flowAnalyticsConfiguration?: pulumi.Input<types.inputs.TrafficAnalyticsPropertiesArgs>;
@@ -173,6 +196,10 @@ export interface FlowLogArgs {
      * Resource ID.
      */
     id?: pulumi.Input<string>;
+    /**
+     * FlowLog resource Managed Identity
+     */
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Resource location.
      */

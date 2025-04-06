@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets information about a private endpoint connection under a disk access resource.
- * Azure REST API version: 2022-07-02.
  *
- * Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+ * Uses Azure REST API version 2024-03-02.
+ *
+ * Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDiskAccessAPrivateEndpointConnection(args: GetDiskAccessAPrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskAccessAPrivateEndpointConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +37,10 @@ export interface GetDiskAccessAPrivateEndpointConnectionArgs {
  */
 export interface GetDiskAccessAPrivateEndpointConnectionResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * private endpoint connection Id
      */
     readonly id: string;
@@ -62,9 +67,10 @@ export interface GetDiskAccessAPrivateEndpointConnectionResult {
 }
 /**
  * Gets information about a private endpoint connection under a disk access resource.
- * Azure REST API version: 2022-07-02.
  *
- * Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+ * Uses Azure REST API version 2024-03-02.
+ *
+ * Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDiskAccessAPrivateEndpointConnectionOutput(args: GetDiskAccessAPrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiskAccessAPrivateEndpointConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

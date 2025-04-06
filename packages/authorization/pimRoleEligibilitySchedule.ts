@@ -15,8 +15,6 @@ import * as types from "./types";
  * Internally, this resource uses the
  * [Role Eligibility Schedule Requests](https://learn.microsoft.com/en-us/rest/api/authorization/role-eligibility-schedule-requests?view=rest-authorization-2020-10-01)
  * API to create and delete the schedules.
- *
- * Azure REST API version: 2020-10-01.
  */
 export class PimRoleEligibilitySchedule extends pulumi.CustomResource {
     /**
@@ -49,6 +47,10 @@ export class PimRoleEligibilitySchedule extends pulumi.CustomResource {
      * The approvalId of the role eligibility schedule request.
      */
     public /*out*/ readonly approvalId!: pulumi.Output<string>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
      */
@@ -153,6 +155,7 @@ export class PimRoleEligibilitySchedule extends pulumi.CustomResource {
             resourceInputs["targetRoleEligibilityScheduleInstanceId"] = args ? args.targetRoleEligibilityScheduleInstanceId : undefined;
             resourceInputs["ticketInfo"] = args ? args.ticketInfo : undefined;
             resourceInputs["approvalId"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["expandedProperties"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -163,6 +166,7 @@ export class PimRoleEligibilitySchedule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["approvalId"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["condition"] = undefined /*out*/;
             resourceInputs["conditionVersion"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;

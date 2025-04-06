@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The VirtualMachines resource definition.
- * Azure REST API version: 2022-05-21-preview. Prior API version in Azure Native 1.x: 2020-06-05-preview.
  *
- * Other available API versions: 2023-04-01-preview.
+ * Uses Azure REST API version 2023-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-05-21-preview.
+ *
+ * Other available API versions: 2022-05-21-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native scvmm [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualMachine extends pulumi.CustomResource {
     /**
@@ -38,6 +39,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      * Availability Sets in vm.
      */
     public readonly availabilitySets!: pulumi.Output<types.outputs.VirtualMachinePropertiesResponseAvailabilitySets[] | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Type of checkpoint supported for the vm.
      */
@@ -173,6 +178,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["virtualMachineName"] = args ? args.virtualMachineName : undefined;
             resourceInputs["vmName"] = args ? args.vmName : undefined;
             resourceInputs["vmmServerId"] = args ? args.vmmServerId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["lastRestoredVMCheckpoint"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["powerState"] = undefined /*out*/;
@@ -181,6 +187,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["availabilitySets"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["checkpointType"] = undefined /*out*/;
             resourceInputs["checkpoints"] = undefined /*out*/;
             resourceInputs["cloudId"] = undefined /*out*/;

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get service fabric.
- * Azure REST API version: 2018-09-15.
+ *
+ * Uses Azure REST API version 2018-09-15.
  */
 export function getServiceFabric(args: GetServiceFabricArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceFabricResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -48,6 +49,10 @@ export interface GetServiceFabricResult {
      */
     readonly applicableSchedule: types.outputs.ApplicableScheduleResponse;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The resource id of the environment under which the service fabric resource is present
      */
     readonly environmentId?: string;
@@ -86,7 +91,8 @@ export interface GetServiceFabricResult {
 }
 /**
  * Get service fabric.
- * Azure REST API version: 2018-09-15.
+ *
+ * Uses Azure REST API version 2018-09-15.
  */
 export function getServiceFabricOutput(args: GetServiceFabricOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceFabricResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

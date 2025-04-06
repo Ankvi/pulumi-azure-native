@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The link resource format.
- * Azure REST API version: 2017-04-26. Prior API version in Azure Native 1.x: 2017-04-26.
+ *
+ * Uses Azure REST API version 2017-04-26. In version 2.x of the Azure Native provider, it used API version 2017-04-26.
  */
 export class Link extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class Link extends pulumi.CustomResource {
         return obj['__pulumiType'] === Link.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Localized descriptions for the Link.
      */
@@ -138,11 +143,13 @@ export class Link extends pulumi.CustomResource {
             resourceInputs["sourceEntityTypeName"] = args ? args.sourceEntityTypeName : undefined;
             resourceInputs["targetEntityType"] = args ? args.targetEntityType : undefined;
             resourceInputs["targetEntityTypeName"] = args ? args.targetEntityTypeName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["tenantId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["linkName"] = undefined /*out*/;

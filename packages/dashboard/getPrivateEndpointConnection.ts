@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The Private Endpoint Connection resource.
- * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2022-10-01-preview, 2023-09-01, 2023-10-01-preview, 2024-10-01.
+ * Uses Azure REST API version 2024-10-01.
+ *
+ * Other available API versions: 2022-08-01, 2022-10-01-preview, 2023-09-01, 2023-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dashboard [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPrivateEndpointConnection(args: GetPrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateEndpointConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,6 +36,10 @@ export interface GetPrivateEndpointConnectionArgs {
  * The Private Endpoint Connection resource.
  */
 export interface GetPrivateEndpointConnectionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The private endpoint connection group ids.
      */
@@ -70,9 +75,10 @@ export interface GetPrivateEndpointConnectionResult {
 }
 /**
  * The Private Endpoint Connection resource.
- * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2022-10-01-preview, 2023-09-01, 2023-10-01-preview, 2024-10-01.
+ * Uses Azure REST API version 2024-10-01.
+ *
+ * Other available API versions: 2022-08-01, 2022-10-01-preview, 2023-09-01, 2023-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dashboard [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPrivateEndpointConnectionOutput(args: GetPrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateEndpointConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

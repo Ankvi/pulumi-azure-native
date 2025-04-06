@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a specific governance rule for the requested scope by ruleId
- * Azure REST API version: 2022-01-01-preview.
+ *
+ * Uses Azure REST API version 2022-01-01-preview.
  */
 export function getGovernanceRule(args: GetGovernanceRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetGovernanceRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetGovernanceRuleArgs {
  * Governance rule over a given scope
  */
 export interface GetGovernanceRuleResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Description of the governance rule
      */
@@ -99,7 +104,8 @@ export interface GetGovernanceRuleResult {
 }
 /**
  * Get a specific governance rule for the requested scope by ruleId
- * Azure REST API version: 2022-01-01-preview.
+ *
+ * Uses Azure REST API version 2022-01-01-preview.
  */
 export function getGovernanceRuleOutput(args: GetGovernanceRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGovernanceRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Azure Active Directory administrator.
- * Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
  *
- * Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+ * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
+ *
+ * Other available API versions: 2014-04-01, 2018-06-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ServerAzureADAdministrator extends pulumi.CustomResource {
     /**
@@ -37,11 +38,15 @@ export class ServerAzureADAdministrator extends pulumi.CustomResource {
     /**
      * Type of the sever administrator.
      */
-    public readonly administratorType!: pulumi.Output<string>;
+    public readonly administratorType!: pulumi.Output<string | undefined>;
     /**
      * Azure Active Directory only Authentication enabled.
      */
     public /*out*/ readonly azureADOnlyAuthentication!: pulumi.Output<boolean>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Login name of the server administrator.
      */
@@ -74,9 +79,6 @@ export class ServerAzureADAdministrator extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.administratorType === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'administratorType'");
-            }
             if ((!args || args.login === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'login'");
             }
@@ -97,11 +99,13 @@ export class ServerAzureADAdministrator extends pulumi.CustomResource {
             resourceInputs["sid"] = args ? args.sid : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["azureADOnlyAuthentication"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["administratorType"] = undefined /*out*/;
             resourceInputs["azureADOnlyAuthentication"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["login"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["sid"] = undefined /*out*/;
@@ -109,7 +113,7 @@ export class ServerAzureADAdministrator extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20140401:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20180601preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20190601preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20200202preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20200801preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20201101preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20210201preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20210501preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20210801preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20211101:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20211101preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20220201preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20220501preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20220801preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20221101preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20230201preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20230501preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20230801preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20240501preview:ServerAzureADAdministrator" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20140401:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20180601preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20190601preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20200202preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20200801preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20201101preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20210201preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20210501preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20210801preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20211101:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20211101preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20220201preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20220501preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20220801preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20221101preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20230201preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20230501preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20230801:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20230801preview:ServerAzureADAdministrator" }, { type: "azure-native:sql/v20240501preview:ServerAzureADAdministrator" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ServerAzureADAdministrator.__pulumiType, name, resourceInputs, opts);
     }
@@ -126,7 +130,7 @@ export interface ServerAzureADAdministratorArgs {
     /**
      * Type of the sever administrator.
      */
-    administratorType: pulumi.Input<string | types.enums.AdministratorType>;
+    administratorType?: pulumi.Input<string | types.enums.AdministratorType>;
     /**
      * Login name of the server administrator.
      */

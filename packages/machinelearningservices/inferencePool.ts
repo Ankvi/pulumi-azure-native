@@ -2,9 +2,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Azure REST API version: 2023-08-01-preview.
+ * Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-08-01-preview.
  *
- * Other available API versions: 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview.
+ * Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class InferencePool extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class InferencePool extends pulumi.CustomResource {
         return obj['__pulumiType'] === InferencePool.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
@@ -99,10 +103,12 @@ export class InferencePool extends pulumi.CustomResource {
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["inferencePoolProperties"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -114,7 +120,7 @@ export class InferencePool extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230801preview:InferencePool" }, { type: "azure-native:machinelearningservices/v20240101preview:InferencePool" }, { type: "azure-native:machinelearningservices/v20240401preview:InferencePool" }, { type: "azure-native:machinelearningservices/v20241001preview:InferencePool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230801preview:InferencePool" }, { type: "azure-native:machinelearningservices/v20240101preview:InferencePool" }, { type: "azure-native:machinelearningservices/v20240401preview:InferencePool" }, { type: "azure-native:machinelearningservices/v20241001preview:InferencePool" }, { type: "azure-native:machinelearningservices/v20250101preview:InferencePool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(InferencePool.__pulumiType, name, resourceInputs, opts);
     }

@@ -221,6 +221,10 @@ export interface AutomaticOSUpgradePolicyResponse {
      */
     enableAutomaticOSUpgrade?: boolean;
     /**
+     * Indicates whether Auto OS Upgrade should undergo deferral. Deferred OS upgrades will send advanced notifications on a per-VM basis that an OS upgrade from rolling upgrades is incoming, via the IMDS tag 'Platform.PendingOSUpgrade'. The upgrade then defers until the upgrade is approved via an ApproveRollingUpgrade call.
+     */
+    osRollingUpgradeDeferral?: boolean;
+    /**
      * Indicates whether rolling upgrade policy should be used during Auto OS Upgrade. Default value is false. Auto OS Upgrade will fallback to the default policy if no policy is defined on the VMSS.
      */
     useRollingUpgradePolicy?: boolean;
@@ -242,6 +246,24 @@ export interface AutomaticRepairsPolicyResponse {
      * Type of repair action (replace, restart, reimage) that will be used for repairing unhealthy virtual machines in the scale set. Default value is replace.
      */
     repairAction?: string;
+}
+
+/**
+ * The configuration parameters used while performing automatic AZ balancing.
+ */
+export interface AutomaticZoneRebalancingPolicyResponse {
+    /**
+     * Specifies whether Automatic AZ Balancing should be enabled on the virtual machine scale set. The default value is false.
+     */
+    enabled?: boolean;
+    /**
+     * Type of rebalance behavior that will be used for recreating virtual machines in the scale set across availability zones. Default and only supported value for now is CreateBeforeDelete.
+     */
+    rebalanceBehavior?: string;
+    /**
+     * Type of rebalance strategy that will be used for rebalancing virtual machines in the scale set across availability zones. Default and only supported value for now is Recreate.
+     */
+    rebalanceStrategy?: string;
 }
 
 /**
@@ -329,6 +351,10 @@ export interface CapacityReservationGroupInstanceViewResponse {
      * List of instance view of the capacity reservations under the capacity reservation group.
      */
     capacityReservations: CapacityReservationInstanceViewWithNameResponse[];
+    /**
+     * List of the subscriptions that the capacity reservation group is shared with. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
+     */
+    sharedSubscriptionIds: SubResourceReadOnlyResponse[];
 }
 
 /**
@@ -670,6 +696,10 @@ export interface CreationDataResponse {
      */
     createOption: string;
     /**
+     * Required if createOption is CopyFromSanSnapshot. This is the ARM id of the source elastic san volume snapshot.
+     */
+    elasticSanResourceId?: string;
+    /**
      * Required if creating from a Gallery Image. The id/sharedGalleryImageId/communityGalleryImageId of the ImageDiskReference will be the ARM id of the shared galley image version from which to create a disk.
      */
     galleryImageReference?: ImageDiskReferenceResponse;
@@ -685,6 +715,10 @@ export interface CreationDataResponse {
      * Set this flag to true to get a boost on the performance target of the disk deployed, see here on the respective performance target. This flag can only be set on disk creation time and cannot be disabled after enabled.
      */
     performancePlus?: boolean;
+    /**
+     * If this field is set on a snapshot and createOption is CopyStart, the snapshot will be copied at a quicker speed.
+     */
+    provisionedBandwidthCopySpeed?: string;
     /**
      * If createOption is ImportSecure, this is the URI of a blob to be imported into VM guest state.
      */
@@ -734,7 +768,7 @@ export interface DataDiskResponse {
      */
     caching?: string;
     /**
-     * Specifies how the virtual machine should be created. Possible values are: **Attach.** This value is used when you are using a specialized disk to create the virtual machine. **FromImage.** This value is used when you are using an image to create the virtual machine. If you are using a platform image, you should also use the imageReference element described above. If you are using a marketplace image, you should also use the plan element previously described.
+     * Specifies how the virtual machine disk should be created. Possible values are **Attach:** This value is used when you are using a specialized disk to create the virtual machine. **FromImage:** This value is used when you are using an image to create the virtual machine data disk. If you are using a platform image, you should also use the imageReference element described above. If you are using a marketplace image, you should also use the plan element previously described. **Empty:** This value is used when creating an empty data disk. **Copy:** This value is used to create a data disk from a snapshot or another disk. **Restore:** This value is used to create a data disk from a disk restore point.
      */
     createOption: string;
     /**
@@ -742,7 +776,7 @@ export interface DataDiskResponse {
      */
     deleteOption?: string;
     /**
-     * Specifies the detach behavior to be used while detaching a disk or which is already in the process of detachment from the virtual machine. Supported values: **ForceDetach.** detachOption: **ForceDetach** is applicable only for managed data disks. If a previous detachment attempt of the data disk did not complete due to an unexpected failure from the virtual machine and the disk is still not released then use force-detach as a last resort option to detach the disk forcibly from the VM. All writes might not have been flushed when using this detach behavior. **This feature is still in preview** mode and is not supported for VirtualMachineScaleSet. To force-detach a data disk update toBeDetached to 'true' along with setting detachOption: 'ForceDetach'.
+     * Specifies the detach behavior to be used while detaching a disk or which is already in the process of detachment from the virtual machine. Supported values: **ForceDetach.** detachOption: **ForceDetach** is applicable only for managed data disks. If a previous detachment attempt of the data disk did not complete due to an unexpected failure from the virtual machine and the disk is still not released then use force-detach as a last resort option to detach the disk forcibly from the VM. All writes might not have been flushed when using this detach behavior. To force-detach a data disk update toBeDetached to 'true' along with setting detachOption: 'ForceDetach'.
      */
     detachOption?: string;
     /**
@@ -773,6 +807,10 @@ export interface DataDiskResponse {
      * The disk name.
      */
     name?: string;
+    /**
+     * The source resource identifier. It can be a snapshot, or disk restore point from which to create a disk.
+     */
+    sourceResource?: ApiEntityReferenceResponse;
     /**
      * Specifies whether the data disk is in process of detachment from the VirtualMachine/VirtualMachineScaleset
      */
@@ -869,6 +907,20 @@ export interface DedicatedHostInstanceViewWithNameResponse {
 }
 
 /**
+ * Indicates the target Virtual Machine ScaleSet properties upon triggering a seamless migration without downtime of the VMs via the ConvertToVirtualMachineScaleSet API.
+ */
+export interface DefaultVirtualMachineScaleSetInfoResponse {
+    /**
+     *  Indicates if the the maximum capacity of the default migrated Virtual Machine Scale Set after its migration will be constrained to a limited number of VMs.
+     */
+    constrainedMaximumCapacity: boolean;
+    /**
+     *  The default Virtual Machine ScaleSet Uri that the Availability Set will be moved to upon triggering a seamless migration via the ConvertToVirtualMachineScaleSet API.
+     */
+    defaultVirtualMachineScaleSet: SubResourceResponse;
+}
+
+/**
  * Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
  */
 export interface DiagnosticsProfileResponse {
@@ -887,7 +939,7 @@ export interface DiffDiskSettingsResponse {
      */
     option?: string;
     /**
-     * Specifies the ephemeral disk placement for operating system disk. Possible values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is: **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk** is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
+     * Specifies the ephemeral disk placement for operating system disk. Possible values are: **CacheDisk,** **ResourceDisk,** **NvmeDisk.** The defaulting behavior is: **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk** or **NvmeDisk** is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk. Minimum api-version for NvmeDisk: 2024-03-01.
      */
     placement?: string;
 }
@@ -1023,6 +1075,16 @@ export interface DiskSkuResponse {
 }
 
 /**
+ * Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+ */
+export interface EncryptionIdentityResponse {
+    /**
+     * Specifies ARM Resource ID of one of the user identities associated with the VM.
+     */
+    userAssignedIdentityResourceId?: string;
+}
+
+/**
  * Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the gallery artifact.
  */
 export interface EncryptionImagesResponse {
@@ -1102,6 +1164,38 @@ export interface EncryptionSettingsElementResponse {
      * Key Vault Key Url and vault id of the key encryption key. KeyEncryptionKey is optional and when provided is used to unwrap the disk encryption key.
      */
     keyEncryptionKey?: KeyVaultAndKeyReferenceResponse;
+}
+
+/**
+ * Specifies eventGridAndResourceGraph related Scheduled Event related configurations.
+ */
+export interface EventGridAndResourceGraphResponse {
+    /**
+     * Specifies if event grid and resource graph is enabled for Scheduled event related configurations.
+     */
+    enable?: boolean;
+}
+
+/**
+ * This is the executed Validation.
+ */
+export interface ExecutedValidationResponse {
+    /**
+     * This property specifies the starting timestamp.
+     */
+    executionTime?: string;
+    /**
+     * This property specifies the status of the validationProfile of the image version.
+     */
+    status?: string;
+    /**
+     * This property specifies the type of image version validation.
+     */
+    type?: string;
+    /**
+     * This property specifies the valid version of the validation.
+     */
+    version?: string;
 }
 
 /**
@@ -1258,9 +1352,13 @@ export interface GalleryArtifactVersionFullSourceResponse {
      */
     communityGalleryImageId?: string;
     /**
-     * The id of the gallery artifact version source. Can specify a disk uri, snapshot uri, user image or storage account resource.
+     * The id of the gallery artifact version source.
      */
     id?: string;
+    /**
+     * The resource Id of the source virtual machine.  Only required when capturing a virtual machine to source this Gallery Image Version.
+     */
+    virtualMachineId?: string;
 }
 
 /**
@@ -1290,7 +1388,7 @@ export interface GalleryDataDiskImageResponse {
  */
 export interface GalleryDiskImageSourceResponse {
     /**
-     * The id of the gallery artifact version source. Can specify a disk uri, snapshot uri, user image or storage account resource.
+     * The id of the gallery artifact version source.
      */
     id?: string;
     /**
@@ -1325,6 +1423,28 @@ export interface GalleryIdentifierResponse {
 }
 
 /**
+ * Identity for the virtual machine.
+ */
+export interface GalleryIdentityResponse {
+    /**
+     * The principal id of the gallery identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The AAD tenant id of the gallery identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * The type of identity used for the gallery. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove all identities from the gallery.
+     */
+    type?: string;
+    /**
+     * The list of user identities associated with the gallery. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentitiesResponseUserAssignedIdentities};
+}
+
+/**
  * A feature for gallery image.
  */
 export interface GalleryImageFeatureResponse {
@@ -1332,6 +1452,10 @@ export interface GalleryImageFeatureResponse {
      * The name of the gallery image feature.
      */
     name?: string;
+    /**
+     * The minimum gallery image version which supports this feature.
+     */
+    startsAtVersion?: string;
     /**
      * The value of the gallery image feature.
      */
@@ -1403,6 +1527,10 @@ export interface GalleryImageVersionSafetyProfileResponse {
      */
     allowDeletionOfReplicatedLocations?: boolean;
     /**
+     * Indicates whether or not the deletion is blocked for this Gallery Image Version if its End Of Life has not expired.
+     */
+    blockDeletionBeforeEndOfLife?: boolean;
+    /**
      * A list of Policy Violations that have been reported for this Gallery Image Version.
      */
     policyViolations: PolicyViolationResponse[];
@@ -1428,6 +1556,20 @@ export interface GalleryImageVersionStorageProfileResponse {
      * The source of the gallery artifact version.
      */
     source?: GalleryArtifactVersionFullSourceResponse;
+}
+
+/**
+ * Contains UEFI settings for the image version.
+ */
+export interface GalleryImageVersionUefiSettingsResponse {
+    /**
+     * Additional UEFI key signatures that will be added to the image in addition to the signature templates
+     */
+    additionalSignatures?: UefiKeySignaturesResponse;
+    /**
+     * The name of the template(s) that contains default UEFI key signatures that will be added to the image.
+     */
+    signatureTemplateNames?: string[];
 }
 
 /**
@@ -1505,6 +1647,20 @@ export interface HardwareProfileResponse {
      * Specifies the properties for customizing the size of the virtual machine. Minimum api-version: 2021-07-01. This feature is still in preview mode and is not supported for VirtualMachineScaleSet. Please follow the instructions in [VM Customization](https://aka.ms/vmcustomization) for more details.
      */
     vmSizeProperties?: VMSizePropertiesResponse;
+}
+
+/**
+ * Specifies particular host endpoint settings.
+ */
+export interface HostEndpointSettingsResponse {
+    /**
+     * Specifies the InVMAccessControlProfileVersion resource id in the format of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}
+     */
+    inVMAccessControlProfileReferenceId?: string;
+    /**
+     * Specifies the execution mode. In Audit mode, the system acts as if it is enforcing the access control policy, including emitting access denial entries in the logs but it does not actually deny any requests to host endpoints. In Enforce mode, the system will enforce the access control and it is the recommended mode of operation.
+     */
+    mode?: string;
 }
 
 /**
@@ -1681,6 +1837,16 @@ export interface ImageStorageProfileResponse {
      * Specifies whether an image is zone resilient or not. Default is false. Zone resilient images can be created only in regions that provide Zone Redundant Storage (ZRS).
      */
     zoneResilient?: boolean;
+}
+
+/**
+ * The security profile of a gallery image version
+ */
+export interface ImageVersionSecurityProfileResponse {
+    /**
+     * Contains UEFI settings for the image version.
+     */
+    uefiSettings?: GalleryImageVersionUefiSettingsResponse;
 }
 
 /**
@@ -2100,7 +2266,7 @@ export interface OSDiskResponse {
      */
     caching?: string;
     /**
-     * Specifies how the virtual machine should be created. Possible values are: **Attach.** This value is used when you are using a specialized disk to create the virtual machine. **FromImage.** This value is used when you are using an image to create the virtual machine. If you are using a platform image, you should also use the imageReference element described above. If you are using a marketplace image, you should also use the plan element previously described.
+     * Specifies how the virtual machine disk should be created. Possible values are **Attach:** This value is used when you are using a specialized disk to create the virtual machine. **FromImage:** This value is used when you are using an image to create the virtual machine. If you are using a platform image, you should also use the imageReference element described above. If you are using a marketplace image, you should also use the plan element previously described.
      */
     createOption: string;
     /**
@@ -2221,6 +2387,24 @@ export interface PatchSettingsResponse {
 }
 
 /**
+ * Describes the user-defined constraints for virtual machine hardware placement.
+ */
+export interface PlacementResponse {
+    /**
+     * This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.
+     */
+    excludeZones?: string[];
+    /**
+     * This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.
+     */
+    includeZones?: string[];
+    /**
+     * Specifies the policy for virtual machine's placement in availability zone. Possible values are: **Any** - An availability zone will be automatically picked by system as part of virtual machine creation.
+     */
+    zonePlacementPolicy?: string;
+}
+
+/**
  * Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
  */
 export interface PlanResponse {
@@ -2240,6 +2424,20 @@ export interface PlanResponse {
      * The publisher ID.
      */
     publisher?: string;
+}
+
+/**
+ * This is the platform attribute of the image version.
+ */
+export interface PlatformAttributeResponse {
+    /**
+     * This property specifies the name of the platformAttribute. It is read-only.
+     */
+    name: string;
+    /**
+     * This property specifies the value of the corresponding name property. It is read-only.
+     */
+    value: string;
 }
 
 /**
@@ -2349,6 +2547,32 @@ export interface ProximityPlacementGroupPropertiesResponseIntent {
 }
 
 /**
+ * Specifies ProxyAgent settings for the virtual machine or virtual machine scale set. Minimum api-version: 2023-09-01.
+ */
+export interface ProxyAgentSettingsResponse {
+    /**
+     * Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.
+     */
+    enabled?: boolean;
+    /**
+     * Specifies the IMDS endpoint settings while creating the virtual machine or virtual machine scale set. Minimum api-version: 2024-03-01.
+     */
+    imds?: HostEndpointSettingsResponse;
+    /**
+     * Increase the value of this property allows users to reset the key used for securing communication channel between guest and host.
+     */
+    keyIncarnationId?: number;
+    /**
+     * Specifies the mode that ProxyAgent will execute on. Warning: this property has been deprecated, please specify 'mode' under particular hostendpoint setting.
+     */
+    mode?: string;
+    /**
+     * Specifies the Wire Server endpoint settings while creating the virtual machine or virtual machine scale set. Minimum api-version: 2024-03-01.
+     */
+    wireServer?: HostEndpointSettingsResponse;
+}
+
+/**
  * Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
  */
 export interface PublicIPAddressSkuResponse {
@@ -2453,6 +2677,44 @@ export interface ReplicationStatusResponse {
 }
 
 /**
+ * Describes an resiliency policy - AutomaticZoneRebalancingPolicy, ResilientVMCreationPolicy and/or ResilientVMDeletionPolicy.
+ */
+export interface ResiliencyPolicyResponse {
+    /**
+     * The configuration parameters used while performing automatic AZ balancing.
+     */
+    automaticZoneRebalancingPolicy?: AutomaticZoneRebalancingPolicyResponse;
+    /**
+     * The configuration parameters used while performing resilient VM creation.
+     */
+    resilientVMCreationPolicy?: ResilientVMCreationPolicyResponse;
+    /**
+     * The configuration parameters used while performing resilient VM deletion.
+     */
+    resilientVMDeletionPolicy?: ResilientVMDeletionPolicyResponse;
+}
+
+/**
+ * The configuration parameters used while performing resilient VM creation.
+ */
+export interface ResilientVMCreationPolicyResponse {
+    /**
+     * Specifies whether resilient VM creation should be enabled on the virtual machine scale set. The default value is false.
+     */
+    enabled?: boolean;
+}
+
+/**
+ * The configuration parameters used while performing resilient VM deletion.
+ */
+export interface ResilientVMDeletionPolicyResponse {
+    /**
+     * Specifies whether resilient VM deletion should be enabled on the virtual machine scale set. The default value is false.
+     */
+    enabled?: boolean;
+}
+
+/**
  * Describes the resource range.
  */
 export interface ResourceRangeResponse {
@@ -2464,6 +2726,13 @@ export interface ResourceRangeResponse {
      * The minimum number of the resource.
      */
     min?: number;
+}
+
+export interface ResourceSharingProfileResponse {
+    /**
+     * Specifies an array of subscription resource IDs that capacity reservation group is shared with. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
+     */
+    subscriptionIds?: SubResourceResponse[];
 }
 
 /**
@@ -2681,6 +2950,10 @@ export interface RestorePointSourceVMStorageProfileResponse {
      */
     dataDisks?: RestorePointSourceVMDataDiskResponse[];
     /**
+     * Gets the disk controller type of the VM captured at the time of the restore point creation.
+     */
+    diskControllerType: string;
+    /**
      * Gets the OS disk of the VM captured at the time of the restore point creation.
      */
     osDisk?: RestorePointSourceVMOSDiskResponse;
@@ -2761,9 +3034,38 @@ export interface ScaleInPolicyResponse {
      */
     forceDeletion?: boolean;
     /**
+     * This property allows you to prioritize the deletion of unhealthy and inactive VMs when a virtual machine scale set is being scaled-in.(Feature in Preview)
+     */
+    prioritizeUnhealthyVMs?: boolean;
+    /**
      * The rules to be followed when scaling-in a virtual machine scale set. <br><br> Possible values are: <br><br> **Default** When a virtual machine scale set is scaled in, the scale set will first be balanced across zones if it is a zonal scale set. Then, it will be balanced across Fault Domains as far as possible. Within each Fault Domain, the virtual machines chosen for removal will be the newest ones that are not protected from scale-in. <br><br> **OldestVM** When a virtual machine scale set is being scaled-in, the oldest virtual machines that are not protected from scale-in will be chosen for removal. For zonal virtual machine scale sets, the scale set will first be balanced across zones. Within each zone, the oldest virtual machines that are not protected will be chosen for removal. <br><br> **NewestVM** When a virtual machine scale set is being scaled-in, the newest virtual machines that are not protected from scale-in will be chosen for removal. For zonal virtual machine scale sets, the scale set will first be balanced across zones. Within each zone, the newest virtual machines that are not protected will be chosen for removal. <br><br>
      */
     rules?: string[];
+}
+
+export interface ScheduledEventsAdditionalPublishingTargetsResponse {
+    /**
+     * The configuration parameters used while creating eventGridAndResourceGraph Scheduled Event setting.
+     */
+    eventGridAndResourceGraph?: EventGridAndResourceGraphResponse;
+}
+
+/**
+ * Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets Scheduled Event related configurations.
+ */
+export interface ScheduledEventsPolicyResponse {
+    /**
+     * The configuration parameters used while publishing scheduledEventsAdditionalPublishingTargets.
+     */
+    scheduledEventsAdditionalPublishingTargets?: ScheduledEventsAdditionalPublishingTargetsResponse;
+    /**
+     * The configuration parameters used while creating userInitiatedReboot scheduled event setting creation.
+     */
+    userInitiatedReboot?: UserInitiatedRebootResponse;
+    /**
+     * The configuration parameters used while creating userInitiatedRedeploy scheduled event setting creation.
+     */
+    userInitiatedRedeploy?: UserInitiatedRedeployResponse;
 }
 
 export interface ScheduledEventsProfileResponse {
@@ -2778,17 +3080,21 @@ export interface ScheduledEventsProfileResponse {
 }
 
 /**
- * Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+ * Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
  */
 export interface SecurityPostureReferenceResponse {
     /**
-     * List of virtual machine extensions to exclude when applying the Security Posture.
+     * The list of virtual machine extension names to exclude when applying the security posture.
      */
-    excludeExtensions?: VirtualMachineExtensionResponse[];
+    excludeExtensions?: string[];
     /**
-     * The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
+     * The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest
      */
-    id?: string;
+    id: string;
+    /**
+     * Whether the security posture can be overridden by the user.
+     */
+    isOverridable?: boolean;
 }
 
 /**
@@ -2799,6 +3105,14 @@ export interface SecurityProfileResponse {
      * This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. The default behavior is: The Encryption at host will be disabled unless this property is set to true for the resource.
      */
     encryptionAtHost?: boolean;
+    /**
+     * Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+     */
+    encryptionIdentity?: EncryptionIdentityResponse;
+    /**
+     * Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+     */
+    proxyAgentSettings?: ProxyAgentSettingsResponse;
     /**
      * Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. The default behavior is: UefiSettings will not be enabled unless this property is set.
      */
@@ -2835,7 +3149,7 @@ export interface SharingProfileGroupResponse {
      */
     ids?: string[];
     /**
-     * This property allows you to specify the type of sharing group. <br><br> Possible values are: <br><br> **Subscriptions** <br><br> **AADTenants**
+     * This property allows you to specify the type of sharing group. Possible values are: **Subscriptions,** **AADTenants.**
      */
     type?: string;
 }
@@ -2853,7 +3167,7 @@ export interface SharingProfileResponse {
      */
     groups: SharingProfileGroupResponse[];
     /**
-     * This property allows you to specify the permission of sharing gallery. <br><br> Possible values are: <br><br> **Private** <br><br> **Groups** <br><br> **Community**
+     * This property allows you to specify the permission of sharing gallery. Possible values are: **Private,** **Groups,** **Community.**
      */
     permissions?: string;
 }
@@ -2870,6 +3184,34 @@ export interface SharingStatusResponse {
      * Summary of all regional sharing status.
      */
     summary?: RegionalSharingStatusResponse[];
+}
+
+/**
+ * Specifies the sku profile for the virtual machine scale set. With this property the customer is able to specify a list of VM sizes and an allocation strategy.
+ */
+export interface SkuProfileResponse {
+    /**
+     * Specifies the allocation strategy for the virtual machine scale set based on which the VMs will be allocated.
+     */
+    allocationStrategy?: string;
+    /**
+     * Specifies the VM sizes for the virtual machine scale set.
+     */
+    vmSizes?: SkuProfileVMSizeResponse[];
+}
+
+/**
+ * Specifies the VM Size.
+ */
+export interface SkuProfileVMSizeResponse {
+    /**
+     * Specifies the name of the VM Size.
+     */
+    name?: string;
+    /**
+     * Specifies the rank (a.k.a priority) associated with the VM Size.
+     */
+    rank?: number;
 }
 
 /**
@@ -2966,6 +3308,10 @@ export interface SshPublicKeyResponse {
  * Specifies the storage settings for the virtual machine disks.
  */
 export interface StorageProfileResponse {
+    /**
+     * Specifies whether the regional disks should be aligned/moved to the VM zone. This is applicable only for VMs with placement property set. Please note that this change is irreversible. Minimum api-version: 2024-11-01.
+     */
+    alignRegionalDisksToVMZone?: boolean;
     /**
      * Specifies the parameters that are used to add a data disk to a virtual machine. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
      */
@@ -3083,6 +3429,42 @@ export interface TerminateNotificationProfileResponse {
 }
 
 /**
+ * A UEFI key signature.
+ */
+export interface UefiKeyResponse {
+    /**
+     * The type of key signature.
+     */
+    type?: string;
+    /**
+     * The value of the key signature.
+     */
+    value?: string[];
+}
+
+/**
+ * Additional UEFI key signatures that will be added to the image in addition to the signature templates
+ */
+export interface UefiKeySignaturesResponse {
+    /**
+     * The database of UEFI keys for this image version.
+     */
+    db?: UefiKeyResponse[];
+    /**
+     * The database of revoked UEFI keys for this image version.
+     */
+    dbx?: UefiKeyResponse[];
+    /**
+     * The Key Encryption Keys of this image version.
+     */
+    kek?: UefiKeyResponse[];
+    /**
+     * The Platform Key of this image version.
+     */
+    pk?: UefiKeyResponse;
+}
+
+/**
  * Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
  */
 export interface UefiSettingsResponse {
@@ -3141,6 +3523,10 @@ export interface UserArtifactSettingsResponse {
      * Optional. The name to assign the downloaded package file on the VM. This is limited to 4096 characters. If not specified, the package file will be named the same as the Gallery Application name.
      */
     packageFileName?: string;
+    /**
+     * Optional. The action to be taken with regards to install/update/remove of the gallery application in the event of a reboot.
+     */
+    scriptBehaviorAfterReboot?: string;
 }
 
 /**
@@ -3169,6 +3555,26 @@ export interface UserAssignedIdentitiesResponseUserAssignedIdentities {
 }
 
 /**
+ * Specifies Reboot related Scheduled Event related configurations.
+ */
+export interface UserInitiatedRebootResponse {
+    /**
+     * Specifies Reboot Scheduled Event related configurations.
+     */
+    automaticallyApprove?: boolean;
+}
+
+/**
+ * Specifies Redeploy related Scheduled Event related configurations.
+ */
+export interface UserInitiatedRedeployResponse {
+    /**
+     * Specifies Redeploy Scheduled Event related configurations.
+     */
+    automaticallyApprove?: boolean;
+}
+
+/**
  * Specifies the security profile settings for the managed disk. **Note:** It can only be set for Confidential VMs.
  */
 export interface VMDiskSecurityProfileResponse {
@@ -3177,7 +3583,7 @@ export interface VMDiskSecurityProfileResponse {
      */
     diskEncryptionSet?: DiskEncryptionSetParametersResponse;
     /**
-     * Specifies the EncryptionType of the managed disk. It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob, and VMGuestStateOnly for encryption of just the VMGuestState blob. **Note:** It can be set for only Confidential VMs.
+     * Specifies the EncryptionType of the managed disk. It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob.. **Note:** It can be set for only Confidential VMs.
      */
     securityEncryptionType?: string;
 }
@@ -3224,6 +3630,21 @@ export interface VMSizePropertiesResponse {
      * Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). **Setting this property to 1 also means that hyper-threading is disabled.**
      */
     vCPUsPerCore?: number;
+}
+
+/**
+ * This is the validations profile of a Gallery Image Version.
+ */
+export interface ValidationsProfileResponse {
+    executedValidations?: ExecutedValidationResponse[];
+    /**
+     * This specifies the pub, offer, sku and version of the image version metadata
+     */
+    platformAttributes?: PlatformAttributeResponse[];
+    /**
+     * The published time of the image version
+     */
+    validationEtag?: string;
 }
 
 /**
@@ -3461,6 +3882,10 @@ export interface VirtualMachineInstanceViewResponse {
      */
     hyperVGeneration?: string;
     /**
+     * [Preview Feature] Specifies whether the VM is currently in or out of the Standby Pool.
+     */
+    isVMInStandbyPool: boolean;
+    /**
      * The Maintenance Operation status on the virtual machine.
      */
     maintenanceRedeployStatus?: MaintenanceRedeployStatusResponse;
@@ -3497,7 +3922,7 @@ export interface VirtualMachineInstanceViewResponse {
      */
     vmAgent?: VirtualMachineAgentInstanceViewResponse;
     /**
-     * The health status for the VM.
+     * The application health status for the VM, provided through Application Health Extension.
      */
     vmHealth: VirtualMachineHealthStatusResponse;
 }
@@ -3520,6 +3945,14 @@ export interface VirtualMachineIpTagResponse {
  * Describes a virtual machine network interface configurations.
  */
 export interface VirtualMachineNetworkInterfaceConfigurationResponse {
+    /**
+     * Specifies whether the Auxiliary mode is enabled for the Network Interface resource.
+     */
+    auxiliaryMode?: string;
+    /**
+     * Specifies whether the Auxiliary sku is enabled for the Network Interface resource.
+     */
+    auxiliarySku?: string;
     /**
      * Specify what happens to the network interface when the VM is deleted
      */
@@ -3679,6 +4112,10 @@ export interface VirtualMachinePublicIPAddressDnsSettingsConfigurationResponse {
      * The Domain name label prefix of the PublicIPAddress resources that will be created. The generated name label is the concatenation of the domain name label and vm network profile unique ID.
      */
     domainNameLabel: string;
+    /**
+     * The Domain name label scope of the PublicIPAddress resources that will be created. The generated name label is the concatenation of the hashed domain name label with policy according to the domain name label scope and vm network profile unique ID.
+     */
+    domainNameLabelScope?: string;
 }
 
 /**
@@ -3970,6 +4407,20 @@ export interface VirtualMachineScaleSetManagedDiskParametersResponse {
 }
 
 /**
+ * Describes the Availability Set properties related to migration to Flexible Virtual Machine Scale Set.
+ */
+export interface VirtualMachineScaleSetMigrationInfoResponse {
+    /**
+     * Indicates the target Virtual Machine ScaleSet properties upon triggering a seamless migration without downtime of the VMs via the ConvertToVirtualMachineScaleSet API.
+     */
+    defaultVirtualMachineScaleSetInfo: DefaultVirtualMachineScaleSetInfoResponse;
+    /**
+     * Specifies the Virtual Machine Scale Set that the Availability Set is migrated to.
+     */
+    migrateToVirtualMachineScaleSet: SubResourceResponse;
+}
+
+/**
  * Describes a virtual machines scale sets network configuration's DNS settings.
  */
 export interface VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse {
@@ -3983,6 +4434,14 @@ export interface VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse {
  * Describes a virtual machine scale set network profile's network configurations.
  */
 export interface VirtualMachineScaleSetNetworkConfigurationResponse {
+    /**
+     * Specifies whether the Auxiliary mode is enabled for the Network Interface resource.
+     */
+    auxiliaryMode?: string;
+    /**
+     * Specifies whether the Auxiliary sku is enabled for the Network Interface resource.
+     */
+    auxiliarySku?: string;
     /**
      * Specify what happens to the network interface when the VM is deleted
      */
@@ -4034,7 +4493,7 @@ export interface VirtualMachineScaleSetNetworkProfileResponse {
      */
     healthProbe?: ApiEntityReferenceResponse;
     /**
-     * specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'
+     * Specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'. For support of all network properties, use '2022-11-01'.
      */
     networkApiVersion?: string;
     /**
@@ -4143,6 +4602,10 @@ export interface VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsRe
      * The Domain name label.The concatenation of the domain name label and vm index will be the domain name labels of the PublicIPAddress resources that will be created
      */
     domainNameLabel: string;
+    /**
+     * The Domain name label scope.The concatenation of the hashed domain name label that generated according to the policy from domain name label scope and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+     */
+    domainNameLabelScope?: string;
 }
 
 /**
@@ -4267,7 +4730,7 @@ export interface VirtualMachineScaleSetVMInstanceViewResponse {
      */
     vmAgent?: VirtualMachineAgentInstanceViewResponse;
     /**
-     * The health status for the VM.
+     * The application health status for the VM, provided through Application Health Extension or Load Balancer Health Probes.
      */
     vmHealth: VirtualMachineHealthStatusResponse;
 }
@@ -4335,7 +4798,7 @@ export interface VirtualMachineScaleSetVMProfileResponse {
      */
     scheduledEventsProfile?: ScheduledEventsProfileResponse;
     /**
-     * Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+     * Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
      */
     securityPostureReference?: SecurityPostureReferenceResponse;
     /**
@@ -4350,6 +4813,10 @@ export interface VirtualMachineScaleSetVMProfileResponse {
      * Specifies the storage settings for the virtual machine disks.
      */
     storageProfile?: VirtualMachineScaleSetStorageProfileResponse;
+    /**
+     * Specifies the time in which this VM profile for the Virtual Machine Scale Set was created. This value will be added to VMSS Flex VM tags when creating/updating the VMSS VM Profile. Minimum API version for this property is 2023-09-01.
+     */
+    timeCreated: string;
     /**
      * UserData for the virtual machines in the scale set, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
      */
@@ -4407,9 +4874,9 @@ export interface WindowsConfigurationResponse {
      */
     enableAutomaticUpdates?: boolean;
     /**
-     * Indicates whether VMAgent Platform Updates is enabled for the Windows virtual machine. Default value is false.
+     * Indicates whether VMAgent Platform Updates are enabled for the Windows Virtual Machine.
      */
-    enableVMAgentPlatformUpdates?: boolean;
+    enableVMAgentPlatformUpdates: boolean;
     /**
      * [Preview Feature] Specifies settings related to VM Guest Patching on Windows.
      */
@@ -4441,26 +4908,3 @@ export interface WindowsVMGuestPatchAutomaticByPlatformSettingsResponse {
      */
     rebootSetting?: string;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

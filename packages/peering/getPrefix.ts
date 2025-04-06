@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets an existing prefix with the specified name under the given subscription, resource group and peering service.
- * Azure REST API version: 2022-10-01.
+ *
+ * Uses Azure REST API version 2022-10-01.
  */
 export function getPrefix(args: GetPrefixArgs, opts?: pulumi.InvokeOptions): Promise<GetPrefixResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,6 +39,10 @@ export interface GetPrefixArgs {
  * The peering service prefix class.
  */
 export interface GetPrefixResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The error message for validation state
      */
@@ -81,7 +86,8 @@ export interface GetPrefixResult {
 }
 /**
  * Gets an existing prefix with the specified name under the given subscription, resource group and peering service.
- * Azure REST API version: 2022-10-01.
+ *
+ * Uses Azure REST API version 2022-10-01.
  */
 export function getPrefixOutput(args: GetPrefixOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrefixResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

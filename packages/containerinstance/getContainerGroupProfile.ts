@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the properties of the specified container group profile in the specified subscription and resource group. The operation returns the properties of container group profile including containers, image registry credentials, restart policy, IP address type, OS type, volumes, current revision number, etc.
- * Azure REST API version: 2024-05-01-preview.
+ *
+ * Uses Azure REST API version 2024-05-01-preview.
  */
 export function getContainerGroupProfile(args: GetContainerGroupProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerGroupProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetContainerGroupProfileArgs {
  * A container group profile.
  */
 export interface GetContainerGroupProfileResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The properties for confidential container group
      */
@@ -114,7 +119,8 @@ export interface GetContainerGroupProfileResult {
 }
 /**
  * Gets the properties of the specified container group profile in the specified subscription and resource group. The operation returns the properties of container group profile including containers, image registry credentials, restart policy, IP address type, OS type, volumes, current revision number, etc.
- * Azure REST API version: 2024-05-01-preview.
+ *
+ * Uses Azure REST API version 2024-05-01-preview.
  */
 export function getContainerGroupProfileOutput(args: GetContainerGroupProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContainerGroupProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

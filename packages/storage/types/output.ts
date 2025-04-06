@@ -90,6 +90,16 @@ export interface AzureFilesIdentityBasedAuthenticationResponse {
 }
 
 /**
+ * This property defines the creation time based filtering condition. Blob Inventory schema parameter 'Creation-Time' is mandatory with this filter.
+ */
+export interface BlobInventoryCreationTimeResponse {
+    /**
+     * When set the policy filters the objects that are created in the last N days. Where N is an integer value between 1 to 36500.
+     */
+    lastNDays?: number;
+}
+
+/**
  * An object that defines the blob inventory rule.
  */
 export interface BlobInventoryPolicyDefinitionResponse {
@@ -123,6 +133,10 @@ export interface BlobInventoryPolicyFilterResponse {
      * An array of predefined enum values. Valid values include blockBlob, appendBlob, pageBlob. Hns accounts does not support pageBlobs. This field is required when definition.objectType property is set to 'Blob'.
      */
     blobTypes?: string[];
+    /**
+     * This property is used to filter objects based on the object creation time
+     */
+    creationTime?: BlobInventoryCreationTimeResponse;
     /**
      * An array of strings with maximum 10 blob prefixes to be excluded from the inventory.
      */
@@ -545,6 +559,24 @@ export interface ExtendedLocationResponse {
 }
 
 /**
+ * File Share Paid Bursting properties.
+ */
+export interface FileSharePropertiesResponseFileSharePaidBursting {
+    /**
+     * Indicates whether paid bursting is enabled for the share. This property is only for file shares created under Files Provisioned v1 SSD account type.
+     */
+    paidBurstingEnabled?: boolean;
+    /**
+     * The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 10340 which is the maximum allowed bandwidth for a share.
+     */
+    paidBurstingMaxBandwidthMibps?: number;
+    /**
+     * The maximum paid bursting IOPS for the share. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 102400 which is the maximum allowed IOPS for a share.
+     */
+    paidBurstingMaxIops?: number;
+}
+
+/**
  * Statistics related to replication for storage account's Blob, Table, Queue and File services. It is only available when geo-redundant replication is enabled for the storage account.
  */
 export interface GeoReplicationStatsResponse {
@@ -553,9 +585,21 @@ export interface GeoReplicationStatsResponse {
      */
     canFailover: boolean;
     /**
+     * A boolean flag which indicates whether or not planned account failover is supported for the account.
+     */
+    canPlannedFailover: boolean;
+    /**
      * All primary writes preceding this UTC date/time value are guaranteed to be available for read operations. Primary writes following this point in time may or may not be available for reads. Element may be default value if value of LastSyncTime is not available, this can happen if secondary is offline or we are in bootstrap.
      */
     lastSyncTime: string;
+    /**
+     * The redundancy type of the account after an account failover is performed.
+     */
+    postFailoverRedundancy: string;
+    /**
+     * The redundancy type of the account after a planned account failover is performed.
+     */
+    postPlannedFailoverRedundancy: string;
     /**
      * The status of the secondary location. Possible values are: - Live: Indicates that the secondary location is active and operational. - Bootstrap: Indicates initial synchronization from the primary location to the secondary location is in progress.This typically occurs when replication is first enabled. - Unavailable: Indicates that the secondary location is temporarily unavailable.
      */
@@ -860,11 +904,11 @@ export interface ManagementPolicyRuleResponse {
 }
 
 /**
- * The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+ * The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
  */
 export interface ManagementPolicySchemaResponse {
     /**
-     * The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+     * The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
      */
     rules: ManagementPolicyRuleResponse[];
 }
@@ -982,6 +1026,16 @@ export interface ObjectReplicationPolicyFilterResponse {
 }
 
 /**
+ * Optional. The object replication policy metrics feature options.
+ */
+export interface ObjectReplicationPolicyPropertiesResponseMetrics {
+    /**
+     * Indicates whether object replication metrics feature is enabled for the policy.
+     */
+    enabled?: boolean;
+}
+
+/**
  * The replication policy rule between two containers.
  */
 export interface ObjectReplicationPolicyRuleResponse {
@@ -1005,7 +1059,7 @@ export interface ObjectReplicationPolicyRuleResponse {
 
 export interface PermissionScopeResponse {
     /**
-     * The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), and Create (c).
+     * The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), Create (c), Modify Ownership (o), and Modify Permissions (p).
      */
     permissions: string;
     /**
@@ -1159,7 +1213,7 @@ export interface RoutingPreferenceResponse {
  */
 export interface SasPolicyResponse {
     /**
-     * The SAS expiration action. Can only be Log.
+     * The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.
      */
     expirationAction: string;
     /**
@@ -1398,23 +1452,23 @@ export interface StorageTaskAssignmentReportResponse {
  */
 export interface StorageTaskReportPropertiesResponse {
     /**
-     * End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+     * End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
      */
     finishTime: string;
     /**
-     * Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+     * Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
      */
     objectFailedCount: string;
     /**
-     * Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+     * Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
      */
     objectsOperatedOnCount: string;
     /**
-     * Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+     * Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
      */
     objectsSucceededCount: string;
     /**
-     * Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+     * Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
      */
     objectsTargetedCount: string;
     /**
@@ -1430,7 +1484,7 @@ export interface StorageTaskReportPropertiesResponse {
      */
     runStatusError: string;
     /**
-     * Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+     * Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
      */
     startTime: string;
     /**
@@ -1665,7 +1719,3 @@ export function virtualNetworkRuleResponseProvideDefaults(val: VirtualNetworkRul
         action: (val.action) ?? "Allow",
     };
 }
-
-
-
-

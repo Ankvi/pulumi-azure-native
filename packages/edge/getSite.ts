@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Site
- * Azure REST API version: 2024-02-01-preview.
+ *
+ * Uses Azure REST API version 2024-02-01-preview.
  */
 export function getSite(args: GetSiteArgs, opts?: pulumi.InvokeOptions): Promise<GetSiteResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -29,6 +30,10 @@ export interface GetSiteArgs {
  */
 export interface GetSiteResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
@@ -51,7 +56,8 @@ export interface GetSiteResult {
 }
 /**
  * Get a Site
- * Azure REST API version: 2024-02-01-preview.
+ *
+ * Uses Azure REST API version 2024-02-01-preview.
  */
 export function getSiteOutput(args: GetSiteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSiteResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

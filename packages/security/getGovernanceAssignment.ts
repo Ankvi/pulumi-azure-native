@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a specific governanceAssignment for the requested scope by AssignmentKey
- * Azure REST API version: 2022-01-01-preview.
+ *
+ * Uses Azure REST API version 2022-01-01-preview.
  */
 export function getGovernanceAssignment(args: GetGovernanceAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetGovernanceAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +38,10 @@ export interface GetGovernanceAssignmentResult {
      * The additional data for the governance assignment - e.g. links to ticket (optional), see example
      */
     readonly additionalData?: types.outputs.GovernanceAssignmentAdditionalDataResponse;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
      */
@@ -72,7 +77,8 @@ export interface GetGovernanceAssignmentResult {
 }
 /**
  * Get a specific governanceAssignment for the requested scope by AssignmentKey
- * Azure REST API version: 2022-01-01-preview.
+ *
+ * Uses Azure REST API version 2022-01-01-preview.
  */
 export function getGovernanceAssignmentOutput(args: GetGovernanceAssignmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGovernanceAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

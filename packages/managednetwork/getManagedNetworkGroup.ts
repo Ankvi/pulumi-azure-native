@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The Get ManagedNetworkGroups operation gets a Managed Network Group specified by the resource group, Managed Network name, and group name
- * Azure REST API version: 2019-06-01-preview.
+ *
+ * Uses Azure REST API version 2019-06-01-preview.
  */
 export function getManagedNetworkGroup(args: GetManagedNetworkGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedNetworkGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetManagedNetworkGroupArgs {
  * The Managed Network Group resource
  */
 export interface GetManagedNetworkGroupResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -80,7 +85,8 @@ export interface GetManagedNetworkGroupResult {
 }
 /**
  * The Get ManagedNetworkGroups operation gets a Managed Network Group specified by the resource group, Managed Network name, and group name
- * Azure REST API version: 2019-06-01-preview.
+ *
+ * Uses Azure REST API version 2019-06-01-preview.
  */
 export function getManagedNetworkGroupOutput(args: GetManagedNetworkGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManagedNetworkGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

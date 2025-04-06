@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a data connector.
- * Azure REST API version: 2023-02-01.
+ *
+ * Uses Azure REST API version 2024-09-01.
  */
 export function getTIDataConnector(args: GetTIDataConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetTIDataConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetTIDataConnectorArgs {
  * Represents threat intelligence data connector.
  */
 export interface GetTIDataConnectorResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The available data types for the connector.
      */
@@ -73,7 +78,8 @@ export interface GetTIDataConnectorResult {
 }
 /**
  * Gets a data connector.
- * Azure REST API version: 2023-02-01.
+ *
+ * Uses Azure REST API version 2024-09-01.
  */
 export function getTIDataConnectorOutput(args: GetTIDataConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTIDataConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

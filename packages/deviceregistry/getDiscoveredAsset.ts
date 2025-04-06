@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a DiscoveredAsset
- * Azure REST API version: 2024-09-01-preview.
+ *
+ * Uses Azure REST API version 2024-09-01-preview.
  */
 export function getDiscoveredAsset(args: GetDiscoveredAssetArgs, opts?: pulumi.InvokeOptions): Promise<GetDiscoveredAssetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,6 +33,10 @@ export interface GetDiscoveredAssetResult {
      * A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
      */
     readonly assetEndpointProfileRef: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set.
      */
@@ -127,7 +132,8 @@ export interface GetDiscoveredAssetResult {
 }
 /**
  * Get a DiscoveredAsset
- * Azure REST API version: 2024-09-01-preview.
+ *
+ * Uses Azure REST API version 2024-09-01-preview.
  */
 export function getDiscoveredAssetOutput(args: GetDiscoveredAssetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiscoveredAssetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

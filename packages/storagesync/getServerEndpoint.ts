@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a ServerEndpoint.
- * Azure REST API version: 2022-06-01.
  *
- * Other available API versions: 2022-09-01.
+ * Uses Azure REST API version 2022-09-01.
+ *
+ * Other available API versions: 2022-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagesync [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getServerEndpoint(args: GetServerEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetServerEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,6 +42,10 @@ export interface GetServerEndpointArgs {
  */
 export interface GetServerEndpointResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Cloud Tiering.
      */
     readonly cloudTiering?: string;
@@ -53,7 +58,7 @@ export interface GetServerEndpointResult {
      */
     readonly friendlyName?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -105,6 +110,10 @@ export interface GetServerEndpointResult {
      */
     readonly recallStatus: types.outputs.ServerEndpointRecallStatusResponse;
     /**
+     * Server Endpoint provisioning status
+     */
+    readonly serverEndpointProvisioningStatus?: types.outputs.ServerEndpointProvisioningStatusResponse;
+    /**
      * Server Local path.
      */
     readonly serverLocalPath?: string;
@@ -139,9 +148,10 @@ export interface GetServerEndpointResult {
 }
 /**
  * Get a ServerEndpoint.
- * Azure REST API version: 2022-06-01.
  *
- * Other available API versions: 2022-09-01.
+ * Uses Azure REST API version 2022-09-01.
+ *
+ * Other available API versions: 2022-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagesync [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getServerEndpointOutput(args: GetServerEndpointOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

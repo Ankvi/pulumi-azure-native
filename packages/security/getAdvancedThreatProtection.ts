@@ -2,7 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the Advanced Threat Protection settings for the specified resource.
- * Azure REST API version: 2019-01-01.
+ *
+ * Uses Azure REST API version 2019-01-01.
+ *
+ * Other available API versions: 2017-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAdvancedThreatProtection(args: GetAdvancedThreatProtectionArgs, opts?: pulumi.InvokeOptions): Promise<GetAdvancedThreatProtectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +31,10 @@ export interface GetAdvancedThreatProtectionArgs {
  */
 export interface GetAdvancedThreatProtectionResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Resource Id
      */
     readonly id: string;
@@ -46,7 +53,10 @@ export interface GetAdvancedThreatProtectionResult {
 }
 /**
  * Gets the Advanced Threat Protection settings for the specified resource.
- * Azure REST API version: 2019-01-01.
+ *
+ * Uses Azure REST API version 2019-01-01.
+ *
+ * Other available API versions: 2017-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAdvancedThreatProtectionOutput(args: GetAdvancedThreatProtectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAdvancedThreatProtectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

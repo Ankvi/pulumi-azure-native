@@ -33,6 +33,10 @@ export interface GuestCredentialArgs {
      */
     password?: pulumi.Input<string>;
     /**
+     * Private key used to authenticate to a virtual machine through ssh.
+     */
+    privateKey?: pulumi.Input<string>;
+    /**
      * Gets or sets username to connect with the guest.
      */
     username?: pulumi.Input<string>;
@@ -226,6 +230,10 @@ export interface OsProfileForVMInstanceArgs {
      * Gets or sets the type of the os.
      */
     osType?: pulumi.Input<string | enums.OsType>;
+    /**
+     * Windows Configuration.
+     */
+    windowsConfiguration?: pulumi.Input<WindowsConfigurationArgs>;
 }
 
 /**
@@ -360,6 +368,52 @@ export interface VirtualDiskArgs {
     unitNumber?: pulumi.Input<number>;
 }
 
-
-
-
+/**
+ * Specifies the Windows Configuration settings for the virtual machine.
+ */
+export interface WindowsConfigurationArgs {
+    /**
+     * Sets a value indicating whether auto logon is enabled.
+     */
+    autoLogon?: pulumi.Input<boolean>;
+    /**
+     * Sets auto logon count.
+     */
+    autoLogonCount?: pulumi.Input<number>;
+    /**
+     * Sets domain name that vm should join.
+     */
+    domainName?: pulumi.Input<string>;
+    /**
+     * Sets domain user password.
+     */
+    domainUserPassword?: pulumi.Input<string>;
+    /**
+     * Sets domain username.
+     */
+    domainUsername?: pulumi.Input<string>;
+    /**
+     * Sets first logon commands
+     */
+    firstLogonCommands?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Sets full name of the owner of the vm.
+     */
+    fullName?: pulumi.Input<string>;
+    /**
+     * Sets org name to which the owner of the vm belongs.
+     */
+    orgName?: pulumi.Input<string>;
+    /**
+     * Sets product id of the vm.
+     */
+    productId?: pulumi.Input<string>;
+    /**
+     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Time zone name correspond to time zones listed at Microsoft Time Zone name values(https://learn.microsoft.com/en-us/previous-versions/windows/embedded/ms912391(v=winembedded.11)).
+     */
+    timeZone?: pulumi.Input<string>;
+    /**
+     * Sets work group name that vm should join.
+     */
+    workGroupName?: pulumi.Input<string>;
+}

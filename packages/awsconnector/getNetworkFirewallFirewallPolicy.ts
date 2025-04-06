@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a NetworkFirewallFirewallPolicy
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getNetworkFirewallFirewallPolicy(args: GetNetworkFirewallFirewallPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkFirewallFirewallPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetNetworkFirewallFirewallPolicyArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetNetworkFirewallFirewallPolicyResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetNetworkFirewallFirewallPolicyResult {
 }
 /**
  * Get a NetworkFirewallFirewallPolicy
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getNetworkFirewallFirewallPolicyOutput(args: GetNetworkFirewallFirewallPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkFirewallFirewallPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

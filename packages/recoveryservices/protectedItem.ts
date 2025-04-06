@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Base class for backup items.
- * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-02-01.
  *
- * Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-10-01.
+ * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+ *
+ * Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ProtectedItem extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class ProtectedItem extends pulumi.CustomResource {
         return obj['__pulumiType'] === ProtectedItem.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Optional ETag.
      */
@@ -91,9 +96,11 @@ export class ProtectedItem extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vaultName"] = args ? args.vaultName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -102,7 +109,7 @@ export class ProtectedItem extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:recoveryservices/v20160601:ProtectedItem" }, { type: "azure-native:recoveryservices/v20190513:ProtectedItem" }, { type: "azure-native:recoveryservices/v20190615:ProtectedItem" }, { type: "azure-native:recoveryservices/v20201001:ProtectedItem" }, { type: "azure-native:recoveryservices/v20201201:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210101:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210201:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210201preview:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210210:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210301:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210401:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210601:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210701:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210801:ProtectedItem" }, { type: "azure-native:recoveryservices/v20211001:ProtectedItem" }, { type: "azure-native:recoveryservices/v20211201:ProtectedItem" }, { type: "azure-native:recoveryservices/v20220101:ProtectedItem" }, { type: "azure-native:recoveryservices/v20220201:ProtectedItem" }, { type: "azure-native:recoveryservices/v20220301:ProtectedItem" }, { type: "azure-native:recoveryservices/v20220401:ProtectedItem" }, { type: "azure-native:recoveryservices/v20220601preview:ProtectedItem" }, { type: "azure-native:recoveryservices/v20220901preview:ProtectedItem" }, { type: "azure-native:recoveryservices/v20220930preview:ProtectedItem" }, { type: "azure-native:recoveryservices/v20221001:ProtectedItem" }, { type: "azure-native:recoveryservices/v20230101:ProtectedItem" }, { type: "azure-native:recoveryservices/v20230201:ProtectedItem" }, { type: "azure-native:recoveryservices/v20230401:ProtectedItem" }, { type: "azure-native:recoveryservices/v20230601:ProtectedItem" }, { type: "azure-native:recoveryservices/v20230801:ProtectedItem" }, { type: "azure-native:recoveryservices/v20240101:ProtectedItem" }, { type: "azure-native:recoveryservices/v20240201:ProtectedItem" }, { type: "azure-native:recoveryservices/v20240401:ProtectedItem" }, { type: "azure-native:recoveryservices/v20240430preview:ProtectedItem" }, { type: "azure-native:recoveryservices/v20240730preview:ProtectedItem" }, { type: "azure-native:recoveryservices/v20241001:ProtectedItem" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:recoveryservices/v20160601:ProtectedItem" }, { type: "azure-native:recoveryservices/v20190513:ProtectedItem" }, { type: "azure-native:recoveryservices/v20190615:ProtectedItem" }, { type: "azure-native:recoveryservices/v20201001:ProtectedItem" }, { type: "azure-native:recoveryservices/v20201201:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210101:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210201:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210201preview:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210210:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210301:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210401:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210601:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210701:ProtectedItem" }, { type: "azure-native:recoveryservices/v20210801:ProtectedItem" }, { type: "azure-native:recoveryservices/v20211001:ProtectedItem" }, { type: "azure-native:recoveryservices/v20211201:ProtectedItem" }, { type: "azure-native:recoveryservices/v20220101:ProtectedItem" }, { type: "azure-native:recoveryservices/v20220201:ProtectedItem" }, { type: "azure-native:recoveryservices/v20220301:ProtectedItem" }, { type: "azure-native:recoveryservices/v20220401:ProtectedItem" }, { type: "azure-native:recoveryservices/v20220601preview:ProtectedItem" }, { type: "azure-native:recoveryservices/v20220901preview:ProtectedItem" }, { type: "azure-native:recoveryservices/v20220930preview:ProtectedItem" }, { type: "azure-native:recoveryservices/v20221001:ProtectedItem" }, { type: "azure-native:recoveryservices/v20230101:ProtectedItem" }, { type: "azure-native:recoveryservices/v20230201:ProtectedItem" }, { type: "azure-native:recoveryservices/v20230401:ProtectedItem" }, { type: "azure-native:recoveryservices/v20230601:ProtectedItem" }, { type: "azure-native:recoveryservices/v20230801:ProtectedItem" }, { type: "azure-native:recoveryservices/v20240101:ProtectedItem" }, { type: "azure-native:recoveryservices/v20240201:ProtectedItem" }, { type: "azure-native:recoveryservices/v20240401:ProtectedItem" }, { type: "azure-native:recoveryservices/v20240430preview:ProtectedItem" }, { type: "azure-native:recoveryservices/v20240730preview:ProtectedItem" }, { type: "azure-native:recoveryservices/v20241001:ProtectedItem" }, { type: "azure-native:recoveryservices/v20241101preview:ProtectedItem" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ProtectedItem.__pulumiType, name, resourceInputs, opts);
     }

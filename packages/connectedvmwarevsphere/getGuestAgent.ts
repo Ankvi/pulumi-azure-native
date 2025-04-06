@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Implements GuestAgent GET method.
- * Azure REST API version: 2022-07-15-preview.
  *
- * Other available API versions: 2023-03-01-preview.
+ * Uses Azure REST API version 2023-03-01-preview.
+ *
+ * Other available API versions: 2022-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getGuestAgent(args: GetGuestAgentArgs, opts?: pulumi.InvokeOptions): Promise<GetGuestAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +37,10 @@ export interface GetGuestAgentArgs {
  */
 export interface GetGuestAgentResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Username / Password Credentials to provision guest agent.
      */
     readonly credentials?: types.outputs.GuestCredentialResponse;
@@ -48,7 +53,7 @@ export interface GetGuestAgentResult {
      */
     readonly httpProxyConfig?: types.outputs.HttpProxyConfigurationResponse;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -56,11 +61,15 @@ export interface GetGuestAgentResult {
      */
     readonly name: string;
     /**
+     * The resource id of the private link scope this machine is assigned to, if any.
+     */
+    readonly privateLinkScopeResourceId?: string;
+    /**
      * Gets or sets the guest agent provisioning action.
      */
     readonly provisioningAction?: string;
     /**
-     * Gets or sets the provisioning state.
+     * Gets the provisioning state.
      */
     readonly provisioningState: string;
     /**
@@ -72,7 +81,7 @@ export interface GetGuestAgentResult {
      */
     readonly statuses: types.outputs.ResourceStatusResponse[];
     /**
-     * The system data.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
@@ -86,9 +95,10 @@ export interface GetGuestAgentResult {
 }
 /**
  * Implements GuestAgent GET method.
- * Azure REST API version: 2022-07-15-preview.
  *
- * Other available API versions: 2023-03-01-preview.
+ * Uses Azure REST API version 2023-03-01-preview.
+ *
+ * Other available API versions: 2022-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getGuestAgentOutput(args: GetGuestAgentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGuestAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

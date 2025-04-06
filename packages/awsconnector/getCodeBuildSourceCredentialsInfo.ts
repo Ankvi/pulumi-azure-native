@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a CodeBuildSourceCredentialsInfo
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getCodeBuildSourceCredentialsInfo(args: GetCodeBuildSourceCredentialsInfoArgs, opts?: pulumi.InvokeOptions): Promise<GetCodeBuildSourceCredentialsInfoResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetCodeBuildSourceCredentialsInfoArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetCodeBuildSourceCredentialsInfoResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetCodeBuildSourceCredentialsInfoResult {
 }
 /**
  * Get a CodeBuildSourceCredentialsInfo
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getCodeBuildSourceCredentialsInfoOutput(args: GetCodeBuildSourceCredentialsInfoOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCodeBuildSourceCredentialsInfoResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

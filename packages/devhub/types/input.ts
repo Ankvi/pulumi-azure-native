@@ -43,6 +43,50 @@ export interface DeploymentPropertiesArgs {
 }
 
 /**
+ * GitHub Workflow Profile
+ */
+export interface GitHubWorkflowProfileArgs {
+    /**
+     * Information on the azure container registry
+     */
+    acr?: pulumi.Input<ACRArgs>;
+    /**
+     * The Azure Kubernetes Cluster Resource the application will be deployed to.
+     */
+    aksResourceId?: pulumi.Input<string>;
+    /**
+     * Repository Branch Name
+     */
+    branchName?: pulumi.Input<string>;
+    deploymentProperties?: pulumi.Input<DeploymentPropertiesArgs>;
+    /**
+     * Path to Dockerfile Build Context within the repository.
+     */
+    dockerBuildContext?: pulumi.Input<string>;
+    /**
+     * Path to the Dockerfile within the repository.
+     */
+    dockerfile?: pulumi.Input<string>;
+    lastWorkflowRun?: pulumi.Input<WorkflowRunArgs>;
+    /**
+     * Kubernetes namespace the application is deployed to.
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * The fields needed for OIDC with GitHub.
+     */
+    oidcCredentials?: pulumi.Input<GitHubWorkflowProfileOidcCredentialsArgs>;
+    /**
+     * Repository Name
+     */
+    repositoryName?: pulumi.Input<string>;
+    /**
+     * Repository Owner
+     */
+    repositoryOwner?: pulumi.Input<string>;
+}
+
+/**
  * The fields needed for OIDC with GitHub.
  */
 export interface GitHubWorkflowProfileOidcCredentialsArgs {
@@ -116,6 +160,3 @@ export interface WorkflowRunArgs {
      */
     workflowRunStatus?: pulumi.Input<string | enums.WorkflowRunStatus>;
 }
-
-
-

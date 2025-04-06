@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Lists the available Service Providers for creating Connection Settings
- * Azure REST API version: 2022-09-15.
  *
- * Other available API versions: 2018-07-12, 2020-06-02, 2021-03-01, 2021-05-01-preview, 2022-06-15-preview, 2023-09-15-preview.
+ * Uses Azure REST API version 2023-09-15-preview.
+ *
+ * Other available API versions: 2022-09-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native botservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listBotConnectionServiceProviders(args?: ListBotConnectionServiceProvidersArgs, opts?: pulumi.InvokeOptions): Promise<ListBotConnectionServiceProvidersResult> {
     args = args || {};
@@ -32,9 +33,10 @@ export interface ListBotConnectionServiceProvidersResult {
 }
 /**
  * Lists the available Service Providers for creating Connection Settings
- * Azure REST API version: 2022-09-15.
  *
- * Other available API versions: 2018-07-12, 2020-06-02, 2021-03-01, 2021-05-01-preview, 2022-06-15-preview, 2023-09-15-preview.
+ * Uses Azure REST API version 2023-09-15-preview.
+ *
+ * Other available API versions: 2022-09-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native botservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listBotConnectionServiceProvidersOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListBotConnectionServiceProvidersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

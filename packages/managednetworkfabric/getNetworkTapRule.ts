@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get Network Tap Rule resource details.
- * Azure REST API version: 2023-06-15.
+ *
+ * Uses Azure REST API version 2023-06-15.
  */
 export function getNetworkTapRule(args: GetNetworkTapRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkTapRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +37,10 @@ export interface GetNetworkTapRuleResult {
      * Switch configuration description.
      */
     readonly annotation?: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Configuration state of the resource.
      */
@@ -99,7 +104,8 @@ export interface GetNetworkTapRuleResult {
 }
 /**
  * Get Network Tap Rule resource details.
- * Azure REST API version: 2023-06-15.
+ *
+ * Uses Azure REST API version 2023-06-15.
  */
 export function getNetworkTapRuleOutput(args: GetNetworkTapRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkTapRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

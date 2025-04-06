@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Dra model.
- * Azure REST API version: 2021-02-16-preview.
+ *
+ * Uses Azure REST API version 2021-02-16-preview. In version 2.x of the Azure Native provider, it used API version 2021-02-16-preview.
  */
 export class Dra extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class Dra extends pulumi.CustomResource {
         return obj['__pulumiType'] === Dra.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Gets or sets the name of the resource.
      */
@@ -70,17 +75,19 @@ export class Dra extends pulumi.CustomResource {
             resourceInputs["fabricName"] = args ? args.fabricName : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:datareplication/v20210216preview:Dra" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:datareplication/v20210216preview:Dra" }, { type: "azure-native:datareplication/v20240901:Dra" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Dra.__pulumiType, name, resourceInputs, opts);
     }

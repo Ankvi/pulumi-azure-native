@@ -145,6 +145,43 @@ export interface DiagnosticsUploadConfigurationArgs {
 }
 
 /**
+ * Configuration for sending packet core events to Azure Event Hub.
+ */
+export interface EventHubConfigurationArgs {
+    /**
+     * Resource ID  of Azure Event Hub to send packet core events to.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The duration (in seconds) between UE usage reports.
+     */
+    reportingInterval?: pulumi.Input<number>;
+}
+/**
+ * eventHubConfigurationArgsProvideDefaults sets the appropriate defaults for EventHubConfigurationArgs
+ */
+export function eventHubConfigurationArgsProvideDefaults(val: EventHubConfigurationArgs): EventHubConfigurationArgs {
+    return {
+        ...val,
+        reportingInterval: (val.reportingInterval) ?? 1800,
+    };
+}
+
+/**
+ * A key used for SUPI concealment.
+ */
+export interface HomeNetworkPublicKeyArgs {
+    /**
+     * The Home Network Public Key Identifier determines which public key was used to generate the SUCI sent to the AMF. See TS 23.003 Section 2.2B Section 5.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The URL of Azure Key Vault secret containing the private key, versioned or unversioned. For example: https://contosovault.vault.azure.net/secrets/mySuciPrivateKey/562a4bb76b524a1493a6afe8e536ee78.
+     */
+    url?: pulumi.Input<string>;
+}
+
+/**
  * HTTPS server certificate configuration.
  */
 export interface HttpsServerCertificateArgs {
@@ -178,9 +215,17 @@ export function installationArgsProvideDefaults(val: InstallationArgs): Installa
  */
 export interface InterfacePropertiesArgs {
     /**
+     * The IPv4 addresses of the endpoints to send BFD probes to.
+     */
+    bfdIpv4Endpoints?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The IPv4 address.
      */
     ipv4Address?: pulumi.Input<string>;
+    /**
+     * The list of IPv4 addresses, for a multi-node system.
+     */
+    ipv4AddressList?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The default IPv4 gateway (router).
      */
@@ -193,6 +238,10 @@ export interface InterfacePropertiesArgs {
      * The logical name for this interface. This should match one of the interfaces configured on your Azure Stack Edge device.
      */
     name?: pulumi.Input<string>;
+    /**
+     * VLAN identifier of the network interface. Example: 501.
+     */
+    vlanId?: pulumi.Input<number>;
 }
 
 /**
@@ -241,6 +290,16 @@ export interface MobileNetworkResourceIdArgs {
      * Mobile network resource ID.
      */
     id: pulumi.Input<string>;
+}
+
+/**
+ * Configuration enabling NAS reroute.
+ */
+export interface NASRerouteConfigurationArgs {
+    /**
+     * The macro network's MME group ID. This is where unknown UEs are sent to via NAS reroute.
+     */
+    macroMmeGroupId: pulumi.Input<number>;
 }
 
 /**
@@ -417,7 +476,7 @@ export interface PlatformConfigurationArgs {
 }
 
 /**
- * Public land mobile network (PLMN) ID.
+ * Public land mobile network (PLMN) ID. This is made up of the mobile country code and mobile network code, as defined in https://www.itu.int/rec/T-REC-E.212. The values 001-01 and 001-001 can be used for testing and the values 999-99 and 999-999 can be used on internal private networks.
  */
 export interface PlmnIdArgs {
     /**
@@ -478,6 +537,38 @@ export function portReuseHoldTimesArgsProvideDefaults(val: PortReuseHoldTimesArg
         tcp: (val.tcp) ?? 120,
         udp: (val.udp) ?? 60,
     };
+}
+
+/**
+ * Configuration relating to a particular PLMN
+ */
+export interface PublicLandMobileNetworkArgs {
+    /**
+     * Configuration relating to SUPI concealment.
+     */
+    homeNetworkPublicKeys?: pulumi.Input<PublicLandMobileNetworkHomeNetworkPublicKeysArgs>;
+    /**
+     * Mobile country code (MCC).
+     */
+    mcc: pulumi.Input<string>;
+    /**
+     * Mobile network code (MNC).
+     */
+    mnc: pulumi.Input<string>;
+}
+
+/**
+ * Configuration relating to SUPI concealment.
+ */
+export interface PublicLandMobileNetworkHomeNetworkPublicKeysArgs {
+    /**
+     * This provides a mapping to identify which public key has been used for SUPI concealment using the Profile A Protection Scheme.
+     */
+    profileA?: pulumi.Input<pulumi.Input<HomeNetworkPublicKeyArgs>[]>;
+    /**
+     * This provides a mapping to identify which public key has been used for SUPI concealment using the Profile B Protection Scheme.
+     */
+    profileB?: pulumi.Input<pulumi.Input<HomeNetworkPublicKeyArgs>[]>;
 }
 
 /**
@@ -552,6 +643,20 @@ export interface ServiceResourceIdArgs {
      * Service resource ID.
      */
     id: pulumi.Input<string>;
+}
+
+/**
+ * Signaling configuration for the packet core.
+ */
+export interface SignalingConfigurationArgs {
+    /**
+     * An ordered list of NAS encryption algorithms, used to encrypt control plane traffic between the UE and packet core, in order from most to least preferred. If not specified, the packet core will use a built-in default ordering.
+     */
+    nasEncryption?: pulumi.Input<pulumi.Input<string | enums.NasEncryptionType>[]>;
+    /**
+     * Configuration enabling 4G NAS reroute.
+     */
+    nasReroute?: pulumi.Input<NASRerouteConfigurationArgs>;
 }
 
 /**
@@ -644,8 +749,9 @@ export interface SnssaiArgs {
     sst: pulumi.Input<number>;
 }
 
-
-
-
-
-
+export interface UserConsentConfigurationArgs {
+    /**
+     * Allow Microsoft to access non-PII telemetry information from the packet core.
+     */
+    allowSupportTelemetryAccess?: pulumi.Input<boolean>;
+}

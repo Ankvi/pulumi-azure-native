@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the properties of the connected registry.
- * Azure REST API version: 2023-01-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+ * Uses Azure REST API version 2024-11-01-preview.
+ *
+ * Other available API versions: 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-01-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getConnectedRegistry(args: GetConnectedRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectedRegistryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,6 +41,10 @@ export interface GetConnectedRegistryResult {
      */
     readonly activation: types.outputs.ActivationPropertiesResponse;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The list of the ACR token resource IDs used to authenticate clients to the connected registry.
      */
     readonly clientTokenIds?: string[];
@@ -47,6 +52,10 @@ export interface GetConnectedRegistryResult {
      * The current connection state of the connected registry.
      */
     readonly connectionState: string;
+    /**
+     * The garbage collection properties of the connected registry.
+     */
+    readonly garbageCollection?: types.outputs.GarbageCollectionPropertiesResponse;
     /**
      * The resource ID.
      */
@@ -102,9 +111,10 @@ export interface GetConnectedRegistryResult {
 }
 /**
  * Gets the properties of the connected registry.
- * Azure REST API version: 2023-01-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+ * Uses Azure REST API version 2024-11-01-preview.
+ *
+ * Other available API versions: 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-01-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getConnectedRegistryOutput(args: GetConnectedRegistryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectedRegistryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

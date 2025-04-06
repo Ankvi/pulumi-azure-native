@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a billing profile by its ID. The operation is supported for billing accounts with agreement type Microsoft Customer Agreement and Microsoft Partner Agreement.
- * Azure REST API version: 2024-04-01.
+ *
+ * Uses Azure REST API version 2024-04-01.
  */
 export function getBillingProfile(args: GetBillingProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetBillingProfileArgs {
  * A billing profile.
  */
 export interface GetBillingProfileResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -55,7 +60,8 @@ export interface GetBillingProfileResult {
 }
 /**
  * Gets a billing profile by its ID. The operation is supported for billing accounts with agreement type Microsoft Customer Agreement and Microsoft Partner Agreement.
- * Azure REST API version: 2024-04-01.
+ *
+ * Uses Azure REST API version 2024-04-01.
  */
 export function getBillingProfileOutput(args: GetBillingProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBillingProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

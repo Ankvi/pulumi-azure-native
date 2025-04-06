@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Cloud shell console
- * Azure REST API version: 2018-10-01. Prior API version in Azure Native 1.x: 2018-10-01.
+ *
+ * Uses Azure REST API version 2018-10-01. In version 2.x of the Azure Native provider, it used API version 2018-10-01.
  */
 export class Console extends pulumi.CustomResource {
     /**
@@ -33,6 +34,10 @@ export class Console extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Cloud shell console properties.
      */
     public readonly properties!: pulumi.Output<types.outputs.ConsolePropertiesResponse>;
@@ -53,7 +58,9 @@ export class Console extends pulumi.CustomResource {
             }
             resourceInputs["consoleName"] = args ? args.consoleName : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * An environment for hosting container apps
- * Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2022-03-01.
  *
- * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview.
+ * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
+ *
+ * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ManagedEnvironment extends pulumi.CustomResource {
     /**
@@ -39,6 +40,10 @@ export class ManagedEnvironment extends pulumi.CustomResource {
      */
     public readonly appLogsConfiguration!: pulumi.Output<types.outputs.AppLogsConfigurationResponse | undefined>;
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Custom domain configuration for the environment
      */
     public readonly customDomainConfiguration!: pulumi.Output<types.outputs.CustomDomainConfigurationResponse | undefined>;
@@ -50,6 +55,10 @@ export class ManagedEnvironment extends pulumi.CustomResource {
      * Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
      */
     public readonly daprAIInstrumentationKey!: pulumi.Output<string | undefined>;
+    /**
+     * The configuration of Dapr component.
+     */
+    public /*out*/ readonly daprConfiguration!: pulumi.Output<types.outputs.DaprConfigurationResponse | undefined>;
     /**
      * Default Domain Name for the cluster
      */
@@ -63,6 +72,14 @@ export class ManagedEnvironment extends pulumi.CustomResource {
      */
     public /*out*/ readonly eventStreamEndpoint!: pulumi.Output<string>;
     /**
+     * Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
+     */
+    public readonly infrastructureResourceGroup!: pulumi.Output<string | undefined>;
+    /**
+     * The configuration of Keda component.
+     */
+    public /*out*/ readonly kedaConfiguration!: pulumi.Output<types.outputs.KedaConfigurationResponse | undefined>;
+    /**
      * Kind of the Environment.
      */
     public readonly kind!: pulumi.Output<string | undefined>;
@@ -75,13 +92,17 @@ export class ManagedEnvironment extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Peer authentication settings for the Managed Environment
+     */
+    public readonly peerAuthentication!: pulumi.Output<types.outputs.ManagedEnvironmentResponsePeerAuthentication | undefined>;
+    /**
+     * Peer traffic settings for the Managed Environment
+     */
+    public readonly peerTrafficConfiguration!: pulumi.Output<types.outputs.ManagedEnvironmentResponsePeerTrafficConfiguration | undefined>;
+    /**
      * Provisioning state of the Environment.
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
-    /**
-     * SKU properties of the Environment.
-     */
-    public readonly sku!: pulumi.Output<types.outputs.EnvironmentSkuPropertiesResponse | undefined>;
     /**
      * Static IP of the Environment
      */
@@ -130,17 +151,22 @@ export class ManagedEnvironment extends pulumi.CustomResource {
             resourceInputs["daprAIConnectionString"] = args ? args.daprAIConnectionString : undefined;
             resourceInputs["daprAIInstrumentationKey"] = args ? args.daprAIInstrumentationKey : undefined;
             resourceInputs["environmentName"] = args ? args.environmentName : undefined;
+            resourceInputs["infrastructureResourceGroup"] = args ? args.infrastructureResourceGroup : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["peerAuthentication"] = args ? args.peerAuthentication : undefined;
+            resourceInputs["peerTrafficConfiguration"] = args ? args.peerTrafficConfiguration : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vnetConfiguration"] = args ? args.vnetConfiguration : undefined;
             resourceInputs["workloadProfiles"] = args ? args.workloadProfiles : undefined;
             resourceInputs["zoneRedundant"] = args ? args.zoneRedundant : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["daprConfiguration"] = undefined /*out*/;
             resourceInputs["defaultDomain"] = undefined /*out*/;
             resourceInputs["deploymentErrors"] = undefined /*out*/;
             resourceInputs["eventStreamEndpoint"] = undefined /*out*/;
+            resourceInputs["kedaConfiguration"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["staticIp"] = undefined /*out*/;
@@ -148,17 +174,22 @@ export class ManagedEnvironment extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["appLogsConfiguration"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["customDomainConfiguration"] = undefined /*out*/;
             resourceInputs["daprAIConnectionString"] = undefined /*out*/;
             resourceInputs["daprAIInstrumentationKey"] = undefined /*out*/;
+            resourceInputs["daprConfiguration"] = undefined /*out*/;
             resourceInputs["defaultDomain"] = undefined /*out*/;
             resourceInputs["deploymentErrors"] = undefined /*out*/;
             resourceInputs["eventStreamEndpoint"] = undefined /*out*/;
+            resourceInputs["infrastructureResourceGroup"] = undefined /*out*/;
+            resourceInputs["kedaConfiguration"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["peerAuthentication"] = undefined /*out*/;
+            resourceInputs["peerTrafficConfiguration"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
-            resourceInputs["sku"] = undefined /*out*/;
             resourceInputs["staticIp"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
@@ -168,7 +199,7 @@ export class ManagedEnvironment extends pulumi.CustomResource {
             resourceInputs["zoneRedundant"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20220101preview:ManagedEnvironment" }, { type: "azure-native:app/v20220301:ManagedEnvironment" }, { type: "azure-native:app/v20220601preview:ManagedEnvironment" }, { type: "azure-native:app/v20221001:ManagedEnvironment" }, { type: "azure-native:app/v20221101preview:ManagedEnvironment" }, { type: "azure-native:app/v20230401preview:ManagedEnvironment" }, { type: "azure-native:app/v20230501:ManagedEnvironment" }, { type: "azure-native:app/v20230502preview:ManagedEnvironment" }, { type: "azure-native:app/v20230801preview:ManagedEnvironment" }, { type: "azure-native:app/v20231102preview:ManagedEnvironment" }, { type: "azure-native:app/v20240202preview:ManagedEnvironment" }, { type: "azure-native:app/v20240301:ManagedEnvironment" }, { type: "azure-native:app/v20240802preview:ManagedEnvironment" }, { type: "azure-native:app/v20241002preview:ManagedEnvironment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20220101preview:ManagedEnvironment" }, { type: "azure-native:app/v20220301:ManagedEnvironment" }, { type: "azure-native:app/v20220601preview:ManagedEnvironment" }, { type: "azure-native:app/v20221001:ManagedEnvironment" }, { type: "azure-native:app/v20221101preview:ManagedEnvironment" }, { type: "azure-native:app/v20230401preview:ManagedEnvironment" }, { type: "azure-native:app/v20230501:ManagedEnvironment" }, { type: "azure-native:app/v20230502preview:ManagedEnvironment" }, { type: "azure-native:app/v20230801preview:ManagedEnvironment" }, { type: "azure-native:app/v20231102preview:ManagedEnvironment" }, { type: "azure-native:app/v20240202preview:ManagedEnvironment" }, { type: "azure-native:app/v20240301:ManagedEnvironment" }, { type: "azure-native:app/v20240802preview:ManagedEnvironment" }, { type: "azure-native:app/v20241002preview:ManagedEnvironment" }, { type: "azure-native:app/v20250101:ManagedEnvironment" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedEnvironment.__pulumiType, name, resourceInputs, opts);
     }
@@ -199,6 +230,10 @@ export interface ManagedEnvironmentArgs {
      */
     environmentName?: pulumi.Input<string>;
     /**
+     * Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
+     */
+    infrastructureResourceGroup?: pulumi.Input<string>;
+    /**
      * Kind of the Environment.
      */
     kind?: pulumi.Input<string>;
@@ -207,13 +242,17 @@ export interface ManagedEnvironmentArgs {
      */
     location?: pulumi.Input<string>;
     /**
+     * Peer authentication settings for the Managed Environment
+     */
+    peerAuthentication?: pulumi.Input<types.inputs.ManagedEnvironmentPeerAuthenticationArgs>;
+    /**
+     * Peer traffic settings for the Managed Environment
+     */
+    peerTrafficConfiguration?: pulumi.Input<types.inputs.ManagedEnvironmentPeerTrafficConfigurationArgs>;
+    /**
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
-    /**
-     * SKU properties of the Environment.
-     */
-    sku?: pulumi.Input<types.inputs.EnvironmentSkuPropertiesArgs>;
     /**
      * Resource tags.
      */

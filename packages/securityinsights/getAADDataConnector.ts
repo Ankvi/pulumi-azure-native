@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a data connector.
- * Azure REST API version: 2023-02-01.
+ *
+ * Uses Azure REST API version 2024-09-01.
  */
 export function getAADDataConnector(args: GetAADDataConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAADDataConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetAADDataConnectorArgs {
  * Represents AAD (Azure Active Directory) data connector.
  */
 export interface GetAADDataConnectorResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The available data types for the connector.
      */
@@ -69,7 +74,8 @@ export interface GetAADDataConnectorResult {
 }
 /**
  * Gets a data connector.
- * Azure REST API version: 2023-02-01.
+ *
+ * Uses Azure REST API version 2024-09-01.
  */
 export function getAADDataConnectorOutput(args: GetAADDataConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAADDataConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

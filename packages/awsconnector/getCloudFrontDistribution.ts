@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a CloudFrontDistribution
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getCloudFrontDistribution(args: GetCloudFrontDistributionArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudFrontDistributionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetCloudFrontDistributionArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetCloudFrontDistributionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetCloudFrontDistributionResult {
 }
 /**
  * Get a CloudFrontDistribution
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getCloudFrontDistributionOutput(args: GetCloudFrontDistributionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudFrontDistributionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

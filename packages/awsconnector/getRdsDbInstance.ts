@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a RdsDBInstance
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getRdsDbInstance(args: GetRdsDbInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetRdsDbInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetRdsDbInstanceArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetRdsDbInstanceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetRdsDbInstanceResult {
 }
 /**
  * Get a RdsDBInstance
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getRdsDbInstanceOutput(args: GetRdsDbInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRdsDbInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

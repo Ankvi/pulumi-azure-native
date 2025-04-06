@@ -2,9 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the access policy with the specified name in the specified environment.
- * Azure REST API version: 2020-05-15.
  *
- * Other available API versions: 2021-06-30-preview.
+ * Uses Azure REST API version 2020-05-15.
+ *
+ * Other available API versions: 2021-03-31-preview, 2021-06-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native timeseriesinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAccessPolicy(args: GetAccessPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,6 +36,10 @@ export interface GetAccessPolicyArgs {
  */
 export interface GetAccessPolicyResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * An description of the access policy.
      */
     readonly description?: string;
@@ -61,9 +66,10 @@ export interface GetAccessPolicyResult {
 }
 /**
  * Gets the access policy with the specified name in the specified environment.
- * Azure REST API version: 2020-05-15.
  *
- * Other available API versions: 2021-06-30-preview.
+ * Uses Azure REST API version 2020-05-15.
+ *
+ * Other available API versions: 2021-03-31-preview, 2021-06-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native timeseriesinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAccessPolicyOutput(args: GetAccessPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

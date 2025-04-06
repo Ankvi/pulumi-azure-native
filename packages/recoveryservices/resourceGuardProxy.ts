@@ -2,9 +2,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-02-01-preview.
+ * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
  *
- * Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-10-01.
+ * Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ResourceGuardProxy extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class ResourceGuardProxy extends pulumi.CustomResource {
         return obj['__pulumiType'] === ResourceGuardProxy.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Optional ETag.
      */
@@ -82,9 +86,11 @@ export class ResourceGuardProxy extends pulumi.CustomResource {
             resourceInputs["resourceGuardProxyName"] = args ? args.resourceGuardProxyName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vaultName"] = args ? args.vaultName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -93,7 +99,7 @@ export class ResourceGuardProxy extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:recoveryservices/v20210201preview:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20210701:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20210801:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20211001:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20211201:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20220101:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20220201:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20220301:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20220401:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20220601preview:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20220901preview:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20220930preview:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20221001:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20230101:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20230201:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20230401:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20230601:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20230801:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20240101:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20240201:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20240401:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20240430preview:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20240730preview:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20241001:ResourceGuardProxy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:recoveryservices/v20210201preview:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20210701:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20210801:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20211001:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20211201:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20220101:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20220201:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20220301:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20220401:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20220601preview:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20220901preview:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20220930preview:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20221001:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20230101:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20230201:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20230401:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20230601:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20230801:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20240101:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20240201:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20240401:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20240430preview:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20240730preview:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20241001:ResourceGuardProxy" }, { type: "azure-native:recoveryservices/v20241101preview:ResourceGuardProxy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ResourceGuardProxy.__pulumiType, name, resourceInputs, opts);
     }

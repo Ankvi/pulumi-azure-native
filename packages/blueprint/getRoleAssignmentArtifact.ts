@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get a blueprint artifact.
- * Azure REST API version: 2018-11-01-preview.
+ *
+ * Uses Azure REST API version 2018-11-01-preview.
  */
 export function getRoleAssignmentArtifact(args: GetRoleAssignmentArtifactArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleAssignmentArtifactResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,6 +33,10 @@ export interface GetRoleAssignmentArtifactArgs {
  * Blueprint artifact that applies a Role assignment.
  */
 export interface GetRoleAssignmentArtifactResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Artifacts which need to be deployed before the specified artifact.
      */
@@ -76,7 +81,8 @@ export interface GetRoleAssignmentArtifactResult {
 }
 /**
  * Get a blueprint artifact.
- * Azure REST API version: 2018-11-01-preview.
+ *
+ * Uses Azure REST API version 2018-11-01-preview.
  */
 export function getRoleAssignmentArtifactOutput(args: GetRoleAssignmentArtifactOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoleAssignmentArtifactResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

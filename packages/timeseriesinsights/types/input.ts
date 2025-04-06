@@ -39,24 +39,6 @@ export interface LocalTimestampTimeZoneOffsetArgs {
 }
 
 /**
- * A collection of information about the state of the connection between service consumer and provider.
- */
-export interface PrivateLinkServiceConnectionStateArgs {
-    /**
-     * A message indicating if changes on the service provider require any updates on the consumer.
-     */
-    actionsRequired?: pulumi.Input<string>;
-    /**
-     * The reason for approval/rejection of the connection.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-     */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
-}
-
-/**
  * A key property for the reference data set. A reference data set can have multiple key properties.
  */
 export interface ReferenceDataSetKeyPropertyArgs {
@@ -107,5 +89,3 @@ export interface WarmStoreConfigurationPropertiesArgs {
      */
     dataRetention: pulumi.Input<string>;
 }
-
-

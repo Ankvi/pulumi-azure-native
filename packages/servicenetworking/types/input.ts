@@ -11,6 +11,16 @@ export interface AssociationSubnetArgs {
 }
 
 /**
+ * SecurityPolicyConfigurations Subresource of Traffic Controller.
+ */
+export interface SecurityPolicyConfigurationsArgs {
+    /**
+     * Contains reference to a WAF-type security policy.
+     */
+    wafSecurityPolicy?: pulumi.Input<WafSecurityPolicyArgs>;
+}
+
+/**
  * Web Application Firewall Policy
  */
 export interface WafPolicyArgs {
@@ -20,6 +30,12 @@ export interface WafPolicyArgs {
     id: pulumi.Input<string>;
 }
 
-
-
-
+/**
+ * Web Application Firewall Security Policy
+ */
+export interface WafSecurityPolicyArgs {
+    /**
+     * Resource ID of the Waf Security Policy
+     */
+    id: pulumi.Input<string>;
+}

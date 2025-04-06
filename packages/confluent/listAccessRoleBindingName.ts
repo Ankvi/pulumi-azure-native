@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Details of the role binding names returned on successful response
- * Azure REST API version: 2024-02-13.
  *
- * Other available API versions: 2024-07-01.
+ * Uses Azure REST API version 2024-07-01.
+ *
+ * Other available API versions: 2024-02-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listAccessRoleBindingName(args: ListAccessRoleBindingNameArgs, opts?: pulumi.InvokeOptions): Promise<ListAccessRoleBindingNameResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -50,9 +51,10 @@ export interface ListAccessRoleBindingNameResult {
 }
 /**
  * Details of the role binding names returned on successful response
- * Azure REST API version: 2024-02-13.
  *
- * Other available API versions: 2024-07-01.
+ * Uses Azure REST API version 2024-07-01.
+ *
+ * Other available API versions: 2024-02-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listAccessRoleBindingNameOutput(args: ListAccessRoleBindingNameOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListAccessRoleBindingNameResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

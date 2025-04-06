@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the properties of an Azure Video Indexer account.
- * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2024-01-01, 2024-04-01-preview, 2024-06-01-preview, 2024-09-23-preview, 2025-01-01.
+ * Uses Azure REST API version 2024-01-01.
+ *
+ * Other available API versions: 2022-08-01, 2024-04-01-preview, 2024-06-01-preview, 2024-09-23-preview, 2025-01-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native videoindexer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,6 +40,10 @@ export interface GetAccountResult {
      */
     readonly accountName: string;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
@@ -51,10 +56,6 @@ export interface GetAccountResult {
      */
     readonly location: string;
     /**
-     * The media services details
-     */
-    readonly mediaServices?: types.outputs.MediaServicesForPutRequestResponse;
-    /**
      * The name of the resource
      */
     readonly name: string;
@@ -62,6 +63,10 @@ export interface GetAccountResult {
      * Gets the status of the account at the time the operation was called.
      */
     readonly provisioningState: string;
+    /**
+     * The storage services details
+     */
+    readonly storageServices?: types.outputs.StorageServicesForPutRequestResponse;
     /**
      * The system meta data relating to this resource.
      */
@@ -85,9 +90,10 @@ export interface GetAccountResult {
 }
 /**
  * Gets the properties of an Azure Video Indexer account.
- * Azure REST API version: 2022-08-01.
  *
- * Other available API versions: 2024-01-01, 2024-04-01-preview, 2024-06-01-preview, 2024-09-23-preview, 2025-01-01.
+ * Uses Azure REST API version 2024-01-01.
+ *
+ * Other available API versions: 2022-08-01, 2024-04-01-preview, 2024-06-01-preview, 2024-09-23-preview, 2025-01-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native videoindexer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

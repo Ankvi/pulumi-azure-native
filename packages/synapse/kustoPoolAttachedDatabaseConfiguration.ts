@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Class representing an attached database configuration.
- * Azure REST API version: 2021-06-01-preview. Prior API version in Azure Native 1.x: 2021-06-01-preview.
+ *
+ * Uses Azure REST API version 2021-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-06-01-preview.
  */
 export class KustoPoolAttachedDatabaseConfiguration extends pulumi.CustomResource {
     /**
@@ -36,6 +37,10 @@ export class KustoPoolAttachedDatabaseConfiguration extends pulumi.CustomResourc
      * The list of databases from the clusterResourceId which are currently attached to the kusto pool.
      */
     public /*out*/ readonly attachedDatabaseNames!: pulumi.Output<string[]>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The name of the database which you would like to attach, use * if you want to follow all current and future databases.
      */
@@ -112,12 +117,14 @@ export class KustoPoolAttachedDatabaseConfiguration extends pulumi.CustomResourc
             resourceInputs["tableLevelSharingProperties"] = args ? args.tableLevelSharingProperties : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
             resourceInputs["attachedDatabaseNames"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["attachedDatabaseNames"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["databaseName"] = undefined /*out*/;
             resourceInputs["defaultPrincipalsModificationKind"] = undefined /*out*/;
             resourceInputs["kustoPoolResourceId"] = undefined /*out*/;

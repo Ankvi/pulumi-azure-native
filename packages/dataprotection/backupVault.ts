@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Backup Vault Resource
- * Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2021-01-01.
  *
- * Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-01-01.
+ * Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
+ *
+ * Other available API versions: 2023-01-01, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dataprotection [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class BackupVault extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class BackupVault extends pulumi.CustomResource {
         return obj['__pulumiType'] === BackupVault.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Optional ETag.
      */
@@ -91,10 +96,12 @@ export class BackupVault extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vaultName"] = args ? args.vaultName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -105,7 +112,7 @@ export class BackupVault extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dataprotection/v20210101:BackupVault" }, { type: "azure-native:dataprotection/v20210201preview:BackupVault" }, { type: "azure-native:dataprotection/v20210601preview:BackupVault" }, { type: "azure-native:dataprotection/v20210701:BackupVault" }, { type: "azure-native:dataprotection/v20211001preview:BackupVault" }, { type: "azure-native:dataprotection/v20211201preview:BackupVault" }, { type: "azure-native:dataprotection/v20220101:BackupVault" }, { type: "azure-native:dataprotection/v20220201preview:BackupVault" }, { type: "azure-native:dataprotection/v20220301:BackupVault" }, { type: "azure-native:dataprotection/v20220331preview:BackupVault" }, { type: "azure-native:dataprotection/v20220401:BackupVault" }, { type: "azure-native:dataprotection/v20220501:BackupVault" }, { type: "azure-native:dataprotection/v20220901preview:BackupVault" }, { type: "azure-native:dataprotection/v20221001preview:BackupVault" }, { type: "azure-native:dataprotection/v20221101preview:BackupVault" }, { type: "azure-native:dataprotection/v20221201:BackupVault" }, { type: "azure-native:dataprotection/v20230101:BackupVault" }, { type: "azure-native:dataprotection/v20230401preview:BackupVault" }, { type: "azure-native:dataprotection/v20230501:BackupVault" }, { type: "azure-native:dataprotection/v20230601preview:BackupVault" }, { type: "azure-native:dataprotection/v20230801preview:BackupVault" }, { type: "azure-native:dataprotection/v20231101:BackupVault" }, { type: "azure-native:dataprotection/v20231201:BackupVault" }, { type: "azure-native:dataprotection/v20240201preview:BackupVault" }, { type: "azure-native:dataprotection/v20240301:BackupVault" }, { type: "azure-native:dataprotection/v20240401:BackupVault" }, { type: "azure-native:dataprotection/v20250101:BackupVault" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dataprotection/v20210101:BackupVault" }, { type: "azure-native:dataprotection/v20210201preview:BackupVault" }, { type: "azure-native:dataprotection/v20210601preview:BackupVault" }, { type: "azure-native:dataprotection/v20210701:BackupVault" }, { type: "azure-native:dataprotection/v20211001preview:BackupVault" }, { type: "azure-native:dataprotection/v20211201preview:BackupVault" }, { type: "azure-native:dataprotection/v20220101:BackupVault" }, { type: "azure-native:dataprotection/v20220201preview:BackupVault" }, { type: "azure-native:dataprotection/v20220301:BackupVault" }, { type: "azure-native:dataprotection/v20220331preview:BackupVault" }, { type: "azure-native:dataprotection/v20220401:BackupVault" }, { type: "azure-native:dataprotection/v20220501:BackupVault" }, { type: "azure-native:dataprotection/v20220901preview:BackupVault" }, { type: "azure-native:dataprotection/v20221001preview:BackupVault" }, { type: "azure-native:dataprotection/v20221101preview:BackupVault" }, { type: "azure-native:dataprotection/v20221201:BackupVault" }, { type: "azure-native:dataprotection/v20230101:BackupVault" }, { type: "azure-native:dataprotection/v20230401preview:BackupVault" }, { type: "azure-native:dataprotection/v20230501:BackupVault" }, { type: "azure-native:dataprotection/v20230601preview:BackupVault" }, { type: "azure-native:dataprotection/v20230801preview:BackupVault" }, { type: "azure-native:dataprotection/v20231101:BackupVault" }, { type: "azure-native:dataprotection/v20231201:BackupVault" }, { type: "azure-native:dataprotection/v20240201preview:BackupVault" }, { type: "azure-native:dataprotection/v20240301:BackupVault" }, { type: "azure-native:dataprotection/v20240401:BackupVault" }, { type: "azure-native:dataprotection/v20250101:BackupVault" }, { type: "azure-native:dataprotection/v20250201:BackupVault" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(BackupVault.__pulumiType, name, resourceInputs, opts);
     }

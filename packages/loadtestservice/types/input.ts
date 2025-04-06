@@ -41,5 +41,3 @@ export interface ManagedServiceIdentityArgs {
      */
     userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
-
-

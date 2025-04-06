@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Defines the GuestAgent.
- * Azure REST API version: 2022-12-15-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview.
+ * Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-15-preview.
+ *
+ * Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class GuestAgent extends pulumi.CustomResource {
     /**
@@ -35,23 +36,23 @@ export class GuestAgent extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Username / Password Credentials to provision guest agent.
      */
     public readonly credentials!: pulumi.Output<types.outputs.GuestCredentialResponse | undefined>;
     /**
-     * HTTP Proxy configuration for the VM.
-     */
-    public readonly httpProxyConfig!: pulumi.Output<types.outputs.HttpProxyConfigurationResponse | undefined>;
-    /**
      * The name of the resource
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The guest agent provisioning action.
      */
     public readonly provisioningAction!: pulumi.Output<string | undefined>;
     /**
-     * The provisioning state.
+     * Provisioning state of the virtual machine instance.
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
@@ -78,25 +79,21 @@ export class GuestAgent extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'resourceGroupName'");
-            }
-            if ((!args || args.virtualMachineName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'virtualMachineName'");
+            if ((!args || args.resourceUri === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'resourceUri'");
             }
             resourceInputs["credentials"] = args ? args.credentials : undefined;
-            resourceInputs["httpProxyConfig"] = args ? args.httpProxyConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["provisioningAction"] = args ? args.provisioningAction : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["virtualMachineName"] = args ? args.virtualMachineName : undefined;
+            resourceInputs["resourceUri"] = args ? args.resourceUri : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["credentials"] = undefined /*out*/;
-            resourceInputs["httpProxyConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningAction"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -105,7 +102,7 @@ export class GuestAgent extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20210901preview:GuestAgent" }, { type: "azure-native:azurestackhci/v20221215preview:GuestAgent" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20221215preview:GuestAgent" }, { type: "azure-native:azurestackhci/v20230701preview:GuestAgent" }, { type: "azure-native:azurestackhci/v20230901preview:GuestAgent" }, { type: "azure-native:azurestackhci/v20240101:GuestAgent" }, { type: "azure-native:azurestackhci/v20240201preview:GuestAgent" }, { type: "azure-native:azurestackhci/v20240501preview:GuestAgent" }, { type: "azure-native:azurestackhci/v20240715preview:GuestAgent" }, { type: "azure-native:azurestackhci/v20240801preview:GuestAgent" }, { type: "azure-native:azurestackhci/v20241001preview:GuestAgent" }, { type: "azure-native:azurestackhci/v20250201preview:GuestAgent" }, { type: "azure-native:azurestackhci/v20250401preview:GuestAgent" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GuestAgent.__pulumiType, name, resourceInputs, opts);
     }
@@ -120,23 +117,11 @@ export interface GuestAgentArgs {
      */
     credentials?: pulumi.Input<types.inputs.GuestCredentialArgs>;
     /**
-     * HTTP Proxy configuration for the VM.
-     */
-    httpProxyConfig?: pulumi.Input<types.inputs.HttpProxyConfigurationArgs>;
-    /**
-     * Name of the guestAgents.
-     */
-    name?: pulumi.Input<string>;
-    /**
      * The guest agent provisioning action.
      */
     provisioningAction?: pulumi.Input<string | types.enums.ProvisioningAction>;
     /**
-     * The name of the resource group. The name is case insensitive.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
-    resourceGroupName: pulumi.Input<string>;
-    /**
-     * Name of the vm.
-     */
-    virtualMachineName: pulumi.Input<string>;
+    resourceUri: pulumi.Input<string>;
 }

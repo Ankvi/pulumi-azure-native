@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Hub resource.
- * Azure REST API version: 2017-04-26. Prior API version in Azure Native 1.x: 2017-04-26.
+ *
+ * Uses Azure REST API version 2017-04-26. In version 2.x of the Azure Native provider, it used API version 2017-04-26.
  */
 export class Hub extends pulumi.CustomResource {
     /**
@@ -36,6 +37,10 @@ export class Hub extends pulumi.CustomResource {
      * API endpoint URL of the hub.
      */
     public /*out*/ readonly apiEndpoint!: pulumi.Output<string>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Billing settings of the hub.
      */
@@ -90,12 +95,14 @@ export class Hub extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tenantFeatures"] = args ? args.tenantFeatures : undefined;
             resourceInputs["apiEndpoint"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["webEndpoint"] = undefined /*out*/;
         } else {
             resourceInputs["apiEndpoint"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["hubBillingInfo"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

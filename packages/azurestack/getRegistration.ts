@@ -2,9 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Returns the properties of an Azure Stack registration.
- * Azure REST API version: 2022-06-01.
  *
- * Other available API versions: 2020-06-01-preview.
+ * Uses Azure REST API version 2022-06-01.
+ *
+ * Other available API versions: 2020-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestack [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getRegistration(args: GetRegistrationArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistrationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -29,6 +30,10 @@ export interface GetRegistrationArgs {
  * Registration information.
  */
 export interface GetRegistrationResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Specifies the billing mode for the Azure Stack registration.
      */
@@ -68,9 +73,10 @@ export interface GetRegistrationResult {
 }
 /**
  * Returns the properties of an Azure Stack registration.
- * Azure REST API version: 2022-06-01.
  *
- * Other available API versions: 2020-06-01-preview.
+ * Uses Azure REST API version 2022-06-01.
+ *
+ * Other available API versions: 2020-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestack [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getRegistrationOutput(args: GetRegistrationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegistrationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

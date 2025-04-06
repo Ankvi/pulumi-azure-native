@@ -2,9 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * An Azure SQL Database sync agent.
- * Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
  *
- * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+ * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
+ *
+ * Other available API versions: 2015-05-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SyncAgent extends pulumi.CustomResource {
     /**
@@ -33,6 +34,10 @@ export class SyncAgent extends pulumi.CustomResource {
         return obj['__pulumiType'] === SyncAgent.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Expiration time of the sync agent version.
      */
@@ -87,6 +92,7 @@ export class SyncAgent extends pulumi.CustomResource {
             resourceInputs["serverName"] = args ? args.serverName : undefined;
             resourceInputs["syncAgentName"] = args ? args.syncAgentName : undefined;
             resourceInputs["syncDatabaseId"] = args ? args.syncDatabaseId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["expiryTime"] = undefined /*out*/;
             resourceInputs["isUpToDate"] = undefined /*out*/;
             resourceInputs["lastAliveTime"] = undefined /*out*/;
@@ -95,6 +101,7 @@ export class SyncAgent extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["expiryTime"] = undefined /*out*/;
             resourceInputs["isUpToDate"] = undefined /*out*/;
             resourceInputs["lastAliveTime"] = undefined /*out*/;
@@ -105,7 +112,7 @@ export class SyncAgent extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20150501preview:SyncAgent" }, { type: "azure-native:sql/v20200202preview:SyncAgent" }, { type: "azure-native:sql/v20200801preview:SyncAgent" }, { type: "azure-native:sql/v20201101preview:SyncAgent" }, { type: "azure-native:sql/v20210201preview:SyncAgent" }, { type: "azure-native:sql/v20210501preview:SyncAgent" }, { type: "azure-native:sql/v20210801preview:SyncAgent" }, { type: "azure-native:sql/v20211101:SyncAgent" }, { type: "azure-native:sql/v20211101preview:SyncAgent" }, { type: "azure-native:sql/v20220201preview:SyncAgent" }, { type: "azure-native:sql/v20220501preview:SyncAgent" }, { type: "azure-native:sql/v20220801preview:SyncAgent" }, { type: "azure-native:sql/v20221101preview:SyncAgent" }, { type: "azure-native:sql/v20230201preview:SyncAgent" }, { type: "azure-native:sql/v20230501preview:SyncAgent" }, { type: "azure-native:sql/v20230801preview:SyncAgent" }, { type: "azure-native:sql/v20240501preview:SyncAgent" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20150501preview:SyncAgent" }, { type: "azure-native:sql/v20200202preview:SyncAgent" }, { type: "azure-native:sql/v20200801preview:SyncAgent" }, { type: "azure-native:sql/v20201101preview:SyncAgent" }, { type: "azure-native:sql/v20210201preview:SyncAgent" }, { type: "azure-native:sql/v20210501preview:SyncAgent" }, { type: "azure-native:sql/v20210801preview:SyncAgent" }, { type: "azure-native:sql/v20211101:SyncAgent" }, { type: "azure-native:sql/v20211101preview:SyncAgent" }, { type: "azure-native:sql/v20220201preview:SyncAgent" }, { type: "azure-native:sql/v20220501preview:SyncAgent" }, { type: "azure-native:sql/v20220801preview:SyncAgent" }, { type: "azure-native:sql/v20221101preview:SyncAgent" }, { type: "azure-native:sql/v20230201preview:SyncAgent" }, { type: "azure-native:sql/v20230501preview:SyncAgent" }, { type: "azure-native:sql/v20230801:SyncAgent" }, { type: "azure-native:sql/v20230801preview:SyncAgent" }, { type: "azure-native:sql/v20240501preview:SyncAgent" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SyncAgent.__pulumiType, name, resourceInputs, opts);
     }

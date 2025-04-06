@@ -350,6 +350,28 @@ export interface BackgroundJobResponse {
 }
 
 /**
+ * The backup profile for the SQL server.
+ */
+export interface BackupPolicyResponse {
+    /**
+     * The differential backup interval in hours.
+     */
+    differentialBackupHours?: number;
+    /**
+     * The value indicating days between full backups.
+     */
+    fullBackupDays?: number;
+    /**
+     * The retention period for all the databases in this managed instance.
+     */
+    retentionPeriodDays?: number;
+    /**
+     * The value indicating minutes between transaction log backups.
+     */
+    transactionLogBackupMinutes?: number;
+}
+
+/**
  * Username and password for basic login authentication.
  */
 export interface BasicLoginInformationResponse {
@@ -438,6 +460,28 @@ export interface ExtendedLocationResponse {
      * The type of the extended location.
      */
     type?: string;
+}
+
+/**
+ * Failover Cluster Instance properties.
+ */
+export interface FailoverClusterResponse {
+    /**
+     * The host names which are part of the SQL FCI resource group.
+     */
+    hostNames: string[];
+    /**
+     * The GUID of the SQL Server's underlying Failover Cluster.
+     */
+    id: string;
+    /**
+     * The network name to connect to the SQL FCI.
+     */
+    networkName: string;
+    /**
+     * The ARM IDs of the Arc SQL Server resources, belonging to the current server's Failover cluster.
+     */
+    sqlInstanceIds: string[];
 }
 
 /**
@@ -651,6 +695,16 @@ export interface LogAnalyticsWorkspaceConfigResponse {
      * Azure Log Analytics workspace ID
      */
     workspaceId?: string;
+}
+
+/**
+ * The monitoring configuration.
+ */
+export interface MonitoringResponse {
+    /**
+     * Indicates if monitoring is enabled for this SQL Server instance.
+     */
+    enabled?: boolean;
 }
 
 /**
@@ -1030,6 +1084,10 @@ export interface SqlServerAvailabilityGroupResourcePropertiesResponseReplicas {
 export interface SqlServerDatabaseResourcePropertiesResponse {
     backupInformation?: SqlServerDatabaseResourcePropertiesResponseBackupInformation;
     /**
+     * The backup profile for the SQL server.
+     */
+    backupPolicy?: BackupPolicyResponse;
+    /**
      * Collation of the database.
      */
     collationName?: string;
@@ -1037,6 +1095,10 @@ export interface SqlServerDatabaseResourcePropertiesResponse {
      * Compatibility level of the database
      */
     compatibilityLevel?: number;
+    /**
+     * Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified.
+     */
+    createMode?: string;
     /**
      * Creation date of the database.
      */
@@ -1046,9 +1108,17 @@ export interface SqlServerDatabaseResourcePropertiesResponse {
      */
     databaseOptions?: SqlServerDatabaseResourcePropertiesResponseDatabaseOptions;
     /**
+     * This records the earliest start date and time that restore is available for this database (ISO8601 format).
+     */
+    earliestRestoreDate: string;
+    /**
      * Whether the database is read only or not.
      */
     isReadOnly?: boolean;
+    /**
+     * The time when last successful database upload was performed.
+     */
+    lastDatabaseUploadTime: string;
     /**
      * The provisioning state of the Arc-enabled SQL Server database resource.
      */
@@ -1058,9 +1128,17 @@ export interface SqlServerDatabaseResourcePropertiesResponse {
      */
     recoveryMode?: string;
     /**
+     * Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database.
+     */
+    restorePointInTime?: string;
+    /**
      * Size of the database.
      */
     sizeMB?: number;
+    /**
+     * The resource identifier of the source database associated with create operation of this database.
+     */
+    sourceDatabaseId?: string;
     /**
      * Space left of the database.
      */
@@ -1173,17 +1251,25 @@ export interface SqlServerInstanceJobStatusResponse {
  */
 export interface SqlServerInstancePropertiesResponse {
     /**
+     * The role of the SQL Server, based on availability.
+     */
+    alwaysOnRole: string;
+    /**
      * Status of Azure Defender.
      */
-    azureDefenderStatus?: string;
+    azureDefenderStatus: string;
     /**
      * Timestamp of last Azure Defender status update.
      */
-    azureDefenderStatusLastUpdated?: string;
+    azureDefenderStatusLastUpdated: string;
+    /**
+     * The backup profile for the SQL server.
+     */
+    backupPolicy?: BackupPolicyResponse;
     /**
      * SQL Server collation.
      */
-    collation?: string;
+    collation: string;
     /**
      * ARM Resource id of the container resource (Azure Arc for Servers).
      */
@@ -1199,11 +1285,15 @@ export interface SqlServerInstancePropertiesResponse {
     /**
      * SQL Server current version.
      */
-    currentVersion?: string;
+    currentVersion: string;
     /**
      * SQL Server edition.
      */
     edition?: string;
+    /**
+     * Failover Cluster Instance properties.
+     */
+    failoverCluster?: FailoverClusterResponse;
     /**
      * Type of host for Azure Arc SQL Server
      */
@@ -1213,17 +1303,29 @@ export interface SqlServerInstancePropertiesResponse {
      */
     instanceName?: string;
     /**
+     * The time when last successful inventory upload was performed.
+     */
+    lastInventoryUploadTime: string;
+    /**
+     * The time when last successful usage upload was performed.
+     */
+    lastUsageUploadTime: string;
+    /**
      * SQL Server license type.
      */
-    licenseType?: string;
+    licenseType: string;
+    /**
+     * The monitoring configuration.
+     */
+    monitoring?: MonitoringResponse;
     /**
      * SQL Server update level.
      */
-    patchLevel?: string;
+    patchLevel: string;
     /**
      * SQL Server product ID.
      */
-    productId?: string;
+    productId: string;
     /**
      * The provisioning state of the Arc-enabled SQL Server resource.
      */
@@ -1235,15 +1337,19 @@ export interface SqlServerInstancePropertiesResponse {
     /**
      * Dynamic TCP ports used by SQL Server.
      */
-    tcpDynamicPorts?: string;
+    tcpDynamicPorts: string;
     /**
      * Static TCP ports used by SQL Server.
      */
-    tcpStaticPorts?: string;
+    tcpStaticPorts: string;
+    /**
+     * Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
+     */
+    upgradeLockedUntil?: string;
     /**
      * The number of logical processors used by the SQL Server instance.
      */
-    vCore?: string;
+    vCore: string;
     /**
      * SQL Server version.
      */
@@ -1367,5 +1473,3 @@ export interface UploadWatermarkResponse {
      */
     usages?: string;
 }
-
-

@@ -98,13 +98,23 @@ export interface DicomServiceAuthenticationConfigurationResponse {
 }
 
 /**
- * An access policy entry.
+ * Settings to encrypt a service
  */
-export interface FhirServiceAccessPolicyEntryResponse {
+export interface EncryptionResponse {
     /**
-     * An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
+     * The encryption settings for the customer-managed key
      */
-    objectId: string;
+    customerManagedKeyEncryption?: EncryptionResponseCustomerManagedKeyEncryption;
+}
+
+/**
+ * The encryption settings for the customer-managed key
+ */
+export interface EncryptionResponseCustomerManagedKeyEncryption {
+    /**
+     * The URL of the key to use for encryption
+     */
+    keyEncryptionKeyUrl?: string;
 }
 
 /**
@@ -133,6 +143,10 @@ export interface FhirServiceAuthenticationConfigurationResponse {
      * The authority url for the service
      */
     authority?: string;
+    /**
+     * The array of identity provider configurations for SMART on FHIR authentication.
+     */
+    smartIdentityProviders?: SmartIdentityProviderConfigurationResponse[];
     /**
      * If the SMART on FHIR proxy is enabled
      */
@@ -522,6 +536,52 @@ export interface ServicesResourceResponseIdentity {
 }
 
 /**
+ * An Application configured in the Identity Provider used to access FHIR resources.
+ */
+export interface SmartIdentityProviderApplicationResponse {
+    /**
+     * The actions that are permitted to be performed on FHIR resources for the application.
+     */
+    allowedDataActions?: string[];
+    /**
+     * The audience that will be used to validate bearer tokens against the given authority.
+     */
+    audience?: string;
+    /**
+     * The application client id defined in the identity provider. This value will be used to validate bearer tokens against the given authority.
+     */
+    clientId?: string;
+}
+
+/**
+ * An object to configure an identity provider for use with SMART on FHIR authentication.
+ */
+export interface SmartIdentityProviderConfigurationResponse {
+    /**
+     * The array of identity provider applications for SMART on FHIR authentication.
+     */
+    applications?: SmartIdentityProviderApplicationResponse[];
+    /**
+     * The identity provider token authority also known as the token issuing authority.
+     */
+    authority?: string;
+}
+
+/**
+ * The configuration of connected storage
+ */
+export interface StorageConfigurationResponse {
+    /**
+     * The filesystem name of connected storage account.
+     */
+    fileSystemName?: string;
+    /**
+     * The resource id of connected storage account.
+     */
+    storageResourceId?: string;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -582,9 +642,3 @@ export interface WorkspaceResponseProperties {
      */
     publicNetworkAccess: string;
 }
-
-
-
-
-
-

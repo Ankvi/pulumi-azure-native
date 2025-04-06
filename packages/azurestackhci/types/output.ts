@@ -7,15 +7,15 @@ export interface AdapterPropertyOverridesResponse {
     /**
      * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
      */
-    jumboPacket?: string;
+    jumboPacket: string;
     /**
      * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
      */
-    networkDirect?: string;
+    networkDirect: string;
     /**
      * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
      */
-    networkDirectTechnology?: string;
+    networkDirectTechnology: string;
 }
 
 /**
@@ -26,6 +26,10 @@ export interface ArcConnectivityPropertiesResponse {
      * True indicates ARC connectivity is enabled
      */
     enabled?: boolean;
+    /**
+     * Service configurations associated with the connectivity resource. They are only processed by the server if 'enabled' property is set to 'true'.
+     */
+    serviceConfigurations?: ServiceConfigurationResponse[];
 }
 
 /**
@@ -82,6 +86,10 @@ export interface ClusterNodeResponse {
      * Type of the cluster node hardware.
      */
     nodeType: string;
+    /**
+     * OEM activation status of the node.
+     */
+    oemActivation: string;
     /**
      * Display version of the operating system running on the cluster node.
      */
@@ -145,15 +153,33 @@ export interface ClusterReportedPropertiesResponse {
      */
     nodes: ClusterNodeResponse[];
     /**
+     * OEM activation status of the cluster.
+     */
+    oemActivation: string;
+    /**
      * Capabilities supported by the cluster.
      */
     supportedCapabilities: string[];
 }
 
 /**
+ * Properties for a particular default extension category.
+ */
+export interface DefaultExtensionDetailsResponse {
+    /**
+     * Default extension category
+     */
+    category: string;
+    /**
+     * Consent time for extension category
+     */
+    consentTime: string;
+}
+
+/**
  * AzureStackHCI Cluster deployment properties.
  */
-export interface ClusterResponse {
+export interface DeploymentClusterResponse {
     /**
      * For Azure blob service endpoint type, select either Default or Custom domain. If you selected **Custom domain, enter the domain for the blob service in this format core.windows.net.
      */
@@ -174,20 +200,6 @@ export interface ClusterResponse {
      * Use a cloud witness if you have internet access and if you use an Azure Storage account to provide a vote on cluster quorum. A cloud witness uses Azure Blob Storage to read or write a blob file and then uses it to arbitrate in split-brain resolution. Only allowed values are 'Cloud', 'FileShare'. 
      */
     witnessType?: string;
-}
-
-/**
- * Properties for a particular default extension category.
- */
-export interface DefaultExtensionDetailsResponse {
-    /**
-     * Default extension category
-     */
-    category: string;
-    /**
-     * Consent time for extension category
-     */
-    consentTime: string;
 }
 
 /**
@@ -215,7 +227,7 @@ export interface DeploymentDataResponse {
     /**
      * Observability config to deploy AzureStackHCI Cluster.
      */
-    cluster?: ClusterResponse;
+    cluster?: DeploymentClusterResponse;
     /**
      * FQDN to deploy cluster
      */
@@ -245,13 +257,21 @@ export interface DeploymentDataResponse {
      */
     physicalNodes?: PhysicalNodesResponse[];
     /**
-     * The URI to the keyvault / secret store.
+     * SDN Integration config to deploy AzureStackHCI Cluster.
+     */
+    sdnIntegration?: SdnIntegrationResponse;
+    /**
+     * secrets used for cloud deployment.
+     */
+    secrets?: EceDeploymentSecretsResponse[];
+    /**
+     * Azure keyvault endpoint. This property is deprecated from 2023-12-01-preview. Please use secrets property instead.
      */
     secretsLocation?: string;
     /**
      * SecuritySettings to deploy AzureStackHCI Cluster.
      */
-    securitySettings?: SecuritySettingsResponse;
+    securitySettings?: DeploymentSecuritySettingsResponse;
     /**
      * Storage config to deploy AzureStackHCI Cluster.
      */
@@ -263,25 +283,74 @@ export interface DeploymentDataResponse {
 export function deploymentDataResponseProvideDefaults(val: DeploymentDataResponse): DeploymentDataResponse {
     return {
         ...val,
-        hostNetwork: (val.hostNetwork ? hostNetworkResponseProvideDefaults(val.hostNetwork) : undefined),
         observability: (val.observability ? observabilityResponseProvideDefaults(val.observability) : undefined),
-        securitySettings: (val.securitySettings ? securitySettingsResponseProvideDefaults(val.securitySettings) : undefined),
+        securitySettings: (val.securitySettings ? deploymentSecuritySettingsResponseProvideDefaults(val.securitySettings) : undefined),
         storage: (val.storage ? storageResponseProvideDefaults(val.storage) : undefined),
     };
 }
 
 /**
- * The DeploymentStatus of AzureStackHCI Cluster.
+ * The SecuritySettings of AzureStackHCI Cluster.
  */
-export interface DeploymentStatusResponse {
+export interface DeploymentSecuritySettingsResponse {
     /**
-     * Status of AzureStackHCI Cluster Deployment.
+     * When set to true, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent. 
      */
-    status: string;
+    bitlockerBootVolume?: boolean;
     /**
-     * List of steps of AzureStackHCI Cluster Deployment.
+     * When set to true, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes.
      */
-    steps: StepResponse[];
+    bitlockerDataVolumes?: boolean;
+    /**
+     * When set to true, Credential Guard is enabled.
+     */
+    credentialGuardEnforced?: boolean;
+    /**
+     * When set to true, the security baseline is re-applied regularly.
+     */
+    driftControlEnforced?: boolean;
+    /**
+     * By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent.
+     */
+    drtmProtection?: boolean;
+    /**
+     * By default, Hypervisor-protected Code Integrity is enabled on your Azure HCI cluster.
+     */
+    hvciProtection?: boolean;
+    /**
+     * When set to true, all the side channel mitigations are enabled
+     */
+    sideChannelMitigationEnforced?: boolean;
+    /**
+     * When set to true, cluster east-west traffic is encrypted.
+     */
+    smbClusterEncryption?: boolean;
+    /**
+     * When set to true, the SMB default instance requires sign in for the client and server services.
+     */
+    smbSigningEnforced?: boolean;
+    /**
+     * WDAC is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster.
+     */
+    wdacEnforced?: boolean;
+}
+/**
+ * deploymentSecuritySettingsResponseProvideDefaults sets the appropriate defaults for DeploymentSecuritySettingsResponse
+ */
+export function deploymentSecuritySettingsResponseProvideDefaults(val: DeploymentSecuritySettingsResponse): DeploymentSecuritySettingsResponse {
+    return {
+        ...val,
+        bitlockerBootVolume: (val.bitlockerBootVolume) ?? true,
+        bitlockerDataVolumes: (val.bitlockerDataVolumes) ?? true,
+        credentialGuardEnforced: (val.credentialGuardEnforced) ?? false,
+        driftControlEnforced: (val.driftControlEnforced) ?? true,
+        drtmProtection: (val.drtmProtection) ?? true,
+        hvciProtection: (val.hvciProtection) ?? true,
+        sideChannelMitigationEnforced: (val.sideChannelMitigationEnforced) ?? true,
+        smbClusterEncryption: (val.smbClusterEncryption) ?? false,
+        smbSigningEnforced: (val.smbSigningEnforced) ?? true,
+        wdacEnforced: (val.wdacEnforced) ?? true,
+    };
 }
 
 /**
@@ -323,17 +392,17 @@ export interface DeploymentStepResponse {
 }
 
 /**
- * The device Configuration of a device.
+ * The device Configuration for edge device.
  */
 export interface DeviceConfigurationResponse {
     /**
-     * device metadata details.
+     * Device metadata details.
      */
     deviceMetadata?: string;
     /**
      * NIC Details of device
      */
-    nicDetails: NicDetailResponse[];
+    nicDetails?: NicDetailResponse[];
 }
 
 /**
@@ -348,6 +417,38 @@ export interface EceActionStatusResponse {
      * List of steps of AzureStackHCI Cluster Deployment.
      */
     steps: DeploymentStepResponse[];
+}
+
+/**
+ * Protected parameters list stored in keyvault.
+ */
+export interface EceDeploymentSecretsResponse {
+    /**
+     * Secret name expected for Enterprise Cloud Engine (ECE) deployment.
+     */
+    eceSecretName?: string;
+    /**
+     * Secret URI stored in keyvault.
+     */
+    secretLocation?: string;
+    /**
+     * Secret name stored in keyvault.
+     */
+    secretName?: string;
+}
+
+/**
+ * The DeploymentStatus of AzureStackHCI Cluster.
+ */
+export interface EceReportedPropertiesResponse {
+    /**
+     * Deployment status of AzureStackHCI Cluster Deployment.
+     */
+    deploymentStatus: EceActionStatusResponse;
+    /**
+     * validation status of AzureStackHCI Cluster Deployment.
+     */
+    validationStatus: EceActionStatusResponse;
 }
 
 /**
@@ -380,6 +481,10 @@ export interface ErrorDetailResponse {
      * The error details.
      */
     details: ErrorDetailResponse[];
+    /**
+     * Exception details while installing extension.
+     */
+    exception?: string;
     /**
      * The error message.
      */
@@ -453,6 +558,55 @@ export interface ExtensionInstanceViewResponseStatus {
 }
 
 /**
+ * Extensions details for edge device.
+ */
+export interface ExtensionProfileResponse {
+    /**
+     * List of Arc extensions installed on edge device.
+     */
+    extensions: ExtensionResponse[];
+}
+
+/**
+ * Arc extension installed on edge device.
+ */
+export interface ExtensionResponse {
+    /**
+     * Error details while installing Arc extension.
+     */
+    errorDetails: ErrorDetailResponse[];
+    /**
+     * Arc extension name installed on edge device.
+     */
+    extensionName: string;
+    /**
+     * Arc Extension Azure resource id.
+     */
+    extensionResourceId: string;
+    /**
+     * Extension managed by user or Azure.
+     */
+    managedBy: string;
+    /**
+     * Arc extension state from arc machine extension.
+     */
+    state: string;
+    /**
+     * Extension version installed.
+     */
+    typeHandlerVersion: string;
+}
+/**
+ * extensionResponseProvideDefaults sets the appropriate defaults for ExtensionResponse
+ */
+export function extensionResponseProvideDefaults(val: ExtensionResponse): ExtensionResponse {
+    return {
+        ...val,
+        managedBy: (val.managedBy) ?? "Azure",
+    };
+}
+
+/**
  * This is the gallery image definition identifier.
  */
 export interface GalleryImageIdentifierResponse {
@@ -471,13 +625,37 @@ export interface GalleryImageIdentifierResponse {
 }
 
 /**
+ * The download status of the gallery image
+ */
+export interface GalleryImageStatusDownloadStatusResponse {
+    /**
+     * The downloaded sized of the image in MB
+     */
+    downloadSizeInMB?: number;
+}
+
+/**
+ * The status of the operation performed on the gallery image
+ */
+export interface GalleryImageStatusProvisioningStatusResponse {
+    /**
+     * The ID of the operation performed on the gallery image
+     */
+    operationId?: string;
+    /**
+     * The status of the operation performed on the gallery image [Succeeded, Failed, InProgress]
+     */
+    status: string;
+}
+
+/**
  * The observed state of gallery images
  */
 export interface GalleryImageStatusResponse {
     /**
      * The download status of the gallery image
      */
-    downloadStatus?: GalleryImageStatusResponseDownloadStatus;
+    downloadStatus?: GalleryImageStatusDownloadStatusResponse;
     /**
      * GalleryImage provisioning error code
      */
@@ -490,28 +668,10 @@ export interface GalleryImageStatusResponse {
      * The progress of the operation in percentage
      */
     progressPercentage?: number;
-    provisioningStatus?: GalleryImageStatusResponseProvisioningStatus;
-}
-
-/**
- * The download status of the gallery image
- */
-export interface GalleryImageStatusResponseDownloadStatus {
     /**
-     * The downloaded sized of the image in MB
+     * provisioning status of the gallery image
      */
-    downloadSizeInMB?: number;
-}
-
-export interface GalleryImageStatusResponseProvisioningStatus {
-    /**
-     * The ID of the operation performed on the gallery image
-     */
-    operationId?: string;
-    /**
-     * The status of the operation performed on the gallery image [Succeeded, Failed, InProgress]
-     */
-    status?: string;
+    provisioningStatus?: GalleryImageStatusProvisioningStatusResponse;
 }
 
 /**
@@ -662,6 +822,122 @@ export interface HciCollectLogJobPropertiesResponse {
 }
 
 /**
+ * properties for Arc-enabled edge device with HCI OS.
+ */
+export interface HciEdgeDevicePropertiesResponse {
+    /**
+     * Device Configuration
+     */
+    deviceConfiguration?: DeviceConfigurationResponse;
+    /**
+     * Provisioning state of edgeDevice resource
+     */
+    provisioningState: string;
+    /**
+     * The instance view of all current configurations on HCI device.
+     */
+    reportedProperties: HciReportedPropertiesResponse;
+}
+
+/**
+ * The network profile of a device.
+ */
+export interface HciNetworkProfileResponse {
+    /**
+     * HostNetwork config to deploy AzureStackHCI Cluster.
+     */
+    hostNetwork: HostNetworkResponse;
+    /**
+     * List of NIC Details of device.
+     */
+    nicDetails: HciNicDetailResponse[];
+    /**
+     * List of switch details for edge device.
+     */
+    switchDetails: SwitchDetailResponse[];
+}
+
+/**
+ * The NIC Detail of a device.
+ */
+export interface HciNicDetailResponse {
+    /**
+     * Adapter Name of NIC
+     */
+    adapterName: string;
+    /**
+     * Component Id of NIC
+     */
+    componentId: string;
+    /**
+     * Default Gateway of NIC
+     */
+    defaultGateway: string;
+    /**
+     * Default Isolation of Management NIC
+     */
+    defaultIsolationId: string;
+    /**
+     * DNS Servers for NIC
+     */
+    dnsServers: string[];
+    /**
+     * Driver Version of NIC
+     */
+    driverVersion: string;
+    /**
+     * Interface Description of NIC
+     */
+    interfaceDescription: string;
+    /**
+     * Subnet Mask of NIC
+     */
+    ip4Address: string;
+    /**
+     * MAC address information of NIC.
+     */
+    macAddress: string;
+    /**
+     * The status of NIC, up, disconnected.
+     */
+    nicStatus: string;
+    /**
+     * The type of NIC, physical, virtual, management.
+     */
+    nicType: string;
+    /**
+     * The slot attached to the NIC.
+     */
+    slot: string;
+    /**
+     * Subnet Mask of NIC
+     */
+    subnetMask: string;
+    /**
+     * The switch attached to the NIC, if any.
+     */
+    switchName: string;
+    /**
+     * The VLAN ID of the physical NIC.
+     */
+    vlanId: string;
+}
+
+/**
+ * OS configurations for HCI device.
+ */
+export interface HciOsProfileResponse {
+    /**
+     * Version of assembly present on device
+     */
+    assemblyVersion: string;
+    /**
+     * The boot type of the device. e.g. UEFI, Legacy etc
+     */
+    bootType: string;
+}
+
+/**
  * Represents the properties of a remote support job for HCI.
  */
 export interface HciRemoteSupportJobPropertiesResponse {
@@ -713,35 +989,51 @@ export interface HciRemoteSupportJobPropertiesResponse {
 }
 
 /**
+ * The device Configuration for HCI device.
+ */
+export interface HciReportedPropertiesResponse {
+    /**
+     * edge device state.
+     */
+    deviceState: string;
+    /**
+     * Extensions details for edge device.
+     */
+    extensionProfile: ExtensionProfileResponse;
+    /**
+     * HCI device network information.
+     */
+    networkProfile: HciNetworkProfileResponse;
+    /**
+     * HCI device OS specific information.
+     */
+    osProfile: HciOsProfileResponse;
+    /**
+     * Solution builder extension (SBE) deployment package information.
+     */
+    sbeDeploymentPackageInfo: SbeDeploymentPackageInfoResponse;
+}
+
+/**
  * The HostNetwork of a cluster.
  */
 export interface HostNetworkResponse {
     /**
      * Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
      */
-    enableStorageAutoIp?: boolean;
+    enableStorageAutoIp: boolean;
     /**
      * The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
      */
-    intents?: IntentsResponse[];
+    intents: IntentsResponse[];
     /**
-     * Defines how the storage adapters between nodes are connected either switch or switch less..
+     * Defines how the storage adapters between nodes are connected either switch or switch less.
      */
-    storageConnectivitySwitchless?: boolean;
+    storageConnectivitySwitchless: boolean;
     /**
      * List of StorageNetworks config to deploy AzureStackHCI Cluster.
      */
-    storageNetworks?: StorageNetworksResponse[];
-}
-/**
- * hostNetworkResponseProvideDefaults sets the appropriate defaults for HostNetworkResponse
- */
-export function hostNetworkResponseProvideDefaults(val: HostNetworkResponse): HostNetworkResponse {
-    return {
-        ...val,
-        enableStorageAutoIp: (val.enableStorageAutoIp) ?? false,
-        storageConnectivitySwitchless: (val.storageConnectivitySwitchless) ?? false,
-    };
+    storageNetworks: StorageNetworksResponse[];
 }
 
 /**
@@ -749,13 +1041,47 @@ export function hostNetworkResponseProvideDefaults(val: HostNetworkResponse): Ho
  */
 export interface HttpProxyConfigurationResponse {
     /**
-     * The httpsProxy url.
+     * The HTTP proxy server endpoint to use.
+     */
+    httpProxy?: string;
+    /**
+     * The HTTPS proxy server endpoint to use.
      */
     httpsProxy?: string;
+    /**
+     * The endpoints that should not go through proxy.
+     */
+    noProxy?: string[];
+    /**
+     * Alternative CA cert to use for connecting to proxy servers.
+     */
+    trustedCa?: string;
 }
 
 /**
- * InterfaceIPConfiguration iPConfiguration in a network interface.
+ * InterfaceIPConfigurationPropertiesFormat properties of IP configuration.
+ */
+export interface IPConfigurationPropertiesResponse {
+    /**
+     * Gateway for network interface
+     */
+    gateway: string;
+    /**
+     * prefixLength for network interface
+     */
+    prefixLength: string;
+    /**
+     * PrivateIPAddress - Private IP address of the IP configuration.
+     */
+    privateIPAddress?: string;
+    /**
+     * Subnet - Name of Subnet bound to the IP configuration.
+     */
+    subnet?: LogicalNetworkArmReferenceResponse;
+}
+
+/**
+ * InterfaceIPConfiguration IPConfiguration in a network interface.
  */
 export interface IPConfigurationResponse {
     /**
@@ -765,60 +1091,37 @@ export interface IPConfigurationResponse {
     /**
      * InterfaceIPConfigurationPropertiesFormat properties of IP configuration.
      */
-    properties?: IPConfigurationResponseProperties;
+    properties?: IPConfigurationPropertiesResponse;
 }
 
 /**
- * InterfaceIPConfigurationPropertiesFormat properties of IP configuration.
+ * IP Pool info
  */
-export interface IPConfigurationResponseProperties {
-    /**
-     * prefixLength for network interface
-     */
-    prefixLength?: string;
-    /**
-     * PrivateIPAddress - Private IP address of the IP configuration.
-     */
-    privateIPAddress?: string;
-    /**
-     * PrivateIPAllocationMethod - The private IP address allocation method. Possible values include: 'Static', 'Dynamic'
-     */
-    privateIPAllocationMethod?: string;
-    /**
-     * Subnet - Name of Subnet bound to the IP configuration.
-     */
-    subnet?: IPConfigurationResponseSubnet;
-}
-
-/**
- * Subnet - Name of Subnet bound to the IP configuration.
- */
-export interface IPConfigurationResponseSubnet {
-    /**
-     * ID - The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-     */
-    id?: string;
-}
-
 export interface IPPoolInfoResponse {
     /**
-     * no. of ip addresses available in the ip pool
+     * Number of IP addresses available in the IP Pool
      */
     available: string;
     /**
-     * no. of ip addresses allocated from the ip pool
+     * Number of IP addresses allocated from the IP Pool
      */
     used: string;
 }
 
+/**
+ * Describes IPPool
+ */
 export interface IPPoolResponse {
     /**
-     * end of the ip address pool
+     * End of the IP address pool
      */
     end?: string;
+    /**
+     * IPPool info
+     */
     info?: IPPoolInfoResponse;
     /**
-     * ip pool type
+     * Type of the IP Pool [vm, vippool]
      */
     ipPoolType?: string;
     /**
@@ -826,7 +1129,7 @@ export interface IPPoolResponse {
      */
     name?: string;
     /**
-     * start of the ip address pool
+     * Start of the IP address pool
      */
     start?: string;
 }
@@ -847,6 +1150,16 @@ export interface IdentityResponse {
      * The identity type.
      */
     type?: string;
+}
+
+/**
+ * The ARM ID for a Gallery Image.
+ */
+export interface ImageArmReferenceResponse {
+    /**
+     * The ARM ID for an image resource used by the virtual machine instance.
+     */
+    id?: string;
 }
 
 /**
@@ -912,7 +1225,47 @@ export interface IntentsResponse {
     /**
      * Set Adapter PropertyOverrides for cluster.
      */
-    adapterPropertyOverrides?: AdapterPropertyOverridesResponse;
+    adapterPropertyOverrides: AdapterPropertyOverridesResponse;
+    /**
+     * Array of adapters used for the network intent.
+     */
+    intentAdapters: string[];
+    /**
+     * Name of the network intent you wish to create.
+     */
+    intentName: string;
+    /**
+     * IntentType for host network intent.
+     */
+    intentType: number;
+    /**
+     * IsComputeIntentSet for host network intent.
+     */
+    isComputeIntentSet: boolean;
+    /**
+     * IsManagementIntentSet for host network intent.
+     */
+    isManagementIntentSet: boolean;
+    /**
+     * IsNetworkIntentType for host network intent.
+     */
+    isNetworkIntentType: boolean;
+    /**
+     * IntentType for host network intent.
+     */
+    isOnlyStorage: boolean;
+    /**
+     * IsOnlyStretch for host network intent.
+     */
+    isOnlyStretch: boolean;
+    /**
+     * IsStorageIntentSet for host network intent.
+     */
+    isStorageIntentSet: boolean;
+    /**
+     * IsStretchIntentSet for host network intent.
+     */
+    isStretchIntentSet: boolean;
     /**
      * Name of the network intent you wish to create.
      */
@@ -920,19 +1273,23 @@ export interface IntentsResponse {
     /**
      * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
      */
-    overrideAdapterProperty?: boolean;
+    overrideAdapterProperty: boolean;
     /**
      * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
      */
-    overrideQosPolicy?: boolean;
+    overrideQosPolicy: boolean;
     /**
      * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
      */
-    overrideVirtualSwitchConfiguration?: boolean;
+    overrideVirtualSwitchConfiguration: boolean;
     /**
      * Set QoS PolicyOverrides for cluster.
      */
-    qosPolicyOverrides?: QosPolicyOverridesResponse;
+    qosPolicyOverrides: QosPolicyOverridesResponse;
+    /**
+     * Scope for host network intent.
+     */
+    scope: number;
     /**
      * List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
      */
@@ -940,20 +1297,12 @@ export interface IntentsResponse {
     /**
      * Set virtualSwitch ConfigurationOverrides for cluster.
      */
-    virtualSwitchConfigurationOverrides?: VirtualSwitchConfigurationOverridesResponse;
-}
-/**
- * intentsResponseProvideDefaults sets the appropriate defaults for IntentsResponse
- */
-export function intentsResponseProvideDefaults(val: IntentsResponse): IntentsResponse {
-    return {
-        ...val,
-        overrideAdapterProperty: (val.overrideAdapterProperty) ?? false,
-        overrideQosPolicy: (val.overrideQosPolicy) ?? false,
-        overrideVirtualSwitchConfiguration: (val.overrideVirtualSwitchConfiguration) ?? false,
-    };
+    virtualSwitchConfigurationOverrides: VirtualSwitchConfigurationOverridesResponse;
 }
 
+/**
+ * DNS Settings of the interface
+ */
 export interface InterfaceDNSSettingsResponse {
     /**
      * List of DNS server IP Addresses for the interface
@@ -973,6 +1322,38 @@ export interface IpPoolsResponse {
      * Starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
      */
     startingAddress?: string;
+}
+
+/**
+ * Attestation configurations for isolated VM (e.g. TVM, CVM) of the cluster.
+ */
+export interface IsolatedVmAttestationConfigurationResponse {
+    /**
+     * Fully qualified Azure resource id of the Microsoft Azure attestation resource associated with this cluster.
+     */
+    attestationResourceId: string;
+    /**
+     * Region specific endpoint for Microsoft Azure Attestation service for the cluster
+     */
+    attestationServiceEndpoint: string;
+    /**
+     * Region specific endpoint for relying party service.
+     */
+    relyingPartyServiceEndpoint: string;
+}
+
+/**
+ * Log Collection Error details of the cluster.
+ */
+export interface LogCollectionErrorResponse {
+    /**
+     * Error Code of the log collection
+     */
+    errorCode: string;
+    /**
+     * Error Message of the log collection
+     */
+    errorMessage: string;
 }
 
 /**
@@ -1006,6 +1387,25 @@ export interface LogCollectionJobSessionResponse {
 }
 
 /**
+ * Log Collection properties of the cluster.
+ */
+export interface LogCollectionPropertiesResponse {
+    /**
+     * From DateTimeStamp from when logs need to be connected
+     */
+    fromDate: string;
+    /**
+     * Recent DateTimeStamp where logs are successfully generated
+     */
+    lastLogGenerated: string;
+    logCollectionSessionDetails: LogCollectionSessionResponse[];
+    /**
+     * To DateTimeStamp till when logs need to be connected
+     */
+    toDate: string;
+}
+
+/**
  * Represents the reported properties of a log collection job.
  */
 export interface LogCollectionReportedPropertiesResponse {
@@ -1028,6 +1428,48 @@ export interface LogCollectionReportedPropertiesResponse {
 }
 
 /**
+ * Log Collection Session details of the cluster.
+ */
+export interface LogCollectionSessionResponse {
+    /**
+     * CorrelationId of the log collection
+     */
+    correlationId: string;
+    /**
+     * End Time of the logs when it was collected
+     */
+    endTimeCollected: string;
+    /**
+     * Log Collection Error details of the cluster.
+     */
+    logCollectionError: LogCollectionErrorResponse;
+    /**
+     * LogCollection job type
+     */
+    logCollectionJobType: string;
+    /**
+     * LogCollection status
+     */
+    logCollectionStatus: string;
+    /**
+     * End Time of the logs when it was collected
+     */
+    logEndTime: string;
+    /**
+     * Size of the logs collected
+     */
+    logSize: number;
+    /**
+     * Start Time of the logs when it was collected
+     */
+    logStartTime: string;
+    /**
+     * Duration of logs collected
+     */
+    timeCollected: string;
+}
+
+/**
  * The ARM ID for a Logical Network.
  */
 export interface LogicalNetworkArmReferenceResponse {
@@ -1040,11 +1482,25 @@ export interface LogicalNetworkArmReferenceResponse {
 /**
  * DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.
  */
-export interface LogicalNetworkPropertiesResponseDhcpOptions {
+export interface LogicalNetworkPropertiesDhcpOptionsResponse {
     /**
      * The list of DNS servers IP addresses.
      */
     dnsServers?: string[];
+}
+
+/**
+ * Describes the status of the provisioning.
+ */
+export interface LogicalNetworkStatusProvisioningStatusResponse {
+    /**
+     * The ID of the operation performed on the logical network
+     */
+    operationId?: string;
+    /**
+     * The status of the operation performed on the logical network [Succeeded, Failed, InProgress]
+     */
+    status: string;
 }
 
 /**
@@ -1059,18 +1515,10 @@ export interface LogicalNetworkStatusResponse {
      * Descriptive error message
      */
     errorMessage?: string;
-    provisioningStatus?: LogicalNetworkStatusResponseProvisioningStatus;
-}
-
-export interface LogicalNetworkStatusResponseProvisioningStatus {
     /**
-     * The ID of the operation performed on the logical network
+     * Logical network provisioning status
      */
-    operationId?: string;
-    /**
-     * The status of the operation performed on the logical network [Succeeded, Failed, InProgress]
-     */
-    status?: string;
+    provisioningStatus?: LogicalNetworkStatusProvisioningStatusResponse;
 }
 
 /**
@@ -1122,13 +1570,59 @@ export interface MachineExtensionPropertiesResponseInstanceView {
 }
 
 /**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityResponse {
+    /**
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: string;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
+ * The download status of the gallery image
+ */
+export interface MarketplaceGalleryImageStatusDownloadStatusResponse {
+    /**
+     * The downloaded sized of the image in MB
+     */
+    downloadSizeInMB?: number;
+}
+
+/**
+ * Marketplace GalleryImage provisioning status
+ */
+export interface MarketplaceGalleryImageStatusProvisioningStatusResponse {
+    /**
+     * The ID of the operation performed on the gallery image
+     */
+    operationId?: string;
+    /**
+     * The status of the operation performed on the gallery image [Succeeded, Failed, InProgress]
+     */
+    status: string;
+}
+
+/**
  * The observed state of marketplace gallery images
  */
 export interface MarketplaceGalleryImageStatusResponse {
     /**
      * The download status of the gallery image
      */
-    downloadStatus?: MarketplaceGalleryImageStatusResponseDownloadStatus;
+    downloadStatus?: MarketplaceGalleryImageStatusDownloadStatusResponse;
     /**
      * MarketplaceGalleryImage provisioning error code
      */
@@ -1141,28 +1635,28 @@ export interface MarketplaceGalleryImageStatusResponse {
      * The progress of the operation in percentage
      */
     progressPercentage?: number;
-    provisioningStatus?: MarketplaceGalleryImageStatusResponseProvisioningStatus;
+    /**
+     * Provisioning status of marketplace gallery image
+     */
+    provisioningStatus?: MarketplaceGalleryImageStatusProvisioningStatusResponse;
 }
 
 /**
- * The download status of the gallery image
+ * network controller config for SDN Integration to deploy AzureStackHCI Cluster.
  */
-export interface MarketplaceGalleryImageStatusResponseDownloadStatus {
+export interface NetworkControllerResponse {
     /**
-     * The downloaded sized of the image in MB
+     * macAddressPoolStart of network controller used for SDN Integration.
      */
-    downloadSizeInMB?: number;
-}
-
-export interface MarketplaceGalleryImageStatusResponseProvisioningStatus {
+    macAddressPoolStart?: string;
     /**
-     * The ID of the operation performed on the gallery image
+     * macAddressPoolStop of network controller used for SDN Integration.
      */
-    operationId?: string;
+    macAddressPoolStop?: string;
     /**
-     * The status of the operation performed on the gallery image [Succeeded, Failed, InProgress]
+     * NetworkVirtualizationEnabled of network controller used for SDN Integration.
      */
-    status?: string;
+    networkVirtualizationEnabled?: boolean;
 }
 
 /**
@@ -1173,6 +1667,20 @@ export interface NetworkInterfaceArmReferenceResponse {
      * The ARM ID for a Network Interface.
      */
     id?: string;
+}
+
+/**
+ * Network interface provisioning status
+ */
+export interface NetworkInterfaceStatusProvisioningStatusResponse {
+    /**
+     * The ID of the operation performed on the network interface
+     */
+    operationId?: string;
+    /**
+     * The status of the operation performed on the network interface [Succeeded, Failed, InProgress]
+     */
+    status: string;
 }
 
 /**
@@ -1187,18 +1695,52 @@ export interface NetworkInterfaceStatusResponse {
      * Descriptive error message
      */
     errorMessage?: string;
-    provisioningStatus?: NetworkInterfaceStatusResponseProvisioningStatus;
+    /**
+     * Network interface provisioning status
+     */
+    provisioningStatus?: NetworkInterfaceStatusProvisioningStatusResponse;
 }
 
-export interface NetworkInterfaceStatusResponseProvisioningStatus {
+/**
+ * The ARM ID for a Network Security Group.
+ */
+export interface NetworkSecurityGroupArmReferenceResponse {
     /**
-     * The ID of the operation performed on the network interface
+     * The ARM ID for a Network Security Group.
+     */
+    id?: string;
+}
+
+/**
+ * network security group provisioning status
+ */
+export interface NetworkSecurityGroupStatusProvisioningStatusResponse {
+    /**
+     * The ID of the operation performed on the network security group
      */
     operationId?: string;
     /**
-     * The status of the operation performed on the network interface [Succeeded, Failed, InProgress]
+     * The status of the operation performed on the network security group [Succeeded, Failed, InProgress]
      */
-    status?: string;
+    status: string;
+}
+
+/**
+ * The observed state of network security group
+ */
+export interface NetworkSecurityGroupStatusResponse {
+    /**
+     * NetworkSecurityGroup provisioning error code
+     */
+    errorCode?: string;
+    /**
+     * Descriptive error message
+     */
+    errorMessage?: string;
+    /**
+     * network security group provisioning status
+     */
+    provisioningStatus?: NetworkSecurityGroupStatusProvisioningStatusResponse;
 }
 
 /**
@@ -1208,7 +1750,7 @@ export interface NicDetailResponse {
     /**
      * Adapter Name of NIC
      */
-    adapterName: string;
+    adapterName?: string;
     /**
      * Component Id of NIC
      */
@@ -1309,6 +1851,32 @@ export interface PerNodeExtensionStateResponse {
 }
 
 /**
+ * Remote Support Node Session Details on the Node.
+ */
+export interface PerNodeRemoteSupportSessionResponse {
+    /**
+     * Remote Support Access Level
+     */
+    accessLevel: string;
+    /**
+     * Duration of Remote Support Enablement
+     */
+    duration: number;
+    /**
+     * Name of the node
+     */
+    nodeName: string;
+    /**
+     * Remote Support Session EndTime on the Node
+     */
+    sessionEndTime: string;
+    /**
+     * Remote Support Session StartTime on the Node
+     */
+    sessionStartTime: string;
+}
+
+/**
  * Status of Arc agent for a particular node in HCI Cluster.
  */
 export interface PerNodeStateResponse {
@@ -1316,6 +1884,10 @@ export interface PerNodeStateResponse {
      * Fully qualified resource ID for the Arc agent of this node.
      */
     arcInstance: string;
+    /**
+     * The service principal id of the arc for server node
+     */
+    arcNodeServicePrincipalObjectId: string;
     /**
      * Name of the Node in HCI Cluster
      */
@@ -1411,6 +1983,60 @@ export interface RemoteSupportJobReportedPropertiesResponse {
 }
 
 /**
+ * Remote Support Node Settings of the cluster.
+ */
+export interface RemoteSupportNodeSettingsResponse {
+    /**
+     * Arc ResourceId of the Node
+     */
+    arcResourceId: string;
+    /**
+     * Remote Support Access Connection Error Message on the Node
+     */
+    connectionErrorMessage: string;
+    /**
+     * Remote Support Access Connection Status on the Node
+     */
+    connectionStatus: string;
+    /**
+     * Remote Support Enablement Request Created TimeStamp on the Node
+     */
+    createdAt: string;
+    /**
+     * Remote Support Access Connection State on the Node
+     */
+    state: string;
+    /**
+     * Remote Support Transcript location on the node
+     */
+    transcriptLocation: string;
+    /**
+     * Remote Support Enablement Request Updated TimeStamp on the Node
+     */
+    updatedAt: string;
+}
+
+/**
+ * Remote Support properties of the cluster.
+ */
+export interface RemoteSupportPropertiesResponse {
+    /**
+     * Remote Support Access Level
+     */
+    accessLevel: string;
+    /**
+     * Expiration DateTimeStamp when Remote Support Access will be expired
+     */
+    expirationTimeStamp: string;
+    remoteSupportNodeSettings: RemoteSupportNodeSettingsResponse[];
+    remoteSupportSessionDetails: PerNodeRemoteSupportSessionResponse[];
+    /**
+     * Remote Support Type for cluster
+     */
+    remoteSupportType: string;
+}
+
+/**
  * Represents a remote support session.
  */
 export interface RemoteSupportSessionResponse {
@@ -1434,20 +2060,6 @@ export interface RemoteSupportSessionResponse {
      * The location where the session transcript is stored.
      */
     transcriptLocation: string;
-}
-
-/**
- * The DeploymentStatus of AzureStackHCI Cluster.
- */
-export interface ReportedPropertiesResponse {
-    /**
-     * Deployment status of AzureStackHCI Cluster Deployment.
-     */
-    deploymentStatus: DeploymentStatusResponse;
-    /**
-     * validation status of AzureStackHCI Cluster Deployment.
-     */
-    validationStatus: ValidationStatusResponse;
 }
 
 /**
@@ -1491,6 +2103,100 @@ export interface RouteTableResponse {
 }
 
 /**
+ * secrets used for solution builder extension (SBE) partner extensibility.
+ */
+export interface SbeCredentialsResponse {
+    /**
+     * secret name expected for Enterprise Cloud Engine (ECE).
+     */
+    eceSecretName?: string;
+    /**
+     * secret URI stored in keyvault.
+     */
+    secretLocation?: string;
+    /**
+     * secret name stored in keyvault.
+     */
+    secretName?: string;
+}
+
+/**
+ * Solution builder extension (SBE) package and manifest information for the solution builder extension staged for AzureStackHCI cluster deployment.
+ */
+export interface SbeDeploymentInfoResponse {
+    /**
+     * SBE family name.
+     */
+    family?: string;
+    /**
+     * SBE manifest publisher.
+     */
+    publisher?: string;
+    /**
+     * SBE Manifest Creation Date.
+     */
+    sbeManifestCreationDate?: string;
+    /**
+     * SBE Manifest Source.
+     */
+    sbeManifestSource?: string;
+    /**
+     * SBE package version.
+     */
+    version?: string;
+}
+
+/**
+ * Solution builder extension (SBE) deployment package information.
+ */
+export interface SbeDeploymentPackageInfoResponse {
+    /**
+     * SBE deployment validation code.
+     */
+    code: string;
+    /**
+     * A detailed message that explains the SBE package validation result.
+     */
+    message: string;
+    /**
+     * This represents discovered update results for matching updates and store it as SBE manifest.
+     */
+    sbeManifest: string;
+}
+
+/**
+ * The solution builder extension (SBE) partner deployment info for cluster.
+ */
+export interface SbePartnerInfoResponse {
+    /**
+     * SBE credentials list for AzureStackHCI cluster deployment.
+     */
+    credentialList?: SbeCredentialsResponse[];
+    /**
+     * List of SBE partner properties for AzureStackHCI cluster deployment.
+     */
+    partnerProperties?: SbePartnerPropertiesResponse[];
+    /**
+     * SBE package and manifest information for the solution Builder Extension staged for AzureStackHCI cluster deployment.
+     */
+    sbeDeploymentInfo?: SbeDeploymentInfoResponse;
+}
+
+/**
+ * Solution builder extension (SBE) partner properties object.
+ */
+export interface SbePartnerPropertiesResponse {
+    /**
+     * SBE partner property name.
+     */
+    name?: string;
+    /**
+     * SBE partner property value.
+     */
+    value?: string;
+}
+
+/**
  * Scale units will contains list of deployment data
  */
 export interface ScaleUnitsResponse {
@@ -1498,6 +2204,10 @@ export interface ScaleUnitsResponse {
      * Deployment Data to deploy AzureStackHCI Cluster.
      */
     deploymentData: DeploymentDataResponse;
+    /**
+     * Solution builder extension (SBE) partner properties
+     */
+    sbePartnerInfo?: SbePartnerInfoResponse;
 }
 /**
  * scaleUnitsResponseProvideDefaults sets the appropriate defaults for ScaleUnitsResponse
@@ -1507,6 +2217,16 @@ export function scaleUnitsResponseProvideDefaults(val: ScaleUnitsResponse): Scal
         ...val,
         deploymentData: deploymentDataResponseProvideDefaults(val.deploymentData),
     };
+}
+
+/**
+ * SDN Integration config to deploy AzureStackHCI Cluster.
+ */
+export interface SdnIntegrationResponse {
+    /**
+     * network controller config for SDN Integration to deploy AzureStackHCI Cluster.
+     */
+    networkController?: NetworkControllerResponse;
 }
 
 /**
@@ -1536,67 +2256,17 @@ export interface SecurityComplianceStatusResponse {
 }
 
 /**
- * The SecuritySettings of AzureStackHCI Cluster.
+ * Service configuration details
  */
-export interface SecuritySettingsResponse {
+export interface ServiceConfigurationResponse {
     /**
-     * When set to true, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent. 
+     * The port on which service is enabled.
      */
-    bitlockerBootVolume?: boolean;
+    port: number;
     /**
-     * When set to true, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes.
+     * Name of the service.
      */
-    bitlockerDataVolumes?: boolean;
-    /**
-     * When set to true, Credential Guard is enabled.
-     */
-    credentialGuardEnforced?: boolean;
-    /**
-     * When set to true, the security baseline is re-applied regularly.
-     */
-    driftControlEnforced?: boolean;
-    /**
-     * By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent.
-     */
-    drtmProtection?: boolean;
-    /**
-     * By default, Hypervisor-protected Code Integrity is enabled on your Azure HCI cluster.
-     */
-    hvciProtection?: boolean;
-    /**
-     * When set to true, all the side channel mitigations are enabled
-     */
-    sideChannelMitigationEnforced?: boolean;
-    /**
-     * When set to true, cluster east-west traffic is encrypted.
-     */
-    smbClusterEncryption?: boolean;
-    /**
-     * When set to true, the SMB default instance requires sign in for the client and server services.
-     */
-    smbSigningEnforced?: boolean;
-    /**
-     * WDAC is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster.
-     */
-    wdacEnforced?: boolean;
-}
-/**
- * securitySettingsResponseProvideDefaults sets the appropriate defaults for SecuritySettingsResponse
- */
-export function securitySettingsResponseProvideDefaults(val: SecuritySettingsResponse): SecuritySettingsResponse {
-    return {
-        ...val,
-        bitlockerBootVolume: (val.bitlockerBootVolume) ?? true,
-        bitlockerDataVolumes: (val.bitlockerDataVolumes) ?? true,
-        credentialGuardEnforced: (val.credentialGuardEnforced) ?? false,
-        driftControlEnforced: (val.driftControlEnforced) ?? true,
-        drtmProtection: (val.drtmProtection) ?? true,
-        hvciProtection: (val.hvciProtection) ?? true,
-        sideChannelMitigationEnforced: (val.sideChannelMitigationEnforced) ?? true,
-        smbClusterEncryption: (val.smbClusterEncryption) ?? false,
-        smbSigningEnforced: (val.smbSigningEnforced) ?? true,
-        wdacEnforced: (val.wdacEnforced) ?? true,
-    };
+    serviceName: string;
 }
 
 /**
@@ -1614,7 +2284,7 @@ export interface SoftwareAssurancePropertiesResponse {
     /**
      * Status of the Software Assurance for the cluster.
      */
-    softwareAssuranceStatus?: string;
+    softwareAssuranceStatus: string;
 }
 
 /**
@@ -1632,7 +2302,7 @@ export interface SshConfigurationResponse {
  */
 export interface SshPublicKeyResponse {
     /**
-     * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+     * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
      */
     keyData?: string;
     /**
@@ -1658,13 +2328,9 @@ export interface StepResponse {
      */
     errorMessage?: string;
     /**
-     * List of exceptions in AzureStackHCI Cluster Deployment.
+     * Expected execution time of a given step. This is optionally authored in the update action plan and can be empty.
      */
-    exception?: string[];
-    /**
-     * FullStepIndex of step.
-     */
-    fullStepIndex?: string;
+    expectedExecutionTime?: string;
     /**
      * Completion time of this step or the last completed sub-step.
      */
@@ -1688,6 +2354,38 @@ export interface StepResponse {
 }
 
 /**
+ * The StorageAdapter physical nodes of a cluster.
+ */
+export interface StorageAdapterIPInfoResponse {
+    /**
+     * The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
+     */
+    ipv4Address: string;
+    /**
+     * storage adapter physical node name.
+     */
+    physicalNode: string;
+    /**
+     * The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
+     */
+    subnetMask: string;
+}
+
+/**
+ * Storage container provisioning status
+ */
+export interface StorageContainerStatusProvisioningStatusResponse {
+    /**
+     * The ID of the operation performed on the storage container
+     */
+    operationId?: string;
+    /**
+     * The status of the operation performed on the storage container [Succeeded, Failed, InProgress]
+     */
+    status: string;
+}
+
+/**
  * The observed state of storage containers
  */
 export interface StorageContainerStatusResponse {
@@ -1707,18 +2405,10 @@ export interface StorageContainerStatusResponse {
      * Descriptive error message
      */
     errorMessage?: string;
-    provisioningStatus?: StorageContainerStatusResponseProvisioningStatus;
-}
-
-export interface StorageContainerStatusResponseProvisioningStatus {
     /**
-     * The ID of the operation performed on the storage container
+     * Storage container's provisioning status
      */
-    operationId?: string;
-    /**
-     * The status of the operation performed on the storage container [Succeeded, Failed, InProgress]
-     */
-    status?: string;
+    provisioningStatus?: StorageContainerStatusProvisioningStatusResponse;
 }
 
 /**
@@ -1728,11 +2418,19 @@ export interface StorageNetworksResponse {
     /**
      * Name of the storage network.
      */
-    name?: string;
+    name: string;
     /**
      * Name of the storage network adapter.
      */
-    networkAdapterName?: string;
+    networkAdapterName: string;
+    /**
+     * List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
+     */
+    storageAdapterIPInfo: StorageAdapterIPInfoResponse[];
+    /**
+     * ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic. 
+     */
+    storageVlanId: string;
     /**
      * ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic. 
      */
@@ -1759,15 +2457,18 @@ export function storageResponseProvideDefaults(val: StorageResponse): StorageRes
 }
 
 /**
- * IPConfigurationReference - Describes a IPConfiguration under the virtual network
+ * The ARM ID for a Network Interface.
  */
-export interface SubnetPropertiesFormatResponseIpConfigurationReferences {
+export interface SubnetIpConfigurationReferenceResponse {
     /**
-     * IPConfigurationID
+     * The ARM ID for a Network Interface.
      */
     id?: string;
 }
 
+/**
+ * Properties of the subnet.
+ */
 export interface SubnetResponse {
     /**
      * The address prefix for the subnet: Cidr for this subnet - IPv4, IPv6.
@@ -1784,7 +2485,7 @@ export interface SubnetResponse {
     /**
      * IPConfigurationReferences - list of IPConfigurationReferences
      */
-    ipConfigurationReferences?: SubnetPropertiesFormatResponseIpConfigurationReferences[];
+    ipConfigurationReferences?: SubnetIpConfigurationReferenceResponse[];
     /**
      * network associated pool of IP Addresses
      */
@@ -1794,6 +2495,10 @@ export interface SubnetResponse {
      */
     name?: string;
     /**
+     * NetworkSecurityGroup - Network Security Group attached to the logical network.
+     */
+    networkSecurityGroup?: NetworkSecurityGroupArmReferenceResponse;
+    /**
      * Route table resource.
      */
     routeTable?: RouteTableResponse;
@@ -1801,6 +2506,42 @@ export interface SubnetResponse {
      * Vlan to use for the subnet
      */
     vlan?: number;
+}
+
+/**
+ * List of switch details for edge device.
+ */
+export interface SwitchDetailResponse {
+    /**
+     * This represents extensions installed on virtualSwitch.
+     */
+    extensions: SwitchExtensionResponse[];
+    /**
+     * The name of the switch.
+     */
+    switchName: string;
+    /**
+     * The type of the switch. e.g. external, internal.
+     */
+    switchType: string;
+}
+
+/**
+ * This represents extensions installed on virtualSwitch.
+ */
+export interface SwitchExtensionResponse {
+    /**
+     * This represents whether extension is enabled on virtualSwitch.
+     */
+    extensionEnabled: boolean;
+    /**
+     * This will show extension name for virtualSwitch.
+     */
+    extensionName: string;
+    /**
+     * Unique identifier for virtualSwitch.
+     */
+    switchId: string;
 }
 
 /**
@@ -1866,23 +2607,65 @@ export interface UserAssignedIdentityResponse {
 }
 
 /**
- * The ValidationStatus of AzureStackHCI Cluster.
+ * Specifies the security profile settings for the managed disk. NOTE: It can only be set for Confidential VMs
  */
-export interface ValidationStatusResponse {
+export interface VMDiskSecurityProfileResponse {
     /**
-     * Status of AzureStackHCI Cluster Deployment.
+     * Specifies the EncryptionType of the managed disk. It is set to NonPersistedTPM for not persisting firmware state in the VMGuestState blob. NOTE: It can be set for only Confidential VMs.
+     */
+    securityEncryptionType?: string;
+}
+
+/**
+ * The ARM ID for a Virtual Hard Disk.
+ */
+export interface VirtualHardDiskArmReferenceResponse {
+    /**
+     * The ARM ID for a Virtual Hard Disk.
+     */
+    id?: string;
+}
+
+/**
+ * The download status of the virtual hard disk
+ */
+export interface VirtualHardDiskDownloadStatusResponse {
+    /**
+     * The downloaded sized of the virtual hard disk in MB
+     */
+    downloadedSizeInMB?: number;
+    /**
+     * The progress of the operation in percentage
+     */
+    progressPercentage?: number;
+    /**
+     * The status of Uploading virtual hard disk [Succeeded, Failed, InProgress]
      */
     status: string;
+}
+
+/**
+ * VHD Status provisioning status
+ */
+export interface VirtualHardDiskStatusProvisioningStatusResponse {
     /**
-     * List of steps of AzureStackHCI Cluster Deployment.
+     * The ID of the operation performed on the virtual hard disk
      */
-    steps: StepResponse[];
+    operationId?: string;
+    /**
+     * The status of the operation performed on the virtual hard disk [Succeeded, Failed, InProgress]
+     */
+    status: string;
 }
 
 /**
  * The observed state of virtual hard disks
  */
 export interface VirtualHardDiskStatusResponse {
+    /**
+     * The download status of the virtual hard disk
+     */
+    downloadStatus?: VirtualHardDiskDownloadStatusResponse;
     /**
      * VirtualHardDisk provisioning error code
      */
@@ -1891,29 +2674,77 @@ export interface VirtualHardDiskStatusResponse {
      * Descriptive error message
      */
     errorMessage?: string;
-    provisioningStatus?: VirtualHardDiskStatusResponseProvisioningStatus;
+    /**
+     * Provisioning status of the vhd
+     */
+    provisioningStatus?: VirtualHardDiskStatusProvisioningStatusResponse;
+    /**
+     * The upload status of the virtual hard disk
+     */
+    uploadStatus?: VirtualHardDiskUploadStatusResponse;
 }
 
-export interface VirtualHardDiskStatusResponseProvisioningStatus {
+/**
+ * The upload status of the virtual hard disk
+ */
+export interface VirtualHardDiskUploadStatusResponse {
     /**
-     * The ID of the operation performed on the virtual hard disk
+     * VirtualHardDisk upload error code
      */
-    operationId?: string;
+    errorCode?: string;
     /**
-     * The status of the operation performed on the virtual hard disk [Succeeded, Failed, InProgress]
+     * Descriptive upload error message
      */
-    status?: string;
+    errorMessage?: string;
+    /**
+     * The progress of the operation in percentage
+     */
+    progressPercentage?: number;
+    /**
+     * The status of Uploading virtual hard disk [Succeeded, Failed, InProgress]
+     */
+    status: string;
+    /**
+     * The uploaded sized of the virtual hard disk in MB
+     */
+    uploadedSizeInMB?: number;
 }
 
-export interface VirtualMachineInstancePropertiesResponseDataDisks {
+/**
+ * The instance view of the VM Config Agent running on the virtual machine.
+ */
+export interface VirtualMachineConfigAgentInstanceViewResponse {
     /**
-     * Resource ID of the data disk
+     * The resource status information.
      */
-    id?: string;
+    statuses?: InstanceViewStatusResponse[];
+    /**
+     * The VM Config Agent full version.
+     */
+    vmConfigAgentVersion?: string;
 }
 
-export interface VirtualMachineInstancePropertiesResponseDynamicMemoryConfig {
+/**
+ * The parameters of a managed disk.
+ */
+export interface VirtualMachineInstanceManagedDiskParametersResponse {
+    /**
+     * Specifies the security profile for the managed disk.
+     */
+    securityProfile?: VMDiskSecurityProfileResponse;
+}
+
+/**
+ * Dynamic memory config
+ */
+export interface VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfigResponse {
+    /**
+     * Maximum memory in MB
+     */
     maximumMemoryMB?: number;
+    /**
+     * Minimum memory in MB
+     */
     minimumMemoryMB?: number;
     /**
      * Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage of the total memory that the virtual machine instance is thought to need. This only applies to virtual systems with dynamic memory enabled. This property can be in the range of 5 to 2000.
@@ -1924,8 +2755,11 @@ export interface VirtualMachineInstancePropertiesResponseDynamicMemoryConfig {
 /**
  * HardwareProfile - Specifies the hardware settings for the virtual machine instance.
  */
-export interface VirtualMachineInstancePropertiesResponseHardwareProfile {
-    dynamicMemoryConfig?: VirtualMachineInstancePropertiesResponseDynamicMemoryConfig;
+export interface VirtualMachineInstancePropertiesHardwareProfileResponse {
+    /**
+     * Dynamic memory config
+     */
+    dynamicMemoryConfig?: VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfigResponse;
     /**
      * RAM in MB for the virtual machine instance
      */
@@ -1934,12 +2768,19 @@ export interface VirtualMachineInstancePropertiesResponseHardwareProfile {
      * number of processors for the virtual machine instance
      */
     processors?: number;
+    /**
+     * virtualMachineGPUs - list of gpus to be attached to the virtual machine instance
+     */
+    virtualMachineGPUs?: VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse[];
+    /**
+     * Enum of VM Sizes
+     */
     vmSize?: string;
 }
 /**
- * virtualMachineInstancePropertiesResponseHardwareProfileProvideDefaults sets the appropriate defaults for VirtualMachineInstancePropertiesResponseHardwareProfile
+ * virtualMachineInstancePropertiesHardwareProfileResponseProvideDefaults sets the appropriate defaults for VirtualMachineInstancePropertiesHardwareProfileResponse
  */
-export function virtualMachineInstancePropertiesResponseHardwareProfileProvideDefaults(val: VirtualMachineInstancePropertiesResponseHardwareProfile): VirtualMachineInstancePropertiesResponseHardwareProfile {
+export function virtualMachineInstancePropertiesHardwareProfileResponseProvideDefaults(val: VirtualMachineInstancePropertiesHardwareProfileResponse): VirtualMachineInstancePropertiesHardwareProfileResponse {
     return {
         ...val,
         vmSize: (val.vmSize) ?? "Default",
@@ -1947,19 +2788,37 @@ export function virtualMachineInstancePropertiesResponseHardwareProfileProvideDe
 }
 
 /**
- * Which Image to use for the virtual machine instance
+ * GPU properties - describes the GPU configuration.
  */
-export interface VirtualMachineInstancePropertiesResponseImageReference {
+export interface VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse {
     /**
-     * Resource ID of the image
+     * GPU assignment type
      */
-    id?: string;
+    assignmentType: string;
+    /**
+     * Name of the GPU
+     */
+    gpuName?: string;
+    /**
+     * Size of gpu partition in MB for GPU-P
+     */
+    partitionSizeMB?: number;
+}
+
+/**
+ * NetworkProfile - describes the network configuration the virtual machine instance
+ */
+export interface VirtualMachineInstancePropertiesNetworkProfileResponse {
+    /**
+     * NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
+     */
+    networkInterfaces?: NetworkInterfaceArmReferenceResponse[];
 }
 
 /**
  * LinuxConfiguration - linux specific configuration values for the virtual machine instance
  */
-export interface VirtualMachineInstancePropertiesResponseLinuxConfiguration {
+export interface VirtualMachineInstancePropertiesOsProfileLinuxConfigurationResponse {
     /**
      * DisablePasswordAuthentication - whether password authentication should be disabled
      */
@@ -1978,9 +2837,9 @@ export interface VirtualMachineInstancePropertiesResponseLinuxConfiguration {
     ssh?: SshConfigurationResponse;
 }
 /**
- * virtualMachineInstancePropertiesResponseLinuxConfigurationProvideDefaults sets the appropriate defaults for VirtualMachineInstancePropertiesResponseLinuxConfiguration
+ * virtualMachineInstancePropertiesOsProfileLinuxConfigurationResponseProvideDefaults sets the appropriate defaults for VirtualMachineInstancePropertiesOsProfileLinuxConfigurationResponse
  */
-export function virtualMachineInstancePropertiesResponseLinuxConfigurationProvideDefaults(val: VirtualMachineInstancePropertiesResponseLinuxConfiguration): VirtualMachineInstancePropertiesResponseLinuxConfiguration {
+export function virtualMachineInstancePropertiesOsProfileLinuxConfigurationResponseProvideDefaults(val: VirtualMachineInstancePropertiesOsProfileLinuxConfigurationResponse): VirtualMachineInstancePropertiesOsProfileLinuxConfigurationResponse {
     return {
         ...val,
         provisionVMAgent: (val.provisionVMAgent) ?? true,
@@ -1988,41 +2847,10 @@ export function virtualMachineInstancePropertiesResponseLinuxConfigurationProvid
     };
 }
 
-export interface VirtualMachineInstancePropertiesResponseNetworkInterfaces {
-    /**
-     * ID - Resource Id of the network interface
-     */
-    id?: string;
-}
-
-/**
- * NetworkProfile - describes the network configuration the virtual machine instance
- */
-export interface VirtualMachineInstancePropertiesResponseNetworkProfile {
-    /**
-     * NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
-     */
-    networkInterfaces?: VirtualMachineInstancePropertiesResponseNetworkInterfaces[];
-}
-
-/**
- * VHD to attach as OS disk
- */
-export interface VirtualMachineInstancePropertiesResponseOsDisk {
-    /**
-     * Resource ID of the OS disk
-     */
-    id?: string;
-    /**
-     * This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
-     */
-    osType?: string;
-}
-
 /**
  * OsProfile - describes the configuration of the operating system and sets login data
  */
-export interface VirtualMachineInstancePropertiesResponseOsProfile {
+export interface VirtualMachineInstancePropertiesOsProfileResponse {
     /**
      * AdminUsername - admin username
      */
@@ -2034,87 +2862,27 @@ export interface VirtualMachineInstancePropertiesResponseOsProfile {
     /**
      * LinuxConfiguration - linux specific configuration values for the virtual machine instance
      */
-    linuxConfiguration?: VirtualMachineInstancePropertiesResponseLinuxConfiguration;
+    linuxConfiguration?: VirtualMachineInstancePropertiesOsProfileLinuxConfigurationResponse;
     /**
-     * Windows Configuration for the virtual machine instance 
+     * Windows Configuration for the virtual machine instance
      */
-    windowsConfiguration?: VirtualMachineInstancePropertiesResponseWindowsConfiguration;
+    windowsConfiguration?: VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse;
 }
 /**
- * virtualMachineInstancePropertiesResponseOsProfileProvideDefaults sets the appropriate defaults for VirtualMachineInstancePropertiesResponseOsProfile
+ * virtualMachineInstancePropertiesOsProfileResponseProvideDefaults sets the appropriate defaults for VirtualMachineInstancePropertiesOsProfileResponse
  */
-export function virtualMachineInstancePropertiesResponseOsProfileProvideDefaults(val: VirtualMachineInstancePropertiesResponseOsProfile): VirtualMachineInstancePropertiesResponseOsProfile {
+export function virtualMachineInstancePropertiesOsProfileResponseProvideDefaults(val: VirtualMachineInstancePropertiesOsProfileResponse): VirtualMachineInstancePropertiesOsProfileResponse {
     return {
         ...val,
-        linuxConfiguration: (val.linuxConfiguration ? virtualMachineInstancePropertiesResponseLinuxConfigurationProvideDefaults(val.linuxConfiguration) : undefined),
-        windowsConfiguration: (val.windowsConfiguration ? virtualMachineInstancePropertiesResponseWindowsConfigurationProvideDefaults(val.windowsConfiguration) : undefined),
+        linuxConfiguration: (val.linuxConfiguration ? virtualMachineInstancePropertiesOsProfileLinuxConfigurationResponseProvideDefaults(val.linuxConfiguration) : undefined),
+        windowsConfiguration: (val.windowsConfiguration ? virtualMachineInstancePropertiesOsProfileWindowsConfigurationResponseProvideDefaults(val.windowsConfiguration) : undefined),
     };
 }
 
 /**
- * SecurityProfile - Specifies the security settings for the virtual machine instance.
+ * Windows Configuration for the virtual machine instance
  */
-export interface VirtualMachineInstancePropertiesResponseSecurityProfile {
-    enableTPM?: boolean;
-    /**
-     * Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
-     */
-    securityType?: string;
-    uefiSettings?: VirtualMachineInstancePropertiesResponseUefiSettings;
-}
-/**
- * virtualMachineInstancePropertiesResponseSecurityProfileProvideDefaults sets the appropriate defaults for VirtualMachineInstancePropertiesResponseSecurityProfile
- */
-export function virtualMachineInstancePropertiesResponseSecurityProfileProvideDefaults(val: VirtualMachineInstancePropertiesResponseSecurityProfile): VirtualMachineInstancePropertiesResponseSecurityProfile {
-    return {
-        ...val,
-        enableTPM: (val.enableTPM) ?? false,
-        uefiSettings: (val.uefiSettings ? virtualMachineInstancePropertiesResponseUefiSettingsProvideDefaults(val.uefiSettings) : undefined),
-    };
-}
-
-/**
- * StorageProfile - contains information about the disks and storage information for the virtual machine instance
- */
-export interface VirtualMachineInstancePropertiesResponseStorageProfile {
-    /**
-     * adds data disks to the virtual machine instance
-     */
-    dataDisks?: VirtualMachineInstancePropertiesResponseDataDisks[];
-    /**
-     * Which Image to use for the virtual machine instance
-     */
-    imageReference?: VirtualMachineInstancePropertiesResponseImageReference;
-    /**
-     * VHD to attach as OS disk
-     */
-    osDisk?: VirtualMachineInstancePropertiesResponseOsDisk;
-    /**
-     * Id of the storage container that hosts the VM configuration file
-     */
-    vmConfigStoragePathId?: string;
-}
-
-export interface VirtualMachineInstancePropertiesResponseUefiSettings {
-    /**
-     * Specifies whether secure boot should be enabled on the virtual machine instance.
-     */
-    secureBootEnabled?: boolean;
-}
-/**
- * virtualMachineInstancePropertiesResponseUefiSettingsProvideDefaults sets the appropriate defaults for VirtualMachineInstancePropertiesResponseUefiSettings
- */
-export function virtualMachineInstancePropertiesResponseUefiSettingsProvideDefaults(val: VirtualMachineInstancePropertiesResponseUefiSettings): VirtualMachineInstancePropertiesResponseUefiSettings {
-    return {
-        ...val,
-        secureBootEnabled: (val.secureBootEnabled) ?? false,
-    };
-}
-
-/**
- * Windows Configuration for the virtual machine instance 
- */
-export interface VirtualMachineInstancePropertiesResponseWindowsConfiguration {
+export interface VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse {
     /**
      * Whether to EnableAutomaticUpdates on the machine
      */
@@ -2137,14 +2905,115 @@ export interface VirtualMachineInstancePropertiesResponseWindowsConfiguration {
     timeZone?: string;
 }
 /**
- * virtualMachineInstancePropertiesResponseWindowsConfigurationProvideDefaults sets the appropriate defaults for VirtualMachineInstancePropertiesResponseWindowsConfiguration
+ * virtualMachineInstancePropertiesOsProfileWindowsConfigurationResponseProvideDefaults sets the appropriate defaults for VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse
  */
-export function virtualMachineInstancePropertiesResponseWindowsConfigurationProvideDefaults(val: VirtualMachineInstancePropertiesResponseWindowsConfiguration): VirtualMachineInstancePropertiesResponseWindowsConfiguration {
+export function virtualMachineInstancePropertiesOsProfileWindowsConfigurationResponseProvideDefaults(val: VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse): VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse {
     return {
         ...val,
         provisionVMAgent: (val.provisionVMAgent) ?? true,
         provisionVMConfigAgent: (val.provisionVMConfigAgent) ?? true,
     };
+}
+
+/**
+ * SecurityProfile - Specifies the security settings for the virtual machine instance.
+ */
+export interface VirtualMachineInstancePropertiesSecurityProfileResponse {
+    /**
+     * Enable TPM flag
+     */
+    enableTPM?: boolean;
+    /**
+     * Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
+     */
+    securityType?: string;
+    /**
+     * Uefi settings of the virtual machine instance
+     */
+    uefiSettings?: VirtualMachineInstancePropertiesSecurityProfileUefiSettingsResponse;
+}
+/**
+ * virtualMachineInstancePropertiesSecurityProfileResponseProvideDefaults sets the appropriate defaults for VirtualMachineInstancePropertiesSecurityProfileResponse
+ */
+export function virtualMachineInstancePropertiesSecurityProfileResponseProvideDefaults(val: VirtualMachineInstancePropertiesSecurityProfileResponse): VirtualMachineInstancePropertiesSecurityProfileResponse {
+    return {
+        ...val,
+        enableTPM: (val.enableTPM) ?? false,
+        uefiSettings: (val.uefiSettings ? virtualMachineInstancePropertiesSecurityProfileUefiSettingsResponseProvideDefaults(val.uefiSettings) : undefined),
+    };
+}
+
+/**
+ * Uefi settings - Specifies whether secure boot should be enabled on the virtual machine instance.
+ */
+export interface VirtualMachineInstancePropertiesSecurityProfileUefiSettingsResponse {
+    /**
+     * Specifies whether secure boot should be enabled on the virtual machine instance.
+     */
+    secureBootEnabled?: boolean;
+}
+/**
+ * virtualMachineInstancePropertiesSecurityProfileUefiSettingsResponseProvideDefaults sets the appropriate defaults for VirtualMachineInstancePropertiesSecurityProfileUefiSettingsResponse
+ */
+export function virtualMachineInstancePropertiesSecurityProfileUefiSettingsResponseProvideDefaults(val: VirtualMachineInstancePropertiesSecurityProfileUefiSettingsResponse): VirtualMachineInstancePropertiesSecurityProfileUefiSettingsResponse {
+    return {
+        ...val,
+        secureBootEnabled: (val.secureBootEnabled) ?? false,
+    };
+}
+
+/**
+ * VHD to attach as OS disk
+ */
+export interface VirtualMachineInstancePropertiesStorageProfileOsDiskResponse {
+    /**
+     * The ARM ID for a Virtual Hard Disk.
+     */
+    id?: string;
+    /**
+     * The managed disk parameters.
+     */
+    managedDisk?: VirtualMachineInstanceManagedDiskParametersResponse;
+    /**
+     * This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: Windows, Linux.
+     */
+    osType?: string;
+}
+
+/**
+ * StorageProfile - contains information about the disks and storage information for the virtual machine instance
+ */
+export interface VirtualMachineInstancePropertiesStorageProfileResponse {
+    /**
+     * adds data disks to the virtual machine instance
+     */
+    dataDisks?: VirtualHardDiskArmReferenceResponse[];
+    /**
+     * Which Image to use for the virtual machine instance
+     */
+    imageReference?: ImageArmReferenceResponse;
+    /**
+     * VHD to attach as OS disk
+     */
+    osDisk?: VirtualMachineInstancePropertiesStorageProfileOsDiskResponse;
+    /**
+     * Id of the storage container that hosts the VM configuration file
+     */
+    vmConfigStoragePathId?: string;
+}
+
+/**
+ * Virtual machine instance provisioning status.
+ */
+export interface VirtualMachineInstanceStatusProvisioningStatusResponse {
+    /**
+     * The ID of the operation performed on the virtual machine instance
+     */
+    operationId?: string;
+    /**
+     * The status of the operation performed on the virtual machine instance [Succeeded, Failed, InProgress]
+     */
+    status: string;
 }
 
 /**
@@ -2163,18 +3032,10 @@ export interface VirtualMachineInstanceStatusResponse {
      * The power state of the virtual machine instance
      */
     powerState?: string;
-    provisioningStatus?: VirtualMachineInstanceStatusResponseProvisioningStatus;
-}
-
-export interface VirtualMachineInstanceStatusResponseProvisioningStatus {
     /**
-     * The ID of the operation performed on the virtual machine instance
+     * Provisioning status of the virtual machine instance
      */
-    operationId?: string;
-    /**
-     * The status of the operation performed on the virtual machine instance [Succeeded, Failed, InProgress]
-     */
-    status?: string;
+    provisioningStatus?: VirtualMachineInstanceStatusProvisioningStatusResponse;
 }
 
 /**
@@ -2184,7 +3045,7 @@ export interface VirtualMachineInstanceViewResponse {
     /**
      * The VM Config Agent running on the virtual machine.
      */
-    vmAgent?: VirtualMachineVMConfigAgentInstanceViewResponse;
+    vmAgent?: VirtualMachineConfigAgentInstanceViewResponse;
 }
 
 export interface VirtualMachinePropertiesResponseDataDisks {
@@ -2460,20 +3321,6 @@ export interface VirtualMachineStatusResponseProvisioningStatus {
 }
 
 /**
- * The instance view of the VM Config Agent running on the virtual machine.
- */
-export interface VirtualMachineVMConfigAgentInstanceViewResponse {
-    /**
-     * The resource status information.
-     */
-    statuses?: InstanceViewStatusResponse[];
-    /**
-     * The VM Config Agent full version.
-     */
-    vmVMConfigAgentVersion?: string;
-}
-
-/**
  * DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
  */
 export interface VirtualNetworkPropertiesResponseDhcpOptions {
@@ -2554,10 +3401,6 @@ export interface VirtualNetworkPropertiesResponseSubnets {
      */
     ipConfigurationReferences?: VirtualNetworkPropertiesResponseIpConfigurationReferences[];
     /**
-     * network associated pool of IP Addresses
-     */
-    ipPools?: IPPoolResponse[];
-    /**
      * Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
     name?: string;
@@ -2604,30 +3447,23 @@ export interface VirtualSwitchConfigurationOverridesResponse {
     /**
      * Enable IoV for Virtual Switch
      */
-    enableIov?: string;
+    enableIov: string;
     /**
      * Load Balancing Algorithm for Virtual Switch
      */
-    loadBalancingAlgorithm?: string;
+    loadBalancingAlgorithm: string;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * The credentials used to login to the image repository that has access to the specified image
+ */
+export interface VmImageRepositoryCredentialsResponse {
+    /**
+     * Password for accessing image repository
+     */
+    password: string;
+    /**
+     * Username for accessing image repository
+     */
+    username: string;
+}

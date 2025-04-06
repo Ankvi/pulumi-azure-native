@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The profile resource format.
- * Azure REST API version: 2017-04-26. Prior API version in Azure Native 1.x: 2017-04-26.
+ *
+ * Uses Azure REST API version 2017-04-26. In version 2.x of the Azure Native provider, it used API version 2017-04-26.
  */
 export class Profile extends pulumi.CustomResource {
     /**
@@ -40,6 +41,10 @@ export class Profile extends pulumi.CustomResource {
      * The attributes for the Type.
      */
     public readonly attributes!: pulumi.Output<{[key: string]: string[]} | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Localized descriptions for the property.
      */
@@ -148,6 +153,7 @@ export class Profile extends pulumi.CustomResource {
             resourceInputs["strongIds"] = args ? args.strongIds : undefined;
             resourceInputs["timestampFieldName"] = args ? args.timestampFieldName : undefined;
             resourceInputs["typeName"] = args ? args.typeName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["lastChangedUtc"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -156,6 +162,7 @@ export class Profile extends pulumi.CustomResource {
         } else {
             resourceInputs["apiEntitySetName"] = undefined /*out*/;
             resourceInputs["attributes"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["entityType"] = undefined /*out*/;

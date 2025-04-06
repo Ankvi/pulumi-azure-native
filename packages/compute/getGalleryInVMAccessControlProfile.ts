@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Retrieves information about a gallery inVMAccessControlProfile.
- * Azure REST API version: 2024-03-03.
+ *
+ * Uses Azure REST API version 2024-03-03.
  */
 export function getGalleryInVMAccessControlProfile(args: GetGalleryInVMAccessControlProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetGalleryInVMAccessControlProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetGalleryInVMAccessControlProfileArgs {
  */
 export interface GetGalleryInVMAccessControlProfileResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Resource Id
      */
     readonly id: string;
@@ -60,7 +65,8 @@ export interface GetGalleryInVMAccessControlProfileResult {
 }
 /**
  * Retrieves information about a gallery inVMAccessControlProfile.
- * Azure REST API version: 2024-03-03.
+ *
+ * Uses Azure REST API version 2024-03-03.
  */
 export function getGalleryInVMAccessControlProfileOutput(args: GetGalleryInVMAccessControlProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGalleryInVMAccessControlProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

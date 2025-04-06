@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a SsmParameter
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getSsmParameter(args: GetSsmParameterArgs, opts?: pulumi.InvokeOptions): Promise<GetSsmParameterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetSsmParameterArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetSsmParameterResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetSsmParameterResult {
 }
 /**
  * Get a SsmParameter
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getSsmParameterOutput(args: GetSsmParameterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSsmParameterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

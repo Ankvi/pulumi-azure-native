@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Returns a server communication link.
- * Azure REST API version: 2014-04-01.
+ *
+ * Uses Azure REST API version 2014-04-01.
  */
 export function getServerCommunicationLink(args: GetServerCommunicationLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetServerCommunicationLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,6 +33,10 @@ export interface GetServerCommunicationLinkArgs {
  * Server communication link.
  */
 export interface GetServerCommunicationLinkResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Resource ID.
      */
@@ -63,7 +68,8 @@ export interface GetServerCommunicationLinkResult {
 }
 /**
  * Returns a server communication link.
- * Azure REST API version: 2014-04-01.
+ *
+ * Uses Azure REST API version 2014-04-01.
  */
 export function getServerCommunicationLinkOutput(args: GetServerCommunicationLinkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerCommunicationLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

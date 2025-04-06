@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the specified cloud connection in a specified resource group.
- * Azure REST API version: 2023-01-01-preview.
+ *
+ * Uses Azure REST API version 2023-01-01-preview.
  */
 export function getCloudConnection(args: GetCloudConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetCloudConnectionArgs {
  * Resource which represents the managed network connection between Azure Gateways and remote cloud gateways.
  */
 export interface GetCloudConnectionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The cloud connector which discovered the remote resource.
      */
@@ -79,7 +84,8 @@ export interface GetCloudConnectionResult {
 }
 /**
  * Gets the specified cloud connection in a specified resource group.
- * Azure REST API version: 2023-01-01-preview.
+ *
+ * Uses Azure REST API version 2023-01-01-preview.
  */
 export function getCloudConnectionOutput(args: GetCloudConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

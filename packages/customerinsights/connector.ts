@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The connector resource format.
- * Azure REST API version: 2017-04-26. Prior API version in Azure Native 1.x: 2017-04-26.
+ *
+ * Uses Azure REST API version 2017-04-26. In version 2.x of the Azure Native provider, it used API version 2017-04-26.
  */
 export class Connector extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class Connector extends pulumi.CustomResource {
         return obj['__pulumiType'] === Connector.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * ID of the connector.
      */
@@ -116,6 +121,7 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["hubName"] = args ? args.hubName : undefined;
             resourceInputs["isInternal"] = args ? args.isInternal : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["connectorId"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["lastModified"] = undefined /*out*/;
@@ -124,6 +130,7 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["tenantId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["connectorId"] = undefined /*out*/;
             resourceInputs["connectorName"] = undefined /*out*/;
             resourceInputs["connectorProperties"] = undefined /*out*/;

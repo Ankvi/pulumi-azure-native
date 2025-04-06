@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A SQL Server availability group listener.
- * Azure REST API version: 2022-02-01. Prior API version in Azure Native 1.x: 2017-03-01-preview.
  *
- * Other available API versions: 2023-01-01-preview, 2023-10-01.
+ * Uses Azure REST API version 2023-10-01. In version 2.x of the Azure Native provider, it used API version 2022-02-01.
+ *
+ * Other available API versions: 2022-02-01, 2022-07-01-preview, 2022-08-01-preview, 2023-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sqlvirtualmachine [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class AvailabilityGroupListener extends pulumi.CustomResource {
     /**
@@ -42,6 +43,10 @@ export class AvailabilityGroupListener extends pulumi.CustomResource {
      * Name of the availability group.
      */
     public readonly availabilityGroupName!: pulumi.Output<string | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Create a default availability group if it does not exist.
      */
@@ -101,6 +106,7 @@ export class AvailabilityGroupListener extends pulumi.CustomResource {
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sqlVirtualMachineGroupName"] = args ? args.sqlVirtualMachineGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -108,6 +114,7 @@ export class AvailabilityGroupListener extends pulumi.CustomResource {
         } else {
             resourceInputs["availabilityGroupConfiguration"] = undefined /*out*/;
             resourceInputs["availabilityGroupName"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createDefaultAvailabilityGroupIfNotExist"] = undefined /*out*/;
             resourceInputs["loadBalancerConfigurations"] = undefined /*out*/;
             resourceInputs["multiSubnetIpConfigurations"] = undefined /*out*/;

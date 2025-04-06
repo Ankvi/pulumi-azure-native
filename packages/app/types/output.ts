@@ -146,7 +146,7 @@ export interface AzureActiveDirectoryRegistrationResponse {
     clientSecretSettingName?: string;
     /**
      * The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
      * This URI is a case-sensitive identifier for the token issuer.
      * More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
      */
@@ -256,6 +256,16 @@ export interface AzureStaticWebAppsResponse {
 }
 
 /**
+ * The configuration settings of the storage of the tokens if blob storage is used.
+ */
+export interface BlobStorageTokenStoreResponse {
+    /**
+     * The name of the app secrets containing the SAS URL of the blob storage containing the tokens.
+     */
+    sasUrlSettingName: string;
+}
+
+/**
  * Configuration of the build.
  */
 export interface BuildConfigurationResponse {
@@ -264,7 +274,7 @@ export interface BuildConfigurationResponse {
      */
     baseOs?: string;
     /**
-     * List of environment variables to be passed to the build.
+     * List of environment variables to be passed to the build, secrets should not be used in environment variable.
      */
     environmentVariables?: EnvironmentVariableResponse[];
     /**
@@ -384,6 +394,10 @@ export interface ConfigurationResponse {
      * Collection of secrets used by a Container app
      */
     secrets?: SecretResponse[];
+    /**
+     * Container App to be a dev Container App Service
+     */
+    service?: ServiceResponse;
 }
 /**
  * configurationResponseProvideDefaults sets the appropriate defaults for ConfigurationResponse
@@ -508,6 +522,14 @@ export interface ContainerAppProbeResponseTcpSocket {
  */
 export interface ContainerAppSecretResponse {
     /**
+     * Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
+     */
+    identity: string;
+    /**
+     * Azure Key Vault URL pointing to the secret referenced by the container app.
+     */
+    keyVaultUrl: string;
+    /**
      * Secret Name.
      */
     name: string;
@@ -620,27 +642,27 @@ export interface CookieExpirationResponse {
  */
 export interface CorsPolicyResponse {
     /**
-     * allow credential or not
+     * Specifies whether the resource allows credentials
      */
     allowCredentials?: boolean;
     /**
-     * allowed HTTP headers
+     * Specifies the content for the access-control-allow-headers header
      */
     allowedHeaders?: string[];
     /**
-     * allowed HTTP methods
+     * Specifies the content for the access-control-allow-methods header
      */
     allowedMethods?: string[];
     /**
-     * allowed origins
+     * Specifies the content for the access-control-allow-origins header
      */
     allowedOrigins: string[];
     /**
-     * expose HTTP headers 
+     * Specifies the content for the access-control-expose-headers header 
      */
     exposeHeaders?: string[];
     /**
-     * max time client can cache the result
+     * Specifies the content for the access-control-max-age header
      */
     maxAge?: number;
 }
@@ -793,9 +815,31 @@ export interface CustomScaleRuleResponse {
 }
 
 /**
+ * Dapr Component Resiliency Policy Circuit Breaker Policy Configuration.
+ */
+export interface DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse {
+    /**
+     * The number of consecutive errors before the circuit is opened.
+     */
+    consecutiveErrors?: number;
+    /**
+     * The optional interval in seconds after which the error count resets to 0. An interval of 0 will never reset. If not specified, the timeoutInSeconds value will be used.
+     */
+    intervalInSeconds?: number;
+    /**
+     * The interval in seconds until a retry attempt is made after the circuit is opened.
+     */
+    timeoutInSeconds?: number;
+}
+
+/**
  * Dapr Component Resiliency Policy Configuration.
  */
 export interface DaprComponentResiliencyPolicyConfigurationResponse {
+    /**
+     * The optional circuit breaker policy configuration
+     */
+    circuitBreakerPolicy?: DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse;
     /**
      * The optional HTTP retry policy configuration
      */
@@ -842,6 +886,16 @@ export interface DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse
      * The optional response timeout in seconds
      */
     responseTimeoutInSeconds?: number;
+}
+
+/**
+ * Configuration properties Dapr component
+ */
+export interface DaprConfigurationResponse {
+    /**
+     * The version of Dapr
+     */
+    version: string;
 }
 
 /**
@@ -1036,13 +1090,17 @@ export interface DynamicPoolConfigurationResponse {
 }
 
 /**
- * Managed Environment resource SKU properties.
+ * The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
  */
-export interface EnvironmentSkuPropertiesResponse {
+export interface EncryptionSettingsResponse {
     /**
-     * Name of the Sku.
+     * The secret name which is referenced for EncryptionKey.
      */
-    name: string;
+    containerAppAuthEncryptionSecretName?: string;
+    /**
+     * The secret name which is referenced for SigningKey.
+     */
+    containerAppAuthSigningSecretName?: string;
 }
 
 /**
@@ -1563,9 +1621,31 @@ export interface IdentityProvidersResponse {
 }
 
 /**
+ * Port mappings of container app ingress
+ */
+export interface IngressPortMappingResponse {
+    /**
+     * Specifies the exposed port for the target port. If not specified, it defaults to target port
+     */
+    exposedPort?: number;
+    /**
+     * Specifies whether the app port is accessible outside of the environment
+     */
+    external: boolean;
+    /**
+     * Specifies the port user's container listens on
+     */
+    targetPort: number;
+}
+
+/**
  * Container App Ingress configuration.
  */
 export interface IngressResponse {
+    /**
+     * Settings to expose additional ports on container app
+     */
+    additionalPortMappings?: IngressPortMappingResponse[];
     /**
      * Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS connections
      */
@@ -1599,6 +1679,10 @@ export interface IngressResponse {
      */
     ipSecurityRestrictions?: IpSecurityRestrictionRuleResponse[];
     /**
+     * Sticky Sessions for Single Revision Mode
+     */
+    stickySessions?: IngressResponseStickySessions;
+    /**
      * Target Port in containers for traffic from ingress
      */
     targetPort?: number;
@@ -1621,6 +1705,16 @@ export function ingressResponseProvideDefaults(val: IngressResponse): IngressRes
         external: (val.external) ?? false,
         transport: (val.transport) ?? "auto",
     };
+}
+
+/**
+ * Sticky Sessions for Single Revision Mode
+ */
+export interface IngressResponseStickySessions {
+    /**
+     * Sticky Session Affinity
+     */
+    affinity?: string;
 }
 
 /**
@@ -1691,6 +1785,30 @@ export interface JavaComponentConfigurationPropertyResponse {
      * The value of the property
      */
     value?: string;
+}
+
+/**
+ * Container App Ingress configuration.
+ */
+export interface JavaComponentIngressResponse {
+    /**
+     * Hostname of the Java Component endpoint
+     */
+    fqdn: string;
+}
+
+/**
+ * Java component scaling configurations
+ */
+export interface JavaComponentPropertiesResponseScale {
+    /**
+     * Optional. Maximum number of Java component replicas
+     */
+    maxReplicas?: number;
+    /**
+     * Optional. Minimum number of Java component replicas. Defaults to 1 if not set
+     */
+    minReplicas?: number;
 }
 
 /**
@@ -1902,6 +2020,16 @@ export interface JwtClaimChecksResponse {
 }
 
 /**
+ * Configuration properties Keda component
+ */
+export interface KedaConfigurationResponse {
+    /**
+     * The version of Keda
+     */
+    version: string;
+}
+
+/**
  * Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
  */
 export interface LogAnalyticsConfigurationResponse {
@@ -1937,6 +2065,10 @@ export interface LoginResponse {
      * The routes that specify the endpoints used for login and logout requests.
      */
     routes?: LoginRoutesResponse;
+    /**
+     * The configuration settings of the token store.
+     */
+    tokenStore?: TokenStoreResponse;
 }
 
 /**
@@ -1986,17 +2118,33 @@ export interface ManagedCertificateResponseProperties {
 }
 
 /**
- * Configuration used to control the Environment Egress outbound traffic
+ * Peer traffic encryption settings for the Managed Environment
  */
-export interface ManagedEnvironmentOutboundSettingsResponse {
+export interface ManagedEnvironmentResponseEncryption {
     /**
-     * Outbound type for the cluster
+     * Boolean indicating whether the peer traffic encryption is enabled
      */
-    outBoundType?: string;
+    enabled?: boolean;
+}
+
+/**
+ * Peer authentication settings for the Managed Environment
+ */
+export interface ManagedEnvironmentResponsePeerAuthentication {
     /**
-     * Virtual Appliance IP used as the Egress controller for the Environment
+     * Mutual TLS authentication settings for the Managed Environment
      */
-    virtualNetworkApplianceIp?: string;
+    mtls?: MtlsResponse;
+}
+
+/**
+ * Peer traffic settings for the Managed Environment
+ */
+export interface ManagedEnvironmentResponsePeerTrafficConfiguration {
+    /**
+     * Peer traffic encryption settings for the Managed Environment
+     */
+    encryption?: ManagedEnvironmentResponseEncryption;
 }
 
 /**
@@ -2007,6 +2155,29 @@ export interface ManagedEnvironmentStorageResponseProperties {
      * Azure file properties
      */
     azureFile?: AzureFilePropertiesResponse;
+}
+
+/**
+ * Optional settings for a Managed Identity that is assigned to the Session pool.
+ */
+export interface ManagedIdentitySettingResponse {
+    /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Session Pool, or 'system' for system-assigned identity.
+     */
+    identity: string;
+    /**
+     * Use to select the lifecycle stages of a Session Pool during which the Managed Identity should be available.
+     */
+    lifecycle?: string;
+}
+/**
+ * managedIdentitySettingResponseProvideDefaults sets the appropriate defaults for ManagedIdentitySettingResponse
+ */
+export function managedIdentitySettingResponseProvideDefaults(val: ManagedIdentitySettingResponse): ManagedIdentitySettingResponse {
+    return {
+        ...val,
+        lifecycle: (val.lifecycle) ?? "None",
+    };
 }
 
 /**
@@ -2029,6 +2200,47 @@ export interface ManagedServiceIdentityResponse {
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
     userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
+ * Configuration properties for mutual TLS authentication
+ */
+export interface MtlsResponse {
+    /**
+     * Boolean indicating whether the mutual TLS authentication is enabled
+     */
+    enabled?: boolean;
+}
+
+/**
+ * Nacos properties.
+ */
+export interface NacosComponentResponse {
+    /**
+     * Type of the Java Component.
+     * Expected value is 'Nacos'.
+     */
+    componentType: "Nacos";
+    /**
+     * List of Java Components configuration properties
+     */
+    configurations?: JavaComponentConfigurationPropertyResponse[];
+    /**
+     * Java Component Ingress configurations.
+     */
+    ingress?: JavaComponentIngressResponse;
+    /**
+     * Provisioning state of the Java Component.
+     */
+    provisioningState: string;
+    /**
+     * Java component scaling configurations
+     */
+    scale?: JavaComponentPropertiesResponseScale;
+    /**
+     * List of Java Components that are bound to the Java component
+     */
+    serviceBinds?: JavaComponentServiceBindResponse[];
 }
 
 /**
@@ -2299,6 +2511,32 @@ export interface ScaleRuleResponse {
 }
 
 /**
+ * Spring Cloud Gateway route definition
+ */
+export interface ScgRouteResponse {
+    /**
+     * Filters of the route
+     */
+    filters?: string[];
+    /**
+     * Id of the route
+     */
+    id: string;
+    /**
+     * Order of the route
+     */
+    order?: number;
+    /**
+     * Predicates of the route
+     */
+    predicates?: string[];
+    /**
+     * Uri of the route
+     */
+    uri: string;
+}
+
+/**
  * Maintenance schedule entry for a managed environment.
  */
 export interface ScheduledEntryResponse {
@@ -2346,6 +2584,30 @@ export interface SecretVolumeItemResponse {
      * Name of the Container App secret from which to pull the secret value.
      */
     secretRef?: string;
+}
+
+/**
+ * Configuration to bind a ContainerApp to a dev ContainerApp Service
+ */
+export interface ServiceBindResponse {
+    /**
+     * Name of the service bind
+     */
+    name?: string;
+    /**
+     * Resource id of the target service
+     */
+    serviceId?: string;
+}
+
+/**
+ * Container App to be a dev service
+ */
+export interface ServiceResponse {
+    /**
+     * Dev ContainerApp service type
+     */
+    type: string;
 }
 
 /**
@@ -2427,17 +2689,145 @@ export interface SessionPoolSecretResponse {
  */
 export interface SessionRegistryCredentialsResponse {
     /**
+     * A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
+     */
+    identity?: string;
+    /**
      * The name of the secret that contains the registry login password
      */
     passwordSecretRef?: string;
     /**
      * Container registry server.
      */
-    registryServer?: string;
+    server?: string;
     /**
      * Container registry username.
      */
     username?: string;
+}
+
+/**
+ * Spring Boot Admin properties.
+ */
+export interface SpringBootAdminComponentResponse {
+    /**
+     * Type of the Java Component.
+     * Expected value is 'SpringBootAdmin'.
+     */
+    componentType: "SpringBootAdmin";
+    /**
+     * List of Java Components configuration properties
+     */
+    configurations?: JavaComponentConfigurationPropertyResponse[];
+    /**
+     * Java Component Ingress configurations.
+     */
+    ingress?: JavaComponentIngressResponse;
+    /**
+     * Provisioning state of the Java Component.
+     */
+    provisioningState: string;
+    /**
+     * Java component scaling configurations
+     */
+    scale?: JavaComponentPropertiesResponseScale;
+    /**
+     * List of Java Components that are bound to the Java component
+     */
+    serviceBinds?: JavaComponentServiceBindResponse[];
+}
+
+/**
+ * Spring Cloud Config properties.
+ */
+export interface SpringCloudConfigComponentResponse {
+    /**
+     * Type of the Java Component.
+     * Expected value is 'SpringCloudConfig'.
+     */
+    componentType: "SpringCloudConfig";
+    /**
+     * List of Java Components configuration properties
+     */
+    configurations?: JavaComponentConfigurationPropertyResponse[];
+    /**
+     * Provisioning state of the Java Component.
+     */
+    provisioningState: string;
+    /**
+     * Java component scaling configurations
+     */
+    scale?: JavaComponentPropertiesResponseScale;
+    /**
+     * List of Java Components that are bound to the Java component
+     */
+    serviceBinds?: JavaComponentServiceBindResponse[];
+}
+
+/**
+ * Spring Cloud Eureka properties.
+ */
+export interface SpringCloudEurekaComponentResponse {
+    /**
+     * Type of the Java Component.
+     * Expected value is 'SpringCloudEureka'.
+     */
+    componentType: "SpringCloudEureka";
+    /**
+     * List of Java Components configuration properties
+     */
+    configurations?: JavaComponentConfigurationPropertyResponse[];
+    /**
+     * Java Component Ingress configurations.
+     */
+    ingress?: JavaComponentIngressResponse;
+    /**
+     * Provisioning state of the Java Component.
+     */
+    provisioningState: string;
+    /**
+     * Java component scaling configurations
+     */
+    scale?: JavaComponentPropertiesResponseScale;
+    /**
+     * List of Java Components that are bound to the Java component
+     */
+    serviceBinds?: JavaComponentServiceBindResponse[];
+}
+
+/**
+ * Spring Cloud Gateway properties.
+ */
+export interface SpringCloudGatewayComponentResponse {
+    /**
+     * Type of the Java Component.
+     * Expected value is 'SpringCloudGateway'.
+     */
+    componentType: "SpringCloudGateway";
+    /**
+     * List of Java Components configuration properties
+     */
+    configurations?: JavaComponentConfigurationPropertyResponse[];
+    /**
+     * Java Component Ingress configurations.
+     */
+    ingress?: JavaComponentIngressResponse;
+    /**
+     * Provisioning state of the Java Component.
+     */
+    provisioningState: string;
+    /**
+     * Java component scaling configurations
+     */
+    scale?: JavaComponentPropertiesResponseScale;
+    /**
+     * List of Java Components that are bound to the Java component
+     */
+    serviceBinds?: JavaComponentServiceBindResponse[];
+    /**
+     * Gateway route definition
+     */
+    springCloudGatewayRoutes?: ScgRouteResponse[];
 }
 
 /**
@@ -2527,6 +2917,14 @@ export interface TemplateResponse {
      */
     scale?: ScaleResponse;
     /**
+     * List of container app services bound to the app
+     */
+    serviceBinds?: ServiceBindResponse[];
+    /**
+     * Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.
+     */
+    terminationGracePeriodSeconds?: number;
+    /**
      * List of volume definitions for the Container App.
      */
     volumes?: VolumeResponse[];
@@ -2553,6 +2951,26 @@ export interface TimeoutPolicyResponse {
      * Timeout, in seconds, for a request to respond
      */
     responseTimeoutInSeconds?: number;
+}
+
+/**
+ * The configuration settings of the token store.
+ */
+export interface TokenStoreResponse {
+    /**
+     * The configuration settings of the storage of the tokens if blob storage is used.
+     */
+    azureBlobStorage?: BlobStorageTokenStoreResponse;
+    /**
+     * <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
+     *  The default is <code>false</code>.
+     */
+    enabled?: boolean;
+    /**
+     * The number of hours after session token expiration that a session token can be used to
+     * call the token refresh API. The default is 72 hours.
+     */
+    tokenRefreshExtensionHours?: number;
 }
 
 /**
@@ -2640,17 +3058,13 @@ export interface VnetConfigurationResponse {
      */
     dockerBridgeCidr?: string;
     /**
-     * Resource ID of a subnet for infrastructure components. This subnet must be in the same VNET as the subnet defined in runtimeSubnetId. Must not overlap with any other provided IP ranges.
+     * Resource ID of a subnet for infrastructure components. Must not overlap with any other provided IP ranges.
      */
     infrastructureSubnetId?: string;
     /**
-     * Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide runtimeSubnetId and infrastructureSubnetId if enabling this property
+     * Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide infrastructureSubnetId if enabling this property
      */
     internal?: boolean;
-    /**
-     * Configuration used to control the Environment Egress outbound traffic
-     */
-    outboundSettings?: ManagedEnvironmentOutboundSettingsResponse;
     /**
      * IP range in CIDR notation that can be reserved for environment infrastructure IP addresses. Must not overlap with any other provided IP ranges.
      */
@@ -2659,10 +3073,6 @@ export interface VnetConfigurationResponse {
      *  An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server.
      */
     platformReservedDnsIP?: string;
-    /**
-     * This field is deprecated and not used. If you wish to provide your own subnet that Container App containers are injected into, then you should leverage the infrastructureSubnetId.
-     */
-    runtimeSubnetId?: string;
 }
 
 /**
@@ -2748,23 +3158,17 @@ export interface WorkloadProfileResponse {
     /**
      * The maximum capacity.
      */
-    maximumCount: number;
+    maximumCount?: number;
     /**
      * The minimum capacity.
      */
-    minimumCount: number;
+    minimumCount?: number;
+    /**
+     * Workload profile type for the workloads to run on.
+     */
+    name: string;
     /**
      * Workload profile type for the workloads to run on.
      */
     workloadProfileType: string;
 }
-
-
-
-
-
-
-
-
-
-

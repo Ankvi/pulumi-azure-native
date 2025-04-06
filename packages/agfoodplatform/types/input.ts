@@ -143,5 +143,3 @@ export interface SolutionPropertiesArgs {
      */
     termId: pulumi.Input<string>;
 }
-
-

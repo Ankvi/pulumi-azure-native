@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Retrieve the details of the monitored resource.
- * Azure REST API version: 2023-07-07-preview.
+ *
+ * Uses Azure REST API version 2023-07-07-preview.
  */
 export function getMonitoredResource(args: GetMonitoredResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitoredResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetMonitoredResourceArgs {
  */
 export interface GetMonitoredResourceResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
@@ -56,7 +61,8 @@ export interface GetMonitoredResourceResult {
 }
 /**
  * Retrieve the details of the monitored resource.
- * Azure REST API version: 2023-07-07-preview.
+ *
+ * Uses Azure REST API version 2023-07-07-preview.
  */
 export function getMonitoredResourceOutput(args: GetMonitoredResourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMonitoredResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the description of an existing time series database connection.
- * Azure REST API version: 2023-01-31.
+ *
+ * Uses Azure REST API version 2023-01-31.
  */
 export function getTimeSeriesDatabaseConnection(args: GetTimeSeriesDatabaseConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetTimeSeriesDatabaseConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetTimeSeriesDatabaseConnectionArgs {
  */
 export interface GetTimeSeriesDatabaseConnectionResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The resource identifier.
      */
     readonly id: string;
@@ -56,7 +61,8 @@ export interface GetTimeSeriesDatabaseConnectionResult {
 }
 /**
  * Get the description of an existing time series database connection.
- * Azure REST API version: 2023-01-31.
+ *
+ * Uses Azure REST API version 2023-01-31.
  */
 export function getTimeSeriesDatabaseConnectionOutput(args: GetTimeSeriesDatabaseConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTimeSeriesDatabaseConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets properties of an alert for the specified subscription, resource group, SAP monitor name, and resource name.
- * Azure REST API version: 2024-02-01-preview.
+ *
+ * Uses Azure REST API version 2024-02-01-preview.
  */
 export function getAlert(args: GetAlertArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,6 +42,10 @@ export interface GetAlertResult {
      * ID of the alert rule resource created.
      */
     readonly alertRuleResourceId: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Defines the alert instance errors.
      */
@@ -80,7 +85,8 @@ export interface GetAlertResult {
 }
 /**
  * Gets properties of an alert for the specified subscription, resource group, SAP monitor name, and resource name.
- * Azure REST API version: 2024-02-01-preview.
+ *
+ * Uses Azure REST API version 2024-02-01-preview.
  */
 export function getAlertOutput(args: GetAlertOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlertResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

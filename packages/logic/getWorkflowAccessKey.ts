@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a workflow access key.
- * Azure REST API version: 2015-02-01-preview.
+ *
+ * Uses Azure REST API version 2015-02-01-preview.
  */
 export function getWorkflowAccessKey(args: GetWorkflowAccessKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowAccessKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,6 +31,10 @@ export interface GetWorkflowAccessKeyArgs {
 
 export interface GetWorkflowAccessKeyResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Gets or sets the resource id.
      */
     readonly id?: string;
@@ -52,7 +57,8 @@ export interface GetWorkflowAccessKeyResult {
 }
 /**
  * Gets a workflow access key.
- * Azure REST API version: 2015-02-01-preview.
+ *
+ * Uses Azure REST API version 2015-02-01-preview.
  */
 export function getWorkflowAccessKeyOutput(args: GetWorkflowAccessKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkflowAccessKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

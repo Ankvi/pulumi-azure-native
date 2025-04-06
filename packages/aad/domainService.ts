@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Domain service.
- * Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2021-03-01.
+ *
+ * Uses Azure REST API version 2022-12-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
  */
 export class DomainService extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class DomainService extends pulumi.CustomResource {
         return obj['__pulumiType'] === DomainService.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Configuration diagnostics data containing latest execution from client.
      */
@@ -158,6 +163,7 @@ export class DomainService extends pulumi.CustomResource {
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["syncScope"] = (args ? args.syncScope : undefined) ?? "All";
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["deploymentId"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["migrationProperties"] = undefined /*out*/;
@@ -170,6 +176,7 @@ export class DomainService extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["configDiagnostics"] = undefined /*out*/;
             resourceInputs["deploymentId"] = undefined /*out*/;
             resourceInputs["domainConfigurationType"] = undefined /*out*/;

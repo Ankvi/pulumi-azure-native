@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Implements GuestAgent GET method.
- * Azure REST API version: 2023-03-01-preview.
  *
- * Other available API versions: 2023-10-01, 2023-12-01.
+ * Uses Azure REST API version 2023-12-01.
+ *
+ * Other available API versions: 2023-03-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getVMInstanceGuestAgent(args: GetVMInstanceGuestAgentArgs, opts?: pulumi.InvokeOptions): Promise<GetVMInstanceGuestAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -25,6 +26,10 @@ export interface GetVMInstanceGuestAgentArgs {
  * Defines the GuestAgent.
  */
 export interface GetVMInstanceGuestAgentResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Username / Password Credentials to provision guest agent.
      */
@@ -80,9 +85,10 @@ export interface GetVMInstanceGuestAgentResult {
 }
 /**
  * Implements GuestAgent GET method.
- * Azure REST API version: 2023-03-01-preview.
  *
- * Other available API versions: 2023-10-01, 2023-12-01.
+ * Uses Azure REST API version 2023-12-01.
+ *
+ * Other available API versions: 2023-03-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getVMInstanceGuestAgentOutput(args: GetVMInstanceGuestAgentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVMInstanceGuestAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

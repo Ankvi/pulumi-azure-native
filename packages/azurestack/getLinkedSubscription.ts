@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns the properties of a Linked Subscription resource.
- * Azure REST API version: 2020-06-01-preview.
+ *
+ * Uses Azure REST API version 2020-06-01-preview.
  */
 export function getLinkedSubscription(args: GetLinkedSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetLinkedSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetLinkedSubscriptionArgs {
  * Linked Subscription information.
  */
 export interface GetLinkedSubscriptionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The status of the remote management connection of the Azure Stack device.
      */
@@ -91,7 +96,8 @@ export interface GetLinkedSubscriptionResult {
 }
 /**
  * Returns the properties of a Linked Subscription resource.
- * Azure REST API version: 2020-06-01-preview.
+ *
+ * Uses Azure REST API version 2020-06-01-preview.
  */
 export function getLinkedSubscriptionOutput(args: GetLinkedSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLinkedSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

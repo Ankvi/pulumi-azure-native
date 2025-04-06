@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * This operation retrieves a single standard assignment, given its name and the scope it was created at.
- * Azure REST API version: 2024-08-01.
+ *
+ * Uses Azure REST API version 2024-08-01.
  */
 export function getStandardAssignment(args: GetStandardAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetStandardAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +37,10 @@ export interface GetStandardAssignmentResult {
      * Additional data about assignment that has Attest effect
      */
     readonly attestationData?: types.outputs.StandardAssignmentPropertiesResponseAttestationData;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Description of the standardAssignment
      */
@@ -79,7 +84,8 @@ export interface GetStandardAssignmentResult {
 }
 /**
  * This operation retrieves a single standard assignment, given its name and the scope it was created at.
- * Azure REST API version: 2024-08-01.
+ *
+ * Uses Azure REST API version 2024-08-01.
  */
 export function getStandardAssignmentOutput(args: GetStandardAssignmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStandardAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

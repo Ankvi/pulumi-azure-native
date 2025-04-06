@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Capture properties of Open AI resource Integration.
- * Azure REST API version: 2024-03-01.
  *
- * Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview.
+ * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
+ *
+ * Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elastic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class OpenAI extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class OpenAI extends pulumi.CustomResource {
         return obj['__pulumiType'] === OpenAI.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Name of the integration.
      */
@@ -68,15 +73,17 @@ export class OpenAI extends pulumi.CustomResource {
             resourceInputs["monitorName"] = args ? args.monitorName : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:elastic/v20240101preview:OpenAI" }, { type: "azure-native:elastic/v20240301:OpenAI" }, { type: "azure-native:elastic/v20240501preview:OpenAI" }, { type: "azure-native:elastic/v20240615preview:OpenAI" }, { type: "azure-native:elastic/v20241001preview:OpenAI" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:elastic/v20240101preview:OpenAI" }, { type: "azure-native:elastic/v20240301:OpenAI" }, { type: "azure-native:elastic/v20240501preview:OpenAI" }, { type: "azure-native:elastic/v20240615preview:OpenAI" }, { type: "azure-native:elastic/v20241001preview:OpenAI" }, { type: "azure-native:elastic/v20250115preview:OpenAI" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(OpenAI.__pulumiType, name, resourceInputs, opts);
     }

@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get metadata information on an assessment type in a specific subscription
- * Azure REST API version: 2019-01-01-preview.
+ *
+ * Uses Azure REST API version 2019-01-01-preview.
  */
 export function getAssessmentsMetadataSubscription(args: GetAssessmentsMetadataSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetAssessmentsMetadataSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -26,6 +27,10 @@ export interface GetAssessmentsMetadataSubscriptionResult {
      * BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
      */
     readonly assessmentType: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     readonly categories?: string[];
     /**
      * Human readable description of the assessment
@@ -75,7 +80,8 @@ export interface GetAssessmentsMetadataSubscriptionResult {
 }
 /**
  * Get metadata information on an assessment type in a specific subscription
- * Azure REST API version: 2019-01-01-preview.
+ *
+ * Uses Azure REST API version 2019-01-01-preview.
  */
 export function getAssessmentsMetadataSubscriptionOutput(args: GetAssessmentsMetadataSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAssessmentsMetadataSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

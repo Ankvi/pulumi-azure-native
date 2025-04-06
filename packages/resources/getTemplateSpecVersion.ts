@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a Template Spec version from a specific Template Spec.
- * Azure REST API version: 2022-02-01.
  *
- * Other available API versions: 2019-06-01-preview.
+ * Uses Azure REST API version 2022-02-01.
+ *
+ * Other available API versions: 2021-03-01-preview, 2021-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getTemplateSpecVersion(args: GetTemplateSpecVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateSpecVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,6 +36,10 @@ export interface GetTemplateSpecVersionArgs {
  * Template Spec Version object.
  */
 export interface GetTemplateSpecVersionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Template Spec version description.
      */
@@ -82,9 +87,10 @@ export interface GetTemplateSpecVersionResult {
 }
 /**
  * Gets a Template Spec version from a specific Template Spec.
- * Azure REST API version: 2022-02-01.
  *
- * Other available API versions: 2019-06-01-preview.
+ * Uses Azure REST API version 2022-02-01.
+ *
+ * Other available API versions: 2021-03-01-preview, 2021-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getTemplateSpecVersionOutput(args: GetTemplateSpecVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTemplateSpecVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

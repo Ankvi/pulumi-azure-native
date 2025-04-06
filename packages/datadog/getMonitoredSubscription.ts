@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The request to update subscriptions needed to be monitored by the Datadog monitor resource.
- * Azure REST API version: 2023-01-01.
  *
- * Other available API versions: 2023-07-07, 2023-10-20.
+ * Uses Azure REST API version 2023-10-20.
+ *
+ * Other available API versions: 2023-01-01, 2023-07-07. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getMonitoredSubscription(args: GetMonitoredSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitoredSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +37,10 @@ export interface GetMonitoredSubscriptionArgs {
  */
 export interface GetMonitoredSubscriptionResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The id of the monitored subscription resource.
      */
     readonly id: string;
@@ -54,9 +59,10 @@ export interface GetMonitoredSubscriptionResult {
 }
 /**
  * The request to update subscriptions needed to be monitored by the Datadog monitor resource.
- * Azure REST API version: 2023-01-01.
  *
- * Other available API versions: 2023-07-07, 2023-10-20.
+ * Uses Azure REST API version 2023-10-20.
+ *
+ * Other available API versions: 2023-01-01, 2023-07-07. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getMonitoredSubscriptionOutput(args: GetMonitoredSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMonitoredSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets an Azure Bare Metal Instance for the specified subscription, resource group, and instance name.
- * Azure REST API version: 2024-08-01-preview.
+ *
+ * Uses Azure REST API version 2024-08-01-preview.
  */
 export function getAzureBareMetalInstance(args: GetAzureBareMetalInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureBareMetalInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetAzureBareMetalInstanceArgs {
  * AzureBareMetal instance info on Azure (ARM properties and AzureBareMetal properties)
  */
 export interface GetAzureBareMetalInstanceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Specifies the Azure Bare Metal Instance unique ID.
      */
@@ -95,7 +100,8 @@ export interface GetAzureBareMetalInstanceResult {
 }
 /**
  * Gets an Azure Bare Metal Instance for the specified subscription, resource group, and instance name.
- * Azure REST API version: 2024-08-01-preview.
+ *
+ * Uses Azure REST API version 2024-08-01-preview.
  */
 export function getAzureBareMetalInstanceOutput(args: GetAzureBareMetalInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzureBareMetalInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

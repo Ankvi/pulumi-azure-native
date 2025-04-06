@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Markup rule
- * Azure REST API version: 2022-10-05-preview.
+ *
+ * Uses Azure REST API version 2022-10-05-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-05-preview.
  */
 export class MarkupRule extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class MarkupRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === MarkupRule.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Customer information for the markup rule.
      */
@@ -100,8 +105,10 @@ export class MarkupRule extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["percentage"] = args ? args.percentage : undefined;
             resourceInputs["startDate"] = args ? args.startDate : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["customerDetails"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["eTag"] = undefined /*out*/;

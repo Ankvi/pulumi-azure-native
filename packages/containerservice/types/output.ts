@@ -1,13 +1,147 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Access profile for the Fleet hub API server.
+ */
+export interface APIServerAccessProfileResponse {
+    /**
+     * Whether to create the Fleet hub as a private cluster or not.
+     */
+    enablePrivateCluster?: boolean;
+    /**
+     * Whether to enable apiserver vnet integration for the Fleet hub or not.
+     */
+    enableVnetIntegration?: boolean;
+    /**
+     * The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
+     */
+    subnetId?: string;
+}
+
+/**
+ * For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
+ */
+export interface AbsoluteMonthlyScheduleResponse {
+    /**
+     * The date of the month.
+     */
+    dayOfMonth: number;
+    /**
+     * Specifies the number of months between each set of occurrences.
+     */
+    intervalMonths: number;
+}
+
+/**
+ * Observability profile to enable advanced network metrics and flow logs with historical contexts.
+ */
+export interface AdvancedNetworkingObservabilityResponse {
+    /**
+     * Indicates the enablement of Advanced Networking observability functionalities on clusters.
+     */
+    enabled?: boolean;
+}
+
+/**
+ * Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
+ */
+export interface AdvancedNetworkingResponse {
+    /**
+     * Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified, the default is false.
+     */
+    enabled?: boolean;
+    /**
+     * Observability profile to enable advanced network metrics and flow logs with historical contexts.
+     */
+    observability?: AdvancedNetworkingObservabilityResponse;
+    /**
+     * Security profile to enable security features on cilium based cluster.
+     */
+    security?: AdvancedNetworkingSecurityResponse;
+}
+
+/**
+ * Security profile to enable security features on cilium based cluster.
+ */
+export interface AdvancedNetworkingSecurityResponse {
+    /**
+     * This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based clusters. If not specified, the default is false.
+     */
+    enabled?: boolean;
+}
+
+/**
+ * Network settings of an agent pool.
+ */
+export interface AgentPoolNetworkProfileResponse {
+    /**
+     * The port ranges that are allowed to access. The specified ranges are allowed to overlap.
+     */
+    allowedHostPorts?: PortRangeResponse[];
+    /**
+     * The IDs of the application security groups which agent pool will associate when created.
+     */
+    applicationSecurityGroups?: string[];
+    /**
+     * IPTags of instance-level public IPs.
+     */
+    nodePublicIPTags?: IPTagResponse[];
+}
+
+/**
+ * The security settings of an agent pool.
+ */
+export interface AgentPoolSecurityProfileResponse {
+    /**
+     * Secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and drivers can boot. For more details, see aka.ms/aks/trustedlaunch.  If not specified, the default is false.
+     */
+    enableSecureBoot?: boolean;
+    /**
+     * vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
+     */
+    enableVTPM?: boolean;
+}
+
+/**
  * Settings for upgrading an agentpool
  */
 export interface AgentPoolUpgradeSettingsResponse {
     /**
-     * This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+     * The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.
+     */
+    drainTimeoutInMinutes?: number;
+    /**
+     * This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
      */
     maxSurge?: string;
+    /**
+     * The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes.
+     */
+    nodeSoakDurationInMinutes?: number;
+}
+
+/**
+ * The Windows agent pool's specific profile.
+ */
+export interface AgentPoolWindowsProfileResponse {
+    /**
+     * The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
+     */
+    disableOutboundNat?: boolean;
+}
+
+/**
+ * Agent profile for the Fleet hub.
+ */
+export interface AgentProfileResponse {
+    /**
+     * The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
+     */
+    subnetId?: string;
+    /**
+     * The virtual machine size of the Fleet hub.
+     */
+    vmSize?: string;
 }
 
 /**
@@ -52,6 +186,16 @@ export function azureKeyVaultKmsResponseProvideDefaults(val: AzureKeyVaultKmsRes
 }
 
 /**
+ * Settings for upgrading a cluster.
+ */
+export interface ClusterUpgradeSettingsResponse {
+    /**
+     * Settings for overrides.
+     */
+    overrideSettings?: UpgradeOverrideSettingsResponse;
+}
+
+/**
  * Profile for Linux VMs in the container service cluster.
  */
 export interface ContainerServiceLinuxProfileResponse {
@@ -69,6 +213,10 @@ export interface ContainerServiceLinuxProfileResponse {
  * Profile of network configuration.
  */
 export interface ContainerServiceNetworkProfileResponse {
+    /**
+     * Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
+     */
+    advancedNetworking?: AdvancedNetworkingResponse;
     /**
      * An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
      */
@@ -139,7 +287,6 @@ export function containerServiceNetworkProfileResponseProvideDefaults(val: Conta
         dnsServiceIP: (val.dnsServiceIP) ?? "10.0.0.10",
         loadBalancerProfile: (val.loadBalancerProfile ? managedClusterLoadBalancerProfileResponseProvideDefaults(val.loadBalancerProfile) : undefined),
         natGatewayProfile: (val.natGatewayProfile ? managedClusterNATGatewayProfileResponseProvideDefaults(val.natGatewayProfile) : undefined),
-        networkPlugin: (val.networkPlugin) ?? "kubenet",
         outboundType: (val.outboundType) ?? "loadBalancer",
         podCidr: (val.podCidr) ?? "10.244.0.0/16",
         serviceCidr: (val.serviceCidr) ?? "10.0.0.0/16",
@@ -188,6 +335,52 @@ export interface CredentialResultResponse {
      * Base64-encoded Kubernetes configuration file.
      */
     value: string;
+}
+
+/**
+ * For schedules like: 'recur every day' or 'recur every 3 days'.
+ */
+export interface DailyScheduleResponse {
+    /**
+     * Specifies the number of days between each set of occurrences.
+     */
+    intervalDays: number;
+}
+
+/**
+ * For example, between '2022-12-23' and '2023-01-05'.
+ */
+export interface DateSpanResponse {
+    /**
+     * The end date of the date span.
+     */
+    end: string;
+    /**
+     * The start date of the date span.
+     */
+    start: string;
+}
+
+/**
+ * Delegated resource properties - internal use only.
+ */
+export interface DelegatedResourceResponse {
+    /**
+     * The source resource location - internal use only.
+     */
+    location?: string;
+    /**
+     * The delegation id of the referral delegation (optional) - internal use only.
+     */
+    referralResource?: string;
+    /**
+     * The ARM resource id of the delegated resource - internal use only.
+     */
+    resourceId?: string;
+    /**
+     * The tenant id of the delegated resource - internal use only.
+     */
+    tenantId?: string;
 }
 
 /**
@@ -263,6 +456,14 @@ export interface FleetCredentialResultResponse {
  */
 export interface FleetHubProfileResponse {
     /**
+     * The agent profile for the Fleet hub.
+     */
+    agentProfile?: AgentProfileResponse;
+    /**
+     * The access profile for the Fleet hub API server.
+     */
+    apiServerAccessProfile?: APIServerAccessProfileResponse;
+    /**
      * DNS prefix used to create the FQDN for the Fleet hub.
      */
     dnsPrefix?: string;
@@ -274,6 +475,116 @@ export interface FleetHubProfileResponse {
      * The Kubernetes version of the Fleet hub.
      */
     kubernetesVersion: string;
+    /**
+     * The Azure Portal FQDN of the Fleet hub.
+     */
+    portalFqdn: string;
+}
+
+/**
+ * Contains the IPTag associated with the object.
+ */
+export interface IPTagResponse {
+    /**
+     * The IP tag type. Example: RoutingPreference.
+     */
+    ipTagType?: string;
+    /**
+     * The value of the IP tag associated with the public IP. Example: Internet.
+     */
+    tag?: string;
+}
+
+/**
+ * Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
+ */
+export interface IstioCertificateAuthorityResponse {
+    /**
+     * Plugin certificates information for Service Mesh.
+     */
+    plugin?: IstioPluginCertificateAuthorityResponse;
+}
+
+/**
+ * Istio components configuration.
+ */
+export interface IstioComponentsResponse {
+    /**
+     * Istio egress gateways.
+     */
+    egressGateways?: IstioEgressGatewayResponse[];
+    /**
+     * Istio ingress gateways.
+     */
+    ingressGateways?: IstioIngressGatewayResponse[];
+}
+
+/**
+ * Istio egress gateway configuration.
+ */
+export interface IstioEgressGatewayResponse {
+    /**
+     * Whether to enable the egress gateway.
+     */
+    enabled: boolean;
+}
+
+/**
+ * Istio ingress gateway configuration. For now, we support up to one external ingress gateway named `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`.
+ */
+export interface IstioIngressGatewayResponse {
+    /**
+     * Whether to enable the ingress gateway.
+     */
+    enabled: boolean;
+    /**
+     * Mode of an ingress gateway.
+     */
+    mode: string;
+}
+
+/**
+ * Plugin certificates information for Service Mesh.
+ */
+export interface IstioPluginCertificateAuthorityResponse {
+    /**
+     * Certificate chain object name in Azure Key Vault.
+     */
+    certChainObjectName?: string;
+    /**
+     * Intermediate certificate object name in Azure Key Vault.
+     */
+    certObjectName?: string;
+    /**
+     * Intermediate certificate private key object name in Azure Key Vault.
+     */
+    keyObjectName?: string;
+    /**
+     * The resource ID of the Key Vault.
+     */
+    keyVaultId?: string;
+    /**
+     * Root certificate object name in Azure Key Vault.
+     */
+    rootCertObjectName?: string;
+}
+
+/**
+ * Istio service mesh configuration.
+ */
+export interface IstioServiceMeshResponse {
+    /**
+     * Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
+     */
+    certificateAuthority?: IstioCertificateAuthorityResponse;
+    /**
+     * Istio components configuration.
+     */
+    components?: IstioComponentsResponse;
+    /**
+     * The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
+     */
+    revisions?: string[];
 }
 
 /**
@@ -381,6 +692,45 @@ export interface LinuxOSConfigResponse {
 }
 
 /**
+ * Maintenance window used to configure scheduled auto-upgrade for a Managed Cluster.
+ */
+export interface MaintenanceWindowResponse {
+    /**
+     * Length of maintenance window range from 4 to 24 hours.
+     */
+    durationHours: number;
+    /**
+     * Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.
+     */
+    notAllowedDates?: DateSpanResponse[];
+    /**
+     * Recurrence schedule for the maintenance window.
+     */
+    schedule: ScheduleResponse;
+    /**
+     * The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive and will not be used for upgrades. If not specified, the maintenance window will be active right away.
+     */
+    startDate?: string;
+    /**
+     * The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field. For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
+     */
+    startTime: string;
+    /**
+     * The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is '+00:00'.
+     */
+    utcOffset?: string;
+}
+/**
+ * maintenanceWindowResponseProvideDefaults sets the appropriate defaults for MaintenanceWindowResponse
+ */
+export function maintenanceWindowResponseProvideDefaults(val: MaintenanceWindowResponse): MaintenanceWindowResponse {
+    return {
+        ...val,
+        durationHours: (val.durationHours) ?? 24,
+    };
+}
+
+/**
  * For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
  */
 export interface ManagedClusterAADProfileResponse {
@@ -485,6 +835,10 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     availabilityZones?: string[];
     /**
+     * AKS will associate the specified agent pool with the Capacity Reservation Group.
+     */
+    capacityReservationGroupID?: string;
+    /**
      * Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1.
      */
     count?: number;
@@ -496,6 +850,10 @@ export interface ManagedClusterAgentPoolProfileResponse {
      * If orchestratorVersion is a fully specified version <major.minor.patch>, this field will be exactly equal to it. If orchestratorVersion is <major.minor>, this field will contain the full <major.minor.patch> version being used.
      */
     currentOrchestratorVersion: string;
+    /**
+     * Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal etag convention.
+     */
+    eTag: string;
     /**
      * Whether to enable auto-scaler
      */
@@ -545,6 +903,10 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     maxPods?: number;
     /**
+     * A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).
+     */
+    messageOfTheDay?: string;
+    /**
      * The minimum number of nodes for auto-scaling
      */
     minCount?: number;
@@ -556,6 +918,10 @@ export interface ManagedClusterAgentPoolProfileResponse {
      * Windows agent pool names must be 6 characters or less.
      */
     name: string;
+    /**
+     * Network-related settings of an agent pool.
+     */
+    networkProfile?: AgentPoolNetworkProfileResponse;
     /**
      * The version of node image
      */
@@ -621,6 +987,10 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     scaleSetPriority?: string;
     /**
+     * The security settings of an agent pool.
+     */
+    securityProfile?: AgentPoolSecurityProfileResponse;
+    /**
      * Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
      */
     spotMaxPrice?: number;
@@ -637,13 +1007,17 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     upgradeSettings?: AgentPoolUpgradeSettingsResponse;
     /**
-     * VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
+     * VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. If this field is not specified, AKS will attempt to find an appropriate VM SKU for your pool, based on quota and capacity. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
      */
     vmSize?: string;
     /**
      * If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
      */
     vnetSubnetID?: string;
+    /**
+     * The Windows agent pool's specific profile.
+     */
+    windowsProfile?: AgentPoolWindowsProfileResponse;
     /**
      * Determines the type of workload a node can run.
      */
@@ -654,6 +1028,10 @@ export interface ManagedClusterAgentPoolProfileResponse {
  * Auto upgrade profile for a managed cluster.
  */
 export interface ManagedClusterAutoUpgradeProfileResponse {
+    /**
+     * Manner in which the OS on your nodes is updated. The default is NodeImage.
+     */
+    nodeOSUpgradeChannel?: string;
     /**
      * For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
      */
@@ -699,6 +1077,16 @@ export interface ManagedClusterAzureMonitorProfileResponse {
 }
 
 /**
+ * The cost analysis configuration for the cluster
+ */
+export interface ManagedClusterCostAnalysisResponse {
+    /**
+     * The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
+     */
+    enabled?: boolean;
+}
+
+/**
  * Cluster HTTP proxy configuration.
  */
 export interface ManagedClusterHTTPProxyConfigResponse {
@@ -724,6 +1112,10 @@ export interface ManagedClusterHTTPProxyConfigResponse {
  * Identity for the managed cluster.
  */
 export interface ManagedClusterIdentityResponse {
+    /**
+     * The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only.
+     */
+    delegatedResources?: {[key: string]: DelegatedResourceResponse};
     /**
      * The principal id of the system assigned identity which is used by master components.
      */
@@ -754,6 +1146,34 @@ export interface ManagedClusterIdentityResponseUserAssignedIdentities {
 }
 
 /**
+ * Ingress profile for the container service cluster.
+ */
+export interface ManagedClusterIngressProfileResponse {
+    /**
+     * App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
+     */
+    webAppRouting?: ManagedClusterIngressProfileWebAppRoutingResponse;
+}
+
+/**
+ * Application Routing add-on settings for the ingress profile.
+ */
+export interface ManagedClusterIngressProfileWebAppRoutingResponse {
+    /**
+     * Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be in the same resource group and all private DNS zones must be in the same resource group.
+     */
+    dnsZoneResourceIds?: string[];
+    /**
+     * Whether to enable the Application Routing add-on.
+     */
+    enabled?: boolean;
+    /**
+     * Managed identity of the Application Routing add-on. This is the identity that should be granted permissions, for example, to manage the associated Azure DNS resource and get certificates from Azure Key Vault. See [this overview of the add-on](https://learn.microsoft.com/en-us/azure/aks/web-app-routing?tabs=with-osm) for more instructions.
+     */
+    identity: UserAssignedIdentityResponse;
+}
+
+/**
  * Profile of the managed cluster load balancer.
  */
 export interface ManagedClusterLoadBalancerProfileResponse {
@@ -761,6 +1181,10 @@ export interface ManagedClusterLoadBalancerProfileResponse {
      * The desired number of allocated SNAT ports per VM. Allowed values are in the range of 0 to 64000 (inclusive). The default value is 0 which results in Azure dynamically allocating ports.
      */
     allocatedOutboundPorts?: number;
+    /**
+     * The type of the managed inbound Load Balancer BackendPool.
+     */
+    backendPoolType?: string;
     /**
      * The effective outbound IP resources of the cluster load balancer.
      */
@@ -793,6 +1217,7 @@ export function managedClusterLoadBalancerProfileResponseProvideDefaults(val: Ma
     return {
         ...val,
         allocatedOutboundPorts: (val.allocatedOutboundPorts) ?? 0,
+        backendPoolType: (val.backendPoolType) ?? "NodeIPConfiguration",
         idleTimeoutInMinutes: (val.idleTimeoutInMinutes) ?? 30,
         managedOutboundIPs: (val.managedOutboundIPs ? managedClusterLoadBalancerProfileResponseManagedOutboundIPsProvideDefaults(val.managedOutboundIPs) : undefined),
     };
@@ -862,6 +1287,16 @@ export function managedClusterManagedOutboundIPProfileResponseProvideDefaults(va
 }
 
 /**
+ * The metrics profile for the ManagedCluster.
+ */
+export interface ManagedClusterMetricsProfileResponse {
+    /**
+     * The cost analysis configuration for the cluster
+     */
+    costAnalysis?: ManagedClusterCostAnalysisResponse;
+}
+
+/**
  * Profile of the managed cluster NAT gateway.
  */
 export interface ManagedClusterNATGatewayProfileResponse {
@@ -887,6 +1322,16 @@ export function managedClusterNATGatewayProfileResponseProvideDefaults(val: Mana
         idleTimeoutInMinutes: (val.idleTimeoutInMinutes) ?? 4,
         managedOutboundIPProfile: (val.managedOutboundIPProfile ? managedClusterManagedOutboundIPProfileResponseProvideDefaults(val.managedOutboundIPProfile) : undefined),
     };
+}
+
+/**
+ * Node resource group lockdown profile for a managed cluster.
+ */
+export interface ManagedClusterNodeResourceGroupProfileResponse {
+    /**
+     * The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
+     */
+    restrictionLevel?: string;
 }
 
 /**
@@ -1040,9 +1485,21 @@ export interface ManagedClusterPropertiesResponseAutoScalerProfile {
      */
     balanceSimilarNodeGroups?: string;
     /**
+     * If set to true, all daemonset pods on empty nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+     */
+    daemonsetEvictionForEmptyNodes?: boolean;
+    /**
+     * If set to true, all daemonset pods on occupied nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+     */
+    daemonsetEvictionForOccupiedNodes?: boolean;
+    /**
      * If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
      */
     expander?: string;
+    /**
+     * If set to true, the resources used by daemonset will be taken into account when making scaling down decisions.
+     */
+    ignoreDaemonsetsUtilization?: boolean;
     /**
      * The default is 10.
      */
@@ -1279,6 +1736,10 @@ export interface ManagedClusterStorageProfileSnapshotControllerResponse {
  */
 export interface ManagedClusterUpdateResponse {
     /**
+     * The node image upgrade to be applied to the target nodes in update run.
+     */
+    nodeImageSelection?: NodeImageSelectionResponse;
+    /**
      * The upgrade to apply to the ManagedClusters.
      */
     upgrade: ManagedClusterUpgradeSpecResponse;
@@ -1342,6 +1803,60 @@ export interface ManagedClusterWorkloadAutoScalerProfileResponse {
      * KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
      */
     keda?: ManagedClusterWorkloadAutoScalerProfileKedaResponse;
+    /**
+     * VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
+     */
+    verticalPodAutoscaler?: ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse;
+}
+/**
+ * managedClusterWorkloadAutoScalerProfileResponseProvideDefaults sets the appropriate defaults for ManagedClusterWorkloadAutoScalerProfileResponse
+ */
+export function managedClusterWorkloadAutoScalerProfileResponseProvideDefaults(val: ManagedClusterWorkloadAutoScalerProfileResponse): ManagedClusterWorkloadAutoScalerProfileResponse {
+    return {
+        ...val,
+        verticalPodAutoscaler: (val.verticalPodAutoscaler ? managedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseProvideDefaults(val.verticalPodAutoscaler) : undefined),
+    };
+}
+
+/**
+ * VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
+ */
+export interface ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse {
+    /**
+     * Whether to enable VPA. Default value is false.
+     */
+    enabled: boolean;
+}
+/**
+ * managedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseProvideDefaults sets the appropriate defaults for ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse
+ */
+export function managedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseProvideDefaults(val: ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse): ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse {
+    return {
+        ...val,
+        enabled: (val.enabled) ?? false,
+    };
+}
+
+/**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityResponse {
+    /**
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: string;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
 }
 
 /**
@@ -1352,6 +1867,10 @@ export interface MemberUpdateStatusResponse {
      * The Azure resource id of the target Kubernetes cluster.
      */
     clusterResourceId: string;
+    /**
+     * The status message after processing the member update operation.
+     */
+    message: string;
     /**
      * The name of the FleetMember.
      */
@@ -1393,184 +1912,55 @@ export interface NetworkProfileForSnapshotResponse {
 }
 
 /**
- * Represents the OpenShift networking configuration
+ * The node image upgrade to be applied to the target nodes in update run.
  */
-export interface NetworkProfileResponse {
+export interface NodeImageSelectionResponse {
     /**
-     * CIDR of subnet used to create PLS needed for management of the cluster
+     * Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded.
      */
-    managementSubnetCidr?: string;
+    customNodeImageVersions?: NodeImageVersionResponse[];
     /**
-     * CIDR for the OpenShift Vnet.
+     * The node image upgrade type.
      */
-    vnetCidr?: string;
-    /**
-     * ID of the Vnet created for OSA cluster.
-     */
-    vnetId?: string;
-}
-/**
- * networkProfileResponseProvideDefaults sets the appropriate defaults for NetworkProfileResponse
- */
-export function networkProfileResponseProvideDefaults(val: NetworkProfileResponse): NetworkProfileResponse {
-    return {
-        ...val,
-        vnetCidr: (val.vnetCidr) ?? "10.0.0.0/8",
-    };
+    type: string;
 }
 
 /**
- * Defines further properties on the API.
+ * The node image upgrade specs for the update run.
  */
-export interface OpenShiftAPIPropertiesResponse {
+export interface NodeImageSelectionStatusResponse {
     /**
-     * Specifies if API server is public or private.
+     * The image versions to upgrade the nodes to.
      */
-    privateApiServer?: boolean;
+    selectedNodeImageVersions: NodeImageVersionResponse[];
 }
 
 /**
- * Defines the Identity provider for MS AAD.
+ * The node upgrade image version.
  */
-export interface OpenShiftManagedClusterAADIdentityProviderResponse {
+export interface NodeImageVersionResponse {
     /**
-     * The clientId password associated with the provider.
+     * The image version to upgrade the nodes to (e.g., 'AKSUbuntu-1804gen2containerd-2022.12.13').
      */
-    clientId?: string;
-    /**
-     * The groupId to be granted cluster admin role.
-     */
-    customerAdminGroupId?: string;
-    /**
-     * The kind of the provider.
-     * Expected value is 'AADIdentityProvider'.
-     */
-    kind: "AADIdentityProvider";
-    /**
-     * The secret password associated with the provider.
-     */
-    secret?: string;
-    /**
-     * The tenantId associated with the provider.
-     */
-    tenantId?: string;
+    version: string;
 }
 
 /**
- * Defines the configuration of the OpenShift cluster VMs.
+ * The port range.
  */
-export interface OpenShiftManagedClusterAgentPoolProfileResponse {
+export interface PortRangeResponse {
     /**
-     * Number of agents (VMs) to host docker containers.
+     * The maximum port that is included in the range. It should be ranged from 1 to 65535, and be greater than or equal to portStart.
      */
-    count: number;
+    portEnd?: number;
     /**
-     * Unique name of the pool profile in the context of the subscription and resource group.
+     * The minimum port that is included in the range. It should be ranged from 1 to 65535, and be less than or equal to portEnd.
      */
-    name: string;
+    portStart?: number;
     /**
-     * OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
+     * The network protocol of the port.
      */
-    osType?: string;
-    /**
-     * Define the role of the AgentPoolProfile.
-     */
-    role?: string;
-    /**
-     * Subnet CIDR for the peering.
-     */
-    subnetCidr?: string;
-    /**
-     * Size of agent VMs.
-     */
-    vmSize: string;
-}
-/**
- * openShiftManagedClusterAgentPoolProfileResponseProvideDefaults sets the appropriate defaults for OpenShiftManagedClusterAgentPoolProfileResponse
- */
-export function openShiftManagedClusterAgentPoolProfileResponseProvideDefaults(val: OpenShiftManagedClusterAgentPoolProfileResponse): OpenShiftManagedClusterAgentPoolProfileResponse {
-    return {
-        ...val,
-        subnetCidr: (val.subnetCidr) ?? "10.0.0.0/24",
-    };
-}
-
-/**
- * Defines all possible authentication profiles for the OpenShift cluster.
- */
-export interface OpenShiftManagedClusterAuthProfileResponse {
-    /**
-     * Type of authentication profile to use.
-     */
-    identityProviders?: OpenShiftManagedClusterIdentityProviderResponse[];
-}
-
-/**
- * Defines the configuration of the identity providers to be used in the OpenShift cluster.
- */
-export interface OpenShiftManagedClusterIdentityProviderResponse {
-    /**
-     * Name of the provider.
-     */
-    name?: string;
-    /**
-     * Configuration of the provider.
-     */
-    provider?: OpenShiftManagedClusterAADIdentityProviderResponse;
-}
-
-/**
- * OpenShiftManagedClusterMaterPoolProfile contains configuration for OpenShift master VMs.
- */
-export interface OpenShiftManagedClusterMasterPoolProfileResponse {
-    /**
-     * Defines further properties on the API.
-     */
-    apiProperties?: OpenShiftAPIPropertiesResponse;
-    /**
-     * Number of masters (VMs) to host docker containers. The default value is 3.
-     */
-    count: number;
-    /**
-     * Subnet CIDR for the peering.
-     */
-    subnetCidr?: string;
-    /**
-     * Size of agent VMs.
-     */
-    vmSize: string;
-}
-
-/**
- * Defines the configuration for Log Analytics integration.
- */
-export interface OpenShiftManagedClusterMonitorProfileResponse {
-    /**
-     * If the Log analytics integration should be turned on or off
-     */
-    enabled?: boolean;
-    /**
-     * Azure Resource Manager Resource ID for the Log Analytics workspace to integrate with.
-     */
-    workspaceResourceID?: string;
-}
-
-/**
- * Represents an OpenShift router
- */
-export interface OpenShiftRouterProfileResponse {
-    /**
-     * Auto-allocated FQDN for the OpenShift router.
-     */
-    fqdn: string;
-    /**
-     * Name of the router profile.
-     */
-    name?: string;
-    /**
-     * DNS subdomain for OpenShift router.
-     */
-    publicSubdomain: string;
+    protocol?: string;
 }
 
 /**
@@ -1638,25 +2028,21 @@ export interface PrivateLinkServiceConnectionStateResponse {
 }
 
 /**
- * Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.
+ * For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
  */
-export interface PurchasePlanResponse {
+export interface RelativeMonthlyScheduleResponse {
     /**
-     * The plan ID.
+     * Specifies on which day of the week the maintenance occurs.
      */
-    name?: string;
+    dayOfWeek: string;
     /**
-     * Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
+     * Specifies the number of months between each set of occurrences.
      */
-    product?: string;
+    intervalMonths: number;
     /**
-     * The promotion code.
+     * Specifies on which week of the month the dayOfWeek applies.
      */
-    promotionCode?: string;
-    /**
-     * The plan ID.
-     */
-    publisher?: string;
+    weekIndex: string;
 }
 
 /**
@@ -1667,6 +2053,42 @@ export interface ResourceReferenceResponse {
      * The fully qualified Azure resource id.
      */
     id?: string;
+}
+
+/**
+ * One and only one of the schedule types should be specified. Choose either 'daily', 'weekly', 'absoluteMonthly' or 'relativeMonthly' for your maintenance schedule.
+ */
+export interface ScheduleResponse {
+    /**
+     * For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
+     */
+    absoluteMonthly?: AbsoluteMonthlyScheduleResponse;
+    /**
+     * For schedules like: 'recur every day' or 'recur every 3 days'.
+     */
+    daily?: DailyScheduleResponse;
+    /**
+     * For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
+     */
+    relativeMonthly?: RelativeMonthlyScheduleResponse;
+    /**
+     * For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
+     */
+    weekly?: WeeklyScheduleResponse;
+}
+
+/**
+ * Service mesh profile for a managed cluster.
+ */
+export interface ServiceMeshProfileResponse {
+    /**
+     * Istio service mesh configuration.
+     */
+    istio?: IstioServiceMeshResponse;
+    /**
+     * Mode of the service mesh.
+     */
+    mode: string;
 }
 
 /**
@@ -1879,6 +2301,10 @@ export interface UpdateGroupStatusResponse {
  */
 export interface UpdateRunStatusResponse {
     /**
+     * The node image upgrade specs for the update run. It is only set in update run when `NodeImageSelection.type` is `Consistent`.
+     */
+    nodeImageSelection: NodeImageSelectionStatusResponse;
+    /**
      * The stages composing an update run. Stages are run sequentially withing an UpdateRun.
      */
     stages: UpdateStageStatusResponse[];
@@ -1967,6 +2393,20 @@ export interface UpdateStatusResponse {
 }
 
 /**
+ * Settings for overrides when upgrading a cluster.
+ */
+export interface UpgradeOverrideSettingsResponse {
+    /**
+     * Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution.
+     */
+    forceUpgrade?: boolean;
+    /**
+     * Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the effectiveness won't change once an upgrade starts even if the `until` expires as upgrade proceeds. This field is not set by default. It must be set for the overrides to take effect.
+     */
+    until?: string;
+}
+
+/**
  * Details about a user assigned identity.
  */
 export interface UserAssignedIdentityResponse {
@@ -1978,6 +2418,10 @@ export interface UserAssignedIdentityResponse {
      * The object ID of the user assigned identity.
      */
     objectId?: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId?: string;
     /**
      * The resource ID of the user assigned identity.
      */
@@ -1999,6 +2443,20 @@ export interface WaitStatusResponse {
 }
 
 /**
+ * For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
+ */
+export interface WeeklyScheduleResponse {
+    /**
+     * Specifies on which day of the week the maintenance occurs.
+     */
+    dayOfWeek: string;
+    /**
+     * Specifies the number of weeks between each set of occurrences.
+     */
+    intervalWeeks: number;
+}
+
+/**
  * Windows gMSA Profile in the managed cluster.
  */
 export interface WindowsGmsaProfileResponse {
@@ -2015,44 +2473,3 @@ export interface WindowsGmsaProfileResponse {
      */
     rootDomainName?: string;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

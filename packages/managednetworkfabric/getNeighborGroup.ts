@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the Neighbor Group.
- * Azure REST API version: 2023-06-15.
+ *
+ * Uses Azure REST API version 2023-06-15.
  */
 export function getNeighborGroup(args: GetNeighborGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNeighborGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,6 +33,10 @@ export interface GetNeighborGroupResult {
      * Switch configuration description.
      */
     readonly annotation?: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * An array of destination IPv4 Addresses or IPv6 Addresses.
      */
@@ -75,7 +80,8 @@ export interface GetNeighborGroupResult {
 }
 /**
  * Gets the Neighbor Group.
- * Azure REST API version: 2023-06-15.
+ *
+ * Uses Azure REST API version 2023-06-15.
  */
 export function getNeighborGroupOutput(args: GetNeighborGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNeighborGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

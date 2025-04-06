@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The EngagementFabric account
- * Azure REST API version: 2018-09-01-preview.
+ *
+ * Uses Azure REST API version 2018-09-01-preview.
  */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetAccountArgs {
  * The EngagementFabric account
  */
 export interface GetAccountResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The ID of the resource
      */
@@ -55,7 +60,8 @@ export interface GetAccountResult {
 }
 /**
  * The EngagementFabric account
- * Azure REST API version: 2018-09-01-preview.
+ *
+ * Uses Azure REST API version 2018-09-01-preview.
  */
 export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

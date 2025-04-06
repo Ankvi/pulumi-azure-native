@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets information about the specified diagnostics package.
- * Azure REST API version: 2023-06-01.
  *
- * Other available API versions: 2023-09-01, 2024-02-01, 2024-04-01.
+ * Uses Azure REST API version 2024-04-01.
+ *
+ * Other available API versions: 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDiagnosticsPackage(args: GetDiagnosticsPackageArgs, opts?: pulumi.InvokeOptions): Promise<GetDiagnosticsPackageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,6 +36,10 @@ export interface GetDiagnosticsPackageArgs {
  * Diagnostics package resource.
  */
 export interface GetDiagnosticsPackageResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -66,9 +71,10 @@ export interface GetDiagnosticsPackageResult {
 }
 /**
  * Gets information about the specified diagnostics package.
- * Azure REST API version: 2023-06-01.
  *
- * Other available API versions: 2023-09-01, 2024-02-01, 2024-04-01.
+ * Uses Azure REST API version 2024-04-01.
+ *
+ * Other available API versions: 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDiagnosticsPackageOutput(args: GetDiagnosticsPackageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiagnosticsPackageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

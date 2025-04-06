@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Retrieves the current value for a specific setting.
- * Azure REST API version: 2019-11-01.
+ *
+ * Uses Azure REST API version 2019-11-01.
  */
 export function getSetting(args: GetSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetSettingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -23,6 +24,10 @@ export interface GetSettingArgs {
  * State of the myscope setting.
  */
 export interface GetSettingResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Array of scopes with additional details used by Cost Management in the Azure portal.
      */
@@ -54,7 +59,8 @@ export interface GetSettingResult {
 }
 /**
  * Retrieves the current value for a specific setting.
- * Azure REST API version: 2019-11-01.
+ *
+ * Uses Azure REST API version 2019-11-01.
  */
 export function getSettingOutput(args: GetSettingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSettingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

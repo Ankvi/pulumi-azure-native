@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Lists SKUs available to the project
- * Azure REST API version: 2024-06-01-preview.
  *
- * Other available API versions: 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+ * Uses Azure REST API version 2024-10-01-preview.
+ *
+ * Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listSkusByProject(args: ListSkusByProjectArgs, opts?: pulumi.InvokeOptions): Promise<ListSkusByProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,9 +42,10 @@ export interface ListSkusByProjectResult {
 }
 /**
  * Lists SKUs available to the project
- * Azure REST API version: 2024-06-01-preview.
  *
- * Other available API versions: 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+ * Uses Azure REST API version 2024-10-01-preview.
+ *
+ * Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listSkusByProjectOutput(args: ListSkusByProjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListSkusByProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

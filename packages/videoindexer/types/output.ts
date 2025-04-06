@@ -23,20 +23,6 @@ export interface ManagedServiceIdentityResponse {
 }
 
 /**
- * The media services details
- */
-export interface MediaServicesForPutRequestResponse {
-    /**
-     * The media services resource id
-     */
-    resourceId?: string;
-    /**
-     * The user assigned identity to be used to grant permissions
-     */
-    userAssignedIdentity?: string;
-}
-
-/**
  * The private endpoint resource.
  */
 export interface PrivateEndpointResponse {
@@ -62,6 +48,20 @@ export interface PrivateLinkServiceConnectionStateResponse {
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
     status?: string;
+}
+
+/**
+ * The storage services details
+ */
+export interface StorageServicesForPutRequestResponse {
+    /**
+     * The storage services resource id
+     */
+    resourceId?: string;
+    /**
+     * The user assigned identity to be used to grant permissions
+     */
+    userAssignedIdentity?: string;
 }
 
 /**
@@ -107,8 +107,3 @@ export interface UserAssignedIdentityResponse {
      */
     principalId: string;
 }
-
-
-
-
-

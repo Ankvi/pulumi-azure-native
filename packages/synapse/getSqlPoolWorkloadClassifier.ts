@@ -2,9 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get a workload classifier of Sql pool's workload group.
- * Azure REST API version: 2021-06-01.
  *
- * Other available API versions: 2021-06-01-preview.
+ * Uses Azure REST API version 2021-06-01.
+ *
+ * Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSqlPoolWorkloadClassifier(args: GetSqlPoolWorkloadClassifierArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlPoolWorkloadClassifierResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -45,6 +46,10 @@ export interface GetSqlPoolWorkloadClassifierArgs {
  */
 export interface GetSqlPoolWorkloadClassifierResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The workload classifier context.
      */
     readonly context?: string;
@@ -83,9 +88,10 @@ export interface GetSqlPoolWorkloadClassifierResult {
 }
 /**
  * Get a workload classifier of Sql pool's workload group.
- * Azure REST API version: 2021-06-01.
  *
- * Other available API versions: 2021-06-01-preview.
+ * Uses Azure REST API version 2021-06-01.
+ *
+ * Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSqlPoolWorkloadClassifierOutput(args: GetSqlPoolWorkloadClassifierOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSqlPoolWorkloadClassifierResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

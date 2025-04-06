@@ -43,6 +43,66 @@ export interface DeploymentPropertiesResponse {
 }
 
 /**
+ * GitHub Workflow Profile
+ */
+export interface GitHubWorkflowProfileResponse {
+    /**
+     * Information on the azure container registry
+     */
+    acr?: ACRResponse;
+    /**
+     * The Azure Kubernetes Cluster Resource the application will be deployed to.
+     */
+    aksResourceId?: string;
+    /**
+     * Determines the authorization status of requests.
+     */
+    authStatus: string;
+    /**
+     * Repository Branch Name
+     */
+    branchName?: string;
+    deploymentProperties?: DeploymentPropertiesResponse;
+    /**
+     * Path to Dockerfile Build Context within the repository.
+     */
+    dockerBuildContext?: string;
+    /**
+     * Path to the Dockerfile within the repository.
+     */
+    dockerfile?: string;
+    lastWorkflowRun?: WorkflowRunResponse;
+    /**
+     * Kubernetes namespace the application is deployed to.
+     */
+    namespace?: string;
+    /**
+     * The fields needed for OIDC with GitHub.
+     */
+    oidcCredentials?: GitHubWorkflowProfileResponseOidcCredentials;
+    /**
+     * The status of the Pull Request submitted against the users repository.
+     */
+    prStatus: string;
+    /**
+     * The URL to the Pull Request submitted against the users repository.
+     */
+    prURL: string;
+    /**
+     * The number associated with the submitted pull request.
+     */
+    pullNumber: number;
+    /**
+     * Repository Name
+     */
+    repositoryName?: string;
+    /**
+     * Repository Owner
+     */
+    repositoryOwner?: string;
+}
+
+/**
  * The fields needed for OIDC with GitHub.
  */
 export interface GitHubWorkflowProfileResponseOidcCredentials {
@@ -158,6 +218,3 @@ export interface WorkflowRunResponse {
      */
     workflowRunURL: string;
 }
-
-
-

@@ -70,45 +70,6 @@ export interface AuthorizationRuleResponse {
 }
 
 /**
- * Automatic TLS server certificate management with cert-manager
- */
-export interface AutomaticCertMethodResponse {
-    /**
-     * Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-     */
-    duration?: string;
-    /**
-     * cert-manager issuerRef.
-     */
-    issuerRef: CertManagerIssuerRefResponse;
-    /**
-     * Type of certificate private key.
-     */
-    privateKey?: CertManagerPrivateKeyResponse;
-    /**
-     * When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-     */
-    renewBefore?: string;
-    /**
-     * Additional Subject Alternative Names (SANs) to include in the certificate.
-     */
-    san?: SanForCertResponse;
-    /**
-     * Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
-     */
-    secretRef?: string;
-}
-/**
- * automaticCertMethodResponseProvideDefaults sets the appropriate defaults for AutomaticCertMethodResponse
- */
-export function automaticCertMethodResponseProvideDefaults(val: AutomaticCertMethodResponse): AutomaticCertMethodResponse {
-    return {
-        ...val,
-        issuerRef: certManagerIssuerRefResponseProvideDefaults(val.issuerRef),
-    };
-}
-
-/**
  * Desired properties of the backend instances of the broker
  */
 export interface BackendChainResponse {
@@ -259,7 +220,7 @@ export interface BrokerAuthenticatorMethodsResponse {
     /**
      * Custom authentication configuration.
      */
-    custom?: BrokerAuthenticatorMethodCustomResponse;
+    customSettings?: BrokerAuthenticatorMethodCustomResponse;
     /**
      * Custom authentication configuration.
      */
@@ -267,11 +228,11 @@ export interface BrokerAuthenticatorMethodsResponse {
     /**
      * ServiceAccountToken authentication configuration.
      */
-    serviceAccountToken?: BrokerAuthenticatorMethodSatResponse;
+    serviceAccountTokenSettings?: BrokerAuthenticatorMethodSatResponse;
     /**
      * X.509 authentication configuration.
      */
-    x509Credentials?: BrokerAuthenticatorMethodX509Response;
+    x509Settings?: BrokerAuthenticatorMethodX509Response;
 }
 /**
  * brokerAuthenticatorMethodsResponseProvideDefaults sets the appropriate defaults for BrokerAuthenticatorMethodsResponse
@@ -279,7 +240,7 @@ export interface BrokerAuthenticatorMethodsResponse {
 export function brokerAuthenticatorMethodsResponseProvideDefaults(val: BrokerAuthenticatorMethodsResponse): BrokerAuthenticatorMethodsResponse {
     return {
         ...val,
-        x509Credentials: (val.x509Credentials ? brokerAuthenticatorMethodX509ResponseProvideDefaults(val.x509Credentials) : undefined),
+        x509Settings: (val.x509Settings ? brokerAuthenticatorMethodX509ResponseProvideDefaults(val.x509Settings) : undefined),
     };
 }
 
@@ -345,10 +306,6 @@ export function brokerDiagnosticsResponseProvideDefaults(val: BrokerDiagnosticsR
  */
 export interface BrokerListenerPropertiesResponse {
     /**
-     * Broker associated with this listener.
-     */
-    brokerRef: string;
-    /**
      * Ports on which this listener accepts client connections.
      */
     ports: ListenerPortResponse[];
@@ -371,7 +328,6 @@ export interface BrokerListenerPropertiesResponse {
 export function brokerListenerPropertiesResponseProvideDefaults(val: BrokerListenerPropertiesResponse): BrokerListenerPropertiesResponse {
     return {
         ...val,
-        serviceName: (val.serviceName) ?? "aio-mq-dmqtt-frontend",
         serviceType: (val.serviceType) ?? "ClusterIp",
     };
 }
@@ -428,6 +384,10 @@ export function brokerPropertiesResponseProvideDefaults(val: BrokerPropertiesRes
  */
 export interface BrokerResourceRuleResponse {
     /**
+     * A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect.
+     */
+    clientIds?: string[];
+    /**
      * Give access for a Broker method (i.e., Connect, Subscribe, or Publish).
      */
     method: string;
@@ -480,13 +440,52 @@ export interface CertManagerCertOptionsResponse {
 }
 
 /**
+ * Automatic TLS server certificate management with cert-manager
+ */
+export interface CertManagerCertificateSpecResponse {
+    /**
+     * Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+     */
+    duration?: string;
+    /**
+     * cert-manager issuerRef.
+     */
+    issuerRef: CertManagerIssuerRefResponse;
+    /**
+     * Type of certificate private key.
+     */
+    privateKey?: CertManagerPrivateKeyResponse;
+    /**
+     * When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+     */
+    renewBefore?: string;
+    /**
+     * Additional Subject Alternative Names (SANs) to include in the certificate.
+     */
+    san?: SanForCertResponse;
+    /**
+     * Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
+     */
+    secretName?: string;
+}
+/**
+ * certManagerCertificateSpecResponseProvideDefaults sets the appropriate defaults for CertManagerCertificateSpecResponse
+ */
+export function certManagerCertificateSpecResponseProvideDefaults(val: CertManagerCertificateSpecResponse): CertManagerCertificateSpecResponse {
+    return {
+        ...val,
+        issuerRef: certManagerIssuerRefResponseProvideDefaults(val.issuerRef),
+    };
+}
+
+/**
  * Cert-Manager issuerRef properties
  */
 export interface CertManagerIssuerRefResponse {
     /**
      * group of issuer.
      */
-    apiGroup: string;
+    group: string;
     /**
      * kind of issuer (Issuer or ClusterIssuer).
      */
@@ -502,7 +501,7 @@ export interface CertManagerIssuerRefResponse {
 export function certManagerIssuerRefResponseProvideDefaults(val: CertManagerIssuerRefResponse): CertManagerIssuerRefResponse {
     return {
         ...val,
-        apiGroup: (val.apiGroup) ?? "cert-manager.io",
+        group: (val.group) ?? "cert-manager.io",
     };
 }
 
@@ -560,9 +559,9 @@ export function clientConfigResponseProvideDefaults(val: ClientConfigResponse): 
 }
 
 /**
- * DataFlow BuiltIn Transformation dataset properties
+ * Dataflow BuiltIn Transformation dataset properties
  */
-export interface DataFlowBuiltInTransformationDatasetResponse {
+export interface DataflowBuiltInTransformationDatasetResponse {
     /**
      * A user provided optional description of the dataset.
      */
@@ -586,9 +585,9 @@ export interface DataFlowBuiltInTransformationDatasetResponse {
 }
 
 /**
- * DataFlow BuiltIn Transformation filter properties
+ * Dataflow BuiltIn Transformation filter properties
  */
-export interface DataFlowBuiltInTransformationFilterResponse {
+export interface DataflowBuiltInTransformationFilterResponse {
     /**
      * A user provided optional description of the filter.
      */
@@ -607,9 +606,9 @@ export interface DataFlowBuiltInTransformationFilterResponse {
     type?: string;
 }
 /**
- * dataFlowBuiltInTransformationFilterResponseProvideDefaults sets the appropriate defaults for DataFlowBuiltInTransformationFilterResponse
+ * dataflowBuiltInTransformationFilterResponseProvideDefaults sets the appropriate defaults for DataflowBuiltInTransformationFilterResponse
  */
-export function dataFlowBuiltInTransformationFilterResponseProvideDefaults(val: DataFlowBuiltInTransformationFilterResponse): DataFlowBuiltInTransformationFilterResponse {
+export function dataflowBuiltInTransformationFilterResponseProvideDefaults(val: DataflowBuiltInTransformationFilterResponse): DataflowBuiltInTransformationFilterResponse {
     return {
         ...val,
         type: (val.type) ?? "Filter",
@@ -617,9 +616,9 @@ export function dataFlowBuiltInTransformationFilterResponseProvideDefaults(val: 
 }
 
 /**
- * DataFlow BuiltIn Transformation map properties
+ * Dataflow BuiltIn Transformation map properties
  */
-export interface DataFlowBuiltInTransformationMapResponse {
+export interface DataflowBuiltInTransformationMapResponse {
     /**
      * A user provided optional description of the mapping function.
      */
@@ -643,21 +642,21 @@ export interface DataFlowBuiltInTransformationMapResponse {
 }
 
 /**
- * DataFlow BuiltIn Transformation properties
+ * Dataflow BuiltIn Transformation properties
  */
-export interface DataFlowBuiltInTransformationResponse {
+export interface DataflowBuiltInTransformationSettingsResponse {
     /**
      * Enrich data from Broker State Store. Dataset references a key in Broker State Store.
      */
-    datasets?: DataFlowBuiltInTransformationDatasetResponse[];
+    datasets?: DataflowBuiltInTransformationDatasetResponse[];
     /**
      * Filters input record or datapoints based on condition.
      */
-    filter?: DataFlowBuiltInTransformationFilterResponse[];
+    filter?: DataflowBuiltInTransformationFilterResponse[];
     /**
      * Maps input to output message.
      */
-    map?: DataFlowBuiltInTransformationMapResponse[];
+    map?: DataflowBuiltInTransformationMapResponse[];
     /**
      * Reference to the schema that describes the output of the transformation.
      */
@@ -668,9 +667,9 @@ export interface DataFlowBuiltInTransformationResponse {
     serializationFormat?: string;
 }
 /**
- * dataFlowBuiltInTransformationResponseProvideDefaults sets the appropriate defaults for DataFlowBuiltInTransformationResponse
+ * dataflowBuiltInTransformationSettingsResponseProvideDefaults sets the appropriate defaults for DataflowBuiltInTransformationSettingsResponse
  */
-export function dataFlowBuiltInTransformationResponseProvideDefaults(val: DataFlowBuiltInTransformationResponse): DataFlowBuiltInTransformationResponse {
+export function dataflowBuiltInTransformationSettingsResponseProvideDefaults(val: DataflowBuiltInTransformationSettingsResponse): DataflowBuiltInTransformationSettingsResponse {
     return {
         ...val,
         serializationFormat: (val.serializationFormat) ?? "Json",
@@ -678,9 +677,9 @@ export function dataFlowBuiltInTransformationResponseProvideDefaults(val: DataFl
 }
 
 /**
- * DataFlow Destination Operation properties
+ * Dataflow Destination Operation properties
  */
-export interface DataFlowDestinationOperationResponse {
+export interface DataflowDestinationOperationSettingsResponse {
     /**
      * Destination location, can be a topic or table name. Supports dynamic values with $topic, $systemProperties, $userProperties, $payload, $context, and $subscription.
      */
@@ -692,43 +691,19 @@ export interface DataFlowDestinationOperationResponse {
 }
 
 /**
- * Azure Data Explorer Authentication properties. NOTE - only authentication property is allowed per entry.
+ * DataflowEndpoint Authentication Access Token properties
  */
-export interface DataFlowEndpointAuthenticationResponse {
+export interface DataflowEndpointAuthenticationAccessTokenResponse {
     /**
-     * SAS token authentication.
+     * Token secret name.
      */
-    accessTokenSecretRef?: string;
-    /**
-     * Mode of Authentication.
-     */
-    method: string;
-    /**
-     * SASL authentication.
-     */
-    saslSettings?: DataFlowEndpointAuthenticationSaslResponse;
-    /**
-     * Service Account Token authentication.
-     */
-    serviceAccountTokenSettings?: DataFlowEndpointAuthenticationServiceAccountTokenResponse;
-    /**
-     * System-assigned managed identity authentication.
-     */
-    systemAssignedManagedIdentitySettings?: DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponse;
-    /**
-     * User-assigned managed identity authentication.
-     */
-    userAssignedManagedIdentitySettings?: DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponse;
-    /**
-     * X.509 certificate authentication.
-     */
-    x509CredentialsSettings?: DataFlowEndpointAuthenticationX509Response;
+    secretRef: string;
 }
 
 /**
- * DataFlowEndpoint Authentication Sasl properties
+ * DataflowEndpoint Authentication Sasl properties
  */
-export interface DataFlowEndpointAuthenticationSaslResponse {
+export interface DataflowEndpointAuthenticationSaslResponse {
     /**
      * Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
      */
@@ -736,13 +711,13 @@ export interface DataFlowEndpointAuthenticationSaslResponse {
     /**
      * Token secret name.
      */
-    tokenSecretRef: string;
+    secretRef: string;
 }
 
 /**
  * Service Account Token for BrokerAuthentication
  */
-export interface DataFlowEndpointAuthenticationServiceAccountTokenResponse {
+export interface DataflowEndpointAuthenticationServiceAccountTokenResponse {
     /**
      * Audience of the service account. Optional, defaults to the broker internal service account audience.
      */
@@ -750,27 +725,27 @@ export interface DataFlowEndpointAuthenticationServiceAccountTokenResponse {
 }
 
 /**
- * DataFlowEndpoint Authentication SystemAssignedManagedIdentity properties
+ * DataflowEndpoint Authentication SystemAssignedManagedIdentity properties
  */
-export interface DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
+export interface DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
     /**
      * Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
      */
-    audience: string;
+    audience?: string;
 }
 
 /**
- * DataFlowEndpoint Authentication UserAssignedManagedIdentity properties
+ * DataflowEndpoint Authentication UserAssignedManagedIdentity properties
  */
-export interface DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponse {
-    /**
-     * Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
-     */
-    audience: string;
+export interface DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse {
     /**
      * Client ID for the user-assigned managed identity.
      */
     clientId: string;
+    /**
+     * Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+     */
+    scope?: string;
     /**
      * Tenant ID.
      */
@@ -778,9 +753,9 @@ export interface DataFlowEndpointAuthenticationUserAssignedManagedIdentityRespon
 }
 
 /**
- * DataFlowEndpoint Authentication X509 properties
+ * DataflowEndpoint Authentication X509 properties
  */
-export interface DataFlowEndpointAuthenticationX509Response {
+export interface DataflowEndpointAuthenticationX509Response {
     /**
      * Secret reference of the X.509 certificate.
      */
@@ -788,9 +763,31 @@ export interface DataFlowEndpointAuthenticationX509Response {
 }
 
 /**
+ * Azure Data Explorer Authentication properties. NOTE - only authentication property is allowed per entry.
+ */
+export interface DataflowEndpointDataExplorerAuthenticationResponse {
+    /**
+     * Mode of Authentication.
+     */
+    method: any;
+    /**
+     * System-assigned managed identity authentication.
+     */
+    systemAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse;
+    /**
+     * User-assigned managed identity authentication.
+     */
+    userAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse;
+}
+
+/**
  * Azure Data Explorer endpoint properties
  */
-export interface DataFlowEndpointDataExplorerResponse {
+export interface DataflowEndpointDataExplorerResponse {
+    /**
+     * Authentication configuration. NOTE - only authentication property is allowed per entry.
+     */
+    authentication: DataflowEndpointDataExplorerAuthenticationResponse;
     /**
      * Azure Data Explorer endpoint batching configuration.
      */
@@ -805,9 +802,9 @@ export interface DataFlowEndpointDataExplorerResponse {
     host: string;
 }
 /**
- * dataFlowEndpointDataExplorerResponseProvideDefaults sets the appropriate defaults for DataFlowEndpointDataExplorerResponse
+ * dataflowEndpointDataExplorerResponseProvideDefaults sets the appropriate defaults for DataflowEndpointDataExplorerResponse
  */
-export function dataFlowEndpointDataExplorerResponseProvideDefaults(val: DataFlowEndpointDataExplorerResponse): DataFlowEndpointDataExplorerResponse {
+export function dataflowEndpointDataExplorerResponseProvideDefaults(val: DataflowEndpointDataExplorerResponse): DataflowEndpointDataExplorerResponse {
     return {
         ...val,
         batching: (val.batching ? batchingConfigurationResponseProvideDefaults(val.batching) : undefined),
@@ -815,9 +812,35 @@ export function dataFlowEndpointDataExplorerResponseProvideDefaults(val: DataFlo
 }
 
 /**
+ * Azure Data Lake endpoint Authentication properties.  NOTE Enum - Only one method is supported for one entry
+ */
+export interface DataflowEndpointDataLakeStorageAuthenticationResponse {
+    /**
+     * SAS token authentication.
+     */
+    accessTokenSettings?: DataflowEndpointAuthenticationAccessTokenResponse;
+    /**
+     * Mode of Authentication.
+     */
+    method: string;
+    /**
+     * System-assigned managed identity authentication.
+     */
+    systemAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse;
+    /**
+     * User-assigned managed identity authentication.
+     */
+    userAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse;
+}
+
+/**
  * Azure Data Lake endpoint properties
  */
-export interface DataFlowEndpointDataLakeStorageResponse {
+export interface DataflowEndpointDataLakeStorageResponse {
+    /**
+     * Authentication configuration. NOTE - only authentication property is allowed per entry.
+     */
+    authentication: DataflowEndpointDataLakeStorageAuthenticationResponse;
     /**
      * Azure Data Lake endpoint batching configuration.
      */
@@ -828,9 +851,9 @@ export interface DataFlowEndpointDataLakeStorageResponse {
     host: string;
 }
 /**
- * dataFlowEndpointDataLakeStorageResponseProvideDefaults sets the appropriate defaults for DataFlowEndpointDataLakeStorageResponse
+ * dataflowEndpointDataLakeStorageResponseProvideDefaults sets the appropriate defaults for DataflowEndpointDataLakeStorageResponse
  */
-export function dataFlowEndpointDataLakeStorageResponseProvideDefaults(val: DataFlowEndpointDataLakeStorageResponse): DataFlowEndpointDataLakeStorageResponse {
+export function dataflowEndpointDataLakeStorageResponseProvideDefaults(val: DataflowEndpointDataLakeStorageResponse): DataflowEndpointDataLakeStorageResponse {
     return {
         ...val,
         batching: (val.batching ? batchingConfigurationResponseProvideDefaults(val.batching) : undefined),
@@ -838,9 +861,27 @@ export function dataFlowEndpointDataLakeStorageResponseProvideDefaults(val: Data
 }
 
 /**
+ * Microsoft Fabric endpoint. Authentication properties. NOTE - Only one method is supported for one entry
+ */
+export interface DataflowEndpointFabricOneLakeAuthenticationResponse {
+    /**
+     * Mode of Authentication.
+     */
+    method: any;
+    /**
+     * System-assigned managed identity authentication.
+     */
+    systemAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse;
+    /**
+     * User-assigned managed identity authentication.
+     */
+    userAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse;
+}
+
+/**
  * Microsoft Fabric endpoint Names properties
  */
-export interface DataFlowEndpointFabricOneLakeNamesResponse {
+export interface DataflowEndpointFabricOneLakeNamesResponse {
     /**
      * Lakehouse name.
      */
@@ -854,7 +895,11 @@ export interface DataFlowEndpointFabricOneLakeNamesResponse {
 /**
  * Microsoft Fabric endpoint properties
  */
-export interface DataFlowEndpointFabricOneLakeResponse {
+export interface DataflowEndpointFabricOneLakeResponse {
+    /**
+     * Authentication configuration. NOTE - only one authentication property is allowed per entry.
+     */
+    authentication: DataflowEndpointFabricOneLakeAuthenticationResponse;
     /**
      * Batching configuration.
      */
@@ -866,16 +911,16 @@ export interface DataFlowEndpointFabricOneLakeResponse {
     /**
      * Names of the workspace and lakehouse.
      */
-    names: DataFlowEndpointFabricOneLakeNamesResponse;
+    names: DataflowEndpointFabricOneLakeNamesResponse;
     /**
      * Type of location of the data in the workspace. Can be either tables or files.
      */
     oneLakePathType: string;
 }
 /**
- * dataFlowEndpointFabricOneLakeResponseProvideDefaults sets the appropriate defaults for DataFlowEndpointFabricOneLakeResponse
+ * dataflowEndpointFabricOneLakeResponseProvideDefaults sets the appropriate defaults for DataflowEndpointFabricOneLakeResponse
  */
-export function dataFlowEndpointFabricOneLakeResponseProvideDefaults(val: DataFlowEndpointFabricOneLakeResponse): DataFlowEndpointFabricOneLakeResponse {
+export function dataflowEndpointFabricOneLakeResponseProvideDefaults(val: DataflowEndpointFabricOneLakeResponse): DataflowEndpointFabricOneLakeResponse {
     return {
         ...val,
         batching: (val.batching ? batchingConfigurationResponseProvideDefaults(val.batching) : undefined),
@@ -883,9 +928,35 @@ export function dataFlowEndpointFabricOneLakeResponseProvideDefaults(val: DataFl
 }
 
 /**
+ * Kafka endpoint Authentication properties. NOTE - only authentication property is allowed per entry
+ */
+export interface DataflowEndpointKafkaAuthenticationResponse {
+    /**
+     * Mode of Authentication.
+     */
+    method: string;
+    /**
+     * SASL authentication.
+     */
+    saslSettings?: DataflowEndpointAuthenticationSaslResponse;
+    /**
+     * System-assigned managed identity authentication.
+     */
+    systemAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse;
+    /**
+     * User-assigned managed identity authentication.
+     */
+    userAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse;
+    /**
+     * X.509 certificate authentication.
+     */
+    x509CertificateSettings?: DataflowEndpointAuthenticationX509Response;
+}
+
+/**
  * Kafka endpoint Batching properties
  */
-export interface DataFlowEndpointKafkaBatchingResponse {
+export interface DataflowEndpointKafkaBatchingResponse {
     /**
      * Batching latency in milliseconds.
      */
@@ -904,9 +975,9 @@ export interface DataFlowEndpointKafkaBatchingResponse {
     mode?: string;
 }
 /**
- * dataFlowEndpointKafkaBatchingResponseProvideDefaults sets the appropriate defaults for DataFlowEndpointKafkaBatchingResponse
+ * dataflowEndpointKafkaBatchingResponseProvideDefaults sets the appropriate defaults for DataflowEndpointKafkaBatchingResponse
  */
-export function dataFlowEndpointKafkaBatchingResponseProvideDefaults(val: DataFlowEndpointKafkaBatchingResponse): DataFlowEndpointKafkaBatchingResponse {
+export function dataflowEndpointKafkaBatchingResponseProvideDefaults(val: DataflowEndpointKafkaBatchingResponse): DataflowEndpointKafkaBatchingResponse {
     return {
         ...val,
         latencyMs: (val.latencyMs) ?? 5,
@@ -919,11 +990,19 @@ export function dataFlowEndpointKafkaBatchingResponseProvideDefaults(val: DataFl
 /**
  * Kafka endpoint properties
  */
-export interface DataFlowEndpointKafkaResponse {
+export interface DataflowEndpointKafkaResponse {
+    /**
+     * Authentication configuration. NOTE - only authentication property is allowed per entry.
+     */
+    authentication: DataflowEndpointKafkaAuthenticationResponse;
     /**
      * Batching configuration.
      */
-    batching?: DataFlowEndpointKafkaBatchingResponse;
+    batching?: DataflowEndpointKafkaBatchingResponse;
+    /**
+     * Cloud event mapping config.
+     */
+    cloudEventAttributes?: string;
     /**
      * Compression. Can be none, gzip, lz4, or snappy. No effect if the endpoint is used as a source.
      */
@@ -939,7 +1018,7 @@ export interface DataFlowEndpointKafkaResponse {
     /**
      * Kafka endpoint host.
      */
-    host?: string;
+    host: string;
     /**
      * Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
      */
@@ -951,27 +1030,27 @@ export interface DataFlowEndpointKafkaResponse {
     /**
      * TLS configuration.
      */
-    tls: TlsPropertiesResponse;
+    tls?: TlsPropertiesResponse;
 }
 /**
- * dataFlowEndpointKafkaResponseProvideDefaults sets the appropriate defaults for DataFlowEndpointKafkaResponse
+ * dataflowEndpointKafkaResponseProvideDefaults sets the appropriate defaults for DataflowEndpointKafkaResponse
  */
-export function dataFlowEndpointKafkaResponseProvideDefaults(val: DataFlowEndpointKafkaResponse): DataFlowEndpointKafkaResponse {
+export function dataflowEndpointKafkaResponseProvideDefaults(val: DataflowEndpointKafkaResponse): DataflowEndpointKafkaResponse {
     return {
         ...val,
-        batching: (val.batching ? dataFlowEndpointKafkaBatchingResponseProvideDefaults(val.batching) : undefined),
+        batching: (val.batching ? dataflowEndpointKafkaBatchingResponseProvideDefaults(val.batching) : undefined),
         compression: (val.compression) ?? "None",
-        copyMqttProperties: (val.copyMqttProperties) ?? "Disabled",
+        copyMqttProperties: (val.copyMqttProperties) ?? "Enabled",
         kafkaAcks: (val.kafkaAcks) ?? "All",
         partitionStrategy: (val.partitionStrategy) ?? "Default",
-        tls: tlsPropertiesResponseProvideDefaults(val.tls),
+        tls: (val.tls ? tlsPropertiesResponseProvideDefaults(val.tls) : undefined),
     };
 }
 
 /**
  * Local persistent volume endpoint properties
  */
-export interface DataFlowEndpointLocalStorageResponse {
+export interface DataflowEndpointLocalStorageResponse {
     /**
      * Persistent volume claim name.
      */
@@ -979,13 +1058,47 @@ export interface DataFlowEndpointLocalStorageResponse {
 }
 
 /**
+ * Mqtt endpoint Authentication properties. NOTE - only authentication property is allowed per entry.
+ */
+export interface DataflowEndpointMqttAuthenticationResponse {
+    /**
+     * Mode of Authentication.
+     */
+    method: string;
+    /**
+     * Kubernetes service account token authentication. Default audience if not set is aio-internal
+     */
+    serviceAccountTokenSettings?: DataflowEndpointAuthenticationServiceAccountTokenResponse;
+    /**
+     * System-assigned managed identity authentication.
+     */
+    systemAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse;
+    /**
+     * User-assigned managed identity authentication.
+     */
+    userAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse;
+    /**
+     * X.509 certificate authentication.
+     */
+    x509CertificateSettings?: DataflowEndpointAuthenticationX509Response;
+}
+
+/**
  * Broker endpoint properties
  */
-export interface DataFlowEndpointMqttResponse {
+export interface DataflowEndpointMqttResponse {
+    /**
+     * authentication properties. DEFAULT: kubernetes.audience=aio-internal. NOTE - Enum field only property is allowed
+     */
+    authentication: DataflowEndpointMqttAuthenticationResponse;
     /**
      * Client ID prefix. Client ID generated by the dataflow is <prefix>-TBD. Optional; no prefix if omitted.
      */
     clientIdPrefix?: string;
+    /**
+     * Cloud event mapping config.
+     */
+    cloudEventAttributes?: string;
     /**
      * Host of the Broker in the form of <hostname>:<port>. Optional; connects to Broker if omitted.
      */
@@ -1020,38 +1133,32 @@ export interface DataFlowEndpointMqttResponse {
     tls?: TlsPropertiesResponse;
 }
 /**
- * dataFlowEndpointMqttResponseProvideDefaults sets the appropriate defaults for DataFlowEndpointMqttResponse
+ * dataflowEndpointMqttResponseProvideDefaults sets the appropriate defaults for DataflowEndpointMqttResponse
  */
-export function dataFlowEndpointMqttResponseProvideDefaults(val: DataFlowEndpointMqttResponse): DataFlowEndpointMqttResponse {
+export function dataflowEndpointMqttResponseProvideDefaults(val: DataflowEndpointMqttResponse): DataflowEndpointMqttResponse {
     return {
         ...val,
-        host: (val.host) ?? "aio-mq-dmqtt-frontend:1883",
         keepAliveSeconds: (val.keepAliveSeconds) ?? 60,
         maxInflightMessages: (val.maxInflightMessages) ?? 100,
         protocol: (val.protocol) ?? "Mqtt",
         qos: (val.qos) ?? 1,
         retain: (val.retain) ?? "Keep",
-        sessionExpirySeconds: (val.sessionExpirySeconds) ?? 3600,
         tls: (val.tls ? tlsPropertiesResponseProvideDefaults(val.tls) : undefined),
     };
 }
 
 /**
- * DataFlowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
+ * DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
  */
-export interface DataFlowEndpointPropertiesResponse {
-    /**
-     * Authentication configuration.
-     */
-    authentication: DataFlowEndpointAuthenticationResponse;
+export interface DataflowEndpointPropertiesResponse {
     /**
      * Azure Data Explorer endpoint.
      */
-    dataExplorerSettings?: DataFlowEndpointDataExplorerResponse;
+    dataExplorerSettings?: DataflowEndpointDataExplorerResponse;
     /**
      * Azure Data Lake endpoint.
      */
-    dataLakeStorageSettings?: DataFlowEndpointDataLakeStorageResponse;
+    dataLakeStorageSettings?: DataflowEndpointDataLakeStorageResponse;
     /**
      * Endpoint Type.
      */
@@ -1059,50 +1166,50 @@ export interface DataFlowEndpointPropertiesResponse {
     /**
      * Microsoft Fabric endpoint.
      */
-    fabricOneLakeSettings?: DataFlowEndpointFabricOneLakeResponse;
+    fabricOneLakeSettings?: DataflowEndpointFabricOneLakeResponse;
     /**
      * Kafka endpoint.
      */
-    kafkaSettings?: DataFlowEndpointKafkaResponse;
+    kafkaSettings?: DataflowEndpointKafkaResponse;
     /**
      * Local persistent volume endpoint.
      */
-    localStorageSettings?: DataFlowEndpointLocalStorageResponse;
+    localStorageSettings?: DataflowEndpointLocalStorageResponse;
     /**
      * Broker endpoint.
      */
-    mqttSettings?: DataFlowEndpointMqttResponse;
+    mqttSettings?: DataflowEndpointMqttResponse;
     /**
      * The status of the last operation.
      */
     provisioningState: string;
 }
 /**
- * dataFlowEndpointPropertiesResponseProvideDefaults sets the appropriate defaults for DataFlowEndpointPropertiesResponse
+ * dataflowEndpointPropertiesResponseProvideDefaults sets the appropriate defaults for DataflowEndpointPropertiesResponse
  */
-export function dataFlowEndpointPropertiesResponseProvideDefaults(val: DataFlowEndpointPropertiesResponse): DataFlowEndpointPropertiesResponse {
+export function dataflowEndpointPropertiesResponseProvideDefaults(val: DataflowEndpointPropertiesResponse): DataflowEndpointPropertiesResponse {
     return {
         ...val,
-        dataExplorerSettings: (val.dataExplorerSettings ? dataFlowEndpointDataExplorerResponseProvideDefaults(val.dataExplorerSettings) : undefined),
-        dataLakeStorageSettings: (val.dataLakeStorageSettings ? dataFlowEndpointDataLakeStorageResponseProvideDefaults(val.dataLakeStorageSettings) : undefined),
-        fabricOneLakeSettings: (val.fabricOneLakeSettings ? dataFlowEndpointFabricOneLakeResponseProvideDefaults(val.fabricOneLakeSettings) : undefined),
-        kafkaSettings: (val.kafkaSettings ? dataFlowEndpointKafkaResponseProvideDefaults(val.kafkaSettings) : undefined),
-        mqttSettings: (val.mqttSettings ? dataFlowEndpointMqttResponseProvideDefaults(val.mqttSettings) : undefined),
+        dataExplorerSettings: (val.dataExplorerSettings ? dataflowEndpointDataExplorerResponseProvideDefaults(val.dataExplorerSettings) : undefined),
+        dataLakeStorageSettings: (val.dataLakeStorageSettings ? dataflowEndpointDataLakeStorageResponseProvideDefaults(val.dataLakeStorageSettings) : undefined),
+        fabricOneLakeSettings: (val.fabricOneLakeSettings ? dataflowEndpointFabricOneLakeResponseProvideDefaults(val.fabricOneLakeSettings) : undefined),
+        kafkaSettings: (val.kafkaSettings ? dataflowEndpointKafkaResponseProvideDefaults(val.kafkaSettings) : undefined),
+        mqttSettings: (val.mqttSettings ? dataflowEndpointMqttResponseProvideDefaults(val.mqttSettings) : undefined),
     };
 }
 
 /**
- * DataFlow Operation properties. NOTE - One only method is allowed to be used for one entry.
+ * Dataflow Operation properties. NOTE - One only method is allowed to be used for one entry.
  */
-export interface DataFlowOperationResponse {
+export interface DataflowOperationResponse {
     /**
-     * Transformation configuration.
+     * Built In Transformation configuration.
      */
-    builtInTransformationSettings?: DataFlowBuiltInTransformationResponse;
+    builtInTransformationSettings?: DataflowBuiltInTransformationSettingsResponse;
     /**
      * Destination configuration.
      */
-    destinationSettings: DataFlowDestinationOperationResponse;
+    destinationSettings?: DataflowDestinationOperationSettingsResponse;
     /**
      * Optional user provided name of the transformation.
      */
@@ -1114,23 +1221,23 @@ export interface DataFlowOperationResponse {
     /**
      * Source configuration.
      */
-    sourceSettings: DataFlowSourceOperationResponse;
+    sourceSettings?: DataflowSourceOperationSettingsResponse;
 }
 /**
- * dataFlowOperationResponseProvideDefaults sets the appropriate defaults for DataFlowOperationResponse
+ * dataflowOperationResponseProvideDefaults sets the appropriate defaults for DataflowOperationResponse
  */
-export function dataFlowOperationResponseProvideDefaults(val: DataFlowOperationResponse): DataFlowOperationResponse {
+export function dataflowOperationResponseProvideDefaults(val: DataflowOperationResponse): DataflowOperationResponse {
     return {
         ...val,
-        builtInTransformationSettings: (val.builtInTransformationSettings ? dataFlowBuiltInTransformationResponseProvideDefaults(val.builtInTransformationSettings) : undefined),
-        sourceSettings: dataFlowSourceOperationResponseProvideDefaults(val.sourceSettings),
+        builtInTransformationSettings: (val.builtInTransformationSettings ? dataflowBuiltInTransformationSettingsResponseProvideDefaults(val.builtInTransformationSettings) : undefined),
+        sourceSettings: (val.sourceSettings ? dataflowSourceOperationSettingsResponseProvideDefaults(val.sourceSettings) : undefined),
     };
 }
 
 /**
- * DataFlowProfile Resource properties
+ * DataflowProfile Resource properties
  */
-export interface DataFlowProfilePropertiesResponse {
+export interface DataflowProfilePropertiesResponse {
     /**
      * Spec defines the desired identities of NBC diagnostics settings.
      */
@@ -1145,40 +1252,37 @@ export interface DataFlowProfilePropertiesResponse {
     provisioningState: string;
 }
 /**
- * dataFlowProfilePropertiesResponseProvideDefaults sets the appropriate defaults for DataFlowProfilePropertiesResponse
+ * dataflowProfilePropertiesResponseProvideDefaults sets the appropriate defaults for DataflowProfilePropertiesResponse
  */
-export function dataFlowProfilePropertiesResponseProvideDefaults(val: DataFlowProfilePropertiesResponse): DataFlowProfilePropertiesResponse {
+export function dataflowProfilePropertiesResponseProvideDefaults(val: DataflowProfilePropertiesResponse): DataflowProfilePropertiesResponse {
     return {
         ...val,
         diagnostics: (val.diagnostics ? profileDiagnosticsResponseProvideDefaults(val.diagnostics) : undefined),
+        instanceCount: (val.instanceCount) ?? 1,
     };
 }
 
 /**
- * DataFlow Resource properties
+ * Dataflow Resource properties
  */
-export interface DataFlowPropertiesResponse {
+export interface DataflowPropertiesResponse {
     /**
-     * Mode for DataFlow. Optional; defaults to Enabled.
+     * Mode for Dataflow. Optional; defaults to Enabled.
      */
     mode?: string;
     /**
      * List of operations including source and destination references as well as transformation.
      */
-    operations: DataFlowOperationResponse[];
-    /**
-     * Reference to the DataflowProfile CR.
-     */
-    profileRef: string;
+    operations: DataflowOperationResponse[];
     /**
      * The status of the last operation.
      */
     provisioningState: string;
 }
 /**
- * dataFlowPropertiesResponseProvideDefaults sets the appropriate defaults for DataFlowPropertiesResponse
+ * dataflowPropertiesResponseProvideDefaults sets the appropriate defaults for DataflowPropertiesResponse
  */
-export function dataFlowPropertiesResponseProvideDefaults(val: DataFlowPropertiesResponse): DataFlowPropertiesResponse {
+export function dataflowPropertiesResponseProvideDefaults(val: DataflowPropertiesResponse): DataflowPropertiesResponse {
     return {
         ...val,
         mode: (val.mode) ?? "Enabled",
@@ -1186,9 +1290,9 @@ export function dataFlowPropertiesResponseProvideDefaults(val: DataFlowPropertie
 }
 
 /**
- * DataFlow Source Operation properties
+ * Dataflow Source Operation properties
  */
-export interface DataFlowSourceOperationResponse {
+export interface DataflowSourceOperationSettingsResponse {
     /**
      * Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
      */
@@ -1211,9 +1315,9 @@ export interface DataFlowSourceOperationResponse {
     serializationFormat?: string;
 }
 /**
- * dataFlowSourceOperationResponseProvideDefaults sets the appropriate defaults for DataFlowSourceOperationResponse
+ * dataflowSourceOperationSettingsResponseProvideDefaults sets the appropriate defaults for DataflowSourceOperationSettingsResponse
  */
-export function dataFlowSourceOperationResponseProvideDefaults(val: DataFlowSourceOperationResponse): DataFlowSourceOperationResponse {
+export function dataflowSourceOperationSettingsResponseProvideDefaults(val: DataflowSourceOperationSettingsResponse): DataflowSourceOperationSettingsResponse {
     return {
         ...val,
         serializationFormat: (val.serializationFormat) ?? "Json",
@@ -1228,10 +1332,6 @@ export interface DiagnosticsLogsResponse {
      * The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
      */
     level?: string;
-    /**
-     * The open telemetry export configuration.
-     */
-    opentelemetryExportConfig?: OpenTelemetryLogExportConfigResponse;
 }
 /**
  * diagnosticsLogsResponseProvideDefaults sets the appropriate defaults for DiagnosticsLogsResponse
@@ -1240,7 +1340,6 @@ export function diagnosticsLogsResponseProvideDefaults(val: DiagnosticsLogsRespo
     return {
         ...val,
         level: (val.level) ?? "info",
-        opentelemetryExportConfig: (val.opentelemetryExportConfig ? openTelemetryLogExportConfigResponseProvideDefaults(val.opentelemetryExportConfig) : undefined),
     };
 }
 
@@ -1319,7 +1418,7 @@ export function generateResourceLimitsResponseProvideDefaults(val: GenerateResou
 }
 
 /**
- * The properties of a Instance resource.
+ * The properties of the Instance resource.
  */
 export interface InstancePropertiesResponse {
     /**
@@ -1330,6 +1429,10 @@ export interface InstancePropertiesResponse {
      * The status of the last operation.
      */
     provisioningState: string;
+    /**
+     * The reference to the Schema Registry for this AIO Instance.
+     */
+    schemaRegistryRef: SchemaRegistryRefResponse;
     /**
      * The Azure IoT Operations version.
      */
@@ -1417,13 +1520,31 @@ export interface LocalKubernetesReferenceResponse {
 }
 
 /**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityResponse {
+    /**
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: string;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
  * Diagnostic Metrics properties
  */
 export interface MetricsResponse {
-    /**
-     * The open telemetry export configuration.
-     */
-    opentelemetryExportConfig?: OpenTelemetryExportConfigResponse;
     /**
      * The prometheus port to expose the metrics.
      */
@@ -1435,59 +1556,7 @@ export interface MetricsResponse {
 export function metricsResponseProvideDefaults(val: MetricsResponse): MetricsResponse {
     return {
         ...val,
-        opentelemetryExportConfig: (val.opentelemetryExportConfig ? openTelemetryExportConfigResponseProvideDefaults(val.opentelemetryExportConfig) : undefined),
         prometheusPort: (val.prometheusPort) ?? 9600,
-    };
-}
-
-/**
- * OpenTelemetry Export Configuration properties
- */
-export interface OpenTelemetryExportConfigResponse {
-    /**
-     * How often to export the metrics to the open telemetry collector.
-     */
-    intervalSeconds?: number;
-    /**
-     * The open telemetry collector endpoint to export to.
-     */
-    otlpGrpcEndpoint: string;
-}
-/**
- * openTelemetryExportConfigResponseProvideDefaults sets the appropriate defaults for OpenTelemetryExportConfigResponse
- */
-export function openTelemetryExportConfigResponseProvideDefaults(val: OpenTelemetryExportConfigResponse): OpenTelemetryExportConfigResponse {
-    return {
-        ...val,
-        intervalSeconds: (val.intervalSeconds) ?? 30,
-    };
-}
-
-/**
- * OpenTelemetry Log Export Configuration properties
- */
-export interface OpenTelemetryLogExportConfigResponse {
-    /**
-     * How often to export the metrics to the open telemetry collector.
-     */
-    intervalSeconds?: number;
-    /**
-     * The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-     */
-    level?: string;
-    /**
-     * The open telemetry collector endpoint to export to.
-     */
-    otlpGrpcEndpoint: string;
-}
-/**
- * openTelemetryLogExportConfigResponseProvideDefaults sets the appropriate defaults for OpenTelemetryLogExportConfigResponse
- */
-export function openTelemetryLogExportConfigResponseProvideDefaults(val: OpenTelemetryLogExportConfigResponse): OpenTelemetryLogExportConfigResponse {
-    return {
-        ...val,
-        intervalSeconds: (val.intervalSeconds) ?? 30,
-        level: (val.level) ?? "error",
     };
 }
 
@@ -1510,7 +1579,7 @@ export interface PrincipalDefinitionResponse {
 }
 
 /**
- * DataFlowProfile Diagnostics properties
+ * DataflowProfile Diagnostics properties
  */
 export interface ProfileDiagnosticsResponse {
     /**
@@ -1545,6 +1614,16 @@ export interface SanForCertResponse {
      * IP address SANs.
      */
     ip: string[];
+}
+
+/**
+ * The reference to the Schema Registry for this AIO Instance.
+ */
+export interface SchemaRegistryRefResponse {
+    /**
+     * The resource ID of the Schema Registry.
+     */
+    resourceId: string;
 }
 
 /**
@@ -1678,7 +1757,7 @@ export interface TlsCertMethodResponse {
     /**
      * Option 1 - Automatic TLS server certificate management with cert-manager.
      */
-    automatic?: AutomaticCertMethodResponse;
+    certManagerCertificateSpec?: CertManagerCertificateSpecResponse;
     /**
      * Option 2 - Manual TLS server certificate management through a defined secret.
      */
@@ -1694,7 +1773,7 @@ export interface TlsCertMethodResponse {
 export function tlsCertMethodResponseProvideDefaults(val: TlsCertMethodResponse): TlsCertMethodResponse {
     return {
         ...val,
-        automatic: (val.automatic ? automaticCertMethodResponseProvideDefaults(val.automatic) : undefined),
+        certManagerCertificateSpec: (val.certManagerCertificateSpec ? certManagerCertificateSpecResponseProvideDefaults(val.certManagerCertificateSpec) : undefined),
     };
 }
 
@@ -1734,10 +1813,6 @@ export interface TracesResponse {
      */
     mode?: string;
     /**
-     * The open telemetry export configuration.
-     */
-    opentelemetryExportConfig?: OpenTelemetryExportConfigResponse;
-    /**
      * The self tracing properties.
      */
     selfTracing?: SelfTracingResponse;
@@ -1754,10 +1829,23 @@ export function tracesResponseProvideDefaults(val: TracesResponse): TracesRespon
         ...val,
         cacheSizeMegabytes: (val.cacheSizeMegabytes) ?? 16,
         mode: (val.mode) ?? "Enabled",
-        opentelemetryExportConfig: (val.opentelemetryExportConfig ? openTelemetryExportConfigResponseProvideDefaults(val.opentelemetryExportConfig) : undefined),
         selfTracing: (val.selfTracing ? selfTracingResponseProvideDefaults(val.selfTracing) : undefined),
         spanChannelCapacity: (val.spanChannelCapacity) ?? 1000,
     };
+}
+
+/**
+ * User assigned identity properties
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId: string;
 }
 
 /**
@@ -1853,6 +1941,3 @@ export interface X509ManualCertificateResponse {
      */
     secretRef: string;
 }
-
-
-

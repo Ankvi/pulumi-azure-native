@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get information about a virtual machine image template
- * Azure REST API version: 2022-07-01.
  *
- * Other available API versions: 2023-07-01, 2024-02-01.
+ * Uses Azure REST API version 2024-02-01.
+ *
+ * Other available API versions: 2022-07-01, 2023-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native virtualmachineimages [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getVirtualMachineImageTemplate(args: GetVirtualMachineImageTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineImageTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +32,14 @@ export interface GetVirtualMachineImageTemplateArgs {
  */
 export interface GetVirtualMachineImageTemplateResult {
     /**
+     * Indicates whether or not to automatically run the image template build on template creation or update.
+     */
+    readonly autoRun?: types.outputs.ImageTemplateAutoRunResponse;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours).
      */
     readonly buildTimeoutInMinutes?: number;
@@ -42,6 +51,10 @@ export interface GetVirtualMachineImageTemplateResult {
      * The distribution targets where the image output needs to go to.
      */
     readonly distribute: (types.outputs.ImageTemplateManagedImageDistributorResponse | types.outputs.ImageTemplateSharedImageDistributorResponse | types.outputs.ImageTemplateVhdDistributorResponse)[];
+    /**
+     * Error handling options upon a build failure
+     */
+    readonly errorHandling?: types.outputs.ImageTemplatePropertiesResponseErrorHandling;
     /**
      * The staging resource group id in the same subscription as the image template that will be used to build the image. This read-only field differs from 'stagingResourceGroup' only if the value specified in the 'stagingResourceGroup' field is empty.
      */
@@ -62,6 +75,10 @@ export interface GetVirtualMachineImageTemplateResult {
      * The geo-location where the resource lives
      */
     readonly location: string;
+    /**
+     * Tags that will be applied to the resource group and/or resources created by the service.
+     */
+    readonly managedResourceTags?: {[key: string]: string};
     /**
      * The name of the resource
      */
@@ -109,9 +126,10 @@ export interface GetVirtualMachineImageTemplateResult {
 }
 /**
  * Get information about a virtual machine image template
- * Azure REST API version: 2022-07-01.
  *
- * Other available API versions: 2023-07-01, 2024-02-01.
+ * Uses Azure REST API version 2024-02-01.
+ *
+ * Other available API versions: 2022-07-01, 2023-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native virtualmachineimages [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getVirtualMachineImageTemplateOutput(args: GetVirtualMachineImageTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVirtualMachineImageTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

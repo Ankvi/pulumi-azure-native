@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * An export resource.
- * Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2020-06-01.
  *
- * Other available API versions: 2019-10-01, 2023-04-01-preview, 2023-07-01-preview, 2023-08-01, 2023-09-01, 2023-11-01, 2024-08-01.
+ * Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
+ *
+ * Other available API versions: 2019-01-01, 2019-09-01, 2019-10-01, 2019-11-01, 2020-06-01, 2020-12-01-preview, 2021-01-01, 2021-10-01, 2022-10-01, 2023-03-01, 2023-04-01-preview, 2023-07-01-preview, 2023-08-01, 2023-09-01, 2023-11-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native costmanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Export extends pulumi.CustomResource {
     /**
@@ -35,6 +36,10 @@ export class Export extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Has the definition for the export.
      */
     public readonly definition!: pulumi.Output<types.outputs.ExportDefinitionResponse>;
@@ -50,6 +55,14 @@ export class Export extends pulumi.CustomResource {
      * The format of the export being delivered. Currently only 'Csv' is supported.
      */
     public readonly format!: pulumi.Output<string | undefined>;
+    /**
+     * The managed identity associated with Export
+     */
+    public readonly identity!: pulumi.Output<types.outputs.SystemAssignedServiceIdentityResponse | undefined>;
+    /**
+     * The location of the Export's managed identity. Only required when utilizing managed identity.
+     */
+    public readonly location!: pulumi.Output<string | undefined>;
     /**
      * Resource name.
      */
@@ -100,18 +113,24 @@ export class Export extends pulumi.CustomResource {
             resourceInputs["eTag"] = args ? args.eTag : undefined;
             resourceInputs["exportName"] = args ? args.exportName : undefined;
             resourceInputs["format"] = args ? args.format : undefined;
+            resourceInputs["identity"] = args ? args.identity : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["partitionData"] = args ? args.partitionData : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nextRunTimeEstimate"] = undefined /*out*/;
             resourceInputs["runHistory"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["definition"] = undefined /*out*/;
             resourceInputs["deliveryInfo"] = undefined /*out*/;
             resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["format"] = undefined /*out*/;
+            resourceInputs["identity"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nextRunTimeEstimate"] = undefined /*out*/;
             resourceInputs["partitionData"] = undefined /*out*/;
@@ -120,7 +139,7 @@ export class Export extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:costmanagement/v20190101:Export" }, { type: "azure-native:costmanagement/v20190901:Export" }, { type: "azure-native:costmanagement/v20191001:Export" }, { type: "azure-native:costmanagement/v20191101:Export" }, { type: "azure-native:costmanagement/v20200601:Export" }, { type: "azure-native:costmanagement/v20201201preview:Export" }, { type: "azure-native:costmanagement/v20210101:Export" }, { type: "azure-native:costmanagement/v20211001:Export" }, { type: "azure-native:costmanagement/v20221001:Export" }, { type: "azure-native:costmanagement/v20230301:Export" }, { type: "azure-native:costmanagement/v20230401preview:Export" }, { type: "azure-native:costmanagement/v20230701preview:Export" }, { type: "azure-native:costmanagement/v20230801:Export" }, { type: "azure-native:costmanagement/v20230901:Export" }, { type: "azure-native:costmanagement/v20231101:Export" }, { type: "azure-native:costmanagement/v20240801:Export" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:costmanagement/v20190101:Export" }, { type: "azure-native:costmanagement/v20190901:Export" }, { type: "azure-native:costmanagement/v20191001:Export" }, { type: "azure-native:costmanagement/v20191101:Export" }, { type: "azure-native:costmanagement/v20200601:Export" }, { type: "azure-native:costmanagement/v20201201preview:Export" }, { type: "azure-native:costmanagement/v20210101:Export" }, { type: "azure-native:costmanagement/v20211001:Export" }, { type: "azure-native:costmanagement/v20221001:Export" }, { type: "azure-native:costmanagement/v20230301:Export" }, { type: "azure-native:costmanagement/v20230401preview:Export" }, { type: "azure-native:costmanagement/v20230701preview:Export" }, { type: "azure-native:costmanagement/v20230801:Export" }, { type: "azure-native:costmanagement/v20230901:Export" }, { type: "azure-native:costmanagement/v20231101:Export" }, { type: "azure-native:costmanagement/v20240801:Export" }, { type: "azure-native:costmanagement/v20241001preview:Export" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Export.__pulumiType, name, resourceInputs, opts);
     }
@@ -150,6 +169,14 @@ export interface ExportArgs {
      * The format of the export being delivered. Currently only 'Csv' is supported.
      */
     format?: pulumi.Input<string | types.enums.FormatType>;
+    /**
+     * The managed identity associated with Export
+     */
+    identity?: pulumi.Input<types.inputs.SystemAssignedServiceIdentityArgs>;
+    /**
+     * The location of the Export's managed identity. Only required when utilizing managed identity.
+     */
+    location?: pulumi.Input<string>;
     /**
      * If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file. Note: this option is currently available only for Microsoft Customer Agreement commerce scopes.
      */

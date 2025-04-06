@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A Log Analytics QueryPack-Query definition.
- * Azure REST API version: 2019-09-01. Prior API version in Azure Native 1.x: 2019-09-01.
  *
- * Other available API versions: 2019-09-01-preview, 2023-09-01.
+ * Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2019-09-01.
+ *
+ * Other available API versions: 2019-09-01, 2019-09-01-preview, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Query extends pulumi.CustomResource {
     /**
@@ -39,6 +40,10 @@ export class Query extends pulumi.CustomResource {
      */
     public /*out*/ readonly author!: pulumi.Output<string>;
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Body of the query.
      */
     public readonly body!: pulumi.Output<string>;
@@ -51,7 +56,7 @@ export class Query extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Azure resource name
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -63,7 +68,7 @@ export class Query extends pulumi.CustomResource {
      */
     public readonly related!: pulumi.Output<types.outputs.LogAnalyticsQueryPackQueryPropertiesResponseRelated | undefined>;
     /**
-     * Read only system data
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -79,7 +84,7 @@ export class Query extends pulumi.CustomResource {
      */
     public /*out*/ readonly timeModified!: pulumi.Output<string>;
     /**
-     * Azure resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -116,6 +121,7 @@ export class Query extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["author"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["timeCreated"] = undefined /*out*/;
@@ -123,6 +129,7 @@ export class Query extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["author"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["body"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
@@ -136,7 +143,7 @@ export class Query extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:operationalinsights/v20190901:Query" }, { type: "azure-native:operationalinsights/v20190901preview:Query" }, { type: "azure-native:operationalinsights/v20230901:Query" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:operationalinsights/v20190901:Query" }, { type: "azure-native:operationalinsights/v20190901preview:Query" }, { type: "azure-native:operationalinsights/v20230901:Query" }, { type: "azure-native:operationalinsights/v20250201:Query" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Query.__pulumiType, name, resourceInputs, opts);
     }

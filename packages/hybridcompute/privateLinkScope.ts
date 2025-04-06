@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * An Azure Arc PrivateLinkScope definition.
- * Azure REST API version: 2022-12-27. Prior API version in Azure Native 1.x: 2021-03-25-preview.
  *
- * Other available API versions: 2020-08-15-preview, 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview.
+ * Uses Azure REST API version 2024-07-10. In version 2.x of the Azure Native provider, it used API version 2022-12-27.
+ *
+ * Other available API versions: 2020-08-15-preview, 2021-01-28-preview, 2021-03-25-preview, 2021-04-22-preview, 2021-05-17-preview, 2021-05-20, 2021-06-10-preview, 2021-12-10-preview, 2022-03-10, 2022-05-10-preview, 2022-08-11-preview, 2022-11-10, 2022-12-27, 2022-12-27-preview, 2023-03-15-preview, 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrivateLinkScope extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class PrivateLinkScope extends pulumi.CustomResource {
         return obj['__pulumiType'] === PrivateLinkScope.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Resource location
      */
@@ -78,10 +83,12 @@ export class PrivateLinkScope extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["scopeName"] = args ? args.scopeName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
@@ -90,7 +97,7 @@ export class PrivateLinkScope extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:hybridcompute/v20200815preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20210128preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20210325preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20210422preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20210517preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20210520:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20210610preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20211210preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20220310:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20220510preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20220811preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20221110:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20221227:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20221227preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20230315preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20230620preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20231003preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20240331preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20240520preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20240710:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20240731preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20240910preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20241110preview:PrivateLinkScope" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:hybridcompute/v20200815preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20210128preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20210325preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20210422preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20210517preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20210520:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20210610preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20211210preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20220310:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20220510preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20220811preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20221110:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20221227:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20221227preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20230315preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20230620preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20231003preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20240331preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20240520preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20240710:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20240731preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20240910preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20241110preview:PrivateLinkScope" }, { type: "azure-native:hybridcompute/v20250113:PrivateLinkScope" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateLinkScope.__pulumiType, name, resourceInputs, opts);
     }

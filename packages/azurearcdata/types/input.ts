@@ -235,6 +235,28 @@ export interface AvailabilityGroupInfoArgs {
 }
 
 /**
+ * The backup profile for the SQL server.
+ */
+export interface BackupPolicyArgs {
+    /**
+     * The differential backup interval in hours.
+     */
+    differentialBackupHours?: pulumi.Input<number>;
+    /**
+     * The value indicating days between full backups.
+     */
+    fullBackupDays?: pulumi.Input<number>;
+    /**
+     * The retention period for all the databases in this managed instance.
+     */
+    retentionPeriodDays?: pulumi.Input<number>;
+    /**
+     * The value indicating minutes between transaction log backups.
+     */
+    transactionLogBackupMinutes?: pulumi.Input<number>;
+}
+
+/**
  * Username and password for basic login authentication.
  */
 export interface BasicLoginInformationArgs {
@@ -549,6 +571,16 @@ export interface LogAnalyticsWorkspaceConfigArgs {
 }
 
 /**
+ * The monitoring configuration.
+ */
+export interface MonitoringArgs {
+    /**
+     * Indicates if monitoring is enabled for this SQL Server instance.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+/**
  * Properties from the Kubernetes data controller
  */
 export interface OnPremisePropertyArgs {
@@ -831,6 +863,10 @@ export interface SqlServerAvailabilityGroupResourcePropertiesReplicasArgs {
 export interface SqlServerDatabaseResourcePropertiesArgs {
     backupInformation?: pulumi.Input<SqlServerDatabaseResourcePropertiesBackupInformationArgs>;
     /**
+     * The backup profile for the SQL server.
+     */
+    backupPolicy?: pulumi.Input<BackupPolicyArgs>;
+    /**
      * Collation of the database.
      */
     collationName?: pulumi.Input<string>;
@@ -838,6 +874,10 @@ export interface SqlServerDatabaseResourcePropertiesArgs {
      * Compatibility level of the database
      */
     compatibilityLevel?: pulumi.Input<number>;
+    /**
+     * Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified.
+     */
+    createMode?: pulumi.Input<string | enums.DatabaseCreateMode>;
     /**
      * Creation date of the database.
      */
@@ -855,9 +895,17 @@ export interface SqlServerDatabaseResourcePropertiesArgs {
      */
     recoveryMode?: pulumi.Input<string | enums.RecoveryMode>;
     /**
+     * Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database.
+     */
+    restorePointInTime?: pulumi.Input<string>;
+    /**
      * Size of the database.
      */
     sizeMB?: pulumi.Input<number>;
+    /**
+     * The resource identifier of the source database associated with create operation of this database.
+     */
+    sourceDatabaseId?: pulumi.Input<string>;
     /**
      * Space left of the database.
      */
@@ -924,29 +972,13 @@ export interface SqlServerEsuLicensePropertiesArgs {
  */
 export interface SqlServerInstancePropertiesArgs {
     /**
-     * Status of Azure Defender.
+     * The backup profile for the SQL server.
      */
-    azureDefenderStatus?: pulumi.Input<string | enums.DefenderStatus>;
-    /**
-     * Timestamp of last Azure Defender status update.
-     */
-    azureDefenderStatusLastUpdated?: pulumi.Input<string>;
-    /**
-     * SQL Server collation.
-     */
-    collation?: pulumi.Input<string>;
-    /**
-     * ARM Resource id of the container resource (Azure Arc for Servers).
-     */
-    containerResourceId: pulumi.Input<string>;
+    backupPolicy?: pulumi.Input<BackupPolicyArgs>;
     /**
      * The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
      */
     cores?: pulumi.Input<string>;
-    /**
-     * SQL Server current version.
-     */
-    currentVersion?: pulumi.Input<string>;
     /**
      * SQL Server edition.
      */
@@ -960,33 +992,13 @@ export interface SqlServerInstancePropertiesArgs {
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * SQL Server license type.
+     * The monitoring configuration.
      */
-    licenseType?: pulumi.Input<string | enums.ArcSqlServerLicenseType>;
+    monitoring?: pulumi.Input<MonitoringArgs>;
     /**
-     * SQL Server update level.
+     * Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
      */
-    patchLevel?: pulumi.Input<string>;
-    /**
-     * SQL Server product ID.
-     */
-    productId?: pulumi.Input<string>;
-    /**
-     * The cloud connectivity status.
-     */
-    status: pulumi.Input<string | enums.ConnectionStatus>;
-    /**
-     * Dynamic TCP ports used by SQL Server.
-     */
-    tcpDynamicPorts?: pulumi.Input<string>;
-    /**
-     * Static TCP ports used by SQL Server.
-     */
-    tcpStaticPorts?: pulumi.Input<string>;
-    /**
-     * The number of logical processors used by the SQL Server instance.
-     */
-    vCore?: pulumi.Input<string>;
+    upgradeLockedUntil?: pulumi.Input<string>;
     /**
      * SQL Server version.
      */
@@ -1058,5 +1070,3 @@ export interface UploadWatermarkArgs {
      */
     usages?: pulumi.Input<string>;
 }
-
-

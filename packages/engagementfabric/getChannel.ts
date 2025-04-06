@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * The EngagementFabric channel
- * Azure REST API version: 2018-09-01-preview.
+ *
+ * Uses Azure REST API version 2018-09-01-preview.
  */
 export function getChannel(args: GetChannelArgs, opts?: pulumi.InvokeOptions): Promise<GetChannelResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetChannelArgs {
  */
 export interface GetChannelResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The functions to be enabled for the channel
      */
     readonly channelFunctions?: string[];
@@ -59,7 +64,8 @@ export interface GetChannelResult {
 }
 /**
  * The EngagementFabric channel
- * Azure REST API version: 2018-09-01-preview.
+ *
+ * Uses Azure REST API version 2018-09-01-preview.
  */
 export function getChannelOutput(args: GetChannelOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetChannelResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

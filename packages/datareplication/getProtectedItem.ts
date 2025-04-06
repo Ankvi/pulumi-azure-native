@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the details of the protected item.
- * Azure REST API version: 2021-02-16-preview.
+ *
+ * Uses Azure REST API version 2021-02-16-preview.
+ *
+ * Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getProtectedItem(args: GetProtectedItemArgs, opts?: pulumi.InvokeOptions): Promise<GetProtectedItemResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +37,10 @@ export interface GetProtectedItemArgs {
  */
 export interface GetProtectedItemResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Gets or sets the Id of the resource.
      */
     readonly id: string;
@@ -53,7 +60,10 @@ export interface GetProtectedItemResult {
 }
 /**
  * Gets the details of the protected item.
- * Azure REST API version: 2021-02-16-preview.
+ *
+ * Uses Azure REST API version 2021-02-16-preview.
+ *
+ * Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getProtectedItemOutput(args: GetProtectedItemOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProtectedItemResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

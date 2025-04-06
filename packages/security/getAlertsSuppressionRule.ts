@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given subscription
- * Azure REST API version: 2019-01-01-preview.
+ *
+ * Uses Azure REST API version 2019-01-01-preview.
  */
 export function getAlertsSuppressionRule(args: GetAlertsSuppressionRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertsSuppressionRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -27,6 +28,10 @@ export interface GetAlertsSuppressionRuleResult {
      * Type of the alert to automatically suppress. For all alert types, use '*'
      */
     readonly alertType: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Any comment regarding the rule
      */
@@ -66,7 +71,8 @@ export interface GetAlertsSuppressionRuleResult {
 }
 /**
  * Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given subscription
- * Azure REST API version: 2019-01-01-preview.
+ *
+ * Uses Azure REST API version 2019-01-01-preview.
  */
 export function getAlertsSuppressionRuleOutput(args: GetAlertsSuppressionRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlertsSuppressionRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

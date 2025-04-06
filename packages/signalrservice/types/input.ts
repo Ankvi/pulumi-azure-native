@@ -1,6 +1,20 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * An IP rule
+ */
+export interface IPRuleArgs {
+    /**
+     * Azure Networking ACL Action.
+     */
+    action?: pulumi.Input<string | enums.ACLAction>;
+    /**
+     * An IP or CIDR or ServiceTag
+     */
+    value?: pulumi.Input<string>;
+}
+
+/**
  * Live trace category configuration of a Microsoft.SignalRService resource.
  */
 export interface LiveTraceCategoryArgs {
@@ -173,18 +187,20 @@ export interface ResourceReferenceArgs {
  */
 export interface ResourceSkuArgs {
     /**
-     * Optional, integer. The unit count of the resource. 1 by default.
+     * Optional, integer. The unit count of the resource.
+     * 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default.
      * 
      * If present, following values are allowed:
-     *     Free: 1;
-     *     Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
-     *     Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+     *     Free_F1: 1;
+     *     Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+     *     Premium_P1:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+     *     Premium_P2:  100,200,300,400,500,600,700,800,900,1000;
      */
     capacity?: pulumi.Input<number>;
     /**
      * The name of the SKU. Required.
      * 
-     * Allowed values: Standard_S1, Free_F1, Premium_P1
+     * Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2
      */
     name: pulumi.Input<string>;
     /**
@@ -272,6 +288,10 @@ export interface SignalRNetworkACLsArgs {
      */
     defaultAction?: pulumi.Input<string | enums.ACLAction>;
     /**
+     * IP rules for filtering public traffic
+     */
+    ipRules?: pulumi.Input<pulumi.Input<IPRuleArgs>[]>;
+    /**
      * ACLs for requests from private endpoints
      */
     privateEndpoints?: pulumi.Input<pulumi.Input<PrivateEndpointACLArgs>[]>;
@@ -286,7 +306,7 @@ export interface SignalRNetworkACLsArgs {
  */
 export interface SignalRTlsSettingsArgs {
     /**
-     * Request client certificate during TLS handshake if enabled
+     * Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
      */
     clientCertEnabled?: pulumi.Input<boolean>;
 }
@@ -296,7 +316,7 @@ export interface SignalRTlsSettingsArgs {
 export function signalRTlsSettingsArgsProvideDefaults(val: SignalRTlsSettingsArgs): SignalRTlsSettingsArgs {
     return {
         ...val,
-        clientCertEnabled: (val.clientCertEnabled) ?? true,
+        clientCertEnabled: (val.clientCertEnabled) ?? false,
     };
 }
 
@@ -353,11 +373,3 @@ export interface UpstreamTemplateArgs {
      */
     urlTemplate: pulumi.Input<string>;
 }
-
-
-
-
-
-
-
-

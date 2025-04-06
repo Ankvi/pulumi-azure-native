@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Specifies information about the capacity reservation.
- * Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2021-04-01.
  *
- * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+ * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
+ *
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CapacityReservation extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class CapacityReservation extends pulumi.CustomResource {
         return obj['__pulumiType'] === CapacityReservation.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The Capacity reservation instance view.
      */
@@ -114,6 +119,7 @@ export class CapacityReservation extends pulumi.CustomResource {
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["instanceView"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["platformFaultDomainCount"] = undefined /*out*/;
@@ -124,6 +130,7 @@ export class CapacityReservation extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["virtualMachinesAssociated"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["instanceView"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -139,7 +146,7 @@ export class CapacityReservation extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20210401:CapacityReservation" }, { type: "azure-native:compute/v20210701:CapacityReservation" }, { type: "azure-native:compute/v20211101:CapacityReservation" }, { type: "azure-native:compute/v20220301:CapacityReservation" }, { type: "azure-native:compute/v20220801:CapacityReservation" }, { type: "azure-native:compute/v20221101:CapacityReservation" }, { type: "azure-native:compute/v20230301:CapacityReservation" }, { type: "azure-native:compute/v20230701:CapacityReservation" }, { type: "azure-native:compute/v20230901:CapacityReservation" }, { type: "azure-native:compute/v20240301:CapacityReservation" }, { type: "azure-native:compute/v20240701:CapacityReservation" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20210401:CapacityReservation" }, { type: "azure-native:compute/v20210701:CapacityReservation" }, { type: "azure-native:compute/v20211101:CapacityReservation" }, { type: "azure-native:compute/v20220301:CapacityReservation" }, { type: "azure-native:compute/v20220801:CapacityReservation" }, { type: "azure-native:compute/v20221101:CapacityReservation" }, { type: "azure-native:compute/v20230301:CapacityReservation" }, { type: "azure-native:compute/v20230701:CapacityReservation" }, { type: "azure-native:compute/v20230901:CapacityReservation" }, { type: "azure-native:compute/v20240301:CapacityReservation" }, { type: "azure-native:compute/v20240701:CapacityReservation" }, { type: "azure-native:compute/v20241101:CapacityReservation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CapacityReservation.__pulumiType, name, resourceInputs, opts);
     }

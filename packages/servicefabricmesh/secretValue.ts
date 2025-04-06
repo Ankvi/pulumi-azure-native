@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * This type describes a value of a secret resource. The name of this resource is the version identifier corresponding to this secret value.
- * Azure REST API version: 2018-09-01-preview. Prior API version in Azure Native 1.x: 2018-09-01-preview.
+ *
+ * Uses Azure REST API version 2018-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2018-09-01-preview.
  */
 export class SecretValue extends pulumi.CustomResource {
     /**
@@ -31,6 +32,10 @@ export class SecretValue extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecretValue.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The geo-location where the resource lives
      */
@@ -79,10 +84,12 @@ export class SecretValue extends pulumi.CustomResource {
             resourceInputs["secretValueResourceName"] = args ? args.secretValueResourceName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;

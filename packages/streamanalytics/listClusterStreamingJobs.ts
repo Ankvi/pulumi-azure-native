@@ -3,9 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Lists all of the streaming jobs in the given cluster.
- * Azure REST API version: 2020-03-01.
  *
- * Other available API versions: 2020-03-01-preview.
+ * Uses Azure REST API version 2020-03-01.
  */
 export function listClusterStreamingJobs(args: ListClusterStreamingJobsArgs, opts?: pulumi.InvokeOptions): Promise<ListClusterStreamingJobsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,9 +40,8 @@ export interface ListClusterStreamingJobsResult {
 }
 /**
  * Lists all of the streaming jobs in the given cluster.
- * Azure REST API version: 2020-03-01.
  *
- * Other available API versions: 2020-03-01-preview.
+ * Uses Azure REST API version 2020-03-01.
  */
 export function listClusterStreamingJobsOutput(args: ListClusterStreamingJobsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListClusterStreamingJobsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get DigitalTwinsInstances Endpoint.
- * Azure REST API version: 2023-01-31.
+ *
+ * Uses Azure REST API version 2023-01-31.
  */
 export function getDigitalTwinsEndpoint(args: GetDigitalTwinsEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetDigitalTwinsEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetDigitalTwinsEndpointArgs {
  */
 export interface GetDigitalTwinsEndpointResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The resource identifier.
      */
     readonly id: string;
@@ -56,7 +61,8 @@ export interface GetDigitalTwinsEndpointResult {
 }
 /**
  * Get DigitalTwinsInstances Endpoint.
- * Azure REST API version: 2023-01-31.
+ *
+ * Uses Azure REST API version 2023-01-31.
  */
 export function getDigitalTwinsEndpointOutput(args: GetDigitalTwinsEndpointOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDigitalTwinsEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

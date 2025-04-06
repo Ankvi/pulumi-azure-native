@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a security assessment on your scanned resource
- * Azure REST API version: 2021-06-01.
  *
- * Other available API versions: 2020-01-01.
+ * Uses Azure REST API version 2021-06-01.
+ *
+ * Other available API versions: 2019-01-01-preview, 2020-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAssessment(args: GetAssessmentArgs, opts?: pulumi.InvokeOptions): Promise<GetAssessmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,6 +40,10 @@ export interface GetAssessmentResult {
      * Additional data regarding the assessment
      */
     readonly additionalData?: {[key: string]: string};
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * User friendly display name of the assessment
      */
@@ -78,9 +83,10 @@ export interface GetAssessmentResult {
 }
 /**
  * Get a security assessment on your scanned resource
- * Azure REST API version: 2021-06-01.
  *
- * Other available API versions: 2020-01-01.
+ * Uses Azure REST API version 2021-06-01.
+ *
+ * Other available API versions: 2019-01-01-preview, 2020-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAssessmentOutput(args: GetAssessmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAssessmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

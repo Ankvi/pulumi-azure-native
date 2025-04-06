@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Defines the security user rule collection.
- * Azure REST API version: 2024-03-01.
  *
- * Other available API versions: 2024-05-01.
+ * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
+ *
+ * Other available API versions: 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SecurityUserRuleCollection extends pulumi.CustomResource {
     /**
@@ -38,6 +39,10 @@ export class SecurityUserRuleCollection extends pulumi.CustomResource {
      * Groups for configuration
      */
     public readonly appliesToGroups!: pulumi.Output<types.outputs.SecurityUserGroupItemResponse[]>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * A description of the security user rule collection.
      */
@@ -96,6 +101,7 @@ export class SecurityUserRuleCollection extends pulumi.CustomResource {
             resourceInputs["networkManagerName"] = args ? args.networkManagerName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["ruleCollectionName"] = args ? args.ruleCollectionName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -104,6 +110,7 @@ export class SecurityUserRuleCollection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["appliesToGroups"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -113,7 +120,7 @@ export class SecurityUserRuleCollection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:SecurityUserRuleCollection" }, { type: "azure-native:network/v20210501preview:SecurityUserRuleCollection" }, { type: "azure-native:network/v20220201preview:SecurityUserRuleCollection" }, { type: "azure-native:network/v20220401preview:SecurityUserRuleCollection" }, { type: "azure-native:network/v20240301:SecurityUserRuleCollection" }, { type: "azure-native:network/v20240501:SecurityUserRuleCollection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:SecurityUserRuleCollection" }, { type: "azure-native:network/v20210201preview:UserRuleCollection" }, { type: "azure-native:network/v20210501preview:SecurityUserRuleCollection" }, { type: "azure-native:network/v20210501preview:UserRuleCollection" }, { type: "azure-native:network/v20220201preview:SecurityUserRuleCollection" }, { type: "azure-native:network/v20220401preview:SecurityUserRuleCollection" }, { type: "azure-native:network/v20220401preview:UserRuleCollection" }, { type: "azure-native:network/v20240301:SecurityUserRuleCollection" }, { type: "azure-native:network/v20240501:SecurityUserRuleCollection" }, { type: "azure-native:network:UserRuleCollection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SecurityUserRuleCollection.__pulumiType, name, resourceInputs, opts);
     }

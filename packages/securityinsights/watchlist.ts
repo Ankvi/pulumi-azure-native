@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Represents a Watchlist in Azure Security Insights.
- * Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-03-01-preview.
  *
- * Other available API versions: 2019-01-01-preview, 2021-03-01-preview, 2021-04-01, 2021-10-01-preview, 2022-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview.
+ * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
+ *
+ * Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Watchlist extends pulumi.CustomResource {
     /**
@@ -35,7 +36,11 @@ export class Watchlist extends pulumi.CustomResource {
     }
 
     /**
-     * The content type of the raw content. For now, only text/csv is valid
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
+     * The content type of the raw content. Example : text/csv or text/tsv
      */
     public readonly contentType!: pulumi.Output<string | undefined>;
     /**
@@ -79,7 +84,7 @@ export class Watchlist extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The number of lines in a csv content to skip before the header
+     * The number of lines in a csv/tsv content to skip before the header
      */
     public readonly numberOfLinesToSkip!: pulumi.Output<number | undefined>;
     /**
@@ -87,15 +92,21 @@ export class Watchlist extends pulumi.CustomResource {
      */
     public readonly provider!: pulumi.Output<string>;
     /**
-     * The raw content that represents to watchlist items to create. Example : This line will be skipped
-     * header1,header2
-     * value1,value2
+     * Describes provisioning state
+     */
+    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    /**
+     * The raw content that represents to watchlist items to create. In case of csv/tsv content type, it's the content of the file that will parsed by the endpoint
      */
     public readonly rawContent!: pulumi.Output<string | undefined>;
     /**
-     * The source of the watchlist
+     * The filename of the watchlist, called 'source'
      */
-    public readonly source!: pulumi.Output<string>;
+    public readonly source!: pulumi.Output<string | undefined>;
+    /**
+     * The sourceType of the watchlist
+     */
+    public readonly sourceType!: pulumi.Output<string | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -156,9 +167,6 @@ export class Watchlist extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.source === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'source'");
-            }
             if ((!args || args.workspaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
@@ -176,6 +184,7 @@ export class Watchlist extends pulumi.CustomResource {
             resourceInputs["rawContent"] = args ? args.rawContent : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["sourceType"] = args ? args.sourceType : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["updated"] = args ? args.updated : undefined;
             resourceInputs["updatedBy"] = args ? args.updatedBy : undefined;
@@ -184,11 +193,14 @@ export class Watchlist extends pulumi.CustomResource {
             resourceInputs["watchlistId"] = args ? args.watchlistId : undefined;
             resourceInputs["watchlistType"] = args ? args.watchlistType : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["contentType"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
@@ -202,8 +214,10 @@ export class Watchlist extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["numberOfLinesToSkip"] = undefined /*out*/;
             resourceInputs["provider"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["rawContent"] = undefined /*out*/;
             resourceInputs["source"] = undefined /*out*/;
+            resourceInputs["sourceType"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tenantId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -215,7 +229,7 @@ export class Watchlist extends pulumi.CustomResource {
             resourceInputs["watchlistType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20190101preview:Watchlist" }, { type: "azure-native:securityinsights/v20210301preview:Watchlist" }, { type: "azure-native:securityinsights/v20210401:Watchlist" }, { type: "azure-native:securityinsights/v20210901preview:Watchlist" }, { type: "azure-native:securityinsights/v20211001:Watchlist" }, { type: "azure-native:securityinsights/v20211001preview:Watchlist" }, { type: "azure-native:securityinsights/v20220101preview:Watchlist" }, { type: "azure-native:securityinsights/v20220401preview:Watchlist" }, { type: "azure-native:securityinsights/v20220501preview:Watchlist" }, { type: "azure-native:securityinsights/v20220601preview:Watchlist" }, { type: "azure-native:securityinsights/v20220701preview:Watchlist" }, { type: "azure-native:securityinsights/v20220801:Watchlist" }, { type: "azure-native:securityinsights/v20220801preview:Watchlist" }, { type: "azure-native:securityinsights/v20220901preview:Watchlist" }, { type: "azure-native:securityinsights/v20221001preview:Watchlist" }, { type: "azure-native:securityinsights/v20221101:Watchlist" }, { type: "azure-native:securityinsights/v20221101preview:Watchlist" }, { type: "azure-native:securityinsights/v20221201preview:Watchlist" }, { type: "azure-native:securityinsights/v20230201:Watchlist" }, { type: "azure-native:securityinsights/v20230201preview:Watchlist" }, { type: "azure-native:securityinsights/v20230301preview:Watchlist" }, { type: "azure-native:securityinsights/v20230401preview:Watchlist" }, { type: "azure-native:securityinsights/v20230501preview:Watchlist" }, { type: "azure-native:securityinsights/v20230601preview:Watchlist" }, { type: "azure-native:securityinsights/v20230701preview:Watchlist" }, { type: "azure-native:securityinsights/v20230801preview:Watchlist" }, { type: "azure-native:securityinsights/v20230901preview:Watchlist" }, { type: "azure-native:securityinsights/v20231001preview:Watchlist" }, { type: "azure-native:securityinsights/v20231101:Watchlist" }, { type: "azure-native:securityinsights/v20231201preview:Watchlist" }, { type: "azure-native:securityinsights/v20240101preview:Watchlist" }, { type: "azure-native:securityinsights/v20240301:Watchlist" }, { type: "azure-native:securityinsights/v20240401preview:Watchlist" }, { type: "azure-native:securityinsights/v20240901:Watchlist" }, { type: "azure-native:securityinsights/v20241001preview:Watchlist" }, { type: "azure-native:securityinsights/v20250101preview:Watchlist" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20190101preview:Watchlist" }, { type: "azure-native:securityinsights/v20210301preview:Watchlist" }, { type: "azure-native:securityinsights/v20210401:Watchlist" }, { type: "azure-native:securityinsights/v20210901preview:Watchlist" }, { type: "azure-native:securityinsights/v20211001:Watchlist" }, { type: "azure-native:securityinsights/v20211001preview:Watchlist" }, { type: "azure-native:securityinsights/v20220101preview:Watchlist" }, { type: "azure-native:securityinsights/v20220401preview:Watchlist" }, { type: "azure-native:securityinsights/v20220501preview:Watchlist" }, { type: "azure-native:securityinsights/v20220601preview:Watchlist" }, { type: "azure-native:securityinsights/v20220701preview:Watchlist" }, { type: "azure-native:securityinsights/v20220801:Watchlist" }, { type: "azure-native:securityinsights/v20220801preview:Watchlist" }, { type: "azure-native:securityinsights/v20220901preview:Watchlist" }, { type: "azure-native:securityinsights/v20221001preview:Watchlist" }, { type: "azure-native:securityinsights/v20221101:Watchlist" }, { type: "azure-native:securityinsights/v20221101preview:Watchlist" }, { type: "azure-native:securityinsights/v20221201preview:Watchlist" }, { type: "azure-native:securityinsights/v20230201:Watchlist" }, { type: "azure-native:securityinsights/v20230201preview:Watchlist" }, { type: "azure-native:securityinsights/v20230301preview:Watchlist" }, { type: "azure-native:securityinsights/v20230401preview:Watchlist" }, { type: "azure-native:securityinsights/v20230501preview:Watchlist" }, { type: "azure-native:securityinsights/v20230601preview:Watchlist" }, { type: "azure-native:securityinsights/v20230701preview:Watchlist" }, { type: "azure-native:securityinsights/v20230801preview:Watchlist" }, { type: "azure-native:securityinsights/v20230901preview:Watchlist" }, { type: "azure-native:securityinsights/v20231001preview:Watchlist" }, { type: "azure-native:securityinsights/v20231101:Watchlist" }, { type: "azure-native:securityinsights/v20231201preview:Watchlist" }, { type: "azure-native:securityinsights/v20240101preview:Watchlist" }, { type: "azure-native:securityinsights/v20240301:Watchlist" }, { type: "azure-native:securityinsights/v20240401preview:Watchlist" }, { type: "azure-native:securityinsights/v20240901:Watchlist" }, { type: "azure-native:securityinsights/v20241001preview:Watchlist" }, { type: "azure-native:securityinsights/v20250101preview:Watchlist" }, { type: "azure-native:securityinsights/v20250301:Watchlist" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Watchlist.__pulumiType, name, resourceInputs, opts);
     }
@@ -226,7 +240,7 @@ export class Watchlist extends pulumi.CustomResource {
  */
 export interface WatchlistArgs {
     /**
-     * The content type of the raw content. For now, only text/csv is valid
+     * The content type of the raw content. Example : text/csv or text/tsv
      */
     contentType?: pulumi.Input<string>;
     /**
@@ -262,7 +276,7 @@ export interface WatchlistArgs {
      */
     labels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The number of lines in a csv content to skip before the header
+     * The number of lines in a csv/tsv content to skip before the header
      */
     numberOfLinesToSkip?: pulumi.Input<number>;
     /**
@@ -270,9 +284,7 @@ export interface WatchlistArgs {
      */
     provider: pulumi.Input<string>;
     /**
-     * The raw content that represents to watchlist items to create. Example : This line will be skipped
-     * header1,header2
-     * value1,value2
+     * The raw content that represents to watchlist items to create. In case of csv/tsv content type, it's the content of the file that will parsed by the endpoint
      */
     rawContent?: pulumi.Input<string>;
     /**
@@ -280,9 +292,13 @@ export interface WatchlistArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The source of the watchlist
+     * The filename of the watchlist, called 'source'
      */
-    source: pulumi.Input<string | types.enums.Source>;
+    source?: pulumi.Input<string>;
+    /**
+     * The sourceType of the watchlist
+     */
+    sourceType?: pulumi.Input<string | types.enums.SourceType>;
     /**
      * The tenantId where the watchlist belongs to
      */

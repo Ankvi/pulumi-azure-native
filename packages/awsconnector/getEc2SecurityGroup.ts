@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Ec2SecurityGroup
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getEc2SecurityGroup(args: GetEc2SecurityGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetEc2SecurityGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetEc2SecurityGroupArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetEc2SecurityGroupResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetEc2SecurityGroupResult {
 }
 /**
  * Get a Ec2SecurityGroup
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getEc2SecurityGroupOutput(args: GetEc2SecurityGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEc2SecurityGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * LoadTest details.
- * Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2021-12-01-preview.
  *
- * Other available API versions: 2021-12-01-preview, 2023-12-01-preview.
+ * Uses Azure REST API version 2023-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
+ *
+ * Other available API versions: 2022-12-01, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native loadtestservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class LoadTest extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class LoadTest extends pulumi.CustomResource {
         return obj['__pulumiType'] === LoadTest.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Resource data plane URI.
      */
@@ -96,12 +101,14 @@ export class LoadTest extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["dataPlaneURI"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["dataPlaneURI"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["encryption"] = undefined /*out*/;
@@ -114,7 +121,7 @@ export class LoadTest extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:loadtestservice/v20211201preview:LoadTest" }, { type: "azure-native:loadtestservice/v20220415preview:LoadTest" }, { type: "azure-native:loadtestservice/v20221201:LoadTest" }, { type: "azure-native:loadtestservice/v20231201preview:LoadTest" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:loadtestservice/v20211201preview:LoadTest" }, { type: "azure-native:loadtestservice/v20220415preview:LoadTest" }, { type: "azure-native:loadtestservice/v20221201:LoadTest" }, { type: "azure-native:loadtestservice/v20231201preview:LoadTest" }, { type: "azure-native:loadtestservice/v20241201preview:LoadTest" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LoadTest.__pulumiType, name, resourceInputs, opts);
     }

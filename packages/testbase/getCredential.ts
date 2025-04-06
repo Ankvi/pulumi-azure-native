@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a test base credential Resource
- * Azure REST API version: 2023-11-01-preview.
+ *
+ * Uses Azure REST API version 2023-11-01-preview.
  */
 export function getCredential(args: GetCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetCredentialResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetCredentialArgs {
  */
 export interface GetCredentialResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Credential type.
      */
     readonly credentialType: string;
@@ -60,7 +65,8 @@ export interface GetCredentialResult {
 }
 /**
  * Gets a test base credential Resource
- * Azure REST API version: 2023-11-01-preview.
+ *
+ * Uses Azure REST API version 2023-11-01-preview.
  */
 export function getCredentialOutput(args: GetCredentialOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCredentialResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

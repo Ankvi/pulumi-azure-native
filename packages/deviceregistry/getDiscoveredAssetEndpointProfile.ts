@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a DiscoveredAssetEndpointProfile
- * Azure REST API version: 2024-09-01-preview.
+ *
+ * Uses Azure REST API version 2024-09-01-preview.
  */
 export function getDiscoveredAssetEndpointProfile(args: GetDiscoveredAssetEndpointProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetDiscoveredAssetEndpointProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,6 +33,10 @@ export interface GetDiscoveredAssetEndpointProfileResult {
      * Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
      */
     readonly additionalConfiguration?: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Identifier used to detect changes in the asset endpoint profile.
      */
@@ -87,7 +92,8 @@ export interface GetDiscoveredAssetEndpointProfileResult {
 }
 /**
  * Get a DiscoveredAssetEndpointProfile
- * Azure REST API version: 2024-09-01-preview.
+ *
+ * Uses Azure REST API version 2024-09-01-preview.
  */
 export function getDiscoveredAssetEndpointProfileOutput(args: GetDiscoveredAssetEndpointProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiscoveredAssetEndpointProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

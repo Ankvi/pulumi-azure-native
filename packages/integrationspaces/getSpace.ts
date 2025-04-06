@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Space
- * Azure REST API version: 2023-11-14-preview.
+ *
+ * Uses Azure REST API version 2023-11-14-preview.
  */
 export function getSpace(args: GetSpaceArgs, opts?: pulumi.InvokeOptions): Promise<GetSpaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetSpaceArgs {
  * An integration space.
  */
 export interface GetSpaceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The description of the resource.
      */
@@ -63,7 +68,8 @@ export interface GetSpaceResult {
 }
 /**
  * Get a Space
- * Azure REST API version: 2023-11-14-preview.
+ *
+ * Uses Azure REST API version 2023-11-14-preview.
  */
 export function getSpaceOutput(args: GetSpaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

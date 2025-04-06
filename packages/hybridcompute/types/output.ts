@@ -55,6 +55,10 @@ export interface AgentUpgradeResponse {
      */
     enableAutomaticUpgrade?: boolean;
     /**
+     * Specifies the version of the last attempt
+     */
+    lastAttemptDesiredVersion: string;
+    /**
      * Failure message of last upgrade attempt if any.
      */
     lastAttemptMessage: string;
@@ -137,9 +141,9 @@ export interface ErrorDetailResponse {
  */
 export interface EsuKeyResponse {
     /**
-     * The current status of the license profile key.
+     * The current status of the license profile key. Represented by the same integer value that is presented on the machine itself when querying the license key status.
      */
-    licenseStatus?: string;
+    licenseStatus?: number;
     /**
      * SKU number.
      */
@@ -213,6 +217,24 @@ export interface IdentityResponse {
 }
 
 /**
+ * Describes properties of the IP address.
+ */
+export interface IpAddressResponse {
+    /**
+     * Represents the IP Address.
+     */
+    address?: string;
+    /**
+     * Represents the Ip Address Version.
+     */
+    ipAddressVersion?: string;
+    /**
+     * The subnet to which this IP address belongs.
+     */
+    subnet: SubnetResponse;
+}
+
+/**
  * Describes the properties of a License.
  */
 export interface LicenseDetailsResponse {
@@ -244,6 +266,144 @@ export interface LicenseDetailsResponse {
      * Describes the license core type (pCore or vCore).
      */
     type?: string;
+    /**
+     * A list of volume license details.
+     */
+    volumeLicenseDetails?: VolumeLicenseDetailsResponse[];
+}
+
+/**
+ * Properties for the Machine ESU profile.
+ */
+export interface LicenseProfileMachineInstanceViewEsuPropertiesResponse {
+    /**
+     * The assigned license resource.
+     */
+    assignedLicense?: LicenseResponse;
+    /**
+     * The guid id of the license.
+     */
+    assignedLicenseImmutableId: string;
+    /**
+     * Indicates the eligibility state of Esu.
+     */
+    esuEligibility: string;
+    /**
+     * Indicates whether there is an ESU Key currently active for the machine.
+     */
+    esuKeyState: string;
+    /**
+     * The list of ESU keys.
+     */
+    esuKeys: EsuKeyResponse[];
+    /**
+     * Describes the license assignment state (Assigned or NotAssigned).
+     */
+    licenseAssignmentState?: string;
+    /**
+     * The type of the Esu servers.
+     */
+    serverType: string;
+}
+
+/**
+ * License Profile Instance View in Machine Properties.
+ */
+export interface LicenseProfileMachineInstanceViewResponse {
+    /**
+     * The timestamp in UTC when the billing ends.
+     */
+    billingEndDate: string;
+    /**
+     * The timestamp in UTC when the billing starts.
+     */
+    billingStartDate: string;
+    /**
+     * The timestamp in UTC when the user disenrolled the feature.
+     */
+    disenrollmentDate: string;
+    /**
+     * The timestamp in UTC when the user enrolls the feature.
+     */
+    enrollmentDate: string;
+    /**
+     * The errors that were encountered during the feature enrollment or disenrollment.
+     */
+    error: ErrorDetailResponse;
+    /**
+     * Properties for the Machine ESU profile.
+     */
+    esuProfile?: LicenseProfileMachineInstanceViewEsuPropertiesResponse;
+    /**
+     * Indicates the license channel.
+     */
+    licenseChannel: string;
+    /**
+     * Indicates the license status of the OS.
+     */
+    licenseStatus: string;
+    /**
+     * The list of product features.
+     */
+    productFeatures?: ProductFeatureResponse[];
+    /**
+     * Indicates the product type of the license.
+     */
+    productType?: string;
+    /**
+     * Specifies if this machine is licensed as part of a Software Assurance agreement.
+     */
+    softwareAssuranceCustomer?: boolean;
+    /**
+     * Indicates the subscription status of the product.
+     */
+    subscriptionStatus?: string;
+}
+
+/**
+ * Describes a license in a hybrid machine.
+ */
+export interface LicenseResponse {
+    /**
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     */
+    id: string;
+    /**
+     * Describes the properties of a License.
+     */
+    licenseDetails?: LicenseDetailsResponse;
+    /**
+     * The type of the license resource.
+     */
+    licenseType?: string;
+    /**
+     * The geo-location where the resource lives
+     */
+    location: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * The provisioning state, which only appears in the response.
+     */
+    provisioningState: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Describes the tenant id.
+     */
+    tenantId?: string;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
 }
 
 /**
@@ -457,6 +617,26 @@ export interface MachineRunCommandScriptSourceResponse {
 }
 
 /**
+ * Describes a network interface.
+ */
+export interface NetworkInterfaceResponse {
+    /**
+     * The list of IP addresses in this interface.
+     */
+    ipAddresses?: IpAddressResponse[];
+}
+
+/**
+ * Describes the network information on this machine.
+ */
+export interface NetworkProfileResponse {
+    /**
+     * The list of network interfaces.
+     */
+    networkInterfaces?: NetworkInterfaceResponse[];
+}
+
+/**
  * Specifies the operating system settings for the hybrid machine.
  */
 export interface OSProfileResponse {
@@ -483,9 +663,17 @@ export interface OSProfileResponseLinuxConfiguration {
      */
     assessmentMode?: string;
     /**
+     * Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
+     */
+    enableHotpatching?: boolean;
+    /**
      * Specifies the patch mode.
      */
     patchMode?: string;
+    /**
+     * Status of the hotpatch capability enrollment or disenrollment.
+     */
+    status: PatchSettingsResponseStatus;
 }
 
 /**
@@ -497,9 +685,31 @@ export interface OSProfileResponseWindowsConfiguration {
      */
     assessmentMode?: string;
     /**
+     * Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
+     */
+    enableHotpatching?: boolean;
+    /**
      * Specifies the patch mode.
      */
     patchMode?: string;
+    /**
+     * Status of the hotpatch capability enrollment or disenrollment.
+     */
+    status: PatchSettingsResponseStatus;
+}
+
+/**
+ * Status of the hotpatch capability enrollment or disenrollment.
+ */
+export interface PatchSettingsResponseStatus {
+    /**
+     * The errors that were encountered during the hotpatch capability enrollment or disenrollment.
+     */
+    error: ErrorDetailResponse;
+    /**
+     * Indicates the current status of the hotpatch being enabled or disabled.
+     */
+    hotpatchEnablementStatus?: string;
 }
 
 /**
@@ -575,6 +785,40 @@ export interface PrivateLinkServiceConnectionStatePropertyResponse {
 }
 
 /**
+ * Product Feature
+ */
+export interface ProductFeatureResponse {
+    /**
+     * The timestamp in UTC when the billing ends.
+     */
+    billingEndDate: string;
+    /**
+     * The timestamp in UTC when the billing starts.
+     */
+    billingStartDate: string;
+    /**
+     * The timestamp in UTC when the user disenrolled the feature.
+     */
+    disenrollmentDate: string;
+    /**
+     * The timestamp in UTC when the user enrolls the feature.
+     */
+    enrollmentDate: string;
+    /**
+     * The errors that were encountered during the feature enrollment or disenrollment.
+     */
+    error: ErrorDetailResponse;
+    /**
+     * Product feature name.
+     */
+    name?: string;
+    /**
+     * Indicates the current status of the product features.
+     */
+    subscriptionStatus?: string;
+}
+
+/**
  * Describes the properties of a run command parameter.
  */
 export interface RunCommandInputParameterResponse {
@@ -631,6 +875,16 @@ export interface ServiceStatusesResponse {
 }
 
 /**
+ * Describes the subnet.
+ */
+export interface SubnetResponse {
+    /**
+     * Represents address prefix.
+     */
+    addressPrefix?: string;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -660,13 +914,13 @@ export interface SystemDataResponse {
     lastModifiedByType?: string;
 }
 
-
-
-
-
-
-
-
-
-
-
+export interface VolumeLicenseDetailsResponse {
+    /**
+     * The invoice id for the volume license.
+     */
+    invoiceId?: string;
+    /**
+     * Describes the program year the volume license is for.
+     */
+    programYear?: string;
+}

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * An Azure SQL Database sync group.
- * Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
  *
- * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+ * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
+ *
+ * Other available API versions: 2015-05-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SyncGroup extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class SyncGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === SyncGroup.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Conflict logging retention period.
      */
@@ -125,12 +130,14 @@ export class SyncGroup extends pulumi.CustomResource {
             resourceInputs["syncDatabaseId"] = args ? args.syncDatabaseId : undefined;
             resourceInputs["syncGroupName"] = args ? args.syncGroupName : undefined;
             resourceInputs["usePrivateLinkConnection"] = args ? args.usePrivateLinkConnection : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["lastSyncTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateEndpointName"] = undefined /*out*/;
             resourceInputs["syncState"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["conflictLoggingRetentionInDays"] = undefined /*out*/;
             resourceInputs["conflictResolutionPolicy"] = undefined /*out*/;
             resourceInputs["enableConflictLogging"] = undefined /*out*/;
@@ -147,7 +154,7 @@ export class SyncGroup extends pulumi.CustomResource {
             resourceInputs["usePrivateLinkConnection"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20150501preview:SyncGroup" }, { type: "azure-native:sql/v20190601preview:SyncGroup" }, { type: "azure-native:sql/v20200202preview:SyncGroup" }, { type: "azure-native:sql/v20200801preview:SyncGroup" }, { type: "azure-native:sql/v20201101preview:SyncGroup" }, { type: "azure-native:sql/v20210201preview:SyncGroup" }, { type: "azure-native:sql/v20210501preview:SyncGroup" }, { type: "azure-native:sql/v20210801preview:SyncGroup" }, { type: "azure-native:sql/v20211101:SyncGroup" }, { type: "azure-native:sql/v20211101preview:SyncGroup" }, { type: "azure-native:sql/v20220201preview:SyncGroup" }, { type: "azure-native:sql/v20220501preview:SyncGroup" }, { type: "azure-native:sql/v20220801preview:SyncGroup" }, { type: "azure-native:sql/v20221101preview:SyncGroup" }, { type: "azure-native:sql/v20230201preview:SyncGroup" }, { type: "azure-native:sql/v20230501preview:SyncGroup" }, { type: "azure-native:sql/v20230801preview:SyncGroup" }, { type: "azure-native:sql/v20240501preview:SyncGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20150501preview:SyncGroup" }, { type: "azure-native:sql/v20190601preview:SyncGroup" }, { type: "azure-native:sql/v20200202preview:SyncGroup" }, { type: "azure-native:sql/v20200801preview:SyncGroup" }, { type: "azure-native:sql/v20201101preview:SyncGroup" }, { type: "azure-native:sql/v20210201preview:SyncGroup" }, { type: "azure-native:sql/v20210501preview:SyncGroup" }, { type: "azure-native:sql/v20210801preview:SyncGroup" }, { type: "azure-native:sql/v20211101:SyncGroup" }, { type: "azure-native:sql/v20211101preview:SyncGroup" }, { type: "azure-native:sql/v20220201preview:SyncGroup" }, { type: "azure-native:sql/v20220501preview:SyncGroup" }, { type: "azure-native:sql/v20220801preview:SyncGroup" }, { type: "azure-native:sql/v20221101preview:SyncGroup" }, { type: "azure-native:sql/v20230201preview:SyncGroup" }, { type: "azure-native:sql/v20230501preview:SyncGroup" }, { type: "azure-native:sql/v20230801:SyncGroup" }, { type: "azure-native:sql/v20230801preview:SyncGroup" }, { type: "azure-native:sql/v20240501preview:SyncGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SyncGroup.__pulumiType, name, resourceInputs, opts);
     }

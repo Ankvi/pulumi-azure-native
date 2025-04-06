@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Security Assignment on a resource group over a given scope
- * Azure REST API version: 2024-08-01.
+ *
+ * Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2024-08-01.
  */
 export class StandardAssignment extends pulumi.CustomResource {
     /**
@@ -40,6 +41,10 @@ export class StandardAssignment extends pulumi.CustomResource {
      * Additional data about assignment that has Attest effect
      */
     public readonly attestationData!: pulumi.Output<types.outputs.StandardAssignmentPropertiesResponseAttestationData | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Description of the standardAssignment
      */
@@ -101,12 +106,14 @@ export class StandardAssignment extends pulumi.CustomResource {
             resourceInputs["expiresOn"] = args ? args.expiresOn : undefined;
             resourceInputs["resourceId"] = args ? args.resourceId : undefined;
             resourceInputs["standardAssignmentName"] = args ? args.standardAssignmentName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["assignedStandard"] = undefined /*out*/;
             resourceInputs["attestationData"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["effect"] = undefined /*out*/;

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
- * Azure REST API version: 2023-04-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview.
+ * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
+ *
+ * Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FeaturesetVersion extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class FeaturesetVersion extends pulumi.CustomResource {
         return obj['__pulumiType'] === FeaturesetVersion.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * [Required] Additional attributes of the entity.
      */
@@ -79,16 +84,18 @@ export class FeaturesetVersion extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["featuresetVersionProperties"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230201preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20230401preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20230601preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20230801preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20231001:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20240101preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20240401:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20240401preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20240701preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20241001:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20241001preview:FeaturesetVersion" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230201preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20230401preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20230601preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20230801preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20231001:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20240101preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20240401:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20240401preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20240701preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20241001:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20241001preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20250101preview:FeaturesetVersion" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FeaturesetVersion.__pulumiType, name, resourceInputs, opts);
     }

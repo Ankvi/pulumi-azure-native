@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Wafv2LoggingConfiguration
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getWafv2LoggingConfiguration(args: GetWafv2LoggingConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetWafv2LoggingConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetWafv2LoggingConfigurationArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetWafv2LoggingConfigurationResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetWafv2LoggingConfigurationResult {
 }
 /**
  * Get a Wafv2LoggingConfiguration
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getWafv2LoggingConfigurationOutput(args: GetWafv2LoggingConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWafv2LoggingConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

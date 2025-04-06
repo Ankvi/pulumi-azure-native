@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Defines the GuestAgent.
- * Azure REST API version: 2023-04-01-preview.
+ *
+ * Uses Azure REST API version 2023-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
  */
 export class VMInstanceGuestAgent extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class VMInstanceGuestAgent extends pulumi.CustomResource {
         return obj['__pulumiType'] === VMInstanceGuestAgent.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Username / Password Credentials to provision guest agent.
      */
@@ -91,6 +96,7 @@ export class VMInstanceGuestAgent extends pulumi.CustomResource {
             resourceInputs["httpProxyConfig"] = args ? args.httpProxyConfig : undefined;
             resourceInputs["provisioningAction"] = args ? args.provisioningAction : undefined;
             resourceInputs["resourceUri"] = args ? args.resourceUri : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["customResourceName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -99,6 +105,7 @@ export class VMInstanceGuestAgent extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["credentials"] = undefined /*out*/;
             resourceInputs["customResourceName"] = undefined /*out*/;
             resourceInputs["httpProxyConfig"] = undefined /*out*/;
@@ -111,7 +118,7 @@ export class VMInstanceGuestAgent extends pulumi.CustomResource {
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:scvmm/v20230401preview:VMInstanceGuestAgent" }, { type: "azure-native:scvmm/v20231007:VMInstanceGuestAgent" }, { type: "azure-native:scvmm/v20240601:VMInstanceGuestAgent" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:scvmm/v20230401preview:VMInstanceGuestAgent" }, { type: "azure-native:scvmm/v20231007:GuestAgent" }, { type: "azure-native:scvmm/v20231007:VMInstanceGuestAgent" }, { type: "azure-native:scvmm/v20240601:GuestAgent" }, { type: "azure-native:scvmm/v20240601:VMInstanceGuestAgent" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VMInstanceGuestAgent.__pulumiType, name, resourceInputs, opts);
     }

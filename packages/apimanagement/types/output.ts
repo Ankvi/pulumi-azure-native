@@ -750,6 +750,38 @@ export interface KeyVaultLastAccessStatusContractPropertiesResponse {
 }
 
 /**
+ * Diagnostic settings for Large Language Models
+ */
+export interface LLMDiagnosticSettingsResponse {
+    /**
+     * Specifies whether default diagnostic should be enabled for Large Language Models or not.
+     */
+    logs?: string;
+    /**
+     * Diagnostic settings for Large Language Models requests.
+     */
+    requests?: LLMMessageDiagnosticSettingsResponse;
+    /**
+     * Diagnostic settings for Large Language Models responses.
+     */
+    responses?: LLMMessageDiagnosticSettingsResponse;
+}
+
+/**
+ * Diagnostic settings for Large Language Models Messages
+ */
+export interface LLMMessageDiagnosticSettingsResponse {
+    /**
+     * Maximum size of message to logs in bytes. The default size is 32KB.
+     */
+    maxSizeInBytes?: number;
+    /**
+     * Specifies which message should be logged. Currently there is only 'all' option.
+     */
+    messages?: string;
+}
+
+/**
  * API OAuth2 Authentication settings details.
  */
 export interface OAuth2AuthenticationSettingsContractResponse {
@@ -1162,15 +1194,3 @@ export interface X509CertificateNameResponse {
      */
     name?: string;
 }
-
-
-
-
-
-
-
-
-
-
-
-

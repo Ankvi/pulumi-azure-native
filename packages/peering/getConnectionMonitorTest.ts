@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets an existing connection monitor test with the specified name under the given subscription, resource group and peering service.
- * Azure REST API version: 2022-10-01.
+ *
+ * Uses Azure REST API version 2022-10-01.
  */
 export function getConnectionMonitorTest(args: GetConnectionMonitorTestArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionMonitorTestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,6 +33,10 @@ export interface GetConnectionMonitorTestArgs {
  * The Connection Monitor Test class.
  */
 export interface GetConnectionMonitorTestResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The Connection Monitor test destination
      */
@@ -75,7 +80,8 @@ export interface GetConnectionMonitorTestResult {
 }
 /**
  * Gets an existing connection monitor test with the specified name under the given subscription, resource group and peering service.
- * Azure REST API version: 2022-10-01.
+ *
+ * Uses Azure REST API version 2022-10-01.
  */
 export function getConnectionMonitorTestOutput(args: GetConnectionMonitorTestOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectionMonitorTestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

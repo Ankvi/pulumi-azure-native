@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A managed instance key.
- * Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
  *
- * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+ * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
+ *
+ * Other available API versions: 2017-10-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ManagedInstanceKey extends pulumi.CustomResource {
     /**
@@ -38,6 +39,10 @@ export class ManagedInstanceKey extends pulumi.CustomResource {
      * Key auto rotation opt-in flag. Either true or false.
      */
     public /*out*/ readonly autoRotationEnabled!: pulumi.Output<boolean>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The key creation date.
      */
@@ -85,6 +90,7 @@ export class ManagedInstanceKey extends pulumi.CustomResource {
             resourceInputs["serverKeyType"] = args ? args.serverKeyType : undefined;
             resourceInputs["uri"] = args ? args.uri : undefined;
             resourceInputs["autoRotationEnabled"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -92,6 +98,7 @@ export class ManagedInstanceKey extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["autoRotationEnabled"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -99,7 +106,7 @@ export class ManagedInstanceKey extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20171001preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20200202preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20200801preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20201101preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20210201preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20210501preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20210801preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20211101:ManagedInstanceKey" }, { type: "azure-native:sql/v20211101preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20220201preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20220501preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20220801preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20221101preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20230201preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20230501preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20230801preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20240501preview:ManagedInstanceKey" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20171001preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20200202preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20200801preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20201101preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20210201preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20210501preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20210801preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20211101:ManagedInstanceKey" }, { type: "azure-native:sql/v20211101preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20220201preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20220501preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20220801preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20221101preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20230201preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20230501preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20230801:ManagedInstanceKey" }, { type: "azure-native:sql/v20230801preview:ManagedInstanceKey" }, { type: "azure-native:sql/v20240501preview:ManagedInstanceKey" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedInstanceKey.__pulumiType, name, resourceInputs, opts);
     }

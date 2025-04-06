@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Job Resource.
- * Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2020-11-01.
  *
- * Other available API versions: 2023-03-01, 2023-12-01, 2024-02-01-preview, 2024-03-01-preview.
+ * Uses Azure REST API version 2024-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
+ *
+ * Other available API versions: 2022-12-01, 2023-03-01, 2023-12-01, 2024-02-01-preview, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databox [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Job extends pulumi.CustomResource {
     /**
@@ -35,9 +36,21 @@ export class Job extends pulumi.CustomResource {
     }
 
     /**
+     * Flag to indicate if all devices associated with the job are lost.
+     */
+    public /*out*/ readonly allDevicesLost!: pulumi.Output<boolean>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Reason for cancellation.
      */
     public /*out*/ readonly cancellationReason!: pulumi.Output<string>;
+    /**
+     * Name of the stage where delay might be present.
+     */
+    public /*out*/ readonly delayedStage!: pulumi.Output<string>;
     /**
      * Delivery Info of Job.
      */
@@ -153,7 +166,10 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["transferType"] = args ? args.transferType : undefined;
+            resourceInputs["allDevicesLost"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["cancellationReason"] = undefined /*out*/;
+            resourceInputs["delayedStage"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["isCancellable"] = undefined /*out*/;
             resourceInputs["isCancellableWithoutFee"] = undefined /*out*/;
@@ -168,7 +184,10 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["allDevicesLost"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["cancellationReason"] = undefined /*out*/;
+            resourceInputs["delayedStage"] = undefined /*out*/;
             resourceInputs["deliveryInfo"] = undefined /*out*/;
             resourceInputs["deliveryType"] = undefined /*out*/;
             resourceInputs["details"] = undefined /*out*/;
@@ -192,7 +211,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:databox/v20180101:Job" }, { type: "azure-native:databox/v20190901:Job" }, { type: "azure-native:databox/v20200401:Job" }, { type: "azure-native:databox/v20201101:Job" }, { type: "azure-native:databox/v20210301:Job" }, { type: "azure-native:databox/v20210501:Job" }, { type: "azure-native:databox/v20210801preview:Job" }, { type: "azure-native:databox/v20211201:Job" }, { type: "azure-native:databox/v20220201:Job" }, { type: "azure-native:databox/v20220901:Job" }, { type: "azure-native:databox/v20221001:Job" }, { type: "azure-native:databox/v20221201:Job" }, { type: "azure-native:databox/v20230301:Job" }, { type: "azure-native:databox/v20231201:Job" }, { type: "azure-native:databox/v20240201preview:Job" }, { type: "azure-native:databox/v20240301preview:Job" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:databox/v20180101:Job" }, { type: "azure-native:databox/v20190901:Job" }, { type: "azure-native:databox/v20200401:Job" }, { type: "azure-native:databox/v20201101:Job" }, { type: "azure-native:databox/v20210301:Job" }, { type: "azure-native:databox/v20210501:Job" }, { type: "azure-native:databox/v20210801preview:Job" }, { type: "azure-native:databox/v20211201:Job" }, { type: "azure-native:databox/v20220201:Job" }, { type: "azure-native:databox/v20220901:Job" }, { type: "azure-native:databox/v20221001:Job" }, { type: "azure-native:databox/v20221201:Job" }, { type: "azure-native:databox/v20230301:Job" }, { type: "azure-native:databox/v20231201:Job" }, { type: "azure-native:databox/v20240201preview:Job" }, { type: "azure-native:databox/v20240301preview:Job" }, { type: "azure-native:databox/v20250201:Job" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Job.__pulumiType, name, resourceInputs, opts);
     }

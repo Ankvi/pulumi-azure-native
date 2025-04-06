@@ -41,6 +41,10 @@ export interface ConnectionPropertiesArgs {
      */
     requirementId?: pulumi.Input<string>;
     /**
+     * The schema URIs for this connection
+     */
+    schemaUris?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The schemas for this connection
      */
     schemas?: pulumi.Input<pulumi.Input<SchemaArgs>[]>;
@@ -59,9 +63,21 @@ export interface FlowPropertiesArgs {
      */
     connection?: pulumi.Input<SelectedResourceArgs>;
     /**
+     * The URI to the customer managed key for this flow
+     */
+    customerManagedKeyVaultUri?: pulumi.Input<string>;
+    /**
      * Transfer Storage Blobs or Tables
      */
     dataType?: pulumi.Input<string | enums.DataType>;
+    /**
+     * The destination endpoint ports of the stream
+     */
+    destinationEndpointPorts?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The destination endpoints of the stream
+     */
+    destinationEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The flow type for this flow
      */
@@ -70,6 +86,14 @@ export interface FlowPropertiesArgs {
      * AME, PME, or TORUS only! AKV Chain Containing SAS Token
      */
     keyVaultUri?: pulumi.Input<string>;
+    /**
+     * The messaging options for this flow
+     */
+    messagingOptions?: pulumi.Input<MessagingOptionsArgs>;
+    /**
+     * The passphrase used for SRT streams
+     */
+    passphrase?: pulumi.Input<string>;
     /**
      * The policies for this flow
      */
@@ -82,6 +106,10 @@ export interface FlowPropertiesArgs {
      * Service Bus Queue ID
      */
     serviceBusQueueId?: pulumi.Input<string>;
+    /**
+     * The source IP address and CIDR ranges of the stream
+     */
+    sourceAddresses?: pulumi.Input<StreamSourceAddressesArgs>;
     /**
      * Status of the current flow
      */
@@ -98,6 +126,18 @@ export interface FlowPropertiesArgs {
      * Storage Container Name
      */
     storageContainerName?: pulumi.Input<string>;
+    /**
+     * The flow stream identifier
+     */
+    streamId?: pulumi.Input<string>;
+    /**
+     * The latency of the stream in milliseconds
+     */
+    streamLatency?: pulumi.Input<number>;
+    /**
+     * The protocol of the stream
+     */
+    streamProtocol?: pulumi.Input<string | enums.StreamProtocol>;
 }
 
 /**
@@ -112,6 +152,16 @@ export interface ManagedServiceIdentityArgs {
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
     userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * The option associated with messaging flows.
+ */
+export interface MessagingOptionsArgs {
+    /**
+     * Billing tier for this messaging flow
+     */
+    billingTier?: pulumi.Input<string | enums.FlowBillingTier>;
 }
 
 /**
@@ -179,6 +229,10 @@ export interface SchemaArgs {
      */
     content?: pulumi.Input<string>;
     /**
+     * The direction of the schema.
+     */
+    direction?: pulumi.Input<string | enums.SchemaDirection>;
+    /**
      * ID associated with this schema
      */
     id?: pulumi.Input<string>;
@@ -186,6 +240,14 @@ export interface SchemaArgs {
      * Name of the schema
      */
     name?: pulumi.Input<string>;
+    /**
+     * The Schema Type
+     */
+    schemaType?: pulumi.Input<string | enums.SchemaType>;
+    /**
+     * Uri containing SAS token for the zipped schema
+     */
+    schemaUri?: pulumi.Input<string>;
     /**
      * Status of the schema
      */
@@ -214,6 +276,16 @@ export interface SelectedResourceArgs {
     subscriptionName?: pulumi.Input<string>;
 }
 
+/**
+ * The source IP address and CIDR ranges of the stream
+ */
+export interface StreamSourceAddressesArgs {
+    /**
+     * A source IP address or CIDR range
+     */
+    sourceAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface SubscriberArgs {
     /**
      * Email of the subscriber
@@ -224,7 +296,3 @@ export interface SubscriberArgs {
      */
     notifications?: pulumi.Input<number>;
 }
-
-
-
-

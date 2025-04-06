@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a TestLine
- * Azure REST API version: 2023-04-03.
  *
- * Other available API versions: 2022-12-01-preview, 2023-09-01.
+ * Uses Azure REST API version 2023-09-01.
+ *
+ * Other available API versions: 2022-12-01-preview, 2023-01-31, 2023-04-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native voiceservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getTestLine(args: GetTestLineArgs, opts?: pulumi.InvokeOptions): Promise<GetTestLineResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,6 +36,10 @@ export interface GetTestLineArgs {
  * A TestLine resource
  */
 export interface GetTestLineResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -74,9 +79,10 @@ export interface GetTestLineResult {
 }
 /**
  * Get a TestLine
- * Azure REST API version: 2023-04-03.
  *
- * Other available API versions: 2022-12-01-preview, 2023-09-01.
+ * Uses Azure REST API version 2023-09-01.
+ *
+ * Other available API versions: 2022-12-01-preview, 2023-01-31, 2023-04-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native voiceservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getTestLineOutput(args: GetTestLineOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTestLineResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

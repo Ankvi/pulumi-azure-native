@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the maintenance configuration of a ManagedEnvironment .
- * Azure REST API version: 2024-10-02-preview.
+ *
+ * Uses Azure REST API version 2024-10-02-preview.
  */
 export function getMaintenanceConfiguration(args: GetMaintenanceConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetMaintenanceConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetMaintenanceConfigurationArgs {
  */
 export interface GetMaintenanceConfigurationResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
@@ -56,7 +61,8 @@ export interface GetMaintenanceConfigurationResult {
 }
 /**
  * Gets the maintenance configuration of a ManagedEnvironment .
- * Azure REST API version: 2024-10-02-preview.
+ *
+ * Uses Azure REST API version 2024-10-02-preview.
  */
 export function getMaintenanceConfigurationOutput(args: GetMaintenanceConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMaintenanceConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

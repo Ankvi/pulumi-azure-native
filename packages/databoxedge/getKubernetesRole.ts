@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a specific role by name.
- * Azure REST API version: 2022-03-01.
+ *
+ * Uses Azure REST API version 2023-07-01.
  */
 export function getKubernetesRole(args: GetKubernetesRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesRoleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,6 +41,10 @@ export interface GetKubernetesRoleArgs {
  *  By using this feature, you agree to the preview legal terms. See the https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/
  */
 export interface GetKubernetesRoleResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Host OS supported by the Kubernetes role.
      */
@@ -88,7 +93,8 @@ export interface GetKubernetesRoleResult {
 }
 /**
  * Gets a specific role by name.
- * Azure REST API version: 2022-03-01.
+ *
+ * Uses Azure REST API version 2023-07-01.
  */
 export function getKubernetesRoleOutput(args: GetKubernetesRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesRoleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

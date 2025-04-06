@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Certificate used for Custom Domain bindings of Container Apps in a Managed Environment
- * Azure REST API version: 2022-10-01.
  *
- * Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview.
+ * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
+ *
+ * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ConnectedEnvironmentsCertificate extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class ConnectedEnvironmentsCertificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConnectedEnvironmentsCertificate.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The geo-location where the resource lives
      */
@@ -82,10 +87,12 @@ export class ConnectedEnvironmentsCertificate extends pulumi.CustomResource {
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
@@ -94,7 +101,7 @@ export class ConnectedEnvironmentsCertificate extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20220601preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20221001:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20221101preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20230401preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20230501:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20230502preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20230801preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20231102preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20240202preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20240301:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20240802preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20241002preview:ConnectedEnvironmentsCertificate" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20220601preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20221001:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20221101preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20230401preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20230501:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20230502preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20230801preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20231102preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20240202preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20240301:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20240802preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20241002preview:ConnectedEnvironmentsCertificate" }, { type: "azure-native:app/v20250101:ConnectedEnvironmentsCertificate" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ConnectedEnvironmentsCertificate.__pulumiType, name, resourceInputs, opts);
     }

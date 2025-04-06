@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a IamServerCertificate
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getIamServerCertificate(args: GetIamServerCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetIamServerCertificateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetIamServerCertificateArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetIamServerCertificateResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetIamServerCertificateResult {
 }
 /**
  * Get a IamServerCertificate
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getIamServerCertificateOutput(args: GetIamServerCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIamServerCertificateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

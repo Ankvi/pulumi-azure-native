@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A report resource.
- * Azure REST API version: 2018-08-01-preview. Prior API version in Azure Native 1.x: 2018-08-01-preview.
+ *
+ * Uses Azure REST API version 2018-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2018-08-01-preview.
  */
 export class ReportByDepartment extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class ReportByDepartment extends pulumi.CustomResource {
         return obj['__pulumiType'] === ReportByDepartment.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Has definition for the report.
      */
@@ -87,10 +92,12 @@ export class ReportByDepartment extends pulumi.CustomResource {
             resourceInputs["format"] = args ? args.format : undefined;
             resourceInputs["reportName"] = args ? args.reportName : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["definition"] = undefined /*out*/;
             resourceInputs["deliveryInfo"] = undefined /*out*/;
             resourceInputs["format"] = undefined /*out*/;

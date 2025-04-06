@@ -21,6 +21,16 @@ export interface ResourceIdResponse {
 }
 
 /**
+ * SecurityPolicyConfigurations Subresource of Traffic Controller.
+ */
+export interface SecurityPolicyConfigurationsResponse {
+    /**
+     * Contains reference to a WAF-type security policy.
+     */
+    wafSecurityPolicy?: WafSecurityPolicyResponse;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -60,6 +70,12 @@ export interface WafPolicyResponse {
     id: string;
 }
 
-
-
-
+/**
+ * Web Application Firewall Security Policy
+ */
+export interface WafSecurityPolicyResponse {
+    /**
+     * Resource ID of the Waf Security Policy
+     */
+    id: string;
+}

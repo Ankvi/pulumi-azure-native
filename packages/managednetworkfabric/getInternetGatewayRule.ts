@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets an Internet Gateway Rule resource.
- * Azure REST API version: 2023-06-15.
+ *
+ * Uses Azure REST API version 2023-06-15.
  */
 export function getInternetGatewayRule(args: GetInternetGatewayRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetInternetGatewayRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,6 +33,10 @@ export interface GetInternetGatewayRuleResult {
      * Switch configuration description.
      */
     readonly annotation?: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -71,7 +76,8 @@ export interface GetInternetGatewayRuleResult {
 }
 /**
  * Gets an Internet Gateway Rule resource.
- * Azure REST API version: 2023-06-15.
+ *
+ * Uses Azure REST API version 2023-06-15.
  */
 export function getInternetGatewayRuleOutput(args: GetInternetGatewayRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInternetGatewayRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -4087,7 +4087,7 @@ export interface AzurePostgreSqlLinkedServiceResponse {
 }
 
 /**
- * A copy activity Azure PostgreSQL sink.
+ * A copy activity Azure Database for PostgreSQL sink.
  */
 export interface AzurePostgreSqlSinkResponse {
     /**
@@ -4116,6 +4116,10 @@ export interface AzurePostgreSqlSinkResponse {
      */
     type: "AzurePostgreSqlSink";
     /**
+     * Azure Database for PostgreSQL upsert option settings
+     */
+    upsertSettings?: AzurePostgreSqlSinkResponseUpsertSettings;
+    /**
      * Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
      */
     writeBatchSize?: any;
@@ -4123,10 +4127,24 @@ export interface AzurePostgreSqlSinkResponse {
      * Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
      */
     writeBatchTimeout?: any;
+    /**
+     * The write behavior for the operation. Default is Bulk Insert.
+     */
+    writeMethod?: string;
 }
 
 /**
- * A copy activity Azure PostgreSQL source.
+ * Azure Database for PostgreSQL upsert option settings
+ */
+export interface AzurePostgreSqlSinkResponseUpsertSettings {
+    /**
+     * Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
+     */
+    keys?: any;
+}
+
+/**
+ * A copy activity Azure Database for PostgreSQL source.
  */
 export interface AzurePostgreSqlSourceResponse {
     /**
@@ -6096,6 +6114,14 @@ export interface CommonDataServiceForAppsSinkResponse {
      * The logical name of the alternate key which will be used when upserting records. Type: string (or Expression with resultType string).
      */
     alternateKeyName?: any;
+    /**
+     * Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+     */
+    bypassBusinessLogicExecution?: any;
+    /**
+     * Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    bypassPowerAutomateFlows?: any;
     /**
      * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
      */
@@ -8725,6 +8751,14 @@ export interface DynamicsCrmSinkResponse {
      */
     alternateKeyName?: any;
     /**
+     * Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+     */
+    bypassBusinessLogicExecution?: any;
+    /**
+     * Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    bypassPowerAutomateFlows?: any;
+    /**
      * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
      */
     disableMetricsCollection?: any;
@@ -8936,6 +8970,14 @@ export interface DynamicsSinkResponse {
      * The logical name of the alternate key which will be used when upserting records. Type: string (or Expression with resultType string).
      */
     alternateKeyName?: any;
+    /**
+     * Controls the bypass of Dataverse custom business logic. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
+     */
+    bypassBusinessLogicExecution?: any;
+    /**
+     * Controls the bypass of Power Automate flows. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    bypassPowerAutomateFlows?: any;
     /**
      * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
      */
@@ -11235,10 +11277,6 @@ export interface GreenplumLinkedServiceResponse {
      * Parameters for linked service.
      */
     parameters?: {[key: string]: ParameterSpecificationResponse};
-    /**
-     * The Azure key vault secret reference of password in connection string. Type: string. Only used for V2.
-     */
-    password?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
     /**
      * The port for the connection. Type: integer. Only used for V2.
      */
@@ -16750,6 +16788,18 @@ export interface Office365LinkedServiceResponse {
      */
     parameters?: {[key: string]: ParameterSpecificationResponse};
     /**
+     * The service principal credential type for authentication.'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. If not specified, 'ServicePrincipalKey' is in use. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalCredentialType?: any;
+    /**
+     * Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalEmbeddedCert?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalEmbeddedCertPassword?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
      * Specify the application's client ID. Type: string (or Expression with resultType string).
      */
     servicePrincipalId: any;
@@ -16975,7 +17025,7 @@ export interface OracleLinkedServiceResponse {
     /**
      * The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
      */
-    connectionString: any;
+    connectionString?: any;
     /**
      * Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
      */
@@ -18527,15 +18577,15 @@ export interface PowerQuerySourceResponse {
 }
 
 /**
- * Presto server linked service.
+ * Presto server linked service. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
  */
 export interface PrestoLinkedServiceResponse {
     /**
-     * Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
+     * Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false. Only used for Version 1.0.
      */
     allowHostNameCNMismatch?: any;
     /**
-     * Specifies whether to allow self-signed certificates from the server. The default value is false.
+     * Specifies whether to allow self-signed certificates from the server. The default value is false. Only used for Version 1.0.
      */
     allowSelfSignedServerCert?: any;
     /**
@@ -18559,7 +18609,11 @@ export interface PrestoLinkedServiceResponse {
      */
     description?: string;
     /**
-     * Specifies whether the connections to the server are encrypted using SSL. The default value is false.
+     * Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+     */
+    enableServerCertificateValidation?: any;
+    /**
+     * Specifies whether the connections to the server are encrypted using SSL. The default value for legacy version is False. The default value for version 2.0 is True.
      */
     enableSsl?: any;
     /**
@@ -18579,19 +18633,19 @@ export interface PrestoLinkedServiceResponse {
      */
     password?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
     /**
-     * The TCP port that the Presto server uses to listen for client connections. The default value is 8080.
+     * The TCP port that the Presto server uses to listen for client connections. The default value is 8080 when disable SSL, default value is 443 when enable SSL.
      */
     port?: any;
     /**
-     * The version of the Presto server. (i.e. 0.148-t)
+     * The version of the Presto server. (i.e. 0.148-t) Only used for Version 1.0.
      */
-    serverVersion: any;
+    serverVersion?: any;
     /**
-     * The local time zone used by the connection. Valid values for this option are specified in the IANA Time Zone Database. The default value is the system time zone.
+     * The local time zone used by the connection. Valid values for this option are specified in the IANA Time Zone Database. The default value for Version 1.0 is the client system time zone. The default value for Version 2.0 is server system timeZone
      */
     timeZoneID?: any;
     /**
-     * The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
+     * The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Only used for Version 1.0.
      */
     trustedCertPath?: any;
     /**
@@ -18600,7 +18654,7 @@ export interface PrestoLinkedServiceResponse {
      */
     type: "Presto";
     /**
-     * Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
+     * Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Only used for Version 1.0.
      */
     useSystemTrustStore?: any;
     /**
@@ -22520,6 +22574,10 @@ export interface ServiceNowV2ObjectDatasetResponse {
      * Expected value is 'ServiceNowV2Object'.
      */
     type: "ServiceNowV2Object";
+    /**
+     * Type of value copied from source.
+     */
+    valueType?: string;
 }
 
 /**
@@ -23460,7 +23518,7 @@ export interface SnowflakeV2LinkedServiceResponse {
      */
     encryptedCredential?: string;
     /**
-     * The host name of the Snowflake account.
+     * The host name of the Snowflake account. Type: string (or Expression with resultType string).
      */
     host?: any;
     /**
@@ -23479,6 +23537,14 @@ export interface SnowflakeV2LinkedServiceResponse {
      * The Azure key vault secret reference of private key password for KeyPair auth with encrypted private key.
      */
     privateKeyPassphrase?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * The default access control role to use in the Snowflake session. Type: string (or Expression with resultType string).
+     */
+    role?: any;
+    /**
+     * Schema name for connection. Type: string (or Expression with resultType string).
+     */
+    schema?: any;
     /**
      * The scope of the application registered in Azure Active Directory for AADServicePrincipal authentication.
      */

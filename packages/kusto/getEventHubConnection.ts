@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Returns an Event Hub connection.
- * Azure REST API version: 2018-09-07-preview.
+ *
+ * Uses Azure REST API version 2018-09-07-preview.
  */
 export function getEventHubConnection(args: GetEventHubConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetEventHubConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +38,10 @@ export interface GetEventHubConnectionArgs {
  * Class representing an event hub connection.
  */
 export interface GetEventHubConnectionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The event hub consumer group.
      */
@@ -76,7 +81,8 @@ export interface GetEventHubConnectionResult {
 }
 /**
  * Returns an Event Hub connection.
- * Azure REST API version: 2018-09-07-preview.
+ *
+ * Uses Azure REST API version 2018-09-07-preview.
  */
 export function getEventHubConnectionOutput(args: GetEventHubConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEventHubConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -492,7 +492,7 @@ export interface AzureActiveDirectoryRegistrationArgs {
     clientSecretSettingName?: pulumi.Input<string>;
     /**
      * The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
      * This URI is a case-sensitive identifier for the token issuer.
      * More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
      */
@@ -597,6 +597,10 @@ export interface AzureStorageInfoValueArgs {
      * Path to mount the storage within the site's runtime environment.
      */
     mountPath?: pulumi.Input<string>;
+    /**
+     * Mounting protocol to use for the storage account.
+     */
+    protocol?: pulumi.Input<string | enums.AzureStorageProtocol>;
     /**
      * Name of the file share (container name, for Blob storage).
      */
@@ -795,38 +799,6 @@ export interface CloningInfoArgs {
 }
 
 /**
- * Non versioned Container App configuration properties that define the mutable settings of a Container app
- */
-export interface ConfigurationArgs {
-    /**
-     * ActiveRevisionsMode controls how active revisions are handled for the Container app:
-     * <list><item>Multiple: multiple revisions can be active. If no value if provided, this is the default</item><item>Single: Only one revision can be active at a time. Revision weights can not be used in this mode</item></list>
-     */
-    activeRevisionsMode?: pulumi.Input<string | enums.ActiveRevisionsMode>;
-    /**
-     * Ingress configurations.
-     */
-    ingress?: pulumi.Input<IngressArgs>;
-    /**
-     * Collection of private container registry credentials for containers used by the Container app
-     */
-    registries?: pulumi.Input<pulumi.Input<RegistryCredentialsArgs>[]>;
-    /**
-     * Collection of secrets used by a Container app
-     */
-    secrets?: pulumi.Input<pulumi.Input<SecretArgs>[]>;
-}
-/**
- * configurationArgsProvideDefaults sets the appropriate defaults for ConfigurationArgs
- */
-export function configurationArgsProvideDefaults(val: ConfigurationArgs): ConfigurationArgs {
-    return {
-        ...val,
-        ingress: (val.ingress ? pulumi.output(val.ingress).apply(ingressArgsProvideDefaults) : undefined),
-    };
-}
-
-/**
  * Database connection string information.
  */
 export interface ConnStringInfoArgs {
@@ -1013,36 +985,6 @@ export interface ConsentLinkParameterDefinitionArgs {
     tenantId?: pulumi.Input<string>;
 }
 
-/**
- * Container App container definition.
- */
-export interface ContainerArgs {
-    /**
-     * Container start command arguments.
-     */
-    args?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Container start command.
-     */
-    command?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Container environment variables.
-     */
-    env?: pulumi.Input<pulumi.Input<EnvironmentVarArgs>[]>;
-    /**
-     * Container image tag.
-     */
-    image?: pulumi.Input<string>;
-    /**
-     * Custom container name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Container resource requirements.
-     */
-    resources?: pulumi.Input<ContainerResourcesArgs>;
-}
-
 export interface ContainerAppsConfigurationArgs {
     /**
      * Resource ID of a subnet for control plane infrastructure components. This subnet must be in the same VNET as the subnet defined in appSubnetResourceId. Must not overlap with the IP range defined in platformReservedCidr, if defined.
@@ -1068,20 +1010,6 @@ export interface ContainerAppsConfigurationArgs {
      * An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server
      */
     platformReservedDnsIP?: pulumi.Input<string>;
-}
-
-/**
- * Container App container resource requirements.
- */
-export interface ContainerResourcesArgs {
-    /**
-     * Required CPU in cores, e.g. 0.5
-     */
-    cpu?: pulumi.Input<number>;
-    /**
-     * Required memory, e.g. "250Mb"
-     */
-    memory?: pulumi.Input<string>;
 }
 
 /**
@@ -1210,84 +1138,46 @@ export interface CustomOpenIdConnectProviderArgs {
 }
 
 /**
- * Container App container Custom scaling rule.
+ * App Dapr configuration.
  */
-export interface CustomScaleRuleArgs {
-    /**
-     * Authentication secrets for the custom scale rule.
-     */
-    auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
-    /**
-     * Metadata properties to describe custom scale rule.
-     */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Type of the custom scale rule
-     * eg: azure-servicebus, redis etc.
-     */
-    type?: pulumi.Input<string>;
-}
-
-/**
- * Container App Dapr configuration.
- */
-export interface DaprArgs {
+export interface DaprConfigArgs {
     /**
      * Dapr application identifier
      */
     appId?: pulumi.Input<string>;
     /**
-     * Port on which the Dapr side car
+     * Tells Dapr which port your application is listening on
      */
     appPort?: pulumi.Input<number>;
     /**
-     * Collection of Dapr components
+     * Enables API logging for the Dapr sidecar
      */
-    components?: pulumi.Input<pulumi.Input<DaprComponentArgs>[]>;
+    enableApiLogging?: pulumi.Input<boolean>;
     /**
      * Boolean indicating if the Dapr side car is enabled
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Increasing max size of request body http servers parameter in MB to handle uploading of big files. Default is 4 MB.
+     */
+    httpMaxRequestSize?: pulumi.Input<number>;
+    /**
+     * Dapr max size of http header read buffer in KB to handle when sending multi-KB headers. Default is 65KB.
+     */
+    httpReadBufferSize?: pulumi.Input<number>;
+    /**
+     * Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
+     */
+    logLevel?: pulumi.Input<string | enums.DaprLogLevel>;
 }
-
 /**
- * Dapr component configuration
+ * daprConfigArgsProvideDefaults sets the appropriate defaults for DaprConfigArgs
  */
-export interface DaprComponentArgs {
-    /**
-     * Component metadata
-     */
-    metadata?: pulumi.Input<pulumi.Input<DaprMetadataArgs>[]>;
-    /**
-     * Component name
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Component type
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * Component version
-     */
-    version?: pulumi.Input<string>;
-}
-
-/**
- * Container App Dapr component metadata.
- */
-export interface DaprMetadataArgs {
-    /**
-     * Metadata property name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Name of the Container App secret from which to pull the metadata property value.
-     */
-    secretRef?: pulumi.Input<string>;
-    /**
-     * Metadata property value.
-     */
-    value?: pulumi.Input<string>;
+export function daprConfigArgsProvideDefaults(val: DaprConfigArgs): DaprConfigArgs {
+    return {
+        ...val,
+        enabled: (val.enabled) ?? false,
+    };
 }
 
 /**
@@ -1352,24 +1242,6 @@ export interface EnabledConfigArgs {
      * True if configuration is enabled, false if it is disabled and null if configuration is not set.
      */
     enabled?: pulumi.Input<boolean>;
-}
-
-/**
- * Container App container environment variable.
- */
-export interface EnvironmentVarArgs {
-    /**
-     * Environment variable name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Name of the Container App secret from which to pull the environment variable value.
-     */
-    secretRef?: pulumi.Input<string>;
-    /**
-     * Non-secret environment variable value.
-     */
-    value?: pulumi.Input<string>;
 }
 
 export interface EnvironmentVariableArgs {
@@ -1496,6 +1368,140 @@ export interface ForwardProxyArgs {
 
 export interface FrontEndConfigurationArgs {
     kind?: pulumi.Input<enums.FrontEndServiceType>;
+}
+
+/**
+ * Function app configuration.
+ */
+export interface FunctionAppConfigArgs {
+    /**
+     * Function app deployment configuration.
+     */
+    deployment?: pulumi.Input<FunctionsDeploymentArgs>;
+    /**
+     * Function app runtime settings.
+     */
+    runtime?: pulumi.Input<FunctionsRuntimeArgs>;
+    /**
+     * Function app scale and concurrency settings.
+     */
+    scaleAndConcurrency?: pulumi.Input<FunctionsScaleAndConcurrencyArgs>;
+}
+
+/**
+ * Sets the number of 'Always Ready' instances for a function group or a specific function.
+ */
+export interface FunctionsAlwaysReadyConfigArgs {
+    /**
+     * Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+     */
+    instanceCount?: pulumi.Input<number>;
+    /**
+     * Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
+     */
+    name?: pulumi.Input<string>;
+}
+
+/**
+ * Configuration section for the function app deployment.
+ */
+export interface FunctionsDeploymentArgs {
+    /**
+     * Storage for deployed package used by the function app.
+     */
+    storage?: pulumi.Input<FunctionsDeploymentStorageArgs>;
+}
+
+/**
+ * Authentication method to access the storage account for deployment.
+ */
+export interface FunctionsDeploymentAuthenticationArgs {
+    /**
+     * Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.
+     */
+    storageAccountConnectionStringName?: pulumi.Input<string>;
+    /**
+     * Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
+     */
+    type?: pulumi.Input<string | enums.AuthenticationType>;
+    /**
+     * Use this property for UserAssignedIdentity. Set the resource ID of the identity. Do not set a value for this property when using other authentication type.
+     */
+    userAssignedIdentityResourceId?: pulumi.Input<string>;
+}
+
+/**
+ * Storage for deployed package used by the function app.
+ */
+export interface FunctionsDeploymentStorageArgs {
+    /**
+     * Authentication method to access the storage account for deployment.
+     */
+    authentication?: pulumi.Input<FunctionsDeploymentAuthenticationArgs>;
+    /**
+     * Property to select Azure Storage type. Available options: blobContainer.
+     */
+    type?: pulumi.Input<string | enums.FunctionsDeploymentStorageType>;
+    /**
+     * Property to set the URL for the selected Azure Storage type. Example: For blobContainer, the value could be https://<storageAccountName>.blob.core.windows.net/<containerName>.
+     */
+    value?: pulumi.Input<string>;
+}
+
+/**
+ * Function app runtime name and version.
+ */
+export interface FunctionsRuntimeArgs {
+    /**
+     * Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
+     */
+    name?: pulumi.Input<string | enums.RuntimeName>;
+    /**
+     * Function app runtime version. Example: 8 (for dotnet-isolated)
+     */
+    version?: pulumi.Input<string>;
+}
+
+/**
+ * Scale and concurrency settings for the function app.
+ */
+export interface FunctionsScaleAndConcurrencyArgs {
+    /**
+     * 'Always Ready' configuration for the function app.
+     */
+    alwaysReady?: pulumi.Input<pulumi.Input<FunctionsAlwaysReadyConfigArgs>[]>;
+    /**
+     * Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
+     */
+    instanceMemoryMB?: pulumi.Input<number>;
+    /**
+     * The maximum number of instances for the function app.
+     */
+    maximumInstanceCount?: pulumi.Input<number>;
+    /**
+     * Scale and concurrency settings for the function app triggers.
+     */
+    triggers?: pulumi.Input<FunctionsScaleAndConcurrencyTriggersArgs>;
+}
+
+/**
+ * Scale and concurrency settings for the HTTP trigger.
+ */
+export interface FunctionsScaleAndConcurrencyHttpArgs {
+    /**
+     * The maximum number of concurrent HTTP trigger invocations per instance.
+     */
+    perInstanceConcurrency?: pulumi.Input<number>;
+}
+
+/**
+ * Scale and concurrency settings for the function app triggers.
+ */
+export interface FunctionsScaleAndConcurrencyTriggersArgs {
+    /**
+     * Scale and concurrency settings for the HTTP trigger.
+     */
+    http?: pulumi.Input<FunctionsScaleAndConcurrencyHttpArgs>;
 }
 
 /**
@@ -1694,20 +1700,6 @@ export interface HttpLogsConfigArgs {
 }
 
 /**
- * Container App container Custom scaling rule.
- */
-export interface HttpScaleRuleArgs {
-    /**
-     * Authentication secrets for the custom scale rule.
-     */
-    auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
-    /**
-     * Metadata properties to describe http scale rule.
-     */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-}
-
-/**
  * The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
  */
 export interface HttpSettingsArgs {
@@ -1776,38 +1768,6 @@ export interface IdentityProvidersArgs {
      * The configuration settings of the Twitter provider.
      */
     twitter?: pulumi.Input<TwitterArgs>;
-}
-
-/**
- * Container App Ingress configuration.
- */
-export interface IngressArgs {
-    /**
-     * Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS connections
-     */
-    allowInsecure?: pulumi.Input<boolean>;
-    /**
-     * Bool indicating if app exposes an external http endpoint
-     */
-    external?: pulumi.Input<boolean>;
-    /**
-     * Target Port in containers for traffic from ingress
-     */
-    targetPort?: pulumi.Input<number>;
-    traffic?: pulumi.Input<pulumi.Input<TrafficWeightArgs>[]>;
-    /**
-     * Ingress transport protocol
-     */
-    transport?: pulumi.Input<string | enums.IngressTransportMethod>;
-}
-/**
- * ingressArgsProvideDefaults sets the appropriate defaults for IngressArgs
- */
-export function ingressArgsProvideDefaults(val: IngressArgs): IngressArgs {
-    return {
-        ...val,
-        external: (val.external) ?? false,
-    };
 }
 
 /**
@@ -2143,24 +2103,6 @@ export interface PushSettingsArgs {
 }
 
 /**
- * Container App container Azure Queue based scaling rule.
- */
-export interface QueueScaleRuleArgs {
-    /**
-     * Authentication secrets for the queue scale rule.
-     */
-    auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
-    /**
-     * Queue length.
-     */
-    queueLength?: pulumi.Input<number>;
-    /**
-     * Queue name.
-     */
-    queueName?: pulumi.Input<string>;
-}
-
-/**
  * Routing rules for ramp up testing. This rule allows to redirect static traffic % to a slot or to gradually change routing % based on performance.
  */
 export interface RampUpRuleArgs {
@@ -2169,8 +2111,7 @@ export interface RampUpRuleArgs {
      */
     actionHostName?: pulumi.Input<string>;
     /**
-     * Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
-     * https://www.siteextensions.net/packages/TiPCallback/
+     * Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
      */
     changeDecisionCallbackUrl?: pulumi.Input<string>;
     /**
@@ -2202,24 +2143,6 @@ export interface RampUpRuleArgs {
 }
 
 /**
- * Container App Private Registry
- */
-export interface RegistryCredentialsArgs {
-    /**
-     * The name of the Secret that contains the registry login password
-     */
-    passwordSecretRef?: pulumi.Input<string>;
-    /**
-     * Container Registry Server
-     */
-    server?: pulumi.Input<string>;
-    /**
-     * Container Registry Username
-     */
-    username?: pulumi.Input<string>;
-}
-
-/**
  * Trigger based on total requests.
  */
 export interface RequestsBasedTriggerArgs {
@@ -2234,71 +2157,17 @@ export interface RequestsBasedTriggerArgs {
 }
 
 /**
- * Container App scaling configurations.
+ * Function app resource requirements.
  */
-export interface ScaleArgs {
+export interface ResourceConfigArgs {
     /**
-     * Optional. Maximum number of container replicas. Defaults to 10 if not set.
+     * Required CPU in cores, e.g. 0.5
      */
-    maxReplicas?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number>;
     /**
-     * Optional. Minimum number of container replicas.
+     * Required memory, e.g. "1Gi"
      */
-    minReplicas?: pulumi.Input<number>;
-    /**
-     * Scaling rules.
-     */
-    rules?: pulumi.Input<pulumi.Input<ScaleRuleArgs>[]>;
-}
-
-/**
- * Container App container scaling rule.
- */
-export interface ScaleRuleArgs {
-    /**
-     * Azure Queue based scaling.
-     */
-    azureQueue?: pulumi.Input<QueueScaleRuleArgs>;
-    /**
-     * Custom scale rule.
-     */
-    custom?: pulumi.Input<CustomScaleRuleArgs>;
-    /**
-     * HTTP requests based scaling.
-     */
-    http?: pulumi.Input<HttpScaleRuleArgs>;
-    /**
-     * Scale Rule Name
-     */
-    name?: pulumi.Input<string>;
-}
-
-/**
- * Auth Secrets for Container App Scale Rule
- */
-export interface ScaleRuleAuthArgs {
-    /**
-     * Name of the Container App secret from which to pull the auth params.
-     */
-    secretRef?: pulumi.Input<string>;
-    /**
-     * Trigger Parameter that uses the secret
-     */
-    triggerParameter?: pulumi.Input<string>;
-}
-
-/**
- * Container App Secret.
- */
-export interface SecretArgs {
-    /**
-     * Secret Name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Secret Value.
-     */
-    value?: pulumi.Input<string>;
+    memory?: pulumi.Input<string>;
 }
 
 /**
@@ -2466,6 +2335,10 @@ export interface SiteConfigArgs {
      */
     metadata?: pulumi.Input<pulumi.Input<NameValuePairArgs>[]>;
     /**
+     * The minimum strength TLS cipher suite allowed for an application
+     */
+    minTlsCipherSuite?: pulumi.Input<string | enums.TlsCipherSuites>;
+    /**
      * MinTlsVersion: configures the minimum version of TLS required for SSL requests
      */
     minTlsVersion?: pulumi.Input<string | enums.SupportedTlsVersions>;
@@ -2602,6 +2475,29 @@ export function siteConfigArgsProvideDefaults(val: SiteConfigArgs): SiteConfigAr
         localMySqlEnabled: (val.localMySqlEnabled) ?? false,
         netFrameworkVersion: (val.netFrameworkVersion) ?? "v4.6",
     };
+}
+
+export interface SiteDnsConfigArgs {
+    /**
+     * Alternate DNS server to be used by apps. This property replicates the WEBSITE_DNS_ALT_SERVER app setting.
+     */
+    dnsAltServer?: pulumi.Input<string>;
+    /**
+     * Custom time for DNS to be cached in seconds. Allowed range: 0-60. Default is 30 seconds. 0 means caching disabled.
+     */
+    dnsMaxCacheTimeout?: pulumi.Input<number>;
+    /**
+     * Total number of retries for dns lookup. Allowed range: 1-5. Default is 3.
+     */
+    dnsRetryAttemptCount?: pulumi.Input<number>;
+    /**
+     * Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
+     */
+    dnsRetryAttemptTimeout?: pulumi.Input<number>;
+    /**
+     * List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
+     */
+    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -2822,30 +2718,6 @@ export interface StatusCodesRangeBasedTriggerArgs {
 }
 
 /**
- * Container App versioned application definition.
- * Defines the desired state of an immutable revision.
- * Any changes to this section Will result in a new revision being created
- */
-export interface TemplateArgs {
-    /**
-     * List of container definitions for the Container App.
-     */
-    containers?: pulumi.Input<pulumi.Input<ContainerArgs>[]>;
-    /**
-     * Dapr configuration for the Container App.
-     */
-    dapr?: pulumi.Input<DaprArgs>;
-    /**
-     * User friendly suffix that is appended to the revision name
-     */
-    revisionSuffix?: pulumi.Input<string>;
-    /**
-     * Scaling properties for the Container App.
-     */
-    scale?: pulumi.Input<ScaleArgs>;
-}
-
-/**
  * The configuration settings of the token store.
  */
 export interface TokenStoreArgs {
@@ -2867,33 +2739,6 @@ export interface TokenStoreArgs {
      * call the token refresh API. The default is 72 hours.
      */
     tokenRefreshExtensionHours?: pulumi.Input<number>;
-}
-
-/**
- * Traffic weight assigned to a revision
- */
-export interface TrafficWeightArgs {
-    /**
-     * Indicates that the traffic weight belongs to a latest stable revision
-     */
-    latestRevision?: pulumi.Input<boolean>;
-    /**
-     * Name of a revision
-     */
-    revisionName?: pulumi.Input<string>;
-    /**
-     * Traffic weight assigned to a revision
-     */
-    weight?: pulumi.Input<number>;
-}
-/**
- * trafficWeightArgsProvideDefaults sets the appropriate defaults for TrafficWeightArgs
- */
-export function trafficWeightArgsProvideDefaults(val: TrafficWeightArgs): TrafficWeightArgs {
-    return {
-        ...val,
-        latestRevision: (val.latestRevision) ?? false,
-    };
 }
 
 /**
@@ -3045,23 +2890,3 @@ export interface WsdlServiceArgs {
      */
     qualifiedName: pulumi.Input<string>;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

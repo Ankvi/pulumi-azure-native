@@ -3,9 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Extension resource.
- * Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 1.x: 2020-05-12-preview.
  *
- * Other available API versions: 2021-09-01-preview.
+ * Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
  */
 export class Extension extends pulumi.CustomResource {
     /**
@@ -38,6 +37,10 @@ export class Extension extends pulumi.CustomResource {
      * Additional Api Properties.
      */
     public readonly additionalApiProperties!: pulumi.Output<{[key: string]: types.outputs.ApiPropertiesResponse}>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The ETag value to implement optimistic concurrency.
      */
@@ -97,6 +100,7 @@ export class Extension extends pulumi.CustomResource {
             resourceInputs["extensionId"] = args ? args.extensionId : undefined;
             resourceInputs["extensionVersion"] = args ? args.extensionVersion : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["extensionApiDocsLink"] = undefined /*out*/;
             resourceInputs["extensionAuthLink"] = undefined /*out*/;
@@ -107,6 +111,7 @@ export class Extension extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["additionalApiProperties"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["extensionApiDocsLink"] = undefined /*out*/;
             resourceInputs["extensionAuthLink"] = undefined /*out*/;

@@ -1,10 +1,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * NSX Public IP Block
- * Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2021-06-01.
  *
- * Other available API versions: 2023-03-01, 2023-09-01.
+ * Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
+ *
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WorkloadNetworkPublicIP extends pulumi.CustomResource {
     /**
@@ -34,11 +36,15 @@ export class WorkloadNetworkPublicIP extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Display name of the Public IP Block.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * Resource name.
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -54,7 +60,11 @@ export class WorkloadNetworkPublicIP extends pulumi.CustomResource {
      */
     public /*out*/ readonly publicIPBlock!: pulumi.Output<string>;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -80,16 +90,20 @@ export class WorkloadNetworkPublicIP extends pulumi.CustomResource {
             resourceInputs["privateCloudName"] = args ? args.privateCloudName : undefined;
             resourceInputs["publicIPId"] = args ? args.publicIPId : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["publicIPBlock"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["numberOfPublicIPs"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["publicIPBlock"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -116,7 +130,7 @@ export interface WorkloadNetworkPublicIPArgs {
      */
     privateCloudName: pulumi.Input<string>;
     /**
-     * NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+     * ID of the DNS zone.
      */
     publicIPId?: pulumi.Input<string>;
     /**

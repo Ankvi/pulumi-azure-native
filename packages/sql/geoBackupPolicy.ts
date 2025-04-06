@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A Geo backup policy.
- * Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2014-04-01.
  *
- * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+ * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
+ *
+ * Other available API versions: 2014-04-01, 2021-11-01, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class GeoBackupPolicy extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class GeoBackupPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === GeoBackupPolicy.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Kind of geo backup policy.  This is metadata used for the Azure portal experience.
      */
@@ -87,12 +92,14 @@ export class GeoBackupPolicy extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serverName"] = args ? args.serverName : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["storageType"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -101,7 +108,7 @@ export class GeoBackupPolicy extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20140401:GeoBackupPolicy" }, { type: "azure-native:sql/v20211101:GeoBackupPolicy" }, { type: "azure-native:sql/v20220201preview:GeoBackupPolicy" }, { type: "azure-native:sql/v20220501preview:GeoBackupPolicy" }, { type: "azure-native:sql/v20220801preview:GeoBackupPolicy" }, { type: "azure-native:sql/v20221101preview:GeoBackupPolicy" }, { type: "azure-native:sql/v20230201preview:GeoBackupPolicy" }, { type: "azure-native:sql/v20230501preview:GeoBackupPolicy" }, { type: "azure-native:sql/v20230801preview:GeoBackupPolicy" }, { type: "azure-native:sql/v20240501preview:GeoBackupPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20140401:GeoBackupPolicy" }, { type: "azure-native:sql/v20211101:GeoBackupPolicy" }, { type: "azure-native:sql/v20220201preview:GeoBackupPolicy" }, { type: "azure-native:sql/v20220501preview:GeoBackupPolicy" }, { type: "azure-native:sql/v20220801preview:GeoBackupPolicy" }, { type: "azure-native:sql/v20221101preview:GeoBackupPolicy" }, { type: "azure-native:sql/v20230201preview:GeoBackupPolicy" }, { type: "azure-native:sql/v20230501preview:GeoBackupPolicy" }, { type: "azure-native:sql/v20230801:GeoBackupPolicy" }, { type: "azure-native:sql/v20230801preview:GeoBackupPolicy" }, { type: "azure-native:sql/v20240501preview:GeoBackupPolicy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GeoBackupPolicy.__pulumiType, name, resourceInputs, opts);
     }

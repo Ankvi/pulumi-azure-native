@@ -9,15 +9,15 @@ export interface AssociatedWorkspaceResponse {
      */
     associateDate: string;
     /**
-     * The ResourceId id the assigned workspace.
+     * Associated workspace arm resource id, in the form of: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}.
      */
     resourceId: string;
     /**
-     * The id of the assigned workspace.
+     * Associated workspace immutable id.
      */
     workspaceId: string;
     /**
-     * The name id the assigned workspace.
+     * Associated workspace resource name.
      */
     workspaceName: string;
 }
@@ -31,7 +31,7 @@ export interface CapacityReservationPropertiesResponse {
      */
     lastSkuUpdate: string;
     /**
-     * Minimum CapacityReservation value in GB.
+     * Minimum CapacityReservation value in Gigabytes.
      */
     minCapacity: number;
 }
@@ -41,11 +41,11 @@ export interface CapacityReservationPropertiesResponse {
  */
 export interface ClusterSkuResponse {
     /**
-     * The capacity value
+     * The capacity reservation level in Gigabytes for this cluster.
      */
     capacity?: number;
     /**
-     * The name of the SKU.
+     * The SKU (tier) of a cluster.
      */
     name?: string;
 }
@@ -175,6 +175,28 @@ export interface MachineReferenceWithHintsResponse {
      * Resource type qualifier.
      */
     type: string;
+}
+
+/**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityResponse {
+    /**
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: string;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
 }
 
 /**
@@ -388,6 +410,20 @@ export interface TagResponse {
 }
 
 /**
+ * User assigned identity properties
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId: string;
+}
+
+/**
  * User assigned identity properties.
  */
 export interface UserIdentityPropertiesResponse {
@@ -443,6 +479,10 @@ export interface WorkspaceFeaturesResponse {
      * Flag that describes if we want to remove the data after 30 days.
      */
     immediatePurgeDataOn30Days?: boolean;
+    /**
+     * An indication if the specify workspace is limited to sentinel's unified billing model only.
+     */
+    unifiedSentinelBillingOnly: boolean;
 }
 
 /**
@@ -462,11 +502,3 @@ export interface WorkspaceSkuResponse {
      */
     name: string;
 }
-
-
-
-
-
-
-
-

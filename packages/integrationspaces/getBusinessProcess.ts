@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a BusinessProcess
- * Azure REST API version: 2023-11-14-preview.
+ *
+ * Uses Azure REST API version 2023-11-14-preview.
  */
 export function getBusinessProcess(args: GetBusinessProcessArgs, opts?: pulumi.InvokeOptions): Promise<GetBusinessProcessResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,6 +39,10 @@ export interface GetBusinessProcessArgs {
  * A business process under application.
  */
 export interface GetBusinessProcessResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The business process mapping.
      */
@@ -89,7 +94,8 @@ export interface GetBusinessProcessResult {
 }
 /**
  * Get a BusinessProcess
- * Azure REST API version: 2023-11-14-preview.
+ *
+ * Uses Azure REST API version 2023-11-14-preview.
  */
 export function getBusinessProcessOutput(args: GetBusinessProcessOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBusinessProcessResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

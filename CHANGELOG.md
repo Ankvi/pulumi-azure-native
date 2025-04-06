@@ -1,16 +1,5 @@
 # CHANGELOG
 
-### Does the PR have any schema changes?
+This is the first release of v3 of the Azure Native provider. v3 features significantly smaller SDKs because they contain each Azure resource only for one default Azure API version. In addition, all default API versions have been refreshed and some module names have been updated and disambiguated.
 
-Looking good! No breaking changes found.
-No new resources/functions.
-
-<!-- Release notes generated using configuration in .github/release.yml at v2.89.3 -->
-
-## What's Changed
-* In v3, generate default versions only SDK for Go, too by @thomas11 in https://github.com/pulumi/pulumi-azure-native/pull/4036
-* Fix generic resources by passing the correct API version to Read and Delete by @thomas11 in https://github.com/pulumi/pulumi-azure-native/pull/4043
-* Add more type name overrides for conflicting enums in v3 by @thomas11 in https://github.com/pulumi/pulumi-azure-native/pull/4045
-
-
-**Full Changelog**: https://github.com/pulumi/pulumi-azure-native/compare/v2.89.2...v2.89.3
+For a complete list of changes with guidance on how to upgrade, please see [this guide](https://www.pulumi.com/registry/packages/azure-native/from-v2-to-v3/).

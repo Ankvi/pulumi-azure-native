@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the properties of the specified Analytics Connector.
- * Azure REST API version: 2022-10-01-preview.
+ *
+ * Uses Azure REST API version 2022-10-01-preview.
  */
 export function getAnalyticsConnector(args: GetAnalyticsConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAnalyticsConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetAnalyticsConnectorArgs {
  * Analytics Connector definition.
  */
 export interface GetAnalyticsConnectorResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Data destination configuration for Analytics Connector.
      */
@@ -84,7 +89,8 @@ export interface GetAnalyticsConnectorResult {
 }
 /**
  * Gets the properties of the specified Analytics Connector.
- * Azure REST API version: 2022-10-01-preview.
+ *
+ * Uses Azure REST API version 2022-10-01-preview.
  */
 export function getAnalyticsConnectorOutput(args: GetAnalyticsConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAnalyticsConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -2,10 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * A Database Migration Service resource
- * Azure REST API version: 2021-06-30. Prior API version in Azure Native 1.x: 2018-04-19.
+ * An Azure Database Migration Service (classic) resource
  *
- * Other available API versions: 2022-03-30-preview, 2023-07-15-preview.
+ * Uses Azure REST API version 2023-07-15-preview. In version 2.x of the Azure Native provider, it used API version 2021-06-30.
+ *
+ * Other available API versions: 2021-06-30, 2021-10-30-preview, 2022-01-30-preview, 2022-03-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Service extends pulumi.CustomResource {
     /**
@@ -35,6 +36,18 @@ export class Service extends pulumi.CustomResource {
     }
 
     /**
+     * The time delay before the service is auto-stopped when idle.
+     */
+    public readonly autoStopDelay!: pulumi.Output<string | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
+     * Whether service resources should be deleted when stopped. (Turned on by default)
+     */
+    public readonly deleteResourcesOnStop!: pulumi.Output<boolean | undefined>;
+    /**
      * HTTP strong entity tag value. Ignored if submitted
      */
     public /*out*/ readonly etag!: pulumi.Output<string | undefined>;
@@ -42,13 +55,7 @@ export class Service extends pulumi.CustomResource {
      * The resource kind. Only 'vm' (the default) is supported.
      */
     public readonly kind!: pulumi.Output<string | undefined>;
-    /**
-     * Resource location.
-     */
-    public readonly location!: pulumi.Output<string>;
-    /**
-     * Resource name.
-     */
+    public readonly location!: pulumi.Output<string | undefined>;
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The resource's provisioning state
@@ -62,17 +69,8 @@ export class Service extends pulumi.CustomResource {
      * Service SKU
      */
     public readonly sku!: pulumi.Output<types.outputs.ServiceSkuResponse | undefined>;
-    /**
-     * Metadata pertaining to creation and last modification of the resource.
-     */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
-    /**
-     * Resource tags.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Resource type.
-     */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
      * The ID of the Microsoft.Network/networkInterfaces resource which the service have
@@ -81,7 +79,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined
      */
-    public readonly virtualSubnetId!: pulumi.Output<string>;
+    public readonly virtualSubnetId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -97,9 +95,8 @@ export class Service extends pulumi.CustomResource {
             if ((!args || args.groupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            if ((!args || args.virtualSubnetId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'virtualSubnetId'");
-            }
+            resourceInputs["autoStopDelay"] = args ? args.autoStopDelay : undefined;
+            resourceInputs["deleteResourcesOnStop"] = args ? args.deleteResourcesOnStop : undefined;
             resourceInputs["groupName"] = args ? args.groupName : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -109,12 +106,16 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["virtualNicId"] = args ? args.virtualNicId : undefined;
             resourceInputs["virtualSubnetId"] = args ? args.virtualSubnetId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["autoStopDelay"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["deleteResourcesOnStop"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -140,6 +141,14 @@ export class Service extends pulumi.CustomResource {
  */
 export interface ServiceArgs {
     /**
+     * The time delay before the service is auto-stopped when idle.
+     */
+    autoStopDelay?: pulumi.Input<string>;
+    /**
+     * Whether service resources should be deleted when stopped. (Turned on by default)
+     */
+    deleteResourcesOnStop?: pulumi.Input<boolean>;
+    /**
      * Name of the resource group
      */
     groupName: pulumi.Input<string>;
@@ -147,9 +156,6 @@ export interface ServiceArgs {
      * The resource kind. Only 'vm' (the default) is supported.
      */
     kind?: pulumi.Input<string>;
-    /**
-     * Resource location.
-     */
     location?: pulumi.Input<string>;
     /**
      * The public key of the service, used to encrypt secrets sent to the service
@@ -163,9 +169,6 @@ export interface ServiceArgs {
      * Service SKU
      */
     sku?: pulumi.Input<types.inputs.ServiceSkuArgs>;
-    /**
-     * Resource tags.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the Microsoft.Network/networkInterfaces resource which the service have
@@ -174,5 +177,5 @@ export interface ServiceArgs {
     /**
      * The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined
      */
-    virtualSubnetId: pulumi.Input<string>;
+    virtualSubnetId?: pulumi.Input<string>;
 }

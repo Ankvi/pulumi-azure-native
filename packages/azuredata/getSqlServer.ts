@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a SQL Server.
- * Azure REST API version: 2019-07-24-preview.
+ *
+ * Uses Azure REST API version 2019-07-24-preview.
  */
 export function getSqlServer(args: GetSqlServerArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,6 +39,10 @@ export interface GetSqlServerArgs {
  */
 export interface GetSqlServerResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Cores of the Sql Server.
      */
     readonly cores?: number;
@@ -72,7 +77,8 @@ export interface GetSqlServerResult {
 }
 /**
  * Gets a SQL Server.
- * Azure REST API version: 2019-07-24-preview.
+ *
+ * Uses Azure REST API version 2019-07-24-preview.
  */
 export function getSqlServerOutput(args: GetSqlServerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSqlServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

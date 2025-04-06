@@ -249,6 +249,10 @@ export interface GuestConfigurationNavigationResponse {
      */
     contentHash?: string;
     /**
+     * Managed identity with storage access of the guest configuration package and configuration parameters.
+     */
+    contentManagedIdentity?: string;
+    /**
      * Specifies the content type of the configuration. Possible values could be Builtin or Custom.
      */
     contentType: string;
@@ -348,4 +352,3 @@ export interface VMSSVMInfoResponse {
      */
     vmResourceId: string;
 }
-

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * An event source that receives its data from an Azure EventHub.
- * Azure REST API version: 2020-05-15. Prior API version in Azure Native 1.x: 2020-05-15.
+ *
+ * Uses Azure REST API version 2020-05-15. In version 2.x of the Azure Native provider, it used API version 2020-05-15.
  */
 export class EventHubEventSource extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class EventHubEventSource extends pulumi.CustomResource {
         return obj['__pulumiType'] === EventHubEventSource.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The name of the event hub's consumer group that holds the partitions from which events will be read.
      */
@@ -148,10 +153,12 @@ export class EventHubEventSource extends pulumi.CustomResource {
             resourceInputs["time"] = args ? args.time : undefined;
             resourceInputs["timestampPropertyName"] = args ? args.timestampPropertyName : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["consumerGroupName"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["eventHubName"] = undefined /*out*/;
@@ -169,7 +176,7 @@ export class EventHubEventSource extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:timeseriesinsights/v20170228preview:EventHubEventSource" }, { type: "azure-native:timeseriesinsights/v20171115:EventHubEventSource" }, { type: "azure-native:timeseriesinsights/v20180815preview:EventHubEventSource" }, { type: "azure-native:timeseriesinsights/v20200515:EventHubEventSource" }, { type: "azure-native:timeseriesinsights/v20210331preview:EventHubEventSource" }, { type: "azure-native:timeseriesinsights/v20210630preview:EventHubEventSource" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:timeseriesinsights/v20170228preview:EventHubEventSource" }, { type: "azure-native:timeseriesinsights/v20171115:EventHubEventSource" }, { type: "azure-native:timeseriesinsights/v20180815preview:EventHubEventSource" }, { type: "azure-native:timeseriesinsights/v20200515:EventHubEventSource" }, { type: "azure-native:timeseriesinsights/v20210331preview:EventHubEventSource" }, { type: "azure-native:timeseriesinsights/v20210630preview:EventHubEventSource" }, { type: "azure-native:timeseriesinsights/v20210630preview:IoTHubEventSource" }, { type: "azure-native:timeseriesinsights:IoTHubEventSource" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(EventHubEventSource.__pulumiType, name, resourceInputs, opts);
     }

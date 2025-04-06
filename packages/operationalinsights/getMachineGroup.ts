@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns the specified machine group as it existed during the specified time interval.
- * Azure REST API version: 2015-11-01-preview.
+ *
+ * Uses Azure REST API version 2015-11-01-preview.
  */
 export function getMachineGroup(args: GetMachineGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -44,6 +45,10 @@ export interface GetMachineGroupArgs {
  */
 export interface GetMachineGroupResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Count of machines in this group. The value of count may be bigger than the number of machines in case of the group has been truncated due to exceeding the max number of machines a group can handle.
      */
     readonly count?: number;
@@ -83,7 +88,8 @@ export interface GetMachineGroupResult {
 }
 /**
  * Returns the specified machine group as it existed during the specified time interval.
- * Azure REST API version: 2015-11-01-preview.
+ *
+ * Uses Azure REST API version 2015-11-01-preview.
  */
 export function getMachineGroupOutput(args: GetMachineGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMachineGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

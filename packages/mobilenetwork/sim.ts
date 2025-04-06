@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * SIM resource.
- * Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2022-04-01-preview.
  *
- * Other available API versions: 2022-03-01-preview, 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
+ * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01.
+ *
+ * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Sim extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class Sim extends pulumi.CustomResource {
         return obj['__pulumiType'] === Sim.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * An optional free-form text field that can be used to record the device type this SIM is associated with, for example 'Video camera'. The Azure portal allows SIMs to be grouped and filtered based on this value.
      */
@@ -117,6 +122,7 @@ export class Sim extends pulumi.CustomResource {
             resourceInputs["simName"] = args ? args.simName : undefined;
             resourceInputs["simPolicy"] = args ? args.simPolicy : undefined;
             resourceInputs["staticIpConfiguration"] = args ? args.staticIpConfiguration : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["simState"] = undefined /*out*/;
@@ -126,6 +132,7 @@ export class Sim extends pulumi.CustomResource {
             resourceInputs["vendorKeyFingerprint"] = undefined /*out*/;
             resourceInputs["vendorName"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["deviceType"] = undefined /*out*/;
             resourceInputs["integratedCircuitCardIdentifier"] = undefined /*out*/;
             resourceInputs["internationalMobileSubscriberIdentity"] = undefined /*out*/;
@@ -141,7 +148,7 @@ export class Sim extends pulumi.CustomResource {
             resourceInputs["vendorName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:mobilenetwork/v20220401preview:Sim" }, { type: "azure-native:mobilenetwork/v20221101:Sim" }, { type: "azure-native:mobilenetwork/v20230601:Sim" }, { type: "azure-native:mobilenetwork/v20230901:Sim" }, { type: "azure-native:mobilenetwork/v20240201:Sim" }, { type: "azure-native:mobilenetwork/v20240401:Sim" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:mobilenetwork/v20220301preview:Sim" }, { type: "azure-native:mobilenetwork/v20220401preview:Sim" }, { type: "azure-native:mobilenetwork/v20221101:Sim" }, { type: "azure-native:mobilenetwork/v20230601:Sim" }, { type: "azure-native:mobilenetwork/v20230901:Sim" }, { type: "azure-native:mobilenetwork/v20240201:Sim" }, { type: "azure-native:mobilenetwork/v20240401:Sim" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Sim.__pulumiType, name, resourceInputs, opts);
     }

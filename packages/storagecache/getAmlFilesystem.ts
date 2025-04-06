@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns an AML file system.
- * Azure REST API version: 2023-05-01.
+ *
+ * Uses Azure REST API version 2024-03-01.
+ *
+ * Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAmlFilesystem(args: GetAmlFilesystemArgs, opts?: pulumi.InvokeOptions): Promise<GetAmlFilesystemResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +31,10 @@ export interface GetAmlFilesystemArgs {
  * An AML file system instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
  */
 export interface GetAmlFilesystemResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Client information for the AML file system.
      */
@@ -73,6 +80,10 @@ export interface GetAmlFilesystemResult {
      */
     readonly provisioningState: string;
     /**
+     * Specifies root squash settings of the AML file system.
+     */
+    readonly rootSquashSettings?: types.outputs.AmlFilesystemRootSquashSettingsResponse;
+    /**
      * SKU for the resource.
      */
     readonly sku?: types.outputs.SkuNameResponse;
@@ -103,7 +114,10 @@ export interface GetAmlFilesystemResult {
 }
 /**
  * Returns an AML file system.
- * Azure REST API version: 2023-05-01.
+ *
+ * Uses Azure REST API version 2024-03-01.
+ *
+ * Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAmlFilesystemOutput(args: GetAmlFilesystemOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAmlFilesystemResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

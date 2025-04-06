@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * An Azure SQL job agent.
- * Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
  *
- * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+ * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
+ *
+ * Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class JobAgent extends pulumi.CustomResource {
     /**
@@ -35,9 +36,17 @@ export class JobAgent extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Resource ID of the database to store job metadata in.
      */
     public readonly databaseId!: pulumi.Output<string>;
+    /**
+     * The identity of the job agent.
+     */
+    public readonly identity!: pulumi.Output<types.outputs.JobAgentIdentityResponse | undefined>;
     /**
      * Resource location.
      */
@@ -84,17 +93,21 @@ export class JobAgent extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serverName'");
             }
             resourceInputs["databaseId"] = args ? args.databaseId : undefined;
+            resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["jobAgentName"] = args ? args.jobAgentName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serverName"] = args ? args.serverName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["databaseId"] = undefined /*out*/;
+            resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["sku"] = undefined /*out*/;
@@ -103,7 +116,7 @@ export class JobAgent extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20170301preview:JobAgent" }, { type: "azure-native:sql/v20200202preview:JobAgent" }, { type: "azure-native:sql/v20200801preview:JobAgent" }, { type: "azure-native:sql/v20201101preview:JobAgent" }, { type: "azure-native:sql/v20210201preview:JobAgent" }, { type: "azure-native:sql/v20210501preview:JobAgent" }, { type: "azure-native:sql/v20210801preview:JobAgent" }, { type: "azure-native:sql/v20211101:JobAgent" }, { type: "azure-native:sql/v20211101preview:JobAgent" }, { type: "azure-native:sql/v20220201preview:JobAgent" }, { type: "azure-native:sql/v20220501preview:JobAgent" }, { type: "azure-native:sql/v20220801preview:JobAgent" }, { type: "azure-native:sql/v20221101preview:JobAgent" }, { type: "azure-native:sql/v20230201preview:JobAgent" }, { type: "azure-native:sql/v20230501preview:JobAgent" }, { type: "azure-native:sql/v20230801preview:JobAgent" }, { type: "azure-native:sql/v20240501preview:JobAgent" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20170301preview:JobAgent" }, { type: "azure-native:sql/v20200202preview:JobAgent" }, { type: "azure-native:sql/v20200801preview:JobAgent" }, { type: "azure-native:sql/v20201101preview:JobAgent" }, { type: "azure-native:sql/v20210201preview:JobAgent" }, { type: "azure-native:sql/v20210501preview:JobAgent" }, { type: "azure-native:sql/v20210801preview:JobAgent" }, { type: "azure-native:sql/v20211101:JobAgent" }, { type: "azure-native:sql/v20211101preview:JobAgent" }, { type: "azure-native:sql/v20220201preview:JobAgent" }, { type: "azure-native:sql/v20220501preview:JobAgent" }, { type: "azure-native:sql/v20220801preview:JobAgent" }, { type: "azure-native:sql/v20221101preview:JobAgent" }, { type: "azure-native:sql/v20230201preview:JobAgent" }, { type: "azure-native:sql/v20230501preview:JobAgent" }, { type: "azure-native:sql/v20230801:JobAgent" }, { type: "azure-native:sql/v20230801preview:JobAgent" }, { type: "azure-native:sql/v20240501preview:JobAgent" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(JobAgent.__pulumiType, name, resourceInputs, opts);
     }
@@ -117,6 +130,10 @@ export interface JobAgentArgs {
      * Resource ID of the database to store job metadata in.
      */
     databaseId: pulumi.Input<string>;
+    /**
+     * The identity of the job agent.
+     */
+    identity?: pulumi.Input<types.inputs.JobAgentIdentityArgs>;
     /**
      * The name of the job agent to be created or updated.
      */

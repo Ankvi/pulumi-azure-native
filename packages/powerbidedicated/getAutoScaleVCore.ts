@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets details about the specified auto scale v-core.
- * Azure REST API version: 2021-01-01.
+ *
+ * Uses Azure REST API version 2021-01-01.
  */
 export function getAutoScaleVCore(args: GetAutoScaleVCoreArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoScaleVCoreResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetAutoScaleVCoreArgs {
  * Represents an instance of an auto scale v-core resource.
  */
 export interface GetAutoScaleVCoreResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The maximum capacity of an auto scale v-core resource.
      */
@@ -71,7 +76,8 @@ export interface GetAutoScaleVCoreResult {
 }
 /**
  * Gets details about the specified auto scale v-core.
- * Azure REST API version: 2021-01-01.
+ *
+ * Uses Azure REST API version 2021-01-01.
  */
 export function getAutoScaleVCoreOutput(args: GetAutoScaleVCoreOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAutoScaleVCoreResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

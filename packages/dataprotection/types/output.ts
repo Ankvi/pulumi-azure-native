@@ -143,6 +143,11 @@ export interface BackupInstanceResponse {
      * Gets or sets the Backup Instance friendly name.
      */
     friendlyName?: string;
+    /**
+     * Contains information of the Identity Details for the BI.
+     * If it is null, default will be considered as System Assigned.
+     */
+    identityDetails?: IdentityDetailsResponse;
     objectType: string;
     /**
      * Gets or sets the policy information.
@@ -160,6 +165,10 @@ export interface BackupInstanceResponse {
      * Specifies the provisioning state of the resource i.e. provisioning/updating/Succeeded/Failed
      */
     provisioningState: string;
+    /**
+     * ResourceGuardOperationRequests on which LAC check will be performed
+     */
+    resourceGuardOperationRequests?: string[];
     /**
      * Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
      */
@@ -204,6 +213,10 @@ export interface BackupScheduleResponse {
  */
 export interface BackupVaultResponse {
     /**
+     * Security Level of Backup Vault
+     */
+    bcdrSecurityLevel: string;
+    /**
      * Feature Settings
      */
     featureSettings?: FeatureSettingsResponse;
@@ -220,6 +233,14 @@ export interface BackupVaultResponse {
      */
     provisioningState: string;
     /**
+     * List of replicated regions for Backup Vault
+     */
+    replicatedRegions?: string[];
+    /**
+     * ResourceGuardOperationRequests on which LAC check will be performed
+     */
+    resourceGuardOperationRequests?: string[];
+    /**
      * Resource move details for backup vault
      */
     resourceMoveDetails: ResourceMoveDetailsResponse;
@@ -227,6 +248,10 @@ export interface BackupVaultResponse {
      * Resource move state for backup vault
      */
     resourceMoveState: string;
+    /**
+     * Secure Score of Backup Vault
+     */
+    secureScore: string;
     /**
      * Security Settings
      */
@@ -253,6 +278,30 @@ export interface BlobBackupDatasourceParametersResponse {
 }
 
 /**
+ * The details of the managed identity used for CMK
+ */
+export interface CmkKekIdentityResponse {
+    /**
+     * The managed identity to be used which has access permissions to the Key Vault. Provide a value here in case identity types: 'UserAssigned' only.
+     */
+    identityId?: string;
+    /**
+     * The identity type. 'SystemAssigned' and 'UserAssigned' are mutually exclusive. 'SystemAssigned' will use implicitly created managed identity.
+     */
+    identityType?: string;
+}
+
+/**
+ * The properties of the Key Vault which hosts CMK
+ */
+export interface CmkKeyVaultPropertiesResponse {
+    /**
+     * The key uri of the Customer Managed Key
+     */
+    keyUri?: string;
+}
+
+/**
  * Copy on Expiry Option
  */
 export interface CopyOnExpiryOptionResponse {
@@ -261,6 +310,13 @@ export interface CopyOnExpiryOptionResponse {
      * Expected value is 'CopyOnExpiryOption'.
      */
     objectType: "CopyOnExpiryOption";
+}
+
+export interface CrossRegionRestoreSettingsResponse {
+    /**
+     * CrossRegionRestore state
+     */
+    state?: string;
 }
 
 /**
@@ -327,6 +383,10 @@ export interface DatasourceResponse {
      */
     resourceName?: string;
     /**
+     * Properties specific to data source
+     */
+    resourceProperties?: DefaultResourcePropertiesResponse;
+    /**
      * Resource Type of Datasource.
      */
     resourceType?: string;
@@ -361,6 +421,10 @@ export interface DatasourceSetResponse {
      */
     resourceName?: string;
     /**
+     * Properties specific to data source set
+     */
+    resourceProperties?: DefaultResourcePropertiesResponse;
+    /**
      * Resource Type of Datasource.
      */
     resourceType?: string;
@@ -385,6 +449,17 @@ export interface DayResponse {
 }
 
 /**
+ * Default source properties
+ */
+export interface DefaultResourcePropertiesResponse {
+    /**
+     * Type of the specific object - used for deserializing
+     * Expected value is 'DefaultResourceProperties'.
+     */
+    objectType: "DefaultResourceProperties";
+}
+
+/**
  * Identity details
  */
 export interface DppIdentityDetailsResponse {
@@ -397,19 +472,57 @@ export interface DppIdentityDetailsResponse {
      */
     tenantId: string;
     /**
-     * The identityType which can be either SystemAssigned or None
+     * The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
      */
     type?: string;
+    /**
+     * Gets or sets the user assigned identities.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
+ * Customer Managed Key details of the resource.
+ */
+export interface EncryptionSettingsResponse {
+    /**
+     * Enabling/Disabling the Double Encryption state
+     */
+    infrastructureEncryption?: string;
+    /**
+     * The details of the managed identity used for CMK
+     */
+    kekIdentity?: CmkKekIdentityResponse;
+    /**
+     * The properties of the Key Vault which hosts CMK
+     */
+    keyVaultProperties?: CmkKeyVaultPropertiesResponse;
+    /**
+     * Encryption state of the Backup Vault.
+     */
+    state?: string;
 }
 
 /**
  * Class containing feature settings of vault
  */
 export interface FeatureSettingsResponse {
+    crossRegionRestoreSettings?: CrossRegionRestoreSettingsResponse;
     /**
      * CrossSubscriptionRestore Settings
      */
     crossSubscriptionRestoreSettings?: CrossSubscriptionRestoreSettingsResponse;
+}
+
+export interface IdentityDetailsResponse {
+    /**
+     * Specifies if the BI is protected by System Identity.
+     */
+    useSystemAssignedIdentity?: boolean;
+    /**
+     * ARM URL for User Assigned Identity.
+     */
+    userAssignedIdentityArmUrl?: string;
 }
 
 /**
@@ -456,27 +569,35 @@ export interface InnerErrorResponse {
  */
 export interface KubernetesClusterBackupDatasourceParametersResponse {
     /**
-     * Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during restore.
+     * Gets or sets the backup hook references. This property sets the hook reference to be executed during backup.
+     */
+    backupHookReferences?: NamespacedNameResourceResponse[];
+    /**
+     * Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during backup.
      */
     excludedNamespaces?: string[];
     /**
-     * Gets or sets the exclude resource types property. This property sets the resource types to be excluded during restore.
+     * Gets or sets the exclude resource types property. This property sets the resource types to be excluded during backup.
      */
     excludedResourceTypes?: string[];
     /**
-     * Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during restore.
+     * Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during backup.
      */
     includeClusterScopeResources: boolean;
     /**
-     * Gets or sets the include namespaces property. This property sets the namespaces to be included during restore.
+     * Gets or sets the include namespaces property. This property sets the namespaces to be included during backup.
      */
     includedNamespaces?: string[];
     /**
-     * Gets or sets the include resource types property. This property sets the resource types to be included during restore.
+     * Gets or sets the include resource types property. This property sets the resource types to be included during backup.
      */
     includedResourceTypes?: string[];
     /**
-     * Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during restore.
+     * Gets or sets the include volume types property. This property sets the volume types to be included during backup.
+     */
+    includedVolumeTypes?: string[];
+    /**
+     * Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during backup.
      */
     labelSelectors?: string[];
     /**
@@ -485,7 +606,7 @@ export interface KubernetesClusterBackupDatasourceParametersResponse {
      */
     objectType: "KubernetesClusterBackupDatasourceParameters";
     /**
-     * Gets or sets the volume snapshot property. This property if enabled will take volume snapshots during restore.
+     * Gets or sets the volume snapshot property. This property if enabled will take volume snapshots during backup.
      */
     snapshotVolumes: boolean;
 }
@@ -498,6 +619,20 @@ export interface MonitoringSettingsResponse {
      * Settings for Azure Monitor based alerts
      */
     azureMonitorAlertSettings?: AzureMonitorAlertSettingsResponse;
+}
+
+/**
+ * Class to refer resources which contains namespace and name
+ */
+export interface NamespacedNameResourceResponse {
+    /**
+     * Name of the resource
+     */
+    name?: string;
+    /**
+     * Namespace in which the resource exists
+     */
+    namespace?: string;
 }
 
 /**
@@ -732,6 +867,10 @@ export interface SecretStoreResourceResponse {
  */
 export interface SecuritySettingsResponse {
     /**
+     * Customer Managed Key details of the resource.
+     */
+    encryptionSettings?: EncryptionSettingsResponse;
+    /**
      * Immutability Settings at vault level
      */
     immutabilitySettings?: ImmutabilitySettingsResponse;
@@ -851,6 +990,20 @@ export interface TargetCopySettingResponse {
 }
 
 /**
+ * User assigned identity properties
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId: string;
+}
+
+/**
  * Error object used by layers that have access to localized content, and propagate that to user
  */
 export interface UserFacingErrorResponse {
@@ -888,14 +1041,3 @@ export interface UserFacingErrorResponse {
      */
     target?: string;
 }
-
-
-
-
-
-
-
-
-
-
-

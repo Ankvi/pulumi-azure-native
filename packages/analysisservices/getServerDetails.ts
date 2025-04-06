@@ -3,9 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets details about the specified Analysis Services server.
- * Azure REST API version: 2017-08-01.
  *
- * Other available API versions: 2017-08-01-beta.
+ * Uses Azure REST API version 2017-08-01.
  */
 export function getServerDetails(args: GetServerDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +33,10 @@ export interface GetServerDetailsResult {
      * A collection of AS server administrators
      */
     readonly asAdministrators?: types.outputs.ServerAdministratorsResponse;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The SAS container URI to the backup container.
      */
@@ -97,9 +100,8 @@ export interface GetServerDetailsResult {
 }
 /**
  * Gets details about the specified Analysis Services server.
- * Azure REST API version: 2017-08-01.
  *
- * Other available API versions: 2017-08-01-beta.
+ * Uses Azure REST API version 2017-08-01.
  */
 export function getServerDetailsOutput(args: GetServerDetailsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

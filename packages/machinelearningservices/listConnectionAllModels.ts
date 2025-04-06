@@ -2,7 +2,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Azure REST API version: 2024-10-01-preview.
+ * Uses Azure REST API version 2025-01-01-preview.
+ *
+ * Other available API versions: 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listConnectionAllModels(args: ListConnectionAllModelsArgs, opts?: pulumi.InvokeOptions): Promise<ListConnectionAllModelsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,7 +36,9 @@ export interface ListConnectionAllModelsResult {
     readonly value?: types.outputs.EndpointModelPropertiesResponse[];
 }
 /**
- * Azure REST API version: 2024-10-01-preview.
+ * Uses Azure REST API version 2025-01-01-preview.
+ *
+ * Other available API versions: 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listConnectionAllModelsOutput(args: ListConnectionAllModelsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListConnectionAllModelsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

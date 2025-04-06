@@ -252,6 +252,16 @@ export interface L2ConnectionsPropertiesResponseGroundStation {
     id: string;
 }
 
+/**
+ * The name of the partner router to establish a connection to within the ground station.
+ */
+export interface L2ConnectionsPropertiesResponseGroundStationPartnerRouter {
+    /**
+     * The unique name of the partner router that cross-connects with the Orbital Edge Router at the ground station site.
+     */
+    name: string;
+}
+
 export interface ResourceIdListResultResponseValue {
     /**
      * The Azure Resource ID.
@@ -318,6 +328,3 @@ export interface SystemDataResponse {
      */
     lastModifiedByType?: string;
 }
-
-
-

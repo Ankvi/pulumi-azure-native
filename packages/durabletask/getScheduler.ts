@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Scheduler
- * Azure REST API version: 2024-10-01-preview.
+ *
+ * Uses Azure REST API version 2024-10-01-preview.
  */
 export function getScheduler(args: GetSchedulerArgs, opts?: pulumi.InvokeOptions): Promise<GetSchedulerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetSchedulerArgs {
  * A Durable Task Scheduler resource
  */
 export interface GetSchedulerResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetSchedulerResult {
 }
 /**
  * Get a Scheduler
- * Azure REST API version: 2024-10-01-preview.
+ *
+ * Uses Azure REST API version 2024-10-01-preview.
  */
 export function getSchedulerOutput(args: GetSchedulerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSchedulerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

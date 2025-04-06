@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A class representing a CommunicationService resource.
- * Azure REST API version: 2023-03-31. Prior API version in Azure Native 1.x: 2020-08-20.
  *
- * Other available API versions: 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview.
+ * Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-31.
+ *
+ * Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CommunicationService extends pulumi.CustomResource {
     /**
@@ -35,6 +36,10 @@ export class CommunicationService extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The location where the communication service stores its data at rest.
      */
     public readonly dataLocation!: pulumi.Output<string>;
@@ -42,6 +47,10 @@ export class CommunicationService extends pulumi.CustomResource {
      * FQDN of the CommunicationService instance.
      */
     public /*out*/ readonly hostName!: pulumi.Output<string>;
+    /**
+     * Managed service identity (system assigned and/or user assigned identities)
+     */
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The immutable resource Id of the communication service.
      */
@@ -102,10 +111,12 @@ export class CommunicationService extends pulumi.CustomResource {
             }
             resourceInputs["communicationServiceName"] = args ? args.communicationServiceName : undefined;
             resourceInputs["dataLocation"] = args ? args.dataLocation : undefined;
+            resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["linkedDomains"] = args ? args.linkedDomains : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["hostName"] = undefined /*out*/;
             resourceInputs["immutableResourceId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -115,8 +126,10 @@ export class CommunicationService extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["dataLocation"] = undefined /*out*/;
             resourceInputs["hostName"] = undefined /*out*/;
+            resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["immutableResourceId"] = undefined /*out*/;
             resourceInputs["linkedDomains"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -147,6 +160,10 @@ export interface CommunicationServiceArgs {
      * The location where the communication service stores its data at rest.
      */
     dataLocation: pulumi.Input<string>;
+    /**
+     * Managed service identity (system assigned and/or user assigned identities)
+     */
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * List of email Domain resource Ids.
      */

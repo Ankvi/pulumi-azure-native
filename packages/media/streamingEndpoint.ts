@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The streaming endpoint.
- * Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2020-05-01.
  *
- * Other available API versions: 2018-06-01-preview.
+ * Uses Azure REST API version 2022-11-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
+ *
+ * Other available API versions: 2018-03-30-preview, 2018-06-01-preview, 2018-07-01, 2019-05-01-preview, 2020-05-01, 2021-06-01, 2021-11-01, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native media [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class StreamingEndpoint extends pulumi.CustomResource {
     /**
@@ -42,6 +43,10 @@ export class StreamingEndpoint extends pulumi.CustomResource {
      * This feature is deprecated, do not set a value for this property.
      */
     public readonly availabilitySetName!: pulumi.Output<string | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The CDN enabled flag.
      */
@@ -160,6 +165,7 @@ export class StreamingEndpoint extends pulumi.CustomResource {
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["streamingEndpointName"] = args ? args.streamingEndpointName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["freeTrialEndTime"] = undefined /*out*/;
             resourceInputs["hostName"] = undefined /*out*/;
@@ -172,6 +178,7 @@ export class StreamingEndpoint extends pulumi.CustomResource {
         } else {
             resourceInputs["accessControl"] = undefined /*out*/;
             resourceInputs["availabilitySetName"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["cdnEnabled"] = undefined /*out*/;
             resourceInputs["cdnProfile"] = undefined /*out*/;
             resourceInputs["cdnProvider"] = undefined /*out*/;

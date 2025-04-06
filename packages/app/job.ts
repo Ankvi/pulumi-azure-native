@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Container App Job
- * Azure REST API version: 2023-04-01-preview.
  *
- * Other available API versions: 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview.
+ * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Job extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class Job extends pulumi.CustomResource {
         return obj['__pulumiType'] === Job.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Container Apps Job configuration properties.
      */
@@ -110,6 +115,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["workloadProfileName"] = args ? args.workloadProfileName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["eventStreamEndpoint"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["outboundIpAddresses"] = undefined /*out*/;
@@ -117,6 +123,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["configuration"] = undefined /*out*/;
             resourceInputs["environmentId"] = undefined /*out*/;
             resourceInputs["eventStreamEndpoint"] = undefined /*out*/;
@@ -132,7 +139,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["workloadProfileName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20221101preview:Job" }, { type: "azure-native:app/v20230401preview:Job" }, { type: "azure-native:app/v20230501:Job" }, { type: "azure-native:app/v20230502preview:Job" }, { type: "azure-native:app/v20230801preview:Job" }, { type: "azure-native:app/v20231102preview:Job" }, { type: "azure-native:app/v20240202preview:Job" }, { type: "azure-native:app/v20240301:Job" }, { type: "azure-native:app/v20240802preview:Job" }, { type: "azure-native:app/v20241002preview:Job" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20221101preview:Job" }, { type: "azure-native:app/v20230401preview:Job" }, { type: "azure-native:app/v20230501:Job" }, { type: "azure-native:app/v20230502preview:Job" }, { type: "azure-native:app/v20230801preview:Job" }, { type: "azure-native:app/v20231102preview:Job" }, { type: "azure-native:app/v20240202preview:Job" }, { type: "azure-native:app/v20240301:Job" }, { type: "azure-native:app/v20240802preview:Job" }, { type: "azure-native:app/v20241002preview:Job" }, { type: "azure-native:app/v20250101:Job" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Job.__pulumiType, name, resourceInputs, opts);
     }

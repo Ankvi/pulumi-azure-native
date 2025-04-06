@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The virtual machine resource definition.
- * Azure REST API version: 2022-12-15-preview.
+ *
+ * Uses Azure REST API version 2022-12-15-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-15-preview.
  */
 export class VirtualMachine extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class VirtualMachine extends pulumi.CustomResource {
         return obj['__pulumiType'] === VirtualMachine.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The extendedLocation of the resource.
      */
@@ -122,6 +127,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["storageProfile"] = args ? args.storageProfile : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["virtualMachineName"] = args ? args.virtualMachineName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["guestAgentProfile"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -130,6 +136,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["vmId"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["extendedLocation"] = undefined /*out*/;
             resourceInputs["guestAgentProfile"] = undefined /*out*/;
             resourceInputs["hardwareProfile"] = undefined /*out*/;
@@ -148,7 +155,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["vmId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20210701preview:VirtualMachine" }, { type: "azure-native:azurestackhci/v20210901preview:VirtualMachine" }, { type: "azure-native:azurestackhci/v20221215preview:VirtualMachine" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20210701preview:VirtualMachine" }, { type: "azure-native:azurestackhci/v20210901preview:VirtualMachine" }, { type: "azure-native:azurestackhci/v20210901preview:VirtualmachineRetrieve" }, { type: "azure-native:azurestackhci/v20221215preview:VirtualMachine" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualMachine.__pulumiType, name, resourceInputs, opts);
     }

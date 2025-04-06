@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Metadata schema entity. Used to define metadata for the entities in API catalog.
- * Azure REST API version: 2024-03-01.
  *
- * Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+ * Uses Azure REST API version 2024-03-15-preview. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
+ *
+ * Other available API versions: 2024-03-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apicenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class MetadataSchema extends pulumi.CustomResource {
     /**
@@ -38,6 +39,10 @@ export class MetadataSchema extends pulumi.CustomResource {
      * The assignees
      */
     public readonly assignedTo!: pulumi.Output<types.outputs.MetadataAssignmentResponse[] | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The name of the resource
      */
@@ -80,11 +85,13 @@ export class MetadataSchema extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["assignedTo"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["schema"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;

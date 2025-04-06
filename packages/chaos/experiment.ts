@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Model that represents a Experiment resource.
- * Azure REST API version: 2023-04-15-preview. Prior API version in Azure Native 1.x: 2021-09-15-preview.
  *
- * Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-03-22-preview, 2024-11-01-preview, 2025-01-01.
+ * Uses Azure REST API version 2024-03-22-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-15-preview.
+ *
+ * Other available API versions: 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-11-01-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native chaos [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Experiment extends pulumi.CustomResource {
     /**
@@ -35,9 +36,13 @@ export class Experiment extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The identity of the experiment resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ExperimentIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -51,7 +56,7 @@ export class Experiment extends pulumi.CustomResource {
      */
     public readonly properties!: pulumi.Output<types.outputs.ExperimentPropertiesResponse>;
     /**
-     * The system metadata of the experiment resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -86,10 +91,12 @@ export class Experiment extends pulumi.CustomResource {
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -116,7 +123,7 @@ export interface ExperimentArgs {
     /**
      * The identity of the experiment resource.
      */
-    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ExperimentIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */

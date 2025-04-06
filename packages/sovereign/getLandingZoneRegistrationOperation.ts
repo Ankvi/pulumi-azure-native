@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a landing zone registration.
- * Azure REST API version: 2025-02-27-preview.
+ *
+ * Uses Azure REST API version 2025-02-27-preview.
  */
 export function getLandingZoneRegistrationOperation(args: GetLandingZoneRegistrationOperationArgs, opts?: pulumi.InvokeOptions): Promise<GetLandingZoneRegistrationOperationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetLandingZoneRegistrationOperationArgs {
  */
 export interface GetLandingZoneRegistrationOperationResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
@@ -56,7 +61,8 @@ export interface GetLandingZoneRegistrationOperationResult {
 }
 /**
  * Get a landing zone registration.
- * Azure REST API version: 2025-02-27-preview.
+ *
+ * Uses Azure REST API version 2025-02-27-preview.
  */
 export function getLandingZoneRegistrationOperationOutput(args: GetLandingZoneRegistrationOperationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLandingZoneRegistrationOperationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

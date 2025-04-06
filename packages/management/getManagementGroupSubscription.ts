@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Retrieves details about given subscription which is associated with the management group.
  *
- * Azure REST API version: 2021-04-01.
+ * Uses Azure REST API version 2023-04-01.
  *
- * Other available API versions: 2023-04-01.
+ * Other available API versions: 2021-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native management [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getManagementGroupSubscription(args: GetManagementGroupSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetManagementGroupSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +31,10 @@ export interface GetManagementGroupSubscriptionArgs {
  * The details of subscription under management group.
  */
 export interface GetManagementGroupSubscriptionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The friendly name of the subscription.
      */
@@ -63,9 +67,9 @@ export interface GetManagementGroupSubscriptionResult {
 /**
  * Retrieves details about given subscription which is associated with the management group.
  *
- * Azure REST API version: 2021-04-01.
+ * Uses Azure REST API version 2023-04-01.
  *
- * Other available API versions: 2023-04-01.
+ * Other available API versions: 2021-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native management [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getManagementGroupSubscriptionOutput(args: GetManagementGroupSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManagementGroupSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

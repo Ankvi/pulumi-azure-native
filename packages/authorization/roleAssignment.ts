@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Role Assignments
- * Azure REST API version: 2022-04-01. Prior API version in Azure Native 1.x: 2020-10-01-preview.
  *
- * Other available API versions: 2017-10-01-preview, 2020-03-01-preview, 2020-04-01-preview.
+ * Uses Azure REST API version 2022-04-01. In version 2.x of the Azure Native provider, it used API version 2022-04-01.
+ *
+ * Other available API versions: 2020-08-01-preview, 2020-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class RoleAssignment extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class RoleAssignment extends pulumi.CustomResource {
         return obj['__pulumiType'] === RoleAssignment.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
      */
@@ -120,6 +125,7 @@ export class RoleAssignment extends pulumi.CustomResource {
             resourceInputs["roleAssignmentName"] = args ? args.roleAssignmentName : undefined;
             resourceInputs["roleDefinitionId"] = args ? args.roleDefinitionId : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -127,6 +133,7 @@ export class RoleAssignment extends pulumi.CustomResource {
             resourceInputs["updatedBy"] = undefined /*out*/;
             resourceInputs["updatedOn"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["condition"] = undefined /*out*/;
             resourceInputs["conditionVersion"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;

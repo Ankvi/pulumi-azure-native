@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Data store.
- * Azure REST API version: 2019-06-01. Prior API version in Azure Native 1.x: 2019-06-01.
+ *
+ * Uses Azure REST API version 2019-06-01. In version 2.x of the Azure Native provider, it used API version 2019-06-01.
  */
 export class DataStore extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class DataStore extends pulumi.CustomResource {
         return obj['__pulumiType'] === DataStore.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.
      */
@@ -92,9 +97,11 @@ export class DataStore extends pulumi.CustomResource {
             resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["customerSecrets"] = undefined /*out*/;
             resourceInputs["dataStoreTypeId"] = undefined /*out*/;
             resourceInputs["extendedProperties"] = undefined /*out*/;

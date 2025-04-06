@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the JIT request.
- * Azure REST API version: 2021-07-01.
  *
- * Other available API versions: 2023-12-01-preview.
+ * Uses Azure REST API version 2021-07-01.
+ *
+ * Other available API versions: 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native solutions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getJitRequest(args: GetJitRequestArgs, opts?: pulumi.InvokeOptions): Promise<GetJitRequestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetJitRequestResult {
      * The parent application id.
      */
     readonly applicationResourceId: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The client entity that created the JIT request.
      */
@@ -89,9 +94,10 @@ export interface GetJitRequestResult {
 }
 /**
  * Gets the JIT request.
- * Azure REST API version: 2021-07-01.
  *
- * Other available API versions: 2023-12-01-preview.
+ * Uses Azure REST API version 2021-07-01.
+ *
+ * Other available API versions: 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native solutions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getJitRequestOutput(args: GetJitRequestOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetJitRequestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

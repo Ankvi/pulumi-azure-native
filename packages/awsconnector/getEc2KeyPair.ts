@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Ec2KeyPair
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getEc2KeyPair(args: GetEc2KeyPairArgs, opts?: pulumi.InvokeOptions): Promise<GetEc2KeyPairResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetEc2KeyPairArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetEc2KeyPairResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetEc2KeyPairResult {
 }
 /**
  * Get a Ec2KeyPair
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getEc2KeyPairOutput(args: GetEc2KeyPairOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEc2KeyPairResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

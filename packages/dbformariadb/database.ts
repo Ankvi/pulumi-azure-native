@@ -2,9 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Represents a Database.
- * Azure REST API version: 2018-06-01. Prior API version in Azure Native 1.x: 2018-06-01.
  *
- * Other available API versions: 2018-06-01-preview.
+ * Uses Azure REST API version 2018-06-01. In version 2.x of the Azure Native provider, it used API version 2018-06-01.
  */
 export class Database extends pulumi.CustomResource {
     /**
@@ -33,6 +32,10 @@ export class Database extends pulumi.CustomResource {
         return obj['__pulumiType'] === Database.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The charset of the database.
      */
@@ -72,9 +75,11 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["databaseName"] = args ? args.databaseName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serverName"] = args ? args.serverName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["charset"] = undefined /*out*/;
             resourceInputs["collation"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

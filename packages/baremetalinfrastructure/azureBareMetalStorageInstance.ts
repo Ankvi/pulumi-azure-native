@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * AzureBareMetalStorageInstance info on Azure (ARM properties and AzureBareMetalStorage properties)
- * Azure REST API version: 2023-04-06.
  *
- * Other available API versions: 2023-08-04-preview, 2023-11-01-preview, 2024-08-01-preview.
+ * Uses Azure REST API version 2024-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-06.
+ *
+ * Other available API versions: 2023-04-06, 2023-08-04-preview, 2023-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native baremetalinfrastructure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class AzureBareMetalStorageInstance extends pulumi.CustomResource {
     /**
@@ -35,9 +36,17 @@ export class AzureBareMetalStorageInstance extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Specifies the AzureBareMetaStorageInstance unique ID.
      */
     public readonly azureBareMetalStorageInstanceUniqueIdentifier!: pulumi.Output<string | undefined>;
+    /**
+     * The identity of Azure Bare Metal Storage Instance, if configured.
+     */
+    public readonly identity!: pulumi.Output<types.outputs.AzureBareMetalStorageInstanceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -51,7 +60,7 @@ export class AzureBareMetalStorageInstance extends pulumi.CustomResource {
      */
     public readonly storageProperties!: pulumi.Output<types.outputs.StoragePropertiesResponse | undefined>;
     /**
-     * The system metadata relating to this resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -79,15 +88,19 @@ export class AzureBareMetalStorageInstance extends pulumi.CustomResource {
             }
             resourceInputs["azureBareMetalStorageInstanceName"] = args ? args.azureBareMetalStorageInstanceName : undefined;
             resourceInputs["azureBareMetalStorageInstanceUniqueIdentifier"] = args ? args.azureBareMetalStorageInstanceUniqueIdentifier : undefined;
+            resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["storageProperties"] = args ? args.storageProperties : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["azureBareMetalStorageInstanceUniqueIdentifier"] = undefined /*out*/;
+            resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["storageProperties"] = undefined /*out*/;
@@ -107,13 +120,17 @@ export class AzureBareMetalStorageInstance extends pulumi.CustomResource {
  */
 export interface AzureBareMetalStorageInstanceArgs {
     /**
-     * Name of the AzureBareMetalStorage on Azure instance.
+     * Name of the Azure Bare Metal Storage Instance, also known as the ResourceName.
      */
     azureBareMetalStorageInstanceName?: pulumi.Input<string>;
     /**
      * Specifies the AzureBareMetaStorageInstance unique ID.
      */
     azureBareMetalStorageInstanceUniqueIdentifier?: pulumi.Input<string>;
+    /**
+     * The identity of Azure Bare Metal Storage Instance, if configured.
+     */
+    identity?: pulumi.Input<types.inputs.AzureBareMetalStorageInstanceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */

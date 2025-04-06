@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a connector definition
- * Azure REST API version: 2018-08-01-preview.
+ *
+ * Uses Azure REST API version 2018-08-01-preview.
  */
 export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetConnectorArgs {
  * The Connector model definition
  */
 export interface GetConnectorResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Collection information
      */
@@ -87,7 +92,8 @@ export interface GetConnectorResult {
 }
 /**
  * Get a connector definition
- * Azure REST API version: 2018-08-01-preview.
+ *
+ * Uses Azure REST API version 2018-08-01-preview.
  */
 export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

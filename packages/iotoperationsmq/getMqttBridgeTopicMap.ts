@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a MqttBridgeTopicMapResource
- * Azure REST API version: 2023-10-04-preview.
+ *
+ * Uses Azure REST API version 2023-10-04-preview.
  */
 export function getMqttBridgeTopicMap(args: GetMqttBridgeTopicMapArgs, opts?: pulumi.InvokeOptions): Promise<GetMqttBridgeTopicMapResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,6 +39,10 @@ export interface GetMqttBridgeTopicMapArgs {
  * MQ mqttBridgeTopicMap resource
  */
 export interface GetMqttBridgeTopicMapResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Extended Location
      */
@@ -81,7 +86,8 @@ export interface GetMqttBridgeTopicMapResult {
 }
 /**
  * Get a MqttBridgeTopicMapResource
- * Azure REST API version: 2023-10-04-preview.
+ *
+ * Uses Azure REST API version 2023-10-04-preview.
  */
 export function getMqttBridgeTopicMapOutput(args: GetMqttBridgeTopicMapOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMqttBridgeTopicMapResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

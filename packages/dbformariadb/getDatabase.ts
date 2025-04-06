@@ -2,9 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets information about a database.
- * Azure REST API version: 2018-06-01.
  *
- * Other available API versions: 2018-06-01-preview.
+ * Uses Azure REST API version 2018-06-01.
  */
 export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,6 +34,10 @@ export interface GetDatabaseArgs {
  */
 export interface GetDatabaseResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The charset of the database.
      */
     readonly charset?: string;
@@ -57,9 +60,8 @@ export interface GetDatabaseResult {
 }
 /**
  * Gets information about a database.
- * Azure REST API version: 2018-06-01.
  *
- * Other available API versions: 2018-06-01-preview.
+ * Uses Azure REST API version 2018-06-01.
  */
 export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

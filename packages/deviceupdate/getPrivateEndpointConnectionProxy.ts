@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * (INTERNAL - DO NOT USE) Get the specified private endpoint connection proxy associated with the device update account.
- * Azure REST API version: 2023-07-01.
+ *
+ * Uses Azure REST API version 2023-07-01.
  */
 export function getPrivateEndpointConnectionProxy(args: GetPrivateEndpointConnectionProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateEndpointConnectionProxyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetPrivateEndpointConnectionProxyArgs {
  * Private endpoint connection proxy details.
  */
 export interface GetPrivateEndpointConnectionProxyResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * ETag from NRP.
      */
@@ -68,7 +73,8 @@ export interface GetPrivateEndpointConnectionProxyResult {
 }
 /**
  * (INTERNAL - DO NOT USE) Get the specified private endpoint connection proxy associated with the device update account.
- * Azure REST API version: 2023-07-01.
+ *
+ * Uses Azure REST API version 2023-07-01.
  */
 export function getPrivateEndpointConnectionProxyOutput(args: GetPrivateEndpointConnectionProxyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateEndpointConnectionProxyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

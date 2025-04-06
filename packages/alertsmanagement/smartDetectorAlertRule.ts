@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The alert rule information
- * Azure REST API version: 2021-04-01. Prior API version in Azure Native 1.x: 2019-06-01.
+ *
+ * Uses Azure REST API version 2021-04-01. In version 2.x of the Azure Native provider, it used API version 2021-04-01.
+ *
+ * Other available API versions: 2019-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native alertsmanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SmartDetectorAlertRule extends pulumi.CustomResource {
     /**
@@ -36,6 +39,10 @@ export class SmartDetectorAlertRule extends pulumi.CustomResource {
      * The alert rule actions.
      */
     public readonly actionGroups!: pulumi.Output<types.outputs.ActionGroupsInformationResponse>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The alert rule description.
      */
@@ -125,10 +132,12 @@ export class SmartDetectorAlertRule extends pulumi.CustomResource {
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["throttling"] = args ? args.throttling : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["actionGroups"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["detector"] = undefined /*out*/;
             resourceInputs["frequency"] = undefined /*out*/;

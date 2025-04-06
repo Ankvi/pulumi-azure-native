@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a given StorageSyncService.
- * Azure REST API version: 2022-06-01.
  *
- * Other available API versions: 2022-09-01.
+ * Uses Azure REST API version 2022-09-01.
+ *
+ * Other available API versions: 2022-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagesync [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getStorageSyncService(args: GetStorageSyncServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageSyncServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,9 +32,17 @@ export interface GetStorageSyncServiceArgs {
  */
 export interface GetStorageSyncServiceResult {
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
+    /**
+     * managed identities for the Storage Sync service to interact with other Azure services without maintaining any secrets or credentials in code.
+     */
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Incoming Traffic Policy
      */
@@ -82,12 +91,17 @@ export interface GetStorageSyncServiceResult {
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
+    /**
+     * Use Identity authorization when customer have finished setup RBAC permissions.
+     */
+    readonly useIdentity: boolean;
 }
 /**
  * Get a given StorageSyncService.
- * Azure REST API version: 2022-06-01.
  *
- * Other available API versions: 2022-09-01.
+ * Uses Azure REST API version 2022-09-01.
+ *
+ * Other available API versions: 2022-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagesync [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getStorageSyncServiceOutput(args: GetStorageSyncServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStorageSyncServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

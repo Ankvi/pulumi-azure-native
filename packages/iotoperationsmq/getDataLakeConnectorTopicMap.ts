@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a DataLakeTopicMapResource
- * Azure REST API version: 2023-10-04-preview.
+ *
+ * Uses Azure REST API version 2023-10-04-preview.
  */
 export function getDataLakeConnectorTopicMap(args: GetDataLakeConnectorTopicMapArgs, opts?: pulumi.InvokeOptions): Promise<GetDataLakeConnectorTopicMapResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,6 +39,10 @@ export interface GetDataLakeConnectorTopicMapArgs {
  * MQ dataLakeConnector/topicMap resource
  */
 export interface GetDataLakeConnectorTopicMapResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * DataLake Connector CRD to use.
      */
@@ -81,7 +86,8 @@ export interface GetDataLakeConnectorTopicMapResult {
 }
 /**
  * Get a DataLakeTopicMapResource
- * Azure REST API version: 2023-10-04-preview.
+ *
+ * Uses Azure REST API version 2023-10-04-preview.
  */
 export function getDataLakeConnectorTopicMapOutput(args: GetDataLakeConnectorTopicMapOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDataLakeConnectorTopicMapResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

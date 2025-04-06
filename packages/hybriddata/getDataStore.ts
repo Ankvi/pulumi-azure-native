@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * This method gets the data store/repository by name.
- * Azure REST API version: 2019-06-01.
+ *
+ * Uses Azure REST API version 2019-06-01.
  */
 export function getDataStore(args: GetDataStoreArgs, opts?: pulumi.InvokeOptions): Promise<GetDataStoreResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetDataStoreArgs {
  * Data store.
  */
 export interface GetDataStoreResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.
      */
@@ -68,7 +73,8 @@ export interface GetDataStoreResult {
 }
 /**
  * This method gets the data store/repository by name.
- * Azure REST API version: 2019-06-01.
+ *
+ * Uses Azure REST API version 2019-06-01.
  */
 export function getDataStoreOutput(args: GetDataStoreOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDataStoreResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

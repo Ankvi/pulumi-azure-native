@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * SAP monitor info on Azure (ARM properties and SAP monitor properties)
- * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-12-01-preview.
  *
- * Other available API versions: 2023-12-01-preview, 2024-02-01-preview.
+ * Uses Azure REST API version 2024-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-12-01-preview.
+ *
+ * Other available API versions: 2023-04-01, 2023-10-01-preview, 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native workloads [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Monitor extends pulumi.CustomResource {
     /**
@@ -39,13 +40,21 @@ export class Monitor extends pulumi.CustomResource {
      */
     public readonly appLocation!: pulumi.Output<string | undefined>;
     /**
+     * App service plan configuration
+     */
+    public readonly appServicePlanConfiguration!: pulumi.Output<types.outputs.AppServicePlanConfigurationResponse | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Defines the SAP monitor errors.
      */
-    public /*out*/ readonly errors!: pulumi.Output<types.outputs.MonitorPropertiesResponseErrors>;
+    public /*out*/ readonly errors!: pulumi.Output<types.outputs.ErrorDetailResponse>;
     /**
-     * [currently not in use] Managed service identity(user assigned identities)
+     * The managed service identities assigned to this resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.UserAssignedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -57,7 +66,7 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Managed resource group configuration
      */
-    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.ManagedRGConfigurationResponse | undefined>;
+    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.ManagedResourceGroupConfigurationResponse | undefined>;
     /**
      * The subnet which the SAP monitor will be deployed in
      */
@@ -114,6 +123,7 @@ export class Monitor extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["appLocation"] = args ? args.appLocation : undefined;
+            resourceInputs["appServicePlanConfiguration"] = args ? args.appServicePlanConfiguration : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["logAnalyticsWorkspaceArmId"] = args ? args.logAnalyticsWorkspaceArmId : undefined;
@@ -124,6 +134,7 @@ export class Monitor extends pulumi.CustomResource {
             resourceInputs["routingPreference"] = args ? args.routingPreference : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["zoneRedundancyPreference"] = args ? args.zoneRedundancyPreference : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["msiArmId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -133,6 +144,8 @@ export class Monitor extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["appLocation"] = undefined /*out*/;
+            resourceInputs["appServicePlanConfiguration"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -150,7 +163,7 @@ export class Monitor extends pulumi.CustomResource {
             resourceInputs["zoneRedundancyPreference"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:workloads/v20211201preview:Monitor" }, { type: "azure-native:workloads/v20211201preview:monitor" }, { type: "azure-native:workloads/v20221101preview:Monitor" }, { type: "azure-native:workloads/v20221101preview:monitor" }, { type: "azure-native:workloads/v20230401:Monitor" }, { type: "azure-native:workloads/v20230401:monitor" }, { type: "azure-native:workloads/v20231001preview:Monitor" }, { type: "azure-native:workloads/v20231001preview:monitor" }, { type: "azure-native:workloads/v20231201preview:Monitor" }, { type: "azure-native:workloads/v20231201preview:monitor" }, { type: "azure-native:workloads/v20240201preview:Monitor" }, { type: "azure-native:workloads/v20240201preview:monitor" }, { type: "azure-native:workloads:monitor" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:workloads/v20211201preview:Monitor" }, { type: "azure-native:workloads/v20221101preview:Monitor" }, { type: "azure-native:workloads/v20230401:Monitor" }, { type: "azure-native:workloads/v20231001preview:Monitor" }, { type: "azure-native:workloads/v20231201preview:Monitor" }, { type: "azure-native:workloads/v20240201preview:Monitor" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Monitor.__pulumiType, name, resourceInputs, opts);
     }
@@ -165,9 +178,13 @@ export interface MonitorArgs {
      */
     appLocation?: pulumi.Input<string>;
     /**
-     * [currently not in use] Managed service identity(user assigned identities)
+     * App service plan configuration
      */
-    identity?: pulumi.Input<types.inputs.UserAssignedServiceIdentityArgs>;
+    appServicePlanConfiguration?: pulumi.Input<types.inputs.AppServicePlanConfigurationArgs>;
+    /**
+     * The managed service identities assigned to this resource.
+     */
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -179,7 +196,7 @@ export interface MonitorArgs {
     /**
      * Managed resource group configuration
      */
-    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedRGConfigurationArgs>;
+    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedResourceGroupConfigurationArgs>;
     /**
      * Name of the SAP monitor resource.
      */

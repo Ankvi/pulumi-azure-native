@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns instance details for the given instance and account name.
- * Azure REST API version: 2023-07-01.
+ *
+ * Uses Azure REST API version 2023-07-01.
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +38,10 @@ export interface GetInstanceResult {
      * Parent Device Update Account name which Instance belongs to.
      */
     readonly accountName: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Customer-initiated diagnostic log collection storage properties
      */
@@ -80,7 +85,8 @@ export interface GetInstanceResult {
 }
 /**
  * Returns instance details for the given instance and account name.
- * Azure REST API version: 2023-07-01.
+ *
+ * Uses Azure REST API version 2023-07-01.
  */
 export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

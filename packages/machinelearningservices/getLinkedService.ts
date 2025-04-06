@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the detail of a linked service.
- * Azure REST API version: 2020-09-01-preview.
+ *
+ * Uses Azure REST API version 2020-09-01-preview.
  */
 export function getLinkedService(args: GetLinkedServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetLinkedServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetLinkedServiceArgs {
  */
 export interface GetLinkedServiceResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * ResourceId of the link of the linked service.
      */
     readonly id: string;
@@ -60,7 +65,8 @@ export interface GetLinkedServiceResult {
 }
 /**
  * Get the detail of a linked service.
- * Azure REST API version: 2020-09-01-preview.
+ *
+ * Uses Azure REST API version 2020-09-01-preview.
  */
 export function getLinkedServiceOutput(args: GetLinkedServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLinkedServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

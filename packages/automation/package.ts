@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Definition of the Package type.
- * Azure REST API version: 2023-05-15-preview.
  *
- * Other available API versions: 2024-10-23.
+ * Uses Azure REST API version 2023-05-15-preview. In version 2.x of the Azure Native provider, it used API version 2023-05-15-preview.
+ *
+ * Other available API versions: 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Package extends pulumi.CustomResource {
     /**
@@ -38,6 +39,10 @@ export class Package extends pulumi.CustomResource {
      * Metadata pertaining to creation and last modification of the resource.
      */
     public readonly allOf!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Gets or sets the contentLink of the Package.
      */
@@ -112,6 +117,7 @@ export class Package extends pulumi.CustomResource {
             resourceInputs["packageName"] = args ? args.packageName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["runtimeEnvironmentName"] = args ? args.runtimeEnvironmentName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["default"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -124,6 +130,7 @@ export class Package extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         } else {
             resourceInputs["allOf"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["contentLink"] = undefined /*out*/;
             resourceInputs["default"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;

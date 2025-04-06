@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a network manager security configuration admin rule.
- * Azure REST API version: 2023-02-01.
+ *
+ * Uses Azure REST API version 2024-05-01.
  */
 export function getDefaultAdminRule(args: GetDefaultAdminRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultAdminRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -47,6 +48,10 @@ export interface GetDefaultAdminRuleResult {
      * Indicates the access allowed for this particular rule
      */
     readonly access: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * A description for this rule. Restricted to 140 chars.
      */
@@ -119,7 +124,8 @@ export interface GetDefaultAdminRuleResult {
 }
 /**
  * Gets a network manager security configuration admin rule.
- * Azure REST API version: 2023-02-01.
+ *
+ * Uses Azure REST API version 2024-05-01.
  */
 export function getDefaultAdminRuleOutput(args: GetDefaultAdminRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDefaultAdminRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

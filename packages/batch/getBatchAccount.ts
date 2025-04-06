@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets information about the specified Batch account.
- * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2022-01-01, 2023-11-01, 2024-02-01, 2024-07-01.
+ * Uses Azure REST API version 2024-07-01.
+ *
+ * Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getBatchAccount(args: GetBatchAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetBatchAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -43,6 +44,10 @@ export interface GetBatchAccountResult {
      * Contains information about the auto-storage account associated with a Batch account.
      */
     readonly autoStorage: types.outputs.AutoStoragePropertiesResponse;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
      */
@@ -119,9 +124,10 @@ export interface GetBatchAccountResult {
 }
 /**
  * Gets information about the specified Batch account.
- * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2022-01-01, 2023-11-01, 2024-02-01, 2024-07-01.
+ * Uses Azure REST API version 2024-07-01.
+ *
+ * Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getBatchAccountOutput(args: GetBatchAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBatchAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

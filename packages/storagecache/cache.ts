@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A cache instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
- * Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2021-03-01.
  *
- * Other available API versions: 2021-03-01, 2023-03-01-preview, 2023-11-01-preview, 2024-03-01, 2024-07-01.
+ * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+ *
+ * Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Cache extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class Cache extends pulumi.CustomResource {
         return obj['__pulumiType'] === Cache.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The size of this Cache, in GB.
      */
@@ -147,6 +152,7 @@ export class Cache extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
             resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["health"] = undefined /*out*/;
             resourceInputs["mountAddresses"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -157,6 +163,7 @@ export class Cache extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["upgradeStatus"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["cacheSizeGB"] = undefined /*out*/;
             resourceInputs["directoryServicesSettings"] = undefined /*out*/;
             resourceInputs["encryptionSettings"] = undefined /*out*/;

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the private endpoint connection for the Cloud Hsm Cluster.
- * Azure REST API version: 2022-08-31-preview.
  *
- * Other available API versions: 2023-12-10-preview, 2024-06-30-preview.
+ * Uses Azure REST API version 2024-06-30-preview.
+ *
+ * Other available API versions: 2022-08-31-preview, 2023-12-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getCloudHsmClusterPrivateEndpointConnection(args: GetCloudHsmClusterPrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudHsmClusterPrivateEndpointConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -18,7 +19,7 @@ export function getCloudHsmClusterPrivateEndpointConnection(args: GetCloudHsmClu
 
 export interface GetCloudHsmClusterPrivateEndpointConnectionArgs {
     /**
-     * The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 24 characters in length.
+     * The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
      */
     cloudHsmClusterName: string;
     /**
@@ -35,6 +36,10 @@ export interface GetCloudHsmClusterPrivateEndpointConnectionArgs {
  * The private endpoint connection resource.
  */
 export interface GetCloudHsmClusterPrivateEndpointConnectionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Modified whenever there is a change in the state of private endpoint connection.
      */
@@ -74,9 +79,10 @@ export interface GetCloudHsmClusterPrivateEndpointConnectionResult {
 }
 /**
  * Gets the private endpoint connection for the Cloud Hsm Cluster.
- * Azure REST API version: 2022-08-31-preview.
  *
- * Other available API versions: 2023-12-10-preview, 2024-06-30-preview.
+ * Uses Azure REST API version 2024-06-30-preview.
+ *
+ * Other available API versions: 2022-08-31-preview, 2023-12-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getCloudHsmClusterPrivateEndpointConnectionOutput(args: GetCloudHsmClusterPrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudHsmClusterPrivateEndpointConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -89,7 +95,7 @@ export function getCloudHsmClusterPrivateEndpointConnectionOutput(args: GetCloud
 
 export interface GetCloudHsmClusterPrivateEndpointConnectionOutputArgs {
     /**
-     * The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 24 characters in length.
+     * The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
      */
     cloudHsmClusterName: pulumi.Input<string>;
     /**

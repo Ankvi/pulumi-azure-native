@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get properties of a permission binding.
- * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+ * Uses Azure REST API version 2025-02-15.
+ *
+ * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPermissionBinding(args: GetPermissionBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetPermissionBindingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +37,10 @@ export interface GetPermissionBindingArgs {
  */
 export interface GetPermissionBindingResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The name of the client group resource that the permission is bound to.
      * The client group needs to be a resource under the same namespace the permission binding is a part of.
      */
@@ -61,7 +66,7 @@ export interface GetPermissionBindingResult {
      */
     readonly provisioningState: string;
     /**
-     * The system metadata relating to the PermissionBinding resource.
+     * The system metadata relating to the Event Grid resource.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
@@ -76,9 +81,10 @@ export interface GetPermissionBindingResult {
 }
 /**
  * Get properties of a permission binding.
- * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+ * Uses Azure REST API version 2025-02-15.
+ *
+ * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPermissionBindingOutput(args: GetPermissionBindingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPermissionBindingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

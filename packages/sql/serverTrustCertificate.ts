@@ -2,9 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Server trust certificate imported from box to enable connection between box and Sql Managed Instance.
- * Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2021-05-01-preview.
  *
- * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+ * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
+ *
+ * Other available API versions: 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ServerTrustCertificate extends pulumi.CustomResource {
     /**
@@ -33,6 +34,10 @@ export class ServerTrustCertificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServerTrustCertificate.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The certificate name
      */
@@ -75,10 +80,12 @@ export class ServerTrustCertificate extends pulumi.CustomResource {
             resourceInputs["managedInstanceName"] = args ? args.managedInstanceName : undefined;
             resourceInputs["publicBlob"] = args ? args.publicBlob : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["thumbprint"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["certificateName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["publicBlob"] = undefined /*out*/;
@@ -86,7 +93,7 @@ export class ServerTrustCertificate extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20210501preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20210801preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20211101:ServerTrustCertificate" }, { type: "azure-native:sql/v20211101preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20220201preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20220501preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20220801preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20221101preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20230201preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20230501preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20230801preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20240501preview:ServerTrustCertificate" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20210501preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20210801preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20211101:ServerTrustCertificate" }, { type: "azure-native:sql/v20211101preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20220201preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20220501preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20220801preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20221101preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20230201preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20230501preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20230801:ServerTrustCertificate" }, { type: "azure-native:sql/v20230801preview:ServerTrustCertificate" }, { type: "azure-native:sql/v20240501preview:ServerTrustCertificate" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ServerTrustCertificate.__pulumiType, name, resourceInputs, opts);
     }

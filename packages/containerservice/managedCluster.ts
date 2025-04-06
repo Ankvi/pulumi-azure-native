@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Managed cluster.
- * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-03-01.
  *
- * Other available API versions: 2019-06-01, 2021-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview, 2024-08-01, 2024-09-01, 2024-09-02-preview, 2024-10-01.
+ * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+ *
+ * Other available API versions: 2019-11-01, 2020-01-01, 2020-02-01, 2020-03-01, 2020-04-01, 2020-06-01, 2020-07-01, 2020-09-01, 2020-11-01, 2020-12-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-07-01, 2021-08-01, 2021-09-01, 2021-10-01, 2021-11-01-preview, 2022-01-01, 2022-01-02-preview, 2022-02-01, 2022-02-02-preview, 2022-03-01, 2022-03-02-preview, 2022-04-01, 2022-04-02-preview, 2022-05-02-preview, 2022-06-01, 2022-06-02-preview, 2022-07-01, 2022-07-02-preview, 2022-08-02-preview, 2022-08-03-preview, 2022-09-01, 2022-09-02-preview, 2022-10-02-preview, 2022-11-01, 2022-11-02-preview, 2023-01-01, 2023-01-02-preview, 2023-02-01, 2023-02-02-preview, 2023-03-01, 2023-03-02-preview, 2023-04-01, 2023-04-02-preview, 2023-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview, 2024-08-01, 2024-09-01, 2024-09-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  *
  * When creating a managed cluster you must define at least one agent pool inline via the `agentPoolProfiles` property. The Azure API does not currently allow this property to be updated directly. Instead, additional agent pools can be defined via the `AgentPool` resource. If needing to change the initial agent pool profile property, you can either trigger the whole cluster to be re-created by using the [replaceOnChanges resource option](https://www.pulumi.com/docs/concepts/options/replaceonchanges/), or make the change directly in Azure then use `pulumi refresh` to update the stack's stack to match.
  */
@@ -61,6 +62,10 @@ export class ManagedCluster extends pulumi.CustomResource {
      */
     public readonly autoUpgradeProfile!: pulumi.Output<types.outputs.ManagedClusterAutoUpgradeProfileResponse | undefined>;
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Azure Monitor addon profiles for monitoring the managed cluster.
      */
     public readonly azureMonitorProfile!: pulumi.Output<types.outputs.ManagedClusterAzureMonitorProfileResponse | undefined>;
@@ -84,6 +89,10 @@ export class ManagedCluster extends pulumi.CustomResource {
      * This cannot be updated once the Managed Cluster has been created.
      */
     public readonly dnsPrefix!: pulumi.Output<string | undefined>;
+    /**
+     * Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal etag convention.
+     */
+    public /*out*/ readonly eTag!: pulumi.Output<string>;
     /**
      * (DEPRECATED) Whether to enable Kubernetes pod security policy (preview). PodSecurityPolicy was deprecated in Kubernetes v1.21, and removed from Kubernetes in v1.25. Learn more at https://aka.ms/k8s/psp and https://aka.ms/aks/psp.
      */
@@ -113,9 +122,13 @@ export class ManagedCluster extends pulumi.CustomResource {
      */
     public readonly identity!: pulumi.Output<types.outputs.ManagedClusterIdentityResponse | undefined>;
     /**
-     * Identities associated with the cluster.
+     * The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
      */
     public readonly identityProfile!: pulumi.Output<{[key: string]: types.outputs.UserAssignedIdentityResponse} | undefined>;
+    /**
+     * Ingress profile for the managed cluster.
+     */
+    public readonly ingressProfile!: pulumi.Output<types.outputs.ManagedClusterIngressProfileResponse | undefined>;
     /**
      * Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.
      */
@@ -133,6 +146,10 @@ export class ManagedCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly maxAgentPools!: pulumi.Output<number>;
     /**
+     * Optional cluster metrics configuration.
+     */
+    public readonly metricsProfile!: pulumi.Output<types.outputs.ManagedClusterMetricsProfileResponse | undefined>;
+    /**
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -144,6 +161,10 @@ export class ManagedCluster extends pulumi.CustomResource {
      * The name of the resource group containing agent pool nodes.
      */
     public readonly nodeResourceGroup!: pulumi.Output<string | undefined>;
+    /**
+     * Profile of the node resource group configuration.
+     */
+    public readonly nodeResourceGroupProfile!: pulumi.Output<types.outputs.ManagedClusterNodeResourceGroupProfileResponse | undefined>;
     /**
      * The OIDC issuer profile of the Managed Cluster.
      */
@@ -173,9 +194,17 @@ export class ManagedCluster extends pulumi.CustomResource {
      */
     public readonly publicNetworkAccess!: pulumi.Output<string | undefined>;
     /**
+     * The resourceUID uniquely identifies ManagedClusters that reuse ARM ResourceIds (i.e: create, delete, create sequence)
+     */
+    public /*out*/ readonly resourceUID!: pulumi.Output<string>;
+    /**
      * Security profile for the managed cluster.
      */
     public readonly securityProfile!: pulumi.Output<types.outputs.ManagedClusterSecurityProfileResponse | undefined>;
+    /**
+     * Service mesh profile for a managed cluster.
+     */
+    public readonly serviceMeshProfile!: pulumi.Output<types.outputs.ServiceMeshProfileResponse | undefined>;
     /**
      * Information about a service principal identity for the cluster to use for manipulating Azure APIs.
      */
@@ -204,6 +233,10 @@ export class ManagedCluster extends pulumi.CustomResource {
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
+    /**
+     * Settings for upgrading a cluster.
+     */
+    public readonly upgradeSettings!: pulumi.Output<types.outputs.ClusterUpgradeSettingsResponse | undefined>;
     /**
      * The profile for Windows VMs in the Managed Cluster.
      */
@@ -244,11 +277,14 @@ export class ManagedCluster extends pulumi.CustomResource {
             resourceInputs["httpProxyConfig"] = args ? args.httpProxyConfig : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["identityProfile"] = args ? args.identityProfile : undefined;
+            resourceInputs["ingressProfile"] = args ? args.ingressProfile : undefined;
             resourceInputs["kubernetesVersion"] = args ? args.kubernetesVersion : undefined;
             resourceInputs["linuxProfile"] = args ? args.linuxProfile : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["metricsProfile"] = args ? args.metricsProfile : undefined;
             resourceInputs["networkProfile"] = args ? (args.networkProfile ? pulumi.output(args.networkProfile).apply(types.inputs.containerServiceNetworkProfileArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["nodeResourceGroup"] = args ? args.nodeResourceGroup : undefined;
+            resourceInputs["nodeResourceGroupProfile"] = args ? args.nodeResourceGroupProfile : undefined;
             resourceInputs["oidcIssuerProfile"] = args ? args.oidcIssuerProfile : undefined;
             resourceInputs["podIdentityProfile"] = args ? args.podIdentityProfile : undefined;
             resourceInputs["privateLinkResources"] = args ? args.privateLinkResources : undefined;
@@ -256,21 +292,26 @@ export class ManagedCluster extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceName"] = args ? args.resourceName : undefined;
             resourceInputs["securityProfile"] = args ? (args.securityProfile ? pulumi.output(args.securityProfile).apply(types.inputs.managedClusterSecurityProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["serviceMeshProfile"] = args ? args.serviceMeshProfile : undefined;
             resourceInputs["servicePrincipalProfile"] = args ? args.servicePrincipalProfile : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["storageProfile"] = args ? args.storageProfile : undefined;
             resourceInputs["supportPlan"] = args ? args.supportPlan : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
             resourceInputs["windowsProfile"] = args ? args.windowsProfile : undefined;
-            resourceInputs["workloadAutoScalerProfile"] = args ? args.workloadAutoScalerProfile : undefined;
+            resourceInputs["workloadAutoScalerProfile"] = args ? (args.workloadAutoScalerProfile ? pulumi.output(args.workloadAutoScalerProfile).apply(types.inputs.managedClusterWorkloadAutoScalerProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["azurePortalFQDN"] = undefined /*out*/;
             resourceInputs["currentKubernetesVersion"] = undefined /*out*/;
+            resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["fqdn"] = undefined /*out*/;
             resourceInputs["maxAgentPools"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["powerState"] = undefined /*out*/;
             resourceInputs["privateFQDN"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["resourceUID"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
@@ -280,12 +321,14 @@ export class ManagedCluster extends pulumi.CustomResource {
             resourceInputs["apiServerAccessProfile"] = undefined /*out*/;
             resourceInputs["autoScalerProfile"] = undefined /*out*/;
             resourceInputs["autoUpgradeProfile"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["azureMonitorProfile"] = undefined /*out*/;
             resourceInputs["azurePortalFQDN"] = undefined /*out*/;
             resourceInputs["currentKubernetesVersion"] = undefined /*out*/;
             resourceInputs["disableLocalAccounts"] = undefined /*out*/;
             resourceInputs["diskEncryptionSetID"] = undefined /*out*/;
             resourceInputs["dnsPrefix"] = undefined /*out*/;
+            resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["enablePodSecurityPolicy"] = undefined /*out*/;
             resourceInputs["enableRBAC"] = undefined /*out*/;
             resourceInputs["extendedLocation"] = undefined /*out*/;
@@ -294,13 +337,16 @@ export class ManagedCluster extends pulumi.CustomResource {
             resourceInputs["httpProxyConfig"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["identityProfile"] = undefined /*out*/;
+            resourceInputs["ingressProfile"] = undefined /*out*/;
             resourceInputs["kubernetesVersion"] = undefined /*out*/;
             resourceInputs["linuxProfile"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["maxAgentPools"] = undefined /*out*/;
+            resourceInputs["metricsProfile"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkProfile"] = undefined /*out*/;
             resourceInputs["nodeResourceGroup"] = undefined /*out*/;
+            resourceInputs["nodeResourceGroupProfile"] = undefined /*out*/;
             resourceInputs["oidcIssuerProfile"] = undefined /*out*/;
             resourceInputs["podIdentityProfile"] = undefined /*out*/;
             resourceInputs["powerState"] = undefined /*out*/;
@@ -308,7 +354,9 @@ export class ManagedCluster extends pulumi.CustomResource {
             resourceInputs["privateLinkResources"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["publicNetworkAccess"] = undefined /*out*/;
+            resourceInputs["resourceUID"] = undefined /*out*/;
             resourceInputs["securityProfile"] = undefined /*out*/;
+            resourceInputs["serviceMeshProfile"] = undefined /*out*/;
             resourceInputs["servicePrincipalProfile"] = undefined /*out*/;
             resourceInputs["sku"] = undefined /*out*/;
             resourceInputs["storageProfile"] = undefined /*out*/;
@@ -316,11 +364,12 @@ export class ManagedCluster extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["upgradeSettings"] = undefined /*out*/;
             resourceInputs["windowsProfile"] = undefined /*out*/;
             resourceInputs["workloadAutoScalerProfile"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20170831:ManagedCluster" }, { type: "azure-native:containerservice/v20180331:ManagedCluster" }, { type: "azure-native:containerservice/v20180801preview:ManagedCluster" }, { type: "azure-native:containerservice/v20190201:ManagedCluster" }, { type: "azure-native:containerservice/v20190401:ManagedCluster" }, { type: "azure-native:containerservice/v20190601:ManagedCluster" }, { type: "azure-native:containerservice/v20190801:ManagedCluster" }, { type: "azure-native:containerservice/v20191001:ManagedCluster" }, { type: "azure-native:containerservice/v20191101:ManagedCluster" }, { type: "azure-native:containerservice/v20200101:ManagedCluster" }, { type: "azure-native:containerservice/v20200201:ManagedCluster" }, { type: "azure-native:containerservice/v20200301:ManagedCluster" }, { type: "azure-native:containerservice/v20200401:ManagedCluster" }, { type: "azure-native:containerservice/v20200601:ManagedCluster" }, { type: "azure-native:containerservice/v20200701:ManagedCluster" }, { type: "azure-native:containerservice/v20200901:ManagedCluster" }, { type: "azure-native:containerservice/v20201101:ManagedCluster" }, { type: "azure-native:containerservice/v20201201:ManagedCluster" }, { type: "azure-native:containerservice/v20210201:ManagedCluster" }, { type: "azure-native:containerservice/v20210301:ManagedCluster" }, { type: "azure-native:containerservice/v20210501:ManagedCluster" }, { type: "azure-native:containerservice/v20210701:ManagedCluster" }, { type: "azure-native:containerservice/v20210801:ManagedCluster" }, { type: "azure-native:containerservice/v20210901:ManagedCluster" }, { type: "azure-native:containerservice/v20211001:ManagedCluster" }, { type: "azure-native:containerservice/v20211101preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220101:ManagedCluster" }, { type: "azure-native:containerservice/v20220102preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220201:ManagedCluster" }, { type: "azure-native:containerservice/v20220202preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220301:ManagedCluster" }, { type: "azure-native:containerservice/v20220302preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220401:ManagedCluster" }, { type: "azure-native:containerservice/v20220402preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220502preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220601:ManagedCluster" }, { type: "azure-native:containerservice/v20220602preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220701:ManagedCluster" }, { type: "azure-native:containerservice/v20220702preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220802preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220803preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220901:ManagedCluster" }, { type: "azure-native:containerservice/v20220902preview:ManagedCluster" }, { type: "azure-native:containerservice/v20221002preview:ManagedCluster" }, { type: "azure-native:containerservice/v20221101:ManagedCluster" }, { type: "azure-native:containerservice/v20221102preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230101:ManagedCluster" }, { type: "azure-native:containerservice/v20230102preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230201:ManagedCluster" }, { type: "azure-native:containerservice/v20230202preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230301:ManagedCluster" }, { type: "azure-native:containerservice/v20230302preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230401:ManagedCluster" }, { type: "azure-native:containerservice/v20230402preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230501:ManagedCluster" }, { type: "azure-native:containerservice/v20230502preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230601:ManagedCluster" }, { type: "azure-native:containerservice/v20230602preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230701:ManagedCluster" }, { type: "azure-native:containerservice/v20230702preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230801:ManagedCluster" }, { type: "azure-native:containerservice/v20230802preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230901:ManagedCluster" }, { type: "azure-native:containerservice/v20230902preview:ManagedCluster" }, { type: "azure-native:containerservice/v20231001:ManagedCluster" }, { type: "azure-native:containerservice/v20231002preview:ManagedCluster" }, { type: "azure-native:containerservice/v20231101:ManagedCluster" }, { type: "azure-native:containerservice/v20231102preview:ManagedCluster" }, { type: "azure-native:containerservice/v20240101:ManagedCluster" }, { type: "azure-native:containerservice/v20240102preview:ManagedCluster" }, { type: "azure-native:containerservice/v20240201:ManagedCluster" }, { type: "azure-native:containerservice/v20240202preview:ManagedCluster" }, { type: "azure-native:containerservice/v20240302preview:ManagedCluster" }, { type: "azure-native:containerservice/v20240402preview:ManagedCluster" }, { type: "azure-native:containerservice/v20240501:ManagedCluster" }, { type: "azure-native:containerservice/v20240502preview:ManagedCluster" }, { type: "azure-native:containerservice/v20240602preview:ManagedCluster" }, { type: "azure-native:containerservice/v20240701:ManagedCluster" }, { type: "azure-native:containerservice/v20240702preview:ManagedCluster" }, { type: "azure-native:containerservice/v20240801:ManagedCluster" }, { type: "azure-native:containerservice/v20240901:ManagedCluster" }, { type: "azure-native:containerservice/v20240902preview:ManagedCluster" }, { type: "azure-native:containerservice/v20241001:ManagedCluster" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20170831:ManagedCluster" }, { type: "azure-native:containerservice/v20180331:ManagedCluster" }, { type: "azure-native:containerservice/v20180801preview:ManagedCluster" }, { type: "azure-native:containerservice/v20190201:ManagedCluster" }, { type: "azure-native:containerservice/v20190401:ManagedCluster" }, { type: "azure-native:containerservice/v20190601:ManagedCluster" }, { type: "azure-native:containerservice/v20190801:ManagedCluster" }, { type: "azure-native:containerservice/v20191001:ManagedCluster" }, { type: "azure-native:containerservice/v20191101:ManagedCluster" }, { type: "azure-native:containerservice/v20200101:ManagedCluster" }, { type: "azure-native:containerservice/v20200201:ManagedCluster" }, { type: "azure-native:containerservice/v20200301:ManagedCluster" }, { type: "azure-native:containerservice/v20200401:ManagedCluster" }, { type: "azure-native:containerservice/v20200601:ManagedCluster" }, { type: "azure-native:containerservice/v20200701:ManagedCluster" }, { type: "azure-native:containerservice/v20200901:ManagedCluster" }, { type: "azure-native:containerservice/v20201101:ManagedCluster" }, { type: "azure-native:containerservice/v20201201:ManagedCluster" }, { type: "azure-native:containerservice/v20210201:ManagedCluster" }, { type: "azure-native:containerservice/v20210301:ManagedCluster" }, { type: "azure-native:containerservice/v20210501:ManagedCluster" }, { type: "azure-native:containerservice/v20210701:ManagedCluster" }, { type: "azure-native:containerservice/v20210801:ManagedCluster" }, { type: "azure-native:containerservice/v20210901:ManagedCluster" }, { type: "azure-native:containerservice/v20211001:ManagedCluster" }, { type: "azure-native:containerservice/v20211101preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220101:ManagedCluster" }, { type: "azure-native:containerservice/v20220102preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220201:ManagedCluster" }, { type: "azure-native:containerservice/v20220202preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220301:ManagedCluster" }, { type: "azure-native:containerservice/v20220302preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220401:ManagedCluster" }, { type: "azure-native:containerservice/v20220402preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220502preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220601:ManagedCluster" }, { type: "azure-native:containerservice/v20220602preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220701:ManagedCluster" }, { type: "azure-native:containerservice/v20220702preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220802preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220803preview:ManagedCluster" }, { type: "azure-native:containerservice/v20220901:ManagedCluster" }, { type: "azure-native:containerservice/v20220902preview:ManagedCluster" }, { type: "azure-native:containerservice/v20221002preview:ManagedCluster" }, { type: "azure-native:containerservice/v20221101:ManagedCluster" }, { type: "azure-native:containerservice/v20221102preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230101:ManagedCluster" }, { type: "azure-native:containerservice/v20230102preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230201:ManagedCluster" }, { type: "azure-native:containerservice/v20230202preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230301:ManagedCluster" }, { type: "azure-native:containerservice/v20230302preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230401:ManagedCluster" }, { type: "azure-native:containerservice/v20230402preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230501:ManagedCluster" }, { type: "azure-native:containerservice/v20230502preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230601:ManagedCluster" }, { type: "azure-native:containerservice/v20230602preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230701:ManagedCluster" }, { type: "azure-native:containerservice/v20230702preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230801:ManagedCluster" }, { type: "azure-native:containerservice/v20230802preview:ManagedCluster" }, { type: "azure-native:containerservice/v20230901:ManagedCluster" }, { type: "azure-native:containerservice/v20230902preview:ManagedCluster" }, { type: "azure-native:containerservice/v20231001:ManagedCluster" }, { type: "azure-native:containerservice/v20231002preview:ManagedCluster" }, { type: "azure-native:containerservice/v20231101:ManagedCluster" }, { type: "azure-native:containerservice/v20231102preview:ManagedCluster" }, { type: "azure-native:containerservice/v20240101:ManagedCluster" }, { type: "azure-native:containerservice/v20240102preview:ManagedCluster" }, { type: "azure-native:containerservice/v20240201:ManagedCluster" }, { type: "azure-native:containerservice/v20240202preview:ManagedCluster" }, { type: "azure-native:containerservice/v20240302preview:ManagedCluster" }, { type: "azure-native:containerservice/v20240402preview:ManagedCluster" }, { type: "azure-native:containerservice/v20240501:ManagedCluster" }, { type: "azure-native:containerservice/v20240502preview:ManagedCluster" }, { type: "azure-native:containerservice/v20240602preview:ManagedCluster" }, { type: "azure-native:containerservice/v20240701:ManagedCluster" }, { type: "azure-native:containerservice/v20240702preview:ManagedCluster" }, { type: "azure-native:containerservice/v20240801:ManagedCluster" }, { type: "azure-native:containerservice/v20240901:ManagedCluster" }, { type: "azure-native:containerservice/v20240902preview:ManagedCluster" }, { type: "azure-native:containerservice/v20241001:ManagedCluster" }, { type: "azure-native:containerservice/v20241002preview:ManagedCluster" }, { type: "azure-native:containerservice/v20250101:ManagedCluster" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedCluster.__pulumiType, name, resourceInputs, opts);
     }
@@ -395,9 +444,13 @@ export interface ManagedClusterArgs {
      */
     identity?: pulumi.Input<types.inputs.ManagedClusterIdentityArgs>;
     /**
-     * Identities associated with the cluster.
+     * The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
      */
     identityProfile?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.UserAssignedIdentityArgs>}>;
+    /**
+     * Ingress profile for the managed cluster.
+     */
+    ingressProfile?: pulumi.Input<types.inputs.ManagedClusterIngressProfileArgs>;
     /**
      * Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.
      */
@@ -411,6 +464,10 @@ export interface ManagedClusterArgs {
      */
     location?: pulumi.Input<string>;
     /**
+     * Optional cluster metrics configuration.
+     */
+    metricsProfile?: pulumi.Input<types.inputs.ManagedClusterMetricsProfileArgs>;
+    /**
      * The network configuration profile.
      */
     networkProfile?: pulumi.Input<types.inputs.ContainerServiceNetworkProfileArgs>;
@@ -418,6 +475,10 @@ export interface ManagedClusterArgs {
      * The name of the resource group containing agent pool nodes.
      */
     nodeResourceGroup?: pulumi.Input<string>;
+    /**
+     * Profile of the node resource group configuration.
+     */
+    nodeResourceGroupProfile?: pulumi.Input<types.inputs.ManagedClusterNodeResourceGroupProfileArgs>;
     /**
      * The OIDC issuer profile of the Managed Cluster.
      */
@@ -447,6 +508,10 @@ export interface ManagedClusterArgs {
      */
     securityProfile?: pulumi.Input<types.inputs.ManagedClusterSecurityProfileArgs>;
     /**
+     * Service mesh profile for a managed cluster.
+     */
+    serviceMeshProfile?: pulumi.Input<types.inputs.ServiceMeshProfileArgs>;
+    /**
      * Information about a service principal identity for the cluster to use for manipulating Azure APIs.
      */
     servicePrincipalProfile?: pulumi.Input<types.inputs.ManagedClusterServicePrincipalProfileArgs>;
@@ -466,6 +531,10 @@ export interface ManagedClusterArgs {
      * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Settings for upgrading a cluster.
+     */
+    upgradeSettings?: pulumi.Input<types.inputs.ClusterUpgradeSettingsArgs>;
     /**
      * The profile for Windows VMs in the Managed Cluster.
      */

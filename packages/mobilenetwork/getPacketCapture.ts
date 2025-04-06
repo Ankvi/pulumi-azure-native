@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets information about the specified packet capture session.
- * Azure REST API version: 2023-06-01.
  *
- * Other available API versions: 2023-09-01, 2024-02-01, 2024-04-01.
+ * Uses Azure REST API version 2024-04-01.
+ *
+ * Other available API versions: 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPacketCapture(args: GetPacketCaptureArgs, opts?: pulumi.InvokeOptions): Promise<GetPacketCaptureResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +37,10 @@ export interface GetPacketCaptureArgs {
  */
 export interface GetPacketCaptureResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Number of bytes captured per packet, the remaining bytes are truncated. The default "0" means the entire packet is captured.
      */
     readonly bytesToCapturePerPacket?: number;
@@ -55,6 +60,10 @@ export interface GetPacketCaptureResult {
      * List of network interfaces to capture on.
      */
     readonly networkInterfaces?: string[];
+    /**
+     * The list of output files of a packet capture session.
+     */
+    readonly outputFiles: string[];
     /**
      * The provisioning state of the packet capture session resource.
      */
@@ -86,9 +95,10 @@ export interface GetPacketCaptureResult {
 }
 /**
  * Gets information about the specified packet capture session.
- * Azure REST API version: 2023-06-01.
  *
- * Other available API versions: 2023-09-01, 2024-02-01, 2024-04-01.
+ * Uses Azure REST API version 2024-04-01.
+ *
+ * Other available API versions: 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPacketCaptureOutput(args: GetPacketCaptureOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPacketCaptureResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The Get Azure Data Catalog Service operation retrieves a json representation of the data catalog.
- * Azure REST API version: 2016-03-30.
+ *
+ * Uses Azure REST API version 2016-03-30.
  */
 export function getADCCatalog(args: GetADCCatalogArgs, opts?: pulumi.InvokeOptions): Promise<GetADCCatalogResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,6 +33,10 @@ export interface GetADCCatalogResult {
      * Azure data catalog admin list.
      */
     readonly admins?: types.outputs.PrincipalsResponse[];
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Automatic unit adjustment enabled or not.
      */
@@ -79,7 +84,8 @@ export interface GetADCCatalogResult {
 }
 /**
  * The Get Azure Data Catalog Service operation retrieves a json representation of the data catalog.
- * Azure REST API version: 2016-03-30.
+ *
+ * Uses Azure REST API version 2016-03-30.
  */
 export function getADCCatalogOutput(args: GetADCCatalogOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetADCCatalogResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

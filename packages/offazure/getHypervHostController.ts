@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a HypervHost
- * Azure REST API version: 2023-06-06.
  *
- * Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+ * Uses Azure REST API version 2023-10-01-preview.
+ *
+ * Other available API versions: 2023-06-06, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getHypervHostController(args: GetHypervHostControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetHypervHostControllerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,6 +36,10 @@ export interface GetHypervHostControllerArgs {
  * A host resource belonging to a site resource.
  */
 export interface GetHypervHostControllerResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Gets the timestamp marking Hyper-V host creation.
      */
@@ -82,9 +87,10 @@ export interface GetHypervHostControllerResult {
 }
 /**
  * Get a HypervHost
- * Azure REST API version: 2023-06-06.
  *
- * Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+ * Uses Azure REST API version 2023-10-01-preview.
+ *
+ * Other available API versions: 2023-06-06, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getHypervHostControllerOutput(args: GetHypervHostControllerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHypervHostControllerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

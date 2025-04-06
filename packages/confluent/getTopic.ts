@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Details of topic record
- * Azure REST API version: 2024-07-01.
+ *
+ * Uses Azure REST API version 2024-07-01.
  */
 export function getTopic(args: GetTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -43,6 +44,10 @@ export interface GetTopicArgs {
  * Details of topic record
  */
 export interface GetTopicResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Config Specification of the topic
      */
@@ -94,7 +99,8 @@ export interface GetTopicResult {
 }
 /**
  * Details of topic record
- * Azure REST API version: 2024-07-01.
+ *
+ * Uses Azure REST API version 2024-07-01.
  */
 export function getTopicOutput(args: GetTopicOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTopicResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

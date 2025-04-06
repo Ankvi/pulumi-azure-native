@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Details of topic record
- * Azure REST API version: 2024-07-01.
+ *
+ * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
  */
 export class Topic extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class Topic extends pulumi.CustomResource {
         return obj['__pulumiType'] === Topic.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Config Specification of the topic
      */
@@ -114,9 +119,11 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["topicId"] = args ? args.topicId : undefined;
             resourceInputs["topicName"] = args ? args.topicName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["configs"] = undefined /*out*/;
             resourceInputs["inputConfigs"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;

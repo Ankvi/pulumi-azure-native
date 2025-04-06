@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get a MAK key.
- * Azure REST API version: 2019-09-16-preview.
+ *
+ * Uses Azure REST API version 2019-09-16-preview.
  */
 export function getMultipleActivationKey(args: GetMultipleActivationKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetMultipleActivationKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +32,10 @@ export interface GetMultipleActivationKeyResult {
      * Agreement number under which the key is requested.
      */
     readonly agreementNumber?: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * End of support of security updates activated by the MAK key.
      */
@@ -79,7 +84,8 @@ export interface GetMultipleActivationKeyResult {
 }
 /**
  * Get a MAK key.
- * Azure REST API version: 2019-09-16-preview.
+ *
+ * Uses Azure REST API version 2019-09-16-preview.
  */
 export function getMultipleActivationKeyOutput(args: GetMultipleActivationKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMultipleActivationKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

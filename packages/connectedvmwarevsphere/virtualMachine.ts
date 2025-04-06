@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Define the virtualMachine.
- * Azure REST API version: 2022-07-15-preview. Prior API version in Azure Native 1.x: 2020-10-01-preview.
  *
- * Other available API versions: 2023-03-01-preview.
+ * Uses Azure REST API version 2023-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-07-15-preview.
+ *
+ * Other available API versions: 2022-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualMachine extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class VirtualMachine extends pulumi.CustomResource {
         return obj['__pulumiType'] === VirtualMachine.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Gets the name of the corresponding resource in Kubernetes.
      */
@@ -107,7 +112,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public /*out*/ readonly powerState!: pulumi.Output<string>;
     /**
-     * Gets or sets the provisioning state.
+     * Gets the provisioning state.
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
@@ -195,6 +200,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["templateId"] = args ? args.templateId : undefined;
             resourceInputs["vCenterId"] = args ? args.vCenterId : undefined;
             resourceInputs["virtualMachineName"] = args ? args.virtualMachineName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["customResourceName"] = undefined /*out*/;
             resourceInputs["folderPath"] = undefined /*out*/;
             resourceInputs["instanceUuid"] = undefined /*out*/;
@@ -208,6 +214,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["uuid"] = undefined /*out*/;
             resourceInputs["vmId"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["customResourceName"] = undefined /*out*/;
             resourceInputs["extendedLocation"] = undefined /*out*/;
             resourceInputs["firmwareType"] = undefined /*out*/;

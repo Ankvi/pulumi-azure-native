@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Contains information about a pool.
- * Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2021-01-01.
  *
- * Other available API versions: 2023-11-01, 2024-02-01, 2024-07-01.
+ * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+ *
+ * Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Pool extends pulumi.CustomResource {
     /**
@@ -49,6 +50,10 @@ export class Pool extends pulumi.CustomResource {
      */
     public /*out*/ readonly autoScaleRun!: pulumi.Output<types.outputs.AutoScaleRunResponse>;
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * For Windows compute nodes, the Batch service installs the certificates to the specified certificate store and location. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
      *
      * Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
@@ -58,9 +63,6 @@ export class Pool extends pulumi.CustomResource {
     public /*out*/ readonly currentDedicatedNodes!: pulumi.Output<number>;
     public /*out*/ readonly currentLowPriorityNodes!: pulumi.Output<number>;
     public /*out*/ readonly currentNodeCommunicationMode!: pulumi.Output<string>;
-    /**
-     * Using CloudServiceConfiguration specifies that the nodes should be creating using Azure Cloud Services (PaaS), while VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
-     */
     public readonly deploymentConfiguration!: pulumi.Output<types.outputs.DeploymentConfigurationResponse | undefined>;
     /**
      * The display name need not be unique and can contain any Unicode characters up to a maximum length of 1024.
@@ -105,6 +107,10 @@ export class Pool extends pulumi.CustomResource {
      */
     public /*out*/ readonly resizeOperationStatus!: pulumi.Output<types.outputs.ResizeOperationStatusResponse>;
     /**
+     * The user-defined tags to be associated with the Azure Batch Pool. When specified, these tags are propagated to the backing Azure resources associated with the pool. This property can only be specified when the Batch account was created with the poolAllocationMode property set to 'UserSubscription'.
+     */
+    public readonly resourceTags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Defines the desired size of the pool. This can either be 'fixedScale' where the requested targetDedicatedNodes is specified, or 'autoScale' which defines a formula which is periodically reevaluated. If this property is not specified, the pool will have a fixed scale with 0 targetDedicatedNodes.
      */
     public readonly scaleSettings!: pulumi.Output<types.outputs.ScaleSettingsResponse | undefined>;
@@ -112,6 +118,10 @@ export class Pool extends pulumi.CustomResource {
      * In an PATCH (update) operation, this property can be set to an empty object to remove the start task from the pool.
      */
     public readonly startTask!: pulumi.Output<types.outputs.StartTaskResponse | undefined>;
+    /**
+     * The tags of the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * If omitted, the default value is Default.
      */
@@ -128,9 +138,13 @@ export class Pool extends pulumi.CustomResource {
      * The type of the resource.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
+    /**
+     * Describes an upgrade policy - automatic, manual, or rolling.
+     */
+    public readonly upgradePolicy!: pulumi.Output<types.outputs.UpgradePolicyResponse | undefined>;
     public readonly userAccounts!: pulumi.Output<types.outputs.UserAccountResponse[] | undefined>;
     /**
-     * For information about available sizes of virtual machines for Cloud Services pools (pools created with cloudServiceConfiguration), see Sizes for Cloud Services (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Batch supports all Cloud Services VM sizes except ExtraSmall. For information about available VM sizes for pools using images from the Virtual Machines Marketplace (pools created with virtualMachineConfiguration) see Sizes for Virtual Machines (Linux) (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) or Sizes for Virtual Machines (Windows) (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     * For information about available VM sizes, see Sizes for Virtual Machines in Azure (https://learn.microsoft.com/azure/virtual-machines/sizes/overview). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
      */
     public readonly vmSize!: pulumi.Output<string | undefined>;
 
@@ -155,7 +169,7 @@ export class Pool extends pulumi.CustomResource {
             resourceInputs["applicationLicenses"] = args ? args.applicationLicenses : undefined;
             resourceInputs["applicationPackages"] = args ? args.applicationPackages : undefined;
             resourceInputs["certificates"] = args ? args.certificates : undefined;
-            resourceInputs["deploymentConfiguration"] = args ? (args.deploymentConfiguration ? pulumi.output(args.deploymentConfiguration).apply(types.inputs.deploymentConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["deploymentConfiguration"] = args ? args.deploymentConfiguration : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["interNodeCommunication"] = args ? args.interNodeCommunication : undefined;
@@ -164,16 +178,20 @@ export class Pool extends pulumi.CustomResource {
             resourceInputs["networkConfiguration"] = args ? (args.networkConfiguration ? pulumi.output(args.networkConfiguration).apply(types.inputs.networkConfigurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["poolName"] = args ? args.poolName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["resourceTags"] = args ? args.resourceTags : undefined;
             resourceInputs["scaleSettings"] = args ? (args.scaleSettings ? pulumi.output(args.scaleSettings).apply(types.inputs.scaleSettingsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["startTask"] = args ? (args.startTask ? pulumi.output(args.startTask).apply(types.inputs.startTaskArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["targetNodeCommunicationMode"] = args ? args.targetNodeCommunicationMode : undefined;
             resourceInputs["taskSchedulingPolicy"] = args ? (args.taskSchedulingPolicy ? pulumi.output(args.taskSchedulingPolicy).apply(types.inputs.taskSchedulingPolicyArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["taskSlotsPerNode"] = (args ? args.taskSlotsPerNode : undefined) ?? 1;
+            resourceInputs["upgradePolicy"] = args ? args.upgradePolicy : undefined;
             resourceInputs["userAccounts"] = args ? args.userAccounts : undefined;
             resourceInputs["vmSize"] = args ? args.vmSize : undefined;
             resourceInputs["allocationState"] = undefined /*out*/;
             resourceInputs["allocationStateTransitionTime"] = undefined /*out*/;
             resourceInputs["autoScaleRun"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["currentDedicatedNodes"] = undefined /*out*/;
             resourceInputs["currentLowPriorityNodes"] = undefined /*out*/;
@@ -191,6 +209,7 @@ export class Pool extends pulumi.CustomResource {
             resourceInputs["applicationLicenses"] = undefined /*out*/;
             resourceInputs["applicationPackages"] = undefined /*out*/;
             resourceInputs["autoScaleRun"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["certificates"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["currentDedicatedNodes"] = undefined /*out*/;
@@ -209,12 +228,15 @@ export class Pool extends pulumi.CustomResource {
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["provisioningStateTransitionTime"] = undefined /*out*/;
             resourceInputs["resizeOperationStatus"] = undefined /*out*/;
+            resourceInputs["resourceTags"] = undefined /*out*/;
             resourceInputs["scaleSettings"] = undefined /*out*/;
             resourceInputs["startTask"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["targetNodeCommunicationMode"] = undefined /*out*/;
             resourceInputs["taskSchedulingPolicy"] = undefined /*out*/;
             resourceInputs["taskSlotsPerNode"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["upgradePolicy"] = undefined /*out*/;
             resourceInputs["userAccounts"] = undefined /*out*/;
             resourceInputs["vmSize"] = undefined /*out*/;
         }
@@ -247,9 +269,6 @@ export interface PoolArgs {
      * Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
      */
     certificates?: pulumi.Input<pulumi.Input<types.inputs.CertificateReferenceArgs>[]>;
-    /**
-     * Using CloudServiceConfiguration specifies that the nodes should be creating using Azure Cloud Services (PaaS), while VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
-     */
     deploymentConfiguration?: pulumi.Input<types.inputs.DeploymentConfigurationArgs>;
     /**
      * The display name need not be unique and can contain any Unicode characters up to a maximum length of 1024.
@@ -284,6 +303,10 @@ export interface PoolArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
+     * The user-defined tags to be associated with the Azure Batch Pool. When specified, these tags are propagated to the backing Azure resources associated with the pool. This property can only be specified when the Batch account was created with the poolAllocationMode property set to 'UserSubscription'.
+     */
+    resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Defines the desired size of the pool. This can either be 'fixedScale' where the requested targetDedicatedNodes is specified, or 'autoScale' which defines a formula which is periodically reevaluated. If this property is not specified, the pool will have a fixed scale with 0 targetDedicatedNodes.
      */
     scaleSettings?: pulumi.Input<types.inputs.ScaleSettingsArgs>;
@@ -291,6 +314,10 @@ export interface PoolArgs {
      * In an PATCH (update) operation, this property can be set to an empty object to remove the start task from the pool.
      */
     startTask?: pulumi.Input<types.inputs.StartTaskArgs>;
+    /**
+     * The tags of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * If omitted, the default value is Default.
      */
@@ -303,9 +330,13 @@ export interface PoolArgs {
      * The default value is 1. The maximum value is the smaller of 4 times the number of cores of the vmSize of the pool or 256.
      */
     taskSlotsPerNode?: pulumi.Input<number>;
+    /**
+     * Describes an upgrade policy - automatic, manual, or rolling.
+     */
+    upgradePolicy?: pulumi.Input<types.inputs.UpgradePolicyArgs>;
     userAccounts?: pulumi.Input<pulumi.Input<types.inputs.UserAccountArgs>[]>;
     /**
-     * For information about available sizes of virtual machines for Cloud Services pools (pools created with cloudServiceConfiguration), see Sizes for Cloud Services (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Batch supports all Cloud Services VM sizes except ExtraSmall. For information about available VM sizes for pools using images from the Virtual Machines Marketplace (pools created with virtualMachineConfiguration) see Sizes for Virtual Machines (Linux) (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) or Sizes for Virtual Machines (Windows) (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     * For information about available VM sizes, see Sizes for Virtual Machines in Azure (https://learn.microsoft.com/azure/virtual-machines/sizes/overview). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
      */
     vmSize?: pulumi.Input<string>;
 }

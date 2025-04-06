@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Configuration settings for the Azure App Service Authentication / Authorization V2 feature.
- * Azure REST API version: 2021-02-01. Prior API version in Azure Native 1.x: 2020-12-01.
  *
- * Other available API versions: 2020-10-01.
+ * Uses Azure REST API version 2021-02-01. In version 2.x of the Azure Native provider, it used API version 2021-02-01.
+ *
+ * Other available API versions: 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebAppAuthSettingsV2Slot extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class WebAppAuthSettingsV2Slot extends pulumi.CustomResource {
         return obj['__pulumiType'] === WebAppAuthSettingsV2Slot.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.
      */
@@ -96,8 +101,10 @@ export class WebAppAuthSettingsV2Slot extends pulumi.CustomResource {
             resourceInputs["platform"] = args ? args.platform : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["slot"] = args ? args.slot : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["globalValidation"] = undefined /*out*/;
             resourceInputs["httpSettings"] = undefined /*out*/;
             resourceInputs["identityProviders"] = undefined /*out*/;

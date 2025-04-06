@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns a BotService specified by the parameters.
- * Azure REST API version: 2022-09-15.
  *
- * Other available API versions: 2023-09-15-preview.
+ * Uses Azure REST API version 2023-09-15-preview.
+ *
+ * Other available API versions: 2022-09-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native botservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getBot(args: GetBotArgs, opts?: pulumi.InvokeOptions): Promise<GetBotResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,6 +31,10 @@ export interface GetBotArgs {
  * Bot resource definition
  */
 export interface GetBotResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Entity Tag.
      */
@@ -73,9 +78,10 @@ export interface GetBotResult {
 }
 /**
  * Returns a BotService specified by the parameters.
- * Azure REST API version: 2022-09-15.
  *
- * Other available API versions: 2023-09-15-preview.
+ * Uses Azure REST API version 2023-09-15-preview.
+ *
+ * Other available API versions: 2022-09-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native botservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getBotOutput(args: GetBotOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBotResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

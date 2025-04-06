@@ -1,6 +1,55 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * All Customer-managed key encryption properties for the resource.
+ */
+export interface CustomerManagedKeyEncryptionArgs {
+    /**
+     * All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+     */
+    keyEncryptionKeyIdentity?: pulumi.Input<CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs>;
+    /**
+     * key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
+     */
+    keyEncryptionKeyUrl?: pulumi.Input<string>;
+}
+
+/**
+ * All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+ */
+export interface CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs {
+    /**
+     * delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only.
+     */
+    delegatedIdentityClientId?: pulumi.Input<string>;
+    /**
+     * Values can be systemAssignedIdentity or userAssignedIdentity
+     */
+    identityType?: pulumi.Input<string | enums.IdentityType>;
+    /**
+     * user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and delegatedResourceIdentity.
+     */
+    userAssignedIdentityResourceId?: pulumi.Input<string>;
+}
+
+/**
+ * Project catalog settings for project catalogs under a project associated to this dev center.
+ */
+export interface DevCenterProjectCatalogSettingsArgs {
+    /**
+     * Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+     */
+    catalogItemSyncEnableStatus?: pulumi.Input<string | enums.CatalogItemSyncEnableStatus>;
+}
+
+export interface EncryptionArgs {
+    /**
+     * All Customer-managed key encryption properties for the resource.
+     */
+    customerManagedKeyEncryption?: pulumi.Input<CustomerManagedKeyEncryptionArgs>;
+}
+
+/**
  * Properties for a Git repository catalog.
  */
 export interface GitCatalogArgs {
@@ -44,6 +93,16 @@ export interface ManagedServiceIdentityArgs {
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
     userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Settings to be used when associating a project with a catalog.
+ */
+export interface ProjectCatalogSettingsArgs {
+    /**
+     * Indicates catalog item types that can be synced.
+     */
+    catalogItemSyncTypes?: pulumi.Input<pulumi.Input<string | enums.CatalogItemType>[]>;
 }
 
 /**
@@ -119,12 +178,3 @@ export interface UserRoleAssignmentArgs {
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
 }
-
-
-
-
-
-
-
-
-

@@ -2,9 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Retrieve the List of Authentication Keys for Self Hosted Integration Runtime.
- * Azure REST API version: 2022-03-30-preview.
  *
- * Other available API versions: 2023-07-15-preview.
+ * Uses Azure REST API version 2023-07-15-preview.
+ *
+ * Other available API versions: 2021-10-30-preview, 2022-01-30-preview, 2022-03-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listSqlMigrationServiceAuthKeys(args: ListSqlMigrationServiceAuthKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListSqlMigrationServiceAuthKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,9 +41,10 @@ export interface ListSqlMigrationServiceAuthKeysResult {
 }
 /**
  * Retrieve the List of Authentication Keys for Self Hosted Integration Runtime.
- * Azure REST API version: 2022-03-30-preview.
  *
- * Other available API versions: 2023-07-15-preview.
+ * Uses Azure REST API version 2023-07-15-preview.
+ *
+ * Other available API versions: 2021-10-30-preview, 2022-01-30-preview, 2022-03-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listSqlMigrationServiceAuthKeysOutput(args: ListSqlMigrationServiceAuthKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListSqlMigrationServiceAuthKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

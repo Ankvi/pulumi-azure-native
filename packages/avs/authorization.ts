@@ -1,10 +1,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * ExpressRoute Circuit Authorization
- * Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-03-20.
  *
- * Other available API versions: 2023-03-01, 2023-09-01.
+ * Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
+ *
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Authorization extends pulumi.CustomResource {
     /**
@@ -34,6 +36,10 @@ export class Authorization extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The ID of the ExpressRoute Circuit Authorization
      */
     public /*out*/ readonly expressRouteAuthorizationId!: pulumi.Output<string>;
@@ -46,15 +52,19 @@ export class Authorization extends pulumi.CustomResource {
      */
     public readonly expressRouteId!: pulumi.Output<string | undefined>;
     /**
-     * Resource name.
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The state of the  ExpressRoute Circuit Authorization provisioning
+     * The state of the ExpressRoute Circuit Authorization provisioning
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -79,17 +89,21 @@ export class Authorization extends pulumi.CustomResource {
             resourceInputs["expressRouteId"] = args ? args.expressRouteId : undefined;
             resourceInputs["privateCloudName"] = args ? args.privateCloudName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["expressRouteAuthorizationId"] = undefined /*out*/;
             resourceInputs["expressRouteAuthorizationKey"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["expressRouteAuthorizationId"] = undefined /*out*/;
             resourceInputs["expressRouteAuthorizationKey"] = undefined /*out*/;
             resourceInputs["expressRouteId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -104,7 +118,7 @@ export class Authorization extends pulumi.CustomResource {
  */
 export interface AuthorizationArgs {
     /**
-     * Name of the ExpressRoute Circuit Authorization in the private cloud
+     * Name of the ExpressRoute Circuit Authorization
      */
     authorizationName?: pulumi.Input<string>;
     /**
@@ -112,7 +126,7 @@ export interface AuthorizationArgs {
      */
     expressRouteId?: pulumi.Input<string>;
     /**
-     * The name of the private cloud.
+     * Name of the private cloud
      */
     privateCloudName: pulumi.Input<string>;
     /**

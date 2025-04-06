@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the details of the replication extension.
- * Azure REST API version: 2021-02-16-preview.
+ *
+ * Uses Azure REST API version 2021-02-16-preview.
+ *
+ * Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getReplicationExtension(args: GetReplicationExtensionArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationExtensionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +37,10 @@ export interface GetReplicationExtensionArgs {
  */
 export interface GetReplicationExtensionResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Gets or sets the Id of the resource.
      */
     readonly id: string;
@@ -53,7 +60,10 @@ export interface GetReplicationExtensionResult {
 }
 /**
  * Gets the details of the replication extension.
- * Azure REST API version: 2021-02-16-preview.
+ *
+ * Uses Azure REST API version 2021-02-16-preview.
+ *
+ * Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getReplicationExtensionOutput(args: GetReplicationExtensionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReplicationExtensionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

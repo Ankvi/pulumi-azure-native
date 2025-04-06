@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Connection Setting registration for a Bot Service
- * Azure REST API version: 2022-09-15.
  *
- * Other available API versions: 2023-09-15-preview.
+ * Uses Azure REST API version 2023-09-15-preview.
+ *
+ * Other available API versions: 2022-09-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native botservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listBotConnectionWithSecrets(args: ListBotConnectionWithSecretsArgs, opts?: pulumi.InvokeOptions): Promise<ListBotConnectionWithSecretsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -78,9 +79,10 @@ export interface ListBotConnectionWithSecretsResult {
 }
 /**
  * Get a Connection Setting registration for a Bot Service
- * Azure REST API version: 2022-09-15.
  *
- * Other available API versions: 2023-09-15-preview.
+ * Uses Azure REST API version 2023-09-15-preview.
+ *
+ * Other available API versions: 2022-09-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native botservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listBotConnectionWithSecretsOutput(args: ListBotConnectionWithSecretsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListBotConnectionWithSecretsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

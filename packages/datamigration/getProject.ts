@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The project resource is a nested resource representing a stored migration project. The GET method retrieves information about a project.
- * Azure REST API version: 2021-06-30.
  *
- * Other available API versions: 2021-10-30-preview, 2022-03-30-preview, 2023-07-15-preview.
+ * Uses Azure REST API version 2023-07-15-preview.
+ *
+ * Other available API versions: 2021-06-30, 2021-10-30-preview, 2022-01-30-preview, 2022-03-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +37,14 @@ export interface GetProjectArgs {
  */
 export interface GetProjectResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * Field that defines the Azure active directory application info, used to connect to the target Azure resource
+     */
+    readonly azureAuthenticationInfo?: types.outputs.AzureActiveDirectoryAppResponse;
+    /**
      * UTC Date and time when project was created
      */
     readonly creationTime: string;
@@ -44,16 +53,11 @@ export interface GetProjectResult {
      */
     readonly databasesInfo?: types.outputs.DatabaseInfoResponse[];
     /**
-     * Resource ID.
+     * HTTP strong entity tag value. This is ignored if submitted.
      */
+    readonly etag?: string;
     readonly id: string;
-    /**
-     * Resource location.
-     */
-    readonly location: string;
-    /**
-     * Resource name.
-     */
+    readonly location?: string;
     readonly name: string;
     /**
      * The project's provisioning state
@@ -67,13 +71,7 @@ export interface GetProjectResult {
      * Source platform for the project
      */
     readonly sourcePlatform: string;
-    /**
-     * Metadata pertaining to creation and last modification of the resource.
-     */
     readonly systemData: types.outputs.SystemDataResponse;
-    /**
-     * Resource tags.
-     */
     readonly tags?: {[key: string]: string};
     /**
      * Information for connecting to target
@@ -83,16 +81,14 @@ export interface GetProjectResult {
      * Target platform for the project
      */
     readonly targetPlatform: string;
-    /**
-     * Resource type.
-     */
     readonly type: string;
 }
 /**
  * The project resource is a nested resource representing a stored migration project. The GET method retrieves information about a project.
- * Azure REST API version: 2021-06-30.
  *
- * Other available API versions: 2021-10-30-preview, 2022-03-30-preview, 2023-07-15-preview.
+ * Uses Azure REST API version 2023-07-15-preview.
+ *
+ * Other available API versions: 2021-06-30, 2021-10-30-preview, 2022-01-30-preview, 2022-03-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

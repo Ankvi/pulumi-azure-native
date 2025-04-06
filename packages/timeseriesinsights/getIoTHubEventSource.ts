@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the event source with the specified name in the specified environment.
- * Azure REST API version: 2020-05-15.
+ *
+ * Uses Azure REST API version 2020-05-15.
  */
 export function getIoTHubEventSource(args: GetIoTHubEventSourceArgs, opts?: pulumi.InvokeOptions): Promise<GetIoTHubEventSourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetIoTHubEventSourceArgs {
  * An event source that receives its data from an Azure IoTHub.
  */
 export interface GetIoTHubEventSourceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The name of the iot hub's consumer group that holds the partitions from which events will be read.
      */
@@ -97,7 +102,8 @@ export interface GetIoTHubEventSourceResult {
 }
 /**
  * Gets the event source with the specified name in the specified environment.
- * Azure REST API version: 2020-05-15.
+ *
+ * Uses Azure REST API version 2020-05-15.
  */
 export function getIoTHubEventSourceOutput(args: GetIoTHubEventSourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIoTHubEventSourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

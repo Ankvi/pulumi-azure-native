@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a user rule.
- * Azure REST API version: 2022-04-01-preview.
  *
- * Other available API versions: 2021-05-01-preview.
+ * Uses Azure REST API version 2022-04-01-preview.
+ *
+ * Other available API versions: 2021-02-01-preview, 2022-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getUserRule(args: GetUserRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetUserRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -45,6 +46,10 @@ export interface GetUserRuleArgs {
  * Network security user rule.
  */
 export interface GetUserRuleResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * A description for this rule.
      */
@@ -105,9 +110,10 @@ export interface GetUserRuleResult {
 }
 /**
  * Gets a user rule.
- * Azure REST API version: 2022-04-01-preview.
  *
- * Other available API versions: 2021-05-01-preview.
+ * Uses Azure REST API version 2022-04-01-preview.
+ *
+ * Other available API versions: 2021-02-01-preview, 2022-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getUserRuleOutput(args: GetUserRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a DatabaseMigrationServiceReplicationInstance
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getDatabaseMigrationServiceReplicationInstance(args: GetDatabaseMigrationServiceReplicationInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseMigrationServiceReplicationInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetDatabaseMigrationServiceReplicationInstanceArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetDatabaseMigrationServiceReplicationInstanceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetDatabaseMigrationServiceReplicationInstanceResult {
 }
 /**
  * Get a DatabaseMigrationServiceReplicationInstance
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getDatabaseMigrationServiceReplicationInstanceOutput(args: GetDatabaseMigrationServiceReplicationInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseMigrationServiceReplicationInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Organization resource.
- * Azure REST API version: 2021-12-01. Prior API version in Azure Native 1.x: 2020-03-01.
  *
- * Other available API versions: 2020-03-01-preview, 2023-08-22, 2024-02-13, 2024-07-01.
+ * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2021-12-01.
+ *
+ * Other available API versions: 2021-12-01, 2023-08-22, 2024-02-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Organization extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class Organization extends pulumi.CustomResource {
         return obj['__pulumiType'] === Organization.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The creation time of the resource.
      */
@@ -99,12 +104,14 @@ export class Organization extends pulumi.CustomResource {
             if ((!args || args.userDetail === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userDetail'");
             }
+            resourceInputs["linkOrganization"] = args ? args.linkOrganization : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["offerDetail"] = args ? args.offerDetail : undefined;
             resourceInputs["organizationName"] = args ? args.organizationName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userDetail"] = args ? args.userDetail : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["organizationId"] = undefined /*out*/;
@@ -113,6 +120,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -136,6 +144,10 @@ export class Organization extends pulumi.CustomResource {
  * The set of arguments for constructing a Organization resource.
  */
 export interface OrganizationArgs {
+    /**
+     * Link an existing Confluent organization
+     */
+    linkOrganization?: pulumi.Input<types.inputs.LinkOrganizationArgs>;
     /**
      * Location of Organization resource
      */

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * disk encryption set resource.
- * Azure REST API version: 2022-07-02. Prior API version in Azure Native 1.x: 2020-12-01.
  *
- * Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+ * Uses Azure REST API version 2024-03-02. In version 2.x of the Azure Native provider, it used API version 2022-07-02.
+ *
+ * Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DiskEncryptionSet extends pulumi.CustomResource {
     /**
@@ -42,6 +43,10 @@ export class DiskEncryptionSet extends pulumi.CustomResource {
      * The error that was encountered during auto-key rotation. If an error is present, then auto-key rotation will not be attempted until the error on this disk encryption set is fixed.
      */
     public /*out*/ readonly autoKeyRotationError!: pulumi.Output<types.outputs.ApiErrorResponse>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The type of key used to encrypt the data of the disk.
      */
@@ -111,6 +116,7 @@ export class DiskEncryptionSet extends pulumi.CustomResource {
             resourceInputs["rotationToLatestKeyVersionEnabled"] = args ? args.rotationToLatestKeyVersionEnabled : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["autoKeyRotationError"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["lastKeyRotationTimestamp"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["previousKeys"] = undefined /*out*/;
@@ -119,6 +125,7 @@ export class DiskEncryptionSet extends pulumi.CustomResource {
         } else {
             resourceInputs["activeKey"] = undefined /*out*/;
             resourceInputs["autoKeyRotationError"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["encryptionType"] = undefined /*out*/;
             resourceInputs["federatedClientId"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;

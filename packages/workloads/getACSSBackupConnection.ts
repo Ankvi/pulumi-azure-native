@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the backup connection resource of virtual instance for SAP.
- * Azure REST API version: 2023-10-01-preview.
+ *
+ * Uses Azure REST API version 2023-10-01-preview.
  */
 export function getACSSBackupConnection(args: GetACSSBackupConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetACSSBackupConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetACSSBackupConnectionArgs {
  * Define the backup connection resource of virtual instance for SAP..
  */
 export interface GetACSSBackupConnectionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Information about the recovery services vault and backup policy used for backup.
      */
@@ -72,7 +77,8 @@ export interface GetACSSBackupConnectionResult {
 }
 /**
  * Gets the backup connection resource of virtual instance for SAP.
- * Azure REST API version: 2023-10-01-preview.
+ *
+ * Uses Azure REST API version 2023-10-01-preview.
  */
 export function getACSSBackupConnectionOutput(args: GetACSSBackupConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetACSSBackupConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

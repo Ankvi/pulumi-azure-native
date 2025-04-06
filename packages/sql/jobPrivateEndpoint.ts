@@ -2,9 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * A job agent private endpoint.
- * Azure REST API version: 2023-05-01-preview.
  *
- * Other available API versions: 2023-08-01-preview, 2024-05-01-preview.
+ * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class JobPrivateEndpoint extends pulumi.CustomResource {
     /**
@@ -33,6 +34,10 @@ export class JobPrivateEndpoint extends pulumi.CustomResource {
         return obj['__pulumiType'] === JobPrivateEndpoint.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Resource name.
      */
@@ -78,17 +83,19 @@ export class JobPrivateEndpoint extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serverName"] = args ? args.serverName : undefined;
             resourceInputs["targetServerAzureResourceId"] = args ? args.targetServerAzureResourceId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateEndpointId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateEndpointId"] = undefined /*out*/;
             resourceInputs["targetServerAzureResourceId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20230501preview:JobPrivateEndpoint" }, { type: "azure-native:sql/v20230801preview:JobPrivateEndpoint" }, { type: "azure-native:sql/v20240501preview:JobPrivateEndpoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20230501preview:JobPrivateEndpoint" }, { type: "azure-native:sql/v20230801:JobPrivateEndpoint" }, { type: "azure-native:sql/v20230801preview:JobPrivateEndpoint" }, { type: "azure-native:sql/v20240501preview:JobPrivateEndpoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(JobPrivateEndpoint.__pulumiType, name, resourceInputs, opts);
     }

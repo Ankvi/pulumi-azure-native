@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Define the virtualMachineInstance.
- * Azure REST API version: 2023-04-01-preview.
  *
- * Other available API versions: 2023-10-07, 2024-06-01.
+ * Uses Azure REST API version 2023-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
+ *
+ * Other available API versions: 2023-10-07, 2024-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native scvmm [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualMachineInstance extends pulumi.CustomResource {
     /**
@@ -38,6 +39,10 @@ export class VirtualMachineInstance extends pulumi.CustomResource {
      * Availability Sets in vm.
      */
     public readonly availabilitySets!: pulumi.Output<types.outputs.VirtualMachineInstancePropertiesResponseAvailabilitySets[] | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Gets or sets the extended location.
      */
@@ -108,6 +113,7 @@ export class VirtualMachineInstance extends pulumi.CustomResource {
             resourceInputs["osProfile"] = args ? args.osProfile : undefined;
             resourceInputs["resourceUri"] = args ? args.resourceUri : undefined;
             resourceInputs["storageProfile"] = args ? args.storageProfile : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["powerState"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -115,6 +121,7 @@ export class VirtualMachineInstance extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["availabilitySets"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["extendedLocation"] = undefined /*out*/;
             resourceInputs["hardwareProfile"] = undefined /*out*/;
             resourceInputs["infrastructureProfile"] = undefined /*out*/;

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns a workspace with the given name.
- * Azure REST API version: 2023-04-01-preview.
+ *
+ * Uses Azure REST API version 2023-04-01-preview.
  */
 export function getWorkspace(args: GetWorkspaceArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetWorkspaceArgs {
  * Workspace details.
  */
 export interface GetWorkspaceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Data plane endpoint.
      */
@@ -63,7 +68,8 @@ export interface GetWorkspaceResult {
 }
 /**
  * Returns a workspace with the given name.
- * Azure REST API version: 2023-04-01-preview.
+ *
+ * Uses Azure REST API version 2023-04-01-preview.
  */
 export function getWorkspaceOutput(args: GetWorkspaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkspaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

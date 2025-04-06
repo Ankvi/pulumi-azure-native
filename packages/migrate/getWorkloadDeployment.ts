@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the details of the workload deployment.
- * Azure REST API version: 2022-05-01-preview.
+ *
+ * Uses Azure REST API version 2022-05-01-preview.
  */
 export function getWorkloadDeployment(args: GetWorkloadDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadDeploymentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,6 +40,10 @@ export interface GetWorkloadDeploymentArgs {
  */
 export interface GetWorkloadDeploymentResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Gets or sets the Id of the resource.
      */
     readonly id: string;
@@ -62,7 +67,8 @@ export interface GetWorkloadDeploymentResult {
 }
 /**
  * Gets the details of the workload deployment.
- * Azure REST API version: 2022-05-01-preview.
+ *
+ * Uses Azure REST API version 2022-05-01-preview.
  */
 export function getWorkloadDeploymentOutput(args: GetWorkloadDeploymentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkloadDeploymentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

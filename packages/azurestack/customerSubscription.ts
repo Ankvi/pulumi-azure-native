@@ -2,9 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Customer subscription.
- * Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2017-06-01.
  *
- * Other available API versions: 2020-06-01-preview.
+ * Uses Azure REST API version 2022-06-01. In version 2.x of the Azure Native provider, it used API version 2022-06-01.
+ *
+ * Other available API versions: 2020-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestack [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CustomerSubscription extends pulumi.CustomResource {
     /**
@@ -33,6 +34,10 @@ export class CustomerSubscription extends pulumi.CustomResource {
         return obj['__pulumiType'] === CustomerSubscription.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The entity tag used for optimistic concurrency when modifying the resource.
      */
@@ -71,10 +76,12 @@ export class CustomerSubscription extends pulumi.CustomResource {
             resourceInputs["registrationName"] = args ? args.registrationName : undefined;
             resourceInputs["resourceGroup"] = args ? args.resourceGroup : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["tenantId"] = undefined /*out*/;

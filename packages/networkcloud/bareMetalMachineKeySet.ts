@@ -2,9 +2,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview.
+ * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview.
+ * Other available API versions: 2023-10-01-preview, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class BareMetalMachineKeySet extends pulumi.CustomResource {
     /**
@@ -34,6 +34,10 @@ export class BareMetalMachineKeySet extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The object ID of Azure Active Directory group that all users in the list must be in for access to be granted. Users that are not in the group will not have access.
      */
     public readonly azureGroupId!: pulumi.Output<string>;
@@ -45,6 +49,10 @@ export class BareMetalMachineKeySet extends pulumi.CustomResource {
      * The descriptive message about the current detailed status.
      */
     public /*out*/ readonly detailedStatusMessage!: pulumi.Output<string>;
+    /**
+     * Resource ETag.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The date and time after which the users in this key set will be removed from the bare metal machines.
      */
@@ -149,8 +157,10 @@ export class BareMetalMachineKeySet extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userList"] = args ? args.userList : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["detailedStatus"] = undefined /*out*/;
             resourceInputs["detailedStatusMessage"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["lastValidation"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -158,9 +168,11 @@ export class BareMetalMachineKeySet extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["userListStatus"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["azureGroupId"] = undefined /*out*/;
             resourceInputs["detailedStatus"] = undefined /*out*/;
             resourceInputs["detailedStatusMessage"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["expiration"] = undefined /*out*/;
             resourceInputs["extendedLocation"] = undefined /*out*/;
             resourceInputs["jumpHostsAllowed"] = undefined /*out*/;
@@ -177,7 +189,7 @@ export class BareMetalMachineKeySet extends pulumi.CustomResource {
             resourceInputs["userListStatus"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20231001preview:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20240601preview:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20240701:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20241001preview:BareMetalMachineKeySet" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20231001preview:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20240601preview:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20240701:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20241001preview:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20250201:BareMetalMachineKeySet" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(BareMetalMachineKeySet.__pulumiType, name, resourceInputs, opts);
     }

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Azure Data Catalog.
- * Azure REST API version: 2016-03-30. Prior API version in Azure Native 1.x: 2016-03-30.
+ *
+ * Uses Azure REST API version 2016-03-30. In version 2.x of the Azure Native provider, it used API version 2016-03-30.
  */
 export class ADCCatalog extends pulumi.CustomResource {
     /**
@@ -36,6 +37,10 @@ export class ADCCatalog extends pulumi.CustomResource {
      * Azure data catalog admin list.
      */
     public readonly admins!: pulumi.Output<types.outputs.PrincipalsResponse[] | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Automatic unit adjustment enabled or not.
      */
@@ -101,11 +106,13 @@ export class ADCCatalog extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["units"] = args ? args.units : undefined;
             resourceInputs["users"] = args ? args.users : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["admins"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["enableAutomaticUnitAdjustment"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;

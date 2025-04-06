@@ -28,85 +28,6 @@ export function awsCloudProfileResponseProvideDefaults(val: AwsCloudProfileRespo
 }
 
 /**
- * Endpoint details
- */
-export interface EndpointPropertiesResponse {
-    /**
-     * The resource provisioning state.
-     */
-    provisioningState: string;
-    /**
-     * The resource Id of the connectivity endpoint (optional).
-     */
-    resourceId?: string;
-    /**
-     * The type of endpoint.
-     */
-    type: string;
-}
-
-/**
- * Properties of public cloud connectors.
- */
-export interface PublicCloudConnectorPropertiesResponse {
-    /**
-     * Cloud profile for AWS.
-     */
-    awsCloudProfile: AwsCloudProfileResponse;
-    /**
-     * Connector primary identifier.
-     */
-    connectorPrimaryIdentifier: string;
-    /**
-     * Host cloud the public cloud connector.
-     */
-    hostType: string;
-    /**
-     * The resource provisioning state.
-     */
-    provisioningState: string;
-}
-/**
- * publicCloudConnectorPropertiesResponseProvideDefaults sets the appropriate defaults for PublicCloudConnectorPropertiesResponse
- */
-export function publicCloudConnectorPropertiesResponseProvideDefaults(val: PublicCloudConnectorPropertiesResponse): PublicCloudConnectorPropertiesResponse {
-    return {
-        ...val,
-        awsCloudProfile: awsCloudProfileResponseProvideDefaults(val.awsCloudProfile),
-    };
-}
-
-/**
- * Solution configuration resource.
- */
-export interface SolutionConfigurationPropertiesResponse {
-    /**
-     * The last time resources were inventoried
-     */
-    lastSyncTime: string;
-    /**
-     * The resource provisioning state.
-     */
-    provisioningState: string;
-    /**
-     * Solution settings
-     */
-    solutionSettings?: {[key: string]: string};
-    /**
-     * The type of the solution
-     */
-    solutionType: string;
-    /**
-     * The status of solution configurations
-     */
-    status: string;
-    /**
-     * The detailed message of status details
-     */
-    statusDetails: string;
-}
-
-/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -135,4 +56,3 @@ export interface SystemDataResponse {
      */
     lastModifiedByType?: string;
 }
-

@@ -1,6 +1,25 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Model for API authentication with AWS.
+ */
+export interface AWSAuthModelResponse {
+    /**
+     * AWS STS assume role external ID. This is used to prevent the confused deputy problem: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html'
+     */
+    externalId?: string;
+    /**
+     * AWS STS assume role ARN
+     */
+    roleArn: string;
+    /**
+     * Type of paging
+     * Expected value is 'AWS'.
+     */
+    type: "AWS";
+}
+
+/**
  * The Activity query definitions
  */
 export interface ActivityEntityQueriesPropertiesResponseQueryDefinitions {
@@ -45,6 +64,20 @@ export interface ActivityTimelineItemResponse {
     queryId: string;
     /**
      * The activity timeline title.
+     */
+    title: string;
+}
+
+/**
+ * Describes an automation rule action to add a task to an incident.
+ */
+export interface AddIncidentTaskActionPropertiesResponse {
+    /**
+     * The description of the task.
+     */
+    description?: string;
+    /**
+     * The title of the task.
      */
     title: string;
 }
@@ -163,6 +196,33 @@ export interface AnomalyTimelineItemResponse {
 }
 
 /**
+ * Model for authentication with the API Key. Will result in additional header on the request (default behavior) to the remote server: 'ApiKeyName: ApiKeyIdentifier ApiKey'. If 'IsApiKeyInPostPayload' is true it will send it in the body of the request and not the header.
+ */
+export interface ApiKeyAuthModelResponse {
+    /**
+     * API Key for the user secret key credential
+     */
+    apiKey: string;
+    /**
+     * API Key Identifier
+     */
+    apiKeyIdentifier?: string;
+    /**
+     * API Key name
+     */
+    apiKeyName: string;
+    /**
+     * Flag to indicate if API key is set in HTTP POST payload
+     */
+    isApiKeyInPostPayload?: boolean;
+    /**
+     * Type of paging
+     * Expected value is 'APIKey'.
+     */
+    type: "APIKey";
+}
+
+/**
  * An entity describing a content item.
  */
 export interface AssignmentItemResponse {
@@ -170,6 +230,33 @@ export interface AssignmentItemResponse {
      * The resource id of the content item
      */
     resourceId?: string;
+}
+
+/**
+ * Describes an automation rule action to add a task to an incident
+ */
+export interface AutomationRuleAddIncidentTaskActionResponse {
+    /**
+     * Describes an automation rule action to add a task to an incident.
+     */
+    actionConfiguration?: AddIncidentTaskActionPropertiesResponse;
+    /**
+     * The type of the automation rule action.
+     * Expected value is 'AddIncidentTask'.
+     */
+    actionType: "AddIncidentTask";
+    order: number;
+}
+
+/**
+ * Describes an automation rule condition with boolean operators.
+ */
+export interface AutomationRuleBooleanConditionResponse {
+    innerConditions?: (BooleanConditionPropertiesResponse | PropertyArrayChangedConditionPropertiesResponse | PropertyArrayConditionPropertiesResponse | PropertyChangedConditionPropertiesResponse | PropertyConditionPropertiesResponse)[];
+    /**
+     * Describes a boolean condition operator.
+     */
+    operator?: string;
 }
 
 /**
@@ -188,6 +275,21 @@ export interface AutomationRuleModifyPropertiesActionResponse {
 export interface AutomationRulePropertyArrayChangedValuesConditionResponse {
     arrayType?: string;
     changeType?: string;
+}
+
+/**
+ * Describes an automation rule condition on array properties.
+ */
+export interface AutomationRulePropertyArrayValuesConditionResponse {
+    /**
+     * Describes an array condition evaluation type.
+     */
+    arrayConditionType?: string;
+    /**
+     * Describes an array condition evaluated array type.
+     */
+    arrayType?: string;
+    itemConditions?: (BooleanConditionPropertiesResponse | PropertyArrayChangedConditionPropertiesResponse | PropertyArrayConditionPropertiesResponse | PropertyChangedConditionPropertiesResponse | PropertyConditionPropertiesResponse)[];
 }
 
 export interface AutomationRulePropertyValuesChangedConditionResponse {
@@ -226,7 +328,7 @@ export interface AutomationRuleTriggeringLogicResponse {
     /**
      * The conditions to evaluate to determine if the automation rule should be triggered on a given object.
      */
-    conditions?: (PropertyArrayChangedConditionPropertiesResponse | PropertyChangedConditionPropertiesResponse | PropertyConditionPropertiesResponse)[];
+    conditions?: (BooleanConditionPropertiesResponse | PropertyArrayChangedConditionPropertiesResponse | PropertyArrayConditionPropertiesResponse | PropertyChangedConditionPropertiesResponse | PropertyConditionPropertiesResponse)[];
     /**
      * Determines when the automation rule should automatically expire and be disabled.
      */
@@ -274,6 +376,25 @@ export interface AzureDevOpsResourceInfoResponse {
 }
 
 /**
+ * Model for API authentication with basic flow - user name + password.
+ */
+export interface BasicAuthModelResponse {
+    /**
+     * The password
+     */
+    password: string;
+    /**
+     * Type of paging
+     * Expected value is 'Basic'.
+     */
+    type: "Basic";
+    /**
+     * The user name.
+     */
+    userName: string;
+}
+
+/**
  * Represents bookmark timeline item.
  */
 export interface BookmarkTimelineItemResponse {
@@ -314,6 +435,82 @@ export interface BookmarkTimelineItemResponse {
      * The bookmark start time.
      */
     startTimeUtc?: string;
+}
+
+/**
+ * Describes an automation rule condition that applies a boolean operator (e.g AND, OR) to conditions
+ */
+export interface BooleanConditionPropertiesResponse {
+    /**
+     * Describes an automation rule condition with boolean operators.
+     */
+    conditionProperties?: AutomationRuleBooleanConditionResponse;
+    /**
+     *
+     * Expected value is 'Boolean'.
+     */
+    conditionType: "Boolean";
+}
+
+/**
+ * A custom response configuration for a rule.
+ */
+export interface CcpResponseConfigResponse {
+    /**
+     * The compression algorithm. For Example: 'gzip', 'multi-gzip', 'deflate'.
+     */
+    compressionAlgo?: string;
+    /**
+     * The value indicating whether the response isn't an array of events / logs.  By setting this flag to true it means the remote server will response with an object which each property has as a value an array of events / logs.
+     */
+    convertChildPropertiesToArray?: boolean;
+    /**
+     * The csv delimiter, in case the response format is CSV.
+     */
+    csvDelimiter?: string;
+    /**
+     * The character used to escape characters in CSV.
+     */
+    csvEscape?: string;
+    /**
+     * The json paths, '$' char is the json root.
+     */
+    eventsJsonPaths: string[];
+    /**
+     * The response format. possible values are json,csv,xml
+     */
+    format?: string;
+    /**
+     * The value indicating whether the response has CSV boundary in case the response in CSV format.
+     */
+    hasCsvBoundary?: boolean;
+    /**
+     * The value indicating whether the response has headers in case the response in CSV format.
+     */
+    hasCsvHeader?: boolean;
+    /**
+     * The value indicating whether the remote server support Gzip and we should expect Gzip response.
+     */
+    isGzipCompressed?: boolean;
+    /**
+     * The value where the status message/code should appear in the response.
+     */
+    successStatusJsonPath?: string;
+    /**
+     * The status value.
+     */
+    successStatusValue?: string;
+}
+/**
+ * ccpResponseConfigResponseProvideDefaults sets the appropriate defaults for CcpResponseConfigResponse
+ */
+export function ccpResponseConfigResponseProvideDefaults(val: CcpResponseConfigResponse): CcpResponseConfigResponse {
+    return {
+        ...val,
+        compressionAlgo: (val.compressionAlgo) ?? "gzip",
+        csvEscape: (val.csvEscape) ?? "\"",
+        format: (val.format) ?? "json",
+    };
 }
 
 /**
@@ -499,12 +696,6 @@ export interface CustomizableConnectorUiConfigResponse {
      */
     graphQueries: GraphQueryResponse[];
     /**
-     * Gets or sets the name of the table the connector will insert the data to.
-     * This name can be used in other queries by specifying {{graphQueriesTableName}} placeholder
-     *  in Query and LastDataReceivedQuery values.
-     */
-    graphQueriesTableName?: string;
-    /**
      * Gets or sets custom connector id. optional field.
      */
     id?: string;
@@ -530,13 +721,27 @@ export interface CustomizableConnectorUiConfigResponse {
      */
     publisher: string;
     /**
-     * Gets or sets the sample queries for the connector.
-     */
-    sampleQueries: SampleQueryResponse[];
-    /**
      * Gets or sets the connector blade title.
      */
     title: string;
+}
+
+/**
+ * The configuration of the destination of the data.
+ */
+export interface DCRConfigurationResponse {
+    /**
+     * Represents the data collection ingestion endpoint in log analytics.
+     */
+    dataCollectionEndpoint: string;
+    /**
+     * The data collection rule immutable id, the rule defines the transformation and data destination.
+     */
+    dataCollectionRuleImmutableId: string;
+    /**
+     * The stream we are sending the data to.
+     */
+    streamName: string;
 }
 
 /**
@@ -814,6 +1019,48 @@ export interface FileMetadataResponse {
 }
 
 /**
+ * Model for API authentication for all GCP kind connectors.
+ */
+export interface GCPAuthModelResponse {
+    /**
+     * GCP Project Number
+     */
+    projectNumber: string;
+    /**
+     * GCP Service Account Email
+     */
+    serviceAccountEmail: string;
+    /**
+     * Type of paging
+     * Expected value is 'GCP'.
+     */
+    type: "GCP";
+    /**
+     * GCP Workload Identity Provider ID
+     */
+    workloadIdentityProviderId: string;
+}
+
+/**
+ * Model for API authentication for working with service bus or storage account.
+ */
+export interface GenericBlobSbsAuthModelResponse {
+    /**
+     * Credentials for service bus namespace, keyvault uri for access key
+     */
+    credentialsConfig?: {[key: string]: string};
+    /**
+     * Credentials for storage account, keyvault uri for access key
+     */
+    storageAccountCredentialsConfig?: {[key: string]: string};
+    /**
+     * Type of paging
+     * Expected value is 'ServiceBus'.
+     */
+    type: "ServiceBus";
+}
+
+/**
  * GetInsights Query Errors.
  */
 export interface GetInsightsErrorKindResponse {
@@ -843,6 +1090,21 @@ export interface GetInsightsResultsMetadataResponse {
      * the total items found for the insights request
      */
     totalCount: number;
+}
+
+/**
+ * Model for API authentication for GitHub. For this authentication first we need to approve the Router app (Microsoft Security DevOps) to access the GitHub account, Then we only need the InstallationId to get the access token from https://api.github.com/app/installations/{installId}/access_tokens.
+ */
+export interface GitHubAuthModelResponse {
+    /**
+     * The GitHubApp auth installation id.
+     */
+    installationId?: string;
+    /**
+     * Type of paging
+     * Expected value is 'GitHub'.
+     */
+    type: "GitHub";
 }
 
 /**
@@ -1120,7 +1382,7 @@ export interface InstructionStepResponse {
     description?: string;
     /**
      * Gets or sets the inner instruction steps details.
-     * Foe Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
+     * For Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
      */
     innerSteps?: InstructionStepResponse[];
     /**
@@ -1131,6 +1393,59 @@ export interface InstructionStepResponse {
      * Gets or sets the instruction step title.
      */
     title?: string;
+}
+
+/**
+ * Model for API authentication with JWT. Simple exchange between user name + password to access token.
+ */
+export interface JwtAuthModelResponse {
+    /**
+     * The custom headers we want to add once we send request to token endpoint.
+     */
+    headers?: {[key: string]: string};
+    /**
+     * Flag indicating whether we want to send the user name and password to token endpoint in the headers.
+     */
+    isCredentialsInHeaders?: boolean;
+    /**
+     * Flag indicating whether the body request is JSON (header Content-Type = application/json), meaning its a Form URL encoded request (header Content-Type = application/x-www-form-urlencoded).
+     */
+    isJsonRequest?: boolean;
+    /**
+     * The password
+     */
+    password: {[key: string]: string};
+    /**
+     * The custom query parameter we want to add once we send request to token endpoint.
+     */
+    queryParameters?: {[key: string]: string};
+    /**
+     * Request timeout in seconds.
+     */
+    requestTimeoutInSeconds?: number;
+    /**
+     * Token endpoint to request JWT
+     */
+    tokenEndpoint: string;
+    /**
+     * Type of paging
+     * Expected value is 'JwtToken'.
+     */
+    type: "JwtToken";
+    /**
+     * The user name. If user name and password sent in header request we only need to populate the `value` property with the user name (Same as basic auth). If user name and password sent in body request we need to specify the `Key` and `Value`.
+     */
+    userName: {[key: string]: string};
+}
+/**
+ * jwtAuthModelResponseProvideDefaults sets the appropriate defaults for JwtAuthModelResponse
+ */
+export function jwtAuthModelResponseProvideDefaults(val: JwtAuthModelResponse): JwtAuthModelResponse {
+    return {
+        ...val,
+        isJsonRequest: (val.isJsonRequest) ?? false,
+        requestTimeoutInSeconds: (val.requestTimeoutInSeconds) ?? 100,
+    };
 }
 
 /**
@@ -1194,6 +1509,30 @@ export interface MCASDataConnectorDataTypesResponse {
      * Discovery log data type connection.
      */
     discoveryLogs?: DataConnectorDataTypeCommonResponse;
+}
+
+/**
+ * The available data types for Microsoft Threat Intelligence data connector.
+ */
+export interface MSTIDataConnectorDataTypesResponse {
+    /**
+     * Data type for Microsoft Threat Intelligence data connector.
+     */
+    microsoftEmergingThreatFeed: MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeed;
+}
+
+/**
+ * Data type for Microsoft Threat Intelligence data connector.
+ */
+export interface MSTIDataConnectorDataTypesResponseMicrosoftEmergingThreatFeed {
+    /**
+     * The lookback period for the feed to be imported. The date-time to begin importing the feed from, for example: 2024-01-01T00:00:00.000Z.
+     */
+    lookbackPeriod: string;
+    /**
+     * Describe whether this data type connection is enabled or not.
+     */
+    state?: string;
 }
 
 /**
@@ -1299,6 +1638,97 @@ export interface MetadataSupportResponse {
 }
 
 /**
+ * Model for API authentication with no authentication method - public API.
+ */
+export interface NoneAuthModelResponse {
+    /**
+     * Type of paging
+     * Expected value is 'None'.
+     */
+    type: "None";
+}
+
+/**
+ * Model for API authentication with OAuth2.
+ */
+export interface OAuthModelResponse {
+    /**
+     * Access token prepend. Default is 'Bearer'.
+     */
+    accessTokenPrepend?: string;
+    /**
+     * The user's authorization code.
+     */
+    authorizationCode?: string;
+    /**
+     * The authorization endpoint.
+     */
+    authorizationEndpoint?: string;
+    /**
+     * The authorization endpoint headers.
+     */
+    authorizationEndpointHeaders?: {[key: string]: string};
+    /**
+     * The authorization endpoint query parameters.
+     */
+    authorizationEndpointQueryParameters?: {[key: string]: string};
+    /**
+     * The Application (client) ID that the OAuth provider assigned to your app.
+     */
+    clientId: string;
+    /**
+     * The Application (client) secret that the OAuth provider assigned to your app.
+     */
+    clientSecret: string;
+    /**
+     * The grant type, usually will be 'authorization code'.
+     */
+    grantType: string;
+    /**
+     * Indicating whether we want to send the clientId and clientSecret to token endpoint in the headers.
+     */
+    isCredentialsInHeaders?: boolean;
+    /**
+     * A value indicating whether it's a JWT flow.
+     */
+    isJwtBearerFlow?: boolean;
+    /**
+     * The Application redirect url that the user config in the OAuth provider.
+     */
+    redirectUri?: string;
+    /**
+     * The Application (client) Scope that the OAuth provider assigned to your app.
+     */
+    scope?: string;
+    /**
+     * The token endpoint. Defines the OAuth2 refresh token.
+     */
+    tokenEndpoint: string;
+    /**
+     * The token endpoint headers.
+     */
+    tokenEndpointHeaders?: {[key: string]: string};
+    /**
+     * The token endpoint query parameters.
+     */
+    tokenEndpointQueryParameters?: {[key: string]: string};
+    /**
+     * Type of paging
+     * Expected value is 'OAuth2'.
+     */
+    type: "OAuth2";
+}
+/**
+ * oauthModelResponseProvideDefaults sets the appropriate defaults for OAuthModelResponse
+ */
+export function oauthModelResponseProvideDefaults(val: OAuthModelResponse): OAuthModelResponse {
+    return {
+        ...val,
+        isCredentialsInHeaders: (val.isCredentialsInHeaders) ?? false,
+    };
+}
+
+/**
  * The available data types for office data connector.
  */
 export interface OfficeDataConnectorDataTypesResponse {
@@ -1346,6 +1776,33 @@ export interface OfficeDataConnectorDataTypesResponseTeams {
     state?: string;
 }
 
+/**
+ * Model for API authentication for Oracle.
+ */
+export interface OracleAuthModelResponse {
+    /**
+     * Content of the PRM file
+     */
+    pemFile: string;
+    /**
+     * Public Fingerprint
+     */
+    publicFingerprint: string;
+    /**
+     * Oracle tenant ID
+     */
+    tenantId: string;
+    /**
+     * Type of paging
+     * Expected value is 'Oracle'.
+     */
+    type: "Oracle";
+    /**
+     * Oracle user ID
+     */
+    userId: string;
+}
+
 export interface PlaybookActionPropertiesResponse {
     /**
      * The resource id of the playbook resource.
@@ -1358,6 +1815,26 @@ export interface PlaybookActionPropertiesResponse {
 }
 
 /**
+ * The available data types for Premium Microsoft Defender for Threat Intelligence data connector.
+ */
+export interface PremiumMdtiDataConnectorDataTypesResponse {
+    /**
+     * Data type for Premium Microsoft Defender for Threat Intelligence data connector.
+     */
+    connector: PremiumMdtiDataConnectorDataTypesResponseConnector;
+}
+
+/**
+ * Data type for Premium Microsoft Defender for Threat Intelligence data connector.
+ */
+export interface PremiumMdtiDataConnectorDataTypesResponseConnector {
+    /**
+     * Describe whether this data type connection is enabled or not.
+     */
+    state?: string;
+}
+
+/**
  * Describes an automation rule condition that evaluates an array property's value change
  */
 export interface PropertyArrayChangedConditionPropertiesResponse {
@@ -1367,6 +1844,21 @@ export interface PropertyArrayChangedConditionPropertiesResponse {
      * Expected value is 'PropertyArrayChanged'.
      */
     conditionType: "PropertyArrayChanged";
+}
+
+/**
+ * Describes an automation rule condition that evaluates an array property's value
+ */
+export interface PropertyArrayConditionPropertiesResponse {
+    /**
+     * Describes an automation rule condition on array properties.
+     */
+    conditionProperties?: AutomationRulePropertyArrayValuesConditionResponse;
+    /**
+     *
+     * Expected value is 'PropertyArray'.
+     */
+    conditionType: "PropertyArray";
 }
 
 /**
@@ -1405,6 +1897,10 @@ export interface RepoResponse {
      * The name of the repository.
      */
     fullName?: string;
+    /**
+     * The installation id of the repository.
+     */
+    installationId?: number;
     /**
      * The url to access the repository.
      */
@@ -1479,6 +1975,94 @@ export interface ResourceProviderRequiredPermissionsResponse {
 }
 
 /**
+ * The request configuration.
+ */
+export interface RestApiPollerRequestConfigResponse {
+    /**
+     * The API endpoint.
+     */
+    apiEndpoint: string;
+    /**
+     * The query parameter name which the remote server expect to end query. This property goes hand to hand with `startTimeAttributeName`
+     */
+    endTimeAttributeName?: string;
+    /**
+     * The header for the request for the remote server.
+     */
+    headers?: {[key: string]: string};
+    /**
+     * The HTTP method, default value GET.
+     */
+    httpMethod?: string;
+    /**
+     * Flag to indicate if HTTP POST payload is in JSON format (vs form-urlencoded).
+     */
+    isPostPayloadJson?: boolean;
+    /**
+     * The HTTP query parameters to RESTful API.
+     */
+    queryParameters?: any;
+    /**
+     * the query parameters template. Defines the query parameters template to use when passing query parameters in advanced scenarios.
+     */
+    queryParametersTemplate?: string;
+    /**
+     * The query time format. A remote server can have a query to pull data from range 'start' to 'end'. This property indicate what is the expected time format the remote server know to parse.
+     */
+    queryTimeFormat?: string;
+    /**
+     * The query parameter name which we need to send the server for query logs in time interval. Should be defined with `queryTimeIntervalPrepend` and `queryTimeIntervalDelimiter`
+     */
+    queryTimeIntervalAttributeName?: string;
+    /**
+     * The delimiter string between 2 QueryTimeFormat in the query parameter `queryTimeIntervalAttributeName`.
+     */
+    queryTimeIntervalDelimiter?: string;
+    /**
+     * The string prepend to the value of the query parameter in `queryTimeIntervalAttributeName`.
+     */
+    queryTimeIntervalPrepend?: string;
+    /**
+     * The query window in minutes for the request.
+     */
+    queryWindowInMin?: number;
+    /**
+     * The Rate limit queries per second for the request..
+     */
+    rateLimitQPS?: number;
+    /**
+     * The retry count.
+     */
+    retryCount?: number;
+    /**
+     * The query parameter name which the remote server expect to start query. This property goes hand to hand with `endTimeAttributeName`.
+     */
+    startTimeAttributeName?: string;
+    /**
+     * The timeout in seconds.
+     */
+    timeoutInSeconds?: number;
+}
+
+/**
+ * The request paging configuration.
+ */
+export interface RestApiPollerRequestPagingConfigResponse {
+    /**
+     * Page size
+     */
+    pageSize?: number;
+    /**
+     * Page size parameter name
+     */
+    pageSizeParameterName?: string;
+    /**
+     * Type of paging
+     */
+    pagingType: string;
+}
+
+/**
  * Describes the Rfc connector.
  */
 export interface RfcConnectorResponse {
@@ -1531,20 +2115,6 @@ export interface RfcConnectorResponse {
      * Expected value is 'Rfc'.
      */
     type: "Rfc";
-}
-
-/**
- * The sample queries for the connector.
- */
-export interface SampleQueryResponse {
-    /**
-     * Gets or sets the  sample query description.
-     */
-    description: string;
-    /**
-     * Gets or sets the KQL sample query.
-     */
-    query: string;
 }
 
 /**
@@ -1726,6 +2296,49 @@ export interface SecurityMLAnalyticsSettingsDataSourceResponse {
 }
 
 /**
+ * Model for API authentication with session cookie.
+ */
+export interface SessionAuthModelResponse {
+    /**
+     * HTTP request headers to session service endpoint.
+     */
+    headers?: {[key: string]: string};
+    /**
+     * Indicating whether API key is set in HTTP POST payload.
+     */
+    isPostPayloadJson?: boolean;
+    /**
+     * The password attribute name.
+     */
+    password: {[key: string]: string};
+    /**
+     * Query parameters to session service endpoint.
+     */
+    queryParameters?: any;
+    /**
+     * Session id attribute name from HTTP response header.
+     */
+    sessionIdName?: string;
+    /**
+     * HTTP request URL to session service endpoint.
+     */
+    sessionLoginRequestUri?: string;
+    /**
+     * Session timeout in minutes.
+     */
+    sessionTimeoutInMinutes?: number;
+    /**
+     * Type of paging
+     * Expected value is 'Session'.
+     */
+    type: "Session";
+    /**
+     * The user name attribute key value.
+     */
+    userName: {[key: string]: string};
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -1773,6 +2386,120 @@ export interface TIDataConnectorDataTypesResponseIndicators {
      * Describe whether this data type connection is enabled or not.
      */
     state?: string;
+}
+
+/**
+ * Template property bag.
+ */
+export interface TemplatePropertiesResponse {
+    /**
+     * The creator of the content item.
+     */
+    author?: MetadataAuthorResponse;
+    /**
+     * Categories for the item
+     */
+    categories?: MetadataCategoriesResponse;
+    /**
+     * Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
+     */
+    contentId: string;
+    /**
+     * The kind of content the template is for.
+     */
+    contentKind: string;
+    /**
+     * Unique ID for the content. It should be generated based on the contentId of the package, contentId of the template, contentKind of the template and the contentVersion of the template
+     */
+    contentProductId: string;
+    /**
+     * Schema version of the content. Can be used to distinguish between different flow based on the schema version
+     */
+    contentSchemaVersion?: string;
+    /**
+     * The custom version of the content. A optional free text
+     */
+    customVersion?: string;
+    /**
+     * Dependant templates. Expandable.
+     */
+    dependantTemplates: TemplatePropertiesResponse[];
+    /**
+     * Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
+     */
+    dependencies?: MetadataDependenciesResponse;
+    /**
+     * The display name of the template
+     */
+    displayName: string;
+    /**
+     * first publish date content item
+     */
+    firstPublishDate?: string;
+    /**
+     * the icon identifier. this id can later be fetched from the content metadata
+     */
+    icon?: string;
+    /**
+     * Flag indicates if this template is deprecated
+     */
+    isDeprecated: string;
+    /**
+     * last publish date for the content item
+     */
+    lastPublishDate?: string;
+    /**
+     * The JSON of the ARM template to deploy active content. Expandable.
+     */
+    mainTemplate?: any;
+    /**
+     * the package Id contains this template
+     */
+    packageId: string;
+    /**
+     * the packageKind of the package contains this template
+     */
+    packageKind?: string;
+    /**
+     * the name of the package contains this template
+     */
+    packageName?: string;
+    /**
+     * Version of the package.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
+     */
+    packageVersion: string;
+    /**
+     * preview image file names. These will be taken from the solution artifacts
+     */
+    previewImages?: string[];
+    /**
+     * preview image file names. These will be taken from the solution artifacts. used for dark theme support
+     */
+    previewImagesDark?: string[];
+    /**
+     * Providers for the content item
+     */
+    providers?: string[];
+    /**
+     * Source of the content.  This is where/how it was created.
+     */
+    source: MetadataSourceResponse;
+    /**
+     * Support information for the template - type, name, contact information
+     */
+    support?: MetadataSupportResponse;
+    /**
+     * the tactics the resource covers
+     */
+    threatAnalysisTactics?: string[];
+    /**
+     * the techniques the resource covers, these have to be aligned with the tactics being used
+     */
+    threatAnalysisTechniques?: string[];
+    /**
+     * Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
+     */
+    version: string;
 }
 
 /**
@@ -1915,35 +2642,3 @@ export interface WebhookResponse {
      */
     webhookUrl?: string;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

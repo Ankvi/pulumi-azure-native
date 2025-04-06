@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a resource type details in the given subscription and provider.
- * Azure REST API version: 2021-09-01-preview.
+ *
+ * Uses Azure REST API version 2021-09-01-preview.
  */
 export function getResourceTypeRegistration(args: GetResourceTypeRegistrationArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceTypeRegistrationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -26,6 +27,10 @@ export interface GetResourceTypeRegistrationArgs {
 
 export interface GetResourceTypeRegistrationResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
@@ -45,7 +50,8 @@ export interface GetResourceTypeRegistrationResult {
 }
 /**
  * Gets a resource type details in the given subscription and provider.
- * Azure REST API version: 2021-09-01-preview.
+ *
+ * Uses Azure REST API version 2021-09-01-preview.
  */
 export function getResourceTypeRegistrationOutput(args: GetResourceTypeRegistrationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceTypeRegistrationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Custom Recommendation
- * Azure REST API version: 2024-08-01.
+ *
+ * Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2024-08-01.
  */
 export class CustomRecommendation extends pulumi.CustomResource {
     /**
@@ -36,6 +37,10 @@ export class CustomRecommendation extends pulumi.CustomResource {
      * The assessment metadata key used when an assessment is generated for this Recommendation.
      */
     public /*out*/ readonly assessmentKey!: pulumi.Output<string>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * List of all standard supported clouds.
      */
@@ -101,11 +106,13 @@ export class CustomRecommendation extends pulumi.CustomResource {
             resourceInputs["securityIssue"] = args ? args.securityIssue : undefined;
             resourceInputs["severity"] = args ? args.severity : undefined;
             resourceInputs["assessmentKey"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["assessmentKey"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["cloudProviders"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;

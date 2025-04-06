@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Capture logs and metrics of Azure resources based on ARM tags.
- * Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2020-07-01.
  *
- * Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-03-01, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview.
+ * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01.
+ *
+ * Other available API versions: 2023-06-01, 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elastic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class TagRule extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class TagRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === TagRule.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Name of the rule set.
      */
@@ -72,17 +77,19 @@ export class TagRule extends pulumi.CustomResource {
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["ruleSetName"] = args ? args.ruleSetName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:elastic/v20200701:TagRule" }, { type: "azure-native:elastic/v20200701preview:TagRule" }, { type: "azure-native:elastic/v20210901preview:TagRule" }, { type: "azure-native:elastic/v20211001preview:TagRule" }, { type: "azure-native:elastic/v20220505preview:TagRule" }, { type: "azure-native:elastic/v20220701preview:TagRule" }, { type: "azure-native:elastic/v20220901preview:TagRule" }, { type: "azure-native:elastic/v20230201preview:TagRule" }, { type: "azure-native:elastic/v20230501preview:TagRule" }, { type: "azure-native:elastic/v20230601:TagRule" }, { type: "azure-native:elastic/v20230615preview:TagRule" }, { type: "azure-native:elastic/v20230701preview:TagRule" }, { type: "azure-native:elastic/v20231001preview:TagRule" }, { type: "azure-native:elastic/v20231101preview:TagRule" }, { type: "azure-native:elastic/v20240101preview:TagRule" }, { type: "azure-native:elastic/v20240301:TagRule" }, { type: "azure-native:elastic/v20240501preview:TagRule" }, { type: "azure-native:elastic/v20240615preview:TagRule" }, { type: "azure-native:elastic/v20241001preview:TagRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:elastic/v20200701:TagRule" }, { type: "azure-native:elastic/v20200701preview:TagRule" }, { type: "azure-native:elastic/v20210901preview:TagRule" }, { type: "azure-native:elastic/v20211001preview:TagRule" }, { type: "azure-native:elastic/v20220505preview:TagRule" }, { type: "azure-native:elastic/v20220701preview:TagRule" }, { type: "azure-native:elastic/v20220901preview:TagRule" }, { type: "azure-native:elastic/v20230201preview:TagRule" }, { type: "azure-native:elastic/v20230501preview:TagRule" }, { type: "azure-native:elastic/v20230601:TagRule" }, { type: "azure-native:elastic/v20230615preview:TagRule" }, { type: "azure-native:elastic/v20230701preview:TagRule" }, { type: "azure-native:elastic/v20231001preview:TagRule" }, { type: "azure-native:elastic/v20231101preview:TagRule" }, { type: "azure-native:elastic/v20240101preview:TagRule" }, { type: "azure-native:elastic/v20240301:TagRule" }, { type: "azure-native:elastic/v20240501preview:TagRule" }, { type: "azure-native:elastic/v20240615preview:TagRule" }, { type: "azure-native:elastic/v20241001preview:TagRule" }, { type: "azure-native:elastic/v20250115preview:TagRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TagRule.__pulumiType, name, resourceInputs, opts);
     }
@@ -101,7 +108,7 @@ export interface TagRuleArgs {
      */
     properties?: pulumi.Input<types.inputs.MonitoringTagRulesPropertiesArgs>;
     /**
-     * The name of the resource group to which the Elastic resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

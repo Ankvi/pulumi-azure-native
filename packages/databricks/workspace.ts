@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Information about workspace.
- * Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2018-04-01.
  *
- * Other available API versions: 2023-09-15-preview, 2024-05-01, 2024-09-01-preview.
+ * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
+ *
+ * Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-09-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Workspace extends pulumi.CustomResource {
     /**
@@ -35,9 +36,17 @@ export class Workspace extends pulumi.CustomResource {
     }
 
     /**
+     * Access Connector Resource that is going to be associated with Databricks Workspace
+     */
+    public readonly accessConnector!: pulumi.Output<types.outputs.WorkspacePropertiesResponseAccessConnector | undefined>;
+    /**
      * The workspace provider authorizations.
      */
     public readonly authorizations!: pulumi.Output<types.outputs.WorkspaceProviderAuthorizationResponse[] | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Indicates the Object ID, PUID and Application ID of entity that created the workspace.
      */
@@ -47,6 +56,14 @@ export class Workspace extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdDateTime!: pulumi.Output<string>;
     /**
+     * Properties for Default Catalog configuration during workspace creation.
+     */
+    public readonly defaultCatalog!: pulumi.Output<types.outputs.DefaultCatalogPropertiesResponse | undefined>;
+    /**
+     * Gets or Sets Default Storage Firewall configuration information
+     */
+    public readonly defaultStorageFirewall!: pulumi.Output<string | undefined>;
+    /**
      * The resource Id of the managed disk encryption set.
      */
     public /*out*/ readonly diskEncryptionSetId!: pulumi.Output<string>;
@@ -54,6 +71,14 @@ export class Workspace extends pulumi.CustomResource {
      * Encryption properties for databricks workspace
      */
     public readonly encryption!: pulumi.Output<types.outputs.WorkspacePropertiesResponseEncryption | undefined>;
+    /**
+     * Contains settings related to the Enhanced Security and Compliance Add-On.
+     */
+    public readonly enhancedSecurityCompliance!: pulumi.Output<types.outputs.EnhancedSecurityComplianceDefinitionResponse | undefined>;
+    /**
+     * Indicates whether unity catalog enabled for the workspace or not.
+     */
+    public /*out*/ readonly isUcEnabled!: pulumi.Output<boolean>;
     /**
      * The geo-location where the resource lives
      */
@@ -144,8 +169,12 @@ export class Workspace extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
+            resourceInputs["accessConnector"] = args ? args.accessConnector : undefined;
             resourceInputs["authorizations"] = args ? args.authorizations : undefined;
+            resourceInputs["defaultCatalog"] = args ? (args.defaultCatalog ? pulumi.output(args.defaultCatalog).apply(types.inputs.defaultCatalogPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["defaultStorageFirewall"] = args ? args.defaultStorageFirewall : undefined;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
+            resourceInputs["enhancedSecurityCompliance"] = args ? args.enhancedSecurityCompliance : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["managedResourceGroupId"] = args ? args.managedResourceGroupId : undefined;
             resourceInputs["parameters"] = args ? (args.parameters ? pulumi.output(args.parameters).apply(types.inputs.workspaceCustomParametersArgsProvideDefaults) : undefined) : undefined;
@@ -156,9 +185,11 @@ export class Workspace extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["uiDefinitionUri"] = args ? args.uiDefinitionUri : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["createdDateTime"] = undefined /*out*/;
             resourceInputs["diskEncryptionSetId"] = undefined /*out*/;
+            resourceInputs["isUcEnabled"] = undefined /*out*/;
             resourceInputs["managedDiskIdentity"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateEndpointConnections"] = undefined /*out*/;
@@ -170,11 +201,17 @@ export class Workspace extends pulumi.CustomResource {
             resourceInputs["workspaceId"] = undefined /*out*/;
             resourceInputs["workspaceUrl"] = undefined /*out*/;
         } else {
+            resourceInputs["accessConnector"] = undefined /*out*/;
             resourceInputs["authorizations"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["createdDateTime"] = undefined /*out*/;
+            resourceInputs["defaultCatalog"] = undefined /*out*/;
+            resourceInputs["defaultStorageFirewall"] = undefined /*out*/;
             resourceInputs["diskEncryptionSetId"] = undefined /*out*/;
             resourceInputs["encryption"] = undefined /*out*/;
+            resourceInputs["enhancedSecurityCompliance"] = undefined /*out*/;
+            resourceInputs["isUcEnabled"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["managedDiskIdentity"] = undefined /*out*/;
             resourceInputs["managedResourceGroupId"] = undefined /*out*/;
@@ -195,7 +232,7 @@ export class Workspace extends pulumi.CustomResource {
             resourceInputs["workspaceUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:databricks/v20180401:Workspace" }, { type: "azure-native:databricks/v20210401preview:Workspace" }, { type: "azure-native:databricks/v20220401preview:Workspace" }, { type: "azure-native:databricks/v20230201:Workspace" }, { type: "azure-native:databricks/v20230915preview:Workspace" }, { type: "azure-native:databricks/v20240501:Workspace" }, { type: "azure-native:databricks/v20240901preview:Workspace" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:databricks/v20180401:Workspace" }, { type: "azure-native:databricks/v20210401preview:Workspace" }, { type: "azure-native:databricks/v20220401preview:Workspace" }, { type: "azure-native:databricks/v20230201:Workspace" }, { type: "azure-native:databricks/v20230915preview:Workspace" }, { type: "azure-native:databricks/v20240501:Workspace" }, { type: "azure-native:databricks/v20240901preview:Workspace" }, { type: "azure-native:databricks/v20250301preview:Workspace" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Workspace.__pulumiType, name, resourceInputs, opts);
     }
@@ -206,13 +243,29 @@ export class Workspace extends pulumi.CustomResource {
  */
 export interface WorkspaceArgs {
     /**
+     * Access Connector Resource that is going to be associated with Databricks Workspace
+     */
+    accessConnector?: pulumi.Input<types.inputs.WorkspacePropertiesAccessConnectorArgs>;
+    /**
      * The workspace provider authorizations.
      */
     authorizations?: pulumi.Input<pulumi.Input<types.inputs.WorkspaceProviderAuthorizationArgs>[]>;
     /**
+     * Properties for Default Catalog configuration during workspace creation.
+     */
+    defaultCatalog?: pulumi.Input<types.inputs.DefaultCatalogPropertiesArgs>;
+    /**
+     * Gets or Sets Default Storage Firewall configuration information
+     */
+    defaultStorageFirewall?: pulumi.Input<string | types.enums.DefaultStorageFirewall>;
+    /**
      * Encryption properties for databricks workspace
      */
     encryption?: pulumi.Input<types.inputs.WorkspacePropertiesEncryptionArgs>;
+    /**
+     * Contains settings related to the Enhanced Security and Compliance Add-On.
+     */
+    enhancedSecurityCompliance?: pulumi.Input<types.inputs.EnhancedSecurityComplianceDefinitionArgs>;
     /**
      * The geo-location where the resource lives
      */

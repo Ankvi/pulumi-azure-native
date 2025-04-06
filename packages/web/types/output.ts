@@ -512,7 +512,7 @@ export interface AzureActiveDirectoryRegistrationResponse {
     clientSecretSettingName?: string;
     /**
      * The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
+     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
      * This URI is a case-sensitive identifier for the token issuer.
      * More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
      */
@@ -663,6 +663,10 @@ export interface AzureStorageInfoValueResponse {
      * Path to mount the storage within the site's runtime environment.
      */
     mountPath?: string;
+    /**
+     * Mounting protocol to use for the storage account.
+     */
+    protocol?: string;
     /**
      * Name of the file share (container name, for Blob storage).
      */
@@ -850,38 +854,6 @@ export interface ClientRegistrationResponse {
 }
 
 /**
- * Non versioned Container App configuration properties that define the mutable settings of a Container app
- */
-export interface ConfigurationResponse {
-    /**
-     * ActiveRevisionsMode controls how active revisions are handled for the Container app:
-     * <list><item>Multiple: multiple revisions can be active. If no value if provided, this is the default</item><item>Single: Only one revision can be active at a time. Revision weights can not be used in this mode</item></list>
-     */
-    activeRevisionsMode?: string;
-    /**
-     * Ingress configurations.
-     */
-    ingress?: IngressResponse;
-    /**
-     * Collection of private container registry credentials for containers used by the Container app
-     */
-    registries?: RegistryCredentialsResponse[];
-    /**
-     * Collection of secrets used by a Container app
-     */
-    secrets?: SecretResponse[];
-}
-/**
- * configurationResponseProvideDefaults sets the appropriate defaults for ConfigurationResponse
- */
-export function configurationResponseProvideDefaults(val: ConfigurationResponse): ConfigurationResponse {
-    return {
-        ...val,
-        ingress: (val.ingress ? ingressResponseProvideDefaults(val.ingress) : undefined),
-    };
-}
-
-/**
  * Database connection string information.
  */
 export interface ConnStringInfoResponse {
@@ -1058,20 +1030,6 @@ export interface ConsentLinkDefinitionResponse {
     status?: string;
 }
 
-/**
- * Container App Secret.
- */
-export interface ContainerAppSecretResponse {
-    /**
-     * Secret Name.
-     */
-    name: string;
-    /**
-     * Secret Value.
-     */
-    value: string;
-}
-
 export interface ContainerAppsConfigurationResponse {
     /**
      * Resource ID of a subnet for control plane infrastructure components. This subnet must be in the same VNET as the subnet defined in appSubnetResourceId. Must not overlap with the IP range defined in platformReservedCidr, if defined.
@@ -1097,50 +1055,6 @@ export interface ContainerAppsConfigurationResponse {
      * An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server
      */
     platformReservedDnsIP?: string;
-}
-
-/**
- * Container App container resource requirements.
- */
-export interface ContainerResourcesResponse {
-    /**
-     * Required CPU in cores, e.g. 0.5
-     */
-    cpu?: number;
-    /**
-     * Required memory, e.g. "250Mb"
-     */
-    memory?: string;
-}
-
-/**
- * Container App container definition.
- */
-export interface ContainerResponse {
-    /**
-     * Container start command arguments.
-     */
-    args?: string[];
-    /**
-     * Container start command.
-     */
-    command?: string[];
-    /**
-     * Container environment variables.
-     */
-    env?: EnvironmentVarResponse[];
-    /**
-     * Container image tag.
-     */
-    image?: string;
-    /**
-     * Custom container name.
-     */
-    name?: string;
-    /**
-     * Container resource requirements.
-     */
-    resources?: ContainerResourcesResponse;
 }
 
 /**
@@ -1283,84 +1197,46 @@ export interface CustomOpenIdConnectProviderResponse {
 }
 
 /**
- * Container App container Custom scaling rule.
+ * App Dapr configuration.
  */
-export interface CustomScaleRuleResponse {
-    /**
-     * Authentication secrets for the custom scale rule.
-     */
-    auth?: ScaleRuleAuthResponse[];
-    /**
-     * Metadata properties to describe custom scale rule.
-     */
-    metadata?: {[key: string]: string};
-    /**
-     * Type of the custom scale rule
-     * eg: azure-servicebus, redis etc.
-     */
-    type?: string;
-}
-
-/**
- * Dapr component configuration
- */
-export interface DaprComponentResponse {
-    /**
-     * Component metadata
-     */
-    metadata?: DaprMetadataResponse[];
-    /**
-     * Component name
-     */
-    name?: string;
-    /**
-     * Component type
-     */
-    type?: string;
-    /**
-     * Component version
-     */
-    version?: string;
-}
-
-/**
- * Container App Dapr component metadata.
- */
-export interface DaprMetadataResponse {
-    /**
-     * Metadata property name.
-     */
-    name?: string;
-    /**
-     * Name of the Container App secret from which to pull the metadata property value.
-     */
-    secretRef?: string;
-    /**
-     * Metadata property value.
-     */
-    value?: string;
-}
-
-/**
- * Container App Dapr configuration.
- */
-export interface DaprResponse {
+export interface DaprConfigResponse {
     /**
      * Dapr application identifier
      */
     appId?: string;
     /**
-     * Port on which the Dapr side car
+     * Tells Dapr which port your application is listening on
      */
     appPort?: number;
     /**
-     * Collection of Dapr components
+     * Enables API logging for the Dapr sidecar
      */
-    components?: DaprComponentResponse[];
+    enableApiLogging?: boolean;
     /**
      * Boolean indicating if the Dapr side car is enabled
      */
     enabled?: boolean;
+    /**
+     * Increasing max size of request body http servers parameter in MB to handle uploading of big files. Default is 4 MB.
+     */
+    httpMaxRequestSize?: number;
+    /**
+     * Dapr max size of http header read buffer in KB to handle when sending multi-KB headers. Default is 65KB.
+     */
+    httpReadBufferSize?: number;
+    /**
+     * Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
+     */
+    logLevel?: string;
+}
+/**
+ * daprConfigResponseProvideDefaults sets the appropriate defaults for DaprConfigResponse
+ */
+export function daprConfigResponseProvideDefaults(val: DaprConfigResponse): DaprConfigResponse {
+    return {
+        ...val,
+        enabled: (val.enabled) ?? false,
+    };
 }
 
 /**
@@ -1431,24 +1307,6 @@ export interface EnabledConfigResponse {
      * True if configuration is enabled, false if it is disabled and null if configuration is not set.
      */
     enabled?: boolean;
-}
-
-/**
- * Container App container environment variable.
- */
-export interface EnvironmentVarResponse {
-    /**
-     * Environment variable name.
-     */
-    name?: string;
-    /**
-     * Name of the Container App secret from which to pull the environment variable value.
-     */
-    secretRef?: string;
-    /**
-     * Non-secret environment variable value.
-     */
-    value?: string;
 }
 
 export interface EnvironmentVariableResponse {
@@ -1662,6 +1520,140 @@ export interface FrontEndConfigurationResponse {
 }
 
 /**
+ * Function app configuration.
+ */
+export interface FunctionAppConfigResponse {
+    /**
+     * Function app deployment configuration.
+     */
+    deployment?: FunctionsDeploymentResponse;
+    /**
+     * Function app runtime settings.
+     */
+    runtime?: FunctionsRuntimeResponse;
+    /**
+     * Function app scale and concurrency settings.
+     */
+    scaleAndConcurrency?: FunctionsScaleAndConcurrencyResponse;
+}
+
+/**
+ * Sets the number of 'Always Ready' instances for a function group or a specific function.
+ */
+export interface FunctionsAlwaysReadyConfigResponse {
+    /**
+     * Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+     */
+    instanceCount?: number;
+    /**
+     * Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
+     */
+    name?: string;
+}
+
+/**
+ * Configuration section for the function app deployment.
+ */
+export interface FunctionsDeploymentResponse {
+    /**
+     * Storage for deployed package used by the function app.
+     */
+    storage?: FunctionsDeploymentResponseStorage;
+}
+
+/**
+ * Authentication method to access the storage account for deployment.
+ */
+export interface FunctionsDeploymentResponseAuthentication {
+    /**
+     * Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.
+     */
+    storageAccountConnectionStringName?: string;
+    /**
+     * Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
+     */
+    type?: string;
+    /**
+     * Use this property for UserAssignedIdentity. Set the resource ID of the identity. Do not set a value for this property when using other authentication type.
+     */
+    userAssignedIdentityResourceId?: string;
+}
+
+/**
+ * Storage for deployed package used by the function app.
+ */
+export interface FunctionsDeploymentResponseStorage {
+    /**
+     * Authentication method to access the storage account for deployment.
+     */
+    authentication?: FunctionsDeploymentResponseAuthentication;
+    /**
+     * Property to select Azure Storage type. Available options: blobContainer.
+     */
+    type?: string;
+    /**
+     * Property to set the URL for the selected Azure Storage type. Example: For blobContainer, the value could be https://<storageAccountName>.blob.core.windows.net/<containerName>.
+     */
+    value?: string;
+}
+
+/**
+ * Function app runtime name and version.
+ */
+export interface FunctionsRuntimeResponse {
+    /**
+     * Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
+     */
+    name?: string;
+    /**
+     * Function app runtime version. Example: 8 (for dotnet-isolated)
+     */
+    version?: string;
+}
+
+/**
+ * Scale and concurrency settings for the function app.
+ */
+export interface FunctionsScaleAndConcurrencyResponse {
+    /**
+     * 'Always Ready' configuration for the function app.
+     */
+    alwaysReady?: FunctionsAlwaysReadyConfigResponse[];
+    /**
+     * Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
+     */
+    instanceMemoryMB?: number;
+    /**
+     * The maximum number of instances for the function app.
+     */
+    maximumInstanceCount?: number;
+    /**
+     * Scale and concurrency settings for the function app triggers.
+     */
+    triggers?: FunctionsScaleAndConcurrencyResponseTriggers;
+}
+
+/**
+ * Scale and concurrency settings for the HTTP trigger.
+ */
+export interface FunctionsScaleAndConcurrencyResponseHttp {
+    /**
+     * The maximum number of concurrent HTTP trigger invocations per instance.
+     */
+    perInstanceConcurrency?: number;
+}
+
+/**
+ * Scale and concurrency settings for the function app triggers.
+ */
+export interface FunctionsScaleAndConcurrencyResponseTriggers {
+    /**
+     * Scale and concurrency settings for the HTTP trigger.
+     */
+    http?: FunctionsScaleAndConcurrencyResponseHttp;
+}
+
+/**
  * The GitHub action code configuration.
  */
 export interface GitHubActionCodeConfigurationResponse {
@@ -1865,20 +1857,6 @@ export interface HttpLogsConfigResponse {
 }
 
 /**
- * Container App container Custom scaling rule.
- */
-export interface HttpScaleRuleResponse {
-    /**
-     * Authentication secrets for the custom scale rule.
-     */
-    auth?: ScaleRuleAuthResponse[];
-    /**
-     * Metadata properties to describe http scale rule.
-     */
-    metadata?: {[key: string]: string};
-}
-
-/**
  * The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
  */
 export interface HttpSettingsResponse {
@@ -1973,42 +1951,6 @@ export interface IdentityProvidersResponse {
      * The configuration settings of the Twitter provider.
      */
     twitter?: TwitterResponse;
-}
-
-/**
- * Container App Ingress configuration.
- */
-export interface IngressResponse {
-    /**
-     * Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS connections
-     */
-    allowInsecure?: boolean;
-    /**
-     * Bool indicating if app exposes an external http endpoint
-     */
-    external?: boolean;
-    /**
-     * Hostname.
-     */
-    fqdn: string;
-    /**
-     * Target Port in containers for traffic from ingress
-     */
-    targetPort?: number;
-    traffic?: TrafficWeightResponse[];
-    /**
-     * Ingress transport protocol
-     */
-    transport?: string;
-}
-/**
- * ingressResponseProvideDefaults sets the appropriate defaults for IngressResponse
- */
-export function ingressResponseProvideDefaults(val: IngressResponse): IngressResponse {
-    return {
-        ...val,
-        external: (val.external) ?? false,
-    };
 }
 
 /**
@@ -2371,24 +2313,6 @@ export interface PushSettingsResponse {
 }
 
 /**
- * Container App container Azure Queue based scaling rule.
- */
-export interface QueueScaleRuleResponse {
-    /**
-     * Authentication secrets for the queue scale rule.
-     */
-    auth?: ScaleRuleAuthResponse[];
-    /**
-     * Queue length.
-     */
-    queueLength?: number;
-    /**
-     * Queue name.
-     */
-    queueName?: string;
-}
-
-/**
  * Routing rules for ramp up testing. This rule allows to redirect static traffic % to a slot or to gradually change routing % based on performance.
  */
 export interface RampUpRuleResponse {
@@ -2397,8 +2321,7 @@ export interface RampUpRuleResponse {
      */
     actionHostName?: string;
     /**
-     * Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
-     * https://www.siteextensions.net/packages/TiPCallback/
+     * Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
      */
     changeDecisionCallbackUrl?: string;
     /**
@@ -2427,24 +2350,6 @@ export interface RampUpRuleResponse {
      * Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
      */
     reroutePercentage?: number;
-}
-
-/**
- * Container App Private Registry
- */
-export interface RegistryCredentialsResponse {
-    /**
-     * The name of the Secret that contains the registry login password
-     */
-    passwordSecretRef?: string;
-    /**
-     * Container Registry Server
-     */
-    server?: string;
-    /**
-     * Container Registry Username
-     */
-    username?: string;
 }
 
 /**
@@ -2494,6 +2399,20 @@ export interface RequestsBasedTriggerResponse {
      * Time interval.
      */
     timeInterval?: string;
+}
+
+/**
+ * Function app resource requirements.
+ */
+export interface ResourceConfigResponse {
+    /**
+     * Required CPU in cores, e.g. 0.5
+     */
+    cpu?: number;
+    /**
+     * Required memory, e.g. "1Gi"
+     */
+    memory?: string;
 }
 
 /**
@@ -2550,70 +2469,6 @@ export interface ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse 
      * Logical Availability Zones the service is hosted in
      */
     zones?: string[];
-}
-
-/**
- * Container App scaling configurations.
- */
-export interface ScaleResponse {
-    /**
-     * Optional. Maximum number of container replicas. Defaults to 10 if not set.
-     */
-    maxReplicas?: number;
-    /**
-     * Optional. Minimum number of container replicas.
-     */
-    minReplicas?: number;
-    /**
-     * Scaling rules.
-     */
-    rules?: ScaleRuleResponse[];
-}
-
-/**
- * Auth Secrets for Container App Scale Rule
- */
-export interface ScaleRuleAuthResponse {
-    /**
-     * Name of the Container App secret from which to pull the auth params.
-     */
-    secretRef?: string;
-    /**
-     * Trigger Parameter that uses the secret
-     */
-    triggerParameter?: string;
-}
-
-/**
- * Container App container scaling rule.
- */
-export interface ScaleRuleResponse {
-    /**
-     * Azure Queue based scaling.
-     */
-    azureQueue?: QueueScaleRuleResponse;
-    /**
-     * Custom scale rule.
-     */
-    custom?: CustomScaleRuleResponse;
-    /**
-     * HTTP requests based scaling.
-     */
-    http?: HttpScaleRuleResponse;
-    /**
-     * Scale Rule Name
-     */
-    name?: string;
-}
-
-/**
- * Container App Secret.
- */
-export interface SecretResponse {
-    /**
-     * Secret Name.
-     */
-    name?: string;
 }
 
 /**
@@ -2781,6 +2636,10 @@ export interface SiteConfigResponse {
      */
     managedServiceIdentityId?: number;
     /**
+     * The minimum strength TLS cipher suite allowed for an application
+     */
+    minTlsCipherSuite?: string;
+    /**
      * MinTlsVersion: configures the minimum version of TLS required for SSL requests
      */
     minTlsVersion?: string;
@@ -2917,6 +2776,33 @@ export function siteConfigResponseProvideDefaults(val: SiteConfigResponse): Site
         localMySqlEnabled: (val.localMySqlEnabled) ?? false,
         netFrameworkVersion: (val.netFrameworkVersion) ?? "v4.6",
     };
+}
+
+export interface SiteDnsConfigResponse {
+    /**
+     * Alternate DNS server to be used by apps. This property replicates the WEBSITE_DNS_ALT_SERVER app setting.
+     */
+    dnsAltServer?: string;
+    /**
+     * Indicates that sites using Virtual network custom DNS servers are still sorting the list of DNS servers. Read-Only.
+     */
+    dnsLegacySortOrder: boolean;
+    /**
+     * Custom time for DNS to be cached in seconds. Allowed range: 0-60. Default is 30 seconds. 0 means caching disabled.
+     */
+    dnsMaxCacheTimeout?: number;
+    /**
+     * Total number of retries for dns lookup. Allowed range: 1-5. Default is 3.
+     */
+    dnsRetryAttemptCount?: number;
+    /**
+     * Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
+     */
+    dnsRetryAttemptTimeout?: number;
+    /**
+     * List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
+     */
+    dnsServers?: string[];
 }
 
 /**
@@ -3289,30 +3175,6 @@ export interface StatusCodesRangeBasedTriggerResponse {
 }
 
 /**
- * Container App versioned application definition.
- * Defines the desired state of an immutable revision.
- * Any changes to this section Will result in a new revision being created
- */
-export interface TemplateResponse {
-    /**
-     * List of container definitions for the Container App.
-     */
-    containers?: ContainerResponse[];
-    /**
-     * Dapr configuration for the Container App.
-     */
-    dapr?: DaprResponse;
-    /**
-     * User friendly suffix that is appended to the revision name
-     */
-    revisionSuffix?: string;
-    /**
-     * Scaling properties for the Container App.
-     */
-    scale?: ScaleResponse;
-}
-
-/**
  * The configuration settings of the token store.
  */
 export interface TokenStoreResponse {
@@ -3334,33 +3196,6 @@ export interface TokenStoreResponse {
      * call the token refresh API. The default is 72 hours.
      */
     tokenRefreshExtensionHours?: number;
-}
-
-/**
- * Traffic weight assigned to a revision
- */
-export interface TrafficWeightResponse {
-    /**
-     * Indicates that the traffic weight belongs to a latest stable revision
-     */
-    latestRevision?: boolean;
-    /**
-     * Name of a revision
-     */
-    revisionName?: string;
-    /**
-     * Traffic weight assigned to a revision
-     */
-    weight?: number;
-}
-/**
- * trafficWeightResponseProvideDefaults sets the appropriate defaults for TrafficWeightResponse
- */
-export function trafficWeightResponseProvideDefaults(val: TrafficWeightResponse): TrafficWeightResponse {
-    return {
-        ...val,
-        latestRevision: (val.latestRevision) ?? false,
-    };
 }
 
 /**
@@ -3617,23 +3452,3 @@ export interface WsdlServiceResponse {
      */
     qualifiedName: string;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

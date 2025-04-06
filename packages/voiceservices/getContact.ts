@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Contact
- * Azure REST API version: 2022-12-01-preview.
+ *
+ * Uses Azure REST API version 2022-12-01-preview.
  */
 export function getContact(args: GetContactArgs, opts?: pulumi.InvokeOptions): Promise<GetContactResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetContactArgs {
  * A Contact resource
  */
 export interface GetContactResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Full name of contact
      */
@@ -80,7 +85,8 @@ export interface GetContactResult {
 }
 /**
  * Get a Contact
- * Azure REST API version: 2022-12-01-preview.
+ *
+ * Uses Azure REST API version 2022-12-01-preview.
  */
 export function getContactOutput(args: GetContactOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContactResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

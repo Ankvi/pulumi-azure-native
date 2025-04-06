@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a user rule.
- * Azure REST API version: 2022-04-01-preview.
+ *
+ * Uses Azure REST API version 2022-04-01-preview.
  */
 export function getDefaultUserRule(args: GetDefaultUserRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultUserRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -43,6 +44,10 @@ export interface GetDefaultUserRuleArgs {
  * Network security default user rule.
  */
 export interface GetDefaultUserRuleResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * A description for this rule. Restricted to 140 chars.
      */
@@ -107,7 +112,8 @@ export interface GetDefaultUserRuleResult {
 }
 /**
  * Gets a user rule.
- * Azure REST API version: 2022-04-01-preview.
+ *
+ * Uses Azure REST API version 2022-04-01-preview.
  */
 export function getDefaultUserRuleOutput(args: GetDefaultUserRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDefaultUserRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

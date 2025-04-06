@@ -3,9 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a BgpPeer
- * Azure REST API version: 2024-03-01.
  *
- * Other available API versions: 2023-10-01-preview.
+ * Uses Azure REST API version 2024-03-01.
  */
 export function getBgpPeer(args: GetBgpPeerArgs, opts?: pulumi.InvokeOptions): Promise<GetBgpPeerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,6 +29,10 @@ export interface GetBgpPeerArgs {
  * A BgpPeer resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters)
  */
 export interface GetBgpPeerResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -65,9 +68,8 @@ export interface GetBgpPeerResult {
 }
 /**
  * Get a BgpPeer
- * Azure REST API version: 2024-03-01.
  *
- * Other available API versions: 2023-10-01-preview.
+ * Uses Azure REST API version 2024-03-01.
  */
 export function getBgpPeerOutput(args: GetBgpPeerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBgpPeerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

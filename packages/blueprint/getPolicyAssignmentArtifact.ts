@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a blueprint artifact.
- * Azure REST API version: 2018-11-01-preview.
+ *
+ * Uses Azure REST API version 2018-11-01-preview.
  */
 export function getPolicyAssignmentArtifact(args: GetPolicyAssignmentArtifactArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyAssignmentArtifactResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetPolicyAssignmentArtifactArgs {
  * Blueprint artifact that applies a Policy assignment.
  */
 export interface GetPolicyAssignmentArtifactResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Artifacts which need to be deployed before the specified artifact.
      */
@@ -77,7 +82,8 @@ export interface GetPolicyAssignmentArtifactResult {
 }
 /**
  * Get a blueprint artifact.
- * Azure REST API version: 2018-11-01-preview.
+ *
+ * Uses Azure REST API version 2018-11-01-preview.
  */
 export function getPolicyAssignmentArtifactOutput(args: GetPolicyAssignmentArtifactOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicyAssignmentArtifactResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

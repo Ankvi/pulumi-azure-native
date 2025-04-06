@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the sku details for the given resource type and sku name.
- * Azure REST API version: 2021-09-01-preview.
+ *
+ * Uses Azure REST API version 2021-09-01-preview.
  */
 export function getSkusNestedResourceTypeFirst(args: GetSkusNestedResourceTypeFirstArgs, opts?: pulumi.InvokeOptions): Promise<GetSkusNestedResourceTypeFirstResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +37,10 @@ export interface GetSkusNestedResourceTypeFirstArgs {
 
 export interface GetSkusNestedResourceTypeFirstResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
@@ -55,7 +60,8 @@ export interface GetSkusNestedResourceTypeFirstResult {
 }
 /**
  * Gets the sku details for the given resource type and sku name.
- * Azure REST API version: 2021-09-01-preview.
+ *
+ * Uses Azure REST API version 2021-09-01-preview.
  */
 export function getSkusNestedResourceTypeFirstOutput(args: GetSkusNestedResourceTypeFirstOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSkusNestedResourceTypeFirstResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

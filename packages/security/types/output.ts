@@ -1,6 +1,25 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * The environment authentication details
+ */
+export interface AccessTokenAuthenticationResponse {
+    /**
+     * The access token that will be used while authenticating with the onboarded environment
+     */
+    accessToken?: string;
+    /**
+     * The authentication type
+     * Expected value is 'AccessToken'.
+     */
+    authenticationType: "AccessToken";
+    /**
+     * The user name that will be used while authenticating with the onboarded environment
+     */
+    username?: string;
+}
+
+/**
  * Configuration payload for PR Annotations.
  */
 export interface ActionableRemediationResponse {
@@ -84,6 +103,20 @@ export interface AllowlistCustomAlertRuleResponse {
      * The value type of the items in the list.
      */
     valueType: string;
+}
+
+/**
+ * Configuration for servers Arc auto provisioning for a given environment
+ */
+export interface ArcAutoProvisioningResponseConfiguration {
+    /**
+     * Optional Arc private link scope resource id to link the Arc agent
+     */
+    privateLinkScope?: string;
+    /**
+     * Optional HTTP proxy endpoint to use for the Arc agent
+     */
+    proxy?: string;
 }
 
 /**
@@ -206,6 +239,10 @@ export interface AutomationActionEventHubResponse {
      */
     eventHubResourceId?: string;
     /**
+     * Indicates whether the trusted service is enabled or not.
+     */
+    isTrustedServiceEnabled?: boolean;
+    /**
      * The target Event Hub SAS policy name.
      */
     sasPolicyName: string;
@@ -231,7 +268,7 @@ export interface AutomationActionLogicAppResponse {
 }
 
 /**
- * The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
+ * The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
  */
 export interface AutomationActionWorkspaceResponse {
     /**
@@ -246,7 +283,7 @@ export interface AutomationActionWorkspaceResponse {
 }
 
 /**
- * A rule set which evaluates all its rules upon an event interception. Only when all the included rules in the rule set will be evaluated as 'true', will the event trigger the defined actions.
+ * A rule set which evaluates all its rules upon an event interception. Only when all the included rules in the rule set will be evaluated as 'true', will the event trigger the defined actions. 
  */
 export interface AutomationRuleSetResponse {
     rules?: AutomationTriggeringRuleResponse[];
@@ -385,6 +422,10 @@ export interface AwsEnvironmentDataResponse {
      * list of regions to scan
      */
     regions?: string[];
+    /**
+     * Scan interval in hours (value should be between 1-hour to 24-hours)
+     */
+    scanInterval?: number;
 }
 
 /**
@@ -577,6 +618,21 @@ export interface CspmMonitorAzureDevOpsOfferingResponse {
 }
 
 /**
+ * The CSPM (Cloud security posture management) monitoring for Docker Hub offering
+ */
+export interface CspmMonitorDockerHubOfferingResponse {
+    /**
+     * The offering description.
+     */
+    description: string;
+    /**
+     * The type of the security offering.
+     * Expected value is 'CspmMonitorDockerHub'.
+     */
+    offeringType: "CspmMonitorDockerHub";
+}
+
+/**
  * The CSPM monitoring for GCP offering
  */
 export interface CspmMonitorGcpOfferingResponse {
@@ -640,9 +696,28 @@ export interface CspmMonitorGithubOfferingResponse {
 }
 
 /**
+ * The CSPM (Cloud security posture management) monitoring for JFrog Artifactory offering
+ */
+export interface CspmMonitorJFrogOfferingResponse {
+    /**
+     * The offering description.
+     */
+    description: string;
+    /**
+     * The type of the security offering.
+     * Expected value is 'CspmMonitorJFrog'.
+     */
+    offeringType: "CspmMonitorJFrog";
+}
+
+/**
  * The CSPM P1 for AWS offering
  */
 export interface DefenderCspmAwsOfferingResponse {
+    /**
+     * Defenders CSPM Permissions Management offering configurations
+     */
+    ciem?: DefenderCspmAwsOfferingResponseCiem;
     /**
      * The Microsoft Defender Data Sensitivity discovery configuration
      */
@@ -656,32 +731,60 @@ export interface DefenderCspmAwsOfferingResponse {
      */
     description: string;
     /**
+     * The Microsoft Defender container agentless discovery K8s configuration
+     */
+    mdcContainersAgentlessDiscoveryK8s?: DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s;
+    /**
+     * The Microsoft Defender container image assessment configuration
+     */
+    mdcContainersImageAssessment?: DefenderCspmAwsOfferingResponseMdcContainersImageAssessment;
+    /**
      * The type of the security offering.
      * Expected value is 'DefenderCspmAws'.
      */
     offeringType: "DefenderCspmAws";
     /**
-     * The Microsoft Defender for Server VM scanning configuration
+     * The Microsoft Defender for CSPM offering VM scanning configuration
      */
     vmScanners?: DefenderCspmAwsOfferingResponseVmScanners;
 }
 
 /**
- * configuration for Microsoft Defender for Server VM scanning
+ * Defenders CSPM Permissions Management offering configurations
  */
-export interface DefenderCspmAwsOfferingResponseConfiguration {
+export interface DefenderCspmAwsOfferingResponseCiem {
     /**
-     * The cloud role ARN in AWS for this feature
+     * Defender CSPM Permissions Management discovery configuration
+     */
+    ciemDiscovery?: DefenderCspmAwsOfferingResponseCiemDiscovery;
+    /**
+     * AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
+     */
+    ciemOidc?: DefenderCspmAwsOfferingResponseCiemOidc;
+}
+
+/**
+ * Defender CSPM Permissions Management discovery configuration
+ */
+export interface DefenderCspmAwsOfferingResponseCiemDiscovery {
+    /**
+     * The cloud role ARN in AWS for Permissions Management discovery
      */
     cloudRoleArn?: string;
+}
+
+/**
+ * AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
+ */
+export interface DefenderCspmAwsOfferingResponseCiemOidc {
     /**
-     * VM tags that indicates that VM should not be scanned
+     * the azure active directory app name used of authenticating against AWS
      */
-    exclusionTags?: {[key: string]: string};
+    azureActiveDirectoryAppName?: string;
     /**
-     * The scanning mode for the VM scan.
+     * The cloud role ARN in AWS for Permissions Management used for oidc connection
      */
-    scanningMode?: string;
+    cloudRoleArn?: string;
 }
 
 /**
@@ -713,17 +816,64 @@ export interface DefenderCspmAwsOfferingResponseDatabasesDspm {
 }
 
 /**
- * The Microsoft Defender for Server VM scanning configuration
+ * The Microsoft Defender container agentless discovery K8s configuration
+ */
+export interface DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s {
+    /**
+     * The cloud role ARN in AWS for this feature
+     */
+    cloudRoleArn?: string;
+    /**
+     * Is Microsoft Defender container agentless discovery K8s enabled
+     */
+    enabled?: boolean;
+}
+
+/**
+ * The Microsoft Defender container image assessment configuration
+ */
+export interface DefenderCspmAwsOfferingResponseMdcContainersImageAssessment {
+    /**
+     * The cloud role ARN in AWS for this feature
+     */
+    cloudRoleArn?: string;
+    /**
+     * Is Microsoft Defender container image assessment enabled
+     */
+    enabled?: boolean;
+}
+
+/**
+ * The Microsoft Defender for CSPM offering VM scanning configuration
  */
 export interface DefenderCspmAwsOfferingResponseVmScanners {
     /**
-     * configuration for Microsoft Defender for Server VM scanning
+     * The cloud role ARN in AWS for this feature
      */
-    configuration?: DefenderCspmAwsOfferingResponseConfiguration;
+    cloudRoleArn?: string;
     /**
-     * Is Microsoft Defender for Server VM scanning enabled
+     * Configuration for VM scanning
+     */
+    configuration?: VmScannersBaseResponseConfiguration;
+    /**
+     * Is VM scanning enabled
      */
     enabled?: boolean;
+}
+
+/**
+ * The Defender for CSPM Docker Hub offering configurations
+ */
+export interface DefenderCspmDockerHubOfferingResponse {
+    /**
+     * The offering description.
+     */
+    description: string;
+    /**
+     * The type of the security offering.
+     * Expected value is 'DefenderCspmDockerHub'.
+     */
+    offeringType: "DefenderCspmDockerHub";
 }
 
 /**
@@ -731,14 +881,149 @@ export interface DefenderCspmAwsOfferingResponseVmScanners {
  */
 export interface DefenderCspmGcpOfferingResponse {
     /**
+     * GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
+     */
+    ciemDiscovery?: DefenderCspmGcpOfferingResponseCiemDiscovery;
+    /**
+     * The Microsoft Defender Data Sensitivity discovery configuration
+     */
+    dataSensitivityDiscovery?: DefenderCspmGcpOfferingResponseDataSensitivityDiscovery;
+    /**
      * The offering description.
      */
     description: string;
+    /**
+     * The Microsoft Defender Container agentless discovery configuration
+     */
+    mdcContainersAgentlessDiscoveryK8s?: DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s;
+    /**
+     * The Microsoft Defender Container image assessment configuration
+     */
+    mdcContainersImageAssessment?: DefenderCspmGcpOfferingResponseMdcContainersImageAssessment;
     /**
      * The type of the security offering.
      * Expected value is 'DefenderCspmGcp'.
      */
     offeringType: "DefenderCspmGcp";
+    /**
+     * The Microsoft Defender for CSPM VM scanning configuration
+     */
+    vmScanners?: DefenderCspmGcpOfferingResponseVmScanners;
+}
+
+/**
+ * GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
+ */
+export interface DefenderCspmGcpOfferingResponseCiemDiscovery {
+    /**
+     * the azure active directory app name used of authenticating against GCP workload identity federation
+     */
+    azureActiveDirectoryAppName?: string;
+    /**
+     * The service account email address in GCP for Permissions Management offering
+     */
+    serviceAccountEmailAddress?: string;
+    /**
+     * The GCP workload identity provider id for Permissions Management offering
+     */
+    workloadIdentityProviderId?: string;
+}
+
+/**
+ * The Microsoft Defender Data Sensitivity discovery configuration
+ */
+export interface DefenderCspmGcpOfferingResponseDataSensitivityDiscovery {
+    /**
+     * Is Microsoft Defender Data Sensitivity discovery enabled
+     */
+    enabled?: boolean;
+    /**
+     * The service account email address in GCP for this feature
+     */
+    serviceAccountEmailAddress?: string;
+    /**
+     * The workload identity provider id in GCP for this feature
+     */
+    workloadIdentityProviderId?: string;
+}
+
+/**
+ * The Microsoft Defender Container agentless discovery configuration
+ */
+export interface DefenderCspmGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s {
+    /**
+     * Is Microsoft Defender container agentless discovery enabled
+     */
+    enabled?: boolean;
+    /**
+     * The service account email address in GCP for this feature
+     */
+    serviceAccountEmailAddress?: string;
+    /**
+     * The workload identity provider id in GCP for this feature
+     */
+    workloadIdentityProviderId?: string;
+}
+
+/**
+ * The Microsoft Defender Container image assessment configuration
+ */
+export interface DefenderCspmGcpOfferingResponseMdcContainersImageAssessment {
+    /**
+     * Is Microsoft Defender container image assessment enabled
+     */
+    enabled?: boolean;
+    /**
+     * The service account email address in GCP for this feature
+     */
+    serviceAccountEmailAddress?: string;
+    /**
+     * The workload identity provider id in GCP for this feature
+     */
+    workloadIdentityProviderId?: string;
+}
+
+/**
+ * The Microsoft Defender for CSPM VM scanning configuration
+ */
+export interface DefenderCspmGcpOfferingResponseVmScanners {
+    /**
+     * Configuration for VM scanning
+     */
+    configuration?: VmScannersBaseResponseConfiguration;
+    /**
+     * Is VM scanning enabled
+     */
+    enabled?: boolean;
+}
+
+/**
+ * The CSPM P1 for JFrog Artifactory offering
+ */
+export interface DefenderCspmJFrogOfferingResponse {
+    /**
+     * The offering description.
+     */
+    description: string;
+    /**
+     * The Microsoft Defender Container image assessment configuration
+     */
+    mdcContainersImageAssessment?: DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment;
+    /**
+     * The type of the security offering.
+     * Expected value is 'DefenderCspmJFrog'.
+     */
+    offeringType: "DefenderCspmJFrog";
+}
+
+/**
+ * The Microsoft Defender Container image assessment configuration
+ */
+export interface DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment {
+    /**
+     * Is Microsoft Defender container image assessment enabled
+     */
+    enabled?: boolean;
 }
 
 /**
@@ -777,27 +1062,13 @@ export interface DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioning {
      */
     cloudRoleArn?: string;
     /**
-     * Configuration for servers Arc auto provisioning
+     * Configuration for servers Arc auto provisioning for a given environment
      */
-    configuration?: DefenderFoDatabasesAwsOfferingResponseConfiguration;
+    configuration?: ArcAutoProvisioningResponseConfiguration;
     /**
      * Is arc auto provisioning enabled
      */
     enabled?: boolean;
-}
-
-/**
- * Configuration for servers Arc auto provisioning
- */
-export interface DefenderFoDatabasesAwsOfferingResponseConfiguration {
-    /**
-     * Optional Arc private link scope resource id to link the Arc agent
-     */
-    privateLinkScope?: string;
-    /**
-     * Optional http proxy endpoint to use for the Arc agent
-     */
-    proxy?: string;
 }
 
 /**
@@ -833,29 +1104,29 @@ export interface DefenderFoDatabasesAwsOfferingResponseRds {
  */
 export interface DefenderForContainersAwsOfferingResponse {
     /**
-     * Is audit logs pipeline auto provisioning enabled
-     */
-    autoProvisioning?: boolean;
-    /**
      * The cloudwatch to kinesis connection configuration
      */
     cloudWatchToKinesis?: DefenderForContainersAwsOfferingResponseCloudWatchToKinesis;
     /**
-     * The container vulnerability assessment configuration
+     * The externalId used by the data reader to prevent the confused deputy attack
      */
-    containerVulnerabilityAssessment?: DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessment;
-    /**
-     * The container vulnerability assessment task configuration
-     */
-    containerVulnerabilityAssessmentTask?: DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTask;
+    dataCollectionExternalId?: string;
     /**
      * The offering description.
      */
     description: string;
     /**
-     * Enable container vulnerability assessment feature
+     * Is audit logs data collection enabled
      */
-    enableContainerVulnerabilityAssessment?: boolean;
+    enableAuditLogsAutoProvisioning?: boolean;
+    /**
+     * Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
+     */
+    enableDefenderAgentAutoProvisioning?: boolean;
+    /**
+     * Is Policy Kubernetes agent auto provisioning enabled
+     */
+    enablePolicyAgentAutoProvisioning?: boolean;
     /**
      * The kinesis to s3 connection configuration
      */
@@ -865,22 +1136,30 @@ export interface DefenderForContainersAwsOfferingResponse {
      */
     kubeAuditRetentionTime?: number;
     /**
-     * The kubernetes to scuba connection configuration
+     * The kubernetes data collection connection configuration
      */
-    kubernetesScubaReader?: DefenderForContainersAwsOfferingResponseKubernetesScubaReader;
+    kubernetesDataCollection?: DefenderForContainersAwsOfferingResponseKubernetesDataCollection;
     /**
      * The kubernetes service connection configuration
      */
     kubernetesService?: DefenderForContainersAwsOfferingResponseKubernetesService;
+    /**
+     * The Microsoft Defender container agentless discovery K8s configuration
+     */
+    mdcContainersAgentlessDiscoveryK8s?: DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s;
+    /**
+     * The Microsoft Defender container image assessment configuration
+     */
+    mdcContainersImageAssessment?: DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment;
     /**
      * The type of the security offering.
      * Expected value is 'DefenderForContainersAws'.
      */
     offeringType: "DefenderForContainersAws";
     /**
-     * The externalId used by the data reader to prevent the confused deputy attack
+     * The Microsoft Defender for Container K8s VM host scanning configuration
      */
-    scubaExternalId?: string;
+    vmScanners?: DefenderForContainersAwsOfferingResponseVmScanners;
 }
 
 /**
@@ -889,26 +1168,6 @@ export interface DefenderForContainersAwsOfferingResponse {
 export interface DefenderForContainersAwsOfferingResponseCloudWatchToKinesis {
     /**
      * The cloud role ARN in AWS used by CloudWatch to transfer data into Kinesis
-     */
-    cloudRoleArn?: string;
-}
-
-/**
- * The container vulnerability assessment configuration
- */
-export interface DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessment {
-    /**
-     * The cloud role ARN in AWS for this feature
-     */
-    cloudRoleArn?: string;
-}
-
-/**
- * The container vulnerability assessment task configuration
- */
-export interface DefenderForContainersAwsOfferingResponseContainerVulnerabilityAssessmentTask {
-    /**
-     * The cloud role ARN in AWS for this feature
      */
     cloudRoleArn?: string;
 }
@@ -924,9 +1183,9 @@ export interface DefenderForContainersAwsOfferingResponseKinesisToS3 {
 }
 
 /**
- * The kubernetes to scuba connection configuration
+ * The kubernetes data collection connection configuration
  */
-export interface DefenderForContainersAwsOfferingResponseKubernetesScubaReader {
+export interface DefenderForContainersAwsOfferingResponseKubernetesDataCollection {
     /**
      * The cloud role ARN in AWS for this feature used for reading data
      */
@@ -944,25 +1203,98 @@ export interface DefenderForContainersAwsOfferingResponseKubernetesService {
 }
 
 /**
+ * The Microsoft Defender container agentless discovery K8s configuration
+ */
+export interface DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s {
+    /**
+     * The cloud role ARN in AWS for this feature
+     */
+    cloudRoleArn?: string;
+    /**
+     * Is Microsoft Defender container agentless discovery K8s enabled
+     */
+    enabled?: boolean;
+}
+
+/**
+ * The Microsoft Defender container image assessment configuration
+ */
+export interface DefenderForContainersAwsOfferingResponseMdcContainersImageAssessment {
+    /**
+     * The cloud role ARN in AWS for this feature
+     */
+    cloudRoleArn?: string;
+    /**
+     * Is Microsoft Defender container image assessment enabled
+     */
+    enabled?: boolean;
+}
+
+/**
+ * The Microsoft Defender for Container K8s VM host scanning configuration
+ */
+export interface DefenderForContainersAwsOfferingResponseVmScanners {
+    /**
+     * The cloud role ARN in AWS for this feature
+     */
+    cloudRoleArn?: string;
+    /**
+     * Configuration for VM scanning
+     */
+    configuration?: VmScannersBaseResponseConfiguration;
+    /**
+     * Is VM scanning enabled
+     */
+    enabled?: boolean;
+}
+
+/**
+ * The Defender for containers Docker Hub offering configurations
+ */
+export interface DefenderForContainersDockerHubOfferingResponse {
+    /**
+     * The offering description.
+     */
+    description: string;
+    /**
+     * The type of the security offering.
+     * Expected value is 'DefenderForContainersDockerHub'.
+     */
+    offeringType: "DefenderForContainersDockerHub";
+}
+
+/**
  * The containers GCP offering
  */
 export interface DefenderForContainersGcpOfferingResponse {
-    /**
-     * Is audit logs data collection enabled
-     */
-    auditLogsAutoProvisioningFlag?: boolean;
     /**
      * The native cloud connection configuration
      */
     dataPipelineNativeCloudConnection?: DefenderForContainersGcpOfferingResponseDataPipelineNativeCloudConnection;
     /**
-     * Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
-     */
-    defenderAgentAutoProvisioningFlag?: boolean;
-    /**
      * The offering description.
      */
     description: string;
+    /**
+     * Is audit logs data collection enabled
+     */
+    enableAuditLogsAutoProvisioning?: boolean;
+    /**
+     * Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
+     */
+    enableDefenderAgentAutoProvisioning?: boolean;
+    /**
+     * Is Policy Kubernetes agent auto provisioning enabled
+     */
+    enablePolicyAgentAutoProvisioning?: boolean;
+    /**
+     * The Microsoft Defender Container agentless discovery configuration
+     */
+    mdcContainersAgentlessDiscoveryK8s?: DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s;
+    /**
+     * The Microsoft Defender Container image assessment configuration
+     */
+    mdcContainersImageAssessment?: DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment;
     /**
      * The native cloud connection configuration
      */
@@ -973,9 +1305,9 @@ export interface DefenderForContainersGcpOfferingResponse {
      */
     offeringType: "DefenderForContainersGcp";
     /**
-     * Is Policy Kubernetes agent auto provisioning enabled
+     * The Microsoft Defender for Container K8s VM host scanning configuration
      */
-    policyAgentAutoProvisioningFlag?: boolean;
+    vmScanners?: DefenderForContainersGcpOfferingResponseVmScanners;
 }
 
 /**
@@ -993,6 +1325,42 @@ export interface DefenderForContainersGcpOfferingResponseDataPipelineNativeCloud
 }
 
 /**
+ * The Microsoft Defender Container agentless discovery configuration
+ */
+export interface DefenderForContainersGcpOfferingResponseMdcContainersAgentlessDiscoveryK8s {
+    /**
+     * Is Microsoft Defender container agentless discovery enabled
+     */
+    enabled?: boolean;
+    /**
+     * The service account email address in GCP for this feature
+     */
+    serviceAccountEmailAddress?: string;
+    /**
+     * The workload identity provider id in GCP for this feature
+     */
+    workloadIdentityProviderId?: string;
+}
+
+/**
+ * The Microsoft Defender Container image assessment configuration
+ */
+export interface DefenderForContainersGcpOfferingResponseMdcContainersImageAssessment {
+    /**
+     * Is Microsoft Defender container image assessment enabled
+     */
+    enabled?: boolean;
+    /**
+     * The service account email address in GCP for this feature
+     */
+    serviceAccountEmailAddress?: string;
+    /**
+     * The workload identity provider id in GCP for this feature
+     */
+    workloadIdentityProviderId?: string;
+}
+
+/**
  * The native cloud connection configuration
  */
 export interface DefenderForContainersGcpOfferingResponseNativeCloudConnection {
@@ -1004,6 +1372,35 @@ export interface DefenderForContainersGcpOfferingResponseNativeCloudConnection {
      * The GCP workload identity provider id for this offering
      */
     workloadIdentityProviderId?: string;
+}
+
+/**
+ * The Microsoft Defender for Container K8s VM host scanning configuration
+ */
+export interface DefenderForContainersGcpOfferingResponseVmScanners {
+    /**
+     * Configuration for VM scanning
+     */
+    configuration?: VmScannersBaseResponseConfiguration;
+    /**
+     * Is VM scanning enabled
+     */
+    enabled?: boolean;
+}
+
+/**
+ * The Defender for Containers for JFrog Artifactory offering
+ */
+export interface DefenderForContainersJFrogOfferingResponse {
+    /**
+     * The offering description.
+     */
+    description: string;
+    /**
+     * The type of the security offering.
+     * Expected value is 'DefenderForContainersJFrog'.
+     */
+    offeringType: "DefenderForContainersJFrog";
 }
 
 /**
@@ -1034,27 +1431,13 @@ export interface DefenderForDatabasesGcpOfferingResponse {
  */
 export interface DefenderForDatabasesGcpOfferingResponseArcAutoProvisioning {
     /**
-     * Configuration for servers Arc auto provisioning
+     * Configuration for servers Arc auto provisioning for a given environment
      */
-    configuration?: DefenderForDatabasesGcpOfferingResponseConfiguration;
+    configuration?: ArcAutoProvisioningResponseConfiguration;
     /**
      * Is arc auto provisioning enabled
      */
     enabled?: boolean;
-}
-
-/**
- * Configuration for servers Arc auto provisioning
- */
-export interface DefenderForDatabasesGcpOfferingResponseConfiguration {
-    /**
-     * Optional Arc private link scope resource id to link the Arc agent
-     */
-    privateLinkScope?: string;
-    /**
-     * Optional http proxy endpoint to use for the Arc agent
-     */
-    proxy?: string;
 }
 
 /**
@@ -1069,51 +1452,6 @@ export interface DefenderForDatabasesGcpOfferingResponseDefenderForDatabasesArcA
      * The GCP workload identity provider id for this offering
      */
     workloadIdentityProviderId?: string;
-}
-
-/**
- * The Defender for DevOps for Azure DevOps offering
- */
-export interface DefenderForDevOpsAzureDevOpsOfferingResponse {
-    /**
-     * The offering description.
-     */
-    description: string;
-    /**
-     * The type of the security offering.
-     * Expected value is 'DefenderForDevOpsAzureDevOps'.
-     */
-    offeringType: "DefenderForDevOpsAzureDevOps";
-}
-
-/**
- * The Defender for DevOps for Gitlab offering
- */
-export interface DefenderForDevOpsGitLabOfferingResponse {
-    /**
-     * The offering description.
-     */
-    description: string;
-    /**
-     * The type of the security offering.
-     * Expected value is 'DefenderForDevOpsGitLab'.
-     */
-    offeringType: "DefenderForDevOpsGitLab";
-}
-
-/**
- * The Defender for DevOps for Github offering
- */
-export interface DefenderForDevOpsGithubOfferingResponse {
-    /**
-     * The offering description.
-     */
-    description: string;
-    /**
-     * The type of the security offering.
-     * Expected value is 'DefenderForDevOpsGithub'.
-     */
-    offeringType: "DefenderForDevOpsGithub";
 }
 
 /**
@@ -1164,9 +1502,9 @@ export interface DefenderForServersAwsOfferingResponseArcAutoProvisioning {
      */
     cloudRoleArn?: string;
     /**
-     * Configuration for servers Arc auto provisioning
+     * Configuration for servers Arc auto provisioning for a given environment
      */
-    configuration?: DefenderForServersAwsOfferingResponseConfiguration;
+    configuration?: ArcAutoProvisioningResponseConfiguration;
     /**
      * Is arc auto provisioning enabled
      */
@@ -1174,45 +1512,13 @@ export interface DefenderForServersAwsOfferingResponseArcAutoProvisioning {
 }
 
 /**
- * Configuration for servers Arc auto provisioning
- */
-export interface DefenderForServersAwsOfferingResponseConfiguration {
-    /**
-     * Optional Arc private link scope resource id to link the Arc agent
-     */
-    privateLinkScope?: string;
-    /**
-     * Optional HTTP proxy endpoint to use for the Arc agent
-     */
-    proxy?: string;
-}
-
-/**
  * configuration for Vulnerability Assessment autoprovisioning
  */
-export interface DefenderForServersAwsOfferingResponseConfigurationConfiguration {
+export interface DefenderForServersAwsOfferingResponseConfiguration {
     /**
      * The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
      */
     type?: string;
-}
-
-/**
- * configuration for Microsoft Defender for Server VM scanning
- */
-export interface DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration {
-    /**
-     * The cloud role ARN in AWS for this feature
-     */
-    cloudRoleArn?: string;
-    /**
-     * VM tags that indicates that VM should not be scanned
-     */
-    exclusionTags?: {[key: string]: string};
-    /**
-     * The scanning mode for the VM scan.
-     */
-    scanningMode?: string;
 }
 
 /**
@@ -1256,7 +1562,7 @@ export interface DefenderForServersAwsOfferingResponseVaAutoProvisioning {
     /**
      * configuration for Vulnerability Assessment autoprovisioning
      */
-    configuration?: DefenderForServersAwsOfferingResponseConfigurationConfiguration;
+    configuration?: DefenderForServersAwsOfferingResponseConfiguration;
     /**
      * Is Vulnerability Assessment auto provisioning enabled
      */
@@ -1268,11 +1574,15 @@ export interface DefenderForServersAwsOfferingResponseVaAutoProvisioning {
  */
 export interface DefenderForServersAwsOfferingResponseVmScanners {
     /**
-     * configuration for Microsoft Defender for Server VM scanning
+     * The cloud role ARN in AWS for this feature
      */
-    configuration?: DefenderForServersAwsOfferingResponseConfigurationConfigurationConfiguration;
+    cloudRoleArn?: string;
     /**
-     * Is Microsoft Defender for Server VM scanning enabled
+     * Configuration for VM scanning
+     */
+    configuration?: VmScannersBaseResponseConfiguration;
+    /**
+     * Is VM scanning enabled
      */
     enabled?: boolean;
 }
@@ -1321,9 +1631,9 @@ export interface DefenderForServersGcpOfferingResponse {
  */
 export interface DefenderForServersGcpOfferingResponseArcAutoProvisioning {
     /**
-     * Configuration for servers Arc auto provisioning
+     * Configuration for servers Arc auto provisioning for a given environment
      */
-    configuration?: DefenderForServersGcpOfferingResponseConfiguration;
+    configuration?: ArcAutoProvisioningResponseConfiguration;
     /**
      * Is arc auto provisioning enabled
      */
@@ -1331,41 +1641,13 @@ export interface DefenderForServersGcpOfferingResponseArcAutoProvisioning {
 }
 
 /**
- * Configuration for servers Arc auto provisioning
- */
-export interface DefenderForServersGcpOfferingResponseConfiguration {
-    /**
-     * Optional Arc private link scope resource id to link the Arc agent
-     */
-    privateLinkScope?: string;
-    /**
-     * Optional HTTP proxy endpoint to use for the Arc agent
-     */
-    proxy?: string;
-}
-
-/**
  * configuration for Vulnerability Assessment autoprovisioning
  */
-export interface DefenderForServersGcpOfferingResponseConfigurationConfiguration {
+export interface DefenderForServersGcpOfferingResponseConfiguration {
     /**
      * The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
      */
     type?: string;
-}
-
-/**
- * configuration for Microsoft Defender for Server VM scanning
- */
-export interface DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration {
-    /**
-     * VM tags that indicate that VM should not be scanned
-     */
-    exclusionTags?: {[key: string]: string};
-    /**
-     * The scanning mode for the VM scan.
-     */
-    scanningMode?: string;
 }
 
 /**
@@ -1413,7 +1695,7 @@ export interface DefenderForServersGcpOfferingResponseVaAutoProvisioning {
     /**
      * configuration for Vulnerability Assessment autoprovisioning
      */
-    configuration?: DefenderForServersGcpOfferingResponseConfigurationConfiguration;
+    configuration?: DefenderForServersGcpOfferingResponseConfiguration;
     /**
      * Is Vulnerability Assessment auto provisioning enabled
      */
@@ -1425,11 +1707,11 @@ export interface DefenderForServersGcpOfferingResponseVaAutoProvisioning {
  */
 export interface DefenderForServersGcpOfferingResponseVmScanners {
     /**
-     * configuration for Microsoft Defender for Server VM scanning
+     * Configuration for VM scanning
      */
-    configuration?: DefenderForServersGcpOfferingResponseConfigurationConfigurationConfiguration;
+    configuration?: VmScannersBaseResponseConfiguration;
     /**
-     * Is Microsoft Defender for Server VM scanning enabled
+     * Is VM scanning enabled
      */
     enabled?: boolean;
 }
@@ -1488,6 +1770,20 @@ export interface DenylistCustomAlertRuleResponse {
 }
 
 /**
+ * Details about DevOps capability.
+ */
+export interface DevOpsCapabilityResponse {
+    /**
+     * Gets the name of the DevOps capability.
+     */
+    name: string;
+    /**
+     * Gets the value of the DevOps capability.
+     */
+    value: string;
+}
+
+/**
  * DevOps Configuration properties.
  */
 export interface DevOpsConfigurationPropertiesResponse {
@@ -1499,6 +1795,10 @@ export interface DevOpsConfigurationPropertiesResponse {
      * AutoDiscovery states.
      */
     autoDiscovery?: string;
+    /**
+     * List of capabilities assigned to the DevOps configuration during the discovery process.
+     */
+    capabilities: DevOpsCapabilityResponse[];
     /**
      * The provisioning state of the resource.
      * 
@@ -1527,67 +1827,22 @@ export interface DevOpsConfigurationPropertiesResponse {
 }
 
 /**
- * Properties of the DevOps policy assignment resource.
+ * The Docker Hub connector environment data
  */
-export interface DevOpsPolicyAssignmentPropertiesResponse {
+export interface DockerHubEnvironmentDataResponse {
     /**
-     * Gets or sets time when the assignment was created in UTC.
+     * The Docker Hub organization authentication details
      */
-    assignedAt?: string;
+    authentication?: AccessTokenAuthenticationResponse;
     /**
-     * The behavior of a policy on descendant resources.
+     * The type of the environment data.
+     * Expected value is 'DockerHubOrganization'.
      */
-    descendantBehavior?: string;
+    environmentType: "DockerHubOrganization";
     /**
-     * Condensed information to identify a DevOps Policy resource.
+     * Scan interval in hours (value should be between 1-hour to 24-hours)
      */
-    policy?: DevOpsPolicyDescriptorResponse;
-    /**
-     * The provisioning state of the resource.
-     * 
-     * Pending - Provisioning pending.
-     * Failed - Provisioning failed.
-     * Succeeded - Successful provisioning.
-     * Canceled - Provisioning canceled.
-     * PendingDeletion - Deletion pending.
-     * DeletionSuccess - Deletion successful.
-     * DeletionFailure - Deletion failure.
-     */
-    provisioningState: string;
-    /**
-     * Gets the resource status message.
-     */
-    provisioningStatusMessage: string;
-    /**
-     * Gets the time when resource was last checked.
-     */
-    provisioningStatusUpdateTimeUtc: string;
-    /**
-     * Gets or sets the Azure resource id.
-     */
-    resourceId?: string;
-}
-
-/**
- * Condensed information to identify a DevOps Policy resource.
- */
-export interface DevOpsPolicyDescriptorResponse {
-    /**
-     * Gets or sets the policy GUID.
-     */
-    policyId?: string;
-    /**
-     * Gets or sets the policy name.
-     */
-    policyName?: string;
-    /**
-     * DevOps Policy resource types.
-     */
-    policyType?: string;
-    /**
-     * Gets or sets the version.
-     */
-    policyVersion?: string;
+    scanInterval?: number;
 }
 
 /**
@@ -1760,6 +2015,10 @@ export interface GcpProjectEnvironmentDataResponse {
      * The Gcp project's details
      */
     projectDetails?: GcpProjectDetailsResponse;
+    /**
+     * Scan interval in hours (value should be between 1-hour to 24-hours)
+     */
+    scanInterval?: number;
 }
 
 /**
@@ -2061,32 +2320,18 @@ export interface IdentityResponse {
 }
 
 /**
- * The information protection for AWS offering
+ * The JFrog Artifactory connector environment data
  */
-export interface InformationProtectionAwsOfferingResponse {
+export interface JFrogEnvironmentDataResponse {
     /**
-     * The offering description.
+     * The type of the environment data.
+     * Expected value is 'JFrogArtifactory'.
      */
-    description: string;
+    environmentType: "JFrogArtifactory";
     /**
-     * The native cloud connection configuration
+     * Scan interval in hours (value should be between 1-hour to 24-hours)
      */
-    informationProtection?: InformationProtectionAwsOfferingResponseInformationProtection;
-    /**
-     * The type of the security offering.
-     * Expected value is 'InformationProtectionAws'.
-     */
-    offeringType: "InformationProtectionAws";
-}
-
-/**
- * The native cloud connection configuration
- */
-export interface InformationProtectionAwsOfferingResponseInformationProtection {
-    /**
-     * The cloud role ARN in AWS for this feature
-     */
-    cloudRoleArn?: string;
+    scanInterval?: number;
 }
 
 export interface JitNetworkAccessPolicyVirtualMachineResponse {
@@ -2192,6 +2437,36 @@ export interface MalwareScanningPropertiesResponse {
      * Optional. Resource id of an Event Grid Topic to send scan results to.
      */
     scanResultsEventGridTopicResourceId?: string;
+}
+
+/**
+ * Alert notification source
+ */
+export interface NotificationsSourceAlertResponse {
+    /**
+     * Defines the minimal alert severity which will be sent as email notifications
+     */
+    minimalSeverity?: string;
+    /**
+     * The source type that will trigger the notification
+     * Expected value is 'Alert'.
+     */
+    sourceType: "Alert";
+}
+
+/**
+ * Attack path notification source
+ */
+export interface NotificationsSourceAttackPathResponse {
+    /**
+     * Defines the minimal attach path risk level which will be sent as email notifications
+     */
+    minimalRiskLevel?: string;
+    /**
+     * The source type that will trigger the notification
+     * Expected value is 'AttackPath'.
+     */
+    sourceType: "AttackPath";
 }
 
 /**
@@ -2449,20 +2724,6 @@ export interface SecurityAssessmentPartnerDataResponse {
      * secret to authenticate the partner - write only
      */
     secret: string;
-}
-
-/**
- * Defines whether to send email notifications about new security alerts
- */
-export interface SecurityContactPropertiesResponseAlertNotifications {
-    /**
-     * Defines the minimal alert severity which will be sent as email notifications
-     */
-    minimalSeverity?: string;
-    /**
-     * Defines if email notifications will be sent about new security alerts
-     */
-    state?: string;
 }
 
 /**
@@ -2731,26 +2992,16 @@ export interface UserDefinedResourcesPropertiesResponse {
     querySubscriptions: string[];
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * Configuration for VM scanning
+ */
+export interface VmScannersBaseResponseConfiguration {
+    /**
+     * Tags that indicates that a resource should not be scanned
+     */
+    exclusionTags?: {[key: string]: string};
+    /**
+     * The scanning mode for the VM scan.
+     */
+    scanningMode?: string;
+}

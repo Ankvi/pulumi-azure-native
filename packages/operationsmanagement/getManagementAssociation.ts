@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Retrieves the user ManagementAssociation.
- * Azure REST API version: 2015-11-01-preview.
+ *
+ * Uses Azure REST API version 2015-11-01-preview.
  */
 export function getManagementAssociation(args: GetManagementAssociationArgs, opts?: pulumi.InvokeOptions): Promise<GetManagementAssociationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -44,6 +45,10 @@ export interface GetManagementAssociationArgs {
  */
 export interface GetManagementAssociationResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Resource ID.
      */
     readonly id: string;
@@ -66,7 +71,8 @@ export interface GetManagementAssociationResult {
 }
 /**
  * Retrieves the user ManagementAssociation.
- * Azure REST API version: 2015-11-01-preview.
+ *
+ * Uses Azure REST API version 2015-11-01-preview.
  */
 export function getManagementAssociationOutput(args: GetManagementAssociationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManagementAssociationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

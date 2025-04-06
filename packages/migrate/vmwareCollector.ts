@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01.
+ * Uses Azure REST API version 2019-10-01. In version 2.x of the Azure Native provider, it used API version 2019-10-01.
  */
 export class VMwareCollector extends pulumi.CustomResource {
     /**
@@ -31,6 +31,10 @@ export class VMwareCollector extends pulumi.CustomResource {
         return obj['__pulumiType'] === VMwareCollector.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     public readonly eTag!: pulumi.Output<string | undefined>;
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly properties!: pulumi.Output<types.outputs.CollectorPropertiesResponse>;
@@ -58,16 +62,18 @@ export class VMwareCollector extends pulumi.CustomResource {
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["vmWareCollectorName"] = args ? args.vmWareCollectorName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:VMwareCollector" }, { type: "azure-native:migrate/v20230315:VMwareCollector" }, { type: "azure-native:migrate/v20230401preview:VMwareCollector" }, { type: "azure-native:migrate/v20230501preview:VMwareCollector" }, { type: "azure-native:migrate/v20230909preview:VMwareCollector" }, { type: "azure-native:migrate/v20240101preview:VMwareCollector" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:VMwareCollector" }, { type: "azure-native:migrate/v20230315:VMwareCollector" }, { type: "azure-native:migrate/v20230315:VmwareCollectorsOperation" }, { type: "azure-native:migrate/v20230401preview:VMwareCollector" }, { type: "azure-native:migrate/v20230401preview:VmwareCollectorsOperation" }, { type: "azure-native:migrate/v20230501preview:VMwareCollector" }, { type: "azure-native:migrate/v20230501preview:VmwareCollectorsOperation" }, { type: "azure-native:migrate/v20230909preview:VMwareCollector" }, { type: "azure-native:migrate/v20230909preview:VmwareCollectorsOperation" }, { type: "azure-native:migrate/v20240101preview:VMwareCollector" }, { type: "azure-native:migrate/v20240101preview:VmwareCollectorsOperation" }, { type: "azure-native:migrate:VmwareCollectorsOperation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VMwareCollector.__pulumiType, name, resourceInputs, opts);
     }

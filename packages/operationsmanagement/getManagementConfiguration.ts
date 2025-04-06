@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Retrieves the user ManagementConfiguration.
- * Azure REST API version: 2015-11-01-preview.
+ *
+ * Uses Azure REST API version 2015-11-01-preview.
  */
 export function getManagementConfiguration(args: GetManagementConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetManagementConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -29,6 +30,10 @@ export interface GetManagementConfigurationArgs {
  */
 export interface GetManagementConfigurationResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Resource ID.
      */
     readonly id: string;
@@ -51,7 +56,8 @@ export interface GetManagementConfigurationResult {
 }
 /**
  * Retrieves the user ManagementConfiguration.
- * Azure REST API version: 2015-11-01-preview.
+ *
+ * Uses Azure REST API version 2015-11-01-preview.
  */
 export function getManagementConfigurationOutput(args: GetManagementConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManagementConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

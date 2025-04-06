@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets information about the specified hybrid configuration group values.
- * Azure REST API version: 2023-09-01.
  *
- * Other available API versions: 2024-04-15.
+ * Uses Azure REST API version 2024-04-15.
+ *
+ * Other available API versions: 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridnetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getConfigurationGroupValue(args: GetConfigurationGroupValueArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigurationGroupValueResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,6 +31,10 @@ export interface GetConfigurationGroupValueArgs {
  * Hybrid configuration group value resource.
  */
 export interface GetConfigurationGroupValueResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -61,9 +66,10 @@ export interface GetConfigurationGroupValueResult {
 }
 /**
  * Gets information about the specified hybrid configuration group values.
- * Azure REST API version: 2023-09-01.
  *
- * Other available API versions: 2024-04-15.
+ * Uses Azure REST API version 2024-04-15.
+ *
+ * Other available API versions: 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridnetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getConfigurationGroupValueOutput(args: GetConfigurationGroupValueOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConfigurationGroupValueResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

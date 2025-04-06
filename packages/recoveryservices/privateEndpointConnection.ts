@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Private Endpoint Connection Response Properties
- * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-02-01.
  *
- * Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-10-01.
+ * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+ *
+ * Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
         return obj['__pulumiType'] === PrivateEndpointConnection.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Optional ETag.
      */
@@ -83,9 +88,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vaultName"] = args ? args.vaultName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -94,7 +101,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:recoveryservices/v20200202:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20201001:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20201201:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210101:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210201:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210201preview:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210210:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210301:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210401:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210601:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210701:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210801:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20211001:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20211201:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20220101:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20220201:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20220301:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20220401:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20220601preview:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20220901preview:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20220930preview:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20221001:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20230101:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20230201:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20230401:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20230601:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20230801:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20240101:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20240201:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20240401:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20240430preview:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20240730preview:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20241001:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:recoveryservices/v20200202:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20201001:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20201201:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210101:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210201:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210201preview:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210210:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210301:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210401:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210601:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210701:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20210801:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20211001:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20211201:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20220101:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20220201:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20220301:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20220401:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20220601preview:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20220901preview:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20220930preview:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20221001:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20230101:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20230201:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20230401:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20230601:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20230801:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20240101:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20240201:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20240401:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20240430preview:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20240730preview:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20241001:PrivateEndpointConnection" }, { type: "azure-native:recoveryservices/v20241101preview:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }

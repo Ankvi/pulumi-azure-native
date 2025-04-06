@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Response for POST requests that return single SharedAccessAuthorizationRule.
- * Azure REST API version: 2023-01-01-preview.
  *
- * Other available API versions: 2017-04-01, 2023-09-01, 2023-10-01-preview.
+ * Uses Azure REST API version 2023-10-01-preview.
+ *
+ * Other available API versions: 2023-01-01-preview, 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native notificationhubs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNamespaceAuthorizationRule(args: GetNamespaceAuthorizationRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceAuthorizationRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,21 +37,59 @@ export interface GetNamespaceAuthorizationRuleArgs {
  */
 export interface GetNamespaceAuthorizationRuleResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * Gets a string that describes the claim type
+     */
+    readonly claimType: string;
+    /**
+     * Gets a string that describes the claim value
+     */
+    readonly claimValue: string;
+    /**
+     * Gets the created time for this rule
+     */
+    readonly createdTime: string;
+    /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
+    /**
+     * Gets a string that describes the authorization rule.
+     */
+    readonly keyName: string;
     /**
      * Deprecated - only for compatibility.
      */
     readonly location?: string;
     /**
+     * Gets the last modified time for this rule
+     */
+    readonly modifiedTime: string;
+    /**
      * The name of the resource
      */
     readonly name: string;
     /**
-     * SharedAccessAuthorizationRule properties.
+     * Gets a base64-encoded 256-bit primary key for signing and
+     * validating the SAS token.
      */
-    readonly properties: types.outputs.SharedAccessAuthorizationRulePropertiesResponse;
+    readonly primaryKey?: string;
+    /**
+     * Gets the revision number for the rule
+     */
+    readonly revision: number;
+    /**
+     * Gets or sets the rights associated with the rule.
+     */
+    readonly rights: string[];
+    /**
+     * Gets a base64-encoded 256-bit primary key for signing and
+     * validating the SAS token.
+     */
+    readonly secondaryKey?: string;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -66,9 +105,10 @@ export interface GetNamespaceAuthorizationRuleResult {
 }
 /**
  * Response for POST requests that return single SharedAccessAuthorizationRule.
- * Azure REST API version: 2023-01-01-preview.
  *
- * Other available API versions: 2017-04-01, 2023-09-01, 2023-10-01-preview.
+ * Uses Azure REST API version 2023-10-01-preview.
+ *
+ * Other available API versions: 2023-01-01-preview, 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native notificationhubs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNamespaceAuthorizationRuleOutput(args: GetNamespaceAuthorizationRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNamespaceAuthorizationRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

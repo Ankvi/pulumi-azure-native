@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The backup schedule.
- * Azure REST API version: 2017-06-01. Prior API version in Azure Native 1.x: 2017-06-01.
+ *
+ * Uses Azure REST API version 2017-06-01. In version 2.x of the Azure Native provider, it used API version 2017-06-01.
  */
 export class BackupSchedule extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class BackupSchedule extends pulumi.CustomResource {
         return obj['__pulumiType'] === BackupSchedule.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The type of backup which needs to be taken.
      */
@@ -118,10 +123,12 @@ export class BackupSchedule extends pulumi.CustomResource {
             resourceInputs["scheduleRecurrence"] = args ? args.scheduleRecurrence : undefined;
             resourceInputs["scheduleStatus"] = args ? args.scheduleStatus : undefined;
             resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["lastSuccessfulRun"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["backupType"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["lastSuccessfulRun"] = undefined /*out*/;

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The details of subscription under management group.
- * Azure REST API version: 2021-04-01. Prior API version in Azure Native 1.x: 2020-05-01.
  *
- * Other available API versions: 2023-04-01.
+ * Uses Azure REST API version 2023-04-01. In version 2.x of the Azure Native provider, it used API version 2021-04-01.
+ *
+ * Other available API versions: 2021-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native management [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ManagementGroupSubscription extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class ManagementGroupSubscription extends pulumi.CustomResource {
         return obj['__pulumiType'] === ManagementGroupSubscription.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The friendly name of the subscription.
      */
@@ -75,6 +80,7 @@ export class ManagementGroupSubscription extends pulumi.CustomResource {
             }
             resourceInputs["groupId"] = args ? args.groupId : undefined;
             resourceInputs["subscriptionId"] = args ? args.subscriptionId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
@@ -82,6 +88,7 @@ export class ManagementGroupSubscription extends pulumi.CustomResource {
             resourceInputs["tenant"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;

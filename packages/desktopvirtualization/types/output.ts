@@ -87,7 +87,7 @@ export interface AppAttachPackageInfoPropertiesResponse {
      */
     packageRelativePath?: string;
     /**
-     * Package Version found in the appxmanifest.xml. 
+     * Package version found in the appxmanifest.xml. 
      */
     version?: string;
 }
@@ -109,7 +109,7 @@ export interface AppAttachPackagePropertiesResponse {
      */
     image?: AppAttachPackageInfoPropertiesResponse;
     /**
-     * URL of keyvault location to store certificate
+     * URL path to certificate name located in keyVault
      */
     keyVaultURL?: string;
     /**
@@ -185,11 +185,49 @@ export interface MsixPackageDependenciesResponse {
 }
 
 /**
- * The Private Endpoint resource.
+ * The private endpoint connection resource.
+ */
+export interface PrivateEndpointConnectionResponse {
+    /**
+     * The group ids for the private endpoint resource.
+     */
+    groupIds: string[];
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    id: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * The private endpoint resource.
+     */
+    privateEndpoint?: PrivateEndpointResponse;
+    /**
+     * A collection of information about the state of the connection between service consumer and provider.
+     */
+    privateLinkServiceConnectionState: PrivateLinkServiceConnectionStateResponse;
+    /**
+     * The provisioning state of the private endpoint connection resource.
+     */
+    provisioningState: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
+}
+
+/**
+ * The private endpoint resource.
  */
 export interface PrivateEndpointResponse {
     /**
-     * The ARM identifier for Private Endpoint
+     * The ARM identifier for private endpoint.
      */
     id: string;
 }
@@ -246,11 +284,11 @@ export interface RegistrationTokenMinimalResponse {
 
 export interface ResourceModelWithAllowedPropertySetResponseIdentity {
     /**
-     * The principal ID of resource identity.
+     * The principal ID of resource identity. The value must be an UUID.
      */
     principalId: string;
     /**
-     * The tenant ID of resource.
+     * The tenant ID of resource. The value must be an UUID.
      */
     tenantId: string;
     /**
@@ -292,7 +330,7 @@ export interface ResourceModelWithAllowedPropertySetResponseSku {
      */
     family?: string;
     /**
-     * The name of the SKU. Ex - P3. It is typically a letter+number code
+     * The name of the SKU. E.g. P3. It is typically a letter+number code
      */
     name: string;
     /**
@@ -440,16 +478,3 @@ export interface TimeResponse {
      */
     minute: number;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

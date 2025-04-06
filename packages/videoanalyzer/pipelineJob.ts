@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Pipeline job represents a unique instance of a batch topology, used for offline processing of selected portions of archived content.
- * Azure REST API version: 2021-11-01-preview. Prior API version in Azure Native 1.x: 2021-11-01-preview.
+ *
+ * Uses Azure REST API version 2021-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-11-01-preview.
  */
 export class PipelineJob extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class PipelineJob extends pulumi.CustomResource {
         return obj['__pulumiType'] === PipelineJob.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * An optional description for the pipeline.
      */
@@ -95,6 +100,7 @@ export class PipelineJob extends pulumi.CustomResource {
             resourceInputs["pipelineJobName"] = args ? args.pipelineJobName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["topologyName"] = args ? args.topologyName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["expiration"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -102,6 +108,7 @@ export class PipelineJob extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["expiration"] = undefined /*out*/;

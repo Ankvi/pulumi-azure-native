@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * MEC role.
- * Azure REST API version: 2022-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
+ *
+ * Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2022-03-01.
  */
 export class MECRole extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class MECRole extends pulumi.CustomResource {
         return obj['__pulumiType'] === MECRole.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Activation key of the MEC.
      */
@@ -97,9 +102,11 @@ export class MECRole extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceUniqueId"] = args ? args.resourceUniqueId : undefined;
             resourceInputs["roleStatus"] = args ? args.roleStatus : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["controllerEndpoint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -110,7 +117,7 @@ export class MECRole extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:databoxedge/v20190301:MECRole" }, { type: "azure-native:databoxedge/v20190701:MECRole" }, { type: "azure-native:databoxedge/v20190801:MECRole" }, { type: "azure-native:databoxedge/v20200501preview:MECRole" }, { type: "azure-native:databoxedge/v20200901:MECRole" }, { type: "azure-native:databoxedge/v20200901preview:MECRole" }, { type: "azure-native:databoxedge/v20201201:MECRole" }, { type: "azure-native:databoxedge/v20210201:MECRole" }, { type: "azure-native:databoxedge/v20210201preview:MECRole" }, { type: "azure-native:databoxedge/v20210601:MECRole" }, { type: "azure-native:databoxedge/v20210601preview:MECRole" }, { type: "azure-native:databoxedge/v20220301:MECRole" }, { type: "azure-native:databoxedge/v20220401preview:MECRole" }, { type: "azure-native:databoxedge/v20221201preview:MECRole" }, { type: "azure-native:databoxedge/v20230101preview:MECRole" }, { type: "azure-native:databoxedge/v20230701:MECRole" }, { type: "azure-native:databoxedge/v20231201:MECRole" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:databoxedge/v20190301:MECRole" }, { type: "azure-native:databoxedge/v20190701:MECRole" }, { type: "azure-native:databoxedge/v20190801:MECRole" }, { type: "azure-native:databoxedge/v20200501preview:MECRole" }, { type: "azure-native:databoxedge/v20200901:MECRole" }, { type: "azure-native:databoxedge/v20200901preview:MECRole" }, { type: "azure-native:databoxedge/v20201201:MECRole" }, { type: "azure-native:databoxedge/v20210201:MECRole" }, { type: "azure-native:databoxedge/v20210201preview:MECRole" }, { type: "azure-native:databoxedge/v20210601:MECRole" }, { type: "azure-native:databoxedge/v20210601preview:MECRole" }, { type: "azure-native:databoxedge/v20220301:MECRole" }, { type: "azure-native:databoxedge/v20220401preview:MECRole" }, { type: "azure-native:databoxedge/v20221201preview:MECRole" }, { type: "azure-native:databoxedge/v20230101preview:CloudEdgeManagementRole" }, { type: "azure-native:databoxedge/v20230101preview:IoTRole" }, { type: "azure-native:databoxedge/v20230101preview:KubernetesRole" }, { type: "azure-native:databoxedge/v20230101preview:MECRole" }, { type: "azure-native:databoxedge/v20230701:CloudEdgeManagementRole" }, { type: "azure-native:databoxedge/v20230701:IoTRole" }, { type: "azure-native:databoxedge/v20230701:KubernetesRole" }, { type: "azure-native:databoxedge/v20230701:MECRole" }, { type: "azure-native:databoxedge/v20231201:CloudEdgeManagementRole" }, { type: "azure-native:databoxedge/v20231201:IoTRole" }, { type: "azure-native:databoxedge/v20231201:KubernetesRole" }, { type: "azure-native:databoxedge/v20231201:MECRole" }, { type: "azure-native:databoxedge:CloudEdgeManagementRole" }, { type: "azure-native:databoxedge:IoTRole" }, { type: "azure-native:databoxedge:KubernetesRole" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(MECRole.__pulumiType, name, resourceInputs, opts);
     }

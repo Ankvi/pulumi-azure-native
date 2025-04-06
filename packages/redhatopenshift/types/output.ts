@@ -7,11 +7,11 @@ export interface APIServerProfileResponse {
     /**
      * The IP of the cluster API server.
      */
-    ip?: string;
+    ip: string;
     /**
      * The URL to access the cluster API server.
      */
-    url?: string;
+    url: string;
     /**
      * API server visibility.
      */
@@ -51,7 +51,17 @@ export interface ConsoleProfileResponse {
     /**
      * The URL to access the cluster console.
      */
-    url?: string;
+    url: string;
+}
+
+/**
+ * EffectiveOutboundIP represents an effective outbound IP resource of the cluster public load balancer.
+ */
+export interface EffectiveOutboundIPResponse {
+    /**
+     * The fully qualified Azure resource id of an IP address resource.
+     */
+    id?: string;
 }
 
 /**
@@ -61,7 +71,7 @@ export interface IngressProfileResponse {
     /**
      * The IP of the ingress.
      */
-    ip?: string;
+    ip: string;
     /**
      * The ingress profile name.
      */
@@ -70,6 +80,30 @@ export interface IngressProfileResponse {
      * Ingress visibility.
      */
     visibility?: string;
+}
+
+/**
+ * LoadBalancerProfile represents the profile of the cluster public load balancer.
+ */
+export interface LoadBalancerProfileResponse {
+    /**
+     * The list of effective outbound IP addresses of the public load balancer.
+     */
+    effectiveOutboundIps: EffectiveOutboundIPResponse[];
+    /**
+     * The desired managed outbound IPs for the cluster public load balancer.
+     */
+    managedOutboundIps?: ManagedOutboundIPsResponse;
+}
+
+/**
+ * ManagedOutboundIPs represents the desired managed outbound IPs for the cluster public load balancer.
+ */
+export interface ManagedOutboundIPsResponse {
+    /**
+     * Count represents the desired number of IPv4 outbound IPs created and managed by Azure for the cluster public load balancer.  Allowed values are in the range of 1 - 20.  The default value is 1.
+     */
+    count?: number;
 }
 
 /**
@@ -99,9 +133,21 @@ export interface MasterProfileResponse {
  */
 export interface NetworkProfileResponse {
     /**
+     * The cluster load balancer profile.
+     */
+    loadBalancerProfile?: LoadBalancerProfileResponse;
+    /**
+     * The OutboundType used for egress traffic.
+     */
+    outboundType?: string;
+    /**
      * The CIDR used for OpenShift/Kubernetes Pods.
      */
     podCidr?: string;
+    /**
+     * Specifies whether subnets are pre-attached with an NSG
+     */
+    preconfiguredNSG?: string;
     /**
      * The CIDR used for OpenShift/Kubernetes Services.
      */
@@ -185,8 +231,3 @@ export interface WorkerProfileResponse {
      */
     vmSize?: string;
 }
-
-
-
-
-

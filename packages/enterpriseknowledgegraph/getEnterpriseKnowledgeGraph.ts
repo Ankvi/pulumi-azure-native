@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns a EnterpriseKnowledgeGraph service specified by the parameters.
- * Azure REST API version: 2018-12-03.
+ *
+ * Uses Azure REST API version 2018-12-03.
  */
 export function getEnterpriseKnowledgeGraph(args: GetEnterpriseKnowledgeGraphArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseKnowledgeGraphResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetEnterpriseKnowledgeGraphArgs {
  * EnterpriseKnowledgeGraph resource definition
  */
 export interface GetEnterpriseKnowledgeGraphResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Specifies the resource ID.
      */
@@ -59,7 +64,8 @@ export interface GetEnterpriseKnowledgeGraphResult {
 }
 /**
  * Returns a EnterpriseKnowledgeGraph service specified by the parameters.
- * Azure REST API version: 2018-12-03.
+ *
+ * Uses Azure REST API version 2018-12-03.
  */
 export function getEnterpriseKnowledgeGraphOutput(args: GetEnterpriseKnowledgeGraphOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnterpriseKnowledgeGraphResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

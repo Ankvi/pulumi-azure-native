@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Represents a Configuration.
- * Azure REST API version: 2022-01-01. Prior API version in Azure Native 1.x: 2017-12-01.
  *
- * Other available API versions: 2017-12-01, 2020-07-01-privatepreview, 2023-06-01-preview, 2023-06-30, 2023-12-30.
+ * Uses Azure REST API version 2023-12-30. In version 2.x of the Azure Native provider, it used API version 2022-01-01.
+ *
+ * Other available API versions: 2022-01-01, 2023-06-01-preview, 2023-06-30. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Configuration extends pulumi.CustomResource {
     /**
@@ -38,6 +39,10 @@ export class Configuration extends pulumi.CustomResource {
      * Allowed values of the configuration.
      */
     public /*out*/ readonly allowedValues!: pulumi.Output<string>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Current value of the configuration.
      */
@@ -79,7 +84,7 @@ export class Configuration extends pulumi.CustomResource {
      */
     public readonly source!: pulumi.Output<string | undefined>;
     /**
-     * The system metadata relating to this resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -115,6 +120,7 @@ export class Configuration extends pulumi.CustomResource {
             resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["value"] = args ? args.value : undefined;
             resourceInputs["allowedValues"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["dataType"] = undefined /*out*/;
             resourceInputs["defaultValue"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -127,6 +133,7 @@ export class Configuration extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["allowedValues"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["currentValue"] = undefined /*out*/;
             resourceInputs["dataType"] = undefined /*out*/;
             resourceInputs["defaultValue"] = undefined /*out*/;
@@ -142,7 +149,7 @@ export class Configuration extends pulumi.CustomResource {
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbformysql/v20200701preview:Configuration" }, { type: "azure-native:dbformysql/v20200701privatepreview:Configuration" }, { type: "azure-native:dbformysql/v20210501:Configuration" }, { type: "azure-native:dbformysql/v20210501preview:Configuration" }, { type: "azure-native:dbformysql/v20211201preview:Configuration" }, { type: "azure-native:dbformysql/v20220101:Configuration" }, { type: "azure-native:dbformysql/v20230601preview:Configuration" }, { type: "azure-native:dbformysql/v20230630:Configuration" }, { type: "azure-native:dbformysql/v20231230:Configuration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbformysql/v20171201:Configuration" }, { type: "azure-native:dbformysql/v20200701preview:Configuration" }, { type: "azure-native:dbformysql/v20200701privatepreview:Configuration" }, { type: "azure-native:dbformysql/v20210501:Configuration" }, { type: "azure-native:dbformysql/v20210501preview:Configuration" }, { type: "azure-native:dbformysql/v20211201preview:Configuration" }, { type: "azure-native:dbformysql/v20220101:Configuration" }, { type: "azure-native:dbformysql/v20230601preview:Configuration" }, { type: "azure-native:dbformysql/v20230630:Configuration" }, { type: "azure-native:dbformysql/v20231230:Configuration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Configuration.__pulumiType, name, resourceInputs, opts);
     }

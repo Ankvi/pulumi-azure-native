@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * MAK key details.
- * Azure REST API version: 2019-09-16-preview. Prior API version in Azure Native 1.x: 2019-09-16-preview.
+ *
+ * Uses Azure REST API version 2019-09-16-preview. In version 2.x of the Azure Native provider, it used API version 2019-09-16-preview.
  */
 export class MultipleActivationKey extends pulumi.CustomResource {
     /**
@@ -36,6 +37,10 @@ export class MultipleActivationKey extends pulumi.CustomResource {
      * Agreement number under which the key is requested.
      */
     public readonly agreementNumber!: pulumi.Output<string | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * End of support of security updates activated by the MAK key.
      */
@@ -101,6 +106,7 @@ export class MultipleActivationKey extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["supportType"] = (args ? args.supportType : undefined) ?? "SupplementalServicing";
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["expirationDate"] = undefined /*out*/;
             resourceInputs["multipleActivationKey"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -108,6 +114,7 @@ export class MultipleActivationKey extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["agreementNumber"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["expirationDate"] = undefined /*out*/;
             resourceInputs["installedServerNumber"] = undefined /*out*/;
             resourceInputs["isEligible"] = undefined /*out*/;

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a IamPolicyVersion
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getIamPolicyVersion(args: GetIamPolicyVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetIamPolicyVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetIamPolicyVersionArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetIamPolicyVersionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetIamPolicyVersionResult {
 }
 /**
  * Get a IamPolicyVersion
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getIamPolicyVersionOutput(args: GetIamPolicyVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIamPolicyVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

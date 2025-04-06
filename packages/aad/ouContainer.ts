@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Resource for OuContainer.
- * Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2021-03-01.
+ *
+ * Uses Azure REST API version 2022-12-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
  */
 export class OuContainer extends pulumi.CustomResource {
     /**
@@ -36,6 +37,10 @@ export class OuContainer extends pulumi.CustomResource {
      * The list of container accounts
      */
     public /*out*/ readonly accounts!: pulumi.Output<types.outputs.ContainerAccountResponse[] | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The OuContainer name
      */
@@ -113,6 +118,7 @@ export class OuContainer extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["spn"] = args ? args.spn : undefined;
             resourceInputs["accounts"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["containerId"] = undefined /*out*/;
             resourceInputs["deploymentId"] = undefined /*out*/;
             resourceInputs["distinguishedName"] = undefined /*out*/;
@@ -128,6 +134,7 @@ export class OuContainer extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["accounts"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["containerId"] = undefined /*out*/;
             resourceInputs["deploymentId"] = undefined /*out*/;
             resourceInputs["distinguishedName"] = undefined /*out*/;

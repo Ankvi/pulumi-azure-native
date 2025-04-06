@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The Get Domain Service operation retrieves a json representation of the Domain Service.
- * Azure REST API version: 2022-12-01.
+ *
+ * Uses Azure REST API version 2022-12-01.
  */
 export function getDomainService(args: GetDomainServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetDomainServiceArgs {
  * Domain service.
  */
 export interface GetDomainServiceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Configuration diagnostics data containing latest execution from client.
      */
@@ -131,7 +136,8 @@ export interface GetDomainServiceResult {
 }
 /**
  * The Get Domain Service operation retrieves a json representation of the Domain Service.
- * Azure REST API version: 2022-12-01.
+ *
+ * Uses Azure REST API version 2022-12-01.
  */
 export function getDomainServiceOutput(args: GetDomainServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,9 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Disk pool.
- * Azure REST API version: 2021-08-01.
  *
- * Other available API versions: 2020-03-15-preview.
+ * Uses Azure REST API version 2021-08-01.
  */
 export function getDiskPool(args: GetDiskPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,6 +37,10 @@ export interface GetDiskPoolResult {
      * Logical zone for Disk Pool resource; example: ["1"].
      */
     readonly availabilityZones: string[];
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * List of Azure Managed Disks to attach to a Disk Pool.
      */
@@ -93,9 +96,8 @@ export interface GetDiskPoolResult {
 }
 /**
  * Get a Disk pool.
- * Azure REST API version: 2021-08-01.
  *
- * Other available API versions: 2020-03-15-preview.
+ * Uses Azure REST API version 2021-08-01.
  */
 export function getDiskPoolOutput(args: GetDiskPoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiskPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

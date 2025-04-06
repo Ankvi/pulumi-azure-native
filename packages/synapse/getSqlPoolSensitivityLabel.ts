@@ -2,9 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the sensitivity label of a given column
- * Azure REST API version: 2021-06-01.
  *
- * Other available API versions: 2021-06-01-preview.
+ * Uses Azure REST API version 2021-06-01.
+ *
+ * Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSqlPoolSensitivityLabel(args: GetSqlPoolSensitivityLabelArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlPoolSensitivityLabelResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -54,6 +55,10 @@ export interface GetSqlPoolSensitivityLabelArgs {
  * A sensitivity label.
  */
 export interface GetSqlPoolSensitivityLabelResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The column name.
      */
@@ -106,9 +111,10 @@ export interface GetSqlPoolSensitivityLabelResult {
 }
 /**
  * Gets the sensitivity label of a given column
- * Azure REST API version: 2021-06-01.
  *
- * Other available API versions: 2021-06-01-preview.
+ * Uses Azure REST API version 2021-06-01.
+ *
+ * Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSqlPoolSensitivityLabelOutput(args: GetSqlPoolSensitivityLabelOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSqlPoolSensitivityLabelResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

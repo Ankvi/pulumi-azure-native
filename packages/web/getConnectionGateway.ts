@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a specific gateway under a subscription and in a specific resource group
- * Azure REST API version: 2016-06-01.
+ *
+ * Uses Azure REST API version 2016-06-01.
  */
 export function getConnectionGateway(args: GetConnectionGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionGatewayResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetConnectionGatewayArgs {
  */
 export interface GetConnectionGatewayResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Resource ETag
      */
     readonly etag?: string;
@@ -61,7 +66,8 @@ export interface GetConnectionGatewayResult {
 }
 /**
  * Gets a specific gateway under a subscription and in a specific resource group
- * Azure REST API version: 2016-06-01.
+ *
+ * Uses Azure REST API version 2016-06-01.
  */
 export function getConnectionGatewayOutput(args: GetConnectionGatewayOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectionGatewayResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

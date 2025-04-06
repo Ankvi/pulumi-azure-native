@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Class representing a read write database.
- * Azure REST API version: 2021-06-01-preview.
+ *
+ * Uses Azure REST API version 2021-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-06-01-preview.
  */
 export class ReadWriteDatabase extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class ReadWriteDatabase extends pulumi.CustomResource {
         return obj['__pulumiType'] === ReadWriteDatabase.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The time the data should be kept in cache for fast queries in TimeSpan.
      */
@@ -105,6 +110,7 @@ export class ReadWriteDatabase extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["softDeletePeriod"] = args ? args.softDeletePeriod : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["isFollowed"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -112,6 +118,7 @@ export class ReadWriteDatabase extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["hotCachePeriod"] = undefined /*out*/;
             resourceInputs["isFollowed"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -124,7 +131,7 @@ export class ReadWriteDatabase extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:synapse/v20210401preview:ReadWriteDatabase" }, { type: "azure-native:synapse/v20210601preview:ReadWriteDatabase" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:synapse/v20210401preview:ReadWriteDatabase" }, { type: "azure-native:synapse/v20210601preview:ReadOnlyFollowingDatabase" }, { type: "azure-native:synapse/v20210601preview:ReadWriteDatabase" }, { type: "azure-native:synapse:ReadOnlyFollowingDatabase" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ReadWriteDatabase.__pulumiType, name, resourceInputs, opts);
     }

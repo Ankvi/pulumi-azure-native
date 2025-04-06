@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Represents an instance of a orchestrator.
- * Azure REST API version: 2021-03-15. Prior API version in Azure Native 1.x: 2021-03-15.
  *
- * Other available API versions: 2023-05-18-preview, 2023-06-27-preview.
+ * Uses Azure REST API version 2023-06-27-preview. In version 2.x of the Azure Native provider, it used API version 2021-03-15.
+ *
+ * Other available API versions: 2021-03-15, 2023-05-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native delegatednetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DelegatedSubnetServiceDetails extends pulumi.CustomResource {
     /**
@@ -34,6 +35,15 @@ export class DelegatedSubnetServiceDetails extends pulumi.CustomResource {
         return obj['__pulumiType'] === DelegatedSubnetServiceDetails.__pulumiType;
     }
 
+    /**
+     * Defines prefix size of CIDR blocks allocated to nodes in VnetBlock Mode.
+     * Delegated subnet's prefix size should be smaller than this by a minimum of 3.
+     */
+    public readonly allocationBlockPrefixSize!: pulumi.Output<number | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Properties of the controller.
      */
@@ -81,17 +91,21 @@ export class DelegatedSubnetServiceDetails extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
+            resourceInputs["allocationBlockPrefixSize"] = args ? args.allocationBlockPrefixSize : undefined;
             resourceInputs["controllerDetails"] = args ? args.controllerDetails : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceName"] = args ? args.resourceName : undefined;
             resourceInputs["subnetDetails"] = args ? args.subnetDetails : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["resourceGuid"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["allocationBlockPrefixSize"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["controllerDetails"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -112,6 +126,11 @@ export class DelegatedSubnetServiceDetails extends pulumi.CustomResource {
  * The set of arguments for constructing a DelegatedSubnetServiceDetails resource.
  */
 export interface DelegatedSubnetServiceDetailsArgs {
+    /**
+     * Defines prefix size of CIDR blocks allocated to nodes in VnetBlock Mode.
+     * Delegated subnet's prefix size should be smaller than this by a minimum of 3.
+     */
+    allocationBlockPrefixSize?: pulumi.Input<number>;
     /**
      * Properties of the controller.
      */

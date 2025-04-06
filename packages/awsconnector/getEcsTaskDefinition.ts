@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a EcsTaskDefinition
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getEcsTaskDefinition(args: GetEcsTaskDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsTaskDefinitionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetEcsTaskDefinitionArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetEcsTaskDefinitionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetEcsTaskDefinitionResult {
 }
 /**
  * Get a EcsTaskDefinition
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getEcsTaskDefinitionOutput(args: GetEcsTaskDefinitionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsTaskDefinitionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

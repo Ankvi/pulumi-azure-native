@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Specifies information about the Dedicated host.
- * Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
  *
- * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+ * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
+ *
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DedicatedHost extends pulumi.CustomResource {
     /**
@@ -38,6 +39,10 @@ export class DedicatedHost extends pulumi.CustomResource {
      * Specifies whether the dedicated host should be replaced automatically in case of a failure. The value is defaulted to 'true' when not provided.
      */
     public readonly autoReplaceOnFailure!: pulumi.Output<boolean | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * A unique id generated and assigned to the dedicated host by the platform. Does not change throughout the lifetime of the host.
      */
@@ -120,6 +125,7 @@ export class DedicatedHost extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["hostId"] = undefined /*out*/;
             resourceInputs["instanceView"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -130,6 +136,7 @@ export class DedicatedHost extends pulumi.CustomResource {
             resourceInputs["virtualMachines"] = undefined /*out*/;
         } else {
             resourceInputs["autoReplaceOnFailure"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["hostId"] = undefined /*out*/;
             resourceInputs["instanceView"] = undefined /*out*/;
             resourceInputs["licenseType"] = undefined /*out*/;
@@ -145,7 +152,7 @@ export class DedicatedHost extends pulumi.CustomResource {
             resourceInputs["virtualMachines"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20190301:DedicatedHost" }, { type: "azure-native:compute/v20190701:DedicatedHost" }, { type: "azure-native:compute/v20191201:DedicatedHost" }, { type: "azure-native:compute/v20200601:DedicatedHost" }, { type: "azure-native:compute/v20201201:DedicatedHost" }, { type: "azure-native:compute/v20210301:DedicatedHost" }, { type: "azure-native:compute/v20210401:DedicatedHost" }, { type: "azure-native:compute/v20210701:DedicatedHost" }, { type: "azure-native:compute/v20211101:DedicatedHost" }, { type: "azure-native:compute/v20220301:DedicatedHost" }, { type: "azure-native:compute/v20220801:DedicatedHost" }, { type: "azure-native:compute/v20221101:DedicatedHost" }, { type: "azure-native:compute/v20230301:DedicatedHost" }, { type: "azure-native:compute/v20230701:DedicatedHost" }, { type: "azure-native:compute/v20230901:DedicatedHost" }, { type: "azure-native:compute/v20240301:DedicatedHost" }, { type: "azure-native:compute/v20240701:DedicatedHost" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20190301:DedicatedHost" }, { type: "azure-native:compute/v20190701:DedicatedHost" }, { type: "azure-native:compute/v20191201:DedicatedHost" }, { type: "azure-native:compute/v20200601:DedicatedHost" }, { type: "azure-native:compute/v20201201:DedicatedHost" }, { type: "azure-native:compute/v20210301:DedicatedHost" }, { type: "azure-native:compute/v20210401:DedicatedHost" }, { type: "azure-native:compute/v20210701:DedicatedHost" }, { type: "azure-native:compute/v20211101:DedicatedHost" }, { type: "azure-native:compute/v20220301:DedicatedHost" }, { type: "azure-native:compute/v20220801:DedicatedHost" }, { type: "azure-native:compute/v20221101:DedicatedHost" }, { type: "azure-native:compute/v20230301:DedicatedHost" }, { type: "azure-native:compute/v20230701:DedicatedHost" }, { type: "azure-native:compute/v20230901:DedicatedHost" }, { type: "azure-native:compute/v20240301:DedicatedHost" }, { type: "azure-native:compute/v20240701:DedicatedHost" }, { type: "azure-native:compute/v20241101:DedicatedHost" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DedicatedHost.__pulumiType, name, resourceInputs, opts);
     }

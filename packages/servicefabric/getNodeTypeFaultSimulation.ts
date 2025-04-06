@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a fault simulation by the simulationId.
- * Azure REST API version: 2024-11-01-preview.
+ *
+ * Uses Azure REST API version 2024-11-01-preview.
  */
 export function getNodeTypeFaultSimulation(args: GetNodeTypeFaultSimulationArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTypeFaultSimulationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -25,7 +26,7 @@ export interface GetNodeTypeFaultSimulationArgs {
      */
     nodeTypeName: string;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
@@ -61,7 +62,8 @@ export interface GetNodeTypeFaultSimulationResult {
 }
 /**
  * Gets a fault simulation by the simulationId.
- * Azure REST API version: 2024-11-01-preview.
+ *
+ * Uses Azure REST API version 2024-11-01-preview.
  */
 export function getNodeTypeFaultSimulationOutput(args: GetNodeTypeFaultSimulationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodeTypeFaultSimulationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -83,7 +85,7 @@ export interface GetNodeTypeFaultSimulationOutputArgs {
      */
     nodeTypeName: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

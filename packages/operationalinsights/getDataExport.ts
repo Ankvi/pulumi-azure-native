@@ -2,9 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a data export instance.
- * Azure REST API version: 2020-08-01.
  *
- * Other available API versions: 2023-09-01.
+ * Uses Azure REST API version 2023-09-01.
+ *
+ * Other available API versions: 2019-08-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDataExport(args: GetDataExportArgs, opts?: pulumi.InvokeOptions): Promise<GetDataExportResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetDataExportArgs {
  * The top level data export resource container.
  */
 export interface GetDataExportResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The latest data export rule modification time.
      */
@@ -77,9 +82,10 @@ export interface GetDataExportResult {
 }
 /**
  * Gets a data export instance.
- * Azure REST API version: 2020-08-01.
  *
- * Other available API versions: 2023-09-01.
+ * Uses Azure REST API version 2023-09-01.
+ *
+ * Other available API versions: 2019-08-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDataExportOutput(args: GetDataExportOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDataExportResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

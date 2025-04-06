@@ -12,8 +12,6 @@ export const ProfessionalServiceSubscriptionLevel: typeof import("./professional
 utilities.lazyLoad(exports, ["ProfessionalServiceSubscriptionLevel"], () => require("./professionalServiceSubscriptionLevel"));
 
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

@@ -768,6 +768,3 @@ export interface WorkspaceRepositoryConfigurationArgs {
      */
     type?: pulumi.Input<string>;
 }
-
-
-

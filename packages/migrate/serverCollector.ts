@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01.
+ * Uses Azure REST API version 2019-10-01. In version 2.x of the Azure Native provider, it used API version 2019-10-01.
  */
 export class ServerCollector extends pulumi.CustomResource {
     /**
@@ -31,6 +31,10 @@ export class ServerCollector extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServerCollector.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     public readonly eTag!: pulumi.Output<string | undefined>;
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly properties!: pulumi.Output<types.outputs.CollectorPropertiesResponse>;
@@ -58,16 +62,18 @@ export class ServerCollector extends pulumi.CustomResource {
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serverCollectorName"] = args ? args.serverCollectorName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:ServerCollector" }, { type: "azure-native:migrate/v20230315:ServerCollector" }, { type: "azure-native:migrate/v20230401preview:ServerCollector" }, { type: "azure-native:migrate/v20230501preview:ServerCollector" }, { type: "azure-native:migrate/v20230909preview:ServerCollector" }, { type: "azure-native:migrate/v20240101preview:ServerCollector" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:ServerCollector" }, { type: "azure-native:migrate/v20230315:ServerCollector" }, { type: "azure-native:migrate/v20230315:ServerCollectorsOperation" }, { type: "azure-native:migrate/v20230401preview:ServerCollector" }, { type: "azure-native:migrate/v20230401preview:ServerCollectorsOperation" }, { type: "azure-native:migrate/v20230501preview:ServerCollector" }, { type: "azure-native:migrate/v20230501preview:ServerCollectorsOperation" }, { type: "azure-native:migrate/v20230909preview:ServerCollector" }, { type: "azure-native:migrate/v20230909preview:ServerCollectorsOperation" }, { type: "azure-native:migrate/v20240101preview:ServerCollector" }, { type: "azure-native:migrate/v20240101preview:ServerCollectorsOperation" }, { type: "azure-native:migrate:ServerCollectorsOperation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ServerCollector.__pulumiType, name, resourceInputs, opts);
     }

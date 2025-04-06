@@ -1,10 +1,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
- * A cloud link resource
- * Azure REST API version: 2022-05-01.
+ * Get a CloudLink
  *
- * Other available API versions: 2023-03-01, 2023-09-01.
+ * Uses Azure REST API version 2023-09-01.
+ *
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getCloudLink(args: GetCloudLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -17,7 +19,7 @@ export function getCloudLink(args: GetCloudLinkArgs, opts?: pulumi.InvokeOptions
 
 export interface GetCloudLinkArgs {
     /**
-     * Name of the cloud link resource
+     * Name of the cloud link.
      */
     cloudLinkName: string;
     /**
@@ -35,7 +37,11 @@ export interface GetCloudLinkArgs {
  */
 export interface GetCloudLinkResult {
     /**
-     * Resource ID.
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -43,23 +49,32 @@ export interface GetCloudLinkResult {
      */
     readonly linkedCloud?: string;
     /**
-     * Resource name.
+     * The name of the resource
      */
     readonly name: string;
+    /**
+     * The provisioning state of the resource.
+     */
+    readonly provisioningState: string;
     /**
      * The state of the cloud link.
      */
     readonly status: string;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
 /**
- * A cloud link resource
- * Azure REST API version: 2022-05-01.
+ * Get a CloudLink
  *
- * Other available API versions: 2023-03-01, 2023-09-01.
+ * Uses Azure REST API version 2023-09-01.
+ *
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getCloudLinkOutput(args: GetCloudLinkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -72,7 +87,7 @@ export function getCloudLinkOutput(args: GetCloudLinkOutputArgs, opts?: pulumi.I
 
 export interface GetCloudLinkOutputArgs {
     /**
-     * Name of the cloud link resource
+     * Name of the cloud link.
      */
     cloudLinkName: pulumi.Input<string>;
     /**

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a cloud connector definition
- * Azure REST API version: 2019-03-01-preview.
+ *
+ * Uses Azure REST API version 2019-03-01-preview.
  */
 export function getCloudConnector(args: GetCloudConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetCloudConnectorArgs {
  * The Connector model definition
  */
 export interface GetCloudConnectorResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Connector billing model
      */
@@ -103,7 +108,8 @@ export interface GetCloudConnectorResult {
 }
 /**
  * Get a cloud connector definition
- * Azure REST API version: 2019-03-01-preview.
+ *
+ * Uses Azure REST API version 2019-03-01-preview.
  */
 export function getCloudConnectorOutput(args: GetCloudConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a ElasticLoadBalancingv2TargetHealthDescription
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getElasticLoadBalancingv2TargetHealthDescription(args: GetElasticLoadBalancingv2TargetHealthDescriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticLoadBalancingv2TargetHealthDescriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetElasticLoadBalancingv2TargetHealthDescriptionArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetElasticLoadBalancingv2TargetHealthDescriptionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetElasticLoadBalancingv2TargetHealthDescriptionResult {
 }
 /**
  * Get a ElasticLoadBalancingv2TargetHealthDescription
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getElasticLoadBalancingv2TargetHealthDescriptionOutput(args: GetElasticLoadBalancingv2TargetHealthDescriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetElasticLoadBalancingv2TargetHealthDescriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

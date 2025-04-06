@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the managed application definition.
- * Azure REST API version: 2021-07-01.
  *
- * Other available API versions: 2023-12-01-preview.
+ * Uses Azure REST API version 2021-07-01.
+ *
+ * Other available API versions: 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native solutions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getApplicationDefinition(args: GetApplicationDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationDefinitionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,6 +39,10 @@ export interface GetApplicationDefinitionResult {
      * The managed application provider authorizations.
      */
     readonly authorizations?: types.outputs.ApplicationAuthorizationResponse[];
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The createUiDefinition json for the backing template with Microsoft.Solutions/applications resource. It can be a JObject or well-formed JSON string.
      */
@@ -125,9 +130,10 @@ export interface GetApplicationDefinitionResult {
 }
 /**
  * Gets the managed application definition.
- * Azure REST API version: 2021-07-01.
  *
- * Other available API versions: 2023-12-01-preview.
+ * Uses Azure REST API version 2021-07-01.
+ *
+ * Other available API versions: 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native solutions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getApplicationDefinitionOutput(args: GetApplicationDefinitionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationDefinitionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

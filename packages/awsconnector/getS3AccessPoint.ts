@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a S3AccessPoint
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getS3AccessPoint(args: GetS3AccessPointArgs, opts?: pulumi.InvokeOptions): Promise<GetS3AccessPointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetS3AccessPointArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetS3AccessPointResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetS3AccessPointResult {
 }
 /**
  * Get a S3AccessPoint
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getS3AccessPointOutput(args: GetS3AccessPointOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetS3AccessPointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

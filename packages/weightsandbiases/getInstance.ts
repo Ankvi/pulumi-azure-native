@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a InstanceResource
- * Azure REST API version: 2024-09-18-preview.
+ *
+ * Uses Azure REST API version 2024-09-18-preview.
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetInstanceArgs {
  * Concrete tracked resource types can be created by aliasing this type using a specific property type.
  */
 export interface GetInstanceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -63,7 +68,8 @@ export interface GetInstanceResult {
 }
 /**
  * Get a InstanceResource
- * Azure REST API version: 2024-09-18-preview.
+ *
+ * Uses Azure REST API version 2024-09-18-preview.
  */
 export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

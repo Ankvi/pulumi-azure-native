@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the evidence metadata
- * Azure REST API version: 2024-06-27.
+ *
+ * Uses Azure REST API version 2024-06-27.
  */
 export function getEvidence(args: GetEvidenceArgs, opts?: pulumi.InvokeOptions): Promise<GetEvidenceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetEvidenceArgs {
  * A class represent an AppComplianceAutomation evidence resource.
  */
 export interface GetEvidenceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Control id.
      */
@@ -71,7 +76,8 @@ export interface GetEvidenceResult {
 }
 /**
  * Get the evidence metadata
- * Azure REST API version: 2024-06-27.
+ *
+ * Uses Azure REST API version 2024-06-27.
  */
 export function getEvidenceOutput(args: GetEvidenceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEvidenceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

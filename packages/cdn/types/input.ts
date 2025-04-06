@@ -103,7 +103,11 @@ export interface CacheExpirationActionParametersArgs {
      * The level at which the content needs to be cached.
      */
     cacheType: pulumi.Input<string | enums.CacheType>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleCacheExpirationActionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleCacheExpirationActionParameters">;
 }
 
 /**
@@ -118,7 +122,11 @@ export interface CacheKeyQueryStringActionParametersArgs {
      * Caching behavior for the requests
      */
     queryStringBehavior: pulumi.Input<string | enums.QueryStringBehavior>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleCacheKeyQueryStringBehaviorActionParameters">;
 }
 
 /**
@@ -141,7 +149,11 @@ export interface ClientPortMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleClientPortConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleClientPortConditionParameters">;
 }
 /**
  * clientPortMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for ClientPortMatchConditionParametersArgs
@@ -191,7 +203,11 @@ export interface CookiesMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleCookiesConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleCookiesConditionParameters">;
 }
 /**
  * cookiesMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for CookiesMatchConditionParametersArgs
@@ -953,7 +969,11 @@ export interface HeaderActionParametersArgs {
      * Name of the header to modify
      */
     headerName: pulumi.Input<string>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleHeaderActionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleHeaderActionParameters">;
     /**
      * Value for the specified action
      */
@@ -1002,7 +1022,11 @@ export interface HostNameMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleHostNameConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleHostNameConditionParameters">;
 }
 /**
  * hostNameMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for HostNameMatchConditionParametersArgs
@@ -1048,7 +1072,11 @@ export interface HttpVersionMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleHttpVersionConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleHttpVersionConditionParameters">;
 }
 /**
  * httpVersionMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for HttpVersionMatchConditionParametersArgs
@@ -1067,7 +1095,7 @@ export interface IsDeviceMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string | enums.IsDeviceMatchValue>[]>;
     /**
      * Describes if this is negate condition or not
      */
@@ -1080,7 +1108,11 @@ export interface IsDeviceMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleIsDeviceConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleIsDeviceConditionParameters">;
 }
 /**
  * isDeviceMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for IsDeviceMatchConditionParametersArgs
@@ -1112,7 +1144,7 @@ export interface KeyVaultSigningKeyParametersArgs {
      * Subscription Id of the user's Key Vault containing the secret
      */
     subscriptionId: pulumi.Input<string>;
-    typeName: pulumi.Input<string>;
+    typeName: pulumi.Input<string | enums.KeyVaultSigningKeyParametersType>;
     /**
      * The name of the user's Key Vault containing the secret
      */
@@ -1293,7 +1325,11 @@ export interface OriginGroupOverrideActionParametersArgs {
      * defines the OriginGroup that would override the DefaultOriginGroup.
      */
     originGroup: pulumi.Input<ResourceReferenceArgs>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleOriginGroupOverrideActionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleOriginGroupOverrideActionParameters">;
 }
 
 /**
@@ -1346,7 +1382,11 @@ export interface PostArgsMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRulePostArgsConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRulePostArgsConditionParameters">;
 }
 /**
  * postArgsMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for PostArgsMatchConditionParametersArgs
@@ -1356,6 +1396,42 @@ export function postArgsMatchConditionParametersArgsProvideDefaults(val: PostArg
         ...val,
         negateCondition: (val.negateCondition) ?? false,
     };
+}
+
+/**
+ * Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
+ */
+export interface ProfileLogScrubbingArgs {
+    /**
+     * List of log scrubbing rules applied to the Azure Front Door profile logs.
+     */
+    scrubbingRules?: pulumi.Input<pulumi.Input<ProfileScrubbingRulesArgs>[]>;
+    /**
+     * State of the log scrubbing config. Default value is Enabled.
+     */
+    state?: pulumi.Input<string | enums.ProfileScrubbingState>;
+}
+
+/**
+ * Defines the contents of the log scrubbing rules.
+ */
+export interface ProfileScrubbingRulesArgs {
+    /**
+     * The variable to be scrubbed from the logs.
+     */
+    matchVariable: pulumi.Input<string | enums.ScrubbingRuleEntryMatchVariable>;
+    /**
+     * When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
+     */
+    selector?: pulumi.Input<string>;
+    /**
+     * When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
+     */
+    selectorMatchOperator: pulumi.Input<string | enums.ScrubbingRuleEntryMatchOperator>;
+    /**
+     * Defines the state of a log scrubbing rule. Default value is enabled.
+     */
+    state?: pulumi.Input<string | enums.ScrubbingRuleEntryState>;
 }
 
 /**
@@ -1378,7 +1454,11 @@ export interface QueryStringMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleQueryStringConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleQueryStringConditionParameters">;
 }
 /**
  * queryStringMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for QueryStringMatchConditionParametersArgs
@@ -1454,7 +1534,11 @@ export interface RemoteAddressMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleRemoteAddressConditionParameters">;
 }
 /**
  * remoteAddressMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for RemoteAddressMatchConditionParametersArgs
@@ -1486,7 +1570,11 @@ export interface RequestBodyMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleRequestBodyConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleRequestBodyConditionParameters">;
 }
 /**
  * requestBodyMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for RequestBodyMatchConditionParametersArgs
@@ -1522,7 +1610,11 @@ export interface RequestHeaderMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleRequestHeaderConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleRequestHeaderConditionParameters">;
 }
 /**
  * requestHeaderMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for RequestHeaderMatchConditionParametersArgs
@@ -1541,7 +1633,7 @@ export interface RequestMethodMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string | enums.RequestMethodMatchValue>[]>;
     /**
      * Describes if this is negate condition or not
      */
@@ -1554,7 +1646,11 @@ export interface RequestMethodMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleRequestMethodConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleRequestMethodConditionParameters">;
 }
 /**
  * requestMethodMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for RequestMethodMatchConditionParametersArgs
@@ -1573,7 +1669,7 @@ export interface RequestSchemeMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string | enums.RequestSchemeMatchValue>[]>;
     /**
      * Describes if this is negate condition or not
      */
@@ -1586,7 +1682,11 @@ export interface RequestSchemeMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleRequestSchemeConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleRequestSchemeConditionParameters">;
 }
 /**
  * requestSchemeMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for RequestSchemeMatchConditionParametersArgs
@@ -1618,7 +1718,11 @@ export interface RequestUriMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleRequestUriConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleRequestUriConditionParameters">;
 }
 /**
  * requestUriMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for RequestUriMatchConditionParametersArgs
@@ -1670,7 +1774,11 @@ export interface RouteConfigurationOverrideActionParametersArgs {
      * A reference to the origin group override configuration. Leave empty to use the default origin group on route.
      */
     originGroupOverride?: pulumi.Input<OriginGroupOverrideArgs>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleRouteConfigurationOverrideActionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleRouteConfigurationOverrideActionParameters">;
 }
 
 /**
@@ -1726,7 +1834,11 @@ export interface ServerPortMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleServerPortConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleServerPortConditionParameters">;
 }
 /**
  * serverPortMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for ServerPortMatchConditionParametersArgs
@@ -1806,7 +1918,11 @@ export interface SocketAddrMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleSocketAddrConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleSocketAddrConditionParameters">;
 }
 /**
  * socketAddrMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for SocketAddrMatchConditionParametersArgs
@@ -1838,7 +1954,11 @@ export interface SslProtocolMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleSslProtocolConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleSslProtocolConditionParameters">;
 }
 /**
  * sslProtocolMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for SslProtocolMatchConditionParametersArgs
@@ -1884,7 +2004,11 @@ export interface UrlFileExtensionMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleUrlFileExtensionMatchConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleUrlFileExtensionMatchConditionParameters">;
 }
 /**
  * urlFileExtensionMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for UrlFileExtensionMatchConditionParametersArgs
@@ -1916,7 +2040,11 @@ export interface UrlFileNameMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleUrlFilenameConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleUrlFilenameConditionParameters">;
 }
 /**
  * urlFileNameMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for UrlFileNameMatchConditionParametersArgs
@@ -1948,7 +2076,11 @@ export interface UrlPathMatchConditionParametersArgs {
      * List of transforms
      */
     transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleUrlPathMatchConditionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleUrlPathMatchConditionParameters">;
 }
 /**
  * urlPathMatchConditionParametersArgsProvideDefaults sets the appropriate defaults for UrlPathMatchConditionParametersArgs
@@ -2003,7 +2135,11 @@ export interface UrlRedirectActionParametersArgs {
      * The redirect type the rule will use when redirecting traffic.
      */
     redirectType: pulumi.Input<string | enums.RedirectType>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleUrlRedirectActionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleUrlRedirectActionParameters">;
 }
 
 /**
@@ -2037,7 +2173,11 @@ export interface UrlRewriteActionParametersArgs {
      * define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.
      */
     sourcePattern: pulumi.Input<string>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleUrlRewriteActionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleUrlRewriteActionParameters">;
 }
 
 /**
@@ -2067,7 +2207,11 @@ export interface UrlSigningActionParametersArgs {
      * Defines which query string parameters in the url to be considered for expires, key id etc. 
      */
     parameterNameOverride?: pulumi.Input<pulumi.Input<UrlSigningParamIdentifierArgs>[]>;
-    typeName: pulumi.Input<string>;
+    /**
+     *
+     * Expected value is 'DeliveryRuleUrlSigningActionParameters'.
+     */
+    typeName: pulumi.Input<"DeliveryRuleUrlSigningActionParameters">;
 }
 
 /**
@@ -2099,7 +2243,7 @@ export interface UrlSigningKeyParametersArgs {
     /**
      * Version of the secret to be used
      */
-    secretVersion?: pulumi.Input<string>;
+    secretVersion: pulumi.Input<string>;
     /**
      * The type of the secret resource.
      * Expected value is 'UrlSigningKey'.
@@ -2120,9 +2264,3 @@ export interface UrlSigningParamIdentifierArgs {
      */
     paramName: pulumi.Input<string>;
 }
-
-
-
-
-
-

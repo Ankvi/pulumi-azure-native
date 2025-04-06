@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Authority
- * Azure REST API version: 2024-01-26-preview.
+ *
+ * Uses Azure REST API version 2024-01-26-preview.
  */
 export function getAuthority(args: GetAuthorityArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthorityResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetAuthorityArgs {
  * A VerifiedId authority resource
  */
 export interface GetAuthorityResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetAuthorityResult {
 }
 /**
  * Get a Authority
- * Azure REST API version: 2024-01-26-preview.
+ *
+ * Uses Azure REST API version 2024-01-26-preview.
  */
 export function getAuthorityOutput(args: GetAuthorityOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthorityResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A cluster resource
- * Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-03-20.
  *
- * Other available API versions: 2020-03-20, 2021-06-01, 2023-03-01, 2023-09-01.
+ * Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
+ *
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Cluster extends pulumi.CustomResource {
     /**
@@ -35,6 +36,10 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The identity
      */
     public /*out*/ readonly clusterId!: pulumi.Output<number>;
@@ -47,7 +52,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly hosts!: pulumi.Output<string[] | undefined>;
     /**
-     * Resource name.
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -55,13 +60,21 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
-     * The cluster SKU
+     * The SKU (Stock Keeping Unit) assigned to this resource.
      */
     public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
+    /**
+     * Name of the vsan datastore associated with the cluster
+     */
+    public readonly vsanDatastoreName!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -89,18 +102,24 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["privateCloudName"] = args ? args.privateCloudName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
+            resourceInputs["vsanDatastoreName"] = args ? args.vsanDatastoreName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["clusterSize"] = undefined /*out*/;
             resourceInputs["hosts"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["sku"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["vsanDatastoreName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "azure-native:avs/v20200320:Cluster" }, { type: "azure-native:avs/v20200717preview:Cluster" }, { type: "azure-native:avs/v20210101preview:Cluster" }, { type: "azure-native:avs/v20210601:Cluster" }, { type: "azure-native:avs/v20211201:Cluster" }, { type: "azure-native:avs/v20220501:Cluster" }, { type: "azure-native:avs/v20230301:Cluster" }, { type: "azure-native:avs/v20230901:Cluster" }] };
@@ -114,7 +133,7 @@ export class Cluster extends pulumi.CustomResource {
  */
 export interface ClusterArgs {
     /**
-     * Name of the cluster in the private cloud
+     * Name of the cluster
      */
     clusterName?: pulumi.Input<string>;
     /**
@@ -126,7 +145,7 @@ export interface ClusterArgs {
      */
     hosts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the private cloud.
+     * Name of the private cloud
      */
     privateCloudName: pulumi.Input<string>;
     /**
@@ -134,7 +153,11 @@ export interface ClusterArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The cluster SKU
+     * The SKU (Stock Keeping Unit) assigned to this resource.
      */
     sku: pulumi.Input<types.inputs.SkuArgs>;
+    /**
+     * Name of the vsan datastore associated with the cluster
+     */
+    vsanDatastoreName?: pulumi.Input<string>;
 }

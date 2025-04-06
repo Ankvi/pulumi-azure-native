@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Advanced Ingress routing for path/header based routing for a Container App Environment
- * Azure REST API version: 2024-10-02-preview.
+ *
+ * Uses Azure REST API version 2024-10-02-preview.
  */
 export function getHttpRouteConfig(args: GetHttpRouteConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetHttpRouteConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetHttpRouteConfigArgs {
  */
 export interface GetHttpRouteConfigResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
@@ -56,7 +61,8 @@ export interface GetHttpRouteConfigResult {
 }
 /**
  * Advanced Ingress routing for path/header based routing for a Container App Environment
- * Azure REST API version: 2024-10-02-preview.
+ *
+ * Uses Azure REST API version 2024-10-02-preview.
  */
 export function getHttpRouteConfigOutput(args: GetHttpRouteConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHttpRouteConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

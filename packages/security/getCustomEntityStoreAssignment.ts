@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a single custom entity store assignment by name for the provided subscription and resource group.
- * Azure REST API version: 2021-07-01-preview.
+ *
+ * Uses Azure REST API version 2021-07-01-preview.
  */
 export function getCustomEntityStoreAssignment(args: GetCustomEntityStoreAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomEntityStoreAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetCustomEntityStoreAssignmentArgs {
  * Custom entity store assignment
  */
 export interface GetCustomEntityStoreAssignmentResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The link to entity store database.
      */
@@ -55,7 +60,8 @@ export interface GetCustomEntityStoreAssignmentResult {
 }
 /**
  * Gets a single custom entity store assignment by name for the provided subscription and resource group.
- * Azure REST API version: 2021-07-01-preview.
+ *
+ * Uses Azure REST API version 2021-07-01-preview.
  */
 export function getCustomEntityStoreAssignmentOutput(args: GetCustomEntityStoreAssignmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomEntityStoreAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -31,7 +31,7 @@ export interface ActionStatusResponse {
 }
 
 /**
- * Model that represents a branch in the step.
+ * Model that represents a branch in the step. 9 total per experiment.
  */
 export interface BranchResponse {
     /**
@@ -117,6 +117,20 @@ export interface ContinuousActionResponse {
      * Expected value is 'continuous'.
      */
     type: "continuous";
+}
+
+/**
+ * Model that represents the Customer Managed Storage for an Experiment.
+ */
+export interface CustomerDataStoragePropertiesResponse {
+    /**
+     * Name of the Azure Blob Storage container to use or create.
+     */
+    blobContainerName?: string;
+    /**
+     * ARM Resource ID of the Storage account to use for Customer Data storage.
+     */
+    storageAccountResourceId?: string;
 }
 
 /**
@@ -212,17 +226,43 @@ export interface ExperimentExecutionDetailsPropertiesResponseRunInformation {
 }
 
 /**
+ * The identity of the experiment resource.
+ */
+export interface ExperimentIdentityResponse {
+    /**
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: string;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
  * Model that represents the Experiment properties model.
  */
 export interface ExperimentPropertiesResponse {
     /**
+     * Optional customer-managed Storage account where Experiment schema will be stored.
+     */
+    customerDataStorage?: CustomerDataStoragePropertiesResponse;
+    /**
+     * Most recent provisioning state for the given experiment resource.
+     */
+    provisioningState: string;
+    /**
      * List of selectors.
      */
     selectors: (ListSelectorResponse | QuerySelectorResponse)[];
-    /**
-     * A boolean value that indicates if experiment should be started on creation or not.
-     */
-    startOnCreation?: boolean;
     /**
      * List of steps.
      */
@@ -360,28 +400,6 @@ export interface QuerySelectorResponse {
 }
 
 /**
- * The identity of a resource.
- */
-export interface ResourceIdentityResponse {
-    /**
-     * GUID that represents the principal ID of this resource identity.
-     */
-    principalId: string;
-    /**
-     * GUID that represents the tenant ID of this resource identity.
-     */
-    tenantId: string;
-    /**
-     * String of the resource identity type.
-     */
-    type: string;
-    /**
-     * The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-     */
-    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
-}
-
-/**
  * Model that represents the Simple filter parameters.
  */
 export interface SimpleFilterParametersResponse {
@@ -499,10 +517,3 @@ export interface UserAssignedIdentityResponse {
      */
     principalId: string;
 }
-
-
-
-
-
-
-

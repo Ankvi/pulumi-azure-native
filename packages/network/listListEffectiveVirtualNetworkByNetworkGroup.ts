@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Lists all effective virtual networks by specified network group.
- * Azure REST API version: 2022-04-01-preview.
  *
- * Other available API versions: 2021-05-01-preview.
+ * Uses Azure REST API version 2022-04-01-preview.
+ *
+ * Other available API versions: 2022-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listListEffectiveVirtualNetworkByNetworkGroup(args: ListListEffectiveVirtualNetworkByNetworkGroupArgs, opts?: pulumi.InvokeOptions): Promise<ListListEffectiveVirtualNetworkByNetworkGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -51,9 +52,10 @@ export interface ListListEffectiveVirtualNetworkByNetworkGroupResult {
 }
 /**
  * Lists all effective virtual networks by specified network group.
- * Azure REST API version: 2022-04-01-preview.
  *
- * Other available API versions: 2021-05-01-preview.
+ * Uses Azure REST API version 2022-04-01-preview.
+ *
+ * Other available API versions: 2022-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listListEffectiveVirtualNetworkByNetworkGroupOutput(args: ListListEffectiveVirtualNetworkByNetworkGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListListEffectiveVirtualNetworkByNetworkGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

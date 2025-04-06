@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a SQL Server registration.
- * Azure REST API version: 2019-07-24-preview.
+ *
+ * Uses Azure REST API version 2019-07-24-preview.
  */
 export function getSqlServerRegistration(args: GetSqlServerRegistrationArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlServerRegistrationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetSqlServerRegistrationArgs {
  * A SQL server registration.
  */
 export interface GetSqlServerRegistrationResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -67,7 +72,8 @@ export interface GetSqlServerRegistrationResult {
 }
 /**
  * Gets a SQL Server registration.
- * Azure REST API version: 2019-07-24-preview.
+ *
+ * Uses Azure REST API version 2019-07-24-preview.
  */
 export function getSqlServerRegistrationOutput(args: GetSqlServerRegistrationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSqlServerRegistrationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

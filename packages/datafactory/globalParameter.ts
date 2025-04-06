@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Global parameters resource type.
- * Azure REST API version: 2018-06-01. Prior API version in Azure Native 1.x: 2018-06-01.
+ *
+ * Uses Azure REST API version 2018-06-01. In version 2.x of the Azure Native provider, it used API version 2018-06-01.
  */
 export class GlobalParameter extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class GlobalParameter extends pulumi.CustomResource {
         return obj['__pulumiType'] === GlobalParameter.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Etag identifies change in the resource.
      */
@@ -73,10 +78,12 @@ export class GlobalParameter extends pulumi.CustomResource {
             resourceInputs["globalParameterName"] = args ? args.globalParameterName : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;

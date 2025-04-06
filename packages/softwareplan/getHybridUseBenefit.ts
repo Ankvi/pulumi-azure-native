@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a given plan ID
- * Azure REST API version: 2019-12-01.
+ *
+ * Uses Azure REST API version 2019-12-01.
  */
 export function getHybridUseBenefit(args: GetHybridUseBenefitArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridUseBenefitResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetHybridUseBenefitArgs {
  * Response on GET of a hybrid use benefit
  */
 export interface GetHybridUseBenefitResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Created date
      */
@@ -63,7 +68,8 @@ export interface GetHybridUseBenefitResult {
 }
 /**
  * Gets a given plan ID
- * Azure REST API version: 2019-12-01.
+ *
+ * Uses Azure REST API version 2019-12-01.
  */
 export function getHybridUseBenefitOutput(args: GetHybridUseBenefitOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHybridUseBenefitResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * REST model used to encapsulate the user visible state of a PrivateEndpoint.
- * Azure REST API version: 2020-07-07.
+ *
+ * Uses Azure REST API version 2020-07-07.
  */
 export function getPrivateEndpointConnection(args: GetPrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateEndpointConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetPrivateEndpointConnectionArgs {
  */
 export interface GetPrivateEndpointConnectionResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Gets the tag for optimistic concurrency control.
      */
     readonly eTag: string;
@@ -60,7 +65,8 @@ export interface GetPrivateEndpointConnectionResult {
 }
 /**
  * REST model used to encapsulate the user visible state of a PrivateEndpoint.
- * Azure REST API version: 2020-07-07.
+ *
+ * Uses Azure REST API version 2020-07-07.
  */
 export function getPrivateEndpointConnectionOutput(args: GetPrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateEndpointConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

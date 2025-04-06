@@ -1,6 +1,77 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Configuration of the API Bridge.
+ */
+export interface ApiBridgePropertiesResponse {
+    /**
+     * The allowed source IP addresses or CIDR ranges for accessing the API Bridge
+     */
+    allowedAddressPrefixes?: string[];
+    /**
+     * The activation state of the API Bridge for this Communications Gateway
+     */
+    configureApiBridge?: string;
+    /**
+     * FQDNs for sending requests to the API Bridge endpoint
+     */
+    endpointFqdns: string[];
+}
+/**
+ * apiBridgePropertiesResponseProvideDefaults sets the appropriate defaults for ApiBridgePropertiesResponse
+ */
+export function apiBridgePropertiesResponseProvideDefaults(val: ApiBridgePropertiesResponse): ApiBridgePropertiesResponse {
+    return {
+        ...val,
+        configureApiBridge: (val.configureApiBridge) ?? "disabled",
+    };
+}
+
+/**
+ * Details of a Custom SIP Header.
+ */
+export interface CustomSipHeaderResponse {
+    /**
+     * The name of the Custom SIP Header
+     */
+    name?: string;
+}
+
+/**
+ * Properties of Custom SIP Headers.
+ */
+export interface CustomSipHeadersPropertiesResponse {
+    /**
+     * The Custom SIP Headers to apply to the calls which traverse the Communications Gateway
+     */
+    headers?: CustomSipHeaderResponse[];
+}
+
+/**
+ * Details of a DNS Domain delegated to the Communications Gateway.
+ */
+export interface DnsDelegationPropertiesResponse {
+    /**
+     * Domain name to delegate
+     */
+    domain?: string;
+    /**
+     * The Azure-hosted DNS Name Servers for the delegated DNS Zones
+     */
+    nameServers: string[];
+}
+
+/**
+ * Details of DNS Domains delegated to the Communications Gateway.
+ */
+export interface DnsDelegationsPropertiesResponse {
+    /**
+     * DNS Domains to delegate for the creation of DNS Zones by the Azure Communications Gateway
+     */
+    delegations?: DnsDelegationPropertiesResponse[];
+}
+
+/**
  * Managed service identity (system assigned and/or user assigned identities)
  */
 export interface ManagedServiceIdentityResponse {
@@ -27,11 +98,11 @@ export interface ManagedServiceIdentityResponse {
  */
 export interface PrimaryRegionPropertiesResponse {
     /**
-     * The allowed source IP address or CIDR ranges for media
+     * The allowed source IP addresses or CIDR ranges for media
      */
     allowedMediaSourceAddressPrefixes?: string[];
     /**
-     * The allowed source IP address or CIDR ranges for signaling
+     * The allowed source IP addresses or CIDR ranges for signaling
      */
     allowedSignalingSourceAddressPrefixes?: string[];
     /**
@@ -56,6 +127,32 @@ export interface ServiceRegionPropertiesResponse {
      * The configuration used in this region as primary, and other regions as backup.
      */
     primaryRegionProperties: PrimaryRegionPropertiesResponse;
+}
+
+/**
+ * The resource model definition representing SKU
+ */
+export interface SkuResponse {
+    /**
+     * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+     */
+    capacity?: number;
+    /**
+     * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+     */
+    family?: string;
+    /**
+     * The name of the SKU. Ex - P3. It is typically a letter+number code
+     */
+    name: string;
+    /**
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     */
+    size?: string;
+    /**
+     * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+     */
+    tier?: string;
 }
 
 /**
@@ -101,5 +198,3 @@ export interface UserAssignedIdentityResponse {
      */
     principalId: string;
 }
-
-

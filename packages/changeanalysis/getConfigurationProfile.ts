@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A profile object that contains change analysis configuration, such as notification settings, for this subscription
- * Azure REST API version: 2020-04-01-preview.
+ *
+ * Uses Azure REST API version 2020-04-01-preview.
  */
 export function getConfigurationProfile(args: GetConfigurationProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigurationProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -23,6 +24,10 @@ export interface GetConfigurationProfileArgs {
  * A profile object that contains change analysis configuration, such as notification settings, for this subscription
  */
 export interface GetConfigurationProfileResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -54,7 +59,8 @@ export interface GetConfigurationProfileResult {
 }
 /**
  * A profile object that contains change analysis configuration, such as notification settings, for this subscription
- * Azure REST API version: 2020-04-01-preview.
+ *
+ * Uses Azure REST API version 2020-04-01-preview.
  */
 export function getConfigurationProfileOutput(args: GetConfigurationProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConfigurationProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -210,6 +210,10 @@ export interface SpringbootserversPropertiesResponse {
      */
     fqdnAndIpAddressList?: string[];
     /**
+     * Resource labels
+     */
+    labels?: {[key: string]: string};
+    /**
      * The machine Id from ARM
      */
     machineArmId?: string;
@@ -296,4 +300,3 @@ export interface SystemDataResponse {
      */
     lastModifiedByType?: string;
 }
-

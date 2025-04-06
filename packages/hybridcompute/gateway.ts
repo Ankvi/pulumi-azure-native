@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Describes an Arc Gateway.
- * Azure REST API version: 2024-03-31-preview.
  *
- * Other available API versions: 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview.
+ * Uses Azure REST API version 2024-07-31-preview. In version 2.x of the Azure Native provider, it used API version 2024-03-31-preview.
+ *
+ * Other available API versions: 2024-03-31-preview, 2024-05-20-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Gateway extends pulumi.CustomResource {
     /**
@@ -38,6 +39,10 @@ export class Gateway extends pulumi.CustomResource {
      * Specifies the list of features that are enabled for this Gateway.
      */
     public readonly allowedFeatures!: pulumi.Output<string[] | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The endpoint fqdn for the Gateway.
      */
@@ -95,6 +100,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["gatewayEndpoint"] = undefined /*out*/;
             resourceInputs["gatewayId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -103,6 +109,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["allowedFeatures"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["gatewayEndpoint"] = undefined /*out*/;
             resourceInputs["gatewayId"] = undefined /*out*/;
             resourceInputs["gatewayType"] = undefined /*out*/;
@@ -114,7 +121,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:hybridcompute/v20240331preview:Gateway" }, { type: "azure-native:hybridcompute/v20240520preview:Gateway" }, { type: "azure-native:hybridcompute/v20240731preview:Gateway" }, { type: "azure-native:hybridcompute/v20240910preview:Gateway" }, { type: "azure-native:hybridcompute/v20241110preview:Gateway" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:hybridcompute/v20240331preview:Gateway" }, { type: "azure-native:hybridcompute/v20240520preview:Gateway" }, { type: "azure-native:hybridcompute/v20240731preview:Gateway" }, { type: "azure-native:hybridcompute/v20240910preview:Gateway" }, { type: "azure-native:hybridcompute/v20241110preview:Gateway" }, { type: "azure-native:hybridcompute/v20250113:Gateway" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Gateway.__pulumiType, name, resourceInputs, opts);
     }

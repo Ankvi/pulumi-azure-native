@@ -70,45 +70,6 @@ export interface AuthorizationRuleArgs {
 }
 
 /**
- * Automatic TLS server certificate management with cert-manager
- */
-export interface AutomaticCertMethodArgs {
-    /**
-     * Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-     */
-    duration?: pulumi.Input<string>;
-    /**
-     * cert-manager issuerRef.
-     */
-    issuerRef: pulumi.Input<CertManagerIssuerRefArgs>;
-    /**
-     * Type of certificate private key.
-     */
-    privateKey?: pulumi.Input<CertManagerPrivateKeyArgs>;
-    /**
-     * When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-     */
-    renewBefore?: pulumi.Input<string>;
-    /**
-     * Additional Subject Alternative Names (SANs) to include in the certificate.
-     */
-    san?: pulumi.Input<SanForCertArgs>;
-    /**
-     * Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
-     */
-    secretRef?: pulumi.Input<string>;
-}
-/**
- * automaticCertMethodArgsProvideDefaults sets the appropriate defaults for AutomaticCertMethodArgs
- */
-export function automaticCertMethodArgsProvideDefaults(val: AutomaticCertMethodArgs): AutomaticCertMethodArgs {
-    return {
-        ...val,
-        issuerRef: pulumi.output(val.issuerRef).apply(certManagerIssuerRefArgsProvideDefaults),
-    };
-}
-
-/**
  * Desired properties of the backend instances of the broker
  */
 export interface BackendChainArgs {
@@ -255,7 +216,7 @@ export interface BrokerAuthenticatorMethodsArgs {
     /**
      * Custom authentication configuration.
      */
-    custom?: pulumi.Input<BrokerAuthenticatorMethodCustomArgs>;
+    customSettings?: pulumi.Input<BrokerAuthenticatorMethodCustomArgs>;
     /**
      * Custom authentication configuration.
      */
@@ -263,11 +224,11 @@ export interface BrokerAuthenticatorMethodsArgs {
     /**
      * ServiceAccountToken authentication configuration.
      */
-    serviceAccountToken?: pulumi.Input<BrokerAuthenticatorMethodSatArgs>;
+    serviceAccountTokenSettings?: pulumi.Input<BrokerAuthenticatorMethodSatArgs>;
     /**
      * X.509 authentication configuration.
      */
-    x509Credentials?: pulumi.Input<BrokerAuthenticatorMethodX509Args>;
+    x509Settings?: pulumi.Input<BrokerAuthenticatorMethodX509Args>;
 }
 /**
  * brokerAuthenticatorMethodsArgsProvideDefaults sets the appropriate defaults for BrokerAuthenticatorMethodsArgs
@@ -275,7 +236,7 @@ export interface BrokerAuthenticatorMethodsArgs {
 export function brokerAuthenticatorMethodsArgsProvideDefaults(val: BrokerAuthenticatorMethodsArgs): BrokerAuthenticatorMethodsArgs {
     return {
         ...val,
-        x509Credentials: (val.x509Credentials ? pulumi.output(val.x509Credentials).apply(brokerAuthenticatorMethodX509ArgsProvideDefaults) : undefined),
+        x509Settings: (val.x509Settings ? pulumi.output(val.x509Settings).apply(brokerAuthenticatorMethodX509ArgsProvideDefaults) : undefined),
     };
 }
 
@@ -337,10 +298,6 @@ export function brokerDiagnosticsArgsProvideDefaults(val: BrokerDiagnosticsArgs)
  */
 export interface BrokerListenerPropertiesArgs {
     /**
-     * Broker associated with this listener.
-     */
-    brokerRef: pulumi.Input<string>;
-    /**
      * Ports on which this listener accepts client connections.
      */
     ports: pulumi.Input<pulumi.Input<ListenerPortArgs>[]>;
@@ -359,7 +316,6 @@ export interface BrokerListenerPropertiesArgs {
 export function brokerListenerPropertiesArgsProvideDefaults(val: BrokerListenerPropertiesArgs): BrokerListenerPropertiesArgs {
     return {
         ...val,
-        serviceName: (val.serviceName) ?? "aio-mq-dmqtt-frontend",
         serviceType: (val.serviceType) ?? "ClusterIp",
     };
 }
@@ -411,6 +367,10 @@ export function brokerPropertiesArgsProvideDefaults(val: BrokerPropertiesArgs): 
  * Broker Resource Rule properties. This defines the objects that represent the actions or topics, such as - method.Connect, method.Publish, etc.
  */
 export interface BrokerResourceRuleArgs {
+    /**
+     * A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect.
+     */
+    clientIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Give access for a Broker method (i.e., Connect, Subscribe, or Publish).
      */
@@ -464,13 +424,52 @@ export interface CertManagerCertOptionsArgs {
 }
 
 /**
+ * Automatic TLS server certificate management with cert-manager
+ */
+export interface CertManagerCertificateSpecArgs {
+    /**
+     * Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+     */
+    duration?: pulumi.Input<string>;
+    /**
+     * cert-manager issuerRef.
+     */
+    issuerRef: pulumi.Input<CertManagerIssuerRefArgs>;
+    /**
+     * Type of certificate private key.
+     */
+    privateKey?: pulumi.Input<CertManagerPrivateKeyArgs>;
+    /**
+     * When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+     */
+    renewBefore?: pulumi.Input<string>;
+    /**
+     * Additional Subject Alternative Names (SANs) to include in the certificate.
+     */
+    san?: pulumi.Input<SanForCertArgs>;
+    /**
+     * Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
+     */
+    secretName?: pulumi.Input<string>;
+}
+/**
+ * certManagerCertificateSpecArgsProvideDefaults sets the appropriate defaults for CertManagerCertificateSpecArgs
+ */
+export function certManagerCertificateSpecArgsProvideDefaults(val: CertManagerCertificateSpecArgs): CertManagerCertificateSpecArgs {
+    return {
+        ...val,
+        issuerRef: pulumi.output(val.issuerRef).apply(certManagerIssuerRefArgsProvideDefaults),
+    };
+}
+
+/**
  * Cert-Manager issuerRef properties
  */
 export interface CertManagerIssuerRefArgs {
     /**
      * group of issuer.
      */
-    apiGroup: pulumi.Input<string>;
+    group: pulumi.Input<string>;
     /**
      * kind of issuer (Issuer or ClusterIssuer).
      */
@@ -486,7 +485,7 @@ export interface CertManagerIssuerRefArgs {
 export function certManagerIssuerRefArgsProvideDefaults(val: CertManagerIssuerRefArgs): CertManagerIssuerRefArgs {
     return {
         ...val,
-        apiGroup: (val.apiGroup) ?? "cert-manager.io",
+        group: (val.group) ?? "cert-manager.io",
     };
 }
 
@@ -544,44 +543,9 @@ export function clientConfigArgsProvideDefaults(val: ClientConfigArgs): ClientCo
 }
 
 /**
- * DataFlow BuiltIn Transformation properties
+ * Dataflow BuiltIn Transformation dataset properties
  */
-export interface DataFlowBuiltInTransformationArgs {
-    /**
-     * Enrich data from Broker State Store. Dataset references a key in Broker State Store.
-     */
-    datasets?: pulumi.Input<pulumi.Input<DataFlowBuiltInTransformationDatasetArgs>[]>;
-    /**
-     * Filters input record or datapoints based on condition.
-     */
-    filter?: pulumi.Input<pulumi.Input<DataFlowBuiltInTransformationFilterArgs>[]>;
-    /**
-     * Maps input to output message.
-     */
-    map?: pulumi.Input<pulumi.Input<DataFlowBuiltInTransformationMapArgs>[]>;
-    /**
-     * Reference to the schema that describes the output of the transformation.
-     */
-    schemaRef?: pulumi.Input<string>;
-    /**
-     * Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
-     */
-    serializationFormat?: pulumi.Input<string | enums.TransformationSerializationFormat>;
-}
-/**
- * dataFlowBuiltInTransformationArgsProvideDefaults sets the appropriate defaults for DataFlowBuiltInTransformationArgs
- */
-export function dataFlowBuiltInTransformationArgsProvideDefaults(val: DataFlowBuiltInTransformationArgs): DataFlowBuiltInTransformationArgs {
-    return {
-        ...val,
-        serializationFormat: (val.serializationFormat) ?? "Json",
-    };
-}
-
-/**
- * DataFlow BuiltIn Transformation dataset properties
- */
-export interface DataFlowBuiltInTransformationDatasetArgs {
+export interface DataflowBuiltInTransformationDatasetArgs {
     /**
      * A user provided optional description of the dataset.
      */
@@ -605,9 +569,9 @@ export interface DataFlowBuiltInTransformationDatasetArgs {
 }
 
 /**
- * DataFlow BuiltIn Transformation filter properties
+ * Dataflow BuiltIn Transformation filter properties
  */
-export interface DataFlowBuiltInTransformationFilterArgs {
+export interface DataflowBuiltInTransformationFilterArgs {
     /**
      * A user provided optional description of the filter.
      */
@@ -626,9 +590,9 @@ export interface DataFlowBuiltInTransformationFilterArgs {
     type?: pulumi.Input<string | enums.FilterType>;
 }
 /**
- * dataFlowBuiltInTransformationFilterArgsProvideDefaults sets the appropriate defaults for DataFlowBuiltInTransformationFilterArgs
+ * dataflowBuiltInTransformationFilterArgsProvideDefaults sets the appropriate defaults for DataflowBuiltInTransformationFilterArgs
  */
-export function dataFlowBuiltInTransformationFilterArgsProvideDefaults(val: DataFlowBuiltInTransformationFilterArgs): DataFlowBuiltInTransformationFilterArgs {
+export function dataflowBuiltInTransformationFilterArgsProvideDefaults(val: DataflowBuiltInTransformationFilterArgs): DataflowBuiltInTransformationFilterArgs {
     return {
         ...val,
         type: (val.type) ?? "Filter",
@@ -636,9 +600,9 @@ export function dataFlowBuiltInTransformationFilterArgsProvideDefaults(val: Data
 }
 
 /**
- * DataFlow BuiltIn Transformation map properties
+ * Dataflow BuiltIn Transformation map properties
  */
-export interface DataFlowBuiltInTransformationMapArgs {
+export interface DataflowBuiltInTransformationMapArgs {
     /**
      * A user provided optional description of the mapping function.
      */
@@ -658,13 +622,48 @@ export interface DataFlowBuiltInTransformationMapArgs {
     /**
      * Type of transformation.
      */
-    type?: pulumi.Input<string | enums.DataFlowMappingType>;
+    type?: pulumi.Input<string | enums.DataflowMappingType>;
 }
 
 /**
- * DataFlow Destination Operation properties
+ * Dataflow BuiltIn Transformation properties
  */
-export interface DataFlowDestinationOperationArgs {
+export interface DataflowBuiltInTransformationSettingsArgs {
+    /**
+     * Enrich data from Broker State Store. Dataset references a key in Broker State Store.
+     */
+    datasets?: pulumi.Input<pulumi.Input<DataflowBuiltInTransformationDatasetArgs>[]>;
+    /**
+     * Filters input record or datapoints based on condition.
+     */
+    filter?: pulumi.Input<pulumi.Input<DataflowBuiltInTransformationFilterArgs>[]>;
+    /**
+     * Maps input to output message.
+     */
+    map?: pulumi.Input<pulumi.Input<DataflowBuiltInTransformationMapArgs>[]>;
+    /**
+     * Reference to the schema that describes the output of the transformation.
+     */
+    schemaRef?: pulumi.Input<string>;
+    /**
+     * Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
+     */
+    serializationFormat?: pulumi.Input<string | enums.TransformationSerializationFormat>;
+}
+/**
+ * dataflowBuiltInTransformationSettingsArgsProvideDefaults sets the appropriate defaults for DataflowBuiltInTransformationSettingsArgs
+ */
+export function dataflowBuiltInTransformationSettingsArgsProvideDefaults(val: DataflowBuiltInTransformationSettingsArgs): DataflowBuiltInTransformationSettingsArgs {
+    return {
+        ...val,
+        serializationFormat: (val.serializationFormat) ?? "Json",
+    };
+}
+
+/**
+ * Dataflow Destination Operation properties
+ */
+export interface DataflowDestinationOperationSettingsArgs {
     /**
      * Destination location, can be a topic or table name. Supports dynamic values with $topic, $systemProperties, $userProperties, $payload, $context, and $subscription.
      */
@@ -676,57 +675,33 @@ export interface DataFlowDestinationOperationArgs {
 }
 
 /**
- * Azure Data Explorer Authentication properties. NOTE - only authentication property is allowed per entry.
+ * DataflowEndpoint Authentication Access Token properties
  */
-export interface DataFlowEndpointAuthenticationArgs {
-    /**
-     * SAS token authentication.
-     */
-    accessTokenSecretRef?: pulumi.Input<string>;
-    /**
-     * Mode of Authentication.
-     */
-    method: pulumi.Input<string | enums.AuthenticationMethod>;
-    /**
-     * SASL authentication.
-     */
-    saslSettings?: pulumi.Input<DataFlowEndpointAuthenticationSaslArgs>;
-    /**
-     * Service Account Token authentication.
-     */
-    serviceAccountTokenSettings?: pulumi.Input<DataFlowEndpointAuthenticationServiceAccountTokenArgs>;
-    /**
-     * System-assigned managed identity authentication.
-     */
-    systemAssignedManagedIdentitySettings?: pulumi.Input<DataFlowEndpointAuthenticationSystemAssignedManagedIdentityArgs>;
-    /**
-     * User-assigned managed identity authentication.
-     */
-    userAssignedManagedIdentitySettings?: pulumi.Input<DataFlowEndpointAuthenticationUserAssignedManagedIdentityArgs>;
-    /**
-     * X.509 certificate authentication.
-     */
-    x509CredentialsSettings?: pulumi.Input<DataFlowEndpointAuthenticationX509Args>;
-}
-
-/**
- * DataFlowEndpoint Authentication Sasl properties
- */
-export interface DataFlowEndpointAuthenticationSaslArgs {
-    /**
-     * Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
-     */
-    saslType: pulumi.Input<string | enums.DataFlowEndpointAuthenticationSaslType>;
+export interface DataflowEndpointAuthenticationAccessTokenArgs {
     /**
      * Token secret name.
      */
-    tokenSecretRef: pulumi.Input<string>;
+    secretRef: pulumi.Input<string>;
+}
+
+/**
+ * DataflowEndpoint Authentication Sasl properties
+ */
+export interface DataflowEndpointAuthenticationSaslArgs {
+    /**
+     * Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
+     */
+    saslType: pulumi.Input<string | enums.DataflowEndpointAuthenticationSaslType>;
+    /**
+     * Token secret name.
+     */
+    secretRef: pulumi.Input<string>;
 }
 
 /**
  * Service Account Token for BrokerAuthentication
  */
-export interface DataFlowEndpointAuthenticationServiceAccountTokenArgs {
+export interface DataflowEndpointAuthenticationServiceAccountTokenArgs {
     /**
      * Audience of the service account. Optional, defaults to the broker internal service account audience.
      */
@@ -734,27 +709,27 @@ export interface DataFlowEndpointAuthenticationServiceAccountTokenArgs {
 }
 
 /**
- * DataFlowEndpoint Authentication SystemAssignedManagedIdentity properties
+ * DataflowEndpoint Authentication SystemAssignedManagedIdentity properties
  */
-export interface DataFlowEndpointAuthenticationSystemAssignedManagedIdentityArgs {
+export interface DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs {
     /**
      * Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
      */
-    audience: pulumi.Input<string>;
+    audience?: pulumi.Input<string>;
 }
 
 /**
- * DataFlowEndpoint Authentication UserAssignedManagedIdentity properties
+ * DataflowEndpoint Authentication UserAssignedManagedIdentity properties
  */
-export interface DataFlowEndpointAuthenticationUserAssignedManagedIdentityArgs {
-    /**
-     * Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
-     */
-    audience: pulumi.Input<string>;
+export interface DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs {
     /**
      * Client ID for the user-assigned managed identity.
      */
     clientId: pulumi.Input<string>;
+    /**
+     * Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+     */
+    scope?: pulumi.Input<string>;
     /**
      * Tenant ID.
      */
@@ -762,9 +737,9 @@ export interface DataFlowEndpointAuthenticationUserAssignedManagedIdentityArgs {
 }
 
 /**
- * DataFlowEndpoint Authentication X509 properties
+ * DataflowEndpoint Authentication X509 properties
  */
-export interface DataFlowEndpointAuthenticationX509Args {
+export interface DataflowEndpointAuthenticationX509Args {
     /**
      * Secret reference of the X.509 certificate.
      */
@@ -774,7 +749,11 @@ export interface DataFlowEndpointAuthenticationX509Args {
 /**
  * Azure Data Explorer endpoint properties
  */
-export interface DataFlowEndpointDataExplorerArgs {
+export interface DataflowEndpointDataExplorerArgs {
+    /**
+     * Authentication configuration. NOTE - only authentication property is allowed per entry.
+     */
+    authentication: pulumi.Input<DataflowEndpointDataExplorerAuthenticationArgs>;
     /**
      * Azure Data Explorer endpoint batching configuration.
      */
@@ -789,9 +768,9 @@ export interface DataFlowEndpointDataExplorerArgs {
     host: pulumi.Input<string>;
 }
 /**
- * dataFlowEndpointDataExplorerArgsProvideDefaults sets the appropriate defaults for DataFlowEndpointDataExplorerArgs
+ * dataflowEndpointDataExplorerArgsProvideDefaults sets the appropriate defaults for DataflowEndpointDataExplorerArgs
  */
-export function dataFlowEndpointDataExplorerArgsProvideDefaults(val: DataFlowEndpointDataExplorerArgs): DataFlowEndpointDataExplorerArgs {
+export function dataflowEndpointDataExplorerArgsProvideDefaults(val: DataflowEndpointDataExplorerArgs): DataflowEndpointDataExplorerArgs {
     return {
         ...val,
         batching: (val.batching ? pulumi.output(val.batching).apply(batchingConfigurationArgsProvideDefaults) : undefined),
@@ -799,9 +778,31 @@ export function dataFlowEndpointDataExplorerArgsProvideDefaults(val: DataFlowEnd
 }
 
 /**
+ * Azure Data Explorer Authentication properties. NOTE - only authentication property is allowed per entry.
+ */
+export interface DataflowEndpointDataExplorerAuthenticationArgs {
+    /**
+     * Mode of Authentication.
+     */
+    method: any;
+    /**
+     * System-assigned managed identity authentication.
+     */
+    systemAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs>;
+    /**
+     * User-assigned managed identity authentication.
+     */
+    userAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs>;
+}
+
+/**
  * Azure Data Lake endpoint properties
  */
-export interface DataFlowEndpointDataLakeStorageArgs {
+export interface DataflowEndpointDataLakeStorageArgs {
+    /**
+     * Authentication configuration. NOTE - only authentication property is allowed per entry.
+     */
+    authentication: pulumi.Input<DataflowEndpointDataLakeStorageAuthenticationArgs>;
     /**
      * Azure Data Lake endpoint batching configuration.
      */
@@ -812,9 +813,9 @@ export interface DataFlowEndpointDataLakeStorageArgs {
     host: pulumi.Input<string>;
 }
 /**
- * dataFlowEndpointDataLakeStorageArgsProvideDefaults sets the appropriate defaults for DataFlowEndpointDataLakeStorageArgs
+ * dataflowEndpointDataLakeStorageArgsProvideDefaults sets the appropriate defaults for DataflowEndpointDataLakeStorageArgs
  */
-export function dataFlowEndpointDataLakeStorageArgsProvideDefaults(val: DataFlowEndpointDataLakeStorageArgs): DataFlowEndpointDataLakeStorageArgs {
+export function dataflowEndpointDataLakeStorageArgsProvideDefaults(val: DataflowEndpointDataLakeStorageArgs): DataflowEndpointDataLakeStorageArgs {
     return {
         ...val,
         batching: (val.batching ? pulumi.output(val.batching).apply(batchingConfigurationArgsProvideDefaults) : undefined),
@@ -822,9 +823,35 @@ export function dataFlowEndpointDataLakeStorageArgsProvideDefaults(val: DataFlow
 }
 
 /**
+ * Azure Data Lake endpoint Authentication properties.  NOTE Enum - Only one method is supported for one entry
+ */
+export interface DataflowEndpointDataLakeStorageAuthenticationArgs {
+    /**
+     * SAS token authentication.
+     */
+    accessTokenSettings?: pulumi.Input<DataflowEndpointAuthenticationAccessTokenArgs>;
+    /**
+     * Mode of Authentication.
+     */
+    method: pulumi.Input<string | enums.DataLakeStorageAuthMethod>;
+    /**
+     * System-assigned managed identity authentication.
+     */
+    systemAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs>;
+    /**
+     * User-assigned managed identity authentication.
+     */
+    userAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs>;
+}
+
+/**
  * Microsoft Fabric endpoint properties
  */
-export interface DataFlowEndpointFabricOneLakeArgs {
+export interface DataflowEndpointFabricOneLakeArgs {
+    /**
+     * Authentication configuration. NOTE - only one authentication property is allowed per entry.
+     */
+    authentication: pulumi.Input<DataflowEndpointFabricOneLakeAuthenticationArgs>;
     /**
      * Batching configuration.
      */
@@ -836,16 +863,16 @@ export interface DataFlowEndpointFabricOneLakeArgs {
     /**
      * Names of the workspace and lakehouse.
      */
-    names: pulumi.Input<DataFlowEndpointFabricOneLakeNamesArgs>;
+    names: pulumi.Input<DataflowEndpointFabricOneLakeNamesArgs>;
     /**
      * Type of location of the data in the workspace. Can be either tables or files.
      */
-    oneLakePathType: pulumi.Input<string | enums.DataFlowEndpointFabricPathType>;
+    oneLakePathType: pulumi.Input<string | enums.DataflowEndpointFabricPathType>;
 }
 /**
- * dataFlowEndpointFabricOneLakeArgsProvideDefaults sets the appropriate defaults for DataFlowEndpointFabricOneLakeArgs
+ * dataflowEndpointFabricOneLakeArgsProvideDefaults sets the appropriate defaults for DataflowEndpointFabricOneLakeArgs
  */
-export function dataFlowEndpointFabricOneLakeArgsProvideDefaults(val: DataFlowEndpointFabricOneLakeArgs): DataFlowEndpointFabricOneLakeArgs {
+export function dataflowEndpointFabricOneLakeArgsProvideDefaults(val: DataflowEndpointFabricOneLakeArgs): DataflowEndpointFabricOneLakeArgs {
     return {
         ...val,
         batching: (val.batching ? pulumi.output(val.batching).apply(batchingConfigurationArgsProvideDefaults) : undefined),
@@ -853,9 +880,27 @@ export function dataFlowEndpointFabricOneLakeArgsProvideDefaults(val: DataFlowEn
 }
 
 /**
+ * Microsoft Fabric endpoint. Authentication properties. NOTE - Only one method is supported for one entry
+ */
+export interface DataflowEndpointFabricOneLakeAuthenticationArgs {
+    /**
+     * Mode of Authentication.
+     */
+    method: any;
+    /**
+     * System-assigned managed identity authentication.
+     */
+    systemAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs>;
+    /**
+     * User-assigned managed identity authentication.
+     */
+    userAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs>;
+}
+
+/**
  * Microsoft Fabric endpoint Names properties
  */
-export interface DataFlowEndpointFabricOneLakeNamesArgs {
+export interface DataflowEndpointFabricOneLakeNamesArgs {
     /**
      * Lakehouse name.
      */
@@ -869,15 +914,23 @@ export interface DataFlowEndpointFabricOneLakeNamesArgs {
 /**
  * Kafka endpoint properties
  */
-export interface DataFlowEndpointKafkaArgs {
+export interface DataflowEndpointKafkaArgs {
+    /**
+     * Authentication configuration. NOTE - only authentication property is allowed per entry.
+     */
+    authentication: pulumi.Input<DataflowEndpointKafkaAuthenticationArgs>;
     /**
      * Batching configuration.
      */
-    batching?: pulumi.Input<DataFlowEndpointKafkaBatchingArgs>;
+    batching?: pulumi.Input<DataflowEndpointKafkaBatchingArgs>;
+    /**
+     * Cloud event mapping config.
+     */
+    cloudEventAttributes?: pulumi.Input<string | enums.CloudEventAttributeType>;
     /**
      * Compression. Can be none, gzip, lz4, or snappy. No effect if the endpoint is used as a source.
      */
-    compression?: pulumi.Input<string | enums.DataFlowEndpointKafkaCompression>;
+    compression?: pulumi.Input<string | enums.DataflowEndpointKafkaCompression>;
     /**
      * Consumer group ID.
      */
@@ -889,39 +942,65 @@ export interface DataFlowEndpointKafkaArgs {
     /**
      * Kafka endpoint host.
      */
-    host?: pulumi.Input<string>;
+    host: pulumi.Input<string>;
     /**
      * Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
      */
-    kafkaAcks?: pulumi.Input<string | enums.DataFlowEndpointKafkaAcks>;
+    kafkaAcks?: pulumi.Input<string | enums.DataflowEndpointKafkaAcks>;
     /**
      * Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
      */
-    partitionStrategy?: pulumi.Input<string | enums.DataFlowEndpointKafkaPartitionStrategy>;
+    partitionStrategy?: pulumi.Input<string | enums.DataflowEndpointKafkaPartitionStrategy>;
     /**
      * TLS configuration.
      */
-    tls: pulumi.Input<TlsPropertiesArgs>;
+    tls?: pulumi.Input<TlsPropertiesArgs>;
 }
 /**
- * dataFlowEndpointKafkaArgsProvideDefaults sets the appropriate defaults for DataFlowEndpointKafkaArgs
+ * dataflowEndpointKafkaArgsProvideDefaults sets the appropriate defaults for DataflowEndpointKafkaArgs
  */
-export function dataFlowEndpointKafkaArgsProvideDefaults(val: DataFlowEndpointKafkaArgs): DataFlowEndpointKafkaArgs {
+export function dataflowEndpointKafkaArgsProvideDefaults(val: DataflowEndpointKafkaArgs): DataflowEndpointKafkaArgs {
     return {
         ...val,
-        batching: (val.batching ? pulumi.output(val.batching).apply(dataFlowEndpointKafkaBatchingArgsProvideDefaults) : undefined),
+        batching: (val.batching ? pulumi.output(val.batching).apply(dataflowEndpointKafkaBatchingArgsProvideDefaults) : undefined),
         compression: (val.compression) ?? "None",
-        copyMqttProperties: (val.copyMqttProperties) ?? "Disabled",
+        copyMqttProperties: (val.copyMqttProperties) ?? "Enabled",
         kafkaAcks: (val.kafkaAcks) ?? "All",
         partitionStrategy: (val.partitionStrategy) ?? "Default",
-        tls: pulumi.output(val.tls).apply(tlsPropertiesArgsProvideDefaults),
+        tls: (val.tls ? pulumi.output(val.tls).apply(tlsPropertiesArgsProvideDefaults) : undefined),
     };
+}
+
+/**
+ * Kafka endpoint Authentication properties. NOTE - only authentication property is allowed per entry
+ */
+export interface DataflowEndpointKafkaAuthenticationArgs {
+    /**
+     * Mode of Authentication.
+     */
+    method: pulumi.Input<string | enums.KafkaAuthMethod>;
+    /**
+     * SASL authentication.
+     */
+    saslSettings?: pulumi.Input<DataflowEndpointAuthenticationSaslArgs>;
+    /**
+     * System-assigned managed identity authentication.
+     */
+    systemAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs>;
+    /**
+     * User-assigned managed identity authentication.
+     */
+    userAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs>;
+    /**
+     * X.509 certificate authentication.
+     */
+    x509CertificateSettings?: pulumi.Input<DataflowEndpointAuthenticationX509Args>;
 }
 
 /**
  * Kafka endpoint Batching properties
  */
-export interface DataFlowEndpointKafkaBatchingArgs {
+export interface DataflowEndpointKafkaBatchingArgs {
     /**
      * Batching latency in milliseconds.
      */
@@ -940,9 +1019,9 @@ export interface DataFlowEndpointKafkaBatchingArgs {
     mode?: pulumi.Input<string | enums.OperationalMode>;
 }
 /**
- * dataFlowEndpointKafkaBatchingArgsProvideDefaults sets the appropriate defaults for DataFlowEndpointKafkaBatchingArgs
+ * dataflowEndpointKafkaBatchingArgsProvideDefaults sets the appropriate defaults for DataflowEndpointKafkaBatchingArgs
  */
-export function dataFlowEndpointKafkaBatchingArgsProvideDefaults(val: DataFlowEndpointKafkaBatchingArgs): DataFlowEndpointKafkaBatchingArgs {
+export function dataflowEndpointKafkaBatchingArgsProvideDefaults(val: DataflowEndpointKafkaBatchingArgs): DataflowEndpointKafkaBatchingArgs {
     return {
         ...val,
         latencyMs: (val.latencyMs) ?? 5,
@@ -955,7 +1034,7 @@ export function dataFlowEndpointKafkaBatchingArgsProvideDefaults(val: DataFlowEn
 /**
  * Local persistent volume endpoint properties
  */
-export interface DataFlowEndpointLocalStorageArgs {
+export interface DataflowEndpointLocalStorageArgs {
     /**
      * Persistent volume claim name.
      */
@@ -965,11 +1044,19 @@ export interface DataFlowEndpointLocalStorageArgs {
 /**
  * Broker endpoint properties
  */
-export interface DataFlowEndpointMqttArgs {
+export interface DataflowEndpointMqttArgs {
+    /**
+     * authentication properties. DEFAULT: kubernetes.audience=aio-internal. NOTE - Enum field only property is allowed
+     */
+    authentication: pulumi.Input<DataflowEndpointMqttAuthenticationArgs>;
     /**
      * Client ID prefix. Client ID generated by the dataflow is <prefix>-TBD. Optional; no prefix if omitted.
      */
     clientIdPrefix?: pulumi.Input<string>;
+    /**
+     * Cloud event mapping config.
+     */
+    cloudEventAttributes?: pulumi.Input<string | enums.CloudEventAttributeType>;
     /**
      * Host of the Broker in the form of <hostname>:<port>. Optional; connects to Broker if omitted.
      */
@@ -1004,38 +1091,58 @@ export interface DataFlowEndpointMqttArgs {
     tls?: pulumi.Input<TlsPropertiesArgs>;
 }
 /**
- * dataFlowEndpointMqttArgsProvideDefaults sets the appropriate defaults for DataFlowEndpointMqttArgs
+ * dataflowEndpointMqttArgsProvideDefaults sets the appropriate defaults for DataflowEndpointMqttArgs
  */
-export function dataFlowEndpointMqttArgsProvideDefaults(val: DataFlowEndpointMqttArgs): DataFlowEndpointMqttArgs {
+export function dataflowEndpointMqttArgsProvideDefaults(val: DataflowEndpointMqttArgs): DataflowEndpointMqttArgs {
     return {
         ...val,
-        host: (val.host) ?? "aio-mq-dmqtt-frontend:1883",
         keepAliveSeconds: (val.keepAliveSeconds) ?? 60,
         maxInflightMessages: (val.maxInflightMessages) ?? 100,
         protocol: (val.protocol) ?? "Mqtt",
         qos: (val.qos) ?? 1,
         retain: (val.retain) ?? "Keep",
-        sessionExpirySeconds: (val.sessionExpirySeconds) ?? 3600,
         tls: (val.tls ? pulumi.output(val.tls).apply(tlsPropertiesArgsProvideDefaults) : undefined),
     };
 }
 
 /**
- * DataFlowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
+ * Mqtt endpoint Authentication properties. NOTE - only authentication property is allowed per entry.
  */
-export interface DataFlowEndpointPropertiesArgs {
+export interface DataflowEndpointMqttAuthenticationArgs {
     /**
-     * Authentication configuration.
+     * Mode of Authentication.
      */
-    authentication: pulumi.Input<DataFlowEndpointAuthenticationArgs>;
+    method: pulumi.Input<string | enums.MqttAuthMethod>;
+    /**
+     * Kubernetes service account token authentication. Default audience if not set is aio-internal
+     */
+    serviceAccountTokenSettings?: pulumi.Input<DataflowEndpointAuthenticationServiceAccountTokenArgs>;
+    /**
+     * System-assigned managed identity authentication.
+     */
+    systemAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs>;
+    /**
+     * User-assigned managed identity authentication.
+     */
+    userAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs>;
+    /**
+     * X.509 certificate authentication.
+     */
+    x509CertificateSettings?: pulumi.Input<DataflowEndpointAuthenticationX509Args>;
+}
+
+/**
+ * DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
+ */
+export interface DataflowEndpointPropertiesArgs {
     /**
      * Azure Data Explorer endpoint.
      */
-    dataExplorerSettings?: pulumi.Input<DataFlowEndpointDataExplorerArgs>;
+    dataExplorerSettings?: pulumi.Input<DataflowEndpointDataExplorerArgs>;
     /**
      * Azure Data Lake endpoint.
      */
-    dataLakeStorageSettings?: pulumi.Input<DataFlowEndpointDataLakeStorageArgs>;
+    dataLakeStorageSettings?: pulumi.Input<DataflowEndpointDataLakeStorageArgs>;
     /**
      * Endpoint Type.
      */
@@ -1043,46 +1150,46 @@ export interface DataFlowEndpointPropertiesArgs {
     /**
      * Microsoft Fabric endpoint.
      */
-    fabricOneLakeSettings?: pulumi.Input<DataFlowEndpointFabricOneLakeArgs>;
+    fabricOneLakeSettings?: pulumi.Input<DataflowEndpointFabricOneLakeArgs>;
     /**
      * Kafka endpoint.
      */
-    kafkaSettings?: pulumi.Input<DataFlowEndpointKafkaArgs>;
+    kafkaSettings?: pulumi.Input<DataflowEndpointKafkaArgs>;
     /**
      * Local persistent volume endpoint.
      */
-    localStorageSettings?: pulumi.Input<DataFlowEndpointLocalStorageArgs>;
+    localStorageSettings?: pulumi.Input<DataflowEndpointLocalStorageArgs>;
     /**
      * Broker endpoint.
      */
-    mqttSettings?: pulumi.Input<DataFlowEndpointMqttArgs>;
+    mqttSettings?: pulumi.Input<DataflowEndpointMqttArgs>;
 }
 /**
- * dataFlowEndpointPropertiesArgsProvideDefaults sets the appropriate defaults for DataFlowEndpointPropertiesArgs
+ * dataflowEndpointPropertiesArgsProvideDefaults sets the appropriate defaults for DataflowEndpointPropertiesArgs
  */
-export function dataFlowEndpointPropertiesArgsProvideDefaults(val: DataFlowEndpointPropertiesArgs): DataFlowEndpointPropertiesArgs {
+export function dataflowEndpointPropertiesArgsProvideDefaults(val: DataflowEndpointPropertiesArgs): DataflowEndpointPropertiesArgs {
     return {
         ...val,
-        dataExplorerSettings: (val.dataExplorerSettings ? pulumi.output(val.dataExplorerSettings).apply(dataFlowEndpointDataExplorerArgsProvideDefaults) : undefined),
-        dataLakeStorageSettings: (val.dataLakeStorageSettings ? pulumi.output(val.dataLakeStorageSettings).apply(dataFlowEndpointDataLakeStorageArgsProvideDefaults) : undefined),
-        fabricOneLakeSettings: (val.fabricOneLakeSettings ? pulumi.output(val.fabricOneLakeSettings).apply(dataFlowEndpointFabricOneLakeArgsProvideDefaults) : undefined),
-        kafkaSettings: (val.kafkaSettings ? pulumi.output(val.kafkaSettings).apply(dataFlowEndpointKafkaArgsProvideDefaults) : undefined),
-        mqttSettings: (val.mqttSettings ? pulumi.output(val.mqttSettings).apply(dataFlowEndpointMqttArgsProvideDefaults) : undefined),
+        dataExplorerSettings: (val.dataExplorerSettings ? pulumi.output(val.dataExplorerSettings).apply(dataflowEndpointDataExplorerArgsProvideDefaults) : undefined),
+        dataLakeStorageSettings: (val.dataLakeStorageSettings ? pulumi.output(val.dataLakeStorageSettings).apply(dataflowEndpointDataLakeStorageArgsProvideDefaults) : undefined),
+        fabricOneLakeSettings: (val.fabricOneLakeSettings ? pulumi.output(val.fabricOneLakeSettings).apply(dataflowEndpointFabricOneLakeArgsProvideDefaults) : undefined),
+        kafkaSettings: (val.kafkaSettings ? pulumi.output(val.kafkaSettings).apply(dataflowEndpointKafkaArgsProvideDefaults) : undefined),
+        mqttSettings: (val.mqttSettings ? pulumi.output(val.mqttSettings).apply(dataflowEndpointMqttArgsProvideDefaults) : undefined),
     };
 }
 
 /**
- * DataFlow Operation properties. NOTE - One only method is allowed to be used for one entry.
+ * Dataflow Operation properties. NOTE - One only method is allowed to be used for one entry.
  */
-export interface DataFlowOperationArgs {
+export interface DataflowOperationArgs {
     /**
-     * Transformation configuration.
+     * Built In Transformation configuration.
      */
-    builtInTransformationSettings?: pulumi.Input<DataFlowBuiltInTransformationArgs>;
+    builtInTransformationSettings?: pulumi.Input<DataflowBuiltInTransformationSettingsArgs>;
     /**
      * Destination configuration.
      */
-    destinationSettings: pulumi.Input<DataFlowDestinationOperationArgs>;
+    destinationSettings?: pulumi.Input<DataflowDestinationOperationSettingsArgs>;
     /**
      * Optional user provided name of the transformation.
      */
@@ -1094,23 +1201,23 @@ export interface DataFlowOperationArgs {
     /**
      * Source configuration.
      */
-    sourceSettings: pulumi.Input<DataFlowSourceOperationArgs>;
+    sourceSettings?: pulumi.Input<DataflowSourceOperationSettingsArgs>;
 }
 /**
- * dataFlowOperationArgsProvideDefaults sets the appropriate defaults for DataFlowOperationArgs
+ * dataflowOperationArgsProvideDefaults sets the appropriate defaults for DataflowOperationArgs
  */
-export function dataFlowOperationArgsProvideDefaults(val: DataFlowOperationArgs): DataFlowOperationArgs {
+export function dataflowOperationArgsProvideDefaults(val: DataflowOperationArgs): DataflowOperationArgs {
     return {
         ...val,
-        builtInTransformationSettings: (val.builtInTransformationSettings ? pulumi.output(val.builtInTransformationSettings).apply(dataFlowBuiltInTransformationArgsProvideDefaults) : undefined),
-        sourceSettings: pulumi.output(val.sourceSettings).apply(dataFlowSourceOperationArgsProvideDefaults),
+        builtInTransformationSettings: (val.builtInTransformationSettings ? pulumi.output(val.builtInTransformationSettings).apply(dataflowBuiltInTransformationSettingsArgsProvideDefaults) : undefined),
+        sourceSettings: (val.sourceSettings ? pulumi.output(val.sourceSettings).apply(dataflowSourceOperationSettingsArgsProvideDefaults) : undefined),
     };
 }
 
 /**
- * DataFlowProfile Resource properties
+ * DataflowProfile Resource properties
  */
-export interface DataFlowProfilePropertiesArgs {
+export interface DataflowProfilePropertiesArgs {
     /**
      * Spec defines the desired identities of NBC diagnostics settings.
      */
@@ -1121,36 +1228,33 @@ export interface DataFlowProfilePropertiesArgs {
     instanceCount?: pulumi.Input<number>;
 }
 /**
- * dataFlowProfilePropertiesArgsProvideDefaults sets the appropriate defaults for DataFlowProfilePropertiesArgs
+ * dataflowProfilePropertiesArgsProvideDefaults sets the appropriate defaults for DataflowProfilePropertiesArgs
  */
-export function dataFlowProfilePropertiesArgsProvideDefaults(val: DataFlowProfilePropertiesArgs): DataFlowProfilePropertiesArgs {
+export function dataflowProfilePropertiesArgsProvideDefaults(val: DataflowProfilePropertiesArgs): DataflowProfilePropertiesArgs {
     return {
         ...val,
         diagnostics: (val.diagnostics ? pulumi.output(val.diagnostics).apply(profileDiagnosticsArgsProvideDefaults) : undefined),
+        instanceCount: (val.instanceCount) ?? 1,
     };
 }
 
 /**
- * DataFlow Resource properties
+ * Dataflow Resource properties
  */
-export interface DataFlowPropertiesArgs {
+export interface DataflowPropertiesArgs {
     /**
-     * Mode for DataFlow. Optional; defaults to Enabled.
+     * Mode for Dataflow. Optional; defaults to Enabled.
      */
     mode?: pulumi.Input<string | enums.OperationalMode>;
     /**
      * List of operations including source and destination references as well as transformation.
      */
-    operations: pulumi.Input<pulumi.Input<DataFlowOperationArgs>[]>;
-    /**
-     * Reference to the DataflowProfile CR.
-     */
-    profileRef: pulumi.Input<string>;
+    operations: pulumi.Input<pulumi.Input<DataflowOperationArgs>[]>;
 }
 /**
- * dataFlowPropertiesArgsProvideDefaults sets the appropriate defaults for DataFlowPropertiesArgs
+ * dataflowPropertiesArgsProvideDefaults sets the appropriate defaults for DataflowPropertiesArgs
  */
-export function dataFlowPropertiesArgsProvideDefaults(val: DataFlowPropertiesArgs): DataFlowPropertiesArgs {
+export function dataflowPropertiesArgsProvideDefaults(val: DataflowPropertiesArgs): DataflowPropertiesArgs {
     return {
         ...val,
         mode: (val.mode) ?? "Enabled",
@@ -1158,9 +1262,9 @@ export function dataFlowPropertiesArgsProvideDefaults(val: DataFlowPropertiesArg
 }
 
 /**
- * DataFlow Source Operation properties
+ * Dataflow Source Operation properties
  */
-export interface DataFlowSourceOperationArgs {
+export interface DataflowSourceOperationSettingsArgs {
     /**
      * Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
      */
@@ -1183,9 +1287,9 @@ export interface DataFlowSourceOperationArgs {
     serializationFormat?: pulumi.Input<string | enums.SourceSerializationFormat>;
 }
 /**
- * dataFlowSourceOperationArgsProvideDefaults sets the appropriate defaults for DataFlowSourceOperationArgs
+ * dataflowSourceOperationSettingsArgsProvideDefaults sets the appropriate defaults for DataflowSourceOperationSettingsArgs
  */
-export function dataFlowSourceOperationArgsProvideDefaults(val: DataFlowSourceOperationArgs): DataFlowSourceOperationArgs {
+export function dataflowSourceOperationSettingsArgsProvideDefaults(val: DataflowSourceOperationSettingsArgs): DataflowSourceOperationSettingsArgs {
     return {
         ...val,
         serializationFormat: (val.serializationFormat) ?? "Json",
@@ -1200,10 +1304,6 @@ export interface DiagnosticsLogsArgs {
      * The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
      */
     level?: pulumi.Input<string>;
-    /**
-     * The open telemetry export configuration.
-     */
-    opentelemetryExportConfig?: pulumi.Input<OpenTelemetryLogExportConfigArgs>;
 }
 /**
  * diagnosticsLogsArgsProvideDefaults sets the appropriate defaults for DiagnosticsLogsArgs
@@ -1212,7 +1312,6 @@ export function diagnosticsLogsArgsProvideDefaults(val: DiagnosticsLogsArgs): Di
     return {
         ...val,
         level: (val.level) ?? "info",
-        opentelemetryExportConfig: (val.opentelemetryExportConfig ? pulumi.output(val.opentelemetryExportConfig).apply(openTelemetryLogExportConfigArgsProvideDefaults) : undefined),
     };
 }
 
@@ -1291,13 +1390,17 @@ export function generateResourceLimitsArgsProvideDefaults(val: GenerateResourceL
 }
 
 /**
- * The properties of a Instance resource.
+ * The properties of the Instance resource.
  */
 export interface InstancePropertiesArgs {
     /**
      * Detailed description of the Instance.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The reference to the Schema Registry for this AIO Instance.
+     */
+    schemaRegistryRef: pulumi.Input<SchemaRegistryRefArgs>;
 }
 
 /**
@@ -1381,13 +1484,23 @@ export interface LocalKubernetesReferenceArgs {
 }
 
 /**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityArgs {
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: pulumi.Input<string | enums.ManagedServiceIdentityType>;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
  * Diagnostic Metrics properties
  */
 export interface MetricsArgs {
-    /**
-     * The open telemetry export configuration.
-     */
-    opentelemetryExportConfig?: pulumi.Input<OpenTelemetryExportConfigArgs>;
     /**
      * The prometheus port to expose the metrics.
      */
@@ -1399,59 +1512,7 @@ export interface MetricsArgs {
 export function metricsArgsProvideDefaults(val: MetricsArgs): MetricsArgs {
     return {
         ...val,
-        opentelemetryExportConfig: (val.opentelemetryExportConfig ? pulumi.output(val.opentelemetryExportConfig).apply(openTelemetryExportConfigArgsProvideDefaults) : undefined),
         prometheusPort: (val.prometheusPort) ?? 9600,
-    };
-}
-
-/**
- * OpenTelemetry Export Configuration properties
- */
-export interface OpenTelemetryExportConfigArgs {
-    /**
-     * How often to export the metrics to the open telemetry collector.
-     */
-    intervalSeconds?: pulumi.Input<number>;
-    /**
-     * The open telemetry collector endpoint to export to.
-     */
-    otlpGrpcEndpoint: pulumi.Input<string>;
-}
-/**
- * openTelemetryExportConfigArgsProvideDefaults sets the appropriate defaults for OpenTelemetryExportConfigArgs
- */
-export function openTelemetryExportConfigArgsProvideDefaults(val: OpenTelemetryExportConfigArgs): OpenTelemetryExportConfigArgs {
-    return {
-        ...val,
-        intervalSeconds: (val.intervalSeconds) ?? 30,
-    };
-}
-
-/**
- * OpenTelemetry Log Export Configuration properties
- */
-export interface OpenTelemetryLogExportConfigArgs {
-    /**
-     * How often to export the metrics to the open telemetry collector.
-     */
-    intervalSeconds?: pulumi.Input<number>;
-    /**
-     * The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-     */
-    level?: pulumi.Input<string>;
-    /**
-     * The open telemetry collector endpoint to export to.
-     */
-    otlpGrpcEndpoint: pulumi.Input<string>;
-}
-/**
- * openTelemetryLogExportConfigArgsProvideDefaults sets the appropriate defaults for OpenTelemetryLogExportConfigArgs
- */
-export function openTelemetryLogExportConfigArgsProvideDefaults(val: OpenTelemetryLogExportConfigArgs): OpenTelemetryLogExportConfigArgs {
-    return {
-        ...val,
-        intervalSeconds: (val.intervalSeconds) ?? 30,
-        level: (val.level) ?? "error",
     };
 }
 
@@ -1474,7 +1535,7 @@ export interface PrincipalDefinitionArgs {
 }
 
 /**
- * DataFlowProfile Diagnostics properties
+ * DataflowProfile Diagnostics properties
  */
 export interface ProfileDiagnosticsArgs {
     /**
@@ -1509,6 +1570,16 @@ export interface SanForCertArgs {
      * IP address SANs.
      */
     ip: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * The reference to the Schema Registry for this AIO Instance.
+ */
+export interface SchemaRegistryRefArgs {
+    /**
+     * The resource ID of the Schema Registry.
+     */
+    resourceId: pulumi.Input<string>;
 }
 
 /**
@@ -1612,7 +1683,7 @@ export interface TlsCertMethodArgs {
     /**
      * Option 1 - Automatic TLS server certificate management with cert-manager.
      */
-    automatic?: pulumi.Input<AutomaticCertMethodArgs>;
+    certManagerCertificateSpec?: pulumi.Input<CertManagerCertificateSpecArgs>;
     /**
      * Option 2 - Manual TLS server certificate management through a defined secret.
      */
@@ -1628,7 +1699,7 @@ export interface TlsCertMethodArgs {
 export function tlsCertMethodArgsProvideDefaults(val: TlsCertMethodArgs): TlsCertMethodArgs {
     return {
         ...val,
-        automatic: (val.automatic ? pulumi.output(val.automatic).apply(automaticCertMethodArgsProvideDefaults) : undefined),
+        certManagerCertificateSpec: (val.certManagerCertificateSpec ? pulumi.output(val.certManagerCertificateSpec).apply(certManagerCertificateSpecArgsProvideDefaults) : undefined),
     };
 }
 
@@ -1668,10 +1739,6 @@ export interface TracesArgs {
      */
     mode?: pulumi.Input<string | enums.OperationalMode>;
     /**
-     * The open telemetry export configuration.
-     */
-    opentelemetryExportConfig?: pulumi.Input<OpenTelemetryExportConfigArgs>;
-    /**
      * The self tracing properties.
      */
     selfTracing?: pulumi.Input<SelfTracingArgs>;
@@ -1688,7 +1755,6 @@ export function tracesArgsProvideDefaults(val: TracesArgs): TracesArgs {
         ...val,
         cacheSizeMegabytes: (val.cacheSizeMegabytes) ?? 16,
         mode: (val.mode) ?? "Enabled",
-        opentelemetryExportConfig: (val.opentelemetryExportConfig ? pulumi.output(val.opentelemetryExportConfig).apply(openTelemetryExportConfigArgsProvideDefaults) : undefined),
         selfTracing: (val.selfTracing ? pulumi.output(val.selfTracing).apply(selfTracingArgsProvideDefaults) : undefined),
         spanChannelCapacity: (val.spanChannelCapacity) ?? 1000,
     };
@@ -1787,6 +1853,3 @@ export interface X509ManualCertificateArgs {
      */
     secretRef: pulumi.Input<string>;
 }
-
-
-

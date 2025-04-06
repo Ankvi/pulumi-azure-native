@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get the non-security related metadata of a Windows IoT Device Service.
- * Azure REST API version: 2019-06-01.
+ *
+ * Uses Azure REST API version 2019-06-01.
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +32,10 @@ export interface GetServiceResult {
      * Windows IoT Device Service OEM AAD domain
      */
     readonly adminDomainName?: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Windows IoT Device Service ODM AAD domain
      */
@@ -74,7 +79,8 @@ export interface GetServiceResult {
 }
 /**
  * Get the non-security related metadata of a Windows IoT Device Service.
- * Azure REST API version: 2019-06-01.
+ *
+ * Uses Azure REST API version 2019-06-01.
  */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

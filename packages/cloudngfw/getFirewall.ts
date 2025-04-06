@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a FirewallResource
- * Azure REST API version: 2023-09-01.
  *
- * Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
+ * Uses Azure REST API version 2025-02-06-preview.
+ *
+ * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getFirewall(args: GetFirewallArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,6 +36,10 @@ export interface GetFirewallResult {
      */
     readonly associatedRulestack?: types.outputs.RulestackDetailsResponse;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * DNS settings for Firewall
      */
     readonly dnsSettings: types.outputs.DNSSettingsResponse;
@@ -54,6 +59,10 @@ export interface GetFirewallResult {
      * Panorama Managed: Default is False. Default will be CloudSec managed
      */
     readonly isPanoramaManaged?: string;
+    /**
+     * Strata Cloud Managed: Default is False. Default will be CloudSec managed
+     */
+    readonly isStrataCloudManaged?: string;
     /**
      * The geo-location where the resource lives
      */
@@ -87,6 +96,10 @@ export interface GetFirewallResult {
      */
     readonly provisioningState: string;
     /**
+     * Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
+     */
+    readonly strataCloudManagerConfig?: types.outputs.StrataCloudManagerConfigResponse;
+    /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
@@ -101,9 +114,10 @@ export interface GetFirewallResult {
 }
 /**
  * Get a FirewallResource
- * Azure REST API version: 2023-09-01.
  *
- * Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
+ * Uses Azure REST API version 2025-02-06-preview.
+ *
+ * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getFirewallOutput(args: GetFirewallOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFirewallResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

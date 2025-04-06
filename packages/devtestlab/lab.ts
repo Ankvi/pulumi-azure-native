@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A lab.
- * Azure REST API version: 2018-09-15. Prior API version in Azure Native 1.x: 2018-09-15.
+ *
+ * Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
  */
 export class Lab extends pulumi.CustomResource {
     /**
@@ -40,6 +41,10 @@ export class Lab extends pulumi.CustomResource {
      * The lab's artifact storage account.
      */
     public /*out*/ readonly artifactsStorageAccount!: pulumi.Output<string>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The creation date of the lab.
      */
@@ -158,6 +163,7 @@ export class Lab extends pulumi.CustomResource {
             resourceInputs["support"] = args ? args.support : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["artifactsStorageAccount"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdDate"] = undefined /*out*/;
             resourceInputs["defaultPremiumStorageAccount"] = undefined /*out*/;
             resourceInputs["defaultStorageAccount"] = undefined /*out*/;
@@ -173,6 +179,7 @@ export class Lab extends pulumi.CustomResource {
         } else {
             resourceInputs["announcement"] = undefined /*out*/;
             resourceInputs["artifactsStorageAccount"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdDate"] = undefined /*out*/;
             resourceInputs["defaultPremiumStorageAccount"] = undefined /*out*/;
             resourceInputs["defaultStorageAccount"] = undefined /*out*/;

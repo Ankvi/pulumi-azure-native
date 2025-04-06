@@ -121,9 +121,13 @@ export interface AmlFilesystemHsmSettingsResponse {
      */
     container: string;
     /**
-     * Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
+     * Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This is only used during initial creation of the AML file system. It automatically creates an import job resource that can be deleted.
      */
     importPrefix?: string;
+    /**
+     * Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value. It automatically creates an import job resource that can be deleted.
+     */
+    importPrefixesInitial?: string[];
     /**
      * Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
      */
@@ -196,6 +200,32 @@ export interface AmlFilesystemResponseMaintenanceWindow {
      * The time of day (in UTC) to start the maintenance window.
      */
     timeOfDayUTC?: string;
+}
+
+/**
+ * AML file system squash settings.
+ */
+export interface AmlFilesystemRootSquashSettingsResponse {
+    /**
+     * Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
+     */
+    mode?: string;
+    /**
+     * Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
+     */
+    noSquashNidLists?: string;
+    /**
+     * Group ID to squash to.
+     */
+    squashGID?: number;
+    /**
+     * User ID to squash to.
+     */
+    squashUID?: number;
+    /**
+     * AML file system squash status.
+     */
+    status: string;
 }
 
 /**
@@ -789,8 +819,3 @@ export interface UserAssignedIdentitiesResponseUserAssignedIdentities {
      */
     principalId: string;
 }
-
-
-
-
-

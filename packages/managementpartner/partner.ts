@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * this is the management partner operations response
- * Azure REST API version: 2018-02-01. Prior API version in Azure Native 1.x: 2018-02-01.
+ *
+ * Uses Azure REST API version 2018-02-01. In version 2.x of the Azure Native provider, it used API version 2018-02-01.
  */
 export class Partner extends pulumi.CustomResource {
     /**
@@ -31,6 +32,10 @@ export class Partner extends pulumi.CustomResource {
         return obj['__pulumiType'] === Partner.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * This is the DateTime when the partner was created.
      */
@@ -84,6 +89,7 @@ export class Partner extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["partnerId"] = args ? args.partnerId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -94,6 +100,7 @@ export class Partner extends pulumi.CustomResource {
             resourceInputs["updatedTime"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

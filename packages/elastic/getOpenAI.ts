@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Capture properties of Open AI resource Integration.
- * Azure REST API version: 2024-03-01.
  *
- * Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview.
+ * Uses Azure REST API version 2024-03-01.
+ *
+ * Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elastic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getOpenAI(args: GetOpenAIArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenAIResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +37,10 @@ export interface GetOpenAIArgs {
  */
 export interface GetOpenAIResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The id of the integration.
      */
     readonly id: string;
@@ -54,9 +59,10 @@ export interface GetOpenAIResult {
 }
 /**
  * Capture properties of Open AI resource Integration.
- * Azure REST API version: 2024-03-01.
  *
- * Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview.
+ * Uses Azure REST API version 2024-03-01.
+ *
+ * Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elastic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getOpenAIOutput(args: GetOpenAIOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOpenAIResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

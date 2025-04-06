@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A database resource.
- * Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
  *
- * Other available API versions: 2014-04-01, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+ * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
+ *
+ * Other available API versions: 2014-04-01, 2017-03-01-preview, 2017-10-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Database extends pulumi.CustomResource {
     /**
@@ -38,6 +39,14 @@ export class Database extends pulumi.CustomResource {
      * Time in minutes after which database is automatically paused. A value of -1 means that automatic pause is disabled
      */
     public readonly autoPauseDelay!: pulumi.Output<number | undefined>;
+    /**
+     * Specifies the availability zone the database is pinned to.
+     */
+    public readonly availabilityZone!: pulumi.Output<string | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Collation of the metadata catalog.
      */
@@ -79,6 +88,14 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly elasticPoolId!: pulumi.Output<string | undefined>;
     /**
+     * The azure key vault URI of the database if it's configured with per Database Customer Managed Keys.
+     */
+    public readonly encryptionProtector!: pulumi.Output<string | undefined>;
+    /**
+     * The flag to enable or disable auto rotation of database encryption protector AKV key.
+     */
+    public readonly encryptionProtectorAutoRotation!: pulumi.Output<boolean | undefined>;
+    /**
      * Failover Group resource identifier that this database belongs to.
      */
     public /*out*/ readonly failoverGroupId!: pulumi.Output<string>;
@@ -87,7 +104,15 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly federatedClientId!: pulumi.Output<string | undefined>;
     /**
-     * The number of secondary replicas associated with the database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
+     * Specifies the behavior when monthly free limits are exhausted for the free database.
+     * 
+     * AutoPause: The database will be auto paused upon exhaustion of free limits for remainder of the month.
+     * 
+     * BillForUsage: The database will continue to be online upon exhaustion of free limits and any overage will be billed.
+     */
+    public readonly freeLimitExhaustionBehavior!: pulumi.Output<string | undefined>;
+    /**
+     * The number of secondary replicas associated with the Business Critical, Premium, or Hyperscale edition database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
      */
     public readonly highAvailabilityReplicaCount!: pulumi.Output<number | undefined>;
     /**
@@ -102,6 +127,10 @@ export class Database extends pulumi.CustomResource {
      * Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
      */
     public readonly isLedgerOn!: pulumi.Output<boolean | undefined>;
+    /**
+     * The resource ids of the user assigned identities to use
+     */
+    public readonly keys!: pulumi.Output<{[key: string]: types.outputs.DatabaseKeyResponse} | undefined>;
     /**
      * Kind of database. This is metadata used for the Azure portal experience.
      */
@@ -123,6 +152,16 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly managedBy!: pulumi.Output<string>;
     /**
+     * Whether or not customer controlled manual cutover needs to be done during Update Database operation to Hyperscale tier.
+     * 
+     * This property is only applicable when scaling database from Business Critical/General Purpose/Premium/Standard tier to Hyperscale tier.
+     * 
+     * When manualCutover is specified, the scaling operation will wait for user input to trigger cutover to Hyperscale database.
+     * 
+     * To trigger cutover, please provide 'performCutover' parameter when the Scaling operation is in Waiting state.
+     */
+    public readonly manualCutover!: pulumi.Output<boolean | undefined>;
+    /**
      * The max log size for this database.
      */
     public /*out*/ readonly maxLogSizeBytes!: pulumi.Output<number>;
@@ -143,6 +182,20 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly pausedDate!: pulumi.Output<string>;
     /**
+     * To trigger customer controlled manual cutover during the wait state while Scaling operation is in progress.
+     * 
+     * This property parameter is only applicable for scaling operations that are initiated along with 'manualCutover' parameter.
+     * 
+     * This property is only applicable when scaling database from Business Critical/General Purpose/Premium/Standard tier to Hyperscale tier is already in progress.
+     * 
+     * When performCutover is specified, the scaling operation will trigger cutover and perform role-change to Hyperscale database.
+     */
+    public readonly performCutover!: pulumi.Output<boolean | undefined>;
+    /**
+     * Type of enclave requested on the database i.e. Default or VBS enclaves.
+     */
+    public readonly preferredEnclaveType!: pulumi.Output<string | undefined>;
+    /**
      * The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region. Not applicable to a Hyperscale database within an elastic pool.
      */
     public readonly readScale!: pulumi.Output<string | undefined>;
@@ -159,7 +212,7 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly resumedDate!: pulumi.Output<string>;
     /**
-     * The secondary type of the database if it is a secondary.  Valid values are Geo and Named.
+     * The secondary type of the database if it is a secondary.  Valid values are Geo, Named and Standby.
      */
     public readonly secondaryType!: pulumi.Output<string | undefined>;
     /**
@@ -189,6 +242,10 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
+     * Whether or not the database uses free monthly limits. Allowed on one database in a subscription.
+     */
+    public readonly useFreeLimit!: pulumi.Output<boolean | undefined>;
+    /**
      * Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones.
      */
     public readonly zoneRedundant!: pulumi.Output<boolean | undefined>;
@@ -211,21 +268,29 @@ export class Database extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serverName'");
             }
             resourceInputs["autoPauseDelay"] = args ? args.autoPauseDelay : undefined;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["catalogCollation"] = args ? args.catalogCollation : undefined;
             resourceInputs["collation"] = args ? args.collation : undefined;
             resourceInputs["createMode"] = args ? args.createMode : undefined;
             resourceInputs["databaseName"] = args ? args.databaseName : undefined;
             resourceInputs["elasticPoolId"] = args ? args.elasticPoolId : undefined;
+            resourceInputs["encryptionProtector"] = args ? args.encryptionProtector : undefined;
+            resourceInputs["encryptionProtectorAutoRotation"] = args ? args.encryptionProtectorAutoRotation : undefined;
             resourceInputs["federatedClientId"] = args ? args.federatedClientId : undefined;
+            resourceInputs["freeLimitExhaustionBehavior"] = args ? args.freeLimitExhaustionBehavior : undefined;
             resourceInputs["highAvailabilityReplicaCount"] = args ? args.highAvailabilityReplicaCount : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["isLedgerOn"] = args ? args.isLedgerOn : undefined;
+            resourceInputs["keys"] = args ? args.keys : undefined;
             resourceInputs["licenseType"] = args ? args.licenseType : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["longTermRetentionBackupResourceId"] = args ? args.longTermRetentionBackupResourceId : undefined;
             resourceInputs["maintenanceConfigurationId"] = args ? args.maintenanceConfigurationId : undefined;
+            resourceInputs["manualCutover"] = args ? args.manualCutover : undefined;
             resourceInputs["maxSizeBytes"] = args ? args.maxSizeBytes : undefined;
             resourceInputs["minCapacity"] = args ? args.minCapacity : undefined;
+            resourceInputs["performCutover"] = args ? args.performCutover : undefined;
+            resourceInputs["preferredEnclaveType"] = args ? args.preferredEnclaveType : undefined;
             resourceInputs["readScale"] = args ? args.readScale : undefined;
             resourceInputs["recoverableDatabaseId"] = args ? args.recoverableDatabaseId : undefined;
             resourceInputs["recoveryServicesRecoveryPointId"] = args ? args.recoveryServicesRecoveryPointId : undefined;
@@ -241,7 +306,9 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["sourceDatabaseId"] = args ? args.sourceDatabaseId : undefined;
             resourceInputs["sourceResourceId"] = args ? args.sourceResourceId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["useFreeLimit"] = args ? args.useFreeLimit : undefined;
             resourceInputs["zoneRedundant"] = args ? args.zoneRedundant : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["currentBackupStorageRedundancy"] = undefined /*out*/;
             resourceInputs["currentServiceObjectiveName"] = undefined /*out*/;
@@ -262,6 +329,8 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["autoPauseDelay"] = undefined /*out*/;
+            resourceInputs["availabilityZone"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["catalogCollation"] = undefined /*out*/;
             resourceInputs["collation"] = undefined /*out*/;
             resourceInputs["creationDate"] = undefined /*out*/;
@@ -272,22 +341,29 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["defaultSecondaryLocation"] = undefined /*out*/;
             resourceInputs["earliestRestoreDate"] = undefined /*out*/;
             resourceInputs["elasticPoolId"] = undefined /*out*/;
+            resourceInputs["encryptionProtector"] = undefined /*out*/;
+            resourceInputs["encryptionProtectorAutoRotation"] = undefined /*out*/;
             resourceInputs["failoverGroupId"] = undefined /*out*/;
             resourceInputs["federatedClientId"] = undefined /*out*/;
+            resourceInputs["freeLimitExhaustionBehavior"] = undefined /*out*/;
             resourceInputs["highAvailabilityReplicaCount"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["isInfraEncryptionEnabled"] = undefined /*out*/;
             resourceInputs["isLedgerOn"] = undefined /*out*/;
+            resourceInputs["keys"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["licenseType"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["maintenanceConfigurationId"] = undefined /*out*/;
             resourceInputs["managedBy"] = undefined /*out*/;
+            resourceInputs["manualCutover"] = undefined /*out*/;
             resourceInputs["maxLogSizeBytes"] = undefined /*out*/;
             resourceInputs["maxSizeBytes"] = undefined /*out*/;
             resourceInputs["minCapacity"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pausedDate"] = undefined /*out*/;
+            resourceInputs["performCutover"] = undefined /*out*/;
+            resourceInputs["preferredEnclaveType"] = undefined /*out*/;
             resourceInputs["readScale"] = undefined /*out*/;
             resourceInputs["requestedBackupStorageRedundancy"] = undefined /*out*/;
             resourceInputs["requestedServiceObjectiveName"] = undefined /*out*/;
@@ -297,10 +373,11 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["useFreeLimit"] = undefined /*out*/;
             resourceInputs["zoneRedundant"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20140401:Database" }, { type: "azure-native:sql/v20170301preview:Database" }, { type: "azure-native:sql/v20171001preview:Database" }, { type: "azure-native:sql/v20190601preview:Database" }, { type: "azure-native:sql/v20200202preview:Database" }, { type: "azure-native:sql/v20200801preview:Database" }, { type: "azure-native:sql/v20201101preview:Database" }, { type: "azure-native:sql/v20210201preview:Database" }, { type: "azure-native:sql/v20210501preview:Database" }, { type: "azure-native:sql/v20210801preview:Database" }, { type: "azure-native:sql/v20211101:Database" }, { type: "azure-native:sql/v20211101preview:Database" }, { type: "azure-native:sql/v20220201preview:Database" }, { type: "azure-native:sql/v20220501preview:Database" }, { type: "azure-native:sql/v20220801preview:Database" }, { type: "azure-native:sql/v20221101preview:Database" }, { type: "azure-native:sql/v20230201preview:Database" }, { type: "azure-native:sql/v20230501preview:Database" }, { type: "azure-native:sql/v20230801preview:Database" }, { type: "azure-native:sql/v20240501preview:Database" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20140401:Database" }, { type: "azure-native:sql/v20170301preview:Database" }, { type: "azure-native:sql/v20171001preview:Database" }, { type: "azure-native:sql/v20190601preview:Database" }, { type: "azure-native:sql/v20200202preview:Database" }, { type: "azure-native:sql/v20200801preview:Database" }, { type: "azure-native:sql/v20201101preview:Database" }, { type: "azure-native:sql/v20210201preview:Database" }, { type: "azure-native:sql/v20210501preview:Database" }, { type: "azure-native:sql/v20210801preview:Database" }, { type: "azure-native:sql/v20211101:Database" }, { type: "azure-native:sql/v20211101preview:Database" }, { type: "azure-native:sql/v20220201preview:Database" }, { type: "azure-native:sql/v20220501preview:Database" }, { type: "azure-native:sql/v20220801preview:Database" }, { type: "azure-native:sql/v20221101preview:Database" }, { type: "azure-native:sql/v20230201preview:Database" }, { type: "azure-native:sql/v20230501preview:Database" }, { type: "azure-native:sql/v20230801:Database" }, { type: "azure-native:sql/v20230801preview:Database" }, { type: "azure-native:sql/v20240501preview:Database" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Database.__pulumiType, name, resourceInputs, opts);
     }
@@ -314,6 +391,10 @@ export interface DatabaseArgs {
      * Time in minutes after which database is automatically paused. A value of -1 means that automatic pause is disabled
      */
     autoPauseDelay?: pulumi.Input<number>;
+    /**
+     * Specifies the availability zone the database is pinned to.
+     */
+    availabilityZone?: pulumi.Input<string | types.enums.AvailabilityZoneType>;
     /**
      * Collation of the metadata catalog.
      */
@@ -351,11 +432,27 @@ export interface DatabaseArgs {
      */
     elasticPoolId?: pulumi.Input<string>;
     /**
+     * The azure key vault URI of the database if it's configured with per Database Customer Managed Keys.
+     */
+    encryptionProtector?: pulumi.Input<string>;
+    /**
+     * The flag to enable or disable auto rotation of database encryption protector AKV key.
+     */
+    encryptionProtectorAutoRotation?: pulumi.Input<boolean>;
+    /**
      * The Client id used for cross tenant per database CMK scenario
      */
     federatedClientId?: pulumi.Input<string>;
     /**
-     * The number of secondary replicas associated with the database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
+     * Specifies the behavior when monthly free limits are exhausted for the free database.
+     * 
+     * AutoPause: The database will be auto paused upon exhaustion of free limits for remainder of the month.
+     * 
+     * BillForUsage: The database will continue to be online upon exhaustion of free limits and any overage will be billed.
+     */
+    freeLimitExhaustionBehavior?: pulumi.Input<string | types.enums.FreeLimitExhaustionBehavior>;
+    /**
+     * The number of secondary replicas associated with the Business Critical, Premium, or Hyperscale edition database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
      */
     highAvailabilityReplicaCount?: pulumi.Input<number>;
     /**
@@ -366,6 +463,10 @@ export interface DatabaseArgs {
      * Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
      */
     isLedgerOn?: pulumi.Input<boolean>;
+    /**
+     * The resource ids of the user assigned identities to use
+     */
+    keys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The license type to apply for this database. `LicenseIncluded` if you need a license, or `BasePrice` if you have a license and are eligible for the Azure Hybrid Benefit.
      */
@@ -383,6 +484,16 @@ export interface DatabaseArgs {
      */
     maintenanceConfigurationId?: pulumi.Input<string>;
     /**
+     * Whether or not customer controlled manual cutover needs to be done during Update Database operation to Hyperscale tier.
+     * 
+     * This property is only applicable when scaling database from Business Critical/General Purpose/Premium/Standard tier to Hyperscale tier.
+     * 
+     * When manualCutover is specified, the scaling operation will wait for user input to trigger cutover to Hyperscale database.
+     * 
+     * To trigger cutover, please provide 'performCutover' parameter when the Scaling operation is in Waiting state.
+     */
+    manualCutover?: pulumi.Input<boolean>;
+    /**
      * The max size of the database expressed in bytes.
      */
     maxSizeBytes?: pulumi.Input<number>;
@@ -390,6 +501,20 @@ export interface DatabaseArgs {
      * Minimal capacity that database will always have allocated, if not paused
      */
     minCapacity?: pulumi.Input<number>;
+    /**
+     * To trigger customer controlled manual cutover during the wait state while Scaling operation is in progress.
+     * 
+     * This property parameter is only applicable for scaling operations that are initiated along with 'manualCutover' parameter.
+     * 
+     * This property is only applicable when scaling database from Business Critical/General Purpose/Premium/Standard tier to Hyperscale tier is already in progress.
+     * 
+     * When performCutover is specified, the scaling operation will trigger cutover and perform role-change to Hyperscale database.
+     */
+    performCutover?: pulumi.Input<boolean>;
+    /**
+     * Type of enclave requested on the database i.e. Default or VBS enclaves.
+     */
+    preferredEnclaveType?: pulumi.Input<string | types.enums.AlwaysEncryptedEnclaveType>;
     /**
      * The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region. Not applicable to a Hyperscale database within an elastic pool.
      */
@@ -423,7 +548,7 @@ export interface DatabaseArgs {
      */
     sampleName?: pulumi.Input<string | types.enums.SampleName>;
     /**
-     * The secondary type of the database if it is a secondary.  Valid values are Geo and Named.
+     * The secondary type of the database if it is a secondary.  Valid values are Geo, Named and Standby.
      */
     secondaryType?: pulumi.Input<string | types.enums.SecondaryType>;
     /**
@@ -472,6 +597,10 @@ export interface DatabaseArgs {
      * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Whether or not the database uses free monthly limits. Allowed on one database in a subscription.
+     */
+    useFreeLimit?: pulumi.Input<boolean>;
     /**
      * Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones.
      */

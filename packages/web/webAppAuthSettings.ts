@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Configuration settings for the Azure App Service Authentication / Authorization feature.
- * Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
  *
- * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+ * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+ *
+ * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebAppAuthSettings extends pulumi.CustomResource {
     /**
@@ -60,6 +61,10 @@ export class WebAppAuthSettings extends pulumi.CustomResource {
      * If the path is relative, base will the site's root directory.
      */
     public readonly authFilePath!: pulumi.Output<string | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The Client ID of this relying party application, known as the client_id.
      * This setting is required for enabling OpenID Connection authentication with Azure Active Directory or 
@@ -170,7 +175,7 @@ export class WebAppAuthSettings extends pulumi.CustomResource {
     public readonly isAuthFromFile!: pulumi.Output<string | undefined>;
     /**
      * The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://sts.windows.net/{tenant-guid}/.
+     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://sts.windows.net/{tenant-guid}/`.
      * This URI is a case-sensitive identifier for the token issuer.
      * More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
      */
@@ -309,6 +314,7 @@ export class WebAppAuthSettings extends pulumi.CustomResource {
             resourceInputs["twitterConsumerSecretSettingName"] = args ? args.twitterConsumerSecretSettingName : undefined;
             resourceInputs["unauthenticatedClientAction"] = args ? args.unauthenticatedClientAction : undefined;
             resourceInputs["validateIssuer"] = args ? args.validateIssuer : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["aadClaimsAuthorization"] = undefined /*out*/;
@@ -316,6 +322,7 @@ export class WebAppAuthSettings extends pulumi.CustomResource {
             resourceInputs["allowedAudiences"] = undefined /*out*/;
             resourceInputs["allowedExternalRedirectUrls"] = undefined /*out*/;
             resourceInputs["authFilePath"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["clientSecret"] = undefined /*out*/;
             resourceInputs["clientSecretCertificateThumbprint"] = undefined /*out*/;
@@ -500,7 +507,7 @@ export interface WebAppAuthSettingsArgs {
     isAuthFromFile?: pulumi.Input<string>;
     /**
      * The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://sts.windows.net/{tenant-guid}/.
+     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://sts.windows.net/{tenant-guid}/`.
      * This URI is a case-sensitive identifier for the token issuer.
      * More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
      */

@@ -2,9 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a datasource instance.
- * Azure REST API version: 2020-08-01.
  *
- * Other available API versions: 2015-11-01-preview, 2023-09-01.
+ * Uses Azure REST API version 2023-09-01.
+ *
+ * Other available API versions: 2015-11-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDataSource(args: GetDataSourceArgs, opts?: pulumi.InvokeOptions): Promise<GetDataSourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetDataSourceArgs {
  * Datasources under OMS Workspace.
  */
 export interface GetDataSourceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The ETag of the data source.
      */
@@ -65,9 +70,10 @@ export interface GetDataSourceResult {
 }
 /**
  * Gets a datasource instance.
- * Azure REST API version: 2020-08-01.
  *
- * Other available API versions: 2015-11-01-preview, 2023-09-01.
+ * Uses Azure REST API version 2023-09-01.
+ *
+ * Other available API versions: 2015-11-01-preview, 2020-03-01-preview, 2020-08-01, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDataSourceOutput(args: GetDataSourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDataSourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

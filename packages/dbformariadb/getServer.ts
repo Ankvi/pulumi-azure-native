@@ -3,9 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets information about a server.
- * Azure REST API version: 2018-06-01.
  *
- * Other available API versions: 2018-06-01-preview.
+ * Uses Azure REST API version 2018-06-01.
  */
 export function getServer(args: GetServerArgs, opts?: pulumi.InvokeOptions): Promise<GetServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +33,10 @@ export interface GetServerResult {
      * The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
      */
     readonly administratorLogin?: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Earliest restore point creation time (ISO8601 format)
      */
@@ -109,9 +112,8 @@ export interface GetServerResult {
 }
 /**
  * Gets information about a server.
- * Azure REST API version: 2018-06-01.
  *
- * Other available API versions: 2018-06-01-preview.
+ * Uses Azure REST API version 2018-06-01.
  */
 export function getServerOutput(args: GetServerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

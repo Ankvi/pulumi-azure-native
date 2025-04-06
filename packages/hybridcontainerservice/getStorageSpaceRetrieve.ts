@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the Hybrid AKS storage space object
- * Azure REST API version: 2022-09-01-preview.
+ *
+ * Uses Azure REST API version 2022-09-01-preview.
  */
 export function getStorageSpaceRetrieve(args: GetStorageSpaceRetrieveArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageSpaceRetrieveResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetStorageSpaceRetrieveArgs {
  * The storageSpaces resource definition.
  */
 export interface GetStorageSpaceRetrieveResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     readonly extendedLocation?: types.outputs.StorageSpacesResponseExtendedLocation;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -60,7 +65,8 @@ export interface GetStorageSpaceRetrieveResult {
 }
 /**
  * Gets the Hybrid AKS storage space object
- * Azure REST API version: 2022-09-01-preview.
+ *
+ * Uses Azure REST API version 2022-09-01-preview.
  */
 export function getStorageSpaceRetrieveOutput(args: GetStorageSpaceRetrieveOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStorageSpaceRetrieveResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the detailed information for a given task run.
- * Azure REST API version: 2019-06-01-preview.
+ *
+ * Uses Azure REST API version 2019-06-01-preview.
  */
 export function getTaskRun(args: GetTaskRunArgs, opts?: pulumi.InvokeOptions): Promise<GetTaskRunResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +35,10 @@ export interface GetTaskRunArgs {
  * The task run will have the information of request and result of a run.
  */
 export interface GetTaskRunResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * How the run should be forced to rerun even if the run request configuration has not changed
      */
@@ -77,7 +82,8 @@ export interface GetTaskRunResult {
 }
 /**
  * Gets the detailed information for a given task run.
- * Azure REST API version: 2019-06-01-preview.
+ *
+ * Uses Azure REST API version 2019-06-01-preview.
  */
 export function getTaskRunOutput(args: GetTaskRunOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTaskRunResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

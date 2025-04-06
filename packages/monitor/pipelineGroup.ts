@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A pipeline group definition.
- * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2024-10-01-preview.
+ * Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
+ *
+ * Other available API versions: 2023-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PipelineGroup extends pulumi.CustomResource {
     /**
@@ -35,11 +36,11 @@ export class PipelineGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The exporters specified for a pipeline group instance.
+     * The Azure API version of the resource.
      */
-    public readonly exporters!: pulumi.Output<types.outputs.ExporterResponse[]>;
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
-     * The extended location for given pipeline group.
+     * The complex type of the extended location.
      */
     public readonly extendedLocation!: pulumi.Output<types.outputs.AzureResourceManagerCommonTypesExtendedLocationResponse | undefined>;
     /**
@@ -51,29 +52,9 @@ export class PipelineGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Networking configurations for the pipeline group instance.
+     * The resource-specific properties for this resource.
      */
-    public readonly networkingConfigurations!: pulumi.Output<types.outputs.NetworkingConfigurationResponse[] | undefined>;
-    /**
-     * The processors specified for a pipeline group instance.
-     */
-    public readonly processors!: pulumi.Output<types.outputs.ProcessorResponse[]>;
-    /**
-     * The provisioning state of a pipeline group instance. Set to Succeeded if everything is healthy.
-     */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
-    /**
-     * The receivers specified for a pipeline group instance.
-     */
-    public readonly receivers!: pulumi.Output<types.outputs.ReceiverResponse[]>;
-    /**
-     * Defines the amount of replicas of the pipeline group instance.
-     */
-    public readonly replicas!: pulumi.Output<number | undefined>;
-    /**
-     * The service section for a given pipeline group instance.
-     */
-    public readonly service!: pulumi.Output<types.outputs.ServiceResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PipelineGroupPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -98,47 +79,25 @@ export class PipelineGroup extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.exporters === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'exporters'");
-            }
-            if ((!args || args.processors === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'processors'");
-            }
-            if ((!args || args.receivers === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'receivers'");
-            }
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'service'");
-            }
-            resourceInputs["exporters"] = args ? args.exporters : undefined;
             resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["networkingConfigurations"] = args ? args.networkingConfigurations : undefined;
             resourceInputs["pipelineGroupName"] = args ? args.pipelineGroupName : undefined;
-            resourceInputs["processors"] = args ? args.processors : undefined;
-            resourceInputs["receivers"] = args ? args.receivers : undefined;
-            resourceInputs["replicas"] = args ? args.replicas : undefined;
+            resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
-            resourceInputs["exporters"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["extendedLocation"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["networkingConfigurations"] = undefined /*out*/;
-            resourceInputs["processors"] = undefined /*out*/;
-            resourceInputs["provisioningState"] = undefined /*out*/;
-            resourceInputs["receivers"] = undefined /*out*/;
-            resourceInputs["replicas"] = undefined /*out*/;
-            resourceInputs["service"] = undefined /*out*/;
+            resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -155,11 +114,7 @@ export class PipelineGroup extends pulumi.CustomResource {
  */
 export interface PipelineGroupArgs {
     /**
-     * The exporters specified for a pipeline group instance.
-     */
-    exporters: pulumi.Input<pulumi.Input<types.inputs.ExporterArgs>[]>;
-    /**
-     * The extended location for given pipeline group.
+     * The complex type of the extended location.
      */
     extendedLocation?: pulumi.Input<types.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs>;
     /**
@@ -167,33 +122,17 @@ export interface PipelineGroupArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * Networking configurations for the pipeline group instance.
-     */
-    networkingConfigurations?: pulumi.Input<pulumi.Input<types.inputs.NetworkingConfigurationArgs>[]>;
-    /**
      * The name of pipeline group. The name is case insensitive.
      */
     pipelineGroupName?: pulumi.Input<string>;
     /**
-     * The processors specified for a pipeline group instance.
+     * The resource-specific properties for this resource.
      */
-    processors: pulumi.Input<pulumi.Input<types.inputs.ProcessorArgs>[]>;
-    /**
-     * The receivers specified for a pipeline group instance.
-     */
-    receivers: pulumi.Input<pulumi.Input<types.inputs.ReceiverArgs>[]>;
-    /**
-     * Defines the amount of replicas of the pipeline group instance.
-     */
-    replicas?: pulumi.Input<number>;
+    properties?: pulumi.Input<types.inputs.PipelineGroupPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
-    /**
-     * The service section for a given pipeline group instance.
-     */
-    service: pulumi.Input<types.inputs.ServiceArgs>;
     /**
      * Resource tags.
      */

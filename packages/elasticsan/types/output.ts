@@ -1,6 +1,52 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Encryption identity for the volume group.
+ */
+export interface EncryptionIdentityResponse {
+    /**
+     * Resource identifier of the UserAssigned identity to be associated with server-side encryption on the volume group.
+     */
+    encryptionUserAssignedIdentity?: string;
+}
+
+/**
+ * The encryption settings on the volume group.
+ */
+export interface EncryptionPropertiesResponse {
+    /**
+     * The identity to be used with service-side encryption at rest.
+     */
+    encryptionIdentity?: EncryptionIdentityResponse;
+    /**
+     * Properties provided by key vault.
+     */
+    keyVaultProperties?: KeyVaultPropertiesResponse;
+}
+
+/**
+ * Identity for the resource.
+ */
+export interface IdentityResponse {
+    /**
+     * The principal ID of resource identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of resource.
+     */
+    tenantId: string;
+    /**
+     * The identity type.
+     */
+    type: string;
+    /**
+     * Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group. The key is the ARM resource identifier of the identity.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
  * Iscsi target information
  */
 export interface IscsiTargetInfoResponse {
@@ -27,6 +73,46 @@ export interface IscsiTargetInfoResponse {
 }
 
 /**
+ * Properties of key vault.
+ */
+export interface KeyVaultPropertiesResponse {
+    /**
+     * This is a read only property that represents the expiration time of the current version of the customer managed key used for encryption.
+     */
+    currentVersionedKeyExpirationTimestamp: string;
+    /**
+     * The object identifier of the current versioned Key Vault Key in use.
+     */
+    currentVersionedKeyIdentifier: string;
+    /**
+     * The name of KeyVault key.
+     */
+    keyName?: string;
+    /**
+     * The Uri of KeyVault.
+     */
+    keyVaultUri?: string;
+    /**
+     * The version of KeyVault key.
+     */
+    keyVersion?: string;
+    /**
+     * Timestamp of last rotation of the Key Vault Key.
+     */
+    lastKeyRotationTimestamp: string;
+}
+
+/**
+ * Parent resource information.
+ */
+export interface ManagedByInfoResponse {
+    /**
+     * Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
+     */
+    resourceId?: string;
+}
+
+/**
  * A set of rules governing the network accessibility.
  */
 export interface NetworkRuleSetResponse {
@@ -34,6 +120,44 @@ export interface NetworkRuleSetResponse {
      * The list of virtual network rules.
      */
     virtualNetworkRules?: VirtualNetworkRuleResponse[];
+}
+
+/**
+ *  Response for PrivateEndpoint Connection object
+ */
+export interface PrivateEndpointConnectionResponse {
+    /**
+     *  List of resources private endpoint is mapped
+     */
+    groupIds?: string[];
+    /**
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     */
+    id: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * Private Endpoint resource
+     */
+    privateEndpoint?: PrivateEndpointResponse;
+    /**
+     * Private Link Service Connection State.
+     */
+    privateLinkServiceConnectionState: PrivateLinkServiceConnectionStateResponse;
+    /**
+     * Provisioning State of Private Endpoint connection resource
+     */
+    provisioningState: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
 }
 
 /**
@@ -97,9 +221,9 @@ export interface SourceCreationDataResponse {
      */
     createSource?: string;
     /**
-     * If createOption is Copy, this is the ARM id of the source snapshot or disk. If createOption is Restore, this is the ARM-like id of the source disk restore point.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
-    sourceUri?: string;
+    sourceId?: string;
 }
 
 /**
@@ -133,6 +257,20 @@ export interface SystemDataResponse {
 }
 
 /**
+ * UserAssignedIdentity for the resource.
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The client ID of the identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the identity.
+     */
+    principalId: string;
+}
+
+/**
  * Virtual Network rule.
  */
 export interface VirtualNetworkRuleResponse {
@@ -140,10 +278,6 @@ export interface VirtualNetworkRuleResponse {
      * The action of virtual network rule.
      */
     action?: string;
-    /**
-     * Gets the state of virtual network rule.
-     */
-    state: string;
     /**
      * Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
      */
@@ -158,7 +292,3 @@ export function virtualNetworkRuleResponseProvideDefaults(val: VirtualNetworkRul
         action: (val.action) ?? "Allow",
     };
 }
-
-
-
-

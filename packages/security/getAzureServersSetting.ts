@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a server vulnerability assessments setting of the requested kind, that is set on the subscription
- * Azure REST API version: 2023-05-01.
+ *
+ * Uses Azure REST API version 2023-05-01.
  */
 export function getAzureServersSetting(args: GetAzureServersSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureServersSettingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -23,6 +24,10 @@ export interface GetAzureServersSettingArgs {
  * A vulnerability assessments setting on Azure servers in the defined scope.
  */
 export interface GetAzureServersSettingResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -51,7 +56,8 @@ export interface GetAzureServersSettingResult {
 }
 /**
  * Get a server vulnerability assessments setting of the requested kind, that is set on the subscription
- * Azure REST API version: 2023-05-01.
+ *
+ * Uses Azure REST API version 2023-05-01.
  */
 export function getAzureServersSettingOutput(args: GetAzureServersSettingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzureServersSettingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

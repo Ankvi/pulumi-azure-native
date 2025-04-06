@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A provider instance associated with SAP monitor.
- * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-12-01-preview.
  *
- * Other available API versions: 2023-10-01-preview, 2023-12-01-preview, 2024-02-01-preview.
+ * Uses Azure REST API version 2024-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+ *
+ * Other available API versions: 2023-04-01, 2023-10-01-preview, 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native workloads [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ProviderInstance extends pulumi.CustomResource {
     /**
@@ -35,13 +36,17 @@ export class ProviderInstance extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Defines the provider instance errors.
      */
-    public /*out*/ readonly errors!: pulumi.Output<types.outputs.ProviderInstancePropertiesResponseErrors>;
+    public /*out*/ readonly errors!: pulumi.Output<types.outputs.ErrorDetailResponse>;
     /**
-     * [currently not in use] Managed service identity(user assigned identities)
+     * Resource health details
      */
-    public readonly identity!: pulumi.Output<types.outputs.UserAssignedServiceIdentityResponse | undefined>;
+    public /*out*/ readonly health!: pulumi.Output<types.outputs.HealthResponse>;
     /**
      * The name of the resource
      */
@@ -49,7 +54,7 @@ export class ProviderInstance extends pulumi.CustomResource {
     /**
      * Defines the provider specific properties.
      */
-    public readonly providerSettings!: pulumi.Output<types.outputs.DB2ProviderInstancePropertiesResponse | types.outputs.HanaDbProviderInstancePropertiesResponse | types.outputs.MsSqlServerProviderInstancePropertiesResponse | types.outputs.PrometheusHaClusterProviderInstancePropertiesResponse | types.outputs.PrometheusOSProviderInstancePropertiesResponse | types.outputs.SapNetWeaverProviderInstancePropertiesResponse | undefined>;
+    public readonly providerSettings!: pulumi.Output<types.outputs.Db2ProviderInstancePropertiesResponse | types.outputs.HanaDbProviderInstancePropertiesResponse | types.outputs.MsSqlServerProviderInstancePropertiesResponse | types.outputs.OracleProviderInstancePropertiesResponse | types.outputs.PrometheusHaClusterProviderInstancePropertiesResponse | types.outputs.PrometheusOsProviderInstancePropertiesResponse | types.outputs.SapNetWeaverProviderInstancePropertiesResponse | undefined>;
     /**
      * State of provisioning of the provider instance
      */
@@ -80,19 +85,21 @@ export class ProviderInstance extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["monitorName"] = args ? args.monitorName : undefined;
             resourceInputs["providerInstanceName"] = args ? args.providerInstanceName : undefined;
             resourceInputs["providerSettings"] = args ? args.providerSettings : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
+            resourceInputs["health"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
-            resourceInputs["identity"] = undefined /*out*/;
+            resourceInputs["health"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["providerSettings"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -111,10 +118,6 @@ export class ProviderInstance extends pulumi.CustomResource {
  */
 export interface ProviderInstanceArgs {
     /**
-     * [currently not in use] Managed service identity(user assigned identities)
-     */
-    identity?: pulumi.Input<types.inputs.UserAssignedServiceIdentityArgs>;
-    /**
      * Name of the SAP monitor resource.
      */
     monitorName: pulumi.Input<string>;
@@ -125,7 +128,7 @@ export interface ProviderInstanceArgs {
     /**
      * Defines the provider specific properties.
      */
-    providerSettings?: pulumi.Input<types.inputs.DB2ProviderInstancePropertiesArgs | types.inputs.HanaDbProviderInstancePropertiesArgs | types.inputs.MsSqlServerProviderInstancePropertiesArgs | types.inputs.PrometheusHaClusterProviderInstancePropertiesArgs | types.inputs.PrometheusOSProviderInstancePropertiesArgs | types.inputs.SapNetWeaverProviderInstancePropertiesArgs>;
+    providerSettings?: pulumi.Input<types.inputs.Db2ProviderInstancePropertiesArgs | types.inputs.HanaDbProviderInstancePropertiesArgs | types.inputs.MsSqlServerProviderInstancePropertiesArgs | types.inputs.OracleProviderInstancePropertiesArgs | types.inputs.PrometheusHaClusterProviderInstancePropertiesArgs | types.inputs.PrometheusOsProviderInstancePropertiesArgs | types.inputs.SapNetWeaverProviderInstancePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

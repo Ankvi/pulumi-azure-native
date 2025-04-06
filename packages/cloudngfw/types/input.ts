@@ -185,6 +185,10 @@ export interface NetworkProfileArgs {
      */
     networkType: pulumi.Input<string | enums.NetworkType>;
     /**
+     * Array of ipv4 destination address for which source NAT is to be performed
+     */
+    privateSourceNatRulesDestination?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * List of IPs associated with the Firewall
      */
     publicIps: pulumi.Input<pulumi.Input<IPAddressArgs>[]>;
@@ -309,6 +313,16 @@ export interface SourceAddrArgs {
 }
 
 /**
+ * This field is only present if Strata Cloud Manager is managing the policy for this firewall
+ */
+export interface StrataCloudManagerConfigArgs {
+    /**
+     * Strata Cloud Manager name which is intended to manage the policy for this firewall.
+     */
+    cloudManagerName: pulumi.Input<string>;
+}
+
+/**
  * Tag
  */
 export interface TagInfoArgs {
@@ -369,10 +383,3 @@ export interface VwanConfigurationArgs {
      */
     vHub: pulumi.Input<IPAddressSpaceArgs>;
 }
-
-
-
-
-
-
-

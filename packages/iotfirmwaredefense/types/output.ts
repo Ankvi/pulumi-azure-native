@@ -1,6 +1,20 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Error and status message
+ */
+export interface StatusMessageResponse {
+    /**
+     * The error code
+     */
+    errorCode?: number;
+    /**
+     * The error or status message
+     */
+    message?: string;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -29,4 +43,3 @@ export interface SystemDataResponse {
      */
     lastModifiedByType?: string;
 }
-

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a DataSet in a share
- * Azure REST API version: 2021-08-01.
+ *
+ * Uses Azure REST API version 2021-08-01.
  */
 export function getADLSGen1FolderDataSet(args: GetADLSGen1FolderDataSetArgs, opts?: pulumi.InvokeOptions): Promise<GetADLSGen1FolderDataSetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -42,6 +43,10 @@ export interface GetADLSGen1FolderDataSetResult {
      * The ADLS account name.
      */
     readonly accountName: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Unique id for identifying a data set resource
      */
@@ -82,7 +87,8 @@ export interface GetADLSGen1FolderDataSetResult {
 }
 /**
  * Get a DataSet in a share
- * Azure REST API version: 2021-08-01.
+ *
+ * Uses Azure REST API version 2021-08-01.
  */
 export function getADLSGen1FolderDataSetOutput(args: GetADLSGen1FolderDataSetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetADLSGen1FolderDataSetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

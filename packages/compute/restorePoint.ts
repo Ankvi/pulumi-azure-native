@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Restore Point details.
- * Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2021-03-01.
  *
- * Other available API versions: 2021-11-01, 2022-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+ * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
+ *
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class RestorePoint extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class RestorePoint extends pulumi.CustomResource {
         return obj['__pulumiType'] === RestorePoint.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
      */
@@ -96,11 +101,13 @@ export class RestorePoint extends pulumi.CustomResource {
             resourceInputs["sourceMetadata"] = args ? args.sourceMetadata : undefined;
             resourceInputs["sourceRestorePoint"] = args ? args.sourceRestorePoint : undefined;
             resourceInputs["timeCreated"] = args ? args.timeCreated : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["instanceView"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["consistencyMode"] = undefined /*out*/;
             resourceInputs["excludeDisks"] = undefined /*out*/;
             resourceInputs["instanceView"] = undefined /*out*/;
@@ -112,7 +119,7 @@ export class RestorePoint extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20210301:RestorePoint" }, { type: "azure-native:compute/v20210401:RestorePoint" }, { type: "azure-native:compute/v20210701:RestorePoint" }, { type: "azure-native:compute/v20211101:RestorePoint" }, { type: "azure-native:compute/v20220301:RestorePoint" }, { type: "azure-native:compute/v20220801:RestorePoint" }, { type: "azure-native:compute/v20221101:RestorePoint" }, { type: "azure-native:compute/v20230301:RestorePoint" }, { type: "azure-native:compute/v20230701:RestorePoint" }, { type: "azure-native:compute/v20230901:RestorePoint" }, { type: "azure-native:compute/v20240301:RestorePoint" }, { type: "azure-native:compute/v20240701:RestorePoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20210301:RestorePoint" }, { type: "azure-native:compute/v20210401:RestorePoint" }, { type: "azure-native:compute/v20210701:RestorePoint" }, { type: "azure-native:compute/v20211101:RestorePoint" }, { type: "azure-native:compute/v20220301:RestorePoint" }, { type: "azure-native:compute/v20220801:RestorePoint" }, { type: "azure-native:compute/v20221101:RestorePoint" }, { type: "azure-native:compute/v20230301:RestorePoint" }, { type: "azure-native:compute/v20230701:RestorePoint" }, { type: "azure-native:compute/v20230901:RestorePoint" }, { type: "azure-native:compute/v20240301:RestorePoint" }, { type: "azure-native:compute/v20240701:RestorePoint" }, { type: "azure-native:compute/v20241101:RestorePoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RestorePoint.__pulumiType, name, resourceInputs, opts);
     }

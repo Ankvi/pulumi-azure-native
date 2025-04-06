@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The backup policy.
- * Azure REST API version: 2017-06-01. Prior API version in Azure Native 1.x: 2017-06-01.
+ *
+ * Uses Azure REST API version 2017-06-01. In version 2.x of the Azure Native provider, it used API version 2017-06-01.
  */
 export class BackupPolicy extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class BackupPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === BackupPolicy.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The backup policy creation type. Indicates whether this was created through SaaS or through StorSimple Snapshot Manager.
      */
@@ -102,6 +107,7 @@ export class BackupPolicy extends pulumi.CustomResource {
             resourceInputs["managerName"] = args ? args.managerName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["volumeIds"] = args ? args.volumeIds : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["backupPolicyCreationType"] = undefined /*out*/;
             resourceInputs["lastBackupTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -111,6 +117,7 @@ export class BackupPolicy extends pulumi.CustomResource {
             resourceInputs["ssmHostName"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["backupPolicyCreationType"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["lastBackupTime"] = undefined /*out*/;

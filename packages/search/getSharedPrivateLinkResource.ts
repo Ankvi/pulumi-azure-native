@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the details of the shared private link resource managed by the search service in the given resource group.
- * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview.
+ * Uses Azure REST API version 2023-11-01.
+ *
+ * Other available API versions: 2022-09-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSharedPrivateLinkResource(args: GetSharedPrivateLinkResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetSharedPrivateLinkResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -22,19 +23,23 @@ export interface GetSharedPrivateLinkResourceArgs {
      */
     resourceGroupName: string;
     /**
-     * The name of the Azure Cognitive Search service associated with the specified resource group.
+     * The name of the search service associated with the specified resource group.
      */
     searchServiceName: string;
     /**
-     * The name of the shared private link resource managed by the Azure Cognitive Search service within the specified resource group.
+     * The name of the shared private link resource managed by the search service within the specified resource group.
      */
     sharedPrivateLinkResourceName: string;
 }
 
 /**
- * Describes a Shared Private Link Resource managed by the Azure Cognitive Search service.
+ * Describes a Shared Private Link Resource managed by the search service.
  */
 export interface GetSharedPrivateLinkResourceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -44,7 +49,7 @@ export interface GetSharedPrivateLinkResourceResult {
      */
     readonly name: string;
     /**
-     * Describes the properties of a Shared Private Link Resource managed by the Azure Cognitive Search service.
+     * Describes the properties of a Shared Private Link Resource managed by the search service.
      */
     readonly properties: types.outputs.SharedPrivateLinkResourcePropertiesResponse;
     /**
@@ -54,9 +59,10 @@ export interface GetSharedPrivateLinkResourceResult {
 }
 /**
  * Gets the details of the shared private link resource managed by the search service in the given resource group.
- * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview.
+ * Uses Azure REST API version 2023-11-01.
+ *
+ * Other available API versions: 2022-09-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSharedPrivateLinkResourceOutput(args: GetSharedPrivateLinkResourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSharedPrivateLinkResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -73,11 +79,11 @@ export interface GetSharedPrivateLinkResourceOutputArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The name of the Azure Cognitive Search service associated with the specified resource group.
+     * The name of the search service associated with the specified resource group.
      */
     searchServiceName: pulumi.Input<string>;
     /**
-     * The name of the shared private link resource managed by the Azure Cognitive Search service within the specified resource group.
+     * The name of the shared private link resource managed by the search service within the specified resource group.
      */
     sharedPrivateLinkResourceName: pulumi.Input<string>;
 }

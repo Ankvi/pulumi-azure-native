@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Defines the security user configuration
- * Azure REST API version: 2022-04-01-preview. Prior API version in Azure Native 1.x: 2021-02-01-preview.
  *
- * Other available API versions: 2021-05-01-preview, 2024-03-01, 2024-05-01.
+ * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-04-01-preview.
+ *
+ * Other available API versions: 2021-02-01-preview, 2022-02-01-preview, 2022-04-01-preview, 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SecurityUserConfiguration extends pulumi.CustomResource {
     /**
@@ -35,9 +36,9 @@ export class SecurityUserConfiguration extends pulumi.CustomResource {
     }
 
     /**
-     * Flag if need to delete existing network security groups.
+     * The Azure API version of the resource.
      */
-    public readonly deleteExistingNSGs!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * A description of the security user configuration.
      */
@@ -54,6 +55,10 @@ export class SecurityUserConfiguration extends pulumi.CustomResource {
      * The provisioning state of the resource.
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    /**
+     * Unique identifier for this resource.
+     */
+    public /*out*/ readonly resourceGuid!: pulumi.Output<string>;
     /**
      * The system metadata related to this resource.
      */
@@ -81,21 +86,23 @@ export class SecurityUserConfiguration extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["configurationName"] = args ? args.configurationName : undefined;
-            resourceInputs["deleteExistingNSGs"] = args ? args.deleteExistingNSGs : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["networkManagerName"] = args ? args.networkManagerName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["resourceGuid"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
-            resourceInputs["deleteExistingNSGs"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["resourceGuid"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
@@ -115,10 +122,6 @@ export interface SecurityUserConfigurationArgs {
      */
     configurationName?: pulumi.Input<string>;
     /**
-     * Flag if need to delete existing network security groups.
-     */
-    deleteExistingNSGs?: pulumi.Input<string | types.enums.DeleteExistingNSGs>;
-    /**
      * A description of the security user configuration.
      */
     description?: pulumi.Input<string>;
@@ -127,7 +130,7 @@ export interface SecurityUserConfigurationArgs {
      */
     networkManagerName: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

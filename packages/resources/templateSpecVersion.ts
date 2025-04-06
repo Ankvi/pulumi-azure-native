@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Template Spec Version object.
- * Azure REST API version: 2022-02-01. Prior API version in Azure Native 1.x: 2022-02-01.
  *
- * Other available API versions: 2019-06-01-preview.
+ * Uses Azure REST API version 2022-02-01. In version 2.x of the Azure Native provider, it used API version 2022-02-01.
+ *
+ * Other available API versions: 2021-03-01-preview, 2021-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class TemplateSpecVersion extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class TemplateSpecVersion extends pulumi.CustomResource {
         return obj['__pulumiType'] === TemplateSpecVersion.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Template Spec version description.
      */
@@ -102,10 +107,12 @@ export class TemplateSpecVersion extends pulumi.CustomResource {
             resourceInputs["templateSpecName"] = args ? args.templateSpecName : undefined;
             resourceInputs["templateSpecVersion"] = args ? args.templateSpecVersion : undefined;
             resourceInputs["uiFormDefinition"] = args ? args.uiFormDefinition : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["linkedTemplates"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;

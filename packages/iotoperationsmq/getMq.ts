@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a MqResource
- * Azure REST API version: 2023-10-04-preview.
+ *
+ * Uses Azure REST API version 2023-10-04-preview.
  */
 export function getMq(args: GetMqArgs, opts?: pulumi.InvokeOptions): Promise<GetMqResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetMqArgs {
  * MQ resource
  */
 export interface GetMqResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Extended Location
      */
@@ -63,7 +68,8 @@ export interface GetMqResult {
 }
 /**
  * Get a MqResource
- * Azure REST API version: 2023-10-04-preview.
+ *
+ * Uses Azure REST API version 2023-10-04-preview.
  */
 export function getMqOutput(args: GetMqOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMqResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

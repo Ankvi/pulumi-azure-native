@@ -87,5 +87,3 @@ export interface TrackedResourceResponseSystemData {
      */
     lastModifiedByType?: string;
 }
-
-

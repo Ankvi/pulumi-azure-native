@@ -3,9 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Represents an instance of an Analysis Services resource.
- * Azure REST API version: 2017-08-01. Prior API version in Azure Native 1.x: 2017-08-01.
  *
- * Other available API versions: 2017-08-01-beta.
+ * Uses Azure REST API version 2017-08-01. In version 2.x of the Azure Native provider, it used API version 2017-08-01.
  */
 export class ServerDetails extends pulumi.CustomResource {
     /**
@@ -38,6 +37,10 @@ export class ServerDetails extends pulumi.CustomResource {
      * A collection of AS server administrators
      */
     public readonly asAdministrators!: pulumi.Output<types.outputs.ServerAdministratorsResponse | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The SAS container URI to the backup container.
      */
@@ -124,6 +127,7 @@ export class ServerDetails extends pulumi.CustomResource {
             resourceInputs["serverName"] = args ? args.serverName : undefined;
             resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.resourceSkuArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["serverFullName"] = undefined /*out*/;
@@ -131,6 +135,7 @@ export class ServerDetails extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["asAdministrators"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["backupBlobContainerUri"] = undefined /*out*/;
             resourceInputs["gatewayDetails"] = undefined /*out*/;
             resourceInputs["ipV4FirewallSettings"] = undefined /*out*/;

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The Azure AD for customers resource.
- * Azure REST API version: 2023-05-17-preview.
+ *
+ * Uses Azure REST API version 2023-05-17-preview. In version 2.x of the Azure Native provider, it used API version 2023-05-17-preview.
  */
 export class CIAMTenant extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class CIAMTenant extends pulumi.CustomResource {
         return obj['__pulumiType'] === CIAMTenant.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The type of billing. Will be MAU for all new customers. Cannot be changed if value is 'MAU'. Learn more about Azure AD for customers billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling).
      */
@@ -105,6 +110,7 @@ export class CIAMTenant extends pulumi.CustomResource {
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["billingType"] = undefined /*out*/;
             resourceInputs["domainName"] = undefined /*out*/;
             resourceInputs["effectiveStartDateUtc"] = undefined /*out*/;
@@ -113,6 +119,7 @@ export class CIAMTenant extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["billingType"] = undefined /*out*/;
             resourceInputs["createTenantProperties"] = undefined /*out*/;
             resourceInputs["domainName"] = undefined /*out*/;

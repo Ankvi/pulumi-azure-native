@@ -51,18 +51,28 @@ export function agentOptionsArgsProvideDefaults(val: AgentOptionsArgs): AgentOpt
 
 export interface AgentPoolUpgradeSettingsArgs {
     /**
-     * The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+     * The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool. If not specified during creation, a value of 1800 seconds is used.
+     */
+    drainTimeout?: pulumi.Input<number>;
+    /**
+     * The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 1 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
      */
     maxSurge?: pulumi.Input<string>;
+    /**
+     * The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
+     */
+    maxUnavailable?: pulumi.Input<string>;
 }
-/**
- * agentPoolUpgradeSettingsArgsProvideDefaults sets the appropriate defaults for AgentPoolUpgradeSettingsArgs
- */
-export function agentPoolUpgradeSettingsArgsProvideDefaults(val: AgentPoolUpgradeSettingsArgs): AgentPoolUpgradeSettingsArgs {
-    return {
-        ...val,
-        maxSurge: (val.maxSurge) ?? "1",
-    };
+
+export interface AnalyticsOutputSettingsArgs {
+    /**
+     * The resource ID of the analytics workspace that is to be used by the specified identity.
+     */
+    analyticsWorkspaceId?: pulumi.Input<string>;
+    /**
+     * The selection of the managed identity to use with this analytics workspace. The identity type must be either system assigned or user assigned.
+     */
+    associatedIdentity?: pulumi.Input<IdentitySelectorArgs>;
 }
 
 export interface AttachedNetworkConfigurationArgs {
@@ -82,7 +92,7 @@ export interface AttachedNetworkConfigurationArgs {
 
 export interface BareMetalMachineConfigurationDataArgs {
     /**
-     * The credentials of the baseboard management controller on this bare metal machine.
+     * The credentials of the baseboard management controller on this bare metal machine. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
      */
     bmcCredentials: pulumi.Input<AdministrativeCredentialsArgs>;
     /**
@@ -154,7 +164,7 @@ export interface BgpServiceLoadBalancerConfigurationArgs {
      */
     fabricPeeringEnabled?: pulumi.Input<string | enums.FabricPeeringEnabled>;
     /**
-     * The list of pools of IP addresses that can be allocated to Load Balancer services.
+     * The list of pools of IP addresses that can be allocated to load balancer services.
      */
     ipAddressPools?: pulumi.Input<pulumi.Input<IpAddressPoolArgs>[]>;
 }
@@ -221,6 +231,17 @@ export function clusterUpdateStrategyArgsProvideDefaults(val: ClusterUpdateStrat
     };
 }
 
+export interface CommandOutputSettingsArgs {
+    /**
+     * The selection of the managed identity to use with this storage account container. The identity type must be either system assigned or user assigned.
+     */
+    associatedIdentity?: pulumi.Input<IdentitySelectorArgs>;
+    /**
+     * The URL of the storage account container that is to be used by the specified identities.
+     */
+    containerUrl?: pulumi.Input<string>;
+}
+
 export interface ControlPlaneNodeConfigurationArgs {
     /**
      * The administrator credentials to be used for the nodes in the control plane.
@@ -271,6 +292,17 @@ export interface ExtendedLocationArgs {
      * The extended location type, for example, CustomLocation.
      */
     type: pulumi.Input<string>;
+}
+
+export interface IdentitySelectorArgs {
+    /**
+     * The type of managed identity that is being selected.
+     */
+    identityType?: pulumi.Input<string | enums.ManagedServiceIdentitySelectorType>;
+    /**
+     * The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+     */
+    userAssignedIdentityResourceId?: pulumi.Input<string>;
 }
 
 export interface ImageRepositoryCredentialsArgs {
@@ -341,13 +373,12 @@ export function initialAgentPoolConfigurationArgsProvideDefaults(val: InitialAge
     return {
         ...val,
         agentOptions: (val.agentOptions ? pulumi.output(val.agentOptions).apply(agentOptionsArgsProvideDefaults) : undefined),
-        upgradeSettings: (val.upgradeSettings ? pulumi.output(val.upgradeSettings).apply(agentPoolUpgradeSettingsArgsProvideDefaults) : undefined),
     };
 }
 
 export interface IpAddressPoolArgs {
     /**
-     * The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.
+     * The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
      */
     addresses: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -424,6 +455,13 @@ export function l2networkAttachmentConfigurationArgsProvideDefaults(val: L2Netwo
     };
 }
 
+export interface L2ServiceLoadBalancerConfigurationArgs {
+    /**
+     * The list of pools of IP addresses that can be allocated to load balancer services.
+     */
+    ipAddressPools?: pulumi.Input<pulumi.Input<IpAddressPoolArgs>[]>;
+}
+
 export interface L3NetworkAttachmentConfigurationArgs {
     /**
      * The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
@@ -458,6 +496,20 @@ export interface ManagedResourceGroupConfigurationArgs {
      * The name for the managed resource group. If not specified, the unique name is automatically generated.
      */
     name?: pulumi.Input<string>;
+}
+
+/**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityArgs {
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: pulumi.Input<string | enums.ManagedServiceIdentityType>;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface NetworkAttachmentArgs {
@@ -514,7 +566,7 @@ export interface NetworkConfigurationArgs {
      */
     attachedNetworkConfiguration?: pulumi.Input<AttachedNetworkConfigurationArgs>;
     /**
-     * The configuration of the BGP service load balancer for this Kubernetes cluster.
+     * The configuration of the BGP service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
      */
     bgpServiceLoadBalancerConfiguration?: pulumi.Input<BgpServiceLoadBalancerConfigurationArgs>;
     /**
@@ -529,6 +581,10 @@ export interface NetworkConfigurationArgs {
      * The IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in service CIDR.
      */
     dnsServiceIp?: pulumi.Input<string>;
+    /**
+     * The configuration of the Layer 2 service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
+     */
+    l2ServiceLoadBalancerConfiguration?: pulumi.Input<L2ServiceLoadBalancerConfigurationArgs>;
     /**
      * The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
      */
@@ -558,7 +614,7 @@ export interface OsDiskArgs {
      */
     deleteOption?: pulumi.Input<string | enums.OsDiskDeleteOption>;
     /**
-     * The size of the disk in gigabytes. Required if the createOption is Ephemeral.
+     * The size of the disk. Required if the createOption is Ephemeral. Allocations are measured in gibibytes.
      */
     diskSizeGB: pulumi.Input<number>;
 }
@@ -620,6 +676,17 @@ export function runtimeProtectionConfigurationArgsProvideDefaults(val: RuntimePr
     };
 }
 
+export interface SecretArchiveSettingsArgs {
+    /**
+     * The selection of the managed identity to use with this vault URI. The identity type must be either system assigned or user assigned.
+     */
+    associatedIdentity?: pulumi.Input<IdentitySelectorArgs>;
+    /**
+     * The URI for the key vault used as the secret archive.
+     */
+    vaultUri?: pulumi.Input<string>;
+}
+
 export interface ServiceLoadBalancerBgpPeerArgs {
     /**
      * The indicator of BFD enablement for this BgpPeer.
@@ -630,11 +697,11 @@ export interface ServiceLoadBalancerBgpPeerArgs {
      */
     bgpMultiHop?: pulumi.Input<string | enums.BgpMultiHop>;
     /**
-     * The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
+     * Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
      */
     holdTime?: pulumi.Input<string>;
     /**
-     * The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
+     * Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
      */
     keepAliveTime?: pulumi.Input<string>;
     /**
@@ -702,7 +769,7 @@ export interface SshPublicKeyArgs {
 
 export interface StorageApplianceConfigurationDataArgs {
     /**
-     * The credentials of the administrative interface on this storage appliance.
+     * The credentials of the administrative interface on this storage appliance. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
      */
     adminCredentials: pulumi.Input<AdministrativeCredentialsArgs>;
     /**
@@ -804,6 +871,18 @@ export interface VirtualMachinePlacementHintArgs {
     scope: pulumi.Input<string | enums.VirtualMachinePlacementHintPodAffinityScope>;
 }
 
-
-
-
+export interface VulnerabilityScanningSettingsArgs {
+    /**
+     * The mode selection for container vulnerability scanning.
+     */
+    containerScan?: pulumi.Input<string | enums.VulnerabilityScanningSettingsContainerScan>;
+}
+/**
+ * vulnerabilityScanningSettingsArgsProvideDefaults sets the appropriate defaults for VulnerabilityScanningSettingsArgs
+ */
+export function vulnerabilityScanningSettingsArgsProvideDefaults(val: VulnerabilityScanningSettingsArgs): VulnerabilityScanningSettingsArgs {
+    return {
+        ...val,
+        containerScan: (val.containerScan) ?? "Enabled",
+    };
+}

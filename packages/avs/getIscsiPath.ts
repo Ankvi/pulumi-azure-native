@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a IscsiPath
- * Azure REST API version: 2023-09-01.
+ *
+ * Uses Azure REST API version 2023-09-01.
  */
 export function getIscsiPath(args: GetIscsiPathArgs, opts?: pulumi.InvokeOptions): Promise<GetIscsiPathResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetIscsiPathArgs {
  * An iSCSI path resource
  */
 export interface GetIscsiPathResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -55,7 +60,8 @@ export interface GetIscsiPathResult {
 }
 /**
  * Get a IscsiPath
- * Azure REST API version: 2023-09-01.
+ *
+ * Uses Azure REST API version 2023-09-01.
  */
 export function getIscsiPathOutput(args: GetIscsiPathOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIscsiPathResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

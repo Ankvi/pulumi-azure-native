@@ -1,10 +1,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
- * NSX DNS Zone
- * Azure REST API version: 2022-05-01.
+ * Get a WorkloadNetworkDnsZone
  *
- * Other available API versions: 2023-03-01, 2023-09-01.
+ * Uses Azure REST API version 2023-09-01.
+ *
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getWorkloadNetworkDnsZone(args: GetWorkloadNetworkDnsZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadNetworkDnsZoneResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -17,7 +19,7 @@ export function getWorkloadNetworkDnsZone(args: GetWorkloadNetworkDnsZoneArgs, o
 
 export interface GetWorkloadNetworkDnsZoneArgs {
     /**
-     * NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+     * ID of the DNS zone.
      */
     dnsZoneId: string;
     /**
@@ -35,6 +37,10 @@ export interface GetWorkloadNetworkDnsZoneArgs {
  */
 export interface GetWorkloadNetworkDnsZoneResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Display name of the DNS Zone.
      */
     readonly displayName?: string;
@@ -51,11 +57,11 @@ export interface GetWorkloadNetworkDnsZoneResult {
      */
     readonly domain?: string[];
     /**
-     * Resource ID.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
-     * Resource name.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -71,15 +77,20 @@ export interface GetWorkloadNetworkDnsZoneResult {
      */
     readonly sourceIp?: string;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
 /**
- * NSX DNS Zone
- * Azure REST API version: 2022-05-01.
+ * Get a WorkloadNetworkDnsZone
  *
- * Other available API versions: 2023-03-01, 2023-09-01.
+ * Uses Azure REST API version 2023-09-01.
+ *
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getWorkloadNetworkDnsZoneOutput(args: GetWorkloadNetworkDnsZoneOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkloadNetworkDnsZoneResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -92,7 +103,7 @@ export function getWorkloadNetworkDnsZoneOutput(args: GetWorkloadNetworkDnsZoneO
 
 export interface GetWorkloadNetworkDnsZoneOutputArgs {
     /**
-     * NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+     * ID of the DNS zone.
      */
     dnsZoneId: pulumi.Input<string>;
     /**

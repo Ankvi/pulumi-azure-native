@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Firmware definition
- * Azure REST API version: 2023-02-08-preview.
  *
- * Other available API versions: 2024-01-10.
+ * Uses Azure REST API version 2024-01-10. In version 2.x of the Azure Native provider, it used API version 2023-02-08-preview.
+ *
+ * Other available API versions: 2023-02-08-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotfirmwaredefense [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Firmware extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class Firmware extends pulumi.CustomResource {
         return obj['__pulumiType'] === Firmware.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * User-specified description of the firmware.
      */
@@ -65,7 +70,7 @@ export class Firmware extends pulumi.CustomResource {
     /**
      * A list of errors or other messages generated during firmware analysis
      */
-    public readonly statusMessages!: pulumi.Output<any[] | undefined>;
+    public readonly statusMessages!: pulumi.Output<types.outputs.StatusMessageResponse[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -111,11 +116,13 @@ export class Firmware extends pulumi.CustomResource {
             resourceInputs["vendor"] = args ? args.vendor : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["fileName"] = undefined /*out*/;
             resourceInputs["fileSize"] = undefined /*out*/;
@@ -130,7 +137,7 @@ export class Firmware extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:iotfirmwaredefense/v20230208preview:Firmware" }, { type: "azure-native:iotfirmwaredefense/v20240110:Firmware" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:iotfirmwaredefense/v20230208preview:Firmware" }, { type: "azure-native:iotfirmwaredefense/v20240110:Firmware" }, { type: "azure-native:iotfirmwaredefense/v20250401preview:Firmware" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Firmware.__pulumiType, name, resourceInputs, opts);
     }
@@ -171,7 +178,7 @@ export interface FirmwareArgs {
     /**
      * A list of errors or other messages generated during firmware analysis
      */
-    statusMessages?: pulumi.Input<any[]>;
+    statusMessages?: pulumi.Input<pulumi.Input<types.inputs.StatusMessageArgs>[]>;
     /**
      * Firmware vendor.
      */

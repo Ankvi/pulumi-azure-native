@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A Media Services account.
- * Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2020-05-01.
  *
- * Other available API versions: 2015-10-01.
+ * Uses Azure REST API version 2023-01-01. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
+ *
+ * Other available API versions: 2015-10-01, 2018-03-30-preview, 2018-06-01-preview, 2018-07-01, 2020-05-01, 2021-05-01, 2021-06-01, 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native media [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class MediaService extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class MediaService extends pulumi.CustomResource {
         return obj['__pulumiType'] === MediaService.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The account encryption properties.
      */
@@ -117,6 +122,7 @@ export class MediaService extends pulumi.CustomResource {
             resourceInputs["storageAccounts"] = args ? args.storageAccounts : undefined;
             resourceInputs["storageAuthentication"] = args ? args.storageAuthentication : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["mediaServiceId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateEndpointConnections"] = undefined /*out*/;
@@ -124,6 +130,7 @@ export class MediaService extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["encryption"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["keyDelivery"] = undefined /*out*/;

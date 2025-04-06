@@ -61,6 +61,10 @@ export interface ConnectionPropertiesResponse {
      */
     requirementId?: string;
     /**
+     * The schema URIs for this connection
+     */
+    schemaUris?: string[];
+    /**
      * The schemas for this connection
      */
     schemas?: SchemaResponse[];
@@ -87,9 +91,21 @@ export interface FlowPropertiesResponse {
      */
     connection?: SelectedResourceResponse;
     /**
+     * The URI to the customer managed key for this flow
+     */
+    customerManagedKeyVaultUri?: string;
+    /**
      * Transfer Storage Blobs or Tables
      */
     dataType?: string;
+    /**
+     * The destination endpoint ports of the stream
+     */
+    destinationEndpointPorts?: number[];
+    /**
+     * The destination endpoints of the stream
+     */
+    destinationEndpoints?: string[];
     /**
      * Dataflow GUID associated with this flow
      */
@@ -111,6 +127,14 @@ export interface FlowPropertiesResponse {
      */
     linkedFlowId: string;
     /**
+     * The messaging options for this flow
+     */
+    messagingOptions?: MessagingOptionsResponse;
+    /**
+     * The passphrase used for SRT streams
+     */
+    passphrase?: string;
+    /**
      * The policies for this flow
      */
     policies?: string[];
@@ -127,6 +151,10 @@ export interface FlowPropertiesResponse {
      */
     serviceBusQueueId?: string;
     /**
+     * The source IP address and CIDR ranges of the stream
+     */
+    sourceAddresses?: StreamSourceAddressesResponse;
+    /**
      * Status of the current flow
      */
     status?: string;
@@ -142,6 +170,18 @@ export interface FlowPropertiesResponse {
      * Storage Container Name
      */
     storageContainerName?: string;
+    /**
+     * The flow stream identifier
+     */
+    streamId?: string;
+    /**
+     * The latency of the stream in milliseconds
+     */
+    streamLatency?: number;
+    /**
+     * The protocol of the stream
+     */
+    streamProtocol?: string;
 }
 
 /**
@@ -178,6 +218,16 @@ export interface ManagedServiceIdentityResponse {
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
     userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
+ * The option associated with messaging flows.
+ */
+export interface MessagingOptionsResponse {
+    /**
+     * Billing tier for this messaging flow
+     */
+    billingTier?: string;
 }
 
 /**
@@ -271,6 +321,10 @@ export interface PendingConnectionResponse {
      */
     requirementId?: string;
     /**
+     * The schema URIs for this connection
+     */
+    schemaUris?: string[];
+    /**
      * The schemas for this connection
      */
     schemas?: SchemaResponse[];
@@ -317,9 +371,21 @@ export interface PendingFlowResponse {
      */
     connectionId: string;
     /**
+     * The URI to the customer managed key for this flow
+     */
+    customerManagedKeyVaultUri?: string;
+    /**
      * Transfer Storage Blobs or Tables
      */
     dataType?: string;
+    /**
+     * The destination endpoint ports of the stream
+     */
+    destinationEndpointPorts?: number[];
+    /**
+     * The destination endpoints of the stream
+     */
+    destinationEndpoints?: string[];
     /**
      * Dataflow GUID associated with this flow
      */
@@ -349,9 +415,17 @@ export interface PendingFlowResponse {
      */
     location: string;
     /**
+     * The messaging options for this flow
+     */
+    messagingOptions?: MessagingOptionsResponse;
+    /**
      * The name of the resource
      */
     name: string;
+    /**
+     * The passphrase used for SRT streams
+     */
+    passphrase?: string;
     /**
      * The policies for this flow
      */
@@ -369,6 +443,10 @@ export interface PendingFlowResponse {
      */
     serviceBusQueueId?: string;
     /**
+     * The source IP address and CIDR ranges of the stream
+     */
+    sourceAddresses?: StreamSourceAddressesResponse;
+    /**
      * Status of the current flow
      */
     status?: string;
@@ -384,6 +462,18 @@ export interface PendingFlowResponse {
      * Storage Container Name
      */
     storageContainerName?: string;
+    /**
+     * The flow stream identifier
+     */
+    streamId?: string;
+    /**
+     * The latency of the stream in milliseconds
+     */
+    streamLatency?: number;
+    /**
+     * The protocol of the stream
+     */
+    streamProtocol?: string;
     /**
      * Subscription ID of the pending flow.
      */
@@ -519,6 +609,10 @@ export interface SchemaResponse {
      */
     content?: string;
     /**
+     * The direction of the schema.
+     */
+    direction?: string;
+    /**
      * ID associated with this schema
      */
     id?: string;
@@ -526,6 +620,14 @@ export interface SchemaResponse {
      * Name of the schema
      */
     name?: string;
+    /**
+     * The Schema Type
+     */
+    schemaType?: string;
+    /**
+     * Uri containing SAS token for the zipped schema
+     */
+    schemaUri?: string;
     /**
      * Status of the schema
      */
@@ -552,6 +654,16 @@ export interface SelectedResourceResponse {
      * Name of the subscription with the connection
      */
     subscriptionName?: string;
+}
+
+/**
+ * The source IP address and CIDR ranges of the stream
+ */
+export interface StreamSourceAddressesResponse {
+    /**
+     * A source IP address or CIDR range
+     */
+    sourceAddresses?: string[];
 }
 
 export interface SubscriberResponse {
@@ -608,7 +720,3 @@ export interface UserAssignedIdentityResponse {
      */
     principalId: string;
 }
-
-
-
-

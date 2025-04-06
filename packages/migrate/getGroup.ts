@@ -3,9 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get information related to a specific group in the project. Returns a json object of type 'group' as specified in the models section.
- * Azure REST API version: 2019-10-01.
  *
- * Other available API versions: 2018-02-02.
+ * Uses Azure REST API version 2019-10-01.
  */
 export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +35,10 @@ export interface GetGroupArgs {
  */
 export interface GetGroupResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * For optimistic concurrency control.
      */
     readonly eTag?: string;
@@ -58,9 +61,8 @@ export interface GetGroupResult {
 }
 /**
  * Get information related to a specific group in the project. Returns a json object of type 'group' as specified in the models section.
- * Azure REST API version: 2019-10-01.
  *
- * Other available API versions: 2018-02-02.
+ * Uses Azure REST API version 2019-10-01.
  */
 export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

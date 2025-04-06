@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a DiagnosticServiceResource
- * Azure REST API version: 2023-10-04-preview.
+ *
+ * Uses Azure REST API version 2023-10-04-preview.
  */
 export function getDiagnosticService(args: GetDiagnosticServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetDiagnosticServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetDiagnosticServiceArgs {
  * MQ diagnostic services resource
  */
 export interface GetDiagnosticServiceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The frequency at which the data will be exported.
      */
@@ -100,7 +105,8 @@ export interface GetDiagnosticServiceResult {
 }
 /**
  * Get a DiagnosticServiceResource
- * Azure REST API version: 2023-10-04-preview.
+ *
+ * Uses Azure REST API version 2023-10-04-preview.
  */
 export function getDiagnosticServiceOutput(args: GetDiagnosticServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiagnosticServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

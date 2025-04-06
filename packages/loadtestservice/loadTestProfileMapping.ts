@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * LoadTest profile mapping resource details
- * Azure REST API version: 2023-12-01-preview.
+ *
+ * Uses Azure REST API version 2023-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-12-01-preview.
+ *
+ * Other available API versions: 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native loadtestservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class LoadTestProfileMapping extends pulumi.CustomResource {
     /**
@@ -32,6 +35,10 @@ export class LoadTestProfileMapping extends pulumi.CustomResource {
         return obj['__pulumiType'] === LoadTestProfileMapping.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Mapped Azure Load Test resource Id.
      */
@@ -76,10 +83,12 @@ export class LoadTestProfileMapping extends pulumi.CustomResource {
             resourceInputs["resourceUri"] = args ? args.resourceUri : undefined;
             resourceInputs["sourceResourceId"] = args ? args.sourceResourceId : undefined;
             resourceInputs["testProfileId"] = args ? args.testProfileId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["azureLoadTestingResourceId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["sourceResourceId"] = undefined /*out*/;
@@ -88,7 +97,7 @@ export class LoadTestProfileMapping extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:loadtestservice/v20231201preview:LoadTestProfileMapping" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:loadtestservice/v20231201preview:LoadTestProfileMapping" }, { type: "azure-native:loadtestservice/v20241201preview:LoadTestProfileMapping" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LoadTestProfileMapping.__pulumiType, name, resourceInputs, opts);
     }

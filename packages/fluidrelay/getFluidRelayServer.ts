@@ -3,9 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A FluidRelay Server.
- * Azure REST API version: 2022-06-01.
  *
- * Other available API versions: 2021-06-15-preview.
+ * Uses Azure REST API version 2022-06-01.
  */
 export function getFluidRelayServer(args: GetFluidRelayServerArgs, opts?: pulumi.InvokeOptions): Promise<GetFluidRelayServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,6 +29,10 @@ export interface GetFluidRelayServerArgs {
  * A FluidRelay Server.
  */
 export interface GetFluidRelayServerResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * All encryption configuration for a resource.
      */
@@ -81,9 +84,8 @@ export interface GetFluidRelayServerResult {
 }
 /**
  * A FluidRelay Server.
- * Azure REST API version: 2022-06-01.
  *
- * Other available API versions: 2021-06-15-preview.
+ * Uses Azure REST API version 2022-06-01.
  */
 export function getFluidRelayServerOutput(args: GetFluidRelayServerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFluidRelayServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

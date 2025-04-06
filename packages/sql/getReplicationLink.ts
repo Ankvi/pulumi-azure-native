@@ -2,9 +2,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a replication link.
- * Azure REST API version: 2023-05-01-preview.
  *
- * Other available API versions: 2023-08-01-preview, 2024-05-01-preview.
+ * Uses Azure REST API version 2023-08-01.
+ *
+ * Other available API versions: 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getReplicationLink(args: GetReplicationLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,6 +40,10 @@ export interface GetReplicationLinkArgs {
  * A replication link.
  */
 export interface GetReplicationLinkResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Resource ID.
      */
@@ -102,9 +107,10 @@ export interface GetReplicationLinkResult {
 }
 /**
  * Gets a replication link.
- * Azure REST API version: 2023-05-01-preview.
  *
- * Other available API versions: 2023-08-01-preview, 2024-05-01-preview.
+ * Uses Azure REST API version 2023-08-01.
+ *
+ * Other available API versions: 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getReplicationLinkOutput(args: GetReplicationLinkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReplicationLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

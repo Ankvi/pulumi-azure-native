@@ -113,6 +113,3 @@ export interface SiteSpnPropertiesArgs {
      */
     tenantId?: pulumi.Input<string>;
 }
-
-
-

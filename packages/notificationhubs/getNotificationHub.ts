@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Notification Hub Resource.
- * Azure REST API version: 2023-01-01-preview.
  *
- * Other available API versions: 2017-04-01, 2023-09-01, 2023-10-01-preview.
+ * Uses Azure REST API version 2023-10-01-preview.
+ *
+ * Other available API versions: 2023-01-01-preview, 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native notificationhubs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNotificationHub(args: GetNotificationHubArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationHubResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +37,39 @@ export interface GetNotificationHubArgs {
  */
 export interface GetNotificationHubResult {
     /**
+     * Description of a NotificationHub AdmCredential.
+     */
+    readonly admCredential?: types.outputs.AdmCredentialResponse;
+    /**
+     * Description of a NotificationHub ApnsCredential.
+     */
+    readonly apnsCredential?: types.outputs.ApnsCredentialResponse;
+    /**
+     * Gets or sets the AuthorizationRules of the created NotificationHub
+     */
+    readonly authorizationRules: types.outputs.SharedAccessAuthorizationRulePropertiesResponse[];
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * Description of a NotificationHub BaiduCredential.
+     */
+    readonly baiduCredential?: types.outputs.BaiduCredentialResponse;
+    /**
+     * Description of a NotificationHub BrowserCredential.
+     */
+    readonly browserCredential?: types.outputs.BrowserCredentialResponse;
+    readonly dailyMaxActiveDevices: number;
+    /**
+     * Description of a NotificationHub FcmV1Credential.
+     */
+    readonly fcmV1Credential?: types.outputs.FcmV1CredentialResponse;
+    /**
+     * Description of a NotificationHub GcmCredential.
+     */
+    readonly gcmCredential?: types.outputs.GcmCredentialResponse;
+    /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
@@ -44,13 +78,17 @@ export interface GetNotificationHubResult {
      */
     readonly location: string;
     /**
+     * Description of a NotificationHub MpnsCredential.
+     */
+    readonly mpnsCredential?: types.outputs.MpnsCredentialResponse;
+    /**
      * The name of the resource
      */
     readonly name: string;
     /**
-     * NotificationHub properties.
+     * Gets or sets the RegistrationTtl of the created NotificationHub
      */
-    readonly properties: types.outputs.NotificationHubPropertiesResponse;
+    readonly registrationTtl?: string;
     /**
      * The Sku description for a namespace
      */
@@ -67,12 +105,21 @@ export interface GetNotificationHubResult {
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
+    /**
+     * Description of a NotificationHub WnsCredential.
+     */
+    readonly wnsCredential?: types.outputs.WnsCredentialResponse;
+    /**
+     * Description of a NotificationHub XiaomiCredential.
+     */
+    readonly xiaomiCredential?: types.outputs.XiaomiCredentialResponse;
 }
 /**
  * Notification Hub Resource.
- * Azure REST API version: 2023-01-01-preview.
  *
- * Other available API versions: 2017-04-01, 2023-09-01, 2023-10-01-preview.
+ * Uses Azure REST API version 2023-10-01-preview.
+ *
+ * Other available API versions: 2023-01-01-preview, 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native notificationhubs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNotificationHubOutput(args: GetNotificationHubOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNotificationHubResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

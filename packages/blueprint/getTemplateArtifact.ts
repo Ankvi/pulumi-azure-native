@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a blueprint artifact.
- * Azure REST API version: 2018-11-01-preview.
+ *
+ * Uses Azure REST API version 2018-11-01-preview.
  */
 export function getTemplateArtifact(args: GetTemplateArtifactArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateArtifactResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetTemplateArtifactArgs {
  * Blueprint artifact that deploys a Resource Manager template.
  */
 export interface GetTemplateArtifactResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Artifacts which need to be deployed before the specified artifact.
      */
@@ -77,7 +82,8 @@ export interface GetTemplateArtifactResult {
 }
 /**
  * Get a blueprint artifact.
- * Azure REST API version: 2018-11-01-preview.
+ *
+ * Uses Azure REST API version 2018-11-01-preview.
  */
 export function getTemplateArtifactOutput(args: GetTemplateArtifactOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTemplateArtifactResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

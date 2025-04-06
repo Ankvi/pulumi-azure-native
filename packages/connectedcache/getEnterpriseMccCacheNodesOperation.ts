@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * This api gets ispCacheNode resource information
- * Azure REST API version: 2023-05-01-preview.
+ *
+ * Uses Azure REST API version 2023-05-01-preview.
  */
 export function getEnterpriseMccCacheNodesOperation(args: GetEnterpriseMccCacheNodesOperationArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseMccCacheNodesOperationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetEnterpriseMccCacheNodesOperationArgs {
  * Represents the high level Nodes needed to provision cache node resources
  */
 export interface GetEnterpriseMccCacheNodesOperationResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -64,7 +69,8 @@ export interface GetEnterpriseMccCacheNodesOperationResult {
 }
 /**
  * This api gets ispCacheNode resource information
- * Azure REST API version: 2023-05-01-preview.
+ *
+ * Uses Azure REST API version 2023-05-01-preview.
  */
 export function getEnterpriseMccCacheNodesOperationOutput(args: GetEnterpriseMccCacheNodesOperationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnterpriseMccCacheNodesOperationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

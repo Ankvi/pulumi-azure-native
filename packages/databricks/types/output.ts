@@ -2,9 +2,13 @@ import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 export interface AccessConnectorPropertiesResponse {
     /**
-     * Provisioning status of the accessConnector.
+     * Provisioning status of the Access Connector.
      */
     provisioningState: string;
+    /**
+     * List of workspaces referring this Access Connector.
+     */
+    referedBy: string[];
 }
 
 /**
@@ -15,6 +19,24 @@ export interface AddressSpaceResponse {
      * A list of address blocks reserved for this virtual network in CIDR notation.
      */
     addressPrefixes?: string[];
+}
+
+/**
+ * Status of automated cluster updates feature.
+ */
+export interface AutomaticClusterUpdateDefinitionResponse {
+    value?: string;
+}
+
+/**
+ * Status of Compliance Security Profile feature.
+ */
+export interface ComplianceSecurityProfileDefinitionResponse {
+    /**
+     * Compliance standards associated with the workspace.
+     */
+    complianceStandards?: string[];
+    value?: string;
 }
 
 /**
@@ -33,6 +55,29 @@ export interface CreatedByResponse {
      * The Personal Object ID corresponding to the object ID above
      */
     puid: string;
+}
+
+/**
+ * These properties lets user specify default catalog properties during workspace creation.
+ */
+export interface DefaultCatalogPropertiesResponse {
+    /**
+     * Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
+     */
+    initialName?: string;
+    /**
+     * Defines the initial type of the default catalog. Possible values (case-insensitive):  HiveMetastore, UnityCatalog
+     */
+    initialType?: string;
+}
+/**
+ * defaultCatalogPropertiesResponseProvideDefaults sets the appropriate defaults for DefaultCatalogPropertiesResponse
+ */
+export function defaultCatalogPropertiesResponseProvideDefaults(val: DefaultCatalogPropertiesResponse): DefaultCatalogPropertiesResponse {
+    return {
+        ...val,
+        initialType: (val.initialType) ?? "HiveMetastore",
+    };
 }
 
 /**
@@ -110,6 +155,31 @@ export interface EncryptionV2ResponseKeyVaultProperties {
      * The version of KeyVault key.
      */
     keyVersion: string;
+}
+
+/**
+ * Status of settings related to the Enhanced Security and Compliance Add-On.
+ */
+export interface EnhancedSecurityComplianceDefinitionResponse {
+    /**
+     * Status of automated cluster updates feature.
+     */
+    automaticClusterUpdate?: AutomaticClusterUpdateDefinitionResponse;
+    /**
+     * Status of Compliance Security Profile feature.
+     */
+    complianceSecurityProfile?: ComplianceSecurityProfileDefinitionResponse;
+    /**
+     * Status of Enhanced Security Monitoring feature.
+     */
+    enhancedSecurityMonitoring?: EnhancedSecurityMonitoringDefinitionResponse;
+}
+
+/**
+ * Status of Enhanced Security Monitoring feature.
+ */
+export interface EnhancedSecurityMonitoringDefinitionResponse {
+    value?: string;
 }
 
 /**
@@ -387,9 +457,9 @@ export interface WorkspaceCustomParametersResponse {
      */
     customVirtualNetworkId?: WorkspaceCustomStringParameterResponse;
     /**
-     * Should the Public IP be Disabled?
+     * Boolean indicating whether the public IP should be disabled. Default value is true
      */
-    enableNoPublicIp?: WorkspaceCustomBooleanParameterResponse;
+    enableNoPublicIp?: WorkspaceNoPublicIPBooleanParameterResponse;
     /**
      * Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.
      */
@@ -483,6 +553,38 @@ export function workspaceEncryptionParameterResponseProvideDefaults(val: Workspa
 }
 
 /**
+ * The value which should be used for this field.
+ */
+export interface WorkspaceNoPublicIPBooleanParameterResponse {
+    /**
+     * The type of variable that this is
+     */
+    type: string;
+    /**
+     * The value which should be used for this field.
+     */
+    value: boolean;
+}
+
+/**
+ * Access Connector Resource that is going to be associated with Databricks Workspace
+ */
+export interface WorkspacePropertiesResponseAccessConnector {
+    /**
+     * The resource ID of Azure Databricks Access Connector Resource.
+     */
+    id: string;
+    /**
+     * The identity type of the Access Connector Resource.
+     */
+    identityType: string;
+    /**
+     * The resource ID of the User Assigned Identity associated with the Access Connector Resource. This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
+     */
+    userAssignedIdentityId?: string;
+}
+
+/**
  * Encryption properties for databricks workspace
  */
 export interface WorkspacePropertiesResponseEncryption {
@@ -505,8 +607,3 @@ export interface WorkspaceProviderAuthorizationResponse {
      */
     roleDefinitionId: string;
 }
-
-
-
-
-

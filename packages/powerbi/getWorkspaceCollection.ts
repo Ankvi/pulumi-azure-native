@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Retrieves an existing Power BI Workspace Collection.
- * Azure REST API version: 2016-01-29.
+ *
+ * Uses Azure REST API version 2016-01-29.
  */
 export function getWorkspaceCollection(args: GetWorkspaceCollectionArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceCollectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -25,6 +26,10 @@ export interface GetWorkspaceCollectionArgs {
 }
 
 export interface GetWorkspaceCollectionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Resource id
      */
@@ -50,7 +55,8 @@ export interface GetWorkspaceCollectionResult {
 }
 /**
  * Retrieves an existing Power BI Workspace Collection.
- * Azure REST API version: 2016-01-29.
+ *
+ * Uses Azure REST API version 2016-01-29.
  */
 export function getWorkspaceCollectionOutput(args: GetWorkspaceCollectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkspaceCollectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

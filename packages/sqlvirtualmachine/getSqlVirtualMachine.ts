@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a SQL virtual machine.
- * Azure REST API version: 2022-02-01.
  *
- * Other available API versions: 2023-01-01-preview, 2023-10-01.
+ * Uses Azure REST API version 2023-10-01.
+ *
+ * Other available API versions: 2022-02-01, 2022-07-01-preview, 2022-08-01-preview, 2023-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sqlvirtualmachine [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSqlVirtualMachine(args: GetSqlVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlVirtualMachineResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,7 +37,11 @@ export interface GetSqlVirtualMachineArgs {
  */
 export interface GetSqlVirtualMachineResult {
     /**
-     * Assessment Settings.
+     * Additional VM Patching solution enabled on the Virtual Machine
+     */
+    readonly additionalVmPatch: string;
+    /**
+     * SQL best practices Assessment Settings.
      */
     readonly assessmentSettings?: types.outputs.AssessmentSettingsResponse;
     /**
@@ -48,17 +53,29 @@ export interface GetSqlVirtualMachineResult {
      */
     readonly autoPatchingSettings?: types.outputs.AutoPatchingSettingsResponse;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * Enable automatic upgrade of Sql IaaS extension Agent.
+     */
+    readonly enableAutomaticUpgrade?: boolean;
+    /**
      * Resource ID.
      */
     readonly id: string;
     /**
-     * Azure Active Directory identity of the server.
+     * DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server.
      */
     readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * Key vault credential settings.
      */
     readonly keyVaultCredentialSettings?: types.outputs.KeyVaultCredentialSettingsResponse;
+    /**
+     * SQL IaaS Agent least privilege mode.
+     */
+    readonly leastPrivilegeMode?: string;
     /**
      * Resource location.
      */
@@ -67,6 +84,10 @@ export interface GetSqlVirtualMachineResult {
      * Resource name.
      */
     readonly name: string;
+    /**
+     * Operating System of the current SQL Virtual Machine.
+     */
+    readonly osType: string;
     /**
      * Provisioning state to track the async operation status.
      */
@@ -84,7 +105,7 @@ export interface GetSqlVirtualMachineResult {
      */
     readonly sqlImageSku?: string;
     /**
-     * SQL Server Management type.
+     * SQL Server Management type. NOTE: This parameter is not used anymore. API will automatically detect the Sql Management, refrain from using it.
      */
     readonly sqlManagement?: string;
     /**
@@ -108,9 +129,17 @@ export interface GetSqlVirtualMachineResult {
      */
     readonly tags?: {[key: string]: string};
     /**
+     * Troubleshooting status
+     */
+    readonly troubleshootingStatus: types.outputs.TroubleshootingStatusResponse;
+    /**
      * Resource type.
      */
     readonly type: string;
+    /**
+     * Virtual Machine Identity details used for Sql IaaS extension configurations.
+     */
+    readonly virtualMachineIdentitySettings?: types.outputs.VirtualMachineIdentityResponse;
     /**
      * ARM Resource id of underlying virtual machine created from SQL marketplace image.
      */
@@ -126,9 +155,10 @@ export interface GetSqlVirtualMachineResult {
 }
 /**
  * Gets a SQL virtual machine.
- * Azure REST API version: 2022-02-01.
  *
- * Other available API versions: 2023-01-01-preview, 2023-10-01.
+ * Uses Azure REST API version 2023-10-01.
+ *
+ * Other available API versions: 2022-02-01, 2022-07-01-preview, 2022-08-01-preview, 2023-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sqlvirtualmachine [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSqlVirtualMachineOutput(args: GetSqlVirtualMachineOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSqlVirtualMachineResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

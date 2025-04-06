@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the console for the user.
- * Azure REST API version: 2018-10-01.
+ *
+ * Uses Azure REST API version 2018-10-01.
  */
 export function getConsoleWithLocation(args: GetConsoleWithLocationArgs, opts?: pulumi.InvokeOptions): Promise<GetConsoleWithLocationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -29,13 +30,18 @@ export interface GetConsoleWithLocationArgs {
  */
 export interface GetConsoleWithLocationResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Cloud shell console properties.
      */
     readonly properties: types.outputs.ConsolePropertiesResponse;
 }
 /**
  * Gets the console for the user.
- * Azure REST API version: 2018-10-01.
+ *
+ * Uses Azure REST API version 2018-10-01.
  */
 export function getConsoleWithLocationOutput(args: GetConsoleWithLocationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConsoleWithLocationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

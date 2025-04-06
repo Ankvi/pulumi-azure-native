@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a network manager security user configuration rule collection.
- * Azure REST API version: 2024-03-01.
  *
- * Other available API versions: 2024-05-01.
+ * Uses Azure REST API version 2024-05-01.
+ *
+ * Other available API versions: 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSecurityUserRuleCollection(args: GetSecurityUserRuleCollectionArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityUserRuleCollectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -45,6 +46,10 @@ export interface GetSecurityUserRuleCollectionResult {
      */
     readonly appliesToGroups: types.outputs.SecurityUserGroupItemResponse[];
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * A description of the security user rule collection.
      */
     readonly description?: string;
@@ -79,9 +84,10 @@ export interface GetSecurityUserRuleCollectionResult {
 }
 /**
  * Gets a network manager security user configuration rule collection.
- * Azure REST API version: 2024-03-01.
  *
- * Other available API versions: 2024-05-01.
+ * Uses Azure REST API version 2024-05-01.
+ *
+ * Other available API versions: 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSecurityUserRuleCollectionOutput(args: GetSecurityUserRuleCollectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecurityUserRuleCollectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

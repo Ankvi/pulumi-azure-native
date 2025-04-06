@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Advanced Ingress routing for path/header based routing for a Container App Environment
- * Azure REST API version: 2024-10-02-preview.
+ *
+ * Uses Azure REST API version 2024-10-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-02-preview.
  */
 export class HttpRouteConfig extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class HttpRouteConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === HttpRouteConfig.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The name of the resource
      */
@@ -70,10 +75,12 @@ export class HttpRouteConfig extends pulumi.CustomResource {
             resourceInputs["httpRouteName"] = args ? args.httpRouteName : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;

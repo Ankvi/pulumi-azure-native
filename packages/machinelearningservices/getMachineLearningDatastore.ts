@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Datastore by name.
- * Azure REST API version: 2020-05-01-preview.
+ *
+ * Uses Azure REST API version 2020-05-01-preview.
  */
 export function getMachineLearningDatastore(args: GetMachineLearningDatastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineLearningDatastoreResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetMachineLearningDatastoreArgs {
  * Machine Learning datastore object wrapped into ARM resource envelope.
  */
 export interface GetMachineLearningDatastoreResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Specifies the resource ID.
      */
@@ -68,7 +73,8 @@ export interface GetMachineLearningDatastoreResult {
 }
 /**
  * Get a Datastore by name.
- * Azure REST API version: 2020-05-01-preview.
+ *
+ * Uses Azure REST API version 2020-05-01-preview.
  */
 export function getMachineLearningDatastoreOutput(args: GetMachineLearningDatastoreOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMachineLearningDatastoreResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

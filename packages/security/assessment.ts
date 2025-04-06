@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Security assessment on a resource - response format
- * Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2020-01-01.
  *
- * Other available API versions: 2020-01-01.
+ * Uses Azure REST API version 2021-06-01. In version 2.x of the Azure Native provider, it used API version 2021-06-01.
+ *
+ * Other available API versions: 2019-01-01-preview, 2020-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Assessment extends pulumi.CustomResource {
     /**
@@ -38,6 +39,10 @@ export class Assessment extends pulumi.CustomResource {
      * Additional data regarding the assessment
      */
     public readonly additionalData!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * User friendly display name of the assessment
      */
@@ -98,12 +103,14 @@ export class Assessment extends pulumi.CustomResource {
             resourceInputs["resourceDetails"] = args ? args.resourceDetails : undefined;
             resourceInputs["resourceId"] = args ? args.resourceId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["links"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["additionalData"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["links"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;

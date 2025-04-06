@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets an integration account RosettaNetProcessConfiguration.
- * Azure REST API version: 2016-06-01.
+ *
+ * Uses Azure REST API version 2016-06-01.
  */
 export function getRosettaNetProcessConfiguration(args: GetRosettaNetProcessConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetRosettaNetProcessConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +38,10 @@ export interface GetRosettaNetProcessConfigurationResult {
      * The RosettaNet process configuration activity settings.
      */
     readonly activitySettings: types.outputs.RosettaNetPipActivitySettingsResponse;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The changed time.
      */
@@ -96,7 +101,8 @@ export interface GetRosettaNetProcessConfigurationResult {
 }
 /**
  * Gets an integration account RosettaNetProcessConfiguration.
- * Azure REST API version: 2016-06-01.
+ *
+ * Uses Azure REST API version 2016-06-01.
  */
 export function getRosettaNetProcessConfigurationOutput(args: GetRosettaNetProcessConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRosettaNetProcessConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

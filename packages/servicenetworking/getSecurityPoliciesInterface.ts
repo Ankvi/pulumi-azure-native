@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a SecurityPolicy
- * Azure REST API version: 2024-05-01-preview.
  *
- * Other available API versions: 2025-01-01.
+ * Uses Azure REST API version 2025-01-01.
+ *
+ * Other available API versions: 2024-05-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicenetworking [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSecurityPoliciesInterface(args: GetSecurityPoliciesInterfaceArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityPoliciesInterfaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,6 +36,10 @@ export interface GetSecurityPoliciesInterfaceArgs {
  * SecurityPolicy Subresource of Traffic Controller.
  */
 export interface GetSecurityPoliciesInterfaceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -68,15 +73,16 @@ export interface GetSecurityPoliciesInterfaceResult {
      */
     readonly type: string;
     /**
-     * Web Application Firewall Policy of the Traffic Controller Security Policy
+     * Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
      */
     readonly wafPolicy?: types.outputs.WafPolicyResponse;
 }
 /**
  * Get a SecurityPolicy
- * Azure REST API version: 2024-05-01-preview.
  *
- * Other available API versions: 2025-01-01.
+ * Uses Azure REST API version 2025-01-01.
+ *
+ * Other available API versions: 2024-05-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicenetworking [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSecurityPoliciesInterfaceOutput(args: GetSecurityPoliciesInterfaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecurityPoliciesInterfaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

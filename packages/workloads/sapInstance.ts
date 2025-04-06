@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Define the SAP Instance resource.
- * Azure REST API version: 2023-10-01-preview.
+ *
+ * Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  */
 export class SapInstance extends pulumi.CustomResource {
     /**
@@ -36,6 +37,10 @@ export class SapInstance extends pulumi.CustomResource {
      * Enter a business function/department identifier to group multiple SIDs.
      */
     public /*out*/ readonly application!: pulumi.Output<string>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The Environment; PRD, QA, DEV, etc to which SAP system belongs to. Select from the list of available dropdown values.
      */
@@ -100,6 +105,7 @@ export class SapInstance extends pulumi.CustomResource {
             resourceInputs["sapInstanceName"] = args ? args.sapInstanceName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["application"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["environment"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["landscapeSid"] = undefined /*out*/;
@@ -110,6 +116,7 @@ export class SapInstance extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["application"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["environment"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["landscapeSid"] = undefined /*out*/;

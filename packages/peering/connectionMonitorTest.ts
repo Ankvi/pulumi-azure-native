@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * The Connection Monitor Test class.
- * Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2021-06-01.
+ *
+ * Uses Azure REST API version 2022-10-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
  */
 export class ConnectionMonitorTest extends pulumi.CustomResource {
     /**
@@ -31,6 +32,10 @@ export class ConnectionMonitorTest extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConnectionMonitorTest.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The Connection Monitor test destination
      */
@@ -92,12 +97,14 @@ export class ConnectionMonitorTest extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sourceAgent"] = args ? args.sourceAgent : undefined;
             resourceInputs["testFrequencyInSec"] = args ? args.testFrequencyInSec : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["isTestSuccessful"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["path"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["destination"] = undefined /*out*/;
             resourceInputs["destinationPort"] = undefined /*out*/;
             resourceInputs["isTestSuccessful"] = undefined /*out*/;

@@ -2,10 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Describes an existing Private Endpoint connection to the Azure Cognitive Search service.
- * Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-08-01.
+ * Describes an existing private endpoint connection to the search service.
  *
- * Other available API versions: 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview.
+ * Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+ *
+ * Other available API versions: 2022-09-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -35,11 +36,15 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
+     * Describes the properties of an existing private endpoint connection to the search service.
      */
     public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
     /**
@@ -68,9 +73,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.privateEndpointConnectionPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["searchServiceName"] = args ? args.searchServiceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -87,11 +94,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
  */
 export interface PrivateEndpointConnectionArgs {
     /**
-     * The name of the private endpoint connection to the Azure Cognitive Search service with the specified resource group.
+     * The name of the private endpoint connection to the search service with the specified resource group.
      */
     privateEndpointConnectionName?: pulumi.Input<string>;
     /**
-     * Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
+     * Describes the properties of an existing private endpoint connection to the search service.
      */
     properties?: pulumi.Input<types.inputs.PrivateEndpointConnectionPropertiesArgs>;
     /**
@@ -99,7 +106,7 @@ export interface PrivateEndpointConnectionArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The name of the Azure Cognitive Search service associated with the specified resource group.
+     * The name of the search service associated with the specified resource group.
      */
     searchServiceName: pulumi.Input<string>;
 }

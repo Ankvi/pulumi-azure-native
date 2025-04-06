@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Details of a specific cloud account connector
- * Azure REST API version: 2020-01-01-preview.
+ *
+ * Uses Azure REST API version 2020-01-01-preview.
  */
 export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetConnectorResult {
      */
     readonly authenticationDetails?: types.outputs.AwAssumeRoleAuthenticationDetailsPropertiesResponse | types.outputs.AwsCredsAuthenticationDetailsPropertiesResponse | types.outputs.GcpCredentialsDetailsPropertiesResponse;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
      */
     readonly hybridComputeSettings?: types.outputs.HybridComputeSettingsPropertiesResponse;
@@ -46,7 +51,8 @@ export interface GetConnectorResult {
 }
 /**
  * Details of a specific cloud account connector
- * Azure REST API version: 2020-01-01-preview.
+ *
+ * Uses Azure REST API version 2020-01-01-preview.
  */
 export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

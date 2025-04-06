@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Azure REST API version: 2019-04-01. Prior API version in Azure Native 1.x: 2019-04-01.
+ * Uses Azure REST API version 2019-04-01. In version 2.x of the Azure Native provider, it used API version 2019-04-01.
  */
 export class Controller extends pulumi.CustomResource {
     /**
@@ -31,6 +31,10 @@ export class Controller extends pulumi.CustomResource {
         return obj['__pulumiType'] === Controller.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * DNS name for accessing DataPlane services
      */
@@ -102,12 +106,14 @@ export class Controller extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["targetContainerHostCredentialsBase64"] = args ? args.targetContainerHostCredentialsBase64 : undefined;
             resourceInputs["targetContainerHostResourceId"] = args ? args.targetContainerHostResourceId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["dataPlaneFqdn"] = undefined /*out*/;
             resourceInputs["hostSuffix"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["targetContainerHostApiServerFqdn"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["dataPlaneFqdn"] = undefined /*out*/;
             resourceInputs["hostSuffix"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;

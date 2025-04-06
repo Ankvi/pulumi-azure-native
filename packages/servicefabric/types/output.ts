@@ -24,6 +24,28 @@ export interface AddRemoveIncrementalNamedPartitionScalingMechanismResponse {
 }
 
 /**
+ * Specifies the settings for a network interface to attach to the node type.
+ */
+export interface AdditionalNetworkInterfaceConfigurationResponse {
+    /**
+     * Specifies the DSCP configuration to apply to the network interface.
+     */
+    dscpConfiguration?: SubResourceResponse;
+    /**
+     * Specifies whether the network interface is accelerated networking-enabled.
+     */
+    enableAcceleratedNetworking?: boolean;
+    /**
+     * Specifies the IP configurations of the network interface.
+     */
+    ipConfigurations: IpConfigurationResponse[];
+    /**
+     * Name of the network interface.
+     */
+    name: string;
+}
+
+/**
  * Defines a health policy used to evaluate the health of an application or one of its children entities.
  */
 export interface ApplicationHealthPolicyResponse {
@@ -202,6 +224,131 @@ export interface ClientCertificateResponse {
 }
 
 /**
+ * Defines a health policy used to evaluate the health of the cluster or of a cluster node.
+ */
+export interface ClusterHealthPolicyResponse {
+    /**
+     * The maximum allowed percentage of unhealthy applications before reporting an error. For example, to allow 10% of applications to be unhealthy, this value would be 10.
+     *
+     * The percentage represents the maximum tolerated percentage of applications that can be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy application, the health is evaluated as Warning.
+     * This is calculated by dividing the number of unhealthy applications over the total number of application instances in the cluster, excluding applications of application types that are included in the ApplicationTypeHealthPolicyMap.
+     * The computation rounds up to tolerate one failure on small numbers of applications. Default percentage is zero.
+     */
+    maxPercentUnhealthyApplications: number;
+    /**
+     * The maximum allowed percentage of unhealthy nodes before reporting an error. For example, to allow 10% of nodes to be unhealthy, this value would be 10.
+     *
+     * The percentage represents the maximum tolerated percentage of nodes that can be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy node, the health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy nodes over the total number of nodes in the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes. Default percentage is zero.
+     *
+     * In large clusters, some nodes will always be down or out for repairs, so this percentage should be configured to tolerate that.
+     */
+    maxPercentUnhealthyNodes: number;
+}
+/**
+ * clusterHealthPolicyResponseProvideDefaults sets the appropriate defaults for ClusterHealthPolicyResponse
+ */
+export function clusterHealthPolicyResponseProvideDefaults(val: ClusterHealthPolicyResponse): ClusterHealthPolicyResponse {
+    return {
+        ...val,
+        maxPercentUnhealthyApplications: (val.maxPercentUnhealthyApplications) ?? 0,
+        maxPercentUnhealthyNodes: (val.maxPercentUnhealthyNodes) ?? 0,
+    };
+}
+
+/**
+ * Describes the monitoring policies for the cluster upgrade.
+ */
+export interface ClusterMonitoringPolicyResponse {
+    /**
+     * The amount of time to retry health evaluation when the application or cluster is unhealthy before the upgrade rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     */
+    healthCheckRetryTimeout: string;
+    /**
+     * The amount of time that the application or cluster must remain healthy before the upgrade proceeds to the next upgrade domain. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     */
+    healthCheckStableDuration: string;
+    /**
+     * The length of time to wait after completing an upgrade domain before performing health checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     */
+    healthCheckWaitDuration: string;
+    /**
+     * The amount of time each upgrade domain has to complete before the upgrade rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     */
+    upgradeDomainTimeout: string;
+    /**
+     * The amount of time the overall upgrade has to complete before the upgrade rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     */
+    upgradeTimeout: string;
+}
+
+/**
+ * Describes the delta health policies for the cluster upgrade.
+ */
+export interface ClusterUpgradeDeltaHealthPolicyResponse {
+    /**
+     * The maximum allowed percentage of applications health degradation allowed during cluster upgrades.
+     * The delta is measured between the state of the applications at the beginning of upgrade and the state of the applications at the time of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make sure the global state of the cluster is within tolerated limits. System services are not included in this.
+     * NOTE: This value will overwrite the value specified in properties.UpgradeDescription.HealthPolicy.MaxPercentUnhealthyApplications
+     */
+    maxPercentDeltaUnhealthyApplications?: number;
+    /**
+     * The maximum allowed percentage of nodes health degradation allowed during cluster upgrades.
+     * The delta is measured between the state of the nodes at the beginning of upgrade and the state of the nodes at the time of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make sure the global state of the cluster is within tolerated limits.
+     */
+    maxPercentDeltaUnhealthyNodes: number;
+    /**
+     * The maximum allowed percentage of upgrade domain nodes health degradation allowed during cluster upgrades.
+     * The delta is measured between the state of the upgrade domain nodes at the beginning of upgrade and the state of the upgrade domain nodes at the time of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion for all completed upgrade domains to make sure the state of the upgrade domains is within tolerated limits.
+     */
+    maxPercentUpgradeDomainDeltaUnhealthyNodes?: number;
+}
+
+/**
+ * Describes the policy used when upgrading the cluster.
+ */
+export interface ClusterUpgradePolicyResponse {
+    /**
+     * The cluster delta health policy defines a health policy used to evaluate the health of the cluster during a cluster upgrade.
+     */
+    deltaHealthPolicy?: ClusterUpgradeDeltaHealthPolicyResponse;
+    /**
+     * If true, then processes are forcefully restarted during upgrade even when the code version has not changed (the upgrade only changes configuration or data).
+     */
+    forceRestart?: boolean;
+    /**
+     * The cluster health policy defines a health policy used to evaluate the health of the cluster during a cluster upgrade.
+     */
+    healthPolicy?: ClusterHealthPolicyResponse;
+    /**
+     * The cluster monitoring policy describes the parameters for monitoring an upgrade in Monitored mode.
+     */
+    monitoringPolicy?: ClusterMonitoringPolicyResponse;
+    /**
+     * The maximum amount of time to block processing of an upgrade domain and prevent loss of availability when there are unexpected issues.
+     * When this timeout expires, processing of the upgrade domain will proceed regardless of availability loss issues.
+     * The timeout is reset at the start of each upgrade domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     * This value must be between 00:00:00 and 49710.06:28:15 (unsigned 32 bit integer for seconds)
+     */
+    upgradeReplicaSetCheckTimeout?: string;
+}
+/**
+ * clusterUpgradePolicyResponseProvideDefaults sets the appropriate defaults for ClusterUpgradePolicyResponse
+ */
+export function clusterUpgradePolicyResponseProvideDefaults(val: ClusterUpgradePolicyResponse): ClusterUpgradePolicyResponse {
+    return {
+        ...val,
+        healthPolicy: (val.healthPolicy ? clusterHealthPolicyResponseProvideDefaults(val.healthPolicy) : undefined),
+    };
+}
+
+/**
  * Port range details
  */
 export interface EndpointRangeDescriptionResponse {
@@ -244,7 +391,7 @@ export interface FaultSimulationDetailsResponse {
     /**
      * Fault simulation parameters.
      */
-    parameters?: ZoneFaultSimulationParametersResponse;
+    parameters?: ZoneFaultSimulationContentResponse;
 }
 
 /**
@@ -296,15 +443,86 @@ export interface FrontendConfigurationResponse {
 }
 
 /**
- * IPTag associated with the object.
+ * Specifies an IP configuration of the network interface.
  */
-export interface IPTagResponse {
+export interface IpConfigurationResponse {
     /**
-     * The IP tag type.
+     * Specifies an array of references to backend address pools of application gateways. A node type can reference backend address pools of multiple application gateways. Multiple node types cannot use the same application gateway.
+     */
+    applicationGatewayBackendAddressPools?: SubResourceResponse[];
+    /**
+     * Specifies an array of references to backend address pools of load balancers. A node type can reference backend address pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer.	
+     */
+    loadBalancerBackendAddressPools?: SubResourceResponse[];
+    /**
+     * Specifies an array of references to inbound Nat pools of the load balancers. A node type can reference inbound nat pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer.
+     */
+    loadBalancerInboundNatPools?: SubResourceResponse[];
+    /**
+     * Name of the network interface.
+     */
+    name: string;
+    /**
+     * Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4.
+     */
+    privateIPAddressVersion?: string;
+    /**
+     * The public IP address configuration of the network interface.
+     */
+    publicIPAddressConfiguration?: IpConfigurationResponsePublicIPAddressConfiguration;
+    /**
+     * Specifies the subnet of the network interface.
+     */
+    subnet?: SubResourceResponse;
+}
+/**
+ * ipConfigurationResponseProvideDefaults sets the appropriate defaults for IpConfigurationResponse
+ */
+export function ipConfigurationResponseProvideDefaults(val: IpConfigurationResponse): IpConfigurationResponse {
+    return {
+        ...val,
+        privateIPAddressVersion: (val.privateIPAddressVersion) ?? "IPv4",
+        publicIPAddressConfiguration: (val.publicIPAddressConfiguration ? ipConfigurationResponsePublicIPAddressConfigurationProvideDefaults(val.publicIPAddressConfiguration) : undefined),
+    };
+}
+
+/**
+ * The public IP address configuration of the network interface.
+ */
+export interface IpConfigurationResponsePublicIPAddressConfiguration {
+    /**
+     * Specifies the list of IP tags associated with the public IP address.
+     */
+    ipTags?: IpTagResponse[];
+    /**
+     * Name of the network interface.
+     */
+    name: string;
+    /**
+     * Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
+     */
+    publicIPAddressVersion?: string;
+}
+/**
+ * ipConfigurationResponsePublicIPAddressConfigurationProvideDefaults sets the appropriate defaults for IpConfigurationResponsePublicIPAddressConfiguration
+ */
+export function ipConfigurationResponsePublicIPAddressConfigurationProvideDefaults(val: IpConfigurationResponsePublicIPAddressConfiguration): IpConfigurationResponsePublicIPAddressConfiguration {
+    return {
+        ...val,
+        publicIPAddressVersion: (val.publicIPAddressVersion) ?? "IPv4",
+    };
+}
+
+/**
+ * The IP tag associated with the public IP address.
+ */
+export interface IpTagResponse {
+    /**
+     * IP tag type. Example: FirstPartyUsage.
      */
     ipTagType: string;
     /**
-     * The value of the IP tag.
+     * IP tag associated with the public IP. Example: SQL, Storage etc.
      */
     tag: string;
 }
@@ -458,11 +676,29 @@ export interface NodeTypeFaultSimulationResponse {
     /**
      * Current or latest asynchronous operation status on the node type
      */
-    operationStatus?: string;
+    operationStatus: string;
     /**
      * Fault simulation status
      */
     status?: string;
+}
+
+/**
+ * Provides information about NAT configuration on the default public Load Balancer for the node type.
+ */
+export interface NodeTypeNatConfigResponse {
+    /**
+     * The internal port for the NAT configuration.
+     */
+    backendPort?: number;
+    /**
+     * The port range end for the external endpoint.
+     */
+    frontendPortRangeEnd?: number;
+    /**
+     * The port range start for the external endpoint.
+     */
+    frontendPortRangeStart?: number;
 }
 
 /**
@@ -510,6 +746,10 @@ export interface PartitionInstanceCountScaleMechanismResponse {
  * Describes Az Resiliency status of Base resources
  */
 export interface ResourceAzStatusResponse {
+    /**
+     * Zone resiliency status details for the resource.
+     */
+    details: string;
     /**
      * VM Size name.
      */
@@ -638,7 +878,7 @@ export interface ServicePlacementInvalidDomainPolicyResponse {
 }
 
 /**
- * The name of the domain that should used for placement as per this policy.
+ * The type of placement policy for a service fabric service. Following are the possible values.
  */
 export interface ServicePlacementNonPartiallyPlaceServicePolicyResponse {
     /**
@@ -649,7 +889,7 @@ export interface ServicePlacementNonPartiallyPlaceServicePolicyResponse {
 }
 
 /**
- * Describes the policy to be used for placement of a Service Fabric service where the service's 
+ * Describes the policy to be used for placement of a Service Fabric service where the service's
  * Primary replicas should optimally be placed in a particular domain.
  *
  * This placement policy is usually used with fault domains in scenarios where the Service Fabric
@@ -997,7 +1237,7 @@ export interface SystemDataResponse {
      */
     createdByType?: string;
     /**
-     * The timestamp of resource last modification (UTC).
+     * The timestamp of resource last modification (UTC)
      */
     lastModifiedAt?: string;
     /**
@@ -1086,6 +1326,10 @@ export interface VMSSExtensionResponse {
      * Json formatted public settings for the extension.
      */
     settings?: any;
+    /**
+     * Indicates the setup order for the extension.
+     */
+    setupOrder?: string[];
     /**
      * Specifies the type of the extension; an example is "CustomScriptExtension".
      */
@@ -1181,7 +1425,7 @@ export interface VmssDataDiskResponse {
 /**
  * Parameters for Zone Fault Simulation action.
  */
-export interface ZoneFaultSimulationParametersResponse {
+export interface ZoneFaultSimulationContentResponse {
     /**
      * Constraints for Fault Simulation action.
      */
@@ -1200,17 +1444,3 @@ export interface ZoneFaultSimulationParametersResponse {
      */
     zones?: string[];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

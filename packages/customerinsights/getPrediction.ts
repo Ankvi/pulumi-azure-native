@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a Prediction in the hub.
- * Azure REST API version: 2017-04-26.
+ *
+ * Uses Azure REST API version 2017-04-26.
  */
 export function getPrediction(args: GetPredictionArgs, opts?: pulumi.InvokeOptions): Promise<GetPredictionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +38,10 @@ export interface GetPredictionResult {
      * Whether do auto analyze.
      */
     readonly autoAnalyze: boolean;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Description of the prediction.
      */
@@ -116,7 +121,8 @@ export interface GetPredictionResult {
 }
 /**
  * Gets a Prediction in the hub.
- * Azure REST API version: 2017-04-26.
+ *
+ * Uses Azure REST API version 2017-04-26.
  */
 export function getPredictionOutput(args: GetPredictionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPredictionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

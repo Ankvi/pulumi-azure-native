@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Represents a ApplicationGroup definition.
- * Azure REST API version: 2022-09-09. Prior API version in Azure Native 1.x: 2021-02-01-preview.
  *
- * Other available API versions: 2022-04-01-preview, 2022-10-14-preview, 2023-07-07-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview.
+ * Uses Azure REST API version 2024-04-03. In version 2.x of the Azure Native provider, it used API version 2022-09-09.
+ *
+ * Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ApplicationGroup extends pulumi.CustomResource {
     /**
@@ -39,6 +40,10 @@ export class ApplicationGroup extends pulumi.CustomResource {
      */
     public readonly applicationGroupType!: pulumi.Output<string>;
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Is cloud pc resource.
      */
     public /*out*/ readonly cloudPcResource!: pulumi.Output<boolean>;
@@ -60,13 +65,13 @@ export class ApplicationGroup extends pulumi.CustomResource {
     public readonly hostPoolArmPath!: pulumi.Output<string>;
     public readonly identity!: pulumi.Output<types.outputs.ResourceModelWithAllowedPropertySetResponseIdentity | undefined>;
     /**
-     * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+     * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
     public readonly kind!: pulumi.Output<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
      */
@@ -80,9 +85,13 @@ export class ApplicationGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
     public readonly plan!: pulumi.Output<types.outputs.ResourceModelWithAllowedPropertySetResponsePlan | undefined>;
+    /**
+     * Boolean representing whether the applicationGroup is show in the feed.
+     */
+    public readonly showInFeed!: pulumi.Output<boolean | undefined>;
     public readonly sku!: pulumi.Output<types.outputs.ResourceModelWithAllowedPropertySetResponseSku | undefined>;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -129,8 +138,10 @@ export class ApplicationGroup extends pulumi.CustomResource {
             resourceInputs["managedBy"] = args ? args.managedBy : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["showInFeed"] = args ? args.showInFeed : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["cloudPcResource"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -140,6 +151,7 @@ export class ApplicationGroup extends pulumi.CustomResource {
             resourceInputs["workspaceArmPath"] = undefined /*out*/;
         } else {
             resourceInputs["applicationGroupType"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["cloudPcResource"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -152,6 +164,7 @@ export class ApplicationGroup extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["objectId"] = undefined /*out*/;
             resourceInputs["plan"] = undefined /*out*/;
+            resourceInputs["showInFeed"] = undefined /*out*/;
             resourceInputs["sku"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
@@ -159,7 +172,7 @@ export class ApplicationGroup extends pulumi.CustomResource {
             resourceInputs["workspaceArmPath"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:desktopvirtualization/v20190123preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20190924preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20191210preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20200921preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20201019preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20201102preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20201110preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20210114preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20210201preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20210309preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20210401preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20210712:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20210903preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20220210preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20220401preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20220909:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20221014preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20230707preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20230905:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20231004preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20231101preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20240116preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20240306preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20240403:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20240408preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20240808preview:ApplicationGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:desktopvirtualization/v20190123preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20190924preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20191210preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20200921preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20201019preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20201102preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20201110preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20210114preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20210201preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20210309preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20210401preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20210712:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20210903preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20220210preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20220401preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20220909:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20221014preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20230707preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20230905:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20231004preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20231101preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20240116preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20240306preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20240403:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20240408preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20240808preview:ApplicationGroup" }, { type: "azure-native:desktopvirtualization/v20241101preview:ApplicationGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ApplicationGroup.__pulumiType, name, resourceInputs, opts);
     }
@@ -191,7 +204,7 @@ export interface ApplicationGroupArgs {
     hostPoolArmPath: pulumi.Input<string>;
     identity?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetIdentityArgs>;
     /**
-     * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+     * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
     kind?: pulumi.Input<string>;
     /**
@@ -207,6 +220,10 @@ export interface ApplicationGroupArgs {
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
+    /**
+     * Boolean representing whether the applicationGroup is show in the feed.
+     */
+    showInFeed?: pulumi.Input<boolean>;
     sku?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetSkuArgs>;
     /**
      * Resource tags.

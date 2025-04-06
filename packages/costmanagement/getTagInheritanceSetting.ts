@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the setting from the given scope by name.
- * Azure REST API version: 2022-10-05-preview.
+ *
+ * Uses Azure REST API version 2024-08-01.
  */
 export function getTagInheritanceSetting(args: GetTagInheritanceSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetTagInheritanceSettingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -29,11 +30,11 @@ export interface GetTagInheritanceSettingArgs {
  */
 export interface GetTagInheritanceSettingResult {
     /**
-     * eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
+     * The Azure API version of the resource.
      */
-    readonly eTag?: string;
+    readonly azureApiVersion: string;
     /**
-     * Resource Id.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
@@ -42,7 +43,7 @@ export interface GetTagInheritanceSettingResult {
      */
     readonly kind: "taginheritance";
     /**
-     * Resource name.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -50,13 +51,14 @@ export interface GetTagInheritanceSettingResult {
      */
     readonly properties: types.outputs.TagInheritancePropertiesResponse;
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
 /**
  * Get the setting from the given scope by name.
- * Azure REST API version: 2022-10-05-preview.
+ *
+ * Uses Azure REST API version 2024-08-01.
  */
 export function getTagInheritanceSettingOutput(args: GetTagInheritanceSettingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagInheritanceSettingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

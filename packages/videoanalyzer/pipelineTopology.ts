@@ -8,7 +8,8 @@ import * as types from "./types";
  *   - Sources: list of one or more data sources nodes such as an RTSP source which allows for content to be ingested from cameras.
  *   - Processors: list of nodes which perform data analysis or transformations.
  *   - Sinks: list of one or more data sinks which allow for data to be stored or exported to other destinations.
- *     Azure REST API version: 2021-11-01-preview. Prior API version in Azure Native 1.x: 2021-11-01-preview.
+ *
+ * Uses Azure REST API version 2021-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-11-01-preview.
  */
 export class PipelineTopology extends pulumi.CustomResource {
     /**
@@ -37,6 +38,10 @@ export class PipelineTopology extends pulumi.CustomResource {
         return obj['__pulumiType'] === PipelineTopology.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * An optional description of the pipeline topology. It is recommended that the expected use of the topology to be described here.
      */
@@ -117,10 +122,12 @@ export class PipelineTopology extends pulumi.CustomResource {
             resourceInputs["sinks"] = args ? args.sinks : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["sources"] = args ? args.sources : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

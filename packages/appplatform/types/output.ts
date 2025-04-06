@@ -41,6 +41,10 @@ export interface AcceleratorGitRepositoryResponse {
      */
     intervalInSeconds?: number;
     /**
+     * Folder path inside the git repository to consider as the root of the accelerator or fragment.
+     */
+    subPath?: string;
+    /**
      * Git repository URL for the accelerator.
      */
     url: string;
@@ -101,6 +105,10 @@ export interface ApiPortalInstanceResponse {
  */
 export interface ApiPortalPropertiesResponse {
     /**
+     * Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
+     */
+    apiTryOutEnabledState?: string;
+    /**
      * The array of resource Ids of gateway to integrate with API portal.
      */
     gatewayIds?: string[];
@@ -143,6 +151,7 @@ export interface ApiPortalPropertiesResponse {
 export function apiPortalPropertiesResponseProvideDefaults(val: ApiPortalPropertiesResponse): ApiPortalPropertiesResponse {
     return {
         ...val,
+        apiTryOutEnabledState: (val.apiTryOutEnabledState) ?? "Enabled",
         httpsOnly: (val.httpsOnly) ?? false,
         public: (val.public) ?? false,
     };
@@ -243,6 +252,10 @@ export interface AppResourcePropertiesResponse {
      */
     temporaryDisk?: TemporaryDiskResponse;
     /**
+     * State of test endpoint auth.
+     */
+    testEndpointAuthState?: string;
+    /**
      * URL of the App
      */
     url: string;
@@ -264,6 +277,7 @@ export function appResourcePropertiesResponseProvideDefaults(val: AppResourcePro
         enableEndToEndTLS: (val.enableEndToEndTLS) ?? false,
         httpsOnly: (val.httpsOnly) ?? false,
         temporaryDisk: (val.temporaryDisk ? temporaryDiskResponseProvideDefaults(val.temporaryDisk) : undefined),
+        testEndpointAuthState: (val.testEndpointAuthState) ?? "Enabled",
         vnetAddons: (val.vnetAddons ? appVNetAddonsResponseProvideDefaults(val.vnetAddons) : undefined),
     };
 }
@@ -675,6 +689,10 @@ export interface BuildpackPropertiesResponse {
      * Id of the buildpack
      */
     id?: string;
+    /**
+     * Version of the buildpack
+     */
+    version: string;
 }
 
 /**
@@ -713,6 +731,10 @@ export interface ClusterResourcePropertiesResponse {
      * The name of the resource group that contains the infrastructure resources
      */
     infraResourceGroup?: string;
+    /**
+     * Additional Service settings for planned maintenance
+     */
+    maintenanceScheduleConfiguration?: WeeklyMaintenanceScheduleConfigurationResponse;
     /**
      * The resource Id of the Managed Environment that the Spring Apps instance builds on
      */
@@ -979,6 +1001,10 @@ export interface ConfigurationServiceSettingsResponse {
      * Property of git environment.
      */
     gitProperty?: ConfigurationServiceGitPropertyResponse;
+    /**
+     * How often (in seconds) to check repository updates. Minimum value is 0.
+     */
+    refreshIntervalInSeconds?: number;
 }
 
 /**
@@ -1185,10 +1211,18 @@ export interface CustomScaleRuleResponse {
  */
 export interface CustomizedAcceleratorPropertiesResponse {
     acceleratorTags?: string[];
+    /**
+     * Type of the customized accelerator.
+     */
+    acceleratorType?: string;
     description?: string;
     displayName?: string;
     gitRepository: AcceleratorGitRepositoryResponse;
     iconUrl?: string;
+    /**
+     * Imports references all imports that this accelerator/fragment depends upon.
+     */
+    imports: string[];
     /**
      * State of the customized accelerator.
      */
@@ -1248,7 +1282,7 @@ export interface DeploymentResourcePropertiesResponse {
     /**
      * Uploaded source information of the deployment.
      */
-    source?: BuildResultUserSourceInfoResponse | CustomContainerUserSourceInfoResponse | JarUploadedUserSourceInfoResponse | NetCoreZipUploadedUserSourceInfoResponse | SourceUploadedUserSourceInfoResponse | UploadedUserSourceInfoResponse;
+    source?: BuildResultUserSourceInfoResponse | CustomContainerUserSourceInfoResponse | JarUploadedUserSourceInfoResponse | NetCoreZipUploadedUserSourceInfoResponse | SourceUploadedUserSourceInfoResponse | UploadedUserSourceInfoResponse | WarUploadedUserSourceInfoResponse;
     /**
      * Status of the Deployment
      */
@@ -1650,6 +1684,44 @@ export interface GatewayInstanceResponse {
 }
 
 /**
+ * Spring Cloud Gateway local response cache per instance properties.
+ */
+export interface GatewayLocalResponseCachePerInstancePropertiesResponse {
+    /**
+     * The type of the response cache.
+     * Expected value is 'LocalCachePerInstance'.
+     */
+    responseCacheType: "LocalCachePerInstance";
+    /**
+     * Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries
+     */
+    size?: string;
+    /**
+     * Time before a cached entry is expired (300s, 5m, 1h...)
+     */
+    timeToLive?: string;
+}
+
+/**
+ * Spring Cloud Gateway local response cache per route properties.
+ */
+export interface GatewayLocalResponseCachePerRoutePropertiesResponse {
+    /**
+     * The type of the response cache.
+     * Expected value is 'LocalCachePerRoute'.
+     */
+    responseCacheType: "LocalCachePerRoute";
+    /**
+     * Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries.
+     */
+    size?: string;
+    /**
+     * Time before a cached entry is expired (300s, 5m, 1h...)
+     */
+    timeToLive?: string;
+}
+
+/**
  * Properties of the Spring Cloud Gateway Operator.
  */
 export interface GatewayOperatorPropertiesResponse {
@@ -1698,6 +1770,10 @@ export interface GatewayPropertiesResponse {
      */
     apmTypes?: string[];
     /**
+     * Collection of ApmReferences in service level
+     */
+    apms?: ApmReferenceResponse[];
+    /**
      * Client-Certification Authentication.
      */
     clientAuth?: GatewayPropertiesResponseClientAuth;
@@ -1733,6 +1809,10 @@ export interface GatewayPropertiesResponse {
      * The requested resource quantity for required CPU and Memory.
      */
     resourceRequests?: GatewayResourceRequestsResponse;
+    /**
+     * The properties to configure different types of response cache for Spring Cloud Gateway.
+     */
+    responseCacheProperties?: GatewayLocalResponseCachePerInstancePropertiesResponse | GatewayLocalResponseCachePerRoutePropertiesResponse;
     /**
      * Single sign-on related configuration
      */
@@ -2147,6 +2227,10 @@ export interface KeyVaultCertificatePropertiesResponse {
      */
     activateDate: string;
     /**
+     * Indicates whether to automatically synchronize certificate from key vault or not.
+     */
+    autoSync?: string;
+    /**
      * The certificate version of key vault.
      */
     certVersion?: string;
@@ -2202,6 +2286,7 @@ export interface KeyVaultCertificatePropertiesResponse {
 export function keyVaultCertificatePropertiesResponseProvideDefaults(val: KeyVaultCertificatePropertiesResponse): KeyVaultCertificatePropertiesResponse {
     return {
         ...val,
+        autoSync: (val.autoSync) ?? "Disabled",
         excludePrivateKey: (val.excludePrivateKey) ?? false,
     };
 }
@@ -2883,6 +2968,26 @@ export interface TriggeredBuildResultResponse {
      * The unique build id of this build result
      */
     id?: string;
+    /**
+     * The container image of this build result
+     */
+    image?: string;
+    /**
+     * The last transition reason of this build result
+     */
+    lastTransitionReason?: string;
+    /**
+     * The last transition status of this build result
+     */
+    lastTransitionStatus?: string;
+    /**
+     * The last transition time of this build result
+     */
+    lastTransitionTime?: string;
+    /**
+     * The provisioning state of this build result
+     */
+    provisioningState: string;
 }
 
 /**
@@ -2949,9 +3054,25 @@ export interface WarUploadedUserSourceInfoResponse {
     version?: string;
 }
 
-
-
-
-
-
-
+/**
+ * Weekly planned maintenance
+ */
+export interface WeeklyMaintenanceScheduleConfigurationResponse {
+    /**
+     * The day to run the maintenance job
+     */
+    day: string;
+    /**
+     * The duration time to run the maintenance job, specified in ISO8601 format, e.g. PT8H
+     */
+    duration: string;
+    /**
+     * The frequency to run the maintenance job
+     * Expected value is 'Weekly'.
+     */
+    frequency: "Weekly";
+    /**
+     * The hour to run the maintenance job
+     */
+    hour: number;
+}

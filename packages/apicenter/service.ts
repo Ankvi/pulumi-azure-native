@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The service entity.
- * Azure REST API version: 2023-07-01-preview.
  *
- * Other available API versions: 2024-03-01, 2024-03-15-preview, 2024-06-01-preview.
+ * Uses Azure REST API version 2024-03-15-preview. In version 2.x of the Azure Native provider, it used API version 2023-07-01-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2024-03-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apicenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Service extends pulumi.CustomResource {
     /**
@@ -35,7 +36,11 @@ export class Service extends pulumi.CustomResource {
     }
 
     /**
-     * The identity of the service.
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
+     * The managed service identities assigned to this resource.
      */
     public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
@@ -47,9 +52,13 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The status of the last operation.
+     * Provisioning state of the service.
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    /**
+     * Flag used to restore soft-deleted API Center service. If specified and set to 'true' all other properties will be ignored.
+     */
+    public readonly restore!: pulumi.Output<boolean | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -80,17 +89,21 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["restore"] = (args ? args.restore : undefined) ?? false;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["restore"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -107,7 +120,7 @@ export class Service extends pulumi.CustomResource {
  */
 export interface ServiceArgs {
     /**
-     * The identity of the service.
+     * The managed service identities assigned to this resource.
      */
     identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
@@ -119,7 +132,11 @@ export interface ServiceArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * Service name
+     * Flag used to restore soft-deleted API Center service. If specified and set to 'true' all other properties will be ignored.
+     */
+    restore?: pulumi.Input<boolean>;
+    /**
+     * The name of Azure API Center service.
      */
     serviceName?: pulumi.Input<string>;
     /**

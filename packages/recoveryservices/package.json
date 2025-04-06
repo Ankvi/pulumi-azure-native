@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-recoveryservices",
-    "version": "2.89.3",
+    "version": "3.0.0",
     "description": "Pulumi Azure Native package for recoveryservices",
     "keywords": [
         "pulumi",

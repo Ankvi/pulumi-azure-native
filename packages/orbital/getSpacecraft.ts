@@ -3,9 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the specified spacecraft in a specified resource group.
- * Azure REST API version: 2022-11-01.
  *
- * Other available API versions: 2022-03-01.
+ * Uses Azure REST API version 2022-11-01.
  */
 export function getSpacecraft(args: GetSpacecraftArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacecraftResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,6 +29,10 @@ export interface GetSpacecraftArgs {
  * Customer creates a spacecraft resource to schedule a contact.
  */
 export interface GetSpacecraftResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -77,9 +80,8 @@ export interface GetSpacecraftResult {
 }
 /**
  * Gets the specified spacecraft in a specified resource group.
- * Azure REST API version: 2022-11-01.
  *
- * Other available API versions: 2022-03-01.
+ * Uses Azure REST API version 2022-11-01.
  */
 export function getSpacecraftOutput(args: GetSpacecraftOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpacecraftResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a database's threat detection policy.
- * Azure REST API version: 2014-04-01.
+ *
+ * Uses Azure REST API version 2014-04-01.
  */
 export function getDatabaseThreatDetectionPolicy(args: GetDatabaseThreatDetectionPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseThreatDetectionPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +38,10 @@ export interface GetDatabaseThreatDetectionPolicyArgs {
  * Contains information about a database Threat Detection policy.
  */
 export interface GetDatabaseThreatDetectionPolicyResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Specifies the semicolon-separated list of alerts that are disabled, or empty string to disable no alerts. Possible values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly; Data_Exfiltration; Unsafe_Action.
      */
@@ -88,7 +93,8 @@ export interface GetDatabaseThreatDetectionPolicyResult {
 }
 /**
  * Gets a database's threat detection policy.
- * Azure REST API version: 2014-04-01.
+ *
+ * Uses Azure REST API version 2014-04-01.
  */
 export function getDatabaseThreatDetectionPolicyOutput(args: GetDatabaseThreatDetectionPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseThreatDetectionPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

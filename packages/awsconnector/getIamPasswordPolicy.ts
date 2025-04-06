@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a IamPasswordPolicy
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getIamPasswordPolicy(args: GetIamPasswordPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIamPasswordPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetIamPasswordPolicyArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetIamPasswordPolicyResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetIamPasswordPolicyResult {
 }
 /**
  * Get a IamPasswordPolicy
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getIamPasswordPolicyOutput(args: GetIamPasswordPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIamPasswordPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

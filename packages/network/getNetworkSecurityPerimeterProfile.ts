@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the specified NSP profile.
- * Azure REST API version: 2024-06-01-preview.
+ *
+ * Uses Azure REST API version 2024-06-01-preview.
  */
 export function getNetworkSecurityPerimeterProfile(args: GetNetworkSecurityPerimeterProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkSecurityPerimeterProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +38,10 @@ export interface GetNetworkSecurityPerimeterProfileResult {
      */
     readonly accessRulesVersion: string;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Version number that increases with every update to diagnostic settings within the profile.
      */
     readonly diagnosticSettingsVersion: string;
@@ -63,7 +68,8 @@ export interface GetNetworkSecurityPerimeterProfileResult {
 }
 /**
  * Gets the specified NSP profile.
- * Azure REST API version: 2024-06-01-preview.
+ *
+ * Uses Azure REST API version 2024-06-01-preview.
  */
 export function getNetworkSecurityPerimeterProfileOutput(args: GetNetworkSecurityPerimeterProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkSecurityPerimeterProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

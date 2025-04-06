@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the properties of a SecretSync instance.
- * Azure REST API version: 2024-08-21-preview.
+ *
+ * Uses Azure REST API version 2024-08-21-preview.
  */
 export function getSecretSync(args: GetSecretSyncArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretSyncResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetSecretSyncArgs {
  * The SecretSync resource.
  */
 export interface GetSecretSyncResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The complex type of the extended location.
      */
@@ -87,7 +92,8 @@ export interface GetSecretSyncResult {
 }
 /**
  * Gets the properties of a SecretSync instance.
- * Azure REST API version: 2024-08-21-preview.
+ *
+ * Uses Azure REST API version 2024-08-21-preview.
  */
 export function getSecretSyncOutput(args: GetSecretSyncOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretSyncResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

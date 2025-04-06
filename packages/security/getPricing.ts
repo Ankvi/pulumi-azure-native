@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the Defender plans pricing configurations of the selected scope (valid scopes are resource id or a subscription id). At the resource level, supported resource types are 'VirtualMachines, VMSS and ARC Machines'.
- * Azure REST API version: 2024-01-01.
+ *
+ * Uses Azure REST API version 2024-01-01.
  */
 export function getPricing(args: GetPricingArgs, opts?: pulumi.InvokeOptions): Promise<GetPricingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetPricingArgs {
  * Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
  */
 export interface GetPricingResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Optional. True if the plan is deprecated. If there are replacing plans they will appear in `replacedBy` property
      */
@@ -87,7 +92,8 @@ export interface GetPricingResult {
 }
 /**
  * Get the Defender plans pricing configurations of the selected scope (valid scopes are resource id or a subscription id). At the resource level, supported resource types are 'VirtualMachines, VMSS and ARC Machines'.
- * Azure REST API version: 2024-01-01.
+ *
+ * Uses Azure REST API version 2024-01-01.
  */
 export function getPricingOutput(args: GetPricingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPricingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

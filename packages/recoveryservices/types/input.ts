@@ -67,6 +67,10 @@ export interface A2ACrossClusterMigrationPolicyCreationInputArgs {
  */
 export interface A2AEnableProtectionInputArgs {
     /**
+     * A value indicating whether the auto protection is enabled.
+     */
+    autoProtectionOfDataDisk?: pulumi.Input<string | enums.AutoProtectionOfDataDisk>;
+    /**
      * The recovery disk encryption information (for two pass flows).
      */
     diskEncryptionInfo?: pulumi.Input<DiskEncryptionInfoArgs>;
@@ -87,6 +91,10 @@ export interface A2AEnableProtectionInputArgs {
      * The multi vm group name.
      */
     multiVmGroupName?: pulumi.Input<string>;
+    /**
+     * The replication protection cluster Id.
+     */
+    protectionClusterId?: pulumi.Input<string>;
     /**
      * The recovery availability set Id.
      */
@@ -681,6 +689,10 @@ export interface AzureFileShareProtectionPolicyArgs {
      */
     timeZone?: pulumi.Input<string>;
     /**
+     * Retention policy with the details on hardened backup copy retention ranges.
+     */
+    vaultRetentionPolicy?: pulumi.Input<VaultRetentionPolicyArgs>;
+    /**
      * Type of workload for the backup management
      */
     workLoadType?: pulumi.Input<string | enums.WorkloadType>;
@@ -1241,6 +1253,7 @@ export interface AzureIaaSVMProtectionPolicyArgs {
      * Backup schedule specified as part of backup policy.
      */
     schedulePolicy?: pulumi.Input<LogSchedulePolicyArgs | LongTermSchedulePolicyArgs | SimpleSchedulePolicyArgs | SimpleSchedulePolicyV2Args>;
+    snapshotConsistencyType?: pulumi.Input<string | enums.IaasVMSnapshotConsistencyType>;
     /**
      * Tiering policy to automatically move RPs to another tier
      * Key is Target Tier, defined in RecoveryPointTierType enum.
@@ -1257,7 +1270,9 @@ export interface AzureIaaSVMProtectionPolicyArgs {
  * Settings for Azure Monitor based alerts
  */
 export interface AzureMonitorAlertSettingsArgs {
+    alertsForAllFailoverIssues?: pulumi.Input<string | enums.AlertsState>;
     alertsForAllJobFailures?: pulumi.Input<string | enums.AlertsState>;
+    alertsForAllReplicationIssues?: pulumi.Input<string | enums.AlertsState>;
 }
 
 /**
@@ -1566,6 +1581,10 @@ export interface AzureStorageContainerArgs {
      * Status of health of the container.
      */
     healthStatus?: pulumi.Input<string>;
+    /**
+     * Re-Do Operation
+     */
+    operationType?: pulumi.Input<string | enums.OperationType>;
     /**
      * Type of the protectable object associated with this container
      */
@@ -2479,6 +2498,7 @@ export interface AzureWorkloadSQLAutoProtectionIntentArgs {
  */
 export interface ClassicAlertSettingsArgs {
     alertsForCriticalOperations?: pulumi.Input<string | enums.AlertsState>;
+    emailNotificationsForSiteRecovery?: pulumi.Input<string | enums.AlertsState>;
 }
 
 /**
@@ -3303,13 +3323,17 @@ export interface HyperVReplicaAzureDiskInputDetailsArgs {
      */
     diskId?: pulumi.Input<string>;
     /**
-     * The DiskType.
+     * The disk type.
      */
     diskType?: pulumi.Input<string | enums.DiskAccountType>;
     /**
      * The LogStorageAccountId.
      */
     logStorageAccountId?: pulumi.Input<string>;
+    /**
+     * The logical sector size (in bytes), 512 by default.
+     */
+    sectorSizeInBytes?: pulumi.Input<number>;
 }
 
 /**
@@ -3321,7 +3345,7 @@ export interface HyperVReplicaAzureEnableProtectionInputArgs {
      */
     diskEncryptionSetId?: pulumi.Input<string>;
     /**
-     * The DiskType.
+     * The disk type.
      */
     diskType?: pulumi.Input<string | enums.DiskAccountType>;
     /**
@@ -3349,6 +3373,10 @@ export interface HyperVReplicaAzureEnableProtectionInputArgs {
      * License type.
      */
     licenseType?: pulumi.Input<string | enums.LicenseType>;
+    /**
+     * The license type for Linux VM's.
+     */
+    linuxLicenseType?: pulumi.Input<string | enums.LinuxLicenseType>;
     /**
      * The storage account to be used for logging during replication.
      */
@@ -3410,6 +3438,10 @@ export interface HyperVReplicaAzureEnableProtectionInputArgs {
      */
     targetStorageAccountId?: pulumi.Input<string>;
     /**
+     * The target VM security profile.
+     */
+    targetVmSecurityProfile?: pulumi.Input<SecurityProfilePropertiesArgs>;
+    /**
      * The target VM size.
      */
     targetVmSize?: pulumi.Input<string>;
@@ -3425,6 +3457,10 @@ export interface HyperVReplicaAzureEnableProtectionInputArgs {
      * A value indicating whether managed disks should be used during replication.
      */
     useManagedDisksForReplication?: pulumi.Input<string>;
+    /**
+     * The OS name selected by user.
+     */
+    userSelectedOSName?: pulumi.Input<string>;
     /**
      * The OS disk VHD id associated with VM.
      */
@@ -3678,7 +3714,7 @@ export interface InMageAzureV2DiskInputDetailsArgs {
      */
     diskId?: pulumi.Input<string>;
     /**
-     * The DiskType.
+     * The disk type.
      */
     diskType?: pulumi.Input<string | enums.DiskAccountType>;
     /**
@@ -3696,7 +3732,7 @@ export interface InMageAzureV2EnableProtectionInputArgs {
      */
     diskEncryptionSetId?: pulumi.Input<string>;
     /**
-     * The DiskType.
+     * The disk type.
      */
     diskType?: pulumi.Input<string | enums.DiskAccountType>;
     /**
@@ -3955,6 +3991,10 @@ export interface InMageRcmDiskInputArgs {
      * The log storage account ARM Id.
      */
     logStorageAccountId: pulumi.Input<string>;
+    /**
+     * The logical sector size (in bytes), 512 by default.
+     */
+    sectorSizeInBytes?: pulumi.Input<number>;
 }
 
 /**
@@ -3973,6 +4013,10 @@ export interface InMageRcmDisksDefaultInputArgs {
      * The log storage account ARM Id.
      */
     logStorageAccountId: pulumi.Input<string>;
+    /**
+     * The logical sector size (in bytes), 512 by default.
+     */
+    sectorSizeInBytes?: pulumi.Input<number>;
 }
 
 /**
@@ -4001,6 +4045,10 @@ export interface InMageRcmEnableProtectionInputArgs {
      */
     licenseType?: pulumi.Input<string | enums.LicenseType>;
     /**
+     * The license type for Linux VM's.
+     */
+    linuxLicenseType?: pulumi.Input<string | enums.LinuxLicenseType>;
+    /**
      * The multi VM group name.
      */
     multiVmGroupName?: pulumi.Input<string>;
@@ -4012,6 +4060,14 @@ export interface InMageRcmEnableProtectionInputArgs {
      * The run-as account Id.
      */
     runAsAccountId?: pulumi.Input<string>;
+    /**
+     * The tags for the seed managed disks.
+     */
+    seedManagedDiskTags?: pulumi.Input<pulumi.Input<UserCreatedResourceTagArgs>[]>;
+    /**
+     * The SQL Server license type.
+     */
+    sqlServerLicenseType?: pulumi.Input<string | enums.SqlServerLicenseType>;
     /**
      * The target availability set ARM Id.
      */
@@ -4025,9 +4081,17 @@ export interface InMageRcmEnableProtectionInputArgs {
      */
     targetBootDiagnosticsStorageAccountId?: pulumi.Input<string>;
     /**
+     * The tags for the target managed disks.
+     */
+    targetManagedDiskTags?: pulumi.Input<pulumi.Input<UserCreatedResourceTagArgs>[]>;
+    /**
      * The selected target network ARM Id.
      */
     targetNetworkId?: pulumi.Input<string>;
+    /**
+     * The tags for the target NICs.
+     */
+    targetNicTags?: pulumi.Input<pulumi.Input<UserCreatedResourceTagArgs>[]>;
     /**
      * The target proximity placement group Id.
      */
@@ -4045,9 +4109,17 @@ export interface InMageRcmEnableProtectionInputArgs {
      */
     targetVmName?: pulumi.Input<string>;
     /**
+     * The target VM security profile.
+     */
+    targetVmSecurityProfile?: pulumi.Input<SecurityProfilePropertiesArgs>;
+    /**
      * The target VM size.
      */
     targetVmSize?: pulumi.Input<string>;
+    /**
+     * The target VM tags.
+     */
+    targetVmTags?: pulumi.Input<pulumi.Input<UserCreatedResourceTagArgs>[]>;
     /**
      * The selected test network ARM Id.
      */
@@ -4056,6 +4128,10 @@ export interface InMageRcmEnableProtectionInputArgs {
      * The selected test subnet name.
      */
     testSubnetName?: pulumi.Input<string>;
+    /**
+     * The OS name selected by user.
+     */
+    userSelectedOSName?: pulumi.Input<string>;
 }
 
 /**
@@ -4954,7 +5030,7 @@ export interface ResourceGuardProxyBaseArgs {
     description?: pulumi.Input<string>;
     lastUpdatedTime?: pulumi.Input<string>;
     resourceGuardOperationDetails?: pulumi.Input<pulumi.Input<ResourceGuardOperationDetailArgs>[]>;
-    resourceGuardResourceId?: pulumi.Input<string>;
+    resourceGuardResourceId: pulumi.Input<string>;
 }
 
 /**
@@ -4980,6 +5056,32 @@ export interface RetentionDurationArgs {
      * Retention duration type of retention policy.
      */
     durationType?: pulumi.Input<string | enums.RetentionDurationType>;
+}
+
+/**
+ * Security profile input.
+ */
+export interface SecurityProfilePropertiesArgs {
+    /**
+     * A value indicating whether confidential compute encryption to be enabled.
+     */
+    targetVmConfidentialEncryption?: pulumi.Input<string | enums.SecurityConfiguration>;
+    /**
+     * A value indicating whether integrity monitoring to be enabled.
+     */
+    targetVmMonitoring?: pulumi.Input<string | enums.SecurityConfiguration>;
+    /**
+     * A value indicating whether secure boot to be enabled.
+     */
+    targetVmSecureBoot?: pulumi.Input<string | enums.SecurityConfiguration>;
+    /**
+     * The target VM security type.
+     */
+    targetVmSecurityType?: pulumi.Input<string | enums.SecurityType>;
+    /**
+     * A value indicating whether trusted platform module to be enabled.
+     */
+    targetVmTpm?: pulumi.Input<string | enums.SecurityConfiguration>;
 }
 
 /**
@@ -5153,9 +5255,22 @@ export interface SkuArgs {
 }
 
 /**
+ * Snapshot Backup related fields for WorkloadType SaPHanaSystem
+ */
+export interface SnapshotBackupAdditionalDetailsArgs {
+    instantRPDetails?: pulumi.Input<string>;
+    instantRpRetentionRangeInDays?: pulumi.Input<number>;
+    /**
+     * User assigned managed identity details
+     */
+    userAssignedManagedIdentityDetails?: pulumi.Input<UserAssignedManagedIdentityDetailsArgs>;
+}
+
+/**
  * Soft delete Settings of vault
  */
 export interface SoftDeleteSettingsArgs {
+    enhancedSecurityState?: pulumi.Input<string | enums.EnhancedSecurityState>;
     /**
      * Soft delete retention period in days
      */
@@ -5190,6 +5305,10 @@ export interface SubProtectionPolicyArgs {
      */
     schedulePolicy?: pulumi.Input<LogSchedulePolicyArgs | LongTermSchedulePolicyArgs | SimpleSchedulePolicyArgs | SimpleSchedulePolicyV2Args>;
     /**
+     * Snapshot Backup related fields for WorkloadType SaPHanaSystem
+     */
+    snapshotBackupAdditionalDetails?: pulumi.Input<SnapshotBackupAdditionalDetailsArgs>;
+    /**
      * Tiering policy to automatically move RPs to another tier.
      * Key is Target Tier, defined in RecoveryPointTierType enum.
      * Tiering policy specifies the criteria to move RP to the target tier.
@@ -5219,6 +5338,52 @@ export interface TieringPolicyArgs {
      * 3. DoNotTier: Do not tier any recovery points
      */
     tieringMode?: pulumi.Input<string | enums.TieringMode>;
+}
+
+/**
+ * User assigned managed identity properties
+ */
+export interface UserAssignedIdentityPropertiesArgs {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId?: pulumi.Input<string>;
+}
+
+/**
+ * User assigned managed identity details
+ */
+export interface UserAssignedManagedIdentityDetailsArgs {
+    /**
+     * The ARM id of the assigned identity.
+     */
+    identityArmId?: pulumi.Input<string>;
+    /**
+     * The name of the assigned identity.
+     */
+    identityName?: pulumi.Input<string>;
+    /**
+     * User assigned managed identity properties
+     */
+    userAssignedIdentityProperties?: pulumi.Input<UserAssignedIdentityPropertiesArgs>;
+}
+
+/**
+ * Resource tag input.
+ */
+export interface UserCreatedResourceTagArgs {
+    /**
+     * The tag name. Please read for more information: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations
+     */
+    tagName?: pulumi.Input<string>;
+    /**
+     * The tag value. Please read her for more information: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations
+     */
+    tagValue?: pulumi.Input<string>;
 }
 
 /**
@@ -5284,6 +5449,10 @@ export interface VMwareCbtDiskInputArgs {
      * The key vault secret name of the log storage account.
      */
     logStorageAccountSasSecretName: pulumi.Input<string>;
+    /**
+     * The logical sector size (in bytes), 512 by default.
+     */
+    sectorSizeInBytes?: pulumi.Input<number>;
 }
 
 /**
@@ -5311,6 +5480,10 @@ export interface VMwareCbtEnableMigrationInputArgs {
      * License type.
      */
     licenseType?: pulumi.Input<string | enums.LicenseType>;
+    /**
+     * The license type for Linux VM's.
+     */
+    linuxLicenseType?: pulumi.Input<string | enums.LinuxLicenseType>;
     /**
      * A value indicating whether auto resync is to be done.
      */
@@ -5391,6 +5564,10 @@ export interface VMwareCbtEnableMigrationInputArgs {
      * The selected test subnet name.
      */
     testSubnetName?: pulumi.Input<string>;
+    /**
+     * The OS name selected by user.
+     */
+    userSelectedOSName?: pulumi.Input<string>;
     /**
      * The ARM Id of the VM discovered in VMware.
      */
@@ -5486,6 +5663,14 @@ export interface VaultPropertiesArgs {
      */
     publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess>;
     /**
+     * The redundancy Settings of a Vault
+     */
+    redundancySettings?: pulumi.Input<VaultPropertiesRedundancySettingsArgs>;
+    /**
+     * ResourceGuardOperationRequests on which LAC check will be performed
+     */
+    resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Restore Settings of the vault
      */
     restoreSettings?: pulumi.Input<RestoreSettingsArgs>;
@@ -5511,6 +5696,31 @@ export interface VaultPropertiesEncryptionArgs {
      * The properties of the Key Vault which hosts CMK
      */
     keyVaultProperties?: pulumi.Input<CmkKeyVaultPropertiesArgs>;
+}
+
+/**
+ * The redundancy Settings of a Vault
+ */
+export interface VaultPropertiesRedundancySettingsArgs {
+    /**
+     * Flag to show if Cross Region Restore is enabled on the Vault or not
+     */
+    crossRegionRestore?: pulumi.Input<string | enums.CrossRegionRestore>;
+    /**
+     * The storage redundancy setting of a vault
+     */
+    standardTierStorageRedundancy?: pulumi.Input<string | enums.StandardTierStorageRedundancy>;
+}
+
+/**
+ * Vault retention policy for AzureFileShare
+ */
+export interface VaultRetentionPolicyArgs {
+    snapshotRetentionInDays: pulumi.Input<number>;
+    /**
+     * Base class for retention policy.
+     */
+    vaultRetention: pulumi.Input<LongTermRetentionPolicyArgs | SimpleRetentionPolicyArgs>;
 }
 
 /**
@@ -5622,17 +5832,3 @@ export interface YearlyRetentionScheduleArgs {
      */
     retentionTimes?: pulumi.Input<pulumi.Input<string>[]>;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

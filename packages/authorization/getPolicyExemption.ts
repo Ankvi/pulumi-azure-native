@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * This operation retrieves a single policy exemption, given its name and the scope it was created at.
- * Azure REST API version: 2022-07-01-preview.
+ *
+ * Uses Azure REST API version 2022-07-01-preview.
+ *
+ * Other available API versions: 2020-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPolicyExemption(args: GetPolicyExemptionArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyExemptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,6 +35,10 @@ export interface GetPolicyExemptionResult {
      * The option whether validate the exemption is at or under the assignment scope.
      */
     readonly assignmentScopeValidation?: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The description of the policy exemption.
      */
@@ -83,7 +90,10 @@ export interface GetPolicyExemptionResult {
 }
 /**
  * This operation retrieves a single policy exemption, given its name and the scope it was created at.
- * Azure REST API version: 2022-07-01-preview.
+ *
+ * Uses Azure REST API version 2022-07-01-preview.
+ *
+ * Other available API versions: 2020-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPolicyExemptionOutput(args: GetPolicyExemptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicyExemptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -237,11 +237,37 @@ export interface FilesNotTieringErrorResponse {
 }
 
 /**
- * The Private Endpoint Connection resource.
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityResponse {
+    /**
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: string;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
+ * The private endpoint connection resource.
  */
 export interface PrivateEndpointConnectionResponse {
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * The group ids for the private endpoint resource.
+     */
+    groupIds: string[];
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     id: string;
     /**
@@ -249,7 +275,7 @@ export interface PrivateEndpointConnectionResponse {
      */
     name: string;
     /**
-     * The resource of private end point.
+     * The private endpoint resource.
      */
     privateEndpoint?: PrivateEndpointResponse;
     /**
@@ -271,11 +297,11 @@ export interface PrivateEndpointConnectionResponse {
 }
 
 /**
- * The Private Endpoint resource.
+ * The private endpoint resource.
  */
 export interface PrivateEndpointResponse {
     /**
-     * The ARM identifier for Private Endpoint
+     * The ARM identifier for private endpoint.
      */
     id: string;
 }
@@ -386,6 +412,62 @@ export interface ServerEndpointFilesNotSyncingErrorResponse {
      * Count of transient files not syncing with the specified error code
      */
     transientCount: number;
+}
+
+/**
+ * Server endpoint provisioning status information
+ */
+export interface ServerEndpointProvisioningStatusResponse {
+    /**
+     * Server Endpoint provisioning status
+     */
+    provisioningStatus: string;
+    /**
+     * Provisioning Step status information for each step in the provisioning process
+     */
+    provisioningStepStatuses: ServerEndpointProvisioningStepStatusResponse[];
+    /**
+     * Server Endpoint provisioning type
+     */
+    provisioningType: string;
+}
+
+/**
+ * Server endpoint provisioning step status object.
+ */
+export interface ServerEndpointProvisioningStepStatusResponse {
+    /**
+     * Additional information for the provisioning step
+     */
+    additionalInformation: {[key: string]: string};
+    /**
+     * End time of the provisioning step
+     */
+    endTime: string;
+    /**
+     * Error code (HResult) for the provisioning step
+     */
+    errorCode: number;
+    /**
+     * Estimated completion time of the provisioning step in minutes
+     */
+    minutesLeft: number;
+    /**
+     * Name of the provisioning step
+     */
+    name: string;
+    /**
+     * Estimated progress percentage
+     */
+    progressPercentage: number;
+    /**
+     * Start time of the provisioning step
+     */
+    startTime: string;
+    /**
+     * Status of the provisioning step
+     */
+    status: string;
 }
 
 /**
@@ -580,3 +662,16 @@ export interface SystemDataResponse {
     lastModifiedByType?: string;
 }
 
+/**
+ * User assigned identity properties
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId: string;
+}

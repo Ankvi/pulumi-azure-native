@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the SAP Instance resource.
- * Azure REST API version: 2023-10-01-preview.
+ *
+ * Uses Azure REST API version 2023-10-01-preview.
  */
 export function getSapInstance(args: GetSapInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetSapInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +38,10 @@ export interface GetSapInstanceResult {
      * Enter a business function/department identifier to group multiple SIDs.
      */
     readonly application: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The Environment; PRD, QA, DEV, etc to which SAP system belongs to. Select from the list of available dropdown values.
      */
@@ -84,7 +89,8 @@ export interface GetSapInstanceResult {
 }
 /**
  * Gets the SAP Instance resource.
- * Azure REST API version: 2023-10-01-preview.
+ *
+ * Uses Azure REST API version 2023-10-01-preview.
  */
 export function getSapInstanceOutput(args: GetSapInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSapInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

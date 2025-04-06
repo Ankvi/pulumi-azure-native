@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Network function resource response.
- * Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2020-01-01-preview.
  *
- * Other available API versions: 2023-09-01, 2024-04-15.
+ * Uses Azure REST API version 2024-04-15. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
+ *
+ * Other available API versions: 2022-01-01-preview, 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridnetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkFunction extends pulumi.CustomResource {
     /**
@@ -35,55 +36,31 @@ export class NetworkFunction extends pulumi.CustomResource {
     }
 
     /**
-     * The reference to the device resource. Once set, it cannot be updated.
+     * The Azure API version of the resource.
      */
-    public readonly device!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
     public /*out*/ readonly etag!: pulumi.Output<string | undefined>;
     /**
+     * The managed identity of the network function.
+     */
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
+    /**
      * The geo-location where the resource lives
      */
     public readonly location!: pulumi.Output<string>;
-    /**
-     * The resource URI of the managed application.
-     */
-    public /*out*/ readonly managedApplication!: pulumi.Output<types.outputs.SubResourceResponse>;
-    /**
-     * The parameters for the managed application.
-     */
-    public readonly managedApplicationParameters!: pulumi.Output<any | undefined>;
     /**
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The network function container configurations from the user.
+     * Network function properties.
      */
-    public readonly networkFunctionContainerConfigurations!: pulumi.Output<any | undefined>;
+    public readonly properties!: pulumi.Output<types.outputs.NetworkFunctionValueWithSecretsResponse | types.outputs.NetworkFunctionValueWithoutSecretsResponse>;
     /**
-     * The network function configurations from the user.
-     */
-    public readonly networkFunctionUserConfigurations!: pulumi.Output<types.outputs.NetworkFunctionUserConfigurationResponse[] | undefined>;
-    /**
-     * The provisioning state of the network function resource.
-     */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
-    /**
-     * The service key for the network function resource.
-     */
-    public /*out*/ readonly serviceKey!: pulumi.Output<string>;
-    /**
-     * The sku name for the network function. Once set, it cannot be updated.
-     */
-    public readonly skuName!: pulumi.Output<string | undefined>;
-    /**
-     * The sku type for the network function.
-     */
-    public /*out*/ readonly skuType!: pulumi.Output<string>;
-    /**
-     * The system meta data relating to this resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -94,14 +71,6 @@ export class NetworkFunction extends pulumi.CustomResource {
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
-    /**
-     * The vendor name for the network function. Once set, it cannot be updated.
-     */
-    public readonly vendorName!: pulumi.Output<string | undefined>;
-    /**
-     * The vendor provisioning state for the network function resource.
-     */
-    public /*out*/ readonly vendorProvisioningState!: pulumi.Output<string>;
 
     /**
      * Create a NetworkFunction resource with the given unique name, arguments, and options.
@@ -117,43 +86,27 @@ export class NetworkFunction extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["device"] = args ? args.device : undefined;
+            resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["managedApplicationParameters"] = args ? args.managedApplicationParameters : undefined;
-            resourceInputs["networkFunctionContainerConfigurations"] = args ? args.networkFunctionContainerConfigurations : undefined;
             resourceInputs["networkFunctionName"] = args ? args.networkFunctionName : undefined;
-            resourceInputs["networkFunctionUserConfigurations"] = args ? args.networkFunctionUserConfigurations : undefined;
+            resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["skuName"] = args ? args.skuName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vendorName"] = args ? args.vendorName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
-            resourceInputs["managedApplication"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["provisioningState"] = undefined /*out*/;
-            resourceInputs["serviceKey"] = undefined /*out*/;
-            resourceInputs["skuType"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
-            resourceInputs["vendorProvisioningState"] = undefined /*out*/;
         } else {
-            resourceInputs["device"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
-            resourceInputs["managedApplication"] = undefined /*out*/;
-            resourceInputs["managedApplicationParameters"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["networkFunctionContainerConfigurations"] = undefined /*out*/;
-            resourceInputs["networkFunctionUserConfigurations"] = undefined /*out*/;
-            resourceInputs["provisioningState"] = undefined /*out*/;
-            resourceInputs["serviceKey"] = undefined /*out*/;
-            resourceInputs["skuName"] = undefined /*out*/;
-            resourceInputs["skuType"] = undefined /*out*/;
+            resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
-            resourceInputs["vendorName"] = undefined /*out*/;
-            resourceInputs["vendorProvisioningState"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "azure-native:hybridnetwork/v20200101preview:NetworkFunction" }, { type: "azure-native:hybridnetwork/v20210501:NetworkFunction" }, { type: "azure-native:hybridnetwork/v20220101preview:NetworkFunction" }, { type: "azure-native:hybridnetwork/v20230901:NetworkFunction" }, { type: "azure-native:hybridnetwork/v20240415:NetworkFunction" }] };
@@ -167,43 +120,27 @@ export class NetworkFunction extends pulumi.CustomResource {
  */
 export interface NetworkFunctionArgs {
     /**
-     * The reference to the device resource. Once set, it cannot be updated.
+     * The managed identity of the network function.
      */
-    device?: pulumi.Input<types.inputs.SubResourceArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
-     * The parameters for the managed application.
-     */
-    managedApplicationParameters?: any;
-    /**
-     * The network function container configurations from the user.
-     */
-    networkFunctionContainerConfigurations?: any;
-    /**
      * Resource name for the network function resource.
      */
     networkFunctionName?: pulumi.Input<string>;
     /**
-     * The network function configurations from the user.
+     * Network function properties.
      */
-    networkFunctionUserConfigurations?: pulumi.Input<pulumi.Input<types.inputs.NetworkFunctionUserConfigurationArgs>[]>;
+    properties?: pulumi.Input<types.inputs.NetworkFunctionValueWithSecretsArgs | types.inputs.NetworkFunctionValueWithoutSecretsArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The sku name for the network function. Once set, it cannot be updated.
-     */
-    skuName?: pulumi.Input<string>;
-    /**
      * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The vendor name for the network function. Once set, it cannot be updated.
-     */
-    vendorName?: pulumi.Input<string>;
 }

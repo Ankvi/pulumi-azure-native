@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the specified edge site in a specified resource group.
- * Azure REST API version: 2024-03-01-preview.
  *
- * Other available API versions: 2024-03-01.
+ * Uses Azure REST API version 2024-03-01-preview.
+ *
+ * Other available API versions: 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native orbital [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getEdgeSite(args: GetEdgeSiteArgs, opts?: pulumi.InvokeOptions): Promise<GetEdgeSiteResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,6 +31,10 @@ export interface GetEdgeSiteArgs {
  * A customer's reference to a global communications site site.
  */
 export interface GetEdgeSiteResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * A reference to global communications site.
      */
@@ -61,9 +66,10 @@ export interface GetEdgeSiteResult {
 }
 /**
  * Gets the specified edge site in a specified resource group.
- * Azure REST API version: 2024-03-01-preview.
  *
- * Other available API versions: 2024-03-01.
+ * Uses Azure REST API version 2024-03-01-preview.
+ *
+ * Other available API versions: 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native orbital [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getEdgeSiteOutput(args: GetEdgeSiteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEdgeSiteResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

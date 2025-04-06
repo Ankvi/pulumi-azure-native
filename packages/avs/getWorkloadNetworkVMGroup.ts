@@ -1,10 +1,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
- * NSX VM Group
- * Azure REST API version: 2022-05-01.
+ * Get a WorkloadNetworkVMGroup
  *
- * Other available API versions: 2023-03-01, 2023-09-01.
+ * Uses Azure REST API version 2023-09-01.
+ *
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getWorkloadNetworkVMGroup(args: GetWorkloadNetworkVMGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadNetworkVMGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -25,7 +27,7 @@ export interface GetWorkloadNetworkVMGroupArgs {
      */
     resourceGroupName: string;
     /**
-     * NSX VM Group identifier. Generally the same as the VM Group's display name
+     * ID of the VM group.
      */
     vmGroupId: string;
 }
@@ -35,11 +37,15 @@ export interface GetWorkloadNetworkVMGroupArgs {
  */
 export interface GetWorkloadNetworkVMGroupResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Display name of the VM group.
      */
     readonly displayName?: string;
     /**
-     * Resource ID.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -47,7 +53,7 @@ export interface GetWorkloadNetworkVMGroupResult {
      */
     readonly members?: string[];
     /**
-     * Resource name.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -63,15 +69,20 @@ export interface GetWorkloadNetworkVMGroupResult {
      */
     readonly status: string;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
 /**
- * NSX VM Group
- * Azure REST API version: 2022-05-01.
+ * Get a WorkloadNetworkVMGroup
  *
- * Other available API versions: 2023-03-01, 2023-09-01.
+ * Uses Azure REST API version 2023-09-01.
+ *
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getWorkloadNetworkVMGroupOutput(args: GetWorkloadNetworkVMGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkloadNetworkVMGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -92,7 +103,7 @@ export interface GetWorkloadNetworkVMGroupOutputArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * NSX VM Group identifier. Generally the same as the VM Group's display name
+     * ID of the VM group.
      */
     vmGroupId: pulumi.Input<string>;
 }

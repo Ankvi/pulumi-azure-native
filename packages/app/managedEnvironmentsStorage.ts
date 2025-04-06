@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Storage resource for managedEnvironment.
- * Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2022-03-01.
  *
- * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview.
+ * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
+ *
+ * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ManagedEnvironmentsStorage extends pulumi.CustomResource {
     /**
@@ -34,6 +35,10 @@ export class ManagedEnvironmentsStorage extends pulumi.CustomResource {
         return obj['__pulumiType'] === ManagedEnvironmentsStorage.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The name of the resource
      */
@@ -72,17 +77,19 @@ export class ManagedEnvironmentsStorage extends pulumi.CustomResource {
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["storageName"] = args ? args.storageName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20220101preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20220301:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20220601preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20221001:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20221101preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20230401preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20230501:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20230502preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20230801preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20231102preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20240202preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20240301:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20240802preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20241002preview:ManagedEnvironmentsStorage" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20220101preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20220301:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20220601preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20221001:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20221101preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20230401preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20230501:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20230502preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20230801preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20231102preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20240202preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20240301:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20240802preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20241002preview:ManagedEnvironmentsStorage" }, { type: "azure-native:app/v20250101:ManagedEnvironmentsStorage" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedEnvironmentsStorage.__pulumiType, name, resourceInputs, opts);
     }

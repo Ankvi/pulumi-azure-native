@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-cloudngfw",
-    "version": "2.89.3",
+    "version": "3.0.0",
     "description": "Pulumi Azure Native package for cloudngfw",
     "keywords": [
         "pulumi",

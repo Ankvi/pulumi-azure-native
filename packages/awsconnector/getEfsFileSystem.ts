@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a EfsFileSystem
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getEfsFileSystem(args: GetEfsFileSystemArgs, opts?: pulumi.InvokeOptions): Promise<GetEfsFileSystemResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetEfsFileSystemArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetEfsFileSystemResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetEfsFileSystemResult {
 }
 /**
  * Get a EfsFileSystem
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getEfsFileSystemOutput(args: GetEfsFileSystemOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEfsFileSystemResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

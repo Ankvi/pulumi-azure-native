@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Lists a workflow run expression trace.
- * Azure REST API version: 2019-05-01.
  *
- * Other available API versions: 2016-06-01, 2018-07-01-preview.
+ * Uses Azure REST API version 2019-05-01.
+ *
+ * Other available API versions: 2016-06-01, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listWorkflowRunActionRepetitionExpressionTraces(args: ListWorkflowRunActionRepetitionExpressionTracesArgs, opts?: pulumi.InvokeOptions): Promise<ListWorkflowRunActionRepetitionExpressionTracesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -49,9 +50,10 @@ export interface ListWorkflowRunActionRepetitionExpressionTracesResult {
 }
 /**
  * Lists a workflow run expression trace.
- * Azure REST API version: 2019-05-01.
  *
- * Other available API versions: 2016-06-01, 2018-07-01-preview.
+ * Uses Azure REST API version 2019-05-01.
+ *
+ * Other available API versions: 2016-06-01, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listWorkflowRunActionRepetitionExpressionTracesOutput(args: ListWorkflowRunActionRepetitionExpressionTracesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListWorkflowRunActionRepetitionExpressionTracesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

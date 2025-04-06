@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A sensitivity label.
- * Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
  *
- * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+ * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
+ *
+ * Other available API versions: 2018-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ManagedDatabaseSensitivityLabel extends pulumi.CustomResource {
     /**
@@ -34,6 +35,11 @@ export class ManagedDatabaseSensitivityLabel extends pulumi.CustomResource {
         return obj['__pulumiType'] === ManagedDatabaseSensitivityLabel.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    public readonly clientClassificationSource!: pulumi.Output<string | undefined>;
     /**
      * The column name.
      */
@@ -109,6 +115,7 @@ export class ManagedDatabaseSensitivityLabel extends pulumi.CustomResource {
             if ((!args || args.tableName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tableName'");
             }
+            resourceInputs["clientClassificationSource"] = args ? args.clientClassificationSource : undefined;
             resourceInputs["columnName"] = args ? args.columnName : undefined;
             resourceInputs["databaseName"] = args ? args.databaseName : undefined;
             resourceInputs["informationType"] = args ? args.informationType : undefined;
@@ -121,11 +128,14 @@ export class ManagedDatabaseSensitivityLabel extends pulumi.CustomResource {
             resourceInputs["schemaName"] = args ? args.schemaName : undefined;
             resourceInputs["sensitivityLabelSource"] = args ? args.sensitivityLabelSource : undefined;
             resourceInputs["tableName"] = args ? args.tableName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["isDisabled"] = undefined /*out*/;
             resourceInputs["managedBy"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["clientClassificationSource"] = undefined /*out*/;
             resourceInputs["columnName"] = undefined /*out*/;
             resourceInputs["informationType"] = undefined /*out*/;
             resourceInputs["informationTypeId"] = undefined /*out*/;
@@ -140,7 +150,7 @@ export class ManagedDatabaseSensitivityLabel extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20180601preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20200202preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20200801preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20201101preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20210201preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20210501preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20210801preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20211101:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20211101preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20220201preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20220501preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20220801preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20221101preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20230201preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20230501preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20230801preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20240501preview:ManagedDatabaseSensitivityLabel" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20180601preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20200202preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20200801preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20201101preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20210201preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20210501preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20210801preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20211101:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20211101preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20220201preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20220501preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20220801preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20221101preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20230201preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20230501preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20230801:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20230801preview:ManagedDatabaseSensitivityLabel" }, { type: "azure-native:sql/v20240501preview:ManagedDatabaseSensitivityLabel" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedDatabaseSensitivityLabel.__pulumiType, name, resourceInputs, opts);
     }
@@ -150,6 +160,7 @@ export class ManagedDatabaseSensitivityLabel extends pulumi.CustomResource {
  * The set of arguments for constructing a ManagedDatabaseSensitivityLabel resource.
  */
 export interface ManagedDatabaseSensitivityLabelArgs {
+    clientClassificationSource?: pulumi.Input<string | types.enums.ClientClassificationSource>;
     /**
      * The name of the column.
      */

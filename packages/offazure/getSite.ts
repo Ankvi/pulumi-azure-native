@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Site REST Resource.
- * Azure REST API version: 2020-07-07.
+ *
+ * Uses Azure REST API version 2020-07-07.
  */
 export function getSite(args: GetSiteArgs, opts?: pulumi.InvokeOptions): Promise<GetSiteResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetSiteArgs {
  * Site REST Resource.
  */
 export interface GetSiteResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * eTag for concurrency control.
      */
@@ -60,7 +65,8 @@ export interface GetSiteResult {
 }
 /**
  * Site REST Resource.
- * Azure REST API version: 2020-07-07.
+ *
+ * Uses Azure REST API version 2020-07-07.
  */
 export function getSiteOutput(args: GetSiteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSiteResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

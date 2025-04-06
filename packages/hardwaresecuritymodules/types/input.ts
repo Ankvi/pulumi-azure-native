@@ -5,23 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
  */
 export interface ApiEntityReferenceArgs {
     /**
-     * The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+     * The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
      */
-    id?: pulumi.Input<string>;
-}
-
-/**
- * Security domain properties information for Cloud HSM cluster
- */
-export interface CloudHsmClusterSecurityDomainPropertiesArgs {
-    /**
-     * status of security domain activation
-     */
-    activationStatus?: pulumi.Input<string>;
-    /**
-     * FIPS state information for security domain
-     */
-    fipsState?: pulumi.Input<number>;
+    resourceId?: pulumi.Input<string>;
 }
 
 /**
@@ -43,21 +29,17 @@ export interface CloudHsmClusterSkuArgs {
 }
 
 /**
- * The Cloud HSM Properties
+ * Managed service identity (system assigned and/or user assigned identities)
  */
-export interface CloudHsmPropertiesArgs {
+export interface ManagedServiceIdentityArgs {
     /**
-     * FQDN of the Cloud HSM
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
      */
-    fqdn?: pulumi.Input<string>;
+    type: pulumi.Input<string | enums.ManagedServiceIdentityType>;
     /**
-     * The Cloud HSM State
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    state?: pulumi.Input<string>;
-    /**
-     * The Cloud HSM State message
-     */
-    stateMessage?: pulumi.Input<string>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -82,20 +64,6 @@ export interface NetworkProfileArgs {
      * Specifies the identifier of the subnet.
      */
     subnet?: pulumi.Input<ApiEntityReferenceArgs>;
-}
-
-/**
- * The private endpoint connection resource.
- */
-export interface PrivateEndpointConnectionArgs {
-    /**
-     * Modified whenever there is a change in the state of private endpoint connection.
-     */
-    etag?: pulumi.Input<string>;
-    /**
-     * A collection of information about the state of the connection between service consumer and provider.
-     */
-    privateLinkServiceConnectionState: pulumi.Input<PrivateLinkServiceConnectionStateArgs>;
 }
 
 /**
@@ -125,6 +93,3 @@ export interface SkuArgs {
      */
     name?: pulumi.Input<string | enums.SkuName>;
 }
-
-
-

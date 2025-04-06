@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a CloudWatchAlarm
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getCloudWatchAlarm(args: GetCloudWatchAlarmArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudWatchAlarmResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetCloudWatchAlarmArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetCloudWatchAlarmResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetCloudWatchAlarmResult {
 }
 /**
  * Get a CloudWatchAlarm
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getCloudWatchAlarmOutput(args: GetCloudWatchAlarmOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudWatchAlarmResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

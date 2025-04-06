@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the properties for an Azure Dev Spaces Controller.
- * Azure REST API version: 2019-04-01.
+ *
+ * Uses Azure REST API version 2019-04-01.
  */
 export function getController(args: GetControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetControllerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -25,6 +26,10 @@ export interface GetControllerArgs {
 }
 
 export interface GetControllerResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * DNS name for accessing DataPlane services
      */
@@ -72,7 +77,8 @@ export interface GetControllerResult {
 }
 /**
  * Gets the properties for an Azure Dev Spaces Controller.
- * Azure REST API version: 2019-04-01.
+ *
+ * Uses Azure REST API version 2019-04-01.
  */
 export function getControllerOutput(args: GetControllerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetControllerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

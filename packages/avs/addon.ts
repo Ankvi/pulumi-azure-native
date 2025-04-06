@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * An addon resource
- * Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-07-17-preview.
  *
- * Other available API versions: 2021-01-01-preview, 2023-03-01, 2023-09-01.
+ * Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
+ *
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Addon extends pulumi.CustomResource {
     /**
@@ -35,15 +36,27 @@ export class Addon extends pulumi.CustomResource {
     }
 
     /**
-     * Resource name.
+     * Addon type
+     */
+    public readonly addonType!: pulumi.Output<string>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The properties of an addon resource
+     * The state of the addon provisioning
      */
-    public readonly properties!: pulumi.Output<types.outputs.AddonArcPropertiesResponse | types.outputs.AddonHcxPropertiesResponse | types.outputs.AddonSrmPropertiesResponse | types.outputs.AddonVrPropertiesResponse>;
+    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -58,6 +71,9 @@ export class Addon extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.addonType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'addonType'");
+            }
             if ((!args || args.privateCloudName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'privateCloudName'");
             }
@@ -65,14 +81,20 @@ export class Addon extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["addonName"] = args ? args.addonName : undefined;
+            resourceInputs["addonType"] = args ? args.addonType : undefined;
             resourceInputs["privateCloudName"] = args ? args.privateCloudName : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["addonType"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["properties"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -87,17 +109,17 @@ export class Addon extends pulumi.CustomResource {
  */
 export interface AddonArgs {
     /**
-     * Name of the addon for the private cloud
+     * Name of the addon.
      */
     addonName?: pulumi.Input<string>;
     /**
-     * The name of the private cloud.
+     * Addon type
+     */
+    addonType: pulumi.Input<string | types.enums.AddonType>;
+    /**
+     * Name of the private cloud
      */
     privateCloudName: pulumi.Input<string>;
-    /**
-     * The properties of an addon resource
-     */
-    properties?: pulumi.Input<types.inputs.AddonArcPropertiesArgs | types.inputs.AddonHcxPropertiesArgs | types.inputs.AddonSrmPropertiesArgs | types.inputs.AddonVrPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

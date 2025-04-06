@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a LambdaFunctionCodeLocation
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getLambdaFunctionCodeLocation(args: GetLambdaFunctionCodeLocationArgs, opts?: pulumi.InvokeOptions): Promise<GetLambdaFunctionCodeLocationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +29,10 @@ export interface GetLambdaFunctionCodeLocationArgs {
  * A Microsoft.AwsConnector resource
  */
 export interface GetLambdaFunctionCodeLocationResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -59,7 +64,8 @@ export interface GetLambdaFunctionCodeLocationResult {
 }
 /**
  * Get a LambdaFunctionCodeLocation
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getLambdaFunctionCodeLocationOutput(args: GetLambdaFunctionCodeLocationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLambdaFunctionCodeLocationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

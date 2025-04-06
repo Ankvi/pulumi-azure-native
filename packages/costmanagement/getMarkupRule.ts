@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a markup rule by its rule name.
- * Azure REST API version: 2022-10-05-preview.
+ *
+ * Uses Azure REST API version 2022-10-05-preview.
  */
 export function getMarkupRule(args: GetMarkupRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetMarkupRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,6 +34,10 @@ export interface GetMarkupRuleArgs {
  * Markup rule
  */
 export interface GetMarkupRuleResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Customer information for the markup rule.
      */
@@ -72,7 +77,8 @@ export interface GetMarkupRuleResult {
 }
 /**
  * Get a markup rule by its rule name.
- * Azure REST API version: 2022-10-05-preview.
+ *
+ * Uses Azure REST API version 2022-10-05-preview.
  */
 export function getMarkupRuleOutput(args: GetMarkupRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMarkupRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

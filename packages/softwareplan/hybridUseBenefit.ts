@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Response on GET of a hybrid use benefit
- * Azure REST API version: 2019-12-01. Prior API version in Azure Native 1.x: 2019-06-01-preview.
+ *
+ * Uses Azure REST API version 2019-12-01. In version 2.x of the Azure Native provider, it used API version 2019-12-01.
  */
 export class HybridUseBenefit extends pulumi.CustomResource {
     /**
@@ -32,6 +33,10 @@ export class HybridUseBenefit extends pulumi.CustomResource {
         return obj['__pulumiType'] === HybridUseBenefit.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Created date
      */
@@ -81,6 +86,7 @@ export class HybridUseBenefit extends pulumi.CustomResource {
             resourceInputs["planId"] = args ? args.planId : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdDate"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["lastUpdatedDate"] = undefined /*out*/;
@@ -88,6 +94,7 @@ export class HybridUseBenefit extends pulumi.CustomResource {
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdDate"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["lastUpdatedDate"] = undefined /*out*/;

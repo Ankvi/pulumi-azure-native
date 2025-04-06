@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * NSX DHCP
- * Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-07-17-preview.
  *
- * Other available API versions: 2021-01-01-preview, 2023-03-01, 2023-09-01.
+ * Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
+ *
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WorkloadNetworkDhcp extends pulumi.CustomResource {
     /**
@@ -35,15 +36,39 @@ export class WorkloadNetworkDhcp extends pulumi.CustomResource {
     }
 
     /**
-     * Resource name.
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
+     * Type of DHCP: SERVER or RELAY.
+     */
+    public readonly dhcpType!: pulumi.Output<string>;
+    /**
+     * Display name of the DHCP entity.
+     */
+    public readonly displayName!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * DHCP properties.
+     * The provisioning state
      */
-    public readonly properties!: pulumi.Output<types.outputs.WorkloadNetworkDhcpRelayResponse | types.outputs.WorkloadNetworkDhcpServerResponse>;
+    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
-     * Resource type.
+     * NSX revision number.
+     */
+    public readonly revision!: pulumi.Output<number | undefined>;
+    /**
+     * NSX Segments consuming DHCP.
+     */
+    public /*out*/ readonly segments!: pulumi.Output<string[]>;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -58,6 +83,9 @@ export class WorkloadNetworkDhcp extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.dhcpType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'dhcpType'");
+            }
             if ((!args || args.privateCloudName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'privateCloudName'");
             }
@@ -65,14 +93,26 @@ export class WorkloadNetworkDhcp extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["dhcpId"] = args ? args.dhcpId : undefined;
+            resourceInputs["dhcpType"] = args ? args.dhcpType : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["privateCloudName"] = args ? args.privateCloudName : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["revision"] = args ? args.revision : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["segments"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["dhcpType"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["properties"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["revision"] = undefined /*out*/;
+            resourceInputs["segments"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -87,19 +127,27 @@ export class WorkloadNetworkDhcp extends pulumi.CustomResource {
  */
 export interface WorkloadNetworkDhcpArgs {
     /**
-     * NSX DHCP identifier. Generally the same as the DHCP display name
+     * The ID of the DHCP configuration
      */
     dhcpId?: pulumi.Input<string>;
+    /**
+     * Type of DHCP: SERVER or RELAY.
+     */
+    dhcpType: pulumi.Input<string | types.enums.DhcpTypeEnum>;
+    /**
+     * Display name of the DHCP entity.
+     */
+    displayName?: pulumi.Input<string>;
     /**
      * Name of the private cloud
      */
     privateCloudName: pulumi.Input<string>;
     /**
-     * DHCP properties.
-     */
-    properties?: pulumi.Input<types.inputs.WorkloadNetworkDhcpRelayArgs | types.inputs.WorkloadNetworkDhcpServerArgs>;
-    /**
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
+    /**
+     * NSX revision number.
+     */
+    revision?: pulumi.Input<number>;
 }

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a given registered server.
- * Azure REST API version: 2022-06-01.
  *
- * Other available API versions: 2022-09-01.
+ * Uses Azure REST API version 2022-09-01.
+ *
+ * Other available API versions: 2022-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagesync [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getRegisteredServer(args: GetRegisteredServerArgs, opts?: pulumi.InvokeOptions): Promise<GetRegisteredServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +37,10 @@ export interface GetRegisteredServerArgs {
  */
 export interface GetRegisteredServerResult {
     /**
+     * Server auth type.
+     */
+    readonly activeAuthType: string;
+    /**
      * Registered Server Agent Version
      */
     readonly agentVersion?: string;
@@ -47,6 +52,14 @@ export interface GetRegisteredServerResult {
      * Registered Server Agent Version Status
      */
     readonly agentVersionStatus: string;
+    /**
+     * Server Application Id
+     */
+    readonly applicationId?: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Registered Server clusterId
      */
@@ -64,9 +77,13 @@ export interface GetRegisteredServerResult {
      */
     readonly friendlyName?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
+    /**
+     * Apply server with newly discovered ApplicationId if available.
+     */
+    readonly identity: boolean;
     /**
      * Registered Server last heart beat
      */
@@ -79,6 +96,10 @@ export interface GetRegisteredServerResult {
      * Registered Server lastWorkflowId
      */
     readonly lastWorkflowId?: string;
+    /**
+     * Latest Server Application Id discovered from the server. It is not yet applied.
+     */
+    readonly latestApplicationId?: string;
     /**
      * Management Endpoint Uri
      */
@@ -146,9 +167,10 @@ export interface GetRegisteredServerResult {
 }
 /**
  * Get a given registered server.
- * Azure REST API version: 2022-06-01.
  *
- * Other available API versions: 2022-09-01.
+ * Uses Azure REST API version 2022-09-01.
+ *
+ * Other available API versions: 2022-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagesync [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getRegisteredServerOutput(args: GetRegisteredServerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegisteredServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
