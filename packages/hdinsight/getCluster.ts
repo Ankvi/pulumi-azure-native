@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets the specified cluster.
  *
- * Uses Azure REST API version 2021-06-01.
+ * Uses Azure REST API version 2024-08-01-preview.
  *
- * Other available API versions: 2023-04-15-preview, 2023-06-01-preview, 2023-08-15-preview, 2023-11-01-preview, 2024-05-01-preview, 2024-08-01-preview, 2025-01-15-preview.
+ * Other available API versions: 2021-06-01, 2023-04-15-preview, 2023-08-15-preview, 2025-01-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hdinsight [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +31,10 @@ export interface GetClusterArgs {
  * The HDInsight cluster.
  */
 export interface GetClusterResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The ETag for the resource
      */
@@ -75,9 +79,9 @@ export interface GetClusterResult {
 /**
  * Gets the specified cluster.
  *
- * Uses Azure REST API version 2021-06-01.
+ * Uses Azure REST API version 2024-08-01-preview.
  *
- * Other available API versions: 2023-04-15-preview, 2023-06-01-preview, 2023-08-15-preview, 2023-11-01-preview, 2024-05-01-preview, 2024-08-01-preview, 2025-01-15-preview.
+ * Other available API versions: 2021-06-01, 2023-04-15-preview, 2023-08-15-preview, 2025-01-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hdinsight [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

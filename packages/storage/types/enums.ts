@@ -2,6 +2,7 @@ export const AccessTier = {
     Hot: "Hot",
     Cool: "Cool",
     Premium: "Premium",
+    Cold: "Cold",
 } as const;
 
 /**
@@ -58,6 +59,8 @@ export const AllowedMethods = {
     OPTIONS: "OPTIONS",
     PUT: "PUT",
     PATCH: "PATCH",
+    CONNECT: "CONNECT",
+    TRACE: "TRACE",
 } as const;
 
 export type AllowedMethods = (typeof AllowedMethods)[keyof typeof AllowedMethods];
@@ -186,10 +189,11 @@ export type EncryptionScopeState = (typeof EncryptionScopeState)[keyof typeof En
 
 export const ExpirationAction = {
     Log: "Log",
+    Block: "Block",
 } as const;
 
 /**
- * The SAS expiration action. Can only be Log.
+ * The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.
  */
 export type ExpirationAction = (typeof ExpirationAction)[keyof typeof ExpirationAction];
 
@@ -299,6 +303,7 @@ export const MinimumTlsVersion = {
     TLS1_0: "TLS1_0",
     TLS1_1: "TLS1_1",
     TLS1_2: "TLS1_2",
+    TLS1_3: "TLS1_3",
 } as const;
 
 /**
@@ -366,10 +371,11 @@ export type PublicAccess = (typeof PublicAccess)[keyof typeof PublicAccess];
 export const PublicNetworkAccess = {
     Enabled: "Enabled",
     Disabled: "Disabled",
+    SecuredByPerimeter: "SecuredByPerimeter",
 } as const;
 
 /**
- * Allow or disallow public network access to Storage Account. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
+ * Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account. Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
  */
 export type PublicNetworkAccess = (typeof PublicNetworkAccess)[keyof typeof PublicNetworkAccess];
 
@@ -469,6 +475,12 @@ export const SkuName = {
     Premium_ZRS: "Premium_ZRS",
     Standard_GZRS: "Standard_GZRS",
     Standard_RAGZRS: "Standard_RAGZRS",
+    StandardV2_LRS: "StandardV2_LRS",
+    StandardV2_GRS: "StandardV2_GRS",
+    StandardV2_ZRS: "StandardV2_ZRS",
+    StandardV2_GZRS: "StandardV2_GZRS",
+    PremiumV2_LRS: "PremiumV2_LRS",
+    PremiumV2_ZRS: "PremiumV2_ZRS",
 } as const;
 
 /**

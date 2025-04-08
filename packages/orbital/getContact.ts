@@ -5,8 +5,6 @@ import * as types from "./types";
  * Gets the specified contact in a specified resource group.
  *
  * Uses Azure REST API version 2022-11-01.
- *
- * Other available API versions: 2022-03-01.
  */
 export function getContact(args: GetContactArgs, opts?: pulumi.InvokeOptions): Promise<GetContactResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,6 +38,10 @@ export interface GetContactResult {
      * The configuration associated with the allocated antenna.
      */
     readonly antennaConfiguration: types.outputs.ContactsPropertiesResponseAntennaConfiguration;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The reference to the contact profile resource.
      */
@@ -121,8 +123,6 @@ export interface GetContactResult {
  * Gets the specified contact in a specified resource group.
  *
  * Uses Azure REST API version 2022-11-01.
- *
- * Other available API versions: 2022-03-01.
  */
 export function getContactOutput(args: GetContactOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContactResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

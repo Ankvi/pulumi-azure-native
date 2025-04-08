@@ -29,6 +29,24 @@ export interface AzureSkuArgs {
 }
 
 /**
+ * Configuration for external callout policies, including URI patterns, access types, and service types.
+ */
+export interface CalloutPolicyArgs {
+    /**
+     * Type of the callout service, specifying the kind of external resource or service being accessed.
+     */
+    calloutType?: pulumi.Input<string | enums.CalloutType>;
+    /**
+     * Regular expression or FQDN pattern for the callout URI.
+     */
+    calloutUriRegex?: pulumi.Input<string>;
+    /**
+     * Indicates whether outbound access is permitted for the specified URI pattern.
+     */
+    outboundAccess?: pulumi.Input<string | enums.OutboundAccess>;
+}
+
+/**
  * Identity for the resource.
  */
 export interface IdentityArgs {
@@ -68,6 +86,10 @@ export interface KeyVaultPropertiesArgs {
  * The language extension object.
  */
 export interface LanguageExtensionArgs {
+    /**
+     * The language extension custom image name.
+     */
+    languageExtensionCustomImageName?: pulumi.Input<string>;
     /**
      * The language extension image name.
      */
@@ -185,16 +207,20 @@ export interface VirtualNetworkConfigurationArgs {
      */
     enginePublicIpId: pulumi.Input<string>;
     /**
+     * When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
+     */
+    state?: pulumi.Input<string | enums.VnetState>;
+    /**
      * The subnet resource id.
      */
     subnetId: pulumi.Input<string>;
 }
-
-
-
-
-
-
-
-
-
+/**
+ * virtualNetworkConfigurationArgsProvideDefaults sets the appropriate defaults for VirtualNetworkConfigurationArgs
+ */
+export function virtualNetworkConfigurationArgsProvideDefaults(val: VirtualNetworkConfigurationArgs): VirtualNetworkConfigurationArgs {
+    return {
+        ...val,
+        state: (val.state) ?? "Enabled",
+    };
+}

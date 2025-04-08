@@ -3,9 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Response for the POST request that returns Namespace or NotificationHub access keys (connection strings).
  *
- * Uses Azure REST API version 2023-01-01-preview.
+ * Uses Azure REST API version 2023-10-01-preview.
  *
- * Other available API versions: 2017-04-01, 2023-09-01, 2023-10-01-preview.
+ * Other available API versions: 2023-01-01-preview, 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native notificationhubs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listNotificationHubKeys(args: ListNotificationHubKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListNotificationHubKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -65,9 +65,9 @@ export interface ListNotificationHubKeysResult {
 /**
  * Response for the POST request that returns Namespace or NotificationHub access keys (connection strings).
  *
- * Uses Azure REST API version 2023-01-01-preview.
+ * Uses Azure REST API version 2023-10-01-preview.
  *
- * Other available API versions: 2017-04-01, 2023-09-01, 2023-10-01-preview.
+ * Other available API versions: 2023-01-01-preview, 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native notificationhubs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listNotificationHubKeysOutput(args: ListNotificationHubKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListNotificationHubKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

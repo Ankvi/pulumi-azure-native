@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets information about a server.
  *
- * Uses Azure REST API version 2022-12-01.
+ * Uses Azure REST API version 2024-08-01.
  *
- * Other available API versions: 2017-12-01, 2017-12-01-preview, 2020-02-14-preview, 2021-04-10-privatepreview, 2021-06-15-privatepreview, 2022-03-08-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
+ * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getServer(args: GetServerArgs, opts?: pulumi.InvokeOptions): Promise<GetServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -44,6 +44,10 @@ export interface GetServerResult {
      */
     readonly availabilityZone?: string;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Backup properties of a server.
      */
     readonly backup?: types.outputs.BackupResponse;
@@ -60,7 +64,7 @@ export interface GetServerResult {
      */
     readonly highAvailability?: types.outputs.HighAvailabilityResponse;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -88,6 +92,14 @@ export interface GetServerResult {
      */
     readonly network?: types.outputs.NetworkResponse;
     /**
+     * List of private endpoint connections associated with the specified resource.
+     */
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
+    /**
+     * Replica properties of a server. These Replica properties are required to be passed only in case you want to Promote a server.
+     */
+    readonly replica?: types.outputs.ReplicaResponse;
+    /**
      * Replicas allowed for a server.
      */
     readonly replicaCapacity: number;
@@ -100,7 +112,7 @@ export interface GetServerResult {
      */
     readonly sku?: types.outputs.SkuResponse;
     /**
-     * The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
+     * The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica' or 'ReviveDropped'. This property is returned only for Replica server
      */
     readonly sourceServerResourceId?: string;
     /**
@@ -131,9 +143,9 @@ export interface GetServerResult {
 /**
  * Gets information about a server.
  *
- * Uses Azure REST API version 2022-12-01.
+ * Uses Azure REST API version 2024-08-01.
  *
- * Other available API versions: 2017-12-01, 2017-12-01-preview, 2020-02-14-preview, 2021-04-10-privatepreview, 2021-06-15-privatepreview, 2022-03-08-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
+ * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getServerOutput(args: GetServerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

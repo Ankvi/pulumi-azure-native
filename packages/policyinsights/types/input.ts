@@ -22,6 +22,10 @@ export interface RemediationFiltersArgs {
      * The resource locations that will be remediated.
      */
     locations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided.
+     */
+    resourceIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -33,5 +37,3 @@ export interface RemediationPropertiesFailureThresholdArgs {
      */
     percentage?: pulumi.Input<number>;
 }
-
-

@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * The MySQLServer resource definition.
  *
- * Uses Azure REST API version 2024-09-30-preview.
+ * Uses Azure REST API version 2024-09-30-preview. In version 2.x of the Azure Native provider, it used API version 2024-09-30-preview.
  */
 export class MySQLServer extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class MySQLServer extends pulumi.CustomResource {
         return obj['__pulumiType'] === MySQLServer.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * mysql server edition.
      */
@@ -137,10 +141,12 @@ export class MySQLServer extends pulumi.CustomResource {
             resourceInputs["supportEndIn"] = args ? args.supportEndIn : undefined;
             resourceInputs["supportStatus"] = args ? args.supportStatus : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["edition"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["hostIp"] = undefined /*out*/;

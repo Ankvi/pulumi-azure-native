@@ -504,4 +504,3 @@ export interface TypedErrorInfoResponse {
     info: any;
     type: string;
 }
-

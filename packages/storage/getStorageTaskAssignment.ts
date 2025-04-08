@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get the storage task assignment properties
  *
- * Uses Azure REST API version 2023-05-01.
+ * Uses Azure REST API version 2024-01-01.
  *
- * Other available API versions: 2024-01-01.
+ * Other available API versions: 2023-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getStorageTaskAssignment(args: GetStorageTaskAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageTaskAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +37,10 @@ export interface GetStorageTaskAssignmentArgs {
  */
 export interface GetStorageTaskAssignmentResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
@@ -56,9 +60,9 @@ export interface GetStorageTaskAssignmentResult {
 /**
  * Get the storage task assignment properties
  *
- * Uses Azure REST API version 2023-05-01.
+ * Uses Azure REST API version 2024-01-01.
  *
- * Other available API versions: 2024-01-01.
+ * Other available API versions: 2023-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getStorageTaskAssignmentOutput(args: GetStorageTaskAssignmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStorageTaskAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -40,6 +40,10 @@ export interface GetMqttBridgeTopicMapArgs {
  */
 export interface GetMqttBridgeTopicMapResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Extended Location
      */
     readonly extendedLocation: types.outputs.ExtendedLocationPropertyResponse;

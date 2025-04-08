@@ -5,8 +5,6 @@ import * as types from "./types";
  * Gets the active diagnostic setting for AadIam.
  *
  * Uses Azure REST API version 2017-04-01.
- *
- * Other available API versions: 2017-04-01-preview.
  */
 export function getDiagnosticSetting(args: GetDiagnosticSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetDiagnosticSettingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -26,6 +24,10 @@ export interface GetDiagnosticSettingArgs {
  * The diagnostic setting resource.
  */
 export interface GetDiagnosticSettingResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The resource Id for the event hub authorization rule.
      */
@@ -67,8 +69,6 @@ export interface GetDiagnosticSettingResult {
  * Gets the active diagnostic setting for AadIam.
  *
  * Uses Azure REST API version 2017-04-01.
- *
- * Other available API versions: 2017-04-01-preview.
  */
 export function getDiagnosticSettingOutput(args: GetDiagnosticSettingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiagnosticSettingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

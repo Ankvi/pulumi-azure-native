@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * A SQL Database Fleet tier.
  *
- * Uses Azure REST API version 2025-02-01-preview.
+ * Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2025-02-01-preview.
  */
 export class FleetTier extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class FleetTier extends pulumi.CustomResource {
         return obj['__pulumiType'] === FleetTier.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The name of the resource
      */
@@ -71,10 +75,12 @@ export class FleetTier extends pulumi.CustomResource {
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tierName"] = args ? args.tierName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;

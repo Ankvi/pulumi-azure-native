@@ -292,6 +292,20 @@ export function controlPlaneProfileResponseProvideDefaults(val: ControlPlaneProf
 }
 
 /**
+ * The credential result response.
+ */
+export interface CredentialResultResponse {
+    /**
+     * The name of the credential.
+     */
+    name: string;
+    /**
+     * Base64-encoded Kubernetes configuration file.
+     */
+    value: string;
+}
+
+/**
  * Configurations for provisioning the cluster with HTTP proxy servers.
  */
 export interface HttpProxyConfigResponseResponse {
@@ -346,6 +360,18 @@ export interface LinuxProfilePropertiesResponseSsh {
      * PublicKeys - The list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified.
      */
     publicKeys?: LinuxProfilePropertiesResponsePublicKeys[];
+}
+
+export interface ListCredentialResponseResponseError {
+    code?: string;
+    message?: string;
+}
+
+export interface ListCredentialResponseResponseProperties {
+    /**
+     * Base64-encoded Kubernetes configuration file.
+     */
+    kubeconfigs: CredentialResultResponse[];
 }
 
 /**
@@ -993,6 +1019,3 @@ export interface WindowsProfileResponseResponse {
      */
     licenseType?: string;
 }
-
-
-

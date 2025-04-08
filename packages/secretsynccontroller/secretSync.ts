@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * The SecretSync resource.
  *
- * Uses Azure REST API version 2024-08-21-preview.
+ * Uses Azure REST API version 2024-08-21-preview. In version 2.x of the Azure Native provider, it used API version 2024-08-21-preview.
  */
 export class SecretSync extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class SecretSync extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecretSync.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The complex type of the extended location.
      */
@@ -122,12 +126,14 @@ export class SecretSync extends pulumi.CustomResource {
             resourceInputs["secretSyncName"] = args ? args.secretSyncName : undefined;
             resourceInputs["serviceAccountName"] = args ? args.serviceAccountName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["extendedLocation"] = undefined /*out*/;
             resourceInputs["forceSynchronization"] = undefined /*out*/;
             resourceInputs["kubernetesSecretType"] = undefined /*out*/;

@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Machine Learning dataset object wrapped into ARM resource envelope.
  *
- * Uses Azure REST API version 2020-05-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-05-01-preview.
+ * Uses Azure REST API version 2020-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2020-05-01-preview.
  */
 export class MachineLearningDataset extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class MachineLearningDataset extends pulumi.CustomResource {
         return obj['__pulumiType'] === MachineLearningDataset.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The identity of the resource.
      */
@@ -96,6 +100,7 @@ export class MachineLearningDataset extends pulumi.CustomResource {
             resourceInputs["skipValidation"] = (args ? args.skipValidation : undefined) ?? false;
             resourceInputs["timeSeries"] = args ? args.timeSeries : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -104,6 +109,7 @@ export class MachineLearningDataset extends pulumi.CustomResource {
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

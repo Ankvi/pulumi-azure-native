@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get information about a guest configuration assignment
  *
- * Uses Azure REST API version 2022-01-25.
+ * Uses Azure REST API version 2024-04-05.
  *
- * Other available API versions: 2024-04-05.
+ * Other available API versions: 2022-01-25. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native guestconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getGuestConfigurationHCRPAssignment(args: GetGuestConfigurationHCRPAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetGuestConfigurationHCRPAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +37,10 @@ export interface GetGuestConfigurationHCRPAssignmentArgs {
  */
 export interface GetGuestConfigurationHCRPAssignmentResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * ARM resource id of the guest configuration assignment.
      */
     readonly id: string;
@@ -64,9 +68,9 @@ export interface GetGuestConfigurationHCRPAssignmentResult {
 /**
  * Get information about a guest configuration assignment
  *
- * Uses Azure REST API version 2022-01-25.
+ * Uses Azure REST API version 2024-04-05.
  *
- * Other available API versions: 2024-04-05.
+ * Other available API versions: 2022-01-25. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native guestconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getGuestConfigurationHCRPAssignmentOutput(args: GetGuestConfigurationHCRPAssignmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGuestConfigurationHCRPAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

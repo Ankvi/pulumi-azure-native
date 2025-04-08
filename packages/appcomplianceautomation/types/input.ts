@@ -1,32 +1,13 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * Report's properties.
- */
-export interface ReportPropertiesArgs {
-    /**
-     * Report offer Guid.
-     */
-    offerGuid?: pulumi.Input<string>;
-    /**
-     * List of resource data.
-     */
-    resources: pulumi.Input<pulumi.Input<ResourceMetadataArgs>[]>;
-    /**
-     * Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
-     * An example of valid timezone id is "Pacific Standard Time".
-     */
-    timeZone: pulumi.Input<string>;
-    /**
-     * Report collection trigger time.
-     */
-    triggerTime: pulumi.Input<string>;
-}
-
-/**
  * Single resource Id's metadata.
  */
 export interface ResourceMetadataArgs {
+    /**
+     * Account Id. For example - the AWS account id.
+     */
+    accountId?: pulumi.Input<string>;
     /**
      * Resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1".
      */
@@ -36,17 +17,13 @@ export interface ResourceMetadataArgs {
      */
     resourceKind?: pulumi.Input<string>;
     /**
-     * Resource name.
+     * Resource Origin.
      */
-    resourceName?: pulumi.Input<string>;
+    resourceOrigin?: pulumi.Input<string | enums.ResourceOrigin>;
     /**
-     * Resource type.
+     * Resource type. e.g. "Microsoft.Compute/virtualMachines"
      */
     resourceType?: pulumi.Input<string>;
-    /**
-     * Resource's tag type.
-     */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -63,3 +40,24 @@ export interface ScopingAnswerArgs {
     questionId: pulumi.Input<string>;
 }
 
+/**
+ * The information of 'bring your own storage' account binding to the report
+ */
+export interface StorageInfoArgs {
+    /**
+     * 'bring your own storage' account name
+     */
+    accountName?: pulumi.Input<string>;
+    /**
+     * The region of 'bring your own storage' account
+     */
+    location?: pulumi.Input<string>;
+    /**
+     * The resourceGroup which 'bring your own storage' account belongs to
+     */
+    resourceGroup?: pulumi.Input<string>;
+    /**
+     * The subscription id which 'bring your own storage' account belongs to
+     */
+    subscriptionId?: pulumi.Input<string>;
+}

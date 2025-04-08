@@ -68,7 +68,7 @@ export interface ActiveDirectoryResponse {
      */
     encryptDCConnections?: boolean;
     /**
-     * kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
+     * kdc server IP address for the active directory machine. This optional parameter is used only while creating kerberos volume.
      */
     kdcIP?: string;
     /**
@@ -299,7 +299,7 @@ export interface KeyVaultPropertiesResponse {
     /**
      * The resource ID of KeyVault.
      */
-    keyVaultResourceId: string;
+    keyVaultResourceId?: string;
     /**
      * The Uri of KeyVault.
      */
@@ -443,6 +443,24 @@ export interface QuotaReportResponse {
 }
 
 /**
+ * The full path to a volume that is to be migrated into ANF. Required for Migration volumes
+ */
+export interface RemotePathResponse {
+    /**
+     * The Path to a ONTAP Host
+     */
+    externalHostName: string;
+    /**
+     * The name of a server on the ONTAP Host
+     */
+    serverName: string;
+    /**
+     * The name of a volume on the server
+     */
+    volumeName: string;
+}
+
+/**
  * Replication properties
  */
 export interface ReplicationObjectResponse {
@@ -451,17 +469,21 @@ export interface ReplicationObjectResponse {
      */
     endpointType?: string;
     /**
+     * The full path to a volume that is to be migrated into ANF. Required for Migration volumes
+     */
+    remotePath?: RemotePathResponse;
+    /**
      * The remote region for the other end of the Volume Replication.
      */
     remoteVolumeRegion?: string;
     /**
-     * The resource ID of the remote volume.
+     * The resource ID of the remote volume. Required for cross region and cross zone replication
      */
-    remoteVolumeResourceId: string;
+    remoteVolumeResourceId?: string;
     /**
      * Id
      */
-    replicationId?: string;
+    replicationId: string;
     /**
      * Schedule
      */
@@ -484,6 +506,10 @@ export interface ReplicationResponse {
      * The resource ID of the remote volume.
      */
     remoteVolumeResourceId: string;
+    /**
+     * UUID v4 used to identify the replication.
+     */
+    replicationId: string;
     /**
      * Schedule
      */
@@ -539,13 +565,13 @@ export interface UserAssignedIdentityResponse {
  */
 export interface VolumeBackupPropertiesResponse {
     /**
-     * Backup Enabled
-     */
-    backupEnabled?: boolean;
-    /**
      * Backup Policy Resource ID
      */
     backupPolicyId?: string;
+    /**
+     * Backup Vault Resource ID
+     */
+    backupVaultId?: string;
     /**
      * Policy Enforced
      */
@@ -568,6 +594,10 @@ export interface VolumeBackupsResponse {
      * Volume name
      */
     volumeName?: string;
+    /**
+     * ResourceId used to identify the Volume
+     */
+    volumeResourceId?: string;
 }
 
 /**
@@ -582,10 +612,6 @@ export interface VolumeGroupMetaDataResponse {
      * Application Type
      */
     applicationType?: string;
-    /**
-     * Application specific identifier of deployment rules for the volume group
-     */
-    deploymentSpecId?: string;
     /**
      * Application specific placement rules for the volume group
      */
@@ -613,7 +639,7 @@ export interface VolumeGroupVolumePropertiesResponse {
      */
     avsDataStore?: string;
     /**
-     * UUID v4 or resource identifier used to identify the Backup.
+     * Resource identifier used to identify the Backup.
      */
     backupId?: string;
     /**
@@ -632,6 +658,17 @@ export interface VolumeGroupVolumePropertiesResponse {
      * Specifies whether Cool Access(tiering) is enabled for the volume.
      */
     coolAccess?: boolean;
+    /**
+     * coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are: 
+     *  Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
+     *  OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
+     *  Never - No client-driven data is pulled from cool tier to standard storage.
+     */
+    coolAccessRetrievalPolicy?: string;
+    /**
+     * coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.
+     */
+    coolAccessTieringPolicy?: string;
     /**
      * Specifies the number of days after which data that is not accessed by clients will be tiered.
      */
@@ -660,6 +697,10 @@ export interface VolumeGroupVolumePropertiesResponse {
      * If enabled (true) the snapshot the volume was created from will be automatically deleted after the volume create operation has finished.  Defaults to false
      */
     deleteBaseSnapshot?: boolean;
+    /**
+     * The effective value of the network features type available to the volume, or current effective state of update.
+     */
+    effectiveNetworkFeatures: string;
     /**
      * Flag indicating whether subvolume operations are enabled on the volume
      */
@@ -725,7 +766,7 @@ export interface VolumeGroupVolumePropertiesResponse {
      */
     name?: string;
     /**
-     * Basic network, or Standard features available to the volume.
+     * The original value of the network features type available to the volume at the time it was created.
      */
     networkFeatures?: string;
     /**
@@ -765,7 +806,7 @@ export interface VolumeGroupVolumePropertiesResponse {
      */
     serviceLevel?: string;
     /**
-     * Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+     * Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
      */
     smbAccessBasedEnumeration?: string;
     /**
@@ -777,7 +818,7 @@ export interface VolumeGroupVolumePropertiesResponse {
      */
     smbEncryption?: boolean;
     /**
-     * Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+     * Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
      */
     smbNonBrowsable?: string;
     /**
@@ -785,7 +826,7 @@ export interface VolumeGroupVolumePropertiesResponse {
      */
     snapshotDirectoryVisible?: boolean;
     /**
-     * UUID v4 or resource identifier used to identify the Snapshot.
+     * Resource identifier used to identify the Snapshot.
      */
     snapshotId?: string;
     /**
@@ -814,7 +855,7 @@ export interface VolumeGroupVolumePropertiesResponse {
      */
     unixPermissions?: string;
     /**
-     * Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
+     * Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. For regular volumes, valid values are in the range 50GiB to 100TiB. For large volumes, valid values are in the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB. Values expressed in bytes as multiples of 1 GiB.
      */
     usageThreshold: number;
     /**
@@ -829,6 +870,10 @@ export interface VolumeGroupVolumePropertiesResponse {
      * What type of volume is this. For destination volumes in Cross Region Replication, set type to DataProtection
      */
     volumeType?: string;
+    /**
+     * Availability Zone
+     */
+    zones?: string[];
 }
 /**
  * volumeGroupVolumePropertiesResponseProvideDefaults sets the appropriate defaults for VolumeGroupVolumePropertiesResponse
@@ -847,12 +892,10 @@ export function volumeGroupVolumePropertiesResponseProvideDefaults(val: VolumeGr
         isLargeVolume: (val.isLargeVolume) ?? false,
         kerberosEnabled: (val.kerberosEnabled) ?? false,
         ldapEnabled: (val.ldapEnabled) ?? false,
-        networkFeatures: (val.networkFeatures) ?? "Basic",
         securityStyle: (val.securityStyle) ?? "unix",
         smbContinuouslyAvailable: (val.smbContinuouslyAvailable) ?? false,
         smbEncryption: (val.smbEncryption) ?? false,
         snapshotDirectoryVisible: (val.snapshotDirectoryVisible) ?? true,
-        unixPermissions: (val.unixPermissions) ?? "0770",
         usageThreshold: (val.usageThreshold) ?? 107374182400,
     };
 }
@@ -938,23 +981,3 @@ export interface WeeklyScheduleResponse {
      */
     usedBytes?: number;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

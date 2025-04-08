@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Retrieves the details of a VpnServerConfiguration.
  *
- * Uses Azure REST API version 2023-02-01.
+ * Uses Azure REST API version 2024-05-01.
  *
- * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+ * Other available API versions: 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getVpnServerConfiguration(args: GetVpnServerConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnServerConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,13 +32,9 @@ export interface GetVpnServerConfigurationArgs {
  */
 export interface GetVpnServerConfigurationResult {
     /**
-     * The set of aad vpn authentication parameters.
+     * The Azure API version of the resource.
      */
-    readonly aadAuthenticationParameters?: types.outputs.AadAuthenticationParametersResponse;
-    /**
-     * List of all VpnServerConfigurationPolicyGroups.
-     */
-    readonly configurationPolicyGroups?: types.outputs.VpnServerConfigurationPolicyGroupResponse[];
+    readonly azureApiVersion: string;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -56,33 +52,9 @@ export interface GetVpnServerConfigurationResult {
      */
     readonly name: string;
     /**
-     * List of references to P2SVpnGateways.
+     * Properties of the P2SVpnServer configuration.
      */
-    readonly p2SVpnGateways: types.outputs.P2SVpnGatewayResponse[];
-    /**
-     * The provisioning state of the VpnServerConfiguration resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-     */
-    readonly provisioningState: string;
-    /**
-     * Radius client root certificate of VpnServerConfiguration.
-     */
-    readonly radiusClientRootCertificates?: types.outputs.VpnServerConfigRadiusClientRootCertificateResponse[];
-    /**
-     * The radius server address property of the VpnServerConfiguration resource for point to site client connection.
-     */
-    readonly radiusServerAddress?: string;
-    /**
-     * Radius Server root certificate of VpnServerConfiguration.
-     */
-    readonly radiusServerRootCertificates?: types.outputs.VpnServerConfigRadiusServerRootCertificateResponse[];
-    /**
-     * The radius secret property of the VpnServerConfiguration resource for point to site client connection.
-     */
-    readonly radiusServerSecret?: string;
-    /**
-     * Multiple Radius Server configuration for VpnServerConfiguration.
-     */
-    readonly radiusServers?: types.outputs.RadiusServerResponse[];
+    readonly properties: types.outputs.VpnServerConfigurationPropertiesResponse;
     /**
      * Resource tags.
      */
@@ -91,33 +63,13 @@ export interface GetVpnServerConfigurationResult {
      * Resource type.
      */
     readonly type: string;
-    /**
-     * VPN authentication types for the VpnServerConfiguration.
-     */
-    readonly vpnAuthenticationTypes?: string[];
-    /**
-     * VpnClientIpsecPolicies for VpnServerConfiguration.
-     */
-    readonly vpnClientIpsecPolicies?: types.outputs.IpsecPolicyResponse[];
-    /**
-     * VPN client revoked certificate of VpnServerConfiguration.
-     */
-    readonly vpnClientRevokedCertificates?: types.outputs.VpnServerConfigVpnClientRevokedCertificateResponse[];
-    /**
-     * VPN client root certificate of VpnServerConfiguration.
-     */
-    readonly vpnClientRootCertificates?: types.outputs.VpnServerConfigVpnClientRootCertificateResponse[];
-    /**
-     * VPN protocols for the VpnServerConfiguration.
-     */
-    readonly vpnProtocols?: string[];
 }
 /**
  * Retrieves the details of a VpnServerConfiguration.
  *
- * Uses Azure REST API version 2023-02-01.
+ * Uses Azure REST API version 2024-05-01.
  *
- * Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+ * Other available API versions: 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getVpnServerConfigurationOutput(args: GetVpnServerConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpnServerConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

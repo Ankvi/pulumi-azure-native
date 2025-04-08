@@ -40,6 +40,10 @@ export interface GetKafkaConnectorTopicMapArgs {
  */
 export interface GetKafkaConnectorTopicMapResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The batching settings for kafka messages.
      */
     readonly batching?: types.outputs.KafkaTopicMapBatchingResponse;

@@ -2,11 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Get service
+ * Returns details of the service.
  *
- * Uses Azure REST API version 2023-07-01-preview.
+ * Uses Azure REST API version 2024-03-15-preview.
  *
- * Other available API versions: 2024-03-01, 2024-03-15-preview, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01-preview, 2024-03-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apicenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -22,7 +22,7 @@ export interface GetServiceArgs {
      */
     resourceGroupName: string;
     /**
-     * Service name
+     * The name of Azure API Center service.
      */
     serviceName: string;
 }
@@ -32,11 +32,15 @@ export interface GetServiceArgs {
  */
 export interface GetServiceResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
-     * The identity of the service.
+     * The managed service identities assigned to this resource.
      */
     readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
@@ -48,9 +52,13 @@ export interface GetServiceResult {
      */
     readonly name: string;
     /**
-     * The status of the last operation.
+     * Provisioning state of the service.
      */
     readonly provisioningState: string;
+    /**
+     * Flag used to restore soft-deleted API Center service. If specified and set to 'true' all other properties will be ignored.
+     */
+    readonly restore?: boolean;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -65,11 +73,11 @@ export interface GetServiceResult {
     readonly type: string;
 }
 /**
- * Get service
+ * Returns details of the service.
  *
- * Uses Azure REST API version 2023-07-01-preview.
+ * Uses Azure REST API version 2024-03-15-preview.
  *
- * Other available API versions: 2024-03-01, 2024-03-15-preview, 2024-06-01-preview.
+ * Other available API versions: 2023-07-01-preview, 2024-03-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apicenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -85,7 +93,7 @@ export interface GetServiceOutputArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * Service name
+     * The name of Azure API Center service.
      */
     serviceName: pulumi.Input<string>;
 }

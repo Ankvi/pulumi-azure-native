@@ -53,14 +53,6 @@ export interface InputPatchConfigurationArgs {
      */
     linuxParameters?: pulumi.Input<InputLinuxParametersArgs>;
     /**
-     * List of post tasks. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]
-     */
-    postTasks?: pulumi.Input<pulumi.Input<TaskPropertiesArgs>[]>;
-    /**
-     * List of pre tasks. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]
-     */
-    preTasks?: pulumi.Input<pulumi.Input<TaskPropertiesArgs>[]>;
-    /**
      * Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
      */
     rebootSetting?: pulumi.Input<string | enums.RebootOptions>;
@@ -102,28 +94,6 @@ export interface InputWindowsParametersArgs {
 }
 
 /**
- * Definition of a MaintenanceOverrideProperties
- */
-export interface MaintenanceOverridePropertiesArgs {
-    /**
-     * Effective end date of the maintenance override window in YYYY-MM-DD hh:mm format. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone. Expiration date must be set to a future date. If not provided, it will be set to the maximum datetime 9999-12-31 23:59:59.
-     */
-    endDateTime?: pulumi.Input<string>;
-    /**
-     * Gets or sets overrideProperties of the maintenanceConfiguration
-     */
-    overrideProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Effective start date of the maintenance override window in YYYY-MM-DD hh:mm format. The start date can be set to either the current date or future date. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone.
-     */
-    startDateTime?: pulumi.Input<string>;
-    /**
-     * Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
-     */
-    timeZone?: pulumi.Input<string>;
-}
-
-/**
  * Tag filter information for the VM.
  */
 export interface TagSettingsPropertiesArgs {
@@ -136,33 +106,3 @@ export interface TagSettingsPropertiesArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
 }
-
-/**
- * Task properties of the software update configuration.
- */
-export interface TaskPropertiesArgs {
-    /**
-     * Gets or sets the parameters of the task.
-     */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Gets or sets the name of the runbook.
-     */
-    source?: pulumi.Input<string>;
-    /**
-     * Global Task execute once when schedule trigger. Resource task execute for each VM.
-     */
-    taskScope?: pulumi.Input<string | enums.TaskScope>;
-}
-/**
- * taskPropertiesArgsProvideDefaults sets the appropriate defaults for TaskPropertiesArgs
- */
-export function taskPropertiesArgsProvideDefaults(val: TaskPropertiesArgs): TaskPropertiesArgs {
-    return {
-        ...val,
-        taskScope: (val.taskScope) ?? "Global",
-    };
-}
-
-
-

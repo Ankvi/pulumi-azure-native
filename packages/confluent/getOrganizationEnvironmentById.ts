@@ -35,6 +35,10 @@ export interface GetOrganizationEnvironmentByIdArgs {
  */
 export interface GetOrganizationEnvironmentByIdResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Id of the environment
      */
     readonly id?: string;

@@ -5,6 +5,8 @@ import * as types from "./types";
  * Get the detail of a linked workspace.
  *
  * Uses Azure REST API version 2020-05-15-preview.
+ *
+ * Other available API versions: 2020-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getLinkedWorkspace(args: GetLinkedWorkspaceArgs, opts?: pulumi.InvokeOptions): Promise<GetLinkedWorkspaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,6 +37,10 @@ export interface GetLinkedWorkspaceArgs {
  */
 export interface GetLinkedWorkspaceResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * ResourceId of the link of the linked workspace.
      */
     readonly id: string;
@@ -55,6 +61,8 @@ export interface GetLinkedWorkspaceResult {
  * Get the detail of a linked workspace.
  *
  * Uses Azure REST API version 2020-05-15-preview.
+ *
+ * Other available API versions: 2020-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getLinkedWorkspaceOutput(args: GetLinkedWorkspaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLinkedWorkspaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

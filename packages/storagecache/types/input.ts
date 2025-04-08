@@ -38,9 +38,13 @@ export interface AmlFilesystemHsmSettingsArgs {
      */
     container: pulumi.Input<string>;
     /**
-     * Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
+     * Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This is only used during initial creation of the AML file system. It automatically creates an import job resource that can be deleted.
      */
     importPrefix?: pulumi.Input<string>;
+    /**
+     * Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value. It automatically creates an import job resource that can be deleted.
+     */
+    importPrefixesInitial?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
      */
@@ -82,6 +86,28 @@ export interface AmlFilesystemMaintenanceWindowArgs {
      * The time of day (in UTC) to start the maintenance window.
      */
     timeOfDayUTC?: pulumi.Input<string>;
+}
+
+/**
+ * AML file system squash settings.
+ */
+export interface AmlFilesystemRootSquashSettingsArgs {
+    /**
+     * Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
+     */
+    mode?: pulumi.Input<string | enums.AmlFilesystemSquashMode>;
+    /**
+     * Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
+     */
+    noSquashNidLists?: pulumi.Input<string>;
+    /**
+     * Group ID to squash to.
+     */
+    squashGID?: pulumi.Input<number>;
+    /**
+     * User ID to squash to.
+     */
+    squashUID?: pulumi.Input<number>;
 }
 
 /**
@@ -511,8 +537,3 @@ export interface UnknownTargetArgs {
      */
     attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
-
-
-
-
-

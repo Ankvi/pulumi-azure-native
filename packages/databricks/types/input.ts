@@ -11,6 +11,47 @@ export interface AddressSpaceArgs {
 }
 
 /**
+ * Status of automated cluster updates feature.
+ */
+export interface AutomaticClusterUpdateDefinitionArgs {
+    value?: pulumi.Input<string | enums.AutomaticClusterUpdateValue>;
+}
+
+/**
+ * Status of Compliance Security Profile feature.
+ */
+export interface ComplianceSecurityProfileDefinitionArgs {
+    /**
+     * Compliance standards associated with the workspace.
+     */
+    complianceStandards?: pulumi.Input<pulumi.Input<string | enums.ComplianceStandard>[]>;
+    value?: pulumi.Input<string | enums.ComplianceSecurityProfileValue>;
+}
+
+/**
+ * These properties lets user specify default catalog properties during workspace creation.
+ */
+export interface DefaultCatalogPropertiesArgs {
+    /**
+     * Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
+     */
+    initialName?: pulumi.Input<string>;
+    /**
+     * Defines the initial type of the default catalog. Possible values (case-insensitive):  HiveMetastore, UnityCatalog
+     */
+    initialType?: pulumi.Input<string | enums.InitialType>;
+}
+/**
+ * defaultCatalogPropertiesArgsProvideDefaults sets the appropriate defaults for DefaultCatalogPropertiesArgs
+ */
+export function defaultCatalogPropertiesArgsProvideDefaults(val: DefaultCatalogPropertiesArgs): DefaultCatalogPropertiesArgs {
+    return {
+        ...val,
+        initialType: (val.initialType) ?? "HiveMetastore",
+    };
+}
+
+/**
  * The object that contains details of encryption used on the workspace.
  */
 export interface EncryptionArgs {
@@ -85,6 +126,31 @@ export interface EncryptionV2KeyVaultPropertiesArgs {
      * The version of KeyVault key.
      */
     keyVersion: pulumi.Input<string>;
+}
+
+/**
+ * Status of settings related to the Enhanced Security and Compliance Add-On.
+ */
+export interface EnhancedSecurityComplianceDefinitionArgs {
+    /**
+     * Status of automated cluster updates feature.
+     */
+    automaticClusterUpdate?: pulumi.Input<AutomaticClusterUpdateDefinitionArgs>;
+    /**
+     * Status of Compliance Security Profile feature.
+     */
+    complianceSecurityProfile?: pulumi.Input<ComplianceSecurityProfileDefinitionArgs>;
+    /**
+     * Status of Enhanced Security Monitoring feature.
+     */
+    enhancedSecurityMonitoring?: pulumi.Input<EnhancedSecurityMonitoringDefinitionArgs>;
+}
+
+/**
+ * Status of Enhanced Security Monitoring feature.
+ */
+export interface EnhancedSecurityMonitoringDefinitionArgs {
+    value?: pulumi.Input<string | enums.EnhancedSecurityMonitoringValue>;
 }
 
 /**
@@ -234,9 +300,9 @@ export interface WorkspaceCustomParametersArgs {
      */
     customVirtualNetworkId?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
     /**
-     * Should the Public IP be Disabled?
+     * Boolean indicating whether the public IP should be disabled. Default value is true
      */
-    enableNoPublicIp?: pulumi.Input<WorkspaceCustomBooleanParameterArgs>;
+    enableNoPublicIp?: pulumi.Input<WorkspaceNoPublicIPBooleanParameterArgs>;
     /**
      * Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.
      */
@@ -318,6 +384,34 @@ export function workspaceEncryptionParameterArgsProvideDefaults(val: WorkspaceEn
 }
 
 /**
+ * The value which should be used for this field.
+ */
+export interface WorkspaceNoPublicIPBooleanParameterArgs {
+    /**
+     * The value which should be used for this field.
+     */
+    value: pulumi.Input<boolean>;
+}
+
+/**
+ * Access Connector Resource that is going to be associated with Databricks Workspace
+ */
+export interface WorkspacePropertiesAccessConnectorArgs {
+    /**
+     * The resource ID of Azure Databricks Access Connector Resource.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The identity type of the Access Connector Resource.
+     */
+    identityType: pulumi.Input<string | enums.IdentityType>;
+    /**
+     * The resource ID of the User Assigned Identity associated with the Access Connector Resource. This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
+     */
+    userAssignedIdentityId?: pulumi.Input<string>;
+}
+
+/**
  * Encryption properties for databricks workspace
  */
 export interface WorkspacePropertiesEncryptionArgs {
@@ -340,9 +434,3 @@ export interface WorkspaceProviderAuthorizationArgs {
      */
     roleDefinitionId: pulumi.Input<string>;
 }
-
-
-
-
-
-

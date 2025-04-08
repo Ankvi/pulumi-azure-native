@@ -39,4 +39,3 @@ export interface TableLevelSharingPropertiesArgs {
      */
     tablesToInclude?: pulumi.Input<pulumi.Input<string>[]>;
 }
-

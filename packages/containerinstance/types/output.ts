@@ -1,16 +1,6 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * The API entity reference.
- */
-export interface ApiEntityReferenceResponse {
-    /**
-     * The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-     */
-    id?: string;
-}
-
-/**
  * The properties of the Azure File volume. Azure File shares are mounted as volumes.
  */
 export interface AzureFileVolumeResponse {
@@ -26,10 +16,6 @@ export interface AzureFileVolumeResponse {
      * The storage account access key used to access the Azure File share.
      */
     storageAccountKey?: string;
-    /**
-     * The reference to the storage account access key used to access the Azure File share.
-     */
-    storageAccountKeyReference?: string;
     /**
      * The name of the storage account that contains the Azure File share.
      */
@@ -99,13 +85,17 @@ export interface ContainerGroupIdentityResponse {
 }
 
 /**
- * The object that contains a reference to a Container Group Profile
+ * The container group profile reference.
  */
-export interface ContainerGroupProfileStubResponse {
+export interface ContainerGroupProfileReferenceDefinitionResponse {
     /**
-     * The API entity reference.
+     * The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
      */
-    resource?: ApiEntityReferenceResponse;
+    id?: string;
+    /**
+     * The container group profile reference revision.
+     */
+    revision?: number;
 }
 
 /**
@@ -353,13 +343,6 @@ export interface DnsConfigurationResponse {
 }
 
 /**
- * Describes the elastic profile of the Container Scale Set
- */
-export interface ElasticProfileResponse {
-    desiredCount?: number;
-}
-
-/**
  * The container group encryption properties.
  */
 export interface EncryptionPropertiesResponse {
@@ -393,10 +376,6 @@ export interface EnvironmentVariableResponse {
      * The value of the secure environment variable.
      */
     secureValue?: string;
-    /**
-     * The reference of the secure environment variable.
-     */
-    secureValueReference?: string;
     /**
      * The value of the environment variable.
      */
@@ -495,10 +474,6 @@ export interface ImageRegistryCredentialResponse {
      * The password for the private registry.
      */
     password?: string;
-    /**
-     * The reference for the private registry password.
-     */
-    passwordReference?: string;
     /**
      * The Docker image registry server without a protocol such as "http" and "https".
      */
@@ -631,28 +606,6 @@ export interface LogAnalyticsResponse {
 }
 
 /**
- * Identity for the nGroup.
- */
-export interface NGroupIdentityResponse {
-    /**
-     * The principal id of the nGroup identity. This property will only be provided for a system assigned identity.
-     */
-    principalId: string;
-    /**
-     * The tenant id associated with the nGroup. This property will only be provided for a system assigned identity.
-     */
-    tenantId: string;
-    /**
-     * The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
-     */
-    type?: string;
-    /**
-     * The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-     */
-    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
-}
-
-/**
  * The port exposed on the container group.
  */
 export interface PortResponse {
@@ -761,33 +714,17 @@ export interface SecurityContextDefinitionResponse {
 }
 
 /**
- * Metadata pertaining to creation and last modification of the resource.
+ * The standby pool profile reference.
  */
-export interface SystemDataResponse {
+export interface StandbyPoolProfileDefinitionResponse {
     /**
-     * The timestamp of resource creation (UTC).
+     * The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
      */
-    createdAt?: string;
+    failContainerGroupCreateOnReuseFailure?: boolean;
     /**
-     * The identity that created the resource.
+     * The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
      */
-    createdBy?: string;
-    /**
-     * The type of identity that created the resource.
-     */
-    createdByType?: string;
-    /**
-     * The timestamp of resource last modification (UTC)
-     */
-    lastModifiedAt?: string;
-    /**
-     * The identity that last modified the resource.
-     */
-    lastModifiedBy?: string;
-    /**
-     * The type of identity that last modified the resource.
-     */
-    lastModifiedByType?: string;
+    id?: string;
 }
 
 /**
@@ -800,20 +737,6 @@ export interface UserAssignedIdentitiesResponse {
     clientId: string;
     /**
      * The principal id of user assigned identity.
-     */
-    principalId: string;
-}
-
-/**
- * User assigned identity properties
- */
-export interface UserAssignedIdentityResponse {
-    /**
-     * The client ID of the assigned identity.
-     */
-    clientId: string;
-    /**
-     * The principal ID of the assigned identity.
      */
     principalId: string;
 }
@@ -860,15 +783,4 @@ export interface VolumeResponse {
      * The secret volume.
      */
     secret?: {[key: string]: string};
-    /**
-     * The secret reference volume.
-     */
-    secretReference?: {[key: string]: string};
 }
-
-
-
-
-
-
-

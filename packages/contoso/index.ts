@@ -12,8 +12,6 @@ export const getEmployeeOutput: typeof import("./getEmployee").getEmployeeOutput
 utilities.lazyLoad(exports, ["getEmployee","getEmployeeOutput"], () => require("./getEmployee"));
 
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

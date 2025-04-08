@@ -3,8 +3,6 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Uses Azure REST API version 2023-01-15.
- *
- * Other available API versions: 2018-12-20, 2021-11-15.
  */
 export function getRecoveryPointAccessToken(args: GetRecoveryPointAccessTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetRecoveryPointAccessTokenResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -97,8 +95,6 @@ export interface GetRecoveryPointAccessTokenResult {
 }
 /**
  * Uses Azure REST API version 2023-01-15.
- *
- * Other available API versions: 2018-12-20, 2021-11-15.
  */
 export function getRecoveryPointAccessTokenOutput(args: GetRecoveryPointAccessTokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRecoveryPointAccessTokenResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

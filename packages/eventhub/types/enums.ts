@@ -15,6 +15,16 @@ export const ApplicationGroupPolicyType = {
  */
 export type ApplicationGroupPolicyType = (typeof ApplicationGroupPolicyType)[keyof typeof ApplicationGroupPolicyType];
 
+export const CaptureIdentityType = {
+    SystemAssigned: "SystemAssigned",
+    UserAssigned: "UserAssigned",
+} as const;
+
+/**
+ * Type of Azure Active Directory Managed Identity.
+ */
+export type CaptureIdentityType = (typeof CaptureIdentityType)[keyof typeof CaptureIdentityType];
+
 export const CleanupPolicyRetentionDescription = {
     Delete: "Delete",
     Compact: "Compact",

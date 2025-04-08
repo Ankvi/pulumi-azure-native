@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * A monitored resource.
  *
- * Uses Azure REST API version 2023-07-07-preview.
+ * Uses Azure REST API version 2023-07-07-preview. In version 2.x of the Azure Native provider, it used API version 2023-07-07-preview.
  */
 export class MonitoredResource extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class MonitoredResource extends pulumi.CustomResource {
         return obj['__pulumiType'] === MonitoredResource.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The name of the resource
      */
@@ -70,11 +74,13 @@ export class MonitoredResource extends pulumi.CustomResource {
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["monitoredResourceName"] = args ? args.monitoredResourceName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;

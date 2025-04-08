@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get the object replication policy of the storage account by policy ID.
  *
- * Uses Azure REST API version 2022-09-01.
+ * Uses Azure REST API version 2024-01-01.
  *
- * Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+ * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getObjectReplicationPolicy(args: GetObjectReplicationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectReplicationPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +37,10 @@ export interface GetObjectReplicationPolicyArgs {
  */
 export interface GetObjectReplicationPolicyResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Required. Destination account name. It should be full resource id if allowCrossTenantReplication set to false.
      */
     readonly destinationAccount: string;
@@ -48,6 +52,10 @@ export interface GetObjectReplicationPolicyResult {
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
+    /**
+     * Optional. The object replication policy metrics feature options.
+     */
+    readonly metrics?: types.outputs.ObjectReplicationPolicyPropertiesResponseMetrics;
     /**
      * The name of the resource
      */
@@ -72,9 +80,9 @@ export interface GetObjectReplicationPolicyResult {
 /**
  * Get the object replication policy of the storage account by policy ID.
  *
- * Uses Azure REST API version 2022-09-01.
+ * Uses Azure REST API version 2024-01-01.
  *
- * Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+ * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getObjectReplicationPolicyOutput(args: GetObjectReplicationPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetObjectReplicationPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -19,5 +19,3 @@ export interface IdentityArgs {
      */
     type?: pulumi.Input<string | enums.ResourceIdentityType>;
 }
-
-

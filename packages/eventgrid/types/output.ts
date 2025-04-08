@@ -76,30 +76,6 @@ export interface BoolEqualsFilterResponse {
 }
 
 /**
- * The Authentication properties for the client.
- */
-export interface ClientAuthenticationResponse {
-    /**
-     * The CA certificate subject name used for authentication.
-     */
-    certificateSubject?: ClientCertificateSubjectDistinguishedNameResponse;
-    /**
-     * The self signed certificate's thumbprints data used for authentication.
-     */
-    certificateThumbprint?: ClientCertificateThumbprintResponse;
-}
-
-/**
- * Client authentication settings for namespace resource.
- */
-export interface ClientAuthenticationSettingsResponse {
-    /**
-     * Alternative authentication name sources related to client authentication settings for namespace resource.
-     */
-    alternativeAuthenticationNameSources?: string[];
-}
-
-/**
  * The certificate authentication properties for the client.
  */
 export interface ClientCertificateAuthenticationResponse {
@@ -111,43 +87,6 @@ export interface ClientCertificateAuthenticationResponse {
      * The validation scheme used to authenticate the client. Default value is SubjectMatchesAuthenticationName.
      */
     validationScheme?: string;
-}
-
-/**
- * CA certificate subject distinguished name information used by service to authenticate clients.
- * For more information, see https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.x509certificates.x500distinguishedname?view=net-6.0#remarks
- */
-export interface ClientCertificateSubjectDistinguishedNameResponse {
-    /**
-     * The common name field in the subject name. The allowed limit is 64 characters and it should be specified.
-     */
-    commonName?: string;
-    /**
-     * The country code field in the subject name. If present, the country code should be represented by two-letter code defined in ISO 2166-1 (alpha-2). For example: 'US'.
-     */
-    countryCode?: string;
-    /**
-     * The organization field in the subject name. If present, the allowed limit is 64 characters.
-     */
-    organization?: string;
-    /**
-     * The organization unit field in the subject name. If present, the allowed limit is 32 characters.
-     */
-    organizationUnit?: string;
-}
-
-/**
- * Thumbprints are used by the service to validate the device permission when authentication is done using self signed certificate.
- */
-export interface ClientCertificateThumbprintResponse {
-    /**
-     * The primary thumbprint used for validation.
-     */
-    primary?: string;
-    /**
-     * The secondary thumbprint used for validation.
-     */
-    secondary?: string;
 }
 
 /**
@@ -169,12 +108,59 @@ export interface ConnectionStateResponse {
 }
 
 /**
+ * A custom domain configuration that allows users to publish to their own domain name.
+ */
+export interface CustomDomainConfigurationResponse {
+    /**
+     * The URL for the certificate that is used for publishing to the custom domain. We currently support certificates stored in Azure Key Vault only. While certificate URL can be either
+     * versioned URL of the following format https://{key-vault-name}.vault.azure.net/certificates/{certificate-name}/{version-id}, or unversioned URL of the following format (e.g.,
+     * https://contosovault.vault.azure.net/certificates/contosocert, we support unversioned certificate URL only (e.g., https://contosovault.vault.azure.net/certificates/contosocert)
+     */
+    certificateUrl?: string;
+    /**
+     * Expected DNS TXT record name. Event Grid will check for a TXT record with this name in the DNS record set of the custom domain name to prove ownership over the domain.
+     * The values under this TXT record must contain the expected TXT record value.
+     */
+    expectedTxtRecordName?: string;
+    /**
+     * Expected DNS TXT record value. Event Grid will check for a TXT record with this value in the DNS record set of the custom domain name to prove ownership over the domain.
+     */
+    expectedTxtRecordValue?: string;
+    /**
+     * Fully Qualified Domain Name (FQDN) for the custom domain.
+     */
+    fullyQualifiedDomainName: string;
+    /**
+     * Identity info for accessing the certificate for the custom domain. This identity info must match an identity that has been set on the namespace.
+     */
+    identity?: CustomDomainIdentityResponse;
+    /**
+     * Validation state for the custom domain. This is a read only property and is initially set to 'Pending' and will be updated to 'Approved' by Event Grid only after ownership of the domain name has been successfully validated.
+     */
+    validationState?: string;
+}
+
+/**
+ * The identity information for retrieving the certificate for the custom domain.
+ */
+export interface CustomDomainIdentityResponse {
+    /**
+     * The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
+     */
+    type?: string;
+    /**
+     * The user identity associated with the resource.
+     */
+    userAssignedIdentity?: string;
+}
+
+/**
  * Information about the deadletter destination with resource identity.
  */
 export interface DeadLetterWithResourceIdentityResponse {
     /**
      * Information about the destination where events have to be delivered for the event subscription.
-     * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
+     * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during dead-lettering.
      */
     deadLetterDestination?: StorageBlobDeadLetterDestinationResponse;
     /**
@@ -192,6 +178,10 @@ export interface DeliveryConfigurationResponse {
      */
     deliveryMode?: string;
     /**
+     * This property should be populated when deliveryMode is push and represents information about the push subscription.
+     */
+    push?: PushInfoResponse;
+    /**
      * This property should be populated when deliveryMode is queue and represents information about the queue subscription.
      */
     queue?: QueueInfoResponse;
@@ -203,9 +193,9 @@ export interface DeliveryConfigurationResponse {
 export interface DeliveryWithResourceIdentityResponse {
     /**
      * Information about the destination where events have to be delivered for the event subscription.
-     * Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
+     * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
      */
-    destination?: AzureFunctionEventSubscriptionDestinationResponse | EventHubEventSubscriptionDestinationResponse | HybridConnectionEventSubscriptionDestinationResponse | ServiceBusQueueEventSubscriptionDestinationResponse | ServiceBusTopicEventSubscriptionDestinationResponse | StorageQueueEventSubscriptionDestinationResponse | WebHookEventSubscriptionDestinationResponse;
+    destination?: AzureFunctionEventSubscriptionDestinationResponse | EventHubEventSubscriptionDestinationResponse | HybridConnectionEventSubscriptionDestinationResponse | MonitorAlertEventSubscriptionDestinationResponse | NamespaceTopicEventSubscriptionDestinationResponse | ServiceBusQueueEventSubscriptionDestinationResponse | ServiceBusTopicEventSubscriptionDestinationResponse | StorageQueueEventSubscriptionDestinationResponse | WebHookEventSubscriptionDestinationResponse;
     /**
      * The identity to use when delivering events.
      */
@@ -309,7 +299,7 @@ export function eventSubscriptionFilterResponseProvideDefaults(val: EventSubscri
  */
 export interface EventSubscriptionIdentityResponse {
     /**
-     * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
+     * The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
      */
     type?: string;
     /**
@@ -547,6 +537,31 @@ export interface JsonInputSchemaMappingResponse {
 }
 
 /**
+ * Information about the Monitor Alert destination for an event subscription.
+ */
+export interface MonitorAlertEventSubscriptionDestinationResponse {
+    /**
+     * The list of ARM Ids of Action Groups that will be triggered on every Alert fired through this event subscription.
+     * Each resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Insights/actionGroups/{ActionGroupName}.
+     */
+    actionGroups?: string[];
+    /**
+     * The description that will be attached to every Alert fired through this event subscription.
+     */
+    description?: string;
+    /**
+     * Type of the endpoint for the event subscription destination.
+     * Expected value is 'MonitorAlert'.
+     */
+    endpointType: "MonitorAlert";
+    /**
+     * The severity that will be attached to every Alert fired through this event subscription.
+     * This field must be provided.
+     */
+    severity?: string;
+}
+
+/**
  * Represents available Sku pricing tiers.
  */
 export interface NamespaceSkuResponse {
@@ -560,6 +575,23 @@ export interface NamespaceSkuResponse {
      * The name of the SKU.
      */
     name?: string;
+}
+
+/**
+ * Information about the Namespace Topic destination for an event subscription.
+ */
+export interface NamespaceTopicEventSubscriptionDestinationResponse {
+    /**
+     * Type of the endpoint for the event subscription destination.
+     * Expected value is 'NamespaceTopic'.
+     */
+    endpointType: "NamespaceTopic";
+    /**
+     * The Azure resource Id that represents the endpoint of the Event Grid Namespace Topic destination of an event subscription.
+     * This field is required and the Namespace Topic resource listed must already exist.
+     * The resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.EventGrid/namespaces/{NamespaceName}/topics/{TopicName}.
+     */
+    resourceId?: string;
 }
 
 /**
@@ -974,6 +1006,50 @@ export interface PrivateEndpointResponse {
 }
 
 /**
+ * Properties of the destination info for event subscription supporting push.
+ */
+export interface PushInfoResponse {
+    /**
+     * The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
+     * Uses the managed identity setup on the parent resource (namely, namespace) to acquire the authentication tokens being used during dead-lettering.
+     */
+    deadLetterDestinationWithResourceIdentity?: DeadLetterWithResourceIdentityResponse;
+    /**
+     * Information about the destination where events have to be delivered for the event subscription.
+     * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
+     */
+    deliveryWithResourceIdentity?: DeliveryWithResourceIdentityResponse;
+    /**
+     * Information about the destination where events have to be delivered for the event subscription.
+     * Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery.
+     */
+    destination?: AzureFunctionEventSubscriptionDestinationResponse | EventHubEventSubscriptionDestinationResponse | HybridConnectionEventSubscriptionDestinationResponse | MonitorAlertEventSubscriptionDestinationResponse | NamespaceTopicEventSubscriptionDestinationResponse | ServiceBusQueueEventSubscriptionDestinationResponse | ServiceBusTopicEventSubscriptionDestinationResponse | StorageQueueEventSubscriptionDestinationResponse | WebHookEventSubscriptionDestinationResponse;
+    /**
+     * Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
+     * This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
+     *     - (n) is replaced by the value of each time element that follows the (n).
+     *     - P is the duration (or Period) designator and is always placed at the beginning of the duration.
+     *     - Y is the year designator, and it follows the value for the number of years.
+     *     - M is the month designator, and it follows the value for the number of months.
+     *     - W is the week designator, and it follows the value for the number of weeks.
+     *     - D is the day designator, and it follows the value for the number of days.
+     *     - T is the time designator, and it precedes the time components.
+     *     - H is the hour designator, and it follows the value for the number of hours.
+     *     - M is the minute designator, and it follows the value for the number of minutes.
+     *     - S is the second designator, and it follows the value for the number of seconds.
+     * This duration value cannot be set greater than the topic’s EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined
+     * by topic’s EventRetentionInDays value. The followings are examples of valid values:
+     *     - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
+     *     - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
+     */
+    eventTimeToLive?: string;
+    /**
+     * The maximum delivery count of the events.
+     */
+    maxDeliveryCount?: number;
+}
+
+/**
  * Properties of the Queue info for event subscription.
  */
 export interface QueueInfoResponse {
@@ -1039,13 +1115,16 @@ export function retryPolicyResponseProvideDefaults(val: RetryPolicyResponse): Re
 
 export interface RoutingEnrichmentsResponse {
     dynamic?: DynamicRoutingEnrichmentResponse[];
-    static?: StaticRoutingEnrichmentResponse[];
+    static?: StaticStringRoutingEnrichmentResponse[];
 }
 
 /**
  * Routing identity info for topic spaces configuration.
  */
 export interface RoutingIdentityInfoResponse {
+    /**
+     * Routing identity type for topic spaces configuration.
+     */
     type?: string;
     userAssignedIdentity?: string;
 }
@@ -1120,15 +1199,20 @@ export function staticDeliveryAttributeMappingResponseProvideDefaults(val: Stati
     };
 }
 
-export interface StaticRoutingEnrichmentResponse {
+export interface StaticStringRoutingEnrichmentResponse {
     /**
      * Static routing enrichment key.
      */
     key?: string;
     /**
-     * Static routing enrichment value type. For e.g. this property value can be 'String'.
+     * String type routing enrichment value.
      */
-    valueType?: string;
+    value?: string;
+    /**
+     * Static routing enrichment value type. For e.g. this property value can be 'String'.
+     * Expected value is 'String'.
+     */
+    valueType: "String";
 }
 
 /**
@@ -1160,7 +1244,7 @@ export interface StorageQueueEventSubscriptionDestinationResponse {
      */
     endpointType: "StorageQueue";
     /**
-     * Storage queue message time to live in seconds.
+     * Storage queue message time to live in seconds. This value cannot be zero or negative with the exception of using -1 to indicate that the Time To Live of the message is Infinite.
      */
     queueMessageTimeToLiveInSeconds?: number;
     /**
@@ -1512,9 +1596,9 @@ export interface SystemDataResponse {
  */
 export interface TopicSpacesConfigurationResponse {
     /**
-     * Client authentication settings for topic spaces configuration.
+     * List of custom domain configurations for the namespace.
      */
-    clientAuthentication?: ClientAuthenticationSettingsResponse;
+    customDomains?: CustomDomainConfigurationResponse[];
     /**
      * The endpoint for the topic spaces configuration. This is a read-only property.
      */
@@ -1562,6 +1646,10 @@ export function topicSpacesConfigurationResponseProvideDefaults(val: TopicSpaces
  * Properties of the Topics Configuration.
  */
 export interface TopicsConfigurationResponse {
+    /**
+     * List of custom domain configurations for the namespace.
+     */
+    customDomains?: CustomDomainConfigurationResponse[];
     /**
      * The hostname for the topics configuration. This is a read-only property.
      */
@@ -1616,6 +1704,10 @@ export interface WebHookEventSubscriptionDestinationResponse {
      */
     maxEventsPerBatch?: number;
     /**
+     * Minimum TLS version that should be supported by webhook endpoint
+     */
+    minimumTlsVersionAllowed?: string;
+    /**
      * Preferred batch size in Kilobytes.
      */
     preferredBatchSizeInKilobytes?: number;
@@ -1630,10 +1722,3 @@ export function webHookEventSubscriptionDestinationResponseProvideDefaults(val: 
         preferredBatchSizeInKilobytes: (val.preferredBatchSizeInKilobytes) ?? 64,
     };
 }
-
-
-
-
-
-
-

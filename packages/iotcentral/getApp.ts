@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get the metadata of an IoT Central application.
  *
- * Uses Azure REST API version 2021-06-01.
+ * Uses Azure REST API version 2021-11-01-preview.
  *
- * Other available API versions: 2021-11-01-preview.
+ * Other available API versions: 2021-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotcentral [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAppResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,11 +36,15 @@ export interface GetAppResult {
      */
     readonly applicationId: string;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The display name of the application.
      */
     readonly displayName?: string;
     /**
-     * The ARM resource identifier.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
@@ -48,13 +52,29 @@ export interface GetAppResult {
      */
     readonly identity?: types.outputs.SystemAssignedServiceIdentityResponse;
     /**
-     * The resource location.
+     * The geo-location where the resource lives
      */
     readonly location: string;
     /**
-     * The ARM resource name.
+     * The name of the resource
      */
     readonly name: string;
+    /**
+     * Network Rule Set Properties of this IoT Central application.
+     */
+    readonly networkRuleSets?: types.outputs.NetworkRuleSetsResponse;
+    /**
+     * Private endpoint connections created on this IoT Central application.
+     */
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
+    /**
+     * The provisioning state of the application.
+     */
+    readonly provisioningState: string;
+    /**
+     * Whether requests from the public network are allowed.
+     */
+    readonly publicNetworkAccess?: string;
     /**
      * A valid instance SKU.
      */
@@ -68,7 +88,11 @@ export interface GetAppResult {
      */
     readonly subdomain?: string;
     /**
-     * The resource tags.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
      */
     readonly tags?: {[key: string]: string};
     /**
@@ -76,16 +100,16 @@ export interface GetAppResult {
      */
     readonly template?: string;
     /**
-     * The resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
 /**
  * Get the metadata of an IoT Central application.
  *
- * Uses Azure REST API version 2021-06-01.
+ * Uses Azure REST API version 2021-11-01-preview.
  *
- * Other available API versions: 2021-11-01-preview.
+ * Other available API versions: 2021-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotcentral [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

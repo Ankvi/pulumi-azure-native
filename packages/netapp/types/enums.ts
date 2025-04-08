@@ -1,5 +1,6 @@
 export const ApplicationType = {
     SAP_HANA: "SAP-HANA",
+    ORACLE: "ORACLE",
 } as const;
 
 /**
@@ -32,6 +33,30 @@ export const ChownMode = {
  * This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own.
  */
 export type ChownMode = (typeof ChownMode)[keyof typeof ChownMode];
+
+export const CoolAccessRetrievalPolicy = {
+    Default: "Default",
+    OnRead: "OnRead",
+    Never: "Never",
+} as const;
+
+/**
+ * coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are: 
+ *  Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
+ *  OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
+ *  Never - No client-driven data is pulled from cool tier to standard storage.
+ */
+export type CoolAccessRetrievalPolicy = (typeof CoolAccessRetrievalPolicy)[keyof typeof CoolAccessRetrievalPolicy];
+
+export const CoolAccessTieringPolicy = {
+    Auto: "Auto",
+    SnapshotOnly: "SnapshotOnly",
+} as const;
+
+/**
+ * coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.
+ */
+export type CoolAccessTieringPolicy = (typeof CoolAccessTieringPolicy)[keyof typeof CoolAccessTieringPolicy];
 
 export const EnableSubvolumes = {
     /**
@@ -121,17 +146,25 @@ export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[key
 
 export const NetworkFeatures = {
     /**
-     * Basic network feature.
+     * Basic network features.
      */
     Basic: "Basic",
     /**
-     * Standard network feature.
+     * Standard network features.
      */
     Standard: "Standard",
+    /**
+     * Updating from Basic to Standard network features.
+     */
+    Basic_Standard: "Basic_Standard",
+    /**
+     * Updating from Standard to Basic network features.
+     */
+    Standard_Basic: "Standard_Basic",
 } as const;
 
 /**
- * Basic network, or Standard features available to the volume.
+ * The original value of the network features type available to the volume at the time it was created.
  */
 export type NetworkFeatures = (typeof NetworkFeatures)[keyof typeof NetworkFeatures];
 
@@ -208,7 +241,7 @@ export const SmbAccessBasedEnumeration = {
 } as const;
 
 /**
- * Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+ * Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
  */
 export type SmbAccessBasedEnumeration = (typeof SmbAccessBasedEnumeration)[keyof typeof SmbAccessBasedEnumeration];
 
@@ -224,7 +257,7 @@ export const SmbNonBrowsable = {
 } as const;
 
 /**
- * Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+ * Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
  */
 export type SmbNonBrowsable = (typeof SmbNonBrowsable)[keyof typeof SmbNonBrowsable];
 

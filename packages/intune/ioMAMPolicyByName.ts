@@ -3,9 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * iOS Policy entity for Intune MAM.
  *
- * Uses Azure REST API version 2015-01-14-preview. In version 1.x of the Azure Native provider, it used API version 2015-01-14-preview.
- *
- * Other available API versions: 2015-01-14-privatepreview.
+ * Uses Azure REST API version 2015-01-14-preview. In version 2.x of the Azure Native provider, it used API version 2015-01-14-preview.
  */
 export class IoMAMPolicyByName extends pulumi.CustomResource {
     /**
@@ -39,6 +37,10 @@ export class IoMAMPolicyByName extends pulumi.CustomResource {
     public readonly appSharingFromLevel!: pulumi.Output<string | undefined>;
     public readonly appSharingToLevel!: pulumi.Output<string | undefined>;
     public readonly authentication!: pulumi.Output<string | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     public readonly clipboardSharingLevel!: pulumi.Output<string | undefined>;
     public readonly dataBackup!: pulumi.Output<string | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
@@ -109,6 +111,7 @@ export class IoMAMPolicyByName extends pulumi.CustomResource {
             resourceInputs["policyName"] = args ? args.policyName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["touchId"] = (args ? args.touchId : undefined) ?? "enable";
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["groupStatus"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -120,6 +123,7 @@ export class IoMAMPolicyByName extends pulumi.CustomResource {
             resourceInputs["appSharingFromLevel"] = undefined /*out*/;
             resourceInputs["appSharingToLevel"] = undefined /*out*/;
             resourceInputs["authentication"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["clipboardSharingLevel"] = undefined /*out*/;
             resourceInputs["dataBackup"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;

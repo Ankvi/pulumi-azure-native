@@ -17,8 +17,6 @@ export const listEnergyServicePartitionsOutput: typeof import("./listEnergyServi
 utilities.lazyLoad(exports, ["listEnergyServicePartitions","listEnergyServicePartitionsOutput"], () => require("./listEnergyServicePartitions"));
 
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

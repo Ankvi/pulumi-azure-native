@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get container app resiliency policy.
  *
- * Uses Azure REST API version 2023-08-01-preview.
+ * Uses Azure REST API version 2024-10-02-preview.
  *
- * Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+ * Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAppResiliency(args: GetAppResiliencyArgs, opts?: pulumi.InvokeOptions): Promise<GetAppResiliencyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +37,10 @@ export interface GetAppResiliencyArgs {
  */
 export interface GetAppResiliencyResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Policy that defines circuit breaker conditions
      */
     readonly circuitBreakerPolicy?: types.outputs.CircuitBreakerPolicyResponse;
@@ -49,7 +53,7 @@ export interface GetAppResiliencyResult {
      */
     readonly httpRetryPolicy?: types.outputs.HttpRetryPolicyResponse;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -80,9 +84,9 @@ export interface GetAppResiliencyResult {
 /**
  * Get container app resiliency policy.
  *
- * Uses Azure REST API version 2023-08-01-preview.
+ * Uses Azure REST API version 2024-10-02-preview.
  *
- * Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+ * Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAppResiliencyOutput(args: GetAppResiliencyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppResiliencyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

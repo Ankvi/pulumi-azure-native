@@ -93,6 +93,10 @@ export interface GuestAgentProfileResponse {
  */
 export interface GuestCredentialResponse {
     /**
+     * Private key used to authenticate to a virtual machine through ssh.
+     */
+    privateKey?: string;
+    /**
      * Gets or sets username to connect with the guest.
      */
     username?: string;
@@ -403,6 +407,10 @@ export interface OsProfileForVMInstanceResponse {
      * Gets or sets the current version status of VMware Tools installed in the guest operating system.
      */
     toolsVersionStatus: string;
+    /**
+     * Windows Configuration.
+     */
+    windowsConfiguration?: WindowsConfigurationResponse;
 }
 
 /**
@@ -681,6 +689,48 @@ export interface VirtualSCSIControllerResponse {
     type?: string;
 }
 
-
-
-
+/**
+ * Specifies the Windows Configuration settings for the virtual machine.
+ */
+export interface WindowsConfigurationResponse {
+    /**
+     * Sets a value indicating whether auto logon is enabled.
+     */
+    autoLogon?: boolean;
+    /**
+     * Sets auto logon count.
+     */
+    autoLogonCount?: number;
+    /**
+     * Sets domain name that vm should join.
+     */
+    domainName?: string;
+    /**
+     * Sets domain username.
+     */
+    domainUsername?: string;
+    /**
+     * Sets first logon commands
+     */
+    firstLogonCommands?: string[];
+    /**
+     * Sets full name of the owner of the vm.
+     */
+    fullName?: string;
+    /**
+     * Sets org name to which the owner of the vm belongs.
+     */
+    orgName?: string;
+    /**
+     * Sets product id of the vm.
+     */
+    productId?: string;
+    /**
+     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Time zone name correspond to time zones listed at Microsoft Time Zone name values(https://learn.microsoft.com/en-us/previous-versions/windows/embedded/ms912391(v=winembedded.11)).
+     */
+    timeZone?: string;
+    /**
+     * Sets work group name that vm should join.
+     */
+    workGroupName?: string;
+}

@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Virtual machine model
  *
- * Uses Azure REST API version 2019-04-01. In version 1.x of the Azure Native provider, it used API version 2019-04-01.
+ * Uses Azure REST API version 2019-04-01. In version 2.x of the Azure Native provider, it used API version 2019-04-01.
  */
 export class VirtualMachine extends pulumi.CustomResource {
     /**
@@ -37,6 +37,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      * The amount of memory
      */
     public readonly amountOfRam!: pulumi.Output<number>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The list of Virtual Disks' Controllers
      */
@@ -177,6 +181,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["username"] = args ? args.username : undefined;
             resourceInputs["vSphereNetworks"] = args ? args.vSphereNetworks : undefined;
             resourceInputs["virtualMachineName"] = args ? args.virtualMachineName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["controllers"] = undefined /*out*/;
             resourceInputs["dnsname"] = undefined /*out*/;
             resourceInputs["folder"] = undefined /*out*/;
@@ -191,6 +196,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["vmwaretools"] = undefined /*out*/;
         } else {
             resourceInputs["amountOfRam"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["controllers"] = undefined /*out*/;
             resourceInputs["customization"] = undefined /*out*/;
             resourceInputs["disks"] = undefined /*out*/;

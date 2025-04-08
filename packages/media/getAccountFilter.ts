@@ -5,6 +5,8 @@ import * as types from "./types";
  * Get the details of an Account Filter in the Media Services account.
  *
  * Uses Azure REST API version 2023-01-01.
+ *
+ * Other available API versions: 2018-07-01, 2020-05-01, 2021-06-01, 2021-11-01, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native media [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAccountFilter(args: GetAccountFilterArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountFilterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +36,10 @@ export interface GetAccountFilterArgs {
  * An Account Filter.
  */
 export interface GetAccountFilterResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The first quality.
      */
@@ -67,6 +73,8 @@ export interface GetAccountFilterResult {
  * Get the details of an Account Filter in the Media Services account.
  *
  * Uses Azure REST API version 2023-01-01.
+ *
+ * Other available API versions: 2018-07-01, 2020-05-01, 2021-06-01, 2021-11-01, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native media [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAccountFilterOutput(args: GetAccountFilterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountFilterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

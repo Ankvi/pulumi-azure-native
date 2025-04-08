@@ -34,6 +34,10 @@ export interface GetStorageTaskResult {
      */
     readonly action: types.outputs.StorageTaskActionResponse;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The creation date and time of the storage task in UTC.
      */
     readonly creationTimeInUtc: string;

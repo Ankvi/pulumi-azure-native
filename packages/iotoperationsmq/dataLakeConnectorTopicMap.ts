@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * MQ dataLakeConnector/topicMap resource
  *
- * Uses Azure REST API version 2023-10-04-preview.
+ * Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
  */
 export class DataLakeConnectorTopicMap extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class DataLakeConnectorTopicMap extends pulumi.CustomResource {
         return obj['__pulumiType'] === DataLakeConnectorTopicMap.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * DataLake Connector CRD to use.
      */
@@ -108,11 +112,13 @@ export class DataLakeConnectorTopicMap extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["topicMapName"] = args ? args.topicMapName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["dataLakeConnectorRef"] = undefined /*out*/;
             resourceInputs["extendedLocation"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;

@@ -169,6 +169,50 @@ export interface DiagnosticsUploadConfigurationResponse {
 }
 
 /**
+ * Configuration for sending packet core events to Azure Event Hub.
+ */
+export interface EventHubConfigurationResponse {
+    /**
+     * Resource ID  of Azure Event Hub to send packet core events to.
+     */
+    id: string;
+    /**
+     * The duration (in seconds) between UE usage reports.
+     */
+    reportingInterval?: number;
+}
+/**
+ * eventHubConfigurationResponseProvideDefaults sets the appropriate defaults for EventHubConfigurationResponse
+ */
+export function eventHubConfigurationResponseProvideDefaults(val: EventHubConfigurationResponse): EventHubConfigurationResponse {
+    return {
+        ...val,
+        reportingInterval: (val.reportingInterval) ?? 1800,
+    };
+}
+
+export interface HomeNetworkPrivateKeysProvisioningResponse {
+    /**
+     * The provisioning state of the private keys for SUPI concealment.
+     */
+    state: string;
+}
+
+/**
+ * A key used for SUPI concealment.
+ */
+export interface HomeNetworkPublicKeyResponse {
+    /**
+     * The Home Network Public Key Identifier determines which public key was used to generate the SUCI sent to the AMF. See TS 23.003 Section 2.2B Section 5.
+     */
+    id: number;
+    /**
+     * The URL of Azure Key Vault secret containing the private key, versioned or unversioned. For example: https://contosovault.vault.azure.net/secrets/mySuciPrivateKey/562a4bb76b524a1493a6afe8e536ee78.
+     */
+    url?: string;
+}
+
+/**
  * HTTPS server certificate configuration.
  */
 export interface HttpsServerCertificateResponse {
@@ -222,9 +266,17 @@ export function installationResponseProvideDefaults(val: InstallationResponse): 
  */
 export interface InterfacePropertiesResponse {
     /**
+     * The IPv4 addresses of the endpoints to send BFD probes to.
+     */
+    bfdIpv4Endpoints?: string[];
+    /**
      * The IPv4 address.
      */
     ipv4Address?: string;
+    /**
+     * The list of IPv4 addresses, for a multi-node system.
+     */
+    ipv4AddressList?: string[];
     /**
      * The default IPv4 gateway (router).
      */
@@ -237,6 +289,10 @@ export interface InterfacePropertiesResponse {
      * The logical name for this interface. This should match one of the interfaces configured on your Azure Stack Edge device.
      */
     name?: string;
+    /**
+     * VLAN identifier of the network interface. Example: 501.
+     */
+    vlanId?: number;
 }
 
 /**
@@ -285,6 +341,16 @@ export interface MobileNetworkResourceIdResponse {
      * Mobile network resource ID.
      */
     id: string;
+}
+
+/**
+ * Configuration enabling NAS reroute.
+ */
+export interface NASRerouteConfigurationResponse {
+    /**
+     * The macro network's MME group ID. This is where unknown UEs are sent to via NAS reroute.
+     */
+    macroMmeGroupId: number;
 }
 
 /**
@@ -465,7 +531,7 @@ export interface PlatformConfigurationResponse {
 }
 
 /**
- * Public land mobile network (PLMN) ID.
+ * Public land mobile network (PLMN) ID. This is made up of the mobile country code and mobile network code, as defined in https://www.itu.int/rec/T-REC-E.212. The values 001-01 and 001-001 can be used for testing and the values 999-99 and 999-999 can be used on internal private networks.
  */
 export interface PlmnIdResponse {
     /**
@@ -526,6 +592,38 @@ export function portReuseHoldTimesResponseProvideDefaults(val: PortReuseHoldTime
         tcp: (val.tcp) ?? 120,
         udp: (val.udp) ?? 60,
     };
+}
+
+/**
+ * Configuration relating to a particular PLMN
+ */
+export interface PublicLandMobileNetworkResponse {
+    /**
+     * Configuration relating to SUPI concealment.
+     */
+    homeNetworkPublicKeys?: PublicLandMobileNetworkResponseHomeNetworkPublicKeys;
+    /**
+     * Mobile country code (MCC).
+     */
+    mcc: string;
+    /**
+     * Mobile network code (MNC).
+     */
+    mnc: string;
+}
+
+/**
+ * Configuration relating to SUPI concealment.
+ */
+export interface PublicLandMobileNetworkResponseHomeNetworkPublicKeys {
+    /**
+     * This provides a mapping to identify which public key has been used for SUPI concealment using the Profile A Protection Scheme.
+     */
+    profileA?: HomeNetworkPublicKeyResponse[];
+    /**
+     * This provides a mapping to identify which public key has been used for SUPI concealment using the Profile B Protection Scheme.
+     */
+    profileB?: HomeNetworkPublicKeyResponse[];
 }
 
 /**
@@ -600,6 +698,20 @@ export interface ServiceResourceIdResponse {
      * Service resource ID.
      */
     id: string;
+}
+
+/**
+ * Signaling configuration for the packet core.
+ */
+export interface SignalingConfigurationResponse {
+    /**
+     * An ordered list of NAS encryption algorithms, used to encrypt control plane traffic between the UE and packet core, in order from most to least preferred. If not specified, the packet core will use a built-in default ordering.
+     */
+    nasEncryption?: string[];
+    /**
+     * Configuration enabling 4G NAS reroute.
+     */
+    nasReroute?: NASRerouteConfigurationResponse;
 }
 
 /**
@@ -792,8 +904,9 @@ export interface UserAssignedIdentityResponse {
     principalId: string;
 }
 
-
-
-
-
-
+export interface UserConsentConfigurationResponse {
+    /**
+     * Allow Microsoft to access non-PII telemetry information from the packet core.
+     */
+    allowSupportTelemetryAccess?: boolean;
+}

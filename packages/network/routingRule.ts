@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Network routing rule.
  *
- * Uses Azure REST API version 2024-03-01.
+ * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
  *
- * Other available API versions: 2024-05-01.
+ * Other available API versions: 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class RoutingRule extends pulumi.CustomResource {
     /**
@@ -35,6 +35,10 @@ export class RoutingRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === RoutingRule.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * A description for this rule.
      */
@@ -109,6 +113,7 @@ export class RoutingRule extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["ruleCollectionName"] = args ? args.ruleCollectionName : undefined;
             resourceInputs["ruleName"] = args ? args.ruleName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -116,6 +121,7 @@ export class RoutingRule extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["destination"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

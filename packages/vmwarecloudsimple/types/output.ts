@@ -1,6 +1,72 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Properties of dedicated cloud node
+ */
+export interface DedicatedCloudNodePropertiesResponse {
+    /**
+     * Availability Zone id, e.g. "az1"
+     */
+    availabilityZoneId: string;
+    /**
+     * Availability Zone name, e.g. "Availability Zone 1"
+     */
+    availabilityZoneName: string;
+    /**
+     * VMWare Cloud Rack Name
+     */
+    cloudRackName: string;
+    /**
+     * date time the resource was created
+     */
+    created: string;
+    /**
+     * SKU's id
+     */
+    id: string;
+    /**
+     * SKU's name
+     */
+    name: string;
+    /**
+     * count of nodes to create
+     */
+    nodesCount: number;
+    /**
+     * Placement Group id, e.g. "n1"
+     */
+    placementGroupId: string;
+    /**
+     * Placement Name, e.g. "Placement Group 1"
+     */
+    placementGroupName: string;
+    /**
+     * Private Cloud Id
+     */
+    privateCloudId: string;
+    /**
+     * Resource Pool Name
+     */
+    privateCloudName: string;
+    /**
+     * The provisioning status of the resource
+     */
+    provisioningState: string;
+    /**
+     * purchase id
+     */
+    purchaseId: string;
+    /**
+     * Node status, indicates is private cloud set up on this node or not
+     */
+    status: string;
+    /**
+     * VMWare Cluster Name
+     */
+    vmwareClusterName: string;
+}
+
+/**
  * Guest OS Customization properties
  */
 export interface GuestOSCustomizationResponse {

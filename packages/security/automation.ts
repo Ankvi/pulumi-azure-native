@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * The security automation resource.
  *
- * Uses Azure REST API version 2019-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2019-01-01-preview.
+ * Uses Azure REST API version 2023-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2019-01-01-preview.
  *
- * Other available API versions: 2023-12-01-preview.
+ * Other available API versions: 2019-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Automation extends pulumi.CustomResource {
     /**
@@ -39,6 +39,10 @@ export class Automation extends pulumi.CustomResource {
      * A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
      */
     public readonly actions!: pulumi.Output<(types.outputs.AutomationActionEventHubResponse | types.outputs.AutomationActionLogicAppResponse | types.outputs.AutomationActionWorkspaceResponse)[] | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The security automation description.
      */
@@ -104,11 +108,13 @@ export class Automation extends pulumi.CustomResource {
             resourceInputs["scopes"] = args ? args.scopes : undefined;
             resourceInputs["sources"] = args ? args.sources : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["actions"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["isEnabled"] = undefined /*out*/;

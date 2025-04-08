@@ -35,6 +35,10 @@ export interface GetKafkaConnectorArgs {
  */
 export interface GetKafkaConnectorResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The client id prefix of the dynamically generated client ids.
      */
     readonly clientIdPrefix?: string;

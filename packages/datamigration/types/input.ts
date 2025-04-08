@@ -7,15 +7,19 @@ export interface AzureActiveDirectoryAppArgs {
     /**
      * Key used to authenticate to the Azure Active Directory Application
      */
-    appKey: pulumi.Input<string>;
+    appKey?: pulumi.Input<string>;
     /**
      * Application ID of the Azure Active Directory Application
      */
-    applicationId: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string>;
+    /**
+     * Ignore checking azure permissions on the AAD app
+     */
+    ignoreAzurePermissions?: pulumi.Input<boolean>;
     /**
      * Tenant id of the customer
      */
-    tenantId: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
 }
 
 /**
@@ -25,7 +29,7 @@ export interface BlobShareArgs {
     /**
      * SAS URI of Azure Storage Account Container.
      */
-    sasUri: pulumi.Input<string>;
+    sasUri?: pulumi.Input<string>;
 }
 
 /**
@@ -45,6 +49,15 @@ export interface ConnectToMongoDbTaskPropertiesArgs {
      * Expected value is 'Connect.MongoDb'.
      */
     taskType: pulumi.Input<"Connect.MongoDb">;
+}
+/**
+ * connectToMongoDbTaskPropertiesArgsProvideDefaults sets the appropriate defaults for ConnectToMongoDbTaskPropertiesArgs
+ */
+export function connectToMongoDbTaskPropertiesArgsProvideDefaults(val: ConnectToMongoDbTaskPropertiesArgs): ConnectToMongoDbTaskPropertiesArgs {
+    return {
+        ...val,
+        input: (val.input ? pulumi.output(val.input).apply(mongoDbConnectionInfoArgsProvideDefaults) : undefined),
+    };
 }
 
 /**
@@ -236,6 +249,10 @@ export interface ConnectToSourceSqlServerTaskInputArgs {
      */
     collectTdeCertificateInfo?: pulumi.Input<boolean>;
     /**
+     * encrypted key for secure fields
+     */
+    encryptedKeyForSecureFields?: pulumi.Input<string>;
+    /**
      * Connection information for Source SQL Server
      */
     sourceConnectionInfo: pulumi.Input<SqlConnectionInfoArgs>;
@@ -271,6 +288,10 @@ export interface ConnectToSourceSqlServerTaskPropertiesArgs {
      * Task input
      */
     input?: pulumi.Input<ConnectToSourceSqlServerTaskInputArgs>;
+    /**
+     * Task id 
+     */
+    taskId?: pulumi.Input<string>;
     /**
      * Task type.
      * Expected value is 'ConnectToSource.SqlServer'.
@@ -448,6 +469,10 @@ export function connectToTargetOracleAzureDbForPostgreSqlSyncTaskPropertiesArgsP
  */
 export interface ConnectToTargetSqlDbTaskInputArgs {
     /**
+     * Boolean flag indicating whether to query object counts for each database on the target server
+     */
+    queryObjectCounts?: pulumi.Input<boolean>;
+    /**
      * Connection information for target SQL DB
      */
     targetConnectionInfo: pulumi.Input<SqlConnectionInfoArgs>;
@@ -470,6 +495,10 @@ export interface ConnectToTargetSqlDbTaskPropertiesArgs {
      * Key value pairs of client data to attach meta data information to task
      */
     clientData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * DateTime in UTC when the task was created
+     */
+    createdOn?: pulumi.Input<string>;
     /**
      * Task input
      */
@@ -495,7 +524,7 @@ export function connectToTargetSqlDbTaskPropertiesArgsProvideDefaults(val: Conne
  */
 export interface ConnectToTargetSqlMISyncTaskInputArgs {
     /**
-     * Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+     * Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
      */
     azureApp: pulumi.Input<AzureActiveDirectoryAppArgs>;
     /**
@@ -657,7 +686,7 @@ export interface DatabaseMigrationPropertiesSqlDbArgs {
      */
     kind: pulumi.Input<"SqlDb">;
     /**
-     * ID tracking current migration operation.
+     * ID for current migration operation.
      */
     migrationOperationId?: pulumi.Input<string>;
     /**
@@ -669,7 +698,7 @@ export interface DatabaseMigrationPropertiesSqlDbArgs {
      */
     provisioningError?: pulumi.Input<string>;
     /**
-     * Resource Id of the target resource (SQL VM or SQL Managed Instance).
+     * Resource Id of the target resource.
      */
     scope?: pulumi.Input<string>;
     /**
@@ -971,6 +1000,10 @@ export interface GetUserTablesSqlTaskInputArgs {
      */
     connectionInfo: pulumi.Input<SqlConnectionInfoArgs>;
     /**
+     * encrypted key for secure fields
+     */
+    encryptedKeyForSecureFields?: pulumi.Input<string>;
+    /**
      * List of database names to collect tables for
      */
     selectedDatabases: pulumi.Input<pulumi.Input<string>[]>;
@@ -997,6 +1030,10 @@ export interface GetUserTablesSqlTaskPropertiesArgs {
      * Task input
      */
     input?: pulumi.Input<GetUserTablesSqlTaskInputArgs>;
+    /**
+     * Task id 
+     */
+    taskId?: pulumi.Input<string>;
     /**
      * Task type.
      * Expected value is 'GetUserTables.Sql'.
@@ -1054,6 +1091,15 @@ export interface MigrateMongoDbTaskPropertiesArgs {
      */
     taskType: pulumi.Input<"Migrate.MongoDb">;
 }
+/**
+ * migrateMongoDbTaskPropertiesArgsProvideDefaults sets the appropriate defaults for MigrateMongoDbTaskPropertiesArgs
+ */
+export function migrateMongoDbTaskPropertiesArgsProvideDefaults(val: MigrateMongoDbTaskPropertiesArgs): MigrateMongoDbTaskPropertiesArgs {
+    return {
+        ...val,
+        input: (val.input ? pulumi.output(val.input).apply(mongoDbMigrationSettingsArgsProvideDefaults) : undefined),
+    };
+}
 
 /**
  * Database specific information for offline MySQL to Azure Database for MySQL migration task inputs
@@ -1077,6 +1123,10 @@ export interface MigrateMySqlAzureDbForMySqlOfflineDatabaseInputArgs {
  * Input for the task that migrates MySQL databases to Azure Database for MySQL for offline migrations
  */
 export interface MigrateMySqlAzureDbForMySqlOfflineTaskInputArgs {
+    /**
+     * encrypted key for secure fields
+     */
+    encryptedKeyForSecureFields?: pulumi.Input<string>;
     /**
      * Setting to set the source server read only
      */
@@ -1126,6 +1176,14 @@ export interface MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesArgs {
      * Task input
      */
     input?: pulumi.Input<MigrateMySqlAzureDbForMySqlOfflineTaskInputArgs>;
+    /**
+     * whether the task can be cloned or not
+     */
+    isCloneable?: pulumi.Input<boolean>;
+    /**
+     * Task id 
+     */
+    taskId?: pulumi.Input<string>;
     /**
      * Task type.
      * Expected value is 'Migrate.MySql.AzureDbForMySql'.
@@ -1328,7 +1386,7 @@ export interface MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputArgs {
     /**
      * Migration settings which tune the migration behavior
      */
-    migrationSetting?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    migrationSetting?: any;
     /**
      * Name of the database
      */
@@ -1366,6 +1424,10 @@ export interface MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputArgs
  */
 export interface MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputArgs {
     /**
+     * encrypted key for secure fields
+     */
+    encryptedKeyForSecureFields?: pulumi.Input<string>;
+    /**
      * Databases to migrate
      */
     selectedDatabases: pulumi.Input<pulumi.Input<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputArgs>[]>;
@@ -1398,9 +1460,21 @@ export interface MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesArgs {
      */
     clientData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * DateTime in UTC when the task was created
+     */
+    createdOn?: pulumi.Input<string>;
+    /**
      * Task input
      */
     input?: pulumi.Input<MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputArgs>;
+    /**
+     * whether the task can be cloned or not
+     */
+    isCloneable?: pulumi.Input<boolean>;
+    /**
+     * task id
+     */
+    taskId?: pulumi.Input<string>;
     /**
      * Task type.
      * Expected value is 'Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2'.
@@ -1422,6 +1496,10 @@ export function migratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesArgsProvi
  */
 export interface MigrateSqlServerSqlDbDatabaseInputArgs {
     /**
+     * id of the database
+     */
+    id?: pulumi.Input<string>;
+    /**
      * Whether to set database read only before migration
      */
     makeSourceDbReadOnly?: pulumi.Input<boolean>;
@@ -1429,6 +1507,10 @@ export interface MigrateSqlServerSqlDbDatabaseInputArgs {
      * Name of the database
      */
     name?: pulumi.Input<string>;
+    /**
+     * Settings selected for DB schema migration.
+     */
+    schemaSetting?: any;
     /**
      * Mapping of source to target tables
      */
@@ -1542,6 +1624,10 @@ export function migrateSqlServerSqlDbSyncTaskPropertiesArgsProvideDefaults(val: 
  */
 export interface MigrateSqlServerSqlDbTaskInputArgs {
     /**
+     * encrypted key for secure fields
+     */
+    encryptedKeyForSecureFields?: pulumi.Input<string>;
+    /**
      * Databases to migrate
      */
     selectedDatabases: pulumi.Input<pulumi.Input<MigrateSqlServerSqlDbDatabaseInputArgs>[]>;
@@ -1549,6 +1635,10 @@ export interface MigrateSqlServerSqlDbTaskInputArgs {
      * Information for connecting to source
      */
     sourceConnectionInfo: pulumi.Input<SqlConnectionInfoArgs>;
+    /**
+     * Date and time relative to UTC when the migration was started on
+     */
+    startedOn?: pulumi.Input<string>;
     /**
      * Information for connecting to target
      */
@@ -1580,9 +1670,21 @@ export interface MigrateSqlServerSqlDbTaskPropertiesArgs {
      */
     clientData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * DateTime in UTC when the task was created
+     */
+    createdOn?: pulumi.Input<string>;
+    /**
      * Task input
      */
     input?: pulumi.Input<MigrateSqlServerSqlDbTaskInputArgs>;
+    /**
+     * whether the task can be cloned or not
+     */
+    isCloneable?: pulumi.Input<boolean>;
+    /**
+     * task id
+     */
+    taskId?: pulumi.Input<string>;
     /**
      * Task type.
      * Expected value is 'Migrate.SqlServer.SqlDb'.
@@ -1612,6 +1714,10 @@ export interface MigrateSqlServerSqlMIDatabaseInputArgs {
      */
     backupFileShare?: pulumi.Input<FileShareArgs>;
     /**
+     * id of the database
+     */
+    id?: pulumi.Input<string>;
+    /**
      * Name of the database
      */
     name: pulumi.Input<string>;
@@ -1626,13 +1732,17 @@ export interface MigrateSqlServerSqlMIDatabaseInputArgs {
  */
 export interface MigrateSqlServerSqlMISyncTaskInputArgs {
     /**
-     * Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+     * Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
      */
     azureApp: pulumi.Input<AzureActiveDirectoryAppArgs>;
     /**
      * Backup file share information for all selected databases.
      */
     backupFileShare?: pulumi.Input<FileShareArgs>;
+    /**
+     * Number of database migrations to start in parallel
+     */
+    numberOfParallelDatabaseMigrations?: pulumi.Input<number>;
     /**
      * Databases to migrate
      */
@@ -1668,6 +1778,10 @@ export interface MigrateSqlServerSqlMISyncTaskPropertiesArgs {
      * Key value pairs of client data to attach meta data information to task
      */
     clientData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * DateTime in UTC when the task was created
+     */
+    createdOn?: pulumi.Input<string>;
     /**
      * Task input
      */
@@ -1709,6 +1823,10 @@ export interface MigrateSqlServerSqlMITaskInputArgs {
      */
     backupMode?: pulumi.Input<string | enums.BackupMode>;
     /**
+     * encrypted key for secure fields
+     */
+    encryptedKeyForSecureFields?: pulumi.Input<string>;
+    /**
      * Agent Jobs to migrate.
      */
     selectedAgentJobs?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1724,6 +1842,10 @@ export interface MigrateSqlServerSqlMITaskInputArgs {
      * Information for connecting to source
      */
     sourceConnectionInfo: pulumi.Input<SqlConnectionInfoArgs>;
+    /**
+     * Date and time relative to UTC when the migration was started on
+     */
+    startedOn?: pulumi.Input<string>;
     /**
      * Information for connecting to target
      */
@@ -1749,9 +1871,25 @@ export interface MigrateSqlServerSqlMITaskPropertiesArgs {
      */
     clientData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * DateTime in UTC when the task was created
+     */
+    createdOn?: pulumi.Input<string>;
+    /**
      * Task input
      */
     input?: pulumi.Input<MigrateSqlServerSqlMITaskInputArgs>;
+    /**
+     * whether the task can be cloned or not
+     */
+    isCloneable?: pulumi.Input<boolean>;
+    /**
+     * parent task id
+     */
+    parentTaskId?: pulumi.Input<string>;
+    /**
+     * task id
+     */
+    taskId?: pulumi.Input<string>;
     /**
      * Task type.
      * Expected value is 'Migrate.SqlServer.AzureSqlDbMI'.
@@ -1895,13 +2033,50 @@ export interface MongoDbCollectionSettingsArgs {
  */
 export interface MongoDbConnectionInfoArgs {
     /**
+     * Additional connection settings
+     */
+    additionalSettings?: pulumi.Input<string>;
+    /**
+     * Authentication type to use for connection
+     */
+    authentication?: pulumi.Input<string | enums.AuthenticationType>;
+    /**
      * A MongoDB connection string or blob container URL. The user name and password can be specified here or in the userName and password properties
      */
     connectionString: pulumi.Input<string>;
     /**
+     * Data source 
+     */
+    dataSource?: pulumi.Input<string>;
+    /**
+     * Whether to encrypt the connection
+     */
+    encryptConnection?: pulumi.Input<boolean>;
+    enforceSSL?: pulumi.Input<boolean>;
+    /**
      * Password credential.
      */
     password?: pulumi.Input<string>;
+    /**
+     * port for server
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * server brand version
+     */
+    serverBrandVersion?: pulumi.Input<string>;
+    /**
+     * name of the server
+     */
+    serverName?: pulumi.Input<string>;
+    /**
+     * server version
+     */
+    serverVersion?: pulumi.Input<string>;
+    /**
+     * Whether to trust the server certificate
+     */
+    trustServerCertificate?: pulumi.Input<boolean>;
     /**
      * Type of connection info
      * Expected value is 'MongoDbConnectionInfo'.
@@ -1911,6 +2086,15 @@ export interface MongoDbConnectionInfoArgs {
      * User name
      */
     userName?: pulumi.Input<string>;
+}
+/**
+ * mongoDbConnectionInfoArgsProvideDefaults sets the appropriate defaults for MongoDbConnectionInfoArgs
+ */
+export function mongoDbConnectionInfoArgsProvideDefaults(val: MongoDbConnectionInfoArgs): MongoDbConnectionInfoArgs {
+    return {
+        ...val,
+        trustServerCertificate: (val.trustServerCertificate) ?? false,
+    };
 }
 
 /**
@@ -1956,6 +2140,16 @@ export interface MongoDbMigrationSettingsArgs {
      */
     throttling?: pulumi.Input<MongoDbThrottlingSettingsArgs>;
 }
+/**
+ * mongoDbMigrationSettingsArgsProvideDefaults sets the appropriate defaults for MongoDbMigrationSettingsArgs
+ */
+export function mongoDbMigrationSettingsArgsProvideDefaults(val: MongoDbMigrationSettingsArgs): MongoDbMigrationSettingsArgs {
+    return {
+        ...val,
+        source: pulumi.output(val.source).apply(mongoDbConnectionInfoArgsProvideDefaults),
+        target: pulumi.output(val.target).apply(mongoDbConnectionInfoArgsProvideDefaults),
+    };
+}
 
 /**
  * Describes a field reference within a MongoDB shard key
@@ -1982,7 +2176,7 @@ export interface MongoDbShardKeySettingArgs {
     /**
      * Whether the shard key is unique
      */
-    isUnique: pulumi.Input<boolean>;
+    isUnique?: pulumi.Input<boolean>;
 }
 
 /**
@@ -2030,6 +2224,18 @@ export interface MongoMigrationCollectionArgs {
  */
 export interface MySqlConnectionInfoArgs {
     /**
+     * Additional connection settings
+     */
+    additionalSettings?: pulumi.Input<string>;
+    /**
+     * Authentication type to use for connection
+     */
+    authentication?: pulumi.Input<string | enums.AuthenticationType>;
+    /**
+     * Data source 
+     */
+    dataSource?: pulumi.Input<string>;
+    /**
      * Whether to encrypt the connection
      */
     encryptConnection?: pulumi.Input<boolean>;
@@ -2070,6 +2276,10 @@ export function mySqlConnectionInfoArgsProvideDefaults(val: MySqlConnectionInfoA
  */
 export interface OracleConnectionInfoArgs {
     /**
+     * Authentication type to use for connection
+     */
+    authentication?: pulumi.Input<string | enums.AuthenticationType>;
+    /**
      * EZConnect or TNSName connection string.
      */
     dataSource: pulumi.Input<string>;
@@ -2077,6 +2287,18 @@ export interface OracleConnectionInfoArgs {
      * Password credential.
      */
     password?: pulumi.Input<string>;
+    /**
+     * port for server
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * name of the server
+     */
+    serverName?: pulumi.Input<string>;
+    /**
+     * server version
+     */
+    serverVersion?: pulumi.Input<string>;
     /**
      * Type of connection info
      * Expected value is 'OracleConnectionInfo'.
@@ -2092,6 +2314,18 @@ export interface OracleConnectionInfoArgs {
  * Information for connecting to PostgreSQL server
  */
 export interface PostgreSqlConnectionInfoArgs {
+    /**
+     * Additional connection settings
+     */
+    additionalSettings?: pulumi.Input<string>;
+    /**
+     * Authentication type to use for connection
+     */
+    authentication?: pulumi.Input<string | enums.AuthenticationType>;
+    /**
+     * Data source 
+     */
+    dataSource?: pulumi.Input<string>;
     /**
      * Name of the database
      */
@@ -2109,9 +2343,17 @@ export interface PostgreSqlConnectionInfoArgs {
      */
     port: pulumi.Input<number>;
     /**
+     * server brand version
+     */
+    serverBrandVersion?: pulumi.Input<string>;
+    /**
      * Name of the server
      */
     serverName: pulumi.Input<string>;
+    /**
+     * server version
+     */
+    serverVersion?: pulumi.Input<string>;
     /**
      * Whether to trust the server certificate
      */
@@ -2224,6 +2466,26 @@ export interface SqlConnectionInfoArgs {
      */
     platform?: pulumi.Input<string | enums.SqlSourcePlatform>;
     /**
+     * Port for Server
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Represents the ID of an HTTP resource represented by an Azure resource provider.
+     */
+    resourceId?: pulumi.Input<string>;
+    /**
+     * server brand version
+     */
+    serverBrandVersion?: pulumi.Input<string>;
+    /**
+     * name of the server
+     */
+    serverName?: pulumi.Input<string>;
+    /**
+     * server version
+     */
+    serverVersion?: pulumi.Input<string>;
+    /**
      * Whether to trust the server certificate
      */
     trustServerCertificate?: pulumi.Input<boolean>;
@@ -2291,7 +2553,7 @@ export interface SsisMigrationInfoArgs {
      */
     projectOverwriteOption?: pulumi.Input<string | enums.SsisMigrationOverwriteOption>;
     /**
-     * The SSIS store type of source, only SSIS catalog is supported now in DMS
+     * The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
      */
     ssisStoreType?: pulumi.Input<string | enums.SsisStoreType>;
 }
@@ -2329,7 +2591,7 @@ export function validateMigrationInputSqlServerSqlDbSyncTaskPropertiesArgsProvid
  */
 export interface ValidateMigrationInputSqlServerSqlMISyncTaskInputArgs {
     /**
-     * Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+     * Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
      */
     azureApp: pulumi.Input<AzureActiveDirectoryAppArgs>;
     /**
@@ -2481,6 +2743,15 @@ export interface ValidateMongoDbTaskPropertiesArgs {
      */
     taskType: pulumi.Input<"Validate.MongoDb">;
 }
+/**
+ * validateMongoDbTaskPropertiesArgsProvideDefaults sets the appropriate defaults for ValidateMongoDbTaskPropertiesArgs
+ */
+export function validateMongoDbTaskPropertiesArgsProvideDefaults(val: ValidateMongoDbTaskPropertiesArgs): ValidateMongoDbTaskPropertiesArgs {
+    return {
+        ...val,
+        input: (val.input ? pulumi.output(val.input).apply(mongoDbMigrationSettingsArgsProvideDefaults) : undefined),
+    };
+}
 
 /**
  * Properties for the task that validates a migration for Oracle to Azure Database for PostgreSQL for online migrations
@@ -2537,6 +2808,3 @@ export function validateSyncMigrationInputSqlServerTaskInputArgsProvideDefaults(
         targetConnectionInfo: pulumi.output(val.targetConnectionInfo).apply(sqlConnectionInfoArgsProvideDefaults),
     };
 }
-
-
-

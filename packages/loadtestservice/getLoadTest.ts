@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get a LoadTestResource
  *
- * Uses Azure REST API version 2022-12-01.
+ * Uses Azure REST API version 2023-12-01-preview.
  *
- * Other available API versions: 2021-12-01-preview, 2023-12-01-preview, 2024-12-01-preview.
+ * Other available API versions: 2022-12-01, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native loadtestservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getLoadTest(args: GetLoadTestArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadTestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +31,10 @@ export interface GetLoadTestArgs {
  * LoadTest details.
  */
 export interface GetLoadTestResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Resource data plane URI.
      */
@@ -79,9 +83,9 @@ export interface GetLoadTestResult {
 /**
  * Get a LoadTestResource
  *
- * Uses Azure REST API version 2022-12-01.
+ * Uses Azure REST API version 2023-12-01-preview.
  *
- * Other available API versions: 2021-12-01-preview, 2023-12-01-preview, 2024-12-01-preview.
+ * Other available API versions: 2022-12-01, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native loadtestservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getLoadTestOutput(args: GetLoadTestOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadTestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

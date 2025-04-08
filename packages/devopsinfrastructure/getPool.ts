@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get a Pool
  *
- * Uses Azure REST API version 2023-10-30-preview.
+ * Uses Azure REST API version 2025-01-21.
  *
- * Other available API versions: 2023-12-13-preview, 2024-03-26-preview, 2024-04-04-preview, 2024-10-19, 2025-01-21.
+ * Other available API versions: 2023-10-30-preview, 2023-12-13-preview, 2024-03-26-preview, 2024-04-04-preview, 2024-10-19. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devopsinfrastructure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPool(args: GetPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +36,10 @@ export interface GetPoolResult {
      */
     readonly agentProfile: types.outputs.StatefulResponse | types.outputs.StatelessAgentProfileResponse;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The resource id of the DevCenter Project the pool belongs to.
      */
     readonly devCenterProjectResourceId: string;
@@ -44,7 +48,7 @@ export interface GetPoolResult {
      */
     readonly fabricProfile: types.outputs.VmssFabricProfileResponse;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -66,7 +70,7 @@ export interface GetPoolResult {
     /**
      * Defines the organization in which the pool will be used.
      */
-    readonly organizationProfile: types.outputs.AzureDevOpsOrganizationProfileResponse;
+    readonly organizationProfile: types.outputs.AzureDevOpsOrganizationProfileResponse | types.outputs.GitHubOrganizationProfileResponse;
     /**
      * The status of the current operation.
      */
@@ -87,9 +91,9 @@ export interface GetPoolResult {
 /**
  * Get a Pool
  *
- * Uses Azure REST API version 2023-10-30-preview.
+ * Uses Azure REST API version 2025-01-21.
  *
- * Other available API versions: 2023-12-13-preview, 2024-03-26-preview, 2024-04-04-preview, 2024-10-19, 2025-01-21.
+ * Other available API versions: 2023-10-30-preview, 2023-12-13-preview, 2024-03-26-preview, 2024-04-04-preview, 2024-10-19. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devopsinfrastructure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPoolOutput(args: GetPoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

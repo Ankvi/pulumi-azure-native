@@ -30,6 +30,10 @@ export interface GetReportByBillingAccountArgs {
  */
 export interface GetReportByBillingAccountResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Has definition for the report.
      */
     readonly definition: types.outputs.ReportDefinitionResponse;

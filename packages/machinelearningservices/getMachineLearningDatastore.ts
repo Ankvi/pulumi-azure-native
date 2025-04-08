@@ -35,6 +35,10 @@ export interface GetMachineLearningDatastoreArgs {
  */
 export interface GetMachineLearningDatastoreResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Specifies the resource ID.
      */
     readonly id: string;

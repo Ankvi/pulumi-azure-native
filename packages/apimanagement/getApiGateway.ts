@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets an API Management gateway resource description.
  *
- * Uses Azure REST API version 2023-09-01-preview.
+ * Uses Azure REST API version 2024-06-01-preview.
  *
- * Other available API versions: 2024-05-01, 2024-06-01-preview.
+ * Other available API versions: 2023-09-01-preview, 2024-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getApiGateway(args: GetApiGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetApiGatewayResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +31,10 @@ export interface GetApiGatewayArgs {
  * A single API Management gateway resource in List or Get response.
  */
 export interface GetApiGatewayResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Information regarding how the gateway should integrate with backend systems.
      */
@@ -95,9 +99,9 @@ export interface GetApiGatewayResult {
 /**
  * Gets an API Management gateway resource description.
  *
- * Uses Azure REST API version 2023-09-01-preview.
+ * Uses Azure REST API version 2024-06-01-preview.
  *
- * Other available API versions: 2024-05-01, 2024-06-01-preview.
+ * Other available API versions: 2023-09-01-preview, 2024-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getApiGatewayOutput(args: GetApiGatewayOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiGatewayResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

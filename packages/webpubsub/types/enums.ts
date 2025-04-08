@@ -43,6 +43,16 @@ export const PrivateLinkServiceConnectionStatus = {
  */
 export type PrivateLinkServiceConnectionStatus = (typeof PrivateLinkServiceConnectionStatus)[keyof typeof PrivateLinkServiceConnectionStatus];
 
+export const ServiceKind = {
+    WebPubSub: "WebPubSub",
+    SocketIO: "SocketIO",
+} as const;
+
+/**
+ * The kind of the service
+ */
+export type ServiceKind = (typeof ServiceKind)[keyof typeof ServiceKind];
+
 export const UpstreamAuthType = {
     None: "None",
     ManagedIdentity: "ManagedIdentity",

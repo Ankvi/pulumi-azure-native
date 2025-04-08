@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get a given CloudEndpoint.
  *
- * Uses Azure REST API version 2022-06-01.
+ * Uses Azure REST API version 2022-09-01.
  *
- * Other available API versions: 2022-09-01.
+ * Other available API versions: 2022-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagesync [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getCloudEndpoint(args: GetCloudEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -42,6 +42,10 @@ export interface GetCloudEndpointArgs {
  */
 export interface GetCloudEndpointResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Azure file share name
      */
     readonly azureFileShareName?: string;
@@ -58,7 +62,7 @@ export interface GetCloudEndpointResult {
      */
     readonly friendlyName?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -101,9 +105,9 @@ export interface GetCloudEndpointResult {
 /**
  * Get a given CloudEndpoint.
  *
- * Uses Azure REST API version 2022-06-01.
+ * Uses Azure REST API version 2022-09-01.
  *
- * Other available API versions: 2022-09-01.
+ * Other available API versions: 2022-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagesync [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getCloudEndpointOutput(args: GetCloudEndpointOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Security Assignment on a resource group over a given scope
  *
- * Uses Azure REST API version 2021-08-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-08-01-preview.
+ * Uses Azure REST API version 2021-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-08-01-preview.
  */
 export class Assignment extends pulumi.CustomResource {
     /**
@@ -45,6 +45,10 @@ export class Assignment extends pulumi.CustomResource {
      * Standard item with key as applied to this standard assignment over the given scope
      */
     public readonly assignedStandard!: pulumi.Output<types.outputs.AssignedStandardItemResponse | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * description of the standardAssignment
      */
@@ -126,6 +130,7 @@ export class Assignment extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -134,6 +139,7 @@ export class Assignment extends pulumi.CustomResource {
             resourceInputs["additionalData"] = undefined /*out*/;
             resourceInputs["assignedComponent"] = undefined /*out*/;
             resourceInputs["assignedStandard"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["effect"] = undefined /*out*/;

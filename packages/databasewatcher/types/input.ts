@@ -65,6 +65,3 @@ export interface VaultSecretArgs {
      */
     akvTargetUser?: pulumi.Input<string>;
 }
-
-
-

@@ -142,4 +142,3 @@ export interface PrivateLinkServiceConnectionStateArgs {
      */
     status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
 }
-

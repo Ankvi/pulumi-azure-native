@@ -1,6 +1,16 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Identity for Azure Bare Metal Storage Instance.
+ */
+export interface AzureBareMetalStorageInstanceIdentityArgs {
+    /**
+     * The type of identity used for the Azure Bare Metal Storage Instance. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Azure Bare Metal Storage Instance.
+     */
+    type?: pulumi.Input<string | enums.ResourceIdentityType>;
+}
+
+/**
  * Specifies the disk information fo the Azure Bare Metal Instance
  */
 export interface DiskArgs {
@@ -103,7 +113,7 @@ export interface StorageProfileArgs {
 }
 
 /**
- * described the storage properties of the azure baremetalstorage instance
+ * described the storage properties of the azure bare metal storage instance
  */
 export interface StoragePropertiesArgs {
     /**
@@ -135,6 +145,3 @@ export interface StoragePropertiesArgs {
      */
     workloadType?: pulumi.Input<string>;
 }
-
-
-

@@ -81,6 +81,10 @@ export interface LedgerPropertiesResponse {
      */
     ledgerName: string;
     /**
+     * SKU associated with the ledger
+     */
+    ledgerSku?: string;
+    /**
      * Type of Confidential Ledger
      */
     ledgerType?: string;
@@ -92,6 +96,10 @@ export interface LedgerPropertiesResponse {
      * Provisioning state of Ledger Resource
      */
     provisioningState: string;
+    /**
+     * Object representing RunningState for Ledger.
+     */
+    runningState?: string;
 }
 
 /**
@@ -123,9 +131,13 @@ export interface ManagedCCFPropertiesResponse {
      */
     nodeCount?: number;
     /**
-     * Provisioning state of Ledger Resource
+     * Provisioning state of Managed CCF Resource
      */
     provisioningState: string;
+    /**
+     * Object representing RunningState for Managed CCF.
+     */
+    runningState?: string;
 }
 
 /**
@@ -172,7 +184,3 @@ export interface SystemDataResponse {
      */
     lastModifiedByType?: string;
 }
-
-
-
-

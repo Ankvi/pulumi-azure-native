@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * A Disk.
  *
- * Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+ * Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
  */
 export class Disk extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class Disk extends pulumi.CustomResource {
         return obj['__pulumiType'] === Disk.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The creation date of the disk.
      */
@@ -128,11 +132,13 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["storageAccountId"] = args ? args.storageAccountId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdDate"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["uniqueIdentifier"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdDate"] = undefined /*out*/;
             resourceInputs["diskBlobName"] = undefined /*out*/;
             resourceInputs["diskSizeGiB"] = undefined /*out*/;

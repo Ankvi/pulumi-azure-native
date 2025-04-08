@@ -73,6 +73,20 @@ export interface AlertRulePropertiesArgs {
 }
 
 /**
+ * Configuration details of app service plan
+ */
+export interface AppServicePlanConfigurationArgs {
+    /**
+     * The number of workers in app service plan. If this is not set or set to 0, auto scale will be configured for the app service plan, otherwise, instance count is set to this number.
+     */
+    capacity?: pulumi.Input<number>;
+    /**
+     * The App Service plan tier.
+     */
+    tier?: pulumi.Input<string | enums.AppServicePlanTier>;
+}
+
+/**
  * Gets or sets the application server configuration.
  */
 export interface ApplicationServerConfigurationArgs {
@@ -141,7 +155,7 @@ export interface CentralServerFullResourceNamesArgs {
 }
 
 /**
- * Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
+ * Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn't need to be pre-created.
  */
 export interface CreateAndMountFileShareConfigurationArgs {
     /**
@@ -157,53 +171,6 @@ export interface CreateAndMountFileShareConfigurationArgs {
      * The name of file share storage account name . A custom name is used in case of missing input.
      */
     storageAccountName?: pulumi.Input<string>;
-}
-
-/**
- * Gets or sets the DB2 provider properties.
- */
-export interface DB2ProviderInstancePropertiesArgs {
-    /**
-     * Gets or sets the db2 database name.
-     */
-    dbName?: pulumi.Input<string>;
-    /**
-     * Gets or sets the db2 database password.
-     */
-    dbPassword?: pulumi.Input<string>;
-    /**
-     * Gets or sets the key vault URI to secret with the database password.
-     */
-    dbPasswordUri?: pulumi.Input<string>;
-    /**
-     * Gets or sets the db2 database sql port.
-     */
-    dbPort?: pulumi.Input<string>;
-    /**
-     * Gets or sets the db2 database user name.
-     */
-    dbUsername?: pulumi.Input<string>;
-    /**
-     * Gets or sets the target virtual machine name.
-     */
-    hostname?: pulumi.Input<string>;
-    /**
-     * The provider type. For example, the value can be SapHana.
-     * Expected value is 'Db2'.
-     */
-    providerType: pulumi.Input<"Db2">;
-    /**
-     * Gets or sets the SAP System Identifier
-     */
-    sapSid?: pulumi.Input<string>;
-    /**
-     * Gets or sets the blob URI to SSL certificate for the DB2 Database.
-     */
-    sslCertificateUri?: pulumi.Input<string>;
-    /**
-     * Gets or sets certificate preference if secure communication is enabled.
-     */
-    sslPreference?: pulumi.Input<string | enums.SslPreference>;
 }
 
 /**
@@ -335,6 +302,53 @@ export interface DayArgs {
      * Whether Date is last date of month
      */
     isLast?: pulumi.Input<boolean>;
+}
+
+/**
+ * Gets or sets the DB2 provider properties.
+ */
+export interface Db2ProviderInstancePropertiesArgs {
+    /**
+     * Gets or sets the db2 database name.
+     */
+    dbName?: pulumi.Input<string>;
+    /**
+     * Gets or sets the db2 database password.
+     */
+    dbPassword?: pulumi.Input<string>;
+    /**
+     * Gets or sets the key vault URI to secret with the database password.
+     */
+    dbPasswordUri?: pulumi.Input<string>;
+    /**
+     * Gets or sets the db2 database sql port.
+     */
+    dbPort?: pulumi.Input<string>;
+    /**
+     * Gets or sets the db2 database user name.
+     */
+    dbUsername?: pulumi.Input<string>;
+    /**
+     * Gets or sets the target virtual machine name.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * The provider type. For example, the value can be SapHana.
+     * Expected value is 'Db2'.
+     */
+    providerType: pulumi.Input<"Db2">;
+    /**
+     * Gets or sets the SAP System Identifier
+     */
+    sapSid?: pulumi.Input<string>;
+    /**
+     * Gets or sets the blob URI to SSL certificate for the DB2 Database.
+     */
+    sslCertificateUri?: pulumi.Input<string>;
+    /**
+     * Gets or sets certificate preference if secure communication is enabled.
+     */
+    sslPreference?: pulumi.Input<string | enums.SslPreference>;
 }
 
 /**
@@ -654,6 +668,10 @@ export interface HourlyScheduleArgs {
  */
 export interface ImageReferenceArgs {
     /**
+     * Specifies the ARM resource ID of the Azure Compute Gallery image version used for creating ACSS VMs. You will need to provide this input when you choose to deploy virtual machines in ACSS with OS image from the Azure Compute gallery.
+     */
+    id?: pulumi.Input<string>;
+    /**
      * Specifies the offer of the platform image or marketplace image used to create the virtual machine.
      */
     offer?: pulumi.Input<string>;
@@ -686,7 +704,7 @@ export interface InstantRPAdditionalDetailsArgs {
 }
 
 /**
- * Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+ * Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
  */
 export interface LinuxConfigurationArgs {
     /**
@@ -794,6 +812,30 @@ export interface ManagedRGConfigurationArgs {
 }
 
 /**
+ * Managed resource group configuration
+ */
+export interface ManagedResourceGroupConfigurationArgs {
+    /**
+     * Managed resource group name
+     */
+    name?: pulumi.Input<string>;
+}
+
+/**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityArgs {
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: pulumi.Input<string | enums.ManagedServiceIdentityType>;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
  * Monthly retention schedule.
  */
 export interface MonthlyRetentionScheduleArgs {
@@ -882,7 +924,7 @@ export interface MsSqlServerProviderInstancePropertiesArgs {
 }
 
 /**
- * Defines the network configuration type for SAP system infrastructure that is being deployed 
+ * Defines the network configuration type for SAP system infrastructure that is being deployed
  */
 export interface NetworkConfigurationArgs {
     /**
@@ -934,7 +976,7 @@ export interface NewRecoveryServicesVaultArgs {
  */
 export interface OSProfileArgs {
     /**
-     * Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+     * Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
      */
     adminPassword?: pulumi.Input<string>;
     /**
@@ -945,6 +987,53 @@ export interface OSProfileArgs {
      * Specifies Windows operating system settings on the virtual machine.
      */
     osConfiguration?: pulumi.Input<LinuxConfigurationArgs | WindowsConfigurationArgs>;
+}
+
+/**
+ * Gets or sets the Oracle provider properties.
+ */
+export interface OracleProviderInstancePropertiesArgs {
+    /**
+     * Gets or sets the oracle database name.
+     */
+    dbName?: pulumi.Input<string>;
+    /**
+     * Gets or sets the oracle database password.
+     */
+    dbPassword?: pulumi.Input<string>;
+    /**
+     * Gets or sets the key vault URI to secret with the database password.
+     */
+    dbPasswordUri?: pulumi.Input<string>;
+    /**
+     * Gets or sets the oracle database sql port.
+     */
+    dbPort?: pulumi.Input<string>;
+    /**
+     * Gets or sets the oracle database user name.
+     */
+    dbUsername?: pulumi.Input<string>;
+    /**
+     * Gets or sets the target virtual machine name.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * The provider type. For example, the value can be SapHana.
+     * Expected value is 'Oracle'.
+     */
+    providerType: pulumi.Input<"Oracle">;
+    /**
+     * Gets or sets the SAP System Identifier
+     */
+    sapSid?: pulumi.Input<string>;
+    /**
+     * Gets or sets the blob URI to SSL certificate for the Oracle Database.
+     */
+    sslCertificateUri?: pulumi.Input<string>;
+    /**
+     * Gets or sets certificate preference if secure communication is enabled.
+     */
+    sslPreference?: pulumi.Input<string | enums.SslPreference>;
 }
 
 /**
@@ -999,7 +1088,7 @@ export interface PrometheusHaClusterProviderInstancePropertiesArgs {
 /**
  * Gets or sets the PrometheusOS provider properties.
  */
-export interface PrometheusOSProviderInstancePropertiesArgs {
+export interface PrometheusOsProviderInstancePropertiesArgs {
     /**
      * URL of the Node Exporter endpoint
      */
@@ -1063,6 +1152,20 @@ export interface SAPInstallWithoutOSConfigSoftwareConfigurationArgs {
      * The software version to install.
      */
     softwareVersion: pulumi.Input<string>;
+}
+
+/**
+ * Managed service identity (user assigned identities)
+ */
+export interface SAPVirtualInstanceIdentityArgs {
+    /**
+     * The type of managed identity assigned to this resource.
+     */
+    type: pulumi.Input<string | enums.SAPVirtualInstanceIdentityType>;
+    /**
+     * The identities assigned to this resource by the user.
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -1334,7 +1437,7 @@ export interface SimpleSchedulePolicyV2Args {
 }
 
 /**
- * Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+ * Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
  */
 export interface SingleServerConfigurationArgs {
     /**
@@ -1455,7 +1558,7 @@ export interface SshConfigurationArgs {
 }
 
 /**
- * The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+ * The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
  */
 export interface SshKeyPairArgs {
     /**
@@ -1473,7 +1576,7 @@ export interface SshKeyPairArgs {
  */
 export interface SshPublicKeyArgs {
     /**
-     * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+     * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
      */
     keyData?: pulumi.Input<string>;
 }
@@ -1517,7 +1620,7 @@ export interface SubProtectionPolicyArgs {
 }
 
 /**
- * Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+ * Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
  */
 export interface ThreeTierConfigurationArgs {
     /**
@@ -1640,7 +1743,7 @@ export interface UserAssignedManagedIdentityDetailsArgs {
 }
 
 /**
- * A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
+ * Managed service identity (user assigned identities)
  */
 export interface UserAssignedServiceIdentityArgs {
     /**
@@ -1859,9 +1962,3 @@ export interface YearlyRetentionScheduleArgs {
      */
     retentionTimes?: pulumi.Input<pulumi.Input<string>[]>;
 }
-
-
-
-
-
-

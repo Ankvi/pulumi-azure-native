@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Definition of hybrid runbook worker.
  *
- * Uses Azure REST API version 2022-08-08. In version 1.x of the Azure Native provider, it used API version 2021-06-22.
+ * Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
  *
- * Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+ * Other available API versions: 2021-06-22, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class HybridRunbookWorker extends pulumi.CustomResource {
     /**
@@ -35,6 +35,10 @@ export class HybridRunbookWorker extends pulumi.CustomResource {
         return obj['__pulumiType'] === HybridRunbookWorker.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Gets or sets the assigned machine IP address.
      */
@@ -98,6 +102,7 @@ export class HybridRunbookWorker extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["vmResourceId"] = args ? args.vmResourceId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["ip"] = undefined /*out*/;
             resourceInputs["lastSeenDateTime"] = undefined /*out*/;
             resourceInputs["registeredDateTime"] = undefined /*out*/;
@@ -106,6 +111,7 @@ export class HybridRunbookWorker extends pulumi.CustomResource {
             resourceInputs["workerName"] = undefined /*out*/;
             resourceInputs["workerType"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["ip"] = undefined /*out*/;
             resourceInputs["lastSeenDateTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

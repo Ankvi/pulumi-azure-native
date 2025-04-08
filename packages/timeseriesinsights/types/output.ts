@@ -77,34 +77,6 @@ export interface LocalTimestampResponseTimeZoneOffset {
 }
 
 /**
- * The Private Endpoint resource.
- */
-export interface PrivateEndpointResponse {
-    /**
-     * The ARM identifier for Private Endpoint
-     */
-    id: string;
-}
-
-/**
- * A collection of information about the state of the connection between service consumer and provider.
- */
-export interface PrivateLinkServiceConnectionStateResponse {
-    /**
-     * A message indicating if changes on the service provider require any updates on the consumer.
-     */
-    actionsRequired?: string;
-    /**
-     * The reason for approval/rejection of the connection.
-     */
-    description?: string;
-    /**
-     * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-     */
-    status?: string;
-}
-
-/**
  * A key property for the reference data set. A reference data set can have multiple key properties.
  */
 export interface ReferenceDataSetKeyPropertyResponse {
@@ -173,5 +145,3 @@ export interface WarmStoreConfigurationPropertiesResponse {
      */
     dataRetention: string;
 }
-
-

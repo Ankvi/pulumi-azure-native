@@ -1,6 +1,72 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Encryption identity for the volume group.
+ */
+export interface EncryptionIdentityArgs {
+    /**
+     * Resource identifier of the UserAssigned identity to be associated with server-side encryption on the volume group.
+     */
+    encryptionUserAssignedIdentity?: pulumi.Input<string>;
+}
+
+/**
+ * The encryption settings on the volume group.
+ */
+export interface EncryptionPropertiesArgs {
+    /**
+     * The identity to be used with service-side encryption at rest.
+     */
+    encryptionIdentity?: pulumi.Input<EncryptionIdentityArgs>;
+    /**
+     * Properties provided by key vault.
+     */
+    keyVaultProperties?: pulumi.Input<KeyVaultPropertiesArgs>;
+}
+
+/**
+ * Identity for the resource.
+ */
+export interface IdentityArgs {
+    /**
+     * The identity type.
+     */
+    type: pulumi.Input<string | enums.IdentityType>;
+    /**
+     * Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group. The key is the ARM resource identifier of the identity.
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Properties of key vault.
+ */
+export interface KeyVaultPropertiesArgs {
+    /**
+     * The name of KeyVault key.
+     */
+    keyName?: pulumi.Input<string>;
+    /**
+     * The Uri of KeyVault.
+     */
+    keyVaultUri?: pulumi.Input<string>;
+    /**
+     * The version of KeyVault key.
+     */
+    keyVersion?: pulumi.Input<string>;
+}
+
+/**
+ * Parent resource information.
+ */
+export interface ManagedByInfoArgs {
+    /**
+     * Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
+     */
+    resourceId?: pulumi.Input<string>;
+}
+
+/**
  * A set of rules governing the network accessibility.
  */
 export interface NetworkRuleSetArgs {
@@ -59,11 +125,11 @@ export interface SourceCreationDataArgs {
     /**
      * This enumerates the possible sources of a volume creation.
      */
-    createSource?: pulumi.Input<enums.VolumeCreateOption>;
+    createSource?: pulumi.Input<string | enums.VolumeCreateOption>;
     /**
-     * If createOption is Copy, this is the ARM id of the source snapshot or disk. If createOption is Restore, this is the ARM-like id of the source disk restore point.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
-    sourceUri?: pulumi.Input<string>;
+    sourceId?: pulumi.Input<string>;
 }
 
 /**
@@ -73,7 +139,7 @@ export interface VirtualNetworkRuleArgs {
     /**
      * The action of virtual network rule.
      */
-    action?: pulumi.Input<enums.Action>;
+    action?: pulumi.Input<string | enums.Action>;
     /**
      * Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
      */
@@ -88,7 +154,3 @@ export function virtualNetworkRuleArgsProvideDefaults(val: VirtualNetworkRuleArg
         action: (val.action) ?? "Allow",
     };
 }
-
-
-
-

@@ -30,6 +30,10 @@ export interface GetSolutionArgs {
  */
 export interface GetSolutionResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Resource ID.
      */
     readonly id: string;

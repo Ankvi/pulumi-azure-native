@@ -37,8 +37,6 @@ export const ManagementGroupSubscription: typeof import("./managementGroupSubscr
 utilities.lazyLoad(exports, ["ManagementGroupSubscription"], () => require("./managementGroupSubscription"));
 
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

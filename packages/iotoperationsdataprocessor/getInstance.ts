@@ -30,6 +30,10 @@ export interface GetInstanceArgs {
  */
 export interface GetInstanceResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Detailed description of the Instance.
      */
     readonly description?: string;

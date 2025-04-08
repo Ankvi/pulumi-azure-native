@@ -30,6 +30,10 @@ export interface GetTargetArgs {
  */
 export interface GetTargetResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * A list of components.
      */
     readonly components?: types.outputs.ComponentPropertiesResponse[];

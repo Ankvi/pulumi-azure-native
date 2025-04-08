@@ -6,7 +6,3 @@ export interface PlanArgs {
      */
     accessibility?: pulumi.Input<string | enums.Accessibility>;
 }
-
-
-
-

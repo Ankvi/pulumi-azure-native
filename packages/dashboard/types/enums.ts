@@ -39,6 +39,16 @@ export const ManagedServiceIdentityType = {
  */
 export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];
 
+export const MarketplaceAutoRenew = {
+    Disabled: "Disabled",
+    Enabled: "Enabled",
+} as const;
+
+/**
+ * The AutoRenew setting of the Enterprise subscription
+ */
+export type MarketplaceAutoRenew = (typeof MarketplaceAutoRenew)[keyof typeof MarketplaceAutoRenew];
+
 export const PrivateEndpointServiceConnectionStatus = {
     Pending: "Pending",
     Approved: "Approved",
@@ -59,6 +69,18 @@ export const PublicNetworkAccess = {
  * Indicate the state for enable or disable traffic over the public interface.
  */
 export type PublicNetworkAccess = (typeof PublicNetworkAccess)[keyof typeof PublicNetworkAccess];
+
+export const StartTLSPolicy = {
+    OpportunisticStartTLS: "OpportunisticStartTLS",
+    MandatoryStartTLS: "MandatoryStartTLS",
+    NoStartTLS: "NoStartTLS",
+} as const;
+
+/**
+ * The StartTLSPolicy setting of the SMTP configuration
+ * https://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy
+ */
+export type StartTLSPolicy = (typeof StartTLSPolicy)[keyof typeof StartTLSPolicy];
 
 export const ZoneRedundancy = {
     Disabled: "Disabled",

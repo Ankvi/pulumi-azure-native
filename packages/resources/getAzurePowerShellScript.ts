@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Gets a deployment script with a given name.
  *
- * Uses Azure REST API version 2020-10-01.
+ * Uses Azure REST API version 2023-08-01.
  */
 export function getAzurePowerShellScript(args: GetAzurePowerShellScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetAzurePowerShellScriptResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +37,10 @@ export interface GetAzurePowerShellScriptResult {
      * Azure PowerShell module version to be used.
      */
     readonly azPowerShellVersion: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
      */
@@ -126,7 +130,7 @@ export interface GetAzurePowerShellScriptResult {
 /**
  * Gets a deployment script with a given name.
  *
- * Uses Azure REST API version 2020-10-01.
+ * Uses Azure REST API version 2023-08-01.
  */
 export function getAzurePowerShellScriptOutput(args: GetAzurePowerShellScriptOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzurePowerShellScriptResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

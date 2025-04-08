@@ -23,6 +23,7 @@ export const ActionType = {
     Allow: "Allow",
     Block: "Block",
     Log: "Log",
+    JSChallenge: "JSChallenge",
 } as const;
 
 /**
@@ -39,6 +40,16 @@ export const AddressPrefixType = {
  * Address prefix type.
  */
 export type AddressPrefixType = (typeof AddressPrefixType)[keyof typeof AddressPrefixType];
+
+export const AddressSpaceAggregationOption = {
+    None: "None",
+    Manual: "Manual",
+} as const;
+
+/**
+ * Determine update behavior for changes to network groups referenced within the rules in this configuration.
+ */
+export type AddressSpaceAggregationOption = (typeof AddressSpaceAggregationOption)[keyof typeof AddressSpaceAggregationOption];
 
 export const AdminRuleKind = {
     Custom: "Custom",
@@ -59,28 +70,6 @@ export const AdminState = {
  * Property to indicate if the Express Route Gateway serves traffic when there are multiple Express Route Gateways in the vnet
  */
 export type AdminState = (typeof AdminState)[keyof typeof AdminState];
-
-export const AllowedEndpointRecordType = {
-    DomainName: "DomainName",
-    IPv4Address: "IPv4Address",
-    IPv6Address: "IPv6Address",
-    Any: "Any",
-} as const;
-
-/**
- * The allowed type DNS record types for this profile.
- */
-export type AllowedEndpointRecordType = (typeof AllowedEndpointRecordType)[keyof typeof AllowedEndpointRecordType];
-
-export const AlwaysServe = {
-    Enabled: "Enabled",
-    Disabled: "Disabled",
-} as const;
-
-/**
- * If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
- */
-export type AlwaysServe = (typeof AlwaysServe)[keyof typeof AlwaysServe];
 
 export const ApplicationGatewayClientRevocationOptions = {
     None: "None",
@@ -162,9 +151,21 @@ export const ApplicationGatewayLoadDistributionAlgorithm = {
 export type ApplicationGatewayLoadDistributionAlgorithm = (typeof ApplicationGatewayLoadDistributionAlgorithm)[keyof typeof ApplicationGatewayLoadDistributionAlgorithm];
 
 export const ApplicationGatewayProtocol = {
+    /**
+     * Supported for httpListeners and  backendHttpSettingsCollection properties.
+     */
     Http: "Http",
+    /**
+     * Supported for httpListeners and  backendHttpSettingsCollection properties.
+     */
     Https: "Https",
+    /**
+     * Supported for listeners and backendSettingsCollection properties.
+     */
     Tcp: "Tcp",
+    /**
+     * Supported for listeners and backendSettingsCollection properties.
+     */
     Tls: "Tls",
 } as const;
 
@@ -195,6 +196,16 @@ export const ApplicationGatewayRequestRoutingRuleType = {
  */
 export type ApplicationGatewayRequestRoutingRuleType = (typeof ApplicationGatewayRequestRoutingRuleType)[keyof typeof ApplicationGatewayRequestRoutingRuleType];
 
+export const ApplicationGatewaySkuFamily = {
+    Generation_1: "Generation_1",
+    Generation_2: "Generation_2",
+} as const;
+
+/**
+ * Family of an application gateway SKU.
+ */
+export type ApplicationGatewaySkuFamily = (typeof ApplicationGatewaySkuFamily)[keyof typeof ApplicationGatewaySkuFamily];
+
 export const ApplicationGatewaySkuName = {
     Standard_Small: "Standard_Small",
     Standard_Medium: "Standard_Medium",
@@ -203,6 +214,7 @@ export const ApplicationGatewaySkuName = {
     WAF_Large: "WAF_Large",
     Standard_v2: "Standard_v2",
     WAF_v2: "WAF_v2",
+    Basic: "Basic",
 } as const;
 
 /**
@@ -287,6 +299,7 @@ export const ApplicationGatewayTier = {
     WAF: "WAF",
     Standard_v2: "Standard_v2",
     WAF_v2: "WAF_v2",
+    Basic: "Basic",
 } as const;
 
 /**
@@ -400,34 +413,17 @@ export const AzureFirewallThreatIntelMode = {
  */
 export type AzureFirewallThreatIntelMode = (typeof AzureFirewallThreatIntelMode)[keyof typeof AzureFirewallThreatIntelMode];
 
-export const BackendEnabledState = {
-    Enabled: "Enabled",
-    Disabled: "Disabled",
-} as const;
-
-/**
- * Whether to enable use of this backend. Permitted values are 'Enabled' or 'Disabled'
- */
-export type BackendEnabledState = (typeof BackendEnabledState)[keyof typeof BackendEnabledState];
-
 export const BastionHostSkuName = {
     Basic: "Basic",
     Standard: "Standard",
+    Developer: "Developer",
+    Premium: "Premium",
 } as const;
 
 /**
- * The name of this Bastion Host.
+ * The name of the sku of this Bastion Host.
  */
 export type BastionHostSkuName = (typeof BastionHostSkuName)[keyof typeof BastionHostSkuName];
-
-export const BlockResponseCode = {
-    SERVFAIL: "SERVFAIL",
-} as const;
-
-/**
- * The response code for block actions.
- */
-export type BlockResponseCode = (typeof BlockResponseCode)[keyof typeof BlockResponseCode];
 
 export const CommissionedState = {
     Provisioning: "Provisioning",
@@ -448,6 +444,8 @@ export type CommissionedState = (typeof CommissionedState)[keyof typeof Commissi
 export const ConfigurationType = {
     SecurityAdmin: "SecurityAdmin",
     Connectivity: "Connectivity",
+    SecurityUser: "SecurityUser",
+    Routing: "Routing",
 } as const;
 
 /**
@@ -519,16 +517,6 @@ export const CustomIpPrefixType = {
  */
 export type CustomIpPrefixType = (typeof CustomIpPrefixType)[keyof typeof CustomIpPrefixType];
 
-export const CustomRuleEnabledState = {
-    Disabled: "Disabled",
-    Enabled: "Enabled",
-} as const;
-
-/**
- * Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
- */
-export type CustomRuleEnabledState = (typeof CustomRuleEnabledState)[keyof typeof CustomRuleEnabledState];
-
 export const DdosSettingsProtectionMode = {
     VirtualNetworkInherited: "VirtualNetworkInherited",
     Enabled: "Enabled",
@@ -539,16 +527,6 @@ export const DdosSettingsProtectionMode = {
  * The DDoS protection mode of the public IP
  */
 export type DdosSettingsProtectionMode = (typeof DdosSettingsProtectionMode)[keyof typeof DdosSettingsProtectionMode];
-
-export const DeleteExistingNSGs = {
-    False: "False",
-    True: "True",
-} as const;
-
-/**
- * Flag if need to delete existing network security groups.
- */
-export type DeleteExistingNSGs = (typeof DeleteExistingNSGs)[keyof typeof DeleteExistingNSGs];
 
 export const DeleteExistingPeering = {
     False: "False",
@@ -606,51 +584,6 @@ export const DisableBgpRoutePropagation = {
  */
 export type DisableBgpRoutePropagation = (typeof DisableBgpRoutePropagation)[keyof typeof DisableBgpRoutePropagation];
 
-export const DnsSecurityRuleState = {
-    Enabled: "Enabled",
-    Disabled: "Disabled",
-} as const;
-
-/**
- * The state of DNS security rule.
- */
-export type DnsSecurityRuleState = (typeof DnsSecurityRuleState)[keyof typeof DnsSecurityRuleState];
-
-export const DynamicCompressionEnabled = {
-    Enabled: "Enabled",
-    Disabled: "Disabled",
-} as const;
-
-/**
- * Whether to use dynamic compression for cached content
- */
-export type DynamicCompressionEnabled = (typeof DynamicCompressionEnabled)[keyof typeof DynamicCompressionEnabled];
-
-export const EndpointMonitorStatus = {
-    CheckingEndpoint: "CheckingEndpoint",
-    Online: "Online",
-    Degraded: "Degraded",
-    Disabled: "Disabled",
-    Inactive: "Inactive",
-    Stopped: "Stopped",
-    Unmonitored: "Unmonitored",
-} as const;
-
-/**
- * The monitoring status of the endpoint.
- */
-export type EndpointMonitorStatus = (typeof EndpointMonitorStatus)[keyof typeof EndpointMonitorStatus];
-
-export const EndpointStatus = {
-    Enabled: "Enabled",
-    Disabled: "Disabled",
-} as const;
-
-/**
- * The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method.
- */
-export type EndpointStatus = (typeof EndpointStatus)[keyof typeof EndpointStatus];
-
 export const EndpointType = {
     AzureVM: "AzureVM",
     AzureVNet: "AzureVNet",
@@ -660,6 +593,7 @@ export const EndpointType = {
     MMAWorkspaceNetwork: "MMAWorkspaceNetwork",
     AzureArcVM: "AzureArcVM",
     AzureVMSS: "AzureVMSS",
+    AzureArcNetwork: "AzureArcNetwork",
 } as const;
 
 /**
@@ -667,15 +601,41 @@ export const EndpointType = {
  */
 export type EndpointType = (typeof EndpointType)[keyof typeof EndpointType];
 
-export const EnforceCertificateNameCheckEnabledState = {
-    Enabled: "Enabled",
-    Disabled: "Disabled",
+export const ExceptionEntryMatchVariable = {
+    RequestURI: "RequestURI",
+    RemoteAddr: "RemoteAddr",
+    RequestHeader: "RequestHeader",
 } as const;
 
 /**
- * Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
+ * The variable on which we evaluate the exception condition
  */
-export type EnforceCertificateNameCheckEnabledState = (typeof EnforceCertificateNameCheckEnabledState)[keyof typeof EnforceCertificateNameCheckEnabledState];
+export type ExceptionEntryMatchVariable = (typeof ExceptionEntryMatchVariable)[keyof typeof ExceptionEntryMatchVariable];
+
+export const ExceptionEntrySelectorMatchOperator = {
+    Equals: "Equals",
+    Contains: "Contains",
+    StartsWith: "StartsWith",
+    EndsWith: "EndsWith",
+} as const;
+
+/**
+ * When the matchVariable points to a key-value pair (e.g, RequestHeader), this operates on the selector
+ */
+export type ExceptionEntrySelectorMatchOperator = (typeof ExceptionEntrySelectorMatchOperator)[keyof typeof ExceptionEntrySelectorMatchOperator];
+
+export const ExceptionEntryValueMatchOperator = {
+    Equals: "Equals",
+    Contains: "Contains",
+    StartsWith: "StartsWith",
+    EndsWith: "EndsWith",
+    IPMatch: "IPMatch",
+} as const;
+
+/**
+ * Operates on the allowed values for the matchVariable
+ */
+export type ExceptionEntryValueMatchOperator = (typeof ExceptionEntryValueMatchOperator)[keyof typeof ExceptionEntryValueMatchOperator];
 
 export const ExpressRouteCircuitPeeringState = {
     Disabled: "Disabled",
@@ -969,109 +929,6 @@ export const FlowLogFormatType = {
  */
 export type FlowLogFormatType = (typeof FlowLogFormatType)[keyof typeof FlowLogFormatType];
 
-export const ForwardingRuleState = {
-    Enabled: "Enabled",
-    Disabled: "Disabled",
-} as const;
-
-/**
- * The state of forwarding rule.
- */
-export type ForwardingRuleState = (typeof ForwardingRuleState)[keyof typeof ForwardingRuleState];
-
-export const FrontDoorEnabledState = {
-    Enabled: "Enabled",
-    Disabled: "Disabled",
-} as const;
-
-/**
- * Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled'
- */
-export type FrontDoorEnabledState = (typeof FrontDoorEnabledState)[keyof typeof FrontDoorEnabledState];
-
-export const FrontDoorForwardingProtocol = {
-    HttpOnly: "HttpOnly",
-    HttpsOnly: "HttpsOnly",
-    MatchRequest: "MatchRequest",
-} as const;
-
-/**
- * Protocol this rule will use when forwarding traffic to backends.
- */
-export type FrontDoorForwardingProtocol = (typeof FrontDoorForwardingProtocol)[keyof typeof FrontDoorForwardingProtocol];
-
-export const FrontDoorHealthProbeMethod = {
-    GET: "GET",
-    HEAD: "HEAD",
-} as const;
-
-/**
- * Configures which HTTP method to use to probe the backends defined under backendPools.
- */
-export type FrontDoorHealthProbeMethod = (typeof FrontDoorHealthProbeMethod)[keyof typeof FrontDoorHealthProbeMethod];
-
-export const FrontDoorMatchVariable = {
-    RemoteAddr: "RemoteAddr",
-    RequestMethod: "RequestMethod",
-    QueryString: "QueryString",
-    PostArgs: "PostArgs",
-    RequestUri: "RequestUri",
-    RequestHeader: "RequestHeader",
-    RequestBody: "RequestBody",
-    Cookies: "Cookies",
-    SocketAddr: "SocketAddr",
-} as const;
-
-/**
- * Request variable to compare with.
- */
-export type FrontDoorMatchVariable = (typeof FrontDoorMatchVariable)[keyof typeof FrontDoorMatchVariable];
-
-export const FrontDoorProtocol = {
-    Http: "Http",
-    Https: "Https",
-} as const;
-
-/**
- * Accepted protocol schemes.
- */
-export type FrontDoorProtocol = (typeof FrontDoorProtocol)[keyof typeof FrontDoorProtocol];
-
-export const FrontDoorQuery = {
-    StripNone: "StripNone",
-    StripAll: "StripAll",
-    StripOnly: "StripOnly",
-    StripAllExcept: "StripAllExcept",
-} as const;
-
-/**
- * Treatment of URL query terms when forming the cache key.
- */
-export type FrontDoorQuery = (typeof FrontDoorQuery)[keyof typeof FrontDoorQuery];
-
-export const FrontDoorRedirectProtocol = {
-    HttpOnly: "HttpOnly",
-    HttpsOnly: "HttpsOnly",
-    MatchRequest: "MatchRequest",
-} as const;
-
-/**
- * The protocol of the destination to where the traffic is redirected
- */
-export type FrontDoorRedirectProtocol = (typeof FrontDoorRedirectProtocol)[keyof typeof FrontDoorRedirectProtocol];
-
-export const FrontDoorRedirectType = {
-    Moved: "Moved",
-    Found: "Found",
-    TemporaryRedirect: "TemporaryRedirect",
-    PermanentRedirect: "PermanentRedirect",
-} as const;
-
-/**
- * The redirect type the rule will use when redirecting traffic.
- */
-export type FrontDoorRedirectType = (typeof FrontDoorRedirectType)[keyof typeof FrontDoorRedirectType];
-
 export const GatewayLoadBalancerTunnelInterfaceType = {
     None: "None",
     Internal: "Internal",
@@ -1121,6 +978,16 @@ export const GroupConnectivity = {
  */
 export type GroupConnectivity = (typeof GroupConnectivity)[keyof typeof GroupConnectivity];
 
+export const GroupMemberType = {
+    VirtualNetwork: "VirtualNetwork",
+    Subnet: "Subnet",
+} as const;
+
+/**
+ * The type of the group member.
+ */
+export type GroupMemberType = (typeof GroupMemberType)[keyof typeof GroupMemberType];
+
 export const HTTPConfigurationMethod = {
     Get: "Get",
     Post: "Post",
@@ -1130,27 +997,6 @@ export const HTTPConfigurationMethod = {
  * The HTTP method to use.
  */
 export type HTTPConfigurationMethod = (typeof HTTPConfigurationMethod)[keyof typeof HTTPConfigurationMethod];
-
-export const HeaderActionType = {
-    Append: "Append",
-    Delete: "Delete",
-    Overwrite: "Overwrite",
-} as const;
-
-/**
- * Which type of manipulation to apply to the header.
- */
-export type HeaderActionType = (typeof HeaderActionType)[keyof typeof HeaderActionType];
-
-export const HealthProbeEnabled = {
-    Enabled: "Enabled",
-    Disabled: "Disabled",
-} as const;
-
-/**
- * Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
- */
-export type HealthProbeEnabled = (typeof HealthProbeEnabled)[keyof typeof HealthProbeEnabled];
 
 export const HubRoutingPreference = {
     ExpressRoute: "ExpressRoute",
@@ -1211,16 +1057,6 @@ export const IkeIntegrity = {
  * The IKE integrity algorithm (IKE phase 2).
  */
 export type IkeIntegrity = (typeof IkeIntegrity)[keyof typeof IkeIntegrity];
-
-export const IpAllocationMethod = {
-    Static: "Static",
-    Dynamic: "Dynamic",
-} as const;
-
-/**
- * Private IP address allocation method.
- */
-export type IpAllocationMethod = (typeof IpAllocationMethod)[keyof typeof IpAllocationMethod];
 
 export const IpAllocationType = {
     Undefined: "Undefined",
@@ -1337,64 +1173,6 @@ export const ManagedRuleEnabledState = {
  */
 export type ManagedRuleEnabledState = (typeof ManagedRuleEnabledState)[keyof typeof ManagedRuleEnabledState];
 
-export const ManagedRuleExclusionMatchVariable = {
-    RequestHeaderNames: "RequestHeaderNames",
-    RequestCookieNames: "RequestCookieNames",
-    QueryStringArgNames: "QueryStringArgNames",
-    RequestBodyPostArgNames: "RequestBodyPostArgNames",
-    RequestBodyJsonArgNames: "RequestBodyJsonArgNames",
-} as const;
-
-/**
- * The variable type to be excluded.
- */
-export type ManagedRuleExclusionMatchVariable = (typeof ManagedRuleExclusionMatchVariable)[keyof typeof ManagedRuleExclusionMatchVariable];
-
-export const ManagedRuleExclusionSelectorMatchOperator = {
-    Equals: "Equals",
-    Contains: "Contains",
-    StartsWith: "StartsWith",
-    EndsWith: "EndsWith",
-    EqualsAny: "EqualsAny",
-} as const;
-
-/**
- * Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.
- */
-export type ManagedRuleExclusionSelectorMatchOperator = (typeof ManagedRuleExclusionSelectorMatchOperator)[keyof typeof ManagedRuleExclusionSelectorMatchOperator];
-
-export const ManagedRuleSetActionType = {
-    Block: "Block",
-    Log: "Log",
-    Redirect: "Redirect",
-} as const;
-
-/**
- * Defines the rule set action.
- */
-export type ManagedRuleSetActionType = (typeof ManagedRuleSetActionType)[keyof typeof ManagedRuleSetActionType];
-
-export const MatchProcessingBehavior = {
-    Continue: "Continue",
-    Stop: "Stop",
-} as const;
-
-/**
- * If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
- */
-export type MatchProcessingBehavior = (typeof MatchProcessingBehavior)[keyof typeof MatchProcessingBehavior];
-
-export const MonitorProtocol = {
-    HTTP: "HTTP",
-    HTTPS: "HTTPS",
-    TCP: "TCP",
-} as const;
-
-/**
- * The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
- */
-export type MonitorProtocol = (typeof MonitorProtocol)[keyof typeof MonitorProtocol];
-
 export const NatGatewaySkuName = {
     Standard: "Standard",
 } as const;
@@ -1486,25 +1264,15 @@ export const NextStep = {
  */
 export type NextStep = (typeof NextStep)[keyof typeof NextStep];
 
-export const Operator = {
-    Any: "Any",
-    IPMatch: "IPMatch",
-    GeoMatch: "GeoMatch",
-    Equal: "Equal",
-    Contains: "Contains",
-    LessThan: "LessThan",
-    GreaterThan: "GreaterThan",
-    LessThanOrEqual: "LessThanOrEqual",
-    GreaterThanOrEqual: "GreaterThanOrEqual",
-    BeginsWith: "BeginsWith",
-    EndsWith: "EndsWith",
-    RegEx: "RegEx",
+export const NicTypeInRequest = {
+    PublicNic: "PublicNic",
+    PrivateNic: "PrivateNic",
 } as const;
 
 /**
- * Comparison type to use for matching with the variable value.
+ * NIC type. This should be either PublicNic or PrivateNic.
  */
-export type Operator = (typeof Operator)[keyof typeof Operator];
+export type NicTypeInRequest = (typeof NicTypeInRequest)[keyof typeof NicTypeInRequest];
 
 export const OutputType = {
     Workspace: "Workspace",
@@ -1583,36 +1351,6 @@ export const PfsGroup = {
  */
 export type PfsGroup = (typeof PfsGroup)[keyof typeof PfsGroup];
 
-export const PolicyEnabledState = {
-    Disabled: "Disabled",
-    Enabled: "Enabled",
-} as const;
-
-/**
- * Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified.
- */
-export type PolicyEnabledState = (typeof PolicyEnabledState)[keyof typeof PolicyEnabledState];
-
-export const PolicyMode = {
-    Prevention: "Prevention",
-    Detection: "Detection",
-} as const;
-
-/**
- * Describes if it is in detection mode or prevention mode at policy level.
- */
-export type PolicyMode = (typeof PolicyMode)[keyof typeof PolicyMode];
-
-export const PolicyRequestBodyCheck = {
-    Disabled: "Disabled",
-    Enabled: "Enabled",
-} as const;
-
-/**
- * Describes if policy managed rules will inspect the request body content.
- */
-export type PolicyRequestBodyCheck = (typeof PolicyRequestBodyCheck)[keyof typeof PolicyRequestBodyCheck];
-
 export const PreferredIPVersion = {
     IPv4: "IPv4",
     IPv6: "IPv6",
@@ -1634,6 +1372,32 @@ export const PreferredRoutingGateway = {
  */
 export type PreferredRoutingGateway = (typeof PreferredRoutingGateway)[keyof typeof PreferredRoutingGateway];
 
+export const PrivateEndpointVNetPolicies = {
+    Disabled: "Disabled",
+    Basic: "Basic",
+} as const;
+
+/**
+ * Private Endpoint VNet Policies.
+ */
+export type PrivateEndpointVNetPolicies = (typeof PrivateEndpointVNetPolicies)[keyof typeof PrivateEndpointVNetPolicies];
+
+export const ProbeNoHealthyBackendsBehavior = {
+    /**
+     * No new flows will be sent to the backend pool.
+     */
+    AllProbedDown: "AllProbedDown",
+    /**
+     * When all backend instances are probed down, incoming packets will be sent to all instances.
+     */
+    AllProbedUp: "AllProbedUp",
+} as const;
+
+/**
+ * Determines how new connections are handled by the load balancer when all backend instances are probed down.
+ */
+export type ProbeNoHealthyBackendsBehavior = (typeof ProbeNoHealthyBackendsBehavior)[keyof typeof ProbeNoHealthyBackendsBehavior];
+
 export const ProbeProtocol = {
     Http: "Http",
     Tcp: "Tcp",
@@ -1644,29 +1408,6 @@ export const ProbeProtocol = {
  * The protocol of the end point. If 'Tcp' is specified, a received ACK is required for the probe to be successful. If 'Http' or 'Https' is specified, a 200 OK response from the specifies URI is required for the probe to be successful.
  */
 export type ProbeProtocol = (typeof ProbeProtocol)[keyof typeof ProbeProtocol];
-
-export const ProfileMonitorStatus = {
-    CheckingEndpoints: "CheckingEndpoints",
-    Online: "Online",
-    Degraded: "Degraded",
-    Disabled: "Disabled",
-    Inactive: "Inactive",
-} as const;
-
-/**
- * The profile-level monitoring status of the Traffic Manager profile.
- */
-export type ProfileMonitorStatus = (typeof ProfileMonitorStatus)[keyof typeof ProfileMonitorStatus];
-
-export const ProfileStatus = {
-    Enabled: "Enabled",
-    Disabled: "Disabled",
-} as const;
-
-/**
- * The status of the Traffic Manager profile.
- */
-export type ProfileStatus = (typeof ProfileStatus)[keyof typeof ProfileStatus];
 
 export const ProtocolType = {
     DoNotUse: "DoNotUse",
@@ -1749,6 +1490,16 @@ export const PublicIpAddressDnsSettingsDomainNameLabelScope = {
  */
 export type PublicIpAddressDnsSettingsDomainNameLabelScope = (typeof PublicIpAddressDnsSettingsDomainNameLabelScope)[keyof typeof PublicIpAddressDnsSettingsDomainNameLabelScope];
 
+export const ResiliencyModel = {
+    SingleHomed: "SingleHomed",
+    MultiHomed: "MultiHomed",
+} as const;
+
+/**
+ * Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
+ */
+export type ResiliencyModel = (typeof ResiliencyModel)[keyof typeof ResiliencyModel];
+
 export const ResourceIdentityType = {
     SystemAssigned: "SystemAssigned",
     UserAssigned: "UserAssigned",
@@ -1819,16 +1570,6 @@ export const RoutingRuleDestinationType = {
  */
 export type RoutingRuleDestinationType = (typeof RoutingRuleDestinationType)[keyof typeof RoutingRuleDestinationType];
 
-export const RoutingRuleEnabledState = {
-    Enabled: "Enabled",
-    Disabled: "Disabled",
-} as const;
-
-/**
- * Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
- */
-export type RoutingRuleEnabledState = (typeof RoutingRuleEnabledState)[keyof typeof RoutingRuleEnabledState];
-
 export const RoutingRuleNextHopType = {
     Internet: "Internet",
     NoNextHop: "NoNextHop",
@@ -1841,55 +1582,6 @@ export const RoutingRuleNextHopType = {
  * Next hop type.
  */
 export type RoutingRuleNextHopType = (typeof RoutingRuleNextHopType)[keyof typeof RoutingRuleNextHopType];
-
-export const RuleType = {
-    MatchRule: "MatchRule",
-    RateLimitRule: "RateLimitRule",
-} as const;
-
-/**
- * Describes type of rule.
- */
-export type RuleType = (typeof RuleType)[keyof typeof RuleType];
-
-export const RulesEngineMatchVariable = {
-    IsMobile: "IsMobile",
-    RemoteAddr: "RemoteAddr",
-    RequestMethod: "RequestMethod",
-    QueryString: "QueryString",
-    PostArgs: "PostArgs",
-    RequestUri: "RequestUri",
-    RequestPath: "RequestPath",
-    RequestFilename: "RequestFilename",
-    RequestFilenameExtension: "RequestFilenameExtension",
-    RequestHeader: "RequestHeader",
-    RequestBody: "RequestBody",
-    RequestScheme: "RequestScheme",
-} as const;
-
-/**
- * Match Variable
- */
-export type RulesEngineMatchVariable = (typeof RulesEngineMatchVariable)[keyof typeof RulesEngineMatchVariable];
-
-export const RulesEngineOperator = {
-    Any: "Any",
-    IPMatch: "IPMatch",
-    GeoMatch: "GeoMatch",
-    Equal: "Equal",
-    Contains: "Contains",
-    LessThan: "LessThan",
-    GreaterThan: "GreaterThan",
-    LessThanOrEqual: "LessThanOrEqual",
-    GreaterThanOrEqual: "GreaterThanOrEqual",
-    BeginsWith: "BeginsWith",
-    EndsWith: "EndsWith",
-} as const;
-
-/**
- * Describes operator to apply to the match condition.
- */
-export type RulesEngineOperator = (typeof RulesEngineOperator)[keyof typeof RulesEngineOperator];
 
 export const ScrubbingRuleEntryMatchOperator = {
     Equals: "Equals",
@@ -2005,6 +1697,18 @@ export const SecurityRuleProtocol = {
  */
 export type SecurityRuleProtocol = (typeof SecurityRuleProtocol)[keyof typeof SecurityRuleProtocol];
 
+export const SensitivityType = {
+    None: "None",
+    Low: "Low",
+    Medium: "Medium",
+    High: "High",
+} as const;
+
+/**
+ * Describes the override sensitivity to be applied when rule matches.
+ */
+export type SensitivityType = (typeof SensitivityType)[keyof typeof SensitivityType];
+
 export const ServiceProviderProvisioningState = {
     NotProvisioned: "NotProvisioned",
     Provisioning: "Provisioning",
@@ -2017,88 +1721,25 @@ export const ServiceProviderProvisioningState = {
  */
 export type ServiceProviderProvisioningState = (typeof ServiceProviderProvisioningState)[keyof typeof ServiceProviderProvisioningState];
 
-export const SessionAffinityEnabledState = {
-    Enabled: "Enabled",
-    Disabled: "Disabled",
+export const SharingScope = {
+    Tenant: "Tenant",
+    DelegatedServices: "DelegatedServices",
 } as const;
 
 /**
- * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
+ * Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
  */
-export type SessionAffinityEnabledState = (typeof SessionAffinityEnabledState)[keyof typeof SessionAffinityEnabledState];
+export type SharingScope = (typeof SharingScope)[keyof typeof SharingScope];
 
-export const SkuName = {
-    Classic_AzureFrontDoor: "Classic_AzureFrontDoor",
-    Standard_AzureFrontDoor: "Standard_AzureFrontDoor",
-    Premium_AzureFrontDoor: "Premium_AzureFrontDoor",
+export const SyncMode = {
+    Automatic: "Automatic",
+    Manual: "Manual",
 } as const;
 
 /**
- * Name of the pricing tier.
+ * Backend address synchronous mode for the backend pool
  */
-export type SkuName = (typeof SkuName)[keyof typeof SkuName];
-
-export const State = {
-    Enabled: "Enabled",
-    Disabled: "Disabled",
-} as const;
-
-/**
- * The state of the Experiment
- */
-export type State = (typeof State)[keyof typeof State];
-
-export const TrafficRoutingMethod = {
-    Performance: "Performance",
-    Priority: "Priority",
-    Weighted: "Weighted",
-    Geographic: "Geographic",
-    MultiValue: "MultiValue",
-    Subnet: "Subnet",
-} as const;
-
-/**
- * The traffic routing method of the Traffic Manager profile.
- */
-export type TrafficRoutingMethod = (typeof TrafficRoutingMethod)[keyof typeof TrafficRoutingMethod];
-
-export const TrafficViewEnrollmentStatus = {
-    Enabled: "Enabled",
-    Disabled: "Disabled",
-} as const;
-
-/**
- * Indicates whether Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile. Null, indicates 'Disabled'. Enabling this feature will increase the cost of the Traffic Manage profile.
- */
-export type TrafficViewEnrollmentStatus = (typeof TrafficViewEnrollmentStatus)[keyof typeof TrafficViewEnrollmentStatus];
-
-export const Transform = {
-    Lowercase: "Lowercase",
-    Uppercase: "Uppercase",
-    Trim: "Trim",
-    UrlDecode: "UrlDecode",
-    UrlEncode: "UrlEncode",
-    RemoveNulls: "RemoveNulls",
-} as const;
-
-/**
- * Describes what transforms are applied before matching
- */
-export type Transform = (typeof Transform)[keyof typeof Transform];
-
-export const TransformType = {
-    Lowercase: "Lowercase",
-    Uppercase: "Uppercase",
-    Trim: "Trim",
-    UrlDecode: "UrlDecode",
-    UrlEncode: "UrlEncode",
-    RemoveNulls: "RemoveNulls",
-} as const;
-
-/**
- * Describes what transforms applied before matching.
- */
-export type TransformType = (typeof TransformType)[keyof typeof TransformType];
+export type SyncMode = (typeof SyncMode)[keyof typeof SyncMode];
 
 export const TransportProtocol = {
     Udp: "Udp",
@@ -2137,7 +1778,7 @@ export const VirtualNetworkEncryptionEnforcement = {
 } as const;
 
 /**
- * If the encrypted VNet allows VM that does not support encryption
+ * If the encrypted VNet allows VM that does not support encryption. This field is for future support, AllowUnencrypted is the only supported value at general availability.
  */
 export type VirtualNetworkEncryptionEnforcement = (typeof VirtualNetworkEncryptionEnforcement)[keyof typeof VirtualNetworkEncryptionEnforcement];
 
@@ -2192,6 +1833,7 @@ export const VirtualNetworkGatewaySkuName = {
     ErGw1AZ: "ErGw1AZ",
     ErGw2AZ: "ErGw2AZ",
     ErGw3AZ: "ErGw3AZ",
+    ErGwScale: "ErGwScale",
 } as const;
 
 /**
@@ -2217,6 +1859,7 @@ export const VirtualNetworkGatewaySkuTier = {
     ErGw1AZ: "ErGw1AZ",
     ErGw2AZ: "ErGw2AZ",
     ErGw3AZ: "ErGw3AZ",
+    ErGwScale: "ErGwScale",
 } as const;
 
 /**
@@ -2261,6 +1904,8 @@ export type VirtualNetworkPeeringState = (typeof VirtualNetworkPeeringState)[key
 export const VirtualNetworkPrivateEndpointNetworkPolicies = {
     Enabled: "Enabled",
     Disabled: "Disabled",
+    NetworkSecurityGroupEnabled: "NetworkSecurityGroupEnabled",
+    RouteTableEnabled: "RouteTableEnabled",
 } as const;
 
 /**
@@ -2387,6 +2032,7 @@ export const WebApplicationFirewallAction = {
     Allow: "Allow",
     Block: "Block",
     Log: "Log",
+    JSChallenge: "JSChallenge",
 } as const;
 
 /**
@@ -2495,13 +2141,3 @@ export const WebApplicationFirewallTransform = {
  * Transforms applied before matching.
  */
 export type WebApplicationFirewallTransform = (typeof WebApplicationFirewallTransform)[keyof typeof WebApplicationFirewallTransform];
-
-export const ZoneType = {
-    Public: "Public",
-    Private: "Private",
-} as const;
-
-/**
- * The type of this DNS zone (Public or Private).
- */
-export type ZoneType = (typeof ZoneType)[keyof typeof ZoneType];

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Resource information with extended details.
  *
- * Uses Azure REST API version 2021-11-30. In version 1.x of the Azure Native provider, it used API version 2018-10-31-preview.
+ * Uses Azure REST API version 2024-06-30-preview. In version 2.x of the Azure Native provider, it used API version 2021-11-30.
  *
- * Other available API versions: 2024-06-30-preview.
+ * Other available API versions: 2021-11-30. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DedicatedHsm extends pulumi.CustomResource {
     /**
@@ -36,7 +36,11 @@ export class DedicatedHsm extends pulumi.CustomResource {
     }
 
     /**
-     * The supported Azure location where the dedicated HSM should be created.
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
+     * The geo-location where the resource lives
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -44,7 +48,7 @@ export class DedicatedHsm extends pulumi.CustomResource {
      */
     public readonly managementNetworkProfile!: pulumi.Output<types.outputs.NetworkProfileResponse | undefined>;
     /**
-     * The name of the dedicated HSM.
+     * The name of the resource
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -68,15 +72,15 @@ export class DedicatedHsm extends pulumi.CustomResource {
      */
     public /*out*/ readonly statusMessage!: pulumi.Output<string>;
     /**
-     * Metadata pertaining to creation and last modification of the resource
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * Resource tags
+     * Resource tags.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The resource type of the dedicated HSM.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -110,11 +114,13 @@ export class DedicatedHsm extends pulumi.CustomResource {
             resourceInputs["stampId"] = args ? args.stampId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["managementNetworkProfile"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -140,7 +146,7 @@ export class DedicatedHsm extends pulumi.CustomResource {
  */
 export interface DedicatedHsmArgs {
     /**
-     * The supported Azure location where the dedicated HSM should be created.
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
@@ -156,7 +162,7 @@ export interface DedicatedHsmArgs {
      */
     networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
     /**
-     * The name of the Resource Group to which the resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
@@ -168,7 +174,7 @@ export interface DedicatedHsmArgs {
      */
     stampId?: pulumi.Input<string>;
     /**
-     * Resource tags
+     * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

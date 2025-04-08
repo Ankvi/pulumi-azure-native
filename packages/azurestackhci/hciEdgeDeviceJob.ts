@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Edge device job for Azure Stack HCI solution.
  *
- * Uses Azure REST API version 2024-09-01-preview.
+ * Uses Azure REST API version 2024-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-09-01-preview.
  */
 export class HciEdgeDeviceJob extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class HciEdgeDeviceJob extends pulumi.CustomResource {
         return obj['__pulumiType'] === HciEdgeDeviceJob.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Edge device kind.
      * Expected value is 'HCI'.
@@ -83,10 +87,12 @@ export class HciEdgeDeviceJob extends pulumi.CustomResource {
             resourceInputs["kind"] = "HCI";
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceUri"] = args ? args.resourceUri : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;

@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Gets a setting.
  *
- * Uses Azure REST API version 2023-06-01-preview.
+ * Uses Azure REST API version 2025-01-01-preview.
  */
 export function getEntityAnalytics(args: GetEntityAnalyticsArgs, opts?: pulumi.InvokeOptions): Promise<GetEntityAnalyticsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +34,10 @@ export interface GetEntityAnalyticsArgs {
  * Settings with single toggle.
  */
 export interface GetEntityAnalyticsResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The relevant entity providers that are synced
      */
@@ -67,7 +71,7 @@ export interface GetEntityAnalyticsResult {
 /**
  * Gets a setting.
  *
- * Uses Azure REST API version 2023-06-01-preview.
+ * Uses Azure REST API version 2025-01-01-preview.
  */
 export function getEntityAnalyticsOutput(args: GetEntityAnalyticsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEntityAnalyticsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

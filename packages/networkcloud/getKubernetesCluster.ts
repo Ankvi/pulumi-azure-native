@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get properties of the provided the Kubernetes cluster.
  *
- * Uses Azure REST API version 2023-10-01-preview.
+ * Uses Azure REST API version 2025-02-01.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+ * Other available API versions: 2023-10-01-preview, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -45,6 +45,10 @@ export interface GetKubernetesClusterResult {
      */
     readonly availableUpgrades: types.outputs.AvailableUpgradeResponse[];
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The resource ID of the Network Cloud cluster.
      */
     readonly clusterId: string;
@@ -69,6 +73,10 @@ export interface GetKubernetesClusterResult {
      */
     readonly detailedStatusMessage: string;
     /**
+     * Resource ETag.
+     */
+    readonly etag: string;
+    /**
      * The extended location of the cluster associated with the resource.
      */
     readonly extendedLocation: types.outputs.ExtendedLocationResponse;
@@ -85,7 +93,7 @@ export interface GetKubernetesClusterResult {
      */
     readonly initialAgentPoolConfigurations: types.outputs.InitialAgentPoolConfigurationResponse[];
     /**
-     * The Kubernetes version for this cluster. Accepts n.n, n.n.n, and n.n.n-n format. The interpreted version used will be resolved into this field after creation or update.
+     * The Kubernetes version for this cluster.
      */
     readonly kubernetesVersion: string;
     /**
@@ -128,9 +136,9 @@ export interface GetKubernetesClusterResult {
 /**
  * Get properties of the provided the Kubernetes cluster.
  *
- * Uses Azure REST API version 2023-10-01-preview.
+ * Uses Azure REST API version 2025-02-01.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+ * Other available API versions: 2023-10-01-preview, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -5,8 +5,6 @@ import * as types from "./types";
  * Get a LoadBalancer
  *
  * Uses Azure REST API version 2024-03-01.
- *
- * Other available API versions: 2023-10-01-preview.
  */
 export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,6 +38,10 @@ export interface GetLoadBalancerResult {
      */
     readonly advertiseMode: string;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The list of BGP peers it should advertise to. Null or empty means to advertise to all peers.
      */
     readonly bgpPeers?: string[];
@@ -72,8 +74,6 @@ export interface GetLoadBalancerResult {
  * Get a LoadBalancer
  *
  * Uses Azure REST API version 2024-03-01.
- *
- * Other available API versions: 2023-10-01-preview.
  */
 export function getLoadBalancerOutput(args: GetLoadBalancerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

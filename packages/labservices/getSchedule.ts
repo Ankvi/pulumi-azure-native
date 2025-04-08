@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Returns the properties of a lab Schedule.
  *
- * Uses Azure REST API version 2022-08-01.
+ * Uses Azure REST API version 2023-06-07.
  *
- * Other available API versions: 2023-06-07.
+ * Other available API versions: 2021-10-01-preview, 2021-11-15-preview, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native labservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSchedule(args: GetScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +37,10 @@ export interface GetScheduleArgs {
  */
 export interface GetScheduleResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
@@ -56,6 +60,10 @@ export interface GetScheduleResult {
      * The recurrence pattern of the scheduled actions.
      */
     readonly recurrencePattern?: types.outputs.RecurrencePatternResponse;
+    /**
+     * Error details of last operation done on schedule.
+     */
+    readonly resourceOperationError: types.outputs.ResourceOperationErrorResponse;
     /**
      * When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.
      */
@@ -80,9 +88,9 @@ export interface GetScheduleResult {
 /**
  * Returns the properties of a lab Schedule.
  *
- * Uses Azure REST API version 2022-08-01.
+ * Uses Azure REST API version 2023-06-07.
  *
- * Other available API versions: 2023-06-07.
+ * Other available API versions: 2021-10-01-preview, 2021-11-15-preview, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native labservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getScheduleOutput(args: GetScheduleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetScheduleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

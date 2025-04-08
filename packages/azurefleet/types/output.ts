@@ -1,6 +1,31 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * AdditionalCapabilities for VM.
+ */
+export interface AdditionalCapabilitiesResponse {
+    /**
+     * The flag that enables or disables hibernation capability on the VM.
+     */
+    hibernationEnabled?: boolean;
+    /**
+     * The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS.
+     * Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled.
+     */
+    ultraSSDEnabled?: boolean;
+}
+
+/**
+ * Represents the configuration for additional locations where Fleet resources may be deployed.
+ */
+export interface AdditionalLocationsProfileResponse {
+    /**
+     * The list of location profiles.
+     */
+    locationProfiles: LocationProfileResponse[];
+}
+
+/**
  * Specifies additional XML formatted information that can be included in the
  * Unattend.xml file, which is used by Windows Setup. Contents are defined by
  * setting name, component name, and the pass in which the content is applied.
@@ -169,6 +194,13 @@ export interface CapacityReservationProfileResponse {
  * Compute Profile to use for running user's workloads.
  */
 export interface ComputeProfileResponse {
+    /**
+     * Specifies VMSS and VM API entity models support two additional capabilities as of today: ultraSSDEnabled and hibernationEnabled.
+     * ultraSSDEnabled: Enables UltraSSD_LRS storage account type on the VMSS VMs.
+     * hibernationEnabled: Enables the hibernation capability on the VMSS VMs.
+     * Default value is null if not specified. This property cannot be updated once set.
+     */
+    additionalVirtualMachineCapabilities?: AdditionalCapabilitiesResponse;
     /**
      * Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
      */
@@ -392,6 +424,21 @@ export interface LinuxVMGuestPatchAutomaticByPlatformSettingsResponse {
      * operations.
      */
     rebootSetting?: string;
+}
+
+/**
+ * Represents the profile for a single additional location in the Fleet. The location and the virtualMachineProfileOverride (optional).
+ */
+export interface LocationProfileResponse {
+    /**
+     * The ARM location name of the additional region. If LocationProfile is specified, then location is required.
+     */
+    location: string;
+    /**
+     * An override for computeProfile.baseVirtualMachineProfile specific to this region. 
+     * This override is merged with the base virtual machine profile to define the final virtual machine profile for the resources deployed in this location.
+     */
+    virtualMachineProfileOverride?: BaseVirtualMachineProfileResponse;
 }
 
 /**
@@ -788,6 +835,132 @@ export interface UserAssignedIdentityResponse {
      * The principal ID of the assigned identity.
      */
     principalId: string;
+}
+
+/**
+ * VMAttributes using double values.
+ */
+export interface VMAttributeMinMaxDoubleResponse {
+    /**
+     * Maximum value. Double.MaxValue(1.7976931348623157E+308)
+     */
+    max?: number;
+    /**
+     * Minimum value. default 0. Double.MinValue()
+     */
+    min?: number;
+}
+
+/**
+ * While retrieving VMSizes from CRS, Min = 0 (uint.MinValue) if not specified, Max = 4294967295 (uint.MaxValue) if not specified. This allows to filter VMAttributes on all available VMSizes.
+ */
+export interface VMAttributeMinMaxIntegerResponse {
+    /**
+     * Max VMSize from CRS, Max = 4294967295 (uint.MaxValue) if not specified.
+     */
+    max?: number;
+    /**
+     * Min VMSize from CRS, Min = 0 (uint.MinValue) if not specified.
+     */
+    min?: number;
+}
+
+/**
+ * VMAttributes that will be used to filter VMSizes which will be used to build Fleet.
+ */
+export interface VMAttributesResponse {
+    /**
+     * The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
+     * acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+     */
+    acceleratorCount?: VMAttributeMinMaxIntegerResponse;
+    /**
+     * The accelerator manufacturers specified as a list. 
+     * acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+     */
+    acceleratorManufacturers?: string[];
+    /**
+     * Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
+     * acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+     */
+    acceleratorSupport?: string;
+    /**
+     * The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+     */
+    acceleratorTypes?: string[];
+    /**
+     * The VM architecture types specified as a list. Optional parameter.
+     */
+    architectureTypes?: string[];
+    /**
+     * Specifies whether the VMSize supporting burstable capability should be used to build Fleet or not.
+     */
+    burstableSupport?: string;
+    /**
+     * The VM CPU manufacturers specified as a list. Optional parameter.
+     */
+    cpuManufacturers?: string[];
+    /**
+     * The range of data disk count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+     */
+    dataDiskCount?: VMAttributeMinMaxIntegerResponse;
+    /**
+     * Specifies which VMSizes should be excluded while building Fleet. Optional parameter.
+     */
+    excludedVMSizes?: string[];
+    /**
+     * The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * If localStorageSupport is "Excluded", this VMAttribute can not be used.
+     */
+    localStorageDiskTypes?: string[];
+    /**
+     * LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * If localStorageSupport is "Excluded", this VMAttribute can not be used.
+     */
+    localStorageInGiB?: VMAttributeMinMaxDoubleResponse;
+    /**
+     * Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
+     * Included - Default if not specified as most Azure VMs support local storage.
+     */
+    localStorageSupport?: string;
+    /**
+     * The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+     */
+    memoryInGiB: VMAttributeMinMaxDoubleResponse;
+    /**
+     * The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
+     */
+    memoryInGiBPerVCpu?: VMAttributeMinMaxDoubleResponse;
+    /**
+     * The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+     */
+    networkBandwidthInMbps?: VMAttributeMinMaxDoubleResponse;
+    /**
+     * The range of network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+     */
+    networkInterfaceCount?: VMAttributeMinMaxIntegerResponse;
+    /**
+     * The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+     * rdmaSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * If rdmaSupport is "Excluded", this VMAttribute can not be used.
+     */
+    rdmaNetworkInterfaceCount?: VMAttributeMinMaxIntegerResponse;
+    /**
+     * Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build Fleet or not.
+     */
+    rdmaSupport?: string;
+    /**
+     * The range of vCpuCount specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+     */
+    vCpuCount: VMAttributeMinMaxIntegerResponse;
+    /**
+     * The VM category specified as a list. Optional parameter.
+     */
+    vmCategories?: string[];
 }
 
 /**
@@ -1634,5 +1807,3 @@ export interface WindowsVMGuestPatchAutomaticByPlatformSettingsResponse {
      */
     rebootSetting?: string;
 }
-
-

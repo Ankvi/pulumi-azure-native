@@ -34,6 +34,10 @@ export interface GetHubResult {
      */
     readonly apiEndpoint: string;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Billing settings of the hub.
      */
     readonly hubBillingInfo?: types.outputs.HubBillingInfoFormatResponse;

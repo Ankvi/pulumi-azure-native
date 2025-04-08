@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets information about a network function definition version.
  *
- * Uses Azure REST API version 2023-09-01.
+ * Uses Azure REST API version 2024-04-15.
  *
- * Other available API versions: 2024-04-15.
+ * Other available API versions: 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridnetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNetworkFunctionDefinitionVersion(args: GetNetworkFunctionDefinitionVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkFunctionDefinitionVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -42,6 +42,10 @@ export interface GetNetworkFunctionDefinitionVersionArgs {
  */
 export interface GetNetworkFunctionDefinitionVersionResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
@@ -73,9 +77,9 @@ export interface GetNetworkFunctionDefinitionVersionResult {
 /**
  * Gets information about a network function definition version.
  *
- * Uses Azure REST API version 2023-09-01.
+ * Uses Azure REST API version 2024-04-15.
  *
- * Other available API versions: 2024-04-15.
+ * Other available API versions: 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridnetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNetworkFunctionDefinitionVersionOutput(args: GetNetworkFunctionDefinitionVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkFunctionDefinitionVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

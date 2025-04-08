@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets information about a server.
  *
- * Uses Azure REST API version 2022-01-01.
+ * Uses Azure REST API version 2024-02-01-preview.
  *
- * Other available API versions: 2017-12-01, 2018-06-01-privatepreview, 2020-07-01-preview, 2020-07-01-privatepreview, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-02-01-preview, 2024-06-01-preview, 2024-10-01-preview.
+ * Other available API versions: 2022-01-01, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getServer(args: GetServerArgs, opts?: pulumi.InvokeOptions): Promise<GetServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,6 +40,10 @@ export interface GetServerResult {
      */
     readonly availabilityZone?: string;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Backup related properties of a server.
      */
     readonly backup?: types.outputs.BackupResponse;
@@ -56,13 +60,17 @@ export interface GetServerResult {
      */
     readonly highAvailability?: types.outputs.HighAvailabilityResponse;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
      * The cmk identity for the server.
      */
-    readonly identity?: types.outputs.IdentityResponse;
+    readonly identity?: types.outputs.MySQLServerIdentityResponse;
+    /**
+     * Source properties for import from storage.
+     */
+    readonly importSourceProperties?: types.outputs.ImportSourcePropertiesResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -80,6 +88,10 @@ export interface GetServerResult {
      */
     readonly network?: types.outputs.NetworkResponse;
     /**
+     * PrivateEndpointConnections related properties of a server.
+     */
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
+    /**
      * The maximum number of replicas that a primary server can have.
      */
     readonly replicaCapacity: number;
@@ -90,7 +102,7 @@ export interface GetServerResult {
     /**
      * The SKU (pricing tier) of the server.
      */
-    readonly sku?: types.outputs.SkuResponse;
+    readonly sku?: types.outputs.MySQLServerSkuResponse;
     /**
      * The source MySQL server id.
      */
@@ -104,7 +116,7 @@ export interface GetServerResult {
      */
     readonly storage?: types.outputs.StorageResponse;
     /**
-     * The system metadata relating to this resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
@@ -123,9 +135,9 @@ export interface GetServerResult {
 /**
  * Gets information about a server.
  *
- * Uses Azure REST API version 2022-01-01.
+ * Uses Azure REST API version 2024-02-01-preview.
  *
- * Other available API versions: 2017-12-01, 2018-06-01-privatepreview, 2020-07-01-preview, 2020-07-01-privatepreview, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-02-01-preview, 2024-06-01-preview, 2024-10-01-preview.
+ * Other available API versions: 2022-01-01, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getServerOutput(args: GetServerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

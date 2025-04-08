@@ -25,6 +25,10 @@ export interface GetSettingArgs {
  */
 export interface GetSettingResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Array of scopes with additional details used by Cost Management in the Azure portal.
      */
     readonly cache?: types.outputs.SettingsPropertiesResponseCache[];

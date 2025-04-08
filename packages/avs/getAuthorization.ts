@@ -1,11 +1,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
- * ExpressRoute Circuit Authorization
+ * Get a ExpressRouteAuthorization
  *
- * Uses Azure REST API version 2022-05-01.
+ * Uses Azure REST API version 2023-09-01.
  *
- * Other available API versions: 2023-03-01, 2023-09-01.
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAuthorization(args: GetAuthorizationArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthorizationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -18,7 +19,7 @@ export function getAuthorization(args: GetAuthorizationArgs, opts?: pulumi.Invok
 
 export interface GetAuthorizationArgs {
     /**
-     * Name of the ExpressRoute Circuit Authorization in the private cloud
+     * Name of the ExpressRoute Circuit Authorization
      */
     authorizationName: string;
     /**
@@ -36,6 +37,10 @@ export interface GetAuthorizationArgs {
  */
 export interface GetAuthorizationResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The ID of the ExpressRoute Circuit Authorization
      */
     readonly expressRouteAuthorizationId: string;
@@ -48,28 +53,32 @@ export interface GetAuthorizationResult {
      */
     readonly expressRouteId?: string;
     /**
-     * Resource ID.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
-     * Resource name.
+     * The name of the resource
      */
     readonly name: string;
     /**
-     * The state of the  ExpressRoute Circuit Authorization provisioning
+     * The state of the ExpressRoute Circuit Authorization provisioning
      */
     readonly provisioningState: string;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
 /**
- * ExpressRoute Circuit Authorization
+ * Get a ExpressRouteAuthorization
  *
- * Uses Azure REST API version 2022-05-01.
+ * Uses Azure REST API version 2023-09-01.
  *
- * Other available API versions: 2023-03-01, 2023-09-01.
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAuthorizationOutput(args: GetAuthorizationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthorizationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -82,7 +91,7 @@ export function getAuthorizationOutput(args: GetAuthorizationOutputArgs, opts?: 
 
 export interface GetAuthorizationOutputArgs {
     /**
-     * Name of the ExpressRoute Circuit Authorization in the private cloud
+     * Name of the ExpressRoute Circuit Authorization
      */
     authorizationName: pulumi.Input<string>;
     /**

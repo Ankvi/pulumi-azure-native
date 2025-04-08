@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * A project resource
  *
- * Uses Azure REST API version 2021-06-30. In version 1.x of the Azure Native provider, it used API version 2018-04-19.
+ * Uses Azure REST API version 2023-07-15-preview. In version 2.x of the Azure Native provider, it used API version 2021-06-30.
  *
- * Other available API versions: 2021-10-30-preview, 2022-03-30-preview, 2023-07-15-preview.
+ * Other available API versions: 2021-06-30, 2021-10-30-preview, 2022-01-30-preview, 2022-03-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Project extends pulumi.CustomResource {
     /**
@@ -36,6 +36,14 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
+     * Field that defines the Azure active directory application info, used to connect to the target Azure resource
+     */
+    public readonly azureAuthenticationInfo!: pulumi.Output<types.outputs.AzureActiveDirectoryAppResponse | undefined>;
+    /**
      * UTC Date and time when project was created
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
@@ -44,12 +52,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly databasesInfo!: pulumi.Output<types.outputs.DatabaseInfoResponse[] | undefined>;
     /**
-     * Resource location.
+     * HTTP strong entity tag value. This is ignored if submitted.
      */
-    public readonly location!: pulumi.Output<string>;
-    /**
-     * Resource name.
-     */
+    public /*out*/ readonly etag!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string | undefined>;
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The project's provisioning state
@@ -63,13 +69,7 @@ export class Project extends pulumi.CustomResource {
      * Source platform for the project
      */
     public readonly sourcePlatform!: pulumi.Output<string>;
-    /**
-     * Metadata pertaining to creation and last modification of the resource.
-     */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
-    /**
-     * Resource tags.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Information for connecting to target
@@ -79,9 +79,6 @@ export class Project extends pulumi.CustomResource {
      * Target platform for the project
      */
     public readonly targetPlatform!: pulumi.Output<string>;
-    /**
-     * Resource type.
-     */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
@@ -107,6 +104,7 @@ export class Project extends pulumi.CustomResource {
             if ((!args || args.targetPlatform === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetPlatform'");
             }
+            resourceInputs["azureAuthenticationInfo"] = args ? args.azureAuthenticationInfo : undefined;
             resourceInputs["databasesInfo"] = args ? args.databasesInfo : undefined;
             resourceInputs["groupName"] = args ? args.groupName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -117,14 +115,19 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["targetConnectionInfo"] = args ? args.targetConnectionInfo : undefined;
             resourceInputs["targetPlatform"] = args ? args.targetPlatform : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["azureAuthenticationInfo"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["databasesInfo"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -148,6 +151,10 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectArgs {
     /**
+     * Field that defines the Azure active directory application info, used to connect to the target Azure resource
+     */
+    azureAuthenticationInfo?: pulumi.Input<types.inputs.AzureActiveDirectoryAppArgs>;
+    /**
      * List of DatabaseInfo
      */
     databasesInfo?: pulumi.Input<pulumi.Input<types.inputs.DatabaseInfoArgs>[]>;
@@ -155,9 +162,6 @@ export interface ProjectArgs {
      * Name of the resource group
      */
     groupName: pulumi.Input<string>;
-    /**
-     * Resource location.
-     */
     location?: pulumi.Input<string>;
     /**
      * Name of the project
@@ -175,9 +179,6 @@ export interface ProjectArgs {
      * Source platform for the project
      */
     sourcePlatform: pulumi.Input<string | types.enums.ProjectSourcePlatform>;
-    /**
-     * Resource tags.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Information for connecting to target

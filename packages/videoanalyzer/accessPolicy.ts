@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Access policies help define the authentication rules, and control access to specific video resources.
  *
- * Uses Azure REST API version 2021-11-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-05-01-preview.
+ * Uses Azure REST API version 2021-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-11-01-preview.
  */
 export class AccessPolicy extends pulumi.CustomResource {
     /**
@@ -37,6 +37,10 @@ export class AccessPolicy extends pulumi.CustomResource {
      * Authentication method to be used when validating client API access.
      */
     public readonly authentication!: pulumi.Output<types.outputs.JwtAuthenticationResponse | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The name of the resource
      */
@@ -76,11 +80,13 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["authentication"] = args ? args.authentication : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["authentication"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["role"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;

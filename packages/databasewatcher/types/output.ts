@@ -117,6 +117,3 @@ export interface VaultSecretResponse {
      */
     akvTargetUser?: string;
 }
-
-
-

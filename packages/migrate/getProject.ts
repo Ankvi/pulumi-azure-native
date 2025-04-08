@@ -5,8 +5,6 @@ import * as types from "./types";
  * Get the project with the specified name.
  *
  * Uses Azure REST API version 2019-10-01.
- *
- * Other available API versions: 2018-02-02.
  */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +29,10 @@ export interface GetProjectArgs {
  * Azure Migrate Project.
  */
 export interface GetProjectResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * For optimistic concurrency control.
      */
@@ -64,8 +66,6 @@ export interface GetProjectResult {
  * Get the project with the specified name.
  *
  * Uses Azure REST API version 2019-10-01.
- *
- * Other available API versions: 2018-02-02.
  */
 export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

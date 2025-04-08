@@ -300,9 +300,29 @@ export interface MonitorPropertiesResponse {
      */
     monitoringStatus?: string;
     /**
+     * Plan details of the monitor resource.
+     */
+    planDetails?: PlanDetailsResponse;
+    /**
      * Provisioning state of the monitor resource.
      */
     provisioningState?: string;
+    /**
+     * Status of Azure Subscription where Marketplace SaaS is located.
+     */
+    saaSAzureSubscriptionStatus?: string;
+    /**
+     * A unique identifier associated with the campaign.
+     */
+    sourceCampaignId?: string;
+    /**
+     * Name of the marketing campaign.
+     */
+    sourceCampaignName?: string;
+    /**
+     * State of the Azure Subscription containing the monitor resource
+     */
+    subscriptionState?: string;
     /**
      * Version of elastic of the monitor resource
      */
@@ -414,6 +434,32 @@ export interface PartnerBillingEntityResponse {
 }
 
 /**
+ * Plan details of the monitor resource.
+ */
+export interface PlanDetailsResponse {
+    /**
+     * Offer ID of the plan
+     */
+    offerID?: string;
+    /**
+     * Plan ID
+     */
+    planID?: string;
+    /**
+     * Plan Name
+     */
+    planName?: string;
+    /**
+     * Publisher ID of the plan
+     */
+    publisherID?: string;
+    /**
+     * Term ID of the plan
+     */
+    termID?: string;
+}
+
+/**
  * Microsoft.Elastic SKU.
  */
 export interface ResourceSkuResponse {
@@ -483,15 +529,3 @@ export interface VMResourcesResponse {
      */
     vmResourceId?: string;
 }
-
-
-
-
-
-
-
-
-
-
-
-

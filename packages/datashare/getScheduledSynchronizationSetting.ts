@@ -40,6 +40,10 @@ export interface GetScheduledSynchronizationSettingArgs {
  */
 export interface GetScheduledSynchronizationSettingResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Time at which the synchronization setting was created.
      */
     readonly createdAt: string;

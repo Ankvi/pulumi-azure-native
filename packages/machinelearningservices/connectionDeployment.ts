@@ -2,9 +2,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Uses Azure REST API version 2024-04-01-preview.
+ * Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-04-01-preview.
  *
- * Other available API versions: 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview.
+ * Other available API versions: 2024-04-01-preview, 2024-07-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ConnectionDeployment extends pulumi.CustomResource {
     /**
@@ -34,11 +34,14 @@ export class ConnectionDeployment extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.EndpointDeploymentResourcePropertiesResponse>;
-    public readonly sku!: pulumi.Output<types.outputs.CognitiveServicesSkuResponse | undefined>;
+    public readonly properties!: pulumi.Output<types.outputs.ContentSafetyEndpointDeploymentResourcePropertiesResponse | types.outputs.ManagedOnlineEndpointDeploymentResourcePropertiesResponse | types.outputs.OpenAIEndpointDeploymentResourcePropertiesResponse | types.outputs.SpeechEndpointDeploymentResourcePropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -74,16 +77,17 @@ export class ConnectionDeployment extends pulumi.CustomResource {
             resourceInputs["connectionName"] = args ? args.connectionName : undefined;
             resourceInputs["deploymentName"] = args ? args.deploymentName : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
+            resourceInputs["proxyApiVersion"] = args ? args.proxyApiVersion : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
-            resourceInputs["sku"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
@@ -106,12 +110,15 @@ export interface ConnectionDeploymentArgs {
      * Name of the deployment resource
      */
     deploymentName?: pulumi.Input<string>;
-    properties: pulumi.Input<types.inputs.EndpointDeploymentResourcePropertiesArgs>;
+    properties: pulumi.Input<types.inputs.ContentSafetyEndpointDeploymentResourcePropertiesArgs | types.inputs.ManagedOnlineEndpointDeploymentResourcePropertiesArgs | types.inputs.OpenAIEndpointDeploymentResourcePropertiesArgs | types.inputs.SpeechEndpointDeploymentResourcePropertiesArgs>;
+    /**
+     * Api version used by proxy call
+     */
+    proxyApiVersion?: pulumi.Input<string>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
-    sku?: pulumi.Input<types.inputs.CognitiveServicesSkuArgs>;
     /**
      * Azure Machine Learning Workspace Name
      */

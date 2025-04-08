@@ -12,8 +12,6 @@ export const GraphQuery: typeof import("./graphQuery").GraphQuery = null as any;
 utilities.lazyLoad(exports, ["GraphQuery"], () => require("./graphQuery"));
 
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

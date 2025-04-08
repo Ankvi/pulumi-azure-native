@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Dapr PubSub Event Subscription.
  *
- * Uses Azure REST API version 2023-08-01-preview.
+ * Uses Azure REST API version 2024-10-02-preview.
  *
- * Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+ * Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDaprSubscription(args: GetDaprSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetDaprSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +37,10 @@ export interface GetDaprSubscriptionArgs {
  */
 export interface GetDaprSubscriptionResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Bulk subscription options
      */
     readonly bulkSubscribe?: types.outputs.DaprSubscriptionBulkSubscribeOptionsResponse;
@@ -45,7 +49,7 @@ export interface GetDaprSubscriptionResult {
      */
     readonly deadLetterTopic?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -84,9 +88,9 @@ export interface GetDaprSubscriptionResult {
 /**
  * Dapr PubSub Event Subscription.
  *
- * Uses Azure REST API version 2023-08-01-preview.
+ * Uses Azure REST API version 2024-10-02-preview.
  *
- * Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+ * Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDaprSubscriptionOutput(args: GetDaprSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDaprSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

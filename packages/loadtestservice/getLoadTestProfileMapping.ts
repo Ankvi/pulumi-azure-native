@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-12-01-preview.
  *
- * Other available API versions: 2024-12-01-preview.
+ * Other available API versions: 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native loadtestservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getLoadTestProfileMapping(args: GetLoadTestProfileMappingArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadTestProfileMappingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +31,10 @@ export interface GetLoadTestProfileMappingArgs {
  * LoadTest profile mapping resource details
  */
 export interface GetLoadTestProfileMappingResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Mapped Azure Load Test resource Id.
      */
@@ -65,7 +69,7 @@ export interface GetLoadTestProfileMappingResult {
  *
  * Uses Azure REST API version 2023-12-01-preview.
  *
- * Other available API versions: 2024-12-01-preview.
+ * Other available API versions: 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native loadtestservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getLoadTestProfileMappingOutput(args: GetLoadTestProfileMappingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadTestProfileMappingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

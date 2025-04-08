@@ -29,6 +29,16 @@ export const ActiveRevisionsMode = {
  */
 export type ActiveRevisionsMode = (typeof ActiveRevisionsMode)[keyof typeof ActiveRevisionsMode];
 
+export const Affinity = {
+    Sticky: "sticky",
+    None: "none",
+} as const;
+
+/**
+ * Sticky Session Affinity
+ */
+export type Affinity = (typeof Affinity)[keyof typeof Affinity];
+
 export const AppProtocol = {
     Http: "http",
     Grpc: "grpc",
@@ -81,7 +91,6 @@ export type CookieExpirationConvention = (typeof CookieExpirationConvention)[key
 
 export const DotNetComponentType = {
     AspireDashboard: "AspireDashboard",
-    AspireResourceServerApi: "AspireResourceServerApi",
 } as const;
 
 /**
@@ -118,6 +127,16 @@ export const ForwardProxyConvention = {
  */
 export type ForwardProxyConvention = (typeof ForwardProxyConvention)[keyof typeof ForwardProxyConvention];
 
+export const IdentitySettingsLifeCycle = {
+    None: "None",
+    Main: "Main",
+} as const;
+
+/**
+ * Use to select the lifecycle stages of a Session Pool during which the Managed Identity should be available.
+ */
+export type IdentitySettingsLifeCycle = (typeof IdentitySettingsLifeCycle)[keyof typeof IdentitySettingsLifeCycle];
+
 export const IngressClientCertificateMode = {
     Ignore: "ignore",
     Accept: "accept",
@@ -145,6 +164,8 @@ export const JavaComponentType = {
     SpringBootAdmin: "SpringBootAdmin",
     SpringCloudEureka: "SpringCloudEureka",
     SpringCloudConfig: "SpringCloudConfig",
+    SpringCloudGateway: "SpringCloudGateway",
+    Nacos: "Nacos",
 } as const;
 
 /**
@@ -174,16 +195,6 @@ export const ManagedCertificateDomainControlValidation = {
  * Selected type of domain control validation for managed certificates.
  */
 export type ManagedCertificateDomainControlValidation = (typeof ManagedCertificateDomainControlValidation)[keyof typeof ManagedCertificateDomainControlValidation];
-
-export const ManagedEnvironmentOutBoundType = {
-    LoadBalancer: "LoadBalancer",
-    UserDefinedRouting: "UserDefinedRouting",
-} as const;
-
-/**
- * Outbound type for the cluster
- */
-export type ManagedEnvironmentOutBoundType = (typeof ManagedEnvironmentOutBoundType)[keyof typeof ManagedEnvironmentOutBoundType];
 
 export const ManagedServiceIdentityType = {
     None: "None",
@@ -238,22 +249,6 @@ export const SessionNetworkStatus = {
  * Network status for the sessions.
  */
 export type SessionNetworkStatus = (typeof SessionNetworkStatus)[keyof typeof SessionNetworkStatus];
-
-export const SkuName = {
-    /**
-     * Consumption SKU of Managed Environment.
-     */
-    Consumption: "Consumption",
-    /**
-     * Premium SKU of Managed Environment.
-     */
-    Premium: "Premium",
-} as const;
-
-/**
- * Name of the Sku.
- */
-export type SkuName = (typeof SkuName)[keyof typeof SkuName];
 
 export const StorageType = {
     AzureFile: "AzureFile",

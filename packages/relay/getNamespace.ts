@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Returns the description for the specified namespace.
  *
- * Uses Azure REST API version 2021-11-01.
+ * Uses Azure REST API version 2024-01-01.
  *
- * Other available API versions: 2024-01-01.
+ * Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNamespace(args: GetNamespaceArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +31,10 @@ export interface GetNamespaceArgs {
  * Description of a namespace resource.
  */
 export interface GetNamespaceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The time the namespace was created.
      */
@@ -95,9 +99,9 @@ export interface GetNamespaceResult {
 /**
  * Returns the description for the specified namespace.
  *
- * Uses Azure REST API version 2021-11-01.
+ * Uses Azure REST API version 2024-01-01.
  *
- * Other available API versions: 2024-01-01.
+ * Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNamespaceOutput(args: GetNamespaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNamespaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

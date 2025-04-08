@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * The status of the Canonical support plan.
  *
- * Uses Azure REST API version 2018-03-01. In version 1.x of the Azure Native provider, it used API version 2018-03-01.
+ * Uses Azure REST API version 2018-03-01. In version 2.x of the Azure Native provider, it used API version 2018-03-01.
  */
 export class SupportPlanType extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class SupportPlanType extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The name of the Canonical support plan, i.e. "essential", "standard" or "advanced".
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -61,10 +65,12 @@ export class SupportPlanType extends pulumi.CustomResource {
             }
             resourceInputs["planTypeName"] = args ? args.planTypeName : undefined;
             resourceInputs["providerName"] = args ? args.providerName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

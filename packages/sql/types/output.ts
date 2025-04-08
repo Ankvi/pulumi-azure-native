@@ -1,6 +1,20 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Certificate information
+ */
+export interface CertificateInfoResponse {
+    /**
+     * The certificate name
+     */
+    certificateName: string;
+    /**
+     * The certificate expiry date
+     */
+    expiryDate: string;
+}
+
+/**
  * Azure Active Directory identity configuration for a resource.
  */
 export interface DatabaseIdentityResponse {
@@ -16,6 +30,28 @@ export interface DatabaseIdentityResponse {
      * The resource ids of the user assigned identities to use
      */
     userAssignedIdentities?: {[key: string]: DatabaseUserIdentityResponse};
+}
+
+/**
+ * Database level key used for encryption at rest.
+ */
+export interface DatabaseKeyResponse {
+    /**
+     * The database key creation date.
+     */
+    creationDate: string;
+    /**
+     * Subregion of the server key.
+     */
+    subregion: string;
+    /**
+     * Thumbprint of the database key.
+     */
+    thumbprint: string;
+    /**
+     * The database key type. Only supported value is 'AzureKeyVault'.
+     */
+    type: string;
 }
 
 /**
@@ -43,9 +79,103 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselineItemResponse {
 }
 
 /**
+ * Database specific information
+ */
+export interface DistributedAvailabilityGroupDatabaseResponse {
+    /**
+     * Link connected state
+     */
+    connectedState: string;
+    /**
+     * The name of the database in link
+     */
+    databaseName?: string;
+    /**
+     * Redo lag when Managed Instance link side is primary
+     */
+    instanceRedoReplicationLagSeconds: number;
+    /**
+     * Managed instance replica id
+     */
+    instanceReplicaId: string;
+    /**
+     * Replication lag when Managed Instance link side is primary
+     */
+    instanceSendReplicationLagSeconds: number;
+    /**
+     * Last backup LSN
+     */
+    lastBackupLsn: string;
+    /**
+     * Last backup LSN time
+     */
+    lastBackupTime: string;
+    /**
+     * Last commit LSN
+     */
+    lastCommitLsn: string;
+    /**
+     * Last commit LSN time
+     */
+    lastCommitTime: string;
+    /**
+     * Last hardened LSN
+     */
+    lastHardenedLsn: string;
+    /**
+     * Last hardened LSN time
+     */
+    lastHardenedTime: string;
+    /**
+     * Last received LSN
+     */
+    lastReceivedLsn: string;
+    /**
+     * Last received LSN time
+     */
+    lastReceivedTime: string;
+    /**
+     * Last sent LSN
+     */
+    lastSentLsn: string;
+    /**
+     * Last sent LSN time
+     */
+    lastSentTime: string;
+    /**
+     * The most recent link connection error description
+     */
+    mostRecentLinkError: string;
+    /**
+     * SQL server certificate validity
+     */
+    partnerAuthCertValidity: CertificateInfoResponse;
+    /**
+     * SQL server replica id
+     */
+    partnerReplicaId: string;
+    /**
+     * Current link state
+     */
+    replicaState: string;
+    /**
+     * Seeding progress
+     */
+    seedingProgress: string;
+    /**
+     * Link health state
+     */
+    synchronizationHealth: string;
+}
+
+/**
  * Per database settings of an elastic pool.
  */
 export interface ElasticPoolPerDatabaseSettingsResponse {
+    /**
+     * Auto Pause Delay for per database within pool
+     */
+    autoPauseDelay?: number;
     /**
      * The maximum capacity any one database can consume.
      */
@@ -64,6 +194,10 @@ export interface FailoverGroupReadOnlyEndpointResponse {
      * Failover policy of the read-only endpoint for the failover group.
      */
     failoverPolicy?: string;
+    /**
+     * The target partner server where the read-only endpoint points to.
+     */
+    targetServer?: string;
 }
 
 /**
@@ -105,6 +239,38 @@ export interface InstanceFailoverGroupReadWriteEndpointResponse {
 }
 
 /**
+ * Azure Active Directory identity configuration for a resource.
+ */
+export interface JobAgentIdentityResponse {
+    /**
+     * The job agent identity tenant id
+     */
+    tenantId?: string;
+    /**
+     * The job agent identity type
+     */
+    type: string;
+    /**
+     * The resource ids of the user assigned identities to use
+     */
+    userAssignedIdentities?: {[key: string]: JobAgentUserAssignedIdentityResponse};
+}
+
+/**
+ * Azure Active Directory identity configuration for a resource.
+ */
+export interface JobAgentUserAssignedIdentityResponse {
+    /**
+     * The Azure Active Directory client id.
+     */
+    clientId: string;
+    /**
+     * The Azure Active Directory principal id.
+     */
+    principalId: string;
+}
+
+/**
  * Scheduling properties of a job.
  */
 export interface JobScheduleResponse {
@@ -135,8 +301,8 @@ export interface JobScheduleResponse {
 export function jobScheduleResponseProvideDefaults(val: JobScheduleResponse): JobScheduleResponse {
     return {
         ...val,
-        endTime: (val.endTime) ?? "9999-12-31T11:59:59+00:00",
-        startTime: (val.startTime) ?? "0001-01-01T00:00:00+00:00",
+        endTime: (val.endTime) ?? "9999-12-31T17:29:59+05:30",
+        startTime: (val.startTime) ?? "0001-01-01T05:30:00+05:30",
         type: (val.type) ?? "Once",
     };
 }
@@ -215,7 +381,7 @@ export interface JobStepOutputResponse {
     /**
      * The resource ID of the credential to use to connect to the output destination.
      */
-    credential: string;
+    credential?: string;
     /**
      * The output destination database.
      */
@@ -560,7 +726,7 @@ export interface RecommendedActionResponse {
     /**
      * Gets additional details specific to this recommended action.
      */
-    details: {[key: string]: any};
+    details: {[key: string]: string};
     /**
      * Gets the error details if and why this recommended action is put to error state.
      */
@@ -951,14 +1117,3 @@ export function vulnerabilityAssessmentRecurringScansPropertiesResponseProvideDe
         emailSubscriptionAdmins: (val.emailSubscriptionAdmins) ?? true,
     };
 }
-
-
-
-
-
-
-
-
-
-
-

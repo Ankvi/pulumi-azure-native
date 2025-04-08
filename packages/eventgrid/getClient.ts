@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get properties of a client.
  *
- * Uses Azure REST API version 2023-06-01-preview.
+ * Uses Azure REST API version 2025-02-15.
  *
- * Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+ * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getClient(args: GetClientArgs, opts?: pulumi.InvokeOptions): Promise<GetClientResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -43,13 +43,13 @@ export interface GetClientResult {
      */
     readonly attributes?: any;
     /**
-     * Authentication information for the client.
-     */
-    readonly authentication?: types.outputs.ClientAuthenticationResponse;
-    /**
      * The name presented by the client for authentication. The default value is the name of the resource.
      */
     readonly authenticationName?: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The client certificate authentication information.
      */
@@ -75,7 +75,7 @@ export interface GetClientResult {
      */
     readonly state?: string;
     /**
-     * The system metadata relating to the Client resource.
+     * The system metadata relating to the Event Grid resource.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
@@ -86,9 +86,9 @@ export interface GetClientResult {
 /**
  * Get properties of a client.
  *
- * Uses Azure REST API version 2023-06-01-preview.
+ * Uses Azure REST API version 2025-02-15.
  *
- * Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+ * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getClientOutput(args: GetClientOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClientResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

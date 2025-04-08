@@ -35,6 +35,10 @@ export interface GetPrivateEndpointConnectionProxyArgs {
  */
 export interface GetPrivateEndpointConnectionProxyResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * ETag from NRP.
      */
     readonly eTag: string;

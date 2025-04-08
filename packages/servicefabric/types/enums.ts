@@ -235,6 +235,16 @@ export const PrivateEndpointNetworkPolicies = {
  */
 export type PrivateEndpointNetworkPolicies = (typeof PrivateEndpointNetworkPolicies)[keyof typeof PrivateEndpointNetworkPolicies];
 
+export const PrivateIPAddressVersion = {
+    IPv4: "IPv4",
+    IPv6: "IPv6",
+} as const;
+
+/**
+ * Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4.
+ */
+export type PrivateIPAddressVersion = (typeof PrivateIPAddressVersion)[keyof typeof PrivateIPAddressVersion];
+
 export const PrivateLinkServiceNetworkPolicies = {
     Enabled: "enabled",
     Disabled: "disabled",
@@ -266,6 +276,16 @@ export const Protocol = {
  */
 export type Protocol = (typeof Protocol)[keyof typeof Protocol];
 
+export const PublicIPAddressVersion = {
+    IPv4: "IPv4",
+    IPv6: "IPv6",
+} as const;
+
+/**
+ * Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
+ */
+export type PublicIPAddressVersion = (typeof PublicIPAddressVersion)[keyof typeof PublicIPAddressVersion];
+
 export const RollingUpgradeMode = {
     /**
      * The upgrade will stop after completing each upgrade domain and automatically monitor health before proceeding. The value is 0.
@@ -287,10 +307,14 @@ export const SecurityType = {
      * Trusted Launch is a security type that secures generation 2 virtual machines.
      */
     TrustedLaunch: "TrustedLaunch",
+    /**
+     * Standard is the default security type for all machines.
+     */
+    Standard: "Standard",
 } as const;
 
 /**
- * Specifies the security type of the nodeType. Only TrustedLaunch is currently supported
+ * Specifies the security type of the nodeType. Only Standard and TrustedLaunch are currently supported
  */
 export type SecurityType = (typeof SecurityType)[keyof typeof SecurityType];
 
@@ -457,6 +481,18 @@ export const VmSetupAction = {
  * action to be performed on the vms before bootstrapping the service fabric runtime.
  */
 export type VmSetupAction = (typeof VmSetupAction)[keyof typeof VmSetupAction];
+
+export const VmssExtensionSetupOrder = {
+    /**
+     * Indicates that the vm extension should run before the service fabric runtime starts.
+     */
+    BeforeSFRuntime: "BeforeSFRuntime",
+} as const;
+
+/**
+ * Vm extension setup order.
+ */
+export type VmssExtensionSetupOrder = (typeof VmssExtensionSetupOrder)[keyof typeof VmssExtensionSetupOrder];
 
 export const ZonalUpdateMode = {
     /**

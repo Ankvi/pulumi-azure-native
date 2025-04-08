@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets the search service with the given name in the given resource group.
  *
- * Uses Azure REST API version 2022-09-01.
+ * Uses Azure REST API version 2023-11-01.
  *
- * Other available API versions: 2021-04-01-preview, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview.
+ * Other available API versions: 2022-09-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -22,19 +22,23 @@ export interface GetServiceArgs {
      */
     resourceGroupName: string;
     /**
-     * The name of the Azure Cognitive Search service associated with the specified resource group.
+     * The name of the search service associated with the specified resource group.
      */
     searchServiceName: string;
 }
 
 /**
- * Describes an Azure Cognitive Search service and its current state.
+ * Describes a search service and its current state.
  */
 export interface GetServiceResult {
     /**
      * Defines the options for how the data plane API of a search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
      */
     readonly authOptions?: types.outputs.DataPlaneAuthOptionsResponse;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * When set to true, calls to the search service will not be permitted to utilize API keys for authentication. This cannot be set to true if 'dataPlaneAuthOptions' are defined.
      */
@@ -64,7 +68,7 @@ export interface GetServiceResult {
      */
     readonly name: string;
     /**
-     * Network specific rules that determine how the Azure Cognitive Search service may be reached.
+     * Network-specific rules that determine how the search service may be reached.
      */
     readonly networkRuleSet?: types.outputs.NetworkRuleSetResponse;
     /**
@@ -72,7 +76,7 @@ export interface GetServiceResult {
      */
     readonly partitionCount?: number;
     /**
-     * The list of private endpoint connections to the Azure Cognitive Search service.
+     * The list of private endpoint connections to the search service.
      */
     readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
@@ -88,15 +92,19 @@ export interface GetServiceResult {
      */
     readonly replicaCount?: number;
     /**
-     * The list of shared private link resources managed by the Azure Cognitive Search service.
+     * Sets options that control the availability of semantic search. This configuration is only possible for certain search SKUs in certain locations.
+     */
+    readonly semanticSearch?: string;
+    /**
+     * The list of shared private link resources managed by the search service.
      */
     readonly sharedPrivateLinkResources: types.outputs.SharedPrivateLinkResourceResponse[];
     /**
-     * The SKU of the Search Service, which determines price tier and capacity limits. This property is required when creating a new Search Service.
+     * The SKU of the search service, which determines billing rate and capacity limits. This property is required when creating a new search service.
      */
     readonly sku?: types.outputs.SkuResponse;
     /**
-     * The status of the search service. Possible values include: 'running': The search service is running and no provisioning operations are underway. 'provisioning': The search service is being provisioned or scaled up or down. 'deleting': The search service is being deleted. 'degraded': The search service is degraded. This can occur when the underlying search units are not healthy. The search service is most likely operational, but performance might be slow and some requests might be dropped. 'disabled': The search service is disabled. In this state, the service will reject all API requests. 'error': The search service is in an error state. If your service is in the degraded, disabled, or error states, it means the Azure Cognitive Search team is actively investigating the underlying issue. Dedicated services in these states are still chargeable based on the number of search units provisioned.
+     * The status of the search service. Possible values include: 'running': The search service is running and no provisioning operations are underway. 'provisioning': The search service is being provisioned or scaled up or down. 'deleting': The search service is being deleted. 'degraded': The search service is degraded. This can occur when the underlying search units are not healthy. The search service is most likely operational, but performance might be slow and some requests might be dropped. 'disabled': The search service is disabled. In this state, the service will reject all API requests. 'error': The search service is in an error state. If your service is in the degraded, disabled, or error states, Microsoft is actively investigating the underlying issue. Dedicated services in these states are still chargeable based on the number of search units provisioned.
      */
     readonly status: string;
     /**
@@ -115,9 +123,9 @@ export interface GetServiceResult {
 /**
  * Gets the search service with the given name in the given resource group.
  *
- * Uses Azure REST API version 2022-09-01.
+ * Uses Azure REST API version 2023-11-01.
  *
- * Other available API versions: 2021-04-01-preview, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview.
+ * Other available API versions: 2022-09-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -133,7 +141,7 @@ export interface GetServiceOutputArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The name of the Azure Cognitive Search service associated with the specified resource group.
+     * The name of the search service associated with the specified resource group.
      */
     searchServiceName: pulumi.Input<string>;
 }

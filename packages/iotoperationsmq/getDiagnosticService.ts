@@ -35,6 +35,10 @@ export interface GetDiagnosticServiceArgs {
  */
 export interface GetDiagnosticServiceResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The frequency at which the data will be exported.
      */
     readonly dataExportFrequencySeconds?: number;

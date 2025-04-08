@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get a TrafficController
  *
- * Uses Azure REST API version 2023-05-01-preview.
+ * Uses Azure REST API version 2025-01-01.
  *
- * Other available API versions: 2022-10-01-preview, 2023-11-01, 2024-05-01-preview, 2025-01-01, 2025-03-01-preview.
+ * Other available API versions: 2023-05-01-preview, 2023-11-01, 2024-05-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicenetworking [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getTrafficControllerInterface(args: GetTrafficControllerInterfaceArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficControllerInterfaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +36,10 @@ export interface GetTrafficControllerInterfaceResult {
      */
     readonly associations: types.outputs.ResourceIdResponse[];
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Configuration Endpoints.
      */
     readonly configurationEndpoints: string[];
@@ -60,6 +64,14 @@ export interface GetTrafficControllerInterfaceResult {
      */
     readonly provisioningState: string;
     /**
+     * Security Policies References List
+     */
+    readonly securityPolicies: types.outputs.ResourceIdResponse[];
+    /**
+     * Security Policy Configuration
+     */
+    readonly securityPolicyConfigurations?: types.outputs.SecurityPolicyConfigurationsResponse;
+    /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
@@ -75,9 +87,9 @@ export interface GetTrafficControllerInterfaceResult {
 /**
  * Get a TrafficController
  *
- * Uses Azure REST API version 2023-05-01-preview.
+ * Uses Azure REST API version 2025-01-01.
  *
- * Other available API versions: 2022-10-01-preview, 2023-11-01, 2024-05-01-preview, 2025-01-01, 2025-03-01-preview.
+ * Other available API versions: 2023-05-01-preview, 2023-11-01, 2024-05-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicenetworking [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getTrafficControllerInterfaceOutput(args: GetTrafficControllerInterfaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTrafficControllerInterfaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

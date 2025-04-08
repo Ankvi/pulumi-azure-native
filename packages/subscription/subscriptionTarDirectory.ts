@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Subscription Response for Changed Target Directory.
  *
- * Uses Azure REST API version 2024-08-01-preview.
+ * Uses Azure REST API version 2024-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-08-01-preview.
  */
 export class SubscriptionTarDirectory extends pulumi.CustomResource {
     /**
@@ -34,6 +34,10 @@ export class SubscriptionTarDirectory extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Subscription Name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -59,9 +63,11 @@ export class SubscriptionTarDirectory extends pulumi.CustomResource {
         if (!opts.id) {
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["subscriptionId"] = args ? args.subscriptionId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

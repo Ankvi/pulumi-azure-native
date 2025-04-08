@@ -804,7 +804,7 @@ export interface MsTeamsChannelPropertiesArgs {
 export function msTeamsChannelPropertiesArgsProvideDefaults(val: MsTeamsChannelPropertiesArgs): MsTeamsChannelPropertiesArgs {
     return {
         ...val,
-        deploymentEnvironment: (val.deploymentEnvironment) ?? "FallbackDeploymentEnvironment",
+        deploymentEnvironment: (val.deploymentEnvironment) ?? "CommercialDeployment",
         enableCalling: (val.enableCalling) ?? false,
     };
 }
@@ -1446,9 +1446,3 @@ export function webChatSiteArgsProvideDefaults(val: WebChatSiteArgs): WebChatSit
         isWebchatPreviewEnabled: (val.isWebchatPreviewEnabled) ?? false,
     };
 }
-
-
-
-
-
-

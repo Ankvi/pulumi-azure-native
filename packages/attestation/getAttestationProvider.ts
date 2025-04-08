@@ -5,8 +5,6 @@ import * as types from "./types";
  * Get the status of Attestation Provider.
  *
  * Uses Azure REST API version 2021-06-01.
- *
- * Other available API versions: 2021-06-01-preview.
  */
 export function getAttestationProvider(args: GetAttestationProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetAttestationProviderResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,6 +33,10 @@ export interface GetAttestationProviderResult {
      * Gets the uri of attestation service
      */
     readonly attestUri?: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -84,8 +86,6 @@ export interface GetAttestationProviderResult {
  * Get the status of Attestation Provider.
  *
  * Uses Azure REST API version 2021-06-01.
- *
- * Other available API versions: 2021-06-01-preview.
  */
 export function getAttestationProviderOutput(args: GetAttestationProviderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAttestationProviderResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

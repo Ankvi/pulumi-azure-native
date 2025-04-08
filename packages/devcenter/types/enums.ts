@@ -1,3 +1,22 @@
+export const CatalogItemSyncEnableStatus = {
+    Enabled: "Enabled",
+    Disabled: "Disabled",
+} as const;
+
+/**
+ * Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+ */
+export type CatalogItemSyncEnableStatus = (typeof CatalogItemSyncEnableStatus)[keyof typeof CatalogItemSyncEnableStatus];
+
+export const CatalogItemType = {
+    EnvironmentDefinition: "EnvironmentDefinition",
+} as const;
+
+/**
+ * Indicates catalog item types.
+ */
+export type CatalogItemType = (typeof CatalogItemType)[keyof typeof CatalogItemType];
+
 export const CatalogSyncType = {
     Manual: "Manual",
     Scheduled: "Scheduled",
@@ -47,6 +66,17 @@ export const HibernateSupport = {
  * Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
  */
 export type HibernateSupport = (typeof HibernateSupport)[keyof typeof HibernateSupport];
+
+export const IdentityType = {
+    SystemAssignedIdentity: "systemAssignedIdentity",
+    UserAssignedIdentity: "userAssignedIdentity",
+    DelegatedResourceIdentity: "delegatedResourceIdentity",
+} as const;
+
+/**
+ * Values can be systemAssignedIdentity or userAssignedIdentity
+ */
+export type IdentityType = (typeof IdentityType)[keyof typeof IdentityType];
 
 export const LicenseType = {
     Windows_Client: "Windows_Client",
@@ -117,6 +147,16 @@ export const ScheduledType = {
  */
 export type ScheduledType = (typeof ScheduledType)[keyof typeof ScheduledType];
 
+export const SingleSignOnStatus = {
+    Disabled: "Disabled",
+    Enabled: "Enabled",
+} as const;
+
+/**
+ * Indicates whether Dev Boxes in this pool are created with single sign on enabled. The also requires that single sign on be enabled on the tenant.
+ */
+export type SingleSignOnStatus = (typeof SingleSignOnStatus)[keyof typeof SingleSignOnStatus];
+
 export const SkuTier = {
     Free: "Free",
     Basic: "Basic",
@@ -138,3 +178,13 @@ export const StopOnDisconnectEnableStatus = {
  * Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
  */
 export type StopOnDisconnectEnableStatus = (typeof StopOnDisconnectEnableStatus)[keyof typeof StopOnDisconnectEnableStatus];
+
+export const VirtualNetworkType = {
+    Managed: "Managed",
+    Unmanaged: "Unmanaged",
+} as const;
+
+/**
+ * Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
+ */
+export type VirtualNetworkType = (typeof VirtualNetworkType)[keyof typeof VirtualNetworkType];

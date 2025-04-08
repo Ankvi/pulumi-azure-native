@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Represents a published blueprint.
  *
- * Uses Azure REST API version 2018-11-01-preview. In version 1.x of the Azure Native provider, it used API version 2018-11-01-preview.
+ * Uses Azure REST API version 2018-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2018-11-01-preview.
  */
 export class PublishedBlueprint extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class PublishedBlueprint extends pulumi.CustomResource {
         return obj['__pulumiType'] === PublishedBlueprint.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Name of the published blueprint definition.
      */
@@ -100,10 +104,12 @@ export class PublishedBlueprint extends pulumi.CustomResource {
             resourceInputs["resourceScope"] = args ? args.resourceScope : undefined;
             resourceInputs["targetScope"] = args ? args.targetScope : undefined;
             resourceInputs["versionId"] = args ? args.versionId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["blueprintName"] = undefined /*out*/;
             resourceInputs["changeNotes"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;

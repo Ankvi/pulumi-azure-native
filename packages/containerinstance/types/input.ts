@@ -1,16 +1,6 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * The API entity reference.
- */
-export interface ApiEntityReferenceArgs {
-    /**
-     * The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-     */
-    id?: pulumi.Input<string>;
-}
-
-/**
  * The properties of the Azure File volume. Azure File shares are mounted as volumes.
  */
 export interface AzureFileVolumeArgs {
@@ -26,10 +16,6 @@ export interface AzureFileVolumeArgs {
      * The storage account access key used to access the Azure File share.
      */
     storageAccountKey?: pulumi.Input<string>;
-    /**
-     * The reference to the storage account access key used to access the Azure File share.
-     */
-    storageAccountKeyReference?: pulumi.Input<string>;
     /**
      * The name of the storage account that contains the Azure File share.
      */
@@ -141,13 +127,17 @@ export interface ContainerGroupIdentityArgs {
 }
 
 /**
- * The object that contains a reference to a Container Group Profile
+ * The container group profile reference.
  */
-export interface ContainerGroupProfileStubArgs {
+export interface ContainerGroupProfileReferenceDefinitionArgs {
     /**
-     * The API entity reference.
+     * The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
      */
-    resource?: pulumi.Input<ApiEntityReferenceArgs>;
+    id?: pulumi.Input<string>;
+    /**
+     * The container group profile reference revision.
+     */
+    revision?: pulumi.Input<number>;
 }
 
 /**
@@ -279,13 +269,6 @@ export interface DnsConfigurationArgs {
 }
 
 /**
- * Describes the elastic profile of the Container Scale Set
- */
-export interface ElasticProfileArgs {
-    desiredCount?: pulumi.Input<number>;
-}
-
-/**
  * The container group encryption properties.
  */
 export interface EncryptionPropertiesArgs {
@@ -319,10 +302,6 @@ export interface EnvironmentVariableArgs {
      * The value of the secure environment variable.
      */
     secureValue?: pulumi.Input<string>;
-    /**
-     * The reference of the secure environment variable.
-     */
-    secureValueReference?: pulumi.Input<string>;
     /**
      * The value of the environment variable.
      */
@@ -391,10 +370,6 @@ export interface ImageRegistryCredentialArgs {
      * The password for the private registry.
      */
     password?: pulumi.Input<string>;
-    /**
-     * The reference for the private registry password.
-     */
-    passwordReference?: pulumi.Input<string>;
     /**
      * The Docker image registry server without a protocol such as "http" and "https".
      */
@@ -494,20 +469,6 @@ export interface LogAnalyticsArgs {
      * The workspace resource id for log analytics
      */
     workspaceResourceId?: pulumi.Input<string>;
-}
-
-/**
- * Identity for the nGroup.
- */
-export interface NGroupIdentityArgs {
-    /**
-     * The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
-     */
-    type?: pulumi.Input<enums.ResourceIdentityType>;
-    /**
-     * The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-     */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -619,6 +580,20 @@ export interface SecurityContextDefinitionArgs {
 }
 
 /**
+ * The standby pool profile reference.
+ */
+export interface StandbyPoolProfileDefinitionArgs {
+    /**
+     * The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
+     */
+    failContainerGroupCreateOnReuseFailure?: pulumi.Input<boolean>;
+    /**
+     * The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
+     */
+    id?: pulumi.Input<string>;
+}
+
+/**
  * The properties of the volume.
  */
 export interface VolumeArgs {
@@ -642,10 +617,6 @@ export interface VolumeArgs {
      * The secret volume.
      */
     secret?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The secret reference volume.
-     */
-    secretReference?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -665,10 +636,3 @@ export interface VolumeMountArgs {
      */
     readOnly?: pulumi.Input<boolean>;
 }
-
-
-
-
-
-
-

@@ -2,9 +2,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Uses Azure REST API version 2023-10-01-preview.
+ * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+ * Other available API versions: 2023-10-01-preview, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class KubernetesCluster extends pulumi.CustomResource {
     /**
@@ -50,6 +50,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly availableUpgrades!: pulumi.Output<types.outputs.AvailableUpgradeResponse[]>;
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The resource ID of the Network Cloud cluster.
      */
     public /*out*/ readonly clusterId!: pulumi.Output<string>;
@@ -74,6 +78,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly detailedStatusMessage!: pulumi.Output<string>;
     /**
+     * Resource ETag.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
      * The extended location of the cluster associated with the resource.
      */
     public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
@@ -86,7 +94,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     public readonly initialAgentPoolConfigurations!: pulumi.Output<types.outputs.InitialAgentPoolConfigurationResponse[]>;
     /**
-     * The Kubernetes version for this cluster. Accepts n.n, n.n.n, and n.n.n-n format. The interpreted version used will be resolved into this field after creation or update.
+     * The Kubernetes version for this cluster.
      */
     public readonly kubernetesVersion!: pulumi.Output<string>;
     /**
@@ -169,11 +177,13 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["attachedNetworkIds"] = undefined /*out*/;
             resourceInputs["availableUpgrades"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["connectedClusterId"] = undefined /*out*/;
             resourceInputs["controlPlaneKubernetesVersion"] = undefined /*out*/;
             resourceInputs["detailedStatus"] = undefined /*out*/;
             resourceInputs["detailedStatusMessage"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["featureStatuses"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;
@@ -185,12 +195,14 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["administratorConfiguration"] = undefined /*out*/;
             resourceInputs["attachedNetworkIds"] = undefined /*out*/;
             resourceInputs["availableUpgrades"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["connectedClusterId"] = undefined /*out*/;
             resourceInputs["controlPlaneKubernetesVersion"] = undefined /*out*/;
             resourceInputs["controlPlaneNodeConfiguration"] = undefined /*out*/;
             resourceInputs["detailedStatus"] = undefined /*out*/;
             resourceInputs["detailedStatusMessage"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["extendedLocation"] = undefined /*out*/;
             resourceInputs["featureStatuses"] = undefined /*out*/;
             resourceInputs["initialAgentPoolConfigurations"] = undefined /*out*/;
@@ -241,7 +253,7 @@ export interface KubernetesClusterArgs {
      */
     kubernetesClusterName?: pulumi.Input<string>;
     /**
-     * The Kubernetes version for this cluster. Accepts n.n, n.n.n, and n.n.n-n format. The interpreted version used will be resolved into this field after creation or update.
+     * The Kubernetes version for this cluster.
      */
     kubernetesVersion: pulumi.Input<string>;
     /**

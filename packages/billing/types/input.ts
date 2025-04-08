@@ -325,6 +325,40 @@ export interface BillingProfilePropertiesSoldToArgs {
 }
 
 /**
+ * The properties of the billing role assignment.
+ */
+export interface BillingRoleAssignmentPropertiesArgs {
+    /**
+     * The object id of the user to whom the role was assigned.
+     */
+    principalId?: pulumi.Input<string>;
+    /**
+     * The principal PUID of the user to whom the role was assigned.
+     */
+    principalPuid?: pulumi.Input<string>;
+    /**
+     * The principal tenant id of the user to whom the role was assigned.
+     */
+    principalTenantId?: pulumi.Input<string>;
+    /**
+     * The ID of the role definition.
+     */
+    roleDefinitionId: pulumi.Input<string>;
+    /**
+     * The scope at which the role was assigned.
+     */
+    scope?: pulumi.Input<string>;
+    /**
+     * The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
+     */
+    userAuthenticationType?: pulumi.Input<string>;
+    /**
+     * The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
+     */
+    userEmailAddress?: pulumi.Input<string>;
+}
+
+/**
  * An invoice section.
  */
 export interface InvoiceSectionPropertiesArgs {
@@ -349,5 +383,3 @@ export interface InvoiceSectionPropertiesArgs {
      */
     targetCloud?: pulumi.Input<string>;
 }
-
-

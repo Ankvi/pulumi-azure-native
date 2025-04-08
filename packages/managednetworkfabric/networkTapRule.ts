@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * The NetworkTapRule resource definition.
  *
- * Uses Azure REST API version 2023-06-15.
+ * Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-06-15.
  */
 export class NetworkTapRule extends pulumi.CustomResource {
     /**
@@ -41,6 +41,10 @@ export class NetworkTapRule extends pulumi.CustomResource {
      * Switch configuration description.
      */
     public readonly annotation!: pulumi.Output<string | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Configuration state of the resource.
      */
@@ -126,6 +130,7 @@ export class NetworkTapRule extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tapRulesUrl"] = args ? args.tapRulesUrl : undefined;
             resourceInputs["administrativeState"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["configurationState"] = undefined /*out*/;
             resourceInputs["lastSyncedTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -136,6 +141,7 @@ export class NetworkTapRule extends pulumi.CustomResource {
         } else {
             resourceInputs["administrativeState"] = undefined /*out*/;
             resourceInputs["annotation"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["configurationState"] = undefined /*out*/;
             resourceInputs["configurationType"] = undefined /*out*/;
             resourceInputs["dynamicMatchConfigurations"] = undefined /*out*/;

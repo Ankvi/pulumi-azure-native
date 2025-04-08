@@ -4,9 +4,7 @@ import * as types from "./types";
 /**
  * Customer creates a contact resource for a spacecraft resource.
  *
- * Uses Azure REST API version 2022-11-01.
- *
- * Other available API versions: 2022-03-01.
+ * Uses Azure REST API version 2022-11-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
  */
 export class Contact extends pulumi.CustomResource {
     /**
@@ -39,6 +37,10 @@ export class Contact extends pulumi.CustomResource {
      * The configuration associated with the allocated antenna.
      */
     public /*out*/ readonly antennaConfiguration!: pulumi.Output<types.outputs.ContactsPropertiesResponseAntennaConfiguration>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The reference to the contact profile resource.
      */
@@ -149,6 +151,7 @@ export class Contact extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["spacecraftName"] = args ? args.spacecraftName : undefined;
             resourceInputs["antennaConfiguration"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["endAzimuthDegrees"] = undefined /*out*/;
             resourceInputs["endElevationDegrees"] = undefined /*out*/;
             resourceInputs["errorMessage"] = undefined /*out*/;
@@ -165,6 +168,7 @@ export class Contact extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["antennaConfiguration"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["contactProfile"] = undefined /*out*/;
             resourceInputs["endAzimuthDegrees"] = undefined /*out*/;
             resourceInputs["endElevationDegrees"] = undefined /*out*/;

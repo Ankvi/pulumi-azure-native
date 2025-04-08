@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Retrieves information about the model view or the instance view of a virtual machine.
  *
- * Uses Azure REST API version 2023-03-01.
+ * Uses Azure REST API version 2024-11-01.
  *
- * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -49,6 +49,10 @@ export interface GetVirtualMachineResult {
      */
     readonly availabilitySet?: types.outputs.SubResourceResponse;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Specifies the billing related details of a Azure Spot virtual machine. Minimum api-version: 2019-03-01.
      */
     readonly billingProfile?: types.outputs.BillingProfileResponse;
@@ -60,6 +64,10 @@ export interface GetVirtualMachineResult {
      * Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
      */
     readonly diagnosticsProfile?: types.outputs.DiagnosticsProfileResponse;
+    /**
+     * Etag is property returned in Create/Update/Get response of the VM, so that customer can supply it in the header to ensure optimistic updates.
+     */
+    readonly etag: string;
     /**
      * Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
      */
@@ -105,6 +113,10 @@ export interface GetVirtualMachineResult {
      */
     readonly location: string;
     /**
+     * ManagedBy is set to Virtual Machine Scale Set(VMSS) flex ARM resourceID, if the VM is part of the VMSS. This property is used by platform for internal resource group delete optimization.
+     */
+    readonly managedBy: string;
+    /**
      * Resource name
      */
     readonly name: string;
@@ -116,6 +128,10 @@ export interface GetVirtualMachineResult {
      * Specifies the operating system settings used while creating the virtual machine. Some of the settings cannot be changed once VM is provisioned.
      */
     readonly osProfile?: types.outputs.OSProfileResponse;
+    /**
+     * Placement section specifies the user-defined constraints for virtual machine hardware placement. This property cannot be changed once VM is provisioned. Minimum api-version: 2024-11-01.
+     */
+    readonly placement?: types.outputs.PlacementResponse;
     /**
      * Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
      */
@@ -140,6 +156,10 @@ export interface GetVirtualMachineResult {
      * The virtual machine child extension resources.
      */
     readonly resources: types.outputs.VirtualMachineExtensionResponse[];
+    /**
+     * Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets Scheduled Event related configurations for the virtual machine.
+     */
+    readonly scheduledEventsPolicy?: types.outputs.ScheduledEventsPolicyResponse;
     /**
      * Specifies Scheduled Event related configurations.
      */
@@ -184,9 +204,9 @@ export interface GetVirtualMachineResult {
 /**
  * Retrieves information about the model view or the instance view of a virtual machine.
  *
- * Uses Azure REST API version 2023-03-01.
+ * Uses Azure REST API version 2024-11-01.
  *
- * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getVirtualMachineOutput(args: GetVirtualMachineOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVirtualMachineResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -51,5 +51,3 @@ export interface IngestionSourcesPropertiesFormatArgs {
      */
     sourceType?: pulumi.Input<string | enums.SourceType>;
 }
-
-

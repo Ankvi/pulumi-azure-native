@@ -40,6 +40,10 @@ export interface GetBusinessProcessArgs {
  */
 export interface GetBusinessProcessResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The business process mapping.
      */
     readonly businessProcessMapping?: {[key: string]: types.outputs.BusinessProcessMappingItemResponse};

@@ -83,7 +83,7 @@ export interface ContentLinkResponse {
      */
     contentHash?: ContentHashResponse;
     /**
-     * Gets or sets the uri of the runbook content.
+     * Gets or sets the uri of content.
      */
     uri?: string;
     /**
@@ -333,11 +333,11 @@ export interface LinuxPropertiesResponse {
  */
 export interface ModuleErrorInfoResponse {
     /**
-     * Gets or sets the error code.
+     * Gets the error code.
      */
     code?: string;
     /**
-     * Gets or sets the error message.
+     * Gets the error message.
      */
     message?: string;
 }
@@ -453,10 +453,6 @@ export interface RunbookDraftResponse {
      * Gets or sets the creation time of the runbook draft.
      */
     creationTime?: string;
-    /**
-     * Gets or sets the draft runbook content link.
-     */
-    draftContentLink?: ContentLinkResponse;
     /**
      * Gets or sets whether runbook is in edit mode.
      */
@@ -748,11 +744,3 @@ export interface WindowsPropertiesResponse {
      */
     rebootSetting?: string;
 }
-
-
-
-
-
-
-
-

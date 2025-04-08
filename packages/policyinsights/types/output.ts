@@ -100,6 +100,10 @@ export interface RemediationFiltersResponse {
      * The resource locations that will be remediated.
      */
     locations?: string[];
+    /**
+     * The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided.
+     */
+    resourceIds?: string[];
 }
 
 /**
@@ -155,5 +159,3 @@ export interface TypedErrorInfoResponse {
      */
     type: string;
 }
-
-

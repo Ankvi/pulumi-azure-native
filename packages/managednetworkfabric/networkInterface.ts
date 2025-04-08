@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Defines the NetworkInterface resource.
  *
- * Uses Azure REST API version 2023-02-01-preview. In version 1.x of the Azure Native provider, it used API version 2023-02-01-preview.
+ * Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
  *
- * Other available API versions: 2023-06-15.
+ * Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkInterface extends pulumi.CustomResource {
     /**
@@ -36,7 +36,7 @@ export class NetworkInterface extends pulumi.CustomResource {
     }
 
     /**
-     * administrativeState of the network interface. Example: Enabled | Disabled.
+     * Administrative state of the resource.
      */
     public /*out*/ readonly administrativeState!: pulumi.Output<string>;
     /**
@@ -44,7 +44,11 @@ export class NetworkInterface extends pulumi.CustomResource {
      */
     public readonly annotation!: pulumi.Output<string | undefined>;
     /**
-     * The arm resource id of the interface or compute server its connected to.
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
+     * The ARM resource id of the interface or compute server its connected to.
      */
     public /*out*/ readonly connectedTo!: pulumi.Output<string>;
     /**
@@ -52,11 +56,11 @@ export class NetworkInterface extends pulumi.CustomResource {
      */
     public /*out*/ readonly interfaceType!: pulumi.Output<string>;
     /**
-     * ipv4Address.
+     * IPv4Address of the interface.
      */
     public /*out*/ readonly ipv4Address!: pulumi.Output<string>;
     /**
-     * ipv6Address.
+     * IPv6Address of the interface.
      */
     public /*out*/ readonly ipv6Address!: pulumi.Output<string>;
     /**
@@ -64,11 +68,11 @@ export class NetworkInterface extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * physicalIdentifier of the network interface.
+     * Physical Identifier of the network interface.
      */
     public /*out*/ readonly physicalIdentifier!: pulumi.Output<string>;
     /**
-     * Gets the provisioning state of the resource.
+     * Provisioning state of the resource.
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
@@ -102,6 +106,7 @@ export class NetworkInterface extends pulumi.CustomResource {
             resourceInputs["networkInterfaceName"] = args ? args.networkInterfaceName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["administrativeState"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["connectedTo"] = undefined /*out*/;
             resourceInputs["interfaceType"] = undefined /*out*/;
             resourceInputs["ipv4Address"] = undefined /*out*/;
@@ -114,6 +119,7 @@ export class NetworkInterface extends pulumi.CustomResource {
         } else {
             resourceInputs["administrativeState"] = undefined /*out*/;
             resourceInputs["annotation"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["connectedTo"] = undefined /*out*/;
             resourceInputs["interfaceType"] = undefined /*out*/;
             resourceInputs["ipv4Address"] = undefined /*out*/;
@@ -140,11 +146,11 @@ export interface NetworkInterfaceArgs {
      */
     annotation?: pulumi.Input<string>;
     /**
-     * Name of the NetworkDevice
+     * Name of the Network Device.
      */
     networkDeviceName: pulumi.Input<string>;
     /**
-     * Name of the NetworkInterface
+     * Name of the Network Interface.
      */
     networkInterfaceName?: pulumi.Input<string>;
     /**

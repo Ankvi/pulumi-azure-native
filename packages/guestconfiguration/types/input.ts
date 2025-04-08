@@ -49,6 +49,10 @@ export interface GuestConfigurationNavigationArgs {
      */
     contentHash?: pulumi.Input<string>;
     /**
+     * Managed identity with storage access of the guest configuration package and configuration parameters.
+     */
+    contentManagedIdentity?: pulumi.Input<string>;
+    /**
      * Uri of the storage where guest configuration package is uploaded.
      */
     contentUri?: pulumi.Input<string>;
@@ -65,4 +69,3 @@ export interface GuestConfigurationNavigationArgs {
      */
     version?: pulumi.Input<string>;
 }
-

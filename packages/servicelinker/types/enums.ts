@@ -28,6 +28,22 @@ export const AllowType = {
  */
 export type AllowType = (typeof AllowType)[keyof typeof AllowType];
 
+export const AuthMode = {
+    /**
+     * Default authentication configuration according to the authentication type.
+     */
+    OptInAllAuth: "optInAllAuth",
+    /**
+     * Skip all authentication configuration such as enabling managed identity and granting RBAC roles
+     */
+    OptOutAllAuth: "optOutAllAuth",
+} as const;
+
+/**
+ * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+ */
+export type AuthMode = (typeof AuthMode)[keyof typeof AuthMode];
+
 export const AuthType = {
     SystemAssignedIdentity: "systemAssignedIdentity",
     UserAssignedIdentity: "userAssignedIdentity",
@@ -36,6 +52,7 @@ export const AuthType = {
     Secret: "secret",
     AccessKey: "accessKey",
     UserAccount: "userAccount",
+    EasyAuthMicrosoftEntraID: "easyAuthMicrosoftEntraID",
 } as const;
 
 /**
@@ -64,6 +81,7 @@ export const ClientType = {
     Nodejs: "nodejs",
     SpringBoot: "springBoot",
     Kafka_springBoot: "kafka-springBoot",
+    Jms_springBoot: "jms-springBoot",
     Dapr: "dapr",
 } as const;
 
@@ -71,6 +89,16 @@ export const ClientType = {
  * The application client type
  */
 export type ClientType = (typeof ClientType)[keyof typeof ClientType];
+
+export const DaprMetadataRequired = {
+    True: "true",
+    False: "false",
+} as const;
+
+/**
+ * The value indicating whether the metadata is required or not
+ */
+export type DaprMetadataRequired = (typeof DaprMetadataRequired)[keyof typeof DaprMetadataRequired];
 
 export const DeleteOrUpdateBehavior = {
     Default: "Default",

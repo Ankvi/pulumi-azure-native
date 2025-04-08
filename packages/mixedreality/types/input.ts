@@ -42,5 +42,3 @@ export interface SkuArgs {
      */
     tier?: pulumi.Input<enums.SkuTier>;
 }
-
-

@@ -67,6 +67,20 @@ export interface EndpointAuthenticationArgs {
 }
 
 /**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityArgs {
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: pulumi.Input<string | enums.ManagedServiceIdentityType>;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
  * The configuration to raw CDM data to be used as Modeling resource input.
  */
 export interface ModelingInputDataArgs {
@@ -107,4 +121,3 @@ export interface ServiceEndpointResourcePropertiesArgs {
      */
     preAllocatedCapacity?: pulumi.Input<number>;
 }
-

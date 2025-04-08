@@ -30,7 +30,7 @@ export interface DatadogHostMetadataResponse {
 
 export interface DatadogHostResponse {
     /**
-     * The aliases for the host.
+     * The aliases for the host installed via the Datadog agent.
      */
     aliases?: string[];
     /**
@@ -67,9 +67,13 @@ export interface DatadogLogsAgentResponse {
 }
 
 /**
- * Datadog organization properties
+ * Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
  */
 export interface DatadogOrganizationPropertiesResponse {
+    /**
+     * The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
+     */
+    cspm?: boolean;
     /**
      * Id of the Datadog organization.
      */
@@ -108,7 +112,7 @@ export interface IdentityPropertiesResponse {
      */
     tenantId: string;
     /**
-     * Identity type
+     * Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
      */
     type?: string;
 }
@@ -121,6 +125,10 @@ export interface LinkedResourceResponse {
      * The ARM id of the linked resource.
      */
     id?: string;
+    /**
+     * The location of the linked resource.
+     */
+    location?: string;
 }
 
 /**
@@ -186,7 +194,7 @@ export interface MetricRulesResponse {
  */
 export interface MonitorPropertiesResponse {
     /**
-     * Datadog organization properties
+     * Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
      */
     datadogOrganizationProperties?: DatadogOrganizationPropertiesResponse;
     liftrResourceCategory: string;
@@ -204,7 +212,7 @@ export interface MonitorPropertiesResponse {
     monitoringStatus?: string;
     provisioningState: string;
     /**
-     * User info
+     * Includes name, email and optionally, phone number. User Information can't be null.
      */
     userInfo?: UserInfoResponse;
 }
@@ -266,6 +274,10 @@ export interface MonitoringTagRulesPropertiesResponse {
      */
     automuting?: boolean;
     /**
+     * Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
+     */
+    customMetrics?: boolean;
+    /**
      * Set of rules for sending logs for the Monitor resource.
      */
     logRules?: LogRulesResponse;
@@ -296,7 +308,7 @@ export interface PartnerBillingEntityResponse {
 
 export interface ResourceSkuResponse {
     /**
-     * Name of the SKU.
+     * Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
      */
     name: string;
 }
@@ -342,7 +354,7 @@ export interface SystemDataResponse {
 }
 
 /**
- * User info
+ * Includes name, email and optionally, phone number. User Information can't be null.
  */
 export interface UserInfoResponse {
     /**
@@ -358,7 +370,3 @@ export interface UserInfoResponse {
      */
     phoneNumber?: string;
 }
-
-
-
-

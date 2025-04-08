@@ -31,6 +31,20 @@ export interface CaptureDescriptionResponse {
 }
 
 /**
+ * A value that indicates whether capture description is enabled.
+ */
+export interface CaptureIdentityResponse {
+    /**
+     * Type of Azure Active Directory Managed Identity.
+     */
+    type?: string;
+    /**
+     * ARM ID of Managed User Identity. This property is required is the type is UserAssignedIdentity. If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used.
+     */
+    userAssignedIdentity?: string;
+}
+
+/**
  * SKU parameters particular to a cluster instance.
  */
 export interface ClusterSkuResponse {
@@ -82,6 +96,10 @@ export interface DestinationResponse {
      * Subscription Id of Azure Data Lake Store
      */
     dataLakeSubscriptionId?: string;
+    /**
+     * A value that indicates whether capture description is enabled.
+     */
+    identity?: CaptureIdentityResponse;
     /**
      * Name for capture destination
      */
@@ -355,6 +373,3 @@ export interface UserAssignedIdentityResponse {
      */
     principalId: string;
 }
-
-
-

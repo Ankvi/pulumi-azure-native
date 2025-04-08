@@ -45,6 +45,10 @@ export interface AcceleratorGitRepositoryArgs {
      */
     intervalInSeconds?: pulumi.Input<number>;
     /**
+     * Folder path inside the git repository to consider as the root of the accelerator or fragment.
+     */
+    subPath?: pulumi.Input<string>;
+    /**
      * Git repository URL for the accelerator.
      */
     url: pulumi.Input<string>;
@@ -103,6 +107,10 @@ export interface ApiPortalCustomDomainPropertiesArgs {
  */
 export interface ApiPortalPropertiesArgs {
     /**
+     * Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
+     */
+    apiTryOutEnabledState?: pulumi.Input<string | enums.ApiPortalApiTryOutEnabledState>;
+    /**
      * The array of resource Ids of gateway to integrate with API portal.
      */
     gatewayIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -129,6 +137,7 @@ export interface ApiPortalPropertiesArgs {
 export function apiPortalPropertiesArgsProvideDefaults(val: ApiPortalPropertiesArgs): ApiPortalPropertiesArgs {
     return {
         ...val,
+        apiTryOutEnabledState: (val.apiTryOutEnabledState) ?? "Enabled",
         httpsOnly: (val.httpsOnly) ?? false,
         public: (val.public) ?? false,
     };
@@ -207,6 +216,10 @@ export interface AppResourcePropertiesArgs {
      */
     temporaryDisk?: pulumi.Input<TemporaryDiskArgs>;
     /**
+     * State of test endpoint auth.
+     */
+    testEndpointAuthState?: pulumi.Input<string | enums.TestEndpointAuthState>;
+    /**
      * Additional App settings in vnet injection instance
      */
     vnetAddons?: pulumi.Input<AppVNetAddonsArgs>;
@@ -224,6 +237,7 @@ export function appResourcePropertiesArgsProvideDefaults(val: AppResourcePropert
         enableEndToEndTLS: (val.enableEndToEndTLS) ?? false,
         httpsOnly: (val.httpsOnly) ?? false,
         temporaryDisk: (val.temporaryDisk ? pulumi.output(val.temporaryDisk).apply(temporaryDiskArgsProvideDefaults) : undefined),
+        testEndpointAuthState: (val.testEndpointAuthState) ?? "Enabled",
         vnetAddons: (val.vnetAddons ? pulumi.output(val.vnetAddons).apply(appVNetAddonsArgsProvideDefaults) : undefined),
     };
 }
@@ -498,6 +512,10 @@ export interface ClusterResourcePropertiesArgs {
      */
     infraResourceGroup?: pulumi.Input<string>;
     /**
+     * Additional Service settings for planned maintenance
+     */
+    maintenanceScheduleConfiguration?: pulumi.Input<WeeklyMaintenanceScheduleConfigurationArgs>;
+    /**
      * The resource Id of the Managed Environment that the Spring Apps instance builds on
      */
     managedEnvironmentId?: pulumi.Input<string>;
@@ -699,6 +717,10 @@ export interface ConfigurationServiceSettingsArgs {
      * Property of git environment.
      */
     gitProperty?: pulumi.Input<ConfigurationServiceGitPropertyArgs>;
+    /**
+     * How often (in seconds) to check repository updates. Minimum value is 0.
+     */
+    refreshIntervalInSeconds?: pulumi.Input<number>;
 }
 
 /**
@@ -869,6 +891,10 @@ export interface CustomScaleRuleArgs {
  */
 export interface CustomizedAcceleratorPropertiesArgs {
     acceleratorTags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Type of the customized accelerator.
+     */
+    acceleratorType?: pulumi.Input<string | enums.CustomizedAcceleratorType>;
     description?: pulumi.Input<string>;
     displayName?: pulumi.Input<string>;
     gitRepository: pulumi.Input<AcceleratorGitRepositoryArgs>;
@@ -890,7 +916,7 @@ export interface DeploymentResourcePropertiesArgs {
     /**
      * Uploaded source information of the deployment.
      */
-    source?: pulumi.Input<BuildResultUserSourceInfoArgs | CustomContainerUserSourceInfoArgs | JarUploadedUserSourceInfoArgs | NetCoreZipUploadedUserSourceInfoArgs | SourceUploadedUserSourceInfoArgs | UploadedUserSourceInfoArgs>;
+    source?: pulumi.Input<BuildResultUserSourceInfoArgs | CustomContainerUserSourceInfoArgs | JarUploadedUserSourceInfoArgs | NetCoreZipUploadedUserSourceInfoArgs | SourceUploadedUserSourceInfoArgs | UploadedUserSourceInfoArgs | WarUploadedUserSourceInfoArgs>;
 }
 /**
  * deploymentResourcePropertiesArgsProvideDefaults sets the appropriate defaults for DeploymentResourcePropertiesArgs
@@ -1214,6 +1240,44 @@ export interface GatewayCustomDomainPropertiesArgs {
 }
 
 /**
+ * Spring Cloud Gateway local response cache per instance properties.
+ */
+export interface GatewayLocalResponseCachePerInstancePropertiesArgs {
+    /**
+     * The type of the response cache.
+     * Expected value is 'LocalCachePerInstance'.
+     */
+    responseCacheType: pulumi.Input<"LocalCachePerInstance">;
+    /**
+     * Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries
+     */
+    size?: pulumi.Input<string>;
+    /**
+     * Time before a cached entry is expired (300s, 5m, 1h...)
+     */
+    timeToLive?: pulumi.Input<string>;
+}
+
+/**
+ * Spring Cloud Gateway local response cache per route properties.
+ */
+export interface GatewayLocalResponseCachePerRoutePropertiesArgs {
+    /**
+     * The type of the response cache.
+     * Expected value is 'LocalCachePerRoute'.
+     */
+    responseCacheType: pulumi.Input<"LocalCachePerRoute">;
+    /**
+     * Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries.
+     */
+    size?: pulumi.Input<string>;
+    /**
+     * Time before a cached entry is expired (300s, 5m, 1h...)
+     */
+    timeToLive?: pulumi.Input<string>;
+}
+
+/**
  * Spring Cloud Gateway properties payload
  */
 export interface GatewayPropertiesArgs {
@@ -1229,6 +1293,10 @@ export interface GatewayPropertiesArgs {
      * Collection of APM type used in Spring Cloud Gateway
      */
     apmTypes?: pulumi.Input<pulumi.Input<string | enums.ApmType>[]>;
+    /**
+     * Collection of ApmReferences in service level
+     */
+    apms?: pulumi.Input<pulumi.Input<ApmReferenceArgs>[]>;
     /**
      * Client-Certification Authentication.
      */
@@ -1253,6 +1321,10 @@ export interface GatewayPropertiesArgs {
      * The requested resource quantity for required CPU and Memory.
      */
     resourceRequests?: pulumi.Input<GatewayResourceRequestsArgs>;
+    /**
+     * The properties to configure different types of response cache for Spring Cloud Gateway.
+     */
+    responseCacheProperties?: pulumi.Input<GatewayLocalResponseCachePerInstancePropertiesArgs | GatewayLocalResponseCachePerRoutePropertiesArgs>;
     /**
      * Single sign-on related configuration
      */
@@ -1651,6 +1723,10 @@ export function jobResourceRequestsArgsProvideDefaults(val: JobResourceRequestsA
  */
 export interface KeyVaultCertificatePropertiesArgs {
     /**
+     * Indicates whether to automatically synchronize certificate from key vault or not.
+     */
+    autoSync?: pulumi.Input<string | enums.KeyVaultCertificateAutoSync>;
+    /**
      * The certificate version of key vault.
      */
     certVersion?: pulumi.Input<string>;
@@ -1678,6 +1754,7 @@ export interface KeyVaultCertificatePropertiesArgs {
 export function keyVaultCertificatePropertiesArgsProvideDefaults(val: KeyVaultCertificatePropertiesArgs): KeyVaultCertificatePropertiesArgs {
     return {
         ...val,
+        autoSync: (val.autoSync) ?? "Disabled",
         excludePrivateKey: (val.excludePrivateKey) ?? false,
     };
 }
@@ -2273,9 +2350,21 @@ export interface WarUploadedUserSourceInfoArgs {
     version?: pulumi.Input<string>;
 }
 
-
-
-
-
-
-
+/**
+ * Weekly planned maintenance
+ */
+export interface WeeklyMaintenanceScheduleConfigurationArgs {
+    /**
+     * The day to run the maintenance job
+     */
+    day: pulumi.Input<string | enums.WeekDay>;
+    /**
+     * The frequency to run the maintenance job
+     * Expected value is 'Weekly'.
+     */
+    frequency: pulumi.Input<"Weekly">;
+    /**
+     * The hour to run the maintenance job
+     */
+    hour: pulumi.Input<number>;
+}

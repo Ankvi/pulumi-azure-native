@@ -1,3 +1,29 @@
+export const AutoRunState = {
+    /**
+     * Autorun is enabled
+     */
+    AutoRunEnabled: "Enabled",
+    /**
+     * Autorun is disabled
+     */
+    AutoRunDisabled: "Disabled",
+} as const;
+
+/**
+ * Enabling this field will trigger an automatic build on image template creation or update.
+ */
+export type AutoRunState = (typeof AutoRunState)[keyof typeof AutoRunState];
+
+export const OnBuildError = {
+    Cleanup: "cleanup",
+    Abort: "abort",
+} as const;
+
+/**
+ * If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved.
+ */
+export type OnBuildError = (typeof OnBuildError)[keyof typeof OnBuildError];
+
 export const ResourceIdentityType = {
     UserAssigned: "UserAssigned",
     None: "None",

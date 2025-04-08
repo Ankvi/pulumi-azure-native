@@ -4,9 +4,7 @@ import * as types from "./types";
 /**
  * A StorageClass resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters)
  *
- * Uses Azure REST API version 2024-03-01.
- *
- * Other available API versions: 2023-10-01-preview.
+ * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
  */
 export class StorageClass extends pulumi.CustomResource {
     /**
@@ -43,6 +41,10 @@ export class StorageClass extends pulumi.CustomResource {
      * Volume can be expanded or not
      */
     public readonly allowVolumeExpansion!: pulumi.Output<string | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Allow single data node failure
      */
@@ -126,6 +128,7 @@ export class StorageClass extends pulumi.CustomResource {
             resourceInputs["storageClassName"] = args ? args.storageClassName : undefined;
             resourceInputs["typeProperties"] = args ? args.typeProperties : undefined;
             resourceInputs["volumeBindingMode"] = args ? args.volumeBindingMode : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -133,6 +136,7 @@ export class StorageClass extends pulumi.CustomResource {
         } else {
             resourceInputs["accessModes"] = undefined /*out*/;
             resourceInputs["allowVolumeExpansion"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["dataResilience"] = undefined /*out*/;
             resourceInputs["failoverSpeed"] = undefined /*out*/;
             resourceInputs["limitations"] = undefined /*out*/;

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Returns a Storage Target from a cache.
  *
- * Uses Azure REST API version 2023-05-01.
+ * Uses Azure REST API version 2024-03-01.
  *
- * Other available API versions: 2021-03-01, 2023-11-01-preview, 2024-03-01, 2024-07-01.
+ * Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getStorageTarget(args: GetStorageTargetArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageTargetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,6 +40,10 @@ export interface GetStorageTargetResult {
      * The percentage of cache space allocated for this storage target
      */
     readonly allocationPercentage: number;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Properties when targetType is blobNfs.
      */
@@ -96,9 +100,9 @@ export interface GetStorageTargetResult {
 /**
  * Returns a Storage Target from a cache.
  *
- * Uses Azure REST API version 2023-05-01.
+ * Uses Azure REST API version 2024-03-01.
  *
- * Other available API versions: 2021-03-01, 2023-11-01-preview, 2024-03-01, 2024-07-01.
+ * Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getStorageTargetOutput(args: GetStorageTargetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStorageTargetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

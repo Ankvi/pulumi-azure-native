@@ -30,6 +30,10 @@ export interface GetCloudConnectorArgs {
  */
 export interface GetCloudConnectorResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Connector billing model
      */
     readonly billingModel?: string;

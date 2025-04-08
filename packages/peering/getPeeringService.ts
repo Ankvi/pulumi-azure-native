@@ -30,6 +30,10 @@ export interface GetPeeringServiceArgs {
  */
 export interface GetPeeringServiceResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The ID of the resource.
      */
     readonly id: string;

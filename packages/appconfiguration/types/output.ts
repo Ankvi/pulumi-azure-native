@@ -31,6 +31,20 @@ export interface ApiKeyResponse {
 }
 
 /**
+ * The data plane proxy settings for a configuration store.
+ */
+export interface DataPlaneProxyPropertiesResponse {
+    /**
+     * The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
+     */
+    authenticationMode?: string;
+    /**
+     * The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.
+     */
+    privateLinkDelegation?: string;
+}
+
+/**
  * The encryption settings for a configuration store.
  */
 export interface EncryptionPropertiesResponse {
@@ -187,6 +201,3 @@ export interface UserIdentityResponse {
      */
     principalId: string;
 }
-
-
-

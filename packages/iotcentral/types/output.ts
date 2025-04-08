@@ -11,6 +11,94 @@ export interface AppSkuInfoResponse {
 }
 
 /**
+ * An object for an IP range that will be allowed access.
+ */
+export interface NetworkRuleSetIpRuleResponse {
+    /**
+     * The network action for the IP mask.
+     */
+    action: string;
+    /**
+     * The readable name of the IP rule.
+     */
+    filterName?: string;
+    /**
+     * The CIDR block defining the IP range.
+     */
+    ipMask?: string;
+}
+
+/**
+ * Network Rule Set Properties of this IoT Central application.
+ */
+export interface NetworkRuleSetsResponse {
+    /**
+     * Whether these rules apply for device connectivity to IoT Hub and Device Provisioning service associated with this application.
+     */
+    applyToDevices?: boolean;
+    /**
+     * Whether these rules apply for connectivity via IoT Central web portal and APIs.
+     */
+    applyToIoTCentral?: boolean;
+    /**
+     * The default network action to apply.
+     */
+    defaultAction?: string;
+    /**
+     * List of IP rules.
+     */
+    ipRules?: NetworkRuleSetIpRuleResponse[];
+}
+/**
+ * networkRuleSetsResponseProvideDefaults sets the appropriate defaults for NetworkRuleSetsResponse
+ */
+export function networkRuleSetsResponseProvideDefaults(val: NetworkRuleSetsResponse): NetworkRuleSetsResponse {
+    return {
+        ...val,
+        applyToDevices: (val.applyToDevices) ?? false,
+        applyToIoTCentral: (val.applyToIoTCentral) ?? false,
+    };
+}
+
+/**
+ * The private endpoint connection resource.
+ */
+export interface PrivateEndpointConnectionResponse {
+    /**
+     * The group ids for the private endpoint resource.
+     */
+    groupIds: string[];
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    id: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * The private endpoint resource.
+     */
+    privateEndpoint?: PrivateEndpointResponse;
+    /**
+     * A collection of information about the state of the connection between service consumer and provider.
+     */
+    privateLinkServiceConnectionState: PrivateLinkServiceConnectionStateResponse;
+    /**
+     * The provisioning state of the private endpoint connection resource.
+     */
+    provisioningState: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
+}
+
+/**
  * The private endpoint resource.
  */
 export interface PrivateEndpointResponse {
@@ -85,4 +173,3 @@ export interface SystemDataResponse {
      */
     lastModifiedByType?: string;
 }
-

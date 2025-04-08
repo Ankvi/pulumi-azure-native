@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-05-15-preview.
  *
- * Other available API versions: 2024-10-23.
+ * Other available API versions: 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listAutomationAccountDeletedRunbooks(args: ListAutomationAccountDeletedRunbooksArgs, opts?: pulumi.InvokeOptions): Promise<ListAutomationAccountDeletedRunbooksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -45,7 +45,7 @@ export interface ListAutomationAccountDeletedRunbooksResult {
  *
  * Uses Azure REST API version 2023-05-15-preview.
  *
- * Other available API versions: 2024-10-23.
+ * Other available API versions: 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listAutomationAccountDeletedRunbooksOutput(args: ListAutomationAccountDeletedRunbooksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListAutomationAccountDeletedRunbooksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -40,6 +40,10 @@ export interface GetBlobContainerDataSetArgs {
  */
 export interface GetBlobContainerDataSetResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * BLOB Container name.
      */
     readonly containerName: string;

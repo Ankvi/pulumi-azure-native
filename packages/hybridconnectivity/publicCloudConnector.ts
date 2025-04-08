@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Public Cloud Connector
  *
- * Uses Azure REST API version 2024-12-01.
+ * Uses Azure REST API version 2024-12-01. In version 2.x of the Azure Native provider, it used API version 2024-12-01.
  */
 export class PublicCloudConnector extends pulumi.CustomResource {
     /**
@@ -37,6 +37,10 @@ export class PublicCloudConnector extends pulumi.CustomResource {
      * Cloud profile for AWS.
      */
     public readonly awsCloudProfile!: pulumi.Output<types.outputs.AwsCloudProfileResponse>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Connector primary identifier.
      */
@@ -96,6 +100,7 @@ export class PublicCloudConnector extends pulumi.CustomResource {
             resourceInputs["publicCloudConnector"] = args ? args.publicCloudConnector : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["connectorPrimaryIdentifier"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -103,6 +108,7 @@ export class PublicCloudConnector extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["awsCloudProfile"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["connectorPrimaryIdentifier"] = undefined /*out*/;
             resourceInputs["hostType"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;

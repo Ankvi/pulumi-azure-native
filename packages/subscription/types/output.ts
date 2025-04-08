@@ -34,7 +34,7 @@ export interface SubscriptionAliasResponsePropertiesResponse {
     /**
      * The provisioning state of the resource.
      */
-    provisioningState?: string;
+    provisioningState: string;
     /**
      * Reseller Id
      */
@@ -108,5 +108,3 @@ export interface TargetDirectoryResultPropertiesResponse {
      */
     status: string;
 }
-
-

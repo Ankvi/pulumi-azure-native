@@ -44,6 +44,10 @@ export interface GetSerialPortArgs {
  */
 export interface GetSerialPortResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Resource Id
      */
     readonly id: string;

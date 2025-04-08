@@ -60,6 +60,18 @@ export const AssignmentScopeValidation = {
  */
 export type AssignmentScopeValidation = (typeof AssignmentScopeValidation)[keyof typeof AssignmentScopeValidation];
 
+export const AssignmentType = {
+    NotSpecified: "NotSpecified",
+    System: "System",
+    SystemHidden: "SystemHidden",
+    Custom: "Custom",
+} as const;
+
+/**
+ * The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+ */
+export type AssignmentType = (typeof AssignmentType)[keyof typeof AssignmentType];
+
 export const DefaultDecisionType = {
     Approve: "Approve",
     Deny: "Deny",
@@ -91,10 +103,14 @@ export const EnforcementMode = {
      * The policy effect is not enforced during resource creation or update.
      */
     DoNotEnforce: "DoNotEnforce",
+    /**
+     * The policy effect is not enforced during resource creation or update until the resource or scope of the resource is enrolled to the assignment instance. Enrollment occurs upon deployment of the policy enrollment resource.
+     */
+    Enroll: "Enroll",
 } as const;
 
 /**
- * The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
+ * The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
  */
 export type EnforcementMode = (typeof EnforcementMode)[keyof typeof EnforcementMode];
 
@@ -157,6 +173,10 @@ export const OverrideKind = {
      * It will override the policy effect type.
      */
     PolicyEffect: "policyEffect",
+    /**
+     * It will override the definition version property value of the policy assignment.
+     */
+    DefinitionVersion: "definitionVersion",
 } as const;
 
 /**

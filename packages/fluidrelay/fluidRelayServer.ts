@@ -4,9 +4,7 @@ import * as types from "./types";
 /**
  * A FluidRelay Server.
  *
- * Uses Azure REST API version 2022-06-01. In version 1.x of the Azure Native provider, it used API version 2021-03-12-preview.
- *
- * Other available API versions: 2021-06-15-preview.
+ * Uses Azure REST API version 2022-06-01. In version 2.x of the Azure Native provider, it used API version 2022-06-01.
  */
 export class FluidRelayServer extends pulumi.CustomResource {
     /**
@@ -35,6 +33,10 @@ export class FluidRelayServer extends pulumi.CustomResource {
         return obj['__pulumiType'] === FluidRelayServer.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * All encryption configuration for a resource.
      */
@@ -102,12 +104,14 @@ export class FluidRelayServer extends pulumi.CustomResource {
             resourceInputs["resourceGroup"] = args ? args.resourceGroup : undefined;
             resourceInputs["storagesku"] = args ? args.storagesku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["fluidRelayEndpoints"] = undefined /*out*/;
             resourceInputs["frsTenantId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["encryption"] = undefined /*out*/;
             resourceInputs["fluidRelayEndpoints"] = undefined /*out*/;
             resourceInputs["frsTenantId"] = undefined /*out*/;

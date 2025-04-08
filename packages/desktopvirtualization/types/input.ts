@@ -87,7 +87,7 @@ export interface AppAttachPackageInfoPropertiesArgs {
      */
     packageRelativePath?: pulumi.Input<string>;
     /**
-     * Package Version found in the appxmanifest.xml. 
+     * Package version found in the appxmanifest.xml. 
      */
     version?: pulumi.Input<string>;
 }
@@ -109,7 +109,7 @@ export interface AppAttachPackagePropertiesArgs {
      */
     image?: pulumi.Input<AppAttachPackageInfoPropertiesArgs>;
     /**
-     * URL of keyvault location to store certificate
+     * URL path to certificate name located in keyVault
      */
     keyVaultURL?: pulumi.Input<string>;
 }
@@ -256,7 +256,7 @@ export interface ResourceModelWithAllowedPropertySetSkuArgs {
      */
     family?: pulumi.Input<string>;
     /**
-     * The name of the SKU. Ex - P3. It is typically a letter+number code
+     * The name of the SKU. E.g. P3. It is typically a letter+number code
      */
     name: pulumi.Input<string>;
     /**
@@ -374,16 +374,3 @@ export interface TimeArgs {
      */
     minute: pulumi.Input<number>;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

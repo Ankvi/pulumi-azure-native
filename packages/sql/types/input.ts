@@ -25,9 +25,23 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselineItemArgs {
 }
 
 /**
+ * Database specific information
+ */
+export interface DistributedAvailabilityGroupDatabaseArgs {
+    /**
+     * The name of the database in link
+     */
+    databaseName?: pulumi.Input<string>;
+}
+
+/**
  * Per database settings of an elastic pool.
  */
 export interface ElasticPoolPerDatabaseSettingsArgs {
+    /**
+     * Auto Pause Delay for per database within pool
+     */
+    autoPauseDelay?: pulumi.Input<number>;
     /**
      * The maximum capacity any one database can consume.
      */
@@ -46,6 +60,10 @@ export interface FailoverGroupReadOnlyEndpointArgs {
      * Failover policy of the read-only endpoint for the failover group.
      */
     failoverPolicy?: pulumi.Input<string | enums.ReadOnlyEndpointFailoverPolicy>;
+    /**
+     * The target partner server where the read-only endpoint points to.
+     */
+    targetServer?: pulumi.Input<string>;
 }
 
 /**
@@ -87,6 +105,24 @@ export interface InstanceFailoverGroupReadWriteEndpointArgs {
 }
 
 /**
+ * Azure Active Directory identity configuration for a resource.
+ */
+export interface JobAgentIdentityArgs {
+    /**
+     * The job agent identity tenant id
+     */
+    tenantId?: pulumi.Input<string>;
+    /**
+     * The job agent identity type
+     */
+    type: pulumi.Input<string | enums.JobAgentIdentityType>;
+    /**
+     * The resource ids of the user assigned identities to use
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
  * Scheduling properties of a job.
  */
 export interface JobScheduleArgs {
@@ -117,8 +153,8 @@ export interface JobScheduleArgs {
 export function jobScheduleArgsProvideDefaults(val: JobScheduleArgs): JobScheduleArgs {
     return {
         ...val,
-        endTime: (val.endTime) ?? "9999-12-31T11:59:59+00:00",
-        startTime: (val.startTime) ?? "0001-01-01T00:00:00+00:00",
+        endTime: (val.endTime) ?? "9999-12-31T17:29:59+05:30",
+        startTime: (val.startTime) ?? "0001-01-01T05:30:00+05:30",
         type: (val.type) ?? "Once",
     };
 }
@@ -197,7 +233,7 @@ export interface JobStepOutputArgs {
     /**
      * The resource ID of the credential to use to connect to the output destination.
      */
-    credential: pulumi.Input<string>;
+    credential?: pulumi.Input<string>;
     /**
      * The output destination database.
      */
@@ -565,14 +601,3 @@ export function vulnerabilityAssessmentRecurringScansPropertiesArgsProvideDefaul
         emailSubscriptionAdmins: (val.emailSubscriptionAdmins) ?? true,
     };
 }
-
-
-
-
-
-
-
-
-
-
-

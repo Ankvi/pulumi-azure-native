@@ -4,9 +4,7 @@ import * as types from "./types";
 /**
  * The essential information related to the peer's ASN.
  *
- * Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
- *
- * Other available API versions: 2021-01-01.
+ * Uses Azure REST API version 2022-10-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
  */
 export class PeerAsn extends pulumi.CustomResource {
     /**
@@ -35,6 +33,10 @@ export class PeerAsn extends pulumi.CustomResource {
         return obj['__pulumiType'] === PeerAsn.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The error message for the validation state
      */
@@ -79,11 +81,13 @@ export class PeerAsn extends pulumi.CustomResource {
             resourceInputs["peerAsnName"] = args ? args.peerAsnName : undefined;
             resourceInputs["peerContactDetail"] = args ? args.peerContactDetail : undefined;
             resourceInputs["peerName"] = args ? args.peerName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["errorMessage"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["validationState"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["errorMessage"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["peerAsn"] = undefined /*out*/;

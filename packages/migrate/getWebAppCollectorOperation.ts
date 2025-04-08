@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get a WebAppCollector
  *
- * Uses Azure REST API version 2023-04-01-preview.
+ * Uses Azure REST API version 2024-01-01-preview.
  *
- * Other available API versions: 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+ * Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getWebAppCollectorOperation(args: GetWebAppCollectorOperationArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppCollectorOperationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,6 +40,10 @@ export interface GetWebAppCollectorOperationResult {
      * Gets or sets the collector agent properties.
      */
     readonly agentProperties?: types.outputs.CollectorAgentPropertiesBaseResponse;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Gets the Timestamp when collector was created.
      */
@@ -76,9 +80,9 @@ export interface GetWebAppCollectorOperationResult {
 /**
  * Get a WebAppCollector
  *
- * Uses Azure REST API version 2023-04-01-preview.
+ * Uses Azure REST API version 2024-01-01-preview.
  *
- * Other available API versions: 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+ * Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getWebAppCollectorOperationOutput(args: GetWebAppCollectorOperationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebAppCollectorOperationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

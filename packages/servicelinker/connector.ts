@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Linker of source and target resource
  *
- * Uses Azure REST API version 2022-11-01-preview.
+ * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2024-04-01, 2024-07-01-preview.
+ * Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicelinker [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Connector extends pulumi.CustomResource {
     /**
@@ -38,7 +38,11 @@ export class Connector extends pulumi.CustomResource {
     /**
      * The authentication type.
      */
-    public readonly authInfo!: pulumi.Output<types.outputs.AccessKeyInfoBaseResponse | types.outputs.SecretAuthInfoResponse | types.outputs.ServicePrincipalCertificateAuthInfoResponse | types.outputs.ServicePrincipalSecretAuthInfoResponse | types.outputs.SystemAssignedIdentityAuthInfoResponse | types.outputs.UserAccountAuthInfoResponse | types.outputs.UserAssignedIdentityAuthInfoResponse | undefined>;
+    public readonly authInfo!: pulumi.Output<types.outputs.AccessKeyInfoBaseResponse | types.outputs.EasyAuthMicrosoftEntraIDAuthInfoResponse | types.outputs.SecretAuthInfoResponse | types.outputs.ServicePrincipalCertificateAuthInfoResponse | types.outputs.ServicePrincipalSecretAuthInfoResponse | types.outputs.SystemAssignedIdentityAuthInfoResponse | types.outputs.UserAccountAuthInfoResponse | types.outputs.UserAssignedIdentityAuthInfoResponse | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The application client type
      */
@@ -113,12 +117,14 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["subscriptionId"] = args ? args.subscriptionId : undefined;
             resourceInputs["targetService"] = args ? args.targetService : undefined;
             resourceInputs["vNetSolution"] = args ? args.vNetSolution : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["authInfo"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["clientType"] = undefined /*out*/;
             resourceInputs["configurationInfo"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -145,7 +151,7 @@ export interface ConnectorArgs {
     /**
      * The authentication type.
      */
-    authInfo?: pulumi.Input<types.inputs.AccessKeyInfoBaseArgs | types.inputs.SecretAuthInfoArgs | types.inputs.ServicePrincipalCertificateAuthInfoArgs | types.inputs.ServicePrincipalSecretAuthInfoArgs | types.inputs.SystemAssignedIdentityAuthInfoArgs | types.inputs.UserAccountAuthInfoArgs | types.inputs.UserAssignedIdentityAuthInfoArgs>;
+    authInfo?: pulumi.Input<types.inputs.AccessKeyInfoBaseArgs | types.inputs.EasyAuthMicrosoftEntraIDAuthInfoArgs | types.inputs.SecretAuthInfoArgs | types.inputs.ServicePrincipalCertificateAuthInfoArgs | types.inputs.ServicePrincipalSecretAuthInfoArgs | types.inputs.SystemAssignedIdentityAuthInfoArgs | types.inputs.UserAccountAuthInfoArgs | types.inputs.UserAssignedIdentityAuthInfoArgs>;
     /**
      * The application client type
      */

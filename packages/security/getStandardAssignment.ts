@@ -38,6 +38,10 @@ export interface GetStandardAssignmentResult {
      */
     readonly attestationData?: types.outputs.StandardAssignmentPropertiesResponseAttestationData;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Description of the standardAssignment
      */
     readonly description?: string;

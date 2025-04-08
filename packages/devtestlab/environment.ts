@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * An environment, which is essentially an ARM template deployment.
  *
- * Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+ * Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
  */
 export class Environment extends pulumi.CustomResource {
     /**
@@ -37,6 +37,10 @@ export class Environment extends pulumi.CustomResource {
      * The display name of the Azure Resource Manager template that produced the environment.
      */
     public readonly armTemplateDisplayName!: pulumi.Output<string | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The creator of the environment.
      */
@@ -102,6 +106,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdByUser"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["resourceGroupId"] = undefined /*out*/;
@@ -109,6 +114,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["uniqueIdentifier"] = undefined /*out*/;
         } else {
             resourceInputs["armTemplateDisplayName"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdByUser"] = undefined /*out*/;
             resourceInputs["deploymentProperties"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;

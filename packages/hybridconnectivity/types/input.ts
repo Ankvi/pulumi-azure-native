@@ -26,18 +26,3 @@ export function awsCloudProfileArgsProvideDefaults(val: AwsCloudProfileArgs): Aw
         isOrganizationalAccount: (val.isOrganizationalAccount) ?? false,
     };
 }
-
-/**
- * Endpoint details
- */
-export interface EndpointPropertiesArgs {
-    /**
-     * The resource Id of the connectivity endpoint (optional).
-     */
-    resourceId?: pulumi.Input<string>;
-    /**
-     * The type of endpoint.
-     */
-    type: pulumi.Input<string | enums.Type>;
-}
-

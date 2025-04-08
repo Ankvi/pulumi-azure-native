@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Represents Activity entity query.
  *
- * Uses Azure REST API version 2023-06-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-03-01-preview.
+ * Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
  */
 export class ActivityCustomEntityQuery extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class ActivityCustomEntityQuery extends pulumi.CustomResource {
         return obj['__pulumiType'] === ActivityCustomEntityQuery.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The entity query content to display in timeline
      */
@@ -132,6 +136,7 @@ export class ActivityCustomEntityQuery extends pulumi.CustomResource {
             resourceInputs["templateName"] = args ? args.templateName : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdTimeUtc"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["lastModifiedTimeUtc"] = undefined /*out*/;
@@ -139,6 +144,7 @@ export class ActivityCustomEntityQuery extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["content"] = undefined /*out*/;
             resourceInputs["createdTimeUtc"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;

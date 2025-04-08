@@ -5,6 +5,8 @@ import * as types from "./types";
  * Gets a Template Spec with a given name.
  *
  * Uses Azure REST API version 2022-02-01.
+ *
+ * Other available API versions: 2021-03-01-preview, 2021-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getTemplateSpec(args: GetTemplateSpecArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateSpecResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +36,10 @@ export interface GetTemplateSpecArgs {
  * Template Spec object.
  */
 export interface GetTemplateSpecResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Template Spec description.
      */
@@ -79,6 +85,8 @@ export interface GetTemplateSpecResult {
  * Gets a Template Spec with a given name.
  *
  * Uses Azure REST API version 2022-02-01.
+ *
+ * Other available API versions: 2021-03-01-preview, 2021-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getTemplateSpecOutput(args: GetTemplateSpecOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTemplateSpecResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

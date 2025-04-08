@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * The prediction resource format.
  *
- * Uses Azure REST API version 2017-04-26. In version 1.x of the Azure Native provider, it used API version 2017-04-26.
+ * Uses Azure REST API version 2017-04-26. In version 2.x of the Azure Native provider, it used API version 2017-04-26.
  */
 export class Prediction extends pulumi.CustomResource {
     /**
@@ -37,6 +37,10 @@ export class Prediction extends pulumi.CustomResource {
      * Whether do auto analyze.
      */
     public readonly autoAnalyze!: pulumi.Output<boolean>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Description of the prediction.
      */
@@ -164,6 +168,7 @@ export class Prediction extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["scopeExpression"] = args ? args.scopeExpression : undefined;
             resourceInputs["scoreLabel"] = args ? args.scoreLabel : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemGeneratedEntities"] = undefined /*out*/;
@@ -171,6 +176,7 @@ export class Prediction extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["autoAnalyze"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["grades"] = undefined /*out*/;

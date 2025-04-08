@@ -22,8 +22,6 @@ export const IoMAMPolicyByName: typeof import("./ioMAMPolicyByName").IoMAMPolicy
 utilities.lazyLoad(exports, ["IoMAMPolicyByName"], () => require("./ioMAMPolicyByName"));
 
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

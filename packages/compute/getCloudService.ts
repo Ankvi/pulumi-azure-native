@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2022-09-04.
  *
- * Other available API versions: 2024-11-04.
+ * Other available API versions: 2022-04-04, 2024-11-04. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getCloudService(args: GetCloudServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +31,10 @@ export interface GetCloudServiceArgs {
  * Describes the cloud service.
  */
 export interface GetCloudServiceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Resource Id.
      */
@@ -69,7 +73,7 @@ export interface GetCloudServiceResult {
  *
  * Uses Azure REST API version 2022-09-04.
  *
- * Other available API versions: 2024-11-04.
+ * Other available API versions: 2022-04-04, 2024-11-04. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getCloudServiceOutput(args: GetCloudServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

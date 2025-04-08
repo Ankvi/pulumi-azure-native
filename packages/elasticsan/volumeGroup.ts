@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Response for Volume Group request.
  *
- * Uses Azure REST API version 2021-11-20-preview. In version 1.x of the Azure Native provider, it used API version 2021-11-20-preview.
+ * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2021-11-20-preview.
  *
- * Other available API versions: 2022-12-01-preview, 2023-01-01, 2024-05-01, 2024-06-01-preview.
+ * Other available API versions: 2021-11-20-preview, 2022-12-01-preview, 2023-01-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elasticsan [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VolumeGroup extends pulumi.CustomResource {
     /**
@@ -36,17 +36,37 @@ export class VolumeGroup extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Type of encryption
      */
     public readonly encryption!: pulumi.Output<string | undefined>;
     /**
-     * Azure resource name.
+     * Encryption Properties describing Key Vault and Identity information
+     */
+    public readonly encryptionProperties!: pulumi.Output<types.outputs.EncryptionPropertiesResponse | undefined>;
+    /**
+     * A boolean indicating whether or not Data Integrity Check is enabled
+     */
+    public readonly enforceDataIntegrityCheckForIscsi!: pulumi.Output<boolean | undefined>;
+    /**
+     * The identity of the resource.
+     */
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
+    /**
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * A collection of rules governing the accessibility from specific network locations.
      */
     public readonly networkAcls!: pulumi.Output<types.outputs.NetworkRuleSetResponse | undefined>;
+    /**
+     * The list of Private Endpoint Connections.
+     */
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Type of storage target
      */
@@ -56,15 +76,11 @@ export class VolumeGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
-     * Resource metadata required by ARM RPC
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * Azure resource tags.
-     */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Azure resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -87,23 +103,31 @@ export class VolumeGroup extends pulumi.CustomResource {
             }
             resourceInputs["elasticSanName"] = args ? args.elasticSanName : undefined;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
+            resourceInputs["encryptionProperties"] = args ? args.encryptionProperties : undefined;
+            resourceInputs["enforceDataIntegrityCheckForIscsi"] = args ? args.enforceDataIntegrityCheckForIscsi : undefined;
+            resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["networkAcls"] = args ? args.networkAcls : undefined;
             resourceInputs["protocolType"] = args ? args.protocolType : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["volumeGroupName"] = args ? args.volumeGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["privateEndpointConnections"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["encryption"] = undefined /*out*/;
+            resourceInputs["encryptionProperties"] = undefined /*out*/;
+            resourceInputs["enforceDataIntegrityCheckForIscsi"] = undefined /*out*/;
+            resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkAcls"] = undefined /*out*/;
+            resourceInputs["privateEndpointConnections"] = undefined /*out*/;
             resourceInputs["protocolType"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
-            resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -126,6 +150,18 @@ export interface VolumeGroupArgs {
      */
     encryption?: pulumi.Input<string | types.enums.EncryptionType>;
     /**
+     * Encryption Properties describing Key Vault and Identity information
+     */
+    encryptionProperties?: pulumi.Input<types.inputs.EncryptionPropertiesArgs>;
+    /**
+     * A boolean indicating whether or not Data Integrity Check is enabled
+     */
+    enforceDataIntegrityCheckForIscsi?: pulumi.Input<boolean>;
+    /**
+     * The identity of the resource.
+     */
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
+    /**
      * A collection of rules governing the accessibility from specific network locations.
      */
     networkAcls?: pulumi.Input<types.inputs.NetworkRuleSetArgs>;
@@ -137,10 +173,6 @@ export interface VolumeGroupArgs {
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
-    /**
-     * Azure resource tags.
-     */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the VolumeGroup.
      */

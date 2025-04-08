@@ -46,7 +46,7 @@ export interface AccessPolicyEntryResponse {
 
 export interface ActionResponse {
     /**
-     * The type of the action. The value should be compared case-insensitively.
+     * The type of action.
      */
     type?: string;
 }
@@ -367,6 +367,28 @@ export interface ManagedHsmSkuResponse {
 }
 
 /**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityResponse {
+    /**
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: string;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
  * A set of rules governing the network accessibility of a vault.
  */
 export interface NetworkRuleSetResponse {
@@ -605,6 +627,20 @@ export interface TriggerResponse {
 }
 
 /**
+ * User assigned identity properties
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId: string;
+}
+
+/**
  * Properties of the vault
  */
 export interface VaultPropertiesResponse {
@@ -682,6 +718,9 @@ export function vaultPropertiesResponseProvideDefaults(val: VaultPropertiesRespo
         ...val,
         enableRbacAuthorization: (val.enableRbacAuthorization) ?? false,
         enableSoftDelete: (val.enableSoftDelete) ?? true,
+        enabledForDeployment: (val.enabledForDeployment) ?? false,
+        enabledForDiskEncryption: (val.enabledForDiskEncryption) ?? false,
+        enabledForTemplateDeployment: (val.enabledForTemplateDeployment) ?? false,
         publicNetworkAccess: (val.publicNetworkAccess) ?? "enabled",
         softDeleteRetentionInDays: (val.softDeleteRetentionInDays) ?? 90,
     };
@@ -700,7 +739,3 @@ export interface VirtualNetworkRuleResponse {
      */
     ignoreMissingVnetServiceEndpoint?: boolean;
 }
-
-
-
-

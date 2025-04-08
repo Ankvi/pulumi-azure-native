@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get Alias Subscription.
  *
- * Uses Azure REST API version 2021-10-01.
+ * Uses Azure REST API version 2024-08-01-preview.
  *
- * Other available API versions: 2020-09-01, 2024-08-01-preview.
+ * Other available API versions: 2021-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native subscription [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAlias(args: GetAliasArgs, opts?: pulumi.InvokeOptions): Promise<GetAliasResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -26,6 +26,10 @@ export interface GetAliasArgs {
  * Subscription Information with the alias.
  */
 export interface GetAliasResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified ID for the alias resource.
      */
@@ -50,9 +54,9 @@ export interface GetAliasResult {
 /**
  * Get Alias Subscription.
  *
- * Uses Azure REST API version 2021-10-01.
+ * Uses Azure REST API version 2024-08-01-preview.
  *
- * Other available API versions: 2020-09-01, 2024-08-01-preview.
+ * Other available API versions: 2021-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native subscription [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAliasOutput(args: GetAliasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAliasResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

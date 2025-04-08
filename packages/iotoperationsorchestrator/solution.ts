@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * A Solution resource belonging to an Instance resource.
  *
- * Uses Azure REST API version 2023-10-04-preview.
+ * Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
  */
 export class Solution extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class Solution extends pulumi.CustomResource {
         return obj['__pulumiType'] === Solution.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * A list of components
      */
@@ -94,10 +98,12 @@ export class Solution extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["components"] = undefined /*out*/;
             resourceInputs["extendedLocation"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;

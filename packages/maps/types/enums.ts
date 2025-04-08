@@ -1,5 +1,14 @@
+export const InfrastructureEncryption = {
+    Enabled: "enabled",
+    Disabled: "disabled",
+} as const;
+
+/**
+ * (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled.
+ */
+export type InfrastructureEncryption = (typeof InfrastructureEncryption)[keyof typeof InfrastructureEncryption];
+
 export const Kind = {
-    Gen1: "Gen1",
     Gen2: "Gen2",
 } as const;
 
@@ -8,14 +17,24 @@ export const Kind = {
  */
 export type Kind = (typeof Kind)[keyof typeof Kind];
 
+export const ManagedServiceIdentityType = {
+    None: "None",
+    SystemAssigned: "SystemAssigned",
+    UserAssigned: "UserAssigned",
+    SystemAssigned_UserAssigned: "SystemAssigned,UserAssigned",
+} as const;
+
+/**
+ * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+ */
+export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];
+
 export const Name = {
-    S0: "S0",
-    S1: "S1",
     G2: "G2",
 } as const;
 
 /**
- * The name of the SKU, in standard format (such as S0).
+ * The name of the SKU, in standard format (such as G2).
  */
 export type Name = (typeof Name)[keyof typeof Name];
 
@@ -33,9 +52,10 @@ export type PrivateEndpointServiceConnectionStatus = (typeof PrivateEndpointServ
 export const SigningKey = {
     PrimaryKey: "primaryKey",
     SecondaryKey: "secondaryKey",
+    ManagedIdentity: "managedIdentity",
 } as const;
 
 /**
- * The Map account key to use for signing.
+ * The Maps account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Maps account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS.
  */
 export type SigningKey = (typeof SigningKey)[keyof typeof SigningKey];

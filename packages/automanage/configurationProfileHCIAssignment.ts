@@ -4,7 +4,9 @@ import * as types from "./types";
 /**
  * Configuration profile assignment is an association between a VM and automanage profile configuration.
  *
- * Uses Azure REST API version 2022-05-04.
+ * Uses Azure REST API version 2022-05-04. In version 2.x of the Azure Native provider, it used API version 2022-05-04.
+ *
+ * Other available API versions: 2021-04-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automanage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ConfigurationProfileHCIAssignment extends pulumi.CustomResource {
     /**
@@ -33,6 +35,10 @@ export class ConfigurationProfileHCIAssignment extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConfigurationProfileHCIAssignment.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Azure resource id. Indicates if this resource is managed by another Azure resource.
      */
@@ -75,11 +81,13 @@ export class ConfigurationProfileHCIAssignment extends pulumi.CustomResource {
             resourceInputs["configurationProfileAssignmentName"] = args ? args.configurationProfileAssignmentName : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["managedBy"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["managedBy"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;

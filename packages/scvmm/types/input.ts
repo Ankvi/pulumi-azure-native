@@ -53,11 +53,11 @@ export interface GuestCredentialArgs {
     /**
      * Gets or sets the password to connect with the guest.
      */
-    password?: pulumi.Input<string>;
+    password: pulumi.Input<string>;
     /**
      * Gets or sets username to connect with the guest.
      */
-    username?: pulumi.Input<string>;
+    username: pulumi.Input<string>;
 }
 
 /**
@@ -343,6 +343,3 @@ export interface VirtualMachinePropertiesAvailabilitySetsArgs {
      */
     name?: pulumi.Input<string>;
 }
-
-
-

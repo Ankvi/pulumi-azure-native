@@ -2154,7 +2154,3 @@ export interface X12ValidationSettingsArgs {
      */
     validateXSDTypes: pulumi.Input<boolean>;
 }
-
-
-
-

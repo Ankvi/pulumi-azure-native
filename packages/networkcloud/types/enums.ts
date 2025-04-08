@@ -91,6 +91,7 @@ export type ClusterType = (typeof ClusterType)[keyof typeof ClusterType];
 
 export const ClusterUpdateStrategyType = {
     Rack: "Rack",
+    PauseAfterRack: "PauseAfterRack",
 } as const;
 
 /**
@@ -194,8 +195,37 @@ export const L3NetworkConfigurationIpamEnabled = {
  */
 export type L3NetworkConfigurationIpamEnabled = (typeof L3NetworkConfigurationIpamEnabled)[keyof typeof L3NetworkConfigurationIpamEnabled];
 
+export const ManagedServiceIdentitySelectorType = {
+    SystemAssignedIdentity: "SystemAssignedIdentity",
+    UserAssignedIdentity: "UserAssignedIdentity",
+} as const;
+
+/**
+ * The type of managed identity that is being selected.
+ */
+export type ManagedServiceIdentitySelectorType = (typeof ManagedServiceIdentitySelectorType)[keyof typeof ManagedServiceIdentitySelectorType];
+
+export const ManagedServiceIdentityType = {
+    None: "None",
+    SystemAssigned: "SystemAssigned",
+    UserAssigned: "UserAssigned",
+    SystemAssigned_UserAssigned: "SystemAssigned,UserAssigned",
+} as const;
+
+/**
+ * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+ */
+export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];
+
 export const OsDiskCreateOption = {
+    /**
+     * Utilize the local storage of the host machine.
+     */
     Ephemeral: "Ephemeral",
+    /**
+     * Utilize a storage appliance backed volume to host the disk.
+     */
+    Persistent: "Persistent",
 } as const;
 
 /**
@@ -256,8 +286,18 @@ export const VirtualMachineBootMethod = {
 export type VirtualMachineBootMethod = (typeof VirtualMachineBootMethod)[keyof typeof VirtualMachineBootMethod];
 
 export const VirtualMachineDeviceModelType = {
+    /**
+     * Traditional and most compatible device virtualization interface.
+     */
     T1: "T1",
+    /**
+     * Modern and enhanced device virtualization interface.
+     */
     T2: "T2",
+    /**
+     * Improved security and functionality (including TPM and secure boot support). Required for windows 11 and server 2025.
+     */
+    T3: "T3",
 } as const;
 
 /**
@@ -327,3 +367,13 @@ export const VirtualMachineVirtioInterfaceType = {
  * Field Deprecated, use virtualizationModel instead. The type of the virtio interface.
  */
 export type VirtualMachineVirtioInterfaceType = (typeof VirtualMachineVirtioInterfaceType)[keyof typeof VirtualMachineVirtioInterfaceType];
+
+export const VulnerabilityScanningSettingsContainerScan = {
+    Disabled: "Disabled",
+    Enabled: "Enabled",
+} as const;
+
+/**
+ * The mode selection for container vulnerability scanning.
+ */
+export type VulnerabilityScanningSettingsContainerScan = (typeof VulnerabilityScanningSettingsContainerScan)[keyof typeof VulnerabilityScanningSettingsContainerScan];

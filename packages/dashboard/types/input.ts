@@ -11,6 +11,52 @@ export interface AzureMonitorWorkspaceIntegrationArgs {
 }
 
 /**
+ * Enterprise settings of a Grafana instance
+ */
+export interface EnterpriseConfigurationsArgs {
+    /**
+     * The AutoRenew setting of the Enterprise subscription
+     */
+    marketplaceAutoRenew?: pulumi.Input<string | enums.MarketplaceAutoRenew>;
+    /**
+     * The Plan Id of the Azure Marketplace subscription for the Enterprise plugins
+     */
+    marketplacePlanId?: pulumi.Input<string>;
+}
+
+/**
+ * Server configurations of a Grafana instance
+ */
+export interface GrafanaConfigurationsArgs {
+    /**
+     * Grafana security settings
+     */
+    security?: pulumi.Input<SecurityArgs>;
+    /**
+     * Email server settings.
+     * https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
+     */
+    smtp?: pulumi.Input<SmtpArgs>;
+    /**
+     * Grafana Snapshots settings
+     */
+    snapshots?: pulumi.Input<SnapshotsArgs>;
+    /**
+     * Grafana users settings
+     */
+    users?: pulumi.Input<UsersArgs>;
+}
+/**
+ * grafanaConfigurationsArgsProvideDefaults sets the appropriate defaults for GrafanaConfigurationsArgs
+ */
+export function grafanaConfigurationsArgsProvideDefaults(val: GrafanaConfigurationsArgs): GrafanaConfigurationsArgs {
+    return {
+        ...val,
+        smtp: (val.smtp ? pulumi.output(val.smtp).apply(smtpArgsProvideDefaults) : undefined),
+    };
+}
+
+/**
  * GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards, alerting defaults) for common monitoring scenarios.
  */
 export interface GrafanaIntegrationsArgs {
@@ -49,9 +95,25 @@ export interface ManagedGrafanaPropertiesArgs {
      */
     deterministicOutboundIP?: pulumi.Input<string | enums.DeterministicOutboundIP>;
     /**
+     * Enterprise settings of a Grafana instance
+     */
+    enterpriseConfigurations?: pulumi.Input<EnterpriseConfigurationsArgs>;
+    /**
+     * Server configurations of a Grafana instance
+     */
+    grafanaConfigurations?: pulumi.Input<GrafanaConfigurationsArgs>;
+    /**
      * GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards, alerting defaults) for common monitoring scenarios.
      */
     grafanaIntegrations?: pulumi.Input<GrafanaIntegrationsArgs>;
+    /**
+     * The major Grafana software version to target.
+     */
+    grafanaMajorVersion?: pulumi.Input<string>;
+    /**
+     * Installed plugin list of the Grafana instance. Key is plugin id, value is plugin definition.
+     */
+    grafanaPlugins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicate the state for enable or disable traffic over the public interface.
      */
@@ -60,6 +122,15 @@ export interface ManagedGrafanaPropertiesArgs {
      * The zone redundancy setting of the Grafana instance.
      */
     zoneRedundancy?: pulumi.Input<string | enums.ZoneRedundancy>;
+}
+/**
+ * managedGrafanaPropertiesArgsProvideDefaults sets the appropriate defaults for ManagedGrafanaPropertiesArgs
+ */
+export function managedGrafanaPropertiesArgsProvideDefaults(val: ManagedGrafanaPropertiesArgs): ManagedGrafanaPropertiesArgs {
+    return {
+        ...val,
+        grafanaConfigurations: (val.grafanaConfigurations ? pulumi.output(val.grafanaConfigurations).apply(grafanaConfigurationsArgsProvideDefaults) : undefined),
+    };
 }
 
 /**
@@ -98,7 +169,84 @@ export interface ResourceSkuArgs {
     name: pulumi.Input<string>;
 }
 
+/**
+ * Grafana security settings
+ */
+export interface SecurityArgs {
+    /**
+     * Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+     */
+    csrfAlwaysCheck?: pulumi.Input<boolean>;
+}
 
+/**
+ * Email server settings.
+ * https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
+ */
+export interface SmtpArgs {
+    /**
+     * Enable this to allow Grafana to send email. Default is false
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Address used when sending out emails
+     * https://pkg.go.dev/net/mail#Address
+     */
+    fromAddress?: pulumi.Input<string>;
+    /**
+     * Name to be used when sending out emails. Default is "Azure Managed Grafana Notification"
+     * https://pkg.go.dev/net/mail#Address
+     */
+    fromName?: pulumi.Input<string>;
+    /**
+     * SMTP server hostname with port, e.g. test.email.net:587
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Password of SMTP auth. If the password contains # or ;, then you have to wrap it with triple quotes
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * Verify SSL for SMTP server. Default is false
+     * https://pkg.go.dev/crypto/tls#Config
+     */
+    skipVerify?: pulumi.Input<boolean>;
+    /**
+     * The StartTLSPolicy setting of the SMTP configuration
+     * https://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy
+     */
+    startTLSPolicy?: pulumi.Input<string | enums.StartTLSPolicy>;
+    /**
+     * User of SMTP auth
+     */
+    user?: pulumi.Input<string>;
+}
+/**
+ * smtpArgsProvideDefaults sets the appropriate defaults for SmtpArgs
+ */
+export function smtpArgsProvideDefaults(val: SmtpArgs): SmtpArgs {
+    return {
+        ...val,
+        enabled: (val.enabled) ?? false,
+    };
+}
 
+/**
+ * Grafana Snapshots settings
+ */
+export interface SnapshotsArgs {
+    /**
+     * Set to false to disable external snapshot publish endpoint
+     */
+    externalEnabled?: pulumi.Input<boolean>;
+}
 
-
+/**
+ * Grafana users settings
+ */
+export interface UsersArgs {
+    /**
+     * Set to true so viewers can access and use explore and perform temporary edits on panels in dashboards they have access to. They cannot save their changes.
+     */
+    viewersCanEdit?: pulumi.Input<boolean>;
+}

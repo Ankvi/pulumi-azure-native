@@ -1,82 +1,6 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * The properties of an Arc addon
- */
-export interface AddonArcPropertiesResponse {
-    /**
-     * The type of private cloud addon
-     * Expected value is 'Arc'.
-     */
-    addonType: "Arc";
-    /**
-     * The state of the addon provisioning
-     */
-    provisioningState: string;
-    /**
-     * The VMware vCenter resource ID
-     */
-    vCenter?: string;
-}
-
-/**
- * The properties of an HCX addon
- */
-export interface AddonHcxPropertiesResponse {
-    /**
-     * The type of private cloud addon
-     * Expected value is 'HCX'.
-     */
-    addonType: "HCX";
-    /**
-     * The HCX offer, example VMware MaaS Cloud Provider (Enterprise)
-     */
-    offer: string;
-    /**
-     * The state of the addon provisioning
-     */
-    provisioningState: string;
-}
-
-/**
- * The properties of a Site Recovery Manager (SRM) addon
- */
-export interface AddonSrmPropertiesResponse {
-    /**
-     * The type of private cloud addon
-     * Expected value is 'SRM'.
-     */
-    addonType: "SRM";
-    /**
-     * The Site Recovery Manager (SRM) license
-     */
-    licenseKey?: string;
-    /**
-     * The state of the addon provisioning
-     */
-    provisioningState: string;
-}
-
-/**
- * The properties of a vSphere Replication (VR) addon
- */
-export interface AddonVrPropertiesResponse {
-    /**
-     * The type of private cloud addon
-     * Expected value is 'VR'.
-     */
-    addonType: "VR";
-    /**
-     * The state of the addon provisioning
-     */
-    provisioningState: string;
-    /**
-     * The vSphere Replication Server (VRS) count
-     */
-    vrsCount: number;
-}
-
-/**
  * The properties describing private cloud availability zone distribution
  */
 export interface AvailabilityPropertiesResponse {
@@ -139,7 +63,8 @@ export interface DiskPoolVolumeResponse {
      */
     lunName: string;
     /**
-     * Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+     * Mode that describes whether the LUN has to be mounted as a datastore or
+     * attached as a LUN
      */
     mountOption?: string;
     /**
@@ -159,6 +84,16 @@ export function diskPoolVolumeResponseProvideDefaults(val: DiskPoolVolumeRespons
         ...val,
         mountOption: (val.mountOption) ?? "MOUNT",
     };
+}
+
+/**
+ * An Elastic SAN volume from Microsoft.ElasticSan provider
+ */
+export interface ElasticSanVolumeResponse {
+    /**
+     * Azure resource ID of the Elastic SAN Volume
+     */
+    targetId: string;
 }
 
 /**
@@ -210,15 +145,27 @@ export interface EncryptionResponse {
  */
 export interface EndpointsResponse {
     /**
-     * Endpoint for the HCX Cloud Manager
+     * Endpoint FQDN for the HCX Cloud Manager
      */
     hcxCloudManager: string;
     /**
-     * Endpoint for the NSX-T Data Center manager
+     * Endpoint IP for the HCX Cloud Manager
+     */
+    hcxCloudManagerIp: string;
+    /**
+     * Endpoint FQDN for the NSX-T Data Center manager
      */
     nsxtManager: string;
     /**
-     * Endpoint for Virtual Center Server Appliance
+     * Endpoint IP for the NSX-T Data Center manager
+     */
+    nsxtManagerIp: string;
+    /**
+     * Endpoint IP for Virtual Center Server Appliance
+     */
+    vcenterIp: string;
+    /**
+     * Endpoint FQDN for Virtual Center Server Appliance
      */
     vcsa: string;
 }
@@ -248,7 +195,8 @@ export interface IdentitySourceResponse {
      */
     name?: string;
     /**
-     * The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
+     * The password of the Active Directory user with a minimum of read-only access to
+     * Base DN for users and groups.
      */
     password?: string;
     /**
@@ -264,7 +212,8 @@ export interface IdentitySourceResponse {
      */
     ssl?: string;
     /**
-     * The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
+     * The ID of an Active Directory user with a minimum of read-only access to Base
+     * DN for users and group
      */
     username?: string;
 }
@@ -280,7 +229,7 @@ export interface ManagementClusterResponse {
     /**
      * The cluster size
      */
-    clusterSize: number;
+    clusterSize?: number;
     /**
      * The hosts
      */
@@ -289,6 +238,10 @@ export interface ManagementClusterResponse {
      * The state of the cluster provisioning
      */
     provisioningState: string;
+    /**
+     * Name of the vsan datastore associated with the cluster
+     */
+    vsanDatastoreName?: string;
 }
 
 /**
@@ -314,7 +267,7 @@ export interface PSCredentialExecutionParameterResponse {
      */
     password?: string;
     /**
-     * The type of execution parameter
+     * script execution parameter type
      * Expected value is 'Credential'.
      */
     type: "Credential";
@@ -322,24 +275,6 @@ export interface PSCredentialExecutionParameterResponse {
      * username for login
      */
     username?: string;
-}
-
-/**
- * Identity for the virtual machine.
- */
-export interface PrivateCloudIdentityResponse {
-    /**
-     * The principal ID of private cloud identity. This property will only be provided for a system assigned identity.
-     */
-    principalId: string;
-    /**
-     * The tenant ID associated with the private cloud. This property will only be provided for a system assigned identity.
-     */
-    tenantId: string;
-    /**
-     * The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Private Cloud.
-     */
-    type?: string;
 }
 
 /**
@@ -355,7 +290,7 @@ export interface ScriptSecureStringExecutionParameterResponse {
      */
     secureValue?: string;
     /**
-     * The type of execution parameter
+     * script execution parameter type
      * Expected value is 'SecureValue'.
      */
     type: "SecureValue";
@@ -370,7 +305,7 @@ export interface ScriptStringExecutionParameterResponse {
      */
     name: string;
     /**
-     * The type of execution parameter
+     * script execution parameter type
      * Expected value is 'Value'.
      */
     type: "Value";
@@ -385,9 +320,43 @@ export interface ScriptStringExecutionParameterResponse {
  */
 export interface SkuResponse {
     /**
-     * The name of the SKU.
+     * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+     */
+    capacity?: number;
+    /**
+     * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+     */
+    family?: string;
+    /**
+     * The name of the SKU. E.g. P3. It is typically a letter+number code
      */
     name: string;
+    /**
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     */
+    size?: string;
+    /**
+     * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+     */
+    tier?: string;
+}
+
+/**
+ * Managed service identity (either system assigned, or none)
+ */
+export interface SystemAssignedServiceIdentityResponse {
+    /**
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity (either system assigned, or none).
+     */
+    type: string;
 }
 
 /**
@@ -421,146 +390,6 @@ export interface SystemDataResponse {
 }
 
 /**
- * VM-Host placement policy properties
- */
-export interface VmHostPlacementPolicyPropertiesResponse {
-    /**
-     * vm-host placement policy affinity strength (should/must)
-     */
-    affinityStrength?: string;
-    /**
-     * placement policy affinity type
-     */
-    affinityType: string;
-    /**
-     * placement policy azure hybrid benefit opt-in type
-     */
-    azureHybridBenefitType?: string;
-    /**
-     * Display name of the placement policy
-     */
-    displayName?: string;
-    /**
-     * Host members list
-     */
-    hostMembers: string[];
-    /**
-     * The provisioning state
-     */
-    provisioningState: string;
-    /**
-     * Whether the placement policy is enabled or disabled
-     */
-    state?: string;
-    /**
-     * placement policy type
-     * Expected value is 'VmHost'.
-     */
-    type: "VmHost";
-    /**
-     * Virtual machine members list
-     */
-    vmMembers: string[];
-}
-
-/**
- * VM-VM placement policy properties
- */
-export interface VmVmPlacementPolicyPropertiesResponse {
-    /**
-     * placement policy affinity type
-     */
-    affinityType: string;
-    /**
-     * Display name of the placement policy
-     */
-    displayName?: string;
-    /**
-     * The provisioning state
-     */
-    provisioningState: string;
-    /**
-     * Whether the placement policy is enabled or disabled
-     */
-    state?: string;
-    /**
-     * placement policy type
-     * Expected value is 'VmVm'.
-     */
-    type: "VmVm";
-    /**
-     * Virtual machine members list
-     */
-    vmMembers: string[];
-}
-
-/**
- * NSX DHCP Relay
- */
-export interface WorkloadNetworkDhcpRelayResponse {
-    /**
-     * Type of DHCP: SERVER or RELAY.
-     * Expected value is 'RELAY'.
-     */
-    dhcpType: "RELAY";
-    /**
-     * Display name of the DHCP entity.
-     */
-    displayName?: string;
-    /**
-     * The provisioning state
-     */
-    provisioningState: string;
-    /**
-     * NSX revision number.
-     */
-    revision?: number;
-    /**
-     * NSX Segments consuming DHCP.
-     */
-    segments: string[];
-    /**
-     * DHCP Relay Addresses. Max 3.
-     */
-    serverAddresses?: string[];
-}
-
-/**
- * NSX DHCP Server
- */
-export interface WorkloadNetworkDhcpServerResponse {
-    /**
-     * Type of DHCP: SERVER or RELAY.
-     * Expected value is 'SERVER'.
-     */
-    dhcpType: "SERVER";
-    /**
-     * Display name of the DHCP entity.
-     */
-    displayName?: string;
-    /**
-     * DHCP Server Lease Time.
-     */
-    leaseTime?: number;
-    /**
-     * The provisioning state
-     */
-    provisioningState: string;
-    /**
-     * NSX revision number.
-     */
-    revision?: number;
-    /**
-     * NSX Segments consuming DHCP.
-     */
-    segments: string[];
-    /**
-     * DHCP Server Address.
-     */
-    serverAddress?: string;
-}
-
-/**
  * Ports and any VIF attached to segment.
  */
 export interface WorkloadNetworkSegmentPortVifResponse {
@@ -583,7 +412,3 @@ export interface WorkloadNetworkSegmentSubnetResponse {
      */
     gatewayAddress?: string;
 }
-
-
-
-

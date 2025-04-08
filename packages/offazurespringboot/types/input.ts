@@ -206,6 +206,10 @@ export interface SpringbootserversPropertiesArgs {
      */
     fqdnAndIpAddressList?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Resource labels
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The machine Id from ARM
      */
     machineArmId?: pulumi.Input<string>;
@@ -262,4 +266,3 @@ export interface SpringbootsitesPropertiesArgs {
      */
     provisioningState?: pulumi.Input<string | enums.ProvisioningState>;
 }
-

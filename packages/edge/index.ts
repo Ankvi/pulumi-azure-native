@@ -22,8 +22,6 @@ export const SitesBySubscription: typeof import("./sitesBySubscription").SitesBy
 utilities.lazyLoad(exports, ["SitesBySubscription"], () => require("./sitesBySubscription"));
 
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

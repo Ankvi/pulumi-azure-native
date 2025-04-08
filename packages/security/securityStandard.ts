@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Security Standard on a resource
  *
- * Uses Azure REST API version 2024-08-01.
+ * Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2024-08-01.
  */
 export class SecurityStandard extends pulumi.CustomResource {
     /**
@@ -37,6 +37,10 @@ export class SecurityStandard extends pulumi.CustomResource {
      * List of assessment keys to apply to standard scope.
      */
     public readonly assessments!: pulumi.Output<types.outputs.PartialAssessmentPropertiesResponse[] | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * List of all standard supported clouds.
      */
@@ -91,12 +95,14 @@ export class SecurityStandard extends pulumi.CustomResource {
             resourceInputs["policySetDefinitionId"] = args ? args.policySetDefinitionId : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
             resourceInputs["standardId"] = args ? args.standardId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["standardType"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["assessments"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["cloudProviders"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;

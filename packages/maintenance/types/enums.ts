@@ -55,16 +55,6 @@ export const TagOperators = {
  */
 export type TagOperators = (typeof TagOperators)[keyof typeof TagOperators];
 
-export const TaskScope = {
-    Global: "Global",
-    Resource: "Resource",
-} as const;
-
-/**
- * Global Task execute once when schedule trigger. Resource task execute for each VM.
- */
-export type TaskScope = (typeof TaskScope)[keyof typeof TaskScope];
-
 export const Visibility = {
     /**
      * Only visible to users with permissions.

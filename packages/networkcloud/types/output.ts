@@ -51,18 +51,28 @@ export function agentOptionsResponseProvideDefaults(val: AgentOptionsResponse): 
 
 export interface AgentPoolUpgradeSettingsResponse {
     /**
-     * The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1.
+     * The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool. If not specified during creation, a value of 1800 seconds is used.
+     */
+    drainTimeout?: number;
+    /**
+     * The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 1 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
      */
     maxSurge?: string;
+    /**
+     * The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
+     */
+    maxUnavailable?: string;
 }
-/**
- * agentPoolUpgradeSettingsResponseProvideDefaults sets the appropriate defaults for AgentPoolUpgradeSettingsResponse
- */
-export function agentPoolUpgradeSettingsResponseProvideDefaults(val: AgentPoolUpgradeSettingsResponse): AgentPoolUpgradeSettingsResponse {
-    return {
-        ...val,
-        maxSurge: (val.maxSurge) ?? "1",
-    };
+
+export interface AnalyticsOutputSettingsResponse {
+    /**
+     * The resource ID of the analytics workspace that is to be used by the specified identity.
+     */
+    analyticsWorkspaceId?: string;
+    /**
+     * The selection of the managed identity to use with this analytics workspace. The identity type must be either system assigned or user assigned.
+     */
+    associatedIdentity?: IdentitySelectorResponse;
 }
 
 export interface AttachedNetworkConfigurationResponse {
@@ -97,7 +107,7 @@ export interface BareMetalMachineConfigurationDataResponse {
      */
     bmcConnectionString: string;
     /**
-     * The credentials of the baseboard management controller on this bare metal machine.
+     * The credentials of the baseboard management controller on this bare metal machine. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
      */
     bmcCredentials: AdministrativeCredentialsResponse;
     /**
@@ -169,7 +179,7 @@ export interface BgpServiceLoadBalancerConfigurationResponse {
      */
     fabricPeeringEnabled?: string;
     /**
-     * The list of pools of IP addresses that can be allocated to Load Balancer services.
+     * The list of pools of IP addresses that can be allocated to load balancer services.
      */
     ipAddressPools?: IpAddressPoolResponse[];
 }
@@ -223,7 +233,7 @@ export interface ClusterAvailableVersionResponse {
 
 export interface ClusterCapacityResponse {
     /**
-     * The remaining appliance-based storage in GB available for workload use.
+     * The remaining appliance-based storage in GB available for workload use. Measured in gibibytes.
      */
     availableApplianceStorageGB?: number;
     /**
@@ -231,15 +241,15 @@ export interface ClusterCapacityResponse {
      */
     availableCoreCount?: number;
     /**
-     * The remaining machine or host-based storage in GB available for workload use.
+     * The remaining machine or host-based storage in GB available for workload use. Measured in gibibytes.
      */
     availableHostStorageGB?: number;
     /**
-     * The remaining memory in GB that are available in this cluster for workload use.
+     * The remaining memory in GB that are available in this cluster for workload use. Measured in gibibytes.
      */
     availableMemoryGB?: number;
     /**
-     * The total appliance-based storage in GB supported by this cluster for workload use.
+     * The total appliance-based storage in GB supported by this cluster for workload use. Measured in gibibytes.
      */
     totalApplianceStorageGB?: number;
     /**
@@ -247,11 +257,11 @@ export interface ClusterCapacityResponse {
      */
     totalCoreCount?: number;
     /**
-     * The total machine or host-based storage in GB supported by this cluster for workload use.
+     * The total machine or host-based storage in GB supported by this cluster for workload use. Measured in gibibytes.
      */
     totalHostStorageGB?: number;
     /**
-     * The total memory supported by this cluster for workload use.
+     * The total memory supported by this cluster for workload use. Measured in gibibytes.
      */
     totalMemoryGB?: number;
 }
@@ -307,6 +317,17 @@ export function clusterUpdateStrategyResponseProvideDefaults(val: ClusterUpdateS
         ...val,
         waitTimeMinutes: (val.waitTimeMinutes) ?? 15,
     };
+}
+
+export interface CommandOutputSettingsResponse {
+    /**
+     * The selection of the managed identity to use with this storage account container. The identity type must be either system assigned or user assigned.
+     */
+    associatedIdentity?: IdentitySelectorResponse;
+    /**
+     * The URL of the storage account container that is to be used by the specified identities.
+     */
+    containerUrl?: string;
 }
 
 export interface ControlPlaneNodeConfigurationResponse {
@@ -425,6 +446,17 @@ export interface HardwareValidationStatusResponse {
     result: string;
 }
 
+export interface IdentitySelectorResponse {
+    /**
+     * The type of managed identity that is being selected.
+     */
+    identityType?: string;
+    /**
+     * The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+     */
+    userAssignedIdentityResourceId?: string;
+}
+
 export interface ImageRepositoryCredentialsResponse {
     /**
      * The password or token used to access an image in the target repository.
@@ -493,13 +525,12 @@ export function initialAgentPoolConfigurationResponseProvideDefaults(val: Initia
     return {
         ...val,
         agentOptions: (val.agentOptions ? agentOptionsResponseProvideDefaults(val.agentOptions) : undefined),
-        upgradeSettings: (val.upgradeSettings ? agentPoolUpgradeSettingsResponseProvideDefaults(val.upgradeSettings) : undefined),
     };
 }
 
 export interface IpAddressPoolResponse {
     /**
-     * The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.
+     * The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
      */
     addresses: string[];
     /**
@@ -586,7 +617,7 @@ export interface KubernetesClusterNodeResponse {
      */
     detailedStatusMessage: string;
     /**
-     * The size of the disk configured for this node.
+     * The size of the disk configured for this node. Allocations are measured in gibibytes.
      */
     diskSizeGB: number;
     /**
@@ -602,7 +633,7 @@ export interface KubernetesClusterNodeResponse {
      */
     labels: KubernetesLabelResponse[];
     /**
-     * The amount of memory configured for this node, derived from the vm SKU specified.
+     * The amount of memory configured for this node, derived from the vm SKU specified. Allocations are measured in gibibytes.
      */
     memorySizeGB: number;
     /**
@@ -666,6 +697,13 @@ export function l2networkAttachmentConfigurationResponseProvideDefaults(val: L2N
     };
 }
 
+export interface L2ServiceLoadBalancerConfigurationResponse {
+    /**
+     * The list of pools of IP addresses that can be allocated to load balancer services.
+     */
+    ipAddressPools?: IpAddressPoolResponse[];
+}
+
 export interface L3NetworkAttachmentConfigurationResponse {
     /**
      * The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
@@ -719,6 +757,28 @@ export interface ManagedResourceGroupConfigurationResponse {
      * The name for the managed resource group. If not specified, the unique name is automatically generated.
      */
     name?: string;
+}
+
+/**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityResponse {
+    /**
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: string;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
 }
 
 export interface NetworkAttachmentResponse {
@@ -779,7 +839,7 @@ export interface NetworkConfigurationResponse {
      */
     attachedNetworkConfiguration?: AttachedNetworkConfigurationResponse;
     /**
-     * The configuration of the BGP service load balancer for this Kubernetes cluster.
+     * The configuration of the BGP service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
      */
     bgpServiceLoadBalancerConfiguration?: BgpServiceLoadBalancerConfigurationResponse;
     /**
@@ -794,6 +854,10 @@ export interface NetworkConfigurationResponse {
      * The IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in service CIDR.
      */
     dnsServiceIp?: string;
+    /**
+     * The configuration of the Layer 2 service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
+     */
+    l2ServiceLoadBalancerConfiguration?: L2ServiceLoadBalancerConfigurationResponse;
     /**
      * The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
      */
@@ -838,7 +902,7 @@ export interface OsDiskResponse {
      */
     deleteOption?: string;
     /**
-     * The size of the disk in gigabytes. Required if the createOption is Ephemeral.
+     * The size of the disk. Required if the createOption is Ephemeral. Allocations are measured in gibibytes.
      */
     diskSizeGB: number;
 }
@@ -923,6 +987,55 @@ export interface RuntimeProtectionStatusResponse {
     scanStartedTime: string;
 }
 
+export interface SecretArchiveReferenceResponse {
+    /**
+     * The resource ID of the key vault containing the secret.
+     */
+    keyVaultId: string;
+    /**
+     * The name of the secret in the key vault.
+     */
+    secretName: string;
+    /**
+     * The version of the secret in the key vault.
+     */
+    secretVersion: string;
+}
+
+export interface SecretArchiveSettingsResponse {
+    /**
+     * The selection of the managed identity to use with this vault URI. The identity type must be either system assigned or user assigned.
+     */
+    associatedIdentity?: IdentitySelectorResponse;
+    /**
+     * The URI for the key vault used as the secret archive.
+     */
+    vaultUri?: string;
+}
+
+export interface SecretRotationStatusResponse {
+    /**
+     * The maximum number of days the secret may be used before it must be changed.
+     */
+    expirePeriodDays: number;
+    /**
+     * The date and time when the secret was last changed.
+     */
+    lastRotationTime: string;
+    /**
+     * The number of days a secret exists before rotations will be attempted.
+     */
+    rotationPeriodDays: number;
+    /**
+     * The reference to the secret in a key vault.
+     */
+    secretArchiveReference: SecretArchiveReferenceResponse;
+    /**
+     * The type name used to identify the purpose of the secret.
+     */
+    secretType: string;
+}
+
 export interface ServiceLoadBalancerBgpPeerResponse {
     /**
      * The indicator of BFD enablement for this BgpPeer.
@@ -933,11 +1046,11 @@ export interface ServiceLoadBalancerBgpPeerResponse {
      */
     bgpMultiHop?: string;
     /**
-     * The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
+     * Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
      */
     holdTime?: string;
     /**
-     * The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
+     * Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
      */
     keepAliveTime?: string;
     /**
@@ -1001,7 +1114,7 @@ export interface SshPublicKeyResponse {
 
 export interface StorageApplianceConfigurationDataResponse {
     /**
-     * The credentials of the administrative interface on this storage appliance.
+     * The credentials of the administrative interface on this storage appliance. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
      */
     adminCredentials: AdministrativeCredentialsResponse;
     /**
@@ -1099,6 +1212,20 @@ export function trunkedNetworkAttachmentConfigurationResponseProvideDefaults(val
     };
 }
 
+/**
+ * User assigned identity properties
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId: string;
+}
+
 export interface ValidationThresholdResponse {
     /**
      * Selection of how the type evaluation is applied to the cluster calculation.
@@ -1133,7 +1260,18 @@ export interface VirtualMachinePlacementHintResponse {
     scope: string;
 }
 
-
-
-
-
+export interface VulnerabilityScanningSettingsResponse {
+    /**
+     * The mode selection for container vulnerability scanning.
+     */
+    containerScan?: string;
+}
+/**
+ * vulnerabilityScanningSettingsResponseProvideDefaults sets the appropriate defaults for VulnerabilityScanningSettingsResponse
+ */
+export function vulnerabilityScanningSettingsResponseProvideDefaults(val: VulnerabilityScanningSettingsResponse): VulnerabilityScanningSettingsResponse {
+    return {
+        ...val,
+        containerScan: (val.containerScan) ?? "Enabled",
+    };
+}

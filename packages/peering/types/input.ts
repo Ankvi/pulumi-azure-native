@@ -172,4 +172,3 @@ export interface SubResourceArgs {
      */
     id?: pulumi.Input<string>;
 }
-

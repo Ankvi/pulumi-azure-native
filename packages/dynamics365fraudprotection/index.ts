@@ -12,8 +12,6 @@ export const InstanceDetails: typeof import("./instanceDetails").InstanceDetails
 utilities.lazyLoad(exports, ["InstanceDetails"], () => require("./instanceDetails"));
 
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

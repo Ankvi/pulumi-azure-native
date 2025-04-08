@@ -24,7 +24,7 @@ export interface AccessPolicyEntryArgs {
 
 export interface ActionArgs {
     /**
-     * The type of the action. The value should be compared case-insensitively.
+     * The type of action.
      */
     type?: pulumi.Input<enums.KeyRotationPolicyActionType>;
 }
@@ -79,12 +79,12 @@ export interface KeyPropertiesArgs {
      */
     attributes?: pulumi.Input<KeyAttributesArgs>;
     /**
-     * The elliptic curve name. For valid values, see JsonWebKeyCurveName.
+     * The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256
      */
     curveName?: pulumi.Input<string | enums.JsonWebKeyCurveName>;
     keyOps?: pulumi.Input<pulumi.Input<string | enums.JsonWebKeyOperation>[]>;
     /**
-     * The key size in bits. For example: 2048, 3072, or 4096 for RSA.
+     * The key size in bits. For example: 2048, 3072, or 4096 for RSA. Default for RSA and RSA-HSM keys is 2048. Exception made for bring your own key (BYOK), key exchange keys default to 4096.
      */
     keySize?: pulumi.Input<number>;
     /**
@@ -292,6 +292,20 @@ export interface ManagedHsmSkuArgs {
 }
 
 /**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityArgs {
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: pulumi.Input<string | enums.ManagedServiceIdentityType>;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
  * A set of rules governing the network accessibility of a vault.
  */
 export interface NetworkRuleSetArgs {
@@ -491,6 +505,9 @@ export function vaultPropertiesArgsProvideDefaults(val: VaultPropertiesArgs): Va
         ...val,
         enableRbacAuthorization: (val.enableRbacAuthorization) ?? false,
         enableSoftDelete: (val.enableSoftDelete) ?? true,
+        enabledForDeployment: (val.enabledForDeployment) ?? false,
+        enabledForDiskEncryption: (val.enabledForDiskEncryption) ?? false,
+        enabledForTemplateDeployment: (val.enabledForTemplateDeployment) ?? false,
         publicNetworkAccess: (val.publicNetworkAccess) ?? "enabled",
         softDeleteRetentionInDays: (val.softDeleteRetentionInDays) ?? 90,
     };
@@ -509,7 +526,3 @@ export interface VirtualNetworkRuleArgs {
      */
     ignoreMissingVnetServiceEndpoint?: pulumi.Input<boolean>;
 }
-
-
-
-

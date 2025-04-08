@@ -18,6 +18,3 @@ export interface CreateParentGroupInfoArgs {
      */
     id?: pulumi.Input<string>;
 }
-
-
-

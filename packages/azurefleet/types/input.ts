@@ -1,6 +1,31 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * AdditionalCapabilities for VM.
+ */
+export interface AdditionalCapabilitiesArgs {
+    /**
+     * The flag that enables or disables hibernation capability on the VM.
+     */
+    hibernationEnabled?: pulumi.Input<boolean>;
+    /**
+     * The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS.
+     * Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled.
+     */
+    ultraSSDEnabled?: pulumi.Input<boolean>;
+}
+
+/**
+ * Represents the configuration for additional locations where Fleet resources may be deployed.
+ */
+export interface AdditionalLocationsProfileArgs {
+    /**
+     * The list of location profiles.
+     */
+    locationProfiles: pulumi.Input<pulumi.Input<LocationProfileArgs>[]>;
+}
+
+/**
  * Specifies additional XML formatted information that can be included in the
  * Unattend.xml file, which is used by Windows Setup. Contents are defined by
  * setting name, component name, and the pass in which the content is applied.
@@ -168,6 +193,13 @@ export interface CapacityReservationProfileArgs {
  * Compute Profile to use for running user's workloads.
  */
 export interface ComputeProfileArgs {
+    /**
+     * Specifies VMSS and VM API entity models support two additional capabilities as of today: ultraSSDEnabled and hibernationEnabled.
+     * ultraSSDEnabled: Enables UltraSSD_LRS storage account type on the VMSS VMs.
+     * hibernationEnabled: Enables the hibernation capability on the VMSS VMs.
+     * Default value is null if not specified. This property cannot be updated once set.
+     */
+    additionalVirtualMachineCapabilities?: pulumi.Input<AdditionalCapabilitiesArgs>;
     /**
      * Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
      */
@@ -385,6 +417,21 @@ export interface LinuxVMGuestPatchAutomaticByPlatformSettingsArgs {
      * operations.
      */
     rebootSetting?: pulumi.Input<string | enums.LinuxVMGuestPatchAutomaticByPlatformRebootSetting>;
+}
+
+/**
+ * Represents the profile for a single additional location in the Fleet. The location and the virtualMachineProfileOverride (optional).
+ */
+export interface LocationProfileArgs {
+    /**
+     * The ARM location name of the additional region. If LocationProfile is specified, then location is required.
+     */
+    location: pulumi.Input<string>;
+    /**
+     * An override for computeProfile.baseVirtualMachineProfile specific to this region. 
+     * This override is merged with the base virtual machine profile to define the final virtual machine profile for the resources deployed in this location.
+     */
+    virtualMachineProfileOverride?: pulumi.Input<BaseVirtualMachineProfileArgs>;
 }
 
 /**
@@ -732,6 +779,132 @@ export interface UefiSettingsArgs {
      * api-version: 2020-12-01.
      */
     vTpmEnabled?: pulumi.Input<boolean>;
+}
+
+/**
+ * VMAttributes using double values.
+ */
+export interface VMAttributeMinMaxDoubleArgs {
+    /**
+     * Maximum value. Double.MaxValue(1.7976931348623157E+308)
+     */
+    max?: pulumi.Input<number>;
+    /**
+     * Minimum value. default 0. Double.MinValue()
+     */
+    min?: pulumi.Input<number>;
+}
+
+/**
+ * While retrieving VMSizes from CRS, Min = 0 (uint.MinValue) if not specified, Max = 4294967295 (uint.MaxValue) if not specified. This allows to filter VMAttributes on all available VMSizes.
+ */
+export interface VMAttributeMinMaxIntegerArgs {
+    /**
+     * Max VMSize from CRS, Max = 4294967295 (uint.MaxValue) if not specified.
+     */
+    max?: pulumi.Input<number>;
+    /**
+     * Min VMSize from CRS, Min = 0 (uint.MinValue) if not specified.
+     */
+    min?: pulumi.Input<number>;
+}
+
+/**
+ * VMAttributes that will be used to filter VMSizes which will be used to build Fleet.
+ */
+export interface VMAttributesArgs {
+    /**
+     * The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
+     * acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+     */
+    acceleratorCount?: pulumi.Input<VMAttributeMinMaxIntegerArgs>;
+    /**
+     * The accelerator manufacturers specified as a list. 
+     * acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+     */
+    acceleratorManufacturers?: pulumi.Input<pulumi.Input<string | enums.AcceleratorManufacturer>[]>;
+    /**
+     * Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
+     * acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+     */
+    acceleratorSupport?: pulumi.Input<string | enums.VMAttributeSupport>;
+    /**
+     * The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * If acceleratorSupport is "Excluded", this VMAttribute can not be used.
+     */
+    acceleratorTypes?: pulumi.Input<pulumi.Input<string | enums.AcceleratorType>[]>;
+    /**
+     * The VM architecture types specified as a list. Optional parameter.
+     */
+    architectureTypes?: pulumi.Input<pulumi.Input<string | enums.ArchitectureType>[]>;
+    /**
+     * Specifies whether the VMSize supporting burstable capability should be used to build Fleet or not.
+     */
+    burstableSupport?: pulumi.Input<string | enums.VMAttributeSupport>;
+    /**
+     * The VM CPU manufacturers specified as a list. Optional parameter.
+     */
+    cpuManufacturers?: pulumi.Input<pulumi.Input<string | enums.CpuManufacturer>[]>;
+    /**
+     * The range of data disk count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+     */
+    dataDiskCount?: pulumi.Input<VMAttributeMinMaxIntegerArgs>;
+    /**
+     * Specifies which VMSizes should be excluded while building Fleet. Optional parameter.
+     */
+    excludedVMSizes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * If localStorageSupport is "Excluded", this VMAttribute can not be used.
+     */
+    localStorageDiskTypes?: pulumi.Input<pulumi.Input<string | enums.LocalStorageDiskType>[]>;
+    /**
+     * LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * If localStorageSupport is "Excluded", this VMAttribute can not be used.
+     */
+    localStorageInGiB?: pulumi.Input<VMAttributeMinMaxDoubleArgs>;
+    /**
+     * Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
+     * Included - Default if not specified as most Azure VMs support local storage.
+     */
+    localStorageSupport?: pulumi.Input<string | enums.VMAttributeSupport>;
+    /**
+     * The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+     */
+    memoryInGiB: pulumi.Input<VMAttributeMinMaxDoubleArgs>;
+    /**
+     * The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
+     */
+    memoryInGiBPerVCpu?: pulumi.Input<VMAttributeMinMaxDoubleArgs>;
+    /**
+     * The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+     */
+    networkBandwidthInMbps?: pulumi.Input<VMAttributeMinMaxDoubleArgs>;
+    /**
+     * The range of network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+     */
+    networkInterfaceCount?: pulumi.Input<VMAttributeMinMaxIntegerArgs>;
+    /**
+     * The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+     * rdmaSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * If rdmaSupport is "Excluded", this VMAttribute can not be used.
+     */
+    rdmaNetworkInterfaceCount?: pulumi.Input<VMAttributeMinMaxIntegerArgs>;
+    /**
+     * Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build Fleet or not.
+     */
+    rdmaSupport?: pulumi.Input<string | enums.VMAttributeSupport>;
+    /**
+     * The range of vCpuCount specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
+     */
+    vCpuCount: pulumi.Input<VMAttributeMinMaxIntegerArgs>;
+    /**
+     * The VM category specified as a list. Optional parameter.
+     */
+    vmCategories?: pulumi.Input<pulumi.Input<string | enums.VMCategory>[]>;
 }
 
 /**
@@ -1596,5 +1769,3 @@ export interface WindowsVMGuestPatchAutomaticByPlatformSettingsArgs {
      */
     rebootSetting?: pulumi.Input<string | enums.WindowsVMGuestPatchAutomaticByPlatformRebootSetting>;
 }
-
-

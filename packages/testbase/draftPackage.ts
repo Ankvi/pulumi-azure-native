@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * The Test Base Draft Package resource.
  *
- * Uses Azure REST API version 2023-11-01-preview.
+ * Uses Azure REST API version 2023-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-11-01-preview.
  */
 export class DraftPackage extends pulumi.CustomResource {
     /**
@@ -41,6 +41,10 @@ export class DraftPackage extends pulumi.CustomResource {
      * Application name
      */
     public readonly applicationName!: pulumi.Output<string | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Comments added by user.
      */
@@ -197,6 +201,7 @@ export class DraftPackage extends pulumi.CustomResource {
             resourceInputs["useAutofill"] = args ? args.useAutofill : undefined;
             resourceInputs["useSample"] = args ? args.useSample : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["draftPackagePath"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -207,6 +212,7 @@ export class DraftPackage extends pulumi.CustomResource {
         } else {
             resourceInputs["appFileName"] = undefined /*out*/;
             resourceInputs["applicationName"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["comments"] = undefined /*out*/;
             resourceInputs["draftPackagePath"] = undefined /*out*/;
             resourceInputs["editPackage"] = undefined /*out*/;

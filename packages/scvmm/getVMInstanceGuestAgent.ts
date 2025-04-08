@@ -25,6 +25,10 @@ export interface GetVMInstanceGuestAgentArgs {
  */
 export interface GetVMInstanceGuestAgentResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Username / Password Credentials to provision guest agent.
      */
     readonly credentials?: types.outputs.GuestCredentialResponse;

@@ -30,6 +30,10 @@ export interface GetWebhookArgs {
  */
 export interface GetWebhookResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * content type
      */
     readonly contentType?: string;

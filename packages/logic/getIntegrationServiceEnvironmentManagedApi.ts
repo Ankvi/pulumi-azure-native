@@ -43,6 +43,10 @@ export interface GetIntegrationServiceEnvironmentManagedApiResult {
      */
     readonly apiDefinitions: types.outputs.ApiResourceDefinitionsResponse;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The backend service.
      */
     readonly backendService: types.outputs.ApiResourceBackendServiceResponse;

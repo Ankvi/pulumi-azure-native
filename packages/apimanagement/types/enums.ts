@@ -10,6 +10,26 @@ export const AlwaysLog = {
  */
 export type AlwaysLog = (typeof AlwaysLog)[keyof typeof AlwaysLog];
 
+export const ApiGatewaySkuType = {
+    /**
+     * Standard SKU of the API gateway.
+     */
+    Standard: "Standard",
+    /**
+     * Standard SKU of the API gateway to be used in Workspaces.
+     */
+    WorkspaceGatewayStandard: "WorkspaceGatewayStandard",
+    /**
+     * Premium SKU of the API gateway to be used in Workspaces.
+     */
+    WorkspaceGatewayPremium: "WorkspaceGatewayPremium",
+} as const;
+
+/**
+ * Name of the Sku.
+ */
+export type ApiGatewaySkuType = (typeof ApiGatewaySkuType)[keyof typeof ApiGatewaySkuType];
+
 export const ApiType = {
     Http: "http",
     Soap: "soap",
@@ -368,6 +388,34 @@ export const KeyType = {
  * The Key to be used to generate token for user.
  */
 export type KeyType = (typeof KeyType)[keyof typeof KeyType];
+
+export const LlmDiagnosticSettings = {
+    /**
+     * Default LLM logs are enabled.
+     */
+    Enabled: "enabled",
+    /**
+     * Default LLM logs are disabled.
+     */
+    Disabled: "disabled",
+} as const;
+
+/**
+ * Specifies whether default diagnostic should be enabled for Large Language Models or not.
+ */
+export type LlmDiagnosticSettings = (typeof LlmDiagnosticSettings)[keyof typeof LlmDiagnosticSettings];
+
+export const LlmMessageLogTypes = {
+    /**
+     * Log all messages.
+     */
+    All: "all",
+} as const;
+
+/**
+ * Specifies which message should be logged. Currently there is only 'all' option.
+ */
+export type LlmMessageLogTypes = (typeof LlmMessageLogTypes)[keyof typeof LlmMessageLogTypes];
 
 export const LoggerType = {
     /**

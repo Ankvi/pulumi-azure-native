@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * A share subscription data transfer object.
  *
- * Uses Azure REST API version 2021-08-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
+ * Uses Azure REST API version 2021-08-01. In version 2.x of the Azure Native provider, it used API version 2021-08-01.
  */
 export class ShareSubscription extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class ShareSubscription extends pulumi.CustomResource {
         return obj['__pulumiType'] === ShareSubscription.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Time at which the share subscription was created.
      */
@@ -135,6 +139,7 @@ export class ShareSubscription extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["shareSubscriptionName"] = args ? args.shareSubscriptionName : undefined;
             resourceInputs["sourceShareLocation"] = args ? args.sourceShareLocation : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["providerEmail"] = undefined /*out*/;
@@ -151,6 +156,7 @@ export class ShareSubscription extends pulumi.CustomResource {
             resourceInputs["userEmail"] = undefined /*out*/;
             resourceInputs["userName"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["expirationDate"] = undefined /*out*/;
             resourceInputs["invitationId"] = undefined /*out*/;

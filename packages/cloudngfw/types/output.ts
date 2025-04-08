@@ -371,6 +371,10 @@ export interface NetworkProfileResponse {
      */
     networkType: string;
     /**
+     * Array of ipv4 destination address for which source NAT is to be performed
+     */
+    privateSourceNatRulesDestination?: string[];
+    /**
      * List of IPs associated with the Firewall
      */
     publicIps: IPAddressResponse[];
@@ -567,6 +571,16 @@ export interface StorageAccountResponse {
 }
 
 /**
+ * This field is only present if Strata Cloud Manager is managing the policy for this firewall
+ */
+export interface StrataCloudManagerConfigResponse {
+    /**
+     * Strata Cloud Manager name which is intended to manage the policy for this firewall.
+     */
+    cloudManagerName: string;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -657,10 +671,3 @@ export interface VwanConfigurationResponse {
      */
     vHub: IPAddressSpaceResponse;
 }
-
-
-
-
-
-
-

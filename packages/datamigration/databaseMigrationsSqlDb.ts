@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Database Migration Resource for SQL Database.
  *
- * Uses Azure REST API version 2022-03-30-preview. In version 1.x of the Azure Native provider, it used API version 2022-03-30-preview.
+ * Uses Azure REST API version 2023-07-15-preview. In version 2.x of the Azure Native provider, it used API version 2022-03-30-preview.
  *
- * Other available API versions: 2023-07-15-preview.
+ * Other available API versions: 2022-03-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DatabaseMigrationsSqlDb extends pulumi.CustomResource {
     /**
@@ -35,6 +35,10 @@ export class DatabaseMigrationsSqlDb extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatabaseMigrationsSqlDb.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Database Migration Resource properties for SQL database.
@@ -67,10 +71,12 @@ export class DatabaseMigrationsSqlDb extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sqlDbInstanceName"] = args ? args.sqlDbInstanceName : undefined;
             resourceInputs["targetDbName"] = args ? args.targetDbName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;

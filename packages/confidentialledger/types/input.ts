@@ -69,9 +69,17 @@ export interface LedgerPropertiesArgs {
      */
     certBasedSecurityPrincipals?: pulumi.Input<pulumi.Input<CertBasedSecurityPrincipalArgs>[]>;
     /**
+     * SKU associated with the ledger
+     */
+    ledgerSku?: pulumi.Input<string | enums.LedgerSku>;
+    /**
      * Type of Confidential Ledger
      */
     ledgerType?: pulumi.Input<string | enums.LedgerType>;
+    /**
+     * Object representing RunningState for Ledger.
+     */
+    runningState?: pulumi.Input<string | enums.RunningState>;
 }
 
 /**
@@ -90,6 +98,10 @@ export interface ManagedCCFPropertiesArgs {
      * Number of CCF nodes in the Managed CCF.
      */
     nodeCount?: pulumi.Input<number>;
+    /**
+     * Object representing RunningState for Managed CCF.
+     */
+    runningState?: pulumi.Input<string | enums.RunningState>;
 }
 
 /**
@@ -106,7 +118,3 @@ export interface MemberIdentityCertificateArgs {
     encryptionkey?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<CertificateTagsArgs>[]>;
 }
-
-
-
-

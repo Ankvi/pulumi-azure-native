@@ -139,11 +139,20 @@ export interface BackupInstanceArgs {
      * Gets or sets the Backup Instance friendly name.
      */
     friendlyName?: pulumi.Input<string>;
+    /**
+     * Contains information of the Identity Details for the BI.
+     * If it is null, default will be considered as System Assigned.
+     */
+    identityDetails?: pulumi.Input<IdentityDetailsArgs>;
     objectType: pulumi.Input<string>;
     /**
      * Gets or sets the policy information.
      */
     policyInfo: pulumi.Input<PolicyInfoArgs>;
+    /**
+     * ResourceGuardOperationRequests on which LAC check will be performed
+     */
+    resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
      */
@@ -196,6 +205,14 @@ export interface BackupVaultArgs {
      */
     monitoringSettings?: pulumi.Input<MonitoringSettingsArgs>;
     /**
+     * List of replicated regions for Backup Vault
+     */
+    replicatedRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ResourceGuardOperationRequests on which LAC check will be performed
+     */
+    resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Security Settings
      */
     securitySettings?: pulumi.Input<SecuritySettingsArgs>;
@@ -221,6 +238,30 @@ export interface BlobBackupDatasourceParametersArgs {
 }
 
 /**
+ * The details of the managed identity used for CMK
+ */
+export interface CmkKekIdentityArgs {
+    /**
+     * The managed identity to be used which has access permissions to the Key Vault. Provide a value here in case identity types: 'UserAssigned' only.
+     */
+    identityId?: pulumi.Input<string>;
+    /**
+     * The identity type. 'SystemAssigned' and 'UserAssigned' are mutually exclusive. 'SystemAssigned' will use implicitly created managed identity.
+     */
+    identityType?: pulumi.Input<string | enums.IdentityType>;
+}
+
+/**
+ * The properties of the Key Vault which hosts CMK
+ */
+export interface CmkKeyVaultPropertiesArgs {
+    /**
+     * The key uri of the Customer Managed Key
+     */
+    keyUri?: pulumi.Input<string>;
+}
+
+/**
  * Copy on Expiry Option
  */
 export interface CopyOnExpiryOptionArgs {
@@ -229,6 +270,13 @@ export interface CopyOnExpiryOptionArgs {
      * Expected value is 'CopyOnExpiryOption'.
      */
     objectType: pulumi.Input<"CopyOnExpiryOption">;
+}
+
+export interface CrossRegionRestoreSettingsArgs {
+    /**
+     * CrossRegionRestore state
+     */
+    state?: pulumi.Input<string | enums.CrossRegionRestoreState>;
 }
 
 /**
@@ -295,6 +343,10 @@ export interface DatasourceArgs {
      */
     resourceName?: pulumi.Input<string>;
     /**
+     * Properties specific to data source
+     */
+    resourceProperties?: pulumi.Input<DefaultResourcePropertiesArgs>;
+    /**
      * Resource Type of Datasource.
      */
     resourceType?: pulumi.Input<string>;
@@ -329,6 +381,10 @@ export interface DatasourceSetArgs {
      */
     resourceName?: pulumi.Input<string>;
     /**
+     * Properties specific to data source set
+     */
+    resourceProperties?: pulumi.Input<DefaultResourcePropertiesArgs>;
+    /**
      * Resource Type of Datasource.
      */
     resourceType?: pulumi.Input<string>;
@@ -353,23 +409,72 @@ export interface DayArgs {
 }
 
 /**
+ * Default source properties
+ */
+export interface DefaultResourcePropertiesArgs {
+    /**
+     * Type of the specific object - used for deserializing
+     * Expected value is 'DefaultResourceProperties'.
+     */
+    objectType: pulumi.Input<"DefaultResourceProperties">;
+}
+
+/**
  * Identity details
  */
 export interface DppIdentityDetailsArgs {
     /**
-     * The identityType which can be either SystemAssigned or None
+     * The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
      */
     type?: pulumi.Input<string>;
+    /**
+     * Gets or sets the user assigned identities.
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Customer Managed Key details of the resource.
+ */
+export interface EncryptionSettingsArgs {
+    /**
+     * Enabling/Disabling the Double Encryption state
+     */
+    infrastructureEncryption?: pulumi.Input<string | enums.InfrastructureEncryptionState>;
+    /**
+     * The details of the managed identity used for CMK
+     */
+    kekIdentity?: pulumi.Input<CmkKekIdentityArgs>;
+    /**
+     * The properties of the Key Vault which hosts CMK
+     */
+    keyVaultProperties?: pulumi.Input<CmkKeyVaultPropertiesArgs>;
+    /**
+     * Encryption state of the Backup Vault.
+     */
+    state?: pulumi.Input<string | enums.EncryptionState>;
 }
 
 /**
  * Class containing feature settings of vault
  */
 export interface FeatureSettingsArgs {
+    crossRegionRestoreSettings?: pulumi.Input<CrossRegionRestoreSettingsArgs>;
     /**
      * CrossSubscriptionRestore Settings
      */
     crossSubscriptionRestoreSettings?: pulumi.Input<CrossSubscriptionRestoreSettingsArgs>;
+}
+
+export interface IdentityDetailsArgs {
+    /**
+     * Specifies if the BI is protected by System Identity.
+     */
+    useSystemAssignedIdentity?: pulumi.Input<boolean>;
+    /**
+     * ARM URL for User Assigned Identity.
+     */
+    userAssignedIdentityArmUrl?: pulumi.Input<string>;
 }
 
 /**
@@ -398,27 +503,35 @@ export interface ImmutabilitySettingsArgs {
  */
 export interface KubernetesClusterBackupDatasourceParametersArgs {
     /**
-     * Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during restore.
+     * Gets or sets the backup hook references. This property sets the hook reference to be executed during backup.
+     */
+    backupHookReferences?: pulumi.Input<pulumi.Input<NamespacedNameResourceArgs>[]>;
+    /**
+     * Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during backup.
      */
     excludedNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Gets or sets the exclude resource types property. This property sets the resource types to be excluded during restore.
+     * Gets or sets the exclude resource types property. This property sets the resource types to be excluded during backup.
      */
     excludedResourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during restore.
+     * Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during backup.
      */
     includeClusterScopeResources: pulumi.Input<boolean>;
     /**
-     * Gets or sets the include namespaces property. This property sets the namespaces to be included during restore.
+     * Gets or sets the include namespaces property. This property sets the namespaces to be included during backup.
      */
     includedNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Gets or sets the include resource types property. This property sets the resource types to be included during restore.
+     * Gets or sets the include resource types property. This property sets the resource types to be included during backup.
      */
     includedResourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during restore.
+     * Gets or sets the include volume types property. This property sets the volume types to be included during backup.
+     */
+    includedVolumeTypes?: pulumi.Input<pulumi.Input<string | enums.AKSVolumeTypes>[]>;
+    /**
+     * Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during backup.
      */
     labelSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -427,7 +540,7 @@ export interface KubernetesClusterBackupDatasourceParametersArgs {
      */
     objectType: pulumi.Input<"KubernetesClusterBackupDatasourceParameters">;
     /**
-     * Gets or sets the volume snapshot property. This property if enabled will take volume snapshots during restore.
+     * Gets or sets the volume snapshot property. This property if enabled will take volume snapshots during backup.
      */
     snapshotVolumes: pulumi.Input<boolean>;
 }
@@ -440,6 +553,20 @@ export interface MonitoringSettingsArgs {
      * Settings for Azure Monitor based alerts
      */
     azureMonitorAlertSettings?: pulumi.Input<AzureMonitorAlertSettingsArgs>;
+}
+
+/**
+ * Class to refer resources which contains namespace and name
+ */
+export interface NamespacedNameResourceArgs {
+    /**
+     * Name of the resource
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Namespace in which the resource exists
+     */
+    namespace?: pulumi.Input<string>;
 }
 
 /**
@@ -595,6 +722,10 @@ export interface SecretStoreResourceArgs {
  */
 export interface SecuritySettingsArgs {
     /**
+     * Customer Managed Key details of the resource.
+     */
+    encryptionSettings?: pulumi.Input<EncryptionSettingsArgs>;
+    /**
      * Immutability Settings at vault level
      */
     immutabilitySettings?: pulumi.Input<ImmutabilitySettingsArgs>;
@@ -682,15 +813,3 @@ export interface TargetCopySettingArgs {
      */
     dataStore: pulumi.Input<DataStoreInfoBaseArgs>;
 }
-
-
-
-
-
-
-
-
-
-
-
-

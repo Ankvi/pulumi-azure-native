@@ -31,6 +31,20 @@ export interface CaptureDescriptionArgs {
 }
 
 /**
+ * A value that indicates whether capture description is enabled.
+ */
+export interface CaptureIdentityArgs {
+    /**
+     * Type of Azure Active Directory Managed Identity.
+     */
+    type?: pulumi.Input<enums.CaptureIdentityType>;
+    /**
+     * ARM ID of Managed User Identity. This property is required is the type is UserAssignedIdentity. If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used.
+     */
+    userAssignedIdentity?: pulumi.Input<string>;
+}
+
+/**
  * SKU parameters particular to a cluster instance.
  */
 export interface ClusterSkuArgs {
@@ -82,6 +96,10 @@ export interface DestinationArgs {
      * Subscription Id of Azure Data Lake Store
      */
     dataLakeSubscriptionId?: pulumi.Input<string>;
+    /**
+     * A value that indicates whether capture description is enabled.
+     */
+    identity?: pulumi.Input<CaptureIdentityArgs>;
     /**
      * Name for capture destination
      */
@@ -283,6 +301,3 @@ export interface UserAssignedIdentityPropertiesArgs {
      */
     userAssignedIdentity?: pulumi.Input<string>;
 }
-
-
-

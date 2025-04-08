@@ -1,11 +1,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * NSX DNS Zone
  *
- * Uses Azure REST API version 2022-05-01. In version 1.x of the Azure Native provider, it used API version 2020-07-17-preview.
+ * Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
  *
- * Other available API versions: 2023-03-01, 2023-09-01.
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WorkloadNetworkDnsZone extends pulumi.CustomResource {
     /**
@@ -35,6 +36,10 @@ export class WorkloadNetworkDnsZone extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Display name of the DNS Zone.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
@@ -51,7 +56,7 @@ export class WorkloadNetworkDnsZone extends pulumi.CustomResource {
      */
     public readonly domain!: pulumi.Output<string[] | undefined>;
     /**
-     * Resource name.
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -67,7 +72,11 @@ export class WorkloadNetworkDnsZone extends pulumi.CustomResource {
      */
     public readonly sourceIp!: pulumi.Output<string | undefined>;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -97,10 +106,13 @@ export class WorkloadNetworkDnsZone extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["revision"] = args ? args.revision : undefined;
             resourceInputs["sourceIp"] = args ? args.sourceIp : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["dnsServerIps"] = undefined /*out*/;
             resourceInputs["dnsServices"] = undefined /*out*/;
@@ -109,6 +121,7 @@ export class WorkloadNetworkDnsZone extends pulumi.CustomResource {
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["revision"] = undefined /*out*/;
             resourceInputs["sourceIp"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -135,7 +148,7 @@ export interface WorkloadNetworkDnsZoneArgs {
      */
     dnsServices?: pulumi.Input<number>;
     /**
-     * NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+     * ID of the DNS zone.
      */
     dnsZoneId?: pulumi.Input<string>;
     /**

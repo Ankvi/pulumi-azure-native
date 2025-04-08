@@ -20,6 +20,8 @@ export interface BillingHubExecutionUsageDetailResponse {
 export interface BillingHubFreeHourIncrementEntryResponse {
     createTimeStamp?: string;
     expirationTimeStamp?: string;
+    freeHourStatus?: string;
+    freeHourType?: string;
     incrementalFreeHours?: number;
     remainingFreeHours?: number;
 }
@@ -489,6 +491,24 @@ export interface SubscriptionReceiverValueResponse {
 }
 
 /**
+ * Managed service identity (either system assigned, or none)
+ */
+export interface SystemAssignedServiceIdentityResponse {
+    /**
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity (either system assigned, or none).
+     */
+    type: string;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -505,7 +525,7 @@ export interface SystemDataResponse {
      */
     createdByType?: string;
     /**
-     * The type of identity that last modified the resource.
+     * The timestamp of resource last modification (UTC)
      */
     lastModifiedAt?: string;
     /**
@@ -555,7 +575,7 @@ export interface TargetOSInfoResponse {
     /**
      * Specifies the target OSs to be tested.
      */
-    targetOSs: string[];
+    targetOSs?: string[];
 }
 
 /**
@@ -651,4 +671,3 @@ export interface VerificationResultResponse {
      */
     verificationName?: string;
 }
-

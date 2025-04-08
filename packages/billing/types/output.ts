@@ -41,9 +41,9 @@ export interface AzurePlanResponse {
     /**
      * The sku description.
      */
-    skuDescription: string;
+    skuDescription?: string;
     /**
-     * The sku id.
+     * The ID that uniquely identifies a sku.
      */
     skuId?: string;
 }
@@ -385,6 +385,132 @@ export interface BillingProfilePropertiesResponseSoldTo {
 }
 
 /**
+ * The properties of the billing role assignment.
+ */
+export interface BillingRoleAssignmentPropertiesResponse {
+    /**
+     * The name of the billing account.
+     */
+    billingAccountDisplayName: string;
+    /**
+     * The fully qualified ID that uniquely identifies a billing account.
+     */
+    billingAccountId: string;
+    /**
+     * The name of the billing profile.
+     */
+    billingProfileDisplayName: string;
+    /**
+     * The fully qualified ID that uniquely identifies a billing profile.
+     */
+    billingProfileId: string;
+    /**
+     * The ID of the billing request that was created for the role assignment. This is only applicable to cross tenant role assignments or role assignments created through the billing request.
+     */
+    billingRequestId: string;
+    /**
+     * The object ID of the user who created the role assignment.
+     */
+    createdByPrincipalId: string;
+    /**
+     * The principal PUID of the user who created the role assignment.
+     */
+    createdByPrincipalPuid: string;
+    /**
+     * The tenant Id of the user who created the role assignment.
+     */
+    createdByPrincipalTenantId: string;
+    /**
+     * The email address of the user who created the role assignment. This is supported only for billing accounts with agreement type Enterprise Agreement.
+     */
+    createdByUserEmailAddress: string;
+    /**
+     * The date the role assignment was created.
+     */
+    createdOn: string;
+    /**
+     * The name of the customer.
+     */
+    customerDisplayName: string;
+    /**
+     * The fully qualified ID that uniquely identifies a customer.
+     */
+    customerId: string;
+    /**
+     * The name of the invoice section.
+     */
+    invoiceSectionDisplayName: string;
+    /**
+     * The fully qualified ID that uniquely identifies an invoice section.
+     */
+    invoiceSectionId: string;
+    /**
+     * The principal PUID of the user who modified the role assignment.
+     */
+    modifiedByPrincipalId: string;
+    /**
+     * The principal PUID of the user who modified the role assignment.
+     */
+    modifiedByPrincipalPuid: string;
+    /**
+     * The tenant Id of the user who modified the role assignment.
+     */
+    modifiedByPrincipalTenantId: string;
+    /**
+     * The email address of the user who modified the role assignment. This is supported only for billing accounts with agreement type Enterprise Agreement.
+     */
+    modifiedByUserEmailAddress: string;
+    /**
+     * The date the role assignment was modified.
+     */
+    modifiedOn: string;
+    /**
+     * The display name of the principal to whom the role was assigned.
+     */
+    principalDisplayName: string;
+    /**
+     * The object id of the user to whom the role was assigned.
+     */
+    principalId?: string;
+    /**
+     * The principal PUID of the user to whom the role was assigned.
+     */
+    principalPuid?: string;
+    /**
+     * The principal tenant id of the user to whom the role was assigned.
+     */
+    principalTenantId?: string;
+    /**
+     * The friendly name of the tenant of the user to whom the role was assigned. This will be 'Primary Tenant' for the primary tenant of the billing account.
+     */
+    principalTenantName: string;
+    /**
+     * The type of a role Assignment.
+     */
+    principalType: string;
+    /**
+     * The provisioning state of the resource during a long-running operation.
+     */
+    provisioningState: string;
+    /**
+     * The ID of the role definition.
+     */
+    roleDefinitionId: string;
+    /**
+     * The scope at which the role was assigned.
+     */
+    scope?: string;
+    /**
+     * The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
+     */
+    userAuthenticationType?: string;
+    /**
+     * The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
+     */
+    userEmailAddress?: string;
+}
+
+/**
  * An invoice section.
  */
 export interface InvoiceSectionPropertiesResponse {
@@ -423,11 +549,11 @@ export interface InvoiceSectionPropertiesResponse {
  */
 export interface InvoiceSectionWithCreateSubPermissionResponse {
     /**
-     * The name of the billing profile for the invoice section.
+     * The name of the billing profile.
      */
     billingProfileDisplayName: string;
     /**
-     * The ID of the billing profile for the invoice section.
+     * The fully qualified ID that uniquely identifies a billing profile.
      */
     billingProfileId: string;
     /**
@@ -449,13 +575,13 @@ export interface InvoiceSectionWithCreateSubPermissionResponse {
     /**
      * Enabled azure plans for the associated billing profile.
      */
-    enabledAzurePlans?: AzurePlanResponse[];
+    enabledAzurePlans: AzurePlanResponse[];
     /**
      * The name of the invoice section.
      */
     invoiceSectionDisplayName: string;
     /**
-     * The ID of the invoice section.
+     * The fully qualified ID that uniquely identifies an invoice section.
      */
     invoiceSectionId: string;
     /**
@@ -545,5 +671,3 @@ export interface SystemDataResponse {
      */
     lastModifiedByType?: string;
 }
-
-

@@ -3,9 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets information about the specified application package.
  *
- * Uses Azure REST API version 2023-05-01.
+ * Uses Azure REST API version 2024-07-01.
  *
- * Other available API versions: 2023-11-01, 2024-02-01, 2024-07-01.
+ * Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getApplicationPackage(args: GetApplicationPackageArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationPackageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,6 +41,10 @@ export interface GetApplicationPackageArgs {
  */
 export interface GetApplicationPackageResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The ETag of the resource, used for concurrency statements.
      */
     readonly etag: string;
@@ -73,6 +77,10 @@ export interface GetApplicationPackageResult {
      */
     readonly storageUrlExpiry: string;
     /**
+     * The tags of the resource.
+     */
+    readonly tags?: {[key: string]: string};
+    /**
      * The type of the resource.
      */
     readonly type: string;
@@ -80,9 +88,9 @@ export interface GetApplicationPackageResult {
 /**
  * Gets information about the specified application package.
  *
- * Uses Azure REST API version 2023-05-01.
+ * Uses Azure REST API version 2024-07-01.
  *
- * Other available API versions: 2023-11-01, 2024-02-01, 2024-07-01.
+ * Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getApplicationPackageOutput(args: GetApplicationPackageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationPackageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

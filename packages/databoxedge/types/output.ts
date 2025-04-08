@@ -747,9 +747,3 @@ export interface UserAccessRightResponse {
      */
     userId: string;
 }
-
-
-
-
-
-

@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Student details.
  *
- * Uses Azure REST API version 2021-12-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-12-01-preview.
+ * Uses Azure REST API version 2021-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-12-01-preview.
  */
 export class Student extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class Student extends pulumi.CustomResource {
         return obj['__pulumiType'] === Student.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Student Budget
      */
@@ -140,6 +144,7 @@ export class Student extends pulumi.CustomResource {
             resourceInputs["studentAlias"] = args ? args.studentAlias : undefined;
             resourceInputs["subscriptionAlias"] = args ? args.subscriptionAlias : undefined;
             resourceInputs["subscriptionInviteLastSentDate"] = args ? args.subscriptionInviteLastSentDate : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["effectiveDate"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -147,6 +152,7 @@ export class Student extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["budget"] = undefined /*out*/;
             resourceInputs["effectiveDate"] = undefined /*out*/;
             resourceInputs["email"] = undefined /*out*/;

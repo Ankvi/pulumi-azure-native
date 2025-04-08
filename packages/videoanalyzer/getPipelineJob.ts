@@ -35,6 +35,10 @@ export interface GetPipelineJobArgs {
  */
 export interface GetPipelineJobResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * An optional description for the pipeline.
      */
     readonly description?: string;

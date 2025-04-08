@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Java Component.
  *
- * Uses Azure REST API version 2023-11-02-preview.
+ * Uses Azure REST API version 2024-10-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-11-02-preview.
  *
- * Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01.
+ * Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class JavaComponent extends pulumi.CustomResource {
     /**
@@ -36,25 +36,17 @@ export class JavaComponent extends pulumi.CustomResource {
     }
 
     /**
-     * Type of the Java Component.
+     * The Azure API version of the resource.
      */
-    public readonly componentType!: pulumi.Output<string | undefined>;
-    /**
-     * List of Java Components configuration properties
-     */
-    public readonly configurations!: pulumi.Output<types.outputs.JavaComponentConfigurationPropertyResponse[] | undefined>;
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The name of the resource
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Provisioning state of the Java Component.
+     * Java Component resource specific properties
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
-    /**
-     * List of Java Components that are bound to the Java component
-     */
-    public readonly serviceBinds!: pulumi.Output<types.outputs.JavaComponentServiceBindResponse[] | undefined>;
+    public readonly properties!: pulumi.Output<types.outputs.NacosComponentResponse | types.outputs.SpringBootAdminComponentResponse | types.outputs.SpringCloudConfigComponentResponse | types.outputs.SpringCloudEurekaComponentResponse | types.outputs.SpringCloudGatewayComponentResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -81,21 +73,17 @@ export class JavaComponent extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["componentType"] = args ? args.componentType : undefined;
-            resourceInputs["configurations"] = args ? args.configurations : undefined;
             resourceInputs["environmentName"] = args ? args.environmentName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["serviceBinds"] = args ? args.serviceBinds : undefined;
-            resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
-            resourceInputs["componentType"] = undefined /*out*/;
-            resourceInputs["configurations"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["provisioningState"] = undefined /*out*/;
-            resourceInputs["serviceBinds"] = undefined /*out*/;
+            resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
@@ -111,14 +99,6 @@ export class JavaComponent extends pulumi.CustomResource {
  */
 export interface JavaComponentArgs {
     /**
-     * Type of the Java Component.
-     */
-    componentType?: pulumi.Input<string | types.enums.JavaComponentType>;
-    /**
-     * List of Java Components configuration properties
-     */
-    configurations?: pulumi.Input<pulumi.Input<types.inputs.JavaComponentConfigurationPropertyArgs>[]>;
-    /**
      * Name of the Managed Environment.
      */
     environmentName: pulumi.Input<string>;
@@ -127,11 +107,11 @@ export interface JavaComponentArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * Java Component resource specific properties
+     */
+    properties?: pulumi.Input<types.inputs.NacosComponentArgs | types.inputs.SpringBootAdminComponentArgs | types.inputs.SpringCloudConfigComponentArgs | types.inputs.SpringCloudEurekaComponentArgs | types.inputs.SpringCloudGatewayComponentArgs>;
+    /**
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
-    /**
-     * List of Java Components that are bound to the Java component
-     */
-    serviceBinds?: pulumi.Input<pulumi.Input<types.inputs.JavaComponentServiceBindArgs>[]>;
 }

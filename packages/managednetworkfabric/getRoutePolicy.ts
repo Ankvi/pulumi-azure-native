@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Implements Route Policy GET method.
  *
- * Uses Azure REST API version 2023-02-01-preview.
+ * Uses Azure REST API version 2023-06-15.
  *
- * Other available API versions: 2023-06-15.
+ * Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getRoutePolicy(args: GetRoutePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRoutePolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -22,7 +22,7 @@ export interface GetRoutePolicyArgs {
      */
     resourceGroupName: string;
     /**
-     * Name of the Route Policy
+     * Name of the Route Policy.
      */
     routePolicyName: string;
 }
@@ -32,11 +32,31 @@ export interface GetRoutePolicyArgs {
  */
 export interface GetRoutePolicyResult {
     /**
+     * AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy.
+     */
+    readonly addressFamilyType?: string;
+    /**
+     * Administrative state of the resource.
+     */
+    readonly administrativeState: string;
+    /**
      * Switch configuration description.
      */
     readonly annotation?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * Configuration state of the resource.
+     */
+    readonly configurationState: string;
+    /**
+     * Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+     */
+    readonly defaultAction?: string;
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -48,7 +68,11 @@ export interface GetRoutePolicyResult {
      */
     readonly name: string;
     /**
-     * Gets the provisioning state of the resource.
+     * Arm Resource ID of Network Fabric.
+     */
+    readonly networkFabricId: string;
+    /**
+     * Provisioning state of the resource.
      */
     readonly provisioningState: string;
     /**
@@ -71,9 +95,9 @@ export interface GetRoutePolicyResult {
 /**
  * Implements Route Policy GET method.
  *
- * Uses Azure REST API version 2023-02-01-preview.
+ * Uses Azure REST API version 2023-06-15.
  *
- * Other available API versions: 2023-06-15.
+ * Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getRoutePolicyOutput(args: GetRoutePolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoutePolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -89,7 +113,7 @@ export interface GetRoutePolicyOutputArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * Name of the Route Policy
+     * Name of the Route Policy.
      */
     routePolicyName: pulumi.Input<string>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2021-07-01.
  *
- * Other available API versions: 2023-12-01-preview.
+ * Other available API versions: 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native solutions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listApplicationTokens(args: ListApplicationTokensArgs, opts?: pulumi.InvokeOptions): Promise<ListApplicationTokensResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -51,7 +51,7 @@ export interface ListApplicationTokensResult {
  *
  * Uses Azure REST API version 2021-07-01.
  *
- * Other available API versions: 2023-12-01-preview.
+ * Other available API versions: 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native solutions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listApplicationTokensOutput(args: ListApplicationTokensOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListApplicationTokensResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

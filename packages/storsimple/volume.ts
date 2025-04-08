@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * The volume.
  *
- * Uses Azure REST API version 2017-06-01. In version 1.x of the Azure Native provider, it used API version 2017-06-01.
+ * Uses Azure REST API version 2017-06-01. In version 2.x of the Azure Native provider, it used API version 2017-06-01.
  */
 export class Volume extends pulumi.CustomResource {
     /**
@@ -37,6 +37,10 @@ export class Volume extends pulumi.CustomResource {
      * The IDs of the access control records, associated with the volume.
      */
     public readonly accessControlRecordIds!: pulumi.Output<string[]>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The IDs of the backup policies, in which this volume is part of.
      */
@@ -131,6 +135,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["volumeName"] = args ? args.volumeName : undefined;
             resourceInputs["volumeStatus"] = args ? args.volumeStatus : undefined;
             resourceInputs["volumeType"] = args ? args.volumeType : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["backupPolicyIds"] = undefined /*out*/;
             resourceInputs["backupStatus"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -139,6 +144,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["volumeContainerId"] = undefined /*out*/;
         } else {
             resourceInputs["accessControlRecordIds"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["backupPolicyIds"] = undefined /*out*/;
             resourceInputs["backupStatus"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;

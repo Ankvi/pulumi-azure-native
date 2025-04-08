@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets information about the specified network slice.
  *
- * Uses Azure REST API version 2023-06-01.
+ * Uses Azure REST API version 2024-04-01.
  *
- * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
+ * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSlice(args: GetSliceArgs, opts?: pulumi.InvokeOptions): Promise<GetSliceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +36,10 @@ export interface GetSliceArgs {
  * Network slice resource. Must be created in the same location as its parent mobile network.
  */
 export interface GetSliceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * An optional description for this network slice.
      */
@@ -76,9 +80,9 @@ export interface GetSliceResult {
 /**
  * Gets information about the specified network slice.
  *
- * Uses Azure REST API version 2023-06-01.
+ * Uses Azure REST API version 2024-04-01.
  *
- * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
+ * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSliceOutput(args: GetSliceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSliceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

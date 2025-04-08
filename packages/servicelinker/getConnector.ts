@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Returns Connector resource for a given name.
  *
- * Uses Azure REST API version 2022-11-01-preview.
+ * Uses Azure REST API version 2024-04-01.
  *
- * Other available API versions: 2023-04-01-preview, 2024-04-01, 2024-07-01-preview.
+ * Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicelinker [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -44,7 +44,11 @@ export interface GetConnectorResult {
     /**
      * The authentication type.
      */
-    readonly authInfo?: types.outputs.AccessKeyInfoBaseResponse | types.outputs.SecretAuthInfoResponse | types.outputs.ServicePrincipalCertificateAuthInfoResponse | types.outputs.ServicePrincipalSecretAuthInfoResponse | types.outputs.SystemAssignedIdentityAuthInfoResponse | types.outputs.UserAccountAuthInfoResponse | types.outputs.UserAssignedIdentityAuthInfoResponse;
+    readonly authInfo?: types.outputs.AccessKeyInfoBaseResponse | types.outputs.EasyAuthMicrosoftEntraIDAuthInfoResponse | types.outputs.SecretAuthInfoResponse | types.outputs.ServicePrincipalCertificateAuthInfoResponse | types.outputs.ServicePrincipalSecretAuthInfoResponse | types.outputs.SystemAssignedIdentityAuthInfoResponse | types.outputs.UserAccountAuthInfoResponse | types.outputs.UserAssignedIdentityAuthInfoResponse;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The application client type
      */
@@ -97,9 +101,9 @@ export interface GetConnectorResult {
 /**
  * Returns Connector resource for a given name.
  *
- * Uses Azure REST API version 2022-11-01-preview.
+ * Uses Azure REST API version 2024-04-01.
  *
- * Other available API versions: 2023-04-01-preview, 2024-04-01, 2024-07-01-preview.
+ * Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicelinker [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -41,6 +41,3 @@ export interface CreateCIAMTenantPropertiesArgs {
      */
     displayName: pulumi.Input<string>;
 }
-
-
-

@@ -103,7 +103,7 @@ export interface EncryptionArgs {
     /**
      * Enumerates the possible value of keySource for Encryption
      */
-    keySource?: pulumi.Input<string | enums.KeySource>;
+    keySource?: pulumi.Input<enums.KeySource>;
     /**
      * Properties of KeyVault
      */
@@ -130,7 +130,7 @@ export interface IdentityArgs {
     /**
      * Type of managed service identity.
      */
-    type?: pulumi.Input<string | enums.ManagedServiceIdentityType>;
+    type?: pulumi.Input<enums.ManagedServiceIdentityType>;
     /**
      * Properties for User Assigned Identities
      */
@@ -244,17 +244,17 @@ export interface SBClientAffinePropertiesArgs {
  */
 export interface SBSkuArgs {
     /**
-     * The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.
+     * Messaging units for your service bus premium namespace. Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting. For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16. If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64
      */
     capacity?: pulumi.Input<number>;
     /**
      * Name of this SKU.
      */
-    name: pulumi.Input<string | enums.SkuName>;
+    name: pulumi.Input<enums.SkuName>;
     /**
      * The billing tier of this particular SKU.
      */
-    tier?: pulumi.Input<string | enums.SkuTier>;
+    tier?: pulumi.Input<enums.SkuTier>;
 }
 
 /**
@@ -300,6 +300,3 @@ export interface UserAssignedIdentityPropertiesArgs {
      */
     userAssignedIdentity?: pulumi.Input<string>;
 }
-
-
-

@@ -12,8 +12,6 @@ export const getCopilotSettingOutput: typeof import("./getCopilotSetting").getCo
 utilities.lazyLoad(exports, ["getCopilotSetting","getCopilotSettingOutput"], () => require("./getCopilotSetting"));
 
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Custom Locations definition.
  *
- * Uses Azure REST API version 2021-08-15. In version 1.x of the Azure Native provider, it used API version 2021-03-15-preview.
+ * Uses Azure REST API version 2021-08-31-preview. In version 2.x of the Azure Native provider, it used API version 2021-08-15.
  *
- * Other available API versions: 2021-08-31-preview.
+ * Other available API versions: 2021-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native extendedlocation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CustomLocation extends pulumi.CustomResource {
     /**
@@ -39,6 +39,10 @@ export class CustomLocation extends pulumi.CustomResource {
      * This is optional input that contains the authentication that should be used to generate the namespace.
      */
     public readonly authentication!: pulumi.Output<types.outputs.CustomLocationPropertiesResponseAuthentication | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Contains the reference to the add-on that contains charts to deploy CRDs and operators.
      */
@@ -114,11 +118,13 @@ export class CustomLocation extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceName"] = args ? args.resourceName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["authentication"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["clusterExtensionIds"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["hostResourceId"] = undefined /*out*/;

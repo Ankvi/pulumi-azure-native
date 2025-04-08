@@ -86,11 +86,6 @@ export type DevOpsConfiguration = import("./devOpsConfiguration").DevOpsConfigur
 export const DevOpsConfiguration: typeof import("./devOpsConfiguration").DevOpsConfiguration = null as any;
 utilities.lazyLoad(exports, ["DevOpsConfiguration"], () => require("./devOpsConfiguration"));
 
-export { DevOpsPolicyAssignmentArgs } from "./devOpsPolicyAssignment";
-export type DevOpsPolicyAssignment = import("./devOpsPolicyAssignment").DevOpsPolicyAssignment;
-export const DevOpsPolicyAssignment: typeof import("./devOpsPolicyAssignment").DevOpsPolicyAssignment = null as any;
-utilities.lazyLoad(exports, ["DevOpsPolicyAssignment"], () => require("./devOpsPolicyAssignment"));
-
 export { DeviceSecurityGroupArgs } from "./deviceSecurityGroup";
 export type DeviceSecurityGroup = import("./deviceSecurityGroup").DeviceSecurityGroup;
 export const DeviceSecurityGroup: typeof import("./deviceSecurityGroup").DeviceSecurityGroup = null as any;
@@ -180,11 +175,6 @@ export { GetDevOpsConfigurationArgs, GetDevOpsConfigurationResult, GetDevOpsConf
 export const getDevOpsConfiguration: typeof import("./getDevOpsConfiguration").getDevOpsConfiguration = null as any;
 export const getDevOpsConfigurationOutput: typeof import("./getDevOpsConfiguration").getDevOpsConfigurationOutput = null as any;
 utilities.lazyLoad(exports, ["getDevOpsConfiguration","getDevOpsConfigurationOutput"], () => require("./getDevOpsConfiguration"));
-
-export { GetDevOpsPolicyAssignmentArgs, GetDevOpsPolicyAssignmentResult, GetDevOpsPolicyAssignmentOutputArgs } from "./getDevOpsPolicyAssignment";
-export const getDevOpsPolicyAssignment: typeof import("./getDevOpsPolicyAssignment").getDevOpsPolicyAssignment = null as any;
-export const getDevOpsPolicyAssignmentOutput: typeof import("./getDevOpsPolicyAssignment").getDevOpsPolicyAssignmentOutput = null as any;
-utilities.lazyLoad(exports, ["getDevOpsPolicyAssignment","getDevOpsPolicyAssignmentOutput"], () => require("./getDevOpsPolicyAssignment"));
 
 export { GetDeviceSecurityGroupArgs, GetDeviceSecurityGroupResult, GetDeviceSecurityGroupOutputArgs } from "./getDeviceSecurityGroup";
 export const getDeviceSecurityGroup: typeof import("./getDeviceSecurityGroup").getDeviceSecurityGroup = null as any;
@@ -365,8 +355,6 @@ utilities.lazyLoad(exports, ["WorkspaceSetting"], () => require("./workspaceSett
 // Export enums:
 export * from "./types/enums";
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
@@ -405,8 +393,6 @@ const _module = {
                 return new DefenderForStorage(name, <any>undefined, { urn })
             case "azure-native:security:DevOpsConfiguration":
                 return new DevOpsConfiguration(name, <any>undefined, { urn })
-            case "azure-native:security:DevOpsPolicyAssignment":
-                return new DevOpsPolicyAssignment(name, <any>undefined, { urn })
             case "azure-native:security:DeviceSecurityGroup":
                 return new DeviceSecurityGroup(name, <any>undefined, { urn })
             case "azure-native:security:GovernanceAssignment":

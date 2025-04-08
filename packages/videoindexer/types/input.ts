@@ -15,20 +15,6 @@ export interface ManagedServiceIdentityArgs {
 }
 
 /**
- * The media services details
- */
-export interface MediaServicesForPutRequestArgs {
-    /**
-     * The media services resource id
-     */
-    resourceId?: pulumi.Input<string>;
-    /**
-     * The user assigned identity to be used to grant permissions
-     */
-    userAssignedIdentity?: pulumi.Input<string>;
-}
-
-/**
  * A collection of information about the state of the connection between service consumer and provider.
  */
 export interface PrivateLinkServiceConnectionStateArgs {
@@ -46,8 +32,16 @@ export interface PrivateLinkServiceConnectionStateArgs {
     status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
 }
 
-
-
-
-
-
+/**
+ * The storage services details
+ */
+export interface StorageServicesForPutRequestArgs {
+    /**
+     * The storage services resource id
+     */
+    resourceId?: pulumi.Input<string>;
+    /**
+     * The user assigned identity to be used to grant permissions
+     */
+    userAssignedIdentity?: pulumi.Input<string>;
+}

@@ -90,13 +90,3 @@ export interface DomainPurchaseConsentArgs {
      */
     agreementKeys?: pulumi.Input<pulumi.Input<string>[]>;
 }
-
-
-
-
-
-
-
-
-
-

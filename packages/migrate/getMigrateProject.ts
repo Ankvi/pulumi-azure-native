@@ -30,6 +30,10 @@ export interface GetMigrateProjectArgs {
  */
 export interface GetMigrateProjectResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Gets or sets the eTag for concurrency control.
      */
     readonly eTag?: string;

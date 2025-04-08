@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get a draft Firewall Policy.
  *
- * Uses Azure REST API version 2023-11-01.
+ * Uses Azure REST API version 2024-05-01.
  *
- * Other available API versions: 2024-01-01, 2024-03-01, 2024-05-01.
+ * Other available API versions: 2023-11-01, 2024-01-01, 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getFirewallPolicyDraft(args: GetFirewallPolicyDraftArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallPolicyDraftResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +31,10 @@ export interface GetFirewallPolicyDraftArgs {
  * FirewallPolicy Resource.
  */
 export interface GetFirewallPolicyDraftResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The parent firewall policy from which rules are inherited.
      */
@@ -91,9 +95,9 @@ export interface GetFirewallPolicyDraftResult {
 /**
  * Get a draft Firewall Policy.
  *
- * Uses Azure REST API version 2023-11-01.
+ * Uses Azure REST API version 2024-05-01.
  *
- * Other available API versions: 2024-01-01, 2024-03-01, 2024-05-01.
+ * Other available API versions: 2023-11-01, 2024-01-01, 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getFirewallPolicyDraftOutput(args: GetFirewallPolicyDraftOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFirewallPolicyDraftResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * An object that represents a connected registry for a container registry.
  *
- * Uses Azure REST API version 2023-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-11-01-preview.
+ * Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+ * Other available API versions: 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-01-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ConnectedRegistry extends pulumi.CustomResource {
     /**
@@ -40,6 +40,10 @@ export class ConnectedRegistry extends pulumi.CustomResource {
      */
     public /*out*/ readonly activation!: pulumi.Output<types.outputs.ActivationPropertiesResponse>;
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The list of the ACR token resource IDs used to authenticate clients to the connected registry.
      */
     public readonly clientTokenIds!: pulumi.Output<string[] | undefined>;
@@ -47,6 +51,10 @@ export class ConnectedRegistry extends pulumi.CustomResource {
      * The current connection state of the connected registry.
      */
     public /*out*/ readonly connectionState!: pulumi.Output<string>;
+    /**
+     * The garbage collection properties of the connected registry.
+     */
+    public readonly garbageCollection!: pulumi.Output<types.outputs.GarbageCollectionPropertiesResponse | undefined>;
     /**
      * The last activity time of the connected registry.
      */
@@ -121,6 +129,7 @@ export class ConnectedRegistry extends pulumi.CustomResource {
             }
             resourceInputs["clientTokenIds"] = args ? args.clientTokenIds : undefined;
             resourceInputs["connectedRegistryName"] = args ? args.connectedRegistryName : undefined;
+            resourceInputs["garbageCollection"] = args ? args.garbageCollection : undefined;
             resourceInputs["logging"] = args ? (args.logging ? pulumi.output(args.logging).apply(types.inputs.loggingPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["notificationsList"] = args ? args.notificationsList : undefined;
@@ -128,6 +137,7 @@ export class ConnectedRegistry extends pulumi.CustomResource {
             resourceInputs["registryName"] = args ? args.registryName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["activation"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["connectionState"] = undefined /*out*/;
             resourceInputs["lastActivityTime"] = undefined /*out*/;
             resourceInputs["loginServer"] = undefined /*out*/;
@@ -139,8 +149,10 @@ export class ConnectedRegistry extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         } else {
             resourceInputs["activation"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["clientTokenIds"] = undefined /*out*/;
             resourceInputs["connectionState"] = undefined /*out*/;
+            resourceInputs["garbageCollection"] = undefined /*out*/;
             resourceInputs["lastActivityTime"] = undefined /*out*/;
             resourceInputs["logging"] = undefined /*out*/;
             resourceInputs["loginServer"] = undefined /*out*/;
@@ -173,6 +185,10 @@ export interface ConnectedRegistryArgs {
      * The name of the connected registry.
      */
     connectedRegistryName?: pulumi.Input<string>;
+    /**
+     * The garbage collection properties of the connected registry.
+     */
+    garbageCollection?: pulumi.Input<types.inputs.GarbageCollectionPropertiesArgs>;
     /**
      * The logging properties of the connected registry.
      */

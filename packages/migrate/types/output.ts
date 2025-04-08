@@ -557,11 +557,139 @@ export interface AvailabilitySetResourceSettingsResponse {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: string;
+    targetResourceName?: string;
     /**
      * Gets or sets the target update domain.
      */
     updateDomain?: number;
+}
+
+/**
+ * Details on the Estimated External Storage for AVS Assessment.
+ */
+export interface AvsEstimatedExternalStorageResponse {
+    /**
+     * Total monthly cost for type of storage.
+     */
+    monthlyPrice?: number;
+    /**
+     * Recommended External Storage.
+     */
+    storageType?: string;
+    /**
+     * Predicted storage utilization.
+     */
+    storageUtilization?: number;
+    /**
+     * Predicted total Storage used in GB.
+     */
+    totalStorageInGB?: number;
+}
+
+/**
+ * Details on the Estimated Network Costs for AVS Assessment.
+ */
+export interface AvsEstimatedNetworkResponse {
+    /**
+     * Monthly cost for network type.
+     */
+    monthlyPrice?: number;
+    /**
+     * Recommended Network Sku.
+     */
+    networkType?: string;
+}
+
+/**
+ * Details on the Estimated nodes for AVS Assessment.
+ */
+export interface AvsEstimatedNodeResponse {
+    /**
+     * Predicted CPU utilization.
+     */
+    cpuUtilization?: number;
+    /**
+     * FttRaidLevel recommended for Node.
+     */
+    fttRaidLevel?: string;
+    /**
+     * Total monthly cost for type and number of nodes.
+     */
+    monthlyPrice?: number;
+    /**
+     * Number of nodes that will be needed.
+     */
+    nodeNumber?: number;
+    /**
+     * Recommended SKU.
+     */
+    nodeType?: string;
+    /**
+     * Pricing model indicates what hour multiplier to use while estimating the Nodes cost.
+     */
+    pricingModel?: string;
+    /**
+     * Predicted RAM utilization.
+     */
+    ramUtilization?: number;
+    /**
+     * Predicted storage utilization.
+     */
+    storageUtilization?: number;
+    /**
+     * Predicted total CPU cores across the set of nodes.
+     */
+    totalCpu?: number;
+    /**
+     * Predicted total RAM used in GB.
+     */
+    totalRam?: number;
+    /**
+     * Predicted total Storage used in GB.
+     */
+    totalStorage?: number;
+}
+
+/**
+ * Azure Arc Management settings.
+ */
+export interface AzureArcManagementSettingsResponse {
+    /**
+     * Gets the azure arc monitoring settings.
+     */
+    monitoringSettings: AzureArcMonitoringSettingsResponse;
+}
+
+/**
+ * Azure Arc Monitoring settings.
+ */
+export interface AzureArcMonitoringSettingsResponse {
+    /**
+     * Number of alert rules settings.
+     */
+    alertRulesCount: number;
+    /**
+     * Logs volume settings.
+     */
+    logsVolumeInGB: number;
+}
+
+/**
+ * Azure arc settings for a business case.
+ */
+export interface AzureArcSettingsResponse {
+    /**
+     * AzureArc state indicates whether to include azure arc related costs in on-premises or not.
+     */
+    azureArcState: string;
+    /**
+     * Gets Azure arc labour cost percentage.
+     */
+    laborCostPercentage?: number;
+    /**
+     * Management settings.
+     */
+    managementSettings?: AzureArcManagementSettingsResponse;
 }
 
 /**
@@ -1060,7 +1188,7 @@ export interface DiskEncryptionSetResourceSettingsResponse {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: string;
+    targetResourceName?: string;
 }
 
 /**
@@ -1084,7 +1212,7 @@ export interface FacilitySettingsResponse {
     /**
      * The facilities cost.
      */
-    facilitiesCost: number;
+    facilitiesCostPerKwh?: number;
 }
 
 /**
@@ -1136,19 +1264,6 @@ export interface GmsaAuthenticationPropertiesResponse {
      * Gets or sets username of the user having authorization to access GMSA on Active Directory.
      */
     gmsaUsername?: string;
-}
-
-/**
- * Defines Private link service group connectivity.
- */
-export interface GroupConnectivityInformationResponse {
-    customerVisibleFqdns?: string[];
-    groupId?: string;
-    id?: string;
-    internalFqdn?: string;
-    memberName?: string;
-    privateLinkServiceArmRegion?: string;
-    redirectMapId?: string;
 }
 
 /**
@@ -1680,17 +1795,6 @@ export interface InnerHealthErrorModelResponse {
 }
 
 /**
- * Defines Private link IP configuration.
- */
-export interface IpConfigurationResponse {
-    groupId?: string;
-    id?: string;
-    linkIdentifier?: string;
-    memberName?: string;
-    privateIpAddress?: string;
-}
-
-/**
  * Defines the job status.
  */
 export interface JobStatusResponse {
@@ -1720,7 +1824,7 @@ export interface KeyVaultResourceSettingsResponse {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: string;
+    targetResourceName?: string;
 }
 
 export interface KeyVaultSecretStorePropertiesResponse {
@@ -1858,7 +1962,7 @@ export interface LoadBalancerResourceSettingsResponse {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: string;
+    targetResourceName?: string;
     /**
      * Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
      *  precedence only if frontend IP configurations settings are not present.
@@ -1891,10 +1995,6 @@ export interface ManagementSettingsResponse {
      * Third Party Management Settings.
      */
     thirdPartyManagementSettings: ThirdPartyManagementSettingsResponse;
-    /**
-     * vSphere Management Settings.
-     */
-    vsphereManagementSettings: VsphereManagementSettingsResponse;
 }
 
 /**
@@ -2109,17 +2209,25 @@ export interface MoveCollectionPropertiesResponse {
      */
     errors: MoveCollectionPropertiesResponseErrors;
     /**
+     * Gets or sets the move region which indicates the region where the VM Regional to Zonal move will be conducted.
+     */
+    moveRegion?: string;
+    /**
+     * Defines the MoveType.
+     */
+    moveType?: string;
+    /**
      * Defines the provisioning states.
      */
     provisioningState: string;
     /**
      * Gets or sets the source region.
      */
-    sourceRegion: string;
+    sourceRegion?: string;
     /**
      * Gets or sets the target region.
      */
-    targetRegion: string;
+    targetRegion?: string;
     /**
      * Gets or sets the version of move collection.
      */
@@ -2323,7 +2431,7 @@ export interface NetworkInterfaceResourceSettingsResponse {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: string;
+    targetResourceName?: string;
 }
 
 /**
@@ -2350,7 +2458,7 @@ export interface NetworkSecurityGroupResourceSettingsResponse {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: string;
+    targetResourceName?: string;
 }
 
 /**
@@ -2586,17 +2694,6 @@ export interface PrivateEndpointConnectionPropertiesResponse {
 }
 
 /**
- * Properties of a private endpoint connection proxy.
- */
-export interface PrivateEndpointConnectionProxyPropertiesResponse {
-    /**
-     * Defines Private endpoint additional details.
-     */
-    remotePrivateEndpoint: PrivateEndpointDetailsResponse;
-    status: string;
-}
-
-/**
  * A private endpoint connection for a project.
  */
 export interface PrivateEndpointConnectionResponse {
@@ -2643,17 +2740,6 @@ export interface PrivateEndpointConnectionResponse {
 }
 
 /**
- * Defines Private endpoint additional details.
- */
-export interface PrivateEndpointDetailsResponse {
-    connectionDetails?: IpConfigurationResponse[];
-    id?: string;
-    manualPrivateLinkServiceConnections?: PrivateLinkServiceConnectionResponse[];
-    privateLinkServiceConnections?: PrivateLinkServiceConnectionResponse[];
-    privateLinkServiceProxies?: PrivateLinkServiceProxyResponse[];
-}
-
-/**
  * The private endpoint resource.
  */
 export interface PrivateEndpointResponse {
@@ -2661,16 +2747,6 @@ export interface PrivateEndpointResponse {
      * The ARM identifier for private endpoint.
      */
     id: string;
-}
-
-/**
- * Defines Private link service connection.
- */
-export interface PrivateLinkServiceConnectionResponse {
-    groupIds?: string[];
-    id?: string;
-    name?: string;
-    requestMessage?: string;
 }
 
 /**
@@ -2689,22 +2765,6 @@ export interface PrivateLinkServiceConnectionStateResponse {
      * Connection status of the private endpoint connection.
      */
     status?: string;
-}
-
-/**
- * Defines Private link service proxy.
- */
-export interface PrivateLinkServiceProxyResponse {
-    groupConnectivityInformation?: GroupConnectivityInformationResponse[];
-    id?: string;
-    /**
-     * Defines resource ID of a private endpoint connection.
-     */
-    remotePrivateEndpointConnection?: ResourceIdResponse;
-    /**
-     * Private endpoint connection state.
-     */
-    remotePrivateLinkServiceConnectionState?: PrivateLinkServiceConnectionStateResponse;
 }
 
 /**
@@ -2831,7 +2891,7 @@ export interface PublicIPAddressResourceSettingsResponse {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: string;
+    targetResourceName?: string;
     /**
      * Gets or sets public IP zones.
      */
@@ -2878,7 +2938,7 @@ export interface ResourceGroupResourceSettingsResponse {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: string;
+    targetResourceName?: string;
 }
 
 /**
@@ -3012,6 +3072,10 @@ export interface ServersSolutionSummaryResponse {
  */
 export interface SettingsResponse {
     /**
+     * Azure arc settings.
+     */
+    azureArcSettings?: AzureArcSettingsResponse;
+    /**
      * Azure settings for a business case.
      */
     azureSettings: AzureSettingsResponse;
@@ -3075,21 +3139,11 @@ export interface SolutionPropertiesResponse {
     /**
      * Gets or sets the summary of the solution.
      */
-    summary?: DatabasesSolutionSummaryResponse | ServersSolutionSummaryResponse | SolutionSummaryResponse;
+    summary?: DatabasesSolutionSummaryResponse | ServersSolutionSummaryResponse;
     /**
      * Gets or sets the tool being used in the solution.
      */
     tool?: string;
-}
-
-/**
- * The solution summary class.
- */
-export interface SolutionSummaryResponse {
-    /**
-     * Gets the Instance type.
-     */
-    instanceType: string;
 }
 
 /**
@@ -3112,7 +3166,7 @@ export interface SqlDatabaseResourceSettingsResponse {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: string;
+    targetResourceName?: string;
     /**
      * Defines the zone redundant resource setting.
      */
@@ -3161,7 +3215,7 @@ export interface SqlElasticPoolResourceSettingsResponse {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: string;
+    targetResourceName?: string;
     /**
      * Defines the zone redundant resource setting.
      */
@@ -3216,7 +3270,7 @@ export interface SqlServerResourceSettingsResponse {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: string;
+    targetResourceName?: string;
 }
 
 /**
@@ -3412,7 +3466,7 @@ export interface VirtualMachineResourceSettingsResponse {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: string;
+    targetResourceName?: string;
     /**
      * Gets or sets the target virtual machine size.
      */
@@ -3461,7 +3515,7 @@ export interface VirtualNetworkResourceSettingsResponse {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: string;
+    targetResourceName?: string;
 }
 
 /**
@@ -3469,17 +3523,9 @@ export interface VirtualNetworkResourceSettingsResponse {
  */
 export interface VirtualizationSoftwareSettingsResponse {
     /**
-     * Licence and support list.
+     * VMware cloud foundation license cost.
      */
-    licenseAndSupportList: VsphereLicenseResponse[];
-    /**
-     * Number of physical cores per licence.
-     */
-    numberOfPhysicalCoresPerLicense: number;
-    /**
-     * Software Assurance cost.
-     */
-    softwareAssuranceCost: number;
+    vMwareCloudFoundationLicenseCost: number;
 }
 
 /**
@@ -3494,60 +3540,6 @@ export interface VmUptimeResponse {
      * Number of hours per day for VM uptime.
      */
     hoursPerDay?: number;
-}
-
-/**
- * Representation of a vsphere licence.
- */
-export interface VsphereLicenseResponse {
-    /**
-     * Basic support cost.
-     */
-    basicSupportCost: number;
-    /**
-     * Cost of a licence.
-     */
-    licenseCost: number;
-    /**
-     * VSphere licence type.
-     */
-    licenseType: string;
-    /**
-     * Production support cost.
-     */
-    productionSupportCost: number;
-}
-
-/**
- * Representation of a vsphere management licence.
- */
-export interface VsphereManagementLicenseResponse {
-    /**
-     * Basic support cost.
-     */
-    basicSupportCost: number;
-    /**
-     * Cost of a licence.
-     */
-    licenseCost: number;
-    /**
-     * VSphere licence type.
-     */
-    licenseType: string;
-    /**
-     * Production support cost.
-     */
-    productionSupportCost: number;
-}
-
-/**
- * Vsphere management settings.
- */
-export interface VsphereManagementSettingsResponse {
-    /**
-     * Licence and support list.
-     */
-    licenseAndSupportList: VsphereManagementLicenseResponse[];
 }
 
 /**
@@ -3914,14 +3906,3 @@ export interface WorkloadInstanceModelResponseSystemData {
      */
     lastModifiedByType?: string;
 }
-
-
-
-
-
-
-
-
-
-
-

@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Security Standard on a resource
  *
- * Uses Azure REST API version 2021-08-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-08-01-preview.
+ * Uses Azure REST API version 2021-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-08-01-preview.
  */
 export class Standard extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class Standard extends pulumi.CustomResource {
         return obj['__pulumiType'] === Standard.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * category of the standard provided
      */
@@ -110,12 +114,14 @@ export class Standard extends pulumi.CustomResource {
             resourceInputs["standardId"] = args ? args.standardId : undefined;
             resourceInputs["supportedClouds"] = args ? args.supportedClouds : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["standardType"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["category"] = undefined /*out*/;
             resourceInputs["components"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;

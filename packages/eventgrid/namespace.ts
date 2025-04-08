@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Namespace resource.
  *
- * Uses Azure REST API version 2023-06-01-preview.
+ * Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
  *
- * Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+ * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Namespace extends pulumi.CustomResource {
     /**
@@ -36,6 +36,10 @@ export class Namespace extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Identity information for the Namespace resource.
      */
     public readonly identity!: pulumi.Output<types.outputs.IdentityInfoResponse | undefined>;
@@ -44,7 +48,10 @@ export class Namespace extends pulumi.CustomResource {
      */
     public readonly inboundIpRules!: pulumi.Output<types.outputs.InboundIpRuleResponse[] | undefined>;
     /**
-     * Allows the user to specify if the service is zone-redundant. This is a required property and user needs to specify this value explicitly.
+     * This is an optional property and it allows the user to specify if the namespace resource supports zone-redundancy capability or not. If this
+     * property is not specified explicitly by the user, its default value depends on the following conditions:
+     *     a. For Availability Zones enabled regions - The default property value would be true.
+     *     b. For non-Availability Zones enabled regions - The default property value would be false.
      * Once specified, this property cannot be updated.
      */
     public readonly isZoneRedundant!: pulumi.Output<boolean | undefined>;
@@ -60,6 +67,9 @@ export class Namespace extends pulumi.CustomResource {
      * Name of the resource.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * List of private endpoint connections.
+     */
     public readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[] | undefined>;
     /**
      * Provisioning state of the namespace resource.
@@ -75,7 +85,7 @@ export class Namespace extends pulumi.CustomResource {
      */
     public readonly sku!: pulumi.Output<types.outputs.NamespaceSkuResponse | undefined>;
     /**
-     * The system metadata relating to the namespace resource.
+     * The system metadata relating to the Event Grid resource.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -89,7 +99,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Topics configuration information for the namespace resource
      */
-    public /*out*/ readonly topicsConfiguration!: pulumi.Output<types.outputs.TopicsConfigurationResponse | undefined>;
+    public readonly topicsConfiguration!: pulumi.Output<types.outputs.TopicsConfigurationResponse | undefined>;
     /**
      * Type of the resource.
      */
@@ -121,12 +131,14 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["topicSpacesConfiguration"] = args ? (args.topicSpacesConfiguration ? pulumi.output(args.topicSpacesConfiguration).apply(types.inputs.topicSpacesConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["topicsConfiguration"] = args ? args.topicsConfiguration : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
-            resourceInputs["topicsConfiguration"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["inboundIpRules"] = undefined /*out*/;
             resourceInputs["isZoneRedundant"] = undefined /*out*/;
@@ -163,7 +175,10 @@ export interface NamespaceArgs {
      */
     inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.InboundIpRuleArgs>[]>;
     /**
-     * Allows the user to specify if the service is zone-redundant. This is a required property and user needs to specify this value explicitly.
+     * This is an optional property and it allows the user to specify if the namespace resource supports zone-redundancy capability or not. If this
+     * property is not specified explicitly by the user, its default value depends on the following conditions:
+     *     a. For Availability Zones enabled regions - The default property value would be true.
+     *     b. For non-Availability Zones enabled regions - The default property value would be false.
      * Once specified, this property cannot be updated.
      */
     isZoneRedundant?: pulumi.Input<boolean>;
@@ -179,6 +194,9 @@ export interface NamespaceArgs {
      * Name of the namespace.
      */
     namespaceName?: pulumi.Input<string>;
+    /**
+     * List of private endpoint connections.
+     */
     privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
     /**
      * This determines if traffic is allowed over public network. By default it is enabled.
@@ -201,4 +219,8 @@ export interface NamespaceArgs {
      * Topic spaces configuration information for the namespace resource
      */
     topicSpacesConfiguration?: pulumi.Input<types.inputs.TopicSpacesConfigurationArgs>;
+    /**
+     * Topics configuration information for the namespace resource
+     */
+    topicsConfiguration?: pulumi.Input<types.inputs.TopicsConfigurationArgs>;
 }

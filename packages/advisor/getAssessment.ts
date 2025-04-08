@@ -29,6 +29,10 @@ export interface GetAssessmentResult {
      */
     readonly assessmentId: string;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Assessment Type Description.
      */
     readonly description: string;

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get a Employee
  *
- * Uses Azure REST API version 2021-10-01-preview.
+ * Uses Azure REST API version 2021-11-01.
  *
- * Other available API versions: 2021-11-01.
+ * Other available API versions: 2021-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native contoso [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getEmployee(args: GetEmployeeArgs, opts?: pulumi.InvokeOptions): Promise<GetEmployeeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +31,10 @@ export interface GetEmployeeArgs {
  * Employee resource
  */
 export interface GetEmployeeResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -63,9 +67,9 @@ export interface GetEmployeeResult {
 /**
  * Get a Employee
  *
- * Uses Azure REST API version 2021-10-01-preview.
+ * Uses Azure REST API version 2021-11-01.
  *
- * Other available API versions: 2021-11-01.
+ * Other available API versions: 2021-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native contoso [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getEmployeeOutput(args: GetEmployeeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmployeeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -93,6 +93,28 @@ export interface AccessReviewInstanceResponse {
 }
 
 /**
+ * Recurrence Range of an Access Review Schedule Definition.
+ */
+export interface AccessReviewRecurrenceRangeResponse {
+    /**
+     * The DateTime when the review is scheduled to end. Required if type is endDate
+     */
+    endDate?: string;
+    /**
+     * The number of times to repeat the access review. Required and must be positive if type is numbered.
+     */
+    numberOfOccurrences?: number;
+    /**
+     * The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
+     */
+    startDate?: string;
+    /**
+     * The recurrence range type. The possible values are: endDate, noEnd, numbered.
+     */
+    type?: string;
+}
+
+/**
  * Descriptor for what needs to be reviewed
  */
 export interface AccessReviewReviewerResponse {
@@ -1157,21 +1179,3 @@ export interface UsersOrServicePrincipalSetResponse {
      */
     type?: string;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

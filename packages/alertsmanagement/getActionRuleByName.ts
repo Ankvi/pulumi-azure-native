@@ -30,6 +30,10 @@ export interface GetActionRuleByNameArgs {
  */
 export interface GetActionRuleByNameResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Azure resource Id
      */
     readonly id: string;

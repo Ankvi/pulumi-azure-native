@@ -266,4 +266,3 @@ export interface ServiceBusArgs {
      */
     secondaryConnectionString?: pulumi.Input<string>;
 }
-

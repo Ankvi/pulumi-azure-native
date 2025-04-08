@@ -3,9 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the download URL of the test result.
  *
- * Uses Azure REST API version 2022-04-01-preview.
+ * Uses Azure REST API version 2023-11-01-preview.
  *
- * Other available API versions: 2023-11-01-preview.
+ * Other available API versions: 2022-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native testbase [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getTestResultDownloadURL(args: GetTestResultDownloadURLArgs, opts?: pulumi.InvokeOptions): Promise<GetTestResultDownloadURLResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -23,7 +23,7 @@ export interface GetTestResultDownloadURLArgs {
      */
     packageName: string;
     /**
-     * The name of the resource group that contains the resource.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
@@ -52,9 +52,9 @@ export interface GetTestResultDownloadURLResult {
 /**
  * Gets the download URL of the test result.
  *
- * Uses Azure REST API version 2022-04-01-preview.
+ * Uses Azure REST API version 2023-11-01-preview.
  *
- * Other available API versions: 2023-11-01-preview.
+ * Other available API versions: 2022-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native testbase [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getTestResultDownloadURLOutput(args: GetTestResultDownloadURLOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTestResultDownloadURLResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -72,7 +72,7 @@ export interface GetTestResultDownloadURLOutputArgs {
      */
     packageName: pulumi.Input<string>;
     /**
-     * The name of the resource group that contains the resource.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

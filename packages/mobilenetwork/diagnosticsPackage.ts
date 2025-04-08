@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Diagnostics package resource.
  *
- * Uses Azure REST API version 2023-06-01.
+ * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01.
  *
- * Other available API versions: 2023-09-01, 2024-02-01, 2024-04-01.
+ * Other available API versions: 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DiagnosticsPackage extends pulumi.CustomResource {
     /**
@@ -35,6 +35,10 @@ export class DiagnosticsPackage extends pulumi.CustomResource {
         return obj['__pulumiType'] === DiagnosticsPackage.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The name of the resource
      */
@@ -80,6 +84,7 @@ export class DiagnosticsPackage extends pulumi.CustomResource {
             resourceInputs["diagnosticsPackageName"] = args ? args.diagnosticsPackageName : undefined;
             resourceInputs["packetCoreControlPlaneName"] = args ? args.packetCoreControlPlaneName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["reason"] = undefined /*out*/;
@@ -87,6 +92,7 @@ export class DiagnosticsPackage extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["reason"] = undefined /*out*/;

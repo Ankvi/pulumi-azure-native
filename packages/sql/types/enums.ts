@@ -7,6 +7,27 @@ export const AdministratorType = {
  */
 export type AdministratorType = (typeof AdministratorType)[keyof typeof AdministratorType];
 
+export const AlwaysEncryptedEnclaveType = {
+    Default: "Default",
+    VBS: "VBS",
+} as const;
+
+/**
+ * Type of enclave requested on the elastic pool.
+ */
+export type AlwaysEncryptedEnclaveType = (typeof AlwaysEncryptedEnclaveType)[keyof typeof AlwaysEncryptedEnclaveType];
+
+export const AuthMetadataLookupModes = {
+    AzureAD: "AzureAD",
+    Paired: "Paired",
+    Windows: "Windows",
+} as const;
+
+/**
+ * The managed instance's authentication metadata lookup mode.
+ */
+export type AuthMetadataLookupModes = (typeof AuthMetadataLookupModes)[keyof typeof AuthMetadataLookupModes];
+
 export const AutoExecuteStatus = {
     Enabled: "Enabled",
     Disabled: "Disabled",
@@ -17,6 +38,28 @@ export const AutoExecuteStatus = {
  * Gets the auto-execute status (whether to let the system execute the recommendations) of this advisor. Possible values are 'Enabled' and 'Disabled'
  */
 export type AutoExecuteStatus = (typeof AutoExecuteStatus)[keyof typeof AutoExecuteStatus];
+
+export const AvailabilityZoneType = {
+    NoPreference: "NoPreference",
+    One: "1",
+    Two: "2",
+    Three: "3",
+} as const;
+
+/**
+ * Specifies the availability zone the pool's primary replica is pinned to.
+ */
+export type AvailabilityZoneType = (typeof AvailabilityZoneType)[keyof typeof AvailabilityZoneType];
+
+export const BackupStorageAccessTier = {
+    Hot: "Hot",
+    Archive: "Archive",
+} as const;
+
+/**
+ * The BackupStorageAccessTier for the LTR backups
+ */
+export type BackupStorageAccessTier = (typeof BackupStorageAccessTier)[keyof typeof BackupStorageAccessTier];
 
 export const BackupStorageRedundancy = {
     Geo: "Geo",
@@ -49,6 +92,15 @@ export const CatalogCollationType = {
  * Collation of the metadata catalog.
  */
 export type CatalogCollationType = (typeof CatalogCollationType)[keyof typeof CatalogCollationType];
+
+export const ClientClassificationSource = {
+    None: "None",
+    Native: "Native",
+    Recommended: "Recommended",
+    MIP: "MIP",
+} as const;
+
+export type ClientClassificationSource = (typeof ClientClassificationSource)[keyof typeof ClientClassificationSource];
 
 export const CreateMode = {
     Default: "Default",
@@ -149,6 +201,40 @@ export const ElasticPoolLicenseType = {
  */
 export type ElasticPoolLicenseType = (typeof ElasticPoolLicenseType)[keyof typeof ElasticPoolLicenseType];
 
+export const FailoverGroupDatabasesSecondaryType = {
+    Geo: "Geo",
+    Standby: "Standby",
+} as const;
+
+/**
+ * Databases secondary type on partner server.
+ */
+export type FailoverGroupDatabasesSecondaryType = (typeof FailoverGroupDatabasesSecondaryType)[keyof typeof FailoverGroupDatabasesSecondaryType];
+
+export const FailoverModeType = {
+    None: "None",
+    Manual: "Manual",
+} as const;
+
+/**
+ * The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure.
+ */
+export type FailoverModeType = (typeof FailoverModeType)[keyof typeof FailoverModeType];
+
+export const FreeLimitExhaustionBehavior = {
+    AutoPause: "AutoPause",
+    BillOverUsage: "BillOverUsage",
+} as const;
+
+/**
+ * Specifies the behavior when monthly free limits are exhausted for the free database.
+ * 
+ * AutoPause: The database will be auto paused upon exhaustion of free limits for remainder of the month.
+ * 
+ * BillForUsage: The database will continue to be online upon exhaustion of free limits and any overage will be billed.
+ */
+export type FreeLimitExhaustionBehavior = (typeof FreeLimitExhaustionBehavior)[keyof typeof FreeLimitExhaustionBehavior];
+
 export const GeoBackupPolicyState = {
     Enabled: "Enabled",
     Disabled: "Disabled",
@@ -158,6 +244,16 @@ export const GeoBackupPolicyState = {
  * The state of the geo backup policy.
  */
 export type GeoBackupPolicyState = (typeof GeoBackupPolicyState)[keyof typeof GeoBackupPolicyState];
+
+export const HybridSecondaryUsage = {
+    Active: "Active",
+    Passive: "Passive",
+} as const;
+
+/**
+ * Hybrid secondary usage. Possible values are 'Active' (default value) and 'Passive' (customer uses the secondary as Passive DR).
+ */
+export type HybridSecondaryUsage = (typeof HybridSecondaryUsage)[keyof typeof HybridSecondaryUsage];
 
 export const IdentityType = {
     None: "None",
@@ -180,6 +276,18 @@ export const InstancePoolLicenseType = {
  * The license type. Possible values are 'LicenseIncluded' (price for SQL license is included) and 'BasePrice' (without SQL license price).
  */
 export type InstancePoolLicenseType = (typeof InstancePoolLicenseType)[keyof typeof InstancePoolLicenseType];
+
+export const JobAgentIdentityType = {
+    None: "None",
+    SystemAssigned: "SystemAssigned",
+    UserAssigned: "UserAssigned",
+    SystemAssignedUserAssigned: "SystemAssignedUserAssigned",
+} as const;
+
+/**
+ * The job agent identity type
+ */
+export type JobAgentIdentityType = (typeof JobAgentIdentityType)[keyof typeof JobAgentIdentityType];
 
 export const JobScheduleType = {
     Once: "Once",
@@ -241,6 +349,16 @@ export const JobTargetType = {
  */
 export type JobTargetType = (typeof JobTargetType)[keyof typeof JobTargetType];
 
+export const LinkRole = {
+    Primary: "Primary",
+    Secondary: "Secondary",
+} as const;
+
+/**
+ * Managed instance side link role
+ */
+export type LinkRole = (typeof LinkRole)[keyof typeof LinkRole];
+
 export const ManagedDatabaseCreateMode = {
     Default: "Default",
     RestoreExternalBackup: "RestoreExternalBackup",
@@ -262,6 +380,16 @@ export const ManagedInstanceAdministratorType = {
  * Type of the managed instance administrator.
  */
 export type ManagedInstanceAdministratorType = (typeof ManagedInstanceAdministratorType)[keyof typeof ManagedInstanceAdministratorType];
+
+export const ManagedInstanceDatabaseFormat = {
+    AlwaysUpToDate: "AlwaysUpToDate",
+    SQLServer2022: "SQLServer2022",
+} as const;
+
+/**
+ * Specifies the internal format of instance databases specific to the SQL engine version.
+ */
+export type ManagedInstanceDatabaseFormat = (typeof ManagedInstanceDatabaseFormat)[keyof typeof ManagedInstanceDatabaseFormat];
 
 export const ManagedInstanceLicenseType = {
     LicenseIncluded: "LicenseIncluded",
@@ -297,6 +425,29 @@ export const ManagedServerCreateMode = {
  * Restore: Creates an instance by restoring a set of backups to specific point in time. RestorePointInTime and SourceManagedInstanceId must be specified.
  */
 export type ManagedServerCreateMode = (typeof ManagedServerCreateMode)[keyof typeof ManagedServerCreateMode];
+
+export const MinimalTlsVersion = {
+    None: "None",
+    MinimalTlsVersion_1_0: "1.0",
+    MinimalTlsVersion_1_1: "1.1",
+    MinimalTlsVersion_1_2: "1.2",
+    MinimalTlsVersion_1_3: "1.3",
+} as const;
+
+/**
+ * Minimal TLS version. Allowed values: 'None', 1.0', '1.1', '1.2', '1.3'
+ */
+export type MinimalTlsVersion = (typeof MinimalTlsVersion)[keyof typeof MinimalTlsVersion];
+
+export const PricingModel = {
+    Regular: "Regular",
+    Freemium: "Freemium",
+} as const;
+
+/**
+ * Pricing model of Managed Instance.
+ */
+export type PricingModel = (typeof PricingModel)[keyof typeof PricingModel];
 
 export const PrincipalType = {
     User: "User",
@@ -352,15 +503,15 @@ export const ReplicationLinkType = {
  */
 export type ReplicationLinkType = (typeof ReplicationLinkType)[keyof typeof ReplicationLinkType];
 
-export const ReplicationMode = {
+export const ReplicationModeType = {
     Async: "Async",
     Sync: "Sync",
 } as const;
 
 /**
- * The replication mode of a distributed availability group. Parameter will be ignored during link creation.
+ * Replication mode of the link
  */
-export type ReplicationMode = (typeof ReplicationMode)[keyof typeof ReplicationMode];
+export type ReplicationModeType = (typeof ReplicationModeType)[keyof typeof ReplicationModeType];
 
 export const SampleName = {
     AdventureWorksLT: "AdventureWorksLT",
@@ -373,13 +524,24 @@ export const SampleName = {
  */
 export type SampleName = (typeof SampleName)[keyof typeof SampleName];
 
-export const SecondaryType = {
+export const SecondaryInstanceType = {
     Geo: "Geo",
-    Named: "Named",
+    Standby: "Standby",
 } as const;
 
 /**
- * The secondary type of the database if it is a secondary.  Valid values are Geo and Named.
+ * Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only.
+ */
+export type SecondaryInstanceType = (typeof SecondaryInstanceType)[keyof typeof SecondaryInstanceType];
+
+export const SecondaryType = {
+    Geo: "Geo",
+    Named: "Named",
+    Standby: "Standby",
+} as const;
+
+/**
+ * The secondary type of the database if it is a secondary.  Valid values are Geo, Named and Standby.
  */
 export type SecondaryType = (typeof SecondaryType)[keyof typeof SecondaryType];
 
@@ -424,6 +586,16 @@ export const SecurityAlertsPolicyState = {
  */
 export type SecurityAlertsPolicyState = (typeof SecurityAlertsPolicyState)[keyof typeof SecurityAlertsPolicyState];
 
+export const SeedingModeType = {
+    Automatic: "Automatic",
+    Manual: "Manual",
+} as const;
+
+/**
+ * Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
+ */
+export type SeedingModeType = (typeof SeedingModeType)[keyof typeof SeedingModeType];
+
 export const SensitivityLabelRank = {
     None: "None",
     Low: "Low",
@@ -453,6 +625,17 @@ export const ServerNetworkAccessFlag = {
  * Whether or not to restrict outbound network access for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
  */
 export type ServerNetworkAccessFlag = (typeof ServerNetworkAccessFlag)[keyof typeof ServerNetworkAccessFlag];
+
+export const ServerPublicNetworkAccessFlag = {
+    Enabled: "Enabled",
+    Disabled: "Disabled",
+    SecuredByPerimeter: "SecuredByPerimeter",
+} as const;
+
+/**
+ * Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled' or 'SecuredByPerimeter'
+ */
+export type ServerPublicNetworkAccessFlag = (typeof ServerPublicNetworkAccessFlag)[keyof typeof ServerPublicNetworkAccessFlag];
 
 export const ServicePrincipalType = {
     None: "None",
@@ -514,3 +697,10 @@ export const TransparentDataEncryptionState = {
  * Specifies the state of the transparent data encryption.
  */
 export type TransparentDataEncryptionState = (typeof TransparentDataEncryptionState)[keyof typeof TransparentDataEncryptionState];
+
+export const TrustScope = {
+    GlobalTransactions: "GlobalTransactions",
+    ServiceBroker: "ServiceBroker",
+} as const;
+
+export type TrustScope = (typeof TrustScope)[keyof typeof TrustScope];

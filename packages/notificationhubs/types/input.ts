@@ -5,16 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
  */
 export interface AdmCredentialArgs {
     /**
-     * Description of a NotificationHub AdmCredential.
-     */
-    properties: pulumi.Input<AdmCredentialPropertiesArgs>;
-}
-
-/**
- * Description of a NotificationHub AdmCredential.
- */
-export interface AdmCredentialPropertiesArgs {
-    /**
      * Gets or sets the URL of the authorization token.
      */
     authTokenUrl: pulumi.Input<string>;
@@ -32,16 +22,6 @@ export interface AdmCredentialPropertiesArgs {
  * Description of a NotificationHub ApnsCredential.
  */
 export interface ApnsCredentialArgs {
-    /**
-     * Description of a NotificationHub ApnsCredential.
-     */
-    properties: pulumi.Input<ApnsCredentialPropertiesArgs>;
-}
-
-/**
- * Description of a NotificationHub ApnsCredential.
- */
-export interface ApnsCredentialPropertiesArgs {
     /**
      * Gets or sets the APNS certificate.
      */
@@ -84,16 +64,6 @@ export interface ApnsCredentialPropertiesArgs {
  */
 export interface BaiduCredentialArgs {
     /**
-     * Description of a NotificationHub BaiduCredential.
-     */
-    properties: pulumi.Input<BaiduCredentialPropertiesArgs>;
-}
-
-/**
- * Description of a NotificationHub BaiduCredential.
- */
-export interface BaiduCredentialPropertiesArgs {
-    /**
      * Gets or sets baidu Api Key.
      */
     baiduApiKey: pulumi.Input<string>;
@@ -112,16 +82,6 @@ export interface BaiduCredentialPropertiesArgs {
  */
 export interface BrowserCredentialArgs {
     /**
-     * Description of a NotificationHub BrowserCredential.
-     */
-    properties: pulumi.Input<BrowserCredentialPropertiesArgs>;
-}
-
-/**
- * Description of a NotificationHub BrowserCredential.
- */
-export interface BrowserCredentialPropertiesArgs {
-    /**
      * Gets or sets web push subject.
      */
     subject: pulumi.Input<string>;
@@ -136,19 +96,27 @@ export interface BrowserCredentialPropertiesArgs {
 }
 
 /**
- * Description of a NotificationHub GcmCredential.
+ * Description of a NotificationHub FcmV1Credential.
  */
-export interface GcmCredentialArgs {
+export interface FcmV1CredentialArgs {
     /**
-     * Description of a NotificationHub GcmCredential.
+     * Gets or sets client email.
      */
-    properties: pulumi.Input<GcmCredentialPropertiesArgs>;
+    clientEmail: pulumi.Input<string>;
+    /**
+     * Gets or sets private key.
+     */
+    privateKey: pulumi.Input<string>;
+    /**
+     * Gets or sets project id.
+     */
+    projectId: pulumi.Input<string>;
 }
 
 /**
  * Description of a NotificationHub GcmCredential.
  */
-export interface GcmCredentialPropertiesArgs {
+export interface GcmCredentialArgs {
     /**
      * Gets or sets the GCM endpoint.
      */
@@ -178,16 +146,6 @@ export interface IpRuleArgs {
  */
 export interface MpnsCredentialArgs {
     /**
-     * Description of a NotificationHub MpnsCredential.
-     */
-    properties: pulumi.Input<MpnsCredentialPropertiesArgs>;
-}
-
-/**
- * Description of a NotificationHub MpnsCredential.
- */
-export interface MpnsCredentialPropertiesArgs {
-    /**
      * Gets or sets the certificate key for this credential.
      */
     certificateKey: pulumi.Input<string>;
@@ -202,52 +160,6 @@ export interface MpnsCredentialPropertiesArgs {
 }
 
 /**
- * Represents namespace properties.
- */
-export interface NamespacePropertiesArgs {
-    /**
-     * Deprecated.
-     */
-    dataCenter?: pulumi.Input<string>;
-    /**
-     * Defines values for NamespaceType.
-     */
-    namespaceType?: pulumi.Input<string | enums.NamespaceType>;
-    /**
-     * A collection of network authorization rules.
-     */
-    networkAcls?: pulumi.Input<NetworkAclsArgs>;
-    /**
-     * Collection of Notification Hub or Notification Hub Namespace PNS credentials.
-     */
-    pnsCredentials?: pulumi.Input<PnsCredentialsArgs>;
-    /**
-     * Defines values for OperationProvisioningState.
-     */
-    provisioningState?: pulumi.Input<string | enums.OperationProvisioningState>;
-    /**
-     * Type of public network access.
-     */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess>;
-    /**
-     * Allowed replication region
-     */
-    replicationRegion?: pulumi.Input<string | enums.ReplicationRegion>;
-    /**
-     * Gets or sets scaleUnit where the namespace gets created
-     */
-    scaleUnit?: pulumi.Input<string>;
-    /**
-     * Namespace status.
-     */
-    status?: pulumi.Input<string | enums.NamespaceStatus>;
-    /**
-     * Namespace SKU name.
-     */
-    zoneRedundancy?: pulumi.Input<string | enums.ZoneRedundancyPreference>;
-}
-
-/**
  * A collection of network authorization rules.
  */
 export interface NetworkAclsArgs {
@@ -259,52 +171,6 @@ export interface NetworkAclsArgs {
      * A default (public Internet) network authorization rule, which contains rights if no other network rule matches.
      */
     publicNetworkRule?: pulumi.Input<PublicInternetAuthorizationRuleArgs>;
-}
-
-/**
- * NotificationHub properties.
- */
-export interface NotificationHubPropertiesArgs {
-    /**
-     * Description of a NotificationHub AdmCredential.
-     */
-    admCredential?: pulumi.Input<AdmCredentialArgs>;
-    /**
-     * Description of a NotificationHub ApnsCredential.
-     */
-    apnsCredential?: pulumi.Input<ApnsCredentialArgs>;
-    /**
-     * Description of a NotificationHub BaiduCredential.
-     */
-    baiduCredential?: pulumi.Input<BaiduCredentialArgs>;
-    /**
-     * Description of a NotificationHub BrowserCredential.
-     */
-    browserCredential?: pulumi.Input<BrowserCredentialArgs>;
-    /**
-     * Description of a NotificationHub GcmCredential.
-     */
-    gcmCredential?: pulumi.Input<GcmCredentialArgs>;
-    /**
-     * Description of a NotificationHub MpnsCredential.
-     */
-    mpnsCredential?: pulumi.Input<MpnsCredentialArgs>;
-    /**
-     * Gets or sets the NotificationHub name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Gets or sets the RegistrationTtl of the created NotificationHub
-     */
-    registrationTtl?: pulumi.Input<string>;
-    /**
-     * Description of a NotificationHub WnsCredential.
-     */
-    wnsCredential?: pulumi.Input<WnsCredentialArgs>;
-    /**
-     * Description of a NotificationHub XiaomiCredential.
-     */
-    xiaomiCredential?: pulumi.Input<XiaomiCredentialArgs>;
 }
 
 /**
@@ -327,6 +193,10 @@ export interface PnsCredentialsArgs {
      * Description of a NotificationHub BrowserCredential.
      */
     browserCredential?: pulumi.Input<BrowserCredentialArgs>;
+    /**
+     * Description of a NotificationHub FcmV1Credential.
+     */
+    fcmV1Credential?: pulumi.Input<FcmV1CredentialArgs>;
     /**
      * Description of a NotificationHub GcmCredential.
      */
@@ -380,26 +250,6 @@ export interface RemotePrivateLinkServiceConnectionStateArgs {
 }
 
 /**
- * SharedAccessAuthorizationRule properties.
- */
-export interface SharedAccessAuthorizationRulePropertiesArgs {
-    /**
-     * Gets a base64-encoded 256-bit primary key for signing and
-     * validating the SAS token.
-     */
-    primaryKey?: pulumi.Input<string>;
-    /**
-     * Gets or sets the rights associated with the rule.
-     */
-    rights: pulumi.Input<pulumi.Input<string | enums.AccessRights>[]>;
-    /**
-     * Gets a base64-encoded 256-bit primary key for signing and
-     * validating the SAS token.
-     */
-    secondaryKey?: pulumi.Input<string>;
-}
-
-/**
  * The Sku description for a namespace
  */
 export interface SkuArgs {
@@ -430,16 +280,6 @@ export interface SkuArgs {
  */
 export interface WnsCredentialArgs {
     /**
-     * Description of a NotificationHub WnsCredential.
-     */
-    properties: pulumi.Input<WnsCredentialPropertiesArgs>;
-}
-
-/**
- * Description of a NotificationHub WnsCredential.
- */
-export interface WnsCredentialPropertiesArgs {
-    /**
      * Ges or sets the WNS Certificate Key.
      */
     certificateKey?: pulumi.Input<string>;
@@ -466,16 +306,6 @@ export interface WnsCredentialPropertiesArgs {
  */
 export interface XiaomiCredentialArgs {
     /**
-     * Description of a NotificationHub XiaomiCredentialProperties.
-     */
-    properties: pulumi.Input<XiaomiCredentialPropertiesArgs>;
-}
-
-/**
- * Description of a NotificationHub XiaomiCredentialProperties.
- */
-export interface XiaomiCredentialPropertiesArgs {
-    /**
      * Gets or sets app secret.
      */
     appSecret?: pulumi.Input<string>;
@@ -484,6 +314,3 @@ export interface XiaomiCredentialPropertiesArgs {
      */
     endpoint?: pulumi.Input<string>;
 }
-
-
-

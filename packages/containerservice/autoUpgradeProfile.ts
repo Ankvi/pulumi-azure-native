@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * The AutoUpgradeProfile resource.
  *
- * Uses Azure REST API version 2024-05-02-preview.
+ * Uses Azure REST API version 2024-05-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-05-02-preview.
  */
 export class AutoUpgradeProfile extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class AutoUpgradeProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === AutoUpgradeProfile.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Configures how auto-upgrade will be run.
      */
@@ -100,12 +104,14 @@ export class AutoUpgradeProfile extends pulumi.CustomResource {
             resourceInputs["nodeImageSelection"] = args ? args.nodeImageSelection : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["updateStrategyId"] = args ? args.updateStrategyId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["channel"] = undefined /*out*/;
             resourceInputs["disabled"] = undefined /*out*/;
             resourceInputs["eTag"] = undefined /*out*/;
