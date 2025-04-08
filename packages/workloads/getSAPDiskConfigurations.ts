@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the SAP Disk Configuration Layout prod/non-prod SAP System.
- * Azure REST API version: 2023-04-01.
+ *
+ * Uses Azure REST API version 2023-04-01.
  *
  * Other available API versions: 2021-12-01-preview, 2022-11-01-preview, 2023-10-01-preview.
  */
@@ -62,7 +63,8 @@ export interface GetSAPDiskConfigurationsResult {
 }
 /**
  * Get the SAP Disk Configuration Layout prod/non-prod SAP System.
- * Azure REST API version: 2023-04-01.
+ *
+ * Uses Azure REST API version 2023-04-01.
  *
  * Other available API versions: 2021-12-01-preview, 2022-11-01-preview, 2023-10-01-preview.
  */

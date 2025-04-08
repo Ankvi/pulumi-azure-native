@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Azure REST API version: 2016-01-29. Prior API version in Azure Native 1.x: 2016-01-29.
+ * Uses Azure REST API version 2016-01-29. In version 1.x of the Azure Native provider, it used API version 2016-01-29.
  */
 export class WorkspaceCollection extends pulumi.CustomResource {
     /**

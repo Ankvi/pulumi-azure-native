@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * DevOps Policy assignment resource.
- * Azure REST API version: 2024-05-15-preview.
+ *
+ * Uses Azure REST API version 2024-05-15-preview.
  */
 export class DevOpsPolicyAssignment extends pulumi.CustomResource {
     /**

@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the notebook workspace for a Cosmos DB account.
- * Azure REST API version: 2023-04-15.
+ *
+ * Uses Azure REST API version 2023-04-15.
  *
  * Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview.
  */
@@ -57,7 +58,8 @@ export interface GetNotebookWorkspaceResult {
 }
 /**
  * Gets the notebook workspace for a Cosmos DB account.
- * Azure REST API version: 2023-04-15.
+ *
+ * Uses Azure REST API version 2023-04-15.
  *
  * Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview.
  */

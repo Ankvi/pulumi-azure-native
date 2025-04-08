@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the AppComplianceAutomation report and its properties.
- * Azure REST API version: 2022-11-16-preview.
+ *
+ * Uses Azure REST API version 2022-11-16-preview.
  *
  * Other available API versions: 2024-06-27.
  */
@@ -48,7 +49,8 @@ export interface GetReportResult {
 }
 /**
  * Get the AppComplianceAutomation report and its properties.
- * Azure REST API version: 2022-11-16-preview.
+ *
+ * Uses Azure REST API version 2022-11-16-preview.
  *
  * Other available API versions: 2024-06-27.
  */

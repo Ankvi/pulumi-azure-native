@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Support information for the service
- * Azure REST API version: 2024-02-07-preview.
+ *
+ * Uses Azure REST API version 2024-02-07-preview.
  *
  * Other available API versions: 2024-01-19-preview, 2025-02-06-preview.
  */
@@ -83,7 +84,8 @@ export interface ListPaloAltoNetworksCloudngfwSupportInfoResult {
 }
 /**
  * Support information for the service
- * Azure REST API version: 2024-02-07-preview.
+ *
+ * Uses Azure REST API version 2024-02-07-preview.
  *
  * Other available API versions: 2024-01-19-preview, 2025-02-06-preview.
  */

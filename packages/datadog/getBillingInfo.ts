@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Marketplace Subscription and Organization details to which resource gets billed into.
- * Azure REST API version: 2023-10-20.
+ *
+ * Uses Azure REST API version 2023-10-20.
  */
 export function getBillingInfo(args: GetBillingInfoArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingInfoResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,7 +40,8 @@ export interface GetBillingInfoResult {
 }
 /**
  * Marketplace Subscription and Organization details to which resource gets billed into.
- * Azure REST API version: 2023-10-20.
+ *
+ * Uses Azure REST API version 2023-10-20.
  */
 export function getBillingInfoOutput(args: GetBillingInfoOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBillingInfoResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

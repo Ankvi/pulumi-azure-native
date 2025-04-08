@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Macie2JobSummary
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getMacie2JobSummary(args: GetMacie2JobSummaryArgs, opts?: pulumi.InvokeOptions): Promise<GetMacie2JobSummaryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetMacie2JobSummaryResult {
 }
 /**
  * Get a Macie2JobSummary
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getMacie2JobSummaryOutput(args: GetMacie2JobSummaryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMacie2JobSummaryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

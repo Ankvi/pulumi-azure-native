@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets an read-write access token for application insights diagnostic service data.
- * Azure REST API version: 2021-03-03-preview.
+ *
+ * Uses Azure REST API version 2021-03-03-preview.
  */
 export function getDiagnosticServiceTokenReadWrite(args: GetDiagnosticServiceTokenReadWriteArgs, opts?: pulumi.InvokeOptions): Promise<GetDiagnosticServiceTokenReadWriteResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -29,7 +30,8 @@ export interface GetDiagnosticServiceTokenReadWriteResult {
 }
 /**
  * Gets an read-write access token for application insights diagnostic service data.
- * Azure REST API version: 2021-03-03-preview.
+ *
+ * Uses Azure REST API version 2021-03-03-preview.
  */
 export function getDiagnosticServiceTokenReadWriteOutput(args: GetDiagnosticServiceTokenReadWriteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiagnosticServiceTokenReadWriteResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

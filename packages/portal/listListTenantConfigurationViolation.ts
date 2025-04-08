@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets list of items that violate tenant's configuration.
- * Azure REST API version: 2020-09-01-preview.
  *
- * Other available API versions: 2022-12-01-preview.
+ * Uses Azure REST API version 2020-09-01-preview.
+ *
+ * Other available API versions: 2022-12-01-preview, 2025-04-01-preview.
  */
 export function listListTenantConfigurationViolation(args?: ListListTenantConfigurationViolationArgs, opts?: pulumi.InvokeOptions): Promise<ListListTenantConfigurationViolationResult> {
     args = args || {};
@@ -32,9 +33,10 @@ export interface ListListTenantConfigurationViolationResult {
 }
 /**
  * Gets list of items that violate tenant's configuration.
- * Azure REST API version: 2020-09-01-preview.
  *
- * Other available API versions: 2022-12-01-preview.
+ * Uses Azure REST API version 2020-09-01-preview.
+ *
+ * Other available API versions: 2022-12-01-preview, 2025-04-01-preview.
  */
 export function listListTenantConfigurationViolationOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListListTenantConfigurationViolationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

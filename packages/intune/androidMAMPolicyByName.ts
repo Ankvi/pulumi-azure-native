@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Android Policy entity for Intune MAM.
- * Azure REST API version: 2015-01-14-preview. Prior API version in Azure Native 1.x: 2015-01-14-preview.
+ *
+ * Uses Azure REST API version 2015-01-14-preview. In version 1.x of the Azure Native provider, it used API version 2015-01-14-preview.
  *
  * Other available API versions: 2015-01-14-privatepreview.
  */

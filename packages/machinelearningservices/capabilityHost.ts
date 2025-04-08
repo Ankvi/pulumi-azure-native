@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
- * Azure REST API version: 2024-10-01-preview.
+ *
+ * Uses Azure REST API version 2024-10-01-preview.
+ *
+ * Other available API versions: 2025-01-01-preview.
  */
 export class CapabilityHost extends pulumi.CustomResource {
     /**
@@ -82,7 +85,7 @@ export class CapabilityHost extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20241001preview:CapabilityHost" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20241001preview:CapabilityHost" }, { type: "azure-native:machinelearningservices/v20250101preview:CapabilityHost" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CapabilityHost.__pulumiType, name, resourceInputs, opts);
     }

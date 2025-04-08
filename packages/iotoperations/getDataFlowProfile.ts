@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a DataFlowProfileResource
- * Azure REST API version: 2024-07-01-preview.
+ *
+ * Uses Azure REST API version 2024-07-01-preview.
  */
 export function getDataFlowProfile(args: GetDataFlowProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetDataFlowProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -60,7 +61,8 @@ export interface GetDataFlowProfileResult {
 }
 /**
  * Get a DataFlowProfileResource
- * Azure REST API version: 2024-07-01-preview.
+ *
+ * Uses Azure REST API version 2024-07-01-preview.
  */
 export function getDataFlowProfileOutput(args: GetDataFlowProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDataFlowProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

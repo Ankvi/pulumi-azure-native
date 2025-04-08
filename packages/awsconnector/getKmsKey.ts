@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a KmsKey
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getKmsKey(args: GetKmsKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKmsKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetKmsKeyResult {
 }
 /**
  * Get a KmsKey
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getKmsKeyOutput(args: GetKmsKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKmsKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

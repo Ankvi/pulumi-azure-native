@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * List of the EngagementFabric channel descriptions
- * Azure REST API version: 2018-09-01-preview.
+ *
+ * Uses Azure REST API version 2018-09-01-preview.
  */
 export function listAccountChannelTypes(args: ListAccountChannelTypesArgs, opts?: pulumi.InvokeOptions): Promise<ListAccountChannelTypesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,7 +36,8 @@ export interface ListAccountChannelTypesResult {
 }
 /**
  * List of the EngagementFabric channel descriptions
- * Azure REST API version: 2018-09-01-preview.
+ *
+ * Uses Azure REST API version 2018-09-01-preview.
  */
 export function listAccountChannelTypesOutput(args: ListAccountChannelTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListAccountChannelTypesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

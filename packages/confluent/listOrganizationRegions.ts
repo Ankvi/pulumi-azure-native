@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Result of POST request to list regions supported by confluent
- * Azure REST API version: 2024-02-13.
+ *
+ * Uses Azure REST API version 2024-02-13.
  *
  * Other available API versions: 2024-07-01.
  */
@@ -42,7 +43,8 @@ export interface ListOrganizationRegionsResult {
 }
 /**
  * Result of POST request to list regions supported by confluent
- * Azure REST API version: 2024-02-13.
+ *
+ * Uses Azure REST API version 2024-02-13.
  *
  * Other available API versions: 2024-07-01.
  */

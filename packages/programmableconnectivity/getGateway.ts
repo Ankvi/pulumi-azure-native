@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Gateway resource by name.
- * Azure REST API version: 2024-01-15-preview.
+ *
+ * Uses Azure REST API version 2024-01-15-preview.
  */
 export function getGateway(args: GetGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -67,7 +68,8 @@ export interface GetGatewayResult {
 }
 /**
  * Get a Gateway resource by name.
- * Azure REST API version: 2024-01-15-preview.
+ *
+ * Uses Azure REST API version 2024-01-15-preview.
  */
 export function getGatewayOutput(args: GetGatewayOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewayResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Deployment stack object.
- * Azure REST API version: 2022-08-01-preview.
+ *
+ * Uses Azure REST API version 2022-08-01-preview.
  *
  * Other available API versions: 2024-03-01.
  */

@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a cost allocation rule by rule name and billing account or enterprise enrollment.
- * Azure REST API version: 2020-03-01-preview.
  *
- * Other available API versions: 2023-08-01, 2023-09-01, 2023-11-01, 2024-08-01.
+ * Uses Azure REST API version 2020-03-01-preview.
+ *
+ * Other available API versions: 2023-08-01, 2023-09-01, 2023-11-01, 2024-08-01, 2024-10-01-preview.
  */
 export function getCostAllocationRule(args: GetCostAllocationRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetCostAllocationRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -49,9 +50,10 @@ export interface GetCostAllocationRuleResult {
 }
 /**
  * Get a cost allocation rule by rule name and billing account or enterprise enrollment.
- * Azure REST API version: 2020-03-01-preview.
  *
- * Other available API versions: 2023-08-01, 2023-09-01, 2023-11-01, 2024-08-01.
+ * Uses Azure REST API version 2020-03-01-preview.
+ *
+ * Other available API versions: 2023-08-01, 2023-09-01, 2023-11-01, 2024-08-01, 2024-10-01-preview.
  */
 export function getCostAllocationRuleOutput(args: GetCostAllocationRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCostAllocationRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

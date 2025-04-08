@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a AutoUpgradeProfile
- * Azure REST API version: 2024-05-02-preview.
+ *
+ * Uses Azure REST API version 2024-05-02-preview.
  */
 export function getAutoUpgradeProfile(args: GetAutoUpgradeProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoUpgradeProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -79,7 +80,8 @@ export interface GetAutoUpgradeProfileResult {
 }
 /**
  * Get a AutoUpgradeProfile
- * Azure REST API version: 2024-05-02-preview.
+ *
+ * Uses Azure REST API version 2024-05-02-preview.
  */
 export function getAutoUpgradeProfileOutput(args: GetAutoUpgradeProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAutoUpgradeProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

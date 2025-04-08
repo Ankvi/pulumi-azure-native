@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get information about the specified address.
- * Azure REST API version: 2022-05-01-preview.
+ *
+ * Uses Azure REST API version 2022-05-01-preview.
  *
  * Other available API versions: 2024-02-01.
  */
@@ -69,7 +70,8 @@ export interface GetAddressResult {
 }
 /**
  * Get information about the specified address.
- * Azure REST API version: 2022-05-01-preview.
+ *
+ * Uses Azure REST API version 2022-05-01-preview.
  *
  * Other available API versions: 2024-02-01.
  */

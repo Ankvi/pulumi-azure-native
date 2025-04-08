@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Display information about a cloud service.
- * Azure REST API version: 2022-09-04.
+ *
+ * Uses Azure REST API version 2022-09-04.
  *
  * Other available API versions: 2024-11-04.
  */
@@ -65,7 +66,8 @@ export interface GetCloudServiceResult {
 }
 /**
  * Display information about a cloud service.
- * Azure REST API version: 2022-09-04.
+ *
+ * Uses Azure REST API version 2022-09-04.
  *
  * Other available API versions: 2024-11-04.
  */

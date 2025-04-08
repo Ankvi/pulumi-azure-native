@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Retrieves details about given subscription which is associated with the management group.
  *
- * Azure REST API version: 2021-04-01.
+ * Uses Azure REST API version 2021-04-01.
  *
  * Other available API versions: 2023-04-01.
  */
@@ -63,7 +63,7 @@ export interface GetManagementGroupSubscriptionResult {
 /**
  * Retrieves details about given subscription which is associated with the management group.
  *
- * Azure REST API version: 2021-04-01.
+ * Uses Azure REST API version 2021-04-01.
  *
  * Other available API versions: 2023-04-01.
  */

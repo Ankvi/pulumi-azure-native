@@ -1,7 +1,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
- * Azure REST API version: 2023-08-01-preview.
+ * Uses Azure REST API version 2023-08-01-preview.
  *
  * Other available API versions: 2024-01-01-preview, 2024-04-01-preview.
  */
@@ -48,7 +48,7 @@ export interface GetInferencePoolStatusResult {
     readonly reservedCapacity?: number;
 }
 /**
- * Azure REST API version: 2023-08-01-preview.
+ * Uses Azure REST API version 2023-08-01-preview.
  *
  * Other available API versions: 2024-01-01-preview, 2024-04-01-preview.
  */

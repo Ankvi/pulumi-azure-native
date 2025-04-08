@@ -88,6 +88,22 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
+  packages/agricultureplatform:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
+
   packages/alertsmanagement:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -519,6 +535,22 @@ importers:
       typescript:
         specifier: ^5.0.0
         version: 5.2.2
+
+  packages/billingbenefits:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
 
   packages/blueprint:
     dependencies:
@@ -981,6 +1013,22 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
+  packages/databasefleetmanager:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
+
   packages/databasewatcher:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -1252,6 +1300,22 @@ importers:
       typescript:
         specifier: ^5.0.0
         version: 5.2.2
+
+  packages/dependencymap:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
 
   packages/desktopvirtualization:
     dependencies:
@@ -2229,22 +2293,6 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
-  packages/logz:
-    dependencies:
-      '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:*
-        version: link:../core
-      '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.142.0(ts-node@7.0.1)(typescript@5.2.2)
-    devDependencies:
-      '@types/node':
-        specifier: ^20.0.0
-        version: 20.6.2
-      typescript:
-        specifier: ^5.0.0
-        version: 5.2.2
-
   packages/m365securityandcompliance:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -2405,6 +2453,22 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
+  packages/manufacturingplatform:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
+
   packages/maps:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -2516,6 +2580,22 @@ importers:
       typescript:
         specifier: ^5.0.0
         version: 5.2.2
+
+  packages/mysqldiscovery:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
 
   packages/netapp:
     dependencies:
@@ -3638,22 +3718,6 @@ importers:
         version: 5.2.2
 
   packages/virtualmachineimages:
-    dependencies:
-      '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:*
-        version: link:../core
-      '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.142.0(ts-node@7.0.1)(typescript@5.2.2)
-    devDependencies:
-      '@types/node':
-        specifier: ^20.0.0
-        version: 20.6.2
-      typescript:
-        specifier: ^5.0.0
-        version: 5.2.2
-
-  packages/visualstudio:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
         specifier: workspace:*

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a Transform.
- * Azure REST API version: 2022-07-01.
+ *
+ * Uses Azure REST API version 2022-07-01.
  */
 export function getTransform(args: GetTransformArgs, opts?: pulumi.InvokeOptions): Promise<GetTransformResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -68,7 +69,8 @@ export interface GetTransformResult {
 }
 /**
  * Gets a Transform.
- * Azure REST API version: 2022-07-01.
+ *
+ * Uses Azure REST API version 2022-07-01.
  */
 export function getTransformOutput(args: GetTransformOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransformResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

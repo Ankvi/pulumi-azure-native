@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Firmware analysis workspace.
- * Azure REST API version: 2023-02-08-preview.
  *
- * Other available API versions: 2024-01-10.
+ * Uses Azure REST API version 2023-02-08-preview.
+ *
+ * Other available API versions: 2024-01-10, 2025-04-01-preview.
  */
 export class Workspace extends pulumi.CustomResource {
     /**
@@ -90,7 +91,7 @@ export class Workspace extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:iotfirmwaredefense/v20230208preview:Workspace" }, { type: "azure-native:iotfirmwaredefense/v20240110:Workspace" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:iotfirmwaredefense/v20230208preview:Workspace" }, { type: "azure-native:iotfirmwaredefense/v20240110:Workspace" }, { type: "azure-native:iotfirmwaredefense/v20250401preview:Workspace" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Workspace.__pulumiType, name, resourceInputs, opts);
     }

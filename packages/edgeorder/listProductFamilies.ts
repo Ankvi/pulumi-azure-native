@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * This method provides the list of product families for the given subscription.
- * Azure REST API version: 2021-12-01.
+ *
+ * Uses Azure REST API version 2021-12-01.
  */
 export function listProductFamilies(args: ListProductFamiliesArgs, opts?: pulumi.InvokeOptions): Promise<ListProductFamiliesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -49,7 +50,8 @@ export interface ListProductFamiliesResult {
 }
 /**
  * This method provides the list of product families for the given subscription.
- * Azure REST API version: 2021-12-01.
+ *
+ * Uses Azure REST API version 2021-12-01.
  */
 export function listProductFamiliesOutput(args: ListProductFamiliesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListProductFamiliesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

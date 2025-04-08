@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets an order item.
- * Azure REST API version: 2021-12-01.
+ *
+ * Uses Azure REST API version 2021-12-01.
  */
 export function getOrderItemByName(args: GetOrderItemByNameArgs, opts?: pulumi.InvokeOptions): Promise<GetOrderItemByNameResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -76,7 +77,8 @@ export interface GetOrderItemByNameResult {
 }
 /**
  * Gets an order item.
- * Azure REST API version: 2021-12-01.
+ *
+ * Uses Azure REST API version 2021-12-01.
  */
 export function getOrderItemByNameOutput(args: GetOrderItemByNameOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrderItemByNameResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

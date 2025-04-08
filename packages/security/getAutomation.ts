@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Retrieves information about the model of a security automation.
- * Azure REST API version: 2019-01-01-preview.
+ *
+ * Uses Azure REST API version 2019-01-01-preview.
  *
  * Other available API versions: 2023-12-01-preview.
  */
@@ -81,7 +82,8 @@ export interface GetAutomationResult {
 }
 /**
  * Retrieves information about the model of a security automation.
- * Azure REST API version: 2019-01-01-preview.
+ *
+ * Uses Azure REST API version 2019-01-01-preview.
  *
  * Other available API versions: 2023-12-01-preview.
  */

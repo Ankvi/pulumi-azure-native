@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a StandbyContainerGroupPoolResource
- * Azure REST API version: 2023-12-01-preview.
  *
- * Other available API versions: 2024-03-01, 2024-03-01-preview.
+ * Uses Azure REST API version 2023-12-01-preview.
+ *
+ * Other available API versions: 2024-03-01, 2024-03-01-preview, 2025-03-01.
  */
 export function getStandbyContainerGroupPool(args: GetStandbyContainerGroupPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetStandbyContainerGroupPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -69,9 +70,10 @@ export interface GetStandbyContainerGroupPoolResult {
 }
 /**
  * Get a StandbyContainerGroupPoolResource
- * Azure REST API version: 2023-12-01-preview.
  *
- * Other available API versions: 2024-03-01, 2024-03-01-preview.
+ * Uses Azure REST API version 2023-12-01-preview.
+ *
+ * Other available API versions: 2024-03-01, 2024-03-01-preview, 2025-03-01.
  */
 export function getStandbyContainerGroupPoolOutput(args: GetStandbyContainerGroupPoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStandbyContainerGroupPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

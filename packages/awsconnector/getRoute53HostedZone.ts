@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a Route53HostedZone
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getRoute53HostedZone(args: GetRoute53HostedZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetRoute53HostedZoneResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetRoute53HostedZoneResult {
 }
 /**
  * Get a Route53HostedZone
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getRoute53HostedZoneOutput(args: GetRoute53HostedZoneOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoute53HostedZoneResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

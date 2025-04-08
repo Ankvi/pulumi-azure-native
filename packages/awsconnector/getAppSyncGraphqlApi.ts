@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a AppSyncGraphqlApi
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getAppSyncGraphqlApi(args: GetAppSyncGraphqlApiArgs, opts?: pulumi.InvokeOptions): Promise<GetAppSyncGraphqlApiResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetAppSyncGraphqlApiResult {
 }
 /**
  * Get a AppSyncGraphqlApi
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getAppSyncGraphqlApiOutput(args: GetAppSyncGraphqlApiOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppSyncGraphqlApiResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

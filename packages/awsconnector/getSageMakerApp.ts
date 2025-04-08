@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a SageMakerApp
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getSageMakerApp(args: GetSageMakerAppArgs, opts?: pulumi.InvokeOptions): Promise<GetSageMakerAppResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +60,8 @@ export interface GetSageMakerAppResult {
 }
 /**
  * Get a SageMakerApp
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getSageMakerAppOutput(args: GetSageMakerAppOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSageMakerAppResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

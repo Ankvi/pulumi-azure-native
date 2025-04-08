@@ -4,7 +4,8 @@ import * as types from "./types";
 /**
  * AzureLargeStorageInstance info on Azure (ARM properties and
  * AzureLargeStorageInstance properties)
- * Azure REST API version: 2024-08-01-preview.
+ *
+ * Uses Azure REST API version 2024-08-01-preview.
  */
 export class AzureLargeStorageInstance extends pulumi.CustomResource {
     /**

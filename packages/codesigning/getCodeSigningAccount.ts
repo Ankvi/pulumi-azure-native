@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a trusted Signing Account.
- * Azure REST API version: 2024-02-05-preview.
+ *
+ * Uses Azure REST API version 2024-02-05-preview.
  *
  * Other available API versions: 2024-09-30-preview.
  */
@@ -69,7 +70,8 @@ export interface GetCodeSigningAccountResult {
 }
 /**
  * Get a trusted Signing Account.
- * Azure REST API version: 2024-02-05-preview.
+ *
+ * Uses Azure REST API version 2024-02-05-preview.
  *
  * Other available API versions: 2024-09-30-preview.
  */

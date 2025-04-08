@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Administrative credentials for accessing vCenter and NSX-T
- * Azure REST API version: 2022-05-01.
+ *
+ * Uses Azure REST API version 2022-05-01.
  *
  * Other available API versions: 2023-03-01, 2023-09-01.
  */
@@ -48,7 +49,8 @@ export interface ListPrivateCloudAdminCredentialsResult {
 }
 /**
  * Administrative credentials for accessing vCenter and NSX-T
- * Azure REST API version: 2022-05-01.
+ *
+ * Uses Azure REST API version 2022-05-01.
  *
  * Other available API versions: 2023-03-01, 2023-09-01.
  */

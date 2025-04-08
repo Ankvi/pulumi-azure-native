@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Information about azure databricks accessConnector.
- * Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2022-04-01-preview.
  *
- * Other available API versions: 2022-04-01-preview, 2024-05-01, 2024-09-01-preview.
+ * Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
+ *
+ * Other available API versions: 2022-04-01-preview, 2024-05-01, 2024-09-01-preview, 2025-03-01-preview.
  */
 export class AccessConnector extends pulumi.CustomResource {
     /**
@@ -96,7 +97,7 @@ export class AccessConnector extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:databricks/v20220401preview:AccessConnector" }, { type: "azure-native:databricks/v20221001preview:AccessConnector" }, { type: "azure-native:databricks/v20230501:AccessConnector" }, { type: "azure-native:databricks/v20240501:AccessConnector" }, { type: "azure-native:databricks/v20240901preview:AccessConnector" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:databricks/v20220401preview:AccessConnector" }, { type: "azure-native:databricks/v20221001preview:AccessConnector" }, { type: "azure-native:databricks/v20230501:AccessConnector" }, { type: "azure-native:databricks/v20240501:AccessConnector" }, { type: "azure-native:databricks/v20240901preview:AccessConnector" }, { type: "azure-native:databricks/v20250301preview:AccessConnector" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessConnector.__pulumiType, name, resourceInputs, opts);
     }

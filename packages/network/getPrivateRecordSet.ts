@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets a record set.
- * Azure REST API version: 2020-06-01.
+ *
+ * Uses Azure REST API version 2020-06-01.
  *
  * Other available API versions: 2024-06-01.
  */
@@ -107,7 +108,8 @@ export interface GetPrivateRecordSetResult {
 }
 /**
  * Gets a record set.
- * Azure REST API version: 2020-06-01.
+ *
+ * Uses Azure REST API version 2020-06-01.
  *
  * Other available API versions: 2024-06-01.
  */

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a SolutionConfiguration
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getSolutionConfiguration(args: GetSolutionConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetSolutionConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,13 +34,33 @@ export interface GetSolutionConfigurationResult {
      */
     readonly id: string;
     /**
+     * The last time resources were inventoried
+     */
+    readonly lastSyncTime: string;
+    /**
      * The name of the resource
      */
     readonly name: string;
     /**
-     * The resource-specific properties for this resource.
+     * The resource provisioning state.
      */
-    readonly properties: types.outputs.SolutionConfigurationPropertiesResponse;
+    readonly provisioningState: string;
+    /**
+     * Solution settings
+     */
+    readonly solutionSettings?: {[key: string]: string};
+    /**
+     * The type of the solution
+     */
+    readonly solutionType: string;
+    /**
+     * The status of solution configurations
+     */
+    readonly status: string;
+    /**
+     * The detailed message of status details
+     */
+    readonly statusDetails: string;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -51,7 +72,8 @@ export interface GetSolutionConfigurationResult {
 }
 /**
  * Get a SolutionConfiguration
- * Azure REST API version: 2024-12-01.
+ *
+ * Uses Azure REST API version 2024-12-01.
  */
 export function getSolutionConfigurationOutput(args: GetSolutionConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSolutionConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

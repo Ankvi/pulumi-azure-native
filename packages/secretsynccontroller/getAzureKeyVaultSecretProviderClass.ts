@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the properties of an AzureKeyVaultSecretProviderClass instance.
- * Azure REST API version: 2024-08-21-preview.
+ *
+ * Uses Azure REST API version 2024-08-21-preview.
  */
 export function getAzureKeyVaultSecretProviderClass(args: GetAzureKeyVaultSecretProviderClassArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureKeyVaultSecretProviderClassResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -79,7 +80,8 @@ export interface GetAzureKeyVaultSecretProviderClassResult {
 }
 /**
  * Gets the properties of an AzureKeyVaultSecretProviderClass instance.
- * Azure REST API version: 2024-08-21-preview.
+ *
+ * Uses Azure REST API version 2024-08-21-preview.
  */
 export function getAzureKeyVaultSecretProviderClassOutput(args: GetAzureKeyVaultSecretProviderClassOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzureKeyVaultSecretProviderClassResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

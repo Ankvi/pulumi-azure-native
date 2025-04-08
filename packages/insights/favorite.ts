@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Properties that define a favorite that is associated to an Application Insights component.
- * Azure REST API version: 2015-05-01. Prior API version in Azure Native 1.x: 2015-05-01.
+ *
+ * Uses Azure REST API version 2015-05-01. In version 1.x of the Azure Native provider, it used API version 2015-05-01.
  */
 export class Favorite extends pulumi.CustomResource {
     /**

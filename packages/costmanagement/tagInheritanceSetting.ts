@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Tag Inheritance Setting definition.
- * Azure REST API version: 2022-10-05-preview.
+ *
+ * Uses Azure REST API version 2022-10-05-preview.
  */
 export class TagInheritanceSetting extends pulumi.CustomResource {
     /**
@@ -85,7 +86,7 @@ export class TagInheritanceSetting extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:costmanagement/v20221001preview:TagInheritanceSetting" }, { type: "azure-native:costmanagement/v20221005preview:TagInheritanceSetting" }, { type: "azure-native:costmanagement/v20230801:TagInheritanceSetting" }, { type: "azure-native:costmanagement/v20230901:TagInheritanceSetting" }, { type: "azure-native:costmanagement/v20231101:TagInheritanceSetting" }, { type: "azure-native:costmanagement/v20240801:TagInheritanceSetting" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:costmanagement/v20221001preview:TagInheritanceSetting" }, { type: "azure-native:costmanagement/v20221005preview:TagInheritanceSetting" }, { type: "azure-native:costmanagement/v20230801:TagInheritanceSetting" }, { type: "azure-native:costmanagement/v20230901:TagInheritanceSetting" }, { type: "azure-native:costmanagement/v20231101:TagInheritanceSetting" }, { type: "azure-native:costmanagement/v20240801:TagInheritanceSetting" }, { type: "azure-native:costmanagement/v20241001preview:TagInheritanceSetting" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TagInheritanceSetting.__pulumiType, name, resourceInputs, opts);
     }

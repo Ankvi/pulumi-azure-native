@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get Default Security contact configurations for the subscription
- * Azure REST API version: 2020-01-01-preview.
+ *
+ * Uses Azure REST API version 2020-01-01-preview.
  *
  * Other available API versions: 2017-08-01-preview, 2023-12-01-preview.
  */
@@ -56,7 +57,8 @@ export interface GetSecurityContactResult {
 }
 /**
  * Get Default Security contact configurations for the subscription
- * Azure REST API version: 2020-01-01-preview.
+ *
+ * Uses Azure REST API version 2020-01-01-preview.
  *
  * Other available API versions: 2017-08-01-preview, 2023-12-01-preview.
  */

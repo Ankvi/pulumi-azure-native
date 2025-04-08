@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Returns a list of L2 Connections attached to an ground station.
- * Azure REST API version: 2024-03-01-preview.
+ *
+ * Uses Azure REST API version 2024-03-01-preview.
  *
  * Other available API versions: 2024-03-01.
  */
@@ -41,7 +42,8 @@ export interface ListGroundStationL2ConnectionsResult {
 }
 /**
  * Returns a list of L2 Connections attached to an ground station.
- * Azure REST API version: 2024-03-01-preview.
+ *
+ * Uses Azure REST API version 2024-03-01-preview.
  *
  * Other available API versions: 2024-03-01.
  */

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get the ProactiveDetection configuration for this configuration id.
- * Azure REST API version: 2018-05-01-preview.
+ *
+ * Uses Azure REST API version 2018-05-01-preview.
  *
  * Other available API versions: 2015-05-01.
  */
@@ -74,7 +75,8 @@ export interface GetProactiveDetectionConfigurationResult {
 }
 /**
  * Get the ProactiveDetection configuration for this configuration id.
- * Azure REST API version: 2018-05-01-preview.
+ *
+ * Uses Azure REST API version 2018-05-01-preview.
  *
  * Other available API versions: 2015-05-01.
  */

@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The service configuration details associated with the target resource.
- * Azure REST API version: 2023-03-15.
+ *
+ * Uses Azure REST API version 2023-03-15.
  *
  * Other available API versions: 2024-12-01.
  */

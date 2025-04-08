@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * This represents a Azure subscriptionId that is associated with a GroupQuotasEntity.
- * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2024-10-15-preview, 2024-12-18-preview, 2025-03-01.
+ * Uses Azure REST API version 2023-06-01-preview.
+ *
+ * Other available API versions: 2024-10-15-preview, 2024-12-18-preview, 2025-03-01, 2025-03-15-preview.
  */
 export class GroupQuotaSubscription extends pulumi.CustomResource {
     /**
@@ -78,7 +79,7 @@ export class GroupQuotaSubscription extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:quota/v20230601preview:GroupQuotaSubscription" }, { type: "azure-native:quota/v20241015preview:GroupQuotaSubscription" }, { type: "azure-native:quota/v20241218preview:GroupQuotaSubscription" }, { type: "azure-native:quota/v20250301:GroupQuotaSubscription" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:quota/v20230601preview:GroupQuotaSubscription" }, { type: "azure-native:quota/v20241015preview:GroupQuotaSubscription" }, { type: "azure-native:quota/v20241218preview:GroupQuotaSubscription" }, { type: "azure-native:quota/v20250301:GroupQuotaSubscription" }, { type: "azure-native:quota/v20250315preview:GroupQuotaSubscription" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GroupQuotaSubscription.__pulumiType, name, resourceInputs, opts);
     }

@@ -3,7 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Get a LoadTestProfileMappingResource
- * Azure REST API version: 2023-12-01-preview.
+ *
+ * Uses Azure REST API version 2023-12-01-preview.
+ *
+ * Other available API versions: 2024-12-01-preview.
  */
 export function getLoadTestProfileMapping(args: GetLoadTestProfileMappingArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadTestProfileMappingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +62,10 @@ export interface GetLoadTestProfileMappingResult {
 }
 /**
  * Get a LoadTestProfileMappingResource
- * Azure REST API version: 2023-12-01-preview.
+ *
+ * Uses Azure REST API version 2023-12-01-preview.
+ *
+ * Other available API versions: 2024-12-01-preview.
  */
 export function getLoadTestProfileMappingOutput(args: GetLoadTestProfileMappingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadTestProfileMappingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

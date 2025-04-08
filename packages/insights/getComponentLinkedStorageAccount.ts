@@ -2,7 +2,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Returns the current linked storage settings for an Application Insights component.
- * Azure REST API version: 2020-03-01-preview.
+ *
+ * Uses Azure REST API version 2020-03-01-preview.
  */
 export function getComponentLinkedStorageAccount(args: GetComponentLinkedStorageAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetComponentLinkedStorageAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -51,7 +52,8 @@ export interface GetComponentLinkedStorageAccountResult {
 }
 /**
  * Returns the current linked storage settings for an Application Insights component.
- * Azure REST API version: 2020-03-01-preview.
+ *
+ * Uses Azure REST API version 2020-03-01-preview.
  */
 export function getComponentLinkedStorageAccountOutput(args: GetComponentLinkedStorageAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetComponentLinkedStorageAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

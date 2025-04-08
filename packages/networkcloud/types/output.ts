@@ -1136,3 +1136,4 @@ export interface VirtualMachinePlacementHintResponse {
 
 
 
+

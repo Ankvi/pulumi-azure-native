@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Implements resourcePool GET method.
- * Azure REST API version: 2022-07-15-preview.
+ *
+ * Uses Azure REST API version 2022-07-15-preview.
  *
  * Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
  */
@@ -135,7 +136,8 @@ export interface GetResourcePoolResult {
 }
 /**
  * Implements resourcePool GET method.
- * Azure REST API version: 2022-07-15-preview.
+ *
+ * Uses Azure REST API version 2022-07-15-preview.
  *
  * Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
  */

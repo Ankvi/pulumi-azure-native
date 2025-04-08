@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Lists Active Security User Rules in a network manager.
- * Azure REST API version: 2022-04-01-preview.
+ *
+ * Uses Azure REST API version 2022-04-01-preview.
  *
  * Other available API versions: 2021-05-01-preview.
  */
@@ -51,7 +52,8 @@ export interface ListActiveSecurityUserRulesResult {
 }
 /**
  * Lists Active Security User Rules in a network manager.
- * Azure REST API version: 2022-04-01-preview.
+ *
+ * Uses Azure REST API version 2022-04-01-preview.
  *
  * Other available API versions: 2021-05-01-preview.
  */

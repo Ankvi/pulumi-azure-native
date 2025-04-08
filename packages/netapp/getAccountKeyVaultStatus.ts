@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Contains data from encryption.keyVaultProperties as well as information about which private endpoint is used by each encryption sibling set. Response from this endpoint can be modified and used as request body for POST request.
- * Azure REST API version: 2024-09-01-preview.
+ *
+ * Uses Azure REST API version 2024-09-01-preview.
  */
 export function getAccountKeyVaultStatus(args: GetAccountKeyVaultStatusArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyVaultStatusResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -47,7 +48,8 @@ export interface GetAccountKeyVaultStatusResult {
 }
 /**
  * Contains data from encryption.keyVaultProperties as well as information about which private endpoint is used by each encryption sibling set. Response from this endpoint can be modified and used as request body for POST request.
- * Azure REST API version: 2024-09-01-preview.
+ *
+ * Uses Azure REST API version 2024-09-01-preview.
  */
 export function getAccountKeyVaultStatusOutput(args: GetAccountKeyVaultStatusOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountKeyVaultStatusResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

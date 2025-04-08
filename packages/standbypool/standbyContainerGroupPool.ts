@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A StandbyContainerGroupPoolResource.
- * Azure REST API version: 2023-12-01-preview.
  *
- * Other available API versions: 2024-03-01, 2024-03-01-preview.
+ * Uses Azure REST API version 2023-12-01-preview.
+ *
+ * Other available API versions: 2024-03-01, 2024-03-01-preview, 2025-03-01.
  */
 export class StandbyContainerGroupPool extends pulumi.CustomResource {
     /**
@@ -108,7 +109,7 @@ export class StandbyContainerGroupPool extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:standbypool/v20231201preview:StandbyContainerGroupPool" }, { type: "azure-native:standbypool/v20240301:StandbyContainerGroupPool" }, { type: "azure-native:standbypool/v20240301preview:StandbyContainerGroupPool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:standbypool/v20231201preview:StandbyContainerGroupPool" }, { type: "azure-native:standbypool/v20240301:StandbyContainerGroupPool" }, { type: "azure-native:standbypool/v20240301preview:StandbyContainerGroupPool" }, { type: "azure-native:standbypool/v20250301:StandbyContainerGroupPool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(StandbyContainerGroupPool.__pulumiType, name, resourceInputs, opts);
     }

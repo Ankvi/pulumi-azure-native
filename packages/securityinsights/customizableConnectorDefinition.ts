@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Connector definition for kind 'Customizable'.
- * Azure REST API version: 2023-07-01-preview.
+ *
+ * Uses Azure REST API version 2023-07-01-preview.
  */
 export class CustomizableConnectorDefinition extends pulumi.CustomResource {
     /**
@@ -117,7 +118,7 @@ export class CustomizableConnectorDefinition extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20230701preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20230801preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20230901preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20231001preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20231201preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20240101preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20240401preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20240901:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20241001preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20250101preview:CustomizableConnectorDefinition" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20230701preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20230801preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20230901preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20231001preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20231201preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20240101preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20240401preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20240901:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20241001preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20250101preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20250301:CustomizableConnectorDefinition" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CustomizableConnectorDefinition.__pulumiType, name, resourceInputs, opts);
     }

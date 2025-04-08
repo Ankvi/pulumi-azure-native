@@ -3,7 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Define the virtualMachineInstance.
- * Azure REST API version: 2023-03-01-preview.
+ *
+ * Uses Azure REST API version 2023-03-01-preview.
  *
  * Other available API versions: 2023-10-01, 2023-12-01.
  */

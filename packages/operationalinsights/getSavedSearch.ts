@@ -3,9 +3,10 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Gets the specified saved search for a given workspace.
- * Azure REST API version: 2020-08-01.
  *
- * Other available API versions: 2023-09-01.
+ * Uses Azure REST API version 2020-08-01.
+ *
+ * Other available API versions: 2023-09-01, 2025-02-01.
  */
 export function getSavedSearch(args: GetSavedSearchArgs, opts?: pulumi.InvokeOptions): Promise<GetSavedSearchResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -82,9 +83,10 @@ export interface GetSavedSearchResult {
 }
 /**
  * Gets the specified saved search for a given workspace.
- * Azure REST API version: 2020-08-01.
  *
- * Other available API versions: 2023-09-01.
+ * Uses Azure REST API version 2020-08-01.
+ *
+ * Other available API versions: 2023-09-01, 2025-02-01.
  */
 export function getSavedSearchOutput(args: GetSavedSearchOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSavedSearchResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

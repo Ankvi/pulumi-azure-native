@@ -177,7 +177,7 @@ export interface LandingZoneRegistrationResourcePropertiesArgs {
     /**
      * The managed identity to be assigned to this landing zone registration.
      */
-    managedIdentity: pulumi.Input<ManagedIdentityPropertiesArgs>;
+    managedIdentity?: pulumi.Input<ManagedIdentityPropertiesArgs>;
 }
 
 /**

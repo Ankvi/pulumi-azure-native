@@ -172,6 +172,7 @@ export type ScalingHostPoolType = (typeof ScalingHostPoolType)[keyof typeof Scal
 export const SessionHandlingOperation = {
     None: "None",
     Deallocate: "Deallocate",
+    Hibernate: "Hibernate",
 } as const;
 
 /**
