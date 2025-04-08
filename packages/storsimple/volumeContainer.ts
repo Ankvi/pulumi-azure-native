@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * The volume container.
  *
- * Uses Azure REST API version 2017-06-01. In version 1.x of the Azure Native provider, it used API version 2017-06-01.
+ * Uses Azure REST API version 2017-06-01. In version 2.x of the Azure Native provider, it used API version 2017-06-01.
  */
 export class VolumeContainer extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class VolumeContainer extends pulumi.CustomResource {
         return obj['__pulumiType'] === VolumeContainer.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The bandwidth-rate set on the volume container.
      */
@@ -110,6 +114,7 @@ export class VolumeContainer extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["storageAccountCredentialId"] = args ? args.storageAccountCredentialId : undefined;
             resourceInputs["volumeContainerName"] = args ? args.volumeContainerName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["encryptionStatus"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["ownerShipStatus"] = undefined /*out*/;
@@ -117,6 +122,7 @@ export class VolumeContainer extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["volumeCount"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["bandWidthRateInMbps"] = undefined /*out*/;
             resourceInputs["bandwidthSettingId"] = undefined /*out*/;
             resourceInputs["encryptionKey"] = undefined /*out*/;

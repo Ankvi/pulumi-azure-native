@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
  */
 export interface APIServerProfileArgs {
     /**
-     * The IP of the cluster API server.
-     */
-    ip?: pulumi.Input<string>;
-    /**
-     * The URL to access the cluster API server.
-     */
-    url?: pulumi.Input<string>;
-    /**
      * API server visibility.
      */
     visibility?: pulumi.Input<string | enums.Visibility>;
@@ -45,23 +37,9 @@ export interface ClusterProfileArgs {
 }
 
 /**
- * ConsoleProfile represents a console profile.
- */
-export interface ConsoleProfileArgs {
-    /**
-     * The URL to access the cluster console.
-     */
-    url?: pulumi.Input<string>;
-}
-
-/**
  * IngressProfile represents an ingress profile.
  */
 export interface IngressProfileArgs {
-    /**
-     * The IP of the ingress.
-     */
-    ip?: pulumi.Input<string>;
     /**
      * The ingress profile name.
      */
@@ -70,6 +48,26 @@ export interface IngressProfileArgs {
      * Ingress visibility.
      */
     visibility?: pulumi.Input<string | enums.Visibility>;
+}
+
+/**
+ * LoadBalancerProfile represents the profile of the cluster public load balancer.
+ */
+export interface LoadBalancerProfileArgs {
+    /**
+     * The desired managed outbound IPs for the cluster public load balancer.
+     */
+    managedOutboundIps?: pulumi.Input<ManagedOutboundIPsArgs>;
+}
+
+/**
+ * ManagedOutboundIPs represents the desired managed outbound IPs for the cluster public load balancer.
+ */
+export interface ManagedOutboundIPsArgs {
+    /**
+     * Count represents the desired number of IPv4 outbound IPs created and managed by Azure for the cluster public load balancer.  Allowed values are in the range of 1 - 20.  The default value is 1.
+     */
+    count?: pulumi.Input<number>;
 }
 
 /**
@@ -99,9 +97,21 @@ export interface MasterProfileArgs {
  */
 export interface NetworkProfileArgs {
     /**
+     * The cluster load balancer profile.
+     */
+    loadBalancerProfile?: pulumi.Input<LoadBalancerProfileArgs>;
+    /**
+     * The OutboundType used for egress traffic.
+     */
+    outboundType?: pulumi.Input<string | enums.OutboundType>;
+    /**
      * The CIDR used for OpenShift/Kubernetes Pods.
      */
     podCidr?: pulumi.Input<string>;
+    /**
+     * Specifies whether subnets are pre-attached with an NSG
+     */
+    preconfiguredNSG?: pulumi.Input<string | enums.PreconfiguredNSG>;
     /**
      * The CIDR used for OpenShift/Kubernetes Services.
      */
@@ -155,8 +165,3 @@ export interface WorkerProfileArgs {
      */
     vmSize?: pulumi.Input<string>;
 }
-
-
-
-
-

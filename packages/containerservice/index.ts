@@ -71,11 +71,6 @@ export const getManagedClusterSnapshot: typeof import("./getManagedClusterSnapsh
 export const getManagedClusterSnapshotOutput: typeof import("./getManagedClusterSnapshot").getManagedClusterSnapshotOutput = null as any;
 utilities.lazyLoad(exports, ["getManagedClusterSnapshot","getManagedClusterSnapshotOutput"], () => require("./getManagedClusterSnapshot"));
 
-export { GetOpenShiftManagedClusterArgs, GetOpenShiftManagedClusterResult, GetOpenShiftManagedClusterOutputArgs } from "./getOpenShiftManagedCluster";
-export const getOpenShiftManagedCluster: typeof import("./getOpenShiftManagedCluster").getOpenShiftManagedCluster = null as any;
-export const getOpenShiftManagedClusterOutput: typeof import("./getOpenShiftManagedCluster").getOpenShiftManagedClusterOutput = null as any;
-utilities.lazyLoad(exports, ["getOpenShiftManagedCluster","getOpenShiftManagedClusterOutput"], () => require("./getOpenShiftManagedCluster"));
-
 export { GetPrivateEndpointConnectionArgs, GetPrivateEndpointConnectionResult, GetPrivateEndpointConnectionOutputArgs } from "./getPrivateEndpointConnection";
 export const getPrivateEndpointConnection: typeof import("./getPrivateEndpointConnection").getPrivateEndpointConnection = null as any;
 export const getPrivateEndpointConnectionOutput: typeof import("./getPrivateEndpointConnection").getPrivateEndpointConnectionOutput = null as any;
@@ -141,11 +136,6 @@ export type ManagedClusterSnapshot = import("./managedClusterSnapshot").ManagedC
 export const ManagedClusterSnapshot: typeof import("./managedClusterSnapshot").ManagedClusterSnapshot = null as any;
 utilities.lazyLoad(exports, ["ManagedClusterSnapshot"], () => require("./managedClusterSnapshot"));
 
-export { OpenShiftManagedClusterArgs } from "./openShiftManagedCluster";
-export type OpenShiftManagedCluster = import("./openShiftManagedCluster").OpenShiftManagedCluster;
-export const OpenShiftManagedCluster: typeof import("./openShiftManagedCluster").OpenShiftManagedCluster = null as any;
-utilities.lazyLoad(exports, ["OpenShiftManagedCluster"], () => require("./openShiftManagedCluster"));
-
 export { PrivateEndpointConnectionArgs } from "./privateEndpointConnection";
 export type PrivateEndpointConnection = import("./privateEndpointConnection").PrivateEndpointConnection;
 export const PrivateEndpointConnection: typeof import("./privateEndpointConnection").PrivateEndpointConnection = null as any;
@@ -170,8 +160,6 @@ utilities.lazyLoad(exports, ["UpdateRun"], () => require("./updateRun"));
 // Export enums:
 export * from "./types/enums";
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
@@ -194,8 +182,6 @@ const _module = {
                 return new ManagedCluster(name, <any>undefined, { urn })
             case "azure-native:containerservice:ManagedClusterSnapshot":
                 return new ManagedClusterSnapshot(name, <any>undefined, { urn })
-            case "azure-native:containerservice:OpenShiftManagedCluster":
-                return new OpenShiftManagedCluster(name, <any>undefined, { urn })
             case "azure-native:containerservice:PrivateEndpointConnection":
                 return new PrivateEndpointConnection(name, <any>undefined, { urn })
             case "azure-native:containerservice:Snapshot":

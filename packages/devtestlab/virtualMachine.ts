@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * A virtual machine.
  *
- * Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+ * Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
  */
 export class VirtualMachine extends pulumi.CustomResource {
     /**
@@ -49,6 +49,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      * The artifacts to be installed on the virtual machine.
      */
     public readonly artifacts!: pulumi.Output<types.outputs.ArtifactInstallPropertiesResponse[] | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The resource identifier (Microsoft.Compute) of the virtual machine.
      */
@@ -237,6 +241,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["userName"] = args ? args.userName : undefined;
             resourceInputs["applicableSchedule"] = undefined /*out*/;
             resourceInputs["artifactDeploymentStatus"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["computeId"] = undefined /*out*/;
             resourceInputs["computeVm"] = undefined /*out*/;
             resourceInputs["createdByUser"] = undefined /*out*/;
@@ -253,6 +258,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["applicableSchedule"] = undefined /*out*/;
             resourceInputs["artifactDeploymentStatus"] = undefined /*out*/;
             resourceInputs["artifacts"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["computeId"] = undefined /*out*/;
             resourceInputs["computeVm"] = undefined /*out*/;
             resourceInputs["createdByUser"] = undefined /*out*/;

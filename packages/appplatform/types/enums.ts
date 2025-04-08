@@ -1,3 +1,13 @@
+export const ApiPortalApiTryOutEnabledState = {
+    Enabled: "Enabled",
+    Disabled: "Disabled",
+} as const;
+
+/**
+ * Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
+ */
+export type ApiPortalApiTryOutEnabledState = (typeof ApiPortalApiTryOutEnabledState)[keyof typeof ApiPortalApiTryOutEnabledState];
+
 export const ApmType = {
     ApplicationInsights: "ApplicationInsights",
     AppDynamics: "AppDynamics",
@@ -62,6 +72,16 @@ export const ConfigurationServiceGeneration = {
  */
 export type ConfigurationServiceGeneration = (typeof ConfigurationServiceGeneration)[keyof typeof ConfigurationServiceGeneration];
 
+export const CustomizedAcceleratorType = {
+    Accelerator: "Accelerator",
+    Fragment: "Fragment",
+} as const;
+
+/**
+ * Type of the customized accelerator.
+ */
+export type CustomizedAcceleratorType = (typeof CustomizedAcceleratorType)[keyof typeof CustomizedAcceleratorType];
+
 export const DevToolPortalFeatureState = {
     /**
      * Enable the plugin in Dev Tool Portal.
@@ -77,6 +97,15 @@ export const DevToolPortalFeatureState = {
  * State of the plugin
  */
 export type DevToolPortalFeatureState = (typeof DevToolPortalFeatureState)[keyof typeof DevToolPortalFeatureState];
+
+export const Frequency = {
+    Weekly: "Weekly",
+} as const;
+
+/**
+ * The frequency to run the maintenance job
+ */
+export type Frequency = (typeof Frequency)[keyof typeof Frequency];
 
 export const GatewayCertificateVerification = {
     /**
@@ -128,6 +157,16 @@ export const HTTPSchemeType = {
  */
 export type HTTPSchemeType = (typeof HTTPSchemeType)[keyof typeof HTTPSchemeType];
 
+export const KeyVaultCertificateAutoSync = {
+    Disabled: "Disabled",
+    Enabled: "Enabled",
+} as const;
+
+/**
+ * Indicates whether to automatically synchronize certificate from key vault or not.
+ */
+export type KeyVaultCertificateAutoSync = (typeof KeyVaultCertificateAutoSync)[keyof typeof KeyVaultCertificateAutoSync];
+
 export const ManagedIdentityType = {
     None: "None",
     SystemAssigned: "SystemAssigned",
@@ -170,6 +209,22 @@ export const StorageType = {
  */
 export type StorageType = (typeof StorageType)[keyof typeof StorageType];
 
+export const TestEndpointAuthState = {
+    /**
+     * Enable test endpoint auth.
+     */
+    Enabled: "Enabled",
+    /**
+     * Disable test endpoint auth
+     */
+    Disabled: "Disabled",
+} as const;
+
+/**
+ * State of test endpoint auth.
+ */
+export type TestEndpointAuthState = (typeof TestEndpointAuthState)[keyof typeof TestEndpointAuthState];
+
 export const TriggerType = {
     Manual: "Manual",
 } as const;
@@ -187,3 +242,18 @@ export const Type = {
  * The type of the underlying resource to mount as a persistent disk.
  */
 export type Type = (typeof Type)[keyof typeof Type];
+
+export const WeekDay = {
+    Monday: "Monday",
+    Tuesday: "Tuesday",
+    Wednesday: "Wednesday",
+    Thursday: "Thursday",
+    Friday: "Friday",
+    Saturday: "Saturday",
+    Sunday: "Sunday",
+} as const;
+
+/**
+ * The day to run the maintenance job
+ */
+export type WeekDay = (typeof WeekDay)[keyof typeof WeekDay];

@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * State of the myscope setting.
  *
- * Uses Azure REST API version 2019-11-01. In version 1.x of the Azure Native provider, it used API version 2019-11-01.
+ * Uses Azure REST API version 2019-11-01. In version 2.x of the Azure Native provider, it used API version 2019-11-01.
  */
 export class Setting extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class Setting extends pulumi.CustomResource {
         return obj['__pulumiType'] === Setting.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Array of scopes with additional details used by Cost Management in the Azure portal.
      */
@@ -76,10 +80,12 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["scope"] = args ? args.scope : undefined;
             resourceInputs["settingName"] = args ? args.settingName : undefined;
             resourceInputs["startOn"] = args ? args.startOn : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["cache"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

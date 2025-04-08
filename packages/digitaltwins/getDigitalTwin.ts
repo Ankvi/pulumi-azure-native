@@ -30,6 +30,10 @@ export interface GetDigitalTwinArgs {
  */
 export interface GetDigitalTwinResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Time when DigitalTwinsInstance was created.
      */
     readonly createdTime: string;

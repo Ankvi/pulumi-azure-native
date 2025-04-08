@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * An integration application under space.
  *
- * Uses Azure REST API version 2023-11-14-preview.
+ * Uses Azure REST API version 2023-11-14-preview. In version 2.x of the Azure Native provider, it used API version 2023-11-14-preview.
  */
 export class Application extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class Application extends pulumi.CustomResource {
         return obj['__pulumiType'] === Application.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The description of the resource.
      */
@@ -90,11 +94,13 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["spaceName"] = args ? args.spaceName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["trackingDataStores"] = args ? args.trackingDataStores : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

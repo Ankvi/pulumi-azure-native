@@ -79,6 +79,10 @@ export interface ArtifactManifestPropertiesFormatArgs {
  * Artifact store properties.
  */
 export interface ArtifactStorePropertiesFormatArgs {
+    /**
+     * The artifact store backing resource network access type
+     */
+    backingResourcePublicNetworkAccess?: pulumi.Input<string | enums.BackingResourcePublicNetworkAccess>;
     managedResourceGroupConfiguration?: pulumi.Input<ArtifactStorePropertiesFormatManagedResourceGroupConfigurationArgs>;
     /**
      * The replication strategy.
@@ -916,35 +920,113 @@ export interface NetworkFunctionTemplateArgs {
 }
 
 /**
- * The network function user configuration.
+ * NetworkFunction with secrets.
  */
-export interface NetworkFunctionUserConfigurationArgs {
+export interface NetworkFunctionValueWithSecretsArgs {
     /**
-     * The network interface configuration.
+     * Indicates if software updates are allowed during deployment.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<NetworkInterfaceArgs>[]>;
+    allowSoftwareUpdate?: pulumi.Input<boolean>;
     /**
-     * Specifies the operating system settings for the role instance.
+     * The secret type which indicates if secret or not.
+     * Expected value is 'Secret'.
      */
-    osProfile?: pulumi.Input<NetworkFunctionUserConfigurationOsProfileArgs>;
+    configurationType: pulumi.Input<"Secret">;
     /**
-     * The name of the network function role.
+     * The network function definition group name for the network function.
      */
-    roleName?: pulumi.Input<string>;
+    networkFunctionDefinitionGroupName?: pulumi.Input<string>;
     /**
-     * The user data parameters from the customer.
+     * The location of the network function definition offering.
      */
-    userDataParameters?: any;
+    networkFunctionDefinitionOfferingLocation?: pulumi.Input<string>;
+    /**
+     * The network function definition version for the network function.
+     */
+    networkFunctionDefinitionVersion?: pulumi.Input<string>;
+    /**
+     * The network function definition version resource reference.
+     */
+    networkFunctionDefinitionVersionResourceReference?: pulumi.Input<OpenDeploymentResourceReferenceArgs | SecretDeploymentResourceReferenceArgs>;
+    /**
+     * The nfviId for the network function.
+     */
+    nfviId?: pulumi.Input<string>;
+    /**
+     * The nfvi type for the network function.
+     */
+    nfviType?: pulumi.Input<string | enums.NFVIType>;
+    /**
+     * The publisher name for the network function.
+     */
+    publisherName?: pulumi.Input<string>;
+    /**
+     * The scope of the publisher.
+     */
+    publisherScope?: pulumi.Input<string | enums.PublisherScope>;
+    /**
+     * The role configuration override values from the user.
+     */
+    roleOverrideValues?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The JSON-serialized secret deployment values from the user. This contains secrets like passwords,keys etc
+     */
+    secretDeploymentValues?: pulumi.Input<string>;
 }
 
 /**
- * Specifies the operating system settings for the role instance.
+ * NetworkFunction with no secrets.
  */
-export interface NetworkFunctionUserConfigurationOsProfileArgs {
+export interface NetworkFunctionValueWithoutSecretsArgs {
     /**
-     * Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes. <br><br> **Note: Do not pass any secrets or passwords in customData property** <br><br> This property cannot be updated after the VM is created. <br><br> customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) <br><br> For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     * Indicates if software updates are allowed during deployment.
      */
-    customData?: pulumi.Input<string>;
+    allowSoftwareUpdate?: pulumi.Input<boolean>;
+    /**
+     * The secret type which indicates if secret or not.
+     * Expected value is 'Open'.
+     */
+    configurationType: pulumi.Input<"Open">;
+    /**
+     * The JSON-serialized deployment values from the user.
+     */
+    deploymentValues?: pulumi.Input<string>;
+    /**
+     * The network function definition group name for the network function.
+     */
+    networkFunctionDefinitionGroupName?: pulumi.Input<string>;
+    /**
+     * The location of the network function definition offering.
+     */
+    networkFunctionDefinitionOfferingLocation?: pulumi.Input<string>;
+    /**
+     * The network function definition version for the network function.
+     */
+    networkFunctionDefinitionVersion?: pulumi.Input<string>;
+    /**
+     * The network function definition version resource reference.
+     */
+    networkFunctionDefinitionVersionResourceReference?: pulumi.Input<OpenDeploymentResourceReferenceArgs | SecretDeploymentResourceReferenceArgs>;
+    /**
+     * The nfviId for the network function.
+     */
+    nfviId?: pulumi.Input<string>;
+    /**
+     * The nfvi type for the network function.
+     */
+    nfviType?: pulumi.Input<string | enums.NFVIType>;
+    /**
+     * The publisher name for the network function.
+     */
+    publisherName?: pulumi.Input<string>;
+    /**
+     * The scope of the publisher.
+     */
+    publisherScope?: pulumi.Input<string | enums.PublisherScope>;
+    /**
+     * The role configuration override values from the user.
+     */
+    roleOverrideValues?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -1233,19 +1315,6 @@ export interface StorageProfileArgs {
 }
 
 /**
- * Reference to another sub resource.
- */
-export interface SubResourceArgs {
-    /**
-     * Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
-     * An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
-     * A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
-     * Example of a relative ID: $self/frontEndConfigurations/my-frontend.
-     */
-    id?: pulumi.Input<string>;
-}
-
-/**
  * Vhd artifact profile.
  */
 export interface VhdImageArtifactProfileArgs {
@@ -1301,5 +1370,3 @@ export interface VirtualNetworkFunctionNetworkFunctionDefinitionVersionArgs {
      */
     networkFunctionType: pulumi.Input<"VirtualNetworkFunction">;
 }
-
-

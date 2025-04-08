@@ -3,9 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Workspace active directory administrator
  *
- * Uses Azure REST API version 2021-06-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
+ * Uses Azure REST API version 2021-06-01. In version 2.x of the Azure Native provider, it used API version 2021-06-01.
  *
- * Other available API versions: 2021-06-01-preview.
+ * Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WorkspaceAadAdmin extends pulumi.CustomResource {
     /**
@@ -38,6 +38,10 @@ export class WorkspaceAadAdmin extends pulumi.CustomResource {
      * Workspace active directory administrator type
      */
     public readonly administratorType!: pulumi.Output<string | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Login of the workspace active directory administrator
      */
@@ -82,10 +86,12 @@ export class WorkspaceAadAdmin extends pulumi.CustomResource {
             resourceInputs["sid"] = args ? args.sid : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["administratorType"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["login"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["sid"] = undefined /*out*/;

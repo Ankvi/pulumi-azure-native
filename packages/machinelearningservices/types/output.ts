@@ -1,6 +1,42 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * This connection type covers the AAD auth for any applicable Azure service
+ */
+export interface AADAuthTypeWorkspaceConnectionPropertiesResponse {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'AAD'.
+     */
+    authType: "AAD";
+    /**
+     * Category of the connection
+     */
+    category?: string;
+    createdByWorkspaceArmId: string;
+    expiryTime?: string;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    sharedUserList?: string[];
+    target?: string;
+    /**
+     * Value details of the workspace connection.
+     */
+    value?: string;
+    /**
+     * format for the workspace connection value
+     */
+    valueFormat?: string;
+}
+
+/**
  * A Machine Learning compute based on AKS.
  */
 export interface AKSResponse {
@@ -122,15 +158,70 @@ export interface AccessKeyAuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    createdByWorkspaceArmId: string;
     credentials?: WorkspaceConnectionAccessKeyResponse;
     expiryTime?: string;
-    metadata?: any;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    sharedUserList?: string[];
     target?: string;
+    /**
+     * Value details of the workspace connection.
+     */
+    value?: string;
+    /**
+     * format for the workspace connection value
+     */
+    valueFormat?: string;
 }
 
 export interface AccountApiKeysResponse {
     key1?: string;
     key2?: string;
+}
+
+/**
+ * This connection type covers the account key connection for Azure storage
+ */
+export interface AccountKeyAuthTypeWorkspaceConnectionPropertiesResponse {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'AccountKey'.
+     */
+    authType: "AccountKey";
+    /**
+     * Category of the connection
+     */
+    category?: string;
+    createdByWorkspaceArmId: string;
+    credentials?: WorkspaceConnectionAccountKeyResponse;
+    expiryTime?: string;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    sharedUserList?: string[];
+    target?: string;
+    /**
+     * Value details of the workspace connection.
+     */
+    value?: string;
+    /**
+     * format for the workspace connection value
+     */
+    valueFormat?: string;
 }
 
 /**
@@ -145,68 +236,6 @@ export interface AccountKeyDatastoreCredentialsResponse {
 }
 
 /**
- * Cognitive Services account Model.
- */
-export interface AccountModelResponse {
-    /**
-     * Base Model Identifier.
-     */
-    baseModel?: DeploymentModelResponse;
-    /**
-     * The call rate limit Cognitive Services account.
-     */
-    callRateLimit: CallRateLimitResponse;
-    /**
-     * The capabilities.
-     */
-    capabilities?: {[key: string]: string};
-    /**
-     * Cognitive Services account ModelDeprecationInfo.
-     */
-    deprecation?: ModelDeprecationInfoResponse;
-    /**
-     * The capabilities for finetune models.
-     */
-    finetuneCapabilities?: {[key: string]: string};
-    /**
-     * Deployment model format.
-     */
-    format?: string;
-    /**
-     * If the model is default version.
-     */
-    isDefaultVersion?: boolean;
-    /**
-     * Model lifecycle status.
-     */
-    lifecycleStatus?: string;
-    /**
-     * The max capacity.
-     */
-    maxCapacity?: number;
-    /**
-     * Deployment model name.
-     */
-    name?: string;
-    /**
-     * The list of Model Sku.
-     */
-    skus?: ModelSkuResponse[];
-    /**
-     * Optional. Deployment model source ARM resource ID.
-     */
-    source?: string;
-    /**
-     * Metadata pertaining to creation and last modification of the resource.
-     */
-    systemData: SystemDataResponse;
-    /**
-     * Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
-     */
-    version?: string;
-}
-
-/**
  * Details of ACR account to be used for the Registry
  */
 export interface AcrDetailsResponse {
@@ -218,17 +247,25 @@ export interface AcrDetailsResponse {
 
 export interface ActualCapacityInfoResponse {
     /**
-     * Gets or sets the total number of instances for the group.
+     * Gets or sets the number of instances (scale units) which have Failed provisioning state and have target group payload.
      */
-    allocated?: number;
+    failed?: number;
     /**
-     * Gets or sets the number of instances which failed to successfully complete assignment.
+     * Gets or sets the number of instances (scale units) which have Failed provisioning state but do not have target group payload.
      */
-    assignmentFailed?: number;
+    outdatedFailed?: number;
     /**
-     * Gets or sets the number of instances which successfully completed assignment.
+     * Gets or sets the number of instances (scale units) which have Succeeded provisioning state but do not have target group payload.
      */
-    assignmentSuccess?: number;
+    outdatedSucceeded?: number;
+    /**
+     * Gets or sets the number of instances (scale units) which have Succeeded provisioning state and target group payload.
+     */
+    succeeded?: number;
+    /**
+     * Gets or sets the total number of instances (scale units) regardless of provisioning state or whether current group payload version matches the target group payload.
+     */
+    total?: number;
 }
 /**
  * actualCapacityInfoResponseProvideDefaults sets the appropriate defaults for ActualCapacityInfoResponse
@@ -236,9 +273,11 @@ export interface ActualCapacityInfoResponse {
 export function actualCapacityInfoResponseProvideDefaults(val: ActualCapacityInfoResponse): ActualCapacityInfoResponse {
     return {
         ...val,
-        allocated: (val.allocated) ?? 0,
-        assignmentFailed: (val.assignmentFailed) ?? 0,
-        assignmentSuccess: (val.assignmentSuccess) ?? 0,
+        failed: (val.failed) ?? 0,
+        outdatedFailed: (val.outdatedFailed) ?? 0,
+        outdatedSucceeded: (val.outdatedSucceeded) ?? 0,
+        succeeded: (val.succeeded) ?? 0,
+        total: (val.total) ?? 0,
     };
 }
 
@@ -262,6 +301,14 @@ export interface AksNetworkingConfigurationResponse {
      * Virtual network subnet resource ID the compute nodes belong to
      */
     subnetId?: string;
+}
+
+export interface AllFeaturesResponse {
+    /**
+     *
+     * Expected value is 'AllFeatures'.
+     */
+    filterType: "AllFeatures";
 }
 
 /**
@@ -452,6 +499,17 @@ export function amlComputeResponseProvideDefaults(val: AmlComputeResponse): AmlC
 }
 
 /**
+ * AML token compute identity definition.
+ */
+export interface AmlTokenComputeIdentityResponse {
+    /**
+     * Monitor compute identity type enum.
+     * Expected value is 'AmlToken'.
+     */
+    computeIdentityType: "AmlToken";
+}
+
+/**
  * AML Token identity configuration.
  */
 export interface AmlTokenResponse {
@@ -494,13 +552,31 @@ export interface ApiKeyAuthWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    createdByWorkspaceArmId: string;
     /**
      * Api key object for workspace connection credential.
      */
     credentials?: WorkspaceConnectionApiKeyResponse;
     expiryTime?: string;
-    metadata?: any;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    sharedUserList?: string[];
     target?: string;
+    /**
+     * Value details of the workspace connection.
+     */
+    value?: string;
+    /**
+     * format for the workspace connection value
+     */
+    valueFormat?: string;
 }
 
 /**
@@ -526,26 +602,6 @@ export interface AssignedUserResponse {
      * User’s AAD Tenant Id.
      */
     tenantId: string;
-}
-
-export interface AutoDeleteSettingResponse {
-    /**
-     * When to check if an asset is expired
-     */
-    condition?: string;
-    /**
-     * Expiration condition value.
-     */
-    value?: string;
-}
-/**
- * autoDeleteSettingResponseProvideDefaults sets the appropriate defaults for AutoDeleteSettingResponse
- */
-export function autoDeleteSettingResponseProvideDefaults(val: AutoDeleteSettingResponse): AutoDeleteSettingResponse {
-    return {
-        ...val,
-        condition: (val.condition) ?? "CreatedGreaterThan",
-    };
 }
 
 /**
@@ -609,6 +665,10 @@ export interface AutoMLJobResponse {
      */
     jobType: "AutoML";
     /**
+     * Notification setting for the job
+     */
+    notificationSetting?: NotificationSettingResponse;
+    /**
      * Mapping of output data bindings used in the job.
      */
     outputs?: {[key: string]: CustomModelJobOutputResponse | MLFlowModelJobOutputResponse | MLTableJobOutputResponse | TritonModelJobOutputResponse | UriFileJobOutputResponse | UriFolderJobOutputResponse};
@@ -616,6 +676,10 @@ export interface AutoMLJobResponse {
      * The asset property dictionary.
      */
     properties?: {[key: string]: string};
+    /**
+     * Queue settings for the job
+     */
+    queueSettings?: QueueSettingsResponse;
     /**
      * Compute Resource configuration for the job.
      */
@@ -646,6 +710,7 @@ export function autoMLJobResponseProvideDefaults(val: AutoMLJobResponse): AutoML
         ...val,
         experimentName: (val.experimentName) ?? "Default",
         isArchived: (val.isArchived) ?? false,
+        queueSettings: (val.queueSettings ? queueSettingsResponseProvideDefaults(val.queueSettings) : undefined),
         resources: (val.resources ? jobResourceConfigurationResponseProvideDefaults(val.resources) : undefined),
     };
 }
@@ -747,9 +812,17 @@ export interface AzureBlobDatastoreResponse {
      */
     protocol?: string;
     /**
+     * Azure Resource Group name
+     */
+    resourceGroup?: string;
+    /**
      * Indicates which identity to use to authenticate service data access to customer's storage.
      */
     serviceDataAccessAuthIdentity?: string;
+    /**
+     * Azure Subscription Id
+     */
+    subscriptionId?: string;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
@@ -791,6 +864,10 @@ export interface AzureDataLakeGen1DatastoreResponse {
      */
     properties?: {[key: string]: string};
     /**
+     * Azure Resource Group name
+     */
+    resourceGroup?: string;
+    /**
      * Indicates which identity to use to authenticate service data access to customer's storage.
      */
     serviceDataAccessAuthIdentity?: string;
@@ -798,6 +875,10 @@ export interface AzureDataLakeGen1DatastoreResponse {
      * [Required] Azure Data Lake store name.
      */
     storeName: string;
+    /**
+     * Azure Subscription Id
+     */
+    subscriptionId?: string;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
@@ -855,9 +936,17 @@ export interface AzureDataLakeGen2DatastoreResponse {
      */
     protocol?: string;
     /**
+     * Azure Resource Group name
+     */
+    resourceGroup?: string;
+    /**
      * Indicates which identity to use to authenticate service data access to customer's storage.
      */
     serviceDataAccessAuthIdentity?: string;
+    /**
+     * Azure Subscription Id
+     */
+    subscriptionId?: string;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
@@ -985,9 +1074,17 @@ export interface AzureFileDatastoreResponse {
      */
     protocol?: string;
     /**
+     * Azure Resource Group name
+     */
+    resourceGroup?: string;
+    /**
      * Indicates which identity to use to authenticate service data access to customer's storage.
      */
     serviceDataAccessAuthIdentity?: string;
+    /**
+     * Azure Subscription Id
+     */
+    subscriptionId?: string;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
@@ -1344,6 +1441,10 @@ export interface BatchDeploymentResponse {
      */
     compute?: string;
     /**
+     * Properties relevant to different deployment types.
+     */
+    deploymentConfiguration?: BatchPipelineComponentDeploymentConfigurationResponse;
+    /**
      * Description of the endpoint deployment.
      */
     description?: string;
@@ -1441,7 +1542,7 @@ export interface BatchEndpointDefaultsResponse {
  */
 export interface BatchEndpointResponse {
     /**
-     * [Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication. 'Key' doesn't expire but 'AMLToken' does.
+     * [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
      */
     authMode: string;
     /**
@@ -1468,6 +1569,33 @@ export interface BatchEndpointResponse {
      * Endpoint Swagger URI.
      */
     swaggerUri: string;
+}
+
+/**
+ * Properties for a Batch Pipeline Component Deployment.
+ */
+export interface BatchPipelineComponentDeploymentConfigurationResponse {
+    /**
+     * The ARM id of the component to be run.
+     */
+    componentId?: IdAssetReferenceResponse;
+    /**
+     * The enumerated property types for batch deployments.
+     * Expected value is 'PipelineComponent'.
+     */
+    deploymentConfigurationType: "PipelineComponent";
+    /**
+     * The description which will be applied to the job.
+     */
+    description?: string;
+    /**
+     * Run-time settings for the pipeline job.
+     */
+    settings?: {[key: string]: string};
+    /**
+     * The tags which will be applied to the job.
+     */
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -1548,21 +1676,6 @@ export function buildContextResponseProvideDefaults(val: BuildContextResponse): 
     };
 }
 
-/**
- * The call rate limit Cognitive Services account.
- */
-export interface CallRateLimitResponse {
-    /**
-     * The count value of Call Rate Limit.
-     */
-    count?: number;
-    /**
-     * The renewal period in seconds of Call Rate Limit.
-     */
-    renewalPeriod?: number;
-    rules?: ThrottlingRuleResponse[];
-}
-
 export interface CapabilityHostResponse {
     /**
      * List of AI services connections.
@@ -1597,6 +1710,10 @@ export interface CapabilityHostResponse {
      */
     tags?: {[key: string]: string};
     /**
+     * List of Thread storage connections.
+     */
+    threadStorageConnections?: string[];
+    /**
      * List of VectorStore connections.
      */
     vectorStoreConnections?: string[];
@@ -1611,32 +1728,6 @@ export function capabilityHostResponseProvideDefaults(val: CapabilityHostRespons
     };
 }
 
-/**
- * The capacity configuration.
- */
-export interface CapacityConfigResponse {
-    /**
-     * The array of allowed values for capacity.
-     */
-    allowedValues?: number[];
-    /**
-     * The default capacity.
-     */
-    default?: number;
-    /**
-     * The maximum capacity.
-     */
-    maximum?: number;
-    /**
-     * The minimum capacity.
-     */
-    minimum?: number;
-    /**
-     * The minimal incremental between allowed values for capacity.
-     */
-    step?: number;
-}
-
 export interface CapacityReservationGroupResponse {
     /**
      * Offer used by this capacity reservation group.
@@ -1646,6 +1737,54 @@ export interface CapacityReservationGroupResponse {
      * [Required] Specifies the amount of capacity to reserve.
      */
     reservedCapacity: number;
+}
+
+export interface CategoricalDataDriftMetricThresholdResponse {
+    /**
+     *
+     * Expected value is 'Categorical'.
+     */
+    dataType: "Categorical";
+    /**
+     * [Required] The categorical data drift metric to calculate.
+     */
+    metric: string;
+    /**
+     * The threshold value. If null, a default value will be set depending on the selected metric.
+     */
+    threshold?: MonitoringThresholdResponse;
+}
+
+export interface CategoricalDataQualityMetricThresholdResponse {
+    /**
+     *
+     * Expected value is 'Categorical'.
+     */
+    dataType: "Categorical";
+    /**
+     * [Required] The categorical data quality metric to calculate.
+     */
+    metric: string;
+    /**
+     * The threshold value. If null, a default value will be set depending on the selected metric.
+     */
+    threshold?: MonitoringThresholdResponse;
+}
+
+export interface CategoricalPredictionDriftMetricThresholdResponse {
+    /**
+     *
+     * Expected value is 'Categorical'.
+     */
+    dataType: "Categorical";
+    /**
+     * [Required] The categorical prediction drift metric to calculate.
+     */
+    metric: string;
+    /**
+     * The threshold value. If null, a default value will be set depending on the selected metric.
+     */
+    threshold?: MonitoringThresholdResponse;
 }
 
 /**
@@ -1986,6 +2125,35 @@ export interface CognitiveServicesSkuResponse {
     tier?: string;
 }
 
+export interface CollectionResponse {
+    /**
+     * The msi client id used to collect logging to blob storage. If it's null,backend will pick a registered endpoint identity to auth.
+     */
+    clientId?: string;
+    /**
+     * Enable or disable data collection.
+     */
+    dataCollectionMode?: string;
+    /**
+     * The data asset arm resource id. Client side will ensure data asset is pointing to the blob storage, and backend will collect data to the blob storage.
+     */
+    dataId?: string;
+    /**
+     * The sampling rate for collection. Sampling rate 1.0 means we collect 100% of data by default.
+     */
+    samplingRate?: number;
+}
+/**
+ * collectionResponseProvideDefaults sets the appropriate defaults for CollectionResponse
+ */
+export function collectionResponseProvideDefaults(val: CollectionResponse): CollectionResponse {
+    return {
+        ...val,
+        dataCollectionMode: (val.dataCollectionMode) ?? "Disabled",
+        samplingRate: (val.samplingRate) ?? 1,
+    };
+}
+
 /**
  * Column transformer parameters.
  */
@@ -2083,6 +2251,10 @@ export interface CommandJobResponse {
      */
     limits?: CommandJobLimitsResponse;
     /**
+     * Notification setting for the job
+     */
+    notificationSetting?: NotificationSettingResponse;
+    /**
      * Mapping of output data bindings used in the job.
      */
     outputs?: {[key: string]: CustomModelJobOutputResponse | MLFlowModelJobOutputResponse | MLTableJobOutputResponse | TritonModelJobOutputResponse | UriFileJobOutputResponse | UriFolderJobOutputResponse};
@@ -2094,6 +2266,10 @@ export interface CommandJobResponse {
      * The asset property dictionary.
      */
     properties?: {[key: string]: string};
+    /**
+     * Queue settings for the job
+     */
+    queueSettings?: QueueSettingsResponse;
     /**
      * Compute Resource configuration for the job.
      */
@@ -2120,6 +2296,7 @@ export function commandJobResponseProvideDefaults(val: CommandJobResponse): Comm
         ...val,
         experimentName: (val.experimentName) ?? "Default",
         isArchived: (val.isArchived) ?? false,
+        queueSettings: (val.queueSettings ? queueSettingsResponseProvideDefaults(val.queueSettings) : undefined),
         resources: (val.resources ? jobResourceConfigurationResponseProvideDefaults(val.resources) : undefined),
     };
 }
@@ -2600,6 +2777,32 @@ export interface ComputeInstanceVersionResponse {
     runtime?: string;
 }
 
+export interface ComputeRecurrenceScheduleResponse {
+    /**
+     * [Required] List of hours for the schedule.
+     */
+    hours: number[];
+    /**
+     * [Required] List of minutes for the schedule.
+     */
+    minutes: number[];
+    /**
+     * List of month days for the schedule
+     */
+    monthDays?: number[];
+    /**
+     * List of days for the schedule.
+     */
+    weekDays?: string[];
+}
+
+/**
+ * Compute runtime config for feature store type workspace.
+ */
+export interface ComputeRuntimeDtoResponse {
+    sparkRuntimeVersion?: string;
+}
+
 /**
  * The list of schedules to be applied on the computes
  */
@@ -2719,11 +2922,30 @@ export interface ContentSafetyEndpointDeploymentResourcePropertiesResponse {
     versionUpgradeOption?: string;
 }
 
+export interface ContentSafetyResponse {
+    /**
+     * [Required] Specifies the status of content safety.
+     */
+    contentSafetyStatus: string;
+}
+
 export interface CosmosDbSettingsResponse {
     /**
      * The throughput of the collections in cosmosdb database
      */
     collectionsThroughput?: number;
+}
+
+export interface CreateMonitorActionResponse {
+    /**
+     *
+     * Expected value is 'CreateMonitor'.
+     */
+    actionType: "CreateMonitor";
+    /**
+     * [Required] Defines the monitor.
+     */
+    monitorDefinition: MonitorDefinitionResponse;
 }
 
 /**
@@ -2831,13 +3053,42 @@ export interface CustomKeysWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    createdByWorkspaceArmId: string;
     /**
      * Custom Keys credential object
      */
     credentials?: CustomKeysResponse;
     expiryTime?: string;
-    metadata?: any;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    sharedUserList?: string[];
     target?: string;
+    /**
+     * Value details of the workspace connection.
+     */
+    value?: string;
+    /**
+     * format for the workspace connection value
+     */
+    valueFormat?: string;
+}
+
+export interface CustomMetricThresholdResponse {
+    /**
+     * [Required] The user-defined metric to calculate.
+     */
+    metric: string;
+    /**
+     * The threshold value. If null, a default value will be set depending on the selected metric.
+     */
+    threshold?: MonitoringThresholdResponse;
 }
 
 export interface CustomModelJobInputResponse {
@@ -2896,6 +3147,38 @@ export function customModelJobOutputResponseProvideDefaults(val: CustomModelJobO
         ...val,
         mode: (val.mode) ?? "ReadWriteMount",
     };
+}
+
+export interface CustomMonitoringSignalResponse {
+    /**
+     * [Required] Reference to the component asset used to calculate the custom metrics.
+     */
+    componentId: string;
+    /**
+     * Monitoring assets to take as input. Key is the component input port name, value is the data asset.
+     */
+    inputAssets?: {[key: string]: FixedInputDataResponse | RollingInputDataResponse | StaticInputDataResponse};
+    /**
+     * Extra component parameters to take as input. Key is the component literal input port name, value is the parameter value.
+     */
+    inputs?: {[key: string]: CustomModelJobInputResponse | LiteralJobInputResponse | MLFlowModelJobInputResponse | MLTableJobInputResponse | TritonModelJobInputResponse | UriFileJobInputResponse | UriFolderJobInputResponse};
+    /**
+     * [Required] A list of metrics to calculate and their associated thresholds.
+     */
+    metricThresholds: CustomMetricThresholdResponse[];
+    /**
+     * The current notification mode for this signal.
+     */
+    notificationTypes?: string[];
+    /**
+     * Property dictionary. Properties can be added, but not removed or altered.
+     */
+    properties?: {[key: string]: string};
+    /**
+     *
+     * Expected value is 'Custom'.
+     */
+    signalType: "Custom";
 }
 
 /**
@@ -2988,6 +3271,34 @@ export interface CustomTargetRollingWindowSizeResponse {
     value: number;
 }
 
+export interface DataCollectorResponse {
+    /**
+     * [Required] The collection configuration. Each collection has it own configuration to collect model data and the name of collection can be arbitrary string.
+     * Model data collector can be used for either payload logging or custom logging or both of them. Collection request and response are reserved for payload logging, others are for custom logging.
+     */
+    collections: {[key: string]: CollectionResponse};
+    /**
+     * The request logging configuration for mdc, it includes advanced logging settings for all collections. It's optional.
+     */
+    requestLogging?: RequestLoggingResponse;
+    /**
+     * When model data is collected to blob storage, we need to roll the data to different path to avoid logging all of them in a single blob file.
+     * If the rolling rate is hour, all data will be collected in the blob path /yyyy/MM/dd/HH/.
+     * If it's day, all data will be collected in blob path /yyyy/MM/dd/.
+     * The other benefit of rolling path is that model monitoring ui is able to select a time range of data very quickly.
+     */
+    rollingRate?: string;
+}
+/**
+ * dataCollectorResponseProvideDefaults sets the appropriate defaults for DataCollectorResponse
+ */
+export function dataCollectorResponseProvideDefaults(val: DataCollectorResponse): DataCollectorResponse {
+    return {
+        ...val,
+        rollingRate: (val.rollingRate) ?? "Hour",
+    };
+}
+
 /**
  * Container for data asset versions.
  */
@@ -3028,6 +3339,55 @@ export function dataContainerResponseProvideDefaults(val: DataContainerResponse)
     return {
         ...val,
         isArchived: (val.isArchived) ?? false,
+    };
+}
+
+export interface DataDriftMonitoringSignalResponse {
+    /**
+     * A dictionary that maps feature names to their respective data types.
+     */
+    featureDataTypeOverride?: {[key: string]: string};
+    /**
+     * The settings for computing feature importance.
+     */
+    featureImportanceSettings?: FeatureImportanceSettingsResponse;
+    /**
+     * The feature filter which identifies which feature to calculate drift over.
+     */
+    features?: AllFeaturesResponse | FeatureSubsetResponse | TopNFeaturesByAttributionResponse;
+    /**
+     * [Required] A list of metrics to calculate and their associated thresholds.
+     */
+    metricThresholds: (CategoricalDataDriftMetricThresholdResponse | NumericalDataDriftMetricThresholdResponse)[];
+    /**
+     * The current notification mode for this signal.
+     */
+    notificationTypes?: string[];
+    /**
+     * [Required] The data which drift will be calculated for.
+     */
+    productionData: FixedInputDataResponse | RollingInputDataResponse | StaticInputDataResponse;
+    /**
+     * Property dictionary. Properties can be added, but not removed or altered.
+     */
+    properties?: {[key: string]: string};
+    /**
+     * [Required] The data to calculate drift against.
+     */
+    referenceData: FixedInputDataResponse | RollingInputDataResponse | StaticInputDataResponse;
+    /**
+     *
+     * Expected value is 'DataDrift'.
+     */
+    signalType: "DataDrift";
+}
+/**
+ * dataDriftMonitoringSignalResponseProvideDefaults sets the appropriate defaults for DataDriftMonitoringSignalResponse
+ */
+export function dataDriftMonitoringSignalResponseProvideDefaults(val: DataDriftMonitoringSignalResponse): DataDriftMonitoringSignalResponse {
+    return {
+        ...val,
+        featureImportanceSettings: (val.featureImportanceSettings ? featureImportanceSettingsResponseProvideDefaults(val.featureImportanceSettings) : undefined),
     };
 }
 
@@ -3150,6 +3510,55 @@ export interface DataPathAssetReferenceResponse {
      * Expected value is 'DataPath'.
      */
     referenceType: "DataPath";
+}
+
+export interface DataQualityMonitoringSignalResponse {
+    /**
+     * A dictionary that maps feature names to their respective data types.
+     */
+    featureDataTypeOverride?: {[key: string]: string};
+    /**
+     * The settings for computing feature importance.
+     */
+    featureImportanceSettings?: FeatureImportanceSettingsResponse;
+    /**
+     * The features to calculate drift over.
+     */
+    features?: AllFeaturesResponse | FeatureSubsetResponse | TopNFeaturesByAttributionResponse;
+    /**
+     * [Required] A list of metrics to calculate and their associated thresholds.
+     */
+    metricThresholds: (CategoricalDataQualityMetricThresholdResponse | NumericalDataQualityMetricThresholdResponse)[];
+    /**
+     * The current notification mode for this signal.
+     */
+    notificationTypes?: string[];
+    /**
+     * [Required] The data produced by the production service which drift will be calculated for.
+     */
+    productionData: FixedInputDataResponse | RollingInputDataResponse | StaticInputDataResponse;
+    /**
+     * Property dictionary. Properties can be added, but not removed or altered.
+     */
+    properties?: {[key: string]: string};
+    /**
+     * [Required] The data to calculate drift against.
+     */
+    referenceData: FixedInputDataResponse | RollingInputDataResponse | StaticInputDataResponse;
+    /**
+     *
+     * Expected value is 'DataQuality'.
+     */
+    signalType: "DataQuality";
+}
+/**
+ * dataQualityMonitoringSignalResponseProvideDefaults sets the appropriate defaults for DataQualityMonitoringSignalResponse
+ */
+export function dataQualityMonitoringSignalResponseProvideDefaults(val: DataQualityMonitoringSignalResponse): DataQualityMonitoringSignalResponse {
+    return {
+        ...val,
+        featureImportanceSettings: (val.featureImportanceSettings ? featureImportanceSettingsResponseProvideDefaults(val.featureImportanceSettings) : undefined),
+    };
 }
 
 /**
@@ -3544,32 +3953,6 @@ export function deltaModelCurrentStateResponseProvideDefaults(val: DeltaModelCur
     };
 }
 
-/**
- * Properties of Cognitive Services account deployment model.
- */
-export interface DeploymentModelResponse {
-    /**
-     * The call rate limit Cognitive Services account.
-     */
-    callRateLimit: CallRateLimitResponse;
-    /**
-     * Deployment model format.
-     */
-    format?: string;
-    /**
-     * Deployment model name.
-     */
-    name?: string;
-    /**
-     * Optional. Deployment model source ARM resource ID.
-     */
-    source?: string;
-    /**
-     * Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
-     */
-    version?: string;
-}
-
 export interface DeploymentResourceConfigurationResponse {
     /**
      * Optional number of instances or nodes used by the compute target.
@@ -3704,25 +4087,6 @@ export interface EndpointDeploymentModelResponse {
      * Model version.
      */
     version?: string;
-}
-
-export interface EndpointDeploymentResourcePropertiesResponse {
-    /**
-     * Model used for the endpoint deployment.
-     */
-    model: EndpointDeploymentModelResponse;
-    /**
-     * Read-only provision state status property.
-     */
-    provisioningState: string;
-    /**
-     * The name of RAI policy.
-     */
-    raiPolicyName?: string;
-    /**
-     * Deployment model version upgrade option.
-     */
-    versionUpgradeOption?: string;
 }
 
 export interface EndpointModelDeprecationPropertiesResponse {
@@ -4166,6 +4530,82 @@ export interface EstimatedVMPricesResponse {
     values: EstimatedVMPriceResponse[];
 }
 
+export interface FeatureAttributionDriftMonitoringSignalResponse {
+    /**
+     * A dictionary that maps feature names to their respective data types.
+     */
+    featureDataTypeOverride?: {[key: string]: string};
+    /**
+     * [Required] The settings for computing feature importance.
+     */
+    featureImportanceSettings: FeatureImportanceSettingsResponse;
+    /**
+     * [Required] A list of metrics to calculate and their associated thresholds.
+     */
+    metricThreshold: FeatureAttributionMetricThresholdResponse;
+    /**
+     * The current notification mode for this signal.
+     */
+    notificationTypes?: string[];
+    /**
+     * [Required] The data which drift will be calculated for.
+     */
+    productionData: (FixedInputDataResponse | RollingInputDataResponse | StaticInputDataResponse)[];
+    /**
+     * Property dictionary. Properties can be added, but not removed or altered.
+     */
+    properties?: {[key: string]: string};
+    /**
+     * [Required] The data to calculate drift against.
+     */
+    referenceData: FixedInputDataResponse | RollingInputDataResponse | StaticInputDataResponse;
+    /**
+     *
+     * Expected value is 'FeatureAttributionDrift'.
+     */
+    signalType: "FeatureAttributionDrift";
+}
+/**
+ * featureAttributionDriftMonitoringSignalResponseProvideDefaults sets the appropriate defaults for FeatureAttributionDriftMonitoringSignalResponse
+ */
+export function featureAttributionDriftMonitoringSignalResponseProvideDefaults(val: FeatureAttributionDriftMonitoringSignalResponse): FeatureAttributionDriftMonitoringSignalResponse {
+    return {
+        ...val,
+        featureImportanceSettings: featureImportanceSettingsResponseProvideDefaults(val.featureImportanceSettings),
+    };
+}
+
+export interface FeatureAttributionMetricThresholdResponse {
+    /**
+     * [Required] The feature attribution metric to calculate.
+     */
+    metric: string;
+    /**
+     * The threshold value. If null, a default value will be set depending on the selected metric.
+     */
+    threshold?: MonitoringThresholdResponse;
+}
+
+export interface FeatureImportanceSettingsResponse {
+    /**
+     * The mode of operation for computing feature importance.
+     */
+    mode?: string;
+    /**
+     * The name of the target column within the input data asset.
+     */
+    targetColumn?: string;
+}
+/**
+ * featureImportanceSettingsResponseProvideDefaults sets the appropriate defaults for FeatureImportanceSettingsResponse
+ */
+export function featureImportanceSettingsResponseProvideDefaults(val: FeatureImportanceSettingsResponse): FeatureImportanceSettingsResponse {
+    return {
+        ...val,
+        mode: (val.mode) ?? "Disabled",
+    };
+}
+
 /**
  * Dto object representing feature
  */
@@ -4198,6 +4638,30 @@ export function featureResponseProvideDefaults(val: FeatureResponse): FeatureRes
 }
 
 /**
+ * Settings for feature store type workspace.
+ */
+export interface FeatureStoreSettingsResponse {
+    /**
+     * Compute runtime config for feature store type workspace.
+     */
+    computeRuntime?: ComputeRuntimeDtoResponse;
+    offlineStoreConnectionName?: string;
+    onlineStoreConnectionName?: string;
+}
+
+export interface FeatureSubsetResponse {
+    /**
+     * [Required] The list of features to include.
+     */
+    features: string[];
+    /**
+     *
+     * Expected value is 'FeatureSubset'.
+     */
+    filterType: "FeatureSubset";
+}
+
+/**
  * Specifies the feature window
  */
 export interface FeatureWindowResponse {
@@ -4212,7 +4676,7 @@ export interface FeatureWindowResponse {
 }
 
 /**
- * Dto object representing feature set
+ * DTO object representing feature set
  */
 export interface FeaturesetContainerResponse {
     /**
@@ -4307,7 +4771,7 @@ export function featuresetJobResponseProvideDefaults(val: FeaturesetJobResponse)
 }
 
 /**
- * Dto object representing specification
+ * DTO object representing specification
  */
 export interface FeaturesetSpecificationResponse {
     /**
@@ -4317,13 +4781,9 @@ export interface FeaturesetSpecificationResponse {
 }
 
 /**
- * Dto object representing feature set version
+ * DTO object representing feature set version
  */
 export interface FeaturesetVersionResponse {
-    /**
-     * Specifies the lifecycle setting of managed data asset.
-     */
-    autoDeleteSetting?: AutoDeleteSettingResponse;
     /**
      * The asset description text.
      */
@@ -4333,11 +4793,11 @@ export interface FeaturesetVersionResponse {
      */
     entities?: string[];
     /**
-     * If the name version are system generated (anonymous registration). For types where Stage is defined, when Stage is provided it will be used to populate IsAnonymous
+     * If the name version are system generated (anonymous registration).
      */
     isAnonymous?: boolean;
     /**
-     * Is the asset archived? For types where Stage is defined, when Stage is provided it will be used to populate IsArchived
+     * Is the asset archived?
      */
     isArchived?: boolean;
     /**
@@ -4371,7 +4831,6 @@ export interface FeaturesetVersionResponse {
 export function featuresetVersionResponseProvideDefaults(val: FeaturesetVersionResponse): FeaturesetVersionResponse {
     return {
         ...val,
-        autoDeleteSetting: (val.autoDeleteSetting ? autoDeleteSettingResponseProvideDefaults(val.autoDeleteSetting) : undefined),
         isAnonymous: (val.isAnonymous) ?? false,
         isArchived: (val.isArchived) ?? false,
         materializationSettings: (val.materializationSettings ? materializationSettingsResponseProvideDefaults(val.materializationSettings) : undefined),
@@ -4379,7 +4838,7 @@ export function featuresetVersionResponseProvideDefaults(val: FeaturesetVersionR
 }
 
 /**
- * Dto object representing feature entity
+ * DTO object representing feature entity
  */
 export interface FeaturestoreEntityContainerResponse {
     /**
@@ -4422,13 +4881,9 @@ export function featurestoreEntityContainerResponseProvideDefaults(val: Features
 }
 
 /**
- * Dto object representing feature entity version
+ * DTO object representing feature entity version
  */
 export interface FeaturestoreEntityVersionResponse {
-    /**
-     * Specifies the lifecycle setting of managed data asset.
-     */
-    autoDeleteSetting?: AutoDeleteSettingResponse;
     /**
      * The asset description text.
      */
@@ -4438,11 +4893,11 @@ export interface FeaturestoreEntityVersionResponse {
      */
     indexColumns?: IndexColumnResponse[];
     /**
-     * If the name version are system generated (anonymous registration). For types where Stage is defined, when Stage is provided it will be used to populate IsAnonymous
+     * If the name version are system generated (anonymous registration).
      */
     isAnonymous?: boolean;
     /**
-     * Is the asset archived? For types where Stage is defined, when Stage is provided it will be used to populate IsArchived
+     * Is the asset archived?
      */
     isArchived?: boolean;
     /**
@@ -4468,10 +4923,36 @@ export interface FeaturestoreEntityVersionResponse {
 export function featurestoreEntityVersionResponseProvideDefaults(val: FeaturestoreEntityVersionResponse): FeaturestoreEntityVersionResponse {
     return {
         ...val,
-        autoDeleteSetting: (val.autoDeleteSetting ? autoDeleteSettingResponseProvideDefaults(val.autoDeleteSetting) : undefined),
         isAnonymous: (val.isAnonymous) ?? false,
         isArchived: (val.isArchived) ?? false,
     };
+}
+
+/**
+ * Fixed input data definition.
+ */
+export interface FixedInputDataResponse {
+    /**
+     * Mapping of column names to special uses.
+     */
+    columns?: {[key: string]: string};
+    /**
+     * The context metadata of the data source.
+     */
+    dataContext?: string;
+    /**
+     * Monitoring input data type enum.
+     * Expected value is 'Fixed'.
+     */
+    inputDataType: "Fixed";
+    /**
+     * [Required] Specifies the type of job.
+     */
+    jobInputType: string;
+    /**
+     * [Required] Input Asset URI.
+     */
+    uri: string;
 }
 
 export interface FlavorDataResponse {
@@ -4719,7 +5200,7 @@ export interface FqdnOutboundRuleResponse {
     category?: string;
     destination?: string;
     /**
-     * Status of a managed network Outbound Rule of a machine learning workspace.
+     * Type of a managed network Outbound Rule of a machine learning workspace.
      */
     status?: string;
     /**
@@ -4752,6 +5233,53 @@ export interface GridSamplingAlgorithmResponse {
      * Expected value is 'Grid'.
      */
     samplingAlgorithmType: "Grid";
+}
+
+/**
+ * Environment configuration options.
+ */
+export interface GroupEnvironmentConfigurationResponse {
+    /**
+     * ARM resource ID of the environment specification for the inference pool.
+     */
+    environmentId?: string;
+    /**
+     * Environment variables configuration for the inference pool.
+     */
+    environmentVariables?: StringStringKeyValuePairResponse[];
+    /**
+     * Liveness probe monitors the health of the container regularly.
+     */
+    livenessProbe?: ProbeSettingsResponse;
+    /**
+     * Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
+     */
+    readinessProbe?: ProbeSettingsResponse;
+    /**
+     * This verifies whether the application within a container is started. Startup probes run before any other probe, and, unless it finishes successfully, disables other probes.
+     */
+    startupProbe?: ProbeSettingsResponse;
+}
+/**
+ * groupEnvironmentConfigurationResponseProvideDefaults sets the appropriate defaults for GroupEnvironmentConfigurationResponse
+ */
+export function groupEnvironmentConfigurationResponseProvideDefaults(val: GroupEnvironmentConfigurationResponse): GroupEnvironmentConfigurationResponse {
+    return {
+        ...val,
+        livenessProbe: (val.livenessProbe ? probeSettingsResponseProvideDefaults(val.livenessProbe) : undefined),
+        readinessProbe: (val.readinessProbe ? probeSettingsResponseProvideDefaults(val.readinessProbe) : undefined),
+        startupProbe: (val.startupProbe ? probeSettingsResponseProvideDefaults(val.startupProbe) : undefined),
+    };
+}
+
+/**
+ * Model configuration options.
+ */
+export interface GroupModelConfigurationResponse {
+    /**
+     * The URI path to the model.
+     */
+    modelId?: string;
 }
 
 /**
@@ -5994,7 +6522,7 @@ export interface ImageSweepSettingsResponse {
 }
 
 /**
- * Dto object representing index column
+ * DTO object representing index column
  */
 export interface IndexColumnResponse {
     /**
@@ -6029,6 +6557,10 @@ export interface InferenceContainerPropertiesResponse {
      * The port to send the scoring requests to, within the inference server container.
      */
     scoringRoute?: RouteResponse;
+    /**
+     * The route to check the startup of the application in the container.
+     */
+    startupRoute?: RouteResponse;
 }
 
 /**
@@ -6050,15 +6582,28 @@ export interface InferenceEndpointResponse {
     /**
      * [Required] Group within the same pool with which this endpoint needs to be associated with.
      */
-    groupId: string;
+    groupName: string;
     /**
      * Property dictionary. Properties can be added, but not removed or altered.
      */
-    properties?: {[key: string]: string};
+    properties?: StringStringKeyValuePairResponse[];
     /**
      * Provisioning state for the endpoint.
      */
     provisioningState: string;
+    /**
+     * RequestConfiguration for endpoint.
+     */
+    requestConfiguration?: RequestConfigurationResponse;
+}
+/**
+ * inferenceEndpointResponseProvideDefaults sets the appropriate defaults for InferenceEndpointResponse
+ */
+export function inferenceEndpointResponseProvideDefaults(val: InferenceEndpointResponse): InferenceEndpointResponse {
+    return {
+        ...val,
+        requestConfiguration: (val.requestConfiguration ? requestConfigurationResponseProvideDefaults(val.requestConfiguration) : undefined),
+    };
 }
 
 /**
@@ -6066,30 +6611,33 @@ export interface InferenceEndpointResponse {
  */
 export interface InferenceGroupResponse {
     /**
-     * Capacity to be used from the pool's reserved capacity.
-     * optional
-     */
-    bonusExtraCapacity?: number;
-    /**
      * Description of the resource.
      */
     description?: string;
     /**
-     * Metadata for the inference group.
+     * Gets or sets environment configuration for the inference group. Used if PoolType=ScaleUnit.
      */
-    metadata?: string;
+    environmentConfiguration?: GroupEnvironmentConfigurationResponse;
     /**
-     * Priority of the group within the N:Microsoft.MachineLearning.ManagementFrontEnd.Contracts.V20230801Preview.Pools.InferencePools.
+     * Gets or sets model configuration for the inference group. Used if PoolType=ScaleUnit.
      */
-    priority?: number;
+    modelConfiguration?: GroupModelConfigurationResponse;
+    /**
+     * Gets or sets compute instance type.
+     */
+    nodeSkuType?: string;
     /**
      * Property dictionary. Properties can be added, but not removed or altered.
      */
-    properties?: {[key: string]: string};
+    properties?: StringStringKeyValuePairResponse[];
     /**
      * Provisioning state for the inference group.
      */
     provisioningState: string;
+    /**
+     * Gets or sets Scale Unit size.
+     */
+    scaleUnitSize?: number;
 }
 /**
  * inferenceGroupResponseProvideDefaults sets the appropriate defaults for InferenceGroupResponse
@@ -6097,8 +6645,7 @@ export interface InferenceGroupResponse {
 export function inferenceGroupResponseProvideDefaults(val: InferenceGroupResponse): InferenceGroupResponse {
     return {
         ...val,
-        bonusExtraCapacity: (val.bonusExtraCapacity) ?? 0,
-        priority: (val.priority) ?? 0,
+        environmentConfiguration: (val.environmentConfiguration ? groupEnvironmentConfigurationResponseProvideDefaults(val.environmentConfiguration) : undefined),
     };
 }
 
@@ -6107,37 +6654,21 @@ export function inferenceGroupResponseProvideDefaults(val: InferenceGroupRespons
  */
 export interface InferencePoolResponse {
     /**
-     * Code configuration for the inference pool.
-     */
-    codeConfiguration?: CodeConfigurationResponse;
-    /**
      * Description of the resource.
      */
     description?: string;
     /**
-     * EnvironmentConfiguration for the inference pool.
-     */
-    environmentConfiguration?: PoolEnvironmentConfigurationResponse;
-    /**
-     * ModelConfiguration for the inference pool.
-     */
-    modelConfiguration?: PoolModelConfigurationResponse;
-    /**
-     * [Required] Compute instance type.
-     */
-    nodeSkuType: string;
-    /**
      * Property dictionary. Properties can be added, but not removed or altered.
      */
-    properties?: {[key: string]: string};
+    properties?: StringStringKeyValuePairResponse[];
     /**
      * Provisioning state for the pool.
      */
     provisioningState: string;
     /**
-     * Request configuration for the inference pool.
+     * Gets or sets ScaleUnitConfiguration for the inference pool. Used if PoolType=ScaleUnit.
      */
-    requestConfiguration?: RequestConfigurationResponse;
+    scaleUnitConfiguration?: ScaleUnitConfigurationResponse;
 }
 /**
  * inferencePoolResponseProvideDefaults sets the appropriate defaults for InferencePoolResponse
@@ -6145,8 +6676,7 @@ export interface InferencePoolResponse {
 export function inferencePoolResponseProvideDefaults(val: InferencePoolResponse): InferencePoolResponse {
     return {
         ...val,
-        environmentConfiguration: (val.environmentConfiguration ? poolEnvironmentConfigurationResponseProvideDefaults(val.environmentConfiguration) : undefined),
-        requestConfiguration: (val.requestConfiguration ? requestConfigurationResponseProvideDefaults(val.requestConfiguration) : undefined),
+        scaleUnitConfiguration: (val.scaleUnitConfiguration ? scaleUnitConfigurationResponseProvideDefaults(val.scaleUnitConfiguration) : undefined),
     };
 }
 
@@ -6220,7 +6750,7 @@ export interface JobScheduleActionResponse {
     /**
      * [Required] Defines Schedule action definition details.
      */
-    jobBaseProperties: AutoMLJobResponse | CommandJobResponse | PipelineJobResponse | SweepJobResponse;
+    jobBaseProperties: AutoMLJobResponse | CommandJobResponse | PipelineJobResponse | SparkJobResponse | SweepJobResponse;
 }
 
 /**
@@ -6275,6 +6805,10 @@ export interface KubernetesOnlineDeploymentResponse {
      */
     containerResourceRequirements?: ContainerResourceRequirementsResponse;
     /**
+     * The mdc configuration, we disable mdc when it's null.
+     */
+    dataCollector?: DataCollectorResponse;
+    /**
      * Description of the endpoint deployment.
      */
     description?: string;
@@ -6296,7 +6830,7 @@ export interface KubernetesOnlineDeploymentResponse {
      */
     environmentVariables?: {[key: string]: string};
     /**
-     * Compute instance type.
+     * Compute instance type. Default: Standard_F4s_v2.
      */
     instanceType?: string;
     /**
@@ -6334,6 +6868,10 @@ export interface KubernetesOnlineDeploymentResponse {
      * and to DefaultScaleSettings for ManagedOnlineDeployment.
      */
     scaleSettings?: DefaultScaleSettingsResponse | TargetUtilizationScaleSettingsResponse;
+    /**
+     * Startup probe verify whether an application within a container has started successfully.
+     */
+    startupProbe?: ProbeSettingsResponse;
 }
 /**
  * kubernetesOnlineDeploymentResponseProvideDefaults sets the appropriate defaults for KubernetesOnlineDeploymentResponse
@@ -6342,10 +6880,13 @@ export function kubernetesOnlineDeploymentResponseProvideDefaults(val: Kubernete
     return {
         ...val,
         appInsightsEnabled: (val.appInsightsEnabled) ?? false,
+        dataCollector: (val.dataCollector ? dataCollectorResponseProvideDefaults(val.dataCollector) : undefined),
         egressPublicNetworkAccess: (val.egressPublicNetworkAccess) ?? "Enabled",
+        instanceType: (val.instanceType) ?? "Standard_F4s_v2",
         livenessProbe: (val.livenessProbe ? probeSettingsResponseProvideDefaults(val.livenessProbe) : undefined),
         readinessProbe: (val.readinessProbe ? probeSettingsResponseProvideDefaults(val.readinessProbe) : undefined),
         requestSettings: (val.requestSettings ? onlineRequestSettingsResponseProvideDefaults(val.requestSettings) : undefined),
+        startupProbe: (val.startupProbe ? probeSettingsResponseProvideDefaults(val.startupProbe) : undefined),
     };
 }
 
@@ -6694,6 +7235,18 @@ export function labelingJobTextPropertiesResponseProvideDefaults(val: LabelingJo
     };
 }
 
+export interface LakeHouseArtifactResponse {
+    /**
+     * [Required] OneLake artifact name
+     */
+    artifactName: string;
+    /**
+     * Enum to determine OneLake artifact type.
+     * Expected value is 'LakeHouse'.
+     */
+    artifactType: "LakeHouse";
+}
+
 /**
  * Info about origin if it is linked.
  */
@@ -6967,6 +7520,21 @@ export function mltableJobOutputResponseProvideDefaults(val: MLTableJobOutputRes
     };
 }
 
+/**
+ * Managed compute identity definition.
+ */
+export interface ManagedComputeIdentityResponse {
+    /**
+     * Monitor compute identity type enum.
+     * Expected value is 'ManagedIdentity'.
+     */
+    computeIdentityType: "ManagedIdentity";
+    /**
+     * The identity which will be leveraged by the monitoring jobs.
+     */
+    identity?: ManagedServiceIdentityResponse;
+}
+
 export interface ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse {
     /**
      * Authentication type of the connection target
@@ -6977,9 +7545,19 @@ export interface ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    createdByWorkspaceArmId: string;
     credentials?: WorkspaceConnectionManagedIdentityResponse;
     expiryTime?: string;
-    metadata?: any;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    sharedUserList?: string[];
     target?: string;
     /**
      * Value details of the workspace connection.
@@ -7015,6 +7593,37 @@ export interface ManagedIdentityResponse {
 }
 
 /**
+ * Status of the Provisioning for the managed network of a machine learning workspace.
+ */
+export interface ManagedNetworkProvisionStatusResponse {
+    sparkReady?: boolean;
+    /**
+     * Status for the managed network of a machine learning workspace.
+     */
+    status?: string;
+}
+
+/**
+ * Managed Network settings for a machine learning workspace.
+ */
+export interface ManagedNetworkSettingsResponse {
+    /**
+     * Firewall Sku used for FQDN Rules
+     */
+    firewallSku?: string;
+    /**
+     * Isolation mode for the managed network of a machine learning workspace.
+     */
+    isolationMode?: string;
+    networkId: string;
+    outboundRules?: {[key: string]: FqdnOutboundRuleResponse | PrivateEndpointOutboundRuleResponse | ServiceTagOutboundRuleResponse};
+    /**
+     * Status of the Provisioning for the managed network of a machine learning workspace.
+     */
+    status?: ManagedNetworkProvisionStatusResponse;
+}
+
+/**
  * Properties specific to a ManagedOnlineDeployment.
  */
 export interface ManagedOnlineDeploymentResponse {
@@ -7026,6 +7635,10 @@ export interface ManagedOnlineDeploymentResponse {
      * Code configuration for the endpoint deployment.
      */
     codeConfiguration?: CodeConfigurationResponse;
+    /**
+     * The mdc configuration, we disable mdc when it's null.
+     */
+    dataCollector?: DataCollectorResponse;
     /**
      * Description of the endpoint deployment.
      */
@@ -7048,7 +7661,7 @@ export interface ManagedOnlineDeploymentResponse {
      */
     environmentVariables?: {[key: string]: string};
     /**
-     * Compute instance type.
+     * Compute instance type. Default: Standard_F4s_v2.
      */
     instanceType?: string;
     /**
@@ -7086,6 +7699,10 @@ export interface ManagedOnlineDeploymentResponse {
      * and to DefaultScaleSettings for ManagedOnlineDeployment.
      */
     scaleSettings?: DefaultScaleSettingsResponse | TargetUtilizationScaleSettingsResponse;
+    /**
+     * Startup probe verify whether an application within a container has started successfully.
+     */
+    startupProbe?: ProbeSettingsResponse;
 }
 /**
  * managedOnlineDeploymentResponseProvideDefaults sets the appropriate defaults for ManagedOnlineDeploymentResponse
@@ -7094,18 +7711,23 @@ export function managedOnlineDeploymentResponseProvideDefaults(val: ManagedOnlin
     return {
         ...val,
         appInsightsEnabled: (val.appInsightsEnabled) ?? false,
+        dataCollector: (val.dataCollector ? dataCollectorResponseProvideDefaults(val.dataCollector) : undefined),
         egressPublicNetworkAccess: (val.egressPublicNetworkAccess) ?? "Enabled",
+        instanceType: (val.instanceType) ?? "Standard_F4s_v2",
         livenessProbe: (val.livenessProbe ? probeSettingsResponseProvideDefaults(val.livenessProbe) : undefined),
         readinessProbe: (val.readinessProbe ? probeSettingsResponseProvideDefaults(val.readinessProbe) : undefined),
         requestSettings: (val.requestSettings ? onlineRequestSettingsResponseProvideDefaults(val.requestSettings) : undefined),
+        startupProbe: (val.startupProbe ? probeSettingsResponseProvideDefaults(val.startupProbe) : undefined),
     };
 }
 
 export interface ManagedOnlineEndpointDeploymentResourcePropertiesResponse {
+    endpointComputeType?: string;
     /**
      * The failure reason if the creation failed.
      */
     failureReason?: string;
+    model?: string;
     /**
      * Read-only provision state status property.
      */
@@ -7141,15 +7763,15 @@ export interface ManagedServiceIdentityResponse {
 
 export interface MarketplacePlanResponse {
     /**
-     * The Offer ID of the Marketplace Plan.
+     * The identifying name of the Offer of the Marketplace Plan.
      */
     offerId: string;
     /**
-     * The Plan ID of the Marketplace Plan.
+     * The identifying name of the Plan of the Marketplace Plan.
      */
     planId: string;
     /**
-     * The Publisher ID of the Marketplace Plan.
+     * The identifying name of the Publisher of the Marketplace Plan.
      */
     publisherId: string;
 }
@@ -7174,7 +7796,7 @@ export interface MarketplaceSubscriptionResponse {
 }
 
 /**
- * Dto object representing compute resource
+ * DTO object representing compute resource
  */
 export interface MaterializationComputeResourceResponse {
     /**
@@ -7285,48 +7907,11 @@ export function modelContainerResponseProvideDefaults(val: ModelContainerRespons
     };
 }
 
-/**
- * Cognitive Services account ModelDeprecationInfo.
- */
-export interface ModelDeprecationInfoResponse {
+export interface ModelSettingsResponse {
     /**
-     * The datetime of deprecation of the fineTune Model.
+     * The unique model identifier that this ServerlessEndpoint should provision.
      */
-    fineTune?: string;
-    /**
-     * The datetime of deprecation of the inference Model.
-     */
-    inference?: string;
-}
-
-/**
- * Describes an available Cognitive Services Model SKU.
- */
-export interface ModelSkuResponse {
-    /**
-     * The capacity configuration.
-     */
-    capacity?: CapacityConfigResponse;
-    /**
-     * The list of connection ids.
-     */
-    connectionIds?: string[];
-    /**
-     * The datetime of deprecation of the model SKU.
-     */
-    deprecationDate?: string;
-    /**
-     * The name of the model SKU.
-     */
-    name?: string;
-    /**
-     * The list of rateLimit.
-     */
-    rateLimits?: CallRateLimitResponse[];
-    /**
-     * The usage name of the model SKU.
-     */
-    usageName?: string;
+    modelId?: string;
 }
 
 /**
@@ -7387,6 +7972,87 @@ export function modelVersionResponseProvideDefaults(val: ModelVersionResponse): 
         isAnonymous: (val.isAnonymous) ?? false,
         isArchived: (val.isArchived) ?? false,
     };
+}
+
+export interface MonitorDefinitionResponse {
+    /**
+     * The monitor's notification settings.
+     */
+    alertNotificationSettings?: MonitorNotificationSettingsResponse;
+    /**
+     * [Required] The ARM resource ID of the compute resource to run the monitoring job on.
+     */
+    computeConfiguration: MonitorServerlessSparkComputeResponse;
+    /**
+     * The entities targeted by the monitor.
+     */
+    monitoringTarget?: MonitoringTargetResponse;
+    /**
+     * [Required] The signals to monitor.
+     */
+    signals: {[key: string]: CustomMonitoringSignalResponse | DataDriftMonitoringSignalResponse | DataQualityMonitoringSignalResponse | FeatureAttributionDriftMonitoringSignalResponse | PredictionDriftMonitoringSignalResponse};
+}
+
+export interface MonitorEmailNotificationSettingsResponse {
+    /**
+     * The email recipient list which has a limitation of 499 characters in total.
+     */
+    emails?: string[];
+}
+
+export interface MonitorNotificationSettingsResponse {
+    /**
+     * The AML notification email settings.
+     */
+    emailNotificationSettings?: MonitorEmailNotificationSettingsResponse;
+}
+
+/**
+ * Monitor serverless spark compute definition.
+ */
+export interface MonitorServerlessSparkComputeResponse {
+    /**
+     * [Required] The identity scheme leveraged to by the spark jobs running on serverless Spark.
+     */
+    computeIdentity: AmlTokenComputeIdentityResponse | ManagedComputeIdentityResponse;
+    /**
+     * Monitor compute type enum.
+     * Expected value is 'ServerlessSpark'.
+     */
+    computeType: "ServerlessSpark";
+    /**
+     * [Required] The instance type running the Spark job.
+     */
+    instanceType: string;
+    /**
+     * [Required] The Spark runtime version.
+     */
+    runtimeVersion: string;
+}
+
+/**
+ * Monitoring target definition.
+ */
+export interface MonitoringTargetResponse {
+    /**
+     * Reference to the deployment asset targeted by this monitor.
+     */
+    deploymentId?: string;
+    /**
+     * Reference to the model asset targeted by this monitor.
+     */
+    modelId?: string;
+    /**
+     * [Required] The machine learning task type of the monitored model.
+     */
+    taskType: string;
+}
+
+export interface MonitoringThresholdResponse {
+    /**
+     * The threshold value. If null, the set default is dependent on the metric type.
+     */
+    value?: number;
 }
 
 /**
@@ -7480,8 +8146,18 @@ export interface NoneAuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    createdByWorkspaceArmId: string;
     expiryTime?: string;
-    metadata?: any;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    sharedUserList?: string[];
     target?: string;
     /**
      * Value details of the workspace connection.
@@ -7539,6 +8215,92 @@ export interface NotificationSettingResponse {
     webhooks?: {[key: string]: AzureDevOpsWebhookResponse};
 }
 
+export interface NumericalDataDriftMetricThresholdResponse {
+    /**
+     *
+     * Expected value is 'Numerical'.
+     */
+    dataType: "Numerical";
+    /**
+     * [Required] The numerical data drift metric to calculate.
+     */
+    metric: string;
+    /**
+     * The threshold value. If null, a default value will be set depending on the selected metric.
+     */
+    threshold?: MonitoringThresholdResponse;
+}
+
+export interface NumericalDataQualityMetricThresholdResponse {
+    /**
+     *
+     * Expected value is 'Numerical'.
+     */
+    dataType: "Numerical";
+    /**
+     * [Required] The numerical data quality metric to calculate.
+     */
+    metric: string;
+    /**
+     * The threshold value. If null, a default value will be set depending on the selected metric.
+     */
+    threshold?: MonitoringThresholdResponse;
+}
+
+export interface NumericalPredictionDriftMetricThresholdResponse {
+    /**
+     *
+     * Expected value is 'Numerical'.
+     */
+    dataType: "Numerical";
+    /**
+     * [Required] The numerical prediction drift metric to calculate.
+     */
+    metric: string;
+    /**
+     * The threshold value. If null, a default value will be set depending on the selected metric.
+     */
+    threshold?: MonitoringThresholdResponse;
+}
+
+export interface OAuth2AuthTypeWorkspaceConnectionPropertiesResponse {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'OAuth2'.
+     */
+    authType: "OAuth2";
+    /**
+     * Category of the connection
+     */
+    category?: string;
+    createdByWorkspaceArmId: string;
+    /**
+     * ClientId and ClientSecret are required. Other properties are optional
+     * depending on each OAuth2 provider's implementation.
+     */
+    credentials?: WorkspaceConnectionOAuth2Response;
+    expiryTime?: string;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    sharedUserList?: string[];
+    target?: string;
+    /**
+     * Value details of the workspace connection.
+     */
+    value?: string;
+    /**
+     * format for the workspace connection value
+     */
+    valueFormat?: string;
+}
+
 /**
  * Optimization objective.
  */
@@ -7554,11 +8316,67 @@ export interface ObjectiveResponse {
 }
 
 /**
+ * OneLake (Trident) datastore configuration.
+ */
+export interface OneLakeDatastoreResponse {
+    /**
+     * [Required] OneLake artifact backing the datastore.
+     */
+    artifact: LakeHouseArtifactResponse;
+    /**
+     * [Required] Account credentials.
+     */
+    credentials: AccountKeyDatastoreCredentialsResponse | CertificateDatastoreCredentialsResponse | NoneDatastoreCredentialsResponse | SasDatastoreCredentialsResponse | ServicePrincipalDatastoreCredentialsResponse;
+    /**
+     * Enum to determine the datastore contents type.
+     * Expected value is 'OneLake'.
+     */
+    datastoreType: "OneLake";
+    /**
+     * The asset description text.
+     */
+    description?: string;
+    /**
+     * OneLake endpoint to use for the datastore.
+     */
+    endpoint?: string;
+    /**
+     * Readonly property to indicate if datastore is the workspace default datastore
+     */
+    isDefault: boolean;
+    /**
+     * [Required] OneLake workspace name.
+     */
+    oneLakeWorkspaceName: string;
+    /**
+     * The asset property dictionary.
+     */
+    properties?: {[key: string]: string};
+    /**
+     * Indicates which identity to use to authenticate service data access to customer's storage.
+     */
+    serviceDataAccessAuthIdentity?: string;
+    /**
+     * Tag dictionary. Tags can be added, removed, and updated.
+     */
+    tags?: {[key: string]: string};
+}
+/**
+ * oneLakeDatastoreResponseProvideDefaults sets the appropriate defaults for OneLakeDatastoreResponse
+ */
+export function oneLakeDatastoreResponseProvideDefaults(val: OneLakeDatastoreResponse): OneLakeDatastoreResponse {
+    return {
+        ...val,
+        serviceDataAccessAuthIdentity: (val.serviceDataAccessAuthIdentity) ?? "None",
+    };
+}
+
+/**
  * Online endpoint configuration
  */
 export interface OnlineEndpointResponse {
     /**
-     * [Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication. 'Key' doesn't expire but 'AMLToken' does.
+     * [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
      */
     authMode: string;
     /**
@@ -7618,8 +8436,9 @@ export interface OnlineRequestSettingsResponse {
      */
     maxConcurrentRequestsPerInstance?: number;
     /**
-     * The maximum amount of time a request will stay in the queue in ISO 8601 format.
+     * (Deprecated for Managed Online Endpoints) The maximum amount of time a request will stay in the queue in ISO 8601 format.
      * Defaults to 500ms.
+     * (Now increase `request_timeout_ms` to account for any networking/queue delays)
      */
     maxQueueWait?: string;
     /**
@@ -7698,9 +8517,19 @@ export interface PATAuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    createdByWorkspaceArmId: string;
     credentials?: WorkspaceConnectionPersonalAccessTokenResponse;
     expiryTime?: string;
-    metadata?: any;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    sharedUserList?: string[];
     target?: string;
     /**
      * Value details of the workspace connection.
@@ -7774,6 +8603,10 @@ export interface PipelineJobResponse {
      */
     jobs?: {[key: string]: any};
     /**
+     * Notification setting for the job
+     */
+    notificationSetting?: NotificationSettingResponse;
+    /**
      * Outputs for the pipeline job
      */
     outputs?: {[key: string]: CustomModelJobOutputResponse | MLFlowModelJobOutputResponse | MLTableJobOutputResponse | TritonModelJobOutputResponse | UriFileJobOutputResponse | UriFolderJobOutputResponse};
@@ -7814,51 +8647,36 @@ export function pipelineJobResponseProvideDefaults(val: PipelineJobResponse): Pi
     };
 }
 
-/**
- * Environment configuration options.
- */
-export interface PoolEnvironmentConfigurationResponse {
+export interface PredictionDriftMonitoringSignalResponse {
     /**
-     * ARM resource ID of the environment specification for the inference pool.
+     * A dictionary that maps feature names to their respective data types.
      */
-    environmentId?: string;
+    featureDataTypeOverride?: {[key: string]: string};
     /**
-     * Environment variables configuration for the inference pool.
+     * [Required] A list of metrics to calculate and their associated thresholds.
      */
-    environmentVariables?: {[key: string]: string};
+    metricThresholds: (CategoricalPredictionDriftMetricThresholdResponse | NumericalPredictionDriftMetricThresholdResponse)[];
     /**
-     * Liveness probe monitors the health of the container regularly.
+     * The current notification mode for this signal.
      */
-    livenessProbe?: ProbeSettingsResponse;
+    notificationTypes?: string[];
     /**
-     * Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
+     * [Required] The data which drift will be calculated for.
      */
-    readinessProbe?: ProbeSettingsResponse;
+    productionData: FixedInputDataResponse | RollingInputDataResponse | StaticInputDataResponse;
     /**
-     * This verifies whether the application within a container is started. Startup probes run before any other probe, and, unless it finishes successfully, disables other probes.
+     * Property dictionary. Properties can be added, but not removed or altered.
      */
-    startupProbe?: ProbeSettingsResponse;
-}
-/**
- * poolEnvironmentConfigurationResponseProvideDefaults sets the appropriate defaults for PoolEnvironmentConfigurationResponse
- */
-export function poolEnvironmentConfigurationResponseProvideDefaults(val: PoolEnvironmentConfigurationResponse): PoolEnvironmentConfigurationResponse {
-    return {
-        ...val,
-        livenessProbe: (val.livenessProbe ? probeSettingsResponseProvideDefaults(val.livenessProbe) : undefined),
-        readinessProbe: (val.readinessProbe ? probeSettingsResponseProvideDefaults(val.readinessProbe) : undefined),
-        startupProbe: (val.startupProbe ? probeSettingsResponseProvideDefaults(val.startupProbe) : undefined),
-    };
-}
-
-/**
- * Model configuration options.
- */
-export interface PoolModelConfigurationResponse {
+    properties?: {[key: string]: string};
     /**
-     * The URI path to the model.
+     * [Required] The data to calculate drift against.
      */
-    modelId?: string;
+    referenceData: FixedInputDataResponse | RollingInputDataResponse | StaticInputDataResponse;
+    /**
+     *
+     * Expected value is 'PredictionDrift'.
+     */
+    signalType: "PredictionDrift";
 }
 
 /**
@@ -7918,7 +8736,7 @@ export interface PrivateEndpointDestinationResponse {
     serviceResourceId?: string;
     sparkEnabled?: boolean;
     /**
-     * Status of a managed network Outbound Rule of a machine learning workspace.
+     * Type of a managed network Outbound Rule of a machine learning workspace.
      */
     sparkStatus?: string;
     subresourceTarget?: string;
@@ -7937,7 +8755,7 @@ export interface PrivateEndpointOutboundRuleResponse {
      */
     destination?: PrivateEndpointDestinationResponse;
     /**
-     * Status of a managed network Outbound Rule of a machine learning workspace.
+     * Type of a managed network Outbound Rule of a machine learning workspace.
      */
     status?: string;
     /**
@@ -8062,6 +8880,22 @@ export interface PyTorchResponse {
      * Number of processes per node.
      */
     processCountPerInstance?: number;
+}
+
+export interface QueueSettingsResponse {
+    /**
+     * Controls the compute job tier
+     */
+    jobTier?: string;
+}
+/**
+ * queueSettingsResponseProvideDefaults sets the appropriate defaults for QueueSettingsResponse
+ */
+export function queueSettingsResponseProvideDefaults(val: QueueSettingsResponse): QueueSettingsResponse {
+    return {
+        ...val,
+        jobTier: (val.jobTier) ?? "Null",
+    };
 }
 
 /**
@@ -8192,7 +9026,7 @@ export interface RecurrenceResponse {
     /**
      * [Required] The recurrence schedule.
      */
-    schedule?: RecurrenceScheduleResponse;
+    schedule?: ComputeRecurrenceScheduleResponse;
     /**
      * The start time in yyyy-MM-ddTHH:mm:ss format.
      */
@@ -8295,13 +9129,13 @@ export interface RegistryPrivateEndpointConnectionPropertiesResponse {
      */
     privateEndpoint?: PrivateEndpointResourceResponse;
     /**
-     * The connection state.
-     */
-    privateLinkServiceConnectionState?: RegistryPrivateLinkServiceConnectionStateResponse;
-    /**
      * One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
      */
     provisioningState?: string;
+    /**
+     * The connection state.
+     */
+    registryPrivateLinkServiceConnectionState?: RegistryPrivateLinkServiceConnectionStateResponse;
 }
 
 /**
@@ -8310,7 +9144,7 @@ export interface RegistryPrivateEndpointConnectionPropertiesResponse {
 export interface RegistryPrivateEndpointConnectionResponse {
     /**
      * This is the private endpoint connection name created on SRP
-     * Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/privateEndpointConnections/{peConnectionName}
+     * Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
      */
     id?: string;
     /**
@@ -8380,10 +9214,6 @@ export interface RegistryResponse {
      */
     mlFlowRegistryUri?: string;
     /**
-     * Private endpoint connections info used for pending connections in private link portal
-     */
-    privateEndpointConnections?: RegistryPrivateEndpointConnectionResponse[];
-    /**
      * Is the Registry accessible from the internet?
      * Possible values: "Enabled" or "Disabled"
      */
@@ -8392,6 +9222,10 @@ export interface RegistryResponse {
      * Details of each region the registry is in
      */
     regionDetails?: RegistryRegionArmDetailsResponse[];
+    /**
+     * Private endpoint connections info used for pending connections in private link portal
+     */
+    registryPrivateEndpointConnections?: RegistryPrivateEndpointConnectionResponse[];
 }
 
 /**
@@ -8566,9 +9400,11 @@ export function requestConfigurationResponseProvideDefaults(val: RequestConfigur
     };
 }
 
-export interface RequestMatchPatternResponse {
-    method?: string;
-    path?: string;
+export interface RequestLoggingResponse {
+    /**
+     * For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
+     */
+    captureHeaders?: string[];
 }
 
 /**
@@ -8579,6 +9415,45 @@ export interface ResourceIdResponse {
      * The ID of the resource
      */
     id: string;
+}
+
+/**
+ * Rolling input data definition.
+ */
+export interface RollingInputDataResponse {
+    /**
+     * Mapping of column names to special uses.
+     */
+    columns?: {[key: string]: string};
+    /**
+     * The context metadata of the data source.
+     */
+    dataContext?: string;
+    /**
+     * Monitoring input data type enum.
+     * Expected value is 'Rolling'.
+     */
+    inputDataType: "Rolling";
+    /**
+     * [Required] Specifies the type of job.
+     */
+    jobInputType: string;
+    /**
+     * Reference to the component asset used to preprocess the data.
+     */
+    preprocessingComponentId?: string;
+    /**
+     * [Required] Input Asset URI.
+     */
+    uri: string;
+    /**
+     * [Required] The time offset between the end of the data window and the monitor's current run time.
+     */
+    windowOffset: string;
+    /**
+     * [Required] The size of the rolling data window.
+     */
+    windowSize: string;
 }
 
 export interface RouteResponse {
@@ -8602,9 +9477,19 @@ export interface SASAuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    createdByWorkspaceArmId: string;
     credentials?: WorkspaceConnectionSharedAccessSignatureResponse;
     expiryTime?: string;
-    metadata?: any;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    sharedUserList?: string[];
     target?: string;
     /**
      * Value details of the workspace connection.
@@ -8654,6 +9539,29 @@ export function scaleSettingsResponseProvideDefaults(val: ScaleSettingsResponse)
     };
 }
 
+/**
+ * Configuration for ScaleUnit pool.
+ */
+export interface ScaleUnitConfigurationResponse {
+    /**
+     * Gets or sets a value indicating whether PublicEgress is disabled.
+     */
+    disablePublicEgress?: boolean;
+    /**
+     * Gets or sets a list of Registry sources that will be used to confirm identity, storage, ACR.
+     */
+    registries?: string[];
+}
+/**
+ * scaleUnitConfigurationResponseProvideDefaults sets the appropriate defaults for ScaleUnitConfigurationResponse
+ */
+export function scaleUnitConfigurationResponseProvideDefaults(val: ScaleUnitConfigurationResponse): ScaleUnitConfigurationResponse {
+    return {
+        ...val,
+        disablePublicEgress: (val.disablePublicEgress) ?? false,
+    };
+}
+
 export interface ScheduleBaseResponse {
     /**
      * A system assigned id for the schedule.
@@ -8676,7 +9584,7 @@ export interface ScheduleResponse {
     /**
      * [Required] Specifies the action of the schedule
      */
-    action: EndpointScheduleActionResponse | JobScheduleActionResponse;
+    action: CreateMonitorActionResponse | EndpointScheduleActionResponse | JobScheduleActionResponse;
     /**
      * The asset description text.
      */
@@ -8767,35 +9675,42 @@ export interface SecretConfigurationResponse {
     workspaceSecretName?: string;
 }
 
-export interface ServerlessEndpointCapacityReservationResponse {
+export interface ServerlessComputeSettingsResponse {
     /**
-     * [Required] Specifies a capacity reservation group ID to allocate capacity from.
+     * The resource ID of an existing virtual network subnet in which serverless compute nodes should be deployed
      */
-    capacityReservationGroupId: string;
+    serverlessComputeCustomSubnet?: string;
     /**
-     * Specifies a capacity amount to reserve for this endpoint within the parent capacity reservation group.
+     * The flag to signal if serverless compute nodes deployed in custom vNet would have no public IP addresses for a workspace with private endpoint
      */
-    endpointReservedCapacity?: number;
+    serverlessComputeNoPublicIP?: boolean;
 }
 
 export interface ServerlessEndpointResponse {
     /**
-     * Specifies the authentication mode for the Serverless endpoint.
+     * [Required] Specifies the authentication mode for the Serverless endpoint.
      */
-    authMode?: string;
+    authMode: string;
     /**
-     * Optional capacity reservation information for the endpoint. When specified, the Serverless Endpoint
-     * will be allocated capacity from the specified capacity reservation group.
+     * Specifies the content safety options. If omitted, the default content safety settings will be configured
      */
-    capacityReservation?: ServerlessEndpointCapacityReservationResponse;
+    contentSafety?: ContentSafetyResponse;
+    /**
+     * The current state of the ServerlessEndpoint.
+     */
+    endpointState: string;
     /**
      * The inference uri to target when making requests against the serverless endpoint
      */
     inferenceEndpoint: ServerlessInferenceEndpointResponse;
     /**
-     * [Required] The publisher-defined Serverless Offer to provision the endpoint with.
+     * The MarketplaceSubscription Azure ID associated to this ServerlessEndpoint.
      */
-    offer: ServerlessOfferResponse;
+    marketplaceSubscriptionId: string;
+    /**
+     * The model settings (model id) for the model being serviced on the ServerlessEndpoint.
+     */
+    modelSettings?: ModelSettingsResponse;
     /**
      * Provisioning state for the endpoint.
      */
@@ -8841,10 +9756,28 @@ export interface ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    createdByWorkspaceArmId: string;
     credentials?: WorkspaceConnectionServicePrincipalResponse;
     expiryTime?: string;
-    metadata?: any;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    sharedUserList?: string[];
     target?: string;
+    /**
+     * Value details of the workspace connection.
+     */
+    value?: string;
+    /**
+     * format for the workspace connection value
+     */
+    valueFormat?: string;
 }
 
 /**
@@ -8878,6 +9811,14 @@ export interface ServicePrincipalDatastoreCredentialsResponse {
  * Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
  */
 export interface ServiceTagDestinationResponse {
+    /**
+     * The action enum for networking rule.
+     */
+    action?: string;
+    /**
+     * Optional, if provided, the ServiceTag property will be ignored.
+     */
+    addressPrefixes: string[];
     portRanges?: string;
     protocol?: string;
     serviceTag?: string;
@@ -8896,7 +9837,7 @@ export interface ServiceTagOutboundRuleResponse {
      */
     destination?: ServiceTagDestinationResponse;
     /**
-     * Status of a managed network Outbound Rule of a machine learning workspace.
+     * Type of a managed network Outbound Rule of a machine learning workspace.
      */
     status?: string;
     /**
@@ -8963,6 +9904,179 @@ export interface SkuResponse {
      * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
      */
     tier?: string;
+}
+
+export interface SparkJobPythonEntryResponse {
+    /**
+     * [Required] Relative python file path for job entry point.
+     */
+    file: string;
+    /**
+     *
+     * Expected value is 'SparkJobPythonEntry'.
+     */
+    sparkJobEntryType: "SparkJobPythonEntry";
+}
+
+/**
+ * Spark job definition.
+ */
+export interface SparkJobResponse {
+    /**
+     * Archive files used in the job.
+     */
+    archives?: string[];
+    /**
+     * Arguments for the job.
+     */
+    args?: string;
+    /**
+     * [Required] arm-id of the code asset.
+     */
+    codeId: string;
+    /**
+     * ARM resource ID of the component resource.
+     */
+    componentId?: string;
+    /**
+     * ARM resource ID of the compute resource.
+     */
+    computeId?: string;
+    /**
+     * Spark configured properties.
+     */
+    conf?: {[key: string]: string};
+    /**
+     * The asset description text.
+     */
+    description?: string;
+    /**
+     * Display name of job.
+     */
+    displayName?: string;
+    /**
+     * [Required] The entry to execute on startup of the job.
+     */
+    entry: SparkJobPythonEntryResponse | SparkJobScalaEntryResponse;
+    /**
+     * The ARM resource ID of the Environment specification for the job.
+     */
+    environmentId?: string;
+    /**
+     * Environment variables included in the job.
+     */
+    environmentVariables?: {[key: string]: string};
+    /**
+     * The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+     */
+    experimentName?: string;
+    /**
+     * Files used in the job.
+     */
+    files?: string[];
+    /**
+     * Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+     * Defaults to AmlToken if null.
+     */
+    identity?: AmlTokenResponse | ManagedIdentityResponse | UserIdentityResponse;
+    /**
+     * Mapping of input data bindings used in the job.
+     */
+    inputs?: {[key: string]: CustomModelJobInputResponse | LiteralJobInputResponse | MLFlowModelJobInputResponse | MLTableJobInputResponse | TritonModelJobInputResponse | UriFileJobInputResponse | UriFolderJobInputResponse};
+    /**
+     * Is the asset archived?
+     */
+    isArchived?: boolean;
+    /**
+     * Jar files used in the job.
+     */
+    jars?: string[];
+    /**
+     * Enum to determine the type of job.
+     * Expected value is 'Spark'.
+     */
+    jobType: "Spark";
+    /**
+     * Notification setting for the job
+     */
+    notificationSetting?: NotificationSettingResponse;
+    /**
+     * Mapping of output data bindings used in the job.
+     */
+    outputs?: {[key: string]: CustomModelJobOutputResponse | MLFlowModelJobOutputResponse | MLTableJobOutputResponse | TritonModelJobOutputResponse | UriFileJobOutputResponse | UriFolderJobOutputResponse};
+    /**
+     * The asset property dictionary.
+     */
+    properties?: {[key: string]: string};
+    /**
+     * Python files used in the job.
+     */
+    pyFiles?: string[];
+    /**
+     * Queue settings for the job
+     */
+    queueSettings?: QueueSettingsResponse;
+    /**
+     * Compute Resource configuration for the job.
+     */
+    resources?: SparkResourceConfigurationResponse;
+    /**
+     * List of JobEndpoints.
+     * For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+     */
+    services?: {[key: string]: JobServiceResponse};
+    /**
+     * Status of the job.
+     */
+    status: string;
+    /**
+     * Tag dictionary. Tags can be added, removed, and updated.
+     */
+    tags?: {[key: string]: string};
+}
+/**
+ * sparkJobResponseProvideDefaults sets the appropriate defaults for SparkJobResponse
+ */
+export function sparkJobResponseProvideDefaults(val: SparkJobResponse): SparkJobResponse {
+    return {
+        ...val,
+        experimentName: (val.experimentName) ?? "Default",
+        isArchived: (val.isArchived) ?? false,
+        queueSettings: (val.queueSettings ? queueSettingsResponseProvideDefaults(val.queueSettings) : undefined),
+        resources: (val.resources ? sparkResourceConfigurationResponseProvideDefaults(val.resources) : undefined),
+    };
+}
+
+export interface SparkJobScalaEntryResponse {
+    /**
+     * [Required] Scala class name used as entry point.
+     */
+    className: string;
+    /**
+     *
+     * Expected value is 'SparkJobScalaEntry'.
+     */
+    sparkJobEntryType: "SparkJobScalaEntry";
+}
+
+export interface SparkResourceConfigurationResponse {
+    /**
+     * Optional type of VM used as supported by the compute target.
+     */
+    instanceType?: string;
+    /**
+     * Version of spark runtime used for the job.
+     */
+    runtimeVersion?: string;
+}
+/**
+ * sparkResourceConfigurationResponseProvideDefaults sets the appropriate defaults for SparkResourceConfigurationResponse
+ */
+export function sparkResourceConfigurationResponseProvideDefaults(val: SparkResourceConfigurationResponse): SparkResourceConfigurationResponse {
+    return {
+        ...val,
+        runtimeVersion: (val.runtimeVersion) ?? "3.1",
+    };
 }
 
 export interface SpeechEndpointDeploymentResourcePropertiesResponse {
@@ -9053,6 +10167,45 @@ export function stackEnsembleSettingsResponseProvideDefaults(val: StackEnsembleS
 }
 
 /**
+ * Static input data definition.
+ */
+export interface StaticInputDataResponse {
+    /**
+     * Mapping of column names to special uses.
+     */
+    columns?: {[key: string]: string};
+    /**
+     * The context metadata of the data source.
+     */
+    dataContext?: string;
+    /**
+     * Monitoring input data type enum.
+     * Expected value is 'Static'.
+     */
+    inputDataType: "Static";
+    /**
+     * [Required] Specifies the type of job.
+     */
+    jobInputType: string;
+    /**
+     * Reference to the component asset used to preprocess the data.
+     */
+    preprocessingComponentId?: string;
+    /**
+     * [Required] Input Asset URI.
+     */
+    uri: string;
+    /**
+     * [Required] The end date of the data window.
+     */
+    windowEnd: string;
+    /**
+     * [Required] The start date of the data window.
+     */
+    windowStart: string;
+}
+
+/**
  * Active message associated with project
  */
 export interface StatusMessageResponse {
@@ -9082,6 +10235,11 @@ export interface StorageAccountDetailsResponse {
      * Details of system created storage account to be used for the registry
      */
     systemCreatedStorageAccount?: SystemCreatedStorageAccountResponse;
+}
+
+export interface StringStringKeyValuePairResponse {
+    key?: string;
+    value?: string;
 }
 
 /**
@@ -9162,6 +10320,10 @@ export interface SweepJobResponse {
      */
     limits?: SweepJobLimitsResponse;
     /**
+     * Notification setting for the job
+     */
+    notificationSetting?: NotificationSettingResponse;
+    /**
      * [Required] Optimization objective.
      */
     objective: ObjectiveResponse;
@@ -9173,6 +10335,10 @@ export interface SweepJobResponse {
      * The asset property dictionary.
      */
     properties?: {[key: string]: string};
+    /**
+     * Queue settings for the job
+     */
+    queueSettings?: QueueSettingsResponse;
     /**
      * [Required] The hyperparameter sampling algorithm
      */
@@ -9207,6 +10373,7 @@ export function sweepJobResponseProvideDefaults(val: SweepJobResponse): SweepJob
         ...val,
         experimentName: (val.experimentName) ?? "Default",
         isArchived: (val.isArchived) ?? false,
+        queueSettings: (val.queueSettings ? queueSettingsResponseProvideDefaults(val.queueSettings) : undefined),
         trial: trialComponentResponseProvideDefaults(val.trial),
     };
 }
@@ -9713,15 +10880,6 @@ export function textNerResponseProvideDefaults(val: TextNerResponse): TextNerRes
     };
 }
 
-export interface ThrottlingRuleResponse {
-    count?: number;
-    dynamicThrottlingEnabled?: boolean;
-    key?: string;
-    matchPatterns?: RequestMatchPatternResponse[];
-    minCount?: number;
-    renewalPeriod?: number;
-}
-
 /**
  * Describes the tmpfs options for the container
  */
@@ -9730,6 +10888,27 @@ export interface TmpfsOptionsResponse {
      * Mention the Tmpfs size
      */
     size?: number;
+}
+
+export interface TopNFeaturesByAttributionResponse {
+    /**
+     *
+     * Expected value is 'TopNByAttribution'.
+     */
+    filterType: "TopNByAttribution";
+    /**
+     * The number of top features to include.
+     */
+    top?: number;
+}
+/**
+ * topNFeaturesByAttributionResponseProvideDefaults sets the appropriate defaults for TopNFeaturesByAttributionResponse
+ */
+export function topNFeaturesByAttributionResponseProvideDefaults(val: TopNFeaturesByAttributionResponse): TopNFeaturesByAttributionResponse {
+    return {
+        ...val,
+        top: (val.top) ?? 10,
+    };
 }
 
 /**
@@ -10160,9 +11339,19 @@ export interface UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    createdByWorkspaceArmId: string;
     credentials?: WorkspaceConnectionUsernamePasswordResponse;
     expiryTime?: string;
-    metadata?: any;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    sharedUserList?: string[];
     target?: string;
     /**
      * Value details of the workspace connection.
@@ -10393,6 +11582,10 @@ export interface WorkspaceConnectionAccessKeyResponse {
     secretAccessKey?: string;
 }
 
+export interface WorkspaceConnectionAccountKeyResponse {
+    key?: string;
+}
+
 /**
  * Api key object for workspace connection credential.
  */
@@ -10403,6 +11596,41 @@ export interface WorkspaceConnectionApiKeyResponse {
 export interface WorkspaceConnectionManagedIdentityResponse {
     clientId?: string;
     resourceId?: string;
+}
+
+/**
+ * ClientId and ClientSecret are required. Other properties are optional
+ * depending on each OAuth2 provider's implementation.
+ */
+export interface WorkspaceConnectionOAuth2Response {
+    /**
+     * Required by Concur connection category
+     */
+    authUrl?: string;
+    /**
+     * Client id in the format of UUID
+     */
+    clientId?: string;
+    clientSecret?: string;
+    /**
+     * Required by GoogleAdWords connection category
+     */
+    developerToken?: string;
+    password?: string;
+    /**
+     * Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
+     * where user needs to get RefreshToken offline
+     */
+    refreshToken?: string;
+    /**
+     * Required by QuickBooks and Xero connection categories
+     */
+    tenantId?: string;
+    /**
+     * Concur, ServiceNow auth server AccessToken grant type is 'Password'
+     * which requires UsernamePassword
+     */
+    username?: string;
 }
 
 export interface WorkspaceConnectionPersonalAccessTokenResponse {
@@ -10421,25 +11649,17 @@ export interface WorkspaceConnectionSharedAccessSignatureResponse {
 
 export interface WorkspaceConnectionUsernamePasswordResponse {
     password?: string;
+    /**
+     * Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
+     */
+    securityToken?: string;
     username?: string;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * WorkspaceHub's configuration object.
+ */
+export interface WorkspaceHubConfigResponse {
+    additionalWorkspaceStorageAccounts?: string[];
+    defaultWorkspaceResourceGroup?: string;
+}

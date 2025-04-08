@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get a BuildResource
  *
- * Uses Azure REST API version 2023-08-01-preview.
+ * Uses Azure REST API version 2024-10-02-preview.
  *
- * Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+ * Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getBuild(args: GetBuildArgs, opts?: pulumi.InvokeOptions): Promise<GetBuildResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +37,10 @@ export interface GetBuildArgs {
  */
 export interface GetBuildResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Status of the build once it has been provisioned.
      */
     readonly buildStatus: string;
@@ -49,7 +53,7 @@ export interface GetBuildResult {
      */
     readonly destinationContainerRegistry?: types.outputs.ContainerRegistryWithCustomImageResponse;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -84,9 +88,9 @@ export interface GetBuildResult {
 /**
  * Get a BuildResource
  *
- * Uses Azure REST API version 2023-08-01-preview.
+ * Uses Azure REST API version 2024-10-02-preview.
  *
- * Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+ * Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getBuildOutput(args: GetBuildOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBuildResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

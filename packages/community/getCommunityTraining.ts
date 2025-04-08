@@ -30,6 +30,10 @@ export interface GetCommunityTrainingArgs {
  */
 export interface GetCommunityTrainingResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * To indicate whether the Community Training instance has Disaster Recovery enabled
      */
     readonly disasterRecoveryEnabled: boolean;

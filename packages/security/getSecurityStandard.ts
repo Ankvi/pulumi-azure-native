@@ -34,6 +34,10 @@ export interface GetSecurityStandardResult {
      */
     readonly assessments?: types.outputs.PartialAssessmentPropertiesResponse[];
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * List of all standard supported clouds.
      */
     readonly cloudProviders?: string[];

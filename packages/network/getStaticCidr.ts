@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Instance of StaticCidr resource.
  *
- * Uses Azure REST API version 2024-01-01-preview.
+ * Uses Azure REST API version 2024-05-01.
  *
- * Other available API versions: 2024-05-01.
+ * Other available API versions: 2024-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getStaticCidr(args: GetStaticCidrArgs, opts?: pulumi.InvokeOptions): Promise<GetStaticCidrResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -42,6 +42,10 @@ export interface GetStaticCidrArgs {
  */
 export interface GetStaticCidrResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
@@ -65,9 +69,9 @@ export interface GetStaticCidrResult {
 /**
  * Instance of StaticCidr resource.
  *
- * Uses Azure REST API version 2024-01-01-preview.
+ * Uses Azure REST API version 2024-05-01.
  *
- * Other available API versions: 2024-05-01.
+ * Other available API versions: 2024-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getStaticCidrOutput(args: GetStaticCidrOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStaticCidrResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

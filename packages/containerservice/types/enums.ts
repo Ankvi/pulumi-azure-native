@@ -46,6 +46,22 @@ export const AutoUpgradeNodeImageSelectionType = {
  */
 export type AutoUpgradeNodeImageSelectionType = (typeof AutoUpgradeNodeImageSelectionType)[keyof typeof AutoUpgradeNodeImageSelectionType];
 
+export const BackendPoolType = {
+    /**
+     * The type of the managed inbound Load Balancer BackendPool. https://cloud-provider-azure.sigs.k8s.io/topics/loadbalancer/#configure-load-balancer-backend.
+     */
+    NodeIPConfiguration: "NodeIPConfiguration",
+    /**
+     * The type of the managed inbound Load Balancer BackendPool. https://cloud-provider-azure.sigs.k8s.io/topics/loadbalancer/#configure-load-balancer-backend.
+     */
+    NodeIP: "NodeIP",
+} as const;
+
+/**
+ * The type of the managed inbound Load Balancer BackendPool.
+ */
+export type BackendPoolType = (typeof BackendPoolType)[keyof typeof BackendPoolType];
+
 export const Code = {
     /**
      * The cluster is running.
@@ -129,6 +145,22 @@ export const IpFamily = {
  * The IP version to use for cluster networking and IP assignment.
  */
 export type IpFamily = (typeof IpFamily)[keyof typeof IpFamily];
+
+export const IstioIngressGatewayMode = {
+    /**
+     * The ingress gateway is assigned a public IP address and is publicly accessible.
+     */
+    External: "External",
+    /**
+     * The ingress gateway is assigned an internal IP address and cannot is accessed publicly.
+     */
+    Internal: "Internal",
+} as const;
+
+/**
+ * Mode of an ingress gateway.
+ */
+export type IstioIngressGatewayMode = (typeof IstioIngressGatewayMode)[keyof typeof IstioIngressGatewayMode];
 
 export const KeyVaultNetworkAccessTypes = {
     Public: "Public",
@@ -245,12 +277,28 @@ export const ManagedClusterUpgradeType = {
      * NodeImageOnly upgrades only the node images of the target ManagedClusters. Requires the ManagedClusterUpgradeSpec.KubernetesVersion property to NOT be set.
      */
     NodeImageOnly: "NodeImageOnly",
+    /**
+     * ControlPlaneOnly upgrades only targets the KubernetesVersion of the ManagedClusters and will not be applied to the AgentPool. Requires the ManagedClusterUpgradeSpec.KubernetesVersion property to be set.
+     */
+    ControlPlaneOnly: "ControlPlaneOnly",
 } as const;
 
 /**
  * ManagedClusterUpgradeType is the type of upgrade to be applied.
  */
 export type ManagedClusterUpgradeType = (typeof ManagedClusterUpgradeType)[keyof typeof ManagedClusterUpgradeType];
+
+export const ManagedServiceIdentityType = {
+    None: "None",
+    SystemAssigned: "SystemAssigned",
+    UserAssigned: "UserAssigned",
+    SystemAssigned_UserAssigned: "SystemAssigned, UserAssigned",
+} as const;
+
+/**
+ * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+ */
+export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];
 
 export const NetworkDataplane = {
     /**
@@ -318,6 +366,10 @@ export type NetworkPluginMode = (typeof NetworkPluginMode)[keyof typeof NetworkP
 
 export const NetworkPolicy = {
     /**
+     * Network policies will not be enforced. This is the default value when NetworkPolicy is not specified.
+     */
+    None: "none",
+    /**
      * Use Calico network policies. See [differences between Azure and Calico policies](https://docs.microsoft.com/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities) for more information.
      */
     Calico: "calico",
@@ -335,6 +387,50 @@ export const NetworkPolicy = {
  * Network policy used for building the Kubernetes network.
  */
 export type NetworkPolicy = (typeof NetworkPolicy)[keyof typeof NetworkPolicy];
+
+export const NodeImageSelectionType = {
+    /**
+     * Use the latest image version when upgrading nodes. Clusters may use different image versions (e.g., 'AKSUbuntu-1804gen2containerd-2021.10.12' and 'AKSUbuntu-1804gen2containerd-2021.10.19') because, for example, the latest available version is different in different regions.
+     */
+    Latest: "Latest",
+    /**
+     * The image versions to upgrade nodes to are selected as described below: for each node pool in managed clusters affected by the update run, the system selects the latest image version such that it is available across all other node pools (in all other clusters) of the same image type. As a result, all node pools of the same image type will be upgraded to the same image version. For example, if the latest image version for image type 'AKSUbuntu-1804gen2containerd' is 'AKSUbuntu-1804gen2containerd-2021.10.12' for a node pool in cluster A in region X, and is 'AKSUbuntu-1804gen2containerd-2021.10.17' for a node pool in cluster B in region Y, the system will upgrade both node pools to image version 'AKSUbuntu-1804gen2containerd-2021.10.12'.
+     */
+    Consistent: "Consistent",
+    /**
+     * Upgrade the nodes to the custom image versions. When set, update run will use node image versions provided in customNodeImageVersions to upgrade the nodes. If set, customNodeImageVersions must not be empty.
+     */
+    Custom: "Custom",
+} as const;
+
+/**
+ * The node image upgrade type.
+ */
+export type NodeImageSelectionType = (typeof NodeImageSelectionType)[keyof typeof NodeImageSelectionType];
+
+export const NodeOSUpgradeChannel = {
+    /**
+     * No attempt to update your machines OS will be made either by OS or by rolling VHDs. This means you are responsible for your security updates
+     */
+    None: "None",
+    /**
+     * OS updates will be applied automatically through the OS built-in patching infrastructure. Newly scaled in machines will be unpatched initially and will be patched at some point by the OS's infrastructure. Behavior of this option depends on the OS in question. Ubuntu and Mariner apply security patches through unattended upgrade roughly once a day around 06:00 UTC. Windows does not apply security patches automatically and so for them this option is equivalent to None till further notice
+     */
+    Unmanaged: "Unmanaged",
+    /**
+     * AKS will update the nodes with a newly patched VHD containing security fixes and bugfixes on a weekly cadence. With the VHD update machines will be rolling reimaged to that VHD following maintenance windows and surge settings. No extra VHD cost is incurred when choosing this option as AKS hosts the images.
+     */
+    NodeImage: "NodeImage",
+    /**
+     * AKS downloads and updates the nodes with tested security updates. These updates honor the maintenance window settings and produce a new VHD that is used on new nodes. On some occasions it's not possible to apply the updates in place, in such cases the existing nodes will also be re-imaged to the newly produced VHD in order to apply the changes. This option incurs an extra cost of hosting the new Security Patch VHDs in your resource group for just in time consumption.
+     */
+    SecurityPatch: "SecurityPatch",
+} as const;
+
+/**
+ * Manner in which the OS on your nodes is updated. The default is NodeImage.
+ */
+export type NodeOSUpgradeChannel = (typeof NodeOSUpgradeChannel)[keyof typeof NodeOSUpgradeChannel];
 
 export const OSDiskType = {
     /**
@@ -381,65 +477,20 @@ export const OSSKU = {
 export type OSSKU = (typeof OSSKU)[keyof typeof OSSKU];
 
 export const OSType = {
+    /**
+     * Use Linux.
+     */
     Linux: "Linux",
+    /**
+     * Use Windows.
+     */
     Windows: "Windows",
 } as const;
 
 /**
- * OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
+ * The operating system type. The default is Linux.
  */
 export type OSType = (typeof OSType)[keyof typeof OSType];
-
-export const OpenShiftAgentPoolProfileRole = {
-    Compute: "compute",
-    Infra: "infra",
-} as const;
-
-/**
- * Define the role of the AgentPoolProfile.
- */
-export type OpenShiftAgentPoolProfileRole = (typeof OpenShiftAgentPoolProfileRole)[keyof typeof OpenShiftAgentPoolProfileRole];
-
-export const OpenShiftContainerServiceVMSize = {
-    Standard_D2s_v3: "Standard_D2s_v3",
-    Standard_D4s_v3: "Standard_D4s_v3",
-    Standard_D8s_v3: "Standard_D8s_v3",
-    Standard_D16s_v3: "Standard_D16s_v3",
-    Standard_D32s_v3: "Standard_D32s_v3",
-    Standard_D64s_v3: "Standard_D64s_v3",
-    Standard_DS4_v2: "Standard_DS4_v2",
-    Standard_DS5_v2: "Standard_DS5_v2",
-    Standard_F8s_v2: "Standard_F8s_v2",
-    Standard_F16s_v2: "Standard_F16s_v2",
-    Standard_F32s_v2: "Standard_F32s_v2",
-    Standard_F64s_v2: "Standard_F64s_v2",
-    Standard_F72s_v2: "Standard_F72s_v2",
-    Standard_F8s: "Standard_F8s",
-    Standard_F16s: "Standard_F16s",
-    Standard_E4s_v3: "Standard_E4s_v3",
-    Standard_E8s_v3: "Standard_E8s_v3",
-    Standard_E16s_v3: "Standard_E16s_v3",
-    Standard_E20s_v3: "Standard_E20s_v3",
-    Standard_E32s_v3: "Standard_E32s_v3",
-    Standard_E64s_v3: "Standard_E64s_v3",
-    Standard_GS2: "Standard_GS2",
-    Standard_GS3: "Standard_GS3",
-    Standard_GS4: "Standard_GS4",
-    Standard_GS5: "Standard_GS5",
-    Standard_DS12_v2: "Standard_DS12_v2",
-    Standard_DS13_v2: "Standard_DS13_v2",
-    Standard_DS14_v2: "Standard_DS14_v2",
-    Standard_DS15_v2: "Standard_DS15_v2",
-    Standard_L4s: "Standard_L4s",
-    Standard_L8s: "Standard_L8s",
-    Standard_L16s: "Standard_L16s",
-    Standard_L32s: "Standard_L32s",
-} as const;
-
-/**
- * Size of agent VMs.
- */
-export type OpenShiftContainerServiceVMSize = (typeof OpenShiftContainerServiceVMSize)[keyof typeof OpenShiftContainerServiceVMSize];
 
 export const Operator = {
     /**
@@ -489,6 +540,22 @@ export const OutboundType = {
  */
 export type OutboundType = (typeof OutboundType)[keyof typeof OutboundType];
 
+export const Protocol = {
+    /**
+     * TCP protocol.
+     */
+    TCP: "TCP",
+    /**
+     * UDP protocol.
+     */
+    UDP: "UDP",
+} as const;
+
+/**
+ * The network protocol of the port.
+ */
+export type Protocol = (typeof Protocol)[keyof typeof Protocol];
+
 export const PublicNetworkAccess = {
     Enabled: "Enabled",
     Disabled: "Disabled",
@@ -518,6 +585,22 @@ export const ResourceIdentityType = {
  * For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
  */
 export type ResourceIdentityType = (typeof ResourceIdentityType)[keyof typeof ResourceIdentityType];
+
+export const RestrictionLevel = {
+    /**
+     * All RBAC permissions are allowed on the managed node resource group
+     */
+    Unrestricted: "Unrestricted",
+    /**
+     * Only *&#47;read RBAC permissions allowed on the managed node resource group
+     */
+    ReadOnly: "ReadOnly",
+} as const;
+
+/**
+ * The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
+ */
+export type RestrictionLevel = (typeof RestrictionLevel)[keyof typeof RestrictionLevel];
 
 export const ScaleDownMode = {
     /**
@@ -567,6 +650,22 @@ export const ScaleSetPriority = {
  */
 export type ScaleSetPriority = (typeof ScaleSetPriority)[keyof typeof ScaleSetPriority];
 
+export const ServiceMeshMode = {
+    /**
+     * Istio deployed as an AKS addon.
+     */
+    Istio: "Istio",
+    /**
+     * Mesh is disabled.
+     */
+    Disabled: "Disabled",
+} as const;
+
+/**
+ * Mode of the service mesh.
+ */
+export type ServiceMeshMode = (typeof ServiceMeshMode)[keyof typeof ServiceMeshMode];
+
 export const SnapshotType = {
     /**
      * The snapshot is a snapshot of a node pool.
@@ -578,6 +677,34 @@ export const SnapshotType = {
  * The type of a snapshot. The default is NodePool.
  */
 export type SnapshotType = (typeof SnapshotType)[keyof typeof SnapshotType];
+
+export const Type = {
+    /**
+     * First week of the month.
+     */
+    First: "First",
+    /**
+     * Second week of the month.
+     */
+    Second: "Second",
+    /**
+     * Third week of the month.
+     */
+    Third: "Third",
+    /**
+     * Fourth week of the month.
+     */
+    Fourth: "Fourth",
+    /**
+     * Last week of the month.
+     */
+    Last: "Last",
+} as const;
+
+/**
+ * Specifies on which week of the month the dayOfWeek applies.
+ */
+export type Type = (typeof Type)[keyof typeof Type];
 
 export const UpgradeChannel = {
     /**
@@ -593,7 +720,7 @@ export const UpgradeChannel = {
      */
     Patch: "patch",
     /**
-     * Automatically upgrade the node image to the latest version available. Microsoft provides patches and new images for image nodes frequently (usually weekly), but your running nodes won't get the new images unless you do a node image upgrade. Turning on the node-image channel will automatically update your node images whenever a new version is available.
+     * Automatically upgrade the node image to the latest version available. Consider using nodeOSUpgradeChannel instead as that allows you to configure node OS patching separate from Kubernetes version patching
      */
     Node_image: "node-image",
     /**

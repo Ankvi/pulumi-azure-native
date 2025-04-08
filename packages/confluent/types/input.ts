@@ -449,6 +449,16 @@ export interface KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs {
 }
 
 /**
+ * Link an existing Confluent organization
+ */
+export interface LinkOrganizationArgs {
+    /**
+     * User auth token
+     */
+    token: pulumi.Input<string>;
+}
+
+/**
  * Confluent Offer detail
  */
 export interface OfferDetailArgs {
@@ -465,9 +475,25 @@ export interface OfferDetailArgs {
      */
     planName: pulumi.Input<string>;
     /**
+     * Private Offer Id
+     */
+    privateOfferId?: pulumi.Input<string>;
+    /**
+     * Array of Private Offer Ids
+     */
+    privateOfferIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Publisher Id
      */
     publisherId: pulumi.Input<string>;
+    /**
+     * SaaS Offer Status
+     */
+    status?: pulumi.Input<string | enums.SaaSOfferStatus>;
+    /**
+     * Offer Plan Term Id
+     */
+    termId?: pulumi.Input<string>;
     /**
      * Offer Plan Term unit
      */
@@ -651,6 +677,10 @@ export interface TopicsRelatedLinkArgs {
  */
 export interface UserDetailArgs {
     /**
+     * AAD email address
+     */
+    aadEmail?: pulumi.Input<string>;
+    /**
      * Email address
      */
     emailAddress: pulumi.Input<string>;
@@ -662,8 +692,8 @@ export interface UserDetailArgs {
      * Last name
      */
     lastName?: pulumi.Input<string>;
+    /**
+     * User principal name
+     */
+    userPrincipalName?: pulumi.Input<string>;
 }
-
-
-
-

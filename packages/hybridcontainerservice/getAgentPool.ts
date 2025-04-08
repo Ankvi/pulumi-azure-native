@@ -39,6 +39,10 @@ export interface GetAgentPoolResult {
      */
     readonly availabilityZones?: string[];
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The underlying cloud infra provider properties.
      */
     readonly cloudProviderProfile?: types.outputs.CloudProviderProfileResponse;

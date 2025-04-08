@@ -1,3 +1,13 @@
+export const AdditionalVmPatch = {
+    NotSet: "NotSet",
+    MicrosoftUpdate: "MicrosoftUpdate",
+} as const;
+
+/**
+ * Additional Patch to be enable or enabled on the SQL Virtual Machine.
+ */
+export type AdditionalVmPatch = (typeof AdditionalVmPatch)[keyof typeof AdditionalVmPatch];
+
 export const AssessmentDayOfWeek = {
     Monday: "Monday",
     Tuesday: "Tuesday",
@@ -116,12 +126,24 @@ export type FullBackupFrequencyType = (typeof FullBackupFrequencyType)[keyof typ
 export const IdentityType = {
     None: "None",
     SystemAssigned: "SystemAssigned",
+    UserAssigned: "UserAssigned",
+    SystemAssigned_UserAssigned: "SystemAssigned,UserAssigned",
 } as const;
 
 /**
  * The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
  */
 export type IdentityType = (typeof IdentityType)[keyof typeof IdentityType];
+
+export const LeastPrivilegeMode = {
+    Enabled: "Enabled",
+    NotSet: "NotSet",
+} as const;
+
+/**
+ * SQL IaaS Agent least privilege mode.
+ */
+export type LeastPrivilegeMode = (typeof LeastPrivilegeMode)[keyof typeof LeastPrivilegeMode];
 
 export const ReadableSecondary = {
     No: "No",
@@ -164,7 +186,7 @@ export const SqlManagementMode = {
 } as const;
 
 /**
- * SQL Server Management type.
+ * SQL Server Management type. NOTE: This parameter is not used anymore. API will automatically detect the Sql Management, refrain from using it.
  */
 export type SqlManagementMode = (typeof SqlManagementMode)[keyof typeof SqlManagementMode];
 
@@ -210,3 +232,14 @@ export const StorageWorkloadType = {
  * Storage workload type.
  */
 export type StorageWorkloadType = (typeof StorageWorkloadType)[keyof typeof StorageWorkloadType];
+
+export const VmIdentityType = {
+    None: "None",
+    SystemAssigned: "SystemAssigned",
+    UserAssigned: "UserAssigned",
+} as const;
+
+/**
+ * Identity type of the virtual machine. Specify None to opt-out of Managed Identities.
+ */
+export type VmIdentityType = (typeof VmIdentityType)[keyof typeof VmIdentityType];

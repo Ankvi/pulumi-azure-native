@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets the properties of the specified DICOM Service.
  *
- * Uses Azure REST API version 2023-02-28.
+ * Uses Azure REST API version 2024-03-31.
  *
- * Other available API versions: 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2024-03-31, 2025-03-01-preview.
+ * Other available API versions: 2022-10-01-preview, 2022-12-01, 2023-02-28, 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native healthcareapis [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDicomService(args: GetDicomServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetDicomServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,9 +41,21 @@ export interface GetDicomServiceResult {
      */
     readonly authenticationConfiguration?: types.outputs.DicomServiceAuthenticationConfigurationResponse;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Dicom Service Cors configuration.
      */
     readonly corsConfiguration?: types.outputs.CorsConfigurationResponse;
+    /**
+     * If data partitions is enabled or not.
+     */
+    readonly enableDataPartitions?: boolean;
+    /**
+     * The encryption settings of the DICOM service
+     */
+    readonly encryption?: types.outputs.EncryptionResponse;
     /**
      * An etag associated with the resource, used for optimistic concurrency when editing it.
      */
@@ -85,6 +97,10 @@ export interface GetDicomServiceResult {
      */
     readonly serviceUrl: string;
     /**
+     * The configuration of external storage account
+     */
+    readonly storageConfiguration?: types.outputs.StorageConfigurationResponse;
+    /**
      * Metadata pertaining to creation and last modification of the resource.
      */
     readonly systemData: types.outputs.SystemDataResponse;
@@ -100,9 +116,9 @@ export interface GetDicomServiceResult {
 /**
  * Gets the properties of the specified DICOM Service.
  *
- * Uses Azure REST API version 2023-02-28.
+ * Uses Azure REST API version 2024-03-31.
  *
- * Other available API versions: 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2024-03-31, 2025-03-01-preview.
+ * Other available API versions: 2022-10-01-preview, 2022-12-01, 2023-02-28, 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native healthcareapis [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDicomServiceOutput(args: GetDicomServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDicomServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

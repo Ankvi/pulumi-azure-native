@@ -61,13 +61,3 @@ export interface TldLegalAgreementResponse {
      */
     url?: string;
 }
-
-
-
-
-
-
-
-
-
-

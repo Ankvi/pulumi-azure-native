@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * EventGrid Domain.
  *
- * Uses Azure REST API version 2022-06-15. In version 1.x of the Azure Native provider, it used API version 2020-06-01.
+ * Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2022-06-15.
  *
- * Other available API versions: 2020-04-01-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+ * Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Domain extends pulumi.CustomResource {
     /**
@@ -56,6 +56,10 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly autoDeleteTopicWithLastSubscription!: pulumi.Output<boolean | undefined>;
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Data Residency Boundary of the resource.
      */
     public readonly dataResidencyBoundary!: pulumi.Output<string | undefined>;
@@ -67,6 +71,11 @@ export class Domain extends pulumi.CustomResource {
      * Endpoint for the Event Grid Domain Resource which is used for publishing the events.
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    /**
+     * Event Type Information for the domain. This information is provided by the publisher and can be used by the 
+     * subscriber to view different types of events that are published.
+     */
+    public readonly eventTypeInfo!: pulumi.Output<types.outputs.EventTypeInfoResponse | undefined>;
     /**
      * Identity information for the Event Grid Domain resource.
      */
@@ -92,6 +101,10 @@ export class Domain extends pulumi.CustomResource {
      */
     public /*out*/ readonly metricResourceId!: pulumi.Output<string>;
     /**
+     * Minimum TLS version of the publisher allowed to publish to this domain
+     */
+    public readonly minimumTlsVersionAllowed!: pulumi.Output<string | undefined>;
+    /**
      * Name of the resource.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -109,7 +122,7 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly publicNetworkAccess!: pulumi.Output<string | undefined>;
     /**
-     * The system metadata relating to the Event Grid Domain resource.
+     * The system metadata relating to the Event Grid resource.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -140,14 +153,17 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["dataResidencyBoundary"] = args ? args.dataResidencyBoundary : undefined;
             resourceInputs["disableLocalAuth"] = (args ? args.disableLocalAuth : undefined) ?? false;
             resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["eventTypeInfo"] = args ? args.eventTypeInfo : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["inboundIpRules"] = args ? args.inboundIpRules : undefined;
             resourceInputs["inputSchema"] = (args ? args.inputSchema : undefined) ?? "EventGridSchema";
             resourceInputs["inputSchemaMapping"] = args ? args.inputSchemaMapping : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["minimumTlsVersionAllowed"] = args ? args.minimumTlsVersionAllowed : undefined;
             resourceInputs["publicNetworkAccess"] = (args ? args.publicNetworkAccess : undefined) ?? "Enabled";
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["metricResourceId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -158,15 +174,18 @@ export class Domain extends pulumi.CustomResource {
         } else {
             resourceInputs["autoCreateTopicWithFirstSubscription"] = undefined /*out*/;
             resourceInputs["autoDeleteTopicWithLastSubscription"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["dataResidencyBoundary"] = undefined /*out*/;
             resourceInputs["disableLocalAuth"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
+            resourceInputs["eventTypeInfo"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["inboundIpRules"] = undefined /*out*/;
             resourceInputs["inputSchema"] = undefined /*out*/;
             resourceInputs["inputSchemaMapping"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["metricResourceId"] = undefined /*out*/;
+            resourceInputs["minimumTlsVersionAllowed"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateEndpointConnections"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -219,6 +238,11 @@ export interface DomainArgs {
      */
     domainName?: pulumi.Input<string>;
     /**
+     * Event Type Information for the domain. This information is provided by the publisher and can be used by the 
+     * subscriber to view different types of events that are published.
+     */
+    eventTypeInfo?: pulumi.Input<types.inputs.EventTypeInfoArgs>;
+    /**
      * Identity information for the Event Grid Domain resource.
      */
     identity?: pulumi.Input<types.inputs.IdentityInfoArgs>;
@@ -238,6 +262,10 @@ export interface DomainArgs {
      * Location of the resource.
      */
     location?: pulumi.Input<string>;
+    /**
+     * Minimum TLS version of the publisher allowed to publish to this domain
+     */
+    minimumTlsVersionAllowed?: pulumi.Input<string | types.enums.TlsVersion>;
     /**
      * This determines if traffic is allowed over public network. By default it is enabled.
      * You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainProperties.InboundIpRules" />

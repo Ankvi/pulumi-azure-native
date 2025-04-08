@@ -36,6 +36,16 @@ export interface DistributeVersionerSourceArgs {
 }
 
 /**
+ * Indicates if the image template needs to be built on create/update
+ */
+export interface ImageTemplateAutoRunArgs {
+    /**
+     * Enabling this field will trigger an automatic build on image template creation or update.
+     */
+    state?: pulumi.Input<enums.AutoRunState>;
+}
+
+/**
  * Uploads files to VMs (Linux, Windows). Corresponds to Packer file provisioner
  */
 export interface ImageTemplateFileCustomizerArgs {
@@ -291,6 +301,30 @@ export function imageTemplatePowerShellValidatorArgsProvideDefaults(val: ImageTe
         runAsSystem: (val.runAsSystem) ?? false,
         runElevated: (val.runElevated) ?? false,
         sha256Checksum: (val.sha256Checksum) ?? "",
+    };
+}
+
+/**
+ * Error handling options upon a build failure
+ */
+export interface ImageTemplatePropertiesErrorHandlingArgs {
+    /**
+     * If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved.
+     */
+    onCustomizerError?: pulumi.Input<string | enums.OnBuildError>;
+    /**
+     * If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved.
+     */
+    onValidationError?: pulumi.Input<string | enums.OnBuildError>;
+}
+/**
+ * imageTemplatePropertiesErrorHandlingArgsProvideDefaults sets the appropriate defaults for ImageTemplatePropertiesErrorHandlingArgs
+ */
+export function imageTemplatePropertiesErrorHandlingArgsProvideDefaults(val: ImageTemplatePropertiesErrorHandlingArgs): ImageTemplatePropertiesErrorHandlingArgs {
+    return {
+        ...val,
+        onCustomizerError: (val.onCustomizerError) ?? "cleanup",
+        onValidationError: (val.onValidationError) ?? "cleanup",
     };
 }
 
@@ -650,11 +684,15 @@ export function targetRegionArgsProvideDefaults(val: TargetRegionArgs): TargetRe
  */
 export interface VirtualNetworkConfigArgs {
     /**
-     * Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
+     * Resource id of a pre-existing subnet on which Azure Container Instance will be deployed for Isolated Builds. This field may be specified only if `subnetId` is also specified and must be on the same Virtual Network as the subnet specified in `subnetId`.
+     */
+    containerInstanceSubnetId?: pulumi.Input<string>;
+    /**
+     * Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. This must not be specified if `containerInstanceSubnetId` is specified because no proxy virtual machine is deployed in that case. Omit or specify empty string to use the default (Standard_A1_v2).
      */
     proxyVmSize?: pulumi.Input<string>;
     /**
-     * Resource id of a pre-existing subnet.
+     * Resource id of a pre-existing subnet on which the build VM and validation VM will be deployed
      */
     subnetId?: pulumi.Input<string>;
 }
@@ -667,5 +705,3 @@ export function virtualNetworkConfigArgsProvideDefaults(val: VirtualNetworkConfi
         proxyVmSize: (val.proxyVmSize) ?? "",
     };
 }
-
-

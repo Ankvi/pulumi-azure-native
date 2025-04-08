@@ -30,6 +30,10 @@ export interface GetSchemaRegistryArgs {
  */
 export interface GetSchemaRegistryResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Human-readable description of the schema registry.
      */
     readonly description?: string;

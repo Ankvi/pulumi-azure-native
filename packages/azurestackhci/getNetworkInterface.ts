@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets a network interface
  *
- * Uses Azure REST API version 2022-12-15-preview.
+ * Uses Azure REST API version 2025-02-01-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview, 2025-04-01-preview.
+ * Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNetworkInterface(args: GetNetworkInterfaceArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkInterfaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,6 +32,14 @@ export interface GetNetworkInterfaceArgs {
  */
 export interface GetNetworkInterfaceResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * Boolean indicating whether this is a existing local network interface or if one should be created.
+     */
+    readonly createFromLocal?: boolean;
+    /**
      * DNS Settings for the interface
      */
     readonly dnsSettings?: types.outputs.InterfaceDNSSettingsResponse;
@@ -40,7 +48,7 @@ export interface GetNetworkInterfaceResult {
      */
     readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -59,6 +67,10 @@ export interface GetNetworkInterfaceResult {
      * The name of the resource
      */
     readonly name: string;
+    /**
+     * NetworkSecurityGroup - Network Security Group attached to the network interface.
+     */
+    readonly networkSecurityGroup?: types.outputs.NetworkSecurityGroupArmReferenceResponse;
     /**
      * Provisioning state of the network interface.
      */
@@ -83,9 +95,9 @@ export interface GetNetworkInterfaceResult {
 /**
  * Gets a network interface
  *
- * Uses Azure REST API version 2022-12-15-preview.
+ * Uses Azure REST API version 2025-02-01-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview, 2025-04-01-preview.
+ * Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNetworkInterfaceOutput(args: GetNetworkInterfaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkInterfaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

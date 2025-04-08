@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * The Data Box Edge/Gateway device.
  *
- * Uses Azure REST API version 2022-03-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+ * Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2022-03-01.
  *
- * Other available API versions: 2021-02-01, 2021-02-01-preview, 2022-04-01-preview, 2023-01-01-preview, 2023-07-01, 2023-12-01.
+ * Other available API versions: 2022-03-01, 2022-04-01-preview, 2022-12-01-preview, 2023-01-01-preview, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databoxedge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Device extends pulumi.CustomResource {
     /**
@@ -35,6 +35,10 @@ export class Device extends pulumi.CustomResource {
         return obj['__pulumiType'] === Device.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Type of compute roles configured.
      */
@@ -95,6 +99,10 @@ export class Device extends pulumi.CustomResource {
      * The kind of the device.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
+    /**
+     * Kubernetes Workload Profile
+     */
+    public /*out*/ readonly kubernetesWorkloadProfile!: pulumi.Output<string>;
     /**
      * The location of the device. This is a supported and registered Azure geographical region (for example, West US, East US, or Southeast Asia). The geographical region of a device cannot be changed once it is created, but if an identical geographical region is specified on update, the request will succeed.
      */
@@ -161,6 +169,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["configuredRoleTypes"] = undefined /*out*/;
             resourceInputs["culture"] = undefined /*out*/;
             resourceInputs["dataBoxEdgeDeviceStatus"] = undefined /*out*/;
@@ -174,6 +183,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["friendlyName"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["kubernetesWorkloadProfile"] = undefined /*out*/;
             resourceInputs["modelDescription"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nodeCount"] = undefined /*out*/;
@@ -183,6 +193,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["timeZone"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["configuredRoleTypes"] = undefined /*out*/;
             resourceInputs["culture"] = undefined /*out*/;
             resourceInputs["dataBoxEdgeDeviceStatus"] = undefined /*out*/;
@@ -198,6 +209,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["friendlyName"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["kubernetesWorkloadProfile"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["modelDescription"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

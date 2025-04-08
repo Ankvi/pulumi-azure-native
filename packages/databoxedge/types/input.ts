@@ -427,9 +427,3 @@ export interface UserAccessRightArgs {
      */
     userId: pulumi.Input<string>;
 }
-
-
-
-
-
-

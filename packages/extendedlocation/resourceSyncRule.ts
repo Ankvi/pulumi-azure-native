@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Resource Sync Rules definition.
  *
- * Uses Azure REST API version 2021-08-31-preview. In version 1.x of the Azure Native provider, it used API version 2021-08-31-preview.
+ * Uses Azure REST API version 2021-08-31-preview. In version 2.x of the Azure Native provider, it used API version 2021-08-31-preview.
  */
 export class ResourceSyncRule extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class ResourceSyncRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === ResourceSyncRule.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The geo-location where the resource lives
      */
@@ -95,11 +99,13 @@ export class ResourceSyncRule extends pulumi.CustomResource {
             resourceInputs["selector"] = args ? args.selector : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["targetResourceGroup"] = args ? args.targetResourceGroup : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["priority"] = undefined /*out*/;

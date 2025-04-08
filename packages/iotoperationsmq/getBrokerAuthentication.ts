@@ -44,6 +44,10 @@ export interface GetBrokerAuthenticationResult {
      */
     readonly authenticationMethods: types.outputs.BrokerAuthenticatorMethodsResponse[];
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Extended Location
      */
     readonly extendedLocation: types.outputs.ExtendedLocationPropertyResponse;

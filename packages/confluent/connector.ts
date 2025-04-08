@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Details of connector record
  *
- * Uses Azure REST API version 2024-07-01.
+ * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
  */
 export class Connector extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class Connector extends pulumi.CustomResource {
         return obj['__pulumiType'] === Connector.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Connector Info Base
      */
@@ -89,10 +93,12 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["organizationName"] = args ? args.organizationName : undefined;
             resourceInputs["partnerConnectorInfo"] = args ? args.partnerConnectorInfo : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["connectorBasicInfo"] = undefined /*out*/;
             resourceInputs["connectorServiceTypeInfo"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

@@ -1,6 +1,44 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Defines the asset endpoint profile status error properties.
+ */
+export interface AssetEndpointProfileStatusErrorResponse {
+    /**
+     * Error code for classification of errors (ex: 400, 404, 500, etc.).
+     */
+    code: number;
+    /**
+     * Human readable helpful error message to provide additional context for error (ex: “targetAddress 'foo' is not a valid url”).
+     */
+    message: string;
+}
+
+/**
+ * Defines the asset endpoint profile status properties.
+ */
+export interface AssetEndpointProfileStatusResponse {
+    /**
+     * Array object to transfer and persist errors that originate from the Edge.
+     */
+    errors: AssetEndpointProfileStatusErrorResponse[];
+}
+
+/**
+ * Defines the asset status dataset properties.
+ */
+export interface AssetStatusDatasetResponse {
+    /**
+     * The message schema reference object.
+     */
+    messageSchemaReference: MessageSchemaReferenceResponse;
+    /**
+     * The name of the dataset. Must be unique within the status.datasets array. This name is used to correlate between the spec and status dataset information.
+     */
+    name: string;
+}
+
+/**
  * Defines the asset status error properties.
  */
 export interface AssetStatusErrorResponse {
@@ -15,13 +53,35 @@ export interface AssetStatusErrorResponse {
 }
 
 /**
+ * Defines the asset status event properties.
+ */
+export interface AssetStatusEventResponse {
+    /**
+     * The message schema reference object.
+     */
+    messageSchemaReference: MessageSchemaReferenceResponse;
+    /**
+     * The name of the event. Must be unique within the status.events array. This name is used to correlate between the spec and status event information.
+     */
+    name: string;
+}
+
+/**
  * Defines the asset status properties.
  */
 export interface AssetStatusResponse {
     /**
+     * Array of dataset statuses that describe the status of each dataset.
+     */
+    datasets: AssetStatusDatasetResponse[];
+    /**
      * Array object to transfer and persist errors that originate from the Edge.
      */
     errors: AssetStatusErrorResponse[];
+    /**
+     * Array of event statuses that describe the status of each event.
+     */
+    events: AssetStatusEventResponse[];
     /**
      * A read only incremental counter indicating the number of times the configuration has been modified from the perspective of the current actual (Edge) state of the Asset. Edge would be the only writer of this value and would sync back up to the cloud. In steady state, this should equal version.
      */
@@ -29,13 +89,36 @@ export interface AssetStatusResponse {
 }
 
 /**
+ * Definition of the client authentication mechanism to the server.
+ */
+export interface AuthenticationResponse {
+    /**
+     * Defines the method to authenticate the user of the client at the server.
+     */
+    method: string;
+    /**
+     * Defines the username and password references when UsernamePassword user authentication mode is selected.
+     */
+    usernamePasswordCredentials?: UsernamePasswordCredentialsResponse;
+    /**
+     * Defines the certificate reference when Certificate user authentication mode is selected.
+     */
+    x509Credentials?: X509CredentialsResponse;
+}
+/**
+ * authenticationResponseProvideDefaults sets the appropriate defaults for AuthenticationResponse
+ */
+export function authenticationResponseProvideDefaults(val: AuthenticationResponse): AuthenticationResponse {
+    return {
+        ...val,
+        method: (val.method) ?? "Certificate",
+    };
+}
+
+/**
  * Defines the data point properties.
  */
 export interface DataPointResponse {
-    /**
-     * The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-     */
-    capabilityId?: string;
     /**
      * Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
      */
@@ -47,7 +130,7 @@ export interface DataPointResponse {
     /**
      * The name of the data point.
      */
-    name?: string;
+    name: string;
     /**
      * An indication of how the data point should be mapped to OpenTelemetry.
      */
@@ -59,7 +142,38 @@ export interface DataPointResponse {
 export function dataPointResponseProvideDefaults(val: DataPointResponse): DataPointResponse {
     return {
         ...val,
-        observabilityMode: (val.observabilityMode) ?? "none",
+        observabilityMode: (val.observabilityMode) ?? "None",
+    };
+}
+
+/**
+ * Defines the dataset properties.
+ */
+export interface DatasetResponse {
+    /**
+     * Array of data points that are part of the dataset. Each data point can have per-data point configuration.
+     */
+    dataPoints?: DataPointResponse[];
+    /**
+     * Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
+     */
+    datasetConfiguration?: string;
+    /**
+     * Name of the dataset.
+     */
+    name: string;
+    /**
+     * Object that describes the topic information for the specific dataset.
+     */
+    topic?: TopicResponse;
+}
+/**
+ * datasetResponseProvideDefaults sets the appropriate defaults for DatasetResponse
+ */
+export function datasetResponseProvideDefaults(val: DatasetResponse): DatasetResponse {
+    return {
+        ...val,
+        topic: (val.topic ? topicResponseProvideDefaults(val.topic) : undefined),
     };
 }
 
@@ -156,10 +270,6 @@ export function discoveredEventResponseProvideDefaults(val: DiscoveredEventRespo
  */
 export interface EventResponse {
     /**
-     * The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-     */
-    capabilityId?: string;
-    /**
      * Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
      */
     eventConfiguration?: string;
@@ -170,11 +280,15 @@ export interface EventResponse {
     /**
      * The name of the event.
      */
-    name?: string;
+    name: string;
     /**
      * An indication of how the event should be mapped to OpenTelemetry.
      */
     observabilityMode?: string;
+    /**
+     * Object that describes the topic information for the specific event.
+     */
+    topic?: TopicResponse;
 }
 /**
  * eventResponseProvideDefaults sets the appropriate defaults for EventResponse
@@ -182,7 +296,8 @@ export interface EventResponse {
 export function eventResponseProvideDefaults(val: EventResponse): EventResponse {
     return {
         ...val,
-        observabilityMode: (val.observabilityMode) ?? "none",
+        observabilityMode: (val.observabilityMode) ?? "None",
+        topic: (val.topic ? topicResponseProvideDefaults(val.topic) : undefined),
     };
 }
 
@@ -201,21 +316,21 @@ export interface ExtendedLocationResponse {
 }
 
 /**
- * Certificate or private key that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
+ * Defines the message schema reference properties.
  */
-export interface OwnCertificateResponse {
+export interface MessageSchemaReferenceResponse {
     /**
-     * Secret Reference Name (Pfx or Pem password).
+     * The message schema name.
      */
-    certPasswordReference?: string;
+    schemaName: string;
     /**
-     * Secret Reference name (cert and private key).
+     * The message schema registry namespace.
      */
-    certSecretReference?: string;
+    schemaRegistryNamespace: string;
     /**
-     * Certificate thumbprint.
+     * The message schema version.
      */
-    certThumbprint?: string;
+    schemaVersion: string;
 }
 
 /**
@@ -290,54 +405,17 @@ export function topicResponseProvideDefaults(val: TopicResponse): TopicResponse 
 }
 
 /**
- * Definition of the authentication mechanism for the southbound connector.
- */
-export interface TransportAuthenticationResponse {
-    /**
-     * Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-     */
-    ownCertificates: OwnCertificateResponse[];
-}
-
-/**
- * Definition of the client authentication mechanism to the server.
- */
-export interface UserAuthenticationResponse {
-    /**
-     * Defines the method to authenticate the user of the client at the server.
-     */
-    mode: string;
-    /**
-     * Defines the username and password references when UsernamePassword user authentication mode is selected.
-     */
-    usernamePasswordCredentials?: UsernamePasswordCredentialsResponse;
-    /**
-     * Defines the certificate reference when Certificate user authentication mode is selected.
-     */
-    x509Credentials?: X509CredentialsResponse;
-}
-/**
- * userAuthenticationResponseProvideDefaults sets the appropriate defaults for UserAuthenticationResponse
- */
-export function userAuthenticationResponseProvideDefaults(val: UserAuthenticationResponse): UserAuthenticationResponse {
-    return {
-        ...val,
-        mode: (val.mode) ?? "Certificate",
-    };
-}
-
-/**
  * The credentials for authentication mode UsernamePassword.
  */
 export interface UsernamePasswordCredentialsResponse {
     /**
-     * A reference to secret containing the password.
+     * The name of the secret containing the password.
      */
-    passwordReference: string;
+    passwordSecretName: string;
     /**
-     * A reference to secret containing the username.
+     * The name of the secret containing the username.
      */
-    usernameReference: string;
+    usernameSecretName: string;
 }
 
 /**
@@ -345,9 +423,7 @@ export interface UsernamePasswordCredentialsResponse {
  */
 export interface X509CredentialsResponse {
     /**
-     * A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
+     * The name of the secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
      */
-    certificateReference: string;
+    certificateSecretName: string;
 }
-
-

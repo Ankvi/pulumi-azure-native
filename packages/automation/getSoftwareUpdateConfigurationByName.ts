@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get a single software update configuration by name.
  *
- * Uses Azure REST API version 2019-06-01.
+ * Uses Azure REST API version 2023-05-15-preview.
  *
- * Other available API versions: 2017-05-15-preview, 2023-05-15-preview, 2024-10-23.
+ * Other available API versions: 2017-05-15-preview, 2019-06-01, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSoftwareUpdateConfigurationByName(args: GetSoftwareUpdateConfigurationByNameArgs, opts?: pulumi.InvokeOptions): Promise<GetSoftwareUpdateConfigurationByNameResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +36,10 @@ export interface GetSoftwareUpdateConfigurationByNameArgs {
  * Software update configuration properties.
  */
 export interface GetSoftwareUpdateConfigurationByNameResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * CreatedBy property, which only appears in the response.
      */
@@ -88,9 +92,9 @@ export interface GetSoftwareUpdateConfigurationByNameResult {
 /**
  * Get a single software update configuration by name.
  *
- * Uses Azure REST API version 2019-06-01.
+ * Uses Azure REST API version 2023-05-15-preview.
  *
- * Other available API versions: 2017-05-15-preview, 2023-05-15-preview, 2024-10-23.
+ * Other available API versions: 2017-05-15-preview, 2019-06-01, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSoftwareUpdateConfigurationByNameOutput(args: GetSoftwareUpdateConfigurationByNameOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSoftwareUpdateConfigurationByNameResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

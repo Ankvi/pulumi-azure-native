@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Connects an edge site to an orbital gateway and describes what layer 2 traffic to forward between them.
  *
- * Uses Azure REST API version 2024-03-01-preview.
+ * Uses Azure REST API version 2024-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-03-01-preview.
  *
- * Other available API versions: 2024-03-01.
+ * Other available API versions: 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native orbital [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class L2Connection extends pulumi.CustomResource {
     /**
@@ -36,6 +36,10 @@ export class L2Connection extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Globally-unique identifier for this connection that is to be used as a circuit ID.
      */
     public /*out*/ readonly circuitId!: pulumi.Output<string>;
@@ -47,6 +51,10 @@ export class L2Connection extends pulumi.CustomResource {
      * A reference to an Microsoft.Orbital/groundStations resource to route traffic for.
      */
     public readonly groundStation!: pulumi.Output<types.outputs.L2ConnectionsPropertiesResponseGroundStation>;
+    /**
+     * The name of the partner router to establish a connection to within the ground station.
+     */
+    public readonly groundStationPartnerRouter!: pulumi.Output<types.outputs.L2ConnectionsPropertiesResponseGroundStationPartnerRouter>;
     /**
      * The geo-location where the resource lives
      */
@@ -89,6 +97,9 @@ export class L2Connection extends pulumi.CustomResource {
             if ((!args || args.groundStation === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groundStation'");
             }
+            if ((!args || args.groundStationPartnerRouter === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'groundStationPartnerRouter'");
+            }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -100,19 +111,23 @@ export class L2Connection extends pulumi.CustomResource {
             }
             resourceInputs["edgeSite"] = args ? args.edgeSite : undefined;
             resourceInputs["groundStation"] = args ? args.groundStation : undefined;
+            resourceInputs["groundStationPartnerRouter"] = args ? args.groundStationPartnerRouter : undefined;
             resourceInputs["l2ConnectionName"] = args ? args.l2ConnectionName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vlanId"] = args ? args.vlanId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["circuitId"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["circuitId"] = undefined /*out*/;
             resourceInputs["edgeSite"] = undefined /*out*/;
             resourceInputs["groundStation"] = undefined /*out*/;
+            resourceInputs["groundStationPartnerRouter"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -140,6 +155,10 @@ export interface L2ConnectionArgs {
      */
     groundStation: pulumi.Input<types.inputs.L2ConnectionsPropertiesGroundStationArgs>;
     /**
+     * The name of the partner router to establish a connection to within the ground station.
+     */
+    groundStationPartnerRouter: pulumi.Input<types.inputs.L2ConnectionsPropertiesGroundStationPartnerRouterArgs>;
+    /**
      * L2 Connection name.
      */
     l2ConnectionName?: pulumi.Input<string>;
@@ -148,7 +167,7 @@ export interface L2ConnectionArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * The unique name of the partner router that cross-connects with the Orbital Edge Router at the ground station site.
+     * The unique name of the partner router that cross-connects with the Orbital Edge Router at the edge site.
      */
     name: pulumi.Input<string>;
     /**

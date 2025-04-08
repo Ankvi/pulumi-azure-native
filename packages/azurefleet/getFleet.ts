@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get a Fleet
  *
- * Uses Azure REST API version 2024-05-01-preview.
+ * Uses Azure REST API version 2024-11-01.
  *
- * Other available API versions: 2023-11-01-preview, 2024-11-01.
+ * Other available API versions: 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurefleet [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getFleet(args: GetFleetArgs, opts?: pulumi.InvokeOptions): Promise<GetFleetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +31,14 @@ export interface GetFleetArgs {
  * An Compute Fleet resource
  */
 export interface GetFleetResult {
+    /**
+     * Represents the configuration for additional locations where Fleet resources may be deployed.
+     */
+    readonly additionalLocationsProfile?: types.outputs.AdditionalLocationsProfileResponse;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Compute Profile to use for running user's workloads.
      */
@@ -88,6 +96,10 @@ export interface GetFleetResult {
      */
     readonly uniqueId: string;
     /**
+     * Attribute based Fleet.
+     */
+    readonly vmAttributes?: types.outputs.VMAttributesResponse;
+    /**
      * List of VM sizes supported for Compute Fleet
      */
     readonly vmSizesProfile: types.outputs.VmSizeProfileResponse[];
@@ -99,9 +111,9 @@ export interface GetFleetResult {
 /**
  * Get a Fleet
  *
- * Uses Azure REST API version 2024-05-01-preview.
+ * Uses Azure REST API version 2024-11-01.
  *
- * Other available API versions: 2023-11-01-preview, 2024-11-01.
+ * Other available API versions: 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurefleet [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getFleetOutput(args: GetFleetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFleetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

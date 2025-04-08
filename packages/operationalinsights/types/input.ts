@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
  */
 export interface ClusterSkuArgs {
     /**
-     * The capacity value
+     * The capacity reservation level in Gigabytes for this cluster.
      */
     capacity?: pulumi.Input<number>;
     /**
-     * The name of the SKU.
+     * The SKU (tier) of a cluster.
      */
     name?: pulumi.Input<string | enums.ClusterSkuNameEnum>;
 }
@@ -107,6 +107,20 @@ export interface MachineReferenceWithHintsArgs {
      * Expected value is 'ref:machinewithhints'.
      */
     kind: pulumi.Input<"ref:machinewithhints">;
+}
+
+/**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityArgs {
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: pulumi.Input<string | enums.ManagedServiceIdentityType>;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -252,12 +266,3 @@ export interface WorkspaceSkuArgs {
      */
     name: pulumi.Input<string | enums.WorkspaceSkuNameEnum>;
 }
-
-
-
-
-
-
-
-
-

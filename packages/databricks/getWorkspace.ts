@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets the workspace.
  *
- * Uses Azure REST API version 2023-02-01.
+ * Uses Azure REST API version 2024-05-01.
  *
- * Other available API versions: 2023-09-15-preview, 2024-05-01, 2024-09-01-preview, 2025-03-01-preview.
+ * Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-09-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getWorkspace(args: GetWorkspaceArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,9 +32,17 @@ export interface GetWorkspaceArgs {
  */
 export interface GetWorkspaceResult {
     /**
+     * Access Connector Resource that is going to be associated with Databricks Workspace
+     */
+    readonly accessConnector?: types.outputs.WorkspacePropertiesResponseAccessConnector;
+    /**
      * The workspace provider authorizations.
      */
     readonly authorizations?: types.outputs.WorkspaceProviderAuthorizationResponse[];
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Indicates the Object ID, PUID and Application ID of entity that created the workspace.
      */
@@ -44,6 +52,14 @@ export interface GetWorkspaceResult {
      */
     readonly createdDateTime: string;
     /**
+     * Properties for Default Catalog configuration during workspace creation.
+     */
+    readonly defaultCatalog?: types.outputs.DefaultCatalogPropertiesResponse;
+    /**
+     * Gets or Sets Default Storage Firewall configuration information
+     */
+    readonly defaultStorageFirewall?: string;
+    /**
      * The resource Id of the managed disk encryption set.
      */
     readonly diskEncryptionSetId: string;
@@ -52,9 +68,17 @@ export interface GetWorkspaceResult {
      */
     readonly encryption?: types.outputs.WorkspacePropertiesResponseEncryption;
     /**
+     * Contains settings related to the Enhanced Security and Compliance Add-On.
+     */
+    readonly enhancedSecurityCompliance?: types.outputs.EnhancedSecurityComplianceDefinitionResponse;
+    /**
      * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
+    /**
+     * Indicates whether unity catalog enabled for the workspace or not.
+     */
+    readonly isUcEnabled: boolean;
     /**
      * The geo-location where the resource lives
      */
@@ -131,9 +155,9 @@ export interface GetWorkspaceResult {
 /**
  * Gets the workspace.
  *
- * Uses Azure REST API version 2023-02-01.
+ * Uses Azure REST API version 2024-05-01.
  *
- * Other available API versions: 2023-09-15-preview, 2024-05-01, 2024-09-01-preview, 2025-03-01-preview.
+ * Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-09-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getWorkspaceOutput(args: GetWorkspaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkspaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

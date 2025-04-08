@@ -1,7 +1,7 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * Datadog organization properties
+ * Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
  */
 export interface DatadogOrganizationPropertiesArgs {
     /**
@@ -13,6 +13,10 @@ export interface DatadogOrganizationPropertiesArgs {
      */
     applicationKey?: pulumi.Input<string>;
     /**
+     * The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
+     */
+    cspm?: pulumi.Input<boolean>;
+    /**
      * The Id of the Enterprise App used for Single sign on.
      */
     enterpriseAppId?: pulumi.Input<string>;
@@ -21,7 +25,7 @@ export interface DatadogOrganizationPropertiesArgs {
      */
     id?: pulumi.Input<string>;
     /**
-     * The auth code used to linking to an existing datadog organization.
+     * The auth code used to linking to an existing Datadog organization.
      */
     linkingAuthCode?: pulumi.Input<string>;
     /**
@@ -33,7 +37,7 @@ export interface DatadogOrganizationPropertiesArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The redirect uri for linking.
+     * The redirect URI for linking.
      */
     redirectUri?: pulumi.Input<string>;
 }
@@ -58,7 +62,7 @@ export interface FilteringTagArgs {
 
 export interface IdentityPropertiesArgs {
     /**
-     * Identity type
+     * Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
      */
     type?: pulumi.Input<string | enums.ManagedIdentityTypes>;
 }
@@ -100,7 +104,7 @@ export interface MetricRulesArgs {
  */
 export interface MonitorPropertiesArgs {
     /**
-     * Datadog organization properties
+     * Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
      */
     datadogOrganizationProperties?: pulumi.Input<DatadogOrganizationPropertiesArgs>;
     /**
@@ -108,7 +112,7 @@ export interface MonitorPropertiesArgs {
      */
     monitoringStatus?: pulumi.Input<string | enums.MonitoringStatus>;
     /**
-     * User info
+     * Includes name, email and optionally, phone number. User Information can't be null.
      */
     userInfo?: pulumi.Input<UserInfoArgs>;
 }
@@ -144,6 +148,10 @@ export interface MonitoringTagRulesPropertiesArgs {
      */
     automuting?: pulumi.Input<boolean>;
     /**
+     * Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
+     */
+    customMetrics?: pulumi.Input<boolean>;
+    /**
      * Set of rules for sending logs for the Monitor resource.
      */
     logRules?: pulumi.Input<LogRulesArgs>;
@@ -155,7 +163,7 @@ export interface MonitoringTagRulesPropertiesArgs {
 
 export interface ResourceSkuArgs {
     /**
-     * Name of the SKU.
+     * Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
      */
     name: pulumi.Input<string>;
 }
@@ -175,7 +183,7 @@ export interface SubscriptionListArgs {
 }
 
 /**
- * User info
+ * Includes name, email and optionally, phone number. User Information can't be null.
  */
 export interface UserInfoArgs {
     /**
@@ -191,7 +199,3 @@ export interface UserInfoArgs {
      */
     phoneNumber?: pulumi.Input<string>;
 }
-
-
-
-

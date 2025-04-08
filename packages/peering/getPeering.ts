@@ -30,6 +30,10 @@ export interface GetPeeringArgs {
  */
 export interface GetPeeringResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The properties that define a direct peering.
      */
     readonly direct?: types.outputs.PeeringPropertiesDirectResponse;

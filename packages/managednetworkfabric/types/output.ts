@@ -1,41 +1,111 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * Access Control List condition model.
+ * Action that need to performed.
  */
-export interface AccessControlListConditionPropertiesResponse {
+export interface AccessControlListActionResponse {
     /**
-     * action. Example: allow | deny.
+     * Name of the counter block to get match count information.
      */
-    action: string;
+    counterName?: string;
     /**
-     * Switch configuration description.
+     * Type of actions that can be performed.
      */
-    annotation?: string;
+    type?: string;
+}
+
+/**
+ * Defines the match condition that is supported to filter the traffic.
+ */
+export interface AccessControlListMatchConditionResponse {
     /**
-     * destinationAddress. Example: any | 1.1.1.0/24 | 1.1.10.10
+     * List of DSCP Markings that need to be matched.
      */
-    destinationAddress: string;
+    dscpMarkings?: string[];
     /**
-     * destinationPort. Example: any | 1253
+     * List of ether type values that need to be matched.
      */
-    destinationPort: string;
+    etherTypes?: string[];
     /**
-     * TCP/IP protocol as defined in the list of IP protocol numbers. Example: 255 (any) | 0 | 1.
+     * List of IP fragment packets that need to be matched.
      */
-    protocol: number;
+    fragments?: string[];
     /**
-     * sequenceNumber of the Access Control List.
+     * IP condition that needs to be matched.
      */
-    sequenceNumber: number;
+    ipCondition?: IpMatchConditionResponse;
     /**
-     * sourceAddress. Example: any | 1.1.1.0/24 | 1.1.10.10
+     * List of IP Lengths that need to be matched.
      */
-    sourceAddress: string;
+    ipLengths?: string[];
     /**
-     * sourcePort. Example: any | 1253
+     * Defines the port condition that needs to be matched.
      */
-    sourcePort: string;
+    portCondition?: AccessControlListPortConditionResponse;
+    /**
+     * List of the protocols that need to be matched.
+     */
+    protocolTypes?: string[];
+    /**
+     * List of TTL [Time To Live] values that need to be matched.
+     */
+    ttlValues?: string[];
+    /**
+     * Vlan match condition that needs to be matched.
+     */
+    vlanMatchCondition?: VlanMatchConditionResponse;
+}
+
+/**
+ * Defines the match configuration that are supported to filter the traffic.
+ */
+export interface AccessControlListMatchConfigurationResponse {
+    /**
+     * List of actions that need to be performed for the matched conditions.
+     */
+    actions?: AccessControlListActionResponse[];
+    /**
+     * Type of IP Address. IPv4 or IPv6
+     */
+    ipAddressType?: string;
+    /**
+     * List of the match conditions.
+     */
+    matchConditions?: AccessControlListMatchConditionResponse[];
+    /**
+     * The name of the match configuration.
+     */
+    matchConfigurationName?: string;
+    /**
+     * Sequence Number of the match configuration.
+     */
+    sequenceNumber?: number;
+}
+
+/**
+ * Defines the port condition that needs to be matched.
+ */
+export interface AccessControlListPortConditionResponse {
+    /**
+     * List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+     */
+    flags?: string[];
+    /**
+     * Layer4 protocol type that needs to be matched.
+     */
+    layer4Protocol: string;
+    /**
+     * List of the port Group Names that need to be matched.
+     */
+    portGroupNames?: string[];
+    /**
+     * Port type that needs to be matched.
+     */
+    portType?: string;
+    /**
+     * List of the Ports that need to be matched.
+     */
+    ports?: string[];
 }
 
 /**
@@ -43,15 +113,15 @@ export interface AccessControlListConditionPropertiesResponse {
  */
 export interface ActionIpCommunityPropertiesResponse {
     /**
-     * IP Community ID list properties.
+     * List of IP Community IDs.
      */
     add?: IpCommunityIdListResponse;
     /**
-     * IP Community ID list properties.
+     * List of IP Community IDs.
      */
     delete?: IpCommunityIdListResponse;
     /**
-     * IP Community ID list properties.
+     * List of IP Community IDs.
      */
     set?: IpCommunityIdListResponse;
 }
@@ -61,21 +131,21 @@ export interface ActionIpCommunityPropertiesResponse {
  */
 export interface ActionIpExtendedCommunityPropertiesResponse {
     /**
-     * IP Extended Community Id list properties.
+     * List of IP Extended Community IDs.
      */
     add?: IpExtendedCommunityIdListResponse;
     /**
-     * IP Extended Community Id list properties.
+     * List of IP Extended Community IDs.
      */
     delete?: IpExtendedCommunityIdListResponse;
     /**
-     * IP Extended Community Id list properties.
+     * List of IP Extended Community IDs.
      */
     set?: IpExtendedCommunityIdListResponse;
 }
 
 /**
- * List of IPv4 and IPv6 route configurations.
+ * List of IPv4 and IPv6 aggregate routes.
  */
 export interface AggregateRouteConfigurationResponse {
     /**
@@ -83,19 +153,19 @@ export interface AggregateRouteConfigurationResponse {
      */
     ipv4Routes?: AggregateRouteResponse[];
     /**
-     * List of IPv6 Routes prefixes.
+     * List of Ipv6Routes prefixes.
      */
     ipv6Routes?: AggregateRouteResponse[];
 }
 
 /**
- * Aggregate Route properties.
+ * aggregateIpv4Route model.
  */
 export interface AggregateRouteResponse {
     /**
-     * Prefix of the aggregate Route.
+     * IPv4 Prefix of the aggregate Ipv4Route.
      */
-    prefix?: string;
+    prefix: string;
 }
 
 /**
@@ -107,71 +177,23 @@ export interface BfdConfigurationResponse {
      */
     administrativeState: string;
     /**
-     * interval in milliseconds. Example: 300.
+     * Interval in milliseconds. Example: 300.
      */
-    interval: number;
+    intervalInMilliSeconds?: number;
     /**
-     * Multiplier for the Bfd Configuration. Example: 3.
+     * Multiplier for the Bfd Configuration. Example: 5.
      */
-    multiplier: number;
-}
-
-/**
- * BGP configuration properties
- */
-export interface BgpConfigurationResponse {
-    /**
-     * Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
-     */
-    allowAS?: number;
-    /**
-     * Enable Or Disable state.
-     */
-    allowASOverride?: string;
-    /**
-     * Switch configuration description.
-     */
-    annotation?: string;
-    /**
-     * BFD configuration properties
-     */
-    bfdConfiguration?: BfdConfigurationResponse;
-    /**
-     * Originate a defaultRoute. Ex: "True" | "False".
-     */
-    defaultRouteOriginate?: string;
-    /**
-     * ASN of Network Fabric. Example: 65048.
-     */
-    fabricASN: number;
-    /**
-     * BGP Ipv4 ListenRange.
-     */
-    ipv4ListenRangePrefixes?: string[];
-    /**
-     * List with stringified ipv4NeighborAddresses.
-     */
-    ipv4NeighborAddress?: NeighborAddressResponse[];
-    /**
-     * BGP Ipv6 ListenRange.
-     */
-    ipv6ListenRangePrefixes?: string[];
-    /**
-     * List with stringified IPv6 Neighbor Address.
-     */
-    ipv6NeighborAddress?: NeighborAddressResponse[];
-    /**
-     * Peer ASN. Example: 65047.
-     */
-    peerASN: number;
+    multiplier?: number;
 }
 /**
- * bgpConfigurationResponseProvideDefaults sets the appropriate defaults for BgpConfigurationResponse
+ * bfdConfigurationResponseProvideDefaults sets the appropriate defaults for BfdConfigurationResponse
  */
-export function bgpConfigurationResponseProvideDefaults(val: BgpConfigurationResponse): BgpConfigurationResponse {
+export function bfdConfigurationResponseProvideDefaults(val: BfdConfigurationResponse): BfdConfigurationResponse {
     return {
         ...val,
-        allowAS: (val.allowAS) ?? 2,
+        administrativeState: (val.administrativeState) ?? "Disabled",
+        intervalInMilliSeconds: (val.intervalInMilliSeconds) ?? 300,
+        multiplier: (val.multiplier) ?? 5,
     };
 }
 
@@ -202,9 +224,37 @@ export interface ConnectedSubnetResponse {
      */
     annotation?: string;
     /**
-     * Prefix of the connected Subnet.
+     * Prefix of the Connected Subnet.
      */
-    prefix?: string;
+    prefix: string;
+}
+
+/**
+ * Connected Subnet Route Policy properties.
+ */
+export interface ConnectedSubnetRoutePolicyResponse {
+    /**
+     * Array of ARM Resource ID of the RoutePolicies.
+     */
+    exportRoutePolicy?: L3ExportRoutePolicyResponse;
+    /**
+     * ARM Resource ID of the Route Policy. This is used for the backward compatibility.
+     */
+    exportRoutePolicyId?: string;
+}
+
+/**
+ * Network Fabric Controller services.
+ */
+export interface ControllerServicesResponse {
+    /**
+     * The IPv4 Address space is optional, if the value is not defined at the time of NFC creation, then the default value 10.0.0.0/19 is considered. The IPV4 address subnet is an optional attribute.
+     */
+    ipv4AddressSpaces?: string[];
+    /**
+     * The IPv6 is not supported right now.
+     */
+    ipv6AddressSpaces?: string[];
 }
 
 /**
@@ -248,6 +298,34 @@ export interface ErrorDetailResponse {
 }
 
 /**
+ * Export Route Policy Configuration.
+ */
+export interface ExportRoutePolicyInformationResponse {
+    /**
+     * Export IPv4 Route Policy Id.
+     */
+    exportIpv4RoutePolicyId?: string;
+    /**
+     * Export IPv6 Route Policy Id.
+     */
+    exportIpv6RoutePolicyId?: string;
+}
+
+/**
+ * Export Route Policy either IPv4 or IPv6.
+ */
+export interface ExportRoutePolicyResponse {
+    /**
+     * ARM resource ID of RoutePolicy.
+     */
+    exportIpv4RoutePolicyId?: string;
+    /**
+     * ARM resource ID of RoutePolicy.
+     */
+    exportIpv6RoutePolicyId?: string;
+}
+
+/**
  * The ExpressRoute circuit ID and the Auth Key are required for you to successfully deploy NFC service.
  */
 export interface ExpressRouteConnectionInformationResponse {
@@ -270,9 +348,17 @@ export interface ExternalNetworkPropertiesResponseOptionAProperties {
      */
     bfdConfiguration?: BfdConfigurationResponse;
     /**
+     * Egress Acl. ARM resource ID of Access Control Lists.
+     */
+    egressAclId?: string;
+    /**
      * Fabric ASN number. Example 65001 
      */
     fabricASN: number;
+    /**
+     * Ingress Acl. ARM resource ID of Access Control Lists.
+     */
+    ingressAclId?: string;
     /**
      * MTU to use for option A peering.
      */
@@ -282,19 +368,19 @@ export interface ExternalNetworkPropertiesResponseOptionAProperties {
      */
     peerASN: number;
     /**
-     * IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * IPv4 Address Prefix.
      */
     primaryIpv4Prefix?: string;
     /**
-     * IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * IPv6 Address Prefix.
      */
     primaryIpv6Prefix?: string;
     /**
-     * Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * Secondary IPv4 Address Prefix.
      */
     secondaryIpv4Prefix?: string;
     /**
-     * Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * Secondary IPv6 Address Prefix.
      */
     secondaryIpv6Prefix?: string;
     /**
@@ -308,50 +394,147 @@ export interface ExternalNetworkPropertiesResponseOptionAProperties {
 export function externalNetworkPropertiesResponseOptionAPropertiesProvideDefaults(val: ExternalNetworkPropertiesResponseOptionAProperties): ExternalNetworkPropertiesResponseOptionAProperties {
     return {
         ...val,
+        bfdConfiguration: (val.bfdConfiguration ? bfdConfigurationResponseProvideDefaults(val.bfdConfiguration) : undefined),
         mtu: (val.mtu) ?? 1500,
     };
 }
 
 /**
- * BFD Configuration properties.
- */
-export interface FabricBfdConfigurationResponse {
-    /**
-     * interval in seconds. Example: 300.
-     */
-    interval: number;
-    /**
-     * multiplier. Example: 3.
-     */
-    multiplier: number;
-}
-
-/**
- * Option B configuration.
+ * Option B configuration to be used for Management VPN.
  */
 export interface FabricOptionBPropertiesResponse {
     /**
-     * Route Targets to be applied for outgoing routes from CE.
+     * Route Targets to be applied for outgoing routes from CE. This is for backward compatibility.
      */
-    exportRouteTargets: string[];
+    exportRouteTargets?: string[];
     /**
-     * Route Targets to be applied for incoming routes into CE.
+     * Route Targets to be applied for incoming routes into CE. This is for backward compatibility.
      */
-    importRouteTargets: string[];
+    importRouteTargets?: string[];
+    /**
+     * Route Targets to be applied.
+     */
+    routeTargets?: RouteTargetInformationResponse;
 }
 
 /**
- * InfrastructureServices IP ranges.
+ * Import Route Policy Configuration.
  */
-export interface InfrastructureServicesResponse {
+export interface ImportRoutePolicyInformationResponse {
     /**
-     * The IPv4 Address space is optional, if the value is not defined at the time of NFC creation, then the default value 10.0.0.0/19 is considered. The IPV4 address subnet is an optional attribute.
+     * Import IPv4 Route Policy Id.
      */
-    ipv4AddressSpaces?: string[];
+    importIpv4RoutePolicyId?: string;
     /**
-     * The IPv6 is not supported right now.
+     * Import IPv6 Route Policy Id.
      */
-    ipv6AddressSpaces?: string[];
+    importIpv6RoutePolicyId?: string;
+}
+
+/**
+ * Import Route Policy either IPv4 or IPv6.
+ */
+export interface ImportRoutePolicyResponse {
+    /**
+     * ARM resource ID of RoutePolicy.
+     */
+    importIpv4RoutePolicyId?: string;
+    /**
+     * ARM resource ID of RoutePolicy.
+     */
+    importIpv6RoutePolicyId?: string;
+}
+
+/**
+ * BGP configuration properties.
+ */
+export interface InternalNetworkPropertiesResponseBgpConfiguration {
+    /**
+     * Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
+     */
+    allowAS?: number;
+    /**
+     * Enable Or Disable state.
+     */
+    allowASOverride?: string;
+    /**
+     * Switch configuration description.
+     */
+    annotation?: string;
+    /**
+     * BFD configuration properties
+     */
+    bfdConfiguration?: BfdConfigurationResponse;
+    /**
+     * Originate a defaultRoute. Ex: "True" | "False".
+     */
+    defaultRouteOriginate?: string;
+    /**
+     * ASN of Network Fabric. Example: 65048.
+     */
+    fabricASN: number;
+    /**
+     * List of BGP IPv4 Listen Range prefixes.
+     */
+    ipv4ListenRangePrefixes?: string[];
+    /**
+     * List with stringified IPv4 Neighbor Addresses.
+     */
+    ipv4NeighborAddress?: NeighborAddressResponse[];
+    /**
+     * List of BGP IPv6 Listen Ranges prefixes.
+     */
+    ipv6ListenRangePrefixes?: string[];
+    /**
+     * List with stringified IPv6 Neighbor Address.
+     */
+    ipv6NeighborAddress?: NeighborAddressResponse[];
+    /**
+     * Peer ASN. Example: 65047.
+     */
+    peerASN: number;
+}
+/**
+ * internalNetworkPropertiesResponseBgpConfigurationProvideDefaults sets the appropriate defaults for InternalNetworkPropertiesResponseBgpConfiguration
+ */
+export function internalNetworkPropertiesResponseBgpConfigurationProvideDefaults(val: InternalNetworkPropertiesResponseBgpConfiguration): InternalNetworkPropertiesResponseBgpConfiguration {
+    return {
+        ...val,
+        allowAS: (val.allowAS) ?? 2,
+        bfdConfiguration: (val.bfdConfiguration ? bfdConfigurationResponseProvideDefaults(val.bfdConfiguration) : undefined),
+    };
+}
+
+/**
+ * Static Route Configuration properties.
+ */
+export interface InternalNetworkPropertiesResponseStaticRouteConfiguration {
+    /**
+     * BFD configuration properties
+     */
+    bfdConfiguration?: BfdConfigurationResponse;
+    /**
+     * Extension. Example: NoExtension | NPB.
+     */
+    extension?: string;
+    /**
+     * List of IPv4 Routes.
+     */
+    ipv4Routes?: StaticRoutePropertiesResponse[];
+    /**
+     * List of IPv6 Routes.
+     */
+    ipv6Routes?: StaticRoutePropertiesResponse[];
+}
+/**
+ * internalNetworkPropertiesResponseStaticRouteConfigurationProvideDefaults sets the appropriate defaults for InternalNetworkPropertiesResponseStaticRouteConfiguration
+ */
+export function internalNetworkPropertiesResponseStaticRouteConfigurationProvideDefaults(val: InternalNetworkPropertiesResponseStaticRouteConfiguration): InternalNetworkPropertiesResponseStaticRouteConfiguration {
+    return {
+        ...val,
+        bfdConfiguration: (val.bfdConfiguration ? bfdConfigurationResponseProvideDefaults(val.bfdConfiguration) : undefined),
+        extension: (val.extension) ?? "NoExtension",
+    };
 }
 
 /**
@@ -365,6 +548,28 @@ export interface IpCommunityIdListResponse {
 }
 
 /**
+ * IP Community patchable properties.
+ */
+export interface IpCommunityRuleResponse {
+    /**
+     * Action to be taken on the configuration. Example: Permit | Deny.
+     */
+    action: string;
+    /**
+     * List the community members of IP Community.
+     */
+    communityMembers: string[];
+    /**
+     * Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
+     */
+    sequenceNumber: number;
+    /**
+     * Supported well known Community List.
+     */
+    wellKnownCommunities?: string[];
+}
+
+/**
  * IP Extended Community Id list properties.
  */
 export interface IpExtendedCommunityIdListResponse {
@@ -372,6 +577,24 @@ export interface IpExtendedCommunityIdListResponse {
      * List of IP Extended Community resource IDs.
      */
     ipExtendedCommunityIds?: string[];
+}
+
+/**
+ * List of IP Extended Community Rules.
+ */
+export interface IpExtendedCommunityRuleResponse {
+    /**
+     * Action to be taken on the configuration. Example: Permit | Deny.
+     */
+    action: string;
+    /**
+     * Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295.
+     */
+    routeTargets: string[];
+    /**
+     * Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
+     */
+    sequenceNumber: number;
 }
 
 /**
@@ -414,7 +637,10 @@ export interface IpMatchConditionResponse {
     type?: string;
 }
 
-export interface IpPrefixPropertiesResponseIpPrefixRules {
+/**
+ * IP Prefix Rule properties.
+ */
+export interface IpPrefixRuleResponse {
     /**
      * Action to be taken on the configuration. Example: Permit | Deny.
      */
@@ -432,9 +658,9 @@ export interface IpPrefixPropertiesResponseIpPrefixRules {
      */
     sequenceNumber: number;
     /**
-     * SubnetMaskLength gives the minimum NetworkPrefix length to be matched.Possible values for IPv4 are 1 - 32. Possible values of IPv6 are 1 - 128.
+     * SubnetMaskLength gives the minimum NetworkPrefix length to be matched. Possible values for IPv4 are 1 - 32 . Possible values of IPv6 are 1 - 128.
      */
-    subnetMaskLength?: number;
+    subnetMaskLength?: string;
 }
 
 /**
@@ -452,35 +678,49 @@ export interface IsolationDomainPropertiesResponse {
 }
 
 /**
- * Connected Subnet RoutePolicy
+ * Array of ARM Resource ID of the RoutePolicies.
  */
-export interface L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicy {
+export interface L3ExportRoutePolicyResponse {
     /**
-     * Enabled/Disabled connected subnet route policy. Ex: Enabled | Disabled.
+     * ARM Resource ID of the RoutePolicy.
      */
-    administrativeState: string;
+    exportIpv4RoutePolicyId?: string;
     /**
-     * exportRoutePolicyId value.
+     * ARM Resource ID of the RoutePolicy.
      */
-    exportRoutePolicyId?: string;
+    exportIpv6RoutePolicyId?: string;
 }
 
 /**
- * layer2Configuration
+ * Option B configuration.
+ */
+export interface L3OptionBPropertiesResponse {
+    /**
+     * RouteTargets to be applied. This is used for the backward compatibility.
+     */
+    exportRouteTargets?: string[];
+    /**
+     * RouteTargets to be applied. This is used for the backward compatibility.
+     */
+    importRouteTargets?: string[];
+    /**
+     * RouteTargets to be applied.
+     */
+    routeTargets?: RouteTargetInformationResponse;
+}
+
+/**
+ * Common properties for Layer2 Configuration.
  */
 export interface Layer2ConfigurationResponse {
     /**
      * List of network device interfaces resource IDs.
      */
-    interfaces: string[];
+    interfaces?: string[];
     /**
      * MTU of the packets between PE & CE.
      */
-    mtu: number;
-    /**
-     * Number of ports connected between PE/CE. Maximum value depends on FabricSKU.
-     */
-    portCount?: number;
+    mtu?: number;
 }
 /**
  * layer2ConfigurationResponseProvideDefaults sets the appropriate defaults for Layer2ConfigurationResponse
@@ -490,48 +730,6 @@ export function layer2ConfigurationResponseProvideDefaults(val: Layer2Configurat
         ...val,
         mtu: (val.mtu) ?? 1500,
     };
-}
-
-/**
- * layer3Configuration
- */
-export interface Layer3ConfigurationResponse {
-    /**
-     * exportRoutePolicyId
-     */
-    exportRoutePolicyId?: string;
-    /**
-     * ASN of CE devices for CE/PE connectivity.
-     */
-    fabricASN: number;
-    /**
-     * importRoutePolicyId
-     */
-    importRoutePolicyId?: string;
-    /**
-     * ASN of PE devices for CE/PE connectivity.Example : 28
-     */
-    peerASN?: number;
-    /**
-     * IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-     */
-    primaryIpv4Prefix?: string;
-    /**
-     * IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-     */
-    primaryIpv6Prefix?: string;
-    /**
-     * Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-     */
-    secondaryIpv4Prefix?: string;
-    /**
-     * Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-     */
-    secondaryIpv6Prefix?: string;
-    /**
-     * VLAN for CE/PE Layer 3 connectivity.Example : 501
-     */
-    vlanId?: number;
 }
 
 /**
@@ -551,20 +749,20 @@ export interface ManagedResourceGroupConfigurationResponse {
 /**
  * Configuration to be used to setup the management network.
  */
-export interface ManagementNetworkConfigurationResponse {
+export interface ManagementNetworkConfigurationPropertiesResponse {
     /**
-     * Configuration for infrastructure vpn.
+     * VPN Configuration properties.
      */
     infrastructureVpnConfiguration: VpnConfigurationPropertiesResponse;
     /**
-     * Configuration for workload vpn.
+     * VPN Configuration properties.
      */
     workloadVpnConfiguration: VpnConfigurationPropertiesResponse;
 }
 /**
- * managementNetworkConfigurationResponseProvideDefaults sets the appropriate defaults for ManagementNetworkConfigurationResponse
+ * managementNetworkConfigurationPropertiesResponseProvideDefaults sets the appropriate defaults for ManagementNetworkConfigurationPropertiesResponse
  */
-export function managementNetworkConfigurationResponseProvideDefaults(val: ManagementNetworkConfigurationResponse): ManagementNetworkConfigurationResponse {
+export function managementNetworkConfigurationPropertiesResponseProvideDefaults(val: ManagementNetworkConfigurationPropertiesResponse): ManagementNetworkConfigurationPropertiesResponse {
     return {
         ...val,
         infrastructureVpnConfiguration: vpnConfigurationPropertiesResponseProvideDefaults(val.infrastructureVpnConfiguration),
@@ -581,9 +779,9 @@ export interface NeighborAddressResponse {
      */
     address?: string;
     /**
-     * OperationalState of the NeighborAddress.
+     * Configuration state of the resource.
      */
-    operationalState: string;
+    configurationState: string;
 }
 
 /**
@@ -714,64 +912,64 @@ export interface NetworkTapRuleMatchConfigurationResponse {
 }
 
 /**
- * Peering optionA properties
+ * Common properties for Layer3Configuration.
  */
-export interface OptionAPropertiesResponse {
+export interface NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration {
     /**
-     * BFD Configuration properties.
+     * ASN of CE devices for CE/PE connectivity.
      */
-    bfdConfiguration?: FabricBfdConfigurationResponse;
+    fabricASN: number;
     /**
-     * MTU to use for option A peering.
+     * ASN of PE devices for CE/PE connectivity.Example : 28
      */
-    mtu?: number;
+    peerASN: number;
     /**
-     * Peer ASN number.Example : 28
-     */
-    peerASN?: number;
-    /**
-     * IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * IPv4 Address Prefix.
      */
     primaryIpv4Prefix?: string;
     /**
-     * IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * IPv6 Address Prefix.
      */
     primaryIpv6Prefix?: string;
     /**
-     * Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * Secondary IPv4 Address Prefix.
      */
     secondaryIpv4Prefix?: string;
     /**
-     * Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * Secondary IPv6 Address Prefix.
      */
     secondaryIpv6Prefix?: string;
     /**
-     * Vlan identifier. Example : 501
+     * VLAN for CE/PE Layer 3 connectivity.Example : 501
      */
-    vlanId?: number;
-}
-/**
- * optionAPropertiesResponseProvideDefaults sets the appropriate defaults for OptionAPropertiesResponse
- */
-export function optionAPropertiesResponseProvideDefaults(val: OptionAPropertiesResponse): OptionAPropertiesResponse {
-    return {
-        ...val,
-        mtu: (val.mtu) ?? 1500,
-    };
+    vlanId: number;
 }
 
 /**
- * Option B configuration.
+ * NPB Static Route Configuration properties.
  */
-export interface OptionBPropertiesResponse {
+export interface NpbStaticRouteConfigurationResponse {
     /**
-     * Route Targets to be applied for outgoing routes from CE.
+     * BFD Configuration properties.
      */
-    exportRouteTargets?: string[];
+    bfdConfiguration?: BfdConfigurationResponse;
     /**
-     * Route Targets to be applied for incoming routes into CE.
+     * List of IPv4 Routes.
      */
-    importRouteTargets?: string[];
+    ipv4Routes?: StaticRoutePropertiesResponse[];
+    /**
+     * List of IPv6 Routes.
+     */
+    ipv6Routes?: StaticRoutePropertiesResponse[];
+}
+/**
+ * npbStaticRouteConfigurationResponseProvideDefaults sets the appropriate defaults for NpbStaticRouteConfigurationResponse
+ */
+export function npbStaticRouteConfigurationResponseProvideDefaults(val: NpbStaticRouteConfigurationResponse): NpbStaticRouteConfigurationResponse {
+    return {
+        ...val,
+        bfdConfiguration: (val.bfdConfiguration ? bfdConfigurationResponseProvideDefaults(val.bfdConfiguration) : undefined),
+    };
 }
 
 /**
@@ -811,7 +1009,7 @@ export interface PortGroupPropertiesResponse {
 }
 
 /**
- * Route Policy Statement properties..
+ * Route Policy Statement properties.
  */
 export interface RoutePolicyStatementPropertiesResponse {
     /**
@@ -830,6 +1028,37 @@ export interface RoutePolicyStatementPropertiesResponse {
      * Sequence to insert to/delete from existing route.
      */
     sequenceNumber: number;
+}
+/**
+ * routePolicyStatementPropertiesResponseProvideDefaults sets the appropriate defaults for RoutePolicyStatementPropertiesResponse
+ */
+export function routePolicyStatementPropertiesResponseProvideDefaults(val: RoutePolicyStatementPropertiesResponse): RoutePolicyStatementPropertiesResponse {
+    return {
+        ...val,
+        condition: statementConditionPropertiesResponseProvideDefaults(val.condition),
+    };
+}
+
+/**
+ * Route Target Configuration.
+ */
+export interface RouteTargetInformationResponse {
+    /**
+     * Route Targets to be applied for outgoing routes into CE.
+     */
+    exportIpv4RouteTargets?: string[];
+    /**
+     * Route Targets to be applied for outgoing routes from CE.
+     */
+    exportIpv6RouteTargets?: string[];
+    /**
+     * Route Targets to be applied for incoming routes into CE.
+     */
+    importIpv4RouteTargets?: string[];
+    /**
+     * Route Targets to be applied for incoming routes from CE.
+     */
+    importIpv6RouteTargets?: string[];
 }
 
 /**
@@ -851,7 +1080,7 @@ export interface RulePropertiesResponse {
  */
 export interface StatementActionPropertiesResponse {
     /**
-     * action. Example: Permit | Deny.
+     * Action type. Example: Permit | Deny | Continue.
      */
     actionType: string;
     /**
@@ -863,7 +1092,7 @@ export interface StatementActionPropertiesResponse {
      */
     ipExtendedCommunityProperties?: ActionIpExtendedCommunityPropertiesResponse;
     /**
-     * localPreference of the route policy.
+     * Local Preference of the route policy.
      */
     localPreference?: number;
 }
@@ -884,36 +1113,31 @@ export interface StatementConditionPropertiesResponse {
      * Arm Resource Id of IpPrefix.
      */
     ipPrefixId?: string;
+    /**
+     * Type of the condition used.
+     */
+    type?: string;
 }
-
 /**
- * staticRouteConfiguration model.
+ * statementConditionPropertiesResponseProvideDefaults sets the appropriate defaults for StatementConditionPropertiesResponse
  */
-export interface StaticRouteConfigurationResponse {
-    /**
-     * BFD configuration properties
-     */
-    bfdConfiguration?: BfdConfigurationResponse;
-    /**
-     * List with object IPv4Routes.
-     */
-    ipv4Routes?: StaticRoutePropertiesResponse[];
-    /**
-     * List with object IPv6Routes.
-     */
-    ipv6Routes?: StaticRoutePropertiesResponse[];
+export function statementConditionPropertiesResponseProvideDefaults(val: StatementConditionPropertiesResponse): StatementConditionPropertiesResponse {
+    return {
+        ...val,
+        type: (val.type) ?? "Or",
+    };
 }
 
 /**
- * Static Route properties.
+ * Route Properties.
  */
 export interface StaticRoutePropertiesResponse {
     /**
-     * List of next hop IPv4 | IPv6 addresses.
+     * List of next hop addresses.
      */
     nextHop: string[];
     /**
-     * IPv4 | IPv6 Prefix.
+     * Prefix of the route.
      */
     prefix: string;
 }
@@ -961,19 +1185,19 @@ export interface TerminalServerConfigurationResponse {
      */
     password: string;
     /**
-     * IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * IPv4 Address Prefix.
      */
     primaryIpv4Prefix: string;
     /**
-     * IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * IPv6 Address Prefix.
      */
     primaryIpv6Prefix?: string;
     /**
-     * Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * Secondary IPv4 Address Prefix.
      */
     secondaryIpv4Prefix: string;
     /**
-     * Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * Secondary IPv6 Address Prefix.
      */
     secondaryIpv6Prefix?: string;
     /**
@@ -1019,21 +1243,21 @@ export interface VlanMatchConditionResponse {
 }
 
 /**
- * Configuration for infrastructure vpn.
+ * Network and credential configuration currently applied on terminal server.
  */
 export interface VpnConfigurationPropertiesResponse {
     /**
-     * Indicates configuration state. Example: Enabled | Disabled.
+     * Administrative state of the resource.
      */
     administrativeState: string;
     /**
-     * Gets the networkToNetworkInterconnectId of the resource.
+     * ARM Resource ID of the Network To Network Interconnect.
      */
-    networkToNetworkInterconnectId: string;
+    networkToNetworkInterconnectId?: string;
     /**
      * option A properties
      */
-    optionAProperties?: OptionAPropertiesResponse;
+    optionAProperties?: VpnConfigurationPropertiesResponseOptionAProperties;
     /**
      * option B properties
      */
@@ -1049,21 +1273,54 @@ export interface VpnConfigurationPropertiesResponse {
 export function vpnConfigurationPropertiesResponseProvideDefaults(val: VpnConfigurationPropertiesResponse): VpnConfigurationPropertiesResponse {
     return {
         ...val,
-        optionAProperties: (val.optionAProperties ? optionAPropertiesResponseProvideDefaults(val.optionAProperties) : undefined),
+        optionAProperties: (val.optionAProperties ? vpnConfigurationPropertiesResponseOptionAPropertiesProvideDefaults(val.optionAProperties) : undefined),
     };
 }
 
 /**
- * WorkloadServices IP ranges.
+ * option A properties
  */
-export interface WorkloadServicesResponse {
+export interface VpnConfigurationPropertiesResponseOptionAProperties {
     /**
-     * The IPv4 Address space is optional, if the value is defined at the time of NFC creation, then the default value 10.0.0.0/19 is considered. The IPV4 address subnet is an optional attribute.
+     * BFD Configuration properties.
      */
-    ipv4AddressSpaces?: string[];
+    bfdConfiguration?: BfdConfigurationResponse;
     /**
-     * The IPv6 is not supported right now.
+     * MTU to use for option A peering.
      */
-    ipv6AddressSpaces?: string[];
+    mtu?: number;
+    /**
+     * Peer ASN number.Example : 28
+     */
+    peerASN: number;
+    /**
+     * IPv4 Address Prefix.
+     */
+    primaryIpv4Prefix?: string;
+    /**
+     * IPv6 Address Prefix.
+     */
+    primaryIpv6Prefix?: string;
+    /**
+     * Secondary IPv4 Address Prefix.
+     */
+    secondaryIpv4Prefix?: string;
+    /**
+     * Secondary IPv6 Address Prefix.
+     */
+    secondaryIpv6Prefix?: string;
+    /**
+     * Vlan Id.Example : 501
+     */
+    vlanId: number;
 }
-
+/**
+ * vpnConfigurationPropertiesResponseOptionAPropertiesProvideDefaults sets the appropriate defaults for VpnConfigurationPropertiesResponseOptionAProperties
+ */
+export function vpnConfigurationPropertiesResponseOptionAPropertiesProvideDefaults(val: VpnConfigurationPropertiesResponseOptionAProperties): VpnConfigurationPropertiesResponseOptionAProperties {
+    return {
+        ...val,
+        bfdConfiguration: (val.bfdConfiguration ? bfdConfigurationResponseProvideDefaults(val.bfdConfiguration) : undefined),
+        mtu: (val.mtu) ?? 1500,
+    };
+}

@@ -33,4 +33,3 @@ export interface ResourceSyncRulePropertiesSelectorArgs {
      */
     matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
-

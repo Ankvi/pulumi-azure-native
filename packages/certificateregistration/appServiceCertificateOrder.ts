@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * SSL certificate purchase order.
  *
- * Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2020-10-01.
+ * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+ * Other available API versions: 2022-09-01, 2023-01-01, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native certificateregistration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class AppServiceCertificateOrder extends pulumi.CustomResource {
     /**
@@ -44,6 +44,10 @@ export class AppServiceCertificateOrder extends pulumi.CustomResource {
      */
     public readonly autoRenew!: pulumi.Output<boolean | undefined>;
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * State of the Key Vault secret.
      */
     public readonly certificates!: pulumi.Output<{[key: string]: types.outputs.AppServiceCertificateResponse} | undefined>;
@@ -80,7 +84,7 @@ export class AppServiceCertificateOrder extends pulumi.CustomResource {
      */
     public readonly keySize!: pulumi.Output<number | undefined>;
     /**
-     * Kind of resource.
+     * Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
      */
     public readonly kind!: pulumi.Output<string | undefined>;
     /**
@@ -166,6 +170,7 @@ export class AppServiceCertificateOrder extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["validityInYears"] = (args ? args.validityInYears : undefined) ?? 1;
             resourceInputs["appServiceCertificateNotRenewableReasons"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["contact"] = undefined /*out*/;
             resourceInputs["domainVerificationToken"] = undefined /*out*/;
             resourceInputs["expirationTime"] = undefined /*out*/;
@@ -183,6 +188,7 @@ export class AppServiceCertificateOrder extends pulumi.CustomResource {
         } else {
             resourceInputs["appServiceCertificateNotRenewableReasons"] = undefined /*out*/;
             resourceInputs["autoRenew"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["certificates"] = undefined /*out*/;
             resourceInputs["contact"] = undefined /*out*/;
             resourceInputs["csr"] = undefined /*out*/;
@@ -243,7 +249,7 @@ export interface AppServiceCertificateOrderArgs {
      */
     keySize?: pulumi.Input<number>;
     /**
-     * Kind of resource.
+     * Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
      */
     kind?: pulumi.Input<string>;
     /**

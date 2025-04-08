@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Retrieves a SQL Server Instance resource
  *
- * Uses Azure REST API version 2023-01-15-preview.
+ * Uses Azure REST API version 2024-01-01.
  *
- * Other available API versions: 2024-01-01, 2024-05-01-preview, 2025-03-01-preview.
+ * Other available API versions: 2023-01-15-preview, 2024-05-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSqlServerInstance(args: GetSqlServerInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlServerInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +31,10 @@ export interface GetSqlServerInstanceArgs {
  * A SqlServerInstance.
  */
 export interface GetSqlServerInstanceResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -63,9 +67,9 @@ export interface GetSqlServerInstanceResult {
 /**
  * Retrieves a SQL Server Instance resource
  *
- * Uses Azure REST API version 2023-01-15-preview.
+ * Uses Azure REST API version 2024-01-01.
  *
- * Other available API versions: 2024-01-01, 2024-05-01-preview, 2025-03-01-preview.
+ * Other available API versions: 2023-01-15-preview, 2024-05-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSqlServerInstanceOutput(args: GetSqlServerInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSqlServerInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

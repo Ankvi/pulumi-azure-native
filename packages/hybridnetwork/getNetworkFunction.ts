@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets information about the specified network function resource.
  *
- * Uses Azure REST API version 2022-01-01-preview.
+ * Uses Azure REST API version 2024-04-15.
  *
- * Other available API versions: 2023-09-01, 2024-04-15.
+ * Other available API versions: 2022-01-01-preview, 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridnetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNetworkFunction(args: GetNetworkFunctionArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkFunctionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,9 +32,9 @@ export interface GetNetworkFunctionArgs {
  */
 export interface GetNetworkFunctionResult {
     /**
-     * The reference to the device resource. Once set, it cannot be updated.
+     * The Azure API version of the resource.
      */
-    readonly device?: types.outputs.SubResourceResponse;
+    readonly azureApiVersion: string;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -44,47 +44,23 @@ export interface GetNetworkFunctionResult {
      */
     readonly id: string;
     /**
+     * The managed identity of the network function.
+     */
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
+    /**
      * The geo-location where the resource lives
      */
     readonly location: string;
-    /**
-     * The resource URI of the managed application.
-     */
-    readonly managedApplication: types.outputs.SubResourceResponse;
-    /**
-     * The parameters for the managed application.
-     */
-    readonly managedApplicationParameters?: any;
     /**
      * The name of the resource
      */
     readonly name: string;
     /**
-     * The network function container configurations from the user.
+     * Network function properties.
      */
-    readonly networkFunctionContainerConfigurations?: any;
+    readonly properties: types.outputs.NetworkFunctionValueWithSecretsResponse | types.outputs.NetworkFunctionValueWithoutSecretsResponse;
     /**
-     * The network function configurations from the user.
-     */
-    readonly networkFunctionUserConfigurations?: types.outputs.NetworkFunctionUserConfigurationResponse[];
-    /**
-     * The provisioning state of the network function resource.
-     */
-    readonly provisioningState: string;
-    /**
-     * The service key for the network function resource.
-     */
-    readonly serviceKey: string;
-    /**
-     * The sku name for the network function. Once set, it cannot be updated.
-     */
-    readonly skuName?: string;
-    /**
-     * The sku type for the network function.
-     */
-    readonly skuType: string;
-    /**
-     * The system meta data relating to this resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
@@ -95,21 +71,13 @@ export interface GetNetworkFunctionResult {
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
-    /**
-     * The vendor name for the network function. Once set, it cannot be updated.
-     */
-    readonly vendorName?: string;
-    /**
-     * The vendor provisioning state for the network function resource.
-     */
-    readonly vendorProvisioningState: string;
 }
 /**
  * Gets information about the specified network function resource.
  *
- * Uses Azure REST API version 2022-01-01-preview.
+ * Uses Azure REST API version 2024-04-15.
  *
- * Other available API versions: 2023-09-01, 2024-04-15.
+ * Other available API versions: 2022-01-01-preview, 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridnetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNetworkFunctionOutput(args: GetNetworkFunctionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkFunctionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

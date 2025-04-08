@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * An API collection as represented by Microsoft Defender for APIs.
  *
- * Uses Azure REST API version 2023-11-15.
+ * Uses Azure REST API version 2023-11-15. In version 2.x of the Azure Native provider, it used API version 2023-11-15.
  */
 export class APICollectionByAzureApiManagementService extends pulumi.CustomResource {
     /**
@@ -32,6 +32,10 @@ export class APICollectionByAzureApiManagementService extends pulumi.CustomResou
         return obj['__pulumiType'] === APICollectionByAzureApiManagementService.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The base URI for this API collection. All endpoints of this API collection extend this base URI.
      */
@@ -101,6 +105,7 @@ export class APICollectionByAzureApiManagementService extends pulumi.CustomResou
             resourceInputs["apiId"] = args ? args.apiId : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["baseUrl"] = undefined /*out*/;
             resourceInputs["discoveredVia"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
@@ -114,6 +119,7 @@ export class APICollectionByAzureApiManagementService extends pulumi.CustomResou
             resourceInputs["sensitivityLabel"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["baseUrl"] = undefined /*out*/;
             resourceInputs["discoveredVia"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
@@ -128,7 +134,7 @@ export class APICollectionByAzureApiManagementService extends pulumi.CustomResou
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:security/v20221120preview:APICollectionByAzureApiManagementService" }, { type: "azure-native:security/v20231115:APICollectionByAzureApiManagementService" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:security/v20221120preview:APICollection" }, { type: "azure-native:security/v20221120preview:APICollectionByAzureApiManagementService" }, { type: "azure-native:security/v20231115:APICollectionByAzureApiManagementService" }, { type: "azure-native:security:APICollection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(APICollectionByAzureApiManagementService.__pulumiType, name, resourceInputs, opts);
     }

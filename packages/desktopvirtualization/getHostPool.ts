@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get a host pool.
  *
- * Uses Azure REST API version 2022-09-09.
+ * Uses Azure REST API version 2024-04-03.
  *
- * Other available API versions: 2022-04-01-preview, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview.
+ * Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getHostPool(args: GetHostPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetHostPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,9 +36,17 @@ export interface GetHostPoolResult {
      */
     readonly agentUpdate?: types.outputs.AgentUpdatePropertiesResponse;
     /**
+     * List of App Attach Package links.
+     */
+    readonly appAttachPackageReferences: string[];
+    /**
      * List of applicationGroup links.
      */
     readonly applicationGroupReferences: string[];
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Is cloud pc resource.
      */
@@ -64,12 +72,12 @@ export interface GetHostPoolResult {
      */
     readonly hostPoolType: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     readonly identity?: types.outputs.ResourceModelWithAllowedPropertySetResponseIdentity;
     /**
-     * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+     * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
     readonly kind?: string;
     /**
@@ -79,7 +87,7 @@ export interface GetHostPoolResult {
     /**
      * The geo-location where the resource lives
      */
-    readonly location?: string;
+    readonly location: string;
     /**
      * The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
      */
@@ -105,6 +113,14 @@ export interface GetHostPoolResult {
      * The type of preferred application group type, default to Desktop Application Group
      */
     readonly preferredAppGroupType: string;
+    /**
+     * List of private endpoint connection associated with the specified resource
+     */
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
+    /**
+     * Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
+     */
+    readonly publicNetworkAccess?: string;
     /**
      * The registration info of HostPool.
      */
@@ -135,7 +151,7 @@ export interface GetHostPoolResult {
      */
     readonly startVMOnConnect?: boolean;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
@@ -158,9 +174,9 @@ export interface GetHostPoolResult {
 /**
  * Get a host pool.
  *
- * Uses Azure REST API version 2022-09-09.
+ * Uses Azure REST API version 2024-04-03.
  *
- * Other available API versions: 2022-04-01-preview, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview.
+ * Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getHostPoolOutput(args: GetHostPoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHostPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

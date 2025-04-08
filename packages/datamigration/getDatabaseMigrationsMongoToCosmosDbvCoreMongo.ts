@@ -35,6 +35,10 @@ export interface GetDatabaseMigrationsMongoToCosmosDbvCoreMongoArgs {
  */
 export interface GetDatabaseMigrationsMongoToCosmosDbvCoreMongoResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * List of Mongo Collections to be migrated.
      */
     readonly collectionList?: types.outputs.MongoMigrationCollectionResponse[];

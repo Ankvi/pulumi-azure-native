@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-02-01.
  *
- * Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
+ * Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getProjectCatalog(args: GetProjectCatalogArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectCatalogResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,6 +40,10 @@ export interface GetProjectCatalogResult {
      * Properties for an Azure DevOps catalog type.
      */
     readonly adoGit?: types.outputs.GitCatalogResponse;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The connection state of the catalog.
      */
@@ -98,7 +102,7 @@ export interface GetProjectCatalogResult {
  *
  * Uses Azure REST API version 2024-02-01.
  *
- * Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
+ * Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getProjectCatalogOutput(args: GetProjectCatalogOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectCatalogResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

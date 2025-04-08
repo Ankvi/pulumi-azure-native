@@ -119,3 +119,12 @@ export const ServiceManagedIdentityType = {
  * Type of identity being specified, currently SystemAssigned and None are allowed.
  */
 export type ServiceManagedIdentityType = (typeof ServiceManagedIdentityType)[keyof typeof ServiceManagedIdentityType];
+
+export const SmartDataActions = {
+    Read: "Read",
+} as const;
+
+/**
+ * The Data Actions that can be enabled for a Smart Identity Provider Application.
+ */
+export type SmartDataActions = (typeof SmartDataActions)[keyof typeof SmartDataActions];

@@ -85,6 +85,20 @@ export interface EventNameFilterArgs {
 }
 
 /**
+ * An IP rule
+ */
+export interface IPRuleArgs {
+    /**
+     * Azure Networking ACL Action.
+     */
+    action?: pulumi.Input<string | enums.ACLAction>;
+    /**
+     * An IP or CIDR or ServiceTag
+     */
+    value?: pulumi.Input<string>;
+}
+
+/**
  * Live trace category configuration of a Microsoft.SignalRService resource.
  */
 export interface LiveTraceCategoryArgs {
@@ -257,18 +271,20 @@ export interface ResourceReferenceArgs {
  */
 export interface ResourceSkuArgs {
     /**
-     * Optional, integer. The unit count of the resource. 1 by default.
+     * Optional, integer. The unit count of the resource.
+     * 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default.
      * 
      * If present, following values are allowed:
-     *     Free: 1;
-     *     Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
-     *     Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+     *     Free_F1: 1;
+     *     Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+     *     Premium_P1:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+     *     Premium_P2:  100,200,300,400,500,600,700,800,900,1000;
      */
     capacity?: pulumi.Input<number>;
     /**
      * The name of the SKU. Required.
      * 
-     * Allowed values: Standard_S1, Free_F1, Premium_P1
+     * Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2
      */
     name: pulumi.Input<string>;
     /**
@@ -312,6 +328,10 @@ export interface WebPubSubHubPropertiesArgs {
      * Maximum count of event listeners among all hubs is 10.
      */
     eventListeners?: pulumi.Input<pulumi.Input<EventListenerArgs>[]>;
+    /**
+     * The settings for configuring the WebSocket ping-pong interval in seconds for all clients in the hub. Valid range: 1 to 120. Default to 20 seconds.
+     */
+    webSocketKeepAliveIntervalInSeconds?: pulumi.Input<number>;
 }
 /**
  * webPubSubHubPropertiesArgsProvideDefaults sets the appropriate defaults for WebPubSubHubPropertiesArgs
@@ -320,6 +340,7 @@ export function webPubSubHubPropertiesArgsProvideDefaults(val: WebPubSubHubPrope
     return {
         ...val,
         anonymousConnectPolicy: (val.anonymousConnectPolicy) ?? "deny",
+        webSocketKeepAliveIntervalInSeconds: (val.webSocketKeepAliveIntervalInSeconds) ?? 20,
     };
 }
 
@@ -332,6 +353,10 @@ export interface WebPubSubNetworkACLsArgs {
      */
     defaultAction?: pulumi.Input<string | enums.ACLAction>;
     /**
+     * IP rules for filtering public traffic
+     */
+    ipRules?: pulumi.Input<pulumi.Input<IPRuleArgs>[]>;
+    /**
      * ACLs for requests from private endpoints
      */
     privateEndpoints?: pulumi.Input<pulumi.Input<PrivateEndpointACLArgs>[]>;
@@ -342,11 +367,23 @@ export interface WebPubSubNetworkACLsArgs {
 }
 
 /**
+ * SocketIO settings for the resource
+ */
+export interface WebPubSubSocketIOSettingsArgs {
+    /**
+     * The service mode of Web PubSub for Socket.IO. Values allowed: 
+     * "Default": have your own backend Socket.IO server
+     * "Serverless": your application doesn't have a backend server
+     */
+    serviceMode?: pulumi.Input<string>;
+}
+
+/**
  * TLS settings for the resource
  */
 export interface WebPubSubTlsSettingsArgs {
     /**
-     * Request client certificate during TLS handshake if enabled
+     * Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
      */
     clientCertEnabled?: pulumi.Input<boolean>;
 }
@@ -356,17 +393,6 @@ export interface WebPubSubTlsSettingsArgs {
 export function webPubSubTlsSettingsArgsProvideDefaults(val: WebPubSubTlsSettingsArgs): WebPubSubTlsSettingsArgs {
     return {
         ...val,
-        clientCertEnabled: (val.clientCertEnabled) ?? true,
+        clientCertEnabled: (val.clientCertEnabled) ?? false,
     };
 }
-
-
-
-
-
-
-
-
-
-
-

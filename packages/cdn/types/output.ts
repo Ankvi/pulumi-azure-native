@@ -127,7 +127,11 @@ export interface CacheExpirationActionParametersResponse {
      * The level at which the content needs to be cached.
      */
     cacheType: string;
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleCacheExpirationActionParameters'.
+     */
+    typeName: "DeliveryRuleCacheExpirationActionParameters";
 }
 
 /**
@@ -142,7 +146,11 @@ export interface CacheKeyQueryStringActionParametersResponse {
      * Caching behavior for the requests
      */
     queryStringBehavior: string;
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'.
+     */
+    typeName: "DeliveryRuleCacheKeyQueryStringBehaviorActionParameters";
 }
 
 /**
@@ -153,7 +161,11 @@ export interface CdnCertificateSourceParametersResponse {
      * Type of certificate used
      */
     certificateType: string;
-    typeName: string;
+    /**
+     *
+     * Expected value is 'CdnCertificateSourceParameters'.
+     */
+    typeName: "CdnCertificateSourceParameters";
 }
 
 /**
@@ -209,7 +221,11 @@ export interface ClientPortMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleClientPortConditionParameters'.
+     */
+    typeName: "DeliveryRuleClientPortConditionParameters";
 }
 /**
  * clientPortMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for ClientPortMatchConditionParametersResponse
@@ -259,7 +275,11 @@ export interface CookiesMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleCookiesConditionParameters'.
+     */
+    typeName: "DeliveryRuleCookiesConditionParameters";
 }
 /**
  * cookiesMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for CookiesMatchConditionParametersResponse
@@ -1073,7 +1093,11 @@ export interface HeaderActionParametersResponse {
      * Name of the header to modify
      */
     headerName: string;
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleHeaderActionParameters'.
+     */
+    typeName: "DeliveryRuleHeaderActionParameters";
     /**
      * Value for the specified action
      */
@@ -1122,7 +1146,11 @@ export interface HostNameMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleHostNameConditionParameters'.
+     */
+    typeName: "DeliveryRuleHostNameConditionParameters";
 }
 /**
  * hostNameMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for HostNameMatchConditionParametersResponse
@@ -1168,7 +1196,11 @@ export interface HttpVersionMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleHttpVersionConditionParameters'.
+     */
+    typeName: "DeliveryRuleHttpVersionConditionParameters";
 }
 /**
  * httpVersionMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for HttpVersionMatchConditionParametersResponse
@@ -1200,7 +1232,11 @@ export interface IsDeviceMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleIsDeviceConditionParameters'.
+     */
+    typeName: "DeliveryRuleIsDeviceConditionParameters";
 }
 /**
  * isDeviceMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for IsDeviceMatchConditionParametersResponse
@@ -1236,7 +1272,11 @@ export interface KeyVaultCertificateSourceParametersResponse {
      * Subscription Id of the user's Key Vault containing the SSL certificate
      */
     subscriptionId: string;
-    typeName: string;
+    /**
+     *
+     * Expected value is 'KeyVaultCertificateSourceParameters'.
+     */
+    typeName: "KeyVaultCertificateSourceParameters";
     /**
      * Describes the action that shall be taken when the certificate is updated in Key Vault.
      */
@@ -1435,7 +1475,11 @@ export interface OriginGroupOverrideActionParametersResponse {
      * defines the OriginGroup that would override the DefaultOriginGroup.
      */
     originGroup: ResourceReferenceResponse;
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleOriginGroupOverrideActionParameters'.
+     */
+    typeName: "DeliveryRuleOriginGroupOverrideActionParameters";
 }
 
 /**
@@ -1517,7 +1561,11 @@ export interface PostArgsMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRulePostArgsConditionParameters'.
+     */
+    typeName: "DeliveryRulePostArgsConditionParameters";
 }
 /**
  * postArgsMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for PostArgsMatchConditionParametersResponse
@@ -1527,6 +1575,42 @@ export function postArgsMatchConditionParametersResponseProvideDefaults(val: Pos
         ...val,
         negateCondition: (val.negateCondition) ?? false,
     };
+}
+
+/**
+ * Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
+ */
+export interface ProfileLogScrubbingResponse {
+    /**
+     * List of log scrubbing rules applied to the Azure Front Door profile logs.
+     */
+    scrubbingRules?: ProfileScrubbingRulesResponse[];
+    /**
+     * State of the log scrubbing config. Default value is Enabled.
+     */
+    state?: string;
+}
+
+/**
+ * Defines the contents of the log scrubbing rules.
+ */
+export interface ProfileScrubbingRulesResponse {
+    /**
+     * The variable to be scrubbed from the logs.
+     */
+    matchVariable: string;
+    /**
+     * When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
+     */
+    selector?: string;
+    /**
+     * When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
+     */
+    selectorMatchOperator: string;
+    /**
+     * Defines the state of a log scrubbing rule. Default value is enabled.
+     */
+    state?: string;
 }
 
 /**
@@ -1549,7 +1633,11 @@ export interface QueryStringMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleQueryStringConditionParameters'.
+     */
+    typeName: "DeliveryRuleQueryStringConditionParameters";
 }
 /**
  * queryStringMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for QueryStringMatchConditionParametersResponse
@@ -1625,7 +1713,11 @@ export interface RemoteAddressMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
+     */
+    typeName: "DeliveryRuleRemoteAddressConditionParameters";
 }
 /**
  * remoteAddressMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for RemoteAddressMatchConditionParametersResponse
@@ -1657,7 +1749,11 @@ export interface RequestBodyMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleRequestBodyConditionParameters'.
+     */
+    typeName: "DeliveryRuleRequestBodyConditionParameters";
 }
 /**
  * requestBodyMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for RequestBodyMatchConditionParametersResponse
@@ -1693,7 +1789,11 @@ export interface RequestHeaderMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleRequestHeaderConditionParameters'.
+     */
+    typeName: "DeliveryRuleRequestHeaderConditionParameters";
 }
 /**
  * requestHeaderMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for RequestHeaderMatchConditionParametersResponse
@@ -1725,7 +1825,11 @@ export interface RequestMethodMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleRequestMethodConditionParameters'.
+     */
+    typeName: "DeliveryRuleRequestMethodConditionParameters";
 }
 /**
  * requestMethodMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for RequestMethodMatchConditionParametersResponse
@@ -1757,7 +1861,11 @@ export interface RequestSchemeMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleRequestSchemeConditionParameters'.
+     */
+    typeName: "DeliveryRuleRequestSchemeConditionParameters";
 }
 /**
  * requestSchemeMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for RequestSchemeMatchConditionParametersResponse
@@ -1789,7 +1897,11 @@ export interface RequestUriMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleRequestUriConditionParameters'.
+     */
+    typeName: "DeliveryRuleRequestUriConditionParameters";
 }
 /**
  * requestUriMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for RequestUriMatchConditionParametersResponse
@@ -1841,7 +1953,11 @@ export interface RouteConfigurationOverrideActionParametersResponse {
      * A reference to the origin group override configuration. Leave empty to use the default origin group on route.
      */
     originGroupOverride?: OriginGroupOverrideResponse;
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleRouteConfigurationOverrideActionParameters'.
+     */
+    typeName: "DeliveryRuleRouteConfigurationOverrideActionParameters";
 }
 
 /**
@@ -1897,7 +2013,11 @@ export interface ServerPortMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleServerPortConditionParameters'.
+     */
+    typeName: "DeliveryRuleServerPortConditionParameters";
 }
 /**
  * serverPortMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for ServerPortMatchConditionParametersResponse
@@ -1977,7 +2097,11 @@ export interface SocketAddrMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleSocketAddrConditionParameters'.
+     */
+    typeName: "DeliveryRuleSocketAddrConditionParameters";
 }
 /**
  * socketAddrMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for SocketAddrMatchConditionParametersResponse
@@ -2009,7 +2133,11 @@ export interface SslProtocolMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleSslProtocolConditionParameters'.
+     */
+    typeName: "DeliveryRuleSslProtocolConditionParameters";
 }
 /**
  * sslProtocolMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for SslProtocolMatchConditionParametersResponse
@@ -2085,7 +2213,11 @@ export interface UrlFileExtensionMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleUrlFileExtensionMatchConditionParameters'.
+     */
+    typeName: "DeliveryRuleUrlFileExtensionMatchConditionParameters";
 }
 /**
  * urlFileExtensionMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for UrlFileExtensionMatchConditionParametersResponse
@@ -2117,7 +2249,11 @@ export interface UrlFileNameMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleUrlFilenameConditionParameters'.
+     */
+    typeName: "DeliveryRuleUrlFilenameConditionParameters";
 }
 /**
  * urlFileNameMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for UrlFileNameMatchConditionParametersResponse
@@ -2149,7 +2285,11 @@ export interface UrlPathMatchConditionParametersResponse {
      * List of transforms
      */
     transforms?: string[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleUrlPathMatchConditionParameters'.
+     */
+    typeName: "DeliveryRuleUrlPathMatchConditionParameters";
 }
 /**
  * urlPathMatchConditionParametersResponseProvideDefaults sets the appropriate defaults for UrlPathMatchConditionParametersResponse
@@ -2189,7 +2329,11 @@ export interface UrlRedirectActionParametersResponse {
      * The redirect type the rule will use when redirecting traffic.
      */
     redirectType: string;
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleUrlRedirectActionParameters'.
+     */
+    typeName: "DeliveryRuleUrlRedirectActionParameters";
 }
 
 /**
@@ -2223,7 +2367,11 @@ export interface UrlRewriteActionParametersResponse {
      * define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.
      */
     sourcePattern: string;
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleUrlRewriteActionParameters'.
+     */
+    typeName: "DeliveryRuleUrlRewriteActionParameters";
 }
 
 /**
@@ -2253,7 +2401,11 @@ export interface UrlSigningActionParametersResponse {
      * Defines which query string parameters in the url to be considered for expires, key id etc. 
      */
     parameterNameOverride?: UrlSigningParamIdentifierResponse[];
-    typeName: string;
+    /**
+     *
+     * Expected value is 'DeliveryRuleUrlSigningActionParameters'.
+     */
+    typeName: "DeliveryRuleUrlSigningActionParameters";
 }
 
 /**
@@ -2286,7 +2438,7 @@ export interface UrlSigningKeyParametersResponse {
     /**
      * Version of the secret to be used
      */
-    secretVersion?: string;
+    secretVersion: string;
     /**
      * The type of the secret resource.
      * Expected value is 'UrlSigningKey'.
@@ -2358,10 +2510,3 @@ export interface UserManagedHttpsParametersResponse {
      */
     protocolType: string;
 }
-
-
-
-
-
-
-

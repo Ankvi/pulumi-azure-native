@@ -1,6 +1,16 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Enable AAD authentication for SQL VM.
+ */
+export interface AADAuthenticationSettingsArgs {
+    /**
+     * The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity
+     */
+    clientId?: pulumi.Input<string>;
+}
+
+/**
  * Additional SQL Server feature settings.
  */
 export interface AdditionalFeaturesServerConfigurationsArgs {
@@ -47,19 +57,19 @@ export interface AgReplicaArgs {
 }
 
 /**
- * Configure assessment for databases in your SQL virtual machine.
+ * Configure SQL best practices Assessment for databases in your SQL virtual machine.
  */
 export interface AssessmentSettingsArgs {
     /**
-     * Enable or disable assessment feature on SQL virtual machine.
+     * Enable or disable SQL best practices Assessment feature on SQL virtual machine.
      */
     enable?: pulumi.Input<boolean>;
     /**
-     * Run assessment immediately on SQL virtual machine.
+     * Run SQL best practices Assessment immediately on SQL virtual machine.
      */
     runImmediately?: pulumi.Input<boolean>;
     /**
-     * Schedule for Assessment.
+     * Schedule for SQL best practices Assessment.
      */
     schedule?: pulumi.Input<ScheduleArgs>;
 }
@@ -131,6 +141,10 @@ export interface AutoBackupSettingsArgs {
  */
 export interface AutoPatchingSettingsArgs {
     /**
+     * Additional Patch to be enable or enabled on the SQL Virtual Machine.
+     */
+    additionalVmPatch?: pulumi.Input<string | enums.AdditionalVmPatch>;
+    /**
      * Day of week to apply the patch on.
      */
     dayOfWeek?: pulumi.Input<enums.DayOfWeek>;
@@ -146,6 +160,15 @@ export interface AutoPatchingSettingsArgs {
      * Hour of the day when patching is initiated. Local VM time.
      */
     maintenanceWindowStartingHour?: pulumi.Input<number>;
+}
+/**
+ * autoPatchingSettingsArgsProvideDefaults sets the appropriate defaults for AutoPatchingSettingsArgs
+ */
+export function autoPatchingSettingsArgsProvideDefaults(val: AutoPatchingSettingsArgs): AutoPatchingSettingsArgs {
+    return {
+        ...val,
+        additionalVmPatch: (val.additionalVmPatch) ?? "NotSet",
+    };
 }
 
 /**
@@ -284,8 +307,15 @@ export interface SQLStorageSettingsArgs {
      * Logical Unit Numbers for the disks.
      */
     luns?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Use storage pool to build a drive if true or not provided
+     */
+    useStoragePool?: pulumi.Input<boolean>;
 }
 
+/**
+ * Set tempDb storage settings for SQL Server.
+ */
 export interface SQLTempDbSettingsArgs {
     /**
      * SQL Server tempdb data file count
@@ -323,8 +353,15 @@ export interface SQLTempDbSettingsArgs {
      * SQL Server tempdb persist folder location
      */
     persistFolderPath?: pulumi.Input<string>;
+    /**
+     * Use storage pool to build a drive if true or not provided
+     */
+    useStoragePool?: pulumi.Input<boolean>;
 }
 
+/**
+ * Set assessment schedule for SQL Server.
+ */
 export interface ScheduleArgs {
     /**
      * Day of the week to run assessment.
@@ -356,6 +393,10 @@ export interface ServerConfigurationsManagementSettingsArgs {
      * Additional SQL feature settings.
      */
     additionalFeaturesServerConfigurations?: pulumi.Input<AdditionalFeaturesServerConfigurationsArgs>;
+    /**
+     * Azure AD authentication Settings.
+     */
+    azureAdAuthenticationSettings?: pulumi.Input<AADAuthenticationSettingsArgs>;
     /**
      * SQL connectivity type settings.
      */
@@ -433,6 +474,10 @@ export interface StorageConfigurationSettingsArgs {
      */
     diskConfigurationType?: pulumi.Input<string | enums.DiskConfigurationType>;
     /**
+     * Enable SQL IaaS Agent storage configuration blade in Azure Portal.
+     */
+    enableStorageConfigBlade?: pulumi.Input<boolean>;
+    /**
      * SQL Server Data Storage Settings.
      */
     sqlDataSettings?: pulumi.Input<SQLStorageSettingsArgs>;
@@ -452,6 +497,29 @@ export interface StorageConfigurationSettingsArgs {
      * Storage workload type.
      */
     storageWorkloadType?: pulumi.Input<string | enums.StorageWorkloadType>;
+}
+/**
+ * storageConfigurationSettingsArgsProvideDefaults sets the appropriate defaults for StorageConfigurationSettingsArgs
+ */
+export function storageConfigurationSettingsArgsProvideDefaults(val: StorageConfigurationSettingsArgs): StorageConfigurationSettingsArgs {
+    return {
+        ...val,
+        enableStorageConfigBlade: (val.enableStorageConfigBlade) ?? false,
+    };
+}
+
+/**
+ * Virtual Machine Identity details used for Sql IaaS extension configurations.
+ */
+export interface VirtualMachineIdentityArgs {
+    /**
+     * ARM Resource Id of the identity. Only required when UserAssigned identity is selected.
+     */
+    resourceId?: pulumi.Input<string>;
+    /**
+     * Identity type of the virtual machine. Specify None to opt-out of Managed Identities.
+     */
+    type?: pulumi.Input<string | enums.VmIdentityType>;
 }
 
 /**
@@ -497,6 +565,10 @@ export interface WsfcDomainProfileArgs {
      */
     fileShareWitnessPath?: pulumi.Input<string>;
     /**
+     * The flag to check if SQL service account is GMSA.
+     */
+    isSqlServiceAccountGmsa?: pulumi.Input<boolean>;
+    /**
      * Organizational Unit path in which the nodes and cluster will be present.
      */
     ouPath?: pulumi.Input<string>;
@@ -513,5 +585,3 @@ export interface WsfcDomainProfileArgs {
      */
     storageAccountUrl?: pulumi.Input<string>;
 }
-
-

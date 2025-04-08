@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * The Customer Notification Event resource.
  *
- * Uses Azure REST API version 2022-04-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
+ * Uses Azure REST API version 2023-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-04-01-preview.
  *
- * Other available API versions: 2023-11-01-preview.
+ * Other available API versions: 2022-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native testbase [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CustomerEvent extends pulumi.CustomResource {
     /**
@@ -36,11 +36,15 @@ export class CustomerEvent extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The name of the event subscribed to.
      */
     public readonly eventName!: pulumi.Output<string>;
     /**
-     * Resource name.
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -48,11 +52,11 @@ export class CustomerEvent extends pulumi.CustomResource {
      */
     public readonly receivers!: pulumi.Output<types.outputs.NotificationEventReceiverResponse[]>;
     /**
-     * The system metadata relating to this resource
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -84,10 +88,12 @@ export class CustomerEvent extends pulumi.CustomResource {
             resourceInputs["receivers"] = args ? args.receivers : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["testBaseAccountName"] = args ? args.testBaseAccountName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["eventName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["receivers"] = undefined /*out*/;
@@ -118,7 +124,7 @@ export interface CustomerEventArgs {
      */
     receivers: pulumi.Input<pulumi.Input<types.inputs.NotificationEventReceiverArgs>[]>;
     /**
-     * The name of the resource group that contains the resource.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

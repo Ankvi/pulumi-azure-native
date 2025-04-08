@@ -50,6 +50,10 @@ export interface StandbyVirtualMachinePoolElasticityProfileArgs {
      * Specifies the maximum number of virtual machines in the standby virtual machine pool.
      */
     maxReadyCapacity: pulumi.Input<number>;
+    /**
+     * Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
+     */
+    minReadyCapacity?: pulumi.Input<number>;
 }
 
 /**
@@ -61,6 +65,3 @@ export interface SubnetArgs {
      */
     id: pulumi.Input<string>;
 }
-
-
-

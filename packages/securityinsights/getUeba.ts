@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Gets a setting.
  *
- * Uses Azure REST API version 2023-06-01-preview.
+ * Uses Azure REST API version 2025-01-01-preview.
  */
 export function getUeba(args: GetUebaArgs, opts?: pulumi.InvokeOptions): Promise<GetUebaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +34,10 @@ export interface GetUebaArgs {
  * Settings with single toggle.
  */
 export interface GetUebaResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The relevant data sources that enriched by ueba
      */
@@ -67,7 +71,7 @@ export interface GetUebaResult {
 /**
  * Gets a setting.
  *
- * Uses Azure REST API version 2023-06-01-preview.
+ * Uses Azure REST API version 2025-01-01-preview.
  */
 export function getUebaOutput(args: GetUebaOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUebaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

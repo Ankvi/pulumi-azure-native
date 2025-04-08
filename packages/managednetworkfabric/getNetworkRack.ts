@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get Network Rack resource details.
  *
- * Uses Azure REST API version 2023-02-01-preview.
+ * Uses Azure REST API version 2023-06-15.
  *
- * Other available API versions: 2023-06-15.
+ * Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNetworkRack(args: GetNetworkRackArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkRackResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -18,7 +18,7 @@ export function getNetworkRack(args: GetNetworkRackArgs, opts?: pulumi.InvokeOpt
 
 export interface GetNetworkRackArgs {
     /**
-     * Name of the Network Rack
+     * Name of the Network Rack.
      */
     networkRackName: string;
     /**
@@ -28,7 +28,7 @@ export interface GetNetworkRackArgs {
 }
 
 /**
- * The NetworkRack resource definition.
+ * The Network Rack resource definition.
  */
 export interface GetNetworkRackResult {
     /**
@@ -36,7 +36,11 @@ export interface GetNetworkRackResult {
      */
     readonly annotation?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -48,19 +52,19 @@ export interface GetNetworkRackResult {
      */
     readonly name: string;
     /**
-     * List of network device ARM resource ids.
+     * List of network device ARM resource IDs.
      */
     readonly networkDevices: string[];
     /**
-     * Network Fabric ARM resource id.
+     * ARM resource ID of the Network Fabric.
      */
     readonly networkFabricId: string;
     /**
      * Network Rack SKU name.
      */
-    readonly networkRackSku: string;
+    readonly networkRackType?: string;
     /**
-     * Gets the provisioning state of the resource.
+     * Provisioning state of the resource.
      */
     readonly provisioningState: string;
     /**
@@ -79,9 +83,9 @@ export interface GetNetworkRackResult {
 /**
  * Get Network Rack resource details.
  *
- * Uses Azure REST API version 2023-02-01-preview.
+ * Uses Azure REST API version 2023-06-15.
  *
- * Other available API versions: 2023-06-15.
+ * Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNetworkRackOutput(args: GetNetworkRackOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkRackResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -93,7 +97,7 @@ export function getNetworkRackOutput(args: GetNetworkRackOutputArgs, opts?: pulu
 
 export interface GetNetworkRackOutputArgs {
     /**
-     * Name of the Network Rack
+     * Name of the Network Rack.
      */
     networkRackName: pulumi.Input<string>;
     /**

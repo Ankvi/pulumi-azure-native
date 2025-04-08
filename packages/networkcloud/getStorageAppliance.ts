@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get properties of the provided storage appliance.
  *
- * Uses Azure REST API version 2023-10-01-preview.
+ * Uses Azure REST API version 2025-02-01.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+ * Other available API versions: 2023-10-01-preview, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getStorageAppliance(args: GetStorageApplianceArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageApplianceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,7 +33,11 @@ export interface GetStorageApplianceResult {
      */
     readonly administratorCredentials: types.outputs.AdministrativeCredentialsResponse;
     /**
-     * The total capacity of the storage appliance.
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * The total capacity of the storage appliance. Measured in GiB.
      */
     readonly capacity: number;
     /**
@@ -41,7 +45,7 @@ export interface GetStorageApplianceResult {
      */
     readonly capacityUsed: number;
     /**
-     * The resource ID of the cluster this storage appliance is associated with.
+     * The resource ID of the cluster this storage appliance is associated with. Measured in GiB.
      */
     readonly clusterId: string;
     /**
@@ -52,6 +56,10 @@ export interface GetStorageApplianceResult {
      * The descriptive message about the current detailed status.
      */
     readonly detailedStatusMessage: string;
+    /**
+     * Resource ETag.
+     */
+    readonly etag: string;
     /**
      * The extended location of the cluster associated with the resource.
      */
@@ -68,6 +76,14 @@ export interface GetStorageApplianceResult {
      * The endpoint for the management interface of the storage appliance.
      */
     readonly managementIpv4Address: string;
+    /**
+     * The manufacturer of the storage appliance.
+     */
+    readonly manufacturer: string;
+    /**
+     * The model of the storage appliance.
+     */
+    readonly model: string;
     /**
      * The name of the resource
      */
@@ -93,6 +109,10 @@ export interface GetStorageApplianceResult {
      */
     readonly remoteVendorManagementStatus: string;
     /**
+     * The list of statuses that represent secret rotation activity.
+     */
+    readonly secretRotationStatus: types.outputs.SecretRotationStatusResponse[];
+    /**
      * The serial number for the storage appliance.
      */
     readonly serialNumber: string;
@@ -112,13 +132,17 @@ export interface GetStorageApplianceResult {
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
+    /**
+     * The version of the storage appliance.
+     */
+    readonly version: string;
 }
 /**
  * Get properties of the provided storage appliance.
  *
- * Uses Azure REST API version 2023-10-01-preview.
+ * Uses Azure REST API version 2025-02-01.
  *
- * Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+ * Other available API versions: 2023-10-01-preview, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getStorageApplianceOutput(args: GetStorageApplianceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStorageApplianceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

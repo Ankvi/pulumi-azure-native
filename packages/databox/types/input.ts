@@ -904,8 +904,3 @@ export interface UserAssignedPropertiesArgs {
      */
     resourceId?: pulumi.Input<string>;
 }
-
-
-
-
-

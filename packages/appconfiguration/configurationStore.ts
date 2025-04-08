@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * The configuration store along with all resource properties. The Configuration Store will have all information to begin utilizing it.
  *
- * Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2020-06-01.
+ * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2023-08-01-preview, 2023-09-01-preview, 2024-05-01.
+ * Other available API versions: 2023-03-01, 2023-08-01-preview, 2023-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native appconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ConfigurationStore extends pulumi.CustomResource {
     /**
@@ -36,9 +36,17 @@ export class ConfigurationStore extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The creation date of configuration store.
      */
     public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    /**
+     * Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM).
+     */
+    public readonly dataPlaneProxy!: pulumi.Output<types.outputs.DataPlaneProxyPropertiesResponse | undefined>;
     /**
      * Disables all authentication methods other than AAD authentication.
      */
@@ -119,6 +127,7 @@ export class ConfigurationStore extends pulumi.CustomResource {
             }
             resourceInputs["configStoreName"] = args ? args.configStoreName : undefined;
             resourceInputs["createMode"] = args ? args.createMode : undefined;
+            resourceInputs["dataPlaneProxy"] = args ? args.dataPlaneProxy : undefined;
             resourceInputs["disableLocalAuth"] = (args ? args.disableLocalAuth : undefined) ?? false;
             resourceInputs["enablePurgeProtection"] = (args ? args.enablePurgeProtection : undefined) ?? false;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
@@ -129,6 +138,7 @@ export class ConfigurationStore extends pulumi.CustomResource {
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["softDeleteRetentionInDays"] = (args ? args.softDeleteRetentionInDays : undefined) ?? 7;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -137,7 +147,9 @@ export class ConfigurationStore extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["creationDate"] = undefined /*out*/;
+            resourceInputs["dataPlaneProxy"] = undefined /*out*/;
             resourceInputs["disableLocalAuth"] = undefined /*out*/;
             resourceInputs["enablePurgeProtection"] = undefined /*out*/;
             resourceInputs["encryption"] = undefined /*out*/;
@@ -173,6 +185,10 @@ export interface ConfigurationStoreArgs {
      * Indicates whether the configuration store need to be recovered.
      */
     createMode?: pulumi.Input<types.enums.CreateMode>;
+    /**
+     * Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM).
+     */
+    dataPlaneProxy?: pulumi.Input<types.inputs.DataPlaneProxyPropertiesArgs>;
     /**
      * Disables all authentication methods other than AAD authentication.
      */

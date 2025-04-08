@@ -15,6 +15,28 @@ export interface ApiKeyResponse {
 }
 
 /**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityResponse {
+    /**
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: string;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
  * Information about a Provider. A Provider is an entity that offers Targets to run Azure Quantum Jobs.
  */
 export interface ProviderResponse {
@@ -42,24 +64,6 @@ export interface ProviderResponse {
      * Id to track resource usage for the provider.
      */
     resourceUsageId?: string;
-}
-
-/**
- * Managed Identity information.
- */
-export interface QuantumWorkspaceResponseIdentity {
-    /**
-     * The principal ID of resource identity.
-     */
-    principalId: string;
-    /**
-     * The tenant ID of resource.
-     */
-    tenantId: string;
-    /**
-     * The identity type.
-     */
-    type?: string;
 }
 
 /**
@@ -92,3 +96,46 @@ export interface SystemDataResponse {
     lastModifiedByType?: string;
 }
 
+/**
+ * User assigned identity properties
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId: string;
+}
+
+/**
+ * Properties of a Workspace
+ */
+export interface WorkspaceResourcePropertiesResponse {
+    /**
+     * Indicator of enablement of the Quantum workspace Api keys.
+     */
+    apiKeyEnabled?: boolean;
+    /**
+     * The URI of the workspace endpoint.
+     */
+    endpointUri: string;
+    /**
+     * List of Providers selected for this Workspace
+     */
+    providers?: ProviderResponse[];
+    /**
+     * Provisioning status field
+     */
+    provisioningState: string;
+    /**
+     * ARM Resource Id of the storage account associated with this workspace.
+     */
+    storageAccount?: string;
+    /**
+     * Whether the current workspace is ready to accept Jobs.
+     */
+    usable: string;
+}

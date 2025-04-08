@@ -9,6 +9,10 @@ export interface AdditionalConfigurationArgs {
      */
     hierarchyInformation: pulumi.Input<HierarchyInformationArgs>;
     /**
+     * List Provisioning Details for Devices in Additional Config.
+     */
+    provisioningDetails?: pulumi.Input<pulumi.Input<ProvisioningDetailsArgs>[]>;
+    /**
      * Quantity of the product.
      */
     quantity: pulumi.Input<number>;
@@ -19,21 +23,25 @@ export interface AdditionalConfigurationArgs {
  */
 export interface AddressDetailsArgs {
     /**
-     * Customer address and contact details. It should be address resource
+     * Customer address and contact details.
      */
     forwardAddress: pulumi.Input<AddressPropertiesArgs>;
 }
 
 /**
- * Address Properties
+ * Address Properties.
  */
 export interface AddressPropertiesArgs {
     /**
-     * Contact details for the address
+     * Type of address based on its usage context.
      */
-    contactDetails: pulumi.Input<ContactDetailsArgs>;
+    addressClassification?: pulumi.Input<string | enums.AddressClassification>;
     /**
-     * Shipping details for the address
+     * Contact details for the address.
+     */
+    contactDetails?: pulumi.Input<ContactDetailsArgs>;
+    /**
+     * Shipping details for the address.
      */
     shippingAddress?: pulumi.Input<ShippingAddressArgs>;
 }
@@ -103,45 +111,17 @@ export interface ConfigurationFilterArgs {
 }
 
 /**
- * Configuration filters
- */
-export interface ConfigurationFilters {
-    /**
-     * Filters specific to product
-     */
-    filterableProperty?: FilterableProperty[];
-    /**
-     * Product hierarchy information
-     */
-    hierarchyInformation: HierarchyInformation;
-}
-
-/**
- * Configuration filters
- */
-export interface ConfigurationFiltersArgs {
-    /**
-     * Filters specific to product
-     */
-    filterableProperty?: pulumi.Input<pulumi.Input<FilterablePropertyArgs>[]>;
-    /**
-     * Product hierarchy information
-     */
-    hierarchyInformation: pulumi.Input<HierarchyInformationArgs>;
-}
-
-/**
  * Contact Details.
  */
 export interface ContactDetailsArgs {
     /**
      * Contact name of the person.
      */
-    contactName: pulumi.Input<string>;
+    contactName?: pulumi.Input<string>;
     /**
      * List of Email-ids to be notified about job progress.
      */
-    emailList: pulumi.Input<pulumi.Input<string>[]>;
+    emailList?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Mobile number of the contact person.
      */
@@ -149,7 +129,7 @@ export interface ContactDetailsArgs {
     /**
      * Phone number of the contact person.
      */
-    phone: pulumi.Input<string>;
+    phone?: pulumi.Input<string>;
     /**
      * Phone extension number of the contact person.
      */
@@ -221,7 +201,7 @@ export interface CustomerSubscriptionRegisteredFeaturesArgs {
 }
 
 /**
- * Preferences related to the double encryption
+ * Preferences related to the double encryption.
  */
 export interface EncryptionPreferencesArgs {
     /**
@@ -263,6 +243,10 @@ export interface FilterablePropertyArgs {
  */
 export interface HierarchyInformation {
     /**
+     * Represents Model Display Name.
+     */
+    configurationIdDisplayName?: string;
+    /**
      * Represents configuration name that uniquely identifies configuration.
      */
     configurationName?: string;
@@ -285,6 +269,10 @@ export interface HierarchyInformation {
  */
 export interface HierarchyInformationArgs {
     /**
+     * Represents Model Display Name.
+     */
+    configurationIdDisplayName?: pulumi.Input<string>;
+    /**
      * Represents configuration name that uniquely identifies configuration.
      */
     configurationName?: pulumi.Input<string>;
@@ -303,11 +291,11 @@ export interface HierarchyInformationArgs {
 }
 
 /**
- * Management resource preference to link device
+ * Management resource preference to link device.
  */
 export interface ManagementResourcePreferencesArgs {
     /**
-     * Customer preferred Management resource ARM ID
+     * Customer preferred Management resource ARM ID.
      */
     preferredManagementResourceId?: pulumi.Input<string>;
 }
@@ -327,11 +315,11 @@ export interface NotificationPreferenceArgs {
 }
 
 /**
- * Order item details
+ * Order item details.
  */
 export interface OrderItemDetailsArgs {
     /**
-     * Additional notification email list
+     * Additional notification email list.
      */
     notificationEmailList?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -343,17 +331,30 @@ export interface OrderItemDetailsArgs {
      */
     orderItemType: pulumi.Input<string | enums.OrderItemType>;
     /**
-     * Customer notification Preferences
+     * Customer notification Preferences.
      */
     preferences?: pulumi.Input<PreferencesArgs>;
     /**
-     * Unique identifier for configuration.
+     * Represents product details.
      */
     productDetails: pulumi.Input<ProductDetailsArgs>;
+    /**
+     * Site Related Details.
+     */
+    siteDetails?: pulumi.Input<SiteDetailsArgs>;
+}
+/**
+ * orderItemDetailsArgsProvideDefaults sets the appropriate defaults for OrderItemDetailsArgs
+ */
+export function orderItemDetailsArgsProvideDefaults(val: OrderItemDetailsArgs): OrderItemDetailsArgs {
+    return {
+        ...val,
+        productDetails: pulumi.output(val.productDetails).apply(productDetailsArgsProvideDefaults),
+    };
 }
 
 /**
- * Preferences related to the order
+ * Preferences related to the order.
  */
 export interface PreferencesArgs {
     /**
@@ -369,23 +370,110 @@ export interface PreferencesArgs {
      */
     notificationPreferences?: pulumi.Input<pulumi.Input<NotificationPreferenceArgs>[]>;
     /**
+     * Preferences related to the Term commitment.
+     */
+    termCommitmentPreferences?: pulumi.Input<TermCommitmentPreferencesArgs>;
+    /**
      * Preferences related to the shipment logistics of the order.
      */
     transportPreferences?: pulumi.Input<TransportPreferencesArgs>;
 }
 
 /**
- * Represents product details
+ * Represents product details.
  */
 export interface ProductDetailsArgs {
     /**
-     * Hierarchy of the product which uniquely identifies the product
+     * Hierarchy of the product which uniquely identifies the product.
      */
     hierarchyInformation: pulumi.Input<HierarchyInformationArgs>;
     /**
      * List of additional configurations customer wants in the order item apart from the ones included in the base configuration.
      */
     optInAdditionalConfigurations?: pulumi.Input<pulumi.Input<AdditionalConfigurationArgs>[]>;
+    /**
+     * Device Provisioning Details for Parent.
+     */
+    parentProvisioningDetails?: pulumi.Input<ProvisioningDetailsArgs>;
+}
+/**
+ * productDetailsArgsProvideDefaults sets the appropriate defaults for ProductDetailsArgs
+ */
+export function productDetailsArgsProvideDefaults(val: ProductDetailsArgs): ProductDetailsArgs {
+    return {
+        ...val,
+        parentProvisioningDetails: (val.parentProvisioningDetails ? pulumi.output(val.parentProvisioningDetails).apply(provisioningDetailsArgsProvideDefaults) : undefined),
+    };
+}
+
+/**
+ * Details Related To Provision Resource.
+ */
+export interface ProvisioningDetailsArgs {
+    /**
+     * Auto Provisioning Details.
+     */
+    autoProvisioningStatus?: pulumi.Input<string | enums.AutoProvisioningStatus>;
+    /**
+     * Management Resource ArmId.
+     */
+    managementResourceArmId?: pulumi.Input<string>;
+    /**
+     * Provisioning Resource Arm ID.
+     */
+    provisioningArmId?: pulumi.Input<string>;
+    /**
+     * Provisioning End Point.
+     */
+    provisioningEndPoint?: pulumi.Input<string>;
+    /**
+     * Quantity of the devices.
+     */
+    quantity?: pulumi.Input<number>;
+    /**
+     * Arc Enabled Resource Arm id.
+     */
+    readyToConnectArmId?: pulumi.Input<string>;
+    /**
+     * Serial Number for the Device.
+     */
+    serialNumber?: pulumi.Input<string>;
+    /**
+     * Vendor Name for the Device , (for 1P devices - Microsoft).
+     */
+    vendorName?: pulumi.Input<string>;
+}
+/**
+ * provisioningDetailsArgsProvideDefaults sets the appropriate defaults for ProvisioningDetailsArgs
+ */
+export function provisioningDetailsArgsProvideDefaults(val: ProvisioningDetailsArgs): ProvisioningDetailsArgs {
+    return {
+        ...val,
+        quantity: (val.quantity) ?? 0,
+    };
+}
+
+/**
+ * Msi identity details of the resource
+ */
+export interface ResourceIdentityArgs {
+    /**
+     * Identity type
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * User Assigned Identities
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+/**
+ * resourceIdentityArgsProvideDefaults sets the appropriate defaults for ResourceIdentityArgs
+ */
+export function resourceIdentityArgsProvideDefaults(val: ResourceIdentityArgs): ResourceIdentityArgs {
+    return {
+        ...val,
+        type: (val.type) ?? "None",
+    };
 }
 
 /**
@@ -419,7 +507,7 @@ export interface ShippingAddressArgs {
     /**
      * Street Address line 1.
      */
-    streetAddress1: pulumi.Input<string>;
+    streetAddress1?: pulumi.Input<string>;
     /**
      * Street Address line 2.
      */
@@ -435,7 +523,31 @@ export interface ShippingAddressArgs {
 }
 
 /**
- * Preferences related to the shipment logistics of the sku
+ * Represents Site Related Details.
+ */
+export interface SiteDetailsArgs {
+    /**
+     * Unique Id, Identifying A Site.
+     */
+    siteId: pulumi.Input<string>;
+}
+
+/**
+ * Term Commitment preference received from customer.
+ */
+export interface TermCommitmentPreferencesArgs {
+    /**
+     * Customer preferred Term Duration.
+     */
+    preferredTermCommitmentDuration?: pulumi.Input<string>;
+    /**
+     * Term Commitment Type
+     */
+    preferredTermCommitmentType: pulumi.Input<string | enums.TermCommitmentType>;
+}
+
+/**
+ * Preferences related to the shipment logistics of the sku.
  */
 export interface TransportPreferencesArgs {
     /**
@@ -443,5 +555,3 @@ export interface TransportPreferencesArgs {
      */
     preferredShipmentType: pulumi.Input<string | enums.TransportShipmentTypes>;
 }
-
-

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get HCI cluster.
  *
- * Uses Azure REST API version 2023-03-01.
+ * Uses Azure REST API version 2024-04-01.
  *
- * Other available API versions: 2022-01-01, 2022-09-01, 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+ * Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -48,6 +48,10 @@ export interface GetClusterResult {
      */
     readonly aadTenantId?: string;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Type of billing applied to the resource.
      */
     readonly billingModel: string;
@@ -60,13 +64,21 @@ export interface GetClusterResult {
      */
     readonly cloudManagementEndpoint?: string;
     /**
+     * Overall connectivity status for the cluster resource.
+     */
+    readonly connectivityStatus: string;
+    /**
      * Desired properties of the cluster.
      */
     readonly desiredProperties?: types.outputs.ClusterDesiredPropertiesResponse;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
+    /**
+     * Attestation configurations for isolated VM (e.g. TVM, CVM) of the cluster.
+     */
+    readonly isolatedVmAttestationConfiguration: types.outputs.IsolatedVmAttestationConfigurationResponse;
     /**
      * Most recent billing meter timestamp.
      */
@@ -79,6 +91,10 @@ export interface GetClusterResult {
      * The geo-location where the resource lives
      */
     readonly location: string;
+    /**
+     * Log Collection properties of the cluster.
+     */
+    readonly logCollectionProperties?: types.outputs.LogCollectionPropertiesResponse;
     /**
      * The name of the resource
      */
@@ -95,6 +111,10 @@ export interface GetClusterResult {
      * First cluster sync timestamp.
      */
     readonly registrationTimestamp: string;
+    /**
+     * RemoteSupport properties of the cluster.
+     */
+    readonly remoteSupportProperties?: types.outputs.RemoteSupportPropertiesResponse;
     /**
      * Properties reported by cluster agent.
      */
@@ -143,9 +163,9 @@ export interface GetClusterResult {
 /**
  * Get HCI cluster.
  *
- * Uses Azure REST API version 2023-03-01.
+ * Uses Azure REST API version 2024-04-01.
  *
- * Other available API versions: 2022-01-01, 2022-09-01, 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+ * Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

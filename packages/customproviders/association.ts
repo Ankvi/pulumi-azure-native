@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * The resource definition of this association.
  *
- * Uses Azure REST API version 2018-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2018-09-01-preview.
+ * Uses Azure REST API version 2018-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2018-09-01-preview.
  */
 export class Association extends pulumi.CustomResource {
     /**
@@ -32,6 +32,10 @@ export class Association extends pulumi.CustomResource {
         return obj['__pulumiType'] === Association.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The association name.
      */
@@ -66,10 +70,12 @@ export class Association extends pulumi.CustomResource {
             resourceInputs["associationName"] = args ? args.associationName : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
             resourceInputs["targetResourceId"] = args ? args.targetResourceId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["targetResourceId"] = undefined /*out*/;

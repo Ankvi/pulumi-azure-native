@@ -28,6 +28,10 @@ export interface AccountPropertiesResponse {
     abusePenalty: AbusePenaltyResponse;
     allowedFqdnList?: string[];
     /**
+     * The user owned AML workspace properties.
+     */
+    amlWorkspace?: UserOwnedAmlWorkspaceResponse;
+    /**
      * The api properties for special APIs.
      */
     apiProperties?: ApiPropertiesResponse;
@@ -102,6 +106,10 @@ export interface AccountPropertiesResponse {
      */
     publicNetworkAccess?: string;
     quotaLimit: QuotaLimitResponse;
+    /**
+     * Cognitive Services Rai Monitor Config.
+     */
+    raiMonitorConfig?: RaiMonitorConfigResponse;
     restrictOutboundNetworkAccess?: boolean;
     /**
      * The scheduled purge date, only available for deleted account.
@@ -284,6 +292,38 @@ export interface CommitmentQuotaResponse {
 }
 
 /**
+ * Gets or sets the source to which filter applies.
+ */
+export interface CustomBlocklistConfigResponse {
+    /**
+     * If blocking would occur.
+     */
+    blocking?: boolean;
+    /**
+     * Name of ContentFilter.
+     */
+    blocklistName?: string;
+    /**
+     * Content source to apply the Content Filters.
+     */
+    source?: string;
+}
+
+/**
+ * Internal use only.
+ */
+export interface DeploymentCapacitySettingsResponse {
+    /**
+     * The designated capacity.
+     */
+    designatedCapacity?: number;
+    /**
+     * The priority of this capacity setting.
+     */
+    priority?: number;
+}
+
+/**
  * Properties of Cognitive Services account deployment model.
  */
 export interface DeploymentModelResponse {
@@ -300,9 +340,17 @@ export interface DeploymentModelResponse {
      */
     name?: string;
     /**
+     * Deployment model publisher.
+     */
+    publisher?: string;
+    /**
      * Optional. Deployment model source ARM resource ID.
      */
     source?: string;
+    /**
+     * Optional. Source of the model, another Microsoft.CognitiveServices accounts ARM resource ID.
+     */
+    sourceAccount?: string;
     /**
      * Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
      */
@@ -322,9 +370,25 @@ export interface DeploymentPropertiesResponse {
      */
     capabilities: {[key: string]: string};
     /**
+     * Internal use only.
+     */
+    capacitySettings?: DeploymentCapacitySettingsResponse;
+    /**
+     * The current capacity.
+     */
+    currentCapacity?: number;
+    /**
+     * If the dynamic throttling is enabled.
+     */
+    dynamicThrottlingEnabled: boolean;
+    /**
      * Properties of Cognitive Services account deployment model.
      */
     model?: DeploymentModelResponse;
+    /**
+     * The name of parent deployment.
+     */
+    parentDeploymentName?: string;
     /**
      * Gets the status of the resource at the time the operation was called.
      */
@@ -335,7 +399,7 @@ export interface DeploymentPropertiesResponse {
     raiPolicyName?: string;
     rateLimits: ThrottlingRuleResponse[];
     /**
-     * Properties of Cognitive Services account deployment model.
+     * Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
      */
     scaleSettings?: DeploymentScaleSettingsResponse;
     /**
@@ -345,7 +409,7 @@ export interface DeploymentPropertiesResponse {
 }
 
 /**
- * Properties of Cognitive Services account deployment model.
+ * Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
  */
 export interface DeploymentScaleSettingsResponse {
     /**
@@ -483,6 +547,10 @@ export interface MultiRegionSettingsResponse {
  */
 export interface NetworkRuleSetResponse {
     /**
+     * Setting for trusted services.
+     */
+    bypass?: string;
+    /**
      * The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
      */
     defaultAction?: string;
@@ -587,20 +655,6 @@ export interface QuotaLimitResponse {
 }
 
 /**
- * Azure OpenAI blocklist config.
- */
-export interface RaiBlocklistConfigResponse {
-    /**
-     * If blocking would occur.
-     */
-    blocking?: boolean;
-    /**
-     * Name of ContentFilter.
-     */
-    blocklistName?: string;
-}
-
-/**
  * RAI Custom Blocklist Item properties.
  */
 export interface RaiBlocklistItemPropertiesResponse {
@@ -625,13 +679,23 @@ export interface RaiBlocklistPropertiesResponse {
 }
 
 /**
+ * Cognitive Services Rai Monitor Config.
+ */
+export interface RaiMonitorConfigResponse {
+    /**
+     * The storage resource Id.
+     */
+    adxStorageResourceId?: string;
+    /**
+     * The identity client Id to access the storage.
+     */
+    identityClientId?: string;
+}
+
+/**
  * Azure OpenAI Content Filter.
  */
 export interface RaiPolicyContentFilterResponse {
-    /**
-     * Level at which content is filtered.
-     */
-    allowedContentLevel?: string;
     /**
      * If blocking would occur.
      */
@@ -645,6 +709,10 @@ export interface RaiPolicyContentFilterResponse {
      */
     name?: string;
     /**
+     * Level at which content is filtered.
+     */
+    severityThreshold?: string;
+    /**
      * Content source to apply the Content Filters.
      */
     source?: string;
@@ -655,29 +723,25 @@ export interface RaiPolicyContentFilterResponse {
  */
 export interface RaiPolicyPropertiesResponse {
     /**
-     * Name of the base Content Filters.
+     * Name of Rai policy.
      */
     basePolicyName?: string;
-    /**
-     * The list of blocklists for completion.
-     */
-    completionBlocklists?: RaiBlocklistConfigResponse[];
     /**
      * The list of Content Filters.
      */
     contentFilters?: RaiPolicyContentFilterResponse[];
     /**
-     * Content Filters mode.
+     * The list of custom Blocklist.
+     */
+    customBlocklists?: CustomBlocklistConfigResponse[];
+    /**
+     * Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
      */
     mode?: string;
     /**
      * Content Filters policy type.
      */
-    policyType: string;
-    /**
-     * The list of blocklists for prompt.
-     */
-    promptBlocklists?: RaiBlocklistConfigResponse[];
+    type: string;
 }
 
 /**
@@ -815,6 +879,20 @@ export interface UserAssignedIdentityResponse {
 }
 
 /**
+ * The user owned AML workspace for Cognitive Services account.
+ */
+export interface UserOwnedAmlWorkspaceResponse {
+    /**
+     * Identity Client id of a AML workspace resource.
+     */
+    identityClientId?: string;
+    /**
+     * Full resource id of a AML workspace resource.
+     */
+    resourceId?: string;
+}
+
+/**
  * The user owned storage for Cognitive Services account.
  */
 export interface UserOwnedStorageResponse {
@@ -842,9 +920,3 @@ export interface VirtualNetworkRuleResponse {
      */
     state?: string;
 }
-
-
-
-
-
-

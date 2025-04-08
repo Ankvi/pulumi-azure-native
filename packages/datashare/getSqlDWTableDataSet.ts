@@ -40,6 +40,10 @@ export interface GetSqlDWTableDataSetArgs {
  */
 export interface GetSqlDWTableDataSetResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Unique id for identifying a data set resource
      */
     readonly dataSetId: string;

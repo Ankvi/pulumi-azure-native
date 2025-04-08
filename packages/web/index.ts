@@ -41,11 +41,6 @@ export type ConnectionGateway = import("./connectionGateway").ConnectionGateway;
 export const ConnectionGateway: typeof import("./connectionGateway").ConnectionGateway = null as any;
 utilities.lazyLoad(exports, ["ConnectionGateway"], () => require("./connectionGateway"));
 
-export { ContainerAppArgs } from "./containerApp";
-export type ContainerApp = import("./containerApp").ContainerApp;
-export const ContainerApp: typeof import("./containerApp").ContainerApp = null as any;
-utilities.lazyLoad(exports, ["ContainerApp"], () => require("./containerApp"));
-
 export { CustomApiArgs } from "./customApi";
 export type CustomApi = import("./customApi").CustomApi;
 export const CustomApi: typeof import("./customApi").CustomApi = null as any;
@@ -85,11 +80,6 @@ export { GetConnectionGatewayArgs, GetConnectionGatewayResult, GetConnectionGate
 export const getConnectionGateway: typeof import("./getConnectionGateway").getConnectionGateway = null as any;
 export const getConnectionGatewayOutput: typeof import("./getConnectionGateway").getConnectionGatewayOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectionGateway","getConnectionGatewayOutput"], () => require("./getConnectionGateway"));
-
-export { GetContainerAppArgs, GetContainerAppResult, GetContainerAppOutputArgs } from "./getContainerApp";
-export const getContainerApp: typeof import("./getContainerApp").getContainerApp = null as any;
-export const getContainerAppOutput: typeof import("./getContainerApp").getContainerAppOutput = null as any;
-utilities.lazyLoad(exports, ["getContainerApp","getContainerAppOutput"], () => require("./getContainerApp"));
 
 export { GetCustomApiArgs, GetCustomApiResult, GetCustomApiOutputArgs } from "./getCustomApi";
 export const getCustomApi: typeof import("./getCustomApi").getCustomApi = null as any;
@@ -350,11 +340,6 @@ export { ListConnectionKeysArgs, ListConnectionKeysResult, ListConnectionKeysOut
 export const listConnectionKeys: typeof import("./listConnectionKeys").listConnectionKeys = null as any;
 export const listConnectionKeysOutput: typeof import("./listConnectionKeys").listConnectionKeysOutput = null as any;
 utilities.lazyLoad(exports, ["listConnectionKeys","listConnectionKeysOutput"], () => require("./listConnectionKeys"));
-
-export { ListContainerAppSecretsArgs, ListContainerAppSecretsResult, ListContainerAppSecretsOutputArgs } from "./listContainerAppSecrets";
-export const listContainerAppSecrets: typeof import("./listContainerAppSecrets").listContainerAppSecrets = null as any;
-export const listContainerAppSecretsOutput: typeof import("./listContainerAppSecrets").listContainerAppSecretsOutput = null as any;
-utilities.lazyLoad(exports, ["listContainerAppSecrets","listContainerAppSecretsOutput"], () => require("./listContainerAppSecrets"));
 
 export { ListCustomApiWsdlInterfacesArgs, ListCustomApiWsdlInterfacesResult, ListCustomApiWsdlInterfacesOutputArgs } from "./listCustomApiWsdlInterfaces";
 export const listCustomApiWsdlInterfaces: typeof import("./listCustomApiWsdlInterfaces").listCustomApiWsdlInterfaces = null as any;
@@ -890,8 +875,6 @@ utilities.lazyLoad(exports, ["WebAppVnetConnectionSlot"], () => require("./webAp
 // Export enums:
 export * from "./types/enums";
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
@@ -912,8 +895,6 @@ const _module = {
                 return new Connection(name, <any>undefined, { urn })
             case "azure-native:web:ConnectionGateway":
                 return new ConnectionGateway(name, <any>undefined, { urn })
-            case "azure-native:web:ContainerApp":
-                return new ContainerApp(name, <any>undefined, { urn })
             case "azure-native:web:CustomApi":
                 return new CustomApi(name, <any>undefined, { urn })
             case "azure-native:web:KubeEnvironment":

@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * A Programmable Connectivity Operator API Connection resource
  *
- * Uses Azure REST API version 2024-01-15-preview.
+ * Uses Azure REST API version 2024-01-15-preview. In version 2.x of the Azure Native provider, it used API version 2024-01-15-preview.
  */
 export class OperatorApiConnection extends pulumi.CustomResource {
     /**
@@ -41,6 +41,10 @@ export class OperatorApiConnection extends pulumi.CustomResource {
      * Application ID of the App Developer that is registered with the Operator in a specific country/region.
      */
     public readonly appId!: pulumi.Output<string | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The Network API for the current operator in the country/region provided in the linked Operator API Plan.
      */
@@ -128,6 +132,7 @@ export class OperatorApiConnection extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["saasProperties"] = args ? args.saasProperties : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["camaraApiName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["operatorName"] = undefined /*out*/;
@@ -138,6 +143,7 @@ export class OperatorApiConnection extends pulumi.CustomResource {
         } else {
             resourceInputs["accountType"] = undefined /*out*/;
             resourceInputs["appId"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["camaraApiName"] = undefined /*out*/;
             resourceInputs["configuredApplication"] = undefined /*out*/;
             resourceInputs["gatewayId"] = undefined /*out*/;

@@ -441,4 +441,3 @@ export interface ThrottlingRuleArgs {
 export interface TypedErrorInfoArgs {
     type: pulumi.Input<string>;
 }
-

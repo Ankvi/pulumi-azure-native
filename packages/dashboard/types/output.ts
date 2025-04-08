@@ -11,10 +11,66 @@ export interface AzureMonitorWorkspaceIntegrationResponse {
 }
 
 /**
+ * Enterprise settings of a Grafana instance
+ */
+export interface EnterpriseConfigurationsResponse {
+    /**
+     * The AutoRenew setting of the Enterprise subscription
+     */
+    marketplaceAutoRenew?: string;
+    /**
+     * The Plan Id of the Azure Marketplace subscription for the Enterprise plugins
+     */
+    marketplacePlanId?: string;
+}
+
+/**
+ * Server configurations of a Grafana instance
+ */
+export interface GrafanaConfigurationsResponse {
+    /**
+     * Grafana security settings
+     */
+    security?: SecurityResponse;
+    /**
+     * Email server settings.
+     * https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
+     */
+    smtp?: SmtpResponse;
+    /**
+     * Grafana Snapshots settings
+     */
+    snapshots?: SnapshotsResponse;
+    /**
+     * Grafana users settings
+     */
+    users?: UsersResponse;
+}
+/**
+ * grafanaConfigurationsResponseProvideDefaults sets the appropriate defaults for GrafanaConfigurationsResponse
+ */
+export function grafanaConfigurationsResponseProvideDefaults(val: GrafanaConfigurationsResponse): GrafanaConfigurationsResponse {
+    return {
+        ...val,
+        smtp: (val.smtp ? smtpResponseProvideDefaults(val.smtp) : undefined),
+    };
+}
+
+/**
  * GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards, alerting defaults) for common monitoring scenarios.
  */
 export interface GrafanaIntegrationsResponse {
     azureMonitorWorkspaceIntegrations?: AzureMonitorWorkspaceIntegrationResponse[];
+}
+
+/**
+ * Plugin of Grafana
+ */
+export interface GrafanaPluginResponse {
+    /**
+     * Grafana plugin id
+     */
+    pluginId: string;
 }
 
 export interface IntegrationFabricPropertiesResponse {
@@ -57,9 +113,25 @@ export interface ManagedGrafanaPropertiesResponse {
      */
     endpoint: string;
     /**
+     * Enterprise settings of a Grafana instance
+     */
+    enterpriseConfigurations?: EnterpriseConfigurationsResponse;
+    /**
+     * Server configurations of a Grafana instance
+     */
+    grafanaConfigurations?: GrafanaConfigurationsResponse;
+    /**
      * GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards, alerting defaults) for common monitoring scenarios.
      */
     grafanaIntegrations?: GrafanaIntegrationsResponse;
+    /**
+     * The major Grafana software version to target.
+     */
+    grafanaMajorVersion?: string;
+    /**
+     * Installed plugin list of the Grafana instance. Key is plugin id, value is plugin definition.
+     */
+    grafanaPlugins?: {[key: string]: GrafanaPluginResponse};
     /**
      * The Grafana software version.
      */
@@ -84,6 +156,15 @@ export interface ManagedGrafanaPropertiesResponse {
      * The zone redundancy setting of the Grafana instance.
      */
     zoneRedundancy?: string;
+}
+/**
+ * managedGrafanaPropertiesResponseProvideDefaults sets the appropriate defaults for ManagedGrafanaPropertiesResponse
+ */
+export function managedGrafanaPropertiesResponseProvideDefaults(val: ManagedGrafanaPropertiesResponse): ManagedGrafanaPropertiesResponse {
+    return {
+        ...val,
+        grafanaConfigurations: (val.grafanaConfigurations ? grafanaConfigurationsResponseProvideDefaults(val.grafanaConfigurations) : undefined),
+    };
 }
 
 /**
@@ -193,6 +274,78 @@ export interface ResourceSkuResponse {
 }
 
 /**
+ * Grafana security settings
+ */
+export interface SecurityResponse {
+    /**
+     * Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+     */
+    csrfAlwaysCheck?: boolean;
+}
+
+/**
+ * Email server settings.
+ * https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
+ */
+export interface SmtpResponse {
+    /**
+     * Enable this to allow Grafana to send email. Default is false
+     */
+    enabled?: boolean;
+    /**
+     * Address used when sending out emails
+     * https://pkg.go.dev/net/mail#Address
+     */
+    fromAddress?: string;
+    /**
+     * Name to be used when sending out emails. Default is "Azure Managed Grafana Notification"
+     * https://pkg.go.dev/net/mail#Address
+     */
+    fromName?: string;
+    /**
+     * SMTP server hostname with port, e.g. test.email.net:587
+     */
+    host?: string;
+    /**
+     * Password of SMTP auth. If the password contains # or ;, then you have to wrap it with triple quotes
+     */
+    password?: string;
+    /**
+     * Verify SSL for SMTP server. Default is false
+     * https://pkg.go.dev/crypto/tls#Config
+     */
+    skipVerify?: boolean;
+    /**
+     * The StartTLSPolicy setting of the SMTP configuration
+     * https://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy
+     */
+    startTLSPolicy?: string;
+    /**
+     * User of SMTP auth
+     */
+    user?: string;
+}
+/**
+ * smtpResponseProvideDefaults sets the appropriate defaults for SmtpResponse
+ */
+export function smtpResponseProvideDefaults(val: SmtpResponse): SmtpResponse {
+    return {
+        ...val,
+        enabled: (val.enabled) ?? false,
+    };
+}
+
+/**
+ * Grafana Snapshots settings
+ */
+export interface SnapshotsResponse {
+    /**
+     * Set to false to disable external snapshot publish endpoint
+     */
+    externalEnabled?: boolean;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -236,7 +389,12 @@ export interface UserAssignedIdentityResponse {
     principalId: string;
 }
 
-
-
-
-
+/**
+ * Grafana users settings
+ */
+export interface UsersResponse {
+    /**
+     * Set to true so viewers can access and use explore and perform temporary edits on panels in dashboards they have access to. They cannot save their changes.
+     */
+    viewersCanEdit?: boolean;
+}

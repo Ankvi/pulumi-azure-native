@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Details of cluster record
  *
- * Uses Azure REST API version 2024-07-01.
+ * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
  */
 export class OrganizationClusterById extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class OrganizationClusterById extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationClusterById.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Type of cluster
      */
@@ -89,7 +93,9 @@ export class OrganizationClusterById extends pulumi.CustomResource {
             resourceInputs["spec"] = args ? args.spec : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

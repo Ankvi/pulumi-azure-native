@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
  */
 export interface BackupResponse {
     /**
+     * Backup interval hours for the server.
+     */
+    backupIntervalHours?: number;
+    /**
      * Backup retention days for the server.
      */
     backupRetentionDays?: number;
@@ -54,7 +58,7 @@ export interface DataEncryptionResponse {
 }
 
 /**
- * Network related properties of a server
+ * High availability properties of a server
  */
 export interface HighAvailabilityResponse {
     /**
@@ -72,25 +76,21 @@ export interface HighAvailabilityResponse {
 }
 
 /**
- * Properties to configure Identity for Bring your Own Keys
+ * Import source related properties.
  */
-export interface IdentityResponse {
+export interface ImportSourcePropertiesResponse {
     /**
-     * ObjectId from the KeyVault
+     * Relative path of data directory in storage.
      */
-    principalId: string;
+    dataDirPath?: string;
     /**
-     * TenantId from the KeyVault
+     * Storage type of import source.
      */
-    tenantId: string;
+    storageType?: string;
     /**
-     * Type of managed service identity.
+     * Uri of the import source storage.
      */
-    type?: string;
-    /**
-     * Metadata of user assigned identity.
-     */
-    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse[]};
+    storageUrl?: string;
 }
 
 /**
@@ -116,6 +116,42 @@ export interface MaintenanceWindowResponse {
 }
 
 /**
+ * Properties to configure Identity for Bring your Own Keys
+ */
+export interface MySQLServerIdentityResponse {
+    /**
+     * ObjectId from the KeyVault
+     */
+    principalId: string;
+    /**
+     * TenantId from the KeyVault
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity.
+     */
+    type?: string;
+    /**
+     * Metadata of user assigned identity.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse[]};
+}
+
+/**
+ * Billing information related properties of a server.
+ */
+export interface MySQLServerSkuResponse {
+    /**
+     * The name of the sku, e.g. Standard_D32s_v3.
+     */
+    name: string;
+    /**
+     * The tier of the particular SKU, e.g. GeneralPurpose.
+     */
+    tier: string;
+}
+
+/**
  * Network related properties of a server
  */
 export interface NetworkResponse {
@@ -130,7 +166,52 @@ export interface NetworkResponse {
     /**
      * Whether or not public network access is allowed for this server. Value is 'Disabled' when server has VNet integration.
      */
-    publicNetworkAccess: string;
+    publicNetworkAccess?: string;
+}
+
+/**
+ * The private endpoint connection resource.
+ */
+export interface PrivateEndpointConnectionResponse {
+    /**
+     * The group ids for the private endpoint resource.
+     */
+    groupIds: string[];
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    id: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * The private endpoint resource.
+     */
+    privateEndpoint?: PrivateEndpointResponse;
+    /**
+     * A collection of information about the state of the connection between service consumer and provider.
+     */
+    privateLinkServiceConnectionState: PrivateLinkServiceConnectionStateResponse;
+    /**
+     * The provisioning state of the private endpoint connection resource.
+     */
+    provisioningState: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
+}
+
+export interface PrivateEndpointPropertyResponse {
+    /**
+     * Resource id of the private endpoint.
+     */
+    id?: string;
 }
 
 /**
@@ -162,17 +243,116 @@ export interface PrivateLinkServiceConnectionStateResponse {
 }
 
 /**
+ * Azure Active Directory identity configuration for a resource.
+ */
+export interface ResourceIdentityResponse {
+    /**
+     * The Azure Active Directory principal id.
+     */
+    principalId: string;
+    /**
+     * The Azure Active Directory tenant id.
+     */
+    tenantId: string;
+    /**
+     * The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+     */
+    type?: string;
+}
+
+/**
+ * Properties of a private endpoint connection.
+ */
+export interface ServerPrivateEndpointConnectionPropertiesResponse {
+    /**
+     * Private endpoint which the connection belongs to.
+     */
+    privateEndpoint?: PrivateEndpointPropertyResponse;
+    /**
+     * Connection state of the private endpoint connection.
+     */
+    privateLinkServiceConnectionState?: ServerPrivateLinkServiceConnectionStatePropertyResponse;
+    /**
+     * State of the private endpoint connection.
+     */
+    provisioningState: string;
+}
+
+/**
+ * A private endpoint connection under a server
+ */
+export interface ServerPrivateEndpointConnectionResponse {
+    /**
+     * Resource Id of the private endpoint connection.
+     */
+    id: string;
+    /**
+     * Private endpoint connection properties
+     */
+    properties: ServerPrivateEndpointConnectionPropertiesResponse;
+}
+
+export interface ServerPrivateLinkServiceConnectionStatePropertyResponse {
+    /**
+     * The actions required for private link service connection.
+     */
+    actionsRequired: string;
+    /**
+     * The private link service connection description.
+     */
+    description: string;
+    /**
+     * The private link service connection status.
+     */
+    status: string;
+}
+
+/**
  * Billing information related properties of a server.
  */
 export interface SkuResponse {
     /**
-     * The name of the sku, e.g. Standard_D32s_v3.
+     * The scale up/out capacity, representing server's compute units.
+     */
+    capacity?: number;
+    /**
+     * The family of hardware.
+     */
+    family?: string;
+    /**
+     * The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      */
     name: string;
     /**
-     * The tier of the particular SKU, e.g. GeneralPurpose.
+     * The size code, to be interpreted by resource as appropriate.
      */
-    tier: string;
+    size?: string;
+    /**
+     * The tier of the particular SKU, e.g. Basic.
+     */
+    tier?: string;
+}
+
+/**
+ * Storage Profile properties of a server
+ */
+export interface StorageProfileResponse {
+    /**
+     * Backup retention days for the server.
+     */
+    backupRetentionDays?: number;
+    /**
+     * Enable Geo-redundant or not for server backup.
+     */
+    geoRedundantBackup?: string;
+    /**
+     * Enable Storage Auto Grow.
+     */
+    storageAutogrow?: string;
+    /**
+     * Max storage allowed for a server.
+     */
+    storageMB?: number;
 }
 
 /**
@@ -196,6 +376,10 @@ export interface StorageResponse {
      */
     logOnDisk?: string;
     /**
+     * The redundant type of the server storage. The parameter is used for server creation.
+     */
+    storageRedundancy?: string;
+    /**
      * Max storage size allowed for a server.
      */
     storageSizeGB?: number;
@@ -211,8 +395,9 @@ export function storageResponseProvideDefaults(val: StorageResponse): StorageRes
     return {
         ...val,
         autoGrow: (val.autoGrow) ?? "Disabled",
-        autoIoScaling: (val.autoIoScaling) ?? "Disabled",
+        autoIoScaling: (val.autoIoScaling) ?? "Enabled",
         logOnDisk: (val.logOnDisk) ?? "Disabled",
+        storageRedundancy: (val.storageRedundancy) ?? "LocalRedundancy",
     };
 }
 
@@ -259,16 +444,3 @@ export interface UserAssignedIdentityResponse {
      */
     principalId: string;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

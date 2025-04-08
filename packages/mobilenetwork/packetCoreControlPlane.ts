@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Packet core control plane resource.
  *
- * Uses Azure REST API version 2023-06-01. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
+ * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01.
  *
- * Other available API versions: 2022-03-01-preview, 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
+ * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-06-01, 2023-09-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mobilenetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PacketCoreControlPlane extends pulumi.CustomResource {
     /**
@@ -36,9 +36,17 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The control plane interface on the access network. For 5G networks, this is the N2 interface. For 4G networks, this is the S1-MME interface.
      */
     public readonly controlPlaneAccessInterface!: pulumi.Output<types.outputs.InterfacePropertiesResponse>;
+    /**
+     * The virtual IP address(es) for the control plane on the access network in a High Availability (HA) system. In an HA deployment the access network router should be configured to anycast traffic for this address to the control plane access interfaces on the active and standby nodes. In non-HA system this list should be omitted or empty.
+     */
+    public readonly controlPlaneAccessVirtualIpv4Addresses!: pulumi.Output<string[] | undefined>;
     /**
      * The core network technology generation (5G core or EPC / 4G core).
      */
@@ -47,6 +55,14 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
      * Configuration for uploading packet core diagnostics
      */
     public readonly diagnosticsUpload!: pulumi.Output<types.outputs.DiagnosticsUploadConfigurationResponse | undefined>;
+    /**
+     * Configuration for sending packet core events to an Azure Event Hub.
+     */
+    public readonly eventHub!: pulumi.Output<types.outputs.EventHubConfigurationResponse | undefined>;
+    /**
+     * The provisioning state of the secret containing private keys and keyIds for SUPI concealment.
+     */
+    public /*out*/ readonly homeNetworkPrivateKeysProvisioning!: pulumi.Output<types.outputs.HomeNetworkPrivateKeysProvisioningResponse>;
     /**
      * The identity used to retrieve the ingress certificate from Azure key vault.
      */
@@ -88,6 +104,10 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
      */
     public /*out*/ readonly rollbackVersion!: pulumi.Output<string>;
     /**
+     * Signaling configuration for the packet core.
+     */
+    public readonly signaling!: pulumi.Output<types.outputs.SignalingConfigurationResponse | undefined>;
+    /**
      * Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
      */
     public readonly sites!: pulumi.Output<types.outputs.SiteResourceIdResponse[]>;
@@ -111,6 +131,10 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
      * The MTU (in bytes) signaled to the UE. The same MTU is set on the user plane data links for all data networks. The MTU set on the user plane access link is calculated to be 60 bytes greater than this value to allow for GTP encapsulation.
      */
     public readonly ueMtu!: pulumi.Output<number | undefined>;
+    /**
+     * The user consent configuration for the packet core.
+     */
+    public readonly userConsent!: pulumi.Output<types.outputs.UserConsentConfigurationResponse | undefined>;
     /**
      * The desired version of the packet core software.
      */
@@ -146,8 +170,10 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
                 throw new Error("Missing required property 'sku'");
             }
             resourceInputs["controlPlaneAccessInterface"] = args ? args.controlPlaneAccessInterface : undefined;
+            resourceInputs["controlPlaneAccessVirtualIpv4Addresses"] = args ? args.controlPlaneAccessVirtualIpv4Addresses : undefined;
             resourceInputs["coreNetworkTechnology"] = args ? args.coreNetworkTechnology : undefined;
             resourceInputs["diagnosticsUpload"] = args ? args.diagnosticsUpload : undefined;
+            resourceInputs["eventHub"] = args ? (args.eventHub ? pulumi.output(args.eventHub).apply(types.inputs.eventHubConfigurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["installation"] = args ? (args.installation ? pulumi.output(args.installation).apply(types.inputs.installationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["interopSettings"] = args ? args.interopSettings : undefined;
@@ -156,11 +182,15 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
             resourceInputs["packetCoreControlPlaneName"] = args ? args.packetCoreControlPlaneName : undefined;
             resourceInputs["platform"] = args ? args.platform : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["signaling"] = args ? args.signaling : undefined;
             resourceInputs["sites"] = args ? args.sites : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["ueMtu"] = (args ? args.ueMtu : undefined) ?? 1440;
+            resourceInputs["userConsent"] = args ? args.userConsent : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["homeNetworkPrivateKeysProvisioning"] = undefined /*out*/;
             resourceInputs["installedVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -168,9 +198,13 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["controlPlaneAccessInterface"] = undefined /*out*/;
+            resourceInputs["controlPlaneAccessVirtualIpv4Addresses"] = undefined /*out*/;
             resourceInputs["coreNetworkTechnology"] = undefined /*out*/;
             resourceInputs["diagnosticsUpload"] = undefined /*out*/;
+            resourceInputs["eventHub"] = undefined /*out*/;
+            resourceInputs["homeNetworkPrivateKeysProvisioning"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["installation"] = undefined /*out*/;
             resourceInputs["installedVersion"] = undefined /*out*/;
@@ -181,12 +215,14 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
             resourceInputs["platform"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["rollbackVersion"] = undefined /*out*/;
+            resourceInputs["signaling"] = undefined /*out*/;
             resourceInputs["sites"] = undefined /*out*/;
             resourceInputs["sku"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["ueMtu"] = undefined /*out*/;
+            resourceInputs["userConsent"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -205,6 +241,10 @@ export interface PacketCoreControlPlaneArgs {
      */
     controlPlaneAccessInterface: pulumi.Input<types.inputs.InterfacePropertiesArgs>;
     /**
+     * The virtual IP address(es) for the control plane on the access network in a High Availability (HA) system. In an HA deployment the access network router should be configured to anycast traffic for this address to the control plane access interfaces on the active and standby nodes. In non-HA system this list should be omitted or empty.
+     */
+    controlPlaneAccessVirtualIpv4Addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The core network technology generation (5G core or EPC / 4G core).
      */
     coreNetworkTechnology?: pulumi.Input<string | types.enums.CoreNetworkType>;
@@ -212,6 +252,10 @@ export interface PacketCoreControlPlaneArgs {
      * Configuration for uploading packet core diagnostics
      */
     diagnosticsUpload?: pulumi.Input<types.inputs.DiagnosticsUploadConfigurationArgs>;
+    /**
+     * Configuration for sending packet core events to an Azure Event Hub.
+     */
+    eventHub?: pulumi.Input<types.inputs.EventHubConfigurationArgs>;
     /**
      * The identity used to retrieve the ingress certificate from Azure key vault.
      */
@@ -245,6 +289,10 @@ export interface PacketCoreControlPlaneArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
+     * Signaling configuration for the packet core.
+     */
+    signaling?: pulumi.Input<types.inputs.SignalingConfigurationArgs>;
+    /**
      * Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
      */
     sites: pulumi.Input<pulumi.Input<types.inputs.SiteResourceIdArgs>[]>;
@@ -260,6 +308,10 @@ export interface PacketCoreControlPlaneArgs {
      * The MTU (in bytes) signaled to the UE. The same MTU is set on the user plane data links for all data networks. The MTU set on the user plane access link is calculated to be 60 bytes greater than this value to allow for GTP encapsulation.
      */
     ueMtu?: pulumi.Input<number>;
+    /**
+     * The user consent configuration for the packet core.
+     */
+    userConsent?: pulumi.Input<types.inputs.UserConsentConfigurationArgs>;
     /**
      * The desired version of the packet core software.
      */

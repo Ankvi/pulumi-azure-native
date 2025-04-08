@@ -90,6 +90,16 @@ export interface AzureFilesIdentityBasedAuthenticationArgs {
 }
 
 /**
+ * This property defines the creation time based filtering condition. Blob Inventory schema parameter 'Creation-Time' is mandatory with this filter.
+ */
+export interface BlobInventoryCreationTimeArgs {
+    /**
+     * When set the policy filters the objects that are created in the last N days. Where N is an integer value between 1 to 36500.
+     */
+    lastNDays?: pulumi.Input<number>;
+}
+
+/**
  * An object that defines the blob inventory rule.
  */
 export interface BlobInventoryPolicyDefinitionArgs {
@@ -123,6 +133,10 @@ export interface BlobInventoryPolicyFilterArgs {
      * An array of predefined enum values. Valid values include blockBlob, appendBlob, pageBlob. Hns accounts does not support pageBlobs. This field is required when definition.objectType property is set to 'Blob'.
      */
     blobTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * This property is used to filter objects based on the object creation time
+     */
+    creationTime?: pulumi.Input<BlobInventoryCreationTimeArgs>;
     /**
      * An array of strings with maximum 10 blob prefixes to be excluded from the inventory.
      */
@@ -441,6 +455,24 @@ export interface ExtendedLocationArgs {
 }
 
 /**
+ * File Share Paid Bursting properties.
+ */
+export interface FileSharePropertiesFileSharePaidBurstingArgs {
+    /**
+     * Indicates whether paid bursting is enabled for the share. This property is only for file shares created under Files Provisioned v1 SSD account type.
+     */
+    paidBurstingEnabled?: pulumi.Input<boolean>;
+    /**
+     * The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 10340 which is the maximum allowed bandwidth for a share.
+     */
+    paidBurstingMaxBandwidthMibps?: pulumi.Input<number>;
+    /**
+     * The maximum paid bursting IOPS for the share. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 102400 which is the maximum allowed IOPS for a share.
+     */
+    paidBurstingMaxIops?: pulumi.Input<number>;
+}
+
+/**
  * IP rule with specific IP or IP range in CIDR format.
  */
 export interface IPRuleArgs {
@@ -654,11 +686,11 @@ export interface ManagementPolicyRuleArgs {
 }
 
 /**
- * The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+ * The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
  */
 export interface ManagementPolicySchemaArgs {
     /**
-     * The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+     * The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
      */
     rules: pulumi.Input<pulumi.Input<ManagementPolicyRuleArgs>[]>;
 }
@@ -776,6 +808,16 @@ export interface ObjectReplicationPolicyFilterArgs {
 }
 
 /**
+ * Optional. The object replication policy metrics feature options.
+ */
+export interface ObjectReplicationPolicyPropertiesMetricsArgs {
+    /**
+     * Indicates whether object replication metrics feature is enabled for the policy.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+/**
  * The replication policy rule between two containers.
  */
 export interface ObjectReplicationPolicyRuleArgs {
@@ -799,7 +841,7 @@ export interface ObjectReplicationPolicyRuleArgs {
 
 export interface PermissionScopeArgs {
     /**
-     * The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), and Create (c).
+     * The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), Create (c), Modify Ownership (o), and Modify Permissions (p).
      */
     permissions: pulumi.Input<string>;
     /**
@@ -891,7 +933,7 @@ export interface RoutingPreferenceArgs {
  */
 export interface SasPolicyArgs {
     /**
-     * The SAS expiration action. Can only be Log.
+     * The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.
      */
     expirationAction: pulumi.Input<string | enums.ExpirationAction>;
     /**
@@ -1119,7 +1161,3 @@ export function virtualNetworkRuleArgsProvideDefaults(val: VirtualNetworkRuleArg
         action: (val.action) ?? "Allow",
     };
 }
-
-
-
-

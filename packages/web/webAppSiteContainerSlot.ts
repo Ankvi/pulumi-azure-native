@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Container of a site
  *
- * Uses Azure REST API version 2023-12-01.
+ * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-12-01.
  *
- * Other available API versions: 2024-04-01.
+ * Other available API versions: 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebAppSiteContainerSlot extends pulumi.CustomResource {
     /**
@@ -39,6 +39,10 @@ export class WebAppSiteContainerSlot extends pulumi.CustomResource {
      * Auth Type
      */
     public readonly authType!: pulumi.Output<string | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Created Time
      */
@@ -137,11 +141,13 @@ export class WebAppSiteContainerSlot extends pulumi.CustomResource {
             resourceInputs["userManagedIdentityClientId"] = args ? args.userManagedIdentityClientId : undefined;
             resourceInputs["userName"] = args ? args.userName : undefined;
             resourceInputs["volumeMounts"] = args ? args.volumeMounts : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["authType"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["environmentVariables"] = undefined /*out*/;
             resourceInputs["image"] = undefined /*out*/;

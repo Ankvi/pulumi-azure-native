@@ -32,6 +32,10 @@ export interface GetJitNetworkAccessPolicyArgs {
 
 export interface GetJitNetworkAccessPolicyResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Resource Id
      */
     readonly id: string;

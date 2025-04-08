@@ -51,4 +51,3 @@ export interface IdentityArgs {
      */
     userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
-

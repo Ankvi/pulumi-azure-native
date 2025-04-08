@@ -106,4 +106,3 @@ export interface SmbStorageClassTypePropertiesArgs {
      */
     username?: pulumi.Input<string>;
 }
-

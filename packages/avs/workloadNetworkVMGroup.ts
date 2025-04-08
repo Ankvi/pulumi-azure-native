@@ -1,11 +1,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * NSX VM Group
  *
- * Uses Azure REST API version 2022-05-01. In version 1.x of the Azure Native provider, it used API version 2020-07-17-preview.
+ * Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
  *
- * Other available API versions: 2023-03-01, 2023-09-01.
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WorkloadNetworkVMGroup extends pulumi.CustomResource {
     /**
@@ -35,6 +36,10 @@ export class WorkloadNetworkVMGroup extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Display name of the VM group.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
@@ -43,7 +48,7 @@ export class WorkloadNetworkVMGroup extends pulumi.CustomResource {
      */
     public readonly members!: pulumi.Output<string[] | undefined>;
     /**
-     * Resource name.
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -59,7 +64,11 @@ export class WorkloadNetworkVMGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -86,17 +95,21 @@ export class WorkloadNetworkVMGroup extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["revision"] = args ? args.revision : undefined;
             resourceInputs["vmGroupId"] = args ? args.vmGroupId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["members"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["revision"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -131,7 +144,7 @@ export interface WorkloadNetworkVMGroupArgs {
      */
     revision?: pulumi.Input<number>;
     /**
-     * NSX VM Group identifier. Generally the same as the VM Group's display name
+     * ID of the VM group.
      */
     vmGroupId?: pulumi.Input<string>;
 }

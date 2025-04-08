@@ -1,6 +1,25 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Model for API authentication with AWS.
+ */
+export interface AWSAuthModelArgs {
+    /**
+     * AWS STS assume role external ID. This is used to prevent the confused deputy problem: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html'
+     */
+    externalId?: pulumi.Input<string>;
+    /**
+     * AWS STS assume role ARN
+     */
+    roleArn: pulumi.Input<string>;
+    /**
+     * Type of paging
+     * Expected value is 'AWS'.
+     */
+    type: pulumi.Input<"AWS">;
+}
+
+/**
  * The Activity query definitions
  */
 export interface ActivityEntityQueriesPropertiesQueryDefinitionsArgs {
@@ -8,6 +27,20 @@ export interface ActivityEntityQueriesPropertiesQueryDefinitionsArgs {
      * The Activity query to run on a given entity
      */
     query?: pulumi.Input<string>;
+}
+
+/**
+ * Describes an automation rule action to add a task to an incident.
+ */
+export interface AddIncidentTaskActionPropertiesArgs {
+    /**
+     * The description of the task.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The title of the task.
+     */
+    title: pulumi.Input<string>;
 }
 
 /**
@@ -61,6 +94,33 @@ export interface AlertsDataTypeOfDataConnectorArgs {
 }
 
 /**
+ * Model for authentication with the API Key. Will result in additional header on the request (default behavior) to the remote server: 'ApiKeyName: ApiKeyIdentifier ApiKey'. If 'IsApiKeyInPostPayload' is true it will send it in the body of the request and not the header.
+ */
+export interface ApiKeyAuthModelArgs {
+    /**
+     * API Key for the user secret key credential
+     */
+    apiKey: pulumi.Input<string>;
+    /**
+     * API Key Identifier
+     */
+    apiKeyIdentifier?: pulumi.Input<string>;
+    /**
+     * API Key name
+     */
+    apiKeyName: pulumi.Input<string>;
+    /**
+     * Flag to indicate if API key is set in HTTP POST payload
+     */
+    isApiKeyInPostPayload?: pulumi.Input<boolean>;
+    /**
+     * Type of paging
+     * Expected value is 'APIKey'.
+     */
+    type: pulumi.Input<"APIKey">;
+}
+
+/**
  * An entity describing a content item.
  */
 export interface AssignmentItemArgs {
@@ -68,6 +128,33 @@ export interface AssignmentItemArgs {
      * The resource id of the content item
      */
     resourceId?: pulumi.Input<string>;
+}
+
+/**
+ * Describes an automation rule action to add a task to an incident
+ */
+export interface AutomationRuleAddIncidentTaskActionArgs {
+    /**
+     * Describes an automation rule action to add a task to an incident.
+     */
+    actionConfiguration?: pulumi.Input<AddIncidentTaskActionPropertiesArgs>;
+    /**
+     * The type of the automation rule action.
+     * Expected value is 'AddIncidentTask'.
+     */
+    actionType: pulumi.Input<"AddIncidentTask">;
+    order: pulumi.Input<number>;
+}
+
+/**
+ * Describes an automation rule condition with boolean operators.
+ */
+export interface AutomationRuleBooleanConditionArgs {
+    innerConditions?: pulumi.Input<pulumi.Input<BooleanConditionPropertiesArgs | PropertyArrayChangedConditionPropertiesArgs | PropertyArrayConditionPropertiesArgs | PropertyChangedConditionPropertiesArgs | PropertyConditionPropertiesArgs>[]>;
+    /**
+     * Describes a boolean condition operator.
+     */
+    operator?: pulumi.Input<string | enums.AutomationRuleBooleanConditionSupportedOperator>;
 }
 
 /**
@@ -86,6 +173,21 @@ export interface AutomationRuleModifyPropertiesActionArgs {
 export interface AutomationRulePropertyArrayChangedValuesConditionArgs {
     arrayType?: pulumi.Input<string | enums.AutomationRulePropertyArrayChangedConditionSupportedArrayType>;
     changeType?: pulumi.Input<string | enums.AutomationRulePropertyArrayChangedConditionSupportedChangeType>;
+}
+
+/**
+ * Describes an automation rule condition on array properties.
+ */
+export interface AutomationRulePropertyArrayValuesConditionArgs {
+    /**
+     * Describes an array condition evaluation type.
+     */
+    arrayConditionType?: pulumi.Input<string | enums.AutomationRulePropertyArrayConditionSupportedArrayConditionType>;
+    /**
+     * Describes an array condition evaluated array type.
+     */
+    arrayType?: pulumi.Input<string | enums.AutomationRulePropertyArrayConditionSupportedArrayType>;
+    itemConditions?: pulumi.Input<pulumi.Input<BooleanConditionPropertiesArgs | PropertyArrayChangedConditionPropertiesArgs | PropertyArrayConditionPropertiesArgs | PropertyChangedConditionPropertiesArgs | PropertyConditionPropertiesArgs>[]>;
 }
 
 export interface AutomationRulePropertyValuesChangedConditionArgs {
@@ -124,7 +226,7 @@ export interface AutomationRuleTriggeringLogicArgs {
     /**
      * The conditions to evaluate to determine if the automation rule should be triggered on a given object.
      */
-    conditions?: pulumi.Input<pulumi.Input<PropertyArrayChangedConditionPropertiesArgs | PropertyChangedConditionPropertiesArgs | PropertyConditionPropertiesArgs>[]>;
+    conditions?: pulumi.Input<pulumi.Input<BooleanConditionPropertiesArgs | PropertyArrayChangedConditionPropertiesArgs | PropertyArrayConditionPropertiesArgs | PropertyChangedConditionPropertiesArgs | PropertyConditionPropertiesArgs>[]>;
     /**
      * Determines when the automation rule should automatically expire and be disabled.
      */
@@ -169,6 +271,101 @@ export interface AzureDevOpsResourceInfoArgs {
      * Id of the service-connection created for the source-control.
      */
     serviceConnectionId?: pulumi.Input<string>;
+}
+
+/**
+ * Model for API authentication with basic flow - user name + password.
+ */
+export interface BasicAuthModelArgs {
+    /**
+     * The password
+     */
+    password: pulumi.Input<string>;
+    /**
+     * Type of paging
+     * Expected value is 'Basic'.
+     */
+    type: pulumi.Input<"Basic">;
+    /**
+     * The user name.
+     */
+    userName: pulumi.Input<string>;
+}
+
+/**
+ * Describes an automation rule condition that applies a boolean operator (e.g AND, OR) to conditions
+ */
+export interface BooleanConditionPropertiesArgs {
+    /**
+     * Describes an automation rule condition with boolean operators.
+     */
+    conditionProperties?: pulumi.Input<AutomationRuleBooleanConditionArgs>;
+    /**
+     *
+     * Expected value is 'Boolean'.
+     */
+    conditionType: pulumi.Input<"Boolean">;
+}
+
+/**
+ * A custom response configuration for a rule.
+ */
+export interface CcpResponseConfigArgs {
+    /**
+     * The compression algorithm. For Example: 'gzip', 'multi-gzip', 'deflate'.
+     */
+    compressionAlgo?: pulumi.Input<string>;
+    /**
+     * The value indicating whether the response isn't an array of events / logs.  By setting this flag to true it means the remote server will response with an object which each property has as a value an array of events / logs.
+     */
+    convertChildPropertiesToArray?: pulumi.Input<boolean>;
+    /**
+     * The csv delimiter, in case the response format is CSV.
+     */
+    csvDelimiter?: pulumi.Input<string>;
+    /**
+     * The character used to escape characters in CSV.
+     */
+    csvEscape?: pulumi.Input<string>;
+    /**
+     * The json paths, '$' char is the json root.
+     */
+    eventsJsonPaths: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The response format. possible values are json,csv,xml
+     */
+    format?: pulumi.Input<string>;
+    /**
+     * The value indicating whether the response has CSV boundary in case the response in CSV format.
+     */
+    hasCsvBoundary?: pulumi.Input<boolean>;
+    /**
+     * The value indicating whether the response has headers in case the response in CSV format.
+     */
+    hasCsvHeader?: pulumi.Input<boolean>;
+    /**
+     * The value indicating whether the remote server support Gzip and we should expect Gzip response.
+     */
+    isGzipCompressed?: pulumi.Input<boolean>;
+    /**
+     * The value where the status message/code should appear in the response.
+     */
+    successStatusJsonPath?: pulumi.Input<string>;
+    /**
+     * The status value.
+     */
+    successStatusValue?: pulumi.Input<string>;
+}
+/**
+ * ccpResponseConfigArgsProvideDefaults sets the appropriate defaults for CcpResponseConfigArgs
+ */
+export function ccpResponseConfigArgsProvideDefaults(val: CcpResponseConfigArgs): CcpResponseConfigArgs {
+    return {
+        ...val,
+        compressionAlgo: (val.compressionAlgo) ?? "gzip",
+        csvEscape: (val.csvEscape) ?? "\"",
+        format: (val.format) ?? "json",
+    };
 }
 
 /**
@@ -354,12 +551,6 @@ export interface CustomizableConnectorUiConfigArgs {
      */
     graphQueries: pulumi.Input<pulumi.Input<GraphQueryArgs>[]>;
     /**
-     * Gets or sets the name of the table the connector will insert the data to.
-     * This name can be used in other queries by specifying {{graphQueriesTableName}} placeholder
-     *  in Query and LastDataReceivedQuery values.
-     */
-    graphQueriesTableName?: pulumi.Input<string>;
-    /**
      * Gets or sets custom connector id. optional field.
      */
     id?: pulumi.Input<string>;
@@ -385,13 +576,27 @@ export interface CustomizableConnectorUiConfigArgs {
      */
     publisher: pulumi.Input<string>;
     /**
-     * Gets or sets the sample queries for the connector.
-     */
-    sampleQueries: pulumi.Input<pulumi.Input<SampleQueryArgs>[]>;
-    /**
      * Gets or sets the connector blade title.
      */
     title: pulumi.Input<string>;
+}
+
+/**
+ * The configuration of the destination of the data.
+ */
+export interface DCRConfigurationArgs {
+    /**
+     * Represents the data collection ingestion endpoint in log analytics.
+     */
+    dataCollectionEndpoint: pulumi.Input<string>;
+    /**
+     * The data collection rule immutable id, the rule defines the transformation and data destination.
+     */
+    dataCollectionRuleImmutableId: pulumi.Input<string>;
+    /**
+     * The stream we are sending the data to.
+     */
+    streamName: pulumi.Input<string>;
 }
 
 /**
@@ -502,6 +707,63 @@ export interface FileMetadataArgs {
      * The size of the file.
      */
     fileSize?: pulumi.Input<number>;
+}
+
+/**
+ * Model for API authentication for all GCP kind connectors.
+ */
+export interface GCPAuthModelArgs {
+    /**
+     * GCP Project Number
+     */
+    projectNumber: pulumi.Input<string>;
+    /**
+     * GCP Service Account Email
+     */
+    serviceAccountEmail: pulumi.Input<string>;
+    /**
+     * Type of paging
+     * Expected value is 'GCP'.
+     */
+    type: pulumi.Input<"GCP">;
+    /**
+     * GCP Workload Identity Provider ID
+     */
+    workloadIdentityProviderId: pulumi.Input<string>;
+}
+
+/**
+ * Model for API authentication for working with service bus or storage account.
+ */
+export interface GenericBlobSbsAuthModelArgs {
+    /**
+     * Credentials for service bus namespace, keyvault uri for access key
+     */
+    credentialsConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Credentials for storage account, keyvault uri for access key
+     */
+    storageAccountCredentialsConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Type of paging
+     * Expected value is 'ServiceBus'.
+     */
+    type: pulumi.Input<"ServiceBus">;
+}
+
+/**
+ * Model for API authentication for GitHub. For this authentication first we need to approve the Router app (Microsoft Security DevOps) to access the GitHub account, Then we only need the InstallationId to get the access token from https://api.github.com/app/installations/{installId}/access_tokens.
+ */
+export interface GitHubAuthModelArgs {
+    /**
+     * The GitHubApp auth installation id.
+     */
+    installationId?: pulumi.Input<string>;
+    /**
+     * Type of paging
+     * Expected value is 'GitHub'.
+     */
+    type: pulumi.Input<"GitHub">;
 }
 
 /**
@@ -706,7 +968,7 @@ export interface InstructionStepArgs {
     description?: pulumi.Input<string>;
     /**
      * Gets or sets the inner instruction steps details.
-     * Foe Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
+     * For Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
      */
     innerSteps?: pulumi.Input<pulumi.Input<InstructionStepArgs>[]>;
     /**
@@ -731,6 +993,59 @@ export interface InstructionStepDetailsArgs {
      * Gets or sets the instruction type name.
      */
     type: pulumi.Input<string>;
+}
+
+/**
+ * Model for API authentication with JWT. Simple exchange between user name + password to access token.
+ */
+export interface JwtAuthModelArgs {
+    /**
+     * The custom headers we want to add once we send request to token endpoint.
+     */
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Flag indicating whether we want to send the user name and password to token endpoint in the headers.
+     */
+    isCredentialsInHeaders?: pulumi.Input<boolean>;
+    /**
+     * Flag indicating whether the body request is JSON (header Content-Type = application/json), meaning its a Form URL encoded request (header Content-Type = application/x-www-form-urlencoded).
+     */
+    isJsonRequest?: pulumi.Input<boolean>;
+    /**
+     * The password
+     */
+    password: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The custom query parameter we want to add once we send request to token endpoint.
+     */
+    queryParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Request timeout in seconds.
+     */
+    requestTimeoutInSeconds?: pulumi.Input<number>;
+    /**
+     * Token endpoint to request JWT
+     */
+    tokenEndpoint: pulumi.Input<string>;
+    /**
+     * Type of paging
+     * Expected value is 'JwtToken'.
+     */
+    type: pulumi.Input<"JwtToken">;
+    /**
+     * The user name. If user name and password sent in header request we only need to populate the `value` property with the user name (Same as basic auth). If user name and password sent in body request we need to specify the `Key` and `Value`.
+     */
+    userName: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+/**
+ * jwtAuthModelArgsProvideDefaults sets the appropriate defaults for JwtAuthModelArgs
+ */
+export function jwtAuthModelArgsProvideDefaults(val: JwtAuthModelArgs): JwtAuthModelArgs {
+    return {
+        ...val,
+        isJsonRequest: (val.isJsonRequest) ?? false,
+        requestTimeoutInSeconds: (val.requestTimeoutInSeconds) ?? 100,
+    };
 }
 
 /**
@@ -775,6 +1090,30 @@ export interface MCASDataConnectorDataTypesArgs {
      * Discovery log data type connection.
      */
     discoveryLogs?: pulumi.Input<DataConnectorDataTypeCommonArgs>;
+}
+
+/**
+ * The available data types for Microsoft Threat Intelligence data connector.
+ */
+export interface MSTIDataConnectorDataTypesArgs {
+    /**
+     * Data type for Microsoft Threat Intelligence data connector.
+     */
+    microsoftEmergingThreatFeed: pulumi.Input<MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedArgs>;
+}
+
+/**
+ * Data type for Microsoft Threat Intelligence data connector.
+ */
+export interface MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeedArgs {
+    /**
+     * The lookback period for the feed to be imported. The date-time to begin importing the feed from, for example: 2024-01-01T00:00:00.000Z.
+     */
+    lookbackPeriod: pulumi.Input<string>;
+    /**
+     * Describe whether this data type connection is enabled or not.
+     */
+    state?: pulumi.Input<string | enums.DataTypeState>;
 }
 
 /**
@@ -880,6 +1219,97 @@ export interface MetadataSupportArgs {
 }
 
 /**
+ * Model for API authentication with no authentication method - public API.
+ */
+export interface NoneAuthModelArgs {
+    /**
+     * Type of paging
+     * Expected value is 'None'.
+     */
+    type: pulumi.Input<"None">;
+}
+
+/**
+ * Model for API authentication with OAuth2.
+ */
+export interface OAuthModelArgs {
+    /**
+     * Access token prepend. Default is 'Bearer'.
+     */
+    accessTokenPrepend?: pulumi.Input<string>;
+    /**
+     * The user's authorization code.
+     */
+    authorizationCode?: pulumi.Input<string>;
+    /**
+     * The authorization endpoint.
+     */
+    authorizationEndpoint?: pulumi.Input<string>;
+    /**
+     * The authorization endpoint headers.
+     */
+    authorizationEndpointHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The authorization endpoint query parameters.
+     */
+    authorizationEndpointQueryParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The Application (client) ID that the OAuth provider assigned to your app.
+     */
+    clientId: pulumi.Input<string>;
+    /**
+     * The Application (client) secret that the OAuth provider assigned to your app.
+     */
+    clientSecret: pulumi.Input<string>;
+    /**
+     * The grant type, usually will be 'authorization code'.
+     */
+    grantType: pulumi.Input<string>;
+    /**
+     * Indicating whether we want to send the clientId and clientSecret to token endpoint in the headers.
+     */
+    isCredentialsInHeaders?: pulumi.Input<boolean>;
+    /**
+     * A value indicating whether it's a JWT flow.
+     */
+    isJwtBearerFlow?: pulumi.Input<boolean>;
+    /**
+     * The Application redirect url that the user config in the OAuth provider.
+     */
+    redirectUri?: pulumi.Input<string>;
+    /**
+     * The Application (client) Scope that the OAuth provider assigned to your app.
+     */
+    scope?: pulumi.Input<string>;
+    /**
+     * The token endpoint. Defines the OAuth2 refresh token.
+     */
+    tokenEndpoint: pulumi.Input<string>;
+    /**
+     * The token endpoint headers.
+     */
+    tokenEndpointHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The token endpoint query parameters.
+     */
+    tokenEndpointQueryParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Type of paging
+     * Expected value is 'OAuth2'.
+     */
+    type: pulumi.Input<"OAuth2">;
+}
+/**
+ * oauthModelArgsProvideDefaults sets the appropriate defaults for OAuthModelArgs
+ */
+export function oauthModelArgsProvideDefaults(val: OAuthModelArgs): OAuthModelArgs {
+    return {
+        ...val,
+        isCredentialsInHeaders: (val.isCredentialsInHeaders) ?? false,
+    };
+}
+
+/**
  * The available data types for office data connector.
  */
 export interface OfficeDataConnectorDataTypesArgs {
@@ -927,6 +1357,33 @@ export interface OfficeDataConnectorDataTypesTeamsArgs {
     state?: pulumi.Input<string | enums.DataTypeState>;
 }
 
+/**
+ * Model for API authentication for Oracle.
+ */
+export interface OracleAuthModelArgs {
+    /**
+     * Content of the PRM file
+     */
+    pemFile: pulumi.Input<string>;
+    /**
+     * Public Fingerprint
+     */
+    publicFingerprint: pulumi.Input<string>;
+    /**
+     * Oracle tenant ID
+     */
+    tenantId: pulumi.Input<string>;
+    /**
+     * Type of paging
+     * Expected value is 'Oracle'.
+     */
+    type: pulumi.Input<"Oracle">;
+    /**
+     * Oracle user ID
+     */
+    userId: pulumi.Input<string>;
+}
+
 export interface PlaybookActionPropertiesArgs {
     /**
      * The resource id of the playbook resource.
@@ -939,6 +1396,26 @@ export interface PlaybookActionPropertiesArgs {
 }
 
 /**
+ * The available data types for Premium Microsoft Defender for Threat Intelligence data connector.
+ */
+export interface PremiumMdtiDataConnectorDataTypesArgs {
+    /**
+     * Data type for Premium Microsoft Defender for Threat Intelligence data connector.
+     */
+    connector: pulumi.Input<PremiumMdtiDataConnectorDataTypesConnectorArgs>;
+}
+
+/**
+ * Data type for Premium Microsoft Defender for Threat Intelligence data connector.
+ */
+export interface PremiumMdtiDataConnectorDataTypesConnectorArgs {
+    /**
+     * Describe whether this data type connection is enabled or not.
+     */
+    state?: pulumi.Input<string | enums.DataTypeState>;
+}
+
+/**
  * Describes an automation rule condition that evaluates an array property's value change
  */
 export interface PropertyArrayChangedConditionPropertiesArgs {
@@ -948,6 +1425,21 @@ export interface PropertyArrayChangedConditionPropertiesArgs {
      * Expected value is 'PropertyArrayChanged'.
      */
     conditionType: pulumi.Input<"PropertyArrayChanged">;
+}
+
+/**
+ * Describes an automation rule condition that evaluates an array property's value
+ */
+export interface PropertyArrayConditionPropertiesArgs {
+    /**
+     * Describes an automation rule condition on array properties.
+     */
+    conditionProperties?: pulumi.Input<AutomationRulePropertyArrayValuesConditionArgs>;
+    /**
+     *
+     * Expected value is 'PropertyArray'.
+     */
+    conditionType: pulumi.Input<"PropertyArray">;
 }
 
 /**
@@ -1042,6 +1534,94 @@ export interface ResourceProviderRequiredPermissionsArgs {
 }
 
 /**
+ * The request configuration.
+ */
+export interface RestApiPollerRequestConfigArgs {
+    /**
+     * The API endpoint.
+     */
+    apiEndpoint: pulumi.Input<string>;
+    /**
+     * The query parameter name which the remote server expect to end query. This property goes hand to hand with `startTimeAttributeName`
+     */
+    endTimeAttributeName?: pulumi.Input<string>;
+    /**
+     * The header for the request for the remote server.
+     */
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The HTTP method, default value GET.
+     */
+    httpMethod?: pulumi.Input<string | enums.HttpMethodVerb>;
+    /**
+     * Flag to indicate if HTTP POST payload is in JSON format (vs form-urlencoded).
+     */
+    isPostPayloadJson?: pulumi.Input<boolean>;
+    /**
+     * The HTTP query parameters to RESTful API.
+     */
+    queryParameters?: any;
+    /**
+     * the query parameters template. Defines the query parameters template to use when passing query parameters in advanced scenarios.
+     */
+    queryParametersTemplate?: pulumi.Input<string>;
+    /**
+     * The query time format. A remote server can have a query to pull data from range 'start' to 'end'. This property indicate what is the expected time format the remote server know to parse.
+     */
+    queryTimeFormat?: pulumi.Input<string>;
+    /**
+     * The query parameter name which we need to send the server for query logs in time interval. Should be defined with `queryTimeIntervalPrepend` and `queryTimeIntervalDelimiter`
+     */
+    queryTimeIntervalAttributeName?: pulumi.Input<string>;
+    /**
+     * The delimiter string between 2 QueryTimeFormat in the query parameter `queryTimeIntervalAttributeName`.
+     */
+    queryTimeIntervalDelimiter?: pulumi.Input<string>;
+    /**
+     * The string prepend to the value of the query parameter in `queryTimeIntervalAttributeName`.
+     */
+    queryTimeIntervalPrepend?: pulumi.Input<string>;
+    /**
+     * The query window in minutes for the request.
+     */
+    queryWindowInMin?: pulumi.Input<number>;
+    /**
+     * The Rate limit queries per second for the request..
+     */
+    rateLimitQPS?: pulumi.Input<number>;
+    /**
+     * The retry count.
+     */
+    retryCount?: pulumi.Input<number>;
+    /**
+     * The query parameter name which the remote server expect to start query. This property goes hand to hand with `endTimeAttributeName`.
+     */
+    startTimeAttributeName?: pulumi.Input<string>;
+    /**
+     * The timeout in seconds.
+     */
+    timeoutInSeconds?: pulumi.Input<number>;
+}
+
+/**
+ * The request paging configuration.
+ */
+export interface RestApiPollerRequestPagingConfigArgs {
+    /**
+     * Page size
+     */
+    pageSize?: pulumi.Input<number>;
+    /**
+     * Page size parameter name
+     */
+    pageSizeParameterName?: pulumi.Input<string>;
+    /**
+     * Type of paging
+     */
+    pagingType: pulumi.Input<string | enums.RestApiPollerRequestPagingKind>;
+}
+
+/**
  * Describes the Rfc connector.
  */
 export interface RfcConnectorArgs {
@@ -1094,20 +1674,6 @@ export interface RfcConnectorArgs {
      * Expected value is 'Rfc'.
      */
     type: pulumi.Input<"Rfc">;
-}
-
-/**
- * The sample queries for the connector.
- */
-export interface SampleQueryArgs {
-    /**
-     * Gets or sets the  sample query description.
-     */
-    description: pulumi.Input<string>;
-    /**
-     * Gets or sets the KQL sample query.
-     */
-    query: pulumi.Input<string>;
 }
 
 /**
@@ -1231,6 +1797,49 @@ export interface SecurityMLAnalyticsSettingsDataSourceArgs {
      * The data types used by the security ml analytics settings
      */
     dataTypes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Model for API authentication with session cookie.
+ */
+export interface SessionAuthModelArgs {
+    /**
+     * HTTP request headers to session service endpoint.
+     */
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Indicating whether API key is set in HTTP POST payload.
+     */
+    isPostPayloadJson?: pulumi.Input<boolean>;
+    /**
+     * The password attribute name.
+     */
+    password: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Query parameters to session service endpoint.
+     */
+    queryParameters?: any;
+    /**
+     * Session id attribute name from HTTP response header.
+     */
+    sessionIdName?: pulumi.Input<string>;
+    /**
+     * HTTP request URL to session service endpoint.
+     */
+    sessionLoginRequestUri?: pulumi.Input<string>;
+    /**
+     * Session timeout in minutes.
+     */
+    sessionTimeoutInMinutes?: pulumi.Input<number>;
+    /**
+     * Type of paging
+     * Expected value is 'Session'.
+     */
+    type: pulumi.Input<"Session">;
+    /**
+     * The user name attribute key value.
+     */
+    userName: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -1380,36 +1989,3 @@ export interface WebhookArgs {
      */
     webhookUrl?: pulumi.Input<string>;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

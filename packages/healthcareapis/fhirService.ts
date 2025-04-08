@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * The description of Fhir Service
  *
- * Uses Azure REST API version 2023-02-28. In version 1.x of the Azure Native provider, it used API version 2022-05-15.
+ * Uses Azure REST API version 2024-03-31. In version 2.x of the Azure Native provider, it used API version 2023-02-28.
  *
- * Other available API versions: 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2024-03-31, 2025-03-01-preview.
+ * Other available API versions: 2022-10-01-preview, 2022-12-01, 2023-02-28, 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native healthcareapis [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FhirService extends pulumi.CustomResource {
     /**
@@ -36,10 +36,6 @@ export class FhirService extends pulumi.CustomResource {
     }
 
     /**
-     * Fhir Service access policies.
-     */
-    public readonly accessPolicies!: pulumi.Output<types.outputs.FhirServiceAccessPolicyEntryResponse[] | undefined>;
-    /**
      * Fhir Service Azure container registry configuration.
      */
     public readonly acrConfiguration!: pulumi.Output<types.outputs.FhirServiceAcrConfigurationResponse | undefined>;
@@ -48,9 +44,17 @@ export class FhirService extends pulumi.CustomResource {
      */
     public readonly authenticationConfiguration!: pulumi.Output<types.outputs.FhirServiceAuthenticationConfigurationResponse | undefined>;
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Fhir Service Cors configuration.
      */
     public readonly corsConfiguration!: pulumi.Output<types.outputs.FhirServiceCorsConfigurationResponse | undefined>;
+    /**
+     * The encryption settings of the FHIR service
+     */
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionResponse | undefined>;
     /**
      * An etag associated with the resource, used for optimistic concurrency when editing it.
      */
@@ -133,10 +137,10 @@ export class FhirService extends pulumi.CustomResource {
             if ((!args || args.workspaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["accessPolicies"] = args ? args.accessPolicies : undefined;
             resourceInputs["acrConfiguration"] = args ? args.acrConfiguration : undefined;
             resourceInputs["authenticationConfiguration"] = args ? args.authenticationConfiguration : undefined;
             resourceInputs["corsConfiguration"] = args ? args.corsConfiguration : undefined;
+            resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["exportConfiguration"] = args ? args.exportConfiguration : undefined;
             resourceInputs["fhirServiceName"] = args ? args.fhirServiceName : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
@@ -148,6 +152,7 @@ export class FhirService extends pulumi.CustomResource {
             resourceInputs["resourceVersionPolicyConfiguration"] = args ? args.resourceVersionPolicyConfiguration : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["eventState"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -157,10 +162,11 @@ export class FhirService extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
-            resourceInputs["accessPolicies"] = undefined /*out*/;
             resourceInputs["acrConfiguration"] = undefined /*out*/;
             resourceInputs["authenticationConfiguration"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["corsConfiguration"] = undefined /*out*/;
+            resourceInputs["encryption"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["eventState"] = undefined /*out*/;
             resourceInputs["exportConfiguration"] = undefined /*out*/;
@@ -190,10 +196,6 @@ export class FhirService extends pulumi.CustomResource {
  */
 export interface FhirServiceArgs {
     /**
-     * Fhir Service access policies.
-     */
-    accessPolicies?: pulumi.Input<pulumi.Input<types.inputs.FhirServiceAccessPolicyEntryArgs>[]>;
-    /**
      * Fhir Service Azure container registry configuration.
      */
     acrConfiguration?: pulumi.Input<types.inputs.FhirServiceAcrConfigurationArgs>;
@@ -205,6 +207,10 @@ export interface FhirServiceArgs {
      * Fhir Service Cors configuration.
      */
     corsConfiguration?: pulumi.Input<types.inputs.FhirServiceCorsConfigurationArgs>;
+    /**
+     * The encryption settings of the FHIR service
+     */
+    encryption?: pulumi.Input<types.inputs.EncryptionArgs>;
     /**
      * Fhir Service export configuration.
      */

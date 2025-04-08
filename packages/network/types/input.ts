@@ -1,26 +1,6 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * An A record.
- */
-export interface ARecordArgs {
-    /**
-     * The IPv4 address of this A record.
-     */
-    ipv4Address?: pulumi.Input<string>;
-}
-
-/**
- * An AAAA record.
- */
-export interface AaaaRecordArgs {
-    /**
-     * The IPv6 address of this AAAA record.
-     */
-    ipv6Address?: pulumi.Input<string>;
-}
-
-/**
  * AAD Vpn authentication type related parameters.
  */
 export interface AadAuthenticationParametersArgs {
@@ -74,6 +54,10 @@ export interface AddressSpaceArgs {
      * A list of address blocks reserved for this virtual network in CIDR notation.
      */
     addressPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of IPAM Pools allocating IP address prefixes.
+     */
+    ipamPoolPrefixAllocations?: pulumi.Input<pulumi.Input<IpamPoolPrefixAllocationArgs>[]>;
 }
 
 /**
@@ -400,6 +384,10 @@ export interface ApplicationGatewayHeaderConfigurationArgs {
      * Header value of the header configuration.
      */
     headerValue?: pulumi.Input<string>;
+    /**
+     * An optional field under "Rewrite Action". It lets you capture and modify the value(s) of a specific header when multiple headers with the same name exist. Currently supported for Set-Cookie Response header only. For more details, visit https://aka.ms/appgwheadercrud
+     */
+    headerValueMatcher?: pulumi.Input<HeaderValueMatcherArgs>;
 }
 
 /**
@@ -486,6 +474,10 @@ export interface ApplicationGatewayListenerArgs {
      * Frontend port resource of an application gateway.
      */
     frontendPort?: pulumi.Input<SubResourceArgs>;
+    /**
+     * List of Server Name Indications(SNI) for TLS Multi-site Listener that allows special wildcard characters as well.
+     */
+    hostNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Resource ID.
      */
@@ -683,7 +675,7 @@ export interface ApplicationGatewayProbeArgs {
      */
     pickHostNameFromBackendSettings?: pulumi.Input<boolean>;
     /**
-     * Custom port which will be used for probing the backend servers. The valid value ranges from 1 to 65535. In case not set, port from http settings will be used. This property is valid for Standard_v2 and WAF_v2 only.
+     * Custom port which will be used for probing the backend servers. The valid value ranges from 1 to 65535. In case not set, port from http settings will be used. This property is valid for Basic, Standard_v2 and WAF_v2 only.
      */
     port?: pulumi.Input<number>;
     /**
@@ -946,6 +938,10 @@ export interface ApplicationGatewaySkuArgs {
      * Capacity (instance count) of an application gateway.
      */
     capacity?: pulumi.Input<number>;
+    /**
+     * Family of an application gateway SKU.
+     */
+    family?: pulumi.Input<string | enums.ApplicationGatewaySkuFamily>;
     /**
      * Name of an application gateway SKU.
      */
@@ -1371,6 +1367,20 @@ export interface AzureFirewallApplicationRuleProtocolArgs {
 }
 
 /**
+ * Azure Firewall Autoscale Configuration parameters.
+ */
+export interface AzureFirewallAutoscaleConfigurationArgs {
+    /**
+     * The maximum number of capacity units for this azure firewall. Use null to reset the value to the service default.
+     */
+    maxCapacity?: pulumi.Input<number>;
+    /**
+     * The minimum number of capacity units for this azure firewall. Use null to reset the value to the service default.
+     */
+    minCapacity?: pulumi.Input<number>;
+}
+
+/**
  * IP configuration of an Azure Firewall.
  */
 export interface AzureFirewallIPConfigurationArgs {
@@ -1577,56 +1587,6 @@ export interface AzureFirewallSkuArgs {
 }
 
 /**
- * Backend address of a frontDoor load balancer.
- */
-export interface BackendArgs {
-    /**
-     * Location of the backend (IP address or FQDN)
-     */
-    address?: pulumi.Input<string>;
-    /**
-     * The value to use as the host header sent to the backend. If blank or unspecified, this defaults to the incoming host.
-     */
-    backendHostHeader?: pulumi.Input<string>;
-    /**
-     * Whether to enable use of this backend. Permitted values are 'Enabled' or 'Disabled'
-     */
-    enabledState?: pulumi.Input<string | enums.BackendEnabledState>;
-    /**
-     * The HTTP TCP port number. Must be between 1 and 65535.
-     */
-    httpPort?: pulumi.Input<number>;
-    /**
-     * The HTTPS TCP port number. Must be between 1 and 65535.
-     */
-    httpsPort?: pulumi.Input<number>;
-    /**
-     * Priority to use for load balancing. Higher priorities will not be used for load balancing if any lower priority backend is healthy.
-     */
-    priority?: pulumi.Input<number>;
-    /**
-     * The Alias of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
-     */
-    privateLinkAlias?: pulumi.Input<string>;
-    /**
-     * A custom message to be included in the approval request to connect to the Private Link
-     */
-    privateLinkApprovalMessage?: pulumi.Input<string>;
-    /**
-     * The location of the Private Link resource. Required only if 'privateLinkResourceId' is populated
-     */
-    privateLinkLocation?: pulumi.Input<string>;
-    /**
-     * The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
-     */
-    privateLinkResourceId?: pulumi.Input<string>;
-    /**
-     * Weight of this endpoint for load balancing purposes.
-     */
-    weight?: pulumi.Input<number>;
-}
-
-/**
  * Pool of backend IP addresses.
  */
 export interface BackendAddressPoolArgs {
@@ -1651,6 +1611,10 @@ export interface BackendAddressPoolArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * Backend address synchronous mode for the backend pool
+     */
+    syncMode?: pulumi.Input<string | enums.SyncMode>;
+    /**
      * An array of gateway load balancer tunnel interfaces.
      */
     tunnelInterfaces?: pulumi.Input<pulumi.Input<GatewayLoadBalancerTunnelInterfaceArgs>[]>;
@@ -1658,55 +1622,6 @@ export interface BackendAddressPoolArgs {
      * A reference to a virtual network.
      */
     virtualNetwork?: pulumi.Input<SubResourceArgs>;
-}
-
-/**
- * A backend pool is a collection of backends that can be routed to.
- */
-export interface BackendPoolArgs {
-    /**
-     * The set of backends for this pool
-     */
-    backends?: pulumi.Input<pulumi.Input<BackendArgs>[]>;
-    /**
-     * L7 health probe settings for a backend pool
-     */
-    healthProbeSettings?: pulumi.Input<SubResourceArgs>;
-    /**
-     * Resource ID.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Load balancing settings for a backend pool
-     */
-    loadBalancingSettings?: pulumi.Input<SubResourceArgs>;
-    /**
-     * Resource name.
-     */
-    name?: pulumi.Input<string>;
-}
-
-/**
- * Settings that apply to all backend pools.
- */
-export interface BackendPoolsSettingsArgs {
-    /**
-     * Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
-     */
-    enforceCertificateNameCheck?: pulumi.Input<string | enums.EnforceCertificateNameCheckEnabledState>;
-    /**
-     * Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.
-     */
-    sendRecvTimeoutSeconds?: pulumi.Input<number>;
-}
-/**
- * backendPoolsSettingsArgsProvideDefaults sets the appropriate defaults for BackendPoolsSettingsArgs
- */
-export function backendPoolsSettingsArgsProvideDefaults(val: BackendPoolsSettingsArgs): BackendPoolsSettingsArgs {
-    return {
-        ...val,
-        enforceCertificateNameCheck: (val.enforceCertificateNameCheck) ?? "Enabled",
-    };
 }
 
 /**
@@ -1726,13 +1641,20 @@ export interface BastionHostIPConfigurationArgs {
      */
     privateIPAllocationMethod?: pulumi.Input<string | enums.IPAllocationMethod>;
     /**
-     * Reference of the PublicIP resource.
+     * Reference of the PublicIP resource. Null for private only bastion
      */
-    publicIPAddress: pulumi.Input<SubResourceArgs>;
+    publicIPAddress?: pulumi.Input<SubResourceArgs>;
     /**
      * Reference of the subnet resource.
      */
     subnet: pulumi.Input<SubResourceArgs>;
+}
+
+export interface BastionHostPropertiesFormatNetworkAclsArgs {
+    /**
+     * Sets the IP ACL rules for Developer Bastion Host.
+     */
+    ipRules?: pulumi.Input<pulumi.Input<IPRuleArgs>[]>;
 }
 
 /**
@@ -1796,56 +1718,6 @@ export interface BreakOutCategoryPoliciesArgs {
 }
 
 /**
- * A CAA record.
- */
-export interface CaaRecordArgs {
-    /**
-     * The flags for this CAA record as an integer between 0 and 255.
-     */
-    flags?: pulumi.Input<number>;
-    /**
-     * The tag for this CAA record.
-     */
-    tag?: pulumi.Input<string>;
-    /**
-     * The value for this CAA record.
-     */
-    value?: pulumi.Input<string>;
-}
-
-/**
- * Caching settings for a caching-type route. To disable caching, do not provide a cacheConfiguration object.
- */
-export interface CacheConfigurationArgs {
-    /**
-     * The duration for which the content needs to be cached. Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations). HTTP requires the value to be no more than a year
-     */
-    cacheDuration?: pulumi.Input<string>;
-    /**
-     * Whether to use dynamic compression for cached content
-     */
-    dynamicCompression?: pulumi.Input<string | enums.DynamicCompressionEnabled>;
-    /**
-     * Treatment of URL query terms when forming the cache key.
-     */
-    queryParameterStripDirective?: pulumi.Input<string | enums.FrontDoorQuery>;
-    /**
-     * query parameters to include or exclude (comma separated).
-     */
-    queryParameters?: pulumi.Input<string>;
-}
-
-/**
- * A CNAME record.
- */
-export interface CnameRecordArgs {
-    /**
-     * The canonical name for this CNAME record.
-     */
-    cname?: pulumi.Input<string>;
-}
-
-/**
  * Describes the destination of connection monitor.
  */
 export interface ConnectionMonitorDestinationArgs {
@@ -1868,7 +1740,7 @@ export interface ConnectionMonitorDestinationArgs {
  */
 export interface ConnectionMonitorEndpointArgs {
     /**
-     * Address of the connection monitor endpoint (IP or domain name).
+     * Address of the connection monitor endpoint. Supported for AzureVM, ExternalAddress, ArcMachine, MMAWorkspaceMachine endpoint type.
      */
     address?: pulumi.Input<string>;
     /**
@@ -1876,21 +1748,29 @@ export interface ConnectionMonitorEndpointArgs {
      */
     coverageLevel?: pulumi.Input<string | enums.CoverageLevel>;
     /**
-     * Filter for sub-items within the endpoint.
+     * Filter field is getting deprecated and should not be used. Instead use Include/Exclude scope fields for it.
      */
     filter?: pulumi.Input<ConnectionMonitorEndpointFilterArgs>;
+    /**
+     * Location details is optional and only being used for 'AzureArcNetwork' type endpoints, which contains region details.
+     */
+    locationDetails?: pulumi.Input<ConnectionMonitorEndpointLocationDetailsArgs>;
     /**
      * The name of the connection monitor endpoint.
      */
     name: pulumi.Input<string>;
     /**
-     * Resource ID of the connection monitor endpoint.
+     * Resource ID of the connection monitor endpoint are supported for AzureVM, AzureVMSS, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork, AzureArcVM endpoint type.
      */
     resourceId?: pulumi.Input<string>;
     /**
-     * Endpoint scope.
+     * Endpoint scope defines which target resource to monitor in case of compound resource endpoints like VMSS, AzureSubnet, AzureVNet, MMAWorkspaceNetwork, AzureArcNetwork.
      */
     scope?: pulumi.Input<ConnectionMonitorEndpointScopeArgs>;
+    /**
+     * Subscription ID for connection monitor endpoint. It's an optional parameter which is being used for 'AzureArcNetwork' type endpoint.
+     */
+    subscriptionId?: pulumi.Input<string>;
     /**
      * The endpoint type.
      */
@@ -1923,6 +1803,16 @@ export interface ConnectionMonitorEndpointFilterItemArgs {
      * The type of item included in the filter. Currently only 'AgentAddress' is supported.
      */
     type?: pulumi.Input<string | enums.ConnectionMonitorEndpointFilterItemType>;
+}
+
+/**
+ * Connection monitor endpoint location details only being used for 'AzureArcNetwork' type endpoints, which contains the region details.
+ */
+export interface ConnectionMonitorEndpointLocationDetailsArgs {
+    /**
+     * Region for connection monitor endpoint.
+     */
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -2204,54 +2094,6 @@ export interface CustomDnsConfigPropertiesFormatArgs {
 }
 
 /**
- * Defines contents of a web application rule
- */
-export interface CustomRuleArgs {
-    /**
-     * Describes what action to be applied when rule matches.
-     */
-    action: pulumi.Input<string | enums.ActionType>;
-    /**
-     * Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
-     */
-    enabledState?: pulumi.Input<string | enums.CustomRuleEnabledState>;
-    /**
-     * List of match conditions.
-     */
-    matchConditions: pulumi.Input<pulumi.Input<FrontDoorMatchConditionArgs>[]>;
-    /**
-     * Describes the name of the rule.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
-     */
-    priority: pulumi.Input<number>;
-    /**
-     * Time window for resetting the rate limit count. Default is 1 minute.
-     */
-    rateLimitDurationInMinutes?: pulumi.Input<number>;
-    /**
-     * Number of allowed requests per client within the time window.
-     */
-    rateLimitThreshold?: pulumi.Input<number>;
-    /**
-     * Describes type of rule.
-     */
-    ruleType: pulumi.Input<string | enums.RuleType>;
-}
-
-/**
- * Defines contents of custom rules
- */
-export interface CustomRuleListArgs {
-    /**
-     * List of rules
-     */
-    rules?: pulumi.Input<pulumi.Input<CustomRuleArgs>[]>;
-}
-
-/**
  * Contains the DDoS protection settings of the public IP.
  */
 export interface DdosSettingsArgs {
@@ -2334,34 +2176,6 @@ export interface DhcpOptionsArgs {
 }
 
 /**
- * Class containing DNS settings in a Traffic Manager profile.
- */
-export interface DnsConfigArgs {
-    /**
-     * The relative DNS name provided by this Traffic Manager profile. This value is combined with the DNS domain name used by Azure Traffic Manager to form the fully-qualified domain name (FQDN) of the profile.
-     */
-    relativeName?: pulumi.Input<string>;
-    /**
-     * The DNS Time-To-Live (TTL), in seconds. This informs the local DNS resolvers and DNS clients how long to cache DNS responses provided by this Traffic Manager profile.
-     */
-    ttl?: pulumi.Input<number>;
-}
-
-/**
- * The action to take on DNS requests that match the DNS security rule.
- */
-export interface DnsSecurityRuleActionArgs {
-    /**
-     * The type of action to take.
-     */
-    actionType?: pulumi.Input<string | enums.ActionType>;
-    /**
-     * The response code for block actions.
-     */
-    blockResponseCode?: pulumi.Input<string | enums.BlockResponseCode>;
-}
-
-/**
  * DNS Proxy Settings in Firewall Policy.
  */
 export interface DnsSettingsArgs {
@@ -2380,112 +2194,6 @@ export interface DnsSettingsArgs {
 }
 
 /**
- * Class representing a Traffic Manager endpoint.
- */
-export interface EndpointArgs {
-    /**
-     * If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
-     */
-    alwaysServe?: pulumi.Input<string | enums.AlwaysServe>;
-    /**
-     * List of custom headers.
-     */
-    customHeaders?: pulumi.Input<pulumi.Input<EndpointPropertiesCustomHeadersArgs>[]>;
-    /**
-     * Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
-     */
-    endpointLocation?: pulumi.Input<string>;
-    /**
-     * The monitoring status of the endpoint.
-     */
-    endpointMonitorStatus?: pulumi.Input<string | enums.EndpointMonitorStatus>;
-    /**
-     * The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method.
-     */
-    endpointStatus?: pulumi.Input<string | enums.EndpointStatus>;
-    /**
-     * The list of countries/regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager Geographic documentation for a full list of accepted values.
-     */
-    geoMapping?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The minimum number of endpoints that must be available in the child profile in order for the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.
-     */
-    minChildEndpoints?: pulumi.Input<number>;
-    /**
-     * The minimum number of IPv4 (DNS record type A) endpoints that must be available in the child profile in order for the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.
-     */
-    minChildEndpointsIPv4?: pulumi.Input<number>;
-    /**
-     * The minimum number of IPv6 (DNS record type AAAA) endpoints that must be available in the child profile in order for the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.
-     */
-    minChildEndpointsIPv6?: pulumi.Input<number>;
-    /**
-     * The name of the resource
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value.
-     */
-    priority?: pulumi.Input<number>;
-    /**
-     * The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
-     */
-    subnets?: pulumi.Input<pulumi.Input<EndpointPropertiesSubnetsArgs>[]>;
-    /**
-     * The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
-     */
-    target?: pulumi.Input<string>;
-    /**
-     * The Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
-     */
-    targetResourceId?: pulumi.Input<string>;
-    /**
-     * The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
-     */
-    weight?: pulumi.Input<number>;
-}
-
-/**
- * Custom header name and value.
- */
-export interface EndpointPropertiesCustomHeadersArgs {
-    /**
-     * Header name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Header value.
-     */
-    value?: pulumi.Input<string>;
-}
-
-/**
- * Subnet first address, scope, and/or last address.
- */
-export interface EndpointPropertiesSubnetsArgs {
-    /**
-     * First address in the subnet.
-     */
-    first?: pulumi.Input<string>;
-    /**
-     * Last address in the subnet.
-     */
-    last?: pulumi.Input<string>;
-    /**
-     * Block size (number of leading bits in the subnet mask).
-     */
-    scope?: pulumi.Input<number>;
-}
-
-/**
  * Identifies the service being brought into the virtual network.
  */
 export interface EndpointServiceArgs {
@@ -2493,6 +2201,36 @@ export interface EndpointServiceArgs {
      * A unique identifier of the service being referenced by the interface endpoint.
      */
     id?: pulumi.Input<string>;
+}
+
+/**
+ * Adds exception to allow a request when the condition is satisfied.
+ */
+export interface ExceptionEntryArgs {
+    /**
+     * The managed rule sets that are associated with the exception.
+     */
+    exceptionManagedRuleSets?: pulumi.Input<pulumi.Input<ExclusionManagedRuleSetArgs>[]>;
+    /**
+     * The variable on which we evaluate the exception condition
+     */
+    matchVariable: pulumi.Input<string | enums.ExceptionEntryMatchVariable>;
+    /**
+     * When the matchVariable points to a key-value pair (e.g, RequestHeader), this identifies the key.
+     */
+    selector?: pulumi.Input<string>;
+    /**
+     * When the matchVariable points to a key-value pair (e.g, RequestHeader), this operates on the selector
+     */
+    selectorMatchOperator?: pulumi.Input<string | enums.ExceptionEntrySelectorMatchOperator>;
+    /**
+     * Operates on the allowed values for the matchVariable
+     */
+    valueMatchOperator: pulumi.Input<string | enums.ExceptionEntryValueMatchOperator>;
+    /**
+     * Allowed values for the matchVariable
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -2535,20 +2273,6 @@ export interface ExclusionManagedRuleSetArgs {
      * Defines the version of the rule set to use.
      */
     ruleSetVersion: pulumi.Input<string>;
-}
-
-/**
- * Defines the endpoint properties
- */
-export interface ExperimentEndpointArgs {
-    /**
-     * The endpoint URL
-     */
-    endpoint?: pulumi.Input<string>;
-    /**
-     * The name of the endpoint
-     */
-    name?: pulumi.Input<string>;
 }
 
 /**
@@ -3389,199 +3113,6 @@ export function flowLogFormatParametersArgsProvideDefaults(val: FlowLogFormatPar
 }
 
 /**
- * Describes Forwarding Route.
- */
-export interface ForwardingConfigurationArgs {
-    /**
-     * A reference to the BackendPool which this rule routes to.
-     */
-    backendPool?: pulumi.Input<SubResourceArgs>;
-    /**
-     * The caching configuration associated with this rule.
-     */
-    cacheConfiguration?: pulumi.Input<CacheConfigurationArgs>;
-    /**
-     * A custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.
-     */
-    customForwardingPath?: pulumi.Input<string>;
-    /**
-     * Protocol this rule will use when forwarding traffic to backends.
-     */
-    forwardingProtocol?: pulumi.Input<string | enums.FrontDoorForwardingProtocol>;
-    /**
-     *
-     * Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration'.
-     */
-    odataType: pulumi.Input<"#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration">;
-}
-
-/**
- * Defines a managed rule group override setting.
- */
-export interface FrontDoorManagedRuleGroupOverrideArgs {
-    /**
-     * Describes the exclusions that are applied to all rules in the group.
-     */
-    exclusions?: pulumi.Input<pulumi.Input<ManagedRuleExclusionArgs>[]>;
-    /**
-     * Describes the managed rule group to override.
-     */
-    ruleGroupName: pulumi.Input<string>;
-    /**
-     * List of rules that will be disabled. If none specified, all rules in the group will be disabled.
-     */
-    rules?: pulumi.Input<pulumi.Input<FrontDoorManagedRuleOverrideArgs>[]>;
-}
-
-/**
- * Defines a managed rule group override setting.
- */
-export interface FrontDoorManagedRuleOverrideArgs {
-    /**
-     * Describes the override action to be applied when rule matches.
-     */
-    action?: pulumi.Input<string | enums.ActionType>;
-    /**
-     * Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
-     */
-    enabledState?: pulumi.Input<string | enums.ManagedRuleEnabledState>;
-    /**
-     * Describes the exclusions that are applied to this specific rule.
-     */
-    exclusions?: pulumi.Input<pulumi.Input<ManagedRuleExclusionArgs>[]>;
-    /**
-     * Identifier for the managed rule.
-     */
-    ruleId: pulumi.Input<string>;
-}
-
-/**
- * Defines a managed rule set.
- */
-export interface FrontDoorManagedRuleSetArgs {
-    /**
-     * Describes the exclusions that are applied to all rules in the set.
-     */
-    exclusions?: pulumi.Input<pulumi.Input<ManagedRuleExclusionArgs>[]>;
-    /**
-     * Defines the rule group overrides to apply to the rule set.
-     */
-    ruleGroupOverrides?: pulumi.Input<pulumi.Input<FrontDoorManagedRuleGroupOverrideArgs>[]>;
-    /**
-     * Defines the rule set action.
-     */
-    ruleSetAction?: pulumi.Input<string | enums.ManagedRuleSetActionType>;
-    /**
-     * Defines the rule set type to use.
-     */
-    ruleSetType: pulumi.Input<string>;
-    /**
-     * Defines the version of the rule set to use.
-     */
-    ruleSetVersion: pulumi.Input<string>;
-}
-
-/**
- * Define a match condition.
- */
-export interface FrontDoorMatchConditionArgs {
-    /**
-     * List of possible match values.
-     */
-    matchValue: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Request variable to compare with.
-     */
-    matchVariable: pulumi.Input<string | enums.FrontDoorMatchVariable>;
-    /**
-     * Describes if the result of this condition should be negated.
-     */
-    negateCondition?: pulumi.Input<boolean>;
-    /**
-     * Comparison type to use for matching with the variable value.
-     */
-    operator: pulumi.Input<string | enums.Operator>;
-    /**
-     * Match against a specific key from the QueryString, PostArgs, RequestHeader or Cookies variables. Default is null.
-     */
-    selector?: pulumi.Input<string>;
-    /**
-     * List of transforms.
-     */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.TransformType>[]>;
-}
-
-/**
- * Defines top-level WebApplicationFirewallPolicy configuration settings.
- */
-export interface FrontDoorPolicySettingsArgs {
-    /**
-     * If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-     */
-    customBlockResponseBody?: pulumi.Input<string>;
-    /**
-     * If the action type is block, customer can override the response status code.
-     */
-    customBlockResponseStatusCode?: pulumi.Input<number>;
-    /**
-     * Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified.
-     */
-    enabledState?: pulumi.Input<string | enums.PolicyEnabledState>;
-    /**
-     * Describes if it is in detection mode or prevention mode at policy level.
-     */
-    mode?: pulumi.Input<string | enums.PolicyMode>;
-    /**
-     * If action type is redirect, this field represents redirect URL for the client.
-     */
-    redirectUrl?: pulumi.Input<string>;
-    /**
-     * Describes if policy managed rules will inspect the request body content.
-     */
-    requestBodyCheck?: pulumi.Input<string | enums.PolicyRequestBodyCheck>;
-}
-
-/**
- * A frontend endpoint used for routing.
- */
-export interface FrontendEndpointArgs {
-    /**
-     * The host name of the frontendEndpoint. Must be a domain name.
-     */
-    hostName?: pulumi.Input<string>;
-    /**
-     * Resource ID.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Resource name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
-     */
-    sessionAffinityEnabledState?: pulumi.Input<string | enums.SessionAffinityEnabledState>;
-    /**
-     * UNUSED. This field will be ignored. The TTL to use in seconds for session affinity, if applicable.
-     */
-    sessionAffinityTtlSeconds?: pulumi.Input<number>;
-    /**
-     * Defines the Web Application Firewall policy for each host (if applicable)
-     */
-    webApplicationFirewallPolicyLink?: pulumi.Input<FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLinkArgs>;
-}
-
-/**
- * Defines the Web Application Firewall policy for each host (if applicable)
- */
-export interface FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLinkArgs {
-    /**
-     * Resource ID.
-     */
-    id?: pulumi.Input<string>;
-}
-
-/**
  * Frontend IP address of the load balancer.
  */
 export interface FrontendIPConfigurationArgs {
@@ -3707,64 +3238,21 @@ export interface HTTPHeaderArgs {
 }
 
 /**
- * An action that can manipulate an http header.
+ * An optional field under "Rewrite Action". It lets you capture and modify the value(s) of a specific header when multiple headers with the same name exist. Currently supported for Set-Cookie Response header only. For more details, visit https://aka.ms/appgwheadercrud
  */
-export interface HeaderActionArgs {
+export interface HeaderValueMatcherArgs {
     /**
-     * Which type of manipulation to apply to the header.
+     * Setting this parameter to truth value with force the pattern to do a case in-sensitive comparison.
      */
-    headerActionType: pulumi.Input<string | enums.HeaderActionType>;
+    ignoreCase?: pulumi.Input<boolean>;
     /**
-     * The name of the header this action will apply to.
+     * Setting this value as truth will force to check the negation of the condition given by the user in the pattern field.
      */
-    headerName: pulumi.Input<string>;
+    negate?: pulumi.Input<boolean>;
     /**
-     * The value to update the given header name with. This value is not used if the actionType is Delete.
+     * The pattern, either fixed string or regular expression, that evaluates if a header value should be selected for rewrite.
      */
-    value?: pulumi.Input<string>;
-}
-
-/**
- * Load balancing settings for a backend pool
- */
-export interface HealthProbeSettingsModelArgs {
-    /**
-     * Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
-     */
-    enabledState?: pulumi.Input<string | enums.HealthProbeEnabled>;
-    /**
-     * Configures which HTTP method to use to probe the backends defined under backendPools.
-     */
-    healthProbeMethod?: pulumi.Input<string | enums.FrontDoorHealthProbeMethod>;
-    /**
-     * Resource ID.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The number of seconds between health probes.
-     */
-    intervalInSeconds?: pulumi.Input<number>;
-    /**
-     * Resource name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The path to use for the health probe. Default is /
-     */
-    path?: pulumi.Input<string>;
-    /**
-     * Protocol scheme to use for this probe
-     */
-    protocol?: pulumi.Input<string | enums.FrontDoorProtocol>;
-}
-/**
- * healthProbeSettingsModelArgsProvideDefaults sets the appropriate defaults for HealthProbeSettingsModelArgs
- */
-export function healthProbeSettingsModelArgsProvideDefaults(val: HealthProbeSettingsModelArgs): HealthProbeSettingsModelArgs {
-    return {
-        ...val,
-        healthProbeMethod: (val.healthProbeMethod) ?? "HEAD",
-    };
+    pattern?: pulumi.Input<string>;
 }
 
 /**
@@ -3876,6 +3364,13 @@ export function ipconfigurationProfileArgsProvideDefaults(val: IPConfigurationPr
     };
 }
 
+export interface IPRuleArgs {
+    /**
+     * Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
+     */
+    addressPrefix?: pulumi.Input<string>;
+}
+
 /**
  * IP traffic information.
  */
@@ -3897,33 +3392,6 @@ export interface IPTrafficArgs {
      * The source ports of the traffic.
      */
     sourcePorts: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-/**
- * IP configuration.
- */
-export interface InboundEndpointIPConfigurationArgs {
-    /**
-     * Private IP address of the IP configuration.
-     */
-    privateIpAddress?: pulumi.Input<string>;
-    /**
-     * Private IP address allocation method.
-     */
-    privateIpAllocationMethod?: pulumi.Input<string | enums.IpAllocationMethod>;
-    /**
-     * The reference to the subnet bound to the IP configuration.
-     */
-    subnet: pulumi.Input<SubResourceArgs>;
-}
-/**
- * inboundEndpointIPConfigurationArgsProvideDefaults sets the appropriate defaults for InboundEndpointIPConfigurationArgs
- */
-export function inboundEndpointIPConfigurationArgsProvideDefaults(val: InboundEndpointIPConfigurationArgs): InboundEndpointIPConfigurationArgs {
-    return {
-        ...val,
-        privateIpAllocationMethod: (val.privateIpAllocationMethod) ?? "Dynamic",
-    };
 }
 
 /**
@@ -4027,6 +3495,16 @@ export interface InboundNatRuleArgs {
 }
 
 /**
+ * Resource Uri of Public Ip for Standard Load Balancer Frontend End.
+ */
+export interface InternetIngressPublicIpsPropertiesArgs {
+    /**
+     * Resource Uri of Public Ip
+     */
+    id?: pulumi.Input<string>;
+}
+
+/**
  * Contains the IpTag associated with the object.
  */
 export interface IpTagArgs {
@@ -4038,6 +3516,20 @@ export interface IpTagArgs {
      * The value of the IP tag associated with the public IP. Example: SQL.
      */
     tag?: pulumi.Input<string>;
+}
+
+/**
+ * IpamPool prefix allocation reference.
+ */
+export interface IpamPoolPrefixAllocationArgs {
+    /**
+     * Resource id of the associated Azure IpamPool resource.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Number of IP addresses to allocate.
+     */
+    numberOfIpAddresses?: pulumi.Input<string>;
 }
 
 /**
@@ -4240,32 +3732,6 @@ export interface LoadBalancingRuleArgs {
 }
 
 /**
- * Load balancing settings for a backend pool
- */
-export interface LoadBalancingSettingsModelArgs {
-    /**
-     * The additional latency in milliseconds for probes to fall into the lowest latency bucket
-     */
-    additionalLatencyMilliseconds?: pulumi.Input<number>;
-    /**
-     * Resource ID.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Resource name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The number of samples to consider for load balancing decisions
-     */
-    sampleSize?: pulumi.Input<number>;
-    /**
-     * The number of samples within the sample period that must succeed
-     */
-    successfulSamplesRequired?: pulumi.Input<number>;
-}
-
-/**
  * A common class for general resource information.
  */
 export interface LocalNetworkGatewayArgs {
@@ -4300,24 +3766,6 @@ export interface LocalNetworkGatewayArgs {
 }
 
 /**
- * Exclude variables from managed rule evaluation.
- */
-export interface ManagedRuleExclusionArgs {
-    /**
-     * The variable type to be excluded.
-     */
-    matchVariable: pulumi.Input<string | enums.ManagedRuleExclusionMatchVariable>;
-    /**
-     * Selector value for which elements in the collection this exclusion applies to.
-     */
-    selector: pulumi.Input<string>;
-    /**
-     * Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.
-     */
-    selectorMatchOperator: pulumi.Input<string | enums.ManagedRuleExclusionSelectorMatchOperator>;
-}
-
-/**
  * Defines a managed rule group override setting.
  */
 export interface ManagedRuleGroupOverrideArgs {
@@ -4344,6 +3792,10 @@ export interface ManagedRuleOverrideArgs {
      */
     ruleId: pulumi.Input<string>;
     /**
+     * Describes the override sensitivity to be applied when rule matches.
+     */
+    sensitivity?: pulumi.Input<string | enums.SensitivityType>;
+    /**
      * The state of the managed rule. Defaults to Disabled if not specified.
      */
     state?: pulumi.Input<string | enums.ManagedRuleEnabledState>;
@@ -4368,19 +3820,13 @@ export interface ManagedRuleSetArgs {
 }
 
 /**
- * Defines the list of managed rule sets for the policy.
- */
-export interface ManagedRuleSetListArgs {
-    /**
-     * List of rule sets.
-     */
-    managedRuleSets?: pulumi.Input<pulumi.Input<FrontDoorManagedRuleSetArgs>[]>;
-}
-
-/**
  * Allow to exclude some variable satisfy the condition for the WAF check.
  */
 export interface ManagedRulesDefinitionArgs {
+    /**
+     * The exceptions that are applied on the policy.
+     */
+    exceptions?: pulumi.Input<pulumi.Input<ExceptionEntryArgs>[]>;
     /**
      * The Exclusions that are applied on the policy.
      */
@@ -4443,90 +3889,6 @@ export interface MatchVariableArgs {
      * Match Variable.
      */
     variableName: pulumi.Input<string | enums.WebApplicationFirewallMatchVariable>;
-}
-
-/**
- * Class containing endpoint monitoring settings in a Traffic Manager profile.
- */
-export interface MonitorConfigArgs {
-    /**
-     * List of custom headers.
-     */
-    customHeaders?: pulumi.Input<pulumi.Input<MonitorConfigCustomHeadersArgs>[]>;
-    /**
-     * List of expected status code ranges.
-     */
-    expectedStatusCodeRanges?: pulumi.Input<pulumi.Input<MonitorConfigExpectedStatusCodeRangesArgs>[]>;
-    /**
-     * The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile.
-     */
-    intervalInSeconds?: pulumi.Input<number>;
-    /**
-     * The path relative to the endpoint domain name used to probe for endpoint health.
-     */
-    path?: pulumi.Input<string>;
-    /**
-     * The TCP port used to probe for endpoint health.
-     */
-    port?: pulumi.Input<number>;
-    /**
-     * The profile-level monitoring status of the Traffic Manager profile.
-     */
-    profileMonitorStatus?: pulumi.Input<string | enums.ProfileMonitorStatus>;
-    /**
-     * The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
-     */
-    protocol?: pulumi.Input<string | enums.MonitorProtocol>;
-    /**
-     * The monitor timeout for endpoints in this profile. This is the time that Traffic Manager allows endpoints in this profile to response to the health check.
-     */
-    timeoutInSeconds?: pulumi.Input<number>;
-    /**
-     * The number of consecutive failed health check that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next failed health check.
-     */
-    toleratedNumberOfFailures?: pulumi.Input<number>;
-}
-
-/**
- * Custom header name and value.
- */
-export interface MonitorConfigCustomHeadersArgs {
-    /**
-     * Header name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Header value.
-     */
-    value?: pulumi.Input<string>;
-}
-
-/**
- * Min and max value of a status code range.
- */
-export interface MonitorConfigExpectedStatusCodeRangesArgs {
-    /**
-     * Max status code.
-     */
-    max?: pulumi.Input<number>;
-    /**
-     * Min status code.
-     */
-    min?: pulumi.Input<number>;
-}
-
-/**
- * An MX record.
- */
-export interface MxRecordArgs {
-    /**
-     * The domain name of the mail host for this MX record.
-     */
-    exchange?: pulumi.Input<string>;
-    /**
-     * The preference value for this MX record.
-     */
-    preference?: pulumi.Input<number>;
 }
 
 /**
@@ -4718,9 +4080,13 @@ export interface NetworkInterfaceIPConfigurationArgs {
      */
     primary?: pulumi.Input<boolean>;
     /**
-     * Private IP address of the IP configuration.
+     * Private IP address of the IP configuration. It can be a single IP address or a CIDR block in the format <address>/<prefix-length>.
      */
     privateIPAddress?: pulumi.Input<string>;
+    /**
+     * The private IP address prefix length. If specified and the allocation method is dynamic, the service will allocate a CIDR block instead of a single IP address.
+     */
+    privateIPAddressPrefixLength?: pulumi.Input<number>;
     /**
      * Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4.
      */
@@ -4923,13 +4289,40 @@ export interface NetworkSecurityGroupArgs {
 }
 
 /**
- * An NS record.
+ * Properties of the NetworkVirtualApplianceConnection subresource.
  */
-export interface NsRecordArgs {
+export interface NetworkVirtualApplianceConnectionPropertiesArgs {
     /**
-     * The name server name for this NS record.
+     * Network Virtual Appliance ASN.
      */
-    nsdname?: pulumi.Input<string>;
+    asn?: pulumi.Input<number>;
+    /**
+     * List of bgpPeerAddresses for the NVA instances
+     */
+    bgpPeerAddress?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Enable internet security.
+     */
+    enableInternetSecurity?: pulumi.Input<boolean>;
+    /**
+     * The name of the resource.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The Routing Configuration indicating the associated and propagated route tables on this connection.
+     */
+    routingConfiguration?: pulumi.Input<RoutingConfigurationArgs>;
+    /**
+     * Unique identifier for the connection.
+     */
+    tunnelIdentifier?: pulumi.Input<number>;
+}
+
+/**
+ * Network Profile containing configurations for Public and Private NIC.
+ */
+export interface NetworkVirtualAppliancePropertiesFormatNetworkProfileArgs {
+    networkInterfaceConfigurations?: pulumi.Input<pulumi.Input<VirtualApplianceNetworkInterfaceConfigurationArgs>[]>;
 }
 
 /**
@@ -5187,6 +4580,52 @@ export interface P2SVpnServerConfigVpnClientRootCertificateArgs {
 }
 
 /**
+ * Parameters for P2SVpnServerConfiguration.
+ */
+export interface P2SVpnServerConfigurationPropertiesArgs {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag?: pulumi.Input<string>;
+    /**
+     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan in a resource group. This name can be used to access the resource along with Paren VirtualWan resource name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Radius client root certificate of P2SVpnServerConfiguration.
+     */
+    p2SVpnServerConfigRadiusClientRootCertificates?: pulumi.Input<pulumi.Input<P2SVpnServerConfigRadiusClientRootCertificateArgs>[]>;
+    /**
+     * Radius Server root certificate of P2SVpnServerConfiguration.
+     */
+    p2SVpnServerConfigRadiusServerRootCertificates?: pulumi.Input<pulumi.Input<P2SVpnServerConfigRadiusServerRootCertificateArgs>[]>;
+    /**
+     * VPN client revoked certificate of P2SVpnServerConfiguration.
+     */
+    p2SVpnServerConfigVpnClientRevokedCertificates?: pulumi.Input<pulumi.Input<P2SVpnServerConfigVpnClientRevokedCertificateArgs>[]>;
+    /**
+     * VPN client root certificate of P2SVpnServerConfiguration.
+     */
+    p2SVpnServerConfigVpnClientRootCertificates?: pulumi.Input<pulumi.Input<P2SVpnServerConfigVpnClientRootCertificateArgs>[]>;
+    /**
+     * The radius server address property of the P2SVpnServerConfiguration resource for point to site client connection.
+     */
+    radiusServerAddress?: pulumi.Input<string>;
+    /**
+     * The radius secret property of the P2SVpnServerConfiguration resource for point to site client connection.
+     */
+    radiusServerSecret?: pulumi.Input<string>;
+    /**
+     * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
+     */
+    vpnClientIpsecPolicies?: pulumi.Input<pulumi.Input<IpsecPolicyArgs>[]>;
+    /**
+     * VPN protocols for the P2SVpnServerConfiguration.
+     */
+    vpnProtocols?: pulumi.Input<pulumi.Input<string | enums.VpnGatewayTunnelingProtocol>[]>;
+}
+
+/**
  * Filter that is applied to packet capture request. Multiple filters can be applied.
  */
 export interface PacketCaptureFilterArgs {
@@ -5238,13 +4677,46 @@ export interface PacketCaptureMachineScopeArgs {
 /**
  * The storage location for a packet capture session.
  */
+export interface PacketCaptureSettingsArgs {
+    /**
+     * Number of file count. Default value of count is 10 and maximum number is 10000.
+     */
+    fileCount?: pulumi.Input<number>;
+    /**
+     * Number of bytes captured per packet. Default value in bytes 104857600 (100MB) and maximum in bytes 4294967295 (4GB).
+     */
+    fileSizeInBytes?: pulumi.Input<number>;
+    /**
+     * Maximum duration of the capture session in seconds is 604800s (7 days) for a file. Default value in second 86400s (1 day).
+     */
+    sessionTimeLimitInSeconds?: pulumi.Input<number>;
+}
+/**
+ * packetCaptureSettingsArgsProvideDefaults sets the appropriate defaults for PacketCaptureSettingsArgs
+ */
+export function packetCaptureSettingsArgsProvideDefaults(val: PacketCaptureSettingsArgs): PacketCaptureSettingsArgs {
+    return {
+        ...val,
+        fileCount: (val.fileCount) ?? 10,
+        fileSizeInBytes: (val.fileSizeInBytes) ?? 104857600,
+        sessionTimeLimitInSeconds: (val.sessionTimeLimitInSeconds) ?? 86400,
+    };
+}
+
+/**
+ * The storage location for a packet capture session.
+ */
 export interface PacketCaptureStorageLocationArgs {
     /**
-     * A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures. Required if no storage ID is provided, otherwise optional.
+     * This path is invalid if 'Continuous Capture' is provided with 'true' or 'false'. A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures. Required if no storage ID is provided, otherwise optional.
      */
     filePath?: pulumi.Input<string>;
     /**
-     * The ID of the storage account to save the packet capture session. Required if no local file path is provided.
+     * This path is valid if 'Continuous Capture' is provided with 'true' or 'false' and required if no storage ID is provided, otherwise optional. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures.
+     */
+    localPath?: pulumi.Input<string>;
+    /**
+     * The ID of the storage account to save the packet capture session. Required if no localPath or filePath is provided.
      */
     storageId?: pulumi.Input<string>;
     /**
@@ -5291,6 +4763,10 @@ export interface PolicySettingsArgs {
      * Maximum file upload size in Mb for WAF.
      */
     fileUploadLimitInMb?: pulumi.Input<number>;
+    /**
+     * Web Application Firewall JavaScript Challenge Cookie Expiration time in minutes.
+     */
+    jsChallengeCookieExpirationInMins?: pulumi.Input<number>;
     /**
      * To scrub sensitive log fields
      */
@@ -5389,6 +4865,10 @@ export interface PrivateLinkServiceArgs {
      * The auto-approval list of the private link service.
      */
     autoApproval?: pulumi.Input<PrivateLinkServicePropertiesAutoApprovalArgs>;
+    /**
+     * The destination IP address of the private link service.
+     */
+    destinationIPAddress?: pulumi.Input<string>;
     /**
      * Whether the private link service is enabled for proxy protocol or not.
      */
@@ -5555,6 +5035,10 @@ export interface ProbeArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * Determines how new connections are handled by the load balancer when all backend instances are probed down.
+     */
+    noHealthyBackendsBehavior?: pulumi.Input<string | enums.ProbeNoHealthyBackendsBehavior>;
+    /**
      * The number of probes where if no response, will result in stopping further traffic from being delivered to the endpoint. This values allows endpoints to be taken out of rotation faster or slower than the typical times used in Azure.
      */
     numberOfProbes?: pulumi.Input<number>;
@@ -5588,16 +5072,6 @@ export interface PropagatedRouteTableArgs {
      * The list of labels.
      */
     labels?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-/**
- * A PTR record.
- */
-export interface PtrRecordArgs {
-    /**
-     * The PTR target domain name for this PTR record.
-     */
-    ptrdname?: pulumi.Input<string>;
 }
 
 /**
@@ -5839,41 +5313,6 @@ export interface ReachabilityAnalysisRunPropertiesArgs {
 }
 
 /**
- * Describes Redirect Route.
- */
-export interface RedirectConfigurationArgs {
-    /**
-     * Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
-     */
-    customFragment?: pulumi.Input<string>;
-    /**
-     * Host to redirect. Leave empty to use the incoming host as the destination host.
-     */
-    customHost?: pulumi.Input<string>;
-    /**
-     * The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
-     */
-    customPath?: pulumi.Input<string>;
-    /**
-     * The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
-     */
-    customQueryString?: pulumi.Input<string>;
-    /**
-     *
-     * Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
-     */
-    odataType: pulumi.Input<"#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration">;
-    /**
-     * The protocol of the destination to where the traffic is redirected
-     */
-    redirectProtocol?: pulumi.Input<string | enums.FrontDoorRedirectProtocol>;
-    /**
-     * The redirect type the rule will use when redirecting traffic.
-     */
-    redirectType?: pulumi.Input<string | enums.FrontDoorRedirectType>;
-}
-
-/**
  * ResourceNavigationLink resource.
  */
 export interface ResourceNavigationLinkArgs {
@@ -6088,48 +5527,6 @@ export interface RoutingPolicyArgs {
 }
 
 /**
- * A routing rule represents a specification for traffic to treat and where to send it, along with health probe information.
- */
-export interface RoutingRuleArgs {
-    /**
-     * Protocol schemes to match for this rule
-     */
-    acceptedProtocols?: pulumi.Input<pulumi.Input<string | enums.FrontDoorProtocol>[]>;
-    /**
-     * Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
-     */
-    enabledState?: pulumi.Input<string | enums.RoutingRuleEnabledState>;
-    /**
-     * Frontend endpoints associated with this rule
-     */
-    frontendEndpoints?: pulumi.Input<pulumi.Input<SubResourceArgs>[]>;
-    /**
-     * Resource ID.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Resource name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The route patterns of the rule.
-     */
-    patternsToMatch?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A reference to the routing configuration.
-     */
-    routeConfiguration?: pulumi.Input<ForwardingConfigurationArgs | RedirectConfigurationArgs>;
-    /**
-     * A reference to a specific Rules Engine Configuration to apply to this route.
-     */
-    rulesEngine?: pulumi.Input<SubResourceArgs>;
-    /**
-     * Defines the Web Application Firewall policy for each routing rule (if applicable)
-     */
-    webApplicationFirewallPolicyLink?: pulumi.Input<RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs>;
-}
-
-/**
  * Next hop.
  */
 export interface RoutingRuleNextHopArgs {
@@ -6155,90 +5552,6 @@ export interface RoutingRuleRouteDestinationArgs {
      * Destination type.
      */
     type: pulumi.Input<string | enums.RoutingRuleDestinationType>;
-}
-
-/**
- * Defines the Web Application Firewall policy for each routing rule (if applicable)
- */
-export interface RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs {
-    /**
-     * Resource ID.
-     */
-    id?: pulumi.Input<string>;
-}
-
-/**
- * One or more actions that will execute, modifying the request and/or response.
- */
-export interface RulesEngineActionArgs {
-    /**
-     * A list of header actions to apply from the request from AFD to the origin.
-     */
-    requestHeaderActions?: pulumi.Input<pulumi.Input<HeaderActionArgs>[]>;
-    /**
-     * A list of header actions to apply from the response from AFD to the client.
-     */
-    responseHeaderActions?: pulumi.Input<pulumi.Input<HeaderActionArgs>[]>;
-    /**
-     * Override the route configuration.
-     */
-    routeConfigurationOverride?: pulumi.Input<ForwardingConfigurationArgs | RedirectConfigurationArgs>;
-}
-
-/**
- * Define a match condition
- */
-export interface RulesEngineMatchConditionArgs {
-    /**
-     * Describes if this is negate condition or not
-     */
-    negateCondition?: pulumi.Input<boolean>;
-    /**
-     * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
-     */
-    rulesEngineMatchValue: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Match Variable
-     */
-    rulesEngineMatchVariable: pulumi.Input<string | enums.RulesEngineMatchVariable>;
-    /**
-     * Describes operator to apply to the match condition.
-     */
-    rulesEngineOperator: pulumi.Input<string | enums.RulesEngineOperator>;
-    /**
-     * Name of selector in RequestHeader or RequestBody to be matched
-     */
-    selector?: pulumi.Input<string>;
-    /**
-     * List of transforms
-     */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
-}
-
-/**
- * Contains a list of match conditions, and an action on how to modify the request/response. If multiple rules match, the actions from one rule that conflict with a previous rule overwrite for a singular action, or append in the case of headers manipulation.
- */
-export interface RulesEngineRuleArgs {
-    /**
-     * Actions to perform on the request and response if all of the match conditions are met.
-     */
-    action: pulumi.Input<RulesEngineActionArgs>;
-    /**
-     * A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.
-     */
-    matchConditions?: pulumi.Input<pulumi.Input<RulesEngineMatchConditionArgs>[]>;
-    /**
-     * If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
-     */
-    matchProcessingBehavior?: pulumi.Input<string | enums.MatchProcessingBehavior>;
-    /**
-     * A name to refer to this specific rule.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * A priority assigned to this rule. 
-     */
-    priority: pulumi.Input<number>;
 }
 
 /**
@@ -6436,6 +5749,10 @@ export interface ServiceEndpointPropertiesFormatArgs {
      */
     locations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * SubResource as network identifier.
+     */
+    networkIdentifier?: pulumi.Input<SubResourceArgs>;
+    /**
      * The provisioning state of the resource.
      */
     provisioningState?: pulumi.Input<string>;
@@ -6446,69 +5763,22 @@ export interface ServiceEndpointPropertiesFormatArgs {
 }
 
 /**
- * The pricing tier of the web application firewall policy.
+ * The sku of this Bastion Host.
  */
 export interface SkuArgs {
     /**
-     * Name of the pricing tier.
+     * The name of the sku of this Bastion Host.
      */
-    name?: pulumi.Input<string | enums.SkuName | enums.BastionHostSkuName>;
+    name?: pulumi.Input<string | enums.BastionHostSkuName>;
 }
-
 /**
- * An SOA record.
+ * skuArgsProvideDefaults sets the appropriate defaults for SkuArgs
  */
-export interface SoaRecordArgs {
-    /**
-     * The email contact for this SOA record.
-     */
-    email?: pulumi.Input<string>;
-    /**
-     * The expire time for this SOA record.
-     */
-    expireTime?: pulumi.Input<number>;
-    /**
-     * The domain name of the authoritative name server for this SOA record.
-     */
-    host?: pulumi.Input<string>;
-    /**
-     * The minimum value for this SOA record. By convention this is used to determine the negative caching duration.
-     */
-    minimumTtl?: pulumi.Input<number>;
-    /**
-     * The refresh value for this SOA record.
-     */
-    refreshTime?: pulumi.Input<number>;
-    /**
-     * The retry time for this SOA record.
-     */
-    retryTime?: pulumi.Input<number>;
-    /**
-     * The serial number for this SOA record.
-     */
-    serialNumber?: pulumi.Input<number>;
-}
-
-/**
- * An SRV record.
- */
-export interface SrvRecordArgs {
-    /**
-     * The port value for this SRV record.
-     */
-    port?: pulumi.Input<number>;
-    /**
-     * The priority value for this SRV record.
-     */
-    priority?: pulumi.Input<number>;
-    /**
-     * The target domain name for this SRV record.
-     */
-    target?: pulumi.Input<string>;
-    /**
-     * The weight value for this SRV record.
-     */
-    weight?: pulumi.Input<number>;
+export function skuArgsProvideDefaults(val: SkuArgs): SkuArgs {
+    return {
+        ...val,
+        name: (val.name) ?? "Standard",
+    };
 }
 
 /**
@@ -6555,7 +5825,7 @@ export interface StaticRoutesConfigArgs {
 }
 
 /**
- * A reference to a another resource
+ * Reference to another subresource.
  */
 export interface SubResource {
     /**
@@ -6568,7 +5838,7 @@ export interface SubResource {
 }
 
 /**
- * A reference to a another resource
+ * Reference to another subresource.
  */
 export interface SubResourceArgs {
     /**
@@ -6597,6 +5867,10 @@ export interface SubnetArgs {
      */
     applicationGatewayIPConfigurations?: pulumi.Input<pulumi.Input<ApplicationGatewayIPConfigurationArgs>[]>;
     /**
+     * Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
+     */
+    defaultOutboundAccess?: pulumi.Input<boolean>;
+    /**
      * An array of references to the delegations on the subnet.
      */
     delegations?: pulumi.Input<pulumi.Input<DelegationArgs>[]>;
@@ -6612,6 +5886,10 @@ export interface SubnetArgs {
      * Array of IpAllocation which reference this subnet.
      */
     ipAllocations?: pulumi.Input<pulumi.Input<SubResourceArgs>[]>;
+    /**
+     * A list of IPAM Pools for allocating IP address prefixes.
+     */
+    ipamPoolPrefixAllocations?: pulumi.Input<pulumi.Input<IpamPoolPrefixAllocationArgs>[]>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -6657,6 +5935,10 @@ export interface SubnetArgs {
      */
     serviceEndpoints?: pulumi.Input<pulumi.Input<ServiceEndpointPropertiesFormatArgs>[]>;
     /**
+     * Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+     */
+    sharingScope?: pulumi.Input<string | enums.SharingScope>;
+    /**
      * Resource type.
      */
     type?: pulumi.Input<string>;
@@ -6677,29 +5959,6 @@ export interface SubscriptionIdArgs {
      * Subscription id in the ARM id format.
      */
     id?: pulumi.Input<string>;
-}
-
-/**
- * Describes a server to forward the DNS queries to.
- */
-export interface TargetDnsServerArgs {
-    /**
-     * DNS server IP address.
-     */
-    ipAddress: pulumi.Input<string>;
-    /**
-     * DNS server port.
-     */
-    port?: pulumi.Input<number>;
-}
-/**
- * targetDnsServerArgsProvideDefaults sets the appropriate defaults for TargetDnsServerArgs
- */
-export function targetDnsServerArgsProvideDefaults(val: TargetDnsServerArgs): TargetDnsServerArgs {
-    return {
-        ...val,
-        port: (val.port) ?? 53,
-    };
 }
 
 /**
@@ -6750,16 +6009,6 @@ export interface TrafficSelectorPolicyArgs {
      * A collection of remote address spaces in CIDR format.
      */
     remoteAddressRanges: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-/**
- * A TXT record.
- */
-export interface TxtRecordArgs {
-    /**
-     * The text value of this TXT record.
-     */
-    value?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -6817,6 +6066,51 @@ export interface VirtualApplianceAdditionalNicPropertiesArgs {
      * Name of additional nic
      */
     name?: pulumi.Input<string>;
+}
+
+/**
+ * Represents a single IP configuration.
+ */
+export interface VirtualApplianceIPConfigurationArgs {
+    /**
+     * Name of the IP configuration.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Represents a single IP configuration properties.
+     */
+    properties?: pulumi.Input<VirtualApplianceIPConfigurationPropertiesArgs>;
+}
+
+/**
+ * Represents a single IP configuration properties.
+ */
+export interface VirtualApplianceIPConfigurationPropertiesArgs {
+    /**
+     * Whether or not this is primary IP configuration of the NIC.
+     */
+    primary?: pulumi.Input<boolean>;
+}
+
+/**
+ * Represents a single NIC configuration.
+ */
+export interface VirtualApplianceNetworkInterfaceConfigurationArgs {
+    /**
+     * NIC type. This should be either PublicNic or PrivateNic.
+     */
+    nicType?: pulumi.Input<string | enums.NicTypeInRequest>;
+    /**
+     * Represents a single NIC configuration properties.
+     */
+    properties?: pulumi.Input<VirtualApplianceNetworkInterfaceConfigurationPropertiesArgs>;
+}
+
+/**
+ * Represents a single NIC configuration properties.
+ */
+export interface VirtualApplianceNetworkInterfaceConfigurationPropertiesArgs {
+    ipConfigurations?: pulumi.Input<pulumi.Input<VirtualApplianceIPConfigurationArgs>[]>;
 }
 
 /**
@@ -6934,7 +6228,7 @@ export interface VirtualNetworkEncryptionArgs {
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * If the encrypted VNet allows VM that does not support encryption
+     * If the encrypted VNet allows VM that does not support encryption. This field is for future support, AllowUnencrypted is the only supported value at general availability.
      */
     enforcement?: pulumi.Input<string | enums.VirtualNetworkEncryptionEnforcement>;
 }
@@ -6959,6 +6253,10 @@ export interface VirtualNetworkGatewayArgs {
      * Configures this gateway to accept traffic from remote Virtual WAN networks.
      */
     allowVirtualWanTraffic?: pulumi.Input<boolean>;
+    /**
+     * Autoscale configuration for virutal network gateway
+     */
+    autoScaleConfiguration?: pulumi.Input<VirtualNetworkGatewayAutoScaleConfigurationArgs>;
     /**
      * Virtual network gateway's BGP speaker settings.
      */
@@ -7004,6 +6302,10 @@ export interface VirtualNetworkGatewayArgs {
      */
     id?: pulumi.Input<string>;
     /**
+     * The identity of the virtual network gateway, if configured.
+     */
+    identity?: pulumi.Input<ManagedServiceIdentityArgs>;
+    /**
      * IP configurations for virtual network gateway.
      */
     ipConfigurations?: pulumi.Input<pulumi.Input<VirtualNetworkGatewayIPConfigurationArgs>[]>;
@@ -7015,6 +6317,10 @@ export interface VirtualNetworkGatewayArgs {
      * NatRules for virtual network gateway.
      */
     natRules?: pulumi.Input<pulumi.Input<VirtualNetworkGatewayNatRuleArgs>[]>;
+    /**
+     * Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
+     */
+    resiliencyModel?: pulumi.Input<string | enums.ResiliencyModel>;
     /**
      * The reference to the VirtualNetworkGatewaySku resource which represents the SKU selected for Virtual network gateway.
      */
@@ -7043,6 +6349,27 @@ export interface VirtualNetworkGatewayArgs {
      * The type of this virtual network gateway.
      */
     vpnType?: pulumi.Input<string | enums.VpnType>;
+}
+
+export interface VirtualNetworkGatewayAutoScaleBoundsArgs {
+    /**
+     * Maximum Scale Units for Autoscale configuration
+     */
+    max?: pulumi.Input<number>;
+    /**
+     * Minimum scale Units for Autoscale configuration
+     */
+    min?: pulumi.Input<number>;
+}
+
+/**
+ * Virtual Network Gateway Autoscale Configuration details
+ */
+export interface VirtualNetworkGatewayAutoScaleConfigurationArgs {
+    /**
+     * The bounds of the autoscale configuration
+     */
+    bounds?: pulumi.Input<VirtualNetworkGatewayAutoScaleBoundsArgs>;
 }
 
 /**
@@ -7184,13 +6511,33 @@ export interface VirtualNetworkPeeringArgs {
      */
     doNotVerifyRemoteGateways?: pulumi.Input<boolean>;
     /**
+     * Whether only Ipv6 address space is peered for subnet peering.
+     */
+    enableOnlyIPv6Peering?: pulumi.Input<boolean>;
+    /**
      * Resource ID.
      */
     id?: pulumi.Input<string>;
     /**
+     * The local address space of the local virtual network that is peered.
+     */
+    localAddressSpace?: pulumi.Input<AddressSpaceArgs>;
+    /**
+     * List of local subnet names that are subnet peered with remote virtual network.
+     */
+    localSubnetNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The current local address space of the local virtual network that is peered.
+     */
+    localVirtualNetworkAddressSpace?: pulumi.Input<AddressSpaceArgs>;
+    /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Whether complete virtual network address space is peered.
+     */
+    peerCompleteVnets?: pulumi.Input<boolean>;
     /**
      * The status of the virtual network peering.
      */
@@ -7207,6 +6554,10 @@ export interface VirtualNetworkPeeringArgs {
      * The reference to the remote virtual network's Bgp Communities.
      */
     remoteBgpCommunities?: pulumi.Input<VirtualNetworkBgpCommunitiesArgs>;
+    /**
+     * List of remote subnet names from remote virtual network that are subnet peered.
+     */
+    remoteSubnetNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
      */
@@ -7656,6 +7007,64 @@ export interface VpnServerConfigurationPolicyGroupMemberArgs {
 }
 
 /**
+ * Parameters for VpnServerConfiguration.
+ */
+export interface VpnServerConfigurationPropertiesArgs {
+    /**
+     * The set of aad vpn authentication parameters.
+     */
+    aadAuthenticationParameters?: pulumi.Input<AadAuthenticationParametersArgs>;
+    /**
+     * List of all VpnServerConfigurationPolicyGroups.
+     */
+    configurationPolicyGroups?: pulumi.Input<pulumi.Input<VpnServerConfigurationPolicyGroupArgs>[]>;
+    /**
+     * The name of the VpnServerConfiguration that is unique within a resource group.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Radius client root certificate of VpnServerConfiguration.
+     */
+    radiusClientRootCertificates?: pulumi.Input<pulumi.Input<VpnServerConfigRadiusClientRootCertificateArgs>[]>;
+    /**
+     * The radius server address property of the VpnServerConfiguration resource for point to site client connection.
+     */
+    radiusServerAddress?: pulumi.Input<string>;
+    /**
+     * Radius Server root certificate of VpnServerConfiguration.
+     */
+    radiusServerRootCertificates?: pulumi.Input<pulumi.Input<VpnServerConfigRadiusServerRootCertificateArgs>[]>;
+    /**
+     * The radius secret property of the VpnServerConfiguration resource for point to site client connection.
+     */
+    radiusServerSecret?: pulumi.Input<string>;
+    /**
+     * Multiple Radius Server configuration for VpnServerConfiguration.
+     */
+    radiusServers?: pulumi.Input<pulumi.Input<RadiusServerArgs>[]>;
+    /**
+     * VPN authentication types for the VpnServerConfiguration.
+     */
+    vpnAuthenticationTypes?: pulumi.Input<pulumi.Input<string | enums.VpnAuthenticationType>[]>;
+    /**
+     * VpnClientIpsecPolicies for VpnServerConfiguration.
+     */
+    vpnClientIpsecPolicies?: pulumi.Input<pulumi.Input<IpsecPolicyArgs>[]>;
+    /**
+     * VPN client revoked certificate of VpnServerConfiguration.
+     */
+    vpnClientRevokedCertificates?: pulumi.Input<pulumi.Input<VpnServerConfigVpnClientRevokedCertificateArgs>[]>;
+    /**
+     * VPN client root certificate of VpnServerConfiguration.
+     */
+    vpnClientRootCertificates?: pulumi.Input<pulumi.Input<VpnServerConfigVpnClientRootCertificateArgs>[]>;
+    /**
+     * VPN protocols for the VpnServerConfiguration.
+     */
+    vpnProtocols?: pulumi.Input<pulumi.Input<string | enums.VpnGatewayTunnelingProtocol>[]>;
+}
+
+/**
  * VpnSiteLink Resource.
  */
 export interface VpnSiteLinkArgs {
@@ -7693,6 +7102,10 @@ export interface VpnSiteLinkConnectionArgs {
      * Expected bandwidth in MBPS.
      */
     connectionBandwidth?: pulumi.Input<number>;
+    /**
+     * Dead Peer Detection timeout in seconds for VpnLink connection.
+     */
+    dpdTimeoutSeconds?: pulumi.Input<number>;
     /**
      * List of egress NatRules.
      */
@@ -7818,42 +7231,3 @@ export interface WebApplicationFirewallScrubbingRulesArgs {
      */
     state?: pulumi.Input<string | enums.ScrubbingRuleEntryState>;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

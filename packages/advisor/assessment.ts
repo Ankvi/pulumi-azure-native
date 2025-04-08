@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * The Advisor assessment result data structure.
  *
- * Uses Azure REST API version 2023-09-01-preview.
+ * Uses Azure REST API version 2023-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
  */
 export class Assessment extends pulumi.CustomResource {
     /**
@@ -37,6 +37,10 @@ export class Assessment extends pulumi.CustomResource {
      * Assessment Id.
      */
     public /*out*/ readonly assessmentId!: pulumi.Output<string>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Assessment Type Description.
      */
@@ -98,6 +102,7 @@ export class Assessment extends pulumi.CustomResource {
             resourceInputs["typeId"] = args ? args.typeId : undefined;
             resourceInputs["workloadId"] = args ? args.workloadId : undefined;
             resourceInputs["assessmentId"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["score"] = undefined /*out*/;
@@ -108,6 +113,7 @@ export class Assessment extends pulumi.CustomResource {
             resourceInputs["workloadName"] = undefined /*out*/;
         } else {
             resourceInputs["assessmentId"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["locale"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

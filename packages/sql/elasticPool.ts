@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * An elastic pool.
  *
- * Uses Azure REST API version 2021-11-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01-preview.
+ * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
+ * Other available API versions: 2014-04-01, 2017-10-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ElasticPool extends pulumi.CustomResource {
     /**
@@ -36,11 +36,23 @@ export class ElasticPool extends pulumi.CustomResource {
     }
 
     /**
+     * Time in minutes after which elastic pool is automatically paused. A value of -1 means that automatic pause is disabled
+     */
+    public readonly autoPauseDelay!: pulumi.Output<number | undefined>;
+    /**
+     * Specifies the availability zone the pool's primary replica is pinned to.
+     */
+    public readonly availabilityZone!: pulumi.Output<string | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The creation date of the elastic pool (ISO8601 format).
      */
     public /*out*/ readonly creationDate!: pulumi.Output<string>;
     /**
-     * The number of secondary replicas associated with the elastic pool that are used to provide high availability. Applicable only to Hyperscale elastic pools.
+     * The number of secondary replicas associated with the Business Critical, Premium, or Hyperscale edition elastic pool that are used to provide high availability. Applicable only to Hyperscale elastic pools.
      */
     public readonly highAvailabilityReplicaCount!: pulumi.Output<number | undefined>;
     /**
@@ -75,6 +87,10 @@ export class ElasticPool extends pulumi.CustomResource {
      * The per database settings for the elastic pool.
      */
     public readonly perDatabaseSettings!: pulumi.Output<types.outputs.ElasticPoolPerDatabaseSettingsResponse | undefined>;
+    /**
+     * Type of enclave requested on the elastic pool.
+     */
+    public readonly preferredEnclaveType!: pulumi.Output<string | undefined>;
     /**
      * The elastic pool SKU.
      * 
@@ -119,6 +135,8 @@ export class ElasticPool extends pulumi.CustomResource {
             if ((!args || args.serverName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serverName'");
             }
+            resourceInputs["autoPauseDelay"] = args ? args.autoPauseDelay : undefined;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["elasticPoolName"] = args ? args.elasticPoolName : undefined;
             resourceInputs["highAvailabilityReplicaCount"] = args ? args.highAvailabilityReplicaCount : undefined;
             resourceInputs["licenseType"] = args ? args.licenseType : undefined;
@@ -127,17 +145,22 @@ export class ElasticPool extends pulumi.CustomResource {
             resourceInputs["maxSizeBytes"] = args ? args.maxSizeBytes : undefined;
             resourceInputs["minCapacity"] = args ? args.minCapacity : undefined;
             resourceInputs["perDatabaseSettings"] = args ? args.perDatabaseSettings : undefined;
+            resourceInputs["preferredEnclaveType"] = args ? args.preferredEnclaveType : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serverName"] = args ? args.serverName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["zoneRedundant"] = args ? args.zoneRedundant : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["autoPauseDelay"] = undefined /*out*/;
+            resourceInputs["availabilityZone"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["highAvailabilityReplicaCount"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -148,6 +171,7 @@ export class ElasticPool extends pulumi.CustomResource {
             resourceInputs["minCapacity"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["perDatabaseSettings"] = undefined /*out*/;
+            resourceInputs["preferredEnclaveType"] = undefined /*out*/;
             resourceInputs["sku"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
@@ -166,11 +190,19 @@ export class ElasticPool extends pulumi.CustomResource {
  */
 export interface ElasticPoolArgs {
     /**
+     * Time in minutes after which elastic pool is automatically paused. A value of -1 means that automatic pause is disabled
+     */
+    autoPauseDelay?: pulumi.Input<number>;
+    /**
+     * Specifies the availability zone the pool's primary replica is pinned to.
+     */
+    availabilityZone?: pulumi.Input<string | types.enums.AvailabilityZoneType>;
+    /**
      * The name of the elastic pool.
      */
     elasticPoolName?: pulumi.Input<string>;
     /**
-     * The number of secondary replicas associated with the elastic pool that are used to provide high availability. Applicable only to Hyperscale elastic pools.
+     * The number of secondary replicas associated with the Business Critical, Premium, or Hyperscale edition elastic pool that are used to provide high availability. Applicable only to Hyperscale elastic pools.
      */
     highAvailabilityReplicaCount?: pulumi.Input<number>;
     /**
@@ -197,6 +229,10 @@ export interface ElasticPoolArgs {
      * The per database settings for the elastic pool.
      */
     perDatabaseSettings?: pulumi.Input<types.inputs.ElasticPoolPerDatabaseSettingsArgs>;
+    /**
+     * Type of enclave requested on the elastic pool.
+     */
+    preferredEnclaveType?: pulumi.Input<string | types.enums.AlwaysEncryptedEnclaveType>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

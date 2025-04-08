@@ -2,11 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Event Subscription
+ * Event Subscription.
  *
- * Uses Azure REST API version 2022-06-15. In version 1.x of the Azure Native provider, it used API version 2020-04-01-preview.
+ * Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2022-06-15.
  *
- * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+ * Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PartnerTopicEventSubscription extends pulumi.CustomResource {
     /**
@@ -36,6 +36,10 @@ export class PartnerTopicEventSubscription extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
      * Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
      */
@@ -54,7 +58,7 @@ export class PartnerTopicEventSubscription extends pulumi.CustomResource {
      * Information about the destination where events have to be delivered for the event subscription.
      * Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    public readonly destination!: pulumi.Output<types.outputs.AzureFunctionEventSubscriptionDestinationResponse | types.outputs.EventHubEventSubscriptionDestinationResponse | types.outputs.HybridConnectionEventSubscriptionDestinationResponse | types.outputs.ServiceBusQueueEventSubscriptionDestinationResponse | types.outputs.ServiceBusTopicEventSubscriptionDestinationResponse | types.outputs.StorageQueueEventSubscriptionDestinationResponse | types.outputs.WebHookEventSubscriptionDestinationResponse | undefined>;
+    public readonly destination!: pulumi.Output<types.outputs.AzureFunctionEventSubscriptionDestinationResponse | types.outputs.EventHubEventSubscriptionDestinationResponse | types.outputs.HybridConnectionEventSubscriptionDestinationResponse | types.outputs.MonitorAlertEventSubscriptionDestinationResponse | types.outputs.NamespaceTopicEventSubscriptionDestinationResponse | types.outputs.ServiceBusQueueEventSubscriptionDestinationResponse | types.outputs.ServiceBusTopicEventSubscriptionDestinationResponse | types.outputs.StorageQueueEventSubscriptionDestinationResponse | types.outputs.WebHookEventSubscriptionDestinationResponse | undefined>;
     /**
      * The event delivery schema for the event subscription.
      */
@@ -84,7 +88,7 @@ export class PartnerTopicEventSubscription extends pulumi.CustomResource {
      */
     public readonly retryPolicy!: pulumi.Output<types.outputs.RetryPolicyResponse | undefined>;
     /**
-     * The system metadata relating to Event Subscription resource.
+     * The system metadata relating to the Event Grid resource.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -125,12 +129,14 @@ export class PartnerTopicEventSubscription extends pulumi.CustomResource {
             resourceInputs["partnerTopicName"] = args ? args.partnerTopicName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["retryPolicy"] = args ? (args.retryPolicy ? pulumi.output(args.retryPolicy).apply(types.inputs.retryPolicyArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["topic"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["deadLetterDestination"] = undefined /*out*/;
             resourceInputs["deadLetterWithResourceIdentity"] = undefined /*out*/;
             resourceInputs["deliveryWithResourceIdentity"] = undefined /*out*/;
@@ -176,13 +182,13 @@ export interface PartnerTopicEventSubscriptionArgs {
      * Information about the destination where events have to be delivered for the event subscription.
      * Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    destination?: pulumi.Input<types.inputs.AzureFunctionEventSubscriptionDestinationArgs | types.inputs.EventHubEventSubscriptionDestinationArgs | types.inputs.HybridConnectionEventSubscriptionDestinationArgs | types.inputs.ServiceBusQueueEventSubscriptionDestinationArgs | types.inputs.ServiceBusTopicEventSubscriptionDestinationArgs | types.inputs.StorageQueueEventSubscriptionDestinationArgs | types.inputs.WebHookEventSubscriptionDestinationArgs>;
+    destination?: pulumi.Input<types.inputs.AzureFunctionEventSubscriptionDestinationArgs | types.inputs.EventHubEventSubscriptionDestinationArgs | types.inputs.HybridConnectionEventSubscriptionDestinationArgs | types.inputs.MonitorAlertEventSubscriptionDestinationArgs | types.inputs.NamespaceTopicEventSubscriptionDestinationArgs | types.inputs.ServiceBusQueueEventSubscriptionDestinationArgs | types.inputs.ServiceBusTopicEventSubscriptionDestinationArgs | types.inputs.StorageQueueEventSubscriptionDestinationArgs | types.inputs.WebHookEventSubscriptionDestinationArgs>;
     /**
      * The event delivery schema for the event subscription.
      */
     eventDeliverySchema?: pulumi.Input<string | types.enums.EventDeliverySchema>;
     /**
-     * Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+     * Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only.
      */
     eventSubscriptionName?: pulumi.Input<string>;
     /**
