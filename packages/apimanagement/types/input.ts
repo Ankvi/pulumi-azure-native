@@ -101,7 +101,7 @@ export interface ApiManagementGatewaySkuPropertiesArgs {
     /**
      * Name of the Sku.
      */
-    name: pulumi.Input<string | enums.SkuType>;
+    name: pulumi.Input<string | enums.ApiGatewaySkuType>;
 }
 
 /**
@@ -661,6 +661,38 @@ export interface KeyVaultContractCreatePropertiesArgs {
 }
 
 /**
+ * Diagnostic settings for Large Language Models
+ */
+export interface LLMDiagnosticSettingsArgs {
+    /**
+     * Specifies whether default diagnostic should be enabled for Large Language Models or not.
+     */
+    logs?: pulumi.Input<string | enums.LlmDiagnosticSettings>;
+    /**
+     * Diagnostic settings for Large Language Models requests.
+     */
+    requests?: pulumi.Input<LLMMessageDiagnosticSettingsArgs>;
+    /**
+     * Diagnostic settings for Large Language Models responses.
+     */
+    responses?: pulumi.Input<LLMMessageDiagnosticSettingsArgs>;
+}
+
+/**
+ * Diagnostic settings for Large Language Models Messages
+ */
+export interface LLMMessageDiagnosticSettingsArgs {
+    /**
+     * Maximum size of message to logs in bytes. The default size is 32KB.
+     */
+    maxSizeInBytes?: pulumi.Input<number>;
+    /**
+     * Specifies which message should be logged. Currently there is only 'all' option.
+     */
+    messages?: pulumi.Input<string | enums.LlmMessageLogTypes>;
+}
+
+/**
  * API OAuth2 Authentication settings details.
  */
 export interface OAuth2AuthenticationSettingsContractArgs {
@@ -1008,15 +1040,3 @@ export interface X509CertificateNameArgs {
      */
     name?: pulumi.Input<string>;
 }
-
-
-
-
-
-
-
-
-
-
-
-

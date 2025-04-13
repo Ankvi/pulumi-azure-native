@@ -1,11 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 // Export members:
-export { GetADOOAuthInfoArgs, GetADOOAuthInfoResult, GetADOOAuthInfoOutputArgs } from "./getADOOAuthInfo";
-export const getADOOAuthInfo: typeof import("./getADOOAuthInfo").getADOOAuthInfo = null as any;
-export const getADOOAuthInfoOutput: typeof import("./getADOOAuthInfo").getADOOAuthInfoOutput = null as any;
-utilities.lazyLoad(exports, ["getADOOAuthInfo","getADOOAuthInfoOutput"], () => require("./getADOOAuthInfo"));
-
 export { GetGitHubOAuthArgs, GetGitHubOAuthResult, GetGitHubOAuthOutputArgs } from "./getGitHubOAuth";
 export const getGitHubOAuth: typeof import("./getGitHubOAuth").getGitHubOAuth = null as any;
 export const getGitHubOAuthOutput: typeof import("./getGitHubOAuth").getGitHubOAuthOutput = null as any;
@@ -34,8 +29,6 @@ utilities.lazyLoad(exports, ["Workflow"], () => require("./workflow"));
 
 // Export enums:
 export * from "./types/enums";
-
-
 
 const _module = {
     version: utilities.getVersion(),

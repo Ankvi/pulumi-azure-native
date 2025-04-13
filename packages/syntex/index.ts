@@ -12,8 +12,6 @@ export const getDocumentProcessorOutput: typeof import("./getDocumentProcessor")
 utilities.lazyLoad(exports, ["getDocumentProcessor","getDocumentProcessorOutput"], () => require("./getDocumentProcessor"));
 
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

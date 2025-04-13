@@ -25,16 +25,6 @@ export const AdvancedFilterOperatorType = {
  */
 export type AdvancedFilterOperatorType = (typeof AdvancedFilterOperatorType)[keyof typeof AdvancedFilterOperatorType];
 
-export const AlternativeAuthenticationNameSource = {
-    ClientCertificateSubject: "ClientCertificateSubject",
-    ClientCertificateDns: "ClientCertificateDns",
-    ClientCertificateUri: "ClientCertificateUri",
-    ClientCertificateIp: "ClientCertificateIp",
-    ClientCertificateEmail: "ClientCertificateEmail",
-} as const;
-
-export type AlternativeAuthenticationNameSource = (typeof AlternativeAuthenticationNameSource)[keyof typeof AlternativeAuthenticationNameSource];
-
 export const ChannelProvisioningState = {
     Creating: "Creating",
     Updating: "Updating",
@@ -83,6 +73,27 @@ export const ClientState = {
  */
 export type ClientState = (typeof ClientState)[keyof typeof ClientState];
 
+export const CustomDomainIdentityType = {
+    SystemAssigned: "SystemAssigned",
+    UserAssigned: "UserAssigned",
+} as const;
+
+/**
+ * The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
+ */
+export type CustomDomainIdentityType = (typeof CustomDomainIdentityType)[keyof typeof CustomDomainIdentityType];
+
+export const CustomDomainValidationState = {
+    Pending: "Pending",
+    Approved: "Approved",
+    ErrorRetrievingDnsRecord: "ErrorRetrievingDnsRecord",
+} as const;
+
+/**
+ * Validation state for the custom domain. This is a read only property and is initially set to 'Pending' and will be updated to 'Approved' by Event Grid only after ownership of the domain name has been successfully validated.
+ */
+export type CustomDomainValidationState = (typeof CustomDomainValidationState)[keyof typeof CustomDomainValidationState];
+
 export const DataResidencyBoundary = {
     WithinGeopair: "WithinGeopair",
     WithinRegion: "WithinRegion",
@@ -114,6 +125,7 @@ export type DeliveryAttributeMappingType = (typeof DeliveryAttributeMappingType)
 
 export const DeliveryMode = {
     Queue: "Queue",
+    Push: "Push",
 } as const;
 
 /**
@@ -138,6 +150,8 @@ export const EndpointType = {
     ServiceBusQueue: "ServiceBusQueue",
     ServiceBusTopic: "ServiceBusTopic",
     AzureFunction: "AzureFunction",
+    MonitorAlert: "MonitorAlert",
+    NamespaceTopic: "NamespaceTopic",
 } as const;
 
 /**
@@ -180,7 +194,7 @@ export const EventSubscriptionIdentityType = {
 } as const;
 
 /**
- * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
+ * The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
  */
 export type EventSubscriptionIdentityType = (typeof EventSubscriptionIdentityType)[keyof typeof EventSubscriptionIdentityType];
 
@@ -251,6 +265,20 @@ export const IpActionType = {
  * Action to perform based on the match or no match of the IpMask.
  */
 export type IpActionType = (typeof IpActionType)[keyof typeof IpActionType];
+
+export const MonitorAlertSeverity = {
+    Sev0: "Sev0",
+    Sev1: "Sev1",
+    Sev2: "Sev2",
+    Sev3: "Sev3",
+    Sev4: "Sev4",
+} as const;
+
+/**
+ * The severity that will be attached to every Alert fired through this event subscription.
+ * This field must be provided.
+ */
+export type MonitorAlertSeverity = (typeof MonitorAlertSeverity)[keyof typeof MonitorAlertSeverity];
 
 export const PartnerConfigurationProvisioningState = {
     Creating: "Creating",
@@ -370,6 +398,9 @@ export const RoutingIdentityType = {
     UserAssigned: "UserAssigned",
 } as const;
 
+/**
+ * Routing identity type for topic spaces configuration.
+ */
 export type RoutingIdentityType = (typeof RoutingIdentityType)[keyof typeof RoutingIdentityType];
 
 export const SkuName = {
@@ -397,7 +428,7 @@ export const TlsVersion = {
 } as const;
 
 /**
- * Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported.
+ * Minimum TLS version that should be supported by webhook endpoint
  */
 export type TlsVersion = (typeof TlsVersion)[keyof typeof TlsVersion];
 

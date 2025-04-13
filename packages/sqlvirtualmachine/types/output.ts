@@ -1,6 +1,16 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Enable AAD authentication for SQL VM.
+ */
+export interface AADAuthenticationSettingsResponse {
+    /**
+     * The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity
+     */
+    clientId?: string;
+}
+
+/**
  * Additional SQL Server feature settings.
  */
 export interface AdditionalFeaturesServerConfigurationsResponse {
@@ -47,19 +57,19 @@ export interface AgReplicaResponse {
 }
 
 /**
- * Configure assessment for databases in your SQL virtual machine.
+ * Configure SQL best practices Assessment for databases in your SQL virtual machine.
  */
 export interface AssessmentSettingsResponse {
     /**
-     * Enable or disable assessment feature on SQL virtual machine.
+     * Enable or disable SQL best practices Assessment feature on SQL virtual machine.
      */
     enable?: boolean;
     /**
-     * Run assessment immediately on SQL virtual machine.
+     * Run SQL best practices Assessment immediately on SQL virtual machine.
      */
     runImmediately?: boolean;
     /**
-     * Schedule for Assessment.
+     * Schedule for SQL best practices Assessment.
      */
     schedule?: ScheduleResponse;
 }
@@ -123,6 +133,10 @@ export interface AutoBackupSettingsResponse {
  */
 export interface AutoPatchingSettingsResponse {
     /**
+     * Additional Patch to be enable or enabled on the SQL Virtual Machine.
+     */
+    additionalVmPatch?: string;
+    /**
      * Day of week to apply the patch on.
      */
     dayOfWeek?: string;
@@ -138,6 +152,15 @@ export interface AutoPatchingSettingsResponse {
      * Hour of the day when patching is initiated. Local VM time.
      */
     maintenanceWindowStartingHour?: number;
+}
+/**
+ * autoPatchingSettingsResponseProvideDefaults sets the appropriate defaults for AutoPatchingSettingsResponse
+ */
+export function autoPatchingSettingsResponseProvideDefaults(val: AutoPatchingSettingsResponse): AutoPatchingSettingsResponse {
+    return {
+        ...val,
+        additionalVmPatch: (val.additionalVmPatch) ?? "NotSet",
+    };
 }
 
 /**
@@ -280,8 +303,15 @@ export interface SQLStorageSettingsResponse {
      * Logical Unit Numbers for the disks.
      */
     luns?: number[];
+    /**
+     * Use storage pool to build a drive if true or not provided
+     */
+    useStoragePool?: boolean;
 }
 
+/**
+ * Set tempDb storage settings for SQL Server.
+ */
 export interface SQLTempDbSettingsResponse {
     /**
      * SQL Server tempdb data file count
@@ -319,8 +349,15 @@ export interface SQLTempDbSettingsResponse {
      * SQL Server tempdb persist folder location
      */
     persistFolderPath?: string;
+    /**
+     * Use storage pool to build a drive if true or not provided
+     */
+    useStoragePool?: boolean;
 }
 
+/**
+ * Set assessment schedule for SQL Server.
+ */
 export interface ScheduleResponse {
     /**
      * Day of the week to run assessment.
@@ -352,6 +389,10 @@ export interface ServerConfigurationsManagementSettingsResponse {
      * Additional SQL feature settings.
      */
     additionalFeaturesServerConfigurations?: AdditionalFeaturesServerConfigurationsResponse;
+    /**
+     * Azure AD authentication Settings.
+     */
+    azureAdAuthenticationSettings?: AADAuthenticationSettingsResponse;
     /**
      * SQL connectivity type settings.
      */
@@ -473,6 +514,79 @@ export interface SystemDataResponse {
 }
 
 /**
+ * SQL VM Troubleshooting additional properties.
+ */
+export interface TroubleshootingAdditionalPropertiesResponse {
+    /**
+     * The unhealthy replica information
+     */
+    unhealthyReplicaInfo?: UnhealthyReplicaInfoResponse;
+}
+
+/**
+ * Status of last troubleshooting operation on this SQL VM
+ */
+export interface TroubleshootingStatusResponse {
+    /**
+     * End time in UTC timezone.
+     */
+    endTimeUtc: string;
+    /**
+     * Last troubleshooting trigger time in UTC timezone
+     */
+    lastTriggerTimeUtc: string;
+    /**
+     * Troubleshooting properties
+     */
+    properties: TroubleshootingAdditionalPropertiesResponse;
+    /**
+     * Root cause of the issue
+     */
+    rootCause: string;
+    /**
+     * Start time in UTC timezone.
+     */
+    startTimeUtc: string;
+    /**
+     * SQL VM troubleshooting scenario.
+     */
+    troubleshootingScenario: string;
+}
+/**
+ * troubleshootingStatusResponseProvideDefaults sets the appropriate defaults for TroubleshootingStatusResponse
+ */
+export function troubleshootingStatusResponseProvideDefaults(val: TroubleshootingStatusResponse): TroubleshootingStatusResponse {
+    return {
+        ...val,
+        troubleshootingScenario: (val.troubleshootingScenario) ?? "UnhealthyReplica",
+    };
+}
+
+/**
+ * SQL VM Troubleshoot UnhealthyReplica scenario information.
+ */
+export interface UnhealthyReplicaInfoResponse {
+    /**
+     * The name of the availability group
+     */
+    availabilityGroupName?: string;
+}
+
+/**
+ * Virtual Machine Identity details used for Sql IaaS extension configurations.
+ */
+export interface VirtualMachineIdentityResponse {
+    /**
+     * ARM Resource Id of the identity. Only required when UserAssigned identity is selected.
+     */
+    resourceId?: string;
+    /**
+     * Identity type of the virtual machine. Specify None to opt-out of Managed Identities.
+     */
+    type?: string;
+}
+
+/**
  * Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
  */
 export interface WsfcDomainCredentialsResponse {
@@ -515,6 +629,10 @@ export interface WsfcDomainProfileResponse {
      */
     fileShareWitnessPath?: string;
     /**
+     * The flag to check if SQL service account is GMSA.
+     */
+    isSqlServiceAccountGmsa?: boolean;
+    /**
      * Organizational Unit path in which the nodes and cluster will be present.
      */
     ouPath?: string;
@@ -527,5 +645,3 @@ export interface WsfcDomainProfileResponse {
      */
     storageAccountUrl?: string;
 }
-
-

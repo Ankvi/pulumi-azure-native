@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Authorization rule for a namespace by name.
  *
- * Uses Azure REST API version 2021-11-01.
+ * Uses Azure REST API version 2024-01-01.
  *
- * Other available API versions: 2017-04-01, 2024-01-01.
+ * Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNamespaceAuthorizationRule(args: GetNamespaceAuthorizationRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceAuthorizationRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +37,10 @@ export interface GetNamespaceAuthorizationRuleArgs {
  */
 export interface GetNamespaceAuthorizationRuleResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
@@ -64,9 +68,9 @@ export interface GetNamespaceAuthorizationRuleResult {
 /**
  * Authorization rule for a namespace by name.
  *
- * Uses Azure REST API version 2021-11-01.
+ * Uses Azure REST API version 2024-01-01.
  *
- * Other available API versions: 2017-04-01, 2024-01-01.
+ * Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNamespaceAuthorizationRuleOutput(args: GetNamespaceAuthorizationRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNamespaceAuthorizationRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

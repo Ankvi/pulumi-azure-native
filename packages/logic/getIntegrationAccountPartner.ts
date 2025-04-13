@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2019-05-01.
  *
- * Other available API versions: 2015-08-01-preview.
+ * Other available API versions: 2015-08-01-preview, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getIntegrationAccountPartner(args: GetIntegrationAccountPartnerArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationAccountPartnerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +36,10 @@ export interface GetIntegrationAccountPartnerArgs {
  * The integration account partner.
  */
 export interface GetIntegrationAccountPartnerResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The changed time.
      */
@@ -82,7 +86,7 @@ export interface GetIntegrationAccountPartnerResult {
  *
  * Uses Azure REST API version 2019-05-01.
  *
- * Other available API versions: 2015-08-01-preview.
+ * Other available API versions: 2015-08-01-preview, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getIntegrationAccountPartnerOutput(args: GetIntegrationAccountPartnerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIntegrationAccountPartnerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

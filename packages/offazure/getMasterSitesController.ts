@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get a MasterSite
  *
- * Uses Azure REST API version 2023-06-06.
+ * Uses Azure REST API version 2023-10-01-preview.
  *
- * Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+ * Other available API versions: 2023-06-06, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getMasterSitesController(args: GetMasterSitesControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetMasterSitesControllerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +36,10 @@ export interface GetMasterSitesControllerResult {
      * allowed.
      */
     readonly allowMultipleSites?: boolean;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Gets or sets a value for customer storage account ARM id.
      */
@@ -90,9 +94,9 @@ export interface GetMasterSitesControllerResult {
 /**
  * Get a MasterSite
  *
- * Uses Azure REST API version 2023-06-06.
+ * Uses Azure REST API version 2023-10-01-preview.
  *
- * Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+ * Other available API versions: 2023-06-06, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getMasterSitesControllerOutput(args: GetMasterSitesControllerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMasterSitesControllerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

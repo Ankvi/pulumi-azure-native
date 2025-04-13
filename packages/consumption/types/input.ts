@@ -110,5 +110,3 @@ export function notificationArgsProvideDefaults(val: NotificationArgs): Notifica
         thresholdType: (val.thresholdType) ?? "Actual",
     };
 }
-
-

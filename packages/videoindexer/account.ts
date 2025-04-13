@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * An Azure Video Indexer account.
  *
- * Uses Azure REST API version 2022-08-01. In version 1.x of the Azure Native provider, it used API version 2021-10-18-preview.
+ * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
  *
- * Other available API versions: 2024-01-01, 2024-04-01-preview, 2024-06-01-preview, 2024-09-23-preview, 2025-01-01, 2025-03-01.
+ * Other available API versions: 2022-08-01, 2024-04-01-preview, 2024-06-01-preview, 2024-09-23-preview, 2025-01-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native videoindexer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Account extends pulumi.CustomResource {
     /**
@@ -44,6 +44,10 @@ export class Account extends pulumi.CustomResource {
      */
     public readonly accountName!: pulumi.Output<string>;
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
     public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
@@ -52,10 +56,6 @@ export class Account extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The media services details
-     */
-    public readonly mediaServices!: pulumi.Output<types.outputs.MediaServicesForPutRequestResponse | undefined>;
-    /**
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -63,6 +63,10 @@ export class Account extends pulumi.CustomResource {
      * Gets the status of the account at the time the operation was called.
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    /**
+     * The storage services details
+     */
+    public readonly storageServices!: pulumi.Output<types.outputs.StorageServicesForPutRequestResponse | undefined>;
     /**
      * The system meta data relating to this resource.
      */
@@ -102,9 +106,10 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountName"] = args ? args.accountName : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["mediaServices"] = args ? args.mediaServices : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["storageServices"] = args ? args.storageServices : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -114,11 +119,12 @@ export class Account extends pulumi.CustomResource {
         } else {
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["accountName"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
-            resourceInputs["mediaServices"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["storageServices"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["tenantId"] = undefined /*out*/;
@@ -153,13 +159,13 @@ export interface AccountArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * The media services details
-     */
-    mediaServices?: pulumi.Input<types.inputs.MediaServicesForPutRequestArgs>;
-    /**
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
+    /**
+     * The storage services details
+     */
+    storageServices?: pulumi.Input<types.inputs.StorageServicesForPutRequestArgs>;
     /**
      * Resource tags.
      */

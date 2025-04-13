@@ -78,4 +78,3 @@ export interface ServerAdministratorsArgs {
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
 }
-

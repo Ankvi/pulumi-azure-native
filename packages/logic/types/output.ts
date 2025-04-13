@@ -2494,7 +2494,3 @@ export interface X12ValidationSettingsResponse {
      */
     validateXSDTypes: boolean;
 }
-
-
-
-

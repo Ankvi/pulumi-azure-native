@@ -1,4 +1,14 @@
-export const AllowedContentLevel = {
+export const ByPassSelection = {
+    None: "None",
+    AzureServices: "AzureServices",
+} as const;
+
+/**
+ * Setting for trusted services.
+ */
+export type ByPassSelection = (typeof ByPassSelection)[keyof typeof ByPassSelection];
+
+export const ContentLevel = {
     Low: "Low",
     Medium: "Medium",
     High: "High",
@@ -7,7 +17,7 @@ export const AllowedContentLevel = {
 /**
  * Level at which content is filtered.
  */
-export type AllowedContentLevel = (typeof AllowedContentLevel)[keyof typeof AllowedContentLevel];
+export type ContentLevel = (typeof ContentLevel)[keyof typeof ContentLevel];
 
 export const DeploymentModelVersionUpgradeOption = {
     OnceNewDefaultVersionAvailable: "OnceNewDefaultVersionAvailable",
@@ -107,10 +117,11 @@ export const RaiPolicyMode = {
     Default: "Default",
     Deferred: "Deferred",
     Blocking: "Blocking",
+    Asynchronous_filter: "Asynchronous_filter",
 } as const;
 
 /**
- * Content Filters mode.
+ * Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
  */
 export type RaiPolicyMode = (typeof RaiPolicyMode)[keyof typeof RaiPolicyMode];
 

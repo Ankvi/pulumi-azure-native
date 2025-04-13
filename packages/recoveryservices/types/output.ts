@@ -411,6 +411,10 @@ export interface A2AReplicationDetailsResponse {
      */
     autoProtectionOfDataDisk?: string;
     /**
+     * A value indicating the churn option selected by user.
+     */
+    churnOptionSelected: string;
+    /**
      * The fabric specific object Id of the virtual machine.
      */
     fabricObjectId?: string;
@@ -443,6 +447,10 @@ export interface A2AReplicationDetailsResponse {
      * Expected value is 'A2A'.
      */
     instanceType: "A2A";
+    /**
+     * A value indicating if the cluster infra is ready or not.
+     */
+    isClusterInfraReady?: boolean;
     /**
      * A value indicating whether agent certificate update is required.
      */
@@ -511,6 +519,10 @@ export interface A2AReplicationDetailsResponse {
      * The list of protected managed disks.
      */
     protectedManagedDisks?: A2AProtectedManagedDiskDetailsResponse[];
+    /**
+     * The replication protection cluster Id.
+     */
+    protectionClusterId?: string;
     /**
      * The recovery availability set.
      */
@@ -866,6 +878,58 @@ export interface AgentDiskDetailsResponse {
 }
 
 /**
+ * Appliance details of the migration item.
+ */
+export interface ApplianceMonitoringDetailsResponse {
+    /**
+     * The appliance CPU details.
+     */
+    cpuDetails: ApplianceResourceDetailsResponse;
+    /**
+     * The appliance datastore snapshot details.
+     */
+    datastoreSnapshot: DataStoreUtilizationDetailsResponse[];
+    /**
+     * The disk replication details.
+     */
+    disksReplicationDetails: ApplianceResourceDetailsResponse;
+    /**
+     * The ESXi NFC buffer details.
+     */
+    esxiNfcBuffer: ApplianceResourceDetailsResponse;
+    /**
+     * The appliance network bandwidth details.
+     */
+    networkBandwidth: ApplianceResourceDetailsResponse;
+    /**
+     * The appliance RAM details.
+     */
+    ramDetails: ApplianceResourceDetailsResponse;
+}
+
+/**
+ * Details of the appliance resource.
+ */
+export interface ApplianceResourceDetailsResponse {
+    /**
+     * A value indicating the total capacity of appliance resource.
+     */
+    capacity: number;
+    /**
+     * A value indicating the utilization percentage by gateway agent on appliance.
+     */
+    processUtilization: number;
+    /**
+     * A value indicating the status of appliance resource.
+     */
+    status: string;
+    /**
+     * A value indicating the total utilization percentage for all processes on the appliance.
+     */
+    totalUtilization: number;
+}
+
+/**
  * AzureBackupServer (DPMVenus) workload-specific protection container.
  */
 export interface AzureBackupServerContainerResponse {
@@ -991,6 +1055,10 @@ export interface AzureFileShareProtectionPolicyResponse {
      * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
      */
     timeZone?: string;
+    /**
+     * Retention policy with the details on hardened backup copy retention ranges.
+     */
+    vaultRetentionPolicy?: VaultRetentionPolicyResponse;
     /**
      * Type of workload for the backup management
      */
@@ -1702,6 +1770,7 @@ export interface AzureIaaSVMProtectionPolicyResponse {
      * Backup schedule specified as part of backup policy.
      */
     schedulePolicy?: LogSchedulePolicyResponse | LongTermSchedulePolicyResponse | SimpleSchedulePolicyResponse | SimpleSchedulePolicyV2Response;
+    snapshotConsistencyType?: string;
     /**
      * Tiering policy to automatically move RPs to another tier
      * Key is Target Tier, defined in RecoveryPointTierType enum.
@@ -1718,7 +1787,9 @@ export interface AzureIaaSVMProtectionPolicyResponse {
  * Settings for Azure Monitor based alerts
  */
 export interface AzureMonitorAlertSettingsResponse {
+    alertsForAllFailoverIssues?: string;
     alertsForAllJobFailures?: string;
+    alertsForAllReplicationIssues?: string;
 }
 
 /**
@@ -2039,6 +2110,10 @@ export interface AzureStorageContainerResponse {
      * Status of health of the container.
      */
     healthStatus?: string;
+    /**
+     * Re-Do Operation
+     */
+    operationType?: string;
     /**
      * Type of the protectable object associated with this container
      */
@@ -3136,6 +3211,7 @@ export interface AzureWorkloadSQLAutoProtectionIntentResponse {
  */
 export interface ClassicAlertSettingsResponse {
     alertsForCriticalOperations?: string;
+    emailNotificationsForSiteRecovery?: string;
 }
 
 /**
@@ -3478,6 +3554,24 @@ export interface DataStoreResponse {
 }
 
 /**
+ * Details of the appliance resource.
+ */
+export interface DataStoreUtilizationDetailsResponse {
+    /**
+     * The datastore name.
+     */
+    dataStoreName: string;
+    /**
+     * The total snapshots created for server migration in the datastore.
+     */
+    totalSnapshotsCreated: number;
+    /**
+     * The total count of snapshots supported by the datastore.
+     */
+    totalSnapshotsSupported: number;
+}
+
+/**
  * Day of the week.
  */
 export interface DayResponse {
@@ -3755,6 +3849,44 @@ export interface FabricPropertiesResponse {
      * Rollover encryption details for the fabric.
      */
     rolloverEncryptionDetails?: EncryptionDetailsResponse;
+}
+
+/**
+ * Details of the gateway operation.
+ */
+export interface GatewayOperationDetailsResponse {
+    /**
+     * A value indicating the datastore collection.
+     */
+    dataStores: string[];
+    /**
+     * A value indicating the ESXi host name.
+     */
+    hostName: string;
+    /**
+     * A value indicating the progress percentage of gateway operation.
+     */
+    progressPercentage: number;
+    /**
+     * A value indicating the state of gateway operation.
+     */
+    state: string;
+    /**
+     * A value indicating the time elapsed for the operation in milliseconds.
+     */
+    timeElapsed: number;
+    /**
+     * A value indicating the time remaining for the operation in milliseconds.
+     */
+    timeRemaining: number;
+    /**
+     * A value indicating the upload speed in bytes per second.
+     */
+    uploadSpeed: number;
+    /**
+     * A value indicating the VMware read throughput in bytes per second.
+     */
+    vmwareReadThroughput: number;
 }
 
 /**
@@ -4072,9 +4204,17 @@ export interface HyperVReplicaAzureManagedDiskDetailsResponse {
      */
     replicaDiskType?: string;
     /**
+     * The logical sector size (in bytes), 512 by default.
+     */
+    sectorSizeInBytes?: number;
+    /**
      * Seed managed disk Id.
      */
     seedManagedDiskId?: string;
+    /**
+     * The disk type.
+     */
+    targetDiskAccountType?: string;
 }
 
 /**
@@ -4117,6 +4257,10 @@ export interface HyperVReplicaAzurePolicyDetailsResponse {
  */
 export interface HyperVReplicaAzureReplicationDetailsResponse {
     /**
+     * A value indicating all available inplace OS Upgrade configurations.
+     */
+    allAvailableOSUpgradeConfigurations?: OSUpgradeSupportedVersionsResponse[];
+    /**
      * Azure VM Disk details.
      */
     azureVmDiskDetails?: AzureVmDiskDetailsResponse[];
@@ -4153,6 +4297,10 @@ export interface HyperVReplicaAzureReplicationDetailsResponse {
      * License Type of the VM to be used.
      */
     licenseType?: string;
+    /**
+     * The license type for Linux VM's.
+     */
+    linuxLicenseType?: string;
     /**
      * The operating system info.
      */
@@ -4229,6 +4377,10 @@ export interface HyperVReplicaAzureReplicationDetailsResponse {
      * The target proximity placement group Id.
      */
     targetProximityPlacementGroupId?: string;
+    /**
+     * The target VM security profile.
+     */
+    targetVmSecurityProfile?: SecurityProfilePropertiesResponse;
     /**
      * The target VM tags.
      */
@@ -4853,6 +5005,10 @@ export interface InMageAzureV2ReplicationDetailsResponse {
      */
     agentVersion?: string;
     /**
+     * A value indicating all available inplace OS Upgrade configurations.
+     */
+    allAvailableOSUpgradeConfigurations?: OSUpgradeSupportedVersionsResponse[];
+    /**
      * Azure VM Disk details.
      */
     azureVMDiskDetails?: AzureVmDiskDetailsResponse[];
@@ -4950,6 +5106,10 @@ export interface InMageAzureV2ReplicationDetailsResponse {
      */
     osDiskId?: string;
     /**
+     * The name of the OS on the VM.
+     */
+    osName: string;
+    /**
      * The type of the OS on the VM.
      */
     osType?: string;
@@ -5041,6 +5201,10 @@ export interface InMageAzureV2ReplicationDetailsResponse {
      * The SQL Server license type.
      */
     sqlServerLicenseType?: string;
+    /**
+     * A value indicating the inplace OS Upgrade version.
+     */
+    supportedOSVersions?: string[];
     /**
      * The switch provider blocking error information.
      */
@@ -5977,6 +6141,10 @@ export interface InMageRcmNicDetailsResponse {
      */
     targetIPAddressType?: string;
     /**
+     * The target NIC name.
+     */
+    targetNicName?: string;
+    /**
      * Target subnet name.
      */
     targetSubnetName?: string;
@@ -6030,6 +6198,10 @@ export interface InMageRcmProtectedDiskDetailsResponse {
      */
     capacityInBytes: number;
     /**
+     * The custom target Azure disk name.
+     */
+    customTargetDiskName?: string;
+    /**
      * The data pending at source agent in MB.
      */
     dataPendingAtSourceAgentInMB: number;
@@ -6049,6 +6221,10 @@ export interface InMageRcmProtectedDiskDetailsResponse {
      * The disk name.
      */
     diskName: string;
+    /**
+     * The disk state.
+     */
+    diskState: string;
     /**
      * The disk type.
      */
@@ -6073,6 +6249,10 @@ export interface InMageRcmProtectedDiskDetailsResponse {
      * The resync details.
      */
     resyncDetails?: InMageRcmSyncDetailsResponse;
+    /**
+     * The logical sector size (in bytes), 512 by default.
+     */
+    sectorSizeInBytes?: number;
     /**
      * The uri of the seed blob.
      */
@@ -6208,6 +6388,10 @@ export interface InMageRcmReplicationDetailsResponse {
      */
     licenseType?: string;
     /**
+     * The license type for Linux VM's.
+     */
+    linuxLicenseType?: string;
+    /**
      * The mobility agent information.
      */
     mobilityAgentDetails?: InMageRcmMobilityAgentDetailsResponse;
@@ -6215,6 +6399,10 @@ export interface InMageRcmReplicationDetailsResponse {
      * The multi VM group name.
      */
     multiVmGroupName: string;
+    /**
+     * The OS name associated with VM.
+     */
+    osName?: string;
     /**
      * The type of the OS on the VM.
      */
@@ -6268,9 +6456,21 @@ export interface InMageRcmReplicationDetailsResponse {
      */
     runAsAccountId: string;
     /**
+     * The tags for the seed managed disks.
+     */
+    seedManagedDiskTags?: UserCreatedResourceTagResponse[];
+    /**
+     * The SQL Server license type.
+     */
+    sqlServerLicenseType?: string;
+    /**
      * The replication storage account ARM Id. This is applicable only for the blob based replication test hook.
      */
     storageAccountId: string;
+    /**
+     * A value indicating the inplace OS Upgrade version.
+     */
+    supportedOSVersions?: string[];
     /**
      * The target availability set Id.
      */
@@ -6292,9 +6492,17 @@ export interface InMageRcmReplicationDetailsResponse {
      */
     targetLocation?: string;
     /**
+     * The tags for the target managed disks.
+     */
+    targetManagedDiskTags?: UserCreatedResourceTagResponse[];
+    /**
      * The target network Id.
      */
     targetNetworkId?: string;
+    /**
+     * The tags for the target NICs.
+     */
+    targetNicTags?: UserCreatedResourceTagResponse[];
     /**
      * The target proximity placement group Id.
      */
@@ -6308,13 +6516,25 @@ export interface InMageRcmReplicationDetailsResponse {
      */
     targetVmName?: string;
     /**
+     * The target VM security profile.
+     */
+    targetVmSecurityProfile?: SecurityProfilePropertiesResponse;
+    /**
      * The target VM size.
      */
     targetVmSize?: string;
     /**
+     * The target VM tags.
+     */
+    targetVmTags?: UserCreatedResourceTagResponse[];
+    /**
      * The test network Id.
      */
     testNetworkId?: string;
+    /**
+     * The list of unprotected disks.
+     */
+    unprotectedDisks?: InMageRcmUnProtectedDiskDetailsResponse[];
     /**
      * The network details.
      */
@@ -6357,6 +6577,24 @@ export interface InMageRcmSyncDetailsResponse {
      * The transferred bytes from source VM to azure for the disk.
      */
     transferredBytes: number;
+}
+
+/**
+ * InMageRcm un-protected disk details.
+ */
+export interface InMageRcmUnProtectedDiskDetailsResponse {
+    /**
+     * The disk capacity in bytes.
+     */
+    capacityInBytes: number;
+    /**
+     * The disk Id.
+     */
+    diskId: string;
+    /**
+     * The disk name.
+     */
+    diskName: string;
 }
 
 /**
@@ -7327,6 +7565,10 @@ export interface OSDetailsResponse {
      * Product type.
      */
     productType?: string;
+    /**
+     * The OS name selected by user.
+     */
+    userSelectedOSName?: string;
 }
 
 /**
@@ -7345,6 +7587,20 @@ export interface OSDiskDetailsResponse {
      * The OS disk VHD name.
      */
     vhdName?: string;
+}
+
+/**
+ * Supported OS upgrade versions.
+ */
+export interface OSUpgradeSupportedVersionsResponse {
+    /**
+     * The source OS version name.
+     */
+    supportedSourceOsVersion: string;
+    /**
+     * The target OS version names.
+     */
+    supportedTargetOsVersions: string[];
 }
 
 /**
@@ -8532,7 +8788,7 @@ export interface ResourceGuardProxyBaseResponse {
     description?: string;
     lastUpdatedTime?: string;
     resourceGuardOperationDetails?: ResourceGuardOperationDetailResponse[];
-    resourceGuardResourceId?: string;
+    resourceGuardResourceId: string;
 }
 
 /**
@@ -8616,6 +8872,32 @@ export interface RunAsAccountResponse {
      * The CS RunAs account name.
      */
     accountName?: string;
+}
+
+/**
+ * Security profile input.
+ */
+export interface SecurityProfilePropertiesResponse {
+    /**
+     * A value indicating whether confidential compute encryption to be enabled.
+     */
+    targetVmConfidentialEncryption?: string;
+    /**
+     * A value indicating whether integrity monitoring to be enabled.
+     */
+    targetVmMonitoring?: string;
+    /**
+     * A value indicating whether secure boot to be enabled.
+     */
+    targetVmSecureBoot?: string;
+    /**
+     * The target VM security type.
+     */
+    targetVmSecurityType?: string;
+    /**
+     * A value indicating whether trusted platform module to be enabled.
+     */
+    targetVmTpm?: string;
 }
 
 /**
@@ -8793,9 +9075,22 @@ export interface SkuResponse {
 }
 
 /**
+ * Snapshot Backup related fields for WorkloadType SaPHanaSystem
+ */
+export interface SnapshotBackupAdditionalDetailsResponse {
+    instantRPDetails?: string;
+    instantRpRetentionRangeInDays?: number;
+    /**
+     * User assigned managed identity details
+     */
+    userAssignedManagedIdentityDetails?: UserAssignedManagedIdentityDetailsResponse;
+}
+
+/**
  * Soft delete Settings of vault
  */
 export interface SoftDeleteSettingsResponse {
+    enhancedSecurityState?: string;
     /**
      * Soft delete retention period in days
      */
@@ -8829,6 +9124,10 @@ export interface SubProtectionPolicyResponse {
      * Backup schedule specified as part of backup policy.
      */
     schedulePolicy?: LogSchedulePolicyResponse | LongTermSchedulePolicyResponse | SimpleSchedulePolicyResponse | SimpleSchedulePolicyV2Response;
+    /**
+     * Snapshot Backup related fields for WorkloadType SaPHanaSystem
+     */
+    snapshotBackupAdditionalDetails?: SnapshotBackupAdditionalDetailsResponse;
     /**
      * Tiering policy to automatically move RPs to another tier.
      * Key is Target Tier, defined in RecoveryPointTierType enum.
@@ -8931,6 +9230,52 @@ export interface UpgradeDetailsResponse {
      * Resource ID of the upgraded vault.
      */
     upgradedResourceId: string;
+}
+
+/**
+ * User assigned managed identity properties
+ */
+export interface UserAssignedIdentityPropertiesResponse {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId?: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId?: string;
+}
+
+/**
+ * User assigned managed identity details
+ */
+export interface UserAssignedManagedIdentityDetailsResponse {
+    /**
+     * The ARM id of the assigned identity.
+     */
+    identityArmId?: string;
+    /**
+     * The name of the assigned identity.
+     */
+    identityName?: string;
+    /**
+     * User assigned managed identity properties
+     */
+    userAssignedIdentityProperties?: UserAssignedIdentityPropertiesResponse;
+}
+
+/**
+ * Resource tag input.
+ */
+export interface UserCreatedResourceTagResponse {
+    /**
+     * The tag name. Please read for more information: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations
+     */
+    tagName?: string;
+    /**
+     * The tag value. Please read her for more information: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations
+     */
+    tagValue?: string;
 }
 
 /**
@@ -9094,6 +9439,10 @@ export function vmnicDetailsResponseProvideDefaults(val: VMNicDetailsResponse): 
  */
 export interface VMwareCbtMigrationDetailsResponse {
     /**
+     * A value indicating the appliance monitoring details.
+     */
+    applianceMonitoringDetails: ApplianceMonitoringDetailsResponse;
+    /**
      * The confidential VM key vault Id for ADE installation.
      */
     confidentialVmKeyVaultId?: string;
@@ -9102,9 +9451,21 @@ export interface VMwareCbtMigrationDetailsResponse {
      */
     dataMoverRunAsAccountId: string;
     /**
+     * The delta sync progress percentage.
+     */
+    deltaSyncProgressPercentage: number;
+    /**
+     * The delta sync retry count.
+     */
+    deltaSyncRetryCount: number;
+    /**
      * The firmware type.
      */
     firmwareType: string;
+    /**
+     * A value indicating the gateway operation details.
+     */
+    gatewayOperationDetails: GatewayOperationDetailsResponse;
     /**
      * The initial seeding progress percentage.
      */
@@ -9119,6 +9480,10 @@ export interface VMwareCbtMigrationDetailsResponse {
      */
     instanceType: "VMwareCbt";
     /**
+     * A value indicating whether checksum resync cycle is in progress.
+     */
+    isCheckSumResyncCycle: string;
+    /**
      * The last recovery point Id.
      */
     lastRecoveryPointId: string;
@@ -9131,6 +9496,10 @@ export interface VMwareCbtMigrationDetailsResponse {
      */
     licenseType?: string;
     /**
+     * The license type for Linux VM's.
+     */
+    linuxLicenseType?: string;
+    /**
      * The migration progress percentage.
      */
     migrationProgressPercentage: number;
@@ -9138,6 +9507,10 @@ export interface VMwareCbtMigrationDetailsResponse {
      * The recovery point Id to which the VM was migrated.
      */
     migrationRecoveryPointId: string;
+    /**
+     * A value indicating the SRS operation name.
+     */
+    operationName: string;
     /**
      * The name of the OS on the VM.
      */
@@ -9195,7 +9568,7 @@ export interface VMwareCbtMigrationDetailsResponse {
      */
     storageAccountId: string;
     /**
-     * List of supported inplace OS Upgrade versions.
+     * A value indicating the inplace OS Upgrade version.
      */
     supportedOSVersions?: string[];
     /**
@@ -9359,6 +9732,10 @@ export interface VMwareCbtProtectedDiskDetailsResponse {
      */
     diskType?: string;
     /**
+     * A value indicating the gateway operation details.
+     */
+    gatewayOperationDetails: GatewayOperationDetailsResponse;
+    /**
      * A value indicating whether the disk is the OS disk.
      */
     isOSDisk: string;
@@ -9370,6 +9747,10 @@ export interface VMwareCbtProtectedDiskDetailsResponse {
      * The key vault secret name of the log storage account.
      */
     logStorageAccountSasSecretName: string;
+    /**
+     * The logical sector size (in bytes), 512 by default.
+     */
+    sectorSizeInBytes?: number;
     /**
      * The uri of the seed blob.
      */
@@ -9692,6 +10073,10 @@ export interface VaultPropertiesResponse {
      */
     backupStorageVersion: string;
     /**
+     * Security levels of Recovery Services Vault for business continuity and disaster recovery
+     */
+    bcdrSecurityLevel: string;
+    /**
      * Customer Managed Key details of the resource.
      */
     encryption?: VaultPropertiesResponseEncryption;
@@ -9731,6 +10116,10 @@ export interface VaultPropertiesResponse {
      * The redundancy Settings of a Vault
      */
     redundancySettings?: VaultPropertiesResponseRedundancySettings;
+    /**
+     * ResourceGuardOperationRequests on which LAC check will be performed
+     */
+    resourceGuardOperationRequests?: string[];
     /**
      * Restore Settings of the vault
      */
@@ -9800,11 +10189,22 @@ export interface VaultPropertiesResponseRedundancySettings {
     /**
      * Flag to show if Cross Region Restore is enabled on the Vault or not
      */
-    crossRegionRestore: string;
+    crossRegionRestore?: string;
     /**
      * The storage redundancy setting of a vault
      */
-    standardTierStorageRedundancy: string;
+    standardTierStorageRedundancy?: string;
+}
+
+/**
+ * Vault retention policy for AzureFileShare
+ */
+export interface VaultRetentionPolicyResponse {
+    snapshotRetentionInDays: number;
+    /**
+     * Base class for retention policy.
+     */
+    vaultRetention: LongTermRetentionPolicyResponse | SimpleRetentionPolicyResponse;
 }
 
 /**
@@ -10094,18 +10494,3 @@ export interface YearlyRetentionScheduleResponse {
      */
     retentionTimes?: string[];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

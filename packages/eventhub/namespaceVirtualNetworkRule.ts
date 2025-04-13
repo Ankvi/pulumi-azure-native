@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Single item in a List or Get VirtualNetworkRules operation
  *
- * Uses Azure REST API version 2018-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2018-01-01-preview.
+ * Uses Azure REST API version 2018-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2018-01-01-preview.
  */
 export class NamespaceVirtualNetworkRule extends pulumi.CustomResource {
     /**
@@ -32,6 +32,10 @@ export class NamespaceVirtualNetworkRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === NamespaceVirtualNetworkRule.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The name of the resource
      */
@@ -66,9 +70,11 @@ export class NamespaceVirtualNetworkRule extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["virtualNetworkRuleName"] = args ? args.virtualNetworkRuleName : undefined;
             resourceInputs["virtualNetworkSubnetId"] = args ? args.virtualNetworkSubnetId : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["virtualNetworkSubnetId"] = undefined /*out*/;

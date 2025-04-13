@@ -5,6 +5,8 @@ import * as types from "./types";
  * Gets the specified interface endpoint by resource group.
  *
  * Uses Azure REST API version 2019-02-01.
+ *
+ * Other available API versions: 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getInterfaceEndpoint(args: GetInterfaceEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetInterfaceEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +36,10 @@ export interface GetInterfaceEndpointArgs {
  * Interface endpoint resource.
  */
 export interface GetInterfaceEndpointResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * A reference to the service being brought into the virtual network.
      */
@@ -87,6 +93,8 @@ export interface GetInterfaceEndpointResult {
  * Gets the specified interface endpoint by resource group.
  *
  * Uses Azure REST API version 2019-02-01.
+ *
+ * Other available API versions: 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getInterfaceEndpointOutput(args: GetInterfaceEndpointOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInterfaceEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

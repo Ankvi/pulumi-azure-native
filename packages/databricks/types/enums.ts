@@ -1,3 +1,38 @@
+export const AutomaticClusterUpdateValue = {
+    Enabled: "Enabled",
+    Disabled: "Disabled",
+} as const;
+
+export type AutomaticClusterUpdateValue = (typeof AutomaticClusterUpdateValue)[keyof typeof AutomaticClusterUpdateValue];
+
+export const ComplianceSecurityProfileValue = {
+    Enabled: "Enabled",
+    Disabled: "Disabled",
+} as const;
+
+export type ComplianceSecurityProfileValue = (typeof ComplianceSecurityProfileValue)[keyof typeof ComplianceSecurityProfileValue];
+
+export const ComplianceStandard = {
+    NONE: "NONE",
+    HIPAA: "HIPAA",
+    PCI_DSS: "PCI_DSS",
+} as const;
+
+/**
+ * Compliance standard that can be associated with a workspace.
+ */
+export type ComplianceStandard = (typeof ComplianceStandard)[keyof typeof ComplianceStandard];
+
+export const DefaultStorageFirewall = {
+    Disabled: "Disabled",
+    Enabled: "Enabled",
+} as const;
+
+/**
+ * Gets or Sets Default Storage Firewall configuration information
+ */
+export type DefaultStorageFirewall = (typeof DefaultStorageFirewall)[keyof typeof DefaultStorageFirewall];
+
 export const EncryptionKeySource = {
     Microsoft_Keyvault: "Microsoft.Keyvault",
 } as const;
@@ -6,6 +41,33 @@ export const EncryptionKeySource = {
  * The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
  */
 export type EncryptionKeySource = (typeof EncryptionKeySource)[keyof typeof EncryptionKeySource];
+
+export const EnhancedSecurityMonitoringValue = {
+    Enabled: "Enabled",
+    Disabled: "Disabled",
+} as const;
+
+export type EnhancedSecurityMonitoringValue = (typeof EnhancedSecurityMonitoringValue)[keyof typeof EnhancedSecurityMonitoringValue];
+
+export const IdentityType = {
+    SystemAssigned: "SystemAssigned",
+    UserAssigned: "UserAssigned",
+} as const;
+
+/**
+ * The identity type of the Access Connector Resource.
+ */
+export type IdentityType = (typeof IdentityType)[keyof typeof IdentityType];
+
+export const InitialType = {
+    HiveMetastore: "HiveMetastore",
+    UnityCatalog: "UnityCatalog",
+} as const;
+
+/**
+ * Defines the initial type of the default catalog. Possible values (case-insensitive):  HiveMetastore, UnityCatalog
+ */
+export type InitialType = (typeof InitialType)[keyof typeof InitialType];
 
 export const KeySource = {
     Default: "Default",

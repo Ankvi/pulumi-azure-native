@@ -39,6 +39,10 @@ export interface GetRosettaNetProcessConfigurationResult {
      */
     readonly activitySettings: types.outputs.RosettaNetPipActivitySettingsResponse;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The changed time.
      */
     readonly changedTime: string;

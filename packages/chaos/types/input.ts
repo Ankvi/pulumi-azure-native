@@ -1,7 +1,7 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * Model that represents a branch in the step.
+ * Model that represents a branch in the step. 9 total per experiment.
  */
 export interface BranchArgs {
     /**
@@ -39,6 +39,20 @@ export interface ContinuousActionArgs {
      * Expected value is 'continuous'.
      */
     type: pulumi.Input<"continuous">;
+}
+
+/**
+ * Model that represents the Customer Managed Storage for an Experiment.
+ */
+export interface CustomerDataStoragePropertiesArgs {
+    /**
+     * Name of the Azure Blob Storage container to use or create.
+     */
+    blobContainerName?: pulumi.Input<string>;
+    /**
+     * ARM Resource ID of the Storage account to use for Customer Data storage.
+     */
+    storageAccountResourceId?: pulumi.Input<string>;
 }
 
 /**
@@ -84,17 +98,31 @@ export interface DiscreteActionArgs {
 }
 
 /**
+ * The identity of the experiment resource.
+ */
+export interface ExperimentIdentityArgs {
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: pulumi.Input<string | enums.ManagedServiceIdentityType>;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
  * Model that represents the Experiment properties model.
  */
 export interface ExperimentPropertiesArgs {
     /**
+     * Optional customer-managed Storage account where Experiment schema will be stored.
+     */
+    customerDataStorage?: pulumi.Input<CustomerDataStoragePropertiesArgs>;
+    /**
      * List of selectors.
      */
     selectors: pulumi.Input<pulumi.Input<ListSelectorArgs | QuerySelectorArgs>[]>;
-    /**
-     * A boolean value that indicates if experiment should be started on creation or not.
-     */
-    startOnCreation?: pulumi.Input<boolean>;
     /**
      * List of steps.
      */
@@ -166,20 +194,6 @@ export interface QuerySelectorArgs {
 }
 
 /**
- * The identity of a resource.
- */
-export interface ResourceIdentityArgs {
-    /**
-     * String of the resource identity type.
-     */
-    type: pulumi.Input<enums.ResourceIdentityType>;
-    /**
-     * The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-     */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-/**
  * Model that represents a simple target filter.
  */
 export interface SimpleFilterArgs {
@@ -231,10 +245,3 @@ export interface TargetReferenceArgs {
      */
     type: pulumi.Input<string | enums.TargetReferenceType>;
 }
-
-
-
-
-
-
-

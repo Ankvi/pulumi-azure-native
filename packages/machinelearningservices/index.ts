@@ -536,11 +536,6 @@ export const listServerlessEndpointKeys: typeof import("./listServerlessEndpoint
 export const listServerlessEndpointKeysOutput: typeof import("./listServerlessEndpointKeys").listServerlessEndpointKeysOutput = null as any;
 utilities.lazyLoad(exports, ["listServerlessEndpointKeys","listServerlessEndpointKeysOutput"], () => require("./listServerlessEndpointKeys"));
 
-export { ListWorkspaceConnectionModelsArgs, ListWorkspaceConnectionModelsResult, ListWorkspaceConnectionModelsOutputArgs } from "./listWorkspaceConnectionModels";
-export const listWorkspaceConnectionModels: typeof import("./listWorkspaceConnectionModels").listWorkspaceConnectionModels = null as any;
-export const listWorkspaceConnectionModelsOutput: typeof import("./listWorkspaceConnectionModels").listWorkspaceConnectionModelsOutput = null as any;
-utilities.lazyLoad(exports, ["listWorkspaceConnectionModels","listWorkspaceConnectionModelsOutput"], () => require("./listWorkspaceConnectionModels"));
-
 export { ListWorkspaceConnectionSecretsArgs, ListWorkspaceConnectionSecretsResult, ListWorkspaceConnectionSecretsOutputArgs } from "./listWorkspaceConnectionSecrets";
 export const listWorkspaceConnectionSecrets: typeof import("./listWorkspaceConnectionSecrets").listWorkspaceConnectionSecrets = null as any;
 export const listWorkspaceConnectionSecretsOutput: typeof import("./listWorkspaceConnectionSecrets").listWorkspaceConnectionSecretsOutput = null as any;
@@ -694,8 +689,6 @@ utilities.lazyLoad(exports, ["WorkspaceConnection"], () => require("./workspaceC
 
 // Export enums:
 export * from "./types/enums";
-
-
 
 const _module = {
     version: utilities.getVersion(),

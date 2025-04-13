@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Resource representation of a workflow
  *
- * Uses Azure REST API version 2022-10-11-preview.
+ * Uses Azure REST API version 2023-08-01.
  *
- * Other available API versions: 2023-08-01, 2024-05-01-preview, 2024-08-01-preview, 2025-03-01-preview.
+ * Other available API versions: 2022-10-11-preview, 2024-05-01-preview, 2024-08-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getWorkflow(args: GetWorkflowArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,38 +32,17 @@ export interface GetWorkflowArgs {
  */
 export interface GetWorkflowResult {
     /**
-     * Information on the azure container registry
-     */
-    readonly acr?: types.outputs.ACRResponse;
-    /**
-     * The Azure Kubernetes Cluster Resource the application will be deployed to.
-     */
-    readonly aksResourceId?: string;
-    /**
      * The name of the app.
      */
     readonly appName?: string;
     /**
-     * Determines the authorization status of requests.
+     * The Azure API version of the resource.
      */
-    readonly authStatus: string;
-    /**
-     * Repository Branch Name
-     */
-    readonly branchName?: string;
+    readonly azureApiVersion: string;
     /**
      * The version of the language image used for building the code in the generated dockerfile.
      */
     readonly builderVersion?: string;
-    readonly deploymentProperties?: types.outputs.DeploymentPropertiesResponse;
-    /**
-     * Path to Dockerfile Build Context within the repository.
-     */
-    readonly dockerBuildContext?: string;
-    /**
-     * Path to the Dockerfile within the repository.
-     */
-    readonly dockerfile?: string;
     /**
      * The mode of generation to be used for generating Dockerfiles.
      */
@@ -76,6 +55,10 @@ export interface GetWorkflowResult {
      * The programming language used.
      */
     readonly generationLanguage?: string;
+    /**
+     * Profile of a github workflow.
+     */
+    readonly githubWorkflowProfile?: types.outputs.GitHubWorkflowProfileResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -92,7 +75,6 @@ export interface GetWorkflowResult {
      * The version of the language image used for execution in the generated dockerfile.
      */
     readonly languageVersion?: string;
-    readonly lastWorkflowRun?: types.outputs.WorkflowRunResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -114,37 +96,13 @@ export interface GetWorkflowResult {
      */
     readonly name: string;
     /**
-     * Kubernetes namespace the application is deployed to.
+     * The namespace to deploy the application to.
      */
     readonly namespace?: string;
-    /**
-     * The fields needed for OIDC with GitHub.
-     */
-    readonly oidcCredentials?: types.outputs.GitHubWorkflowProfileResponseOidcCredentials;
     /**
      * The port the application is exposed on.
      */
     readonly port?: string;
-    /**
-     * The status of the Pull Request submitted against the users repository.
-     */
-    readonly prStatus: string;
-    /**
-     * The URL to the Pull Request submitted against the users repository.
-     */
-    readonly prURL: string;
-    /**
-     * The number associated with the submitted pull request.
-     */
-    readonly pullNumber: number;
-    /**
-     * Repository Name
-     */
-    readonly repositoryName?: string;
-    /**
-     * Repository Owner
-     */
-    readonly repositoryOwner?: string;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -161,9 +119,9 @@ export interface GetWorkflowResult {
 /**
  * Resource representation of a workflow
  *
- * Uses Azure REST API version 2022-10-11-preview.
+ * Uses Azure REST API version 2023-08-01.
  *
- * Other available API versions: 2023-08-01, 2024-05-01-preview, 2024-08-01-preview, 2025-03-01-preview.
+ * Other available API versions: 2022-10-11-preview, 2024-05-01-preview, 2024-08-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getWorkflowOutput(args: GetWorkflowOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkflowResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -1,6 +1,24 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
+ */
+export interface ActionOnUnmanageArgs {
+    /**
+     * Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+     */
+    managementGroups?: pulumi.Input<string | enums.DeploymentStacksDeleteDetachEnum>;
+    /**
+     * Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+     */
+    resourceGroups?: pulumi.Input<string | enums.DeploymentStacksDeleteDetachEnum>;
+    /**
+     * Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+     */
+    resources: pulumi.Input<string | enums.DeploymentStacksDeleteDetachEnum>;
+}
+
+/**
  * Settings to customize ACI container instance.
  */
 export interface ContainerConfigurationArgs {
@@ -8,6 +26,24 @@ export interface ContainerConfigurationArgs {
      * Container group name, if not specified then the name will get auto-generated. Not specifying a 'containerGroupName' indicates the system to generate a unique name which might end up flagging an Azure Policy as non-compliant. Use 'containerGroupName' when you have an Azure Policy that expects a specific naming convention or when you want to fully control the name. 'containerGroupName' property must be between 1 and 63 characters long, must contain only lowercase letters, numbers, and dashes and it cannot start or end with a dash and consecutive dashes are not allowed. To specify a 'containerGroupName', add the following object to properties: { "containerSettings": { "containerGroupName": "contoso-container" } }. If you do not want to specify a 'containerGroupName' then do not add 'containerSettings' property.
      */
     containerGroupName?: pulumi.Input<string>;
+    /**
+     * The subnet resource IDs for a container group.
+     */
+    subnetIds?: pulumi.Input<pulumi.Input<ContainerGroupSubnetIdArgs>[]>;
+}
+
+/**
+ * Container group subnet information.
+ */
+export interface ContainerGroupSubnetIdArgs {
+    /**
+     * Resource ID of subnet.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Friendly name for the subnet.
+     */
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -21,11 +57,11 @@ export interface DebugSettingArgs {
 }
 
 /**
- * Defines how resources deployed by the deployment stack are locked.
+ * Defines how resources deployed by the Deployment stack are locked.
  */
 export interface DenySettingsArgs {
     /**
-     * DenySettings will be applied to child scopes.
+     * DenySettings will be applied to child resource scopes of every managed resource with a deny assignment.
      */
     applyToChildScopes?: pulumi.Input<boolean>;
     /**
@@ -37,7 +73,7 @@ export interface DenySettingsArgs {
      */
     excludedPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * denySettings Mode.
+     * denySettings Mode that defines denied actions.
      */
     mode: pulumi.Input<string | enums.DenySettingsMode>;
 }
@@ -51,7 +87,11 @@ export interface DeploymentParameterArgs {
      */
     reference?: pulumi.Input<KeyVaultParameterReferenceArgs>;
     /**
-     * Input value to the parameter .
+     * Type of the value.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * Input value to the parameter.
      */
     value?: any;
 }
@@ -95,24 +135,6 @@ export interface DeploymentPropertiesArgs {
 }
 
 /**
- * Defines the behavior of resources that are not managed immediately after the stack is updated.
- */
-export interface DeploymentStackPropertiesActionOnUnmanageArgs {
-    /**
-     * Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-     */
-    managementGroups?: pulumi.Input<string | enums.DeploymentStacksDeleteDetachEnum>;
-    /**
-     * Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-     */
-    resourceGroups?: pulumi.Input<string | enums.DeploymentStacksDeleteDetachEnum>;
-    /**
-     * Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-     */
-    resources: pulumi.Input<string | enums.DeploymentStacksDeleteDetachEnum>;
-}
-
-/**
  * The debug setting.
  */
 export interface DeploymentStacksDebugSettingArgs {
@@ -145,7 +167,7 @@ export interface DeploymentStacksTemplateLinkArgs {
      */
     contentVersion?: pulumi.Input<string>;
     /**
-     * The resource id of a Template Spec. Use either the id or uri property, but not both.
+     * The resourceId of a Template Spec. Use either the id or uri property, but not both.
      */
     id?: pulumi.Input<string>;
     /**
@@ -153,7 +175,7 @@ export interface DeploymentStacksTemplateLinkArgs {
      */
     queryString?: pulumi.Input<string>;
     /**
-     * The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
+     * The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs.
      */
     relativePath?: pulumi.Input<string>;
     /**
@@ -241,7 +263,7 @@ export interface KeyVaultParameterReferenceArgs {
  */
 export interface KeyVaultReferenceArgs {
     /**
-     * Azure Key Vault resource id.
+     * Azure Key Vault resourceId.
      */
     id: pulumi.Input<string>;
 }
@@ -404,13 +426,3 @@ export interface TemplateLinkArgs {
      */
     uri?: pulumi.Input<string>;
 }
-
-
-
-
-
-
-
-
-
-

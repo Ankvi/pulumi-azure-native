@@ -185,6 +185,16 @@ export interface L2ConnectionsPropertiesGroundStationArgs {
 }
 
 /**
+ * The name of the partner router to establish a connection to within the ground station.
+ */
+export interface L2ConnectionsPropertiesGroundStationPartnerRouterArgs {
+    /**
+     * The unique name of the partner router that cross-connects with the Orbital Edge Router at the ground station site.
+     */
+    name: pulumi.Input<string>;
+}
+
+/**
  * List of authorized spacecraft links per ground station and the expiration date of the authorization.
  */
 export interface SpacecraftLinkArgs {
@@ -209,6 +219,3 @@ export interface SpacecraftLinkArgs {
      */
     polarization: pulumi.Input<string | enums.Polarization>;
 }
-
-
-

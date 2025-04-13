@@ -9,6 +9,10 @@ export interface AdditionalConfigurationResponse {
      */
     hierarchyInformation: HierarchyInformationResponse;
     /**
+     * List Provisioning Details for Devices in Additional Config.
+     */
+    provisioningDetails?: ProvisioningDetailsResponse[];
+    /**
      * Quantity of the product.
      */
     quantity: number;
@@ -19,29 +23,37 @@ export interface AdditionalConfigurationResponse {
  */
 export interface AddressDetailsResponse {
     /**
-     * Customer address and contact details. It should be address resource
+     * Customer address and contact details.
      */
     forwardAddress: AddressPropertiesResponse;
     /**
-     * Return shipping address
+     * Return shipping address.
      */
     returnAddress: AddressPropertiesResponse;
 }
 
 /**
- * Address Properties
+ * Address Properties.
  */
 export interface AddressPropertiesResponse {
     /**
-     * Status of address validation
+     * Type of address based on its usage context.
+     */
+    addressClassification?: string;
+    /**
+     * Status of address validation.
      */
     addressValidationStatus: string;
     /**
-     * Contact details for the address
+     * Contact details for the address.
      */
-    contactDetails: ContactDetailsResponse;
+    contactDetails?: ContactDetailsResponse;
     /**
-     * Shipping details for the address
+     * Provisioning state
+     */
+    provisioningState: string;
+    /**
+     * Shipping details for the address.
      */
     shippingAddress?: ShippingAddressResponse;
 }
@@ -84,6 +96,10 @@ export interface BillingMeterDetailsResponse {
      * Represents Billing type name.
      */
     name: string;
+    /**
+     * Represent Term Type details.
+     */
+    termTypeDetails: TermTypeDetailsResponse;
 }
 
 /**
@@ -173,9 +189,17 @@ export interface ChildConfigurationResponse {
      */
     minimumQuantity: number;
     /**
+     * Determining nature of provisioning that the configuration supports.
+     */
+    provisioningSupport: string;
+    /**
      * Specifications of the configuration.
      */
     specifications: SpecificationResponse[];
+    /**
+     * The Term Commitment Durations that are supported for a configuration.
+     */
+    supportedTermCommitmentDurations: string[];
 }
 
 /**
@@ -202,6 +226,19 @@ export interface ConfigurationDeviceDetailsResponse {
      * Quantity of the product.
      */
     quantity: number;
+    /**
+     * Term Commitment Information of the Device.
+     */
+    termCommitmentInformation: TermCommitmentInformationResponse;
+}
+/**
+ * configurationDeviceDetailsResponseProvideDefaults sets the appropriate defaults for ConfigurationDeviceDetailsResponse
+ */
+export function configurationDeviceDetailsResponseProvideDefaults(val: ConfigurationDeviceDetailsResponse): ConfigurationDeviceDetailsResponse {
+    return {
+        ...val,
+        termCommitmentInformation: termCommitmentInformationResponseProvideDefaults(val.termCommitmentInformation),
+    };
 }
 
 /**
@@ -253,9 +290,17 @@ export interface ConfigurationResponse {
      */
     imageInformation: ImageInformationResponse[];
     /**
+     * Determining nature of provisioning that the configuration supports.
+     */
+    provisioningSupport: string;
+    /**
      * Specifications of the configuration.
      */
     specifications: SpecificationResponse[];
+    /**
+     * The Term Commitment Durations that are supported for a configuration.
+     */
+    supportedTermCommitmentDurations: string[];
 }
 
 /**
@@ -265,11 +310,11 @@ export interface ContactDetailsResponse {
     /**
      * Contact name of the person.
      */
-    contactName: string;
+    contactName?: string;
     /**
      * List of Email-ids to be notified about job progress.
      */
-    emailList: string[];
+    emailList?: string[];
     /**
      * Mobile number of the contact person.
      */
@@ -277,7 +322,7 @@ export interface ContactDetailsResponse {
     /**
      * Phone number of the contact person.
      */
-    phone: string;
+    phone?: string;
     /**
      * Phone extension number of the contact person.
      */
@@ -333,17 +378,52 @@ export interface DescriptionResponse {
  */
 export interface DeviceDetailsResponse {
     /**
-     * Management Resource Id
+     * Device serial number to be displayed.
+     */
+    displaySerialNumber: string;
+    /**
+     * Management Resource Id.
      */
     managementResourceId: string;
     /**
-     * Management Resource Tenant ID
+     * Management Resource Tenant ID.
      */
     managementResourceTenantId: string;
     /**
-     * device serial number
+     * Provisioning Details for the device.
+     */
+    provisioningDetails: ProvisioningDetailsResponse;
+    /**
+     * Determining nature of provisioning that the configuration supports.
+     */
+    provisioningSupport: string;
+    /**
+     * Device serial number.
      */
     serialNumber: string;
+}
+/**
+ * deviceDetailsResponseProvideDefaults sets the appropriate defaults for DeviceDetailsResponse
+ */
+export function deviceDetailsResponseProvideDefaults(val: DeviceDetailsResponse): DeviceDetailsResponse {
+    return {
+        ...val,
+        provisioningDetails: provisioningDetailsResponseProvideDefaults(val.provisioningDetails),
+    };
+}
+
+/**
+ * Proof of possession details.
+ */
+export interface DevicePresenceVerificationDetailsResponse {
+    /**
+     * Insights on current status.
+     */
+    message: string;
+    /**
+     * Proof of possession status.
+     */
+    status: string;
 }
 
 /**
@@ -381,21 +461,21 @@ export interface DimensionsResponse {
 }
 
 /**
- * Describes product display information
+ * Describes product display information.
  */
 export interface DisplayInfoResponse {
     /**
-     * Configuration display name
+     * Configuration display name.
      */
     configurationDisplayName: string;
     /**
-     * Product family display name
+     * Product family display name.
      */
     productFamilyDisplayName: string;
 }
 
 /**
- * Preferences related to the double encryption
+ * Preferences related to the double encryption.
  */
 export interface EncryptionPreferencesResponse {
     /**
@@ -471,7 +551,7 @@ export interface ForwardShippingDetailsResponse {
      */
     carrierName: string;
     /**
-     * TrackingId of the package
+     * TrackingId of the package.
      */
     trackingId: string;
     /**
@@ -498,6 +578,10 @@ export interface GroupedChildConfigurationsResponse {
  * Holds details about product hierarchy information.
  */
 export interface HierarchyInformationResponse {
+    /**
+     * Represents Model Display Name.
+     */
+    configurationIdDisplayName?: string;
     /**
      * Represents configuration name that uniquely identifies configuration.
      */
@@ -545,11 +629,11 @@ export interface LinkResponse {
 }
 
 /**
- * Management resource preference to link device
+ * Management resource preference to link device.
  */
 export interface ManagementResourcePreferencesResponse {
     /**
-     * Customer preferred Management resource ARM ID
+     * Customer preferred Management resource ARM ID.
      */
     preferredManagementResourceId?: string;
 }
@@ -569,7 +653,7 @@ export interface NotificationPreferenceResponse {
 }
 
 /**
- * Order item details
+ * Order item details.
  */
 export interface OrderItemDetailsResponse {
     /**
@@ -581,7 +665,7 @@ export interface OrderItemDetailsResponse {
      */
     cancellationStatus: string;
     /**
-     * Current Order item Status
+     * Current Order item Status.
      */
     currentStage: StageDetailsResponse;
     /**
@@ -593,19 +677,15 @@ export interface OrderItemDetailsResponse {
      */
     error: ErrorDetailResponse;
     /**
-     * Forward Package Shipping details
+     * Forward Package Shipping details.
      */
     forwardShippingDetails: ForwardShippingDetailsResponse;
-    /**
-     * Parent RP details - this returns only the first or default parent RP from the entire list
-     */
-    managementRpDetails: ResourceProviderDetailsResponse;
     /**
      * List of parent RP details supported for configuration.
      */
     managementRpDetailsList: ResourceProviderDetailsResponse[];
     /**
-     * Additional notification email list
+     * Additional notification email list.
      */
     notificationEmailList?: string[];
     /**
@@ -613,7 +693,7 @@ export interface OrderItemDetailsResponse {
      */
     orderItemMode?: string;
     /**
-     * Order item status history
+     * Order item status history.
      */
     orderItemStageHistory: StageDetailsResponse[];
     /**
@@ -621,11 +701,11 @@ export interface OrderItemDetailsResponse {
      */
     orderItemType: string;
     /**
-     * Customer notification Preferences
+     * Customer notification Preferences.
      */
     preferences?: PreferencesResponse;
     /**
-     * Unique identifier for configuration.
+     * Represents product details.
      */
     productDetails: ProductDetailsResponse;
     /**
@@ -637,9 +717,22 @@ export interface OrderItemDetailsResponse {
      */
     returnStatus: string;
     /**
-     * Reverse Package Shipping details
+     * Reverse Package Shipping details.
      */
     reverseShippingDetails: ReverseShippingDetailsResponse;
+    /**
+     * Site Related Details.
+     */
+    siteDetails?: SiteDetailsResponse;
+}
+/**
+ * orderItemDetailsResponseProvideDefaults sets the appropriate defaults for OrderItemDetailsResponse
+ */
+export function orderItemDetailsResponseProvideDefaults(val: OrderItemDetailsResponse): OrderItemDetailsResponse {
+    return {
+        ...val,
+        productDetails: productDetailsResponseProvideDefaults(val.productDetails),
+    };
 }
 
 /**
@@ -666,7 +759,7 @@ export interface Pav2MeterDetailsResponse {
 }
 
 /**
- * Preferences related to the order
+ * Preferences related to the order.
  */
 export interface PreferencesResponse {
     /**
@@ -682,39 +775,35 @@ export interface PreferencesResponse {
      */
     notificationPreferences?: NotificationPreferenceResponse[];
     /**
+     * Preferences related to the Term commitment.
+     */
+    termCommitmentPreferences?: TermCommitmentPreferencesResponse;
+    /**
      * Preferences related to the shipment logistics of the order.
      */
     transportPreferences?: TransportPreferencesResponse;
 }
 
 /**
- * Represents product details
+ * Represents product details.
  */
 export interface ProductDetailsResponse {
     /**
      * Details of all child configurations that are part of the order item.
      */
-    childConfigurationDeviceDetails?: ConfigurationDeviceDetailsResponse[];
+    childConfigurationDeviceDetails: ConfigurationDeviceDetailsResponse[];
     /**
-     * Quantity of the product
-     */
-    count: number;
-    /**
-     * list of device details
-     */
-    deviceDetails: DeviceDetailsResponse[];
-    /**
-     * Display details of the product
+     * Display details of the product.
      */
     displayInfo?: DisplayInfoResponse;
     /**
-     * Hierarchy of the product which uniquely identifies the product
+     * Hierarchy of the product which uniquely identifies the product.
      */
     hierarchyInformation: HierarchyInformationResponse;
     /**
      * Identification type of the configuration.
      */
-    identificationType?: string;
+    identificationType: string;
     /**
      * List of additional configurations customer wants in the order item apart from the ones included in the base configuration.
      */
@@ -722,11 +811,30 @@ export interface ProductDetailsResponse {
     /**
      * Device details of the parent configuration.
      */
-    parentDeviceDetails?: DeviceDetailsResponse;
+    parentDeviceDetails: DeviceDetailsResponse;
+    /**
+     * Device Provisioning Details for Parent.
+     */
+    parentProvisioningDetails?: ProvisioningDetailsResponse;
     /**
      * Double encryption status of the configuration. Read-only field.
      */
     productDoubleEncryptionStatus: string;
+    /**
+     * Term Commitment Information of the Device.
+     */
+    termCommitmentInformation: TermCommitmentInformationResponse;
+}
+/**
+ * productDetailsResponseProvideDefaults sets the appropriate defaults for ProductDetailsResponse
+ */
+export function productDetailsResponseProvideDefaults(val: ProductDetailsResponse): ProductDetailsResponse {
+    return {
+        ...val,
+        parentDeviceDetails: deviceDetailsResponseProvideDefaults(val.parentDeviceDetails),
+        parentProvisioningDetails: (val.parentProvisioningDetails ? provisioningDetailsResponseProvideDefaults(val.parentProvisioningDetails) : undefined),
+        termCommitmentInformation: termCommitmentInformationResponseProvideDefaults(val.termCommitmentInformation),
+    };
 }
 
 /**
@@ -860,6 +968,61 @@ export interface ProductResponse {
 }
 
 /**
+ * Details Related To Provision Resource.
+ */
+export interface ProvisioningDetailsResponse {
+    /**
+     * Auto Provisioning Details.
+     */
+    autoProvisioningStatus?: string;
+    /**
+     * Proof of possession details.
+     */
+    devicePresenceVerification?: DevicePresenceVerificationDetailsResponse;
+    /**
+     * Management Resource ArmId.
+     */
+    managementResourceArmId?: string;
+    /**
+     * Provisioning Resource Arm ID.
+     */
+    provisioningArmId?: string;
+    /**
+     * Provisioning End Point.
+     */
+    provisioningEndPoint?: string;
+    /**
+     * Quantity of the devices.
+     */
+    quantity?: number;
+    /**
+     * Arc Enabled Resource Arm id.
+     */
+    readyToConnectArmId?: string;
+    /**
+     * Serial Number for the Device.
+     */
+    serialNumber?: string;
+    /**
+     * Unique Identity for a Device.
+     */
+    uniqueDeviceIdentifier: string;
+    /**
+     * Vendor Name for the Device , (for 1P devices - Microsoft).
+     */
+    vendorName?: string;
+}
+/**
+ * provisioningDetailsResponseProvideDefaults sets the appropriate defaults for ProvisioningDetailsResponse
+ */
+export function provisioningDetailsResponseProvideDefaults(val: ProvisioningDetailsResponse): ProvisioningDetailsResponse {
+    return {
+        ...val,
+        quantity: (val.quantity) ?? 0,
+    };
+}
+
+/**
  * Billing type Purchase meter details.
  */
 export interface PurchaseMeterDetailsResponse {
@@ -891,6 +1054,37 @@ export interface PurchaseMeterDetailsResponse {
 }
 
 /**
+ * Msi identity details of the resource
+ */
+export interface ResourceIdentityResponse {
+    /**
+     * Service Principal Id backing the Msi
+     */
+    principalId: string;
+    /**
+     * Home Tenant Id
+     */
+    tenantId: string;
+    /**
+     * Identity type
+     */
+    type?: string;
+    /**
+     * User Assigned Identities
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+/**
+ * resourceIdentityResponseProvideDefaults sets the appropriate defaults for ResourceIdentityResponse
+ */
+export function resourceIdentityResponseProvideDefaults(val: ResourceIdentityResponse): ResourceIdentityResponse {
+    return {
+        ...val,
+        type: (val.type) ?? "None",
+    };
+}
+
+/**
  * Management RP details.
  */
 export interface ResourceProviderDetailsResponse {
@@ -917,7 +1111,7 @@ export interface ReverseShippingDetailsResponse {
      */
     sasKeyForLabel: string;
     /**
-     * TrackingId of the package
+     * TrackingId of the package.
      */
     trackingId: string;
     /**
@@ -957,7 +1151,7 @@ export interface ShippingAddressResponse {
     /**
      * Street Address line 1.
      */
-    streetAddress1: string;
+    streetAddress1?: string;
     /**
      * Street Address line 2.
      */
@@ -970,6 +1164,16 @@ export interface ShippingAddressResponse {
      * Extended Zip Code.
      */
     zipExtendedCode?: string;
+}
+
+/**
+ * Represents Site Related Details.
+ */
+export interface SiteDetailsResponse {
+    /**
+     * Unique Id, Identifying A Site.
+     */
+    siteId: string;
 }
 
 /**
@@ -995,7 +1199,7 @@ export interface StageDetailsResponse {
      */
     displayName: string;
     /**
-     * Stage name
+     * Stage name.
      */
     stageName: string;
     /**
@@ -1003,7 +1207,7 @@ export interface StageDetailsResponse {
      */
     stageStatus: string;
     /**
-     * Stage start time
+     * Stage start time.
      */
     startTime: string;
 }
@@ -1039,7 +1243,62 @@ export interface SystemDataResponse {
 }
 
 /**
- * Preferences related to the shipment logistics of the sku
+ * Term Commitment Information.
+ */
+export interface TermCommitmentInformationResponse {
+    /**
+     * Number of Days Pending for Term Commitment
+     */
+    pendingDaysForTerm: number;
+    /**
+     * Term Commitment Type
+     */
+    termCommitmentType: string;
+    /**
+     * Term Commitment Duration. Currently Supporting P365D, P1095D
+     */
+    termCommitmentTypeDuration: string;
+}
+/**
+ * termCommitmentInformationResponseProvideDefaults sets the appropriate defaults for TermCommitmentInformationResponse
+ */
+export function termCommitmentInformationResponseProvideDefaults(val: TermCommitmentInformationResponse): TermCommitmentInformationResponse {
+    return {
+        ...val,
+        pendingDaysForTerm: (val.pendingDaysForTerm) ?? 0,
+    };
+}
+
+/**
+ * Term Commitment preference received from customer.
+ */
+export interface TermCommitmentPreferencesResponse {
+    /**
+     * Customer preferred Term Duration.
+     */
+    preferredTermCommitmentDuration?: string;
+    /**
+     * Term Commitment Type
+     */
+    preferredTermCommitmentType: string;
+}
+
+/**
+ * Holds details about term type and duration.
+ */
+export interface TermTypeDetailsResponse {
+    /**
+     * Term Commitment Type
+     */
+    termType: string;
+    /**
+     * Duration for the term type.
+     */
+    termTypeDuration: string;
+}
+
+/**
+ * Preferences related to the shipment logistics of the sku.
  */
 export interface TransportPreferencesResponse {
     /**
@@ -1048,4 +1307,16 @@ export interface TransportPreferencesResponse {
     preferredShipmentType: string;
 }
 
-
+/**
+ * User assigned identity properties
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId: string;
+}

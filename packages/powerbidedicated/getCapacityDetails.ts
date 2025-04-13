@@ -34,6 +34,10 @@ export interface GetCapacityDetailsResult {
      */
     readonly administration?: types.outputs.DedicatedCapacityAdministratorsResponse;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Capacity name
      */
     readonly friendlyName: string;

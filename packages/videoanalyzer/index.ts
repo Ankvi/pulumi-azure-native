@@ -95,8 +95,6 @@ utilities.lazyLoad(exports, ["VideoAnalyzer"], () => require("./videoAnalyzer"))
 // Export enums:
 export * from "./types/enums";
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

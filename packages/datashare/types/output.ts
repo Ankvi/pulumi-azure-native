@@ -242,4 +242,3 @@ export interface TableLevelSharingPropertiesResponse {
      */
     tablesToInclude?: string[];
 }
-

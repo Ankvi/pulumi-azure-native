@@ -8,6 +8,17 @@ export const AmlFilesystemIdentityType = {
  */
 export type AmlFilesystemIdentityType = (typeof AmlFilesystemIdentityType)[keyof typeof AmlFilesystemIdentityType];
 
+export const AmlFilesystemSquashMode = {
+    None: "None",
+    RootOnly: "RootOnly",
+    All: "All",
+} as const;
+
+/**
+ * Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
+ */
+export type AmlFilesystemSquashMode = (typeof AmlFilesystemSquashMode)[keyof typeof AmlFilesystemSquashMode];
+
 export const CacheIdentityType = {
     SystemAssigned: "SystemAssigned",
     UserAssigned: "UserAssigned",

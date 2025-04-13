@@ -47,7 +47,7 @@ export const JsonWebKeyCurveName = {
 } as const;
 
 /**
- * The elliptic curve name. For valid values, see JsonWebKeyCurveName.
+ * The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256
  */
 export type JsonWebKeyCurveName = (typeof JsonWebKeyCurveName)[keyof typeof JsonWebKeyCurveName];
 
@@ -106,23 +106,18 @@ export const KeyPermissions = {
 export type KeyPermissions = (typeof KeyPermissions)[keyof typeof KeyPermissions];
 
 export const KeyRotationPolicyActionType = {
-    /**
-     * Rotate the key based on the key policy.
-     */
-    Rotate: "Rotate",
-    /**
-     * Trigger Event Grid events. Defaults to 30 days before expiry. Key Vault only.
-     */
-    Notify: "Notify",
+    Rotate: "rotate",
+    Notify: "notify",
 } as const;
 
 /**
- * The type of the action. The value should be compared case-insensitively.
+ * The type of action.
  */
 export type KeyRotationPolicyActionType = (typeof KeyRotationPolicyActionType)[keyof typeof KeyRotationPolicyActionType];
 
 export const ManagedHsmSkuFamily = {
     B: "B",
+    C: "C",
 } as const;
 
 /**
@@ -134,12 +129,26 @@ export const ManagedHsmSkuName = {
     Standard_B1: "Standard_B1",
     Custom_B32: "Custom_B32",
     Custom_B6: "Custom_B6",
+    Custom_C42: "Custom_C42",
+    Custom_C10: "Custom_C10",
 } as const;
 
 /**
  * SKU of the managed HSM Pool
  */
 export type ManagedHsmSkuName = (typeof ManagedHsmSkuName)[keyof typeof ManagedHsmSkuName];
+
+export const ManagedServiceIdentityType = {
+    None: "None",
+    SystemAssigned: "SystemAssigned",
+    UserAssigned: "UserAssigned",
+    SystemAssigned_UserAssigned: "SystemAssigned,UserAssigned",
+} as const;
+
+/**
+ * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+ */
+export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];
 
 export const NetworkRuleAction = {
     Allow: "Allow",

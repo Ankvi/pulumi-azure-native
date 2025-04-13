@@ -4,7 +4,9 @@ import * as types from "./types";
 /**
  * List springbootservers resource.
  *
- * Uses Azure REST API version 2023-01-01-preview.
+ * Uses Azure REST API version 2024-04-01-preview.
+ *
+ * Other available API versions: 2023-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazurespringboot [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSpringbootserver(args: GetSpringbootserverArgs, opts?: pulumi.InvokeOptions): Promise<GetSpringbootserverResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,6 +37,10 @@ export interface GetSpringbootserverArgs {
  */
 export interface GetSpringbootserverResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
@@ -51,10 +57,6 @@ export interface GetSpringbootserverResult {
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
-     * Resource tags
-     */
-    readonly tags?: {[key: string]: string};
-    /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
@@ -62,7 +64,9 @@ export interface GetSpringbootserverResult {
 /**
  * List springbootservers resource.
  *
- * Uses Azure REST API version 2023-01-01-preview.
+ * Uses Azure REST API version 2024-04-01-preview.
+ *
+ * Other available API versions: 2023-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazurespringboot [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSpringbootserverOutput(args: GetSpringbootserverOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpringbootserverResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

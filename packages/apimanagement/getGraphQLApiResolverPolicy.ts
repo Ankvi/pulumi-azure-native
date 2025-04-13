@@ -3,9 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get the policy configuration at the GraphQL API Resolver level.
  *
- * Uses Azure REST API version 2022-08-01.
+ * Uses Azure REST API version 2022-09-01-preview.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+ * Other available API versions: 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getGraphQLApiResolverPolicy(args: GetGraphQLApiResolverPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetGraphQLApiResolverPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -51,6 +51,10 @@ export interface GetGraphQLApiResolverPolicyArgs {
  */
 export interface GetGraphQLApiResolverPolicyResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Format of the policyContent.
      */
     readonly format?: string;
@@ -74,9 +78,9 @@ export interface GetGraphQLApiResolverPolicyResult {
 /**
  * Get the policy configuration at the GraphQL API Resolver level.
  *
- * Uses Azure REST API version 2022-08-01.
+ * Uses Azure REST API version 2022-09-01-preview.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+ * Other available API versions: 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getGraphQLApiResolverPolicyOutput(args: GetGraphQLApiResolverPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGraphQLApiResolverPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

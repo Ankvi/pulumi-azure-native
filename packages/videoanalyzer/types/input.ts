@@ -658,4 +658,3 @@ export interface VideoSourceArgs {
      */
     videoName: pulumi.Input<string>;
 }
-

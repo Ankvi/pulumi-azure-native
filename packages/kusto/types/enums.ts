@@ -90,6 +90,25 @@ export const BlobStorageEventType = {
  */
 export type BlobStorageEventType = (typeof BlobStorageEventType)[keyof typeof BlobStorageEventType];
 
+export const CalloutType = {
+    Kusto: "kusto",
+    Sql: "sql",
+    Cosmosdb: "cosmosdb",
+    External_data: "external_data",
+    Azure_digital_twins: "azure_digital_twins",
+    Sandbox_artifacts: "sandbox_artifacts",
+    Webapi: "webapi",
+    Mysql: "mysql",
+    Postgresql: "postgresql",
+    Genevametrics: "genevametrics",
+    Azure_openai: "azure_openai",
+} as const;
+
+/**
+ * Type of the callout service, specifying the kind of external resource or service being accessed.
+ */
+export type CalloutType = (typeof CalloutType)[keyof typeof CalloutType];
+
 export const ClusterNetworkAccessFlag = {
     Enabled: "Enabled",
     Disabled: "Disabled",
@@ -103,6 +122,7 @@ export type ClusterNetworkAccessFlag = (typeof ClusterNetworkAccessFlag)[keyof t
 export const ClusterPrincipalRole = {
     AllDatabasesAdmin: "AllDatabasesAdmin",
     AllDatabasesViewer: "AllDatabasesViewer",
+    AllDatabasesMonitor: "AllDatabasesMonitor",
 } as const;
 
 /**
@@ -295,6 +315,10 @@ export const LanguageExtensionImageName = {
     R: "R",
     Python3_6_5: "Python3_6_5",
     Python3_10_8: "Python3_10_8",
+    Python3_10_8_DL: "Python3_10_8_DL",
+    PythonCustomImage: "PythonCustomImage",
+    Python3_11_7: "Python3_11_7",
+    Python3_11_7_DL: "Python3_11_7_DL",
 } as const;
 
 /**
@@ -311,6 +335,26 @@ export const LanguageExtensionName = {
  * The language extension name.
  */
 export type LanguageExtensionName = (typeof LanguageExtensionName)[keyof typeof LanguageExtensionName];
+
+export const OutboundAccess = {
+    Allow: "Allow",
+    Deny: "Deny",
+} as const;
+
+/**
+ * Indicates whether outbound access is permitted for the specified URI pattern.
+ */
+export type OutboundAccess = (typeof OutboundAccess)[keyof typeof OutboundAccess];
+
+export const PrincipalPermissionsAction = {
+    RetainPermissionOnScriptCompletion: "RetainPermissionOnScriptCompletion",
+    RemovePermissionOnScriptCompletion: "RemovePermissionOnScriptCompletion",
+} as const;
+
+/**
+ * Indicates if the permissions for the script caller are kept following completion of the script.
+ */
+export type PrincipalPermissionsAction = (typeof PrincipalPermissionsAction)[keyof typeof PrincipalPermissionsAction];
 
 export const PrincipalType = {
     App: "App",
@@ -342,3 +386,23 @@ export const PublicNetworkAccess = {
  * Public network access to the cluster is enabled by default. When disabled, only private endpoint connection to the cluster is allowed
  */
 export type PublicNetworkAccess = (typeof PublicNetworkAccess)[keyof typeof PublicNetworkAccess];
+
+export const ScriptLevel = {
+    Database: "Database",
+    Cluster: "Cluster",
+} as const;
+
+/**
+ * Differentiates between the type of script commands included - Database or Cluster. The default is Database.
+ */
+export type ScriptLevel = (typeof ScriptLevel)[keyof typeof ScriptLevel];
+
+export const VnetState = {
+    Enabled: "Enabled",
+    Disabled: "Disabled",
+} as const;
+
+/**
+ * When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
+ */
+export type VnetState = (typeof VnetState)[keyof typeof VnetState];

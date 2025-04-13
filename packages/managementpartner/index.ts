@@ -12,8 +12,6 @@ export const Partner: typeof import("./partner").Partner = null as any;
 utilities.lazyLoad(exports, ["Partner"], () => require("./partner"));
 
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

@@ -89,9 +89,29 @@ export interface MonitorPropertiesArgs {
      */
     monitoringStatus?: pulumi.Input<string | enums.MonitoringStatus>;
     /**
+     * Plan details of the monitor resource.
+     */
+    planDetails?: pulumi.Input<PlanDetailsArgs>;
+    /**
      * Provisioning state of the monitor resource.
      */
     provisioningState?: pulumi.Input<string | enums.ProvisioningState>;
+    /**
+     * Status of Azure Subscription where Marketplace SaaS is located.
+     */
+    saaSAzureSubscriptionStatus?: pulumi.Input<string>;
+    /**
+     * A unique identifier associated with the campaign.
+     */
+    sourceCampaignId?: pulumi.Input<string>;
+    /**
+     * Name of the marketing campaign.
+     */
+    sourceCampaignName?: pulumi.Input<string>;
+    /**
+     * State of the Azure Subscription containing the monitor resource
+     */
+    subscriptionState?: pulumi.Input<string>;
     /**
      * User information.
      */
@@ -157,6 +177,32 @@ export interface OpenAIIntegrationPropertiesArgs {
 }
 
 /**
+ * Plan details of the monitor resource.
+ */
+export interface PlanDetailsArgs {
+    /**
+     * Offer ID of the plan
+     */
+    offerID?: pulumi.Input<string>;
+    /**
+     * Plan ID
+     */
+    planID?: pulumi.Input<string>;
+    /**
+     * Plan Name
+     */
+    planName?: pulumi.Input<string>;
+    /**
+     * Publisher ID of the plan
+     */
+    publisherID?: pulumi.Input<string>;
+    /**
+     * Term ID of the plan
+     */
+    termID?: pulumi.Input<string>;
+}
+
+/**
  * Microsoft.Elastic SKU.
  */
 export interface ResourceSkuArgs {
@@ -205,15 +251,3 @@ export interface UserInfoArgs {
      */
     lastName?: pulumi.Input<string>;
 }
-
-
-
-
-
-
-
-
-
-
-
-

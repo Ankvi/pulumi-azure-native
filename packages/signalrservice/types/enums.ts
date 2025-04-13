@@ -53,7 +53,7 @@ export const ServiceKind = {
 } as const;
 
 /**
- * The kind of the service, it can be SignalR or RawWebSockets
+ * The kind of the service
  */
 export type ServiceKind = (typeof ServiceKind)[keyof typeof ServiceKind];
 

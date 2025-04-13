@@ -1,21 +1,65 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * A class represent the certification record synchronized from app compliance.
+ */
+export interface CertSyncRecordResponse {
+    /**
+     * Indicates the status of certification process.
+     */
+    certificationStatus?: string;
+    /**
+     * The control records list to be synchronized.
+     */
+    controls?: ControlSyncRecordResponse[];
+    /**
+     * Indicates the status of compliance process.
+     */
+    ingestionStatus?: string;
+    /**
+     * The offerGuid which mapping to the reports.
+     */
+    offerGuid?: string;
+}
+
+/**
+ * A class represent the control record synchronized from app compliance.
+ */
+export interface ControlSyncRecordResponse {
+    /**
+     * The Id of the control. e.g. "Operational_Security_10"
+     */
+    controlId?: string;
+    /**
+     * Control status synchronized from app compliance.
+     */
+    controlStatus?: string;
+}
+
+/**
  * The overview of the compliance result for one report.
  */
 export interface OverviewStatusResponse {
     /**
-     * The count of all failed full automation control.
+     * The count of all failed control.
      */
-    failedCount?: number;
+    failedCount: number;
     /**
      * The count of all manual control.
      */
-    manualCount?: number;
+    manualCount: number;
     /**
-     * The count of all passed full automation control.
+     * The count of all not applicable control.
      */
-    passedCount?: number;
+    notApplicableCount: number;
+    /**
+     * The count of all passed control.
+     */
+    passedCount: number;
+    /**
+     * The count of all pending for approval control.
+     */
+    pendingCount: number;
 }
 
 /**
@@ -25,72 +69,17 @@ export interface ReportComplianceStatusResponse {
     /**
      * The Microsoft 365 certification name.
      */
-    m365?: OverviewStatusResponse;
-}
-
-/**
- * Report's properties.
- */
-export interface ReportPropertiesResponse {
-    /**
-     * Report compliance status.
-     */
-    complianceStatus: ReportComplianceStatusResponse;
-    /**
-     * Report id in database.
-     */
-    id: string;
-    /**
-     * Report last collection trigger time.
-     */
-    lastTriggerTime: string;
-    /**
-     * Report next collection trigger time.
-     */
-    nextTriggerTime: string;
-    /**
-     * Report offer Guid.
-     */
-    offerGuid?: string;
-    /**
-     * Azure lifecycle management
-     */
-    provisioningState: string;
-    /**
-     * Report name.
-     */
-    reportName: string;
-    /**
-     * List of resource data.
-     */
-    resources: ResourceMetadataResponse[];
-    /**
-     * Report status.
-     */
-    status: string;
-    /**
-     * List of subscription Ids.
-     */
-    subscriptions: string[];
-    /**
-     * Report's tenant id.
-     */
-    tenantId: string;
-    /**
-     * Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
-     * An example of valid timezone id is "Pacific Standard Time".
-     */
-    timeZone: string;
-    /**
-     * Report collection trigger time.
-     */
-    triggerTime: string;
+    m365: OverviewStatusResponse;
 }
 
 /**
  * Single resource Id's metadata.
  */
 export interface ResourceMetadataResponse {
+    /**
+     * Account Id. For example - the AWS account id.
+     */
+    accountId?: string;
     /**
      * Resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1".
      */
@@ -100,17 +89,13 @@ export interface ResourceMetadataResponse {
      */
     resourceKind?: string;
     /**
-     * Resource name.
+     * Resource Origin.
      */
-    resourceName?: string;
+    resourceOrigin?: string;
     /**
-     * Resource type.
+     * Resource type. e.g. "Microsoft.Compute/virtualMachines"
      */
     resourceType?: string;
-    /**
-     * Resource's tag type.
-     */
-    tags?: {[key: string]: string};
 }
 
 /**
@@ -222,4 +207,3 @@ export interface SystemDataResponse {
      */
     lastModifiedByType?: string;
 }
-

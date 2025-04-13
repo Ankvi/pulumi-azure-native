@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Method to get a Hyper-V cluster.
  *
- * Uses Azure REST API version 2023-06-06.
+ * Uses Azure REST API version 2023-10-01-preview.
  *
- * Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+ * Other available API versions: 2023-06-06, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getHypervClusterControllerCluster(args: GetHypervClusterControllerClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetHypervClusterControllerClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +36,10 @@ export interface GetHypervClusterControllerClusterArgs {
  * A cluster resource belonging to a site resource.
  */
 export interface GetHypervClusterControllerClusterResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Gets the timestamp marking Hyper-V cluster creation.
      */
@@ -92,9 +96,9 @@ export interface GetHypervClusterControllerClusterResult {
 /**
  * Method to get a Hyper-V cluster.
  *
- * Uses Azure REST API version 2023-06-06.
+ * Uses Azure REST API version 2023-10-01-preview.
  *
- * Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+ * Other available API versions: 2023-06-06, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getHypervClusterControllerClusterOutput(args: GetHypervClusterControllerClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHypervClusterControllerClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

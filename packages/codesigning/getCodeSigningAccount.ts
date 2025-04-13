@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Get a trusted Signing Account.
  *
- * Uses Azure REST API version 2024-02-05-preview.
+ * Uses Azure REST API version 2024-09-30-preview.
  *
- * Other available API versions: 2024-09-30-preview.
+ * Other available API versions: 2024-02-05-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native codesigning [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getCodeSigningAccount(args: GetCodeSigningAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetCodeSigningAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,6 +35,10 @@ export interface GetCodeSigningAccountResult {
      * The URI of the trusted signing account which is used during signing files.
      */
     readonly accountUri: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -71,9 +75,9 @@ export interface GetCodeSigningAccountResult {
 /**
  * Get a trusted Signing Account.
  *
- * Uses Azure REST API version 2024-02-05-preview.
+ * Uses Azure REST API version 2024-09-30-preview.
  *
- * Other available API versions: 2024-09-30-preview.
+ * Other available API versions: 2024-02-05-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native codesigning [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getCodeSigningAccountOutput(args: GetCodeSigningAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCodeSigningAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * The variable.
  *
- * Uses Azure REST API version 2022-08-01-preview.
+ * Uses Azure REST API version 2022-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01-preview.
  *
- * Other available API versions: 2024-12-01-preview.
+ * Other available API versions: 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VariableAtManagementGroup extends pulumi.CustomResource {
     /**
@@ -35,6 +35,10 @@ export class VariableAtManagementGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === VariableAtManagementGroup.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Variable column definitions.
      */
@@ -72,10 +76,12 @@ export class VariableAtManagementGroup extends pulumi.CustomResource {
             resourceInputs["columns"] = args ? args.columns : undefined;
             resourceInputs["managementGroupId"] = args ? args.managementGroupId : undefined;
             resourceInputs["variableName"] = args ? args.variableName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["columns"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;

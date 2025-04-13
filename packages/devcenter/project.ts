@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Represents a project resource.
  *
- * Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2022-09-01-preview.
+ * Uses Azure REST API version 2024-02-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
  *
- * Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
+ * Other available API versions: 2023-04-01, 2023-08-01-preview, 2023-10-01-preview, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Project extends pulumi.CustomResource {
     /**
@@ -36,6 +36,14 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
+     * Settings to be used when associating a project with a catalog.
+     */
+    public readonly catalogSettings!: pulumi.Output<types.outputs.ProjectCatalogSettingsResponse | undefined>;
+    /**
      * Description of the project.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -47,6 +55,14 @@ export class Project extends pulumi.CustomResource {
      * The URI of the Dev Center resource this project is associated with.
      */
     public /*out*/ readonly devCenterUri!: pulumi.Output<string>;
+    /**
+     * The display name of the project.
+     */
+    public readonly displayName!: pulumi.Output<string | undefined>;
+    /**
+     * Managed identity properties
+     */
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -90,22 +106,30 @@ export class Project extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
+            resourceInputs["catalogSettings"] = args ? args.catalogSettings : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["devCenterId"] = args ? args.devCenterId : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maxDevBoxesPerUser"] = args ? args.maxDevBoxesPerUser : undefined;
             resourceInputs["projectName"] = args ? args.projectName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["devCenterUri"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["catalogSettings"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["devCenterId"] = undefined /*out*/;
             resourceInputs["devCenterUri"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["maxDevBoxesPerUser"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -126,6 +150,10 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectArgs {
     /**
+     * Settings to be used when associating a project with a catalog.
+     */
+    catalogSettings?: pulumi.Input<types.inputs.ProjectCatalogSettingsArgs>;
+    /**
      * Description of the project.
      */
     description?: pulumi.Input<string>;
@@ -133,6 +161,14 @@ export interface ProjectArgs {
      * Resource Id of an associated DevCenter
      */
     devCenterId?: pulumi.Input<string>;
+    /**
+     * The display name of the project.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Managed identity properties
+     */
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */

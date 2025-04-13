@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets the details of an EventHub schema group.
  *
- * Uses Azure REST API version 2022-10-01-preview.
+ * Uses Azure REST API version 2024-01-01.
  *
- * Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+ * Other available API versions: 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSchemaRegistry(args: GetSchemaRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetSchemaRegistryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +36,10 @@ export interface GetSchemaRegistryArgs {
  * Single item in List or Get Schema Group operation
  */
 export interface GetSchemaRegistryResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Exact time the Schema Group was created.
      */
@@ -78,9 +82,9 @@ export interface GetSchemaRegistryResult {
 /**
  * Gets the details of an EventHub schema group.
  *
- * Uses Azure REST API version 2022-10-01-preview.
+ * Uses Azure REST API version 2024-01-01.
  *
- * Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+ * Other available API versions: 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSchemaRegistryOutput(args: GetSchemaRegistryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSchemaRegistryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

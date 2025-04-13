@@ -107,6 +107,10 @@ export interface ArtifactStorePrivateEndPointsFormatResponse {
  * Artifact store properties.
  */
 export interface ArtifactStorePropertiesFormatResponse {
+    /**
+     * The artifact store backing resource network access type
+     */
+    backingResourcePublicNetworkAccess?: string;
     managedResourceGroupConfiguration?: ArtifactStorePropertiesFormatResponseManagedResourceGroupConfiguration;
     /**
      * The provisioning state of the application groups resource.
@@ -1016,35 +1020,117 @@ export interface NetworkFunctionTemplateResponse {
 }
 
 /**
- * The network function user configuration.
+ * NetworkFunction with secrets.
  */
-export interface NetworkFunctionUserConfigurationResponse {
+export interface NetworkFunctionValueWithSecretsResponse {
     /**
-     * The network interface configuration.
+     * Indicates if software updates are allowed during deployment.
      */
-    networkInterfaces?: NetworkInterfaceResponse[];
+    allowSoftwareUpdate?: boolean;
     /**
-     * Specifies the operating system settings for the role instance.
+     * The secret type which indicates if secret or not.
+     * Expected value is 'Secret'.
      */
-    osProfile?: NetworkFunctionUserConfigurationResponseOsProfile;
+    configurationType: "Secret";
     /**
-     * The name of the network function role.
+     * The network function definition group name for the network function.
      */
-    roleName?: string;
+    networkFunctionDefinitionGroupName?: string;
     /**
-     * The user data parameters from the customer.
+     * The location of the network function definition offering.
      */
-    userDataParameters?: any;
+    networkFunctionDefinitionOfferingLocation?: string;
+    /**
+     * The network function definition version for the network function.
+     */
+    networkFunctionDefinitionVersion?: string;
+    /**
+     * The network function definition version resource reference.
+     */
+    networkFunctionDefinitionVersionResourceReference?: OpenDeploymentResourceReferenceResponse | SecretDeploymentResourceReferenceResponse;
+    /**
+     * The nfviId for the network function.
+     */
+    nfviId?: string;
+    /**
+     * The nfvi type for the network function.
+     */
+    nfviType?: string;
+    /**
+     * The provisioning state of the network function resource.
+     */
+    provisioningState: string;
+    /**
+     * The publisher name for the network function.
+     */
+    publisherName?: string;
+    /**
+     * The scope of the publisher.
+     */
+    publisherScope?: string;
+    /**
+     * The role configuration override values from the user.
+     */
+    roleOverrideValues?: string[];
 }
 
 /**
- * Specifies the operating system settings for the role instance.
+ * NetworkFunction with no secrets.
  */
-export interface NetworkFunctionUserConfigurationResponseOsProfile {
+export interface NetworkFunctionValueWithoutSecretsResponse {
     /**
-     * Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes. <br><br> **Note: Do not pass any secrets or passwords in customData property** <br><br> This property cannot be updated after the VM is created. <br><br> customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) <br><br> For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     * Indicates if software updates are allowed during deployment.
      */
-    customData?: string;
+    allowSoftwareUpdate?: boolean;
+    /**
+     * The secret type which indicates if secret or not.
+     * Expected value is 'Open'.
+     */
+    configurationType: "Open";
+    /**
+     * The JSON-serialized deployment values from the user.
+     */
+    deploymentValues?: string;
+    /**
+     * The network function definition group name for the network function.
+     */
+    networkFunctionDefinitionGroupName?: string;
+    /**
+     * The location of the network function definition offering.
+     */
+    networkFunctionDefinitionOfferingLocation?: string;
+    /**
+     * The network function definition version for the network function.
+     */
+    networkFunctionDefinitionVersion?: string;
+    /**
+     * The network function definition version resource reference.
+     */
+    networkFunctionDefinitionVersionResourceReference?: OpenDeploymentResourceReferenceResponse | SecretDeploymentResourceReferenceResponse;
+    /**
+     * The nfviId for the network function.
+     */
+    nfviId?: string;
+    /**
+     * The nfvi type for the network function.
+     */
+    nfviType?: string;
+    /**
+     * The provisioning state of the network function resource.
+     */
+    provisioningState: string;
+    /**
+     * The publisher name for the network function.
+     */
+    publisherName?: string;
+    /**
+     * The scope of the publisher.
+     */
+    publisherScope?: string;
+    /**
+     * The role configuration override values from the user.
+     */
+    roleOverrideValues?: string[];
 }
 
 /**
@@ -1492,5 +1578,3 @@ export interface VirtualNetworkFunctionNetworkFunctionDefinitionVersionResponse 
      */
     versionState: string;
 }
-
-

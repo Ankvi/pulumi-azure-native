@@ -39,6 +39,10 @@ export interface GetInstanceResult {
      */
     readonly accountName: string;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Customer-initiated diagnostic log collection storage properties
      */
     readonly diagnosticStorageProperties?: types.outputs.DiagnosticStoragePropertiesResponse;

@@ -15,7 +15,7 @@ export const DenySettingsMode = {
      */
     DenyDelete: "denyDelete",
     /**
-     * Authorized users can only read from a resource, but cannot modify or delete it.
+     * Authorized users can read from a resource, but cannot modify or delete it.
      */
     DenyWriteAndDelete: "denyWriteAndDelete",
     /**
@@ -25,7 +25,7 @@ export const DenySettingsMode = {
 } as const;
 
 /**
- * denySettings Mode.
+ * denySettings Mode that defines denied actions.
  */
 export type DenySettingsMode = (typeof DenySettingsMode)[keyof typeof DenySettingsMode];
 
@@ -45,7 +45,7 @@ export const DeploymentStacksDeleteDetachEnum = {
 } as const;
 
 /**
- * Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+ * Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
  */
 export type DeploymentStacksDeleteDetachEnum = (typeof DeploymentStacksDeleteDetachEnum)[keyof typeof DeploymentStacksDeleteDetachEnum];
 

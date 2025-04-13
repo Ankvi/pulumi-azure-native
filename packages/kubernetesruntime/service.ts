@@ -4,9 +4,7 @@ import * as types from "./types";
 /**
  * A Service resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters)
  *
- * Uses Azure REST API version 2024-03-01.
- *
- * Other available API versions: 2023-10-01-preview.
+ * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
  */
 export class Service extends pulumi.CustomResource {
     /**
@@ -35,6 +33,10 @@ export class Service extends pulumi.CustomResource {
         return obj['__pulumiType'] === Service.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The name of the resource
      */
@@ -72,12 +74,14 @@ export class Service extends pulumi.CustomResource {
             }
             resourceInputs["resourceUri"] = args ? args.resourceUri : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["rpObjectId"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["rpObjectId"] = undefined /*out*/;

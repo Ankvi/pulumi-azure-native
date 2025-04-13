@@ -3,7 +3,7 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Description of a NotificationHub AdmCredential.
  */
-export interface AdmCredentialPropertiesResponse {
+export interface AdmCredentialResponse {
     /**
      * Gets or sets the URL of the authorization token.
      */
@@ -19,19 +19,9 @@ export interface AdmCredentialPropertiesResponse {
 }
 
 /**
- * Description of a NotificationHub AdmCredential.
- */
-export interface AdmCredentialResponse {
-    /**
-     * Description of a NotificationHub AdmCredential.
-     */
-    properties: AdmCredentialPropertiesResponse;
-}
-
-/**
  * Description of a NotificationHub ApnsCredential.
  */
-export interface ApnsCredentialPropertiesResponse {
+export interface ApnsCredentialResponse {
     /**
      * Gets or sets the APNS certificate.
      */
@@ -70,19 +60,9 @@ export interface ApnsCredentialPropertiesResponse {
 }
 
 /**
- * Description of a NotificationHub ApnsCredential.
- */
-export interface ApnsCredentialResponse {
-    /**
-     * Description of a NotificationHub ApnsCredential.
-     */
-    properties: ApnsCredentialPropertiesResponse;
-}
-
-/**
  * Description of a NotificationHub BaiduCredential.
  */
-export interface BaiduCredentialPropertiesResponse {
+export interface BaiduCredentialResponse {
     /**
      * Gets or sets baidu Api Key.
      */
@@ -98,19 +78,9 @@ export interface BaiduCredentialPropertiesResponse {
 }
 
 /**
- * Description of a NotificationHub BaiduCredential.
- */
-export interface BaiduCredentialResponse {
-    /**
-     * Description of a NotificationHub BaiduCredential.
-     */
-    properties: BaiduCredentialPropertiesResponse;
-}
-
-/**
  * Description of a NotificationHub BrowserCredential.
  */
-export interface BrowserCredentialPropertiesResponse {
+export interface BrowserCredentialResponse {
     /**
      * Gets or sets web push subject.
      */
@@ -126,19 +96,27 @@ export interface BrowserCredentialPropertiesResponse {
 }
 
 /**
- * Description of a NotificationHub BrowserCredential.
+ * Description of a NotificationHub FcmV1Credential.
  */
-export interface BrowserCredentialResponse {
+export interface FcmV1CredentialResponse {
     /**
-     * Description of a NotificationHub BrowserCredential.
+     * Gets or sets client email.
      */
-    properties: BrowserCredentialPropertiesResponse;
+    clientEmail: string;
+    /**
+     * Gets or sets private key.
+     */
+    privateKey: string;
+    /**
+     * Gets or sets project id.
+     */
+    projectId: string;
 }
 
 /**
  * Description of a NotificationHub GcmCredential.
  */
-export interface GcmCredentialPropertiesResponse {
+export interface GcmCredentialResponse {
     /**
      * Gets or sets the GCM endpoint.
      */
@@ -147,16 +125,6 @@ export interface GcmCredentialPropertiesResponse {
      * Gets or sets the Google API key.
      */
     googleApiKey: string;
-}
-
-/**
- * Description of a NotificationHub GcmCredential.
- */
-export interface GcmCredentialResponse {
-    /**
-     * Description of a NotificationHub GcmCredential.
-     */
-    properties: GcmCredentialPropertiesResponse;
 }
 
 /**
@@ -176,7 +144,7 @@ export interface IpRuleResponse {
 /**
  * Description of a NotificationHub MpnsCredential.
  */
-export interface MpnsCredentialPropertiesResponse {
+export interface MpnsCredentialResponse {
     /**
      * Gets or sets the certificate key for this credential.
      */
@@ -192,105 +160,6 @@ export interface MpnsCredentialPropertiesResponse {
 }
 
 /**
- * Description of a NotificationHub MpnsCredential.
- */
-export interface MpnsCredentialResponse {
-    /**
-     * Description of a NotificationHub MpnsCredential.
-     */
-    properties: MpnsCredentialPropertiesResponse;
-}
-
-/**
- * Represents namespace properties.
- */
-export interface NamespacePropertiesResponse {
-    /**
-     * Time when the namespace was created.
-     */
-    createdAt: string;
-    /**
-     * Gets or sets whether or not the namespace is set as Critical.
-     */
-    critical: boolean;
-    /**
-     * Deprecated.
-     */
-    dataCenter?: string;
-    /**
-     * Gets or sets whether or not the namespace is currently enabled.
-     */
-    enabled: boolean;
-    /**
-     * Azure Insights Metrics id.
-     */
-    metricId: string;
-    /**
-     * Name of the Notification Hubs namespace. This is immutable property, set automatically 
-     * by the service when the namespace is created.
-     */
-    name: string;
-    /**
-     * Defines values for NamespaceType.
-     */
-    namespaceType?: string;
-    /**
-     * A collection of network authorization rules.
-     */
-    networkAcls?: NetworkAclsResponse;
-    /**
-     * Collection of Notification Hub or Notification Hub Namespace PNS credentials.
-     */
-    pnsCredentials?: PnsCredentialsResponse;
-    /**
-     * Private Endpoint Connections for namespace
-     */
-    privateEndpointConnections: PrivateEndpointConnectionResourceResponse[];
-    /**
-     * Defines values for OperationProvisioningState.
-     */
-    provisioningState?: string;
-    /**
-     * Type of public network access.
-     */
-    publicNetworkAccess?: string;
-    /**
-     * Region. The value is always set to the same value as Namespace.Location, so we are deprecating
-     * this property.
-     */
-    region: string;
-    /**
-     * Allowed replication region
-     */
-    replicationRegion?: string;
-    /**
-     * Gets or sets scaleUnit where the namespace gets created
-     */
-    scaleUnit?: string;
-    /**
-     * Gets or sets endpoint you can use to perform NotificationHub
-     * operations.
-     */
-    serviceBusEndpoint: string;
-    /**
-     * Namespace status.
-     */
-    status?: string;
-    /**
-     * Namespace subscription id.
-     */
-    subscriptionId: string;
-    /**
-     * Time when the namespace was updated.
-     */
-    updatedAt: string;
-    /**
-     * Namespace SKU name.
-     */
-    zoneRedundancy?: string;
-}
-
-/**
  * A collection of network authorization rules.
  */
 export interface NetworkAclsResponse {
@@ -302,57 +171,6 @@ export interface NetworkAclsResponse {
      * A default (public Internet) network authorization rule, which contains rights if no other network rule matches.
      */
     publicNetworkRule?: PublicInternetAuthorizationRuleResponse;
-}
-
-/**
- * NotificationHub properties.
- */
-export interface NotificationHubPropertiesResponse {
-    /**
-     * Description of a NotificationHub AdmCredential.
-     */
-    admCredential?: AdmCredentialResponse;
-    /**
-     * Description of a NotificationHub ApnsCredential.
-     */
-    apnsCredential?: ApnsCredentialResponse;
-    /**
-     * Gets or sets the AuthorizationRules of the created NotificationHub
-     */
-    authorizationRules: SharedAccessAuthorizationRulePropertiesResponse[];
-    /**
-     * Description of a NotificationHub BaiduCredential.
-     */
-    baiduCredential?: BaiduCredentialResponse;
-    /**
-     * Description of a NotificationHub BrowserCredential.
-     */
-    browserCredential?: BrowserCredentialResponse;
-    dailyMaxActiveDevices: number;
-    /**
-     * Description of a NotificationHub GcmCredential.
-     */
-    gcmCredential?: GcmCredentialResponse;
-    /**
-     * Description of a NotificationHub MpnsCredential.
-     */
-    mpnsCredential?: MpnsCredentialResponse;
-    /**
-     * Gets or sets the NotificationHub name.
-     */
-    name?: string;
-    /**
-     * Gets or sets the RegistrationTtl of the created NotificationHub
-     */
-    registrationTtl?: string;
-    /**
-     * Description of a NotificationHub WnsCredential.
-     */
-    wnsCredential?: WnsCredentialResponse;
-    /**
-     * Description of a NotificationHub XiaomiCredential.
-     */
-    xiaomiCredential?: XiaomiCredentialResponse;
 }
 
 /**
@@ -375,6 +193,10 @@ export interface PnsCredentialsResponse {
      * Description of a NotificationHub BrowserCredential.
      */
     browserCredential?: BrowserCredentialResponse;
+    /**
+     * Description of a NotificationHub FcmV1Credential.
+     */
+    fcmV1Credential?: FcmV1CredentialResponse;
     /**
      * Description of a NotificationHub GcmCredential.
      */
@@ -582,7 +404,7 @@ export interface SystemDataResponse {
 /**
  * Description of a NotificationHub WnsCredential.
  */
-export interface WnsCredentialPropertiesResponse {
+export interface WnsCredentialResponse {
     /**
      * Ges or sets the WNS Certificate Key.
      */
@@ -606,19 +428,9 @@ export interface WnsCredentialPropertiesResponse {
 }
 
 /**
- * Description of a NotificationHub WnsCredential.
+ * Description of a NotificationHub XiaomiCredential.
  */
-export interface WnsCredentialResponse {
-    /**
-     * Description of a NotificationHub WnsCredential.
-     */
-    properties: WnsCredentialPropertiesResponse;
-}
-
-/**
- * Description of a NotificationHub XiaomiCredentialProperties.
- */
-export interface XiaomiCredentialPropertiesResponse {
+export interface XiaomiCredentialResponse {
     /**
      * Gets or sets app secret.
      */
@@ -628,16 +440,3 @@ export interface XiaomiCredentialPropertiesResponse {
      */
     endpoint?: string;
 }
-
-/**
- * Description of a NotificationHub XiaomiCredential.
- */
-export interface XiaomiCredentialResponse {
-    /**
-     * Description of a NotificationHub XiaomiCredentialProperties.
-     */
-    properties: XiaomiCredentialPropertiesResponse;
-}
-
-
-

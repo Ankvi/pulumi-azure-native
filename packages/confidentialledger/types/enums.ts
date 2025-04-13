@@ -19,6 +19,17 @@ export const LedgerRoleName = {
  */
 export type LedgerRoleName = (typeof LedgerRoleName)[keyof typeof LedgerRoleName];
 
+export const LedgerSku = {
+    Standard: "Standard",
+    Basic: "Basic",
+    Unknown: "Unknown",
+} as const;
+
+/**
+ * SKU associated with the ledger
+ */
+export type LedgerSku = (typeof LedgerSku)[keyof typeof LedgerSku];
+
 export const LedgerType = {
     Unknown: "Unknown",
     Public: "Public",
@@ -29,3 +40,16 @@ export const LedgerType = {
  * Type of Confidential Ledger
  */
 export type LedgerType = (typeof LedgerType)[keyof typeof LedgerType];
+
+export const RunningState = {
+    Active: "Active",
+    Paused: "Paused",
+    Unknown: "Unknown",
+    Pausing: "Pausing",
+    Resuming: "Resuming",
+} as const;
+
+/**
+ * Object representing RunningState for Managed CCF.
+ */
+export type RunningState = (typeof RunningState)[keyof typeof RunningState];

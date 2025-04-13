@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-hybridcompute",
-    "version": "2.90.0",
+    "version": "3.1.0",
     "description": "Pulumi Azure Native package for hybridcompute",
     "keywords": [
         "pulumi",

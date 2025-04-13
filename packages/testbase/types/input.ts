@@ -394,6 +394,16 @@ export interface SubscriptionReceiverValueArgs {
 }
 
 /**
+ * Managed service identity (either system assigned, or none)
+ */
+export interface SystemAssignedServiceIdentityArgs {
+    /**
+     * Type of managed service identity (either system assigned, or none).
+     */
+    type: pulumi.Input<string | enums.SystemAssignedServiceIdentityType>;
+}
+
+/**
  * Specifies current state of tabs.
  */
 export interface TabStateArgs {
@@ -482,4 +492,3 @@ export interface UserObjectReceiverValueArgs {
      */
     userObjectIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
-

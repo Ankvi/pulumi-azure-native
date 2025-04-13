@@ -30,6 +30,10 @@ export interface GetAccountArgs {
  */
 export interface GetAccountResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Azure resource ID.
      */
     readonly id: string;

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Represents a ScalingPlanPooledSchedule definition.
  *
- * Uses Azure REST API version 2022-09-09. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
+ * Uses Azure REST API version 2024-04-03. In version 2.x of the Azure Native provider, it used API version 2022-09-09.
  *
- * Other available API versions: 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview.
+ * Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ScalingPlanPooledSchedule extends pulumi.CustomResource {
     /**
@@ -35,6 +35,10 @@ export class ScalingPlanPooledSchedule extends pulumi.CustomResource {
         return obj['__pulumiType'] === ScalingPlanPooledSchedule.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Set of days of the week on which this schedule is active.
      */
@@ -108,7 +112,7 @@ export class ScalingPlanPooledSchedule extends pulumi.CustomResource {
      */
     public readonly rampUpStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -153,10 +157,12 @@ export class ScalingPlanPooledSchedule extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["scalingPlanName"] = args ? args.scalingPlanName : undefined;
             resourceInputs["scalingPlanScheduleName"] = args ? args.scalingPlanScheduleName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["daysOfWeek"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["offPeakLoadBalancingAlgorithm"] = undefined /*out*/;
@@ -179,7 +185,7 @@ export class ScalingPlanPooledSchedule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:desktopvirtualization/v20220401preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20220909:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20221014preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20230905:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20231004preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20231101preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20240116preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20240306preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20240403:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20240408preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20240808preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20241101preview:ScalingPlanPooledSchedule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:desktopvirtualization/v20220401preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20220909:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20221014preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20230707preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20230905:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20231004preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20231101preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20240116preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20240306preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20240403:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20240408preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20240808preview:ScalingPlanPooledSchedule" }, { type: "azure-native:desktopvirtualization/v20241101preview:ScalingPlanPooledSchedule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ScalingPlanPooledSchedule.__pulumiType, name, resourceInputs, opts);
     }

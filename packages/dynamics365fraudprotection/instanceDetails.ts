@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Represents an instance of a DFP instance resource.
  *
- * Uses Azure REST API version 2021-02-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-02-01-preview.
+ * Uses Azure REST API version 2021-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-02-01-preview.
  */
 export class InstanceDetails extends pulumi.CustomResource {
     /**
@@ -37,6 +37,10 @@ export class InstanceDetails extends pulumi.CustomResource {
      * A collection of DFP instance administrators
      */
     public readonly administration!: pulumi.Output<types.outputs.DFPInstanceAdministratorsResponse | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Location of the DFP resource.
      */
@@ -81,12 +85,14 @@ export class InstanceDetails extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["administration"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;

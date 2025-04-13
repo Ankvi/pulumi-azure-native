@@ -39,6 +39,10 @@ export interface GetBrokerResult {
      */
     readonly authImage: types.outputs.ContainerImageResponse;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The details of Broker Docker Image.
      */
     readonly brokerImage: types.outputs.ContainerImageResponse;

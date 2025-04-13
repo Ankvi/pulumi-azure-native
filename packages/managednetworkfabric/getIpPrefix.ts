@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Implements IP Prefix GET method.
  *
- * Uses Azure REST API version 2023-02-01-preview.
+ * Uses Azure REST API version 2023-06-15.
  *
- * Other available API versions: 2023-06-15.
+ * Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getIpPrefix(args: GetIpPrefixArgs, opts?: pulumi.InvokeOptions): Promise<GetIpPrefixResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -18,7 +18,7 @@ export function getIpPrefix(args: GetIpPrefixArgs, opts?: pulumi.InvokeOptions):
 
 export interface GetIpPrefixArgs {
     /**
-     * Name of the IP Prefix
+     * Name of the IP Prefix.
      */
     ipPrefixName: string;
     /**
@@ -28,21 +28,33 @@ export interface GetIpPrefixArgs {
 }
 
 /**
- * The IPPrefix resource definition.
+ * The IP Prefix resource definition.
  */
 export interface GetIpPrefixResult {
+    /**
+     * Administrative state of the resource.
+     */
+    readonly administrativeState: string;
     /**
      * Switch configuration description.
      */
     readonly annotation?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * Configuration state of the resource.
+     */
+    readonly configurationState: string;
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
-     * IpPrefix contains the list of IP PrefixRules objects.
+     * The list of IP Prefix Rules.
      */
-    readonly ipPrefixRules: types.outputs.IpPrefixPropertiesResponseIpPrefixRules[];
+    readonly ipPrefixRules: types.outputs.IpPrefixRuleResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -52,7 +64,7 @@ export interface GetIpPrefixResult {
      */
     readonly name: string;
     /**
-     * Gets the provisioning state of the resource.
+     * Provisioning state of the resource.
      */
     readonly provisioningState: string;
     /**
@@ -71,9 +83,9 @@ export interface GetIpPrefixResult {
 /**
  * Implements IP Prefix GET method.
  *
- * Uses Azure REST API version 2023-02-01-preview.
+ * Uses Azure REST API version 2023-06-15.
  *
- * Other available API versions: 2023-06-15.
+ * Other available API versions: 2023-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getIpPrefixOutput(args: GetIpPrefixOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpPrefixResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -85,7 +97,7 @@ export function getIpPrefixOutput(args: GetIpPrefixOutputArgs, opts?: pulumi.Inv
 
 export interface GetIpPrefixOutputArgs {
     /**
-     * Name of the IP Prefix
+     * Name of the IP Prefix.
      */
     ipPrefixName: pulumi.Input<string>;
     /**

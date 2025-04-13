@@ -49,6 +49,10 @@ export interface GetServiceFabricResult {
      */
     readonly applicableSchedule: types.outputs.ApplicableScheduleResponse;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The resource id of the environment under which the service fabric resource is present
      */
     readonly environmentId?: string;

@@ -199,6 +199,10 @@ export interface BotPropertiesResponse {
      */
     msaAppType?: string;
     /**
+     * List of Network Security Perimeter configurations for the bot
+     */
+    networkSecurityPerimeterConfigurations: NetworkSecurityPerimeterConfigurationResponse[];
+    /**
      * The hint to browser (e.g. protocol handler) on how to open the bot for authoring
      */
     openWithHint?: string;
@@ -943,7 +947,7 @@ export interface MsTeamsChannelPropertiesResponse {
 export function msTeamsChannelPropertiesResponseProvideDefaults(val: MsTeamsChannelPropertiesResponse): MsTeamsChannelPropertiesResponse {
     return {
         ...val,
-        deploymentEnvironment: (val.deploymentEnvironment) ?? "FallbackDeploymentEnvironment",
+        deploymentEnvironment: (val.deploymentEnvironment) ?? "CommercialDeployment",
         enableCalling: (val.enableCalling) ?? false,
     };
 }
@@ -983,6 +987,145 @@ export function msTeamsChannelResponseProvideDefaults(val: MsTeamsChannelRespons
         location: (val.location) ?? "global",
         properties: (val.properties ? msTeamsChannelPropertiesResponseProvideDefaults(val.properties) : undefined),
     };
+}
+
+/**
+ * Properties of Network Security Perimeter configuration
+ */
+export interface NetworkSecurityPerimeterConfigurationPropertiesResponse {
+    /**
+     * Information about Network Security Perimeter
+     */
+    networkSecurityPerimeter: NetworkSecurityPerimeterResponse;
+    /**
+     * Information about profile
+     */
+    profile: ProfileResponse;
+    /**
+     * List of Provisioning Issues if any
+     */
+    provisioningIssues?: ProvisioningIssueResponse[];
+    provisioningState?: string;
+    /**
+     * Information about resource association
+     */
+    resourceAssociation: ResourceAssociationResponse;
+}
+/**
+ * networkSecurityPerimeterConfigurationPropertiesResponseProvideDefaults sets the appropriate defaults for NetworkSecurityPerimeterConfigurationPropertiesResponse
+ */
+export function networkSecurityPerimeterConfigurationPropertiesResponseProvideDefaults(val: NetworkSecurityPerimeterConfigurationPropertiesResponse): NetworkSecurityPerimeterConfigurationPropertiesResponse {
+    return {
+        ...val,
+        provisioningState: (val.provisioningState) ?? "Succeeded",
+    };
+}
+
+/**
+ * Network Security Perimeter configuration
+ */
+export interface NetworkSecurityPerimeterConfigurationResponse {
+    /**
+     * Fully qualified identifier of the resource
+     */
+    id?: string;
+    /**
+     * Name of the resource
+     */
+    name?: string;
+    /**
+     * Properties of the Network Security Perimeter configuration
+     */
+    properties: NetworkSecurityPerimeterConfigurationPropertiesResponse;
+    /**
+     * Type of the resource
+     */
+    type?: string;
+}
+/**
+ * networkSecurityPerimeterConfigurationResponseProvideDefaults sets the appropriate defaults for NetworkSecurityPerimeterConfigurationResponse
+ */
+export function networkSecurityPerimeterConfigurationResponseProvideDefaults(val: NetworkSecurityPerimeterConfigurationResponse): NetworkSecurityPerimeterConfigurationResponse {
+    return {
+        ...val,
+        properties: networkSecurityPerimeterConfigurationPropertiesResponseProvideDefaults(val.properties),
+    };
+}
+
+/**
+ * Information about Network Security Perimeter
+ */
+export interface NetworkSecurityPerimeterResponse {
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    id: string;
+    /**
+     * Location of the Network Security Perimeter
+     */
+    location?: string;
+    /**
+     * Guid of the Network Security Perimeter
+     */
+    perimeterGuid?: string;
+}
+
+/**
+ * Information of Access Rule in a profile
+ */
+export interface NspAccessRuleResponse {
+    /**
+     * Name of the access rule
+     */
+    name?: string;
+    /**
+     * Properties of Access Rule
+     */
+    properties: NspAccessRuleResponseProperties;
+}
+
+/**
+ * Properties of Access Rule
+ */
+export interface NspAccessRuleResponseProperties {
+    /**
+     * Address prefixes in the CIDR format for inbound rules
+     */
+    addressPrefixes?: string[];
+    /**
+     * Direction of Access Rule
+     */
+    direction?: string;
+    /**
+     * Email addresses for outbound rules
+     */
+    emailAddresses: string[];
+    /**
+     * FQDN for outbound rules
+     */
+    fullyQualifiedDomainNames: string[];
+    /**
+     * NetworkSecurityPerimeters for inbound rules
+     */
+    networkSecurityPerimeters: NetworkSecurityPerimeterResponse[];
+    /**
+     * Phone numbers for outbound rules
+     */
+    phoneNumbers: string[];
+    /**
+     * Subscriptions for inbound rules
+     */
+    subscriptions?: NspAccessRuleResponseSubscriptions[];
+}
+
+/**
+ * Subscription for inbound rule
+ */
+export interface NspAccessRuleResponseSubscriptions {
+    /**
+     * Fully qualified identifier of subscription
+     */
+    id?: string;
 }
 
 /**
@@ -1109,6 +1252,86 @@ export interface PrivateLinkServiceConnectionStateResponse {
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
     status?: string;
+}
+
+/**
+ * Information about profile
+ */
+export interface ProfileResponse {
+    /**
+     * List of Access Rules
+     */
+    accessRules?: NspAccessRuleResponse[];
+    /**
+     * Current access rules version
+     */
+    accessRulesVersion?: number;
+    /**
+     * Current diagnostic settings version
+     */
+    diagnosticSettingsVersion?: number;
+    /**
+     * List of log categories
+     */
+    enabledLogCategories: string[];
+    /**
+     * Name of the profile
+     */
+    name?: string;
+}
+
+/**
+ * Describes Provisioning issue for given Network Security Perimeter configuration
+ */
+export interface ProvisioningIssueResponse {
+    /**
+     * Name of the issue
+     */
+    name?: string;
+    /**
+     * Properties of Provisioning Issue
+     */
+    properties: ProvisioningIssueResponseProperties;
+}
+
+/**
+ * Properties of Provisioning Issue
+ */
+export interface ProvisioningIssueResponseProperties {
+    /**
+     * Description of the issue
+     */
+    description?: string;
+    /**
+     * Type of Issue
+     */
+    issueType?: string;
+    /**
+     * Provisioning state of Network Security Perimeter configuration propagation
+     */
+    severity?: string;
+    /**
+     * Access rules that can be added to the same profile to remediate the issue.
+     */
+    suggestedAccessRules?: NspAccessRuleResponse[];
+    /**
+     * ARM IDs of resources that can be associated to the same perimeter to remediate the issue.
+     */
+    suggestedResourceIds: string[];
+}
+
+/**
+ * Information about resource association
+ */
+export interface ResourceAssociationResponse {
+    /**
+     * Access Mode of the resource association
+     */
+    accessMode?: string;
+    /**
+     * Name of the resource association
+     */
+    name?: string;
 }
 
 /**
@@ -1942,9 +2165,3 @@ export function webChatSiteResponseProvideDefaults(val: WebChatSiteResponse): We
         isWebchatPreviewEnabled: (val.isWebchatPreviewEnabled) ?? false,
     };
 }
-
-
-
-
-
-

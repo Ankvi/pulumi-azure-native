@@ -68,5 +68,3 @@ export interface TargetDirectoryRequestPropertiesArgs {
      */
     destinationTenantId?: pulumi.Input<string>;
 }
-
-

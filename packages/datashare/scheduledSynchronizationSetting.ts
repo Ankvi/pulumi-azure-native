@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * A type of synchronization setting based on schedule
  *
- * Uses Azure REST API version 2021-08-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
+ * Uses Azure REST API version 2021-08-01. In version 2.x of the Azure Native provider, it used API version 2021-08-01.
  */
 export class ScheduledSynchronizationSetting extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class ScheduledSynchronizationSetting extends pulumi.CustomResource {
         return obj['__pulumiType'] === ScheduledSynchronizationSetting.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Time at which the synchronization setting was created.
      */
@@ -107,6 +111,7 @@ export class ScheduledSynchronizationSetting extends pulumi.CustomResource {
             resourceInputs["shareName"] = args ? args.shareName : undefined;
             resourceInputs["synchronizationSettingName"] = args ? args.synchronizationSettingName : undefined;
             resourceInputs["synchronizationTime"] = args ? args.synchronizationTime : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -114,6 +119,7 @@ export class ScheduledSynchronizationSetting extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["userName"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Sku sub resource.
  *
- * Uses Azure REST API version 2022-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-01-01-preview.
+ * Uses Azure REST API version 2022-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
  */
 export class VendorSkus extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class VendorSkus extends pulumi.CustomResource {
         return obj['__pulumiType'] === VendorSkus.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The sku deployment mode.
      */
@@ -101,11 +105,13 @@ export class VendorSkus extends pulumi.CustomResource {
             resourceInputs["skuName"] = args ? args.skuName : undefined;
             resourceInputs["skuType"] = args ? args.skuType : undefined;
             resourceInputs["vendorName"] = args ? args.vendorName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["deploymentMode"] = undefined /*out*/;
             resourceInputs["managedApplicationParameters"] = undefined /*out*/;
             resourceInputs["managedApplicationTemplate"] = undefined /*out*/;

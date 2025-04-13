@@ -79,15 +79,15 @@ export interface ContentHashArgs {
  */
 export interface ContentLinkArgs {
     /**
-     * Gets or sets the hash.
+     * Sets the hash.
      */
     contentHash?: pulumi.Input<ContentHashArgs>;
     /**
-     * Gets or sets the uri of the runbook content.
+     * Sets the uri of the content.
      */
     uri?: pulumi.Input<string>;
     /**
-     * Gets or sets the version of the content.
+     * Sets the version of the content.
      */
     version?: pulumi.Input<string>;
 }
@@ -602,11 +602,3 @@ export interface WindowsPropertiesArgs {
      */
     rebootSetting?: pulumi.Input<string>;
 }
-
-
-
-
-
-
-
-

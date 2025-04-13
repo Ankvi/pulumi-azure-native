@@ -31,6 +31,10 @@ export interface GetServerCollectorArgs {
 }
 
 export interface GetServerCollectorResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     readonly eTag?: string;
     readonly id: string;
     readonly name: string;

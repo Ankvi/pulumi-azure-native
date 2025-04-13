@@ -4,7 +4,7 @@ export const ManagedIdentityTypes = {
 } as const;
 
 /**
- * Identity type
+ * Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
  */
 export type ManagedIdentityTypes = (typeof ManagedIdentityTypes)[keyof typeof ManagedIdentityTypes];
 

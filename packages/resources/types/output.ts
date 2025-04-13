@@ -1,5 +1,23 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
+/**
+ * Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
+ */
+export interface ActionOnUnmanageResponse {
+    /**
+     * Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+     */
+    managementGroups?: string;
+    /**
+     * Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+     */
+    resourceGroups?: string;
+    /**
+     * Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+     */
+    resources: string;
+}
+
 export interface AliasPathMetadataResponse {
     /**
      * The attributes of the token that the alias path is referring to.
@@ -118,6 +136,24 @@ export interface ContainerConfigurationResponse {
      * Container group name, if not specified then the name will get auto-generated. Not specifying a 'containerGroupName' indicates the system to generate a unique name which might end up flagging an Azure Policy as non-compliant. Use 'containerGroupName' when you have an Azure Policy that expects a specific naming convention or when you want to fully control the name. 'containerGroupName' property must be between 1 and 63 characters long, must contain only lowercase letters, numbers, and dashes and it cannot start or end with a dash and consecutive dashes are not allowed. To specify a 'containerGroupName', add the following object to properties: { "containerSettings": { "containerGroupName": "contoso-container" } }. If you do not want to specify a 'containerGroupName' then do not add 'containerSettings' property.
      */
     containerGroupName?: string;
+    /**
+     * The subnet resource IDs for a container group.
+     */
+    subnetIds?: ContainerGroupSubnetIdResponse[];
+}
+
+/**
+ * Container group subnet information.
+ */
+export interface ContainerGroupSubnetIdResponse {
+    /**
+     * Resource ID of subnet.
+     */
+    id: string;
+    /**
+     * Friendly name for the subnet.
+     */
+    name?: string;
 }
 
 /**
@@ -131,11 +167,11 @@ export interface DebugSettingResponse {
 }
 
 /**
- * Defines how resources deployed by the deployment stack are locked.
+ * Defines how resources deployed by the Deployment stack are locked.
  */
 export interface DenySettingsResponse {
     /**
-     * DenySettings will be applied to child scopes.
+     * DenySettings will be applied to child resource scopes of every managed resource with a deny assignment.
      */
     applyToChildScopes?: boolean;
     /**
@@ -147,7 +183,7 @@ export interface DenySettingsResponse {
      */
     excludedPrincipals?: string[];
     /**
-     * denySettings Mode.
+     * denySettings Mode that defines denied actions.
      */
     mode: string;
 }
@@ -172,6 +208,24 @@ export interface DependencyResponse {
      * The dependency resource type.
      */
     resourceType?: string;
+}
+
+/**
+ * Deployment parameter for the template.
+ */
+export interface DeploymentParameterResponse {
+    /**
+     * Azure Key Vault parameter reference.
+     */
+    reference?: KeyVaultParameterReferenceResponse;
+    /**
+     * Type of the value.
+     */
+    type?: string;
+    /**
+     * Input value to the parameter.
+     */
+    value?: any;
 }
 
 /**
@@ -246,24 +300,6 @@ export interface DeploymentPropertiesExtendedResponse {
      * Array of validated resources.
      */
     validatedResources: ResourceReferenceResponse[];
-}
-
-/**
- * Defines the behavior of resources that are not managed immediately after the stack is updated.
- */
-export interface DeploymentStackPropertiesResponseActionOnUnmanage {
-    /**
-     * Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-     */
-    managementGroups?: string;
-    /**
-     * Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-     */
-    resourceGroups?: string;
-    /**
-     * Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-     */
-    resources: string;
 }
 
 /**
@@ -349,33 +385,29 @@ export interface ErrorDetailResponse {
 }
 
 /**
- * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
+ * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
  */
 export interface ErrorResponseResponse {
     /**
      * The error additional info.
      */
-    additionalInfo?: ErrorAdditionalInfoResponse[];
+    additionalInfo: ErrorAdditionalInfoResponse[];
     /**
      * The error code.
      */
-    code?: string;
+    code: string;
     /**
      * The error details.
      */
-    details?: ErrorResponseResponse[];
-    /**
-     * The error object.
-     */
-    error?: ErrorDetailResponse;
+    details: ErrorResponseResponse[];
     /**
      * The error message.
      */
-    message?: string;
+    message: string;
     /**
      * The error target.
      */
-    target?: string;
+    target: string;
 }
 
 /**
@@ -426,6 +458,34 @@ export interface IdentityResponseUserAssignedIdentities {
 }
 
 /**
+ * Azure Key Vault parameter reference.
+ */
+export interface KeyVaultParameterReferenceResponse {
+    /**
+     * Azure Key Vault reference.
+     */
+    keyVault: KeyVaultReferenceResponse;
+    /**
+     * Azure Key Vault secret name.
+     */
+    secretName: string;
+    /**
+     * Azure Key Vault secret version.
+     */
+    secretVersion?: string;
+}
+
+/**
+ * Azure Key Vault reference.
+ */
+export interface KeyVaultReferenceResponse {
+    /**
+     * Azure Key Vault resourceId.
+     */
+    id: string;
+}
+
+/**
  * Represents a Template Spec artifact containing an embedded Azure Resource Manager template for use as a linked template.
  */
 export interface LinkedTemplateArtifactResponse {
@@ -462,8 +522,7 @@ export interface ManagedResourceReferenceResponse {
 export function managedResourceReferenceResponseProvideDefaults(val: ManagedResourceReferenceResponse): ManagedResourceReferenceResponse {
     return {
         ...val,
-        denyStatus: (val.denyStatus) ?? "None",
-        status: (val.status) ?? "None",
+        denyStatus: (val.denyStatus) ?? "none",
     };
 }
 
@@ -645,13 +704,13 @@ export interface ResourceGroupPropertiesResponse {
 }
 
 /**
- * The resource Id extended model.
+ * The resourceId extended model. This is used to document failed resources with a resourceId and a corresponding error.
  */
 export interface ResourceReferenceExtendedResponse {
     /**
-     * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
+     * The error detail.
      */
-    error?: ErrorResponseResponse;
+    error?: ErrorDetailResponse;
     /**
      * The resourceId of a resource managed by the deployment stack.
      */
@@ -659,7 +718,7 @@ export interface ResourceReferenceExtendedResponse {
 }
 
 /**
- * The resource Id model.
+ * The resourceId model.
  */
 export interface ResourceReferenceResponse {
     /**
@@ -844,13 +903,3 @@ export interface ZoneMappingResponse {
     location?: string;
     zones?: string[];
 }
-
-
-
-
-
-
-
-
-
-

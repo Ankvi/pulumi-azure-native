@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2022-04-01-preview.
  *
- * Other available API versions: 2021-02-01-preview, 2021-05-01-preview.
+ * Other available API versions: 2021-02-01-preview, 2022-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getUserRuleCollection(args: GetUserRuleCollectionArgs, opts?: pulumi.InvokeOptions): Promise<GetUserRuleCollectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -46,6 +46,10 @@ export interface GetUserRuleCollectionResult {
      */
     readonly appliesToGroups: types.outputs.NetworkManagerSecurityGroupItemResponse[];
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * A description of the user rule collection.
      */
     readonly description?: string;
@@ -79,7 +83,7 @@ export interface GetUserRuleCollectionResult {
  *
  * Uses Azure REST API version 2022-04-01-preview.
  *
- * Other available API versions: 2021-02-01-preview, 2021-05-01-preview.
+ * Other available API versions: 2021-02-01-preview, 2022-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getUserRuleCollectionOutput(args: GetUserRuleCollectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserRuleCollectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

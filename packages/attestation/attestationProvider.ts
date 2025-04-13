@@ -4,9 +4,7 @@ import * as types from "./types";
 /**
  * Attestation service response message.
  *
- * Uses Azure REST API version 2021-06-01. In version 1.x of the Azure Native provider, it used API version 2020-10-01.
- *
- * Other available API versions: 2021-06-01-preview.
+ * Uses Azure REST API version 2021-06-01. In version 2.x of the Azure Native provider, it used API version 2021-06-01.
  */
 export class AttestationProvider extends pulumi.CustomResource {
     /**
@@ -39,6 +37,10 @@ export class AttestationProvider extends pulumi.CustomResource {
      * Gets the uri of attestation service
      */
     public /*out*/ readonly attestUri!: pulumi.Output<string | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The geo-location where the resource lives
      */
@@ -103,6 +105,7 @@ export class AttestationProvider extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["attestUri"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateEndpointConnections"] = undefined /*out*/;
             resourceInputs["publicNetworkAccess"] = undefined /*out*/;
@@ -113,6 +116,7 @@ export class AttestationProvider extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["attestUri"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateEndpointConnections"] = undefined /*out*/;

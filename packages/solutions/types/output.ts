@@ -406,4 +406,3 @@ export interface UserAssignedResourceIdentityResponse {
      */
     tenantId: string;
 }
-

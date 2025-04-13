@@ -73,6 +73,20 @@ export interface AlertRulePropertiesResponse {
 }
 
 /**
+ * Configuration details of app service plan
+ */
+export interface AppServicePlanConfigurationResponse {
+    /**
+     * The number of workers in app service plan. If this is not set or set to 0, auto scale will be configured for the app service plan, otherwise, instance count is set to this number.
+     */
+    capacity?: number;
+    /**
+     * The App Service plan tier.
+     */
+    tier?: string;
+}
+
+/**
  * Gets or sets the application server configuration.
  */
 export interface ApplicationServerConfigurationResponse {
@@ -116,6 +130,9 @@ export interface ApplicationServerVmDetailsResponse {
      * Defines the type of application server VM.
      */
     type: string;
+    /**
+     * The virtual machine id.
+     */
     virtualMachineId: string;
 }
 
@@ -167,6 +184,9 @@ export interface CentralServerVmDetailsResponse {
      * Defines the type of central server VM.
      */
     type: string;
+    /**
+     * The virtual machine id.
+     */
     virtualMachineId: string;
 }
 
@@ -239,7 +259,7 @@ export interface ConnectorErrorDefinitionResponse {
 }
 
 /**
- * Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
+ * Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn't need to be pre-created.
  */
 export interface CreateAndMountFileShareConfigurationResponse {
     /**
@@ -255,53 +275,6 @@ export interface CreateAndMountFileShareConfigurationResponse {
      * The name of file share storage account name . A custom name is used in case of missing input.
      */
     storageAccountName?: string;
-}
-
-/**
- * Gets or sets the DB2 provider properties.
- */
-export interface DB2ProviderInstancePropertiesResponse {
-    /**
-     * Gets or sets the db2 database name.
-     */
-    dbName?: string;
-    /**
-     * Gets or sets the db2 database password.
-     */
-    dbPassword?: string;
-    /**
-     * Gets or sets the key vault URI to secret with the database password.
-     */
-    dbPasswordUri?: string;
-    /**
-     * Gets or sets the db2 database sql port.
-     */
-    dbPort?: string;
-    /**
-     * Gets or sets the db2 database user name.
-     */
-    dbUsername?: string;
-    /**
-     * Gets or sets the target virtual machine name.
-     */
-    hostname?: string;
-    /**
-     * The provider type. For example, the value can be SapHana.
-     * Expected value is 'Db2'.
-     */
-    providerType: "Db2";
-    /**
-     * Gets or sets the SAP System Identifier
-     */
-    sapSid?: string;
-    /**
-     * Gets or sets the blob URI to SSL certificate for the DB2 Database.
-     */
-    sslCertificateUri?: string;
-    /**
-     * Gets or sets certificate preference if secure communication is enabled.
-     */
-    sslPreference?: string;
 }
 
 /**
@@ -433,6 +406,9 @@ export interface DatabaseVmDetailsResponse {
      * Storage details of all the Storage Accounts attached to the Database Virtual Machine. For e.g. NFS on AFS Shared Storage.
      */
     storageDetails: StorageInformationResponse[];
+    /**
+     * The virtual machine id.
+     */
     virtualMachineId: string;
 }
 
@@ -448,6 +424,53 @@ export interface DayResponse {
      * Whether Date is last date of month
      */
     isLast?: boolean;
+}
+
+/**
+ * Gets or sets the DB2 provider properties.
+ */
+export interface Db2ProviderInstancePropertiesResponse {
+    /**
+     * Gets or sets the db2 database name.
+     */
+    dbName?: string;
+    /**
+     * Gets or sets the db2 database password.
+     */
+    dbPassword?: string;
+    /**
+     * Gets or sets the key vault URI to secret with the database password.
+     */
+    dbPasswordUri?: string;
+    /**
+     * Gets or sets the db2 database sql port.
+     */
+    dbPort?: string;
+    /**
+     * Gets or sets the db2 database user name.
+     */
+    dbUsername?: string;
+    /**
+     * Gets or sets the target virtual machine name.
+     */
+    hostname?: string;
+    /**
+     * The provider type. For example, the value can be SapHana.
+     * Expected value is 'Db2'.
+     */
+    providerType: "Db2";
+    /**
+     * Gets or sets the SAP System Identifier
+     */
+    sapSid?: string;
+    /**
+     * Gets or sets the blob URI to SSL certificate for the DB2 Database.
+     */
+    sslCertificateUri?: string;
+    /**
+     * Gets or sets certificate preference if secure communication is enabled.
+     */
+    sslPreference?: string;
 }
 
 /**
@@ -742,42 +765,6 @@ export interface ErrorDetailResponse {
 }
 
 /**
- * Standard error object.
- */
-export interface ErrorResponse {
-    /**
-     * Server-defined set of error codes.
-     */
-    code: string;
-    /**
-     * Array of details about specific errors that led to this reported error.
-     */
-    details: ErrorResponse[];
-    /**
-     * Object containing more specific information than  the current object about the error.
-     */
-    innerError: ErrorResponseInnerError;
-    /**
-     * Human-readable representation of the error.
-     */
-    message: string;
-    /**
-     * Target of the error.
-     */
-    target: string;
-}
-
-/**
- * Object containing more specific information than  the current object about the error.
- */
-export interface ErrorResponseInnerError {
-    /**
-     * Standard error object.
-     */
-    innerError?: ErrorResponse;
-}
-
-/**
  * The SAP instance specific performance data for Excel import.
  */
 export interface ExcelPerformanceDataResponse {
@@ -945,6 +932,20 @@ export interface HanaDbProviderInstancePropertiesResponse {
 }
 
 /**
+ * Resource health details
+ */
+export interface HealthResponse {
+    /**
+     * Health state of the resource
+     */
+    healthState: string;
+    /**
+     * Reasons impacting health state
+     */
+    impactingReasons: string;
+}
+
+/**
  * Gets or sets the high availability configuration.
  */
 export interface HighAvailabilityConfigurationResponse {
@@ -992,6 +993,10 @@ export interface HourlyScheduleResponse {
  */
 export interface ImageReferenceResponse {
     /**
+     * Specifies the ARM resource ID of the Azure Compute Gallery image version used for creating ACSS VMs. You will need to provide this input when you choose to deploy virtual machines in ACSS with OS image from the Azure Compute gallery.
+     */
+    id?: string;
+    /**
      * Specifies the offer of the platform image or marketplace image used to create the virtual machine.
      */
     offer?: string;
@@ -1024,7 +1029,7 @@ export interface InstantRPAdditionalDetailsResponse {
 }
 
 /**
- * Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+ * Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
  */
 export interface LinuxConfigurationResponse {
     /**
@@ -1050,6 +1055,9 @@ export interface LinuxConfigurationResponse {
  * The Load Balancer details such as Load Balancer ID.
  */
 export interface LoadBalancerDetailsResponse {
+    /**
+     * Fully qualified resource ID for the load balancer.
+     */
     id: string;
 }
 
@@ -1139,7 +1147,39 @@ export interface ManagedRGConfigurationResponse {
 }
 
 /**
- * Defines the SAP Message Server properties.
+ * Managed resource group configuration
+ */
+export interface ManagedResourceGroupConfigurationResponse {
+    /**
+     * Managed resource group name
+     */
+    name?: string;
+}
+
+/**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityResponse {
+    /**
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: string;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
+ * Defines the SAP message server properties.
  */
 export interface MessageServerPropertiesResponse {
     /**
@@ -1147,55 +1187,29 @@ export interface MessageServerPropertiesResponse {
      */
     health: string;
     /**
-     * Message Server SAP Hostname.
+     * message server SAP Hostname.
      */
     hostname: string;
     /**
-     * Message Server HTTP Port.
+     * message server HTTP Port.
      */
     httpPort: number;
     /**
-     * Message Server HTTPS Port.
+     * message server HTTPS Port.
      */
     httpsPort: number;
     /**
-     * Message Server internal MS port.
+     * message server internal MS port.
      */
     internalMsPort: number;
     /**
-     * Message server IP Address.
+     * message server IP Address.
      */
     ipAddress: string;
     /**
-     * Message Server port.
+     * message server port.
      */
     msPort: number;
-}
-
-/**
- * Defines the SAP monitor errors.
- */
-export interface MonitorPropertiesResponseErrors {
-    /**
-     * Server-defined set of error codes.
-     */
-    code: string;
-    /**
-     * Array of details about specific errors that led to this reported error.
-     */
-    details: ErrorResponse[];
-    /**
-     * Object containing more specific information than  the current object about the error.
-     */
-    innerError: ErrorResponseInnerError;
-    /**
-     * Human-readable representation of the error.
-     */
-    message: string;
-    /**
-     * Target of the error.
-     */
-    target: string;
 }
 
 /**
@@ -1298,7 +1312,7 @@ export interface NativePerformanceDataResponse {
 }
 
 /**
- * Defines the network configuration type for SAP system infrastructure that is being deployed 
+ * Defines the network configuration type for SAP system infrastructure that is being deployed
  */
 export interface NetworkConfigurationResponse {
     /**
@@ -1350,7 +1364,7 @@ export interface NewRecoveryServicesVaultResponse {
  */
 export interface OSProfileResponse {
     /**
-     * Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+     * Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
      */
     adminPassword?: string;
     /**
@@ -1361,6 +1375,53 @@ export interface OSProfileResponse {
      * Specifies Windows operating system settings on the virtual machine.
      */
     osConfiguration?: LinuxConfigurationResponse | WindowsConfigurationResponse;
+}
+
+/**
+ * Gets or sets the Oracle provider properties.
+ */
+export interface OracleProviderInstancePropertiesResponse {
+    /**
+     * Gets or sets the oracle database name.
+     */
+    dbName?: string;
+    /**
+     * Gets or sets the oracle database password.
+     */
+    dbPassword?: string;
+    /**
+     * Gets or sets the key vault URI to secret with the database password.
+     */
+    dbPasswordUri?: string;
+    /**
+     * Gets or sets the oracle database sql port.
+     */
+    dbPort?: string;
+    /**
+     * Gets or sets the oracle database user name.
+     */
+    dbUsername?: string;
+    /**
+     * Gets or sets the target virtual machine name.
+     */
+    hostname?: string;
+    /**
+     * The provider type. For example, the value can be SapHana.
+     * Expected value is 'Oracle'.
+     */
+    providerType: "Oracle";
+    /**
+     * Gets or sets the SAP System Identifier
+     */
+    sapSid?: string;
+    /**
+     * Gets or sets the blob URI to SSL certificate for the Oracle Database.
+     */
+    sslCertificateUri?: string;
+    /**
+     * Gets or sets certificate preference if secure communication is enabled.
+     */
+    sslPreference?: string;
 }
 
 /**
@@ -1415,7 +1476,7 @@ export interface PrometheusHaClusterProviderInstancePropertiesResponse {
 /**
  * Gets or sets the PrometheusOS provider properties.
  */
-export interface PrometheusOSProviderInstancePropertiesResponse {
+export interface PrometheusOsProviderInstancePropertiesResponse {
     /**
      * URL of the Node Exporter endpoint
      */
@@ -1437,32 +1498,6 @@ export interface PrometheusOSProviderInstancePropertiesResponse {
      * Gets or sets certificate preference if secure communication is enabled.
      */
     sslPreference?: string;
-}
-
-/**
- * Defines the provider instance errors.
- */
-export interface ProviderInstancePropertiesResponseErrors {
-    /**
-     * Server-defined set of error codes.
-     */
-    code: string;
-    /**
-     * Array of details about specific errors that led to this reported error.
-     */
-    details: ErrorResponse[];
-    /**
-     * Object containing more specific information than  the current object about the error.
-     */
-    innerError: ErrorResponseInnerError;
-    /**
-     * Human-readable representation of the error.
-     */
-    message: string;
-    /**
-     * Target of the error.
-     */
-    target: string;
 }
 
 /**
@@ -1586,6 +1621,31 @@ export interface SAPVirtualInstanceErrorResponse {
 }
 
 /**
+ * Managed service identity (user assigned identities)
+ */
+export interface SAPVirtualInstanceIdentityResponse {
+    /**
+     * The type of managed identity assigned to this resource.
+     */
+    type: string;
+    /**
+     * The identities assigned to this resource by the user.
+     */
+    userAssignedIdentities?: {[key: string]: SAPVirtualInstanceIdentityResponseUserAssignedIdentities};
+}
+
+export interface SAPVirtualInstanceIdentityResponseUserAssignedIdentities {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId: string;
+}
+
+/**
  * Specify the HANA database TLS/SSL properties which will be used for enabling Azure Backup for this database. You need to specify these details if you have enabled secure communication for your HANA database.
  */
 export interface SSLConfigurationResponse {
@@ -1632,7 +1692,7 @@ export interface SapLandscapeMonitorMetricThresholdsResponse {
 /**
  * Gets or sets the SID groupings by landscape and Environment.
  */
-export interface SapLandscapeMonitorPropertiesResponseGrouping {
+export interface SapLandscapeMonitorPropertiesGroupingResponse {
     /**
      * Gets or sets the list of landscape to SID mappings.
      */
@@ -1854,7 +1914,7 @@ export interface SimpleSchedulePolicyV2Response {
 }
 
 /**
- * Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+ * Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
  */
 export interface SingleServerConfigurationResponse {
     /**
@@ -1975,7 +2035,7 @@ export interface SshConfigurationResponse {
 }
 
 /**
- * The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+ * The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
  */
 export interface SshKeyPairResponse {
     /**
@@ -1993,7 +2053,7 @@ export interface SshKeyPairResponse {
  */
 export interface SshPublicKeyResponse {
     /**
-     * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+     * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
      */
     keyData?: string;
 }
@@ -2009,9 +2069,12 @@ export interface StorageConfigurationResponse {
 }
 
 /**
- * Storage details of all the Storage accounts attached to the VM. For e.g. NFS on AFS Shared Storage. 
+ * Storage details of all the Storage accounts attached to the VM. For e.g. NFS on AFS Shared Storage.
  */
 export interface StorageInformationResponse {
+    /**
+     * Fully qualified resource ID for the storage account.
+     */
     id: string;
 }
 
@@ -2074,7 +2137,7 @@ export interface SystemDataResponse {
 }
 
 /**
- * Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+ * Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
  */
 export interface ThreeTierConfigurationResponse {
     /**
@@ -2211,7 +2274,7 @@ export interface UserAssignedManagedIdentityDetailsResponse {
 }
 
 /**
- * A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
+ * Managed service identity (user assigned identities)
  */
 export interface UserAssignedServiceIdentityResponse {
     /**
@@ -2430,9 +2493,3 @@ export interface YearlyRetentionScheduleResponse {
      */
     retentionTimes?: string[];
 }
-
-
-
-
-
-

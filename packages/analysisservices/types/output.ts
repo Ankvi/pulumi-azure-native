@@ -86,4 +86,3 @@ export interface ServerAdministratorsResponse {
      */
     members?: string[];
 }
-

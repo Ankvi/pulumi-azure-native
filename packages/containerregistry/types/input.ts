@@ -96,6 +96,25 @@ export interface AuthInfoArgs {
 }
 
 /**
+ * The policy for using ARM audience token for a container registry.
+ */
+export interface AzureADAuthenticationAsArmPolicyArgs {
+    /**
+     * The value that indicates whether the policy is enabled or not.
+     */
+    status?: pulumi.Input<string | enums.AzureADAuthenticationAsArmPolicyStatus>;
+}
+/**
+ * azureADAuthenticationAsArmPolicyArgsProvideDefaults sets the appropriate defaults for AzureADAuthenticationAsArmPolicyArgs
+ */
+export function azureADAuthenticationAsArmPolicyArgsProvideDefaults(val: AzureADAuthenticationAsArmPolicyArgs): AzureADAuthenticationAsArmPolicyArgs {
+    return {
+        ...val,
+        status: (val.status) ?? "enabled",
+    };
+}
+
+/**
  * The trigger based on base image dependency.
  */
 export interface BaseImageTriggerArgs {
@@ -547,6 +566,20 @@ export interface FileTaskStepArgs {
 }
 
 /**
+ * The garbage collection properties of the connected registry.
+ */
+export interface GarbageCollectionPropertiesArgs {
+    /**
+     * Indicates whether garbage collection is enabled for the connected registry.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The cron expression indicating the schedule that the connected registry will run garbage collection.
+     */
+    schedule?: pulumi.Input<string>;
+}
+
+/**
  * IP rule with specific IP or IP range in CIDR format.
  */
 export interface IPRuleArgs {
@@ -857,6 +890,10 @@ export interface PlatformPropertiesArgs {
  */
 export interface PoliciesArgs {
     /**
+     * The policy for using ARM audience token for a container registry.
+     */
+    azureADAuthenticationAsArmPolicy?: pulumi.Input<AzureADAuthenticationAsArmPolicyArgs>;
+    /**
      * The export policy for a container registry.
      */
     exportPolicy?: pulumi.Input<ExportPolicyArgs>;
@@ -869,6 +906,10 @@ export interface PoliciesArgs {
      */
     retentionPolicy?: pulumi.Input<RetentionPolicyArgs>;
     /**
+     * The soft delete policy for a container registry.
+     */
+    softDeletePolicy?: pulumi.Input<SoftDeletePolicyArgs>;
+    /**
      * The content trust policy for a container registry.
      */
     trustPolicy?: pulumi.Input<TrustPolicyArgs>;
@@ -879,9 +920,11 @@ export interface PoliciesArgs {
 export function policiesArgsProvideDefaults(val: PoliciesArgs): PoliciesArgs {
     return {
         ...val,
+        azureADAuthenticationAsArmPolicy: (val.azureADAuthenticationAsArmPolicy ? pulumi.output(val.azureADAuthenticationAsArmPolicy).apply(azureADAuthenticationAsArmPolicyArgsProvideDefaults) : undefined),
         exportPolicy: (val.exportPolicy ? pulumi.output(val.exportPolicy).apply(exportPolicyArgsProvideDefaults) : undefined),
         quarantinePolicy: (val.quarantinePolicy ? pulumi.output(val.quarantinePolicy).apply(quarantinePolicyArgsProvideDefaults) : undefined),
         retentionPolicy: (val.retentionPolicy ? pulumi.output(val.retentionPolicy).apply(retentionPolicyArgsProvideDefaults) : undefined),
+        softDeletePolicy: (val.softDeletePolicy ? pulumi.output(val.softDeletePolicy).apply(softDeletePolicyArgsProvideDefaults) : undefined),
         trustPolicy: (val.trustPolicy ? pulumi.output(val.trustPolicy).apply(trustPolicyArgsProvideDefaults) : undefined),
     };
 }
@@ -1009,6 +1052,30 @@ export interface SkuArgs {
      * The SKU name of the container registry. Required for registry creation.
      */
     name: pulumi.Input<string | enums.SkuName>;
+}
+
+/**
+ * The soft delete policy for a container registry
+ */
+export interface SoftDeletePolicyArgs {
+    /**
+     * The number of days after which a soft-deleted item is permanently deleted.
+     */
+    retentionDays?: pulumi.Input<number>;
+    /**
+     * The value that indicates whether the policy is enabled or not.
+     */
+    status?: pulumi.Input<string | enums.PolicyStatus>;
+}
+/**
+ * softDeletePolicyArgsProvideDefaults sets the appropriate defaults for SoftDeletePolicyArgs
+ */
+export function softDeletePolicyArgsProvideDefaults(val: SoftDeletePolicyArgs): SoftDeletePolicyArgs {
+    return {
+        ...val,
+        retentionDays: (val.retentionDays) ?? 7,
+        status: (val.status) ?? "disabled",
+    };
 }
 
 /**
@@ -1272,14 +1339,3 @@ export interface UserIdentityPropertiesArgs {
      */
     principalId?: pulumi.Input<string>;
 }
-
-
-
-
-
-
-
-
-
-
-

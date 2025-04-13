@@ -28,24 +28,6 @@ export function awsCloudProfileResponseProvideDefaults(val: AwsCloudProfileRespo
 }
 
 /**
- * Endpoint details
- */
-export interface EndpointPropertiesResponse {
-    /**
-     * The resource provisioning state.
-     */
-    provisioningState: string;
-    /**
-     * The resource Id of the connectivity endpoint (optional).
-     */
-    resourceId?: string;
-    /**
-     * The type of endpoint.
-     */
-    type: string;
-}
-
-/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -74,4 +56,3 @@ export interface SystemDataResponse {
      */
     lastModifiedByType?: string;
 }
-

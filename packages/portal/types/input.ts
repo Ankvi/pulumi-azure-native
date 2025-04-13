@@ -175,7 +175,3 @@ export interface UserPropertiesArgs {
      */
     terminalSettings: pulumi.Input<TerminalSettingsArgs>;
 }
-
-
-
-

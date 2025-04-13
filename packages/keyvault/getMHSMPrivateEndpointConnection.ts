@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets the specified private endpoint connection associated with the managed HSM Pool.
  *
- * Uses Azure REST API version 2023-02-01.
+ * Uses Azure REST API version 2024-11-01.
  *
- * Other available API versions: 2023-07-01, 2024-04-01-preview, 2024-11-01, 2024-12-01-preview.
+ * Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getMHSMPrivateEndpointConnection(args: GetMHSMPrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetMHSMPrivateEndpointConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +37,10 @@ export interface GetMHSMPrivateEndpointConnectionArgs {
  */
 export interface GetMHSMPrivateEndpointConnectionResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Modified whenever there is a change in the state of private endpoint connection.
      */
     readonly etag?: string;
@@ -44,6 +48,10 @@ export interface GetMHSMPrivateEndpointConnectionResult {
      * The Azure Resource Manager resource ID for the managed HSM Pool.
      */
     readonly id: string;
+    /**
+     * Managed service identity (system assigned and/or user assigned identities)
+     */
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The supported Azure location where the managed HSM Pool should be created.
      */
@@ -84,9 +92,9 @@ export interface GetMHSMPrivateEndpointConnectionResult {
 /**
  * Gets the specified private endpoint connection associated with the managed HSM Pool.
  *
- * Uses Azure REST API version 2023-02-01.
+ * Uses Azure REST API version 2024-11-01.
  *
- * Other available API versions: 2023-07-01, 2024-04-01-preview, 2024-11-01, 2024-12-01-preview.
+ * Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getMHSMPrivateEndpointConnectionOutput(args: GetMHSMPrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMHSMPrivateEndpointConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

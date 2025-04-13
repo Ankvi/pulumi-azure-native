@@ -5,8 +5,6 @@ import * as types from "./types";
  * Gets information about the specified Private Endpoint.
  *
  * Uses Azure REST API version 2020-03-01.
- *
- * Other available API versions: 2020-03-01-preview.
  */
 export function getPrivateEndpoint(args: GetPrivateEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +35,10 @@ export interface GetPrivateEndpointArgs {
  */
 export interface GetPrivateEndpointResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The date when this private endpoint was created.
      */
     readonly createdDate: string;
@@ -65,8 +67,6 @@ export interface GetPrivateEndpointResult {
  * Gets information about the specified Private Endpoint.
  *
  * Uses Azure REST API version 2020-03-01.
- *
- * Other available API versions: 2020-03-01-preview.
  */
 export function getPrivateEndpointOutput(args: GetPrivateEndpointOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

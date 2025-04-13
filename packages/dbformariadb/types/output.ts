@@ -116,5 +116,3 @@ export interface StorageProfileResponse {
      */
     storageMB?: number;
 }
-
-

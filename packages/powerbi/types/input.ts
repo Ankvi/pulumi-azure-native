@@ -50,4 +50,3 @@ export interface PrivateEndpointConnectionArgs {
      */
     provisioningState?: pulumi.Input<string | enums.ResourceProvisioningState>;
 }
-

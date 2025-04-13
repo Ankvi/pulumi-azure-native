@@ -39,6 +39,10 @@ export interface GetKpiResult {
      */
     readonly aliases?: types.outputs.KpiAliasResponse[];
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * The calculation window.
      */
     readonly calculationWindow: string;
