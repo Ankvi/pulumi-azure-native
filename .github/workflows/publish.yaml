@@ -5,6 +5,7 @@ on:
   push:
     tags:
       - v2.*
+      - v3.*
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
