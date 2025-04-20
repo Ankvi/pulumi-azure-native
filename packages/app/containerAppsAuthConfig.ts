@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Configuration settings for the Azure ContainerApp Service Authentication / Authorization feature.
  *
- * Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2022-03-01.
+ * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
  *
- * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01.
+ * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ContainerAppsAuthConfig extends pulumi.CustomResource {
     /**
@@ -35,6 +35,14 @@ export class ContainerAppsAuthConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === ContainerAppsAuthConfig.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
+     * The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
+     */
+    public readonly encryptionSettings!: pulumi.Output<types.outputs.EncryptionSettingsResponse | undefined>;
     /**
      * The configuration settings that determines the validation flow of users using  Service Authentication/Authorization.
      */
@@ -87,16 +95,20 @@ export class ContainerAppsAuthConfig extends pulumi.CustomResource {
             }
             resourceInputs["authConfigName"] = args ? args.authConfigName : undefined;
             resourceInputs["containerAppName"] = args ? args.containerAppName : undefined;
+            resourceInputs["encryptionSettings"] = args ? args.encryptionSettings : undefined;
             resourceInputs["globalValidation"] = args ? args.globalValidation : undefined;
             resourceInputs["httpSettings"] = args ? args.httpSettings : undefined;
             resourceInputs["identityProviders"] = args ? args.identityProviders : undefined;
             resourceInputs["login"] = args ? args.login : undefined;
             resourceInputs["platform"] = args ? args.platform : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["encryptionSettings"] = undefined /*out*/;
             resourceInputs["globalValidation"] = undefined /*out*/;
             resourceInputs["httpSettings"] = undefined /*out*/;
             resourceInputs["identityProviders"] = undefined /*out*/;
@@ -125,6 +137,10 @@ export interface ContainerAppsAuthConfigArgs {
      * Name of the Container App.
      */
     containerAppName: pulumi.Input<string>;
+    /**
+     * The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
+     */
+    encryptionSettings?: pulumi.Input<types.inputs.EncryptionSettingsArgs>;
     /**
      * The configuration settings that determines the validation flow of users using  Service Authentication/Authorization.
      */

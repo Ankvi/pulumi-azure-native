@@ -5,8 +5,6 @@ import * as types from "./types";
  * Get the properties of a specified task.
  *
  * Uses Azure REST API version 2019-06-01-preview.
- *
- * Other available API versions: 2018-09-01, 2019-04-01.
  */
 export function getTask(args: GetTaskArgs, opts?: pulumi.InvokeOptions): Promise<GetTaskResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -45,6 +43,10 @@ export interface GetTaskResult {
      * The dedicated agent pool for the task.
      */
     readonly agentPoolName?: string;
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * The creation date of task.
      */
@@ -118,8 +120,6 @@ export interface GetTaskResult {
  * Get the properties of a specified task.
  *
  * Uses Azure REST API version 2019-06-01-preview.
- *
- * Other available API versions: 2018-09-01, 2019-04-01.
  */
 export function getTaskOutput(args: GetTaskOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTaskResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

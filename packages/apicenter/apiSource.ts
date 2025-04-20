@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * API source entity.
  *
- * Uses Azure REST API version 2024-06-01-preview.
+ * Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
  */
 export class ApiSource extends pulumi.CustomResource {
     /**
@@ -37,6 +37,10 @@ export class ApiSource extends pulumi.CustomResource {
      * API source configuration for Azure API Management.
      */
     public readonly azureApiManagementSource!: pulumi.Output<types.outputs.AzureApiManagementSourceResponse | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Indicates if the specification should be imported along with metadata.
      */
@@ -94,12 +98,14 @@ export class ApiSource extends pulumi.CustomResource {
             resourceInputs["targetEnvironmentId"] = args ? args.targetEnvironmentId : undefined;
             resourceInputs["targetLifecycleStage"] = args ? args.targetLifecycleStage : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["linkState"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiManagementSource"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["importSpecification"] = undefined /*out*/;
             resourceInputs["linkState"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

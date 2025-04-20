@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
  */
 export interface AccessKeyInfoBaseArgs {
     /**
+     * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+     */
+    authMode?: pulumi.Input<string | enums.AuthMode>;
+    /**
      * The authentication type.
      * Expected value is 'accessKey'.
      */
@@ -62,6 +66,14 @@ export interface ConfigurationInfoArgs {
      */
     additionalConfigurations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * A dictionary of additional properties to be added in the end of connection string.
+     */
+    additionalConnectionStringProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * An option to store configuration into different place
+     */
+    configurationStore?: pulumi.Input<ConfigurationStoreArgs>;
+    /**
      * Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
      */
     customizedKeys?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -73,6 +85,16 @@ export interface ConfigurationInfoArgs {
      * Indicates whether to clean up previous operation when Linker is updating or deleting
      */
     deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior>;
+}
+
+/**
+ * An option to store configuration into different place
+ */
+export interface ConfigurationStoreArgs {
+    /**
+     * The app configuration id to store configuration
+     */
+    appConfigurationId?: pulumi.Input<string>;
 }
 
 /**
@@ -117,7 +139,7 @@ export interface CreateOrUpdateDryrunParametersArgs {
     /**
      * The authentication type.
      */
-    authInfo?: pulumi.Input<AccessKeyInfoBaseArgs | SecretAuthInfoArgs | ServicePrincipalCertificateAuthInfoArgs | ServicePrincipalSecretAuthInfoArgs | SystemAssignedIdentityAuthInfoArgs | UserAccountAuthInfoArgs | UserAssignedIdentityAuthInfoArgs>;
+    authInfo?: pulumi.Input<AccessKeyInfoBaseArgs | EasyAuthMicrosoftEntraIDAuthInfoArgs | SecretAuthInfoArgs | ServicePrincipalCertificateAuthInfoArgs | ServicePrincipalSecretAuthInfoArgs | SystemAssignedIdentityAuthInfoArgs | UserAccountAuthInfoArgs | UserAssignedIdentityAuthInfoArgs>;
     /**
      * The application client type
      */
@@ -153,9 +175,17 @@ export interface CreateOrUpdateDryrunParametersArgs {
  */
 export interface DaprMetadataArgs {
     /**
+     * The description of the metadata, returned from configuration api
+     */
+    description?: pulumi.Input<string>;
+    /**
      * Metadata property name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The value indicating whether the metadata is required or not
+     */
+    required?: pulumi.Input<string | enums.DaprMetadataRequired>;
     /**
      * The secret name where dapr could get value
      */
@@ -190,6 +220,33 @@ export interface DaprPropertiesArgs {
      * The dapr component version
      */
     version?: pulumi.Input<string>;
+}
+
+/**
+ * The authentication info when authType is EasyAuth Microsoft Entra ID
+ */
+export interface EasyAuthMicrosoftEntraIDAuthInfoArgs {
+    /**
+     * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+     */
+    authMode?: pulumi.Input<string | enums.AuthMode>;
+    /**
+     * The authentication type.
+     * Expected value is 'easyAuthMicrosoftEntraID'.
+     */
+    authType: pulumi.Input<"easyAuthMicrosoftEntraID">;
+    /**
+     * Application clientId for EasyAuth Microsoft Entra ID.
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * Indicates whether to clean up previous operation when Linker is updating or deleting
+     */
+    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior>;
+    /**
+     * Application Secret for EasyAuth Microsoft Entra ID.
+     */
+    secret?: pulumi.Input<string>;
 }
 
 /**
@@ -267,6 +324,10 @@ export interface PublicNetworkSolutionArgs {
  */
 export interface SecretAuthInfoArgs {
     /**
+     * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+     */
+    authMode?: pulumi.Input<string | enums.AuthMode>;
+    /**
      * The authentication type.
      * Expected value is 'secret'.
      */
@@ -315,6 +376,10 @@ export interface SelfHostedServerArgs {
  */
 export interface ServicePrincipalCertificateAuthInfoArgs {
     /**
+     * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+     */
+    authMode?: pulumi.Input<string | enums.AuthMode>;
+    /**
      * The authentication type.
      * Expected value is 'servicePrincipalCertificate'.
      */
@@ -345,6 +410,10 @@ export interface ServicePrincipalCertificateAuthInfoArgs {
  * The authentication info when authType is servicePrincipal secret
  */
 export interface ServicePrincipalSecretAuthInfoArgs {
+    /**
+     * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+     */
+    authMode?: pulumi.Input<string | enums.AuthMode>;
     /**
      * The authentication type.
      * Expected value is 'servicePrincipalSecret'.
@@ -381,6 +450,10 @@ export interface ServicePrincipalSecretAuthInfoArgs {
  */
 export interface SystemAssignedIdentityAuthInfoArgs {
     /**
+     * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+     */
+    authMode?: pulumi.Input<string | enums.AuthMode>;
+    /**
      * The authentication type.
      * Expected value is 'systemAssignedIdentity'.
      */
@@ -403,6 +476,10 @@ export interface SystemAssignedIdentityAuthInfoArgs {
  * The authentication info when authType is user account
  */
 export interface UserAccountAuthInfoArgs {
+    /**
+     * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+     */
+    authMode?: pulumi.Input<string | enums.AuthMode>;
     /**
      * The authentication type.
      * Expected value is 'userAccount'.
@@ -430,6 +507,10 @@ export interface UserAccountAuthInfoArgs {
  * The authentication info when authType is userAssignedIdentity
  */
 export interface UserAssignedIdentityAuthInfoArgs {
+    /**
+     * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+     */
+    authMode?: pulumi.Input<string | enums.AuthMode>;
     /**
      * The authentication type.
      * Expected value is 'userAssignedIdentity'.
@@ -485,7 +566,3 @@ export interface ValueSecretInfoArgs {
      */
     value?: pulumi.Input<string>;
 }
-
-
-
-

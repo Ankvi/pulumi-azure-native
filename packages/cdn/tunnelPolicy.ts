@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Tunnel Policy maps domains to target endpoints to process traffic over the tunnelling protocol.
  *
- * Uses Azure REST API version 2024-06-01-preview.
+ * Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
  */
 export class TunnelPolicy extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class TunnelPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === TunnelPolicy.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     public /*out*/ readonly deploymentStatus!: pulumi.Output<string>;
     /**
      * Domains referenced by this tunnel policy.
@@ -89,12 +93,14 @@ export class TunnelPolicy extends pulumi.CustomResource {
             resourceInputs["targetGroups"] = args ? args.targetGroups : undefined;
             resourceInputs["tunnelPolicyName"] = args ? args.tunnelPolicyName : undefined;
             resourceInputs["tunnelType"] = args ? args.tunnelType : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["deploymentStatus"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["deploymentStatus"] = undefined /*out*/;
             resourceInputs["domains"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

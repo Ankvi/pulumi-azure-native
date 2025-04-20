@@ -6,6 +6,10 @@ import * as pulumi from "@pulumi/pulumi";
 export interface AccountPropertiesArgs {
     allowedFqdnList?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The user owned AML workspace properties.
+     */
+    amlWorkspace?: pulumi.Input<UserOwnedAmlWorkspaceArgs>;
+    /**
      * The api properties for special APIs.
      */
     apiProperties?: pulumi.Input<ApiPropertiesArgs>;
@@ -38,6 +42,10 @@ export interface AccountPropertiesArgs {
      * Whether or not public endpoint access is allowed for this account.
      */
     publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess>;
+    /**
+     * Cognitive Services Rai Monitor Config.
+     */
+    raiMonitorConfig?: pulumi.Input<RaiMonitorConfigArgs>;
     restore?: pulumi.Input<boolean>;
     restrictOutboundNetworkAccess?: pulumi.Input<boolean>;
     /**
@@ -146,6 +154,38 @@ export interface CommitmentPlanPropertiesArgs {
 }
 
 /**
+ * Gets or sets the source to which filter applies.
+ */
+export interface CustomBlocklistConfigArgs {
+    /**
+     * If blocking would occur.
+     */
+    blocking?: pulumi.Input<boolean>;
+    /**
+     * Name of ContentFilter.
+     */
+    blocklistName?: pulumi.Input<string>;
+    /**
+     * Content source to apply the Content Filters.
+     */
+    source?: pulumi.Input<string | enums.RaiPolicyContentSource>;
+}
+
+/**
+ * Internal use only.
+ */
+export interface DeploymentCapacitySettingsArgs {
+    /**
+     * The designated capacity.
+     */
+    designatedCapacity?: pulumi.Input<number>;
+    /**
+     * The priority of this capacity setting.
+     */
+    priority?: pulumi.Input<number>;
+}
+
+/**
  * Properties of Cognitive Services account deployment model.
  */
 export interface DeploymentModelArgs {
@@ -158,9 +198,17 @@ export interface DeploymentModelArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * Deployment model publisher.
+     */
+    publisher?: pulumi.Input<string>;
+    /**
      * Optional. Deployment model source ARM resource ID.
      */
     source?: pulumi.Input<string>;
+    /**
+     * Optional. Source of the model, another Microsoft.CognitiveServices accounts ARM resource ID.
+     */
+    sourceAccount?: pulumi.Input<string>;
     /**
      * Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
      */
@@ -172,15 +220,27 @@ export interface DeploymentModelArgs {
  */
 export interface DeploymentPropertiesArgs {
     /**
+     * Internal use only.
+     */
+    capacitySettings?: pulumi.Input<DeploymentCapacitySettingsArgs>;
+    /**
+     * The current capacity.
+     */
+    currentCapacity?: pulumi.Input<number>;
+    /**
      * Properties of Cognitive Services account deployment model.
      */
     model?: pulumi.Input<DeploymentModelArgs>;
+    /**
+     * The name of parent deployment.
+     */
+    parentDeploymentName?: pulumi.Input<string>;
     /**
      * The name of RAI policy.
      */
     raiPolicyName?: pulumi.Input<string>;
     /**
-     * Properties of Cognitive Services account deployment model.
+     * Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
      */
     scaleSettings?: pulumi.Input<DeploymentScaleSettingsArgs>;
     /**
@@ -190,7 +250,7 @@ export interface DeploymentPropertiesArgs {
 }
 
 /**
- * Properties of Cognitive Services account deployment model.
+ * Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
  */
 export interface DeploymentScaleSettingsArgs {
     /**
@@ -312,6 +372,10 @@ export interface MultiRegionSettingsArgs {
  */
 export interface NetworkRuleSetArgs {
     /**
+     * Setting for trusted services.
+     */
+    bypass?: pulumi.Input<string | enums.ByPassSelection>;
+    /**
      * The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
      */
     defaultAction?: pulumi.Input<string | enums.NetworkRuleAction>;
@@ -358,20 +422,6 @@ export interface PrivateLinkServiceConnectionStateArgs {
 }
 
 /**
- * Azure OpenAI blocklist config.
- */
-export interface RaiBlocklistConfigArgs {
-    /**
-     * If blocking would occur.
-     */
-    blocking?: pulumi.Input<boolean>;
-    /**
-     * Name of ContentFilter.
-     */
-    blocklistName?: pulumi.Input<string>;
-}
-
-/**
  * RAI Custom Blocklist Item properties.
  */
 export interface RaiBlocklistItemPropertiesArgs {
@@ -396,13 +446,23 @@ export interface RaiBlocklistPropertiesArgs {
 }
 
 /**
+ * Cognitive Services Rai Monitor Config.
+ */
+export interface RaiMonitorConfigArgs {
+    /**
+     * The storage resource Id.
+     */
+    adxStorageResourceId?: pulumi.Input<string>;
+    /**
+     * The identity client Id to access the storage.
+     */
+    identityClientId?: pulumi.Input<string>;
+}
+
+/**
  * Azure OpenAI Content Filter.
  */
 export interface RaiPolicyContentFilterArgs {
-    /**
-     * Level at which content is filtered.
-     */
-    allowedContentLevel?: pulumi.Input<string | enums.AllowedContentLevel>;
     /**
      * If blocking would occur.
      */
@@ -416,6 +476,10 @@ export interface RaiPolicyContentFilterArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * Level at which content is filtered.
+     */
+    severityThreshold?: pulumi.Input<string | enums.ContentLevel>;
+    /**
      * Content source to apply the Content Filters.
      */
     source?: pulumi.Input<string | enums.RaiPolicyContentSource>;
@@ -426,25 +490,21 @@ export interface RaiPolicyContentFilterArgs {
  */
 export interface RaiPolicyPropertiesArgs {
     /**
-     * Name of the base Content Filters.
+     * Name of Rai policy.
      */
     basePolicyName?: pulumi.Input<string>;
-    /**
-     * The list of blocklists for completion.
-     */
-    completionBlocklists?: pulumi.Input<pulumi.Input<RaiBlocklistConfigArgs>[]>;
     /**
      * The list of Content Filters.
      */
     contentFilters?: pulumi.Input<pulumi.Input<RaiPolicyContentFilterArgs>[]>;
     /**
-     * Content Filters mode.
+     * The list of custom Blocklist.
+     */
+    customBlocklists?: pulumi.Input<pulumi.Input<CustomBlocklistConfigArgs>[]>;
+    /**
+     * Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
      */
     mode?: pulumi.Input<string | enums.RaiPolicyMode>;
-    /**
-     * The list of blocklists for prompt.
-     */
-    promptBlocklists?: pulumi.Input<pulumi.Input<RaiBlocklistConfigArgs>[]>;
 }
 
 /**
@@ -492,6 +552,20 @@ export interface SkuArgs {
 }
 
 /**
+ * The user owned AML workspace for Cognitive Services account.
+ */
+export interface UserOwnedAmlWorkspaceArgs {
+    /**
+     * Identity Client id of a AML workspace resource.
+     */
+    identityClientId?: pulumi.Input<string>;
+    /**
+     * Full resource id of a AML workspace resource.
+     */
+    resourceId?: pulumi.Input<string>;
+}
+
+/**
  * The user owned storage for Cognitive Services account.
  */
 export interface UserOwnedStorageArgs {
@@ -519,9 +593,3 @@ export interface VirtualNetworkRuleArgs {
      */
     state?: pulumi.Input<string>;
 }
-
-
-
-
-
-

@@ -7,15 +7,19 @@ export interface AzureActiveDirectoryAppResponse {
     /**
      * Key used to authenticate to the Azure Active Directory Application
      */
-    appKey: string;
+    appKey?: string;
     /**
      * Application ID of the Azure Active Directory Application
      */
-    applicationId: string;
+    applicationId?: string;
+    /**
+     * Ignore checking azure permissions on the AAD app
+     */
+    ignoreAzurePermissions?: boolean;
     /**
      * Tenant id of the customer
      */
-    tenantId: string;
+    tenantId?: string;
 }
 
 /**
@@ -89,7 +93,7 @@ export interface BlobShareResponse {
     /**
      * SAS URI of Azure Storage Account Container.
      */
-    sasUri: string;
+    sasUri?: string;
 }
 
 /**
@@ -125,6 +129,15 @@ export interface ConnectToMongoDbTaskPropertiesResponse {
      * Expected value is 'Connect.MongoDb'.
      */
     taskType: "Connect.MongoDb";
+}
+/**
+ * connectToMongoDbTaskPropertiesResponseProvideDefaults sets the appropriate defaults for ConnectToMongoDbTaskPropertiesResponse
+ */
+export function connectToMongoDbTaskPropertiesResponseProvideDefaults(val: ConnectToMongoDbTaskPropertiesResponse): ConnectToMongoDbTaskPropertiesResponse {
+    return {
+        ...val,
+        input: (val.input ? mongoDbConnectionInfoResponseProvideDefaults(val.input) : undefined),
+    };
 }
 
 /**
@@ -454,6 +467,10 @@ export interface ConnectToSourceSqlServerTaskInputResponse {
      */
     collectTdeCertificateInfo?: boolean;
     /**
+     * encrypted key for secure fields
+     */
+    encryptedKeyForSecureFields?: string;
+    /**
      * Connection information for Source SQL Server
      */
     sourceConnectionInfo: SqlConnectionInfoResponse;
@@ -661,6 +678,10 @@ export interface ConnectToSourceSqlServerTaskPropertiesResponse {
      * The state of the task. This is ignored if submitted.
      */
     state: string;
+    /**
+     * Task id 
+     */
+    taskId?: string;
     /**
      * Task type.
      * Expected value is 'ConnectToSource.SqlServer'.
@@ -969,6 +990,10 @@ export function connectToTargetOracleAzureDbForPostgreSqlSyncTaskPropertiesRespo
  */
 export interface ConnectToTargetSqlDbTaskInputResponse {
     /**
+     * Boolean flag indicating whether to query object counts for each database on the target server
+     */
+    queryObjectCounts?: boolean;
+    /**
      * Connection information for target SQL DB
      */
     targetConnectionInfo: SqlConnectionInfoResponse;
@@ -1018,6 +1043,10 @@ export interface ConnectToTargetSqlDbTaskPropertiesResponse {
      */
     commands: (MigrateMISyncCompleteCommandPropertiesResponse | MigrateSyncCompleteCommandPropertiesResponse)[];
     /**
+     * DateTime in UTC when the task was created
+     */
+    createdOn?: string;
+    /**
      * Array of errors. This is ignored if submitted.
      */
     errors: ODataErrorResponse[];
@@ -1054,7 +1083,7 @@ export function connectToTargetSqlDbTaskPropertiesResponseProvideDefaults(val: C
  */
 export interface ConnectToTargetSqlMISyncTaskInputResponse {
     /**
-     * Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+     * Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
      */
     azureApp: AzureActiveDirectoryAppResponse;
     /**
@@ -1498,7 +1527,7 @@ export interface DatabaseMigrationPropertiesSqlDbResponse {
      */
     migrationFailureError: ErrorInfoResponse;
     /**
-     * ID tracking current migration operation.
+     * ID for current migration operation.
      */
     migrationOperationId?: string;
     /**
@@ -1526,7 +1555,7 @@ export interface DatabaseMigrationPropertiesSqlDbResponse {
      */
     provisioningState: string;
     /**
-     * Resource Id of the target resource (SQL VM or SQL Managed Instance).
+     * Resource Id of the target resource.
      */
     scope?: string;
     /**
@@ -2110,6 +2139,10 @@ export interface GetUserTablesSqlTaskInputResponse {
      */
     connectionInfo: SqlConnectionInfoResponse;
     /**
+     * encrypted key for secure fields
+     */
+    encryptedKeyForSecureFields?: string;
+    /**
      * List of database names to collect tables for
      */
     selectedDatabases: string[];
@@ -2170,6 +2203,10 @@ export interface GetUserTablesSqlTaskPropertiesResponse {
      * The state of the task. This is ignored if submitted.
      */
     state: string;
+    /**
+     * Task id 
+     */
+    taskId?: string;
     /**
      * Task type.
      * Expected value is 'GetUserTables.Sql'.
@@ -2287,6 +2324,15 @@ export interface MigrateMongoDbTaskPropertiesResponse {
      */
     taskType: "Migrate.MongoDb";
 }
+/**
+ * migrateMongoDbTaskPropertiesResponseProvideDefaults sets the appropriate defaults for MigrateMongoDbTaskPropertiesResponse
+ */
+export function migrateMongoDbTaskPropertiesResponseProvideDefaults(val: MigrateMongoDbTaskPropertiesResponse): MigrateMongoDbTaskPropertiesResponse {
+    return {
+        ...val,
+        input: (val.input ? mongoDbMigrationSettingsResponseProvideDefaults(val.input) : undefined),
+    };
+}
 
 /**
  * Database specific information for offline MySQL to Azure Database for MySQL migration task inputs
@@ -2310,6 +2356,10 @@ export interface MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponse {
  * Input for the task that migrates MySQL databases to Azure Database for MySQL for offline migrations
  */
 export interface MigrateMySqlAzureDbForMySqlOfflineTaskInputResponse {
+    /**
+     * encrypted key for secure fields
+     */
+    encryptedKeyForSecureFields?: string;
     /**
      * Setting to set the source server read only
      */
@@ -2580,6 +2630,10 @@ export interface MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponse {
      */
     input?: MigrateMySqlAzureDbForMySqlOfflineTaskInputResponse;
     /**
+     * whether the task can be cloned or not
+     */
+    isCloneable?: boolean;
+    /**
      * Task output. This is ignored if submitted.
      */
     output: (MigrateMySqlAzureDbForMySqlOfflineTaskOutputDatabaseLevelResponse | MigrateMySqlAzureDbForMySqlOfflineTaskOutputErrorResponse | MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse | MigrateMySqlAzureDbForMySqlOfflineTaskOutputTableLevelResponse)[];
@@ -2587,6 +2641,10 @@ export interface MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponse {
      * The state of the task. This is ignored if submitted.
      */
     state: string;
+    /**
+     * Task id 
+     */
+    taskId?: string;
     /**
      * Task type.
      * Expected value is 'Migrate.MySql.AzureDbForMySql'.
@@ -3235,9 +3293,13 @@ export interface MigrateOracleAzureDbPostgreSqlSyncTaskOutputTableLevelResponse 
  */
 export interface MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse {
     /**
+     * Result identifier
+     */
+    id: string;
+    /**
      * Migration settings which tune the migration behavior
      */
-    migrationSetting?: {[key: string]: string};
+    migrationSetting?: any;
     /**
      * Name of the database
      */
@@ -3275,6 +3337,10 @@ export interface MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResp
  */
 export interface MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse {
     /**
+     * encrypted key for secure fields
+     */
+    encryptedKeyForSecureFields?: string;
+    /**
      * Databases to migrate
      */
     selectedDatabases: MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse[];
@@ -3282,6 +3348,10 @@ export interface MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse {
      * Connection information for source PostgreSQL
      */
     sourceConnectionInfo: PostgreSqlConnectionInfoResponse;
+    /**
+     * Migration start time
+     */
+    startedOn: string;
     /**
      * Connection information for target Azure Database for PostgreSQL
      */
@@ -3396,6 +3466,10 @@ export interface MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputErrorRespons
      */
     error: ReportableExceptionResponse;
     /**
+     * List of error events
+     */
+    events?: SyncMigrationDatabaseErrorEventResponse[];
+    /**
      * Result identifier
      */
     id: string;
@@ -3407,6 +3481,10 @@ export interface MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputErrorRespons
 }
 
 export interface MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse {
+    /**
+     * Number of databases to include
+     */
+    databaseCount?: number;
     /**
      * Migration end time
      */
@@ -3531,6 +3609,10 @@ export interface MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse
      */
     commands: (MigrateMISyncCompleteCommandPropertiesResponse | MigrateSyncCompleteCommandPropertiesResponse)[];
     /**
+     * DateTime in UTC when the task was created
+     */
+    createdOn?: string;
+    /**
      * Array of errors. This is ignored if submitted.
      */
     errors: ODataErrorResponse[];
@@ -3539,6 +3621,10 @@ export interface MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse
      */
     input?: MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse;
     /**
+     * whether the task can be cloned or not
+     */
+    isCloneable?: boolean;
+    /**
      * Task output. This is ignored if submitted.
      */
     output: (MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseErrorResponse | MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseLevelResponse | MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputErrorResponse | MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse | MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputTableLevelResponse)[];
@@ -3546,6 +3632,10 @@ export interface MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse
      * The state of the task. This is ignored if submitted.
      */
     state: string;
+    /**
+     * task id
+     */
+    taskId?: string;
     /**
      * Task type.
      * Expected value is 'Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2'.
@@ -3567,6 +3657,10 @@ export function migratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponseP
  */
 export interface MigrateSqlServerSqlDbDatabaseInputResponse {
     /**
+     * id of the database
+     */
+    id?: string;
+    /**
      * Whether to set database read only before migration
      */
     makeSourceDbReadOnly?: boolean;
@@ -3574,6 +3668,10 @@ export interface MigrateSqlServerSqlDbDatabaseInputResponse {
      * Name of the database
      */
     name?: string;
+    /**
+     * Settings selected for DB schema migration.
+     */
+    schemaSetting?: any;
     /**
      * Mapping of source to target tables
      */
@@ -3915,6 +4013,10 @@ export function migrateSqlServerSqlDbSyncTaskPropertiesResponseProvideDefaults(v
  */
 export interface MigrateSqlServerSqlDbTaskInputResponse {
     /**
+     * encrypted key for secure fields
+     */
+    encryptedKeyForSecureFields?: string;
+    /**
      * Databases to migrate
      */
     selectedDatabases: MigrateSqlServerSqlDbDatabaseInputResponse[];
@@ -3922,6 +4024,10 @@ export interface MigrateSqlServerSqlDbTaskInputResponse {
      * Information for connecting to source
      */
     sourceConnectionInfo: SqlConnectionInfoResponse;
+    /**
+     * Date and time relative to UTC when the migration was started on
+     */
+    startedOn?: string;
     /**
      * Information for connecting to target
      */
@@ -4233,6 +4339,10 @@ export interface MigrateSqlServerSqlDbTaskPropertiesResponse {
      */
     commands: (MigrateMISyncCompleteCommandPropertiesResponse | MigrateSyncCompleteCommandPropertiesResponse)[];
     /**
+     * DateTime in UTC when the task was created
+     */
+    createdOn?: string;
+    /**
      * Array of errors. This is ignored if submitted.
      */
     errors: ODataErrorResponse[];
@@ -4241,6 +4351,10 @@ export interface MigrateSqlServerSqlDbTaskPropertiesResponse {
      */
     input?: MigrateSqlServerSqlDbTaskInputResponse;
     /**
+     * whether the task can be cloned or not
+     */
+    isCloneable?: boolean;
+    /**
      * Task output. This is ignored if submitted.
      */
     output: (MigrateSqlServerSqlDbTaskOutputDatabaseLevelResponse | MigrateSqlServerSqlDbTaskOutputDatabaseLevelValidationResultResponse | MigrateSqlServerSqlDbTaskOutputErrorResponse | MigrateSqlServerSqlDbTaskOutputMigrationLevelResponse | MigrateSqlServerSqlDbTaskOutputTableLevelResponse | MigrateSqlServerSqlDbTaskOutputValidationResultResponse)[];
@@ -4248,6 +4362,10 @@ export interface MigrateSqlServerSqlDbTaskPropertiesResponse {
      * The state of the task. This is ignored if submitted.
      */
     state: string;
+    /**
+     * task id
+     */
+    taskId?: string;
     /**
      * Task type.
      * Expected value is 'Migrate.SqlServer.SqlDb'.
@@ -4277,6 +4395,10 @@ export interface MigrateSqlServerSqlMIDatabaseInputResponse {
      */
     backupFileShare?: FileShareResponse;
     /**
+     * id of the database
+     */
+    id?: string;
+    /**
      * Name of the database
      */
     name: string;
@@ -4291,13 +4413,17 @@ export interface MigrateSqlServerSqlMIDatabaseInputResponse {
  */
 export interface MigrateSqlServerSqlMISyncTaskInputResponse {
     /**
-     * Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+     * Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
      */
     azureApp: AzureActiveDirectoryAppResponse;
     /**
      * Backup file share information for all selected databases.
      */
     backupFileShare?: FileShareResponse;
+    /**
+     * Number of database migrations to start in parallel
+     */
+    numberOfParallelDatabaseMigrations?: number;
     /**
      * Databases to migrate
      */
@@ -4466,6 +4592,10 @@ export interface MigrateSqlServerSqlMISyncTaskPropertiesResponse {
      */
     commands: (MigrateMISyncCompleteCommandPropertiesResponse | MigrateSyncCompleteCommandPropertiesResponse)[];
     /**
+     * DateTime in UTC when the task was created
+     */
+    createdOn?: string;
+    /**
      * Array of errors. This is ignored if submitted.
      */
     errors: ODataErrorResponse[];
@@ -4518,6 +4648,10 @@ export interface MigrateSqlServerSqlMITaskInputResponse {
      */
     backupMode?: string;
     /**
+     * encrypted key for secure fields
+     */
+    encryptedKeyForSecureFields?: string;
+    /**
      * Agent Jobs to migrate.
      */
     selectedAgentJobs?: string[];
@@ -4533,6 +4667,10 @@ export interface MigrateSqlServerSqlMITaskInputResponse {
      * Information for connecting to source
      */
     sourceConnectionInfo: SqlConnectionInfoResponse;
+    /**
+     * Date and time relative to UTC when the migration was started on
+     */
+    startedOn?: string;
     /**
      * Information for connecting to target
      */
@@ -4774,6 +4912,10 @@ export interface MigrateSqlServerSqlMITaskPropertiesResponse {
      */
     commands: (MigrateMISyncCompleteCommandPropertiesResponse | MigrateSyncCompleteCommandPropertiesResponse)[];
     /**
+     * DateTime in UTC when the task was created
+     */
+    createdOn?: string;
+    /**
      * Array of errors. This is ignored if submitted.
      */
     errors: ODataErrorResponse[];
@@ -4782,13 +4924,25 @@ export interface MigrateSqlServerSqlMITaskPropertiesResponse {
      */
     input?: MigrateSqlServerSqlMITaskInputResponse;
     /**
+     * whether the task can be cloned or not
+     */
+    isCloneable?: boolean;
+    /**
      * Task output. This is ignored if submitted.
      */
     output: (MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse | MigrateSqlServerSqlMITaskOutputDatabaseLevelResponse | MigrateSqlServerSqlMITaskOutputErrorResponse | MigrateSqlServerSqlMITaskOutputLoginLevelResponse | MigrateSqlServerSqlMITaskOutputMigrationLevelResponse)[];
     /**
+     * parent task id
+     */
+    parentTaskId?: string;
+    /**
      * The state of the task. This is ignored if submitted.
      */
     state: string;
+    /**
+     * task id
+     */
+    taskId?: string;
     /**
      * Task type.
      * Expected value is 'Migrate.SqlServer.AzureSqlDbMI'.
@@ -5005,6 +5159,10 @@ export interface MigrateSyncCompleteCommandOutputResponse {
  * Properties for the command that completes sync migration for a database.
  */
 export interface MigrateSyncCompleteCommandPropertiesResponse {
+    /**
+     * Command id
+     */
+    commandId?: string;
     /**
      * Command type.
      * Expected value is 'Migrate.Sync.Complete.Database'.
@@ -5303,13 +5461,50 @@ export interface MongoDbCollectionSettingsResponse {
  */
 export interface MongoDbConnectionInfoResponse {
     /**
+     * Additional connection settings
+     */
+    additionalSettings?: string;
+    /**
+     * Authentication type to use for connection
+     */
+    authentication?: string;
+    /**
      * A MongoDB connection string or blob container URL. The user name and password can be specified here or in the userName and password properties
      */
     connectionString: string;
     /**
+     * Data source 
+     */
+    dataSource?: string;
+    /**
+     * Whether to encrypt the connection
+     */
+    encryptConnection?: boolean;
+    enforceSSL?: boolean;
+    /**
      * Password credential.
      */
     password?: string;
+    /**
+     * port for server
+     */
+    port?: number;
+    /**
+     * server brand version
+     */
+    serverBrandVersion?: string;
+    /**
+     * name of the server
+     */
+    serverName?: string;
+    /**
+     * server version
+     */
+    serverVersion?: string;
+    /**
+     * Whether to trust the server certificate
+     */
+    trustServerCertificate?: boolean;
     /**
      * Type of connection info
      * Expected value is 'MongoDbConnectionInfo'.
@@ -5319,6 +5514,15 @@ export interface MongoDbConnectionInfoResponse {
      * User name
      */
     userName?: string;
+}
+/**
+ * mongoDbConnectionInfoResponseProvideDefaults sets the appropriate defaults for MongoDbConnectionInfoResponse
+ */
+export function mongoDbConnectionInfoResponseProvideDefaults(val: MongoDbConnectionInfoResponse): MongoDbConnectionInfoResponse {
+    return {
+        ...val,
+        trustServerCertificate: (val.trustServerCertificate) ?? false,
+    };
 }
 
 /**
@@ -5548,6 +5752,16 @@ export interface MongoDbMigrationSettingsResponse {
      */
     throttling?: MongoDbThrottlingSettingsResponse;
 }
+/**
+ * mongoDbMigrationSettingsResponseProvideDefaults sets the appropriate defaults for MongoDbMigrationSettingsResponse
+ */
+export function mongoDbMigrationSettingsResponseProvideDefaults(val: MongoDbMigrationSettingsResponse): MongoDbMigrationSettingsResponse {
+    return {
+        ...val,
+        source: mongoDbConnectionInfoResponseProvideDefaults(val.source),
+        target: mongoDbConnectionInfoResponseProvideDefaults(val.target),
+    };
+}
 
 /**
  * Describes a field reference within a MongoDB shard key
@@ -5588,7 +5802,7 @@ export interface MongoDbShardKeySettingResponse {
     /**
      * Whether the shard key is unique
      */
-    isUnique: boolean;
+    isUnique?: boolean;
 }
 
 /**
@@ -5665,6 +5879,18 @@ export interface MongoMigrationProgressDetailsResponse {
  * Information for connecting to MySQL server
  */
 export interface MySqlConnectionInfoResponse {
+    /**
+     * Additional connection settings
+     */
+    additionalSettings?: string;
+    /**
+     * Authentication type to use for connection
+     */
+    authentication?: string;
+    /**
+     * Data source 
+     */
+    dataSource?: string;
     /**
      * Whether to encrypt the connection
      */
@@ -5763,6 +5989,10 @@ export interface ODataErrorResponse {
  */
 export interface OracleConnectionInfoResponse {
     /**
+     * Authentication type to use for connection
+     */
+    authentication?: string;
+    /**
      * EZConnect or TNSName connection string.
      */
     dataSource: string;
@@ -5770,6 +6000,18 @@ export interface OracleConnectionInfoResponse {
      * Password credential.
      */
     password?: string;
+    /**
+     * port for server
+     */
+    port?: number;
+    /**
+     * name of the server
+     */
+    serverName?: string;
+    /**
+     * server version
+     */
+    serverVersion?: string;
     /**
      * Type of connection info
      * Expected value is 'OracleConnectionInfo'.
@@ -5800,6 +6042,18 @@ export interface OrphanedUserInfoResponse {
  */
 export interface PostgreSqlConnectionInfoResponse {
     /**
+     * Additional connection settings
+     */
+    additionalSettings?: string;
+    /**
+     * Authentication type to use for connection
+     */
+    authentication?: string;
+    /**
+     * Data source 
+     */
+    dataSource?: string;
+    /**
      * Name of the database
      */
     databaseName?: string;
@@ -5816,9 +6070,17 @@ export interface PostgreSqlConnectionInfoResponse {
      */
     port: number;
     /**
+     * server brand version
+     */
+    serverBrandVersion?: string;
+    /**
      * Name of the server
      */
     serverName: string;
+    /**
+     * server version
+     */
+    serverVersion?: string;
     /**
      * Whether to trust the server certificate
      */
@@ -6075,6 +6337,26 @@ export interface SqlConnectionInfoResponse {
      */
     platform?: string;
     /**
+     * Port for Server
+     */
+    port?: number;
+    /**
+     * Represents the ID of an HTTP resource represented by an Azure resource provider.
+     */
+    resourceId?: string;
+    /**
+     * server brand version
+     */
+    serverBrandVersion?: string;
+    /**
+     * name of the server
+     */
+    serverName?: string;
+    /**
+     * server version
+     */
+    serverVersion?: string;
+    /**
      * Whether to trust the server certificate
      */
     trustServerCertificate?: boolean;
@@ -6170,7 +6452,7 @@ export interface SsisMigrationInfoResponse {
      */
     projectOverwriteOption?: string;
     /**
-     * The SSIS store type of source, only SSIS catalog is supported now in DMS
+     * The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
      */
     ssisStoreType?: string;
 }
@@ -6211,33 +6493,12 @@ export interface SyncMigrationDatabaseErrorEventResponse {
     timestampString: string;
 }
 
-/**
- * Metadata pertaining to creation and last modification of the resource.
- */
 export interface SystemDataResponse {
-    /**
-     * The timestamp of resource creation (UTC).
-     */
     createdAt?: string;
-    /**
-     * The identity that created the resource.
-     */
     createdBy?: string;
-    /**
-     * The type of identity that created the resource.
-     */
     createdByType?: string;
-    /**
-     * The timestamp of resource last modification (UTC)
-     */
     lastModifiedAt?: string;
-    /**
-     * The identity that last modified the resource.
-     */
     lastModifiedBy?: string;
-    /**
-     * The type of identity that last modified the resource.
-     */
     lastModifiedByType?: string;
 }
 
@@ -6290,7 +6551,7 @@ export function validateMigrationInputSqlServerSqlDbSyncTaskPropertiesResponsePr
  */
 export interface ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse {
     /**
-     * Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+     * Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
      */
     azureApp: AzureActiveDirectoryAppResponse;
     /**
@@ -6546,6 +6807,15 @@ export interface ValidateMongoDbTaskPropertiesResponse {
      */
     taskType: "Validate.MongoDb";
 }
+/**
+ * validateMongoDbTaskPropertiesResponseProvideDefaults sets the appropriate defaults for ValidateMongoDbTaskPropertiesResponse
+ */
+export function validateMongoDbTaskPropertiesResponseProvideDefaults(val: ValidateMongoDbTaskPropertiesResponse): ValidateMongoDbTaskPropertiesResponse {
+    return {
+        ...val,
+        input: (val.input ? mongoDbMigrationSettingsResponseProvideDefaults(val.input) : undefined),
+    };
+}
 
 /**
  * Properties for the task that validates a migration for Oracle to Azure Database for PostgreSQL for online migrations
@@ -6687,6 +6957,3 @@ export function waitStatisticsResponseProvideDefaults(val: WaitStatisticsRespons
         waitTimeMs: (val.waitTimeMs) ?? 0,
     };
 }
-
-
-

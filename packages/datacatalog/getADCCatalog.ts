@@ -34,6 +34,10 @@ export interface GetADCCatalogResult {
      */
     readonly admins?: types.outputs.PrincipalsResponse[];
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Automatic unit adjustment enabled or not.
      */
     readonly enableAutomaticUnitAdjustment?: boolean;

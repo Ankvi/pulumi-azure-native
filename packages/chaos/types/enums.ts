@@ -7,16 +7,27 @@ export const FilterType = {
  */
 export type FilterType = (typeof FilterType)[keyof typeof FilterType];
 
-export const ResourceIdentityType = {
+export const ManagedServiceIdentityType = {
     None: "None",
     SystemAssigned: "SystemAssigned",
     UserAssigned: "UserAssigned",
+    SystemAssigned_UserAssigned: "SystemAssigned,UserAssigned",
 } as const;
 
 /**
- * String of the resource identity type.
+ * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
  */
-export type ResourceIdentityType = (typeof ResourceIdentityType)[keyof typeof ResourceIdentityType];
+export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];
+
+export const PublicNetworkAccessOption = {
+    Enabled: "Enabled",
+    Disabled: "Disabled",
+} as const;
+
+/**
+ * Public Network Access Control for PrivateAccess resource.
+ */
+export type PublicNetworkAccessOption = (typeof PublicNetworkAccessOption)[keyof typeof PublicNetworkAccessOption];
 
 export const SelectorType = {
     List: "List",

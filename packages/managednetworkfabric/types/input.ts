@@ -1,41 +1,111 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * Access Control List condition model.
+ * Action that need to performed.
  */
-export interface AccessControlListConditionPropertiesArgs {
+export interface AccessControlListActionArgs {
     /**
-     * action. Example: allow | deny.
+     * Name of the counter block to get match count information.
      */
-    action: pulumi.Input<string | enums.ConditionActionType>;
+    counterName?: pulumi.Input<string>;
     /**
-     * Switch configuration description.
+     * Type of actions that can be performed.
      */
-    annotation?: pulumi.Input<string>;
+    type?: pulumi.Input<string | enums.AclActionType>;
+}
+
+/**
+ * Defines the match condition that is supported to filter the traffic.
+ */
+export interface AccessControlListMatchConditionArgs {
     /**
-     * destinationAddress. Example: any | 1.1.1.0/24 | 1.1.10.10
+     * List of DSCP Markings that need to be matched.
      */
-    destinationAddress: pulumi.Input<string>;
+    dscpMarkings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * destinationPort. Example: any | 1253
+     * List of ether type values that need to be matched.
      */
-    destinationPort: pulumi.Input<string>;
+    etherTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * TCP/IP protocol as defined in the list of IP protocol numbers. Example: 255 (any) | 0 | 1.
+     * List of IP fragment packets that need to be matched.
      */
-    protocol: pulumi.Input<number>;
+    fragments?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * sequenceNumber of the Access Control List.
+     * IP condition that needs to be matched.
      */
-    sequenceNumber: pulumi.Input<number>;
+    ipCondition?: pulumi.Input<IpMatchConditionArgs>;
     /**
-     * sourceAddress. Example: any | 1.1.1.0/24 | 1.1.10.10
+     * List of IP Lengths that need to be matched.
      */
-    sourceAddress: pulumi.Input<string>;
+    ipLengths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * sourcePort. Example: any | 1253
+     * Defines the port condition that needs to be matched.
      */
-    sourcePort: pulumi.Input<string>;
+    portCondition?: pulumi.Input<AccessControlListPortConditionArgs>;
+    /**
+     * List of the protocols that need to be matched.
+     */
+    protocolTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of TTL [Time To Live] values that need to be matched.
+     */
+    ttlValues?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Vlan match condition that needs to be matched.
+     */
+    vlanMatchCondition?: pulumi.Input<VlanMatchConditionArgs>;
+}
+
+/**
+ * Defines the match configuration that are supported to filter the traffic.
+ */
+export interface AccessControlListMatchConfigurationArgs {
+    /**
+     * List of actions that need to be performed for the matched conditions.
+     */
+    actions?: pulumi.Input<pulumi.Input<AccessControlListActionArgs>[]>;
+    /**
+     * Type of IP Address. IPv4 or IPv6
+     */
+    ipAddressType?: pulumi.Input<string | enums.IPAddressType>;
+    /**
+     * List of the match conditions.
+     */
+    matchConditions?: pulumi.Input<pulumi.Input<AccessControlListMatchConditionArgs>[]>;
+    /**
+     * The name of the match configuration.
+     */
+    matchConfigurationName?: pulumi.Input<string>;
+    /**
+     * Sequence Number of the match configuration.
+     */
+    sequenceNumber?: pulumi.Input<number>;
+}
+
+/**
+ * Defines the port condition that needs to be matched.
+ */
+export interface AccessControlListPortConditionArgs {
+    /**
+     * List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+     */
+    flags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Layer4 protocol type that needs to be matched.
+     */
+    layer4Protocol: pulumi.Input<string | enums.Layer4Protocol>;
+    /**
+     * List of the port Group Names that need to be matched.
+     */
+    portGroupNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Port type that needs to be matched.
+     */
+    portType?: pulumi.Input<string | enums.PortType>;
+    /**
+     * List of the Ports that need to be matched.
+     */
+    ports?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -43,15 +113,15 @@ export interface AccessControlListConditionPropertiesArgs {
  */
 export interface ActionIpCommunityPropertiesArgs {
     /**
-     * IP Community ID list properties.
+     * List of IP Community IDs.
      */
     add?: pulumi.Input<IpCommunityIdListArgs>;
     /**
-     * IP Community ID list properties.
+     * List of IP Community IDs.
      */
     delete?: pulumi.Input<IpCommunityIdListArgs>;
     /**
-     * IP Community ID list properties.
+     * List of IP Community IDs.
      */
     set?: pulumi.Input<IpCommunityIdListArgs>;
 }
@@ -61,31 +131,31 @@ export interface ActionIpCommunityPropertiesArgs {
  */
 export interface ActionIpExtendedCommunityPropertiesArgs {
     /**
-     * IP Extended Community Id list properties.
+     * List of IP Extended Community IDs.
      */
     add?: pulumi.Input<IpExtendedCommunityIdListArgs>;
     /**
-     * IP Extended Community Id list properties.
+     * List of IP Extended Community IDs.
      */
     delete?: pulumi.Input<IpExtendedCommunityIdListArgs>;
     /**
-     * IP Extended Community Id list properties.
+     * List of IP Extended Community IDs.
      */
     set?: pulumi.Input<IpExtendedCommunityIdListArgs>;
 }
 
 /**
- * Aggregate Route properties.
+ * aggregateIpv4Route model.
  */
 export interface AggregateRouteArgs {
     /**
-     * Prefix of the aggregate Route.
+     * IPv4 Prefix of the aggregate Ipv4Route.
      */
-    prefix?: pulumi.Input<string>;
+    prefix: pulumi.Input<string>;
 }
 
 /**
- * List of IPv4 and IPv6 route configurations.
+ * List of IPv4 and IPv6 aggregate routes.
  */
 export interface AggregateRouteConfigurationArgs {
     /**
@@ -93,59 +163,32 @@ export interface AggregateRouteConfigurationArgs {
      */
     ipv4Routes?: pulumi.Input<pulumi.Input<AggregateRouteArgs>[]>;
     /**
-     * List of IPv6 Routes prefixes.
+     * List of Ipv6Routes prefixes.
      */
     ipv6Routes?: pulumi.Input<pulumi.Input<AggregateRouteArgs>[]>;
 }
 
 /**
- * BGP configuration properties
+ * BFD configuration properties
  */
-export interface BgpConfigurationArgs {
+export interface BfdConfigurationArgs {
     /**
-     * Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
+     * Interval in milliseconds. Example: 300.
      */
-    allowAS?: pulumi.Input<number>;
+    intervalInMilliSeconds?: pulumi.Input<number>;
     /**
-     * Enable Or Disable state.
+     * Multiplier for the Bfd Configuration. Example: 5.
      */
-    allowASOverride?: pulumi.Input<string | enums.AllowASOverride>;
-    /**
-     * Switch configuration description.
-     */
-    annotation?: pulumi.Input<string>;
-    /**
-     * Originate a defaultRoute. Ex: "True" | "False".
-     */
-    defaultRouteOriginate?: pulumi.Input<string | enums.BooleanEnumProperty>;
-    /**
-     * BGP Ipv4 ListenRange.
-     */
-    ipv4ListenRangePrefixes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List with stringified ipv4NeighborAddresses.
-     */
-    ipv4NeighborAddress?: pulumi.Input<pulumi.Input<NeighborAddressArgs>[]>;
-    /**
-     * BGP Ipv6 ListenRange.
-     */
-    ipv6ListenRangePrefixes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List with stringified IPv6 Neighbor Address.
-     */
-    ipv6NeighborAddress?: pulumi.Input<pulumi.Input<NeighborAddressArgs>[]>;
-    /**
-     * Peer ASN. Example: 65047.
-     */
-    peerASN: pulumi.Input<number>;
+    multiplier?: pulumi.Input<number>;
 }
 /**
- * bgpConfigurationArgsProvideDefaults sets the appropriate defaults for BgpConfigurationArgs
+ * bfdConfigurationArgsProvideDefaults sets the appropriate defaults for BfdConfigurationArgs
  */
-export function bgpConfigurationArgsProvideDefaults(val: BgpConfigurationArgs): BgpConfigurationArgs {
+export function bfdConfigurationArgsProvideDefaults(val: BfdConfigurationArgs): BfdConfigurationArgs {
     return {
         ...val,
-        allowAS: (val.allowAS) ?? 2,
+        intervalInMilliSeconds: (val.intervalInMilliSeconds) ?? 300,
+        multiplier: (val.multiplier) ?? 5,
     };
 }
 
@@ -176,9 +219,51 @@ export interface ConnectedSubnetArgs {
      */
     annotation?: pulumi.Input<string>;
     /**
-     * Prefix of the connected Subnet.
+     * Prefix of the Connected Subnet.
      */
-    prefix?: pulumi.Input<string>;
+    prefix: pulumi.Input<string>;
+}
+
+/**
+ * Connected Subnet Route Policy properties.
+ */
+export interface ConnectedSubnetRoutePolicyArgs {
+    /**
+     * Array of ARM Resource ID of the RoutePolicies.
+     */
+    exportRoutePolicy?: pulumi.Input<L3ExportRoutePolicyArgs>;
+    /**
+     * ARM Resource ID of the Route Policy. This is used for the backward compatibility.
+     */
+    exportRoutePolicyId?: pulumi.Input<string>;
+}
+
+/**
+ * Export Route Policy either IPv4 or IPv6.
+ */
+export interface ExportRoutePolicyArgs {
+    /**
+     * ARM resource ID of RoutePolicy.
+     */
+    exportIpv4RoutePolicyId?: pulumi.Input<string>;
+    /**
+     * ARM resource ID of RoutePolicy.
+     */
+    exportIpv6RoutePolicyId?: pulumi.Input<string>;
+}
+
+/**
+ * Export Route Policy Configuration.
+ */
+export interface ExportRoutePolicyInformationArgs {
+    /**
+     * Export IPv4 Route Policy Id.
+     */
+    exportIpv4RoutePolicyId?: pulumi.Input<string>;
+    /**
+     * Export IPv6 Route Policy Id.
+     */
+    exportIpv6RoutePolicyId?: pulumi.Input<string>;
 }
 
 /**
@@ -200,6 +285,18 @@ export interface ExpressRouteConnectionInformationArgs {
  */
 export interface ExternalNetworkPropertiesOptionAPropertiesArgs {
     /**
+     * BFD configuration properties
+     */
+    bfdConfiguration?: pulumi.Input<BfdConfigurationArgs>;
+    /**
+     * Egress Acl. ARM resource ID of Access Control Lists.
+     */
+    egressAclId?: pulumi.Input<string>;
+    /**
+     * Ingress Acl. ARM resource ID of Access Control Lists.
+     */
+    ingressAclId?: pulumi.Input<string>;
+    /**
      * MTU to use for option A peering.
      */
     mtu?: pulumi.Input<number>;
@@ -208,19 +305,19 @@ export interface ExternalNetworkPropertiesOptionAPropertiesArgs {
      */
     peerASN: pulumi.Input<number>;
     /**
-     * IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * IPv4 Address Prefix.
      */
     primaryIpv4Prefix?: pulumi.Input<string>;
     /**
-     * IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * IPv6 Address Prefix.
      */
     primaryIpv6Prefix?: pulumi.Input<string>;
     /**
-     * Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * Secondary IPv4 Address Prefix.
      */
     secondaryIpv4Prefix?: pulumi.Input<string>;
     /**
-     * Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * Secondary IPv6 Address Prefix.
      */
     secondaryIpv6Prefix?: pulumi.Input<string>;
     /**
@@ -234,22 +331,143 @@ export interface ExternalNetworkPropertiesOptionAPropertiesArgs {
 export function externalNetworkPropertiesOptionAPropertiesArgsProvideDefaults(val: ExternalNetworkPropertiesOptionAPropertiesArgs): ExternalNetworkPropertiesOptionAPropertiesArgs {
     return {
         ...val,
+        bfdConfiguration: (val.bfdConfiguration ? pulumi.output(val.bfdConfiguration).apply(bfdConfigurationArgsProvideDefaults) : undefined),
         mtu: (val.mtu) ?? 1500,
     };
 }
 
 /**
- * Option B configuration.
+ * Option B configuration to be used for Management VPN.
  */
 export interface FabricOptionBPropertiesArgs {
     /**
-     * Route Targets to be applied for outgoing routes from CE.
+     * Route Targets to be applied for outgoing routes from CE. This is for backward compatibility.
      */
-    exportRouteTargets: pulumi.Input<pulumi.Input<string>[]>;
+    exportRouteTargets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Route Targets to be applied for incoming routes into CE.
+     * Route Targets to be applied for incoming routes into CE. This is for backward compatibility.
      */
-    importRouteTargets: pulumi.Input<pulumi.Input<string>[]>;
+    importRouteTargets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Route Targets to be applied.
+     */
+    routeTargets?: pulumi.Input<RouteTargetInformationArgs>;
+}
+
+/**
+ * Import Route Policy either IPv4 or IPv6.
+ */
+export interface ImportRoutePolicyArgs {
+    /**
+     * ARM resource ID of RoutePolicy.
+     */
+    importIpv4RoutePolicyId?: pulumi.Input<string>;
+    /**
+     * ARM resource ID of RoutePolicy.
+     */
+    importIpv6RoutePolicyId?: pulumi.Input<string>;
+}
+
+/**
+ * Import Route Policy Configuration.
+ */
+export interface ImportRoutePolicyInformationArgs {
+    /**
+     * Import IPv4 Route Policy Id.
+     */
+    importIpv4RoutePolicyId?: pulumi.Input<string>;
+    /**
+     * Import IPv6 Route Policy Id.
+     */
+    importIpv6RoutePolicyId?: pulumi.Input<string>;
+}
+
+/**
+ * BGP configuration properties.
+ */
+export interface InternalNetworkPropertiesBgpConfigurationArgs {
+    /**
+     * Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
+     */
+    allowAS?: pulumi.Input<number>;
+    /**
+     * Enable Or Disable state.
+     */
+    allowASOverride?: pulumi.Input<string | enums.AllowASOverride>;
+    /**
+     * Switch configuration description.
+     */
+    annotation?: pulumi.Input<string>;
+    /**
+     * BFD configuration properties
+     */
+    bfdConfiguration?: pulumi.Input<BfdConfigurationArgs>;
+    /**
+     * Originate a defaultRoute. Ex: "True" | "False".
+     */
+    defaultRouteOriginate?: pulumi.Input<string | enums.BooleanEnumProperty>;
+    /**
+     * List of BGP IPv4 Listen Range prefixes.
+     */
+    ipv4ListenRangePrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List with stringified IPv4 Neighbor Addresses.
+     */
+    ipv4NeighborAddress?: pulumi.Input<pulumi.Input<NeighborAddressArgs>[]>;
+    /**
+     * List of BGP IPv6 Listen Ranges prefixes.
+     */
+    ipv6ListenRangePrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List with stringified IPv6 Neighbor Address.
+     */
+    ipv6NeighborAddress?: pulumi.Input<pulumi.Input<NeighborAddressArgs>[]>;
+    /**
+     * Peer ASN. Example: 65047.
+     */
+    peerASN: pulumi.Input<number>;
+}
+/**
+ * internalNetworkPropertiesBgpConfigurationArgsProvideDefaults sets the appropriate defaults for InternalNetworkPropertiesBgpConfigurationArgs
+ */
+export function internalNetworkPropertiesBgpConfigurationArgsProvideDefaults(val: InternalNetworkPropertiesBgpConfigurationArgs): InternalNetworkPropertiesBgpConfigurationArgs {
+    return {
+        ...val,
+        allowAS: (val.allowAS) ?? 2,
+        bfdConfiguration: (val.bfdConfiguration ? pulumi.output(val.bfdConfiguration).apply(bfdConfigurationArgsProvideDefaults) : undefined),
+    };
+}
+
+/**
+ * Static Route Configuration properties.
+ */
+export interface InternalNetworkPropertiesStaticRouteConfigurationArgs {
+    /**
+     * BFD configuration properties
+     */
+    bfdConfiguration?: pulumi.Input<BfdConfigurationArgs>;
+    /**
+     * Extension. Example: NoExtension | NPB.
+     */
+    extension?: pulumi.Input<string | enums.Extension>;
+    /**
+     * List of IPv4 Routes.
+     */
+    ipv4Routes?: pulumi.Input<pulumi.Input<StaticRoutePropertiesArgs>[]>;
+    /**
+     * List of IPv6 Routes.
+     */
+    ipv6Routes?: pulumi.Input<pulumi.Input<StaticRoutePropertiesArgs>[]>;
+}
+/**
+ * internalNetworkPropertiesStaticRouteConfigurationArgsProvideDefaults sets the appropriate defaults for InternalNetworkPropertiesStaticRouteConfigurationArgs
+ */
+export function internalNetworkPropertiesStaticRouteConfigurationArgsProvideDefaults(val: InternalNetworkPropertiesStaticRouteConfigurationArgs): InternalNetworkPropertiesStaticRouteConfigurationArgs {
+    return {
+        ...val,
+        bfdConfiguration: (val.bfdConfiguration ? pulumi.output(val.bfdConfiguration).apply(bfdConfigurationArgsProvideDefaults) : undefined),
+        extension: (val.extension) ?? "NoExtension",
+    };
 }
 
 /**
@@ -263,6 +481,28 @@ export interface IpCommunityIdListArgs {
 }
 
 /**
+ * IP Community patchable properties.
+ */
+export interface IpCommunityRuleArgs {
+    /**
+     * Action to be taken on the configuration. Example: Permit | Deny.
+     */
+    action: pulumi.Input<string | enums.CommunityActionTypes>;
+    /**
+     * List the community members of IP Community.
+     */
+    communityMembers: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
+     */
+    sequenceNumber: pulumi.Input<number>;
+    /**
+     * Supported well known Community List.
+     */
+    wellKnownCommunities?: pulumi.Input<pulumi.Input<string | enums.WellKnownCommunities>[]>;
+}
+
+/**
  * IP Extended Community Id list properties.
  */
 export interface IpExtendedCommunityIdListArgs {
@@ -270,6 +510,24 @@ export interface IpExtendedCommunityIdListArgs {
      * List of IP Extended Community resource IDs.
      */
     ipExtendedCommunityIds?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * List of IP Extended Community Rules.
+ */
+export interface IpExtendedCommunityRuleArgs {
+    /**
+     * Action to be taken on the configuration. Example: Permit | Deny.
+     */
+    action: pulumi.Input<string | enums.CommunityActionTypes>;
+    /**
+     * Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295.
+     */
+    routeTargets: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
+     */
+    sequenceNumber: pulumi.Input<number>;
 }
 
 /**
@@ -312,7 +570,10 @@ export interface IpMatchConditionArgs {
     type?: pulumi.Input<string | enums.SourceDestinationType>;
 }
 
-export interface IpPrefixPropertiesIpPrefixRulesArgs {
+/**
+ * IP Prefix Rule properties.
+ */
+export interface IpPrefixRuleArgs {
     /**
      * Action to be taken on the configuration. Example: Permit | Deny.
      */
@@ -330,9 +591,9 @@ export interface IpPrefixPropertiesIpPrefixRulesArgs {
      */
     sequenceNumber: pulumi.Input<number>;
     /**
-     * SubnetMaskLength gives the minimum NetworkPrefix length to be matched.Possible values for IPv4 are 1 - 32. Possible values of IPv6 are 1 - 128.
+     * SubnetMaskLength gives the minimum NetworkPrefix length to be matched. Possible values for IPv4 are 1 - 32 . Possible values of IPv6 are 1 - 128.
      */
-    subnetMaskLength?: pulumi.Input<number>;
+    subnetMaskLength?: pulumi.Input<string>;
 }
 
 /**
@@ -350,27 +611,49 @@ export interface IsolationDomainPropertiesArgs {
 }
 
 /**
- * Connected Subnet RoutePolicy
+ * Array of ARM Resource ID of the RoutePolicies.
  */
-export interface L3IsolationDomainPatchPropertiesConnectedSubnetRoutePolicyArgs {
+export interface L3ExportRoutePolicyArgs {
     /**
-     * exportRoutePolicyId value.
+     * ARM Resource ID of the RoutePolicy.
      */
-    exportRoutePolicyId?: pulumi.Input<string>;
+    exportIpv4RoutePolicyId?: pulumi.Input<string>;
+    /**
+     * ARM Resource ID of the RoutePolicy.
+     */
+    exportIpv6RoutePolicyId?: pulumi.Input<string>;
 }
 
 /**
- * layer2Configuration
+ * Option B configuration.
+ */
+export interface L3OptionBPropertiesArgs {
+    /**
+     * RouteTargets to be applied. This is used for the backward compatibility.
+     */
+    exportRouteTargets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * RouteTargets to be applied. This is used for the backward compatibility.
+     */
+    importRouteTargets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * RouteTargets to be applied.
+     */
+    routeTargets?: pulumi.Input<RouteTargetInformationArgs>;
+}
+
+/**
+ * Common properties for Layer2 Configuration.
  */
 export interface Layer2ConfigurationArgs {
     /**
+     * List of network device interfaces resource IDs.
+     */
+    interfaces?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * MTU of the packets between PE & CE.
      */
-    mtu: pulumi.Input<number>;
-    /**
-     * Number of ports connected between PE/CE. Maximum value depends on FabricSKU.
-     */
-    portCount?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number>;
 }
 /**
  * layer2ConfigurationArgsProvideDefaults sets the appropriate defaults for Layer2ConfigurationArgs
@@ -380,44 +663,6 @@ export function layer2ConfigurationArgsProvideDefaults(val: Layer2ConfigurationA
         ...val,
         mtu: (val.mtu) ?? 1500,
     };
-}
-
-/**
- * layer3Configuration
- */
-export interface Layer3ConfigurationArgs {
-    /**
-     * exportRoutePolicyId
-     */
-    exportRoutePolicyId?: pulumi.Input<string>;
-    /**
-     * importRoutePolicyId
-     */
-    importRoutePolicyId?: pulumi.Input<string>;
-    /**
-     * ASN of PE devices for CE/PE connectivity.Example : 28
-     */
-    peerASN?: pulumi.Input<number>;
-    /**
-     * IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-     */
-    primaryIpv4Prefix?: pulumi.Input<string>;
-    /**
-     * IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-     */
-    primaryIpv6Prefix?: pulumi.Input<string>;
-    /**
-     * Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-     */
-    secondaryIpv4Prefix?: pulumi.Input<string>;
-    /**
-     * Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
-     */
-    secondaryIpv6Prefix?: pulumi.Input<string>;
-    /**
-     * VLAN for CE/PE Layer 3 connectivity.Example : 501
-     */
-    vlanId?: pulumi.Input<number>;
 }
 
 /**
@@ -437,20 +682,20 @@ export interface ManagedResourceGroupConfigurationArgs {
 /**
  * Configuration to be used to setup the management network.
  */
-export interface ManagementNetworkConfigurationArgs {
+export interface ManagementNetworkConfigurationPropertiesArgs {
     /**
-     * Configuration for infrastructure vpn.
+     * VPN Configuration properties.
      */
     infrastructureVpnConfiguration: pulumi.Input<VpnConfigurationPropertiesArgs>;
     /**
-     * Configuration for workload vpn.
+     * VPN Configuration properties.
      */
     workloadVpnConfiguration: pulumi.Input<VpnConfigurationPropertiesArgs>;
 }
 /**
- * managementNetworkConfigurationArgsProvideDefaults sets the appropriate defaults for ManagementNetworkConfigurationArgs
+ * managementNetworkConfigurationPropertiesArgsProvideDefaults sets the appropriate defaults for ManagementNetworkConfigurationPropertiesArgs
  */
-export function managementNetworkConfigurationArgsProvideDefaults(val: ManagementNetworkConfigurationArgs): ManagementNetworkConfigurationArgs {
+export function managementNetworkConfigurationPropertiesArgsProvideDefaults(val: ManagementNetworkConfigurationPropertiesArgs): ManagementNetworkConfigurationPropertiesArgs {
     return {
         ...val,
         infrastructureVpnConfiguration: pulumi.output(val.infrastructureVpnConfiguration).apply(vpnConfigurationPropertiesArgsProvideDefaults),
@@ -596,60 +841,60 @@ export interface NetworkTapRuleMatchConfigurationArgs {
 }
 
 /**
- * Peering optionA properties
+ * Common properties for Layer3Configuration.
  */
-export interface OptionAPropertiesArgs {
+export interface NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs {
     /**
-     * MTU to use for option A peering.
+     * ASN of PE devices for CE/PE connectivity.Example : 28
      */
-    mtu?: pulumi.Input<number>;
+    peerASN: pulumi.Input<number>;
     /**
-     * Peer ASN number.Example : 28
-     */
-    peerASN?: pulumi.Input<number>;
-    /**
-     * IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * IPv4 Address Prefix.
      */
     primaryIpv4Prefix?: pulumi.Input<string>;
     /**
-     * IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * IPv6 Address Prefix.
      */
     primaryIpv6Prefix?: pulumi.Input<string>;
     /**
-     * Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * Secondary IPv4 Address Prefix.
      */
     secondaryIpv4Prefix?: pulumi.Input<string>;
     /**
-     * Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * Secondary IPv6 Address Prefix.
      */
     secondaryIpv6Prefix?: pulumi.Input<string>;
     /**
-     * Vlan identifier. Example : 501
+     * VLAN for CE/PE Layer 3 connectivity.Example : 501
      */
-    vlanId?: pulumi.Input<number>;
-}
-/**
- * optionAPropertiesArgsProvideDefaults sets the appropriate defaults for OptionAPropertiesArgs
- */
-export function optionAPropertiesArgsProvideDefaults(val: OptionAPropertiesArgs): OptionAPropertiesArgs {
-    return {
-        ...val,
-        mtu: (val.mtu) ?? 1500,
-    };
+    vlanId: pulumi.Input<number>;
 }
 
 /**
- * Option B configuration.
+ * NPB Static Route Configuration properties.
  */
-export interface OptionBPropertiesArgs {
+export interface NpbStaticRouteConfigurationArgs {
     /**
-     * Route Targets to be applied for outgoing routes from CE.
+     * BFD Configuration properties.
      */
-    exportRouteTargets?: pulumi.Input<pulumi.Input<string>[]>;
+    bfdConfiguration?: pulumi.Input<BfdConfigurationArgs>;
     /**
-     * Route Targets to be applied for incoming routes into CE.
+     * List of IPv4 Routes.
      */
-    importRouteTargets?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4Routes?: pulumi.Input<pulumi.Input<StaticRoutePropertiesArgs>[]>;
+    /**
+     * List of IPv6 Routes.
+     */
+    ipv6Routes?: pulumi.Input<pulumi.Input<StaticRoutePropertiesArgs>[]>;
+}
+/**
+ * npbStaticRouteConfigurationArgsProvideDefaults sets the appropriate defaults for NpbStaticRouteConfigurationArgs
+ */
+export function npbStaticRouteConfigurationArgsProvideDefaults(val: NpbStaticRouteConfigurationArgs): NpbStaticRouteConfigurationArgs {
+    return {
+        ...val,
+        bfdConfiguration: (val.bfdConfiguration ? pulumi.output(val.bfdConfiguration).apply(bfdConfigurationArgsProvideDefaults) : undefined),
+    };
 }
 
 /**
@@ -689,7 +934,7 @@ export interface PortGroupPropertiesArgs {
 }
 
 /**
- * Route Policy Statement properties..
+ * Route Policy Statement properties.
  */
 export interface RoutePolicyStatementPropertiesArgs {
     /**
@@ -708,6 +953,37 @@ export interface RoutePolicyStatementPropertiesArgs {
      * Sequence to insert to/delete from existing route.
      */
     sequenceNumber: pulumi.Input<number>;
+}
+/**
+ * routePolicyStatementPropertiesArgsProvideDefaults sets the appropriate defaults for RoutePolicyStatementPropertiesArgs
+ */
+export function routePolicyStatementPropertiesArgsProvideDefaults(val: RoutePolicyStatementPropertiesArgs): RoutePolicyStatementPropertiesArgs {
+    return {
+        ...val,
+        condition: pulumi.output(val.condition).apply(statementConditionPropertiesArgsProvideDefaults),
+    };
+}
+
+/**
+ * Route Target Configuration.
+ */
+export interface RouteTargetInformationArgs {
+    /**
+     * Route Targets to be applied for outgoing routes into CE.
+     */
+    exportIpv4RouteTargets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Route Targets to be applied for outgoing routes from CE.
+     */
+    exportIpv6RouteTargets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Route Targets to be applied for incoming routes into CE.
+     */
+    importIpv4RouteTargets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Route Targets to be applied for incoming routes from CE.
+     */
+    importIpv6RouteTargets?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -729,9 +1005,9 @@ export interface RulePropertiesArgs {
  */
 export interface StatementActionPropertiesArgs {
     /**
-     * action. Example: Permit | Deny.
+     * Action type. Example: Permit | Deny | Continue.
      */
-    actionType: pulumi.Input<string | enums.CommunityActionTypes>;
+    actionType: pulumi.Input<string | enums.RoutePolicyActionType>;
     /**
      * IP Community Properties.
      */
@@ -741,7 +1017,7 @@ export interface StatementActionPropertiesArgs {
      */
     ipExtendedCommunityProperties?: pulumi.Input<ActionIpExtendedCommunityPropertiesArgs>;
     /**
-     * localPreference of the route policy.
+     * Local Preference of the route policy.
      */
     localPreference?: pulumi.Input<number>;
 }
@@ -762,32 +1038,31 @@ export interface StatementConditionPropertiesArgs {
      * Arm Resource Id of IpPrefix.
      */
     ipPrefixId?: pulumi.Input<string>;
+    /**
+     * Type of the condition used.
+     */
+    type?: pulumi.Input<string | enums.RoutePolicyConditionType>;
 }
-
 /**
- * staticRouteConfiguration model.
+ * statementConditionPropertiesArgsProvideDefaults sets the appropriate defaults for StatementConditionPropertiesArgs
  */
-export interface StaticRouteConfigurationArgs {
-    /**
-     * List with object IPv4Routes.
-     */
-    ipv4Routes?: pulumi.Input<pulumi.Input<StaticRoutePropertiesArgs>[]>;
-    /**
-     * List with object IPv6Routes.
-     */
-    ipv6Routes?: pulumi.Input<pulumi.Input<StaticRoutePropertiesArgs>[]>;
+export function statementConditionPropertiesArgsProvideDefaults(val: StatementConditionPropertiesArgs): StatementConditionPropertiesArgs {
+    return {
+        ...val,
+        type: (val.type) ?? "Or",
+    };
 }
 
 /**
- * Static Route properties.
+ * Route Properties.
  */
 export interface StaticRoutePropertiesArgs {
     /**
-     * List of next hop IPv4 | IPv6 addresses.
+     * List of next hop addresses.
      */
     nextHop: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * IPv4 | IPv6 Prefix.
+     * Prefix of the route.
      */
     prefix: pulumi.Input<string>;
 }
@@ -801,19 +1076,19 @@ export interface TerminalServerConfigurationArgs {
      */
     password: pulumi.Input<string>;
     /**
-     * IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.0/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * IPv4 Address Prefix.
      */
     primaryIpv4Prefix: pulumi.Input<string>;
     /**
-     * IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a0/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * IPv6 Address Prefix.
      */
     primaryIpv6Prefix?: pulumi.Input<string>;
     /**
-     * Secondary IPv4 Address Prefix of CE-PE interconnect links. Example: 172.31.0.20/31. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * Secondary IPv4 Address Prefix.
      */
     secondaryIpv4Prefix: pulumi.Input<string>;
     /**
-     * Secondary IPv6 Address Prefix of CE-PE interconnect links. Example: 3FFE:FFFF:0:CD30::a4/126. The values can be specified at the time of creation or can be updated afterwards. Any update to the values post-provisioning may disrupt traffic. The 1st and 3rd IPs are to be configured on CE1 and CE2 for Option B interfaces. The 2nd and 4th IPs are to be configured on PE1 and PE2 for Option B interfaces.
+     * Secondary IPv6 Address Prefix.
      */
     secondaryIpv6Prefix?: pulumi.Input<string>;
     /**
@@ -859,13 +1134,17 @@ export interface VlanMatchConditionArgs {
 }
 
 /**
- * Configuration for infrastructure vpn.
+ * Network and credential configuration currently applied on terminal server.
  */
 export interface VpnConfigurationPropertiesArgs {
     /**
+     * ARM Resource ID of the Network To Network Interconnect.
+     */
+    networkToNetworkInterconnectId?: pulumi.Input<string>;
+    /**
      * option A properties
      */
-    optionAProperties?: pulumi.Input<OptionAPropertiesArgs>;
+    optionAProperties?: pulumi.Input<VpnConfigurationPropertiesOptionAPropertiesArgs>;
     /**
      * option B properties
      */
@@ -881,7 +1160,54 @@ export interface VpnConfigurationPropertiesArgs {
 export function vpnConfigurationPropertiesArgsProvideDefaults(val: VpnConfigurationPropertiesArgs): VpnConfigurationPropertiesArgs {
     return {
         ...val,
-        optionAProperties: (val.optionAProperties ? pulumi.output(val.optionAProperties).apply(optionAPropertiesArgsProvideDefaults) : undefined),
+        optionAProperties: (val.optionAProperties ? pulumi.output(val.optionAProperties).apply(vpnConfigurationPropertiesOptionAPropertiesArgsProvideDefaults) : undefined),
     };
 }
 
+/**
+ * option A properties
+ */
+export interface VpnConfigurationPropertiesOptionAPropertiesArgs {
+    /**
+     * BFD Configuration properties.
+     */
+    bfdConfiguration?: pulumi.Input<BfdConfigurationArgs>;
+    /**
+     * MTU to use for option A peering.
+     */
+    mtu?: pulumi.Input<number>;
+    /**
+     * Peer ASN number.Example : 28
+     */
+    peerASN: pulumi.Input<number>;
+    /**
+     * IPv4 Address Prefix.
+     */
+    primaryIpv4Prefix?: pulumi.Input<string>;
+    /**
+     * IPv6 Address Prefix.
+     */
+    primaryIpv6Prefix?: pulumi.Input<string>;
+    /**
+     * Secondary IPv4 Address Prefix.
+     */
+    secondaryIpv4Prefix?: pulumi.Input<string>;
+    /**
+     * Secondary IPv6 Address Prefix.
+     */
+    secondaryIpv6Prefix?: pulumi.Input<string>;
+    /**
+     * Vlan Id.Example : 501
+     */
+    vlanId: pulumi.Input<number>;
+}
+/**
+ * vpnConfigurationPropertiesOptionAPropertiesArgsProvideDefaults sets the appropriate defaults for VpnConfigurationPropertiesOptionAPropertiesArgs
+ */
+export function vpnConfigurationPropertiesOptionAPropertiesArgsProvideDefaults(val: VpnConfigurationPropertiesOptionAPropertiesArgs): VpnConfigurationPropertiesOptionAPropertiesArgs {
+    return {
+        ...val,
+        bfdConfiguration: (val.bfdConfiguration ? pulumi.output(val.bfdConfiguration).apply(bfdConfigurationArgsProvideDefaults) : undefined),
+        mtu: (val.mtu) ?? 1500,
+    };
+}

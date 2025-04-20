@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Data Lake Store virtual network rule information.
  *
- * Uses Azure REST API version 2016-11-01. In version 1.x of the Azure Native provider, it used API version 2016-11-01.
+ * Uses Azure REST API version 2016-11-01. In version 2.x of the Azure Native provider, it used API version 2016-11-01.
  */
 export class VirtualNetworkRule extends pulumi.CustomResource {
     /**
@@ -32,6 +32,10 @@ export class VirtualNetworkRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === VirtualNetworkRule.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The resource name.
      */
@@ -69,9 +73,11 @@ export class VirtualNetworkRule extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["subnetId"] = args ? args.subnetId : undefined;
             resourceInputs["virtualNetworkRuleName"] = args ? args.virtualNetworkRuleName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["subnetId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

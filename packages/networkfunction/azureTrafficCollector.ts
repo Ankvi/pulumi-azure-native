@@ -4,9 +4,7 @@ import * as types from "./types";
 /**
  * Azure Traffic Collector resource.
  *
- * Uses Azure REST API version 2022-11-01. In version 1.x of the Azure Native provider, it used API version 2022-05-01.
- *
- * Other available API versions: 2022-08-01.
+ * Uses Azure REST API version 2022-11-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
  */
 export class AzureTrafficCollector extends pulumi.CustomResource {
     /**
@@ -35,6 +33,10 @@ export class AzureTrafficCollector extends pulumi.CustomResource {
         return obj['__pulumiType'] === AzureTrafficCollector.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Collector Policies for Azure Traffic Collector.
      */
@@ -90,6 +92,7 @@ export class AzureTrafficCollector extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["collectorPolicies"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -98,6 +101,7 @@ export class AzureTrafficCollector extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["virtualHub"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["collectorPolicies"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;

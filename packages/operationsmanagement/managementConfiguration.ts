@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * The container for solution.
  *
- * Uses Azure REST API version 2015-11-01-preview. In version 1.x of the Azure Native provider, it used API version 2015-11-01-preview.
+ * Uses Azure REST API version 2015-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2015-11-01-preview.
  */
 export class ManagementConfiguration extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class ManagementConfiguration extends pulumi.CustomResource {
         return obj['__pulumiType'] === ManagementConfiguration.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Resource location
      */
@@ -68,9 +72,11 @@ export class ManagementConfiguration extends pulumi.CustomResource {
             resourceInputs["managementConfigurationName"] = args ? args.managementConfigurationName : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;

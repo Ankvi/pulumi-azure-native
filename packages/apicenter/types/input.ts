@@ -149,6 +149,3 @@ export interface TermsOfServiceArgs {
      */
     url: pulumi.Input<string>;
 }
-
-
-

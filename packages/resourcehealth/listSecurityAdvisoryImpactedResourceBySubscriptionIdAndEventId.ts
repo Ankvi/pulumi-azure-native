@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Lists impacted resources in the subscription by an event (Security Advisory).
  *
- * Uses Azure REST API version 2022-10-01.
+ * Uses Azure REST API version 2024-02-01.
  *
- * Other available API versions: 2022-10-01-preview, 2023-07-01-preview, 2023-10-01-preview, 2024-02-01.
+ * Other available API versions: 2022-10-01, 2023-07-01-preview, 2023-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourcehealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventId(args: ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdArgs, opts?: pulumi.InvokeOptions): Promise<ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -43,9 +43,9 @@ export interface ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdR
 /**
  * Lists impacted resources in the subscription by an event (Security Advisory).
  *
- * Uses Azure REST API version 2022-10-01.
+ * Uses Azure REST API version 2024-02-01.
  *
- * Other available API versions: 2022-10-01-preview, 2023-07-01-preview, 2023-10-01-preview, 2024-02-01.
+ * Other available API versions: 2022-10-01, 2023-07-01-preview, 2023-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourcehealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdOutput(args: ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

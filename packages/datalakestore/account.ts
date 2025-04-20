@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Data Lake Store account information.
  *
- * Uses Azure REST API version 2016-11-01. In version 1.x of the Azure Native provider, it used API version 2016-11-01.
+ * Uses Azure REST API version 2016-11-01. In version 2.x of the Azure Native provider, it used API version 2016-11-01.
  */
 export class Account extends pulumi.CustomResource {
     /**
@@ -37,6 +37,10 @@ export class Account extends pulumi.CustomResource {
      * The unique identifier associated with this Data Lake Store account.
      */
     public /*out*/ readonly accountId!: pulumi.Output<string>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The account creation time.
      */
@@ -156,6 +160,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["trustedIdProviders"] = args ? args.trustedIdProviders : undefined;
             resourceInputs["virtualNetworkRules"] = args ? args.virtualNetworkRules : undefined;
             resourceInputs["accountId"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["currentTier"] = undefined /*out*/;
             resourceInputs["encryptionProvisioningState"] = undefined /*out*/;
@@ -167,6 +172,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["accountId"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["currentTier"] = undefined /*out*/;
             resourceInputs["defaultGroup"] = undefined /*out*/;

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Specifies information about the Shared Image Gallery that you want to create or update.
  *
- * Uses Azure REST API version 2022-03-03. In version 1.x of the Azure Native provider, it used API version 2020-09-30.
+ * Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2022-03-03.
  *
- * Other available API versions: 2022-08-03, 2023-07-03, 2024-03-03.
+ * Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Gallery extends pulumi.CustomResource {
     /**
@@ -36,6 +36,10 @@ export class Gallery extends pulumi.CustomResource {
     }
 
     /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    /**
      * The description of this Shared Image Gallery resource. This property is updatable.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -43,6 +47,10 @@ export class Gallery extends pulumi.CustomResource {
      * Describes the gallery unique name.
      */
     public /*out*/ readonly identifier!: pulumi.Output<types.outputs.GalleryIdentifierResponse | undefined>;
+    /**
+     * The identity of the gallery, if configured.
+     */
+    public readonly identity!: pulumi.Output<types.outputs.GalleryIdentityResponse | undefined>;
     /**
      * Resource location
      */
@@ -92,19 +100,23 @@ export class Gallery extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["galleryName"] = args ? args.galleryName : undefined;
+            resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sharingProfile"] = args ? args.sharingProfile : undefined;
             resourceInputs["softDeletePolicy"] = args ? args.softDeletePolicy : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["identifier"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["sharingStatus"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["identifier"] = undefined /*out*/;
+            resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -133,6 +145,10 @@ export interface GalleryArgs {
      * The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
      */
     galleryName?: pulumi.Input<string>;
+    /**
+     * The identity of the gallery, if configured.
+     */
+    identity?: pulumi.Input<types.inputs.GalleryIdentityArgs>;
     /**
      * Resource location
      */

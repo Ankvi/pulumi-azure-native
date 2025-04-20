@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Private endpoint connection proxy details.
  *
- * Uses Azure REST API version 2023-07-01. In version 1.x of the Azure Native provider, it used API version 2020-03-01-preview.
+ * Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2023-07-01.
  */
 export class PrivateEndpointConnectionProxy extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class PrivateEndpointConnectionProxy extends pulumi.CustomResource {
         return obj['__pulumiType'] === PrivateEndpointConnectionProxy.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * ETag from NRP.
      */
@@ -84,12 +88,14 @@ export class PrivateEndpointConnectionProxy extends pulumi.CustomResource {
             resourceInputs["remotePrivateEndpoint"] = args ? args.remotePrivateEndpoint : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;

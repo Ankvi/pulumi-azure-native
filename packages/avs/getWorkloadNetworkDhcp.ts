@@ -2,11 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * NSX DHCP
+ * Get a WorkloadNetworkDhcp
  *
- * Uses Azure REST API version 2022-05-01.
+ * Uses Azure REST API version 2023-09-01.
  *
- * Other available API versions: 2021-01-01-preview, 2023-03-01, 2023-09-01.
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getWorkloadNetworkDhcp(args: GetWorkloadNetworkDhcpArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadNetworkDhcpResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -19,7 +19,7 @@ export function getWorkloadNetworkDhcp(args: GetWorkloadNetworkDhcpArgs, opts?: 
 
 export interface GetWorkloadNetworkDhcpArgs {
     /**
-     * NSX DHCP identifier. Generally the same as the DHCP display name
+     * The ID of the DHCP configuration
      */
     dhcpId: string;
     /**
@@ -37,28 +37,52 @@ export interface GetWorkloadNetworkDhcpArgs {
  */
 export interface GetWorkloadNetworkDhcpResult {
     /**
-     * Resource ID.
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * Type of DHCP: SERVER or RELAY.
+     */
+    readonly dhcpType: string;
+    /**
+     * Display name of the DHCP entity.
+     */
+    readonly displayName?: string;
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
-     * Resource name.
+     * The name of the resource
      */
     readonly name: string;
     /**
-     * DHCP properties.
+     * The provisioning state
      */
-    readonly properties: types.outputs.WorkloadNetworkDhcpRelayResponse | types.outputs.WorkloadNetworkDhcpServerResponse;
+    readonly provisioningState: string;
     /**
-     * Resource type.
+     * NSX revision number.
+     */
+    readonly revision?: number;
+    /**
+     * NSX Segments consuming DHCP.
+     */
+    readonly segments: string[];
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
 /**
- * NSX DHCP
+ * Get a WorkloadNetworkDhcp
  *
- * Uses Azure REST API version 2022-05-01.
+ * Uses Azure REST API version 2023-09-01.
  *
- * Other available API versions: 2021-01-01-preview, 2023-03-01, 2023-09-01.
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getWorkloadNetworkDhcpOutput(args: GetWorkloadNetworkDhcpOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkloadNetworkDhcpResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -71,7 +95,7 @@ export function getWorkloadNetworkDhcpOutput(args: GetWorkloadNetworkDhcpOutputA
 
 export interface GetWorkloadNetworkDhcpOutputArgs {
     /**
-     * NSX DHCP identifier. Generally the same as the DHCP display name
+     * The ID of the DHCP configuration
      */
     dhcpId: pulumi.Input<string>;
     /**

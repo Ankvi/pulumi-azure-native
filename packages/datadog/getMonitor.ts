@@ -2,9 +2,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Uses Azure REST API version 2022-06-01.
+ * Uses Azure REST API version 2023-10-20.
  *
- * Other available API versions: 2022-08-01, 2023-01-01, 2023-07-07, 2023-10-20.
+ * Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getMonitor(args: GetMonitorArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -26,6 +26,10 @@ export interface GetMonitorArgs {
 }
 
 export interface GetMonitorResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * ARM id of the monitor resource.
      */
@@ -52,9 +56,9 @@ export interface GetMonitorResult {
     readonly type: string;
 }
 /**
- * Uses Azure REST API version 2022-06-01.
+ * Uses Azure REST API version 2023-10-20.
  *
- * Other available API versions: 2022-08-01, 2023-01-01, 2023-07-07, 2023-10-20.
+ * Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getMonitorOutput(args: GetMonitorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMonitorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

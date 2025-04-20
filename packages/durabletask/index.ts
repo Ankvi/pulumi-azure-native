@@ -22,8 +22,6 @@ export const TaskHub: typeof import("./taskHub").TaskHub = null as any;
 utilities.lazyLoad(exports, ["TaskHub"], () => require("./taskHub"));
 
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

@@ -1,6 +1,41 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * The public Account Merge Info model.
+ */
+export interface AccountMergeInfoResponse {
+    /**
+     * The account location of the *other* account in the merge operation.
+     */
+    accountLocation: string;
+    /**
+     * The account name of the *other* account in the merge operation.
+     */
+    accountName: string;
+    /**
+     * The resource group name of the *other* account in the merge operation.
+     */
+    accountResourceGroupName: string;
+    /**
+     * The subscription id of the *other* account in the merge operation.
+     */
+    accountSubscriptionId: string;
+    /**
+     * The deprovisioned status of the account.
+     * Only applicable for the secondary account.
+     */
+    deprovisioned: boolean;
+    /**
+     * The status of the merge operation.
+     */
+    mergeStatus: string;
+    /**
+     * The account's type for the merge operation.
+     */
+    typeOfAccount: string;
+}
+
+/**
  * Gets or sets the status of the account.
  */
 export interface AccountPropertiesResponseAccountStatus {
@@ -22,10 +57,6 @@ export interface AccountPropertiesResponseEndpoints {
      * Gets the catalog endpoint.
      */
     catalog: string;
-    /**
-     * Gets the guardian endpoint.
-     */
-    guardian: string;
     /**
      * Gets the scan endpoint.
      */
@@ -153,6 +184,24 @@ export interface IdentityResponse {
      * User Assigned Identities
      */
     userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
+ * Ingestion Storage Account Info
+ */
+export interface IngestionStorageResponse {
+    /**
+     * Gets or sets the Id.
+     */
+    id: string;
+    /**
+     * Gets or sets the primary endpoint.
+     */
+    primaryEndpoint: string;
+    /**
+     * Gets or sets the public network access setting
+     */
+    publicNetworkAccess?: string;
 }
 
 /**
@@ -290,7 +339,3 @@ export interface UserAssignedIdentityResponse {
      */
     principalId: string;
 }
-
-
-
-

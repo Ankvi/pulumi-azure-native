@@ -298,7 +298,7 @@ export interface SBClientAffinePropertiesResponse {
  */
 export interface SBSkuResponse {
     /**
-     * The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.
+     * Messaging units for your service bus premium namespace. Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting. For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16. If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64
      */
     capacity?: number;
     /**
@@ -398,6 +398,3 @@ export interface UserAssignedIdentityResponse {
      */
     principalId: string;
 }
-
-
-

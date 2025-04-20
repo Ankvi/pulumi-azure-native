@@ -212,19 +212,19 @@ export interface ClusterNetworkEntityResponse {
 }
 
 /**
- * Record of the environment
+ * Details of cluster record
  */
 export interface ClusterRecordResponse {
     /**
-     * Display name of the user
+     * Display name of the cluster
      */
     displayName?: string;
     /**
-     * Id of the environment
+     * Id of the cluster
      */
     id?: string;
     /**
-     * Type of environment
+     * Type of cluster
      */
     kind?: string;
     /**
@@ -362,7 +362,7 @@ export interface ConnectorInfoBaseResponse {
 }
 
 /**
- * Record of the environment
+ * Details about environment name, metadata and environment id of an environment
  */
 export interface EnvironmentRecordResponse {
     /**
@@ -723,13 +723,25 @@ export interface OfferDetailResponse {
      */
     planName: string;
     /**
+     * Private Offer Id
+     */
+    privateOfferId?: string;
+    /**
+     * Array of Private Offer Ids
+     */
+    privateOfferIds?: string[];
+    /**
      * Publisher Id
      */
     publisherId: string;
     /**
      * SaaS Offer Status
      */
-    status: string;
+    status?: string;
+    /**
+     * Offer Plan Term Id
+     */
+    termId?: string;
     /**
      * Offer Plan Term unit
      */
@@ -778,7 +790,7 @@ export interface RegionSpecEntityResponse {
 }
 
 /**
- * Record of the environment
+ * Details on principal, role name and crn pattern of a role binding
  */
 export interface RoleBindingRecordResponse {
     /**
@@ -786,7 +798,7 @@ export interface RoleBindingRecordResponse {
      */
     crnPattern?: string;
     /**
-     * Id of the role
+     * Id of the role binding
      */
     id?: string;
     /**
@@ -1040,6 +1052,10 @@ export interface TopicsRelatedLinkResponse {
  */
 export interface UserDetailResponse {
     /**
+     * AAD email address
+     */
+    aadEmail?: string;
+    /**
      * Email address
      */
     emailAddress: string;
@@ -1051,6 +1067,10 @@ export interface UserDetailResponse {
      * Last name
      */
     lastName?: string;
+    /**
+     * User principal name
+     */
+    userPrincipalName?: string;
 }
 
 /**
@@ -1082,7 +1102,3 @@ export interface UserRecordResponse {
      */
     metadata?: MetadataEntityResponse;
 }
-
-
-
-

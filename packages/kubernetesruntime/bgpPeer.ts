@@ -4,9 +4,7 @@ import * as types from "./types";
 /**
  * A BgpPeer resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters)
  *
- * Uses Azure REST API version 2024-03-01.
- *
- * Other available API versions: 2023-10-01-preview.
+ * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
  */
 export class BgpPeer extends pulumi.CustomResource {
     /**
@@ -35,6 +33,10 @@ export class BgpPeer extends pulumi.CustomResource {
         return obj['__pulumiType'] === BgpPeer.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * My ASN
      */
@@ -92,11 +94,13 @@ export class BgpPeer extends pulumi.CustomResource {
             resourceInputs["peerAddress"] = args ? args.peerAddress : undefined;
             resourceInputs["peerAsn"] = args ? args.peerAsn : undefined;
             resourceInputs["resourceUri"] = args ? args.resourceUri : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["myAsn"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["peerAddress"] = undefined /*out*/;

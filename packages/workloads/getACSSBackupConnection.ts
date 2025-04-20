@@ -35,6 +35,10 @@ export interface GetACSSBackupConnectionArgs {
  */
 export interface GetACSSBackupConnectionResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Information about the recovery services vault and backup policy used for backup.
      */
     readonly backupData?: types.outputs.HanaBackupDataResponse | types.outputs.SqlBackupDataResponse | types.outputs.VMBackupDataResponse;

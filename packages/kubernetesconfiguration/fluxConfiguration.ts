@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * The Flux Configuration object returned in Get & Put response.
  *
- * Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2021-11-01-preview.
+ * Uses Azure REST API version 2023-05-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2021-11-01-preview, 2022-01-01-preview, 2024-04-01-preview, 2024-11-01.
+ * Other available API versions: 2022-07-01, 2022-11-01, 2024-04-01-preview, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kubernetesconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FluxConfiguration extends pulumi.CustomResource {
     /**
@@ -35,6 +35,10 @@ export class FluxConfiguration extends pulumi.CustomResource {
         return obj['__pulumiType'] === FluxConfiguration.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * Parameters to reconcile to the AzureBlob source kind type.
      */
@@ -163,6 +167,7 @@ export class FluxConfiguration extends pulumi.CustomResource {
             resourceInputs["sourceKind"] = (args ? args.sourceKind : undefined) ?? "GitRepository";
             resourceInputs["suspend"] = (args ? args.suspend : undefined) ?? false;
             resourceInputs["waitForReconciliation"] = args ? args.waitForReconciliation : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["complianceState"] = undefined /*out*/;
             resourceInputs["errorMessage"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -175,6 +180,7 @@ export class FluxConfiguration extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["azureBlob"] = undefined /*out*/;
             resourceInputs["bucket"] = undefined /*out*/;
             resourceInputs["complianceState"] = undefined /*out*/;

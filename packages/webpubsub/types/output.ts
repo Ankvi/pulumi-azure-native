@@ -85,6 +85,20 @@ export interface EventNameFilterResponse {
 }
 
 /**
+ * An IP rule
+ */
+export interface IPRuleResponse {
+    /**
+     * Azure Networking ACL Action.
+     */
+    action?: string;
+    /**
+     * An IP or CIDR or ServiceTag
+     */
+    value?: string;
+}
+
+/**
  * Live trace category configuration of a Microsoft.SignalRService resource.
  */
 export interface LiveTraceCategoryResponse {
@@ -205,11 +219,11 @@ export interface PrivateEndpointConnectionResponse {
      */
     groupIds: string[];
     /**
-     * Fully qualified resource Id for the resource.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     id: string;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     name: string;
     /**
@@ -225,11 +239,11 @@ export interface PrivateEndpointConnectionResponse {
      */
     provisioningState: string;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     systemData: SystemDataResponse;
     /**
-     * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
 }
@@ -305,12 +319,14 @@ export interface ResourceReferenceResponse {
  */
 export interface ResourceSkuResponse {
     /**
-     * Optional, integer. The unit count of the resource. 1 by default.
+     * Optional, integer. The unit count of the resource.
+     * 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default.
      * 
      * If present, following values are allowed:
-     *     Free: 1;
-     *     Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
-     *     Premium:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+     *     Free_F1: 1;
+     *     Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+     *     Premium_P1:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
+     *     Premium_P2:  100,200,300,400,500,600,700,800,900,1000;
      */
     capacity?: number;
     /**
@@ -320,7 +336,7 @@ export interface ResourceSkuResponse {
     /**
      * The name of the SKU. Required.
      * 
-     * Allowed values: Standard_S1, Free_F1, Premium_P1
+     * Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2
      */
     name: string;
     /**
@@ -344,11 +360,11 @@ export interface SharedPrivateLinkResourceResponse {
      */
     groupId: string;
     /**
-     * Fully qualified resource Id for the resource.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     id: string;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     name: string;
     /**
@@ -368,11 +384,11 @@ export interface SharedPrivateLinkResourceResponse {
      */
     status: string;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     systemData: SystemDataResponse;
     /**
-     * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
 }
@@ -454,6 +470,10 @@ export interface WebPubSubHubPropertiesResponse {
      * Maximum count of event listeners among all hubs is 10.
      */
     eventListeners?: EventListenerResponse[];
+    /**
+     * The settings for configuring the WebSocket ping-pong interval in seconds for all clients in the hub. Valid range: 1 to 120. Default to 20 seconds.
+     */
+    webSocketKeepAliveIntervalInSeconds?: number;
 }
 /**
  * webPubSubHubPropertiesResponseProvideDefaults sets the appropriate defaults for WebPubSubHubPropertiesResponse
@@ -462,6 +482,7 @@ export function webPubSubHubPropertiesResponseProvideDefaults(val: WebPubSubHubP
     return {
         ...val,
         anonymousConnectPolicy: (val.anonymousConnectPolicy) ?? "deny",
+        webSocketKeepAliveIntervalInSeconds: (val.webSocketKeepAliveIntervalInSeconds) ?? 20,
     };
 }
 
@@ -474,6 +495,10 @@ export interface WebPubSubNetworkACLsResponse {
      */
     defaultAction?: string;
     /**
+     * IP rules for filtering public traffic
+     */
+    ipRules?: IPRuleResponse[];
+    /**
      * ACLs for requests from private endpoints
      */
     privateEndpoints?: PrivateEndpointACLResponse[];
@@ -484,11 +509,23 @@ export interface WebPubSubNetworkACLsResponse {
 }
 
 /**
+ * SocketIO settings for the resource
+ */
+export interface WebPubSubSocketIOSettingsResponse {
+    /**
+     * The service mode of Web PubSub for Socket.IO. Values allowed: 
+     * "Default": have your own backend Socket.IO server
+     * "Serverless": your application doesn't have a backend server
+     */
+    serviceMode?: string;
+}
+
+/**
  * TLS settings for the resource
  */
 export interface WebPubSubTlsSettingsResponse {
     /**
-     * Request client certificate during TLS handshake if enabled
+     * Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
      */
     clientCertEnabled?: boolean;
 }
@@ -498,17 +535,6 @@ export interface WebPubSubTlsSettingsResponse {
 export function webPubSubTlsSettingsResponseProvideDefaults(val: WebPubSubTlsSettingsResponse): WebPubSubTlsSettingsResponse {
     return {
         ...val,
-        clientCertEnabled: (val.clientCertEnabled) ?? true,
+        clientCertEnabled: (val.clientCertEnabled) ?? false,
     };
 }
-
-
-
-
-
-
-
-
-
-
-

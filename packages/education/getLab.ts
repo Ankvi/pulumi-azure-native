@@ -40,6 +40,10 @@ export interface GetLabArgs {
  */
 export interface GetLabResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Default monetary cap for each student in this lab
      */
     readonly budgetPerStudent: types.outputs.AmountResponse;
@@ -87,6 +91,10 @@ export interface GetLabResult {
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Total budget
+     */
+    readonly totalBudget: types.outputs.AmountResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

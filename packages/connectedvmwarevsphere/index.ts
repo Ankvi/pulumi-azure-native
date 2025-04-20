@@ -145,8 +145,6 @@ utilities.lazyLoad(exports, ["VMInstanceGuestAgent"], () => require("./vminstanc
 // Export enums:
 export * from "./types/enums";
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

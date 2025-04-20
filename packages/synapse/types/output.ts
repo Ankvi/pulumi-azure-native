@@ -1494,6 +1494,3 @@ export interface WorkspaceRepositoryConfigurationResponse {
      */
     type?: string;
 }
-
-
-

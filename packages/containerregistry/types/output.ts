@@ -120,6 +120,25 @@ export interface AuthInfoResponse {
 }
 
 /**
+ * The policy for using ARM audience token for a container registry.
+ */
+export interface AzureADAuthenticationAsArmPolicyResponse {
+    /**
+     * The value that indicates whether the policy is enabled or not.
+     */
+    status?: string;
+}
+/**
+ * azureADAuthenticationAsArmPolicyResponseProvideDefaults sets the appropriate defaults for AzureADAuthenticationAsArmPolicyResponse
+ */
+export function azureADAuthenticationAsArmPolicyResponseProvideDefaults(val: AzureADAuthenticationAsArmPolicyResponse): AzureADAuthenticationAsArmPolicyResponse {
+    return {
+        ...val,
+        status: (val.status) ?? "enabled",
+    };
+}
+
+/**
  * Properties that describe a base image dependency.
  */
 export interface BaseImageDependencyResponse {
@@ -731,6 +750,20 @@ export interface FileTaskStepResponse {
 }
 
 /**
+ * The garbage collection properties of the connected registry.
+ */
+export interface GarbageCollectionPropertiesResponse {
+    /**
+     * Indicates whether garbage collection is enabled for the connected registry.
+     */
+    enabled?: boolean;
+    /**
+     * The cron expression indicating the schedule that the connected registry will run garbage collection.
+     */
+    schedule?: string;
+}
+
+/**
  * IP rule with specific IP or IP range in CIDR format.
  */
 export interface IPRuleResponse {
@@ -1176,6 +1209,10 @@ export interface PlatformPropertiesResponse {
  */
 export interface PoliciesResponse {
     /**
+     * The policy for using ARM audience token for a container registry.
+     */
+    azureADAuthenticationAsArmPolicy?: AzureADAuthenticationAsArmPolicyResponse;
+    /**
      * The export policy for a container registry.
      */
     exportPolicy?: ExportPolicyResponse;
@@ -1188,6 +1225,10 @@ export interface PoliciesResponse {
      */
     retentionPolicy?: RetentionPolicyResponse;
     /**
+     * The soft delete policy for a container registry.
+     */
+    softDeletePolicy?: SoftDeletePolicyResponse;
+    /**
      * The content trust policy for a container registry.
      */
     trustPolicy?: TrustPolicyResponse;
@@ -1198,9 +1239,11 @@ export interface PoliciesResponse {
 export function policiesResponseProvideDefaults(val: PoliciesResponse): PoliciesResponse {
     return {
         ...val,
+        azureADAuthenticationAsArmPolicy: (val.azureADAuthenticationAsArmPolicy ? azureADAuthenticationAsArmPolicyResponseProvideDefaults(val.azureADAuthenticationAsArmPolicy) : undefined),
         exportPolicy: (val.exportPolicy ? exportPolicyResponseProvideDefaults(val.exportPolicy) : undefined),
         quarantinePolicy: (val.quarantinePolicy ? quarantinePolicyResponseProvideDefaults(val.quarantinePolicy) : undefined),
         retentionPolicy: (val.retentionPolicy ? retentionPolicyResponseProvideDefaults(val.retentionPolicy) : undefined),
+        softDeletePolicy: (val.softDeletePolicy ? softDeletePolicyResponseProvideDefaults(val.softDeletePolicy) : undefined),
         trustPolicy: (val.trustPolicy ? trustPolicyResponseProvideDefaults(val.trustPolicy) : undefined),
     };
 }
@@ -1536,6 +1579,34 @@ export interface SkuResponse {
      * The SKU tier based on the SKU name.
      */
     tier: string;
+}
+
+/**
+ * The soft delete policy for a container registry
+ */
+export interface SoftDeletePolicyResponse {
+    /**
+     * The timestamp when the policy was last updated.
+     */
+    lastUpdatedTime: string;
+    /**
+     * The number of days after which a soft-deleted item is permanently deleted.
+     */
+    retentionDays?: number;
+    /**
+     * The value that indicates whether the policy is enabled or not.
+     */
+    status?: string;
+}
+/**
+ * softDeletePolicyResponseProvideDefaults sets the appropriate defaults for SoftDeletePolicyResponse
+ */
+export function softDeletePolicyResponseProvideDefaults(val: SoftDeletePolicyResponse): SoftDeletePolicyResponse {
+    return {
+        ...val,
+        retentionDays: (val.retentionDays) ?? 7,
+        status: (val.status) ?? "disabled",
+    };
 }
 
 /**
@@ -2014,14 +2085,3 @@ export interface UserIdentityPropertiesResponse {
      */
     principalId?: string;
 }
-
-
-
-
-
-
-
-
-
-
-

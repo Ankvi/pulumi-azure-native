@@ -261,4 +261,3 @@ export interface SubResourceResponse {
      */
     id?: string;
 }
-

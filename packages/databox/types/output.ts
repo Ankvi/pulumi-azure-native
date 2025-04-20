@@ -1450,6 +1450,32 @@ export interface ImportDiskDetailsResponse {
 }
 
 /**
+ * Job Delay Notification details
+ */
+export interface JobDelayDetailsResponse {
+    /**
+     * Description of the delay.
+     */
+    description: string;
+    /**
+     * Delay Error code
+     */
+    errorCode: string;
+    /**
+     * Timestamp when the delay notification was resolved.
+     */
+    resolutionTime: string;
+    /**
+     * Timestamp when the delay notification was created.
+     */
+    startTime: string;
+    /**
+     * Status of notification
+     */
+    status: string;
+}
+
+/**
  * Additional delivery info.
  */
 export interface JobDeliveryInfoResponse {
@@ -1463,6 +1489,10 @@ export interface JobDeliveryInfoResponse {
  * Job stages.
  */
 export interface JobStagesResponse {
+    /**
+     * Delay information for the job stages.
+     */
+    delayInformation: JobDelayDetailsResponse[];
     /**
      * Display name of the job stage.
      */
@@ -1832,6 +1862,10 @@ export interface SkuResponse {
      */
     family?: string;
     /**
+     * The model name.
+     */
+    model: string;
+    /**
      * The sku name.
      */
     name: string;
@@ -2066,8 +2100,3 @@ export interface UserAssignedPropertiesResponse {
      */
     resourceId?: string;
 }
-
-
-
-
-

@@ -4,9 +4,7 @@ import * as types from "./types";
 /**
  * Response for Disk Pool request.
  *
- * Uses Azure REST API version 2021-08-01. In version 1.x of the Azure Native provider, it used API version 2020-03-15-preview.
- *
- * Other available API versions: 2020-03-15-preview.
+ * Uses Azure REST API version 2021-08-01. In version 2.x of the Azure Native provider, it used API version 2021-08-01.
  */
 export class DiskPool extends pulumi.CustomResource {
     /**
@@ -43,6 +41,10 @@ export class DiskPool extends pulumi.CustomResource {
      * Logical zone for Disk Pool resource; example: ["1"].
      */
     public readonly availabilityZones!: pulumi.Output<string[]>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * List of Azure Managed Disks to attach to a Disk Pool.
      */
@@ -123,6 +125,7 @@ export class DiskPool extends pulumi.CustomResource {
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["subnetId"] = args ? args.subnetId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -132,6 +135,7 @@ export class DiskPool extends pulumi.CustomResource {
         } else {
             resourceInputs["additionalCapabilities"] = undefined /*out*/;
             resourceInputs["availabilityZones"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["disks"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["managedBy"] = undefined /*out*/;

@@ -68,7 +68,7 @@ export interface ActiveDirectoryArgs {
      */
     encryptDCConnections?: pulumi.Input<boolean>;
     /**
-     * kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
+     * kdc server IP address for the active directory machine. This optional parameter is used only while creating kerberos volume.
      */
     kdcIP?: pulumi.Input<string>;
     /**
@@ -269,7 +269,7 @@ export interface KeyVaultPropertiesArgs {
     /**
      * The resource ID of KeyVault.
      */
-    keyVaultResourceId: pulumi.Input<string>;
+    keyVaultResourceId?: pulumi.Input<string>;
     /**
      * The Uri of KeyVault.
      */
@@ -349,6 +349,24 @@ export interface PlacementKeyValuePairsArgs {
 }
 
 /**
+ * The full path to a volume that is to be migrated into ANF. Required for Migration volumes
+ */
+export interface RemotePathArgs {
+    /**
+     * The Path to a ONTAP Host
+     */
+    externalHostName: pulumi.Input<string>;
+    /**
+     * The name of a server on the ONTAP Host
+     */
+    serverName: pulumi.Input<string>;
+    /**
+     * The name of a volume on the server
+     */
+    volumeName: pulumi.Input<string>;
+}
+
+/**
  * Replication properties
  */
 export interface ReplicationObjectArgs {
@@ -357,17 +375,17 @@ export interface ReplicationObjectArgs {
      */
     endpointType?: pulumi.Input<string | enums.EndpointType>;
     /**
+     * The full path to a volume that is to be migrated into ANF. Required for Migration volumes
+     */
+    remotePath?: pulumi.Input<RemotePathArgs>;
+    /**
      * The remote region for the other end of the Volume Replication.
      */
     remoteVolumeRegion?: pulumi.Input<string>;
     /**
-     * The resource ID of the remote volume.
+     * The resource ID of the remote volume. Required for cross region and cross zone replication
      */
-    remoteVolumeResourceId: pulumi.Input<string>;
-    /**
-     * Id
-     */
-    replicationId?: pulumi.Input<string>;
+    remoteVolumeResourceId?: pulumi.Input<string>;
     /**
      * Schedule
      */
@@ -379,13 +397,13 @@ export interface ReplicationObjectArgs {
  */
 export interface VolumeBackupPropertiesArgs {
     /**
-     * Backup Enabled
-     */
-    backupEnabled?: pulumi.Input<boolean>;
-    /**
      * Backup Policy Resource ID
      */
     backupPolicyId?: pulumi.Input<string>;
+    /**
+     * Backup Vault Resource ID
+     */
+    backupVaultId?: pulumi.Input<string>;
     /**
      * Policy Enforced
      */
@@ -405,10 +423,6 @@ export interface VolumeGroupMetaDataArgs {
      */
     applicationType?: pulumi.Input<string | enums.ApplicationType>;
     /**
-     * Application specific identifier of deployment rules for the volume group
-     */
-    deploymentSpecId?: pulumi.Input<string>;
-    /**
      * Application specific placement rules for the volume group
      */
     globalPlacementRules?: pulumi.Input<pulumi.Input<PlacementKeyValuePairsArgs>[]>;
@@ -427,7 +441,7 @@ export interface VolumeGroupVolumePropertiesArgs {
      */
     avsDataStore?: pulumi.Input<string | enums.AvsDataStore>;
     /**
-     * UUID v4 or resource identifier used to identify the Backup.
+     * Resource identifier used to identify the Backup.
      */
     backupId?: pulumi.Input<string>;
     /**
@@ -438,6 +452,17 @@ export interface VolumeGroupVolumePropertiesArgs {
      * Specifies whether Cool Access(tiering) is enabled for the volume.
      */
     coolAccess?: pulumi.Input<boolean>;
+    /**
+     * coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are: 
+     *  Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
+     *  OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
+     *  Never - No client-driven data is pulled from cool tier to standard storage.
+     */
+    coolAccessRetrievalPolicy?: pulumi.Input<string | enums.CoolAccessRetrievalPolicy>;
+    /**
+     * coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.
+     */
+    coolAccessTieringPolicy?: pulumi.Input<string | enums.CoolAccessTieringPolicy>;
     /**
      * Specifies the number of days after which data that is not accessed by clients will be tiered.
      */
@@ -503,7 +528,7 @@ export interface VolumeGroupVolumePropertiesArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Basic network, or Standard features available to the volume.
+     * The original value of the network features type available to the volume at the time it was created.
      */
     networkFeatures?: pulumi.Input<string | enums.NetworkFeatures>;
     /**
@@ -527,7 +552,7 @@ export interface VolumeGroupVolumePropertiesArgs {
      */
     serviceLevel?: pulumi.Input<string | enums.ServiceLevel>;
     /**
-     * Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+     * Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
      */
     smbAccessBasedEnumeration?: pulumi.Input<string | enums.SmbAccessBasedEnumeration>;
     /**
@@ -539,7 +564,7 @@ export interface VolumeGroupVolumePropertiesArgs {
      */
     smbEncryption?: pulumi.Input<boolean>;
     /**
-     * Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+     * Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
      */
     smbNonBrowsable?: pulumi.Input<string | enums.SmbNonBrowsable>;
     /**
@@ -547,7 +572,7 @@ export interface VolumeGroupVolumePropertiesArgs {
      */
     snapshotDirectoryVisible?: pulumi.Input<boolean>;
     /**
-     * UUID v4 or resource identifier used to identify the Snapshot.
+     * Resource identifier used to identify the Snapshot.
      */
     snapshotId?: pulumi.Input<string>;
     /**
@@ -564,7 +589,7 @@ export interface VolumeGroupVolumePropertiesArgs {
      */
     unixPermissions?: pulumi.Input<string>;
     /**
-     * Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
+     * Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. For regular volumes, valid values are in the range 50GiB to 100TiB. For large volumes, valid values are in the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB. Values expressed in bytes as multiples of 1 GiB.
      */
     usageThreshold: pulumi.Input<number>;
     /**
@@ -575,6 +600,10 @@ export interface VolumeGroupVolumePropertiesArgs {
      * What type of volume is this. For destination volumes in Cross Region Replication, set type to DataProtection
      */
     volumeType?: pulumi.Input<string>;
+    /**
+     * Availability Zone
+     */
+    zones?: pulumi.Input<pulumi.Input<string>[]>;
 }
 /**
  * volumeGroupVolumePropertiesArgsProvideDefaults sets the appropriate defaults for VolumeGroupVolumePropertiesArgs
@@ -592,12 +621,10 @@ export function volumeGroupVolumePropertiesArgsProvideDefaults(val: VolumeGroupV
         isLargeVolume: (val.isLargeVolume) ?? false,
         kerberosEnabled: (val.kerberosEnabled) ?? false,
         ldapEnabled: (val.ldapEnabled) ?? false,
-        networkFeatures: (val.networkFeatures) ?? "Basic",
         securityStyle: (val.securityStyle) ?? "unix",
         smbContinuouslyAvailable: (val.smbContinuouslyAvailable) ?? false,
         smbEncryption: (val.smbEncryption) ?? false,
         snapshotDirectoryVisible: (val.snapshotDirectoryVisible) ?? true,
-        unixPermissions: (val.unixPermissions) ?? "0770",
         usageThreshold: (val.usageThreshold) ?? 107374182400,
     };
 }
@@ -679,23 +706,3 @@ export interface WeeklyScheduleArgs {
      */
     usedBytes?: pulumi.Input<number>;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

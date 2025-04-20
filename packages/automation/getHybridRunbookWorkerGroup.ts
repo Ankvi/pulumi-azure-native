@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Retrieve a hybrid runbook worker group.
  *
- * Uses Azure REST API version 2022-08-08.
+ * Uses Azure REST API version 2023-11-01.
  *
- * Other available API versions: 2021-06-22, 2023-05-15-preview, 2023-11-01, 2024-10-23.
+ * Other available API versions: 2021-06-22, 2022-02-22, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getHybridRunbookWorkerGroup(args: GetHybridRunbookWorkerGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridRunbookWorkerGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,6 +37,10 @@ export interface GetHybridRunbookWorkerGroupArgs {
  */
 export interface GetHybridRunbookWorkerGroupResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Sets the credential of a worker group.
      */
     readonly credential?: types.outputs.RunAsCredentialAssociationPropertyResponse;
@@ -64,9 +68,9 @@ export interface GetHybridRunbookWorkerGroupResult {
 /**
  * Retrieve a hybrid runbook worker group.
  *
- * Uses Azure REST API version 2022-08-08.
+ * Uses Azure REST API version 2023-11-01.
  *
- * Other available API versions: 2021-06-22, 2023-05-15-preview, 2023-11-01, 2024-10-23.
+ * Other available API versions: 2021-06-22, 2022-02-22, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getHybridRunbookWorkerGroupOutput(args: GetHybridRunbookWorkerGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHybridRunbookWorkerGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -444,11 +444,53 @@ export interface AvailabilitySetResourceSettingsArgs {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string>;
     /**
      * Gets or sets the target update domain.
      */
     updateDomain?: pulumi.Input<number>;
+}
+
+/**
+ * Azure Arc Management settings.
+ */
+export interface AzureArcManagementSettingsArgs {
+    /**
+     * Gets the azure arc monitoring settings.
+     */
+    monitoringSettings: pulumi.Input<AzureArcMonitoringSettingsArgs>;
+}
+
+/**
+ * Azure Arc Monitoring settings.
+ */
+export interface AzureArcMonitoringSettingsArgs {
+    /**
+     * Number of alert rules settings.
+     */
+    alertRulesCount: pulumi.Input<number>;
+    /**
+     * Logs volume settings.
+     */
+    logsVolumeInGB: pulumi.Input<number>;
+}
+
+/**
+ * Azure arc settings for a business case.
+ */
+export interface AzureArcSettingsArgs {
+    /**
+     * AzureArc state indicates whether to include azure arc related costs in on-premises or not.
+     */
+    azureArcState: pulumi.Input<string | enums.AzureArcState>;
+    /**
+     * Gets Azure arc labour cost percentage.
+     */
+    laborCostPercentage?: pulumi.Input<number>;
+    /**
+     * Management settings.
+     */
+    managementSettings?: pulumi.Input<AzureArcManagementSettingsArgs>;
 }
 
 /**
@@ -828,7 +870,7 @@ export interface DiskEncryptionSetResourceSettingsArgs {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string>;
 }
 
 /**
@@ -852,7 +894,7 @@ export interface FacilitySettingsArgs {
     /**
      * The facilities cost.
      */
-    facilitiesCost: pulumi.Input<number>;
+    facilitiesCostPerKwh?: pulumi.Input<number>;
 }
 
 /**
@@ -1274,7 +1316,7 @@ export interface KeyVaultResourceSettingsArgs {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string>;
 }
 
 export interface KeyVaultSecretStorePropertiesArgs {
@@ -1411,7 +1453,7 @@ export interface LoadBalancerResourceSettingsArgs {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string>;
     /**
      * Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
      *  precedence only if frontend IP configurations settings are not present.
@@ -1444,10 +1486,6 @@ export interface ManagementSettingsArgs {
      * Third Party Management Settings.
      */
     thirdPartyManagementSettings: pulumi.Input<ThirdPartyManagementSettingsArgs>;
-    /**
-     * vSphere Management Settings.
-     */
-    vsphereManagementSettings: pulumi.Input<VsphereManagementSettingsArgs>;
 }
 
 /**
@@ -1538,13 +1576,21 @@ export interface ModernizeProjectModelPropertiesArgs {
  */
 export interface MoveCollectionPropertiesArgs {
     /**
+     * Gets or sets the move region which indicates the region where the VM Regional to Zonal move will be conducted.
+     */
+    moveRegion?: pulumi.Input<string>;
+    /**
+     * Defines the MoveType.
+     */
+    moveType?: pulumi.Input<string | enums.MoveType>;
+    /**
      * Gets or sets the source region.
      */
-    sourceRegion: pulumi.Input<string>;
+    sourceRegion?: pulumi.Input<string>;
     /**
      * Gets or sets the target region.
      */
-    targetRegion: pulumi.Input<string>;
+    targetRegion?: pulumi.Input<string>;
     /**
      * Gets or sets the version of move collection.
      */
@@ -1616,7 +1662,7 @@ export interface NetworkInterfaceResourceSettingsArgs {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string>;
 }
 
 /**
@@ -1643,7 +1689,7 @@ export interface NetworkSecurityGroupResourceSettingsArgs {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string>;
 }
 
 /**
@@ -1954,7 +2000,7 @@ export interface PublicIPAddressResourceSettingsArgs {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string>;
     /**
      * Gets or sets public IP zones.
      */
@@ -1987,7 +2033,7 @@ export interface ResourceGroupResourceSettingsArgs {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string>;
 }
 
 export interface ResourceIdentityArgs {
@@ -2039,6 +2085,10 @@ export interface SecuritySettingsArgs {
  */
 export interface SettingsArgs {
     /**
+     * Azure arc settings.
+     */
+    azureArcSettings?: pulumi.Input<AzureArcSettingsArgs>;
+    /**
      * Azure settings for a business case.
      */
     azureSettings: pulumi.Input<AzureSettingsArgs>;
@@ -2082,7 +2132,7 @@ export interface SolutionPropertiesArgs {
     /**
      * Gets or sets the cleanup state of the solution.
      */
-    cleanupState?: pulumi.Input<string | enums.CleanupState>;
+    cleanupState?: pulumi.Input<string>;
     /**
      * Gets or sets the details of the solution.
      */
@@ -2090,19 +2140,19 @@ export interface SolutionPropertiesArgs {
     /**
      * Gets or sets the goal of the solution.
      */
-    goal?: pulumi.Input<string | enums.Goal>;
+    goal?: pulumi.Input<string>;
     /**
      * Gets or sets the purpose of the solution.
      */
-    purpose?: pulumi.Input<string | enums.Purpose>;
+    purpose?: pulumi.Input<string>;
     /**
      * Gets or sets the current status of the solution.
      */
-    status?: pulumi.Input<string | enums.Status>;
+    status?: pulumi.Input<string>;
     /**
      * Gets or sets the tool being used in the solution.
      */
-    tool?: pulumi.Input<string | enums.Tool>;
+    tool?: pulumi.Input<string>;
 }
 
 /**
@@ -2125,7 +2175,7 @@ export interface SqlDatabaseResourceSettingsArgs {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string>;
     /**
      * Defines the zone redundant resource setting.
      */
@@ -2174,7 +2224,7 @@ export interface SqlElasticPoolResourceSettingsArgs {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string>;
     /**
      * Defines the zone redundant resource setting.
      */
@@ -2229,7 +2279,7 @@ export interface SqlServerResourceSettingsArgs {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string>;
 }
 
 /**
@@ -2395,7 +2445,7 @@ export interface VirtualMachineResourceSettingsArgs {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string>;
     /**
      * Gets or sets the target virtual machine size.
      */
@@ -2444,7 +2494,7 @@ export interface VirtualNetworkResourceSettingsArgs {
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string>;
 }
 
 /**
@@ -2452,17 +2502,9 @@ export interface VirtualNetworkResourceSettingsArgs {
  */
 export interface VirtualizationSoftwareSettingsArgs {
     /**
-     * Licence and support list.
+     * VMware cloud foundation license cost.
      */
-    licenseAndSupportList: pulumi.Input<pulumi.Input<VsphereLicenseArgs>[]>;
-    /**
-     * Number of physical cores per licence.
-     */
-    numberOfPhysicalCoresPerLicense: pulumi.Input<number>;
-    /**
-     * Software Assurance cost.
-     */
-    softwareAssuranceCost: pulumi.Input<number>;
+    vMwareCloudFoundationLicenseCost: pulumi.Input<number>;
 }
 
 /**
@@ -2477,60 +2519,6 @@ export interface VmUptimeArgs {
      * Number of hours per day for VM uptime.
      */
     hoursPerDay?: pulumi.Input<number>;
-}
-
-/**
- * Representation of a vsphere licence.
- */
-export interface VsphereLicenseArgs {
-    /**
-     * Basic support cost.
-     */
-    basicSupportCost: pulumi.Input<number>;
-    /**
-     * Cost of a licence.
-     */
-    licenseCost: pulumi.Input<number>;
-    /**
-     * VSphere licence type.
-     */
-    licenseType: pulumi.Input<string | enums.LicenseType>;
-    /**
-     * Production support cost.
-     */
-    productionSupportCost: pulumi.Input<number>;
-}
-
-/**
- * Representation of a vsphere management licence.
- */
-export interface VsphereManagementLicenseArgs {
-    /**
-     * Basic support cost.
-     */
-    basicSupportCost: pulumi.Input<number>;
-    /**
-     * Cost of a licence.
-     */
-    licenseCost: pulumi.Input<number>;
-    /**
-     * VSphere licence type.
-     */
-    licenseType: pulumi.Input<string | enums.VsphereManagementLicenseType>;
-    /**
-     * Production support cost.
-     */
-    productionSupportCost: pulumi.Input<number>;
-}
-
-/**
- * Vsphere management settings.
- */
-export interface VsphereManagementSettingsArgs {
-    /**
-     * Licence and support list.
-     */
-    licenseAndSupportList: pulumi.Input<pulumi.Input<VsphereManagementLicenseArgs>[]>;
 }
 
 /**
@@ -2687,14 +2675,3 @@ export interface WorkloadInstanceModelPropertiesArgs {
      */
     sourcePlatform?: pulumi.Input<string>;
 }
-
-
-
-
-
-
-
-
-
-
-

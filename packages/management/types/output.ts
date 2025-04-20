@@ -165,6 +165,3 @@ export interface ParentGroupInfoResponse {
      */
     name?: string;
 }
-
-
-

@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Site REST Resource.
  *
- * Uses Azure REST API version 2020-07-07. In version 1.x of the Azure Native provider, it used API version 2020-01-01.
+ * Uses Azure REST API version 2020-07-07. In version 2.x of the Azure Native provider, it used API version 2020-07-07.
  */
 export class Site extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class Site extends pulumi.CustomResource {
         return obj['__pulumiType'] === Site.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * eTag for concurrency control.
      */
@@ -80,9 +84,11 @@ export class Site extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["siteName"] = args ? args.siteName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -92,7 +98,7 @@ export class Site extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20200101:Site" }, { type: "azure-native:offazure/v20200707:Site" }, { type: "azure-native:offazure/v20230606:Site" }, { type: "azure-native:offazure/v20231001preview:Site" }, { type: "azure-native:offazure/v20240501preview:Site" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20200101:Site" }, { type: "azure-native:offazure/v20200707:Site" }, { type: "azure-native:offazure/v20230606:Site" }, { type: "azure-native:offazure/v20230606:SitesController" }, { type: "azure-native:offazure/v20231001preview:Site" }, { type: "azure-native:offazure/v20231001preview:SitesController" }, { type: "azure-native:offazure/v20240501preview:Site" }, { type: "azure-native:offazure/v20240501preview:SitesController" }, { type: "azure-native:offazure:SitesController" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Site.__pulumiType, name, resourceInputs, opts);
     }

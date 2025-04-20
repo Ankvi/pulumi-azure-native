@@ -5,23 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
  */
 export interface ApiEntityReferenceResponse {
     /**
-     * The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+     * The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
      */
-    id?: string;
-}
-
-/**
- * Security domain properties information for Cloud HSM cluster
- */
-export interface CloudHsmClusterSecurityDomainPropertiesResponse {
-    /**
-     * status of security domain activation
-     */
-    activationStatus?: string;
-    /**
-     * FIPS state information for security domain
-     */
-    fipsState?: number;
+    resourceId?: string;
 }
 
 /**
@@ -51,7 +37,7 @@ export interface CloudHsmPropertiesResponse {
      */
     fqdn?: string;
     /**
-     * The Cloud HSM State
+     * The Cloud HSM State. Values are: Deploying, ConfiguringSlb, Starting, Starting, Failed, Failed, Deleting, DeletingSlbEntry, InitialProvisioning, Updating
      */
     state?: string;
     /**
@@ -61,17 +47,39 @@ export interface CloudHsmPropertiesResponse {
 }
 
 /**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityResponse {
+    /**
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: string;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
  * The network interface definition.
  */
 export interface NetworkInterfaceResponse {
     /**
-     * The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-     */
-    id: string;
-    /**
      * Private Ip address of the interface
      */
     privateIpAddress?: string;
+    /**
+     * The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+     */
+    resourceId: string;
 }
 
 /**
@@ -169,34 +177,45 @@ export interface SkuResponse {
 }
 
 /**
- * Metadata pertaining to creation and last modification of dedicated hsm resource.
+ * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
     /**
-     * The timestamp of dedicated hsm resource creation (UTC).
+     * The timestamp of resource creation (UTC).
      */
     createdAt?: string;
     /**
-     * The identity that created dedicated hsm resource.
+     * The identity that created the resource.
      */
     createdBy?: string;
     /**
-     * The type of identity that created dedicated hsm resource.
+     * The type of identity that created the resource.
      */
     createdByType?: string;
     /**
-     * The timestamp of dedicated hsm resource last modification (UTC).
+     * The timestamp of resource last modification (UTC)
      */
     lastModifiedAt?: string;
     /**
-     * The identity that last modified dedicated hsm resource.
+     * The identity that last modified the resource.
      */
     lastModifiedBy?: string;
     /**
-     * The type of identity that last modified dedicated hsm resource.
+     * The type of identity that last modified the resource.
      */
     lastModifiedByType?: string;
 }
 
-
-
+/**
+ * User assigned identity properties
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId: string;
+}

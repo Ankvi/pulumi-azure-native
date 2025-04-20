@@ -1,4 +1,7 @@
 export const AssociationType = {
+    /**
+     * Association of Type Subnet
+     */
     Subnets: "subnets",
 } as const;
 

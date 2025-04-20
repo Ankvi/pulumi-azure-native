@@ -66,7 +66,3 @@ export interface CertificateOrderContactResponse {
     nameLast?: string;
     phone?: string;
 }
-
-
-
-

@@ -22,8 +22,6 @@ export const SqlServerRegistration: typeof import("./sqlServerRegistration").Sql
 utilities.lazyLoad(exports, ["SqlServerRegistration"], () => require("./sqlServerRegistration"));
 
 
-
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

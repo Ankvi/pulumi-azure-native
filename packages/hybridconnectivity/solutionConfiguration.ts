@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Solution Configuration
  *
- * Uses Azure REST API version 2024-12-01.
+ * Uses Azure REST API version 2024-12-01. In version 2.x of the Azure Native provider, it used API version 2024-12-01.
  */
 export class SolutionConfiguration extends pulumi.CustomResource {
     /**
@@ -33,6 +33,10 @@ export class SolutionConfiguration extends pulumi.CustomResource {
         return obj['__pulumiType'] === SolutionConfiguration.__pulumiType;
     }
 
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The last time resources were inventoried
      */
@@ -91,6 +95,7 @@ export class SolutionConfiguration extends pulumi.CustomResource {
             resourceInputs["solutionConfiguration"] = args ? args.solutionConfiguration : undefined;
             resourceInputs["solutionSettings"] = args ? args.solutionSettings : undefined;
             resourceInputs["solutionType"] = args ? args.solutionType : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["lastSyncTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -99,6 +104,7 @@ export class SolutionConfiguration extends pulumi.CustomResource {
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["lastSyncTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;

@@ -216,6 +216,22 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
+  packages/applicationinsights:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
+
   packages/appplatform:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -584,22 +600,6 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
-  packages/cache:
-    dependencies:
-      '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:*
-        version: link:../core
-      '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.142.0(ts-node@7.0.1)(typescript@5.2.2)
-    devDependencies:
-      '@types/node':
-        specifier: ^20.0.0
-        version: 20.6.2
-      typescript:
-        specifier: ^5.0.0
-        version: 5.2.2
-
   packages/cdn:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -948,6 +948,22 @@ importers:
       typescript:
         specifier: ^5.0.0
         version: 5.2.2
+
+  packages/cosmosdb:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
 
   packages/costmanagement:
     dependencies:
@@ -1365,23 +1381,23 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
-  packages/deviceregistry:
+  packages/deviceprovisioningservices:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.142.0
-        version: 3.142.0(ts-node@7.0.1)(typescript@5.2.2)
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
     devDependencies:
       '@types/node':
         specifier: ^20.0.0
-        version: 20.6.2
+        version: 20.12.14
       typescript:
         specifier: ^5.0.0
-        version: 5.2.2
+        version: 5.7.2
 
-  packages/devices:
+  packages/deviceregistry:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
         specifier: workspace:*
@@ -1477,21 +1493,37 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
-  packages/documentdb:
+  packages/dns:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.142.0
-        version: 3.142.0(ts-node@7.0.1)(typescript@5.2.2)
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
     devDependencies:
       '@types/node':
         specifier: ^20.0.0
-        version: 20.6.2
+        version: 20.12.14
       typescript:
         specifier: ^5.0.0
-        version: 5.2.2
+        version: 5.7.2
+
+  packages/dnsresolver:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
 
   packages/domainregistration:
     dependencies:
@@ -1781,6 +1813,22 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
+  packages/frontdoor:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
+
   packages/graphservices:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -2021,22 +2069,6 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
-  packages/insights:
-    dependencies:
-      '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:*
-        version: link:../core
-      '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.142.0(ts-node@7.0.1)(typescript@5.2.2)
-    devDependencies:
-      '@types/node':
-        specifier: ^20.0.0
-        version: 20.6.2
-      typescript:
-        specifier: ^5.0.0
-        version: 5.2.2
-
   packages/integrationspaces:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -2100,6 +2132,22 @@ importers:
       typescript:
         specifier: ^5.0.0
         version: 5.2.2
+
+  packages/iothub:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
 
   packages/iotoperations:
     dependencies:
@@ -2565,6 +2613,22 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
+  packages/mongocluster:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
+
   packages/monitor:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -2885,6 +2949,22 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
+  packages/privatedns:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
+
   packages/professionalservice:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -3028,6 +3108,38 @@ importers:
       typescript:
         specifier: ^5.0.0
         version: 5.2.2
+
+  packages/redis:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
+
+  packages/redisenterprise:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
 
   packages/relay:
     dependencies:
@@ -3668,6 +3780,22 @@ importers:
       typescript:
         specifier: ^5.0.0
         version: 5.2.2
+
+  packages/trafficmanager:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
 
   packages/verifiedid:
     dependencies:

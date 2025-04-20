@@ -40,6 +40,10 @@ export interface GetServerInstanceArgs {
  */
 export interface GetServerInstanceResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Configuration data for this server instance.
      */
     readonly configurationData: types.outputs.ConfigurationDataResponse;

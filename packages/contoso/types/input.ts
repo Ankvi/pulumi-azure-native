@@ -16,4 +16,3 @@ export interface EmployeePropertiesArgs {
      */
     profile?: pulumi.Input<string>;
 }
-

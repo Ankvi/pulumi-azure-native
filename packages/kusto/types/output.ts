@@ -180,6 +180,10 @@ export interface KeyVaultPropertiesResponse {
  */
 export interface LanguageExtensionResponse {
     /**
+     * The language extension custom image name.
+     */
+    languageExtensionCustomImageName?: string;
+    /**
      * The language extension image name.
      */
     languageExtensionImageName?: string;
@@ -197,6 +201,28 @@ export interface LanguageExtensionsListResponse {
      * The list of language extensions.
      */
     value?: LanguageExtensionResponse[];
+}
+
+/**
+ * Represents a properties of a cluster that is part of a migration.
+ */
+export interface MigrationClusterPropertiesResponse {
+    /**
+     * The public data ingestion URL of the cluster.
+     */
+    dataIngestionUri: string;
+    /**
+     * The resource ID of the cluster.
+     */
+    id: string;
+    /**
+     * The role of the cluster in the migration process.
+     */
+    role: string;
+    /**
+     * The public URL of the cluster.
+     */
+    uri: string;
 }
 
 /**
@@ -285,6 +311,16 @@ export interface PrivateLinkServiceConnectionStatePropertyResponse {
      * The private link service connection status.
      */
     status?: string;
+}
+
+/**
+ * The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
+ */
+export interface SuspensionDetailsResponse {
+    /**
+     * The starting date and time of the suspension state.
+     */
+    suspensionStartDate?: string;
 }
 
 /**
@@ -378,16 +414,20 @@ export interface VirtualNetworkConfigurationResponse {
      */
     enginePublicIpId: string;
     /**
+     * When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
+     */
+    state?: string;
+    /**
      * The subnet resource id.
      */
     subnetId: string;
 }
-
-
-
-
-
-
-
-
-
+/**
+ * virtualNetworkConfigurationResponseProvideDefaults sets the appropriate defaults for VirtualNetworkConfigurationResponse
+ */
+export function virtualNetworkConfigurationResponseProvideDefaults(val: VirtualNetworkConfigurationResponse): VirtualNetworkConfigurationResponse {
+    return {
+        ...val,
+        state: (val.state) ?? "Enabled",
+    };
+}

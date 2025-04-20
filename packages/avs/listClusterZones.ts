@@ -2,11 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * List of all zones and associated hosts for a cluster
+ * List hosts by zone in a cluster
  *
- * Uses Azure REST API version 2022-05-01.
+ * Uses Azure REST API version 2023-09-01.
  *
- * Other available API versions: 2023-03-01, 2023-09-01.
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listClusterZones(args: ListClusterZonesArgs, opts?: pulumi.InvokeOptions): Promise<ListClusterZonesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -19,7 +19,7 @@ export function listClusterZones(args: ListClusterZonesArgs, opts?: pulumi.Invok
 
 export interface ListClusterZonesArgs {
     /**
-     * Name of the cluster in the private cloud
+     * Name of the cluster
      */
     clusterName: string;
     /**
@@ -42,11 +42,11 @@ export interface ListClusterZonesResult {
     readonly zones?: types.outputs.ClusterZoneResponse[];
 }
 /**
- * List of all zones and associated hosts for a cluster
+ * List hosts by zone in a cluster
  *
- * Uses Azure REST API version 2022-05-01.
+ * Uses Azure REST API version 2023-09-01.
  *
- * Other available API versions: 2023-03-01, 2023-09-01.
+ * Other available API versions: 2022-05-01, 2023-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listClusterZonesOutput(args: ListClusterZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListClusterZonesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,7 +59,7 @@ export function listClusterZonesOutput(args: ListClusterZonesOutputArgs, opts?: 
 
 export interface ListClusterZonesOutputArgs {
     /**
-     * Name of the cluster in the private cloud
+     * Name of the cluster
      */
     clusterName: pulumi.Input<string>;
     /**

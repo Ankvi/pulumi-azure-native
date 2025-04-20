@@ -35,6 +35,10 @@ export interface GetContactArgs {
  */
 export interface GetContactResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Full name of contact
      */
     readonly contactName: string;

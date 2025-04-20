@@ -231,7 +231,3 @@ export interface ViolationResponse {
      */
     userId: string;
 }
-
-
-
-

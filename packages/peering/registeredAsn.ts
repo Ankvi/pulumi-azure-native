@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * The customer's ASN that is registered by the peering service provider.
  *
- * Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+ * Uses Azure REST API version 2022-10-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
  */
 export class RegisteredAsn extends pulumi.CustomResource {
     /**
@@ -36,6 +36,10 @@ export class RegisteredAsn extends pulumi.CustomResource {
      * The customer's ASN from which traffic originates.
      */
     public readonly asn!: pulumi.Output<number | undefined>;
+    /**
+     * The Azure API version of the resource.
+     */
+    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
      * The name of the resource.
      */
@@ -74,12 +78,14 @@ export class RegisteredAsn extends pulumi.CustomResource {
             resourceInputs["peeringName"] = args ? args.peeringName : undefined;
             resourceInputs["registeredAsnName"] = args ? args.registeredAsnName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["peeringServicePrefixKey"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["asn"] = undefined /*out*/;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["peeringServicePrefixKey"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;

@@ -212,6 +212,10 @@ export interface AzureCredentialsArgs {
      */
     clientSecret?: pulumi.Input<string>;
     /**
+     * Kind of auth github does for deploying the template
+     */
+    kind?: pulumi.Input<string>;
+    /**
      * Subscription Id.
      */
     subscriptionId?: pulumi.Input<string>;
@@ -268,6 +272,16 @@ export interface AzureStaticWebAppsRegistrationArgs {
 }
 
 /**
+ * The configuration settings of the storage of the tokens if blob storage is used.
+ */
+export interface BlobStorageTokenStoreArgs {
+    /**
+     * The name of the app secrets containing the SAS URL of the blob storage containing the tokens.
+     */
+    sasUrlSettingName: pulumi.Input<string>;
+}
+
+/**
  * Configuration of the build.
  */
 export interface BuildConfigurationArgs {
@@ -276,7 +290,7 @@ export interface BuildConfigurationArgs {
      */
     baseOs?: pulumi.Input<string>;
     /**
-     * List of environment variables to be passed to the build.
+     * List of environment variables to be passed to the build, secrets should not be used in environment variable.
      */
     environmentVariables?: pulumi.Input<pulumi.Input<EnvironmentVariableArgs>[]>;
     /**
@@ -368,6 +382,10 @@ export interface ConfigurationArgs {
      * Collection of secrets used by a Container app
      */
     secrets?: pulumi.Input<pulumi.Input<SecretArgs>[]>;
+    /**
+     * Container App to be a dev Container App Service
+     */
+    service?: pulumi.Input<ServiceArgs>;
 }
 /**
  * configurationArgsProvideDefaults sets the appropriate defaults for ConfigurationArgs
@@ -586,27 +604,27 @@ export interface CookieExpirationArgs {
  */
 export interface CorsPolicyArgs {
     /**
-     * allow credential or not
+     * Specifies whether the resource allows credentials
      */
     allowCredentials?: pulumi.Input<boolean>;
     /**
-     * allowed HTTP headers
+     * Specifies the content for the access-control-allow-headers header
      */
     allowedHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * allowed HTTP methods
+     * Specifies the content for the access-control-allow-methods header
      */
     allowedMethods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * allowed origins
+     * Specifies the content for the access-control-allow-origins header
      */
     allowedOrigins: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * expose HTTP headers 
+     * Specifies the content for the access-control-expose-headers header 
      */
     exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * max time client can cache the result
+     * Specifies the content for the access-control-max-age header
      */
     maxAge?: pulumi.Input<number>;
 }
@@ -751,9 +769,31 @@ export function daprArgsProvideDefaults(val: DaprArgs): DaprArgs {
 }
 
 /**
+ * Dapr Component Resiliency Policy Circuit Breaker Policy Configuration.
+ */
+export interface DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationArgs {
+    /**
+     * The number of consecutive errors before the circuit is opened.
+     */
+    consecutiveErrors?: pulumi.Input<number>;
+    /**
+     * The optional interval in seconds after which the error count resets to 0. An interval of 0 will never reset. If not specified, the timeoutInSeconds value will be used.
+     */
+    intervalInSeconds?: pulumi.Input<number>;
+    /**
+     * The interval in seconds until a retry attempt is made after the circuit is opened.
+     */
+    timeoutInSeconds?: pulumi.Input<number>;
+}
+
+/**
  * Dapr Component Resiliency Policy Configuration.
  */
 export interface DaprComponentResiliencyPolicyConfigurationArgs {
+    /**
+     * The optional circuit breaker policy configuration
+     */
+    circuitBreakerPolicy?: pulumi.Input<DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationArgs>;
     /**
      * The optional HTTP retry policy configuration
      */
@@ -932,13 +972,17 @@ export interface DynamicPoolConfigurationArgs {
 }
 
 /**
- * Managed Environment resource SKU properties.
+ * The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
  */
-export interface EnvironmentSkuPropertiesArgs {
+export interface EncryptionSettingsArgs {
     /**
-     * Name of the Sku.
+     * The secret name which is referenced for EncryptionKey.
      */
-    name: pulumi.Input<string | enums.SkuName>;
+    containerAppAuthEncryptionSecretName?: pulumi.Input<string>;
+    /**
+     * The secret name which is referenced for SigningKey.
+     */
+    containerAppAuthSigningSecretName?: pulumi.Input<string>;
 }
 
 /**
@@ -1057,6 +1101,10 @@ export interface GithubActionConfigurationArgs {
      * Context path
      */
     contextPath?: pulumi.Input<string>;
+    /**
+     * One time Github PAT to configure github environment
+     */
+    githubPersonalAccessToken?: pulumi.Input<string>;
     /**
      * Image name
      */
@@ -1399,6 +1447,10 @@ export interface IdentityProvidersArgs {
  */
 export interface IngressArgs {
     /**
+     * Settings to expose additional ports on container app
+     */
+    additionalPortMappings?: pulumi.Input<pulumi.Input<IngressPortMappingArgs>[]>;
+    /**
      * Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS connections
      */
     allowInsecure?: pulumi.Input<boolean>;
@@ -1427,6 +1479,10 @@ export interface IngressArgs {
      */
     ipSecurityRestrictions?: pulumi.Input<pulumi.Input<IpSecurityRestrictionRuleArgs>[]>;
     /**
+     * Sticky Sessions for Single Revision Mode
+     */
+    stickySessions?: pulumi.Input<IngressStickySessionsArgs>;
+    /**
      * Target Port in containers for traffic from ingress
      */
     targetPort?: pulumi.Input<number>;
@@ -1449,6 +1505,34 @@ export function ingressArgsProvideDefaults(val: IngressArgs): IngressArgs {
         external: (val.external) ?? false,
         transport: (val.transport) ?? "auto",
     };
+}
+
+/**
+ * Port mappings of container app ingress
+ */
+export interface IngressPortMappingArgs {
+    /**
+     * Specifies the exposed port for the target port. If not specified, it defaults to target port
+     */
+    exposedPort?: pulumi.Input<number>;
+    /**
+     * Specifies whether the app port is accessible outside of the environment
+     */
+    external: pulumi.Input<boolean>;
+    /**
+     * Specifies the port user's container listens on
+     */
+    targetPort: pulumi.Input<number>;
+}
+
+/**
+ * Sticky Sessions for Single Revision Mode
+ */
+export interface IngressStickySessionsArgs {
+    /**
+     * Sticky Session Affinity
+     */
+    affinity?: pulumi.Input<string | enums.Affinity>;
 }
 
 /**
@@ -1519,6 +1603,20 @@ export interface JavaComponentConfigurationPropertyArgs {
      * The value of the property
      */
     value?: pulumi.Input<string>;
+}
+
+/**
+ * Java component scaling configurations
+ */
+export interface JavaComponentPropertiesScaleArgs {
+    /**
+     * Optional. Maximum number of Java component replicas
+     */
+    maxReplicas?: pulumi.Input<number>;
+    /**
+     * Optional. Minimum number of Java component replicas. Defaults to 1 if not set
+     */
+    minReplicas?: pulumi.Input<number>;
 }
 
 /**
@@ -1769,6 +1867,10 @@ export interface LoginArgs {
      * The routes that specify the endpoints used for login and logout requests.
      */
     routes?: pulumi.Input<LoginRoutesArgs>;
+    /**
+     * The configuration settings of the token store.
+     */
+    tokenStore?: pulumi.Input<TokenStoreArgs>;
 }
 
 /**
@@ -1806,17 +1908,33 @@ export interface ManagedCertificatePropertiesArgs {
 }
 
 /**
- * Configuration used to control the Environment Egress outbound traffic
+ * Peer traffic encryption settings for the Managed Environment
  */
-export interface ManagedEnvironmentOutboundSettingsArgs {
+export interface ManagedEnvironmentEncryptionArgs {
     /**
-     * Outbound type for the cluster
+     * Boolean indicating whether the peer traffic encryption is enabled
      */
-    outBoundType?: pulumi.Input<string | enums.ManagedEnvironmentOutBoundType>;
+    enabled?: pulumi.Input<boolean>;
+}
+
+/**
+ * Peer authentication settings for the Managed Environment
+ */
+export interface ManagedEnvironmentPeerAuthenticationArgs {
     /**
-     * Virtual Appliance IP used as the Egress controller for the Environment
+     * Mutual TLS authentication settings for the Managed Environment
      */
-    virtualNetworkApplianceIp?: pulumi.Input<string>;
+    mtls?: pulumi.Input<MtlsArgs>;
+}
+
+/**
+ * Peer traffic settings for the Managed Environment
+ */
+export interface ManagedEnvironmentPeerTrafficConfigurationArgs {
+    /**
+     * Peer traffic encryption settings for the Managed Environment
+     */
+    encryption?: pulumi.Input<ManagedEnvironmentEncryptionArgs>;
 }
 
 /**
@@ -1827,6 +1945,29 @@ export interface ManagedEnvironmentStoragePropertiesArgs {
      * Azure file properties
      */
     azureFile?: pulumi.Input<AzureFilePropertiesArgs>;
+}
+
+/**
+ * Optional settings for a Managed Identity that is assigned to the Session pool.
+ */
+export interface ManagedIdentitySettingArgs {
+    /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Session Pool, or 'system' for system-assigned identity.
+     */
+    identity: pulumi.Input<string>;
+    /**
+     * Use to select the lifecycle stages of a Session Pool during which the Managed Identity should be available.
+     */
+    lifecycle?: pulumi.Input<string | enums.IdentitySettingsLifeCycle>;
+}
+/**
+ * managedIdentitySettingArgsProvideDefaults sets the appropriate defaults for ManagedIdentitySettingArgs
+ */
+export function managedIdentitySettingArgsProvideDefaults(val: ManagedIdentitySettingArgs): ManagedIdentitySettingArgs {
+    return {
+        ...val,
+        lifecycle: (val.lifecycle) ?? "None",
+    };
 }
 
 /**
@@ -1841,6 +1982,39 @@ export interface ManagedServiceIdentityArgs {
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
     userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Configuration properties for mutual TLS authentication
+ */
+export interface MtlsArgs {
+    /**
+     * Boolean indicating whether the mutual TLS authentication is enabled
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+/**
+ * Nacos properties.
+ */
+export interface NacosComponentArgs {
+    /**
+     * Type of the Java Component.
+     * Expected value is 'Nacos'.
+     */
+    componentType: pulumi.Input<"Nacos">;
+    /**
+     * List of Java Components configuration properties
+     */
+    configurations?: pulumi.Input<pulumi.Input<JavaComponentConfigurationPropertyArgs>[]>;
+    /**
+     * Java component scaling configurations
+     */
+    scale?: pulumi.Input<JavaComponentPropertiesScaleArgs>;
+    /**
+     * List of Java Components that are bound to the Java component
+     */
+    serviceBinds?: pulumi.Input<pulumi.Input<JavaComponentServiceBindArgs>[]>;
 }
 
 /**
@@ -2105,6 +2279,32 @@ export interface ScaleRuleAuthArgs {
 }
 
 /**
+ * Spring Cloud Gateway route definition
+ */
+export interface ScgRouteArgs {
+    /**
+     * Filters of the route
+     */
+    filters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Id of the route
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Order of the route
+     */
+    order?: pulumi.Input<number>;
+    /**
+     * Predicates of the route
+     */
+    predicates?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Uri of the route
+     */
+    uri: pulumi.Input<string>;
+}
+
+/**
  * Maintenance schedule entry for a managed environment.
  */
 export interface ScheduledEntryArgs {
@@ -2156,6 +2356,30 @@ export interface SecretVolumeItemArgs {
      * Name of the Container App secret from which to pull the secret value.
      */
     secretRef?: pulumi.Input<string>;
+}
+
+/**
+ * Container App to be a dev service
+ */
+export interface ServiceArgs {
+    /**
+     * Dev ContainerApp service type
+     */
+    type: pulumi.Input<string>;
+}
+
+/**
+ * Configuration to bind a ContainerApp to a dev ContainerApp Service
+ */
+export interface ServiceBindArgs {
+    /**
+     * Name of the service bind
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Resource id of the target service
+     */
+    serviceId?: pulumi.Input<string>;
 }
 
 /**
@@ -2241,17 +2465,117 @@ export interface SessionPoolSecretArgs {
  */
 export interface SessionRegistryCredentialsArgs {
     /**
+     * A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
+     */
+    identity?: pulumi.Input<string>;
+    /**
      * The name of the secret that contains the registry login password
      */
     passwordSecretRef?: pulumi.Input<string>;
     /**
      * Container registry server.
      */
-    registryServer?: pulumi.Input<string>;
+    server?: pulumi.Input<string>;
     /**
      * Container registry username.
      */
     username?: pulumi.Input<string>;
+}
+
+/**
+ * Spring Boot Admin properties.
+ */
+export interface SpringBootAdminComponentArgs {
+    /**
+     * Type of the Java Component.
+     * Expected value is 'SpringBootAdmin'.
+     */
+    componentType: pulumi.Input<"SpringBootAdmin">;
+    /**
+     * List of Java Components configuration properties
+     */
+    configurations?: pulumi.Input<pulumi.Input<JavaComponentConfigurationPropertyArgs>[]>;
+    /**
+     * Java component scaling configurations
+     */
+    scale?: pulumi.Input<JavaComponentPropertiesScaleArgs>;
+    /**
+     * List of Java Components that are bound to the Java component
+     */
+    serviceBinds?: pulumi.Input<pulumi.Input<JavaComponentServiceBindArgs>[]>;
+}
+
+/**
+ * Spring Cloud Config properties.
+ */
+export interface SpringCloudConfigComponentArgs {
+    /**
+     * Type of the Java Component.
+     * Expected value is 'SpringCloudConfig'.
+     */
+    componentType: pulumi.Input<"SpringCloudConfig">;
+    /**
+     * List of Java Components configuration properties
+     */
+    configurations?: pulumi.Input<pulumi.Input<JavaComponentConfigurationPropertyArgs>[]>;
+    /**
+     * Java component scaling configurations
+     */
+    scale?: pulumi.Input<JavaComponentPropertiesScaleArgs>;
+    /**
+     * List of Java Components that are bound to the Java component
+     */
+    serviceBinds?: pulumi.Input<pulumi.Input<JavaComponentServiceBindArgs>[]>;
+}
+
+/**
+ * Spring Cloud Eureka properties.
+ */
+export interface SpringCloudEurekaComponentArgs {
+    /**
+     * Type of the Java Component.
+     * Expected value is 'SpringCloudEureka'.
+     */
+    componentType: pulumi.Input<"SpringCloudEureka">;
+    /**
+     * List of Java Components configuration properties
+     */
+    configurations?: pulumi.Input<pulumi.Input<JavaComponentConfigurationPropertyArgs>[]>;
+    /**
+     * Java component scaling configurations
+     */
+    scale?: pulumi.Input<JavaComponentPropertiesScaleArgs>;
+    /**
+     * List of Java Components that are bound to the Java component
+     */
+    serviceBinds?: pulumi.Input<pulumi.Input<JavaComponentServiceBindArgs>[]>;
+}
+
+/**
+ * Spring Cloud Gateway properties.
+ */
+export interface SpringCloudGatewayComponentArgs {
+    /**
+     * Type of the Java Component.
+     * Expected value is 'SpringCloudGateway'.
+     */
+    componentType: pulumi.Input<"SpringCloudGateway">;
+    /**
+     * List of Java Components configuration properties
+     */
+    configurations?: pulumi.Input<pulumi.Input<JavaComponentConfigurationPropertyArgs>[]>;
+    /**
+     * Java component scaling configurations
+     */
+    scale?: pulumi.Input<JavaComponentPropertiesScaleArgs>;
+    /**
+     * List of Java Components that are bound to the Java component
+     */
+    serviceBinds?: pulumi.Input<pulumi.Input<JavaComponentServiceBindArgs>[]>;
+    /**
+     * Gateway route definition
+     */
+    springCloudGatewayRoutes?: pulumi.Input<pulumi.Input<ScgRouteArgs>[]>;
 }
 
 /**
@@ -2311,6 +2635,14 @@ export interface TemplateArgs {
      */
     scale?: pulumi.Input<ScaleArgs>;
     /**
+     * List of container app services bound to the app
+     */
+    serviceBinds?: pulumi.Input<pulumi.Input<ServiceBindArgs>[]>;
+    /**
+     * Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.
+     */
+    terminationGracePeriodSeconds?: pulumi.Input<number>;
+    /**
      * List of volume definitions for the Container App.
      */
     volumes?: pulumi.Input<pulumi.Input<VolumeArgs>[]>;
@@ -2337,6 +2669,26 @@ export interface TimeoutPolicyArgs {
      * Timeout, in seconds, for a request to respond
      */
     responseTimeoutInSeconds?: pulumi.Input<number>;
+}
+
+/**
+ * The configuration settings of the token store.
+ */
+export interface TokenStoreArgs {
+    /**
+     * The configuration settings of the storage of the tokens if blob storage is used.
+     */
+    azureBlobStorage?: pulumi.Input<BlobStorageTokenStoreArgs>;
+    /**
+     * <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
+     *  The default is <code>false</code>.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The number of hours after session token expiration that a session token can be used to
+     * call the token refresh API. The default is 72 hours.
+     */
+    tokenRefreshExtensionHours?: pulumi.Input<number>;
 }
 
 /**
@@ -2410,17 +2762,13 @@ export interface VnetConfigurationArgs {
      */
     dockerBridgeCidr?: pulumi.Input<string>;
     /**
-     * Resource ID of a subnet for infrastructure components. This subnet must be in the same VNET as the subnet defined in runtimeSubnetId. Must not overlap with any other provided IP ranges.
+     * Resource ID of a subnet for infrastructure components. Must not overlap with any other provided IP ranges.
      */
     infrastructureSubnetId?: pulumi.Input<string>;
     /**
-     * Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide runtimeSubnetId and infrastructureSubnetId if enabling this property
+     * Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide infrastructureSubnetId if enabling this property
      */
     internal?: pulumi.Input<boolean>;
-    /**
-     * Configuration used to control the Environment Egress outbound traffic
-     */
-    outboundSettings?: pulumi.Input<ManagedEnvironmentOutboundSettingsArgs>;
     /**
      * IP range in CIDR notation that can be reserved for environment infrastructure IP addresses. Must not overlap with any other provided IP ranges.
      */
@@ -2429,10 +2777,6 @@ export interface VnetConfigurationArgs {
      *  An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server.
      */
     platformReservedDnsIP?: pulumi.Input<string>;
-    /**
-     * This field is deprecated and not used. If you wish to provide your own subnet that Container App containers are injected into, then you should leverage the infrastructureSubnetId.
-     */
-    runtimeSubnetId?: pulumi.Input<string>;
 }
 
 /**
@@ -2486,24 +2830,17 @@ export interface WorkloadProfileArgs {
     /**
      * The maximum capacity.
      */
-    maximumCount: pulumi.Input<number>;
+    maximumCount?: pulumi.Input<number>;
     /**
      * The minimum capacity.
      */
-    minimumCount: pulumi.Input<number>;
+    minimumCount?: pulumi.Input<number>;
+    /**
+     * Workload profile type for the workloads to run on.
+     */
+    name: pulumi.Input<string>;
     /**
      * Workload profile type for the workloads to run on.
      */
     workloadProfileType: pulumi.Input<string>;
 }
-
-
-
-
-
-
-
-
-
-
-

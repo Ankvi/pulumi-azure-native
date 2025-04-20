@@ -35,6 +35,10 @@ export interface GetSolutionArgs {
  */
 export interface GetSolutionResult {
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Gets or sets the ETAG for optimistic concurrency control.
      */
     readonly etag?: string;

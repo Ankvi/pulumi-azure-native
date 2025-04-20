@@ -39,6 +39,32 @@ export interface IdentityArgs {
 }
 
 /**
+ * Describes a license in a hybrid machine.
+ */
+export interface LicenseArgs {
+    /**
+     * Describes the properties of a License.
+     */
+    licenseDetails?: pulumi.Input<LicenseDetailsArgs>;
+    /**
+     * The type of the license resource.
+     */
+    licenseType?: pulumi.Input<string | enums.LicenseType>;
+    /**
+     * The geo-location where the resource lives
+     */
+    location: pulumi.Input<string>;
+    /**
+     * Resource tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Describes the tenant id.
+     */
+    tenantId?: pulumi.Input<string>;
+}
+
+/**
  * Describes the properties of a License.
  */
 export interface LicenseDetailsArgs {
@@ -62,6 +88,50 @@ export interface LicenseDetailsArgs {
      * Describes the license core type (pCore or vCore).
      */
     type?: pulumi.Input<string | enums.LicenseCoreType>;
+    /**
+     * A list of volume license details.
+     */
+    volumeLicenseDetails?: pulumi.Input<pulumi.Input<VolumeLicenseDetailsArgs>[]>;
+}
+
+/**
+ * License Profile Instance View in Machine Properties.
+ */
+export interface LicenseProfileMachineInstanceViewArgs {
+    /**
+     * Properties for the Machine ESU profile.
+     */
+    esuProfile?: pulumi.Input<LicenseProfileMachineInstanceViewEsuPropertiesArgs>;
+    /**
+     * The list of product features.
+     */
+    productFeatures?: pulumi.Input<pulumi.Input<ProductFeatureArgs>[]>;
+    /**
+     * Indicates the product type of the license.
+     */
+    productType?: pulumi.Input<string | enums.LicenseProfileProductType>;
+    /**
+     * Specifies if this machine is licensed as part of a Software Assurance agreement.
+     */
+    softwareAssuranceCustomer?: pulumi.Input<boolean>;
+    /**
+     * Indicates the subscription status of the product.
+     */
+    subscriptionStatus?: pulumi.Input<string | enums.LicenseProfileSubscriptionStatus>;
+}
+
+/**
+ * Properties for the Machine ESU profile.
+ */
+export interface LicenseProfileMachineInstanceViewEsuPropertiesArgs {
+    /**
+     * The assigned license resource.
+     */
+    assignedLicense?: pulumi.Input<LicenseArgs>;
+    /**
+     * Describes the license assignment state (Assigned or NotAssigned).
+     */
+    licenseAssignmentState?: pulumi.Input<string | enums.LicenseAssignmentState>;
 }
 
 /**
@@ -221,6 +291,10 @@ export interface OSProfileLinuxConfigurationArgs {
      */
     assessmentMode?: pulumi.Input<string | enums.AssessmentModeTypes>;
     /**
+     * Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
+     */
+    enableHotpatching?: pulumi.Input<boolean>;
+    /**
      * Specifies the patch mode.
      */
     patchMode?: pulumi.Input<string | enums.PatchModeTypes>;
@@ -234,6 +308,10 @@ export interface OSProfileWindowsConfigurationArgs {
      * Specifies the assessment mode.
      */
     assessmentMode?: pulumi.Input<string | enums.AssessmentModeTypes>;
+    /**
+     * Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
+     */
+    enableHotpatching?: pulumi.Input<boolean>;
     /**
      * Specifies the patch mode.
      */
@@ -276,6 +354,20 @@ export interface PrivateLinkServiceConnectionStatePropertyArgs {
      * The private link service connection status.
      */
     status: pulumi.Input<string>;
+}
+
+/**
+ * Product Feature
+ */
+export interface ProductFeatureArgs {
+    /**
+     * Product feature name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Indicates the current status of the product features.
+     */
+    subscriptionStatus?: pulumi.Input<string | enums.LicenseProfileSubscriptionStatus>;
 }
 
 /**
@@ -334,14 +426,13 @@ export interface ServiceStatusesArgs {
     guestConfigurationService?: pulumi.Input<ServiceStatusArgs>;
 }
 
-
-
-
-
-
-
-
-
-
-
-
+export interface VolumeLicenseDetailsArgs {
+    /**
+     * The invoice id for the volume license.
+     */
+    invoiceId?: pulumi.Input<string>;
+    /**
+     * Describes the program year the volume license is for.
+     */
+    programYear?: pulumi.Input<string | enums.ProgramYear>;
+}

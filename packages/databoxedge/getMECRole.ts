@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Gets a specific role by name.
  *
- * Uses Azure REST API version 2022-03-01.
+ * Uses Azure REST API version 2023-07-01.
  */
 export function getMECRole(args: GetMECRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetMECRoleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,6 +34,10 @@ export interface GetMECRoleArgs {
  * MEC role.
  */
 export interface GetMECRoleResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
     /**
      * Activation key of the MEC.
      */
@@ -75,7 +79,7 @@ export interface GetMECRoleResult {
 /**
  * Gets a specific role by name.
  *
- * Uses Azure REST API version 2022-03-01.
+ * Uses Azure REST API version 2023-07-01.
  */
 export function getMECRoleOutput(args: GetMECRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMECRoleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

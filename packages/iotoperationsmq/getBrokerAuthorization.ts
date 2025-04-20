@@ -44,6 +44,10 @@ export interface GetBrokerAuthorizationResult {
      */
     readonly authorizationPolicies: types.outputs.AuthorizationConfigResponse;
     /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
      * Extended Location
      */
     readonly extendedLocation: types.outputs.ExtendedLocationPropertyResponse;

@@ -1,26 +1,6 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * An A record.
- */
-export interface ARecordResponse {
-    /**
-     * The IPv4 address of this A record.
-     */
-    ipv4Address?: string;
-}
-
-/**
- * An AAAA record.
- */
-export interface AaaaRecordResponse {
-    /**
-     * The IPv6 address of this AAAA record.
-     */
-    ipv6Address?: string;
-}
-
-/**
  * AAD Vpn authentication type related parameters.
  */
 export interface AadAuthenticationParametersResponse {
@@ -496,6 +476,10 @@ export interface AddressSpaceResponse {
      * A list of address blocks reserved for this virtual network in CIDR notation.
      */
     addressPrefixes?: string[];
+    /**
+     * A list of IPAM Pools allocating IP address prefixes.
+     */
+    ipamPoolPrefixAllocations?: IpamPoolPrefixAllocationResponse[];
 }
 
 /**
@@ -842,6 +826,16 @@ export interface ApplicationGatewayFirewallExclusionResponse {
 }
 
 /**
+ * Defines an application gateway for containers reference.
+ */
+export interface ApplicationGatewayForContainersReferenceDefinitionResponse {
+    /**
+     * Resource Id of the application gateway for containers.
+     */
+    id: string;
+}
+
+/**
  * Frontend IP configuration of an application gateway.
  */
 export interface ApplicationGatewayFrontendIPConfigurationResponse {
@@ -943,6 +937,10 @@ export interface ApplicationGatewayHeaderConfigurationResponse {
      * Header value of the header configuration.
      */
     headerValue?: string;
+    /**
+     * An optional field under "Rewrite Action". It lets you capture and modify the value(s) of a specific header when multiple headers with the same name exist. Currently supported for Set-Cookie Response header only. For more details, visit https://aka.ms/appgwheadercrud
+     */
+    headerValueMatcher?: HeaderValueMatcherResponse;
 }
 
 /**
@@ -1057,6 +1055,10 @@ export interface ApplicationGatewayListenerResponse {
      * Frontend port resource of an application gateway.
      */
     frontendPort?: SubResourceResponse;
+    /**
+     * List of Server Name Indications(SNI) for TLS Multi-site Listener that allows special wildcard characters as well.
+     */
+    hostNames?: string[];
     /**
      * Resource ID.
      */
@@ -1383,7 +1385,7 @@ export interface ApplicationGatewayProbeResponse {
      */
     pickHostNameFromBackendSettings?: boolean;
     /**
-     * Custom port which will be used for probing the backend servers. The valid value ranges from 1 to 65535. In case not set, port from http settings will be used. This property is valid for Standard_v2 and WAF_v2 only.
+     * Custom port which will be used for probing the backend servers. The valid value ranges from 1 to 65535. In case not set, port from http settings will be used. This property is valid for Basic, Standard_v2 and WAF_v2 only.
      */
     port?: number;
     /**
@@ -1848,6 +1850,10 @@ export interface ApplicationGatewaySkuResponse {
      * Capacity (instance count) of an application gateway.
      */
     capacity?: number;
+    /**
+     * Family of an application gateway SKU.
+     */
+    family?: string;
     /**
      * Name of an application gateway SKU.
      */
@@ -2373,6 +2379,20 @@ export interface AzureFirewallApplicationRuleResponse {
 }
 
 /**
+ * Azure Firewall Autoscale Configuration parameters.
+ */
+export interface AzureFirewallAutoscaleConfigurationResponse {
+    /**
+     * The maximum number of capacity units for this azure firewall. Use null to reset the value to the service default.
+     */
+    maxCapacity?: number;
+    /**
+     * The minimum number of capacity units for this azure firewall. Use null to reset the value to the service default.
+     */
+    minCapacity?: number;
+}
+
+/**
  * IP configuration of an Azure Firewall.
  */
 export interface AzureFirewallIPConfigurationResponse {
@@ -2677,6 +2697,10 @@ export interface BackendAddressPoolResponse {
      */
     provisioningState: string;
     /**
+     * Backend address synchronous mode for the backend pool
+     */
+    syncMode?: string;
+    /**
      * An array of gateway load balancer tunnel interfaces.
      */
     tunnelInterfaces?: GatewayLoadBalancerTunnelInterfaceResponse[];
@@ -2688,117 +2712,6 @@ export interface BackendAddressPoolResponse {
      * A reference to a virtual network.
      */
     virtualNetwork?: SubResourceResponse;
-}
-
-/**
- * A backend pool is a collection of backends that can be routed to.
- */
-export interface BackendPoolResponse {
-    /**
-     * The set of backends for this pool
-     */
-    backends?: BackendResponse[];
-    /**
-     * L7 health probe settings for a backend pool
-     */
-    healthProbeSettings?: SubResourceResponse;
-    /**
-     * Resource ID.
-     */
-    id?: string;
-    /**
-     * Load balancing settings for a backend pool
-     */
-    loadBalancingSettings?: SubResourceResponse;
-    /**
-     * Resource name.
-     */
-    name?: string;
-    /**
-     * Resource status.
-     */
-    resourceState: string;
-    /**
-     * Resource type.
-     */
-    type: string;
-}
-
-/**
- * Settings that apply to all backend pools.
- */
-export interface BackendPoolsSettingsResponse {
-    /**
-     * Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
-     */
-    enforceCertificateNameCheck?: string;
-    /**
-     * Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.
-     */
-    sendRecvTimeoutSeconds?: number;
-}
-/**
- * backendPoolsSettingsResponseProvideDefaults sets the appropriate defaults for BackendPoolsSettingsResponse
- */
-export function backendPoolsSettingsResponseProvideDefaults(val: BackendPoolsSettingsResponse): BackendPoolsSettingsResponse {
-    return {
-        ...val,
-        enforceCertificateNameCheck: (val.enforceCertificateNameCheck) ?? "Enabled",
-    };
-}
-
-/**
- * Backend address of a frontDoor load balancer.
- */
-export interface BackendResponse {
-    /**
-     * Location of the backend (IP address or FQDN)
-     */
-    address?: string;
-    /**
-     * The value to use as the host header sent to the backend. If blank or unspecified, this defaults to the incoming host.
-     */
-    backendHostHeader?: string;
-    /**
-     * Whether to enable use of this backend. Permitted values are 'Enabled' or 'Disabled'
-     */
-    enabledState?: string;
-    /**
-     * The HTTP TCP port number. Must be between 1 and 65535.
-     */
-    httpPort?: number;
-    /**
-     * The HTTPS TCP port number. Must be between 1 and 65535.
-     */
-    httpsPort?: number;
-    /**
-     * Priority to use for load balancing. Higher priorities will not be used for load balancing if any lower priority backend is healthy.
-     */
-    priority?: number;
-    /**
-     * The Approval status for the connection to the Private Link
-     */
-    privateEndpointStatus: string;
-    /**
-     * The Alias of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
-     */
-    privateLinkAlias?: string;
-    /**
-     * A custom message to be included in the approval request to connect to the Private Link
-     */
-    privateLinkApprovalMessage?: string;
-    /**
-     * The location of the Private Link resource. Required only if 'privateLinkResourceId' is populated
-     */
-    privateLinkLocation?: string;
-    /**
-     * The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
-     */
-    privateLinkResourceId?: string;
-    /**
-     * Weight of this endpoint for load balancing purposes.
-     */
-    weight?: number;
 }
 
 /**
@@ -2876,9 +2789,9 @@ export interface BastionHostIPConfigurationResponse {
      */
     provisioningState: string;
     /**
-     * Reference of the PublicIP resource.
+     * Reference of the PublicIP resource. Null for private only bastion
      */
-    publicIPAddress: SubResourceResponse;
+    publicIPAddress?: SubResourceResponse;
     /**
      * Reference of the subnet resource.
      */
@@ -2887,6 +2800,13 @@ export interface BastionHostIPConfigurationResponse {
      * Ip configuration type.
      */
     type: string;
+}
+
+export interface BastionHostPropertiesFormatResponseNetworkAcls {
+    /**
+     * Sets the IP ACL rules for Developer Bastion Host.
+     */
+    ipRules?: IPRuleResponse[];
 }
 
 /**
@@ -2990,56 +2910,6 @@ export interface BreakOutCategoryPoliciesResponse {
 }
 
 /**
- * A CAA record.
- */
-export interface CaaRecordResponse {
-    /**
-     * The flags for this CAA record as an integer between 0 and 255.
-     */
-    flags?: number;
-    /**
-     * The tag for this CAA record.
-     */
-    tag?: string;
-    /**
-     * The value for this CAA record.
-     */
-    value?: string;
-}
-
-/**
- * Caching settings for a caching-type route. To disable caching, do not provide a cacheConfiguration object.
- */
-export interface CacheConfigurationResponse {
-    /**
-     * The duration for which the content needs to be cached. Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations). HTTP requires the value to be no more than a year
-     */
-    cacheDuration?: string;
-    /**
-     * Whether to use dynamic compression for cached content
-     */
-    dynamicCompression?: string;
-    /**
-     * Treatment of URL query terms when forming the cache key.
-     */
-    queryParameterStripDirective?: string;
-    /**
-     * query parameters to include or exclude (comma separated).
-     */
-    queryParameters?: string;
-}
-
-/**
- * A CNAME record.
- */
-export interface CnameRecordResponse {
-    /**
-     * The canonical name for this CNAME record.
-     */
-    cname?: string;
-}
-
-/**
  * The network configuration group resource
  */
 export interface ConfigurationGroupResponse {
@@ -3064,7 +2934,7 @@ export interface ConfigurationGroupResponse {
      */
     id?: string;
     /**
-     * Group member type.
+     * The type of the group member.
      */
     memberType?: string;
     /**
@@ -3124,11 +2994,21 @@ export interface ConnectionMonitorEndpointFilterResponse {
 }
 
 /**
+ * Connection monitor endpoint location details only being used for 'AzureArcNetwork' type endpoints, which contains the region details.
+ */
+export interface ConnectionMonitorEndpointLocationDetailsResponse {
+    /**
+     * Region for connection monitor endpoint.
+     */
+    region?: string;
+}
+
+/**
  * Describes the connection monitor endpoint.
  */
 export interface ConnectionMonitorEndpointResponse {
     /**
-     * Address of the connection monitor endpoint (IP or domain name).
+     * Address of the connection monitor endpoint. Supported for AzureVM, ExternalAddress, ArcMachine, MMAWorkspaceMachine endpoint type.
      */
     address?: string;
     /**
@@ -3136,21 +3016,29 @@ export interface ConnectionMonitorEndpointResponse {
      */
     coverageLevel?: string;
     /**
-     * Filter for sub-items within the endpoint.
+     * Filter field is getting deprecated and should not be used. Instead use Include/Exclude scope fields for it.
      */
     filter?: ConnectionMonitorEndpointFilterResponse;
+    /**
+     * Location details is optional and only being used for 'AzureArcNetwork' type endpoints, which contains region details.
+     */
+    locationDetails?: ConnectionMonitorEndpointLocationDetailsResponse;
     /**
      * The name of the connection monitor endpoint.
      */
     name: string;
     /**
-     * Resource ID of the connection monitor endpoint.
+     * Resource ID of the connection monitor endpoint are supported for AzureVM, AzureVMSS, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork, AzureArcVM endpoint type.
      */
     resourceId?: string;
     /**
-     * Endpoint scope.
+     * Endpoint scope defines which target resource to monitor in case of compound resource endpoints like VMSS, AzureSubnet, AzureVNet, MMAWorkspaceNetwork, AzureArcNetwork.
      */
     scope?: ConnectionMonitorEndpointScopeResponse;
+    /**
+     * Subscription ID for connection monitor endpoint. It's an optional parameter which is being used for 'AzureArcNetwork' type endpoint.
+     */
+    subscriptionId?: string;
     /**
      * The endpoint type.
      */
@@ -3536,88 +3424,6 @@ export interface CustomDnsConfigPropertiesFormatResponse {
 }
 
 /**
- * Https settings for a domain
- */
-export interface CustomHttpsConfigurationResponse {
-    /**
-     * Defines the source of the SSL certificate
-     */
-    certificateSource: string;
-    /**
-     * Defines the type of the certificate used for secure connections to a frontendEndpoint
-     */
-    certificateType?: string;
-    /**
-     * The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
-     */
-    minimumTlsVersion: string;
-    /**
-     * Defines the TLS extension protocol that is used for secure delivery
-     */
-    protocolType: string;
-    /**
-     * The name of the Key Vault secret representing the full certificate PFX
-     */
-    secretName?: string;
-    /**
-     * The version of the Key Vault secret representing the full certificate PFX
-     */
-    secretVersion?: string;
-    /**
-     * The Key Vault containing the SSL certificate
-     */
-    vault?: KeyVaultCertificateSourceParametersResponseVault;
-}
-
-/**
- * Defines contents of custom rules
- */
-export interface CustomRuleListResponse {
-    /**
-     * List of rules
-     */
-    rules?: CustomRuleResponse[];
-}
-
-/**
- * Defines contents of a web application rule
- */
-export interface CustomRuleResponse {
-    /**
-     * Describes what action to be applied when rule matches.
-     */
-    action: string;
-    /**
-     * Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
-     */
-    enabledState?: string;
-    /**
-     * List of match conditions.
-     */
-    matchConditions: FrontDoorMatchConditionResponse[];
-    /**
-     * Describes the name of the rule.
-     */
-    name?: string;
-    /**
-     * Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
-     */
-    priority: number;
-    /**
-     * Time window for resetting the rate limit count. Default is 1 minute.
-     */
-    rateLimitDurationInMinutes?: number;
-    /**
-     * Number of allowed requests per client within the time window.
-     */
-    rateLimitThreshold?: number;
-    /**
-     * Describes type of rule.
-     */
-    ruleType: string;
-}
-
-/**
  * Contains the DDoS protection settings of the public IP.
  */
 export interface DdosSettingsResponse {
@@ -3688,24 +3494,6 @@ export interface DelegationResponse {
 }
 
 /**
- * The delegation signer information.
- */
-export interface DelegationSignerInfoResponse {
-    /**
-     * The digest algorithm type represents the standard digest algorithm number used to construct the digest. See: https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml
-     */
-    digestAlgorithmType: number;
-    /**
-     * The digest value is a cryptographic hash value of the referenced DNSKEY Resource Record.
-     */
-    digestValue: string;
-    /**
-     * The record represents a delegation signer (DS) record.
-     */
-    record: string;
-}
-
-/**
  * List of properties of the device.
  */
 export interface DevicePropertiesResponse {
@@ -3731,52 +3519,6 @@ export interface DhcpOptionsResponse {
      * The list of DNS servers IP addresses.
      */
     dnsServers?: string[];
-}
-
-/**
- * Class containing DNS settings in a Traffic Manager profile.
- */
-export interface DnsConfigResponse {
-    /**
-     * The fully-qualified domain name (FQDN) of the Traffic Manager profile. This is formed from the concatenation of the RelativeName with the DNS domain used by Azure Traffic Manager.
-     */
-    fqdn: string;
-    /**
-     * The relative DNS name provided by this Traffic Manager profile. This value is combined with the DNS domain name used by Azure Traffic Manager to form the fully-qualified domain name (FQDN) of the profile.
-     */
-    relativeName?: string;
-    /**
-     * The DNS Time-To-Live (TTL), in seconds. This informs the local DNS resolvers and DNS clients how long to cache DNS responses provided by this Traffic Manager profile.
-     */
-    ttl?: number;
-}
-
-/**
- * Represents a single Azure resource and its referencing DNS records.
- */
-export interface DnsResourceReferenceResponse {
-    /**
-     * A list of dns Records 
-     */
-    dnsResources?: SubResourceResponse[];
-    /**
-     * A reference to an azure resource from where the dns resource value is taken.
-     */
-    targetResource?: SubResourceResponse;
-}
-
-/**
- * The action to take on DNS requests that match the DNS security rule.
- */
-export interface DnsSecurityRuleActionResponse {
-    /**
-     * The type of action to take.
-     */
-    actionType?: string;
-    /**
-     * The response code for block actions.
-     */
-    blockResponseCode?: string;
 }
 
 /**
@@ -4044,112 +3786,6 @@ export interface EffectiveVirtualNetworkResponse {
 }
 
 /**
- * Custom header name and value.
- */
-export interface EndpointPropertiesResponseCustomHeaders {
-    /**
-     * Header name.
-     */
-    name?: string;
-    /**
-     * Header value.
-     */
-    value?: string;
-}
-
-/**
- * Subnet first address, scope, and/or last address.
- */
-export interface EndpointPropertiesResponseSubnets {
-    /**
-     * First address in the subnet.
-     */
-    first?: string;
-    /**
-     * Last address in the subnet.
-     */
-    last?: string;
-    /**
-     * Block size (number of leading bits in the subnet mask).
-     */
-    scope?: number;
-}
-
-/**
- * Class representing a Traffic Manager endpoint.
- */
-export interface EndpointResponse {
-    /**
-     * If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
-     */
-    alwaysServe?: string;
-    /**
-     * List of custom headers.
-     */
-    customHeaders?: EndpointPropertiesResponseCustomHeaders[];
-    /**
-     * Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
-     */
-    endpointLocation?: string;
-    /**
-     * The monitoring status of the endpoint.
-     */
-    endpointMonitorStatus?: string;
-    /**
-     * The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method.
-     */
-    endpointStatus?: string;
-    /**
-     * The list of countries/regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager Geographic documentation for a full list of accepted values.
-     */
-    geoMapping?: string[];
-    /**
-     * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
-     */
-    id?: string;
-    /**
-     * The minimum number of endpoints that must be available in the child profile in order for the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.
-     */
-    minChildEndpoints?: number;
-    /**
-     * The minimum number of IPv4 (DNS record type A) endpoints that must be available in the child profile in order for the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.
-     */
-    minChildEndpointsIPv4?: number;
-    /**
-     * The minimum number of IPv6 (DNS record type AAAA) endpoints that must be available in the child profile in order for the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.
-     */
-    minChildEndpointsIPv6?: number;
-    /**
-     * The name of the resource
-     */
-    name?: string;
-    /**
-     * The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value.
-     */
-    priority?: number;
-    /**
-     * The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
-     */
-    subnets?: EndpointPropertiesResponseSubnets[];
-    /**
-     * The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
-     */
-    target?: string;
-    /**
-     * The Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
-     */
-    targetResourceId?: string;
-    /**
-     * The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
-     */
-    type?: string;
-    /**
-     * The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
-     */
-    weight?: number;
-}
-
-/**
  * Identifies the service being brought into the virtual network.
  */
 export interface EndpointServiceResponse {
@@ -4157,6 +3793,36 @@ export interface EndpointServiceResponse {
      * A unique identifier of the service being referenced by the interface endpoint.
      */
     id?: string;
+}
+
+/**
+ * Adds exception to allow a request when the condition is satisfied.
+ */
+export interface ExceptionEntryResponse {
+    /**
+     * The managed rule sets that are associated with the exception.
+     */
+    exceptionManagedRuleSets?: ExclusionManagedRuleSetResponse[];
+    /**
+     * The variable on which we evaluate the exception condition
+     */
+    matchVariable: string;
+    /**
+     * When the matchVariable points to a key-value pair (e.g, RequestHeader), this identifies the key.
+     */
+    selector?: string;
+    /**
+     * When the matchVariable points to a key-value pair (e.g, RequestHeader), this operates on the selector
+     */
+    selectorMatchOperator?: string;
+    /**
+     * Operates on the allowed values for the matchVariable
+     */
+    valueMatchOperator: string;
+    /**
+     * Allowed values for the matchVariable
+     */
+    values?: string[];
 }
 
 /**
@@ -4202,20 +3868,6 @@ export interface ExclusionManagedRuleSetResponse {
 }
 
 /**
- * Defines the endpoint properties
- */
-export interface ExperimentEndpointResponse {
-    /**
-     * The endpoint URL
-     */
-    endpoint?: string;
-    /**
-     * The name of the endpoint
-     */
-    name?: string;
-}
-
-/**
  * Explicit Proxy Settings in Firewall Policy.
  */
 export interface ExplicitProxyResponse {
@@ -4257,6 +3909,10 @@ export interface ExpressRouteCircuitAuthorizationResponse {
      * The authorization use status.
      */
     authorizationUseStatus?: string;
+    /**
+     * The reference to the ExpressRoute connection resource using the authorization.
+     */
+    connectionResourceUri: string;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -5135,6 +4791,10 @@ export interface FlowLogResponse {
      */
     enabled?: boolean;
     /**
+     * Optional field to filter network traffic logs based on SrcIP, SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not specified, all network traffic will be logged.
+     */
+    enabledFilteringCriteria?: string;
+    /**
      * A unique read-only string that changes whenever the resource is updated.
      */
     etag: string;
@@ -5150,6 +4810,10 @@ export interface FlowLogResponse {
      * Resource ID.
      */
     id?: string;
+    /**
+     * FlowLog resource Managed Identity
+     */
+    identity?: ManagedServiceIdentityResponse;
     /**
      * Resource location.
      */
@@ -5196,229 +4860,6 @@ export function flowLogResponseProvideDefaults(val: FlowLogResponse): FlowLogRes
         format: (val.format ? flowLogFormatParametersResponseProvideDefaults(val.format) : undefined),
         retentionPolicy: (val.retentionPolicy ? retentionPolicyParametersResponseProvideDefaults(val.retentionPolicy) : undefined),
     };
-}
-
-/**
- * Describes Forwarding Route.
- */
-export interface ForwardingConfigurationResponse {
-    /**
-     * A reference to the BackendPool which this rule routes to.
-     */
-    backendPool?: SubResourceResponse;
-    /**
-     * The caching configuration associated with this rule.
-     */
-    cacheConfiguration?: CacheConfigurationResponse;
-    /**
-     * A custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.
-     */
-    customForwardingPath?: string;
-    /**
-     * Protocol this rule will use when forwarding traffic to backends.
-     */
-    forwardingProtocol?: string;
-    /**
-     *
-     * Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration'.
-     */
-    odataType: "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration";
-}
-
-/**
- * Defines a managed rule group override setting.
- */
-export interface FrontDoorManagedRuleGroupOverrideResponse {
-    /**
-     * Describes the exclusions that are applied to all rules in the group.
-     */
-    exclusions?: ManagedRuleExclusionResponse[];
-    /**
-     * Describes the managed rule group to override.
-     */
-    ruleGroupName: string;
-    /**
-     * List of rules that will be disabled. If none specified, all rules in the group will be disabled.
-     */
-    rules?: FrontDoorManagedRuleOverrideResponse[];
-}
-
-/**
- * Defines a managed rule group override setting.
- */
-export interface FrontDoorManagedRuleOverrideResponse {
-    /**
-     * Describes the override action to be applied when rule matches.
-     */
-    action?: string;
-    /**
-     * Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
-     */
-    enabledState?: string;
-    /**
-     * Describes the exclusions that are applied to this specific rule.
-     */
-    exclusions?: ManagedRuleExclusionResponse[];
-    /**
-     * Identifier for the managed rule.
-     */
-    ruleId: string;
-}
-
-/**
- * Defines a managed rule set.
- */
-export interface FrontDoorManagedRuleSetResponse {
-    /**
-     * Describes the exclusions that are applied to all rules in the set.
-     */
-    exclusions?: ManagedRuleExclusionResponse[];
-    /**
-     * Defines the rule group overrides to apply to the rule set.
-     */
-    ruleGroupOverrides?: FrontDoorManagedRuleGroupOverrideResponse[];
-    /**
-     * Defines the rule set action.
-     */
-    ruleSetAction?: string;
-    /**
-     * Defines the rule set type to use.
-     */
-    ruleSetType: string;
-    /**
-     * Defines the version of the rule set to use.
-     */
-    ruleSetVersion: string;
-}
-
-/**
- * Define a match condition.
- */
-export interface FrontDoorMatchConditionResponse {
-    /**
-     * List of possible match values.
-     */
-    matchValue: string[];
-    /**
-     * Request variable to compare with.
-     */
-    matchVariable: string;
-    /**
-     * Describes if the result of this condition should be negated.
-     */
-    negateCondition?: boolean;
-    /**
-     * Comparison type to use for matching with the variable value.
-     */
-    operator: string;
-    /**
-     * Match against a specific key from the QueryString, PostArgs, RequestHeader or Cookies variables. Default is null.
-     */
-    selector?: string;
-    /**
-     * List of transforms.
-     */
-    transforms?: string[];
-}
-
-/**
- * Defines top-level WebApplicationFirewallPolicy configuration settings.
- */
-export interface FrontDoorPolicySettingsResponse {
-    /**
-     * If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-     */
-    customBlockResponseBody?: string;
-    /**
-     * If the action type is block, customer can override the response status code.
-     */
-    customBlockResponseStatusCode?: number;
-    /**
-     * Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified.
-     */
-    enabledState?: string;
-    /**
-     * Describes if it is in detection mode or prevention mode at policy level.
-     */
-    mode?: string;
-    /**
-     * If action type is redirect, this field represents redirect URL for the client.
-     */
-    redirectUrl?: string;
-    /**
-     * Describes if policy managed rules will inspect the request body content.
-     */
-    requestBodyCheck?: string;
-}
-
-/**
- * Defines the Resource ID for a Frontend Endpoint.
- */
-export interface FrontendEndpointLinkResponse {
-    /**
-     * Resource ID.
-     */
-    id?: string;
-}
-
-/**
- * A frontend endpoint used for routing.
- */
-export interface FrontendEndpointResponse {
-    /**
-     * The configuration specifying how to enable HTTPS
-     */
-    customHttpsConfiguration: CustomHttpsConfigurationResponse;
-    /**
-     * Provisioning status of Custom Https of the frontendEndpoint.
-     */
-    customHttpsProvisioningState: string;
-    /**
-     * Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step.
-     */
-    customHttpsProvisioningSubstate: string;
-    /**
-     * The host name of the frontendEndpoint. Must be a domain name.
-     */
-    hostName?: string;
-    /**
-     * Resource ID.
-     */
-    id?: string;
-    /**
-     * Resource name.
-     */
-    name?: string;
-    /**
-     * Resource status.
-     */
-    resourceState: string;
-    /**
-     * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
-     */
-    sessionAffinityEnabledState?: string;
-    /**
-     * UNUSED. This field will be ignored. The TTL to use in seconds for session affinity, if applicable.
-     */
-    sessionAffinityTtlSeconds?: number;
-    /**
-     * Resource type.
-     */
-    type: string;
-    /**
-     * Defines the Web Application Firewall policy for each host (if applicable)
-     */
-    webApplicationFirewallPolicyLink?: FrontendEndpointUpdateParametersResponseWebApplicationFirewallPolicyLink;
-}
-
-/**
- * Defines the Web Application Firewall policy for each host (if applicable)
- */
-export interface FrontendEndpointUpdateParametersResponseWebApplicationFirewallPolicyLink {
-    /**
-     * Resource ID.
-     */
-    id?: string;
 }
 
 /**
@@ -5620,72 +5061,21 @@ export interface HTTPHeaderResponse {
 }
 
 /**
- * An action that can manipulate an http header.
+ * An optional field under "Rewrite Action". It lets you capture and modify the value(s) of a specific header when multiple headers with the same name exist. Currently supported for Set-Cookie Response header only. For more details, visit https://aka.ms/appgwheadercrud
  */
-export interface HeaderActionResponse {
+export interface HeaderValueMatcherResponse {
     /**
-     * Which type of manipulation to apply to the header.
+     * Setting this parameter to truth value with force the pattern to do a case in-sensitive comparison.
      */
-    headerActionType: string;
+    ignoreCase?: boolean;
     /**
-     * The name of the header this action will apply to.
+     * Setting this value as truth will force to check the negation of the condition given by the user in the pattern field.
      */
-    headerName: string;
+    negate?: boolean;
     /**
-     * The value to update the given header name with. This value is not used if the actionType is Delete.
+     * The pattern, either fixed string or regular expression, that evaluates if a header value should be selected for rewrite.
      */
-    value?: string;
-}
-
-/**
- * Load balancing settings for a backend pool
- */
-export interface HealthProbeSettingsModelResponse {
-    /**
-     * Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
-     */
-    enabledState?: string;
-    /**
-     * Configures which HTTP method to use to probe the backends defined under backendPools.
-     */
-    healthProbeMethod?: string;
-    /**
-     * Resource ID.
-     */
-    id?: string;
-    /**
-     * The number of seconds between health probes.
-     */
-    intervalInSeconds?: number;
-    /**
-     * Resource name.
-     */
-    name?: string;
-    /**
-     * The path to use for the health probe. Default is /
-     */
-    path?: string;
-    /**
-     * Protocol scheme to use for this probe
-     */
-    protocol?: string;
-    /**
-     * Resource status.
-     */
-    resourceState: string;
-    /**
-     * Resource type.
-     */
-    type: string;
-}
-/**
- * healthProbeSettingsModelResponseProvideDefaults sets the appropriate defaults for HealthProbeSettingsModelResponse
- */
-export function healthProbeSettingsModelResponseProvideDefaults(val: HealthProbeSettingsModelResponse): HealthProbeSettingsModelResponse {
-    return {
-        ...val,
-        healthProbeMethod: (val.healthProbeMethod) ?? "HEAD",
-    };
+    pattern?: string;
 }
 
 /**
@@ -5866,6 +5256,13 @@ export function ipconfigurationResponseProvideDefaults(val: IPConfigurationRespo
     };
 }
 
+export interface IPRuleResponse {
+    /**
+     * Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
+     */
+    addressPrefix?: string;
+}
+
 /**
  * IP traffic information.
  */
@@ -5887,33 +5284,6 @@ export interface IPTrafficResponse {
      * The source ports of the traffic.
      */
     sourcePorts: string[];
-}
-
-/**
- * IP configuration.
- */
-export interface InboundEndpointIPConfigurationResponse {
-    /**
-     * Private IP address of the IP configuration.
-     */
-    privateIpAddress?: string;
-    /**
-     * Private IP address allocation method.
-     */
-    privateIpAllocationMethod?: string;
-    /**
-     * The reference to the subnet bound to the IP configuration.
-     */
-    subnet: SubResourceResponse;
-}
-/**
- * inboundEndpointIPConfigurationResponseProvideDefaults sets the appropriate defaults for InboundEndpointIPConfigurationResponse
- */
-export function inboundEndpointIPConfigurationResponseProvideDefaults(val: InboundEndpointIPConfigurationResponse): InboundEndpointIPConfigurationResponse {
-    return {
-        ...val,
-        privateIpAllocationMethod: (val.privateIpAllocationMethod) ?? "Dynamic",
-    };
 }
 
 /**
@@ -6136,6 +5506,16 @@ export function interfaceEndpointResponseProvideDefaults(val: InterfaceEndpointR
 }
 
 /**
+ * Resource Uri of Public Ip for Standard Load Balancer Frontend End.
+ */
+export interface InternetIngressPublicIpsPropertiesResponse {
+    /**
+     * Resource Uri of Public Ip
+     */
+    id?: string;
+}
+
+/**
  * Contains the IpTag associated with the object.
  */
 export interface IpTagResponse {
@@ -6147,6 +5527,24 @@ export interface IpTagResponse {
      * The value of the IP tag associated with the public IP. Example: SQL.
      */
     tag?: string;
+}
+
+/**
+ * IpamPool prefix allocation reference.
+ */
+export interface IpamPoolPrefixAllocationResponse {
+    /**
+     * List of assigned IP address prefixes in the IpamPool of the associated resource.
+     */
+    allocatedAddressPrefixes: string[];
+    /**
+     * Resource id of the associated Azure IpamPool resource.
+     */
+    id?: string;
+    /**
+     * Number of IP addresses to allocate.
+     */
+    numberOfIpAddresses?: string;
 }
 
 /**
@@ -6252,16 +5650,6 @@ export interface Ipv6ExpressRouteCircuitPeeringConfigResponse {
      * The state of peering.
      */
     state?: string;
-}
-
-/**
- * The Key Vault containing the SSL certificate
- */
-export interface KeyVaultCertificateSourceParametersResponseVault {
-    /**
-     * Resource ID.
-     */
-    id?: string;
 }
 
 /**
@@ -6391,40 +5779,6 @@ export interface LoadBalancingRuleResponse {
 }
 
 /**
- * Load balancing settings for a backend pool
- */
-export interface LoadBalancingSettingsModelResponse {
-    /**
-     * The additional latency in milliseconds for probes to fall into the lowest latency bucket
-     */
-    additionalLatencyMilliseconds?: number;
-    /**
-     * Resource ID.
-     */
-    id?: string;
-    /**
-     * Resource name.
-     */
-    name?: string;
-    /**
-     * Resource status.
-     */
-    resourceState: string;
-    /**
-     * The number of samples to consider for load balancing decisions
-     */
-    sampleSize?: number;
-    /**
-     * The number of samples within the sample period that must succeed
-     */
-    successfulSamplesRequired?: number;
-    /**
-     * Resource type.
-     */
-    type: string;
-}
-
-/**
  * A common class for general resource information.
  */
 export interface LocalNetworkGatewayResponse {
@@ -6479,24 +5833,6 @@ export interface LocalNetworkGatewayResponse {
 }
 
 /**
- * Exclude variables from managed rule evaluation.
- */
-export interface ManagedRuleExclusionResponse {
-    /**
-     * The variable type to be excluded.
-     */
-    matchVariable: string;
-    /**
-     * Selector value for which elements in the collection this exclusion applies to.
-     */
-    selector: string;
-    /**
-     * Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.
-     */
-    selectorMatchOperator: string;
-}
-
-/**
  * Defines a managed rule group override setting.
  */
 export interface ManagedRuleGroupOverrideResponse {
@@ -6523,19 +5859,13 @@ export interface ManagedRuleOverrideResponse {
      */
     ruleId: string;
     /**
+     * Describes the override sensitivity to be applied when rule matches.
+     */
+    sensitivity?: string;
+    /**
      * The state of the managed rule. Defaults to Disabled if not specified.
      */
     state?: string;
-}
-
-/**
- * Defines the list of managed rule sets for the policy.
- */
-export interface ManagedRuleSetListResponse {
-    /**
-     * List of rule sets.
-     */
-    managedRuleSets?: FrontDoorManagedRuleSetResponse[];
 }
 
 /**
@@ -6560,6 +5890,10 @@ export interface ManagedRuleSetResponse {
  * Allow to exclude some variable satisfy the condition for the WAF check.
  */
 export interface ManagedRulesDefinitionResponse {
+    /**
+     * The exceptions that are applied on the policy.
+     */
+    exceptions?: ExceptionEntryResponse[];
     /**
      * The Exclusions that are applied on the policy.
      */
@@ -6641,90 +5975,6 @@ export interface MatchVariableResponse {
      * Match Variable.
      */
     variableName: string;
-}
-
-/**
- * Class containing endpoint monitoring settings in a Traffic Manager profile.
- */
-export interface MonitorConfigResponse {
-    /**
-     * List of custom headers.
-     */
-    customHeaders?: MonitorConfigResponseCustomHeaders[];
-    /**
-     * List of expected status code ranges.
-     */
-    expectedStatusCodeRanges?: MonitorConfigResponseExpectedStatusCodeRanges[];
-    /**
-     * The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile.
-     */
-    intervalInSeconds?: number;
-    /**
-     * The path relative to the endpoint domain name used to probe for endpoint health.
-     */
-    path?: string;
-    /**
-     * The TCP port used to probe for endpoint health.
-     */
-    port?: number;
-    /**
-     * The profile-level monitoring status of the Traffic Manager profile.
-     */
-    profileMonitorStatus?: string;
-    /**
-     * The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
-     */
-    protocol?: string;
-    /**
-     * The monitor timeout for endpoints in this profile. This is the time that Traffic Manager allows endpoints in this profile to response to the health check.
-     */
-    timeoutInSeconds?: number;
-    /**
-     * The number of consecutive failed health check that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next failed health check.
-     */
-    toleratedNumberOfFailures?: number;
-}
-
-/**
- * Custom header name and value.
- */
-export interface MonitorConfigResponseCustomHeaders {
-    /**
-     * Header name.
-     */
-    name?: string;
-    /**
-     * Header value.
-     */
-    value?: string;
-}
-
-/**
- * Min and max value of a status code range.
- */
-export interface MonitorConfigResponseExpectedStatusCodeRanges {
-    /**
-     * Max status code.
-     */
-    max?: number;
-    /**
-     * Min status code.
-     */
-    min?: number;
-}
-
-/**
- * An MX record.
- */
-export interface MxRecordResponse {
-    /**
-     * The domain name of the mail host for this MX record.
-     */
-    exchange?: string;
-    /**
-     * The preference value for this MX record.
-     */
-    preference?: number;
 }
 
 /**
@@ -6992,9 +6242,13 @@ export interface NetworkInterfaceIPConfigurationResponse {
      */
     primary?: boolean;
     /**
-     * Private IP address of the IP configuration.
+     * Private IP address of the IP configuration. It can be a single IP address or a CIDR block in the format <address>/<prefix-length>.
      */
     privateIPAddress?: string;
+    /**
+     * The private IP address prefix length. If specified and the allocation method is dynamic, the service will allocate a CIDR block instead of a single IP address.
+     */
+    privateIPAddressPrefixLength?: number;
     /**
      * Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4.
      */
@@ -7051,6 +6305,10 @@ export interface NetworkInterfaceResponse {
      * Auxiliary sku of Network Interface resource.
      */
     auxiliarySku?: string;
+    /**
+     * Whether default outbound connectivity for nic was configured or not.
+     */
+    defaultOutboundConnectivityEnabled: boolean;
     /**
      * Indicates whether to disable tcp state tracking.
      */
@@ -7435,13 +6693,44 @@ export interface NetworkSecurityGroupResponse {
 }
 
 /**
- * An NS record.
+ * Properties of the NetworkVirtualApplianceConnection subresource.
  */
-export interface NsRecordResponse {
+export interface NetworkVirtualApplianceConnectionPropertiesResponse {
     /**
-     * The name server name for this NS record.
+     * Network Virtual Appliance ASN.
      */
-    nsdname?: string;
+    asn?: number;
+    /**
+     * List of bgpPeerAddresses for the NVA instances
+     */
+    bgpPeerAddress?: string[];
+    /**
+     * Enable internet security.
+     */
+    enableInternetSecurity?: boolean;
+    /**
+     * The name of the resource.
+     */
+    name?: string;
+    /**
+     * The provisioning state of the NetworkVirtualApplianceConnection resource.
+     */
+    provisioningState: string;
+    /**
+     * The Routing Configuration indicating the associated and propagated route tables on this connection.
+     */
+    routingConfiguration?: RoutingConfigurationResponse;
+    /**
+     * Unique identifier for the connection.
+     */
+    tunnelIdentifier?: number;
+}
+
+/**
+ * Network Profile containing configurations for Public and Private NIC.
+ */
+export interface NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile {
+    networkInterfaceConfigurations?: VirtualApplianceNetworkInterfaceConfigurationResponse[];
 }
 
 /**
@@ -7777,6 +7066,60 @@ export interface P2SVpnServerConfigVpnClientRootCertificateResponse {
 }
 
 /**
+ * Parameters for P2SVpnServerConfiguration.
+ */
+export interface P2SVpnServerConfigurationPropertiesResponse {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag?: string;
+    /**
+     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan in a resource group. This name can be used to access the resource along with Paren VirtualWan resource name.
+     */
+    name?: string;
+    /**
+     * List of references to P2SVpnGateways.
+     */
+    p2SVpnGateways: SubResourceResponse[];
+    /**
+     * Radius client root certificate of P2SVpnServerConfiguration.
+     */
+    p2SVpnServerConfigRadiusClientRootCertificates?: P2SVpnServerConfigRadiusClientRootCertificateResponse[];
+    /**
+     * Radius Server root certificate of P2SVpnServerConfiguration.
+     */
+    p2SVpnServerConfigRadiusServerRootCertificates?: P2SVpnServerConfigRadiusServerRootCertificateResponse[];
+    /**
+     * VPN client revoked certificate of P2SVpnServerConfiguration.
+     */
+    p2SVpnServerConfigVpnClientRevokedCertificates?: P2SVpnServerConfigVpnClientRevokedCertificateResponse[];
+    /**
+     * VPN client root certificate of P2SVpnServerConfiguration.
+     */
+    p2SVpnServerConfigVpnClientRootCertificates?: P2SVpnServerConfigVpnClientRootCertificateResponse[];
+    /**
+     * The provisioning state of the P2S VPN server configuration resource.
+     */
+    provisioningState: string;
+    /**
+     * The radius server address property of the P2SVpnServerConfiguration resource for point to site client connection.
+     */
+    radiusServerAddress?: string;
+    /**
+     * The radius secret property of the P2SVpnServerConfiguration resource for point to site client connection.
+     */
+    radiusServerSecret?: string;
+    /**
+     * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
+     */
+    vpnClientIpsecPolicies?: IpsecPolicyResponse[];
+    /**
+     * VPN protocols for the P2SVpnServerConfiguration.
+     */
+    vpnProtocols?: string[];
+}
+
+/**
  * Filter that is applied to packet capture request. Multiple filters can be applied.
  */
 export interface PacketCaptureFilterResponse {
@@ -7828,13 +7171,46 @@ export interface PacketCaptureMachineScopeResponse {
 /**
  * The storage location for a packet capture session.
  */
+export interface PacketCaptureSettingsResponse {
+    /**
+     * Number of file count. Default value of count is 10 and maximum number is 10000.
+     */
+    fileCount?: number;
+    /**
+     * Number of bytes captured per packet. Default value in bytes 104857600 (100MB) and maximum in bytes 4294967295 (4GB).
+     */
+    fileSizeInBytes?: number;
+    /**
+     * Maximum duration of the capture session in seconds is 604800s (7 days) for a file. Default value in second 86400s (1 day).
+     */
+    sessionTimeLimitInSeconds?: number;
+}
+/**
+ * packetCaptureSettingsResponseProvideDefaults sets the appropriate defaults for PacketCaptureSettingsResponse
+ */
+export function packetCaptureSettingsResponseProvideDefaults(val: PacketCaptureSettingsResponse): PacketCaptureSettingsResponse {
+    return {
+        ...val,
+        fileCount: (val.fileCount) ?? 10,
+        fileSizeInBytes: (val.fileSizeInBytes) ?? 104857600,
+        sessionTimeLimitInSeconds: (val.sessionTimeLimitInSeconds) ?? 86400,
+    };
+}
+
+/**
+ * The storage location for a packet capture session.
+ */
 export interface PacketCaptureStorageLocationResponse {
     /**
-     * A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures. Required if no storage ID is provided, otherwise optional.
+     * This path is invalid if 'Continuous Capture' is provided with 'true' or 'false'. A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures. Required if no storage ID is provided, otherwise optional.
      */
     filePath?: string;
     /**
-     * The ID of the storage account to save the packet capture session. Required if no local file path is provided.
+     * This path is valid if 'Continuous Capture' is provided with 'true' or 'false' and required if no storage ID is provided, otherwise optional. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures.
+     */
+    localPath?: string;
+    /**
+     * The ID of the storage account to save the packet capture session. Required if no localPath or filePath is provided.
      */
     storageId?: string;
     /**
@@ -7964,6 +7340,10 @@ export interface PolicySettingsResponse {
      * Maximum file upload size in Mb for WAF.
      */
     fileUploadLimitInMb?: number;
+    /**
+     * Web Application Firewall JavaScript Challenge Cookie Expiration time in minutes.
+     */
+    jsChallengeCookieExpirationInMins?: number;
     /**
      * To scrub sensitive log fields
      */
@@ -8383,6 +7763,10 @@ export interface PrivateLinkServiceResponse {
      */
     autoApproval?: PrivateLinkServicePropertiesResponseAutoApproval;
     /**
+     * The destination IP address of the private link service.
+     */
+    destinationIPAddress?: string;
+    /**
      * Whether the private link service is enabled for proxy protocol or not.
      */
     enableProxyProtocol?: boolean;
@@ -8469,6 +7853,10 @@ export interface ProbeResponse {
      */
     name?: string;
     /**
+     * Determines how new connections are handled by the load balancer when all backend instances are probed down.
+     */
+    noHealthyBackendsBehavior?: string;
+    /**
      * The number of probes where if no response, will result in stopping further traffic from being delivered to the endpoint. This values allows endpoints to be taken out of rotation faster or slower than the typical times used in Azure.
      */
     numberOfProbes?: number;
@@ -8510,16 +7898,6 @@ export interface PropagatedRouteTableResponse {
      * The list of labels.
      */
     labels?: string[];
-}
-
-/**
- * A PTR record.
- */
-export interface PtrRecordResponse {
-    /**
-     * The PTR target domain name for this PTR record.
-     */
-    ptrdname?: string;
 }
 
 /**
@@ -8840,41 +8218,6 @@ export interface RecordSetResponse {
 }
 
 /**
- * Describes Redirect Route.
- */
-export interface RedirectConfigurationResponse {
-    /**
-     * Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
-     */
-    customFragment?: string;
-    /**
-     * Host to redirect. Leave empty to use the incoming host as the destination host.
-     */
-    customHost?: string;
-    /**
-     * The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
-     */
-    customPath?: string;
-    /**
-     * The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
-     */
-    customQueryString?: string;
-    /**
-     *
-     * Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
-     */
-    odataType: "#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration";
-    /**
-     * The protocol of the destination to where the traffic is redirected
-     */
-    redirectProtocol?: string;
-    /**
-     * The redirect type the rule will use when redirecting traffic.
-     */
-    redirectType?: string;
-}
-
-/**
  * Reference to a public IP address.
  */
 export interface ReferencedPublicIpAddressResponse {
@@ -9153,16 +8496,6 @@ export interface RoutingPolicyResponse {
 }
 
 /**
- * Defines the Resource ID for a Routing Rule.
- */
-export interface RoutingRuleLinkResponse {
-    /**
-     * Resource ID.
-     */
-    id?: string;
-}
-
-/**
  * Next hop.
  */
 export interface RoutingRuleNextHopResponse {
@@ -9177,56 +8510,6 @@ export interface RoutingRuleNextHopResponse {
 }
 
 /**
- * A routing rule represents a specification for traffic to treat and where to send it, along with health probe information.
- */
-export interface RoutingRuleResponse {
-    /**
-     * Protocol schemes to match for this rule
-     */
-    acceptedProtocols?: string[];
-    /**
-     * Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
-     */
-    enabledState?: string;
-    /**
-     * Frontend endpoints associated with this rule
-     */
-    frontendEndpoints?: SubResourceResponse[];
-    /**
-     * Resource ID.
-     */
-    id?: string;
-    /**
-     * Resource name.
-     */
-    name?: string;
-    /**
-     * The route patterns of the rule.
-     */
-    patternsToMatch?: string[];
-    /**
-     * Resource status.
-     */
-    resourceState: string;
-    /**
-     * A reference to the routing configuration.
-     */
-    routeConfiguration?: ForwardingConfigurationResponse | RedirectConfigurationResponse;
-    /**
-     * A reference to a specific Rules Engine Configuration to apply to this route.
-     */
-    rulesEngine?: SubResourceResponse;
-    /**
-     * Resource type.
-     */
-    type: string;
-    /**
-     * Defines the Web Application Firewall policy for each routing rule (if applicable)
-     */
-    webApplicationFirewallPolicyLink?: RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink;
-}
-
-/**
  * Route destination.
  */
 export interface RoutingRuleRouteDestinationResponse {
@@ -9238,126 +8521,6 @@ export interface RoutingRuleRouteDestinationResponse {
      * Destination type.
      */
     type: string;
-}
-
-/**
- * Defines the Web Application Firewall policy for each routing rule (if applicable)
- */
-export interface RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink {
-    /**
-     * Resource ID.
-     */
-    id?: string;
-}
-
-/**
- * One or more actions that will execute, modifying the request and/or response.
- */
-export interface RulesEngineActionResponse {
-    /**
-     * A list of header actions to apply from the request from AFD to the origin.
-     */
-    requestHeaderActions?: HeaderActionResponse[];
-    /**
-     * A list of header actions to apply from the response from AFD to the client.
-     */
-    responseHeaderActions?: HeaderActionResponse[];
-    /**
-     * Override the route configuration.
-     */
-    routeConfigurationOverride?: ForwardingConfigurationResponse | RedirectConfigurationResponse;
-}
-
-/**
- * Define a match condition
- */
-export interface RulesEngineMatchConditionResponse {
-    /**
-     * Describes if this is negate condition or not
-     */
-    negateCondition?: boolean;
-    /**
-     * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
-     */
-    rulesEngineMatchValue: string[];
-    /**
-     * Match Variable
-     */
-    rulesEngineMatchVariable: string;
-    /**
-     * Describes operator to apply to the match condition.
-     */
-    rulesEngineOperator: string;
-    /**
-     * Name of selector in RequestHeader or RequestBody to be matched
-     */
-    selector?: string;
-    /**
-     * List of transforms
-     */
-    transforms?: string[];
-}
-
-/**
- * A rules engine configuration containing a list of rules that will run to modify the runtime behavior of the request and response.
- */
-export interface RulesEngineResponse {
-    /**
-     * Resource ID.
-     */
-    id: string;
-    /**
-     * Resource name.
-     */
-    name: string;
-    /**
-     * Resource status.
-     */
-    resourceState: string;
-    /**
-     * A list of rules that define a particular Rules Engine Configuration.
-     */
-    rules?: RulesEngineRuleResponse[];
-    /**
-     * Resource type.
-     */
-    type: string;
-}
-
-/**
- * Contains a list of match conditions, and an action on how to modify the request/response. If multiple rules match, the actions from one rule that conflict with a previous rule overwrite for a singular action, or append in the case of headers manipulation.
- */
-export interface RulesEngineRuleResponse {
-    /**
-     * Actions to perform on the request and response if all of the match conditions are met.
-     */
-    action: RulesEngineActionResponse;
-    /**
-     * A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.
-     */
-    matchConditions?: RulesEngineMatchConditionResponse[];
-    /**
-     * If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
-     */
-    matchProcessingBehavior?: string;
-    /**
-     * A name to refer to this specific rule.
-     */
-    name: string;
-    /**
-     * A priority assigned to this rule. 
-     */
-    priority: number;
-}
-
-/**
- * Defines the Resource ID for a Security Policy.
- */
-export interface SecurityPolicyLinkResponse {
-    /**
-     * Resource ID.
-     */
-    id?: string;
 }
 
 /**
@@ -9603,6 +8766,10 @@ export interface ServiceEndpointPropertiesFormatResponse {
      */
     locations?: string[];
     /**
+     * SubResource as network identifier.
+     */
+    networkIdentifier?: SubResourceResponse;
+    /**
      * The provisioning state of the service endpoint resource.
      */
     provisioningState: string;
@@ -9630,36 +8797,6 @@ export interface SharedKeyPropertiesResponse {
     sharedKeyLength?: number;
 }
 
-/**
- * Represents the signing key.
- */
-export interface SigningKeyResponse {
-    /**
-     * The delegation signer information.
-     */
-    delegationSignerInfo: DelegationSignerInfoResponse[];
-    /**
-     * The flags specifies how the key is used.
-     */
-    flags: number;
-    /**
-     * The key tag value of the DNSKEY Resource Record.
-     */
-    keyTag: number;
-    /**
-     * The protocol value. The value is always 3.
-     */
-    protocol: number;
-    /**
-     * The public key, represented as a Base64 encoding.
-     */
-    publicKey: string;
-    /**
-     * The security algorithm type represents the standard security algorithm number of the DNSKEY Resource Record. See: https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml
-     */
-    securityAlgorithmType: number;
-}
-
 export interface SingleQueryResultResponse {
     /**
      * Describes what is the signature enforces
@@ -9670,7 +8807,7 @@ export interface SingleQueryResultResponse {
      */
     destinationPorts?: string[];
     /**
-     * Describes in which direction signature is being enforced: 0 - Inbound, 1 - OutBound, 2 - Bidirectional
+     * Describes in which direction signature is being enforced: 0 - OutBound, 1 - InBound, 2 - Any, 3 - Internal, 4 - InternalOutbound, 5 - InternalInbound
      */
     direction?: number;
     /**
@@ -9694,7 +8831,7 @@ export interface SingleQueryResultResponse {
      */
     protocol?: string;
     /**
-     * Describes the severity of signature: 1 - Low, 2 - Medium, 3 - High
+     * Describes the severity of signature: 1 - High, 2 - Medium, 3 - Low
      */
     severity?: number;
     /**
@@ -9708,69 +8845,22 @@ export interface SingleQueryResultResponse {
 }
 
 /**
- * The pricing tier of the web application firewall policy.
+ * The sku of this Bastion Host.
  */
 export interface SkuResponse {
     /**
-     * Name of the pricing tier.
+     * The name of the sku of this Bastion Host.
      */
     name?: string;
 }
-
 /**
- * An SOA record.
+ * skuResponseProvideDefaults sets the appropriate defaults for SkuResponse
  */
-export interface SoaRecordResponse {
-    /**
-     * The email contact for this SOA record.
-     */
-    email?: string;
-    /**
-     * The expire time for this SOA record.
-     */
-    expireTime?: number;
-    /**
-     * The domain name of the authoritative name server for this SOA record.
-     */
-    host?: string;
-    /**
-     * The minimum value for this SOA record. By convention this is used to determine the negative caching duration.
-     */
-    minimumTtl?: number;
-    /**
-     * The refresh value for this SOA record.
-     */
-    refreshTime?: number;
-    /**
-     * The retry time for this SOA record.
-     */
-    retryTime?: number;
-    /**
-     * The serial number for this SOA record.
-     */
-    serialNumber?: number;
-}
-
-/**
- * An SRV record.
- */
-export interface SrvRecordResponse {
-    /**
-     * The port value for this SRV record.
-     */
-    port?: number;
-    /**
-     * The priority value for this SRV record.
-     */
-    priority?: number;
-    /**
-     * The target domain name for this SRV record.
-     */
-    target?: string;
-    /**
-     * The weight value for this SRV record.
-     */
-    weight?: number;
+export function skuResponseProvideDefaults(val: SkuResponse): SkuResponse {
+    return {
+        ...val,
+        name: (val.name) ?? "Standard",
+    };
 }
 
 /**
@@ -9829,13 +8919,13 @@ export interface StaticRoutesConfigResponse {
 }
 
 /**
- * Reference to another ARM resource.
+ * Reference to another subresource.
  */
 export interface SubResourceResponse {
     /**
      * Resource ID.
      */
-    id: string;
+    id?: string;
 }
 
 /**
@@ -9854,6 +8944,10 @@ export interface SubnetResponse {
      * Application gateway IP configurations of virtual network resource.
      */
     applicationGatewayIPConfigurations?: ApplicationGatewayIPConfigurationResponse[];
+    /**
+     * Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
+     */
+    defaultOutboundAccess?: boolean;
     /**
      * An array of references to the delegations on the subnet.
      */
@@ -9882,6 +8976,10 @@ export interface SubnetResponse {
      * An array of references to the network interface IP configurations using subnet.
      */
     ipConfigurations: IPConfigurationResponse[];
+    /**
+     * A list of IPAM Pools for allocating IP address prefixes.
+     */
+    ipamPoolPrefixAllocations?: IpamPoolPrefixAllocationResponse[];
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -9935,6 +9033,10 @@ export interface SubnetResponse {
      */
     serviceEndpoints?: ServiceEndpointPropertiesFormatResponse[];
     /**
+     * Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+     */
+    sharingScope?: string;
+    /**
      * Resource type.
      */
     type?: string;
@@ -9985,29 +9087,6 @@ export interface SystemDataResponse {
      * The type of identity that last modified the resource.
      */
     lastModifiedByType?: string;
-}
-
-/**
- * Describes a server to forward the DNS queries to.
- */
-export interface TargetDnsServerResponse {
-    /**
-     * DNS server IP address.
-     */
-    ipAddress: string;
-    /**
-     * DNS server port.
-     */
-    port?: number;
-}
-/**
- * targetDnsServerResponseProvideDefaults sets the appropriate defaults for TargetDnsServerResponse
- */
-export function targetDnsServerResponseProvideDefaults(val: TargetDnsServerResponse): TargetDnsServerResponse {
-    return {
-        ...val,
-        port: (val.port) ?? 53,
-    };
 }
 
 /**
@@ -10087,16 +9166,6 @@ export interface TunnelConnectionHealthResponse {
 }
 
 /**
- * A TXT record.
- */
-export interface TxtRecordResponse {
-    /**
-     * The text value of this TXT record.
-     */
-    value?: string[];
-}
-
-/**
  * Describes a Virtual Machine.
  */
 export interface VMResponse {
@@ -10148,6 +9217,51 @@ export interface VirtualApplianceAdditionalNicPropertiesResponse {
 }
 
 /**
+ * Represents a single IP configuration properties.
+ */
+export interface VirtualApplianceIPConfigurationPropertiesResponse {
+    /**
+     * Whether or not this is primary IP configuration of the NIC.
+     */
+    primary?: boolean;
+}
+
+/**
+ * Represents a single IP configuration.
+ */
+export interface VirtualApplianceIPConfigurationResponse {
+    /**
+     * Name of the IP configuration.
+     */
+    name?: string;
+    /**
+     * Represents a single IP configuration properties.
+     */
+    properties?: VirtualApplianceIPConfigurationPropertiesResponse;
+}
+
+/**
+ * Represents a single NIC configuration properties.
+ */
+export interface VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse {
+    ipConfigurations?: VirtualApplianceIPConfigurationResponse[];
+}
+
+/**
+ * Represents a single NIC configuration.
+ */
+export interface VirtualApplianceNetworkInterfaceConfigurationResponse {
+    /**
+     * NIC type. This should be either PublicNic or PrivateNic.
+     */
+    nicType?: string;
+    /**
+     * Represents a single NIC configuration properties.
+     */
+    properties?: VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse;
+}
+
+/**
  * Network Virtual Appliance NIC properties.
  */
 export interface VirtualApplianceNicPropertiesResponse {
@@ -10159,6 +9273,10 @@ export interface VirtualApplianceNicPropertiesResponse {
      * NIC name.
      */
     name: string;
+    /**
+     * NIC type - PublicNic, PrivateNic, or AdditionalNic.
+     */
+    nicType: string;
     /**
      * Private IP address.
      */
@@ -10288,20 +9406,6 @@ export interface VirtualNetworkBgpCommunitiesResponse {
 }
 
 /**
- * Reference to DNS forwarding ruleset and associated virtual network link.
- */
-export interface VirtualNetworkDnsForwardingRulesetResponse {
-    /**
-     * DNS Forwarding Ruleset Resource ID.
-     */
-    id?: string;
-    /**
-     * The reference to the virtual network link.
-     */
-    virtualNetworkLink?: SubResourceResponse;
-}
-
-/**
  * Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
  */
 export interface VirtualNetworkEncryptionResponse {
@@ -10310,9 +9414,30 @@ export interface VirtualNetworkEncryptionResponse {
      */
     enabled: boolean;
     /**
-     * If the encrypted VNet allows VM that does not support encryption
+     * If the encrypted VNet allows VM that does not support encryption. This field is for future support, AllowUnencrypted is the only supported value at general availability.
      */
     enforcement?: string;
+}
+
+export interface VirtualNetworkGatewayAutoScaleBoundsResponse {
+    /**
+     * Maximum Scale Units for Autoscale configuration
+     */
+    max?: number;
+    /**
+     * Minimum scale Units for Autoscale configuration
+     */
+    min?: number;
+}
+
+/**
+ * Virtual Network Gateway Autoscale Configuration details
+ */
+export interface VirtualNetworkGatewayAutoScaleConfigurationResponse {
+    /**
+     * The bounds of the autoscale configuration
+     */
+    bounds?: VirtualNetworkGatewayAutoScaleBoundsResponse;
 }
 
 /**
@@ -10472,6 +9597,10 @@ export interface VirtualNetworkGatewayResponse {
      */
     allowVirtualWanTraffic?: boolean;
     /**
+     * Autoscale configuration for virutal network gateway
+     */
+    autoScaleConfiguration?: VirtualNetworkGatewayAutoScaleConfigurationResponse;
+    /**
      * Virtual network gateway's BGP speaker settings.
      */
     bgpSettings?: BgpSettingsResponse;
@@ -10520,6 +9649,10 @@ export interface VirtualNetworkGatewayResponse {
      */
     id?: string;
     /**
+     * The identity of the virtual network gateway, if configured.
+     */
+    identity?: ManagedServiceIdentityResponse;
+    /**
      * The IP address allocated by the gateway to which dns requests can be sent.
      */
     inboundDnsForwardingEndpoint: string;
@@ -10543,6 +9676,10 @@ export interface VirtualNetworkGatewayResponse {
      * The provisioning state of the virtual network gateway resource.
      */
     provisioningState: string;
+    /**
+     * Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
+     */
+    resiliencyModel?: string;
     /**
      * The resource GUID property of the virtual network gateway resource.
      */
@@ -10620,6 +9757,10 @@ export interface VirtualNetworkPeeringResponse {
      */
     doNotVerifyRemoteGateways?: boolean;
     /**
+     * Whether only Ipv6 address space is peered for subnet peering.
+     */
+    enableOnlyIPv6Peering?: boolean;
+    /**
      * A unique read-only string that changes whenever the resource is updated.
      */
     etag: string;
@@ -10628,9 +9769,25 @@ export interface VirtualNetworkPeeringResponse {
      */
     id?: string;
     /**
+     * The local address space of the local virtual network that is peered.
+     */
+    localAddressSpace?: AddressSpaceResponse;
+    /**
+     * List of local subnet names that are subnet peered with remote virtual network.
+     */
+    localSubnetNames?: string[];
+    /**
+     * The current local address space of the local virtual network that is peered.
+     */
+    localVirtualNetworkAddressSpace?: AddressSpaceResponse;
+    /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
     name?: string;
+    /**
+     * Whether complete virtual network address space is peered.
+     */
+    peerCompleteVnets?: boolean;
     /**
      * The status of the virtual network peering.
      */
@@ -10651,6 +9808,10 @@ export interface VirtualNetworkPeeringResponse {
      * The reference to the remote virtual network's Bgp Communities.
      */
     remoteBgpCommunities?: VirtualNetworkBgpCommunitiesResponse;
+    /**
+     * List of remote subnet names from remote virtual network that are subnet peered.
+     */
+    remoteSubnetNames?: string[];
     /**
      * The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
      */
@@ -11306,6 +10467,76 @@ export interface VpnServerConfigurationPolicyGroupResponse {
 }
 
 /**
+ * Parameters for VpnServerConfiguration.
+ */
+export interface VpnServerConfigurationPropertiesResponse {
+    /**
+     * The set of aad vpn authentication parameters.
+     */
+    aadAuthenticationParameters?: AadAuthenticationParametersResponse;
+    /**
+     * List of all VpnServerConfigurationPolicyGroups.
+     */
+    configurationPolicyGroups?: VpnServerConfigurationPolicyGroupResponse[];
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * The name of the VpnServerConfiguration that is unique within a resource group.
+     */
+    name?: string;
+    /**
+     * List of references to P2SVpnGateways.
+     */
+    p2SVpnGateways: P2SVpnGatewayResponse[];
+    /**
+     * The provisioning state of the VpnServerConfiguration resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     */
+    provisioningState: string;
+    /**
+     * Radius client root certificate of VpnServerConfiguration.
+     */
+    radiusClientRootCertificates?: VpnServerConfigRadiusClientRootCertificateResponse[];
+    /**
+     * The radius server address property of the VpnServerConfiguration resource for point to site client connection.
+     */
+    radiusServerAddress?: string;
+    /**
+     * Radius Server root certificate of VpnServerConfiguration.
+     */
+    radiusServerRootCertificates?: VpnServerConfigRadiusServerRootCertificateResponse[];
+    /**
+     * The radius secret property of the VpnServerConfiguration resource for point to site client connection.
+     */
+    radiusServerSecret?: string;
+    /**
+     * Multiple Radius Server configuration for VpnServerConfiguration.
+     */
+    radiusServers?: RadiusServerResponse[];
+    /**
+     * VPN authentication types for the VpnServerConfiguration.
+     */
+    vpnAuthenticationTypes?: string[];
+    /**
+     * VpnClientIpsecPolicies for VpnServerConfiguration.
+     */
+    vpnClientIpsecPolicies?: IpsecPolicyResponse[];
+    /**
+     * VPN client revoked certificate of VpnServerConfiguration.
+     */
+    vpnClientRevokedCertificates?: VpnServerConfigVpnClientRevokedCertificateResponse[];
+    /**
+     * VPN client root certificate of VpnServerConfiguration.
+     */
+    vpnClientRootCertificates?: VpnServerConfigVpnClientRootCertificateResponse[];
+    /**
+     * VPN protocols for the VpnServerConfiguration.
+     */
+    vpnProtocols?: string[];
+}
+
+/**
  * VpnSiteLinkConnection Resource.
  */
 export interface VpnSiteLinkConnectionResponse {
@@ -11317,6 +10548,10 @@ export interface VpnSiteLinkConnectionResponse {
      * The connection status.
      */
     connectionStatus: string;
+    /**
+     * Dead Peer Detection timeout in seconds for VpnLink connection.
+     */
+    dpdTimeoutSeconds?: number;
     /**
      * Egress bytes transferred.
      */
@@ -11508,42 +10743,3 @@ export interface WebApplicationFirewallScrubbingRulesResponse {
      */
     state?: string;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
