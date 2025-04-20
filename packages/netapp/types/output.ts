@@ -135,6 +135,38 @@ export function activeDirectoryResponseProvideDefaults(val: ActiveDirectoryRespo
 }
 
 /**
+ * Properties of the server managing the lifecycle of volume buckets
+ */
+export interface BucketServerPropertiesResponse {
+    /**
+     * Certificate Common Name taken from the certificate installed on the bucket server
+     */
+    certificateCommonName: string;
+    /**
+     * The bucket server's certificate expiry date.
+     */
+    certificateExpiryDate: string;
+    /**
+     * The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
+     */
+    fqdn?: string;
+    /**
+     * The bucket server's IPv4 address
+     */
+    ipAddress: string;
+}
+
+/**
+ * The effective CIFS username when accessing the volume data.
+ */
+export interface CifsUserResponse {
+    /**
+     * The CIFS user's username
+     */
+    username?: string;
+}
+
+/**
  * Daily Schedule properties
  */
 export interface DailyScheduleResponse {
@@ -250,6 +282,20 @@ export function exportPolicyRuleResponseProvideDefaults(val: ExportPolicyRuleRes
         kerberos5pReadOnly: (val.kerberos5pReadOnly) ?? false,
         kerberos5pReadWrite: (val.kerberos5pReadWrite) ?? false,
     };
+}
+
+/**
+ * File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
+ */
+export interface FileSystemUserResponse {
+    /**
+     * The effective CIFS username when accessing the volume data.
+     */
+    cifsUser?: CifsUserResponse;
+    /**
+     * The effective NFS User ID and Group ID when accessing the volume data.
+     */
+    nfsUser?: NfsUserResponse;
 }
 
 /**
@@ -396,6 +442,20 @@ export interface MountTargetPropertiesResponse {
      * The SMB server's Fully Qualified Domain Name, FQDN
      */
     smbServerFqdn?: string;
+}
+
+/**
+ * The effective NFS User ID and Group ID when accessing the volume data.
+ */
+export interface NfsUserResponse {
+    /**
+     * The NFS user's GID
+     */
+    groupId?: number;
+    /**
+     * The NFS user's UID
+     */
+    userId?: number;
 }
 
 /**

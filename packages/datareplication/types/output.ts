@@ -62,6 +62,32 @@ export interface AzStackHCIFabricModelCustomPropertiesResponse {
 }
 
 /**
+ * Private endpoint connection details at member level.
+ */
+export interface ConnectionDetailsResponse {
+    /**
+     * Gets or sets group id.
+     */
+    groupId?: string;
+    /**
+     * Gets or sets id.
+     */
+    id?: string;
+    /**
+     * Gets or sets link identifier.
+     */
+    linkIdentifier?: string;
+    /**
+     * Gets or sets member name.
+     */
+    memberName?: string;
+    /**
+     * Gets or sets private IP address.
+     */
+    privateIpAddress?: string;
+}
+
+/**
  * Dra model properties.
  */
 export interface DraModelPropertiesResponse {
@@ -141,6 +167,56 @@ export interface DraModelResponseSystemData {
 }
 
 /**
+ * Fabric agent model properties.
+ */
+export interface FabricAgentModelPropertiesResponse {
+    /**
+     * Identity model.
+     */
+    authenticationIdentity: IdentityModelResponse;
+    /**
+     * Gets or sets the fabric agent correlation Id.
+     */
+    correlationId: string;
+    /**
+     * Fabric agent model custom properties.
+     */
+    customProperties: VMwareFabricAgentModelCustomPropertiesResponse;
+    /**
+     * Gets or sets the list of health errors.
+     */
+    healthErrors: HealthErrorModelResponse[];
+    /**
+     * Gets or sets a value indicating whether the fabric agent is responsive.
+     */
+    isResponsive: boolean;
+    /**
+     * Gets or sets the time when last heartbeat was sent by the fabric agent.
+     */
+    lastHeartbeat: string;
+    /**
+     * Gets or sets the machine Id where fabric agent is running.
+     */
+    machineId: string;
+    /**
+     * Gets or sets the machine name where fabric agent is running.
+     */
+    machineName: string;
+    /**
+     * Gets or sets the provisioning state of the fabric agent.
+     */
+    provisioningState: string;
+    /**
+     * Identity model.
+     */
+    resourceAccessIdentity: IdentityModelResponse;
+    /**
+     * Gets or sets the fabric agent version.
+     */
+    versionNumber: string;
+}
+
+/**
  * Fabric model properties.
  */
 export interface FabricModelPropertiesResponse {
@@ -197,6 +273,36 @@ export interface FabricModelResponseSystemData {
      * managedIdentity.
      */
     lastModifiedByType?: string;
+}
+
+/**
+ * Represents of a connection's group information.
+ */
+export interface GroupConnectivityInformationResponse {
+    /**
+     * Gets or sets customer visible FQDNs.
+     */
+    customerVisibleFqdns?: string[];
+    /**
+     * Gets or sets group id.
+     */
+    groupId?: string;
+    /**
+     * Gets or sets Internal Fqdn.
+     */
+    internalFqdn?: string;
+    /**
+     * Gets or sets member name.
+     */
+    memberName?: string;
+    /**
+     * Gets or sets the private link service arm region.
+     */
+    privateLinkServiceArmRegion?: string;
+    /**
+     * Gets or sets the redirect map id.
+     */
+    redirectMapId?: string;
 }
 
 /**
@@ -705,24 +811,23 @@ export interface HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResp
  */
 export interface IdentityModelResponse {
     /**
-     * Gets or sets the authority of the SPN with which Dra communicates to service.
+     * Gets or sets the authority of the SPN with which fabric agent communicates to service.
      */
     aadAuthority: string;
     /**
-     * Gets or sets the client/application Id of the SPN with which Dra communicates to
-     * service.
+     * Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.
      */
     applicationId: string;
     /**
-     * Gets or sets the audience of the SPN with which Dra communicates to service.
+     * Gets or sets the audience of the SPN with which fabric agent communicates to service.
      */
     audience: string;
     /**
-     * Gets or sets the object Id of the SPN with which Dra communicates to service.
+     * Gets or sets the object Id of the SPN with which fabric agent communicates to service.
      */
     objectId: string;
     /**
-     * Gets or sets the tenant Id of the SPN with which Dra communicates to service.
+     * Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
      */
     tenantId: string;
 }
@@ -818,6 +923,106 @@ export interface PolicyModelResponseSystemData {
      * managedIdentity.
      */
     lastModifiedByType?: string;
+}
+
+/**
+ * Represents private endpoint connection proxy request.
+ */
+export interface PrivateEndpointConnectionProxyPropertiesResponse {
+    /**
+     * Gets or sets the provisioning state of the private endpoint connection proxy.
+     */
+    provisioningState: string;
+    /**
+     * Represent remote private endpoint information for the private endpoint connection proxy.
+     */
+    remotePrivateEndpoint?: RemotePrivateEndpointResponse;
+}
+
+/**
+ * Represents Private endpoint connection response properties.
+ */
+export interface PrivateEndpointConnectionResponsePropertiesResponse {
+    /**
+     * Represent private Endpoint network resource that is linked to the Private Endpoint connection.
+     */
+    privateEndpoint?: PrivateEndpointResponse;
+    /**
+     * Represents Private link service connection state.
+     */
+    privateLinkServiceConnectionState?: PrivateLinkServiceConnectionStateResponse;
+    /**
+     * Gets or sets provisioning state of the private endpoint connection.
+     */
+    provisioningState: string;
+}
+
+/**
+ * Represent private Endpoint network resource that is linked to the Private Endpoint connection.
+ */
+export interface PrivateEndpointResponse {
+    /**
+     * Gets or sets the id.
+     */
+    id?: string;
+}
+
+/**
+ * Represents of an NRP private link service connection.
+ */
+export interface PrivateLinkServiceConnectionResponse {
+    /**
+     * Gets or sets group ids.
+     */
+    groupIds?: string[];
+    /**
+     * Gets or sets private link service connection name.
+     */
+    name?: string;
+    /**
+     * Gets or sets the request message for the private link service connection.
+     */
+    requestMessage?: string;
+}
+
+/**
+ * Represents Private link service connection state.
+ */
+export interface PrivateLinkServiceConnectionStateResponse {
+    /**
+     * Gets or sets actions required.
+     */
+    actionsRequired?: string;
+    /**
+     * Gets or sets description.
+     */
+    description?: string;
+    /**
+     * Gets or sets the status.
+     */
+    status?: string;
+}
+
+/**
+ * Represents NRP private link service proxy.
+ */
+export interface PrivateLinkServiceProxyResponse {
+    /**
+     * Gets or sets group connectivity information.
+     */
+    groupConnectivityInformation?: GroupConnectivityInformationResponse[];
+    /**
+     * Gets or sets private link service proxy id.
+     */
+    id?: string;
+    /**
+     * Represent remote private endpoint connection.
+     */
+    remotePrivateEndpointConnection?: RemotePrivateEndpointConnectionResponse;
+    /**
+     * Represents Private link service connection state.
+     */
+    remotePrivateLinkServiceConnectionState?: PrivateLinkServiceConnectionStateResponse;
 }
 
 /**
@@ -1102,6 +1307,42 @@ export interface ProtectedItemModelResponseSystemData {
 }
 
 /**
+ * Represent remote private endpoint connection.
+ */
+export interface RemotePrivateEndpointConnectionResponse {
+    /**
+     * Gets or sets the remote private endpoint connection id.
+     */
+    id?: string;
+}
+
+/**
+ * Represent remote private endpoint information for the private endpoint connection proxy.
+ */
+export interface RemotePrivateEndpointResponse {
+    /**
+     * Gets or sets the list of Connection Details. This is the connection details for private endpoint.
+     */
+    connectionDetails?: ConnectionDetailsResponse[];
+    /**
+     * Gets or sets private link service proxy id.
+     */
+    id: string;
+    /**
+     * Gets or sets the list of Manual Private Link Service Connections and gets populated for Manual approval flow.
+     */
+    manualPrivateLinkServiceConnections?: PrivateLinkServiceConnectionResponse[];
+    /**
+     * Gets or sets the list of Private Link Service Connections and gets populated for Auto approval flow.
+     */
+    privateLinkServiceConnections?: PrivateLinkServiceConnectionResponse[];
+    /**
+     * Gets or sets the list of private link service proxies.
+     */
+    privateLinkServiceProxies?: PrivateLinkServiceProxyResponse[];
+}
+
+/**
  * Replication extension model properties.
  */
 export interface ReplicationExtensionModelPropertiesResponse {
@@ -1159,6 +1400,36 @@ export interface StorageContainerPropertiesResponse {
 }
 
 /**
+ * Metadata pertaining to creation and last modification of the resource.
+ */
+export interface SystemDataResponse {
+    /**
+     * The timestamp of resource creation (UTC).
+     */
+    createdAt?: string;
+    /**
+     * The identity that created the resource.
+     */
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
+}
+
+/**
  * VMware DRA model custom properties.
  */
 export interface VMwareDraModelCustomPropertiesResponse {
@@ -1168,6 +1439,25 @@ export interface VMwareDraModelCustomPropertiesResponse {
     biosId: string;
     /**
      * Gets or sets the instance type.
+     * Expected value is 'VMware'.
+     */
+    instanceType: "VMware";
+    /**
+     * Identity model.
+     */
+    marsAuthenticationIdentity: IdentityModelResponse;
+}
+
+/**
+ * VMware fabric agent model custom properties.
+ */
+export interface VMwareFabricAgentModelCustomPropertiesResponse {
+    /**
+     * Gets or sets the BIOS Id of the fabric agent machine.
+     */
+    biosId: string;
+    /**
+     * Discriminator property for FabricAgentModelCustomProperties.
      * Expected value is 'VMware'.
      */
     instanceType: "VMware";

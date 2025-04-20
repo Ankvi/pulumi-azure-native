@@ -63,11 +63,11 @@ export interface StorageTaskOperationArgs {
     /**
      * Action to be taken when the operation fails for a object.
      */
-    onFailure?: pulumi.Input<enums.OnFailure>;
+    onFailure?: pulumi.Input<string | enums.OnFailure>;
     /**
      * Action to be taken when the operation is successful for a object.
      */
-    onSuccess?: pulumi.Input<enums.OnSuccess>;
+    onSuccess?: pulumi.Input<string | enums.OnSuccess>;
     /**
      * Key-value parameters for the operation.
      */

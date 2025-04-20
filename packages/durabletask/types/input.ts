@@ -1,4 +1,29 @@
+import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
+/**
+ * The properties of a retention policy
+ */
+export interface RetentionPolicyDetailsArgs {
+    /**
+     * The orchestration state to which this policy applies. If omitted, the policy applies to all purgeable orchestration states.
+     */
+    orchestrationState?: pulumi.Input<string | enums.PurgeableOrchestrationState>;
+    /**
+     * The retention period in days after which the orchestration will be purged automatically
+     */
+    retentionPeriodInDays: pulumi.Input<number>;
+}
+
+/**
+ * The retention policy settings for the resource
+ */
+export interface RetentionPolicyPropertiesArgs {
+    /**
+     * The orchestration retention policies
+     */
+    retentionPolicies?: pulumi.Input<pulumi.Input<RetentionPolicyDetailsArgs>[]>;
+}
+
 /**
  * Details of the Scheduler
  */

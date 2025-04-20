@@ -452,6 +452,107 @@ export interface AvailabilitySetResourceSettingsArgs {
 }
 
 /**
+ * Assessment properties class.
+ */
+export interface AvsAssessmentPropertiesV2Args {
+    /**
+     * Gets or sets the machine assessment ARM ID for VM fallback.
+     */
+    fallbackMachineAssessmentArmId?: pulumi.Input<string>;
+    /**
+     * Gets or sets the scope of assessment.
+     */
+    scope?: pulumi.Input<ScopeArgs>;
+    /**
+     * Gets or sets the settings for the assessment.
+     */
+    settings?: pulumi.Input<AvsAssessmentSettingsArgs>;
+}
+
+/**
+ * Properties of the AVS assessment.
+ */
+export interface AvsAssessmentSettingsArgs {
+    /**
+     * AVS Assessment Scenario.
+     */
+    avsAssessmentScenario?: pulumi.Input<string | enums.AvsAssessmentScenario>;
+    /**
+     * Azure Location or Azure region where to which the machines will be migrated.
+     */
+    azureLocation?: pulumi.Input<string>;
+    /**
+     * Gets or sets the billing settings.
+     */
+    billingSettings?: pulumi.Input<BillingSettingsArgs>;
+    /**
+     * Gets or sets the CPU headroom.
+     */
+    cpuHeadroom?: pulumi.Input<number>;
+    /**
+     * Currency in which prices should be reported.
+     */
+    currency?: pulumi.Input<string | enums.AzureCurrency>;
+    /**
+     * De-duplication compression.
+     */
+    dedupeCompression?: pulumi.Input<number>;
+    /**
+     * Custom discount percentage.
+     */
+    discountPercentage?: pulumi.Input<number>;
+    /**
+     * Gets or sets user configurable setting to display the environment type.
+     */
+    environmentType?: pulumi.Input<string | enums.EnvironmentType>;
+    /**
+     * List of AVS external storage types.
+     */
+    externalStorageTypes?: pulumi.Input<pulumi.Input<string | enums.ExternalStorageType>[]>;
+    /**
+     * List of Failures to tolerate and RAID levels in a common property.
+     */
+    failuresToTolerateAndRaidLevelList?: pulumi.Input<pulumi.Input<string | enums.FttAndRaidLevel>[]>;
+    /**
+     * Is Stretch Cluster Enabled.
+     */
+    isStretchClusterEnabled?: pulumi.Input<boolean>;
+    /**
+     * Is VCF license applied
+     */
+    isVcfByolEnabled?: pulumi.Input<boolean>;
+    /**
+     * Memory overcommit.
+     */
+    memOvercommit?: pulumi.Input<number>;
+    /**
+     * AVS node types.
+     */
+    nodeTypes?: pulumi.Input<pulumi.Input<string | enums.AzureAvsNodeType>[]>;
+    /**
+     * Gets or sets the performance data.
+     */
+    performanceData?: pulumi.Input<PerformanceDataArgs>;
+    /**
+     * Gets or sets the savings settings.
+     */
+    savingsSettings?: pulumi.Input<SavingsSettingsArgs>;
+    /**
+     * Percentage of buffer that user wants on performance metrics when recommending
+     * Azure sizes.
+     */
+    scalingFactor?: pulumi.Input<number>;
+    /**
+     * Assessment sizing criterion.
+     */
+    sizingCriterion?: pulumi.Input<string | enums.AssessmentSizingCriterion>;
+    /**
+     * VCPU over subscription.
+     */
+    vcpuOversubscription?: pulumi.Input<number>;
+}
+
+/**
  * Azure Arc Management settings.
  */
 export interface AzureArcManagementSettingsArgs {
@@ -614,6 +715,20 @@ export function azureSettingsArgsProvideDefaults(val: AzureSettingsArgs): AzureS
 }
 
 /**
+ * Billing settings class.
+ */
+export interface BillingSettingsArgs {
+    /**
+     * Gets or sets the licensing program.
+     */
+    licensingProgram?: pulumi.Input<string | enums.LicensingProgram>;
+    /**
+     * Gets or sets the subscription ID for licensing program selected.
+     */
+    subscriptionId?: pulumi.Input<string>;
+}
+
+/**
  * Binding for a web application.
  */
 export interface BindingArgs {
@@ -746,6 +861,20 @@ export interface CollectorPropertiesArgs {
      * The ARM id of the discovery service site.
      */
     discoverySiteId?: pulumi.Input<string>;
+}
+
+/**
+ * Properties of a compound assessment.
+ */
+export interface CompoundAssessmentPropertiesArgs {
+    /**
+     * Fallback machine assessment ARM ID.
+     */
+    fallbackMachineAssessmentArmId?: pulumi.Input<string>;
+    /**
+     * ARM IDs of the target assessments.
+     */
+    targetAssessmentArmIds: pulumi.Input<TargetAssessmentArmIdsArgs>;
 }
 
 /**
@@ -944,6 +1073,16 @@ export interface GroupPropertiesArgs {
      * The type of group.
      */
     groupType?: pulumi.Input<string>;
+}
+
+/**
+ * Properties of an assessment.
+ */
+export interface HeterogeneousAssessmentPropertiesArgs {
+    /**
+     * Arm id of partner assessments.
+     */
+    assessmentArmIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -1301,6 +1440,16 @@ export interface ImportCollectorPropertiesArgs {
 }
 
 /**
+ * Import SQL Collector properties class.
+ */
+export interface ImportSqlCollectorPropertiesArgs {
+    /**
+     * The sql db extended details.
+     */
+    discoverySiteId?: pulumi.Input<string>;
+}
+
+/**
  * Defines the key vault resource settings.
  */
 export interface KeyVaultResourceSettingsArgs {
@@ -1459,6 +1608,102 @@ export interface LoadBalancerResourceSettingsArgs {
      *  precedence only if frontend IP configurations settings are not present.
      */
     zones?: pulumi.Input<string>;
+}
+
+/**
+ * Properties of an assessment.
+ */
+export interface MachineAssessmentSettingsArgs {
+    /**
+     * The disk type for the assessment.
+     */
+    azureDiskTypes?: pulumi.Input<pulumi.Input<string | enums.AzureDiskType>[]>;
+    /**
+     * Gets or sets the user configurable setting to display the azure hybrid use
+     * benefit.
+     */
+    azureHybridUseBenefit?: pulumi.Input<string | enums.AzureHybridUseBenefit>;
+    /**
+     * Azure Location or Azure region where to which the machines will be migrated.
+     */
+    azureLocation?: pulumi.Input<string>;
+    /**
+     * Gets or sets Azure Pricing Tier - Free, Basic, etc.
+     */
+    azurePricingTier?: pulumi.Input<string | enums.AzurePricingTier>;
+    /**
+     * The azure security offering type.
+     */
+    azureSecurityOfferingType?: pulumi.Input<string | enums.AzureSecurityOfferingType>;
+    /**
+     * Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage.
+     */
+    azureStorageRedundancy?: pulumi.Input<string | enums.AzureStorageRedundancy>;
+    /**
+     * Gets or sets the Azure VM families.
+     */
+    azureVmFamilies?: pulumi.Input<pulumi.Input<string | enums.AzureVmFamily>[]>;
+    /**
+     * Gets or sets the Azure VM security options.
+     */
+    azureVmSecurityOptions?: pulumi.Input<pulumi.Input<string | enums.AzureVmSecurityType>[]>;
+    /**
+     * Gets or sets the billing settings.
+     */
+    billingSettings?: pulumi.Input<BillingSettingsArgs>;
+    /**
+     * Currency in which prices should be reported.
+     */
+    currency?: pulumi.Input<string | enums.AzureCurrency>;
+    /**
+     * Custom discount percentage.
+     */
+    discountPercentage?: pulumi.Input<number>;
+    /**
+     * Gets or sets user configurable setting to display the environment type.
+     */
+    environmentType?: pulumi.Input<string | enums.EnvironmentType>;
+    /**
+     * Gets or sets the user configurable setting to display the linux azure hybrid use
+     * benefit.
+     */
+    linuxAzureHybridUseBenefit?: pulumi.Input<string | enums.AzureHybridUseBenefit>;
+    /**
+     * Gets or sets the performance data.
+     */
+    performanceData?: pulumi.Input<PerformanceDataArgs>;
+    /**
+     * Gets or sets the savings settings.
+     */
+    savingsSettings?: pulumi.Input<SavingsSettingsArgs>;
+    /**
+     * Percentage of buffer that user wants on performance metrics when recommending
+     * Azure sizes.
+     */
+    scalingFactor?: pulumi.Input<number>;
+    /**
+     * Assessment sizing criterion.
+     */
+    sizingCriterion?: pulumi.Input<string | enums.AssessmentSizingCriterion>;
+    /**
+     * Gets or sets the duration for which the VMs are up in the on-premises
+     * environment.
+     */
+    vmUptime?: pulumi.Input<VmUptimeArgs>;
+}
+
+/**
+ * Assessment properties class.
+ */
+export interface MachineAssessmentV2PropertiesArgs {
+    /**
+     * Gets or sets the scope of assessment.
+     */
+    scope?: pulumi.Input<ScopeArgs>;
+    /**
+     * Gets or sets the settings for the assessment.
+     */
+    settings?: pulumi.Input<MachineAssessmentSettingsArgs>;
 }
 
 export interface ManagedIdentityPropertiesArgs {
@@ -1893,6 +2138,30 @@ export interface PerfDataSettingsArgs {
 }
 
 /**
+ * Performance data class.
+ */
+export interface PerformanceDataArgs {
+    /**
+     * Percentile of the utilization data values to be considered while assessing
+     * machines.
+     */
+    percentile?: pulumi.Input<string | enums.Percentile>;
+    /**
+     * Gets or sets the end time to consider performance data for assessment.
+     */
+    perfDataEndTime?: pulumi.Input<string>;
+    /**
+     * Gets or sets the start time to consider performance data for assessment.
+     */
+    perfDataStartTime?: pulumi.Input<string>;
+    /**
+     * Time Range for which the historic utilization data should be considered for
+     * assessment.
+     */
+    timeRange?: pulumi.Input<string | enums.TimeRange>;
+}
+
+/**
  * WebApplication port mapping.
  */
 export interface PortMappingArgs {
@@ -2057,6 +2326,38 @@ export interface ResourceRequirementsArgs {
     memory?: pulumi.Input<string>;
 }
 
+/**
+ * Savings settings class.
+ */
+export interface SavingsSettingsArgs {
+    /**
+     * Gets or sets the Azure offer code.
+     */
+    azureOfferCode?: pulumi.Input<string | enums.AzureOffer>;
+    /**
+     * Gets or sets the savings options.
+     */
+    savingsOptions?: pulumi.Input<string | enums.SavingsOptions>;
+}
+
+/**
+ * Scope of the assessment.
+ */
+export interface ScopeArgs {
+    /**
+     * The ARG query.
+     */
+    azureResourceGraphQuery?: pulumi.Input<string>;
+    /**
+     * The scope type
+     */
+    scopeType?: pulumi.Input<string | enums.ScopeType>;
+    /**
+     * The server group arm id.
+     */
+    serverGroupId?: pulumi.Input<string>;
+}
+
 export interface SecretStoreDetailsArgs {
     secretStore?: pulumi.Input<string | enums.SecretStoreType>;
     secretStoreProperties?: pulumi.Input<SecretStorePropertiesArgs>;
@@ -2156,6 +2457,121 @@ export interface SolutionPropertiesArgs {
 }
 
 /**
+ * SQL assessment settings class.
+ */
+export interface SqlAssessmentSettingsArgs {
+    /**
+     * Gets or sets user preference indicating intent of async commit mode.
+     */
+    asyncCommitModeIntent?: pulumi.Input<string | enums.AsyncCommitModeIntent>;
+    /**
+     * Azure Location or Azure region where to which the machines will be migrated.
+     */
+    azureLocation?: pulumi.Input<string>;
+    /**
+     * Gets or sets a value indicating azure security offering type.
+     */
+    azureSecurityOfferingType?: pulumi.Input<string | enums.AzureSecurityOfferingType>;
+    /**
+     * Gets or sets user configurable SQL database settings.
+     */
+    azureSqlDatabaseSettings?: pulumi.Input<SqlDbSettingsV3Args>;
+    /**
+     * Gets or sets user configurable SQL managed instance settings.
+     */
+    azureSqlManagedInstanceSettings?: pulumi.Input<SqlMiSettingsV3Args>;
+    /**
+     * Gets or sets user configurable SQL VM settings.
+     */
+    azureSqlVmSettings?: pulumi.Input<SqlVmSettingsArgs>;
+    /**
+     * Gets or sets the billing settings.
+     */
+    billingSettings?: pulumi.Input<BillingSettingsArgs>;
+    /**
+     * Currency in which prices should be reported.
+     */
+    currency?: pulumi.Input<string | enums.AzureCurrency>;
+    /**
+     * Gets or sets the Azure Location or Azure region where to which the machines
+     * will be migrated.
+     */
+    disasterRecoveryLocation?: pulumi.Input<string | enums.AzureLocation>;
+    /**
+     * Custom discount percentage.
+     */
+    discountPercentage?: pulumi.Input<number>;
+    /**
+     * Gets or sets a value indicating whether HADR assessments needs to be created.
+     */
+    enableHadrAssessment?: pulumi.Input<boolean>;
+    /**
+     * Gets or sets the duration for which the entity (SQL, VMs) are up in the
+     * on-premises environment.
+     */
+    entityUptime?: pulumi.Input<EntityUptimeArgs>;
+    /**
+     * Gets or sets user configurable setting to display the environment type.
+     */
+    environmentType?: pulumi.Input<string | enums.EnvironmentType>;
+    /**
+     * Gets or sets a value indicating whether internet access is available.
+     */
+    isInternetAccessAvailable?: pulumi.Input<boolean>;
+    /**
+     * Gets or sets user preference indicating intent of multi-subnet configuration.
+     */
+    multiSubnetIntent?: pulumi.Input<string | enums.MultiSubnetIntent>;
+    /**
+     * Gets or sets user configurable setting to display the azure hybrid use benefit.
+     */
+    osLicense?: pulumi.Input<string | enums.OsLicense>;
+    /**
+     * Gets or sets the performance data.
+     */
+    performanceData?: pulumi.Input<PerformanceDataArgs>;
+    /**
+     * Gets or sets SQL the preferred azure targets.
+     */
+    preferredTargets?: pulumi.Input<pulumi.Input<string | enums.AzureTarget>[]>;
+    /**
+     * Gets or sets the savings settings.
+     */
+    savingsSettings?: pulumi.Input<SavingsSettingsArgs>;
+    /**
+     * Percentage of buffer that user wants on performance metrics when recommending
+     * Azure sizes.
+     */
+    scalingFactor?: pulumi.Input<number>;
+    /**
+     * Assessment sizing criterion.
+     */
+    sizingCriterion?: pulumi.Input<string | enums.AssessmentSizingCriterion>;
+    /**
+     * SQL server license.
+     */
+    sqlServerLicense?: pulumi.Input<string | enums.SqlServerLicense>;
+}
+
+/**
+ * SQL assessment properties class.
+ */
+export interface SqlAssessmentV3PropertiesArgs {
+    /**
+     * Gets or sets the machine assessment ARM ID for VM fallback.
+     */
+    fallbackMachineAssessmentArmId?: pulumi.Input<string>;
+    /**
+     * Gets or sets the scope of assessment.
+     */
+    scope?: pulumi.Input<ScopeArgs>;
+    /**
+     * Gets or sets the settings for the assessment.
+     */
+    settings?: pulumi.Input<SqlAssessmentSettingsArgs>;
+}
+
+/**
  * Defines the Sql Database resource settings.
  */
 export interface SqlDatabaseResourceSettingsArgs {
@@ -2205,6 +2621,28 @@ export interface SqlDbSettingsArgs {
 }
 
 /**
+ * SQL database assessment settings V3.
+ */
+export interface SqlDbSettingsV3Args {
+    /**
+     * Gets or sets the azure SQL compute tier.
+     */
+    azureSqlComputeTier?: pulumi.Input<string | enums.ComputeTier>;
+    /**
+     * Gets or sets the azure PAAS SQL instance type.
+     */
+    azureSqlDataBaseType?: pulumi.Input<string | enums.AzureSqlDataBaseType>;
+    /**
+     * Gets or sets the azure SQL purchase model.
+     */
+    azureSqlPurchaseModel?: pulumi.Input<string | enums.AzureSqlPurchaseModel>;
+    /**
+     * Gets or sets the azure SQL service tier.
+     */
+    azureSqlServiceTier?: pulumi.Input<string | enums.AzureSqlServiceTierV3>;
+}
+
+/**
  * Defines the Sql ElasticPool resource settings.
  */
 export interface SqlElasticPoolResourceSettingsArgs {
@@ -2243,6 +2681,20 @@ export interface SqlMiSettingsArgs {
      * Gets or sets the azure SQL service tier.
      */
     azureSqlServiceTier?: pulumi.Input<string | enums.AzureSqlServiceTier>;
+}
+
+/**
+ * SQL managed instance assessment settings V3.
+ */
+export interface SqlMiSettingsV3Args {
+    /**
+     * Gets or sets the azure PAAS SQL instance type.
+     */
+    azureSqlInstanceType?: pulumi.Input<string | enums.AzureSqlInstanceType>;
+    /**
+     * Gets or sets the azure SQL service tier.
+     */
+    azureSqlServiceTier?: pulumi.Input<string | enums.AzureSqlServiceTierV3>;
 }
 
 /**
@@ -2337,6 +2789,24 @@ export interface SubnetResourceSettingsArgs {
      * Defines reference to NSG.
      */
     networkSecurityGroup?: pulumi.Input<NsgReferenceArgs>;
+}
+
+/**
+ * ARM IDs of the target assessments.
+ */
+export interface TargetAssessmentArmIdsArgs {
+    /**
+     * ARM ID for Azure Kubernetes Service assessment.
+     */
+    aks?: pulumi.Input<string>;
+    /**
+     * ARM ID for Azure App Service assessment.
+     */
+    azureAppService?: pulumi.Input<string>;
+    /**
+     * ARM ID for Azure App Service Container assessment.
+     */
+    azureAppServiceContainer?: pulumi.Input<string>;
 }
 
 /**
@@ -2519,6 +2989,79 @@ export interface VmUptimeArgs {
      * Number of hours per day for VM uptime.
      */
     hoursPerDay?: pulumi.Input<number>;
+}
+
+/**
+ * Web app assessment settings class.
+ */
+export interface WebAppAssessmentSettingsArgs {
+    /**
+     * App Service container settings.
+     */
+    appSvcContainerSettings: pulumi.Input<AppSvcContainerSettingsArgs>;
+    /**
+     * App Service native settings.
+     */
+    appSvcNativeSettings: pulumi.Input<AppSvcNativeSettingsArgs>;
+    /**
+     * Azure Location or Azure region where to which the machines will be migrated.
+     */
+    azureLocation?: pulumi.Input<string>;
+    /**
+     * Azure security offering type.
+     */
+    azureSecurityOfferingType: pulumi.Input<string | enums.AzureSecurityOfferingType>;
+    /**
+     * Gets or sets the billing settings.
+     */
+    billingSettings?: pulumi.Input<BillingSettingsArgs>;
+    /**
+     * Currency in which prices should be reported.
+     */
+    currency?: pulumi.Input<string | enums.AzureCurrency>;
+    /**
+     * Custom discount percentage.
+     */
+    discountPercentage?: pulumi.Input<number>;
+    /**
+     * Gets or sets user configurable setting to display the environment type.
+     */
+    environmentType?: pulumi.Input<string | enums.EnvironmentType>;
+    /**
+     * Gets or sets the performance data.
+     */
+    performanceData?: pulumi.Input<PerformanceDataArgs>;
+    /**
+     * Gets or sets the savings settings.
+     */
+    savingsSettings?: pulumi.Input<SavingsSettingsArgs>;
+    /**
+     * Percentage of buffer that user wants on performance metrics when recommending
+     * Azure sizes.
+     */
+    scalingFactor?: pulumi.Input<number>;
+    /**
+     * Assessment sizing criterion.
+     */
+    sizingCriterion?: pulumi.Input<string | enums.AssessmentSizingCriterion>;
+}
+
+/**
+ * WebApp assessment resource properties.
+ */
+export interface WebAppAssessmentV3PropertiesArgs {
+    /**
+     * Gets or sets the machine assessment ARM ID for VM fallback.
+     */
+    fallbackMachineAssessmentArmId?: pulumi.Input<string>;
+    /**
+     * Gets or sets the scope of assessment.
+     */
+    scope?: pulumi.Input<ScopeArgs>;
+    /**
+     * Gets or sets the settings for the assessment.
+     */
+    settings?: pulumi.Input<WebAppAssessmentSettingsArgs>;
 }
 
 /**

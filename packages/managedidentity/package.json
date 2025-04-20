@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-managedidentity",
-    "version": "3.1.0",
+    "version": "3.2.0",
     "description": "Pulumi Azure Native package for managedidentity",
     "keywords": [
         "pulumi",
