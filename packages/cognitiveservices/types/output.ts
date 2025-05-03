@@ -1,6 +1,38 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * This connection type covers the AAD auth for any applicable Azure service
+ */
+export interface AADAuthTypeConnectionPropertiesResponse {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'AAD'.
+     */
+    authType: "AAD";
+    /**
+     * Category of the connection
+     */
+    category?: string;
+    createdByWorkspaceArmId: string;
+    error?: string;
+    expiryTime?: string;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
+}
+
+/**
  * The abuse penalty.
  */
 export interface AbusePenaltyResponse {
@@ -16,6 +48,72 @@ export interface AbusePenaltyResponse {
      * The percentage of rate limit.
      */
     rateLimitPercentage?: number;
+}
+
+export interface AccessKeyAuthTypeConnectionPropertiesResponse {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'AccessKey'.
+     */
+    authType: "AccessKey";
+    /**
+     * Category of the connection
+     */
+    category?: string;
+    createdByWorkspaceArmId: string;
+    credentials?: ConnectionAccessKeyResponse;
+    error?: string;
+    expiryTime?: string;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
+}
+
+/**
+ * This connection type covers the account key connection for Azure storage
+ */
+export interface AccountKeyAuthTypeConnectionPropertiesResponse {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'AccountKey'.
+     */
+    authType: "AccountKey";
+    /**
+     * Category of the connection
+     */
+    category?: string;
+    createdByWorkspaceArmId: string;
+    /**
+     * Account key object for connection credential.
+     */
+    credentials?: ConnectionAccountKeyResponse;
+    error?: string;
+    expiryTime?: string;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
 }
 
 /**
@@ -135,6 +233,61 @@ export function accountPropertiesResponseProvideDefaults(val: AccountPropertiesR
 }
 
 /**
+ * This connection type covers the generic ApiKey auth connection categories, for examples:
+ * AzureOpenAI:
+ *     Category:= AzureOpenAI
+ *     AuthType:= ApiKey (as type discriminator)
+ *     Credentials:= {ApiKey} as .ApiKey
+ *     Target:= {ApiBase}
+ *             
+ * CognitiveService:
+ *     Category:= CognitiveService
+ *     AuthType:= ApiKey (as type discriminator)
+ *     Credentials:= {SubscriptionKey} as ApiKey
+ *     Target:= ServiceRegion={serviceRegion}
+ *             
+ * CognitiveSearch:
+ *     Category:= CognitiveSearch
+ *     AuthType:= ApiKey (as type discriminator)
+ *     Credentials:= {Key} as ApiKey
+ *     Target:= {Endpoint}
+ *             
+ * Use Metadata property bag for ApiType, ApiVersion, Kind and other metadata fields
+ */
+export interface ApiKeyAuthConnectionPropertiesResponse {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'ApiKey'.
+     */
+    authType: "ApiKey";
+    /**
+     * Category of the connection
+     */
+    category?: string;
+    createdByWorkspaceArmId: string;
+    /**
+     * Api key object for connection credential.
+     */
+    credentials?: ConnectionApiKeyResponse;
+    error?: string;
+    expiryTime?: string;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
+}
+
+/**
  * The api properties for special APIs.
  */
 export interface ApiPropertiesResponse {
@@ -193,6 +346,54 @@ export interface CallRateLimitResponse {
      */
     renewalPeriod?: number;
     rules?: ThrottlingRuleResponse[];
+}
+
+export interface CapabilityHostResponse {
+    /**
+     * List of AI services connections.
+     */
+    aiServicesConnections?: string[];
+    /**
+     * Kind of this capability host.
+     */
+    capabilityHostKind?: string;
+    /**
+     * Customer subnet info to help set up this capability host.
+     */
+    customerSubnet?: string;
+    /**
+     * The asset description text.
+     */
+    description?: string;
+    /**
+     * Provisioning state for the CapabilityHost.
+     */
+    provisioningState: string;
+    /**
+     * List of Storage connections.
+     */
+    storageConnections?: string[];
+    /**
+     * Tag dictionary. Tags can be added, removed, and updated.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * List of Thread storage connections.
+     */
+    threadStorageConnections?: string[];
+    /**
+     * List of VectorStore connections.
+     */
+    vectorStoreConnections?: string[];
+}
+/**
+ * capabilityHostResponseProvideDefaults sets the appropriate defaults for CapabilityHostResponse
+ */
+export function capabilityHostResponseProvideDefaults(val: CapabilityHostResponse): CapabilityHostResponse {
+    return {
+        ...val,
+        capabilityHostKind: (val.capabilityHostKind) ?? "Agents",
+    };
 }
 
 /**
@@ -291,6 +492,88 @@ export interface CommitmentQuotaResponse {
     unit?: string;
 }
 
+export interface ConnectionAccessKeyResponse {
+    accessKeyId?: string;
+    secretAccessKey?: string;
+}
+
+/**
+ * Account key object for connection credential.
+ */
+export interface ConnectionAccountKeyResponse {
+    key?: string;
+}
+
+/**
+ * Api key object for connection credential.
+ */
+export interface ConnectionApiKeyResponse {
+    key?: string;
+}
+
+export interface ConnectionManagedIdentityResponse {
+    clientId?: string;
+    resourceId?: string;
+}
+
+/**
+ * ClientId and ClientSecret are required. Other properties are optional
+ * depending on each OAuth2 provider's implementation.
+ */
+export interface ConnectionOAuth2Response {
+    /**
+     * Required by Concur connection category
+     */
+    authUrl?: string;
+    /**
+     * Client id in the format of UUID
+     */
+    clientId?: string;
+    clientSecret?: string;
+    /**
+     * Required by GoogleAdWords connection category
+     */
+    developerToken?: string;
+    password?: string;
+    /**
+     * Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
+     * where user needs to get RefreshToken offline
+     */
+    refreshToken?: string;
+    /**
+     * Required by QuickBooks and Xero connection categories
+     */
+    tenantId?: string;
+    /**
+     * Concur, ServiceNow auth server AccessToken grant type is 'Password'
+     * which requires UsernamePassword
+     */
+    username?: string;
+}
+
+export interface ConnectionPersonalAccessTokenResponse {
+    pat?: string;
+}
+
+export interface ConnectionServicePrincipalResponse {
+    clientId?: string;
+    clientSecret?: string;
+    tenantId?: string;
+}
+
+export interface ConnectionSharedAccessSignatureResponse {
+    sas?: string;
+}
+
+export interface ConnectionUsernamePasswordResponse {
+    password?: string;
+    /**
+     * Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
+     */
+    securityToken?: string;
+    username?: string;
+}
+
 /**
  * Gets or sets the source to which filter applies.
  */
@@ -307,6 +590,53 @@ export interface CustomBlocklistConfigResponse {
      * Content source to apply the Content Filters.
      */
     source?: string;
+}
+
+/**
+ * Category:= CustomKeys
+ * AuthType:= CustomKeys (as type discriminator)
+ * Credentials:= {CustomKeys} as CustomKeys
+ * Target:= {any value}
+ * Use Metadata property bag for ApiVersion and other metadata fields
+ */
+export interface CustomKeysConnectionPropertiesResponse {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'CustomKeys'.
+     */
+    authType: "CustomKeys";
+    /**
+     * Category of the connection
+     */
+    category?: string;
+    createdByWorkspaceArmId: string;
+    /**
+     * Custom Keys credential object
+     */
+    credentials?: CustomKeysResponse;
+    error?: string;
+    expiryTime?: string;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
+}
+
+/**
+ * Custom Keys credential object
+ */
+export interface CustomKeysResponse {
+    keys?: {[key: string]: string};
 }
 
 /**
@@ -531,6 +861,36 @@ export interface KeyVaultPropertiesResponse {
     keyVersion?: string;
 }
 
+export interface ManagedIdentityAuthTypeConnectionPropertiesResponse {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'ManagedIdentity'.
+     */
+    authType: "ManagedIdentity";
+    /**
+     * Category of the connection
+     */
+    category?: string;
+    createdByWorkspaceArmId: string;
+    credentials?: ConnectionManagedIdentityResponse;
+    error?: string;
+    expiryTime?: string;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
+}
+
 /**
  * The multiregion settings Cognitive Services account.
  */
@@ -562,6 +922,99 @@ export interface NetworkRuleSetResponse {
      * The list of virtual network rules.
      */
     virtualNetworkRules?: VirtualNetworkRuleResponse[];
+}
+
+export interface NoneAuthTypeConnectionPropertiesResponse {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'None'.
+     */
+    authType: "None";
+    /**
+     * Category of the connection
+     */
+    category?: string;
+    createdByWorkspaceArmId: string;
+    error?: string;
+    expiryTime?: string;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
+}
+
+export interface OAuth2AuthTypeConnectionPropertiesResponse {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'OAuth2'.
+     */
+    authType: "OAuth2";
+    /**
+     * Category of the connection
+     */
+    category?: string;
+    createdByWorkspaceArmId: string;
+    /**
+     * ClientId and ClientSecret are required. Other properties are optional
+     * depending on each OAuth2 provider's implementation.
+     */
+    credentials?: ConnectionOAuth2Response;
+    error?: string;
+    expiryTime?: string;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
+}
+
+export interface PATAuthTypeConnectionPropertiesResponse {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'PAT'.
+     */
+    authType: "PAT";
+    /**
+     * Category of the connection
+     */
+    category?: string;
+    createdByWorkspaceArmId: string;
+    credentials?: ConnectionPersonalAccessTokenResponse;
+    error?: string;
+    expiryTime?: string;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
 }
 
 /**
@@ -646,6 +1099,32 @@ export interface PrivateLinkServiceConnectionStateResponse {
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
     status?: string;
+}
+
+/**
+ * Properties of Cognitive Services Project'.
+ */
+export interface ProjectPropertiesResponse {
+    /**
+     * The description of the Cognitive Services Project.
+     */
+    description?: string;
+    /**
+     * The display name of the Cognitive Services Project.
+     */
+    displayName?: string;
+    /**
+     * The list of endpoint for this Cognitive Services Project.
+     */
+    endpoints: {[key: string]: string};
+    /**
+     * Indicates whether the project is the default project for the account.
+     */
+    isDefault: boolean;
+    /**
+     * Gets the status of the cognitive services project at the time the operation was called.
+     */
+    provisioningState: string;
 }
 
 export interface QuotaLimitResponse {
@@ -765,6 +1244,66 @@ export interface RegionSettingResponse {
 export interface RequestMatchPatternResponse {
     method?: string;
     path?: string;
+}
+
+export interface SASAuthTypeConnectionPropertiesResponse {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'SAS'.
+     */
+    authType: "SAS";
+    /**
+     * Category of the connection
+     */
+    category?: string;
+    createdByWorkspaceArmId: string;
+    credentials?: ConnectionSharedAccessSignatureResponse;
+    error?: string;
+    expiryTime?: string;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
+}
+
+export interface ServicePrincipalAuthTypeConnectionPropertiesResponse {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'ServicePrincipal'.
+     */
+    authType: "ServicePrincipal";
+    /**
+     * Category of the connection
+     */
+    category?: string;
+    createdByWorkspaceArmId: string;
+    credentials?: ConnectionServicePrincipalResponse;
+    error?: string;
+    expiryTime?: string;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
 }
 
 /**
@@ -901,6 +1440,36 @@ export interface UserOwnedStorageResponse {
      * Full resource id of a Microsoft.Storage resource.
      */
     resourceId?: string;
+}
+
+export interface UsernamePasswordAuthTypeConnectionPropertiesResponse {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'UsernamePassword'.
+     */
+    authType: "UsernamePassword";
+    /**
+     * Category of the connection
+     */
+    category?: string;
+    createdByWorkspaceArmId: string;
+    credentials?: ConnectionUsernamePasswordResponse;
+    error?: string;
+    expiryTime?: string;
+    /**
+     * Group based on connection category
+     */
+    group: string;
+    isSharedToAll?: boolean;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
 }
 
 /**

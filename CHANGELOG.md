@@ -2,31 +2,71 @@
 
 ### Does the PR have any schema changes?
 
-Looking good! No breaking changes found.
+Found 8 breaking changes:
+
+#### Types
+- `🟡` "azure-native:powerplatform:PropertiesNetworkInjection": properties: "virtualNetworks" type changed from "#/types/azure-native:powerplatform:VirtualNetworkPropertiesList" to "array":
+    - `🟡` items had no type but now has &{Type:object Ref:#/types/azure-native:powerplatform:VirtualNetworkProperties AdditionalProperties:<nil> Items:<nil> OneOf:[] Discriminator:<nil> Plain:false}
+- `🟡` "azure-native:powerplatform:PropertiesResponseNetworkInjection": properties: "virtualNetworks" type changed from "#/types/azure-native:powerplatform:VirtualNetworkPropertiesListResponse" to "array":
+    - `🟡` items had no type but now has &{Type:object Ref:#/types/azure-native:powerplatform:VirtualNetworkPropertiesResponse AdditionalProperties:<nil> Items:<nil> OneOf:[] Discriminator:<nil> Plain:false}
+- `🔴` "azure-native:powerplatform:VirtualNetworkPropertiesList" missing
+- `🔴` "azure-native:powerplatform:VirtualNetworkPropertiesListResponse" missing
+- "azure-native:storageactions:StorageTaskOperation": properties:
+    - `🟡` "onFailure" type changed from "#/types/azure-native:storageactions:OnFailure" to ""
+    - `🟡` "onSuccess" type changed from "#/types/azure-native:storageactions:OnSuccess" to ""
 
 #### New resources:
 
-- `monitor.ActivityLogAlert`
-- `monitor.DataCollectionEndpoint`
-- `monitor.DataCollectionRule`
-- `monitor.DataCollectionRuleAssociation`
-- `monitor.MetricAlert`
+- `cognitiveservices.AccountCapabilityHost`
+- `cognitiveservices.AccountConnection`
+- `cognitiveservices.Project`
+- `cognitiveservices.ProjectCapabilityHost`
+- `cognitiveservices.ProjectConnection`
+- `communication.SmtpUsername`
+- `containerinstance.CGProfile`
+- `datareplication.FabricAgent`
+- `datareplication.PrivateEndpointConnection`
+- `datareplication.PrivateEndpointConnectionProxy`
+- `durabletask.RetentionPolicy`
+- `migrate.AvsAssessmentsV2Operation`
+- `migrate.CompoundAssessmentOperation`
+- `migrate.HeterogeneousAssessmentOperation`
+- `migrate.ImportSqlCollectorOperation`
+- `migrate.MachineAssessmentsV2Operation`
+- `migrate.SqlAssessmentV3Operation`
+- `migrate.WebAppAssessmentV3Operation`
+- `netapp.CapacityPoolBucket`
+- `storagecache.AutoExportJob`
 
 #### New functions:
 
-- `monitor.getActivityLogAlert`
-- `monitor.getDataCollectionEndpoint`
-- `monitor.getDataCollectionRule`
-- `monitor.getDataCollectionRuleAssociation`
-- `monitor.getMetricAlert`
+- `cognitiveservices.getAccountCapabilityHost`
+- `cognitiveservices.getAccountConnection`
+- `cognitiveservices.getProject`
+- `cognitiveservices.getProjectCapabilityHost`
+- `cognitiveservices.getProjectConnection`
+- `communication.getSmtpUsername`
+- `containerinstance.getCGProfile`
+- `datareplication.getFabricAgent`
+- `datareplication.getPrivateEndpointConnection`
+- `datareplication.getPrivateEndpointConnectionProxy`
+- `devcenter.getProjectCatalogImageDefinitionErrorDetails`
+- `devhub.getADOOAuthInfo`
+- `durabletask.getRetentionPolicy`
+- `migrate.getAvsAssessmentsV2Operation`
+- `migrate.getCompoundAssessmentOperation`
+- `migrate.getHeterogeneousAssessmentOperation`
+- `migrate.getImportSqlCollectorOperation`
+- `migrate.getMachineAssessmentsV2Operation`
+- `migrate.getSqlAssessmentV3Operation`
+- `migrate.getWebAppAssessmentV3Operation`
+- `netapp.getCapacityPoolBucket`
+- `storagecache.getAutoExportJob`
 
-<!-- Release notes generated using configuration in .github/release.yml at v3.1.0 -->
+<!-- Release notes generated using configuration in .github/release.yml at v3.2.0 -->
 
 ## What's Changed
-* Add versions/tools/compare_major_versions.go by @thomas11 in https://github.com/pulumi/pulumi-azure-native/pull/4083
-* Re-add Insights 2022-06-01 to bring back Monitor.ActionGroup and Monitor.DataCollection* by @thomas11 in https://github.com/pulumi/pulumi-azure-native/pull/4084
-* Bring back more Insights API version to restore MetricAlert and ActivityLogAlert by @thomas11 in https://github.com/pulumi/pulumi-azure-native/pull/4085
-* Local packages: fail with appropriate error messages when module or API version are not found by @thomas11 in https://github.com/pulumi/pulumi-azure-native/pull/4086
+* Bump CI workflows nightly SDK gen and Pulumi update to provider v3 by @thomas11 in https://github.com/pulumi/pulumi-azure-native/pull/4087
 
 
-**Full Changelog**: https://github.com/pulumi/pulumi-azure-native/compare/v3.0.1...v3.1.0
+**Full Changelog**: https://github.com/pulumi/pulumi-azure-native/compare/v3.1.0...v3.2.0

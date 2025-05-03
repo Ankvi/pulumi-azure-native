@@ -5,6 +5,8 @@ import * as types from "./types";
  * Get a existing Azure Advisor assessment.
  *
  * Uses Azure REST API version 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-11-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native advisor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAssessment(args: GetAssessmentArgs, opts?: pulumi.InvokeOptions): Promise<GetAssessmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -85,6 +87,8 @@ export interface GetAssessmentResult {
  * Get a existing Azure Advisor assessment.
  *
  * Uses Azure REST API version 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-11-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native advisor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAssessmentOutput(args: GetAssessmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAssessmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -87,7 +87,7 @@ export interface PropertiesNetworkInjectionArgs {
     /**
      * Network injection configuration
      */
-    virtualNetworks?: pulumi.Input<VirtualNetworkPropertiesListArgs>;
+    virtualNetworks?: pulumi.Input<pulumi.Input<VirtualNetworkPropertiesArgs>[]>;
 }
 
 /**
@@ -112,18 +112,4 @@ export interface VirtualNetworkPropertiesArgs {
      * Properties of a subnet.
      */
     subnet?: pulumi.Input<SubnetPropertiesArgs>;
-}
-
-/**
- * A list of private link resources
- */
-export interface VirtualNetworkPropertiesListArgs {
-    /**
-     * Next page link if any.
-     */
-    nextLink?: pulumi.Input<string>;
-    /**
-     * Array of virtual networks.
-     */
-    value?: pulumi.Input<pulumi.Input<VirtualNetworkPropertiesArgs>[]>;
 }

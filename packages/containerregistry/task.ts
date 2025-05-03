@@ -6,6 +6,8 @@ import * as types from "./types";
  * The task will have all information to schedule a run against it.
  *
  * Uses Azure REST API version 2019-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2019-06-01-preview.
+ *
+ * Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Task extends pulumi.CustomResource {
     /**
@@ -172,7 +174,7 @@ export class Task extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerregistry/v20180901:Task" }, { type: "azure-native:containerregistry/v20190401:Task" }, { type: "azure-native:containerregistry/v20190601preview:Task" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerregistry/v20180901:Task" }, { type: "azure-native:containerregistry/v20190401:Task" }, { type: "azure-native:containerregistry/v20190601preview:Task" }, { type: "azure-native:containerregistry/v20250301preview:Task" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Task.__pulumiType, name, resourceInputs, opts);
     }

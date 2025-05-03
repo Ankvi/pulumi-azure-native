@@ -127,6 +127,30 @@ export function activeDirectoryArgsProvideDefaults(val: ActiveDirectoryArgs): Ac
 }
 
 /**
+ * Properties of the server managing the lifecycle of volume buckets
+ */
+export interface BucketServerPropertiesArgs {
+    /**
+     * A base64-encoded PEM file, which includes both the bucket server's certificate and private key. It is used to authenticate the user and allows access to volume data in a read-only manner.
+     */
+    certificateObject?: pulumi.Input<string>;
+    /**
+     * The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
+     */
+    fqdn?: pulumi.Input<string>;
+}
+
+/**
+ * The effective CIFS username when accessing the volume data.
+ */
+export interface CifsUserArgs {
+    /**
+     * The CIFS user's username
+     */
+    username?: pulumi.Input<string>;
+}
+
+/**
  * Daily Schedule properties
  */
 export interface DailyScheduleArgs {
@@ -241,6 +265,20 @@ export function exportPolicyRuleArgsProvideDefaults(val: ExportPolicyRuleArgs): 
 }
 
 /**
+ * File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
+ */
+export interface FileSystemUserArgs {
+    /**
+     * The effective CIFS username when accessing the volume data.
+     */
+    cifsUser?: pulumi.Input<CifsUserArgs>;
+    /**
+     * The effective NFS User ID and Group ID when accessing the volume data.
+     */
+    nfsUser?: pulumi.Input<NfsUserArgs>;
+}
+
+/**
  * Hourly Schedule properties
  */
 export interface HourlyScheduleArgs {
@@ -332,6 +370,20 @@ export interface MonthlyScheduleArgs {
      * Resource size in bytes, current storage usage for the volume in bytes
      */
     usedBytes?: pulumi.Input<number>;
+}
+
+/**
+ * The effective NFS User ID and Group ID when accessing the volume data.
+ */
+export interface NfsUserArgs {
+    /**
+     * The NFS user's GID
+     */
+    groupId?: pulumi.Input<number>;
+    /**
+     * The NFS user's UID
+     */
+    userId?: pulumi.Input<number>;
 }
 
 /**

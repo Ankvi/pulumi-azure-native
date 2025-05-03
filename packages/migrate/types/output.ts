@@ -368,6 +368,32 @@ export interface AppSvcNativeSettingsResponse {
 }
 
 /**
+ * Assessment details class.
+ */
+export interface AssessmentDetailsResponse {
+    /**
+     * Confidence Rating in Percentage.
+     */
+    confidenceRatingInPercentage: number;
+    /**
+     * Date and Time when assessment was created.
+     */
+    createdTimestamp: string;
+    /**
+     * Last time when rates were queried.
+     */
+    pricesTimestamp: string;
+    /**
+     * Whether assessment is in valid state and all machines have been assessed.
+     */
+    status: string;
+    /**
+     * Date and Time when assessment was last updated.
+     */
+    updatedTimestamp: string;
+}
+
+/**
  * Properties of an assessment.
  */
 export interface AssessmentPropertiesResponse {
@@ -562,6 +588,115 @@ export interface AvailabilitySetResourceSettingsResponse {
      * Gets or sets the target update domain.
      */
     updateDomain?: number;
+}
+
+/**
+ * Assessment properties class.
+ */
+export interface AvsAssessmentPropertiesV2Response {
+    /**
+     * Gets or sets the details of the assessment.
+     */
+    details?: AssessmentDetailsResponse;
+    /**
+     * Gets or sets the machine assessment ARM ID for VM fallback.
+     */
+    fallbackMachineAssessmentArmId?: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * Gets or sets the scope of assessment.
+     */
+    scope?: ScopeResponse;
+    /**
+     * Gets or sets the settings for the assessment.
+     */
+    settings?: AvsAssessmentSettingsResponse;
+}
+
+/**
+ * Properties of the AVS assessment.
+ */
+export interface AvsAssessmentSettingsResponse {
+    /**
+     * AVS Assessment Scenario.
+     */
+    avsAssessmentScenario?: string;
+    /**
+     * Azure Location or Azure region where to which the machines will be migrated.
+     */
+    azureLocation?: string;
+    /**
+     * Gets or sets the billing settings.
+     */
+    billingSettings?: BillingSettingsResponse;
+    /**
+     * Gets or sets the CPU headroom.
+     */
+    cpuHeadroom?: number;
+    /**
+     * Currency in which prices should be reported.
+     */
+    currency?: string;
+    /**
+     * De-duplication compression.
+     */
+    dedupeCompression?: number;
+    /**
+     * Custom discount percentage.
+     */
+    discountPercentage?: number;
+    /**
+     * Gets or sets user configurable setting to display the environment type.
+     */
+    environmentType?: string;
+    /**
+     * List of AVS external storage types.
+     */
+    externalStorageTypes?: string[];
+    /**
+     * List of Failures to tolerate and RAID levels in a common property.
+     */
+    failuresToTolerateAndRaidLevelList?: string[];
+    /**
+     * Is Stretch Cluster Enabled.
+     */
+    isStretchClusterEnabled?: boolean;
+    /**
+     * Is VCF license applied
+     */
+    isVcfByolEnabled?: boolean;
+    /**
+     * Memory overcommit.
+     */
+    memOvercommit?: number;
+    /**
+     * AVS node types.
+     */
+    nodeTypes?: string[];
+    /**
+     * Gets or sets the performance data.
+     */
+    performanceData?: PerformanceDataResponse;
+    /**
+     * Gets or sets the savings settings.
+     */
+    savingsSettings?: SavingsSettingsResponse;
+    /**
+     * Percentage of buffer that user wants on performance metrics when recommending
+     * Azure sizes.
+     */
+    scalingFactor?: number;
+    /**
+     * Assessment sizing criterion.
+     */
+    sizingCriterion?: string;
+    /**
+     * VCPU over subscription.
+     */
+    vcpuOversubscription?: number;
 }
 
 /**
@@ -813,6 +948,20 @@ export function azureSettingsResponseProvideDefaults(val: AzureSettingsResponse)
 }
 
 /**
+ * Billing settings class.
+ */
+export interface BillingSettingsResponse {
+    /**
+     * Gets or sets the licensing program.
+     */
+    licensingProgram?: string;
+    /**
+     * Gets or sets the subscription ID for licensing program selected.
+     */
+    subscriptionId?: string;
+}
+
+/**
  * Binding for a web application.
  */
 export interface BindingResponse {
@@ -960,6 +1109,46 @@ export interface CollectorPropertiesResponse {
      * Time when this collector was updated. Date-Time represented in ISO-8601 format.
      */
     updatedTimestamp: string;
+}
+
+/**
+ * Details of the compound assessment.
+ */
+export interface CompoundAssessmentDetailsResponse {
+    /**
+     * Timestamp when the assessment was created.
+     */
+    createdTimestamp?: string;
+    /**
+     * Status of the assessment.
+     */
+    status: string;
+    /**
+     * Timestamp when the assessment was last updated.
+     */
+    updatedTimestamp?: string;
+}
+
+/**
+ * Properties of a compound assessment.
+ */
+export interface CompoundAssessmentPropertiesResponse {
+    /**
+     * Details of the compound assessment.
+     */
+    details: CompoundAssessmentDetailsResponse;
+    /**
+     * Fallback machine assessment ARM ID.
+     */
+    fallbackMachineAssessmentArmId?: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * ARM IDs of the target assessments.
+     */
+    targetAssessmentArmIds: TargetAssessmentArmIdsResponse;
 }
 
 /**
@@ -1369,6 +1558,44 @@ export interface HealthErrorModelResponse {
 }
 
 /**
+ * Properties of an assessment.
+ */
+export interface HeterogeneousAssessmentPropertiesResponse {
+    /**
+     * Arm id of partner assessments.
+     */
+    assessmentArmIds?: string[];
+    /**
+     * Azure location for assessment.
+     */
+    azureLocation: string;
+    /**
+     * Confidence rating in percentage.
+     */
+    confidenceRatingInPercentage: number;
+    /**
+     * Timestamp for the last successfully calculated summary for the assessment.
+     */
+    lastCalculatedOn: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * Schema version.
+     */
+    schemaVersion: string;
+    /**
+     * Sizing criterion for assessment.
+     */
+    sizingCriterion: string;
+    /**
+     * Whether assessment is in valid state and all machines have been assessed.
+     */
+    status: string;
+}
+
+/**
  * Representation of a licence.
  */
 export interface HypervLicenseResponse {
@@ -1741,6 +1968,28 @@ export interface ImportCollectorPropertiesResponse {
 }
 
 /**
+ * Import SQL Collector properties class.
+ */
+export interface ImportSqlCollectorPropertiesResponse {
+    /**
+     * When was import SQL collector first created.
+     */
+    createdTimestamp: string;
+    /**
+     * The sql db extended details.
+     */
+    discoverySiteId?: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * When was import SQL collector last updated.
+     */
+    updatedTimestamp: string;
+}
+
+/**
  * Inner health error model.
  */
 export interface InnerHealthErrorModelResponse {
@@ -1968,6 +2217,110 @@ export interface LoadBalancerResourceSettingsResponse {
      *  precedence only if frontend IP configurations settings are not present.
      */
     zones?: string;
+}
+
+/**
+ * Properties of an assessment.
+ */
+export interface MachineAssessmentSettingsResponse {
+    /**
+     * The disk type for the assessment.
+     */
+    azureDiskTypes?: string[];
+    /**
+     * Gets or sets the user configurable setting to display the azure hybrid use
+     * benefit.
+     */
+    azureHybridUseBenefit?: string;
+    /**
+     * Azure Location or Azure region where to which the machines will be migrated.
+     */
+    azureLocation?: string;
+    /**
+     * Gets or sets Azure Pricing Tier - Free, Basic, etc.
+     */
+    azurePricingTier?: string;
+    /**
+     * The azure security offering type.
+     */
+    azureSecurityOfferingType?: string;
+    /**
+     * Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage.
+     */
+    azureStorageRedundancy?: string;
+    /**
+     * Gets or sets the Azure VM families.
+     */
+    azureVmFamilies?: string[];
+    /**
+     * Gets or sets the Azure VM security options.
+     */
+    azureVmSecurityOptions?: string[];
+    /**
+     * Gets or sets the billing settings.
+     */
+    billingSettings?: BillingSettingsResponse;
+    /**
+     * Currency in which prices should be reported.
+     */
+    currency?: string;
+    /**
+     * Custom discount percentage.
+     */
+    discountPercentage?: number;
+    /**
+     * Gets or sets user configurable setting to display the environment type.
+     */
+    environmentType?: string;
+    /**
+     * Gets or sets the user configurable setting to display the linux azure hybrid use
+     * benefit.
+     */
+    linuxAzureHybridUseBenefit?: string;
+    /**
+     * Gets or sets the performance data.
+     */
+    performanceData?: PerformanceDataResponse;
+    /**
+     * Gets or sets the savings settings.
+     */
+    savingsSettings?: SavingsSettingsResponse;
+    /**
+     * Percentage of buffer that user wants on performance metrics when recommending
+     * Azure sizes.
+     */
+    scalingFactor?: number;
+    /**
+     * Assessment sizing criterion.
+     */
+    sizingCriterion?: string;
+    /**
+     * Gets or sets the duration for which the VMs are up in the on-premises
+     * environment.
+     */
+    vmUptime?: VmUptimeResponse;
+}
+
+/**
+ * Assessment properties class.
+ */
+export interface MachineAssessmentV2PropertiesResponse {
+    /**
+     * Gets or sets the details of the assessment.
+     */
+    details?: AssessmentDetailsResponse;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * Gets or sets the scope of assessment.
+     */
+    scope?: ScopeResponse;
+    /**
+     * Gets or sets the settings for the assessment.
+     */
+    settings?: MachineAssessmentSettingsResponse;
 }
 
 export interface ManagedIdentityPropertiesResponse {
@@ -2662,6 +3015,30 @@ export interface PerfDataSettingsResponse {
 }
 
 /**
+ * Performance data class.
+ */
+export interface PerformanceDataResponse {
+    /**
+     * Percentile of the utilization data values to be considered while assessing
+     * machines.
+     */
+    percentile?: string;
+    /**
+     * Gets or sets the end time to consider performance data for assessment.
+     */
+    perfDataEndTime?: string;
+    /**
+     * Gets or sets the start time to consider performance data for assessment.
+     */
+    perfDataStartTime?: string;
+    /**
+     * Time Range for which the historic utilization data should be considered for
+     * assessment.
+     */
+    timeRange?: string;
+}
+
+/**
  * WebApplication port mapping.
  */
 export interface PortMappingResponse {
@@ -2969,6 +3346,38 @@ export interface ResourceRequirementsResponse {
     memory?: string;
 }
 
+/**
+ * Savings settings class.
+ */
+export interface SavingsSettingsResponse {
+    /**
+     * Gets or sets the Azure offer code.
+     */
+    azureOfferCode?: string;
+    /**
+     * Gets or sets the savings options.
+     */
+    savingsOptions?: string;
+}
+
+/**
+ * Scope of the assessment.
+ */
+export interface ScopeResponse {
+    /**
+     * The ARG query.
+     */
+    azureResourceGraphQuery?: string;
+    /**
+     * The scope type
+     */
+    scopeType?: string;
+    /**
+     * The server group arm id.
+     */
+    serverGroupId?: string;
+}
+
 export interface SecretStoreDetailsResponse {
     secretStore?: string;
     secretStoreProperties?: SecretStorePropertiesResponse;
@@ -3147,6 +3556,129 @@ export interface SolutionPropertiesResponse {
 }
 
 /**
+ * SQL assessment settings class.
+ */
+export interface SqlAssessmentSettingsResponse {
+    /**
+     * Gets or sets user preference indicating intent of async commit mode.
+     */
+    asyncCommitModeIntent?: string;
+    /**
+     * Azure Location or Azure region where to which the machines will be migrated.
+     */
+    azureLocation?: string;
+    /**
+     * Gets or sets a value indicating azure security offering type.
+     */
+    azureSecurityOfferingType?: string;
+    /**
+     * Gets or sets user configurable SQL database settings.
+     */
+    azureSqlDatabaseSettings?: SqlDbSettingsV3Response;
+    /**
+     * Gets or sets user configurable SQL managed instance settings.
+     */
+    azureSqlManagedInstanceSettings?: SqlMiSettingsV3Response;
+    /**
+     * Gets or sets user configurable SQL VM settings.
+     */
+    azureSqlVmSettings?: SqlVmSettingsResponse;
+    /**
+     * Gets or sets the billing settings.
+     */
+    billingSettings?: BillingSettingsResponse;
+    /**
+     * Currency in which prices should be reported.
+     */
+    currency?: string;
+    /**
+     * Gets or sets the Azure Location or Azure region where to which the machines
+     * will be migrated.
+     */
+    disasterRecoveryLocation?: string;
+    /**
+     * Custom discount percentage.
+     */
+    discountPercentage?: number;
+    /**
+     * Gets or sets a value indicating whether HADR assessments needs to be created.
+     */
+    enableHadrAssessment?: boolean;
+    /**
+     * Gets or sets the duration for which the entity (SQL, VMs) are up in the
+     * on-premises environment.
+     */
+    entityUptime?: EntityUptimeResponse;
+    /**
+     * Gets or sets user configurable setting to display the environment type.
+     */
+    environmentType?: string;
+    /**
+     * Gets or sets a value indicating whether internet access is available.
+     */
+    isInternetAccessAvailable?: boolean;
+    /**
+     * Gets or sets user preference indicating intent of multi-subnet configuration.
+     */
+    multiSubnetIntent?: string;
+    /**
+     * Gets or sets user configurable setting to display the azure hybrid use benefit.
+     */
+    osLicense?: string;
+    /**
+     * Gets or sets the performance data.
+     */
+    performanceData?: PerformanceDataResponse;
+    /**
+     * Gets or sets SQL the preferred azure targets.
+     */
+    preferredTargets?: string[];
+    /**
+     * Gets or sets the savings settings.
+     */
+    savingsSettings?: SavingsSettingsResponse;
+    /**
+     * Percentage of buffer that user wants on performance metrics when recommending
+     * Azure sizes.
+     */
+    scalingFactor?: number;
+    /**
+     * Assessment sizing criterion.
+     */
+    sizingCriterion?: string;
+    /**
+     * SQL server license.
+     */
+    sqlServerLicense?: string;
+}
+
+/**
+ * SQL assessment properties class.
+ */
+export interface SqlAssessmentV3PropertiesResponse {
+    /**
+     * Gets or sets the details of the assessment.
+     */
+    details?: AssessmentDetailsResponse;
+    /**
+     * Gets or sets the machine assessment ARM ID for VM fallback.
+     */
+    fallbackMachineAssessmentArmId?: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * Gets or sets the scope of assessment.
+     */
+    scope?: ScopeResponse;
+    /**
+     * Gets or sets the settings for the assessment.
+     */
+    settings?: SqlAssessmentSettingsResponse;
+}
+
+/**
  * Defines the Sql Database resource settings.
  */
 export interface SqlDatabaseResourceSettingsResponse {
@@ -3196,6 +3728,28 @@ export interface SqlDbSettingsResponse {
 }
 
 /**
+ * SQL database assessment settings V3.
+ */
+export interface SqlDbSettingsV3Response {
+    /**
+     * Gets or sets the azure SQL compute tier.
+     */
+    azureSqlComputeTier?: string;
+    /**
+     * Gets or sets the azure PAAS SQL instance type.
+     */
+    azureSqlDataBaseType?: string;
+    /**
+     * Gets or sets the azure SQL purchase model.
+     */
+    azureSqlPurchaseModel?: string;
+    /**
+     * Gets or sets the azure SQL service tier.
+     */
+    azureSqlServiceTier?: string;
+}
+
+/**
  * Defines the Sql ElasticPool resource settings.
  */
 export interface SqlElasticPoolResourceSettingsResponse {
@@ -3226,6 +3780,20 @@ export interface SqlElasticPoolResourceSettingsResponse {
  * SQL managed instance assessment settings.
  */
 export interface SqlMiSettingsResponse {
+    /**
+     * Gets or sets the azure PAAS SQL instance type.
+     */
+    azureSqlInstanceType?: string;
+    /**
+     * Gets or sets the azure SQL service tier.
+     */
+    azureSqlServiceTier?: string;
+}
+
+/**
+ * SQL managed instance assessment settings V3.
+ */
+export interface SqlMiSettingsV3Response {
     /**
      * Gets or sets the azure PAAS SQL instance type.
      */
@@ -3358,6 +3926,24 @@ export interface SystemDataResponse {
      * The type of identity that last modified the resource.
      */
     lastModifiedByType?: string;
+}
+
+/**
+ * ARM IDs of the target assessments.
+ */
+export interface TargetAssessmentArmIdsResponse {
+    /**
+     * ARM ID for Azure Kubernetes Service assessment.
+     */
+    aks?: string;
+    /**
+     * ARM ID for Azure App Service assessment.
+     */
+    azureAppService?: string;
+    /**
+     * ARM ID for Azure App Service Container assessment.
+     */
+    azureAppServiceContainer?: string;
 }
 
 /**
@@ -3540,6 +4126,87 @@ export interface VmUptimeResponse {
      * Number of hours per day for VM uptime.
      */
     hoursPerDay?: number;
+}
+
+/**
+ * Web app assessment settings class.
+ */
+export interface WebAppAssessmentSettingsResponse {
+    /**
+     * App Service container settings.
+     */
+    appSvcContainerSettings: AppSvcContainerSettingsResponse;
+    /**
+     * App Service native settings.
+     */
+    appSvcNativeSettings: AppSvcNativeSettingsResponse;
+    /**
+     * Azure Location or Azure region where to which the machines will be migrated.
+     */
+    azureLocation?: string;
+    /**
+     * Azure security offering type.
+     */
+    azureSecurityOfferingType: string;
+    /**
+     * Gets or sets the billing settings.
+     */
+    billingSettings?: BillingSettingsResponse;
+    /**
+     * Currency in which prices should be reported.
+     */
+    currency?: string;
+    /**
+     * Custom discount percentage.
+     */
+    discountPercentage?: number;
+    /**
+     * Gets or sets user configurable setting to display the environment type.
+     */
+    environmentType?: string;
+    /**
+     * Gets or sets the performance data.
+     */
+    performanceData?: PerformanceDataResponse;
+    /**
+     * Gets or sets the savings settings.
+     */
+    savingsSettings?: SavingsSettingsResponse;
+    /**
+     * Percentage of buffer that user wants on performance metrics when recommending
+     * Azure sizes.
+     */
+    scalingFactor?: number;
+    /**
+     * Assessment sizing criterion.
+     */
+    sizingCriterion?: string;
+}
+
+/**
+ * WebApp assessment resource properties.
+ */
+export interface WebAppAssessmentV3PropertiesResponse {
+    /**
+     * Gets or sets the details of the assessment.
+     */
+    details?: AssessmentDetailsResponse;
+    /**
+     * Gets or sets the machine assessment ARM ID for VM fallback.
+     */
+    fallbackMachineAssessmentArmId?: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * Gets or sets the scope of assessment.
+     */
+    scope?: ScopeResponse;
+    /**
+     * Gets or sets the settings for the assessment.
+     */
+    settings?: WebAppAssessmentSettingsResponse;
 }
 
 /**

@@ -1,6 +1,89 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * This connection type covers the AAD auth for any applicable Azure service
+ */
+export interface AADAuthTypeConnectionPropertiesArgs {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'AAD'.
+     */
+    authType: pulumi.Input<"AAD">;
+    /**
+     * Category of the connection
+     */
+    category?: pulumi.Input<string | enums.ConnectionCategory>;
+    error?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string>;
+    isSharedToAll?: pulumi.Input<boolean>;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
+    target?: pulumi.Input<string>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+}
+
+export interface AccessKeyAuthTypeConnectionPropertiesArgs {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'AccessKey'.
+     */
+    authType: pulumi.Input<"AccessKey">;
+    /**
+     * Category of the connection
+     */
+    category?: pulumi.Input<string | enums.ConnectionCategory>;
+    credentials?: pulumi.Input<ConnectionAccessKeyArgs>;
+    error?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string>;
+    isSharedToAll?: pulumi.Input<boolean>;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
+    target?: pulumi.Input<string>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+}
+
+/**
+ * This connection type covers the account key connection for Azure storage
+ */
+export interface AccountKeyAuthTypeConnectionPropertiesArgs {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'AccountKey'.
+     */
+    authType: pulumi.Input<"AccountKey">;
+    /**
+     * Category of the connection
+     */
+    category?: pulumi.Input<string | enums.ConnectionCategory>;
+    /**
+     * Account key object for connection credential.
+     */
+    credentials?: pulumi.Input<ConnectionAccountKeyArgs>;
+    error?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string>;
+    isSharedToAll?: pulumi.Input<boolean>;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
+    target?: pulumi.Input<string>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+}
+
+/**
  * Properties of Cognitive Services account.
  */
 export interface AccountPropertiesArgs {
@@ -64,6 +147,56 @@ export function accountPropertiesArgsProvideDefaults(val: AccountPropertiesArgs)
 }
 
 /**
+ * This connection type covers the generic ApiKey auth connection categories, for examples:
+ * AzureOpenAI:
+ *     Category:= AzureOpenAI
+ *     AuthType:= ApiKey (as type discriminator)
+ *     Credentials:= {ApiKey} as .ApiKey
+ *     Target:= {ApiBase}
+ *             
+ * CognitiveService:
+ *     Category:= CognitiveService
+ *     AuthType:= ApiKey (as type discriminator)
+ *     Credentials:= {SubscriptionKey} as ApiKey
+ *     Target:= ServiceRegion={serviceRegion}
+ *             
+ * CognitiveSearch:
+ *     Category:= CognitiveSearch
+ *     AuthType:= ApiKey (as type discriminator)
+ *     Credentials:= {Key} as ApiKey
+ *     Target:= {Endpoint}
+ *             
+ * Use Metadata property bag for ApiType, ApiVersion, Kind and other metadata fields
+ */
+export interface ApiKeyAuthConnectionPropertiesArgs {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'ApiKey'.
+     */
+    authType: pulumi.Input<"ApiKey">;
+    /**
+     * Category of the connection
+     */
+    category?: pulumi.Input<string | enums.ConnectionCategory>;
+    /**
+     * Api key object for connection credential.
+     */
+    credentials?: pulumi.Input<ConnectionApiKeyArgs>;
+    error?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string>;
+    isSharedToAll?: pulumi.Input<boolean>;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
+    target?: pulumi.Input<string>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+}
+
+/**
  * The api properties for special APIs.
  */
 export interface ApiPropertiesArgs {
@@ -107,6 +240,50 @@ export interface ApiPropertiesArgs {
      * (Metrics Advisor Only) The website name of Metrics Advisor.
      */
     websiteName?: pulumi.Input<string>;
+}
+
+export interface CapabilityHostArgs {
+    /**
+     * List of AI services connections.
+     */
+    aiServicesConnections?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Kind of this capability host.
+     */
+    capabilityHostKind?: pulumi.Input<string | enums.CapabilityHostKind>;
+    /**
+     * Customer subnet info to help set up this capability host.
+     */
+    customerSubnet?: pulumi.Input<string>;
+    /**
+     * The asset description text.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * List of Storage connections.
+     */
+    storageConnections?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Tag dictionary. Tags can be added, removed, and updated.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * List of Thread storage connections.
+     */
+    threadStorageConnections?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of VectorStore connections.
+     */
+    vectorStoreConnections?: pulumi.Input<pulumi.Input<string>[]>;
+}
+/**
+ * capabilityHostArgsProvideDefaults sets the appropriate defaults for CapabilityHostArgs
+ */
+export function capabilityHostArgsProvideDefaults(val: CapabilityHostArgs): CapabilityHostArgs {
+    return {
+        ...val,
+        capabilityHostKind: (val.capabilityHostKind) ?? "Agents",
+    };
 }
 
 /**
@@ -153,6 +330,88 @@ export interface CommitmentPlanPropertiesArgs {
     planType?: pulumi.Input<string>;
 }
 
+export interface ConnectionAccessKeyArgs {
+    accessKeyId?: pulumi.Input<string>;
+    secretAccessKey?: pulumi.Input<string>;
+}
+
+/**
+ * Account key object for connection credential.
+ */
+export interface ConnectionAccountKeyArgs {
+    key?: pulumi.Input<string>;
+}
+
+/**
+ * Api key object for connection credential.
+ */
+export interface ConnectionApiKeyArgs {
+    key?: pulumi.Input<string>;
+}
+
+export interface ConnectionManagedIdentityArgs {
+    clientId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string>;
+}
+
+/**
+ * ClientId and ClientSecret are required. Other properties are optional
+ * depending on each OAuth2 provider's implementation.
+ */
+export interface ConnectionOAuth2Args {
+    /**
+     * Required by Concur connection category
+     */
+    authUrl?: pulumi.Input<string>;
+    /**
+     * Client id in the format of UUID
+     */
+    clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
+    /**
+     * Required by GoogleAdWords connection category
+     */
+    developerToken?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
+    /**
+     * Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
+     * where user needs to get RefreshToken offline
+     */
+    refreshToken?: pulumi.Input<string>;
+    /**
+     * Required by QuickBooks and Xero connection categories
+     */
+    tenantId?: pulumi.Input<string>;
+    /**
+     * Concur, ServiceNow auth server AccessToken grant type is 'Password'
+     * which requires UsernamePassword
+     */
+    username?: pulumi.Input<string>;
+}
+
+export interface ConnectionPersonalAccessTokenArgs {
+    pat?: pulumi.Input<string>;
+}
+
+export interface ConnectionServicePrincipalArgs {
+    clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
+}
+
+export interface ConnectionSharedAccessSignatureArgs {
+    sas?: pulumi.Input<string>;
+}
+
+export interface ConnectionUsernamePasswordArgs {
+    password?: pulumi.Input<string>;
+    /**
+     * Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
+     */
+    securityToken?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
+}
+
 /**
  * Gets or sets the source to which filter applies.
  */
@@ -169,6 +428,48 @@ export interface CustomBlocklistConfigArgs {
      * Content source to apply the Content Filters.
      */
     source?: pulumi.Input<string | enums.RaiPolicyContentSource>;
+}
+
+/**
+ * Custom Keys credential object
+ */
+export interface CustomKeysArgs {
+    keys?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+/**
+ * Category:= CustomKeys
+ * AuthType:= CustomKeys (as type discriminator)
+ * Credentials:= {CustomKeys} as CustomKeys
+ * Target:= {any value}
+ * Use Metadata property bag for ApiVersion and other metadata fields
+ */
+export interface CustomKeysConnectionPropertiesArgs {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'CustomKeys'.
+     */
+    authType: pulumi.Input<"CustomKeys">;
+    /**
+     * Category of the connection
+     */
+    category?: pulumi.Input<string | enums.ConnectionCategory>;
+    /**
+     * Custom Keys credential object
+     */
+    credentials?: pulumi.Input<CustomKeysArgs>;
+    error?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string>;
+    isSharedToAll?: pulumi.Input<boolean>;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
+    target?: pulumi.Input<string>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
 }
 
 /**
@@ -356,6 +657,31 @@ export interface KeyVaultPropertiesArgs {
     keyVersion?: pulumi.Input<string>;
 }
 
+export interface ManagedIdentityAuthTypeConnectionPropertiesArgs {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'ManagedIdentity'.
+     */
+    authType: pulumi.Input<"ManagedIdentity">;
+    /**
+     * Category of the connection
+     */
+    category?: pulumi.Input<string | enums.ConnectionCategory>;
+    credentials?: pulumi.Input<ConnectionManagedIdentityArgs>;
+    error?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string>;
+    isSharedToAll?: pulumi.Input<boolean>;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
+    target?: pulumi.Input<string>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+}
+
 /**
  * The multiregion settings Cognitive Services account.
  */
@@ -389,6 +715,84 @@ export interface NetworkRuleSetArgs {
     virtualNetworkRules?: pulumi.Input<pulumi.Input<VirtualNetworkRuleArgs>[]>;
 }
 
+export interface NoneAuthTypeConnectionPropertiesArgs {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'None'.
+     */
+    authType: pulumi.Input<"None">;
+    /**
+     * Category of the connection
+     */
+    category?: pulumi.Input<string | enums.ConnectionCategory>;
+    error?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string>;
+    isSharedToAll?: pulumi.Input<boolean>;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
+    target?: pulumi.Input<string>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+}
+
+export interface OAuth2AuthTypeConnectionPropertiesArgs {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'OAuth2'.
+     */
+    authType: pulumi.Input<"OAuth2">;
+    /**
+     * Category of the connection
+     */
+    category?: pulumi.Input<string | enums.ConnectionCategory>;
+    /**
+     * ClientId and ClientSecret are required. Other properties are optional
+     * depending on each OAuth2 provider's implementation.
+     */
+    credentials?: pulumi.Input<ConnectionOAuth2Args>;
+    error?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string>;
+    isSharedToAll?: pulumi.Input<boolean>;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
+    target?: pulumi.Input<string>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+}
+
+export interface PATAuthTypeConnectionPropertiesArgs {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'PAT'.
+     */
+    authType: pulumi.Input<"PAT">;
+    /**
+     * Category of the connection
+     */
+    category?: pulumi.Input<string | enums.ConnectionCategory>;
+    credentials?: pulumi.Input<ConnectionPersonalAccessTokenArgs>;
+    error?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string>;
+    isSharedToAll?: pulumi.Input<boolean>;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
+    target?: pulumi.Input<string>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+}
+
 /**
  * Properties of the PrivateEndpointConnectProperties.
  */
@@ -419,6 +823,20 @@ export interface PrivateLinkServiceConnectionStateArgs {
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
     status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+}
+
+/**
+ * Properties of Cognitive Services Project'.
+ */
+export interface ProjectPropertiesArgs {
+    /**
+     * The description of the Cognitive Services Project.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The display name of the Cognitive Services Project.
+     */
+    displayName?: pulumi.Input<string>;
 }
 
 /**
@@ -525,6 +943,56 @@ export interface RegionSettingArgs {
     value?: pulumi.Input<number>;
 }
 
+export interface SASAuthTypeConnectionPropertiesArgs {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'SAS'.
+     */
+    authType: pulumi.Input<"SAS">;
+    /**
+     * Category of the connection
+     */
+    category?: pulumi.Input<string | enums.ConnectionCategory>;
+    credentials?: pulumi.Input<ConnectionSharedAccessSignatureArgs>;
+    error?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string>;
+    isSharedToAll?: pulumi.Input<boolean>;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
+    target?: pulumi.Input<string>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+}
+
+export interface ServicePrincipalAuthTypeConnectionPropertiesArgs {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'ServicePrincipal'.
+     */
+    authType: pulumi.Input<"ServicePrincipal">;
+    /**
+     * Category of the connection
+     */
+    category?: pulumi.Input<string | enums.ConnectionCategory>;
+    credentials?: pulumi.Input<ConnectionServicePrincipalArgs>;
+    error?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string>;
+    isSharedToAll?: pulumi.Input<boolean>;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
+    target?: pulumi.Input<string>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+}
+
 /**
  * The resource model definition representing SKU
  */
@@ -574,6 +1042,31 @@ export interface UserOwnedStorageArgs {
      * Full resource id of a Microsoft.Storage resource.
      */
     resourceId?: pulumi.Input<string>;
+}
+
+export interface UsernamePasswordAuthTypeConnectionPropertiesArgs {
+    /**
+     * Authentication type of the connection target
+     * Expected value is 'UsernamePassword'.
+     */
+    authType: pulumi.Input<"UsernamePassword">;
+    /**
+     * Category of the connection
+     */
+    category?: pulumi.Input<string | enums.ConnectionCategory>;
+    credentials?: pulumi.Input<ConnectionUsernamePasswordArgs>;
+    error?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string>;
+    isSharedToAll?: pulumi.Input<boolean>;
+    /**
+     * Store user metadata for this connection
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
+    target?: pulumi.Input<string>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
 }
 
 /**

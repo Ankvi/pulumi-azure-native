@@ -5,6 +5,8 @@ import * as types from "./types";
  * Gets the list of recent fault simulations for the node type.
  *
  * Uses Azure REST API version 2024-11-01-preview.
+ *
+ * Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listNodeTypeFaultSimulation(args: ListNodeTypeFaultSimulationArgs, opts?: pulumi.InvokeOptions): Promise<ListNodeTypeFaultSimulationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -47,6 +49,8 @@ export interface ListNodeTypeFaultSimulationResult {
  * Gets the list of recent fault simulations for the node type.
  *
  * Uses Azure REST API version 2024-11-01-preview.
+ *
+ * Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listNodeTypeFaultSimulationOutput(args: ListNodeTypeFaultSimulationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListNodeTypeFaultSimulationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

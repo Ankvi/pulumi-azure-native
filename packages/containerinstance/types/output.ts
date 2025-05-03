@@ -17,6 +17,10 @@ export interface AzureFileVolumeResponse {
      */
     storageAccountKey?: string;
     /**
+     * The reference to the storage account access key used to access the Azure File share.
+     */
+    storageAccountKeyReference?: string;
+    /**
      * The name of the storage account that contains the Azure File share.
      */
     storageAccountName: string;
@@ -377,6 +381,10 @@ export interface EnvironmentVariableResponse {
      */
     secureValue?: string;
     /**
+     * The reference of the secure environment variable.
+     */
+    secureValueReference?: string;
+    /**
      * The value of the environment variable.
      */
     value?: string;
@@ -474,6 +482,10 @@ export interface ImageRegistryCredentialResponse {
      * The password for the private registry.
      */
     password?: string;
+    /**
+     * The reference for the private registry password.
+     */
+    passwordReference?: string;
     /**
      * The Docker image registry server without a protocol such as "http" and "https".
      */
@@ -728,6 +740,36 @@ export interface StandbyPoolProfileDefinitionResponse {
 }
 
 /**
+ * Metadata pertaining to creation and last modification of the resource.
+ */
+export interface SystemDataResponse {
+    /**
+     * The timestamp of resource creation (UTC).
+     */
+    createdAt?: string;
+    /**
+     * The identity that created the resource.
+     */
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
+}
+
+/**
  * The list of user identities associated with the container group. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  */
 export interface UserAssignedIdentitiesResponse {
@@ -783,4 +825,8 @@ export interface VolumeResponse {
      * The secret volume.
      */
     secret?: {[key: string]: string};
+    /**
+     * The secret reference volume.
+     */
+    secretReference?: {[key: string]: string};
 }

@@ -105,7 +105,7 @@ export interface PropertiesResponseNetworkInjection {
     /**
      * Network injection configuration
      */
-    virtualNetworks?: VirtualNetworkPropertiesListResponse;
+    virtualNetworks?: VirtualNetworkPropertiesResponse[];
 }
 
 /**
@@ -146,20 +146,6 @@ export interface SystemDataResponse {
      * The type of identity that last modified the resource.
      */
     lastModifiedByType?: string;
-}
-
-/**
- * A list of private link resources
- */
-export interface VirtualNetworkPropertiesListResponse {
-    /**
-     * Next page link if any.
-     */
-    nextLink?: string;
-    /**
-     * Array of virtual networks.
-     */
-    value?: VirtualNetworkPropertiesResponse[];
 }
 
 /**

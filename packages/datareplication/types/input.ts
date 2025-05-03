@@ -46,6 +46,32 @@ export interface AzStackHCIFabricModelCustomPropertiesArgs {
 }
 
 /**
+ * Private endpoint connection details at member level.
+ */
+export interface ConnectionDetailsArgs {
+    /**
+     * Gets or sets group id.
+     */
+    groupId?: pulumi.Input<string>;
+    /**
+     * Gets or sets id.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Gets or sets link identifier.
+     */
+    linkIdentifier?: pulumi.Input<string>;
+    /**
+     * Gets or sets member name.
+     */
+    memberName?: pulumi.Input<string>;
+    /**
+     * Gets or sets private IP address.
+     */
+    privateIpAddress?: pulumi.Input<string>;
+}
+
+/**
  * Dra model properties.
  */
 export interface DraModelPropertiesArgs {
@@ -72,6 +98,32 @@ export interface DraModelPropertiesArgs {
 }
 
 /**
+ * Fabric agent model properties.
+ */
+export interface FabricAgentModelPropertiesArgs {
+    /**
+     * Identity model.
+     */
+    authenticationIdentity: pulumi.Input<IdentityModelArgs>;
+    /**
+     * Fabric agent model custom properties.
+     */
+    customProperties: pulumi.Input<VMwareFabricAgentModelCustomPropertiesArgs>;
+    /**
+     * Gets or sets the machine Id where fabric agent is running.
+     */
+    machineId: pulumi.Input<string>;
+    /**
+     * Gets or sets the machine name where fabric agent is running.
+     */
+    machineName: pulumi.Input<string>;
+    /**
+     * Identity model.
+     */
+    resourceAccessIdentity: pulumi.Input<IdentityModelArgs>;
+}
+
+/**
  * Fabric model properties.
  */
 export interface FabricModelPropertiesArgs {
@@ -79,6 +131,36 @@ export interface FabricModelPropertiesArgs {
      * Fabric model custom properties.
      */
     customProperties: pulumi.Input<AzStackHCIFabricModelCustomPropertiesArgs | HyperVMigrateFabricModelCustomPropertiesArgs | VMwareMigrateFabricModelCustomPropertiesArgs>;
+}
+
+/**
+ * Represents of a connection's group information.
+ */
+export interface GroupConnectivityInformationArgs {
+    /**
+     * Gets or sets customer visible FQDNs.
+     */
+    customerVisibleFqdns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Gets or sets group id.
+     */
+    groupId?: pulumi.Input<string>;
+    /**
+     * Gets or sets Internal Fqdn.
+     */
+    internalFqdn?: pulumi.Input<string>;
+    /**
+     * Gets or sets member name.
+     */
+    memberName?: pulumi.Input<string>;
+    /**
+     * Gets or sets the private link service arm region.
+     */
+    privateLinkServiceArmRegion?: pulumi.Input<string>;
+    /**
+     * Gets or sets the redirect map id.
+     */
+    redirectMapId?: pulumi.Input<string>;
 }
 
 /**
@@ -296,24 +378,23 @@ export interface HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesArgs
  */
 export interface IdentityModelArgs {
     /**
-     * Gets or sets the authority of the SPN with which Dra communicates to service.
+     * Gets or sets the authority of the SPN with which fabric agent communicates to service.
      */
     aadAuthority: pulumi.Input<string>;
     /**
-     * Gets or sets the client/application Id of the SPN with which Dra communicates to
-     * service.
+     * Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.
      */
     applicationId: pulumi.Input<string>;
     /**
-     * Gets or sets the audience of the SPN with which Dra communicates to service.
+     * Gets or sets the audience of the SPN with which fabric agent communicates to service.
      */
     audience: pulumi.Input<string>;
     /**
-     * Gets or sets the object Id of the SPN with which Dra communicates to service.
+     * Gets or sets the object Id of the SPN with which fabric agent communicates to service.
      */
     objectId: pulumi.Input<string>;
     /**
-     * Gets or sets the tenant Id of the SPN with which Dra communicates to service.
+     * Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
      */
     tenantId: pulumi.Input<string>;
 }
@@ -326,6 +407,98 @@ export interface PolicyModelPropertiesArgs {
      * Policy model custom properties.
      */
     customProperties: pulumi.Input<HyperVToAzStackHCIPolicyModelCustomPropertiesArgs | VMwareToAzStackHCIPolicyModelCustomPropertiesArgs>;
+}
+
+/**
+ * Represent private Endpoint network resource that is linked to the Private Endpoint connection.
+ */
+export interface PrivateEndpointArgs {
+    /**
+     * Gets or sets the id.
+     */
+    id?: pulumi.Input<string>;
+}
+
+/**
+ * Represents private endpoint connection proxy request.
+ */
+export interface PrivateEndpointConnectionProxyPropertiesArgs {
+    /**
+     * Represent remote private endpoint information for the private endpoint connection proxy.
+     */
+    remotePrivateEndpoint?: pulumi.Input<RemotePrivateEndpointArgs>;
+}
+
+/**
+ * Represents Private endpoint connection response properties.
+ */
+export interface PrivateEndpointConnectionResponsePropertiesArgs {
+    /**
+     * Represent private Endpoint network resource that is linked to the Private Endpoint connection.
+     */
+    privateEndpoint?: pulumi.Input<PrivateEndpointArgs>;
+    /**
+     * Represents Private link service connection state.
+     */
+    privateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs>;
+}
+
+/**
+ * Represents of an NRP private link service connection.
+ */
+export interface PrivateLinkServiceConnectionArgs {
+    /**
+     * Gets or sets group ids.
+     */
+    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Gets or sets private link service connection name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Gets or sets the request message for the private link service connection.
+     */
+    requestMessage?: pulumi.Input<string>;
+}
+
+/**
+ * Represents Private link service connection state.
+ */
+export interface PrivateLinkServiceConnectionStateArgs {
+    /**
+     * Gets or sets actions required.
+     */
+    actionsRequired?: pulumi.Input<string>;
+    /**
+     * Gets or sets description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Gets or sets the status.
+     */
+    status?: pulumi.Input<string | enums.PrivateEndpointConnectionStatus>;
+}
+
+/**
+ * Represents NRP private link service proxy.
+ */
+export interface PrivateLinkServiceProxyArgs {
+    /**
+     * Gets or sets group connectivity information.
+     */
+    groupConnectivityInformation?: pulumi.Input<pulumi.Input<GroupConnectivityInformationArgs>[]>;
+    /**
+     * Gets or sets private link service proxy id.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Represent remote private endpoint connection.
+     */
+    remotePrivateEndpointConnection?: pulumi.Input<RemotePrivateEndpointConnectionArgs>;
+    /**
+     * Represents Private link service connection state.
+     */
+    remotePrivateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs>;
 }
 
 /**
@@ -365,6 +538,42 @@ export interface ProtectedItemModelPropertiesArgs {
 }
 
 /**
+ * Represent remote private endpoint information for the private endpoint connection proxy.
+ */
+export interface RemotePrivateEndpointArgs {
+    /**
+     * Gets or sets the list of Connection Details. This is the connection details for private endpoint.
+     */
+    connectionDetails?: pulumi.Input<pulumi.Input<ConnectionDetailsArgs>[]>;
+    /**
+     * Gets or sets private link service proxy id.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Gets or sets the list of Manual Private Link Service Connections and gets populated for Manual approval flow.
+     */
+    manualPrivateLinkServiceConnections?: pulumi.Input<pulumi.Input<PrivateLinkServiceConnectionArgs>[]>;
+    /**
+     * Gets or sets the list of Private Link Service Connections and gets populated for Auto approval flow.
+     */
+    privateLinkServiceConnections?: pulumi.Input<pulumi.Input<PrivateLinkServiceConnectionArgs>[]>;
+    /**
+     * Gets or sets the list of private link service proxies.
+     */
+    privateLinkServiceProxies?: pulumi.Input<pulumi.Input<PrivateLinkServiceProxyArgs>[]>;
+}
+
+/**
+ * Represent remote private endpoint connection.
+ */
+export interface RemotePrivateEndpointConnectionArgs {
+    /**
+     * Gets or sets the remote private endpoint connection id.
+     */
+    id?: pulumi.Input<string>;
+}
+
+/**
  * Replication extension model properties.
  */
 export interface ReplicationExtensionModelPropertiesArgs {
@@ -398,6 +607,25 @@ export interface VMwareDraModelCustomPropertiesArgs {
     biosId: pulumi.Input<string>;
     /**
      * Gets or sets the instance type.
+     * Expected value is 'VMware'.
+     */
+    instanceType: pulumi.Input<"VMware">;
+    /**
+     * Identity model.
+     */
+    marsAuthenticationIdentity: pulumi.Input<IdentityModelArgs>;
+}
+
+/**
+ * VMware fabric agent model custom properties.
+ */
+export interface VMwareFabricAgentModelCustomPropertiesArgs {
+    /**
+     * Gets or sets the BIOS Id of the fabric agent machine.
+     */
+    biosId: pulumi.Input<string>;
+    /**
+     * Discriminator property for FabricAgentModelCustomProperties.
      * Expected value is 'VMware'.
      */
     instanceType: pulumi.Input<"VMware">;
