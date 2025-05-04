@@ -194,7 +194,7 @@ export interface AmazonMWSSourceArgs {
 }
 
 /**
- * AmazonRdsForOracle database.
+ * AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
  */
 export interface AmazonRdsForOracleLinkedServiceArgs {
     /**
@@ -202,21 +202,61 @@ export interface AmazonRdsForOracleLinkedServiceArgs {
      */
     annotations?: pulumi.Input<any[]>;
     /**
+     * Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
+     */
+    authenticationType?: pulumi.Input<string | enums.AmazonRdsForOracleAuthenticationType>;
+    /**
      * The integration runtime reference.
      */
     connectVia?: pulumi.Input<IntegrationRuntimeReferenceArgs>;
     /**
-     * The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+     * The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
      */
-    connectionString: any;
+    connectionString?: any;
+    /**
+     * Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+     */
+    cryptoChecksumClient?: any;
+    /**
+     * Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+     */
+    cryptoChecksumTypesClient?: any;
     /**
      * Linked service description.
      */
     description?: pulumi.Input<string>;
     /**
+     * Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+     */
+    enableBulkLoad?: any;
+    /**
      * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
      */
     encryptedCredential?: pulumi.Input<string>;
+    /**
+     * Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+     */
+    encryptionClient?: any;
+    /**
+     * Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+     */
+    encryptionTypesClient?: any;
+    /**
+     * Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+     */
+    fetchSize?: any;
+    /**
+     * Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+     */
+    fetchTswtzAsTimestamp?: any;
+    /**
+     * Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+     */
+    initialLobFetchSize?: any;
+    /**
+     * Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+     */
+    initializationString?: any;
     /**
      * Parameters for linked service.
      */
@@ -226,10 +266,26 @@ export interface AmazonRdsForOracleLinkedServiceArgs {
      */
     password?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
     /**
+     * The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+     */
+    server?: any;
+    /**
+     * Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+     */
+    statementCacheSize?: any;
+    /**
+     * Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+     */
+    supportV1DataTypes?: any;
+    /**
      * Type of linked service.
      * Expected value is 'AmazonRdsForOracle'.
      */
     type: pulumi.Input<"AmazonRdsForOracle">;
+    /**
+     * The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
+     */
+    username?: any;
     /**
      * Version of the linked service.
      */
@@ -2899,6 +2955,10 @@ export interface AzureDatabricksLinkedServiceArgs {
      * The credential reference containing authentication information.
      */
     credential?: pulumi.Input<CredentialReferenceArgs>;
+    /**
+     * The data security mode for the Databricks Cluster. Type: string (or Expression with resultType string).
+     */
+    dataSecurityMode?: any;
     /**
      * Linked service description.
      */

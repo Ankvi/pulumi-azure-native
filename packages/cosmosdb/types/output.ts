@@ -782,6 +782,28 @@ export interface FailoverPolicyResponse {
 }
 
 /**
+ * Configuration for throughput pool in the fleetspace.
+ */
+export interface FleetspacePropertiesResponseThroughputPoolConfiguration {
+    /**
+     * List of data regions assigned to the fleetspace. Eg [westus2]
+     */
+    dataRegions?: string[];
+    /**
+     * Maximum throughput for the pool.
+     */
+    maxThroughput?: number;
+    /**
+     * Minimum throughput for the pool.
+     */
+    minThroughput?: number;
+    /**
+     * Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+     */
+    serviceTier?: string;
+}
+
+/**
  * Resource for a regional service location.
  */
 export interface GraphAPIComputeRegionalServiceResourceResponse {

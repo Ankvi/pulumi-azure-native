@@ -1641,6 +1641,69 @@ export interface ManagedServiceIdentityArgs {
 }
 
 /**
+ * Properties of a namespace managed by ARM
+ */
+export interface NamespacePropertiesArgs {
+    /**
+     * Action if Kubernetes namespace with same name already exists.
+     */
+    adoptionPolicy?: pulumi.Input<string | enums.AdoptionPolicy>;
+    /**
+     * The annotations of managed namespace.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
+     */
+    defaultNetworkPolicy?: pulumi.Input<NetworkPoliciesArgs>;
+    /**
+     * The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
+     */
+    defaultResourceQuota?: pulumi.Input<ResourceQuotaArgs>;
+    /**
+     * Delete options of a namespace.
+     */
+    deletePolicy?: pulumi.Input<string | enums.DeletePolicy>;
+    /**
+     * The labels of managed namespace.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+/**
+ * namespacePropertiesArgsProvideDefaults sets the appropriate defaults for NamespacePropertiesArgs
+ */
+export function namespacePropertiesArgsProvideDefaults(val: NamespacePropertiesArgs): NamespacePropertiesArgs {
+    return {
+        ...val,
+        defaultNetworkPolicy: (val.defaultNetworkPolicy ? pulumi.output(val.defaultNetworkPolicy).apply(networkPoliciesArgsProvideDefaults) : undefined),
+    };
+}
+
+/**
+ * Default network policy of the namespace, specifying ingress and egress rules.
+ */
+export interface NetworkPoliciesArgs {
+    /**
+     * Egress policy for the network.
+     */
+    egress?: pulumi.Input<string | enums.PolicyRule>;
+    /**
+     * Ingress policy for the network.
+     */
+    ingress?: pulumi.Input<string | enums.PolicyRule>;
+}
+/**
+ * networkPoliciesArgsProvideDefaults sets the appropriate defaults for NetworkPoliciesArgs
+ */
+export function networkPoliciesArgsProvideDefaults(val: NetworkPoliciesArgs): NetworkPoliciesArgs {
+    return {
+        ...val,
+        egress: (val.egress) ?? "AllowAll",
+        ingress: (val.ingress) ?? "AllowSameNamespace",
+    };
+}
+
+/**
  * The node image upgrade to be applied to the target nodes in update run.
  */
 export interface NodeImageSelectionArgs {
@@ -1744,6 +1807,28 @@ export interface RelativeMonthlyScheduleArgs {
      * Specifies on which week of the month the dayOfWeek applies.
      */
     weekIndex: pulumi.Input<string | enums.Type>;
+}
+
+/**
+ * Resource quota for the namespace.
+ */
+export interface ResourceQuotaArgs {
+    /**
+     * CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+     */
+    cpuLimit?: pulumi.Input<string>;
+    /**
+     * CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+     */
+    cpuRequest?: pulumi.Input<string>;
+    /**
+     * Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+     */
+    memoryLimit?: pulumi.Input<string>;
+    /**
+     * Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+     */
+    memoryRequest?: pulumi.Input<string>;
 }
 
 /**

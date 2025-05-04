@@ -608,6 +608,28 @@ export interface ExcludedPathArgs {
 }
 
 /**
+ * Configuration for throughput pool in the fleetspace.
+ */
+export interface FleetspacePropertiesThroughputPoolConfigurationArgs {
+    /**
+     * List of data regions assigned to the fleetspace. Eg [westus2]
+     */
+    dataRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Maximum throughput for the pool.
+     */
+    maxThroughput?: pulumi.Input<number>;
+    /**
+     * Minimum throughput for the pool.
+     */
+    minThroughput?: pulumi.Input<number>;
+    /**
+     * Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+     */
+    serviceTier?: pulumi.Input<string | enums.ServiceTier>;
+}
+
+/**
  * Properties for Create or Update request for GraphAPIComputeServiceResource
  */
 export interface GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs {

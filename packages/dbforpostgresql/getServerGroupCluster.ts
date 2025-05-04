@@ -42,7 +42,7 @@ export interface GetServerGroupClusterResult {
     /**
      * Authentication configuration of a cluster.
      */
-    readonly authConfig?: types.outputs.AuthConfigResponse;
+    readonly authConfig?: types.outputs.ServerGroupClusterAuthConfigResponse;
     /**
      * The Azure API version of the resource.
      */
@@ -70,7 +70,7 @@ export interface GetServerGroupClusterResult {
     /**
      * The data encryption properties of a cluster.
      */
-    readonly dataEncryption?: types.outputs.DataEncryptionResponse;
+    readonly dataEncryption?: types.outputs.ServerGroupClusterDataEncryptionResponse;
     /**
      * The database name of the cluster. Only one database per cluster is supported.
      */
@@ -106,7 +106,7 @@ export interface GetServerGroupClusterResult {
     /**
      * Maintenance window of a cluster.
      */
-    readonly maintenanceWindow?: types.outputs.MaintenanceWindowResponse;
+    readonly maintenanceWindow?: types.outputs.ServerGroupClusterMaintenanceWindowResponse;
     /**
      * The name of the resource
      */

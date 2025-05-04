@@ -1886,6 +1886,73 @@ export interface MemberUpdateStatusResponse {
 }
 
 /**
+ * Properties of a namespace managed by ARM
+ */
+export interface NamespacePropertiesResponse {
+    /**
+     * Action if Kubernetes namespace with same name already exists.
+     */
+    adoptionPolicy?: string;
+    /**
+     * The annotations of managed namespace.
+     */
+    annotations?: {[key: string]: string};
+    /**
+     * The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
+     */
+    defaultNetworkPolicy?: NetworkPoliciesResponse;
+    /**
+     * The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
+     */
+    defaultResourceQuota?: ResourceQuotaResponse;
+    /**
+     * Delete options of a namespace.
+     */
+    deletePolicy?: string;
+    /**
+     * The labels of managed namespace.
+     */
+    labels?: {[key: string]: string};
+    /**
+     * The current provisioning state of the namespace.
+     */
+    provisioningState: string;
+}
+/**
+ * namespacePropertiesResponseProvideDefaults sets the appropriate defaults for NamespacePropertiesResponse
+ */
+export function namespacePropertiesResponseProvideDefaults(val: NamespacePropertiesResponse): NamespacePropertiesResponse {
+    return {
+        ...val,
+        defaultNetworkPolicy: (val.defaultNetworkPolicy ? networkPoliciesResponseProvideDefaults(val.defaultNetworkPolicy) : undefined),
+    };
+}
+
+/**
+ * Default network policy of the namespace, specifying ingress and egress rules.
+ */
+export interface NetworkPoliciesResponse {
+    /**
+     * Egress policy for the network.
+     */
+    egress?: string;
+    /**
+     * Ingress policy for the network.
+     */
+    ingress?: string;
+}
+/**
+ * networkPoliciesResponseProvideDefaults sets the appropriate defaults for NetworkPoliciesResponse
+ */
+export function networkPoliciesResponseProvideDefaults(val: NetworkPoliciesResponse): NetworkPoliciesResponse {
+    return {
+        ...val,
+        egress: (val.egress) ?? "AllowAll",
+        ingress: (val.ingress) ?? "AllowSameNamespace",
+    };
+}
+
+/**
  * network profile for managed cluster snapshot, these properties are read only.
  */
 export interface NetworkProfileForSnapshotResponse {
@@ -2043,6 +2110,28 @@ export interface RelativeMonthlyScheduleResponse {
      * Specifies on which week of the month the dayOfWeek applies.
      */
     weekIndex: string;
+}
+
+/**
+ * Resource quota for the namespace.
+ */
+export interface ResourceQuotaResponse {
+    /**
+     * CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+     */
+    cpuLimit?: string;
+    /**
+     * CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
+     */
+    cpuRequest?: string;
+    /**
+     * Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+     */
+    memoryLimit?: string;
+    /**
+     * Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
+     */
+    memoryRequest?: string;
 }
 
 /**
