@@ -1,10 +1,16 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * Authentication configuration of a cluster.
+ * Authentication configuration properties of a server
  */
 export interface AuthConfigResponse {
+    /**
+     * If Enabled, Azure Active Directory authentication is enabled.
+     */
     activeDirectoryAuth?: string;
+    /**
+     * If Enabled, Password authentication is enabled.
+     */
     passwordAuth?: string;
     /**
      * Tenant id of the server.
@@ -17,6 +23,7 @@ export interface AuthConfigResponse {
 export function authConfigResponseProvideDefaults(val: AuthConfigResponse): AuthConfigResponse {
     return {
         ...val,
+        passwordAuth: (val.passwordAuth) ?? "Enabled",
         tenantId: (val.tenantId) ?? "",
     };
 }
@@ -50,7 +57,7 @@ export function backupResponseProvideDefaults(val: BackupResponse): BackupRespon
 }
 
 /**
- * The data encryption properties of a cluster.
+ * Data encryption properties of a server
  */
 export interface DataEncryptionResponse {
     /**
@@ -74,13 +81,12 @@ export interface DataEncryptionResponse {
      */
     primaryKeyURI?: string;
     /**
-     * URI for the key in keyvault for data encryption of the primary server.
-     */
-    primaryKeyUri?: string;
-    /**
      * Resource Id for the User assigned identity to be used for data encryption of the primary server.
      */
     primaryUserAssignedIdentityId?: string;
+    /**
+     * Data encryption type to depict if it is System Managed vs Azure Key vault.
+     */
     type?: string;
 }
 
@@ -238,25 +244,37 @@ export interface IdentityPropertiesResponse {
 }
 
 /**
- * Schedule settings for regular cluster updates.
+ * Maintenance window properties of a server.
  */
 export interface MaintenanceWindowResponse {
     /**
-     * Indicates whether custom maintenance window is enabled or not.
+     * indicates whether custom window is enabled or disabled
      */
     customWindow?: string;
     /**
-     * Preferred day of the week for maintenance window.
+     * day of week for maintenance window
      */
     dayOfWeek?: number;
     /**
-     * Start hour within preferred day of the week for maintenance window.
+     * start hour for maintenance window
      */
     startHour?: number;
     /**
-     * Start minute within the start hour for maintenance window.
+     * start minute for maintenance window
      */
     startMinute?: number;
+}
+/**
+ * maintenanceWindowResponseProvideDefaults sets the appropriate defaults for MaintenanceWindowResponse
+ */
+export function maintenanceWindowResponseProvideDefaults(val: MaintenanceWindowResponse): MaintenanceWindowResponse {
+    return {
+        ...val,
+        customWindow: (val.customWindow) ?? "Disabled",
+        dayOfWeek: (val.dayOfWeek) ?? 0,
+        startHour: (val.startHour) ?? 0,
+        startMinute: (val.startMinute) ?? 0,
+    };
 }
 
 /**
@@ -417,6 +435,51 @@ export interface ResourceIdentityResponse {
      * The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
      */
     type?: string;
+}
+
+/**
+ * Authentication configuration of a cluster.
+ */
+export interface ServerGroupClusterAuthConfigResponse {
+    activeDirectoryAuth?: string;
+    passwordAuth?: string;
+}
+
+/**
+ * The data encryption properties of a cluster.
+ */
+export interface ServerGroupClusterDataEncryptionResponse {
+    /**
+     * URI for the key in keyvault for data encryption of the primary server.
+     */
+    primaryKeyUri?: string;
+    /**
+     * Resource Id for the User assigned identity to be used for data encryption of the primary server.
+     */
+    primaryUserAssignedIdentityId?: string;
+    type?: string;
+}
+
+/**
+ * Schedule settings for regular cluster updates.
+ */
+export interface ServerGroupClusterMaintenanceWindowResponse {
+    /**
+     * Indicates whether custom maintenance window is enabled or not.
+     */
+    customWindow?: string;
+    /**
+     * Preferred day of the week for maintenance window.
+     */
+    dayOfWeek?: number;
+    /**
+     * Start hour within preferred day of the week for maintenance window.
+     */
+    startHour?: number;
+    /**
+     * Start minute within the start hour for maintenance window.
+     */
+    startMinute?: number;
 }
 
 /**

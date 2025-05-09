@@ -164,7 +164,7 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["highAvailability"] = args ? (args.highAvailability ? pulumi.output(args.highAvailability).apply(types.inputs.highAvailabilityArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
+            resourceInputs["maintenanceWindow"] = args ? (args.maintenanceWindow ? pulumi.output(args.maintenanceWindow).apply(types.inputs.maintenanceWindowArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["pointInTimeUTC"] = args ? args.pointInTimeUTC : undefined;
             resourceInputs["replica"] = args ? args.replica : undefined;

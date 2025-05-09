@@ -15,11 +15,17 @@ export interface AdminCredentialsArgs {
 }
 
 /**
- * Authentication configuration of a cluster.
+ * Authentication configuration properties of a server
  */
 export interface AuthConfigArgs {
-    activeDirectoryAuth?: pulumi.Input<string | enums.ActiveDirectoryAuth | enums.ActiveDirectoryAuthEnum>;
-    passwordAuth?: pulumi.Input<string | enums.PasswordAuth | enums.PasswordAuthEnum>;
+    /**
+     * If Enabled, Azure Active Directory authentication is enabled.
+     */
+    activeDirectoryAuth?: pulumi.Input<string | enums.ActiveDirectoryAuthEnum>;
+    /**
+     * If Enabled, Password authentication is enabled.
+     */
+    passwordAuth?: pulumi.Input<string | enums.PasswordAuthEnum>;
     /**
      * Tenant id of the server.
      */
@@ -31,6 +37,7 @@ export interface AuthConfigArgs {
 export function authConfigArgsProvideDefaults(val: AuthConfigArgs): AuthConfigArgs {
     return {
         ...val,
+        passwordAuth: (val.passwordAuth) ?? "Enabled",
         tenantId: (val.tenantId) ?? "",
     };
 }
@@ -60,7 +67,7 @@ export function backupArgsProvideDefaults(val: BackupArgs): BackupArgs {
 }
 
 /**
- * The data encryption properties of a cluster.
+ * Data encryption properties of a server
  */
 export interface DataEncryptionArgs {
     /**
@@ -84,14 +91,13 @@ export interface DataEncryptionArgs {
      */
     primaryKeyURI?: pulumi.Input<string>;
     /**
-     * URI for the key in keyvault for data encryption of the primary server.
-     */
-    primaryKeyUri?: pulumi.Input<string>;
-    /**
      * Resource Id for the User assigned identity to be used for data encryption of the primary server.
      */
     primaryUserAssignedIdentityId?: pulumi.Input<string>;
-    type?: pulumi.Input<string | enums.DataEncryptionType | enums.ArmServerKeyType>;
+    /**
+     * Data encryption type to depict if it is System Managed vs Azure Key vault.
+     */
+    type?: pulumi.Input<string | enums.ArmServerKeyType>;
 }
 
 /**
@@ -130,25 +136,37 @@ export interface IdentityPropertiesArgs {
 }
 
 /**
- * Schedule settings for regular cluster updates.
+ * Maintenance window properties of a server.
  */
 export interface MaintenanceWindowArgs {
     /**
-     * Indicates whether custom maintenance window is enabled or not.
+     * indicates whether custom window is enabled or disabled
      */
     customWindow?: pulumi.Input<string>;
     /**
-     * Preferred day of the week for maintenance window.
+     * day of week for maintenance window
      */
     dayOfWeek?: pulumi.Input<number>;
     /**
-     * Start hour within preferred day of the week for maintenance window.
+     * start hour for maintenance window
      */
     startHour?: pulumi.Input<number>;
     /**
-     * Start minute within the start hour for maintenance window.
+     * start minute for maintenance window
      */
     startMinute?: pulumi.Input<number>;
+}
+/**
+ * maintenanceWindowArgsProvideDefaults sets the appropriate defaults for MaintenanceWindowArgs
+ */
+export function maintenanceWindowArgsProvideDefaults(val: MaintenanceWindowArgs): MaintenanceWindowArgs {
+    return {
+        ...val,
+        customWindow: (val.customWindow) ?? "Disabled",
+        dayOfWeek: (val.dayOfWeek) ?? 0,
+        startHour: (val.startHour) ?? 0,
+        startMinute: (val.startMinute) ?? 0,
+    };
 }
 
 /**
@@ -231,6 +249,51 @@ export interface ResourceIdentityArgs {
      * The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
      */
     type?: pulumi.Input<string | enums.SingleServerIdentityProperties>;
+}
+
+/**
+ * Authentication configuration of a cluster.
+ */
+export interface ServerGroupClusterAuthConfigArgs {
+    activeDirectoryAuth?: pulumi.Input<string | enums.ActiveDirectoryAuth>;
+    passwordAuth?: pulumi.Input<string | enums.PasswordAuth>;
+}
+
+/**
+ * The data encryption properties of a cluster.
+ */
+export interface ServerGroupClusterDataEncryptionArgs {
+    /**
+     * URI for the key in keyvault for data encryption of the primary server.
+     */
+    primaryKeyUri?: pulumi.Input<string>;
+    /**
+     * Resource Id for the User assigned identity to be used for data encryption of the primary server.
+     */
+    primaryUserAssignedIdentityId?: pulumi.Input<string>;
+    type?: pulumi.Input<string | enums.DataEncryptionType>;
+}
+
+/**
+ * Schedule settings for regular cluster updates.
+ */
+export interface ServerGroupClusterMaintenanceWindowArgs {
+    /**
+     * Indicates whether custom maintenance window is enabled or not.
+     */
+    customWindow?: pulumi.Input<string>;
+    /**
+     * Preferred day of the week for maintenance window.
+     */
+    dayOfWeek?: pulumi.Input<number>;
+    /**
+     * Start hour within preferred day of the week for maintenance window.
+     */
+    startHour?: pulumi.Input<number>;
+    /**
+     * Start minute within the start hour for maintenance window.
+     */
+    startMinute?: pulumi.Input<number>;
 }
 
 /**

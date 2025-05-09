@@ -410,6 +410,34 @@ export function azureMonitorWorkspaceLogsExporterResponseProvideDefaults(val: Az
 }
 
 /**
+ * The Data Collection Rule and Endpoint used for ingestion by default.
+ */
+export interface AzureMonitorWorkspaceResponseDefaultIngestionSettings {
+    /**
+     * The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.
+     */
+    dataCollectionEndpointResourceId: string;
+    /**
+     * The Azure resource Id of the default data collection rule for this Azure Monitor Workspace.
+     */
+    dataCollectionRuleResourceId: string;
+}
+
+/**
+ * Properties related to the metrics container in the Azure Monitor Workspace
+ */
+export interface AzureMonitorWorkspaceResponseMetrics {
+    /**
+     * An internal identifier for the metrics container. Only to be used by the system
+     */
+    internalId: string;
+    /**
+     * The Prometheus query endpoint for the Azure Monitor Workspace
+     */
+    prometheusQueryEndpoint: string;
+}
+
+/**
  * The complex type of the extended location.
  */
 export interface AzureResourceManagerCommonTypesExtendedLocationResponse {
@@ -1344,20 +1372,6 @@ export interface IncidentServiceConnectionResponse {
 }
 
 /**
- * Settings for data ingestion
- */
-export interface IngestionSettingsResponse {
-    /**
-     * The Azure resource Id of the default data collection endpoint for this workspace.
-     */
-    dataCollectionEndpointResourceId: string;
-    /**
-     * The Azure resource Id of the default data collection rule for this workspace.
-     */
-    dataCollectionRuleResourceId: string;
-}
-
-/**
  * An Itsm receiver.
  */
 export interface ItsmReceiverResponse {
@@ -1797,20 +1811,6 @@ export interface MetricTriggerResponse {
      * the range of time in which instance data is collected. This value must be greater than the delay in metric collection, which can vary from resource-to-resource. Must be between 12 hours and 5 minutes.
      */
     timeWindow: string;
-}
-
-/**
- * Information about metrics for the workspace
- */
-export interface MetricsResponse {
-    /**
-     * An internal identifier for the metrics container. Only to be used by the system
-     */
-    internalId: string;
-    /**
-     * The Prometheus query endpoint for the workspace
-     */
-    prometheusQueryEndpoint: string;
 }
 
 /**

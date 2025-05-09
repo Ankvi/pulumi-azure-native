@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-hybriddata",
-    "version": "3.2.0",
+    "version": "3.3.0",
     "description": "Pulumi Azure Native package for hybriddata",
     "keywords": [
         "pulumi",
