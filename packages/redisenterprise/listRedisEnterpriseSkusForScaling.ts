@@ -1,0 +1,59 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * Lists the available SKUs for scaling the Redis Enterprise cluster.
+ *
+ * Uses Azure REST API version 2025-05-01-preview.
+ */
+export function listRedisEnterpriseSkusForScaling(args: ListRedisEnterpriseSkusForScalingArgs, opts?: pulumi.InvokeOptions): Promise<ListRedisEnterpriseSkusForScalingResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:redisenterprise:listRedisEnterpriseSkusForScaling", {
+        "clusterName": args.clusterName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface ListRedisEnterpriseSkusForScalingArgs {
+    /**
+     * The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+     */
+    clusterName: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+}
+
+/**
+ * The response of a listSkusForScaling operation.
+ */
+export interface ListRedisEnterpriseSkusForScalingResult {
+    /**
+     * List of SKUS available to scale up or scale down.
+     */
+    readonly skus?: types.outputs.SkuDetailsResponse[];
+}
+/**
+ * Lists the available SKUs for scaling the Redis Enterprise cluster.
+ *
+ * Uses Azure REST API version 2025-05-01-preview.
+ */
+export function listRedisEnterpriseSkusForScalingOutput(args: ListRedisEnterpriseSkusForScalingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListRedisEnterpriseSkusForScalingResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:redisenterprise:listRedisEnterpriseSkusForScaling", {
+        "clusterName": args.clusterName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface ListRedisEnterpriseSkusForScalingOutputArgs {
+    /**
+     * The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+     */
+    clusterName: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

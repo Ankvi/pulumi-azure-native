@@ -105,7 +105,7 @@ export interface IdentitySourceArgs {
      */
     baseUserDN?: pulumi.Input<string>;
     /**
-     * The domain's dns name
+     * The domain's DNS name
      */
     domain?: pulumi.Input<string>;
     /**

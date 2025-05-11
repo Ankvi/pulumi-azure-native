@@ -197,6 +197,20 @@ export interface PrivateLinkServiceConnectionStateResponse {
 }
 
 /**
+ * Details of a Redis Enterprise cluster SKU.
+ */
+export interface SkuDetailsResponse {
+    /**
+     * The name of the SKU.
+     */
+    name: string;
+    /**
+     * The cache size in GB.
+     */
+    sizeInGB: number;
+}
+
+/**
  * SKU parameters supplied to the create RedisEnterprise operation.
  */
 export interface SkuResponse {

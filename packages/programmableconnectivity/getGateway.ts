@@ -5,6 +5,8 @@ import * as types from "./types";
  * Get a Gateway resource by name.
  *
  * Uses Azure REST API version 2024-01-15-preview.
+ *
+ * Other available API versions: 2025-03-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native programmableconnectivity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getGateway(args: GetGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -16,7 +18,7 @@ export function getGateway(args: GetGatewayArgs, opts?: pulumi.InvokeOptions): P
 
 export interface GetGatewayArgs {
     /**
-     * Azure Programmable Connectivity Gateway Name
+     * Azure Programmable Connectivity Gateway Name.
      */
     gatewayName: string;
     /**
@@ -26,7 +28,7 @@ export interface GetGatewayArgs {
 }
 
 /**
- * A Programmable Connectivity Gateway resource
+ * A Programmable Connectivity Gateway resource.
  */
 export interface GetGatewayResult {
     /**
@@ -34,7 +36,7 @@ export interface GetGatewayResult {
      */
     readonly azureApiVersion: string;
     /**
-     * Base URL of the Gateway resource. This is the URL that the users would use to make Open API Gateway requests to the Operators via Azure.
+     * Base URL of the Gateway resource. This is the URL that the users would use to make Network API requests to the Operators via Azure.
      */
     readonly gatewayBaseUrl: string;
     /**
@@ -50,7 +52,7 @@ export interface GetGatewayResult {
      */
     readonly name: string;
     /**
-     * List of Operator API Connections selected by the user
+     * List of Operator API Connections selected by the user.
      */
     readonly operatorApiConnections: string[];
     /**
@@ -74,6 +76,8 @@ export interface GetGatewayResult {
  * Get a Gateway resource by name.
  *
  * Uses Azure REST API version 2024-01-15-preview.
+ *
+ * Other available API versions: 2025-03-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native programmableconnectivity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getGatewayOutput(args: GetGatewayOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewayResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -85,7 +89,7 @@ export function getGatewayOutput(args: GetGatewayOutputArgs, opts?: pulumi.Invok
 
 export interface GetGatewayOutputArgs {
     /**
-     * Azure Programmable Connectivity Gateway Name
+     * Azure Programmable Connectivity Gateway Name.
      */
     gatewayName: pulumi.Input<string>;
     /**

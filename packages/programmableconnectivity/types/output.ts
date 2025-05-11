@@ -17,7 +17,7 @@ export interface ApplicationPropertiesResponse {
      */
     legalName?: string;
     /**
-     * Name of the application. Example: Contoso App.
+     * Name of the application.
      */
     name?: string;
     /**
