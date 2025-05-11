@@ -187,7 +187,7 @@ export interface IdentitySourceResponse {
      */
     baseUserDN?: string;
     /**
-     * The domain's dns name
+     * The domain's DNS name
      */
     domain?: string;
     /**

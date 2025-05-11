@@ -1,5 +1,35 @@
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Site address properties
+ */
+export interface SiteAddressPropertiesResponse {
+    /**
+     * City of the address
+     */
+    city?: string;
+    /**
+     * Country of the address
+     */
+    country?: string;
+    /**
+     * Postal or ZIP code of the address
+     */
+    postalCode?: string;
+    /**
+     * State or province of the address
+     */
+    stateOrProvince?: string;
+    /**
+     * First line of the street address
+     */
+    streetAddress1?: string;
+    /**
+     * Second line of the street address
+     */
+    streetAddress2?: string;
+}
+
+/**
  * Site properties
  */
 export interface SitePropertiesResponse {
@@ -16,9 +46,17 @@ export interface SitePropertiesResponse {
      */
     displayName?: string;
     /**
+     * Key-value pairs for labeling the site resource.
+     */
+    labels?: {[key: string]: string};
+    /**
      * Provisioning state of last operation
      */
     provisioningState: string;
+    /**
+     * Physical address of the site
+     */
+    siteAddress?: SiteAddressPropertiesResponse;
 }
 
 /**

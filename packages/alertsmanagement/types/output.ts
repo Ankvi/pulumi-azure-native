@@ -302,6 +302,94 @@ export interface DiagnosticsResponse {
 }
 
 /**
+ * Details about the execution of the investigation
+ */
+export interface InvestigationExecutionResponse {
+    /**
+     * The time at which the investigation execution completed (in UTC)
+     */
+    completedAt: string;
+    /**
+     * The state of the investigation execution
+     */
+    runState: string;
+}
+
+/**
+ * Properties of the current investigation
+ */
+export interface InvestigationMetadataResponse {
+    /**
+     * The creation time of the investigation (in UTC)
+     */
+    createdAt: string;
+    /**
+     * The execution details of the investigation
+     */
+    execution: InvestigationExecutionResponse;
+    /**
+     * The unique identifier of the investigation
+     */
+    id: string;
+    /**
+     * The parameters that were used to start the investigation
+     */
+    runParameters: RunParametersResponse;
+}
+
+/**
+ * A single scope of the investigation
+ */
+export interface InvestigationScopeResponse {
+    /**
+     * The ID of the scope of the investigation - either an Azure alert ID or an Azure resource ID
+     */
+    id: string;
+    /**
+     * The origin of the scope
+     */
+    origin: OriginResponse;
+    /**
+     * The relevance of the scope
+     */
+    relevance?: string;
+}
+
+/**
+ * The issue properties
+ */
+export interface IssuePropertiesResponse {
+    /**
+     * The issue impact time (in UTC)
+     */
+    impactTime: string;
+    /**
+     * The list of investigations in the issue
+     */
+    investigations: InvestigationMetadataResponse[];
+    /**
+     * The number of investigations in the issue
+     */
+    investigationsCount: number;
+    /**
+     * The provisioning state of the resource.
+     */
+    provisioningState: string;
+    /**
+     * The issue severity
+     */
+    severity: string;
+    /**
+     * The issue status
+     */
+    status: string;
+    /**
+     * The issue title
+     */
+    title: string;
+}
+
+/**
  * Monthly recurrence object.
  */
 export interface MonthlyRecurrenceResponse {
@@ -322,6 +410,20 @@ export interface MonthlyRecurrenceResponse {
      * Start time for recurrence.
      */
     startTime?: string;
+}
+
+/**
+ * Details about the origin of the entity - the source that added it to the issue
+ */
+export interface OriginResponse {
+    /**
+     * The ID of the origin - for example, in case of 'Manual', the object ID of the identity, and in case of 'Automatic', the name of the automatic system
+     */
+    addedBy: string;
+    /**
+     * The source of the origin - Manual or Automatic
+     */
+    addedByType: string;
 }
 
 /**
@@ -399,6 +501,58 @@ export interface PrometheusRuleResponse {
 }
 
 /**
+ * Properties of an alert which is related to the issue
+ */
+export interface RelatedAlertResponse {
+    /**
+     * The time this relation was added to the issue (in UTC)
+     */
+    addedAt: string;
+    /**
+     * The alert ID
+     */
+    id: string;
+    /**
+     * The last update time of this relation (in UTC)
+     */
+    lastModifiedAt: string;
+    /**
+     * The source that related the alert to the issue
+     */
+    origin: OriginResponse;
+    /**
+     * The alerts's relevance status
+     */
+    relevance: string;
+}
+
+/**
+ * Properties of a resource which is related to the issue
+ */
+export interface RelatedResourceResponse {
+    /**
+     * The time this relation was added to the issue (in UTC)
+     */
+    addedAt: string;
+    /**
+     * The resource ID
+     */
+    id: string;
+    /**
+     * The last update time of this relation (in UTC)
+     */
+    lastModifiedAt: string;
+    /**
+     * The source that related the resource to the issue
+     */
+    origin: OriginResponse;
+    /**
+     * The resource's relevance status
+     */
+    relevance: string;
+}
+
+/**
  * Indicates if all action groups should be removed.
  */
 export interface RemoveAllActionGroupsResponse {
@@ -407,6 +561,24 @@ export interface RemoveAllActionGroupsResponse {
      * Expected value is 'RemoveAllActionGroups'.
      */
     actionType: "RemoveAllActionGroups";
+}
+
+/**
+ * The parameters used to run the investigation
+ */
+export interface RunParametersResponse {
+    /**
+     * The alerts used to run the investigation
+     */
+    alerts: InvestigationScopeResponse[];
+    /**
+     * The impact time to investigate (in UTC)
+     */
+    impactTime: string;
+    /**
+     * The resources used to run the investigation
+     */
+    resources: InvestigationScopeResponse[];
 }
 
 /**

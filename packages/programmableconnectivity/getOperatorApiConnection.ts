@@ -5,6 +5,8 @@ import * as types from "./types";
  * Get an Operator API Connection.
  *
  * Uses Azure REST API version 2024-01-15-preview.
+ *
+ * Other available API versions: 2025-03-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native programmableconnectivity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getOperatorApiConnection(args: GetOperatorApiConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetOperatorApiConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -102,6 +104,8 @@ export interface GetOperatorApiConnectionResult {
  * Get an Operator API Connection.
  *
  * Uses Azure REST API version 2024-01-15-preview.
+ *
+ * Other available API versions: 2025-03-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native programmableconnectivity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getOperatorApiConnectionOutput(args: GetOperatorApiConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOperatorApiConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

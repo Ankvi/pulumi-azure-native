@@ -17,7 +17,7 @@ export interface ApplicationPropertiesArgs {
      */
     legalName?: pulumi.Input<string>;
     /**
-     * Name of the application. Example: Contoso App.
+     * Name of the application.
      */
     name?: pulumi.Input<string>;
     /**

@@ -18,3 +18,27 @@ export interface CreateParentGroupInfoArgs {
      */
     id?: pulumi.Input<string>;
 }
+
+/**
+ * The details of the parent serviceGroup.
+ */
+export interface ParentServiceGroupPropertiesArgs {
+    /**
+     * The fully qualified ID of the parent serviceGroup.  For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup'
+     */
+    resourceId?: pulumi.Input<string>;
+}
+
+/**
+ * ServiceGroup creation request body parameters.
+ */
+export interface ServiceGroupPropertiesArgs {
+    /**
+     * The display name of the serviceGroup. For example, ServiceGroupTest1
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * The details of the parent serviceGroup.
+     */
+    parent?: pulumi.Input<ParentServiceGroupPropertiesArgs>;
+}

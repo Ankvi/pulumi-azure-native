@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-frontdoor",
-    "version": "3.3.0",
+    "version": "3.4.0",
     "description": "Pulumi Azure Native package for frontdoor",
     "keywords": [
         "pulumi",

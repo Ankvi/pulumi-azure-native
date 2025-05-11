@@ -220,6 +220,28 @@ export interface DiagnosticsArgs {
 }
 
 /**
+ * The issue properties
+ */
+export interface IssuePropertiesArgs {
+    /**
+     * The issue impact time (in UTC)
+     */
+    impactTime: pulumi.Input<string>;
+    /**
+     * The issue severity
+     */
+    severity: pulumi.Input<string>;
+    /**
+     * The issue status
+     */
+    status: pulumi.Input<string | enums.Status>;
+    /**
+     * The issue title
+     */
+    title: pulumi.Input<string>;
+}
+
+/**
  * Monthly recurrence object.
  */
 export interface MonthlyRecurrenceArgs {
