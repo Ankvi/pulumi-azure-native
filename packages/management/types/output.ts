@@ -165,3 +165,95 @@ export interface ParentGroupInfoResponse {
      */
     name?: string;
 }
+
+/**
+ * The details of the parent serviceGroup.
+ */
+export interface ParentServiceGroupPropertiesResponse {
+    /**
+     * The fully qualified ID of the parent serviceGroup.  For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup'
+     */
+    resourceId?: string;
+}
+
+/**
+ * ServiceGroup creation request body parameters.
+ */
+export interface ServiceGroupPropertiesResponse {
+    /**
+     * The display name of the serviceGroup. For example, ServiceGroupTest1
+     */
+    displayName?: string;
+    /**
+     * The details of the parent serviceGroup.
+     */
+    parent?: ParentServiceGroupPropertiesResponse;
+    /**
+     * The provisioning state of the serviceGroup. For example, Running
+     */
+    provisioningState: string;
+}
+
+/**
+ * The serviceGroup details.
+ */
+export interface ServiceGroupResponse {
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    id: string;
+    /**
+     * The kind of the serviceGroup.
+     */
+    kind?: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * ServiceGroup creation request body parameters.
+     */
+    properties?: ServiceGroupPropertiesResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The serviceGroup tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
+}
+
+/**
+ * Metadata pertaining to creation and last modification of the resource.
+ */
+export interface SystemDataResponse {
+    /**
+     * The timestamp of resource creation (UTC).
+     */
+    createdAt?: string;
+    /**
+     * The identity that created the resource.
+     */
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
+}

@@ -13108,6 +13108,10 @@ export interface ImpalaLinkedServiceResponse {
      */
     description?: string;
     /**
+     * Specify whether to enable server SSL certificate validation when you connect.Always use System Trust Store (for V2 only). The default value is true.
+     */
+    enableServerCertificateValidation?: any;
+    /**
      * Specifies whether the connections to the server are encrypted using SSL. The default value is false.
      */
     enableSsl?: any;
@@ -13131,6 +13135,10 @@ export interface ImpalaLinkedServiceResponse {
      * The TCP port that the Impala server uses to listen for client connections. The default value is 21050.
      */
     port?: any;
+    /**
+     * The transport protocol to use in the Thrift layer (for V2 only). Default value is Binary.
+     */
+    thriftTransportProtocol?: string;
     /**
      * The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
      */
