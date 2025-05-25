@@ -2,32 +2,34 @@
 
 ### Does the PR have any schema changes?
 
-Looking good! No breaking changes found.
+Found 6 breaking changes:
+
+#### Resources
+- `🔴` "azure-native:onlineexperimentation:OnlineExperimentWorkspace" missing
+#### Functions
+- `🔴` "azure-native:onlineexperimentation:getOnlineExperimentWorkspace" missing
+#### Types
+- `🔴` "azure-native:onlineexperimentation:OnlineExperimentWorkspaceProperties" missing
+- `🔴` "azure-native:onlineexperimentation:OnlineExperimentWorkspacePropertiesResponse" missing
+- `🟡` "azure-native:workloads:SAPVirtualInstanceIdentityResponse": properties: "userAssignedIdentities": additional properties type changed from "#/types/azure-native:workloads:SAPVirtualInstanceIdentityResponseUserAssignedIdentities" to "#/types/azure-native:workloads:UserAssignedIdentityResponse"
+- `🔴` "azure-native:workloads:SAPVirtualInstanceIdentityResponseUserAssignedIdentities" missing
 
 #### New resources:
 
-- `alertsmanagement.Issue`
-- `avs.PureStoragePolicy`
-- `edge.SitesByServiceGroup`
-- `management.ServiceGroup`
-- `relationships.DependencyOfRelationship`
-- `relationships.ServiceGroupMemberRelationship`
+- `onlineexperimentation.OnlineExperimentationWorkspace`
 
 #### New functions:
 
-- `alertsmanagement.getIssue`
-- `alertsmanagement.listIssueAlerts`
-- `alertsmanagement.listIssueResources`
-- `avs.getPureStoragePolicy`
-- `edge.getSitesByServiceGroup`
-- `management.getServiceGroup`
-- `management.listServiceGroupAncestors`
-- `redisenterprise.listRedisEnterpriseSkusForScaling`
-- `relationships.getDependencyOfRelationship`
-- `relationships.getServiceGroupMemberRelationship`
+- `network.getNetworkVirtualApplianceBootDiagnosticLogs`
+- `network.getVirtualNetworkGatewayResiliencyInformation`
+- `network.getVirtualNetworkGatewayRoutesInformation`
+- `onlineexperimentation.getOnlineExperimentationWorkspace`
 
-<!-- Release notes generated using configuration in .github/release.yml at v3.4.0 -->
+<!-- Release notes generated using configuration in .github/release.yml at v3.5.0 -->
+
+## What's Changed
+* Add workflow to export repo secrets by @pgavlin in https://github.com/pulumi/pulumi-azure-native/pull/4153
+* Use repo-specific ESC environment by @pgavlin in https://github.com/pulumi/pulumi-azure-native/pull/4158
 
 
-
-**Full Changelog**: https://github.com/pulumi/pulumi-azure-native/compare/v3.3.0...v3.4.0
+**Full Changelog**: https://github.com/pulumi/pulumi-azure-native/compare/v3.4.0...v3.5.0

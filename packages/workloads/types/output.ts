@@ -1631,18 +1631,7 @@ export interface SAPVirtualInstanceIdentityResponse {
     /**
      * The identities assigned to this resource by the user.
      */
-    userAssignedIdentities?: {[key: string]: SAPVirtualInstanceIdentityResponseUserAssignedIdentities};
-}
-
-export interface SAPVirtualInstanceIdentityResponseUserAssignedIdentities {
-    /**
-     * The client ID of the assigned identity.
-     */
-    clientId: string;
-    /**
-     * The principal ID of the assigned identity.
-     */
-    principalId: string;
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
 }
 
 /**

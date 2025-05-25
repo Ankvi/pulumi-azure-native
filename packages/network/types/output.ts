@@ -2909,6 +2909,21 @@ export interface BreakOutCategoryPoliciesResponse {
     optimize?: boolean;
 }
 
+export interface CircuitMetadataMapResponse {
+    /**
+     * Link to the Express Route circuit
+     */
+    link?: string;
+    /**
+     * Peering location of the Express Route Circuit
+     */
+    location?: string;
+    /**
+     * Express Route Circuit Name
+     */
+    name?: string;
+}
+
 /**
  * The network configuration group resource
  */
@@ -4983,6 +4998,36 @@ export interface GatewayLoadBalancerTunnelInterfaceResponse {
 }
 
 /**
+ * Resiliency Recommendation details
+ */
+export interface GatewayResiliencyRecommendationResponse {
+    /**
+     * Link to the public documentation for the associated recommendation
+     */
+    callToActionLink?: string;
+    /**
+     * Acton items to apply the recommendation
+     */
+    callToActionText?: string;
+    /**
+     * Recommendation Id
+     */
+    recommendationId?: string;
+    /**
+     * Recommendation details
+     */
+    recommendationText?: string;
+    /**
+     * Recommendation Title
+     */
+    recommendationTitle?: string;
+    /**
+     * Impact associated with the recommendation
+     */
+    severity?: string;
+}
+
+/**
  * Gateway routing details.
  */
 export interface GatewayRouteResponse {
@@ -5014,6 +5059,21 @@ export interface GatewayRouteResponse {
      * The route's weight.
      */
     weight: number;
+}
+
+export interface GatewayRouteSetResponse {
+    /**
+     * List of different Route Sources
+     */
+    details?: {[key: string]: RouteSourceDetailsResponse[]};
+    /**
+     * List of different locations from where the routes are learned
+     */
+    locations?: string[];
+    /**
+     * Route Set name
+     */
+    name?: string;
 }
 
 /**
@@ -8228,6 +8288,28 @@ export interface ReferencedPublicIpAddressResponse {
 }
 
 /**
+ * Gateway Resiliency based Recommendations
+ */
+export interface ResiliencyRecommendationComponentsResponse {
+    /**
+     * Current Score of the gateway
+     */
+    currentScore?: string;
+    /**
+     * Max score that the gateway can achieve if the specified recommendation is applied
+     */
+    maxScore?: string;
+    /**
+     * Name of the Resiliency based Recommendation Component
+     */
+    name?: string;
+    /**
+     * List of Gateway Resiliency based Recommendations
+     */
+    recommendations?: GatewayResiliencyRecommendationResponse[];
+}
+
+/**
  * Representation of basic resource information.
  */
 export interface ResourceBasicsResponse {
@@ -8399,6 +8481,21 @@ export interface RouteResponse {
      * The type of the resource.
      */
     type?: string;
+}
+
+export interface RouteSourceDetailsResponse {
+    /**
+     * Express Route Circuit identifier
+     */
+    circuit?: string;
+    /**
+     * Flag to indicate if the route learned from the primary device is active or passive
+     */
+    pri?: string;
+    /**
+     * Flag to indicate if the route learned from the secondary device is active or passive
+     */
+    sec?: string;
 }
 
 /**

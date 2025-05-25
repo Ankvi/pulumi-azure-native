@@ -5,6 +5,8 @@ import * as types from "./types";
  * Advanced Ingress routing for path/header based routing for a Container App Environment
  *
  * Uses Azure REST API version 2024-10-02-preview.
+ *
+ * Other available API versions: 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getHttpRouteConfig(args: GetHttpRouteConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetHttpRouteConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -63,6 +65,8 @@ export interface GetHttpRouteConfigResult {
  * Advanced Ingress routing for path/header based routing for a Container App Environment
  *
  * Uses Azure REST API version 2024-10-02-preview.
+ *
+ * Other available API versions: 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getHttpRouteConfigOutput(args: GetHttpRouteConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHttpRouteConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

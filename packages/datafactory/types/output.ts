@@ -12409,6 +12409,10 @@ export interface HiveLinkedServiceResponse {
      */
     description?: string;
     /**
+     * Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+     */
+    enableServerCertificateValidation?: any;
+    /**
      * Specifies whether the connections to the server are encrypted using SSL. The default value is false.
      */
     enableSsl?: any;
@@ -23769,6 +23773,10 @@ export interface SparkLinkedServiceResponse {
      * Linked service description.
      */
     description?: string;
+    /**
+     * Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+     */
+    enableServerCertificateValidation?: any;
     /**
      * Specifies whether the connections to the server are encrypted using SSL. The default value is false.
      */
