@@ -4,6 +4,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the specified NSP link resource.
  *
  * Uses Azure REST API version 2024-06-01-preview.
+ *
+ * Other available API versions: 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNetworkSecurityPerimeterLink(args: GetNetworkSecurityPerimeterLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkSecurityPerimeterLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -98,6 +100,8 @@ export interface GetNetworkSecurityPerimeterLinkResult {
  * Gets the specified NSP link resource.
  *
  * Uses Azure REST API version 2024-06-01-preview.
+ *
+ * Other available API versions: 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNetworkSecurityPerimeterLinkOutput(args: GetNetworkSecurityPerimeterLinkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkSecurityPerimeterLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
