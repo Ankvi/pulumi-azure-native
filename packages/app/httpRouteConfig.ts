@@ -5,6 +5,8 @@ import * as types from "./types";
  * Advanced Ingress routing for path/header based routing for a Container App Environment
  *
  * Uses Azure REST API version 2024-10-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-02-preview.
+ *
+ * Other available API versions: 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class HttpRouteConfig extends pulumi.CustomResource {
     /**
@@ -87,7 +89,7 @@ export class HttpRouteConfig extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20241002preview:HttpRouteConfig" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20241002preview:HttpRouteConfig" }, { type: "azure-native:app/v20250202preview:HttpRouteConfig" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(HttpRouteConfig.__pulumiType, name, resourceInputs, opts);
     }

@@ -2,35 +2,35 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * An online experiment workspace resource.
+ * An online experimentation workspace resource.
  *
  * Uses Azure REST API version 2025-05-31-preview.
  */
-export class OnlineExperimentWorkspace extends pulumi.CustomResource {
+export class OnlineExperimentationWorkspace extends pulumi.CustomResource {
     /**
-     * Get an existing OnlineExperimentWorkspace resource's state with the given name, ID, and optional extra
+     * Get an existing OnlineExperimentationWorkspace resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): OnlineExperimentWorkspace {
-        return new OnlineExperimentWorkspace(name, undefined as any, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): OnlineExperimentationWorkspace {
+        return new OnlineExperimentationWorkspace(name, undefined as any, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'azure-native:onlineexperimentation:OnlineExperimentWorkspace';
+    public static readonly __pulumiType = 'azure-native:onlineexperimentation:OnlineExperimentationWorkspace';
 
     /**
-     * Returns true if the given object is an instance of OnlineExperimentWorkspace.  This is designed to work even
+     * Returns true if the given object is an instance of OnlineExperimentationWorkspace.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is OnlineExperimentWorkspace {
+    public static isInstance(obj: any): obj is OnlineExperimentationWorkspace {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === OnlineExperimentWorkspace.__pulumiType;
+        return obj['__pulumiType'] === OnlineExperimentationWorkspace.__pulumiType;
     }
 
     /**
@@ -52,7 +52,7 @@ export class OnlineExperimentWorkspace extends pulumi.CustomResource {
     /**
      * The resource-specific properties for this resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.OnlineExperimentWorkspacePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.OnlineExperimentationWorkspacePropertiesResponse>;
     /**
      * The SKU (Stock Keeping Unit) assigned to this resource.
      */
@@ -71,13 +71,13 @@ export class OnlineExperimentWorkspace extends pulumi.CustomResource {
     public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
-     * Create a OnlineExperimentWorkspace resource with the given unique name, arguments, and options.
+     * Create a OnlineExperimentationWorkspace resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: OnlineExperimentWorkspaceArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: OnlineExperimentationWorkspaceArgs, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
@@ -107,16 +107,16 @@ export class OnlineExperimentWorkspace extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:onlineexperimentation/v20250531preview:OnlineExperimentWorkspace" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:onlineexperimentation/v20250531preview:OnlineExperimentationWorkspace" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
-        super(OnlineExperimentWorkspace.__pulumiType, name, resourceInputs, opts);
+        super(OnlineExperimentationWorkspace.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * The set of arguments for constructing a OnlineExperimentWorkspace resource.
+ * The set of arguments for constructing a OnlineExperimentationWorkspace resource.
  */
-export interface OnlineExperimentWorkspaceArgs {
+export interface OnlineExperimentationWorkspaceArgs {
     /**
      * The managed service identities assigned to this resource.
      */
@@ -128,7 +128,7 @@ export interface OnlineExperimentWorkspaceArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.OnlineExperimentWorkspacePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.OnlineExperimentationWorkspacePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -142,7 +142,7 @@ export interface OnlineExperimentWorkspaceArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of the OnlineExperimentWorkspace
+     * The name of the OnlineExperimentationWorkspace
      */
     workspaceName?: pulumi.Input<string>;
 }
