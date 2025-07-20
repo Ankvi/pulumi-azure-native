@@ -782,6 +782,20 @@ export interface FailoverPolicyResponse {
 }
 
 /**
+ * Configuration for fleetspace Account in the fleetspace.
+ */
+export interface FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties {
+    /**
+     * The location of  global database account in the Fleetspace Account.
+     */
+    armLocation?: string;
+    /**
+     * The resource identifier of global database account in the Fleetspace Account.
+     */
+    resourceId?: string;
+}
+
+/**
  * Configuration for throughput pool in the fleetspace.
  */
 export interface FleetspacePropertiesResponseThroughputPoolConfiguration {

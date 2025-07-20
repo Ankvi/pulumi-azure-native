@@ -311,7 +311,7 @@ export interface CacheNodeEntityResponse {
      */
     addressSpace: number;
     /**
-     * Customer requested day of week for mcc install of auto update cycle
+     * Customer requested day of week for mcc install of auto update cycle. 0 is default no selection. 1-7 are days of week, 1 is Sunday, 2 is Monday, etc.
      */
     autoUpdateRequestedDay?: number;
     /**
@@ -319,7 +319,7 @@ export interface CacheNodeEntityResponse {
      */
     autoUpdateRequestedTime?: string;
     /**
-     * Customer requested week of month for mcc install of auto update cycle
+     * Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc.
      */
     autoUpdateRequestedWeek?: number;
     /**
@@ -760,6 +760,198 @@ export interface ErrorDetailResponse {
      * The error target.
      */
     target: string;
+}
+
+/**
+ * Mcc cache node resource auto update history properties.
+ */
+export interface MccCacheNodeAutoUpdateHistoryPropertiesResponse {
+    /**
+     * Cache node resource auto update history information.
+     */
+    autoUpdateHistory?: MccCacheNodeAutoUpdateInfoResponse[];
+    /**
+     * Mcc cache node resource Id.
+     */
+    cacheNodeId: string;
+    /**
+     * Mcc customer resource Id.
+     */
+    customerId: string;
+}
+
+/**
+ * Mcc cache node resource auto update properties.
+ */
+export interface MccCacheNodeAutoUpdateInfoResponse {
+    /**
+     * Auto update last applied status.
+     */
+    autoUpdateLastAppliedStatus: number;
+    /**
+     * Auto update last applied detailed status text.
+     */
+    autoUpdateLastAppliedStatusDetailedText: string;
+    /**
+     * Auto update last applied status text.
+     */
+    autoUpdateLastAppliedStatusText: string;
+    /**
+     * Auto update Ring Type.
+     */
+    autoUpdateRingType: number;
+    /**
+     * Auto update entity created datetime.
+     */
+    createdDateTimeUtc: string;
+    /**
+     * Auto update image uri before update.
+     */
+    imageUriBeforeUpdate: string;
+    /**
+     * Auto update image uri targetted to update.
+     */
+    imageUriTargeted: string;
+    /**
+     * Auto update image uri at Terminal.
+     */
+    imageUriTerminal: string;
+    /**
+     * Auto update image uri after update.
+     */
+    movedToTerminalStateDateTime: string;
+    /**
+     * This text describing the purpose of the plan of auto update.
+     */
+    planChangeLogText: string;
+    /**
+     * Auto update planId.
+     */
+    planId: number;
+    /**
+     * Auto update image uri after update.
+     */
+    ruleRequestedDay: number;
+    /**
+     * Auto update rule requested hour.
+     */
+    ruleRequestedHour: string;
+    /**
+     * Auto update rule requested minute.
+     */
+    ruleRequestedMinute: string;
+    /**
+     * Auto update image uri before update.
+     */
+    ruleRequestedWeek: number;
+    /**
+     * Auto update time to go live date time.
+     */
+    timeToGoLiveDateTime: string;
+    /**
+     * Auto update entity last updated datetime.
+     */
+    updatedRegistryDateTimeUtc: string;
+}
+
+/**
+ * Mcc cache node resource issue history properties.
+ */
+export interface MccCacheNodeIssueHistoryPropertiesResponse {
+    /**
+     * Mcc cache node resource Id.
+     */
+    cacheNodeId: string;
+    /**
+     * Mcc customer resource Id.
+     */
+    customerId: string;
+    /**
+     * Cache node resource issue details history.
+     */
+    mccIssueHistory?: MccIssueResponse[];
+}
+
+/**
+ * Mcc cache node resource auto update properties.
+ */
+export interface MccCacheNodeTlsCertificatePropertiesResponse {
+    /**
+     * Mcc cache node resource Id.
+     */
+    cacheNodeId: string;
+    /**
+     * Mcc customer resource Id.
+     */
+    customerId: string;
+    /**
+     * Cache node resource tls certificate history details.
+     */
+    tlsCertificateHistory?: MccCacheNodeTlsCertificateResponse[];
+}
+
+/**
+ * Mcc cache node resource Tls certificate details.
+ */
+export interface MccCacheNodeTlsCertificateResponse {
+    /**
+     * Mcc cache node Tls certificate status.
+     */
+    actionRequired: string;
+    /**
+     * Mcc cache node Tls certificate file name.
+     */
+    certificateFileName: string;
+    /**
+     * Mcc cache node Tls certificate expiry date.
+     */
+    expiryDate: string;
+    /**
+     * Mcc cache node Tls certificate not before date.
+     */
+    notBeforeDate: string;
+    /**
+     * Mcc cache node Tls certificate subject name.
+     */
+    subject: string;
+    /**
+     * Mcc cache node Tls certificate subject alternate name.
+     */
+    subjectAltName: string;
+    /**
+     * Mcc cache node Tls certificate thumbprint.
+     */
+    thumbprint: string;
+}
+
+/**
+ * Mcc cache node resource issue properties.
+ */
+export interface MccIssueResponse {
+    /**
+     * Mcc cache node issue detail string.
+     */
+    detailString: string;
+    /**
+     * Mcc cache node issue related help link.
+     */
+    helpLink: string;
+    /**
+     * Mcc cache node issue end date.
+     */
+    issueEndDate: string;
+    /**
+     * Mcc cache node issue start date.
+     */
+    issueStartDate: string;
+    /**
+     * Mcc cache node issue type.
+     */
+    mccIssueType: string;
+    /**
+     * Mcc cache node issues toastString.
+     */
+    toastString: string;
 }
 
 /**

@@ -46,9 +46,9 @@ export class OrganizationClusterById extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<types.outputs.SCMetadataEntityResponse | undefined>;
     /**
-     * Display name of the cluster
+     * The name of the resource
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Specification of the cluster
      */
@@ -58,9 +58,13 @@ export class OrganizationClusterById extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<types.outputs.ClusterStatusEntityResponse | undefined>;
     /**
-     * Type of the resource
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationClusterById resource with the given unique name, arguments, and options.
@@ -84,16 +88,16 @@ export class OrganizationClusterById extends pulumi.CustomResource {
             }
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["environmentId"] = args ? args.environmentId : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationName"] = args ? args.organizationName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -101,6 +105,7 @@ export class OrganizationClusterById extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["spec"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -123,10 +128,6 @@ export interface OrganizationClusterByIdArgs {
      */
     environmentId: pulumi.Input<string>;
     /**
-     * Id of the cluster
-     */
-    id?: pulumi.Input<string>;
-    /**
      * Type of cluster
      */
     kind?: pulumi.Input<string>;
@@ -134,10 +135,6 @@ export interface OrganizationClusterByIdArgs {
      * Metadata of the record
      */
     metadata?: pulumi.Input<types.inputs.SCMetadataEntityArgs>;
-    /**
-     * Display name of the cluster
-     */
-    name?: pulumi.Input<string>;
     /**
      * Organization resource name
      */
@@ -154,8 +151,4 @@ export interface OrganizationClusterByIdArgs {
      * Specification of the cluster status
      */
     status?: pulumi.Input<types.inputs.ClusterStatusEntityArgs>;
-    /**
-     * Type of the resource
-     */
-    type?: pulumi.Input<string>;
 }

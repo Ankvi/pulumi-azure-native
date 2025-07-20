@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * List users success response
+ * Organization users details
  *
  * Uses Azure REST API version 2024-07-01.
  *
@@ -23,7 +23,7 @@ export interface ListAccessUsersArgs {
      */
     organizationName: string;
     /**
-     * Resource group name
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
@@ -50,7 +50,7 @@ export interface ListAccessUsersResult {
     readonly metadata?: types.outputs.ConfluentListMetadataResponse;
 }
 /**
- * List users success response
+ * Organization users details
  *
  * Uses Azure REST API version 2024-07-01.
  *
@@ -71,7 +71,7 @@ export interface ListAccessUsersOutputArgs {
      */
     organizationName: pulumi.Input<string>;
     /**
-     * Resource group name
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

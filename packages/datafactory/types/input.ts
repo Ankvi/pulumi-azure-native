@@ -331,6 +331,14 @@ export interface AmazonRdsForOracleSourceArgs {
      */
     maxConcurrentConnections?: any;
     /**
+     * The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+     */
+    numberPrecision?: any;
+    /**
+     * The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+     */
+    numberScale?: any;
+    /**
      * AmazonRdsForOracle reader query. Type: string (or Expression with resultType string).
      */
     oracleReaderQuery?: any;
@@ -7542,6 +7550,57 @@ export interface DataMapperMappingArgs {
 }
 
 /**
+ * Databricks Job activity.
+ */
+export interface DatabricksJobActivityArgs {
+    /**
+     * Activity depends on condition.
+     */
+    dependsOn?: pulumi.Input<pulumi.Input<ActivityDependencyArgs>[]>;
+    /**
+     * Activity description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The Id of the Databricks Job to be executed. Type: string (or Expression with resultType string).
+     */
+    jobId: any;
+    /**
+     * Job parameters to be used for each run of this job. If the job takes a parameter that is not specified, the default value from the job will be used.
+     */
+    jobParameters?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName?: pulumi.Input<LinkedServiceReferenceArgs>;
+    /**
+     * Activity name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+     */
+    onInactiveMarkAs?: pulumi.Input<string | enums.ActivityOnInactiveMarkAs>;
+    /**
+     * Activity policy.
+     */
+    policy?: pulumi.Input<ActivityPolicyArgs>;
+    /**
+     * Activity state. This is an optional property and if not provided, the state will be Active by default.
+     */
+    state?: pulumi.Input<string | enums.ActivityState>;
+    /**
+     * Type of activity.
+     * Expected value is 'DatabricksJob'.
+     */
+    type: pulumi.Input<"DatabricksJob">;
+    /**
+     * Activity user properties.
+     */
+    userProperties?: pulumi.Input<pulumi.Input<UserPropertyArgs>[]>;
+}
+
+/**
  * DatabricksNotebook activity.
  */
 export interface DatabricksNotebookActivityArgs {
@@ -9771,9 +9830,9 @@ export interface ExpressionV2Args {
      */
     type?: pulumi.Input<string | enums.ExpressionV2Type>;
     /**
-     * Value for Constant/Field Type: string.
+     * Value for Constant/Field Type: object.
      */
-    value?: pulumi.Input<string>;
+    value?: any;
 }
 
 /**
@@ -10309,7 +10368,7 @@ export interface ForEachActivityArgs {
     /**
      * List of activities to execute .
      */
-    activities: pulumi.Input<pulumi.Input<AppendVariableActivityArgs | AzureDataExplorerCommandActivityArgs | AzureFunctionActivityArgs | AzureMLBatchExecutionActivityArgs | AzureMLExecutePipelineActivityArgs | AzureMLUpdateResourceActivityArgs | ControlActivityArgs | CopyActivityArgs | CustomActivityArgs | DataLakeAnalyticsUSQLActivityArgs | DatabricksNotebookActivityArgs | DatabricksSparkJarActivityArgs | DatabricksSparkPythonActivityArgs | DeleteActivityArgs | ExecuteDataFlowActivityArgs | ExecutePipelineActivityArgs | ExecuteSSISPackageActivityArgs | ExecuteWranglingDataflowActivityArgs | ExecutionActivityArgs | FailActivityArgs | FilterActivityArgs | ForEachActivityArgs | GetMetadataActivityArgs | HDInsightHiveActivityArgs | HDInsightMapReduceActivityArgs | HDInsightPigActivityArgs | HDInsightSparkActivityArgs | HDInsightStreamingActivityArgs | IfConditionActivityArgs | LookupActivityArgs | ScriptActivityArgs | SetVariableActivityArgs | SqlServerStoredProcedureActivityArgs | SwitchActivityArgs | SynapseNotebookActivityArgs | SynapseSparkJobDefinitionActivityArgs | UntilActivityArgs | ValidationActivityArgs | WaitActivityArgs | WebActivityArgs | WebHookActivityArgs>[]>;
+    activities: pulumi.Input<pulumi.Input<AppendVariableActivityArgs | AzureDataExplorerCommandActivityArgs | AzureFunctionActivityArgs | AzureMLBatchExecutionActivityArgs | AzureMLExecutePipelineActivityArgs | AzureMLUpdateResourceActivityArgs | ControlActivityArgs | CopyActivityArgs | CustomActivityArgs | DataLakeAnalyticsUSQLActivityArgs | DatabricksJobActivityArgs | DatabricksNotebookActivityArgs | DatabricksSparkJarActivityArgs | DatabricksSparkPythonActivityArgs | DeleteActivityArgs | ExecuteDataFlowActivityArgs | ExecutePipelineActivityArgs | ExecuteSSISPackageActivityArgs | ExecuteWranglingDataflowActivityArgs | ExecutionActivityArgs | FailActivityArgs | FilterActivityArgs | ForEachActivityArgs | GetMetadataActivityArgs | HDInsightHiveActivityArgs | HDInsightMapReduceActivityArgs | HDInsightPigActivityArgs | HDInsightSparkActivityArgs | HDInsightStreamingActivityArgs | IfConditionActivityArgs | LookupActivityArgs | ScriptActivityArgs | SetVariableActivityArgs | SqlServerStoredProcedureActivityArgs | SwitchActivityArgs | SynapseNotebookActivityArgs | SynapseSparkJobDefinitionActivityArgs | UntilActivityArgs | ValidationActivityArgs | WaitActivityArgs | WebActivityArgs | WebHookActivityArgs>[]>;
     /**
      * Batch count to be used for controlling the number of parallel execution (when isSequential is set to false).
      */
@@ -13020,11 +13079,11 @@ export interface IfConditionActivityArgs {
     /**
      * List of activities to execute if expression is evaluated to false. This is an optional property and if not provided, the activity will exit without any action.
      */
-    ifFalseActivities?: pulumi.Input<pulumi.Input<AppendVariableActivityArgs | AzureDataExplorerCommandActivityArgs | AzureFunctionActivityArgs | AzureMLBatchExecutionActivityArgs | AzureMLExecutePipelineActivityArgs | AzureMLUpdateResourceActivityArgs | ControlActivityArgs | CopyActivityArgs | CustomActivityArgs | DataLakeAnalyticsUSQLActivityArgs | DatabricksNotebookActivityArgs | DatabricksSparkJarActivityArgs | DatabricksSparkPythonActivityArgs | DeleteActivityArgs | ExecuteDataFlowActivityArgs | ExecutePipelineActivityArgs | ExecuteSSISPackageActivityArgs | ExecuteWranglingDataflowActivityArgs | ExecutionActivityArgs | FailActivityArgs | FilterActivityArgs | ForEachActivityArgs | GetMetadataActivityArgs | HDInsightHiveActivityArgs | HDInsightMapReduceActivityArgs | HDInsightPigActivityArgs | HDInsightSparkActivityArgs | HDInsightStreamingActivityArgs | IfConditionActivityArgs | LookupActivityArgs | ScriptActivityArgs | SetVariableActivityArgs | SqlServerStoredProcedureActivityArgs | SwitchActivityArgs | SynapseNotebookActivityArgs | SynapseSparkJobDefinitionActivityArgs | UntilActivityArgs | ValidationActivityArgs | WaitActivityArgs | WebActivityArgs | WebHookActivityArgs>[]>;
+    ifFalseActivities?: pulumi.Input<pulumi.Input<AppendVariableActivityArgs | AzureDataExplorerCommandActivityArgs | AzureFunctionActivityArgs | AzureMLBatchExecutionActivityArgs | AzureMLExecutePipelineActivityArgs | AzureMLUpdateResourceActivityArgs | ControlActivityArgs | CopyActivityArgs | CustomActivityArgs | DataLakeAnalyticsUSQLActivityArgs | DatabricksJobActivityArgs | DatabricksNotebookActivityArgs | DatabricksSparkJarActivityArgs | DatabricksSparkPythonActivityArgs | DeleteActivityArgs | ExecuteDataFlowActivityArgs | ExecutePipelineActivityArgs | ExecuteSSISPackageActivityArgs | ExecuteWranglingDataflowActivityArgs | ExecutionActivityArgs | FailActivityArgs | FilterActivityArgs | ForEachActivityArgs | GetMetadataActivityArgs | HDInsightHiveActivityArgs | HDInsightMapReduceActivityArgs | HDInsightPigActivityArgs | HDInsightSparkActivityArgs | HDInsightStreamingActivityArgs | IfConditionActivityArgs | LookupActivityArgs | ScriptActivityArgs | SetVariableActivityArgs | SqlServerStoredProcedureActivityArgs | SwitchActivityArgs | SynapseNotebookActivityArgs | SynapseSparkJobDefinitionActivityArgs | UntilActivityArgs | ValidationActivityArgs | WaitActivityArgs | WebActivityArgs | WebHookActivityArgs>[]>;
     /**
      * List of activities to execute if expression is evaluated to true. This is an optional property and if not provided, the activity will exit without any action.
      */
-    ifTrueActivities?: pulumi.Input<pulumi.Input<AppendVariableActivityArgs | AzureDataExplorerCommandActivityArgs | AzureFunctionActivityArgs | AzureMLBatchExecutionActivityArgs | AzureMLExecutePipelineActivityArgs | AzureMLUpdateResourceActivityArgs | ControlActivityArgs | CopyActivityArgs | CustomActivityArgs | DataLakeAnalyticsUSQLActivityArgs | DatabricksNotebookActivityArgs | DatabricksSparkJarActivityArgs | DatabricksSparkPythonActivityArgs | DeleteActivityArgs | ExecuteDataFlowActivityArgs | ExecutePipelineActivityArgs | ExecuteSSISPackageActivityArgs | ExecuteWranglingDataflowActivityArgs | ExecutionActivityArgs | FailActivityArgs | FilterActivityArgs | ForEachActivityArgs | GetMetadataActivityArgs | HDInsightHiveActivityArgs | HDInsightMapReduceActivityArgs | HDInsightPigActivityArgs | HDInsightSparkActivityArgs | HDInsightStreamingActivityArgs | IfConditionActivityArgs | LookupActivityArgs | ScriptActivityArgs | SetVariableActivityArgs | SqlServerStoredProcedureActivityArgs | SwitchActivityArgs | SynapseNotebookActivityArgs | SynapseSparkJobDefinitionActivityArgs | UntilActivityArgs | ValidationActivityArgs | WaitActivityArgs | WebActivityArgs | WebHookActivityArgs>[]>;
+    ifTrueActivities?: pulumi.Input<pulumi.Input<AppendVariableActivityArgs | AzureDataExplorerCommandActivityArgs | AzureFunctionActivityArgs | AzureMLBatchExecutionActivityArgs | AzureMLExecutePipelineActivityArgs | AzureMLUpdateResourceActivityArgs | ControlActivityArgs | CopyActivityArgs | CustomActivityArgs | DataLakeAnalyticsUSQLActivityArgs | DatabricksJobActivityArgs | DatabricksNotebookActivityArgs | DatabricksSparkJarActivityArgs | DatabricksSparkPythonActivityArgs | DeleteActivityArgs | ExecuteDataFlowActivityArgs | ExecutePipelineActivityArgs | ExecuteSSISPackageActivityArgs | ExecuteWranglingDataflowActivityArgs | ExecutionActivityArgs | FailActivityArgs | FilterActivityArgs | ForEachActivityArgs | GetMetadataActivityArgs | HDInsightHiveActivityArgs | HDInsightMapReduceActivityArgs | HDInsightPigActivityArgs | HDInsightSparkActivityArgs | HDInsightStreamingActivityArgs | IfConditionActivityArgs | LookupActivityArgs | ScriptActivityArgs | SetVariableActivityArgs | SqlServerStoredProcedureActivityArgs | SwitchActivityArgs | SynapseNotebookActivityArgs | SynapseSparkJobDefinitionActivityArgs | UntilActivityArgs | ValidationActivityArgs | WaitActivityArgs | WebActivityArgs | WebHookActivityArgs>[]>;
     /**
      * Activity name.
      */
@@ -17210,6 +17269,14 @@ export interface OracleSourceArgs {
      */
     maxConcurrentConnections?: any;
     /**
+     * The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+     */
+    numberPrecision?: any;
+    /**
+     * The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+     */
+    numberScale?: any;
+    /**
      * Oracle reader query. Type: string (or Expression with resultType string).
      */
     oracleReaderQuery?: any;
@@ -18692,15 +18759,15 @@ export interface PurviewConfigurationArgs {
 }
 
 /**
- * QuickBooks server linked service.
+ * QuickBooks server linked service. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
  */
 export interface QuickBooksLinkedServiceArgs {
     /**
-     * The access token for OAuth 1.0 authentication.
+     * The access token for OAuth 2.0 authentication.
      */
     accessToken?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
     /**
-     * The access token secret for OAuth 1.0 authentication.
+     * The access token secret is deprecated for OAuth 1.0 authentication. Only used for version 1.0.
      */
     accessTokenSecret?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
     /**
@@ -18720,11 +18787,11 @@ export interface QuickBooksLinkedServiceArgs {
      */
     connectionProperties?: any;
     /**
-     * The consumer key for OAuth 1.0 authentication.
+     * The consumer key for OAuth 2.0 authentication.
      */
     consumerKey?: any;
     /**
-     * The consumer secret for OAuth 1.0 authentication.
+     * The consumer secret for OAuth 2.0 authentication.
      */
     consumerSecret?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
     /**
@@ -18744,12 +18811,16 @@ export interface QuickBooksLinkedServiceArgs {
      */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
     /**
+     * The refresh token for OAuth 2.0 authentication.
+     */
+    refreshToken?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
      * Type of linked service.
      * Expected value is 'QuickBooks'.
      */
     type: pulumi.Input<"QuickBooks">;
     /**
-     * Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
+     * Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true. Only used for version 1.0.
      */
     useEncryptedEndpoints?: any;
     /**
@@ -24583,7 +24654,7 @@ export interface SwitchActivityArgs {
     /**
      * List of activities to execute if no case condition is satisfied. This is an optional property and if not provided, the activity will exit without any action.
      */
-    defaultActivities?: pulumi.Input<pulumi.Input<AppendVariableActivityArgs | AzureDataExplorerCommandActivityArgs | AzureFunctionActivityArgs | AzureMLBatchExecutionActivityArgs | AzureMLExecutePipelineActivityArgs | AzureMLUpdateResourceActivityArgs | ControlActivityArgs | CopyActivityArgs | CustomActivityArgs | DataLakeAnalyticsUSQLActivityArgs | DatabricksNotebookActivityArgs | DatabricksSparkJarActivityArgs | DatabricksSparkPythonActivityArgs | DeleteActivityArgs | ExecuteDataFlowActivityArgs | ExecutePipelineActivityArgs | ExecuteSSISPackageActivityArgs | ExecuteWranglingDataflowActivityArgs | ExecutionActivityArgs | FailActivityArgs | FilterActivityArgs | ForEachActivityArgs | GetMetadataActivityArgs | HDInsightHiveActivityArgs | HDInsightMapReduceActivityArgs | HDInsightPigActivityArgs | HDInsightSparkActivityArgs | HDInsightStreamingActivityArgs | IfConditionActivityArgs | LookupActivityArgs | ScriptActivityArgs | SetVariableActivityArgs | SqlServerStoredProcedureActivityArgs | SwitchActivityArgs | SynapseNotebookActivityArgs | SynapseSparkJobDefinitionActivityArgs | UntilActivityArgs | ValidationActivityArgs | WaitActivityArgs | WebActivityArgs | WebHookActivityArgs>[]>;
+    defaultActivities?: pulumi.Input<pulumi.Input<AppendVariableActivityArgs | AzureDataExplorerCommandActivityArgs | AzureFunctionActivityArgs | AzureMLBatchExecutionActivityArgs | AzureMLExecutePipelineActivityArgs | AzureMLUpdateResourceActivityArgs | ControlActivityArgs | CopyActivityArgs | CustomActivityArgs | DataLakeAnalyticsUSQLActivityArgs | DatabricksJobActivityArgs | DatabricksNotebookActivityArgs | DatabricksSparkJarActivityArgs | DatabricksSparkPythonActivityArgs | DeleteActivityArgs | ExecuteDataFlowActivityArgs | ExecutePipelineActivityArgs | ExecuteSSISPackageActivityArgs | ExecuteWranglingDataflowActivityArgs | ExecutionActivityArgs | FailActivityArgs | FilterActivityArgs | ForEachActivityArgs | GetMetadataActivityArgs | HDInsightHiveActivityArgs | HDInsightMapReduceActivityArgs | HDInsightPigActivityArgs | HDInsightSparkActivityArgs | HDInsightStreamingActivityArgs | IfConditionActivityArgs | LookupActivityArgs | ScriptActivityArgs | SetVariableActivityArgs | SqlServerStoredProcedureActivityArgs | SwitchActivityArgs | SynapseNotebookActivityArgs | SynapseSparkJobDefinitionActivityArgs | UntilActivityArgs | ValidationActivityArgs | WaitActivityArgs | WebActivityArgs | WebHookActivityArgs>[]>;
     /**
      * Activity depends on condition.
      */
@@ -24626,7 +24697,7 @@ export interface SwitchCaseArgs {
     /**
      * List of activities to execute for satisfied case condition.
      */
-    activities?: pulumi.Input<pulumi.Input<AppendVariableActivityArgs | AzureDataExplorerCommandActivityArgs | AzureFunctionActivityArgs | AzureMLBatchExecutionActivityArgs | AzureMLExecutePipelineActivityArgs | AzureMLUpdateResourceActivityArgs | ControlActivityArgs | CopyActivityArgs | CustomActivityArgs | DataLakeAnalyticsUSQLActivityArgs | DatabricksNotebookActivityArgs | DatabricksSparkJarActivityArgs | DatabricksSparkPythonActivityArgs | DeleteActivityArgs | ExecuteDataFlowActivityArgs | ExecutePipelineActivityArgs | ExecuteSSISPackageActivityArgs | ExecuteWranglingDataflowActivityArgs | ExecutionActivityArgs | FailActivityArgs | FilterActivityArgs | ForEachActivityArgs | GetMetadataActivityArgs | HDInsightHiveActivityArgs | HDInsightMapReduceActivityArgs | HDInsightPigActivityArgs | HDInsightSparkActivityArgs | HDInsightStreamingActivityArgs | IfConditionActivityArgs | LookupActivityArgs | ScriptActivityArgs | SetVariableActivityArgs | SqlServerStoredProcedureActivityArgs | SwitchActivityArgs | SynapseNotebookActivityArgs | SynapseSparkJobDefinitionActivityArgs | UntilActivityArgs | ValidationActivityArgs | WaitActivityArgs | WebActivityArgs | WebHookActivityArgs>[]>;
+    activities?: pulumi.Input<pulumi.Input<AppendVariableActivityArgs | AzureDataExplorerCommandActivityArgs | AzureFunctionActivityArgs | AzureMLBatchExecutionActivityArgs | AzureMLExecutePipelineActivityArgs | AzureMLUpdateResourceActivityArgs | ControlActivityArgs | CopyActivityArgs | CustomActivityArgs | DataLakeAnalyticsUSQLActivityArgs | DatabricksJobActivityArgs | DatabricksNotebookActivityArgs | DatabricksSparkJarActivityArgs | DatabricksSparkPythonActivityArgs | DeleteActivityArgs | ExecuteDataFlowActivityArgs | ExecutePipelineActivityArgs | ExecuteSSISPackageActivityArgs | ExecuteWranglingDataflowActivityArgs | ExecutionActivityArgs | FailActivityArgs | FilterActivityArgs | ForEachActivityArgs | GetMetadataActivityArgs | HDInsightHiveActivityArgs | HDInsightMapReduceActivityArgs | HDInsightPigActivityArgs | HDInsightSparkActivityArgs | HDInsightStreamingActivityArgs | IfConditionActivityArgs | LookupActivityArgs | ScriptActivityArgs | SetVariableActivityArgs | SqlServerStoredProcedureActivityArgs | SwitchActivityArgs | SynapseNotebookActivityArgs | SynapseSparkJobDefinitionActivityArgs | UntilActivityArgs | ValidationActivityArgs | WaitActivityArgs | WebActivityArgs | WebHookActivityArgs>[]>;
     /**
      * Expected value that satisfies the expression result of the 'on' property.
      */
@@ -25605,7 +25676,7 @@ export interface UntilActivityArgs {
     /**
      * List of activities to execute.
      */
-    activities: pulumi.Input<pulumi.Input<AppendVariableActivityArgs | AzureDataExplorerCommandActivityArgs | AzureFunctionActivityArgs | AzureMLBatchExecutionActivityArgs | AzureMLExecutePipelineActivityArgs | AzureMLUpdateResourceActivityArgs | ControlActivityArgs | CopyActivityArgs | CustomActivityArgs | DataLakeAnalyticsUSQLActivityArgs | DatabricksNotebookActivityArgs | DatabricksSparkJarActivityArgs | DatabricksSparkPythonActivityArgs | DeleteActivityArgs | ExecuteDataFlowActivityArgs | ExecutePipelineActivityArgs | ExecuteSSISPackageActivityArgs | ExecuteWranglingDataflowActivityArgs | ExecutionActivityArgs | FailActivityArgs | FilterActivityArgs | ForEachActivityArgs | GetMetadataActivityArgs | HDInsightHiveActivityArgs | HDInsightMapReduceActivityArgs | HDInsightPigActivityArgs | HDInsightSparkActivityArgs | HDInsightStreamingActivityArgs | IfConditionActivityArgs | LookupActivityArgs | ScriptActivityArgs | SetVariableActivityArgs | SqlServerStoredProcedureActivityArgs | SwitchActivityArgs | SynapseNotebookActivityArgs | SynapseSparkJobDefinitionActivityArgs | UntilActivityArgs | ValidationActivityArgs | WaitActivityArgs | WebActivityArgs | WebHookActivityArgs>[]>;
+    activities: pulumi.Input<pulumi.Input<AppendVariableActivityArgs | AzureDataExplorerCommandActivityArgs | AzureFunctionActivityArgs | AzureMLBatchExecutionActivityArgs | AzureMLExecutePipelineActivityArgs | AzureMLUpdateResourceActivityArgs | ControlActivityArgs | CopyActivityArgs | CustomActivityArgs | DataLakeAnalyticsUSQLActivityArgs | DatabricksJobActivityArgs | DatabricksNotebookActivityArgs | DatabricksSparkJarActivityArgs | DatabricksSparkPythonActivityArgs | DeleteActivityArgs | ExecuteDataFlowActivityArgs | ExecutePipelineActivityArgs | ExecuteSSISPackageActivityArgs | ExecuteWranglingDataflowActivityArgs | ExecutionActivityArgs | FailActivityArgs | FilterActivityArgs | ForEachActivityArgs | GetMetadataActivityArgs | HDInsightHiveActivityArgs | HDInsightMapReduceActivityArgs | HDInsightPigActivityArgs | HDInsightSparkActivityArgs | HDInsightStreamingActivityArgs | IfConditionActivityArgs | LookupActivityArgs | ScriptActivityArgs | SetVariableActivityArgs | SqlServerStoredProcedureActivityArgs | SwitchActivityArgs | SynapseNotebookActivityArgs | SynapseSparkJobDefinitionActivityArgs | UntilActivityArgs | ValidationActivityArgs | WaitActivityArgs | WebActivityArgs | WebHookActivityArgs>[]>;
     /**
      * Activity depends on condition.
      */

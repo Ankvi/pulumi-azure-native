@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Gets information about a virtual endpoint.
+ * Gets information about a pair of virtual endpoints.
  *
  * Uses Azure REST API version 2024-08-01.
  *
@@ -27,13 +27,13 @@ export interface GetVirtualEndpointArgs {
      */
     serverName: string;
     /**
-     * The name of the virtual endpoint.
+     * Base name of the virtual endpoints.
      */
     virtualEndpointName: string;
 }
 
 /**
- * Represents a virtual endpoint for a server.
+ * Pair of virtual endpoints for a flexible server.
  */
 export interface GetVirtualEndpointResult {
     /**
@@ -41,7 +41,7 @@ export interface GetVirtualEndpointResult {
      */
     readonly azureApiVersion: string;
     /**
-     * The endpoint type for the virtual endpoint.
+     * Type of endpoint for the virtual endpoints.
      */
     readonly endpointType?: string;
     /**
@@ -49,7 +49,7 @@ export interface GetVirtualEndpointResult {
      */
     readonly id: string;
     /**
-     * List of members for a virtual endpoint
+     * List of flexible servers that one of the virtual endpoints can refer to.
      */
     readonly members?: string[];
     /**
@@ -65,12 +65,12 @@ export interface GetVirtualEndpointResult {
      */
     readonly type: string;
     /**
-     * List of virtual endpoints for a server
+     * List of virtual endpoints for a flexible server.
      */
     readonly virtualEndpoints: string[];
 }
 /**
- * Gets information about a virtual endpoint.
+ * Gets information about a pair of virtual endpoints.
  *
  * Uses Azure REST API version 2024-08-01.
  *
@@ -95,7 +95,7 @@ export interface GetVirtualEndpointOutputArgs {
      */
     serverName: pulumi.Input<string>;
     /**
-     * The name of the virtual endpoint.
+     * Base name of the virtual endpoints.
      */
     virtualEndpointName: pulumi.Input<string>;
 }

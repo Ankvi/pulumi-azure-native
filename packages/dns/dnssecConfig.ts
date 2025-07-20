@@ -42,7 +42,7 @@ export class DnssecConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string | undefined>;
     /**
-     * The name of the DNSSEC configuration.
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -54,11 +54,11 @@ export class DnssecConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly signingKeys!: pulumi.Output<types.outputs.SigningKeyResponse[]>;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * The type of the DNSSEC configuration.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 

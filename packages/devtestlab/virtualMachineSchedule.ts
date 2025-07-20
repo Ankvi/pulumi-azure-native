@@ -175,7 +175,7 @@ export interface VirtualMachineScheduleArgs {
      */
     hourlyRecurrence?: pulumi.Input<types.inputs.HourDetailsArgs>;
     /**
-     * The name of the lab.
+     * labs
      */
     labName: pulumi.Input<string>;
     /**
@@ -183,7 +183,7 @@ export interface VirtualMachineScheduleArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * The name of the schedule.
+     * The name of the Schedule
      */
     name?: pulumi.Input<string>;
     /**
@@ -191,7 +191,7 @@ export interface VirtualMachineScheduleArgs {
      */
     notificationSettings?: pulumi.Input<types.inputs.NotificationSettingsArgs>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
@@ -215,7 +215,7 @@ export interface VirtualMachineScheduleArgs {
      */
     timeZoneId?: pulumi.Input<string>;
     /**
-     * The name of the virtual machine.
+     * virtualmachines
      */
     virtualMachineName: pulumi.Input<string>;
     /**

@@ -776,7 +776,7 @@ export interface DataDiskResponse {
      */
     deleteOption?: string;
     /**
-     * Specifies the detach behavior to be used while detaching a disk or which is already in the process of detachment from the virtual machine. Supported values: **ForceDetach.** detachOption: **ForceDetach** is applicable only for managed data disks. If a previous detachment attempt of the data disk did not complete due to an unexpected failure from the virtual machine and the disk is still not released then use force-detach as a last resort option to detach the disk forcibly from the VM. All writes might not have been flushed when using this detach behavior. To force-detach a data disk update toBeDetached to 'true' along with setting detachOption: 'ForceDetach'.
+     * Specifies the detach behavior to be used while detaching a disk or which is already in the process of detachment from the virtual machine. Supported values: **ForceDetach.** detachOption: **ForceDetach** is applicable only for managed data disks. If a previous detachment attempt of the data disk did not complete due to an unexpected failure from the virtual machine and the disk is still not released then use force-detach as a last resort option to detach the disk forcibly from the VM. All writes might not have been flushed when using this detach behavior. **This feature is still in preview**. To force-detach a data disk update toBeDetached to 'true' along with setting detachOption: 'ForceDetach'.
      */
     detachOption?: string;
     /**
@@ -859,7 +859,7 @@ export interface DedicatedHostGroupInstanceViewResponse {
 /**
  * Enables or disables a capability on the dedicated host group. Minimum api-version: 2022-03-01.
  */
-export interface DedicatedHostGroupPropertiesResponseAdditionalCapabilities {
+export interface DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse {
     /**
      * The flag that enables or disables a capability to have UltraSSD Enabled Virtual Machines on Dedicated Hosts of the Dedicated Host Group. For the Virtual Machines to be UltraSSD Enabled, UltraSSDEnabled flag for the resource needs to be set true as well. The value is defaulted to 'false' when not provided. Please refer to https://docs.microsoft.com/en-us/azure/virtual-machines/disks-enable-ultra-ssd for more details on Ultra SSD feature. **Note:** The ultraSSDEnabled setting can only be enabled for Host Groups that are created as zonal. Minimum api-version: 2022-03-01.
      */
@@ -911,11 +911,11 @@ export interface DedicatedHostInstanceViewWithNameResponse {
  */
 export interface DefaultVirtualMachineScaleSetInfoResponse {
     /**
-     *  Indicates if the the maximum capacity of the default migrated Virtual Machine Scale Set after its migration will be constrained to a limited number of VMs.
+     * Indicates if the the maximum capacity of the default migrated Virtual Machine Scale Set after its migration will be constrained to a limited number of VMs.
      */
     constrainedMaximumCapacity: boolean;
     /**
-     *  The default Virtual Machine ScaleSet Uri that the Availability Set will be moved to upon triggering a seamless migration via the ConvertToVirtualMachineScaleSet API.
+     * The default Virtual Machine ScaleSet Uri that the Availability Set will be moved to upon triggering a seamless migration via the ConvertToVirtualMachineScaleSet API.
      */
     defaultVirtualMachineScaleSet: SubResourceResponse;
 }
@@ -998,6 +998,28 @@ export interface DiskInstanceViewResponse {
      * The resource status information.
      */
     statuses?: InstanceViewStatusResponse[];
+}
+
+/**
+ * Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.
+ */
+export interface DiskPurchasePlanResponse {
+    /**
+     * The plan ID.
+     */
+    name: string;
+    /**
+     * Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
+     */
+    product: string;
+    /**
+     * The Offer Promotion Code.
+     */
+    promotionCode?: string;
+    /**
+     * The publisher ID.
+     */
+    publisher: string;
 }
 
 /**
@@ -1131,7 +1153,7 @@ export interface EncryptionSetIdentityResponse {
     /**
      * The list of user identities associated with the disk encryption set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
-    userAssignedIdentities?: {[key: string]: UserAssignedIdentitiesResponseUserAssignedIdentities};
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentitiesValueResponse};
 }
 
 /**
@@ -1441,7 +1463,7 @@ export interface GalleryIdentityResponse {
     /**
      * The list of user identities associated with the gallery. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
-    userAssignedIdentities?: {[key: string]: UserAssignedIdentitiesResponseUserAssignedIdentities};
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentitiesValueResponse};
 }
 
 /**
@@ -1918,7 +1940,7 @@ export interface KeyVaultAndKeyReferenceResponse {
 }
 
 /**
- * Key Vault Secret Url and vault id of the encryption key 
+ * Key Vault Secret Url and vault id of the encryption key
  */
 export interface KeyVaultAndSecretReferenceResponse {
     /**
@@ -2369,7 +2391,7 @@ export interface OSProfileResponse {
  */
 export interface PatchSettingsResponse {
     /**
-     * Specifies the mode of VM Guest patch assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine.<br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true. 
+     * Specifies the mode of VM Guest patch assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine.<br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
      */
     assessmentMode?: string;
     /**
@@ -2381,7 +2403,7 @@ export interface PatchSettingsResponse {
      */
     enableHotpatching?: boolean;
     /**
-     * Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
+     * Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true
      */
     patchMode?: string;
 }
@@ -2473,11 +2495,11 @@ export interface PriorityMixPolicyResponse {
  */
 export interface PrivateEndpointConnectionResponse {
     /**
-     * private endpoint connection Id
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     id: string;
     /**
-     * private endpoint connection name
+     * The name of the resource
      */
     name: string;
     /**
@@ -2493,7 +2515,11 @@ export interface PrivateEndpointConnectionResponse {
      */
     provisioningState: string;
     /**
-     * private endpoint connection type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
 }
@@ -2539,7 +2565,7 @@ export interface PropertyUpdatesInProgressResponse {
 /**
  * Specifies the user intent of the proximity placement group.
  */
-export interface ProximityPlacementGroupPropertiesResponseIntent {
+export interface ProximityPlacementGroupPropertiesIntentResponse {
     /**
      * Specifies possible sizes of virtual machines that can be created in the proximity placement group.
      */
@@ -2584,28 +2610,6 @@ export interface PublicIPAddressSkuResponse {
      * Specify public IP sku tier
      */
     tier?: string;
-}
-
-/**
- * Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.
- */
-export interface PurchasePlanResponse {
-    /**
-     * The plan ID.
-     */
-    name: string;
-    /**
-     * Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
-     */
-    product: string;
-    /**
-     * The Offer Promotion Code.
-     */
-    promotionCode?: string;
-    /**
-     * The publisher ID.
-     */
-    publisher: string;
 }
 
 /**
@@ -2790,7 +2794,7 @@ export interface RestorePointResponse {
      */
     excludeDisks?: ApiEntityReferenceResponse[];
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     id: string;
     /**
@@ -2798,7 +2802,7 @@ export interface RestorePointResponse {
      */
     instanceView: RestorePointInstanceViewResponse;
     /**
-     * Resource name
+     * The name of the resource
      */
     name: string;
     /**
@@ -2814,11 +2818,15 @@ export interface RestorePointResponse {
      */
     sourceRestorePoint?: ApiEntityReferenceResponse;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
      * Gets the creation time of the restore point.
      */
     timeCreated?: string;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
 }
@@ -3012,7 +3020,7 @@ export interface RunCommandInputParameterResponse {
 }
 
 /**
- *  Contains clientId or objectId (use only one, not both) of a user-assigned managed identity that has access to storage blob used in Run Command. Use an empty RunCommandManagedIdentity object in case of system-assigned identity. Make sure the Azure storage blob exists in case of scriptUri, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment with scriptUri blob and 'Storage Blob Data Contributor' for Append blobs(outputBlobUri, errorBlobUri). In case of user assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+ * Contains clientId or objectId (use only one, not both) of a user-assigned managed identity that has access to storage blob used in Run Command. Use an empty RunCommandManagedIdentity object in case of system-assigned identity. Make sure the Azure storage blob exists in case of scriptUri, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment with scriptUri blob and 'Storage Blob Data Contributor' for Append blobs(outputBlobUri, errorBlobUri). In case of user assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
  */
 export interface RunCommandManagedIdentityResponse {
     /**
@@ -3374,17 +3382,33 @@ export interface SupportedCapabilitiesResponse {
 }
 
 /**
- * The system meta data relating to this resource.
+ * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
     /**
-     * Specifies the time in UTC at which the Cloud Service (extended support) resource was created. <br />Minimum api-version: 2022-04-04.
+     * The timestamp of resource creation (UTC).
      */
-    createdAt: string;
+    createdAt?: string;
     /**
-     * Specifies the time in UTC at which the Cloud Service (extended support) resource was last modified. <br />Minimum api-version: 2022-04-04.
+     * The identity that created the resource.
      */
-    lastModifiedAt: string;
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
 }
 
 /**
@@ -3543,7 +3567,7 @@ export interface UserArtifactSourceResponse {
     mediaLink: string;
 }
 
-export interface UserAssignedIdentitiesResponseUserAssignedIdentities {
+export interface UserAssignedIdentitiesValueResponse {
     /**
      * The client id of user assigned identity.
      */
@@ -3764,7 +3788,7 @@ export interface VirtualMachineExtensionResponse {
      */
     forceUpdateTag?: string;
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     id: string;
     /**
@@ -3772,11 +3796,11 @@ export interface VirtualMachineExtensionResponse {
      */
     instanceView?: VirtualMachineExtensionInstanceViewResponse;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
-    location?: string;
+    location: string;
     /**
-     * Resource name
+     * The name of the resource
      */
     name: string;
     /**
@@ -3808,11 +3832,15 @@ export interface VirtualMachineExtensionResponse {
      */
     suppressFailures?: boolean;
     /**
-     * Resource tags
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * Resource tags.
      */
     tags?: {[key: string]: string};
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
     /**
@@ -3850,7 +3878,7 @@ export interface VirtualMachineIdentityResponse {
     /**
      * The list of user identities associated with the Virtual Machine. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
-    userAssignedIdentities?: {[key: string]: UserAssignedIdentitiesResponseUserAssignedIdentities};
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentitiesValueResponse};
 }
 
 /**
@@ -3922,7 +3950,7 @@ export interface VirtualMachineInstanceViewResponse {
      */
     vmAgent?: VirtualMachineAgentInstanceViewResponse;
     /**
-     * The application health status for the VM, provided through Application Health Extension.
+     * The health status for the VM.
      */
     vmHealth: VirtualMachineHealthStatusResponse;
 }
@@ -4259,7 +4287,7 @@ export interface VirtualMachineScaleSetExtensionResponse {
      */
     id: string;
     /**
-     * The name of the extension.
+     * Resource name
      */
     name?: string;
     /**
@@ -4371,7 +4399,7 @@ export interface VirtualMachineScaleSetIdentityResponse {
     /**
      * The list of user identities associated with the virtual machine scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
-    userAssignedIdentities?: {[key: string]: UserAssignedIdentitiesResponseUserAssignedIdentities};
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentitiesValueResponse};
 }
 
 /**
@@ -4493,7 +4521,7 @@ export interface VirtualMachineScaleSetNetworkProfileResponse {
      */
     healthProbe?: ApiEntityReferenceResponse;
     /**
-     * Specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'. For support of all network properties, use '2022-11-01'.
+     * specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'
      */
     networkApiVersion?: string;
     /**
@@ -4654,6 +4682,9 @@ export interface VirtualMachineScaleSetStorageProfileResponse {
      * Specifies the parameters that are used to add data disks to the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
      */
     dataDisks?: VirtualMachineScaleSetDataDiskResponse[];
+    /**
+     * Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01
+     */
     diskControllerType?: string;
     /**
      * Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations.
@@ -4730,7 +4761,7 @@ export interface VirtualMachineScaleSetVMInstanceViewResponse {
      */
     vmAgent?: VirtualMachineAgentInstanceViewResponse;
     /**
-     * The application health status for the VM, provided through Application Health Extension or Load Balancer Health Probes.
+     * The health status for the VM.
      */
     vmHealth: VirtualMachineHealthStatusResponse;
 }

@@ -363,7 +363,7 @@ export interface VirtualMachineArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * The name of the virtual machine.
+     * The name of the LabVirtualMachine
      */
     name?: pulumi.Input<string>;
     /**
@@ -391,7 +391,7 @@ export interface VirtualMachineArgs {
      */
     planId?: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

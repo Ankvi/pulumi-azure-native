@@ -40,11 +40,11 @@ export interface GetZoneResult {
      */
     readonly etag?: string;
     /**
-     * Resource ID.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
-     * Resource location.
+     * The geo-location where the resource lives
      */
     readonly location: string;
     /**
@@ -56,7 +56,7 @@ export interface GetZoneResult {
      */
     readonly maxNumberOfRecordsPerRecordSet: number;
     /**
-     * Resource name.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -80,7 +80,7 @@ export interface GetZoneResult {
      */
     readonly signingKeys: types.outputs.SigningKeyResponse[];
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
@@ -88,7 +88,7 @@ export interface GetZoneResult {
      */
     readonly tags?: {[key: string]: string};
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**

@@ -25,6 +25,45 @@ export interface ComputePropertiesArgs {
 }
 
 /**
+ * Database role definition that is assigned to a user.
+ */
+export interface DatabaseRoleArgs {
+    /**
+     * Database scope that the role is assigned to.
+     */
+    db: pulumi.Input<string>;
+    /**
+     * The role that is assigned to the user on the database scope.
+     */
+    role: pulumi.Input<string | enums.UserRole>;
+}
+
+/**
+ * Defines a Microsoft Entra ID Mongo user.
+ */
+export interface EntraIdentityProviderArgs {
+    /**
+     * The Entra identity properties for the user.
+     */
+    properties: pulumi.Input<EntraIdentityProviderPropertiesArgs>;
+    /**
+     * Identity provider types that a a user identity can belong to.
+     * Expected value is 'MicrosoftEntraID'.
+     */
+    type: pulumi.Input<"MicrosoftEntraID">;
+}
+
+/**
+ * Microsoft Entra ID provider properties.
+ */
+export interface EntraIdentityProviderPropertiesArgs {
+    /**
+     * The principal type of the user.
+     */
+    principalType: pulumi.Input<string | enums.EntraPrincipalType>;
+}
+
+/**
  * The properties of a mongo cluster firewall rule.
  */
 export interface FirewallRulePropertiesArgs {
@@ -172,4 +211,18 @@ export interface StoragePropertiesArgs {
      * The size of the data disk assigned to each server.
      */
     sizeGb?: pulumi.Input<number>;
+}
+
+/**
+ * Definition of Mongo user resource on a cluster.
+ */
+export interface UserPropertiesArgs {
+    /**
+     * The user's identity provider definition.
+     */
+    identityProvider?: pulumi.Input<EntraIdentityProviderArgs>;
+    /**
+     * Database roles that are assigned to the user.
+     */
+    roles?: pulumi.Input<pulumi.Input<DatabaseRoleArgs>[]>;
 }

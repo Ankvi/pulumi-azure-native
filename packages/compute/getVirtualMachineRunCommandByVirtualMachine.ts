@@ -24,15 +24,15 @@ export interface GetVirtualMachineRunCommandByVirtualMachineArgs {
      */
     expand?: string;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
-     * The name of the virtual machine run command.
+     * The name of the VirtualMachineRunCommand
      */
     runCommandName: string;
     /**
-     * The name of the virtual machine containing the run command.
+     * The name of the VirtualMachine
      */
     vmName: string;
 }
@@ -50,7 +50,7 @@ export interface GetVirtualMachineRunCommandByVirtualMachineResult {
      */
     readonly azureApiVersion: string;
     /**
-     * User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged 
+     * User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
      */
     readonly errorBlobManagedIdentity?: types.outputs.RunCommandManagedIdentityResponse;
     /**
@@ -58,7 +58,7 @@ export interface GetVirtualMachineRunCommandByVirtualMachineResult {
      */
     readonly errorBlobUri?: string;
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
@@ -66,19 +66,19 @@ export interface GetVirtualMachineRunCommandByVirtualMachineResult {
      */
     readonly instanceView: types.outputs.VirtualMachineRunCommandInstanceViewResponse;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     readonly location: string;
     /**
-     * Resource name
+     * The name of the resource
      */
     readonly name: string;
     /**
-     * User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged 
+     * User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
      */
     readonly outputBlobManagedIdentity?: types.outputs.RunCommandManagedIdentityResponse;
     /**
-     * Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter. 
+     * Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter.
      */
     readonly outputBlobUri?: string;
     /**
@@ -90,7 +90,7 @@ export interface GetVirtualMachineRunCommandByVirtualMachineResult {
      */
     readonly protectedParameters?: types.outputs.RunCommandInputParameterResponse[];
     /**
-     * The provisioning state, which only appears in the response. If treatFailureAsDeploymentFailure set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed. If treatFailureAsDeploymentFailure set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures. See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results 
+     * The provisioning state, which only appears in the response. If treatFailureAsDeploymentFailure set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed. If treatFailureAsDeploymentFailure set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures. See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
      */
     readonly provisioningState: string;
     /**
@@ -106,7 +106,11 @@ export interface GetVirtualMachineRunCommandByVirtualMachineResult {
      */
     readonly source?: types.outputs.VirtualMachineRunCommandScriptSourceResponse;
     /**
-     * Resource tags
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
      */
     readonly tags?: {[key: string]: string};
     /**
@@ -114,11 +118,11 @@ export interface GetVirtualMachineRunCommandByVirtualMachineResult {
      */
     readonly timeoutInSeconds?: number;
     /**
-     * Optional. If set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed. If set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures. See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results 
+     * Optional. If set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed. If set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures. See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
      */
     readonly treatFailureAsDeploymentFailure?: boolean;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -145,15 +149,15 @@ export interface GetVirtualMachineRunCommandByVirtualMachineOutputArgs {
      */
     expand?: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The name of the virtual machine run command.
+     * The name of the VirtualMachineRunCommand
      */
     runCommandName: pulumi.Input<string>;
     /**
-     * The name of the virtual machine containing the run command.
+     * The name of the VirtualMachine
      */
     vmName: pulumi.Input<string>;
 }

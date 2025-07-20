@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Server backup properties
+ * Properties of a backup.
  *
  * Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01-preview.
  *
@@ -40,11 +40,11 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
-     * Backup type.
+     * Type of backup.
      */
     public /*out*/ readonly backupType!: pulumi.Output<string | undefined>;
     /**
-     * Backup completed time (ISO8601 format).
+     * Time(ISO8601 format) at which the backup was completed.
      */
     public /*out*/ readonly completedTime!: pulumi.Output<string | undefined>;
     /**
@@ -52,7 +52,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Backup source
+     * Source of the backup.
      */
     public /*out*/ readonly source!: pulumi.Output<string | undefined>;
     /**
@@ -112,7 +112,7 @@ export class Backup extends pulumi.CustomResource {
  */
 export interface BackupArgs {
     /**
-     * The name of the backup.
+     * Name of the backup.
      */
     backupName?: pulumi.Input<string>;
     /**

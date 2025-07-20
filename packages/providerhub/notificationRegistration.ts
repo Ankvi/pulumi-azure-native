@@ -2,9 +2,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * The notification registration definition.
+ * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2021-09-01-preview.
  *
- * Uses Azure REST API version 2021-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-09-01-preview.
+ * Other available API versions: 2021-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native providerhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NotificationRegistration extends pulumi.CustomResource {
     /**
@@ -41,9 +41,9 @@ export class NotificationRegistration extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.NotificationRegistrationResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.NotificationRegistrationPropertiesResponse>;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -80,7 +80,7 @@ export class NotificationRegistration extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:providerhub/v20201120:NotificationRegistration" }, { type: "azure-native:providerhub/v20210501preview:NotificationRegistration" }, { type: "azure-native:providerhub/v20210601preview:NotificationRegistration" }, { type: "azure-native:providerhub/v20210901preview:NotificationRegistration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:providerhub/v20201120:NotificationRegistration" }, { type: "azure-native:providerhub/v20210501preview:NotificationRegistration" }, { type: "azure-native:providerhub/v20210601preview:NotificationRegistration" }, { type: "azure-native:providerhub/v20210901preview:NotificationRegistration" }, { type: "azure-native:providerhub/v20240901:NotificationRegistration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NotificationRegistration.__pulumiType, name, resourceInputs, opts);
     }

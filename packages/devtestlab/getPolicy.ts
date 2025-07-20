@@ -22,19 +22,19 @@ export interface GetPolicyArgs {
      */
     expand?: string;
     /**
-     * The name of the lab.
+     * labs
      */
     labName: string;
     /**
-     * The name of the policy.
+     * The name of the Schedule
      */
     name: string;
     /**
-     * The name of the policy set.
+     * policysets
      */
     policySetName: string;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
@@ -126,19 +126,19 @@ export interface GetPolicyOutputArgs {
      */
     expand?: pulumi.Input<string>;
     /**
-     * The name of the lab.
+     * labs
      */
     labName: pulumi.Input<string>;
     /**
-     * The name of the policy.
+     * The name of the Schedule
      */
     name: pulumi.Input<string>;
     /**
-     * The name of the policy set.
+     * policysets
      */
     policySetName: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

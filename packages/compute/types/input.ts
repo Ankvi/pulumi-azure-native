@@ -129,7 +129,7 @@ export interface AdditionalUnattendContentArgs {
     /**
      * The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup.
      */
-    componentName?: pulumi.Input<enums.ComponentNames>;
+    componentName?: pulumi.Input<enums.ComponentName>;
     /**
      * Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component. The XML must be less than 4KB and must include the root element for the setting or feature that is being inserted.
      */
@@ -137,7 +137,7 @@ export interface AdditionalUnattendContentArgs {
     /**
      * The pass name. Currently, the only allowable value is OobeSystem.
      */
-    passName?: pulumi.Input<enums.PassNames>;
+    passName?: pulumi.Input<enums.PassName>;
     /**
      * Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.
      */
@@ -581,7 +581,7 @@ export interface DataDiskArgs {
      */
     deleteOption?: pulumi.Input<string | enums.DiskDeleteOptionTypes>;
     /**
-     * Specifies the detach behavior to be used while detaching a disk or which is already in the process of detachment from the virtual machine. Supported values: **ForceDetach.** detachOption: **ForceDetach** is applicable only for managed data disks. If a previous detachment attempt of the data disk did not complete due to an unexpected failure from the virtual machine and the disk is still not released then use force-detach as a last resort option to detach the disk forcibly from the VM. All writes might not have been flushed when using this detach behavior. To force-detach a data disk update toBeDetached to 'true' along with setting detachOption: 'ForceDetach'.
+     * Specifies the detach behavior to be used while detaching a disk or which is already in the process of detachment from the virtual machine. Supported values: **ForceDetach.** detachOption: **ForceDetach** is applicable only for managed data disks. If a previous detachment attempt of the data disk did not complete due to an unexpected failure from the virtual machine and the disk is still not released then use force-detach as a last resort option to detach the disk forcibly from the VM. All writes might not have been flushed when using this detach behavior. **This feature is still in preview**. To force-detach a data disk update toBeDetached to 'true' along with setting detachOption: 'ForceDetach'.
      */
     detachOption?: pulumi.Input<string | enums.DiskDetachOptionTypes>;
     /**
@@ -706,6 +706,28 @@ export interface DiskEncryptionSettingsArgs {
      * Specifies the location of the key encryption key in Key Vault.
      */
     keyEncryptionKey?: pulumi.Input<KeyVaultKeyReferenceArgs>;
+}
+
+/**
+ * Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.
+ */
+export interface DiskPurchasePlanArgs {
+    /**
+     * The plan ID.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
+     */
+    product: pulumi.Input<string>;
+    /**
+     * The Offer Promotion Code.
+     */
+    promotionCode?: pulumi.Input<string>;
+    /**
+     * The publisher ID.
+     */
+    publisher: pulumi.Input<string>;
 }
 
 /**
@@ -1496,7 +1518,7 @@ export interface KeyVaultAndKeyReferenceArgs {
 }
 
 /**
- * Key Vault Secret Url and vault id of the encryption key 
+ * Key Vault Secret Url and vault id of the encryption key
  */
 export interface KeyVaultAndSecretReferenceArgs {
     /**
@@ -1853,7 +1875,7 @@ export interface OSProfileArgs {
  */
 export interface PatchSettingsArgs {
     /**
-     * Specifies the mode of VM Guest patch assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine.<br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true. 
+     * Specifies the mode of VM Guest patch assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine.<br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
      */
     assessmentMode?: pulumi.Input<string | enums.WindowsPatchAssessmentMode>;
     /**
@@ -1865,7 +1887,7 @@ export interface PatchSettingsArgs {
      */
     enableHotpatching?: pulumi.Input<boolean>;
     /**
-     * Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
+     * Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true
      */
     patchMode?: pulumi.Input<string | enums.WindowsVMGuestPatchMode>;
 }
@@ -1990,28 +2012,6 @@ export interface PublicIPAddressSkuArgs {
      * Specify public IP sku tier
      */
     tier?: pulumi.Input<string | enums.PublicIPAddressSkuTier>;
-}
-
-/**
- * Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.
- */
-export interface PurchasePlanArgs {
-    /**
-     * The plan ID.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
-     */
-    product: pulumi.Input<string>;
-    /**
-     * The Offer Promotion Code.
-     */
-    promotionCode?: pulumi.Input<string>;
-    /**
-     * The publisher ID.
-     */
-    publisher: pulumi.Input<string>;
 }
 
 /**
@@ -2216,7 +2216,7 @@ export interface RunCommandInputParameterArgs {
 }
 
 /**
- *  Contains clientId or objectId (use only one, not both) of a user-assigned managed identity that has access to storage blob used in Run Command. Use an empty RunCommandManagedIdentity object in case of system-assigned identity. Make sure the Azure storage blob exists in case of scriptUri, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment with scriptUri blob and 'Storage Blob Data Contributor' for Append blobs(outputBlobUri, errorBlobUri). In case of user assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+ * Contains clientId or objectId (use only one, not both) of a user-assigned managed identity that has access to storage blob used in Run Command. Use an empty RunCommandManagedIdentity object in case of system-assigned identity. Make sure the Azure storage blob exists in case of scriptUri, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment with scriptUri blob and 'Storage Blob Data Contributor' for Append blobs(outputBlobUri, errorBlobUri). In case of user assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
  */
 export interface RunCommandManagedIdentityArgs {
     /**
@@ -3089,7 +3089,7 @@ export interface VirtualMachineScaleSetExtensionArgs {
      */
     forceUpdateTag?: pulumi.Input<string>;
     /**
-     * The name of the extension.
+     * Resource name
      */
     name?: pulumi.Input<string>;
     /**
@@ -3311,7 +3311,7 @@ export interface VirtualMachineScaleSetNetworkProfileArgs {
      */
     healthProbe?: pulumi.Input<ApiEntityReferenceArgs>;
     /**
-     * Specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'. For support of all network properties, use '2022-11-01'.
+     * specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'
      */
     networkApiVersion?: pulumi.Input<string | enums.NetworkApiVersion>;
     /**
@@ -3472,7 +3472,10 @@ export interface VirtualMachineScaleSetStorageProfileArgs {
      * Specifies the parameters that are used to add data disks to the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
      */
     dataDisks?: pulumi.Input<pulumi.Input<VirtualMachineScaleSetDataDiskArgs>[]>;
-    diskControllerType?: pulumi.Input<string>;
+    /**
+     * Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01
+     */
+    diskControllerType?: pulumi.Input<string | enums.DiskControllerTypes>;
     /**
      * Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations.
      */

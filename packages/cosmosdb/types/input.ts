@@ -608,6 +608,20 @@ export interface ExcludedPathArgs {
 }
 
 /**
+ * Configuration for fleetspace Account in the fleetspace.
+ */
+export interface FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs {
+    /**
+     * The location of  global database account in the Fleetspace Account.
+     */
+    armLocation?: pulumi.Input<string>;
+    /**
+     * The resource identifier of global database account in the Fleetspace Account.
+     */
+    resourceId?: pulumi.Input<string>;
+}
+
+/**
  * Configuration for throughput pool in the fleetspace.
  */
 export interface FleetspacePropertiesThroughputPoolConfigurationArgs {

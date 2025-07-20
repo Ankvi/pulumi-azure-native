@@ -153,11 +153,11 @@ export interface EnvironmentArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * The name of the environment.
+     * The name of the DtlEnvironment
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

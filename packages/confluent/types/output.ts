@@ -258,7 +258,7 @@ export interface ClusterSpecEntityResponse {
      */
     byok?: ClusterByokEntityResponse;
     /**
-     * The cloud service provider 
+     * The cloud service provider
      */
     cloud?: string;
     /**
@@ -300,7 +300,7 @@ export interface ClusterSpecEntityResponse {
  */
 export interface ClusterStatusEntityResponse {
     /**
-     * The number of Confluent Kafka Units 
+     * The number of Confluent Kafka Units
      */
     cku?: number;
     /**
@@ -876,7 +876,7 @@ export interface SCClusterSpecEntityResponse {
      */
     byok?: SCClusterByokEntityResponse;
     /**
-     * The cloud service provider 
+     * The cloud service provider
      */
     cloud?: string;
     /**

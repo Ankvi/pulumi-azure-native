@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Details about environment name, metadata and environment id of an environment
+ * Get Environment details by environment Id
  *
  * Uses Azure REST API version 2024-07-01.
  */
@@ -39,9 +39,9 @@ export interface GetOrganizationEnvironmentByIdResult {
      */
     readonly azureApiVersion: string;
     /**
-     * Id of the environment
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
-    readonly id?: string;
+    readonly id: string;
     /**
      * Type of environment
      */
@@ -51,20 +51,24 @@ export interface GetOrganizationEnvironmentByIdResult {
      */
     readonly metadata?: types.outputs.SCMetadataEntityResponse;
     /**
-     * Display name of the environment
+     * The name of the resource
      */
-    readonly name?: string;
+    readonly name: string;
     /**
      * Stream governance configuration
      */
     readonly streamGovernanceConfig?: types.outputs.StreamGovernanceConfigResponse;
     /**
-     * Type of the resource
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly type?: string;
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    readonly type: string;
 }
 /**
- * Details about environment name, metadata and environment id of an environment
+ * Get Environment details by environment Id
  *
  * Uses Azure REST API version 2024-07-01.
  */

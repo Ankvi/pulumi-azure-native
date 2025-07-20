@@ -120,7 +120,7 @@ export class Namespace extends pulumi.CustomResource {
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
-     * Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
+     * This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
      */
     public readonly zoneRedundant!: pulumi.Output<boolean | undefined>;
 
@@ -251,7 +251,7 @@ export interface NamespaceArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
+     * This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
      */
     zoneRedundant?: pulumi.Input<boolean>;
 }

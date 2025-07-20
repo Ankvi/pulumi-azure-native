@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-03-02. In version 2.x of the Azure Native provider, it used API version 2022-07-02.
  *
- * Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DiskAccessAPrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -40,7 +40,7 @@ export class DiskAccessAPrivateEndpointConnection extends pulumi.CustomResource 
      */
     public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
-     * private endpoint connection name
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -56,7 +56,11 @@ export class DiskAccessAPrivateEndpointConnection extends pulumi.CustomResource 
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
-     * private endpoint connection type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -88,6 +92,7 @@ export class DiskAccessAPrivateEndpointConnection extends pulumi.CustomResource 
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateEndpoint"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -95,10 +100,11 @@ export class DiskAccessAPrivateEndpointConnection extends pulumi.CustomResource 
             resourceInputs["privateEndpoint"] = undefined /*out*/;
             resourceInputs["privateLinkServiceConnectionState"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20200930:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20201201:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20210401:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20210801:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20211201:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20220302:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20220702:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20230102:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20230402:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20231002:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20240302:DiskAccessAPrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20200930:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20201201:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20210401:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20210801:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20211201:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20220302:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20220702:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20230102:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20230402:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20231002:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20240302:DiskAccessAPrivateEndpointConnection" }, { type: "azure-native:compute/v20250102:DiskAccessAPrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DiskAccessAPrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }
@@ -121,7 +127,7 @@ export interface DiskAccessAPrivateEndpointConnectionArgs {
      */
     privateLinkServiceConnectionState: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

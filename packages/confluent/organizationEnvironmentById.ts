@@ -46,17 +46,21 @@ export class OrganizationEnvironmentById extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<types.outputs.SCMetadataEntityResponse | undefined>;
     /**
-     * Display name of the environment
+     * The name of the resource
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Stream governance configuration
      */
     public readonly streamGovernanceConfig!: pulumi.Output<types.outputs.StreamGovernanceConfigResponse | undefined>;
     /**
-     * Type of the resource
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationEnvironmentById resource with the given unique name, arguments, and options.
@@ -76,21 +80,22 @@ export class OrganizationEnvironmentById extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["environmentId"] = args ? args.environmentId : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationName"] = args ? args.organizationName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["streamGovernanceConfig"] = args ? args.streamGovernanceConfig : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["streamGovernanceConfig"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -109,10 +114,6 @@ export interface OrganizationEnvironmentByIdArgs {
      */
     environmentId?: pulumi.Input<string>;
     /**
-     * Id of the environment
-     */
-    id?: pulumi.Input<string>;
-    /**
      * Type of environment
      */
     kind?: pulumi.Input<string>;
@@ -120,10 +121,6 @@ export interface OrganizationEnvironmentByIdArgs {
      * Metadata of the record
      */
     metadata?: pulumi.Input<types.inputs.SCMetadataEntityArgs>;
-    /**
-     * Display name of the environment
-     */
-    name?: pulumi.Input<string>;
     /**
      * Organization resource name
      */
@@ -136,8 +133,4 @@ export interface OrganizationEnvironmentByIdArgs {
      * Stream governance configuration
      */
     streamGovernanceConfig?: pulumi.Input<types.inputs.StreamGovernanceConfigArgs>;
-    /**
-     * Type of the resource
-     */
-    type?: pulumi.Input<string>;
 }

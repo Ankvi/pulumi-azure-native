@@ -56,15 +56,15 @@ export class MaintenanceConfiguration extends pulumi.CustomResource {
      */
     public readonly installPatches!: pulumi.Output<types.outputs.InputPatchConfigurationResponse | undefined>;
     /**
-     * Gets or sets location of the resource
+     * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Gets or sets maintenanceScope of the configuration
      */
     public readonly maintenanceScope!: pulumi.Output<string | undefined>;
     /**
-     * Name of the resource
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -84,7 +84,7 @@ export class MaintenanceConfiguration extends pulumi.CustomResource {
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * Gets or sets tags of the resource
+     * Resource tags.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -92,7 +92,7 @@ export class MaintenanceConfiguration extends pulumi.CustomResource {
      */
     public readonly timeZone!: pulumi.Output<string | undefined>;
     /**
-     * Type of the resource
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -178,7 +178,7 @@ export interface MaintenanceConfigurationArgs {
      */
     installPatches?: pulumi.Input<types.inputs.InputPatchConfigurationArgs>;
     /**
-     * Gets or sets location of the resource
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
@@ -194,11 +194,11 @@ export interface MaintenanceConfigurationArgs {
      */
     recurEvery?: pulumi.Input<string>;
     /**
-     * Resource Group Name
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * Maintenance Configuration Name
+     * The name of the MaintenanceConfiguration
      */
     resourceName?: pulumi.Input<string>;
     /**
@@ -206,7 +206,7 @@ export interface MaintenanceConfigurationArgs {
      */
     startDateTime?: pulumi.Input<string>;
     /**
-     * Gets or sets tags of the resource
+     * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
