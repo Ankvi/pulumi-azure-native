@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Details of connector record
+ * Get confluent connector by Name
  *
  * Uses Azure REST API version 2024-07-01.
  */
@@ -78,7 +78,7 @@ export interface GetConnectorResult {
     readonly type: string;
 }
 /**
- * Details of connector record
+ * Get confluent connector by Name
  *
  * Uses Azure REST API version 2024-07-01.
  */

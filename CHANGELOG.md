@@ -2,14 +2,563 @@
 
 ### Does the PR have any schema changes?
 
-Looking good! No breaking changes found.
-No new resources/functions.
+Found 459 breaking changes:
 
-<!-- Release notes generated using configuration in .github/release.yml at v3.5.1 -->
+#### Resources
+- `🟡` "azure-native:compute:DedicatedHostGroup": properties: "additionalCapabilities" type changed from "#/types/azure-native:compute:DedicatedHostGroupPropertiesResponseAdditionalCapabilities" to "#/types/azure-native:compute:DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse"
+- "azure-native:compute:Disk":
+    - `🟡` inputs: "purchasePlan" type changed from "#/types/azure-native:compute:PurchasePlan" to "#/types/azure-native:compute:DiskPurchasePlan"
+    - `🟡` properties: "purchasePlan" type changed from "#/types/azure-native:compute:PurchasePlanResponse" to "#/types/azure-native:compute:DiskPurchasePlanResponse"
+- `🟡` "azure-native:compute:ProximityPlacementGroup": properties: "intent" type changed from "#/types/azure-native:compute:ProximityPlacementGroupPropertiesResponseIntent" to "#/types/azure-native:compute:ProximityPlacementGroupPropertiesIntentResponse"
+- "azure-native:compute:Snapshot":
+    - `🟡` inputs: "purchasePlan" type changed from "#/types/azure-native:compute:PurchasePlan" to "#/types/azure-native:compute:DiskPurchasePlan"
+    - `🟡` properties: "purchasePlan" type changed from "#/types/azure-native:compute:PurchasePlanResponse" to "#/types/azure-native:compute:DiskPurchasePlanResponse"
+- "azure-native:confluent:OrganizationClusterById": inputs:
+    - `🟡` "id" missing
+    - `🟡` "name" missing
+    - `🟡` "type" missing
+- "azure-native:confluent:OrganizationEnvironmentById": inputs:
+    - `🟡` "id" missing
+    - `🟡` "name" missing
+    - `🟡` "type" missing
+- "azure-native:cosmosdb:FleetspaceAccount":
+    - inputs:
+        - `🟡` "accountLocation" missing
+        - `🟡` "accountResourceIdentifier" missing
+    - properties:
+        - `🟡` "accountLocation" missing output "accountLocation"
+        - `🟡` "accountResourceIdentifier" missing output "accountResourceIdentifier"
+- `🟢` "azure-native:guestconfiguration:GuestConfigurationAssignment": required inputs: "name" input has changed to Required
+- `🟢` "azure-native:guestconfiguration:GuestConfigurationConnectedVMwarevSphereAssignment": required inputs: "name" input has changed to Required
+- `🟢` "azure-native:guestconfiguration:GuestConfigurationHCRPAssignment": required inputs: "name" input has changed to Required
+- `🔴` "azure-native:media:AccountFilter" missing
+- `🔴` "azure-native:media:Asset" missing
+- `🔴` "azure-native:media:AssetFilter" missing
+- `🔴` "azure-native:media:ContentKeyPolicy" missing
+- `🔴` "azure-native:media:Job" missing
+- `🔴` "azure-native:media:LiveEvent" missing
+- `🔴` "azure-native:media:LiveOutput" missing
+- `🔴` "azure-native:media:MediaService" missing
+- `🔴` "azure-native:media:PrivateEndpointConnection" missing
+- `🔴` "azure-native:media:StreamingEndpoint" missing
+- `🔴` "azure-native:media:StreamingLocator" missing
+- `🔴` "azure-native:media:StreamingPolicy" missing
+- `🔴` "azure-native:media:Track" missing
+- `🔴` "azure-native:media:Transform" missing
+- `🟡` "azure-native:powerbidedicated:AutoScaleVCore": inputs: "systemData" missing
+- `🟡` "azure-native:powerbidedicated:CapacityDetails": inputs: "systemData" missing
+- `🟡` "azure-native:providerhub:DefaultRollout": properties: "properties" type changed from "#/types/azure-native:providerhub:DefaultRolloutResponseProperties" to "#/types/azure-native:providerhub:DefaultRolloutPropertiesResponse"
+- `🟡` "azure-native:providerhub:NotificationRegistration": properties: "properties" type changed from "#/types/azure-native:providerhub:NotificationRegistrationResponseProperties" to "#/types/azure-native:providerhub:NotificationRegistrationPropertiesResponse"
+- `🟡` "azure-native:providerhub:ProviderRegistration": properties: "properties" type changed from "#/types/azure-native:providerhub:ProviderRegistrationResponseProperties" to "#/types/azure-native:providerhub:ProviderRegistrationPropertiesResponse"
+- `🟡` "azure-native:providerhub:ResourceTypeRegistration": properties: "properties" type changed from "#/types/azure-native:providerhub:ResourceTypeRegistrationResponseProperties" to "#/types/azure-native:providerhub:ResourceTypeRegistrationPropertiesResponse"
+- `🟡` "azure-native:storagemover:Agent": properties: "errorDetails" type changed from "#/types/azure-native:storagemover:AgentPropertiesResponseErrorDetails" to "#/types/azure-native:storagemover:AgentPropertiesErrorDetailsResponse"
+#### Functions
+- `🔴` "azure-native:media:getAccountFilter" missing
+- `🔴` "azure-native:media:getAsset" missing
+- `🔴` "azure-native:media:getAssetEncryptionKey" missing
+- `🔴` "azure-native:media:getAssetFilter" missing
+- `🔴` "azure-native:media:getContentKeyPolicy" missing
+- `🔴` "azure-native:media:getContentKeyPolicyPropertiesWithSecrets" missing
+- `🔴` "azure-native:media:getJob" missing
+- `🔴` "azure-native:media:getLiveEvent" missing
+- `🔴` "azure-native:media:getLiveEventStatus" missing
+- `🔴` "azure-native:media:getLiveEventStreamEvents" missing
+- `🔴` "azure-native:media:getLiveEventTrackIngestHeartbeats" missing
+- `🔴` "azure-native:media:getLiveOutput" missing
+- `🔴` "azure-native:media:getMediaService" missing
+- `🔴` "azure-native:media:getPrivateEndpointConnection" missing
+- `🔴` "azure-native:media:getStreamingEndpoint" missing
+- `🔴` "azure-native:media:getStreamingLocator" missing
+- `🔴` "azure-native:media:getStreamingPolicy" missing
+- `🔴` "azure-native:media:getTrack" missing
+- `🔴` "azure-native:media:getTransform" missing
+- `🔴` "azure-native:media:listAssetContainerSas" missing
+- `🔴` "azure-native:media:listAssetStreamingLocators" missing
+- `🔴` "azure-native:media:listMediaServiceEdgePolicies" missing
+- `🔴` "azure-native:media:listMediaServiceKeys" missing
+- `🔴` "azure-native:media:listStreamingLocatorContentKeys" missing
+- `🔴` "azure-native:media:listStreamingLocatorPaths" missing
+#### Types
+- "azure-native:app:DynamicPoolConfiguration": properties:
+    - `🟡` "cooldownPeriodInSeconds" missing
+    - `🟡` "executionType" missing
+- "azure-native:app:DynamicPoolConfigurationResponse": properties:
+    - `🟡` "cooldownPeriodInSeconds" missing
+    - `🟡` "executionType" missing
+- `🔴` "azure-native:app:ExecutionType" missing
+- `🔴` "azure-native:app:NacosComponent" missing
+- `🔴` "azure-native:app:NacosComponentResponse" missing
+- `🔴` "azure-native:app:ScgRoute" missing
+- `🔴` "azure-native:app:ScgRouteResponse" missing
+- `🔴` "azure-native:app:SpringCloudGatewayComponent" missing
+- `🔴` "azure-native:app:SpringCloudGatewayComponentResponse" missing
+- `🟢` "azure-native:azuredatatransfer:FlowPropertiesResponse": required: "forceDisabledStatus" property has changed to Required
+- "azure-native:botservice:DirectLineSite": required:
+    - `🟢` "isV1Enabled" property is no longer Required
+    - `🟢` "isV3Enabled" property is no longer Required
+- "azure-native:botservice:DirectLineSiteResponse": required:
+    - `🟢` "isV1Enabled" property is no longer Required
+    - `🟢` "isV3Enabled" property is no longer Required
+- "azure-native:botservice:NetworkSecurityPerimeterConfigurationResponse": required:
+    - `🟢` "id" property has changed to Required
+    - `🟢` "name" property has changed to Required
+    - `🟢` "properties" property is no longer Required
+    - `🟢` "systemData" property has changed to Required
+    - `🟢` "type" property has changed to Required
+- `🟡` "azure-native:botservice:NspAccessRuleResponse": properties: "properties" type changed from "#/types/azure-native:botservice:NspAccessRuleResponseProperties" to "#/types/azure-native:botservice:NspAccessRulePropertiesResponse"
+- `🔴` "azure-native:botservice:NspAccessRuleResponseProperties" missing
+- `🔴` "azure-native:botservice:NspAccessRuleResponseSubscriptions" missing
+- `🟢` "azure-native:botservice:PrivateEndpointConnectionResponse": required: "systemData" property has changed to Required
+- `🟡` "azure-native:botservice:ProvisioningIssueResponse": properties: "properties" type changed from "#/types/azure-native:botservice:ProvisioningIssueResponseProperties" to "#/types/azure-native:botservice:ProvisioningIssuePropertiesResponse"
+- `🔴` "azure-native:botservice:ProvisioningIssueResponseProperties" missing
+- `🟡` "azure-native:botservice:ServiceProviderParameterResponse": properties: "metadata" type changed from "#/types/azure-native:botservice:ServiceProviderParameterResponseMetadata" to "#/types/azure-native:botservice:ServiceProviderParameterMetadataResponse"
+- `🔴` "azure-native:botservice:ServiceProviderParameterResponseConstraints" missing
+- `🔴` "azure-native:botservice:ServiceProviderParameterResponseMetadata" missing
+- `🟢` "azure-native:botservice:WebChatSite": required: "isWebchatPreviewEnabled" property is no longer Required
+- `🟢` "azure-native:botservice:WebChatSiteResponse": required: "isWebchatPreviewEnabled" property is no longer Required
+- "azure-native:compute:AdditionalUnattendContent": properties:
+    - `🟡` "componentName" type changed from "#/types/azure-native:compute:ComponentNames" to "#/types/azure-native:compute:ComponentName"
+    - `🟡` "passName" type changed from "#/types/azure-native:compute:PassNames" to "#/types/azure-native:compute:PassName"
+- `🔴` "azure-native:compute:ComponentNames" missing
+- `🔴` "azure-native:compute:DedicatedHostGroupPropertiesResponseAdditionalCapabilities" missing
+- `🟡` "azure-native:compute:EncryptionSetIdentityResponse": properties: "userAssignedIdentities": additional properties type changed from "#/types/azure-native:compute:UserAssignedIdentitiesResponseUserAssignedIdentities" to "#/types/azure-native:compute:UserAssignedIdentitiesValueResponse"
+- `🟡` "azure-native:compute:GalleryIdentityResponse": properties: "userAssignedIdentities": additional properties type changed from "#/types/azure-native:compute:UserAssignedIdentitiesResponseUserAssignedIdentities" to "#/types/azure-native:compute:UserAssignedIdentitiesValueResponse"
+- `🔴` "azure-native:compute:PassNames" missing
+- `🟢` "azure-native:compute:PrivateEndpointConnectionResponse": required: "systemData" property has changed to Required
+- `🔴` "azure-native:compute:ProximityPlacementGroupPropertiesResponseIntent" missing
+- `🔴` "azure-native:compute:PurchasePlan" missing
+- `🔴` "azure-native:compute:PurchasePlanResponse" missing
+- `🟢` "azure-native:compute:RestorePointResponse": required: "systemData" property has changed to Required
+- "azure-native:compute:SystemDataResponse": required:
+    - `🟢` "createdAt" property is no longer Required
+    - `🟢` "lastModifiedAt" property is no longer Required
+- `🔴` "azure-native:compute:UserAssignedIdentitiesResponseUserAssignedIdentities" missing
+- "azure-native:compute:VirtualMachineExtensionResponse": required:
+    - `🟢` "location" property has changed to Required
+    - `🟢` "systemData" property has changed to Required
+- `🟡` "azure-native:compute:VirtualMachineIdentityResponse": properties: "userAssignedIdentities": additional properties type changed from "#/types/azure-native:compute:UserAssignedIdentitiesResponseUserAssignedIdentities" to "#/types/azure-native:compute:UserAssignedIdentitiesValueResponse"
+- `🟡` "azure-native:compute:VirtualMachineScaleSetIdentityResponse": properties: "userAssignedIdentities": additional properties type changed from "#/types/azure-native:compute:UserAssignedIdentitiesResponseUserAssignedIdentities" to "#/types/azure-native:compute:UserAssignedIdentitiesValueResponse"
+- `🟡` "azure-native:compute:VirtualMachineScaleSetStorageProfile": properties: "diskControllerType" type changed from "string" to ""
+- `🟡` "azure-native:datafactory:ExpressionV2": properties: "value" type changed from "string" to "pulumi.json#/Any"
+- `🟡` "azure-native:datafactory:ExpressionV2Response": properties: "value" type changed from "string" to "pulumi.json#/Any"
+- `🔴` "azure-native:media:AacAudio" missing
+- `🔴` "azure-native:media:AacAudioProfile" missing
+- `🔴` "azure-native:media:AacAudioResponse" missing
+- `🔴` "azure-native:media:AbsoluteClipTime" missing
+- `🔴` "azure-native:media:AbsoluteClipTimeResponse" missing
+- `🔴` "azure-native:media:AccessControl" missing
+- `🔴` "azure-native:media:AccessControlResponse" missing
+- `🔴` "azure-native:media:AccountEncryption" missing
+- `🔴` "azure-native:media:AccountEncryptionKeyType" missing
+- `🔴` "azure-native:media:AccountEncryptionResponse" missing
+- `🔴` "azure-native:media:AkamaiAccessControl" missing
+- `🔴` "azure-native:media:AkamaiAccessControlResponse" missing
+- `🔴` "azure-native:media:AkamaiSignatureHeaderAuthenticationKey" missing
+- `🔴` "azure-native:media:AkamaiSignatureHeaderAuthenticationKeyResponse" missing
+- `🔴` "azure-native:media:AnalysisResolution" missing
+- `🔴` "azure-native:media:ArmStreamingEndpointCurrentSku" missing
+- `🔴` "azure-native:media:ArmStreamingEndpointCurrentSkuResponse" missing
+- `🔴` "azure-native:media:AssetContainerPermission" missing
+- `🔴` "azure-native:media:AssetFileEncryptionMetadataResponse" missing
+- `🔴` "azure-native:media:AssetStreamingLocatorResponse" missing
+- `🔴` "azure-native:media:AttributeFilter" missing
+- `🔴` "azure-native:media:Audio" missing
+- `🔴` "azure-native:media:AudioAnalysisMode" missing
+- `🔴` "azure-native:media:AudioAnalyzerPreset" missing
+- `🔴` "azure-native:media:AudioAnalyzerPresetResponse" missing
+- `🔴` "azure-native:media:AudioOverlay" missing
+- `🔴` "azure-native:media:AudioOverlayResponse" missing
+- `🔴` "azure-native:media:AudioResponse" missing
+- `🔴` "azure-native:media:AudioTrack" missing
+- `🔴` "azure-native:media:AudioTrackDescriptor" missing
+- `🔴` "azure-native:media:AudioTrackDescriptorResponse" missing
+- `🔴` "azure-native:media:AudioTrackResponse" missing
+- `🔴` "azure-native:media:BlurType" missing
+- `🔴` "azure-native:media:BuiltInStandardEncoderPreset" missing
+- `🔴` "azure-native:media:BuiltInStandardEncoderPresetResponse" missing
+- `🔴` "azure-native:media:CbcsDrmConfiguration" missing
+- `🔴` "azure-native:media:CbcsDrmConfigurationResponse" missing
+- `🔴` "azure-native:media:CencDrmConfiguration" missing
+- `🔴` "azure-native:media:CencDrmConfigurationResponse" missing
+- `🔴` "azure-native:media:ChannelMapping" missing
+- `🔴` "azure-native:media:ClearKeyEncryptionConfiguration" missing
+- `🔴` "azure-native:media:ClearKeyEncryptionConfigurationResponse" missing
+- `🔴` "azure-native:media:CommonEncryptionCbcs" missing
+- `🔴` "azure-native:media:CommonEncryptionCbcsResponse" missing
+- `🔴` "azure-native:media:CommonEncryptionCenc" missing
+- `🔴` "azure-native:media:CommonEncryptionCencResponse" missing
+- `🔴` "azure-native:media:Complexity" missing
+- `🔴` "azure-native:media:ContentKeyPolicyClearKeyConfiguration" missing
+- `🔴` "azure-native:media:ContentKeyPolicyClearKeyConfigurationResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyFairPlayConfiguration" missing
+- `🔴` "azure-native:media:ContentKeyPolicyFairPlayConfigurationResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyFairPlayOfflineRentalConfiguration" missing
+- `🔴` "azure-native:media:ContentKeyPolicyFairPlayOfflineRentalConfigurationResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyFairPlayRentalAndLeaseKeyType" missing
+- `🔴` "azure-native:media:ContentKeyPolicyOpenRestriction" missing
+- `🔴` "azure-native:media:ContentKeyPolicyOpenRestrictionResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyOption" missing
+- `🔴` "azure-native:media:ContentKeyPolicyOptionResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyPlayReadyConfiguration" missing
+- `🔴` "azure-native:media:ContentKeyPolicyPlayReadyConfigurationResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader" missing
+- `🔴` "azure-native:media:ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeaderResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier" missing
+- `🔴` "azure-native:media:ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifierResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyPlayReadyContentType" missing
+- `🔴` "azure-native:media:ContentKeyPolicyPlayReadyExplicitAnalogTelevisionRestriction" missing
+- `🔴` "azure-native:media:ContentKeyPolicyPlayReadyExplicitAnalogTelevisionRestrictionResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyPlayReadyLicense" missing
+- `🔴` "azure-native:media:ContentKeyPolicyPlayReadyLicenseResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyPlayReadyLicenseType" missing
+- `🔴` "azure-native:media:ContentKeyPolicyPlayReadyPlayRight" missing
+- `🔴` "azure-native:media:ContentKeyPolicyPlayReadyPlayRightResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyPlayReadyUnknownOutputPassingOption" missing
+- `🔴` "azure-native:media:ContentKeyPolicyRestrictionTokenType" missing
+- `🔴` "azure-native:media:ContentKeyPolicyRsaTokenKey" missing
+- `🔴` "azure-native:media:ContentKeyPolicyRsaTokenKeyResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicySymmetricTokenKey" missing
+- `🔴` "azure-native:media:ContentKeyPolicySymmetricTokenKeyResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyTokenClaim" missing
+- `🔴` "azure-native:media:ContentKeyPolicyTokenClaimResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyTokenRestriction" missing
+- `🔴` "azure-native:media:ContentKeyPolicyTokenRestrictionResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyUnknownConfiguration" missing
+- `🔴` "azure-native:media:ContentKeyPolicyUnknownConfigurationResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyUnknownRestriction" missing
+- `🔴` "azure-native:media:ContentKeyPolicyUnknownRestrictionResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyWidevineConfiguration" missing
+- `🔴` "azure-native:media:ContentKeyPolicyWidevineConfigurationResponse" missing
+- `🔴` "azure-native:media:ContentKeyPolicyX509CertificateTokenKey" missing
+- `🔴` "azure-native:media:ContentKeyPolicyX509CertificateTokenKeyResponse" missing
+- `🔴` "azure-native:media:CopyAudio" missing
+- `🔴` "azure-native:media:CopyAudioResponse" missing
+- `🔴` "azure-native:media:CopyVideo" missing
+- `🔴` "azure-native:media:CopyVideoResponse" missing
+- `🔴` "azure-native:media:CrossSiteAccessPolicies" missing
+- `🔴` "azure-native:media:CrossSiteAccessPoliciesResponse" missing
+- `🔴` "azure-native:media:DDAudio" missing
+- `🔴` "azure-native:media:DDAudioResponse" missing
+- `🔴` "azure-native:media:DashSettings" missing
+- `🔴` "azure-native:media:DashSettingsResponse" missing
+- `🔴` "azure-native:media:DefaultAction" missing
+- `🔴` "azure-native:media:DefaultKey" missing
+- `🔴` "azure-native:media:DefaultKeyResponse" missing
+- `🔴` "azure-native:media:Deinterlace" missing
+- `🔴` "azure-native:media:DeinterlaceMode" missing
+- `🔴` "azure-native:media:DeinterlaceParity" missing
+- `🔴` "azure-native:media:DeinterlaceResponse" missing
+- `🔴` "azure-native:media:EdgeUsageDataCollectionPolicyResponse" missing
+- `🔴` "azure-native:media:EdgeUsageDataEventHubResponse" missing
+- `🔴` "azure-native:media:EnabledProtocols" missing
+- `🔴` "azure-native:media:EnabledProtocolsResponse" missing
+- `🔴` "azure-native:media:EncoderNamedPreset" missing
+- `🔴` "azure-native:media:EntropyMode" missing
+- `🔴` "azure-native:media:EnvelopeEncryption" missing
+- `🔴` "azure-native:media:EnvelopeEncryptionResponse" missing
+- `🔴` "azure-native:media:FaceDetectorPreset" missing
+- `🔴` "azure-native:media:FaceDetectorPresetResponse" missing
+- `🔴` "azure-native:media:FaceRedactorMode" missing
+- `🔴` "azure-native:media:Fade" missing
+- `🔴` "azure-native:media:FadeResponse" missing
+- `🔴` "azure-native:media:FilterTrackPropertyCompareOperation" missing
+- `🔴` "azure-native:media:FilterTrackPropertyCondition" missing
+- `🔴` "azure-native:media:FilterTrackPropertyConditionResponse" missing
+- `🔴` "azure-native:media:FilterTrackPropertyType" missing
+- `🔴` "azure-native:media:FilterTrackSelection" missing
+- `🔴` "azure-native:media:FilterTrackSelectionResponse" missing
+- `🔴` "azure-native:media:Filters" missing
+- `🔴` "azure-native:media:FiltersResponse" missing
+- `🔴` "azure-native:media:FirstQuality" missing
+- `🔴` "azure-native:media:FirstQualityResponse" missing
+- `🔴` "azure-native:media:FromAllInputFile" missing
+- `🔴` "azure-native:media:FromAllInputFileResponse" missing
+- `🔴` "azure-native:media:FromEachInputFile" missing
+- `🔴` "azure-native:media:FromEachInputFileResponse" missing
+- `🔴` "azure-native:media:H264Complexity" missing
+- `🔴` "azure-native:media:H264Layer" missing
+- `🔴` "azure-native:media:H264LayerResponse" missing
+- `🔴` "azure-native:media:H264RateControlMode" missing
+- `🔴` "azure-native:media:H264Video" missing
+- `🔴` "azure-native:media:H264VideoProfile" missing
+- `🔴` "azure-native:media:H264VideoResponse" missing
+- `🔴` "azure-native:media:H265Complexity" missing
+- `🔴` "azure-native:media:H265Layer" missing
+- `🔴` "azure-native:media:H265LayerResponse" missing
+- `🔴` "azure-native:media:H265Video" missing
+- `🔴` "azure-native:media:H265VideoProfile" missing
+- `🔴` "azure-native:media:H265VideoResponse" missing
+- `🔴` "azure-native:media:Hls" missing
+- `🔴` "azure-native:media:HlsResponse" missing
+- `🔴` "azure-native:media:HlsSettings" missing
+- `🔴` "azure-native:media:HlsSettingsResponse" missing
+- `🔴` "azure-native:media:IPAccessControl" missing
+- `🔴` "azure-native:media:IPAccessControlResponse" missing
+- `🔴` "azure-native:media:IPRange" missing
+- `🔴` "azure-native:media:IPRangeResponse" missing
+- `🔴` "azure-native:media:Image" missing
+- `🔴` "azure-native:media:ImageFormat" missing
+- `🔴` "azure-native:media:ImageFormatResponse" missing
+- `🔴` "azure-native:media:ImageResponse" missing
+- `🔴` "azure-native:media:InputFile" missing
+- `🔴` "azure-native:media:InputFileResponse" missing
+- `🔴` "azure-native:media:InsightsType" missing
+- `🔴` "azure-native:media:InterleaveOutput" missing
+- `🔴` "azure-native:media:JobErrorDetailResponse" missing
+- `🔴` "azure-native:media:JobErrorResponse" missing
+- `🔴` "azure-native:media:JobInputAsset" missing
+- `🔴` "azure-native:media:JobInputAssetResponse" missing
+- `🔴` "azure-native:media:JobInputClip" missing
+- `🔴` "azure-native:media:JobInputClipResponse" missing
+- `🔴` "azure-native:media:JobInputHttp" missing
+- `🔴` "azure-native:media:JobInputHttpResponse" missing
+- `🔴` "azure-native:media:JobInputSequence" missing
+- `🔴` "azure-native:media:JobInputSequenceResponse" missing
+- `🔴` "azure-native:media:JobInputs" missing
+- `🔴` "azure-native:media:JobInputsResponse" missing
+- `🔴` "azure-native:media:JobOutputAsset" missing
+- `🔴` "azure-native:media:JobOutputAssetResponse" missing
+- `🔴` "azure-native:media:JpgFormat" missing
+- `🔴` "azure-native:media:JpgFormatResponse" missing
+- `🔴` "azure-native:media:JpgImage" missing
+- `🔴` "azure-native:media:JpgImageResponse" missing
+- `🔴` "azure-native:media:JpgLayer" missing
+- `🔴` "azure-native:media:JpgLayerResponse" missing
+- `🔴` "azure-native:media:KeyDelivery" missing
+- `🔴` "azure-native:media:KeyDeliveryResponse" missing
+- `🔴` "azure-native:media:KeyVaultProperties" missing
+- `🔴` "azure-native:media:KeyVaultPropertiesResponse" missing
+- `🔴` "azure-native:media:LiveEventEncoding" missing
+- `🔴` "azure-native:media:LiveEventEncodingResponse" missing
+- `🔴` "azure-native:media:LiveEventEncodingType" missing
+- `🔴` "azure-native:media:LiveEventEndpoint" missing
+- `🔴` "azure-native:media:LiveEventEndpointResponse" missing
+- `🔴` "azure-native:media:LiveEventIngestInterruptionResponse" missing
+- `🔴` "azure-native:media:LiveEventIngestionResponse" missing
+- `🔴` "azure-native:media:LiveEventInput" missing
+- `🔴` "azure-native:media:LiveEventInputAccessControl" missing
+- `🔴` "azure-native:media:LiveEventInputAccessControlResponse" missing
+- `🔴` "azure-native:media:LiveEventInputProtocol" missing
+- `🔴` "azure-native:media:LiveEventInputResponse" missing
+- `🔴` "azure-native:media:LiveEventInputTrackSelection" missing
+- `🔴` "azure-native:media:LiveEventInputTrackSelectionResponse" missing
+- `🔴` "azure-native:media:LiveEventOutputTranscriptionTrack" missing
+- `🔴` "azure-native:media:LiveEventOutputTranscriptionTrackResponse" missing
+- `🔴` "azure-native:media:LiveEventPreview" missing
+- `🔴` "azure-native:media:LiveEventPreviewAccessControl" missing
+- `🔴` "azure-native:media:LiveEventPreviewAccessControlResponse" missing
+- `🔴` "azure-native:media:LiveEventPreviewResponse" missing
+- `🔴` "azure-native:media:LiveEventStatusResponse" missing
+- `🔴` "azure-native:media:LiveEventStreamEventDataResponse" missing
+- `🔴` "azure-native:media:LiveEventStreamEventResponse" missing
+- `🔴` "azure-native:media:LiveEventTimedMetadataEndpoint" missing
+- `🔴` "azure-native:media:LiveEventTimedMetadataEndpointResponse" missing
+- `🔴` "azure-native:media:LiveEventTrackEventDataResponse" missing
+- `🔴` "azure-native:media:LiveEventTrackEventResponse" missing
+- `🔴` "azure-native:media:LiveEventTrackStatusResponse" missing
+- `🔴` "azure-native:media:LiveEventTranscription" missing
+- `🔴` "azure-native:media:LiveEventTranscriptionResponse" missing
+- `🔴` "azure-native:media:MediaServiceIdentity" missing
+- `🔴` "azure-native:media:MediaServiceIdentityResponse" missing
+- `🔴` "azure-native:media:MinimumTlsVersion" missing
+- `🔴` "azure-native:media:Mp4Format" missing
+- `🔴` "azure-native:media:Mp4FormatResponse" missing
+- `🔴` "azure-native:media:MultiBitrateFormat" missing
+- `🔴` "azure-native:media:MultiBitrateFormatResponse" missing
+- `🔴` "azure-native:media:NoEncryption" missing
+- `🔴` "azure-native:media:NoEncryptionResponse" missing
+- `🔴` "azure-native:media:OnErrorType" missing
+- `🔴` "azure-native:media:OutputFile" missing
+- `🔴` "azure-native:media:OutputFileResponse" missing
+- `🔴` "azure-native:media:PngFormat" missing
+- `🔴` "azure-native:media:PngFormatResponse" missing
+- `🔴` "azure-native:media:PngImage" missing
+- `🔴` "azure-native:media:PngImageResponse" missing
+- `🔴` "azure-native:media:PngLayer" missing
+- `🔴` "azure-native:media:PngLayerResponse" missing
+- `🔴` "azure-native:media:PresentationTimeRange" missing
+- `🔴` "azure-native:media:PresentationTimeRangeResponse" missing
+- `🔴` "azure-native:media:PresetConfigurations" missing
+- `🔴` "azure-native:media:PresetConfigurationsResponse" missing
+- `🔴` "azure-native:media:Priority" missing
+- `🔴` "azure-native:media:PrivateEndpointConnectionResponse" missing
+- `🔴` "azure-native:media:PrivateEndpointResponse" missing
+- `🔴` "azure-native:media:PrivateEndpointServiceConnectionStatus" missing
+- `🔴` "azure-native:media:PrivateLinkServiceConnectionState" missing
+- `🔴` "azure-native:media:PrivateLinkServiceConnectionStateResponse" missing
+- `🔴` "azure-native:media:PublicNetworkAccess" missing
+- `🔴` "azure-native:media:Rectangle" missing
+- `🔴` "azure-native:media:RectangleResponse" missing
+- `🔴` "azure-native:media:ResourceIdentity" missing
+- `🔴` "azure-native:media:ResourceIdentityResponse" missing
+- `🔴` "azure-native:media:Rotation" missing
+- `🔴` "azure-native:media:SecurityLevel" missing
+- `🔴` "azure-native:media:SelectAudioTrackByAttribute" missing
+- `🔴` "azure-native:media:SelectAudioTrackByAttributeResponse" missing
+- `🔴` "azure-native:media:SelectAudioTrackById" missing
+- `🔴` "azure-native:media:SelectAudioTrackByIdResponse" missing
+- `🔴` "azure-native:media:SelectVideoTrackByAttribute" missing
+- `🔴` "azure-native:media:SelectVideoTrackByAttributeResponse" missing
+- `🔴` "azure-native:media:SelectVideoTrackById" missing
+- `🔴` "azure-native:media:SelectVideoTrackByIdResponse" missing
+- `🔴` "azure-native:media:StandardEncoderPreset" missing
+- `🔴` "azure-native:media:StandardEncoderPresetResponse" missing
+- `🔴` "azure-native:media:StorageAccount" missing
+- `🔴` "azure-native:media:StorageAccountResponse" missing
+- `🔴` "azure-native:media:StorageAccountType" missing
+- `🔴` "azure-native:media:StorageAuthentication" missing
+- `🔴` "azure-native:media:StreamOptionsFlag" missing
+- `🔴` "azure-native:media:StreamingEndpointAccessControl" missing
+- `🔴` "azure-native:media:StreamingEndpointAccessControlResponse" missing
+- `🔴` "azure-native:media:StreamingLocatorContentKey" missing
+- `🔴` "azure-native:media:StreamingLocatorContentKeyResponse" missing
+- `🔴` "azure-native:media:StreamingPathResponse" missing
+- `🔴` "azure-native:media:StreamingPolicyContentKey" missing
+- `🔴` "azure-native:media:StreamingPolicyContentKeyResponse" missing
+- `🔴` "azure-native:media:StreamingPolicyContentKeys" missing
+- `🔴` "azure-native:media:StreamingPolicyContentKeysResponse" missing
+- `🔴` "azure-native:media:StreamingPolicyFairPlayConfiguration" missing
+- `🔴` "azure-native:media:StreamingPolicyFairPlayConfigurationResponse" missing
+- `🔴` "azure-native:media:StreamingPolicyPlayReadyConfiguration" missing
+- `🔴` "azure-native:media:StreamingPolicyPlayReadyConfigurationResponse" missing
+- `🔴` "azure-native:media:StreamingPolicyWidevineConfiguration" missing
+- `🔴` "azure-native:media:StreamingPolicyWidevineConfigurationResponse" missing
+- `🔴` "azure-native:media:StretchMode" missing
+- `🔴` "azure-native:media:SystemDataResponse" missing
+- `🔴` "azure-native:media:TextTrack" missing
+- `🔴` "azure-native:media:TextTrackResponse" missing
+- `🔴` "azure-native:media:TrackAttribute" missing
+- `🔴` "azure-native:media:TrackPropertyCompareOperation" missing
+- `🔴` "azure-native:media:TrackPropertyCondition" missing
+#### New resources:
+
+- `cloudhealth.AuthenticationSetting`
+- `cloudhealth.DiscoveryRule`
+- `cloudhealth.Entity`
+- `cloudhealth.HealthModel`
+- `cloudhealth.Relationship`
+- `cloudhealth.SignalDefinition`
+- `computeschedule.ScheduledAction`
+- `containerservice.DeploymentSafeguard`
+- `containerservice.ManagedNamespace`
+- `dashboard.Dashboard`
+- `deviceregistry.Namespace`
+- `deviceregistry.NamespaceAsset`
+- `deviceregistry.NamespaceDevice`
+- `deviceregistry.NamespaceDiscoveredAsset`
+- `deviceregistry.NamespaceDiscoveredDevice`
+- `edge.ConfigTemplate`
+- `edge.Configuration`
+- `edge.ConfigurationReference`
+- `edge.Context`
+- `edge.Diagnostic`
+- `edge.DynamicConfiguration`
+- `edge.DynamicConfigurationVersion`
+- `edge.DynamicSchema`
+- `edge.DynamicSchemaVersion`
+- `edge.Execution`
+- `edge.Instance`
+- `edge.Schema`
+- `edge.SchemaVersion`
+- `edge.SiteReference`
+- `edge.Solution`
+- `edge.SolutionTemplate`
+- `edge.SolutionVersion`
+- `edge.Target`
+- `edge.Workflow`
+- `edge.WorkflowVersion`
+- `iotoperations.AkriConnector`
+- `iotoperations.AkriConnectorTemplate`
+- `iotoperations.DataflowGraph`
+- `iotoperations.RegistryEndpoint`
+- `loadtestservice.PlaywrightWorkspace`
+- `machinelearningservices.OutboundRule`
+- `mongocluster.User`
+- `onlineexperimentation.PrivateEndpointConnection`
+- `orbital.GeoCatalog`
+- `providerhub.AuthorizedApplication`
+- `providerhub.CustomRollout`
+- `providerhub.ProviderMonitorSetting`
+- `sql.VirtualCluster`
+- `storagediscovery.StorageDiscoveryWorkspace`
+- `web.SiteCertificate`
+- `web.SiteCertificateSlot`
+- `widget.Employee`
+
+#### New functions:
+
+- `azuredatatransfer.listListFlowsByPipeline`
+- `cloudhealth.getAuthenticationSetting`
+- `cloudhealth.getDiscoveryRule`
+- `cloudhealth.getEntity`
+- `cloudhealth.getHealthModel`
+- `cloudhealth.getRelationship`
+- `cloudhealth.getSignalDefinition`
+- `computeschedule.getScheduledAction`
+- `connectedcache.getEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistory`
+- `connectedcache.getEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistory`
+- `connectedcache.getEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistory`
+- `connectedcache.getIspCacheNodesOperationCacheNodeAutoUpdateHistory`
+- `connectedcache.getIspCacheNodesOperationCacheNodeMccIssueDetailsHistory`
+- `containerservice.getDeploymentSafeguard`
+- `containerservice.getManagedNamespace`
+- `containerservice.listManagedNamespaceCredential`
+- `dashboard.getDashboard`
+- `deviceregistry.getNamespace`
+- `deviceregistry.getNamespaceAsset`
+- `deviceregistry.getNamespaceDevice`
+- `deviceregistry.getNamespaceDiscoveredAsset`
+- `deviceregistry.getNamespaceDiscoveredDevice`
+- `edge.getConfigTemplate`
+- `edge.getConfiguration`
+- `edge.getConfigurationReference`
+- `edge.getContext`
+- `edge.getDiagnostic`
+- `edge.getDynamicConfiguration`
+- `edge.getDynamicConfigurationVersion`
+- `edge.getDynamicSchema`
+- `edge.getDynamicSchemaVersion`
+- `edge.getExecution`
+- `edge.getInstance`
+- `edge.getSchema`
+- `edge.getSchemaVersion`
+- `edge.getSiteReference`
+- `edge.getSolution`
+- `edge.getSolutionTemplate`
+- `edge.getSolutionVersion`
+- `edge.getTarget`
+- `edge.getWorkflow`
+- `edge.getWorkflowVersion`
+- `iotoperations.getAkriConnector`
+- `iotoperations.getAkriConnectorTemplate`
+- `iotoperations.getDataflowGraph`
+- `iotoperations.getRegistryEndpoint`
+- `loadtestservice.getPlaywrightWorkspace`
+- `machinelearningservices.getOutboundRule`
+- `mongocluster.getUser`
+- `onlineexperimentation.getPrivateEndpointConnection`
+- `orbital.getGeoCatalog`
+- `providerhub.getAuthorizedApplication`
+- `providerhub.getCustomRollout`
+- `providerhub.getProviderMonitorSetting`
+- `sql.getVirtualCluster`
+- `storagediscovery.getStorageDiscoveryWorkspace`
+- `web.getSiteCertificate`
+- `web.getSiteCertificateSlot`
+- `widget.getEmployee`
+
 
 ## What's Changed
-* cleanup for maintaining subresource properties by @EronWright in https://github.com/pulumi/pulumi-azure-native/pull/4177
-* Preserve sub-resources in state on refresh by @EronWright in https://github.com/pulumi/pulumi-azure-native/pull/4178
+* run e2e tests in "v3" mode by @EronWright in https://github.com/pulumi/pulumi-azure-native/pull/4182
+* fix for make install_provider by @EronWright in https://github.com/pulumi/pulumi-azure-native/pull/4183
+* fix for makefile (install_provider) by @EronWright in https://github.com/pulumi/pulumi-azure-native/pull/4199
+* fix for TagAtScope for empty tags  by @EronWright in https://github.com/pulumi/pulumi-azure-native/pull/4200
+* Upgrade Java to 1.16.0 by @t0yv0 in https://github.com/pulumi/pulumi-azure-native/pull/4215
+* SDK compatibility with latest specs by @blampe in https://github.com/pulumi/pulumi-azure-native/pull/4207
+* Regenerate SDK by @blampe in https://github.com/pulumi/pulumi-azure-native/pull/4208
+* Update App to track 2025-01-01 by @blampe in https://github.com/pulumi/pulumi-azure-native/pull/4217
+* Fix formatting of REST API paths given "x-ms-skip-url-encoding" directive by @EronWright in https://github.com/pulumi/pulumi-azure-native/pull/4201
+* Bugfix for IsDefaultResponse (regression) by @EronWright in https://github.com/pulumi/pulumi-azure-native/pull/4238
 
 
-**Full Changelog**: https://github.com/pulumi/pulumi-azure-native/compare/v3.5.0...v3.5.1
+**Full Changelog**: https://github.com/pulumi/pulumi-azure-native/compare/v3.5.1...v3.6.1

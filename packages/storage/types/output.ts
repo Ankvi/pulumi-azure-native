@@ -1636,7 +1636,7 @@ export interface TriggerParametersResponse {
      */
     startFrom?: string;
     /**
-     * When to start task execution. This is an optional field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
+     * When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
      */
     startOn?: string;
 }

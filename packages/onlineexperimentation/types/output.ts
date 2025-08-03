@@ -103,6 +103,56 @@ export interface OnlineExperimentationWorkspaceSkuResponse {
 }
 
 /**
+ * Properties of the private endpoint connection.
+ */
+export interface PrivateEndpointConnectionPropertiesResponse {
+    /**
+     * The group ids for the private endpoint resource.
+     */
+    groupIds: string[];
+    /**
+     * The private endpoint resource.
+     */
+    privateEndpoint?: PrivateEndpointResponse;
+    /**
+     * A collection of information about the state of the connection between service consumer and provider.
+     */
+    privateLinkServiceConnectionState: PrivateLinkServiceConnectionStateResponse;
+    /**
+     * The provisioning state of the private endpoint connection resource.
+     */
+    provisioningState: string;
+}
+
+/**
+ * The private endpoint resource.
+ */
+export interface PrivateEndpointResponse {
+    /**
+     * The ARM identifier for private endpoint.
+     */
+    id: string;
+}
+
+/**
+ * A collection of information about the state of the connection between service consumer and provider.
+ */
+export interface PrivateLinkServiceConnectionStateResponse {
+    /**
+     * A message indicating if changes on the service provider require any updates on the consumer.
+     */
+    actionsRequired?: string;
+    /**
+     * The reason for approval/rejection of the connection.
+     */
+    description?: string;
+    /**
+     * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+     */
+    status?: string;
+}
+
+/**
  * The encryption configuration for the online experimentation workspace resource.
  */
 export interface ResourceEncryptionConfigurationResponse {

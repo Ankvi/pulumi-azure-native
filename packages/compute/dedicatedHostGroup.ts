@@ -38,7 +38,7 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
     /**
      * Enables or disables a capability on the dedicated host group. Minimum api-version: 2022-03-01.
      */
-    public readonly additionalCapabilities!: pulumi.Output<types.outputs.DedicatedHostGroupPropertiesResponseAdditionalCapabilities | undefined>;
+    public readonly additionalCapabilities!: pulumi.Output<types.outputs.DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse | undefined>;
     /**
      * The Azure API version of the resource.
      */
@@ -52,11 +52,11 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.DedicatedHostGroupInstanceViewResponse>;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Resource name
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -68,15 +68,19 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
      */
     public readonly supportAutomaticPlacement!: pulumi.Output<boolean | undefined>;
     /**
-     * Resource tags
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * Resource tags.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * Availability Zone to use for this host group. Only single zone is supported. The zone can be assigned only during creation. If not provided, the group supports all zones in the region. If provided, enforces each host in the group to be in the same zone.
+     * The availability zones.
      */
     public readonly zones!: pulumi.Output<string[] | undefined>;
 
@@ -109,6 +113,7 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
             resourceInputs["hosts"] = undefined /*out*/;
             resourceInputs["instanceView"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["additionalCapabilities"] = undefined /*out*/;
@@ -119,6 +124,7 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["platformFaultDomainCount"] = undefined /*out*/;
             resourceInputs["supportAutomaticPlacement"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["zones"] = undefined /*out*/;
@@ -143,7 +149,7 @@ export interface DedicatedHostGroupArgs {
      */
     hostGroupName?: pulumi.Input<string>;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
@@ -151,7 +157,7 @@ export interface DedicatedHostGroupArgs {
      */
     platformFaultDomainCount: pulumi.Input<number>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
@@ -159,11 +165,11 @@ export interface DedicatedHostGroupArgs {
      */
     supportAutomaticPlacement?: pulumi.Input<boolean>;
     /**
-     * Resource tags
+     * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Availability Zone to use for this host group. Only single zone is supported. The zone can be assigned only during creation. If not provided, the group supports all zones in the region. If provided, enforces each host in the group to be in the same zone.
+     * The availability zones.
      */
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

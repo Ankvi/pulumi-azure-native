@@ -1,7 +1,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
- * Get private DNS zone suffix in the cloud
+ * Gets the private DNS zone suffix.
  *
  * Uses Azure REST API version 2024-08-01.
  *
@@ -18,13 +18,13 @@ export interface GetGetPrivateDnsZoneSuffixExecuteArgs {
 }
 
 /**
- * Represents a resource name availability.
+ * Private DNS suffix.
  */
 export interface GetGetPrivateDnsZoneSuffixExecuteResult {
     readonly value?: string;
 }
 /**
- * Get private DNS zone suffix in the cloud
+ * Gets the private DNS zone suffix.
  *
  * Uses Azure REST API version 2024-08-01.
  *

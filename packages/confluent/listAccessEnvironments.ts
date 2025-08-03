@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Details of the environments returned on successful response
+ * Environment list of an organization
  *
  * Uses Azure REST API version 2024-07-01.
  *
@@ -50,7 +50,7 @@ export interface ListAccessEnvironmentsResult {
     readonly metadata?: types.outputs.ConfluentListMetadataResponse;
 }
 /**
- * Details of the environments returned on successful response
+ * Environment list of an organization
  *
  * Uses Azure REST API version 2024-07-01.
  *

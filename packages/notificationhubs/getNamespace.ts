@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Notification Hubs Namespace Resource.
+ * Returns the given namespace.
  *
  * Uses Azure REST API version 2023-10-01-preview.
  *
@@ -143,7 +143,7 @@ export interface GetNamespaceResult {
     readonly zoneRedundancy?: string;
 }
 /**
- * Notification Hubs Namespace Resource.
+ * Returns the given namespace.
  *
  * Uses Azure REST API version 2023-10-01-preview.
  *

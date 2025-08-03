@@ -174,7 +174,7 @@ export interface AzureActiveDirectoryRegistrationArgs {
     clientSecretSettingName?: pulumi.Input<string>;
     /**
      * The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
+     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
      * This URI is a case-sensitive identifier for the token issuer.
      * More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
      */
@@ -308,9 +308,27 @@ export interface BuildConfigurationArgs {
 }
 
 /**
+ * Properties for a certificate stored in a Key Vault.
+ */
+export interface CertificateKeyVaultPropertiesArgs {
+    /**
+     * Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
+     */
+    identity?: pulumi.Input<string>;
+    /**
+     * URL pointing to the Azure Key Vault secret that holds the certificate.
+     */
+    keyVaultUrl?: pulumi.Input<string>;
+}
+
+/**
  * Certificate resource specific properties
  */
 export interface CertificatePropertiesArgs {
+    /**
+     * Properties for a certificate stored in a Key Vault.
+     */
+    certificateKeyVaultProperties?: pulumi.Input<CertificateKeyVaultPropertiesArgs>;
     /**
      * Certificate password.
      */
@@ -367,6 +385,10 @@ export interface ConfigurationArgs {
      */
     dapr?: pulumi.Input<DaprArgs>;
     /**
+     * Optional settings for Managed Identities that are assigned to the Container App. If a Managed Identity is not specified here, default settings will be used.
+     */
+    identitySettings?: pulumi.Input<pulumi.Input<IdentitySettingsArgs>[]>;
+    /**
      * Ingress configurations.
      */
     ingress?: pulumi.Input<IngressArgs>;
@@ -378,6 +400,10 @@ export interface ConfigurationArgs {
      * Collection of private container registry credentials for containers used by the Container app
      */
     registries?: pulumi.Input<pulumi.Input<RegistryCredentialsArgs>[]>;
+    /**
+     * App runtime configuration for the Container App.
+     */
+    runtime?: pulumi.Input<RuntimeArgs>;
     /**
      * Collection of secrets used by a Container app
      */
@@ -670,6 +696,10 @@ export interface CustomDomainArgs {
  */
 export interface CustomDomainConfigurationArgs {
     /**
+     * Certificate stored in Azure Key Vault.
+     */
+    certificateKeyVaultProperties?: pulumi.Input<CertificateKeyVaultPropertiesArgs>;
+    /**
      * Certificate password
      */
     certificatePassword?: pulumi.Input<string>;
@@ -709,6 +739,10 @@ export interface CustomScaleRuleArgs {
      * Authentication secrets for the custom scale rule.
      */
     auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
+    /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: pulumi.Input<string>;
     /**
      * Metadata properties to describe custom scale rule.
      */
@@ -962,13 +996,9 @@ export interface DotNetComponentServiceBindArgs {
  */
 export interface DynamicPoolConfigurationArgs {
     /**
-     * The cooldown period of a session in seconds.
+     * The lifecycle configuration of a session in the dynamic session pool
      */
-    cooldownPeriodInSeconds?: pulumi.Input<number>;
-    /**
-     * The execution type of the session pool.
-     */
-    executionType?: pulumi.Input<string | enums.ExecutionType>;
+    lifecycleConfiguration?: pulumi.Input<LifecycleConfigurationArgs>;
 }
 
 /**
@@ -1370,6 +1400,10 @@ export interface HttpScaleRuleArgs {
      */
     auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
     /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: pulumi.Input<string>;
+    /**
      * Metadata properties to describe http scale rule.
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1440,6 +1474,29 @@ export interface IdentityProvidersArgs {
      * The configuration settings of the Twitter provider.
      */
     twitter?: pulumi.Input<TwitterArgs>;
+}
+
+/**
+ * Optional settings for a Managed Identity that is assigned to the Container App.
+ */
+export interface IdentitySettingsArgs {
+    /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity: pulumi.Input<string>;
+    /**
+     * Use to select the lifecycle stages of a Container App during which the Managed Identity should be available.
+     */
+    lifecycle?: pulumi.Input<string | enums.IdentitySettingsLifeCycle>;
+}
+/**
+ * identitySettingsArgsProvideDefaults sets the appropriate defaults for IdentitySettingsArgs
+ */
+export function identitySettingsArgsProvideDefaults(val: IdentitySettingsArgs): IdentitySettingsArgs {
+    return {
+        ...val,
+        lifecycle: (val.lifecycle) ?? "All",
+    };
 }
 
 /**
@@ -1642,6 +1699,10 @@ export interface JobConfigurationArgs {
      */
     eventTriggerConfig?: pulumi.Input<JobConfigurationEventTriggerConfigArgs>;
     /**
+     * Optional settings for Managed Identities that are assigned to the Container App Job. If a Managed Identity is not specified here, default settings will be used.
+     */
+    identitySettings?: pulumi.Input<pulumi.Input<IdentitySettingsArgs>[]>;
+    /**
      * Manual trigger configuration for a single execution job. Properties replicaCompletionCount and parallelism would be set to 1 by default
      */
     manualTriggerConfig?: pulumi.Input<JobConfigurationManualTriggerConfigArgs>;
@@ -1781,6 +1842,10 @@ export interface JobScaleRuleArgs {
      */
     auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
     /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: pulumi.Input<string>;
+    /**
      * Metadata properties to describe the scale rule.
      */
     metadata?: any;
@@ -1825,6 +1890,24 @@ export interface JwtClaimChecksArgs {
      * The list of the allowed groups.
      */
     allowedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * The lifecycle configuration properties of a session in the dynamic session pool
+ */
+export interface LifecycleConfigurationArgs {
+    /**
+     * The cooldown period of a session in seconds when the lifecycle type is 'Timed'.
+     */
+    cooldownPeriodInSeconds?: pulumi.Input<number>;
+    /**
+     * The lifecycle type of the session pool.
+     */
+    lifecycleType?: pulumi.Input<string | enums.LifecycleType>;
+    /**
+     * The maximum alive period of a session in seconds when the lifecycle type is 'OnContainerExit'.
+     */
+    maxAlivePeriodInSeconds?: pulumi.Input<number>;
 }
 
 /**
@@ -1945,6 +2028,10 @@ export interface ManagedEnvironmentStoragePropertiesArgs {
      * Azure file properties
      */
     azureFile?: pulumi.Input<AzureFilePropertiesArgs>;
+    /**
+     * NFS Azure file properties
+     */
+    nfsAzureFile?: pulumi.Input<NfsAzureFilePropertiesArgs>;
 }
 
 /**
@@ -1995,26 +2082,21 @@ export interface MtlsArgs {
 }
 
 /**
- * Nacos properties.
+ * NFS Azure File Properties.
  */
-export interface NacosComponentArgs {
+export interface NfsAzureFilePropertiesArgs {
     /**
-     * Type of the Java Component.
-     * Expected value is 'Nacos'.
+     * Access mode for storage
      */
-    componentType: pulumi.Input<"Nacos">;
+    accessMode?: pulumi.Input<string | enums.AccessMode>;
     /**
-     * List of Java Components configuration properties
+     * Server for NFS azure file. Specify the Azure storage account server address.
      */
-    configurations?: pulumi.Input<pulumi.Input<JavaComponentConfigurationPropertyArgs>[]>;
+    server?: pulumi.Input<string>;
     /**
-     * Java component scaling configurations
+     * NFS Azure file share name.
      */
-    scale?: pulumi.Input<JavaComponentPropertiesScaleArgs>;
-    /**
-     * List of Java Components that are bound to the Java component
-     */
-    serviceBinds?: pulumi.Input<pulumi.Input<JavaComponentServiceBindArgs>[]>;
+    shareName?: pulumi.Input<string>;
 }
 
 /**
@@ -2144,9 +2226,17 @@ export interface PrivateLinkServiceConnectionStateArgs {
  */
 export interface QueueScaleRuleArgs {
     /**
+     * Storage account name. required if using managed identity to authenticate
+     */
+    accountName?: pulumi.Input<string>;
+    /**
      * Authentication secrets for the queue scale rule.
      */
     auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
+    /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: pulumi.Input<string>;
     /**
      * Queue length.
      */
@@ -2198,9 +2288,33 @@ export interface RegistryInfoArgs {
 }
 
 /**
+ * Container App Runtime configuration.
+ */
+export interface RuntimeArgs {
+    /**
+     * Java app configuration
+     */
+    java?: pulumi.Input<RuntimeJavaArgs>;
+}
+
+/**
+ * Java app configuration
+ */
+export interface RuntimeJavaArgs {
+    /**
+     * Enable jmx core metrics for the java app
+     */
+    enableMetrics?: pulumi.Input<boolean>;
+}
+
+/**
  * Container App scaling configurations.
  */
 export interface ScaleArgs {
+    /**
+     * Optional. KEDA Cooldown Period in seconds. Defaults to 300 seconds if not set.
+     */
+    cooldownPeriod?: pulumi.Input<number>;
     /**
      * Optional. Maximum number of container replicas. Defaults to 10 if not set.
      */
@@ -2209,6 +2323,10 @@ export interface ScaleArgs {
      * Optional. Minimum number of container replicas.
      */
     minReplicas?: pulumi.Input<number>;
+    /**
+     * Optional. KEDA Polling Interval in seconds. Defaults to 30 seconds if not set.
+     */
+    pollingInterval?: pulumi.Input<number>;
     /**
      * Scaling rules.
      */
@@ -2276,32 +2394,6 @@ export interface ScaleRuleAuthArgs {
      * Trigger Parameter that uses the secret
      */
     triggerParameter?: pulumi.Input<string>;
-}
-
-/**
- * Spring Cloud Gateway route definition
- */
-export interface ScgRouteArgs {
-    /**
-     * Filters of the route
-     */
-    filters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Id of the route
-     */
-    id: pulumi.Input<string>;
-    /**
-     * Order of the route
-     */
-    order?: pulumi.Input<number>;
-    /**
-     * Predicates of the route
-     */
-    predicates?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Uri of the route
-     */
-    uri: pulumi.Input<string>;
 }
 
 /**
@@ -2552,33 +2644,6 @@ export interface SpringCloudEurekaComponentArgs {
 }
 
 /**
- * Spring Cloud Gateway properties.
- */
-export interface SpringCloudGatewayComponentArgs {
-    /**
-     * Type of the Java Component.
-     * Expected value is 'SpringCloudGateway'.
-     */
-    componentType: pulumi.Input<"SpringCloudGateway">;
-    /**
-     * List of Java Components configuration properties
-     */
-    configurations?: pulumi.Input<pulumi.Input<JavaComponentConfigurationPropertyArgs>[]>;
-    /**
-     * Java component scaling configurations
-     */
-    scale?: pulumi.Input<JavaComponentPropertiesScaleArgs>;
-    /**
-     * List of Java Components that are bound to the Java component
-     */
-    serviceBinds?: pulumi.Input<pulumi.Input<JavaComponentServiceBindArgs>[]>;
-    /**
-     * Gateway route definition
-     */
-    springCloudGatewayRoutes?: pulumi.Input<pulumi.Input<ScgRouteArgs>[]>;
-}
-
-/**
  * Defines parameters for tcp connection pooling
  */
 export interface TcpConnectionPoolArgs {
@@ -2606,6 +2671,10 @@ export interface TcpScaleRuleArgs {
      * Authentication secrets for the tcp scale rule.
      */
     auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
+    /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: pulumi.Input<string>;
     /**
      * Metadata properties to describe tcp scale rule.
      */
@@ -2784,7 +2853,7 @@ export interface VnetConfigurationArgs {
  */
 export interface VolumeArgs {
     /**
-     * Mount options used while mounting the AzureFile. Must be a comma-separated string.
+     * Mount options used while mounting the Azure file share or NFS Azure file share. Must be a comma-separated string.
      */
     mountOptions?: pulumi.Input<string>;
     /**

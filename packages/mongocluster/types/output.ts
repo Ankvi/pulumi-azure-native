@@ -49,6 +49,45 @@ export interface ConnectionStringResponse {
 }
 
 /**
+ * Database role definition that is assigned to a user.
+ */
+export interface DatabaseRoleResponse {
+    /**
+     * Database scope that the role is assigned to.
+     */
+    db: string;
+    /**
+     * The role that is assigned to the user on the database scope.
+     */
+    role: string;
+}
+
+/**
+ * Microsoft Entra ID provider properties.
+ */
+export interface EntraIdentityProviderPropertiesResponse {
+    /**
+     * The principal type of the user.
+     */
+    principalType: string;
+}
+
+/**
+ * Defines a Microsoft Entra ID Mongo user.
+ */
+export interface EntraIdentityProviderResponse {
+    /**
+     * The Entra identity properties for the user.
+     */
+    properties: EntraIdentityProviderPropertiesResponse;
+    /**
+     * Identity provider types that a a user identity can belong to.
+     * Expected value is 'MicrosoftEntraID'.
+     */
+    type: "MicrosoftEntraID";
+}
+
+/**
  * The properties of a mongo cluster firewall rule.
  */
 export interface FirewallRulePropertiesResponse {
@@ -296,4 +335,22 @@ export interface SystemDataResponse {
      * The type of identity that last modified the resource.
      */
     lastModifiedByType?: string;
+}
+
+/**
+ * Definition of Mongo user resource on a cluster.
+ */
+export interface UserPropertiesResponse {
+    /**
+     * The user's identity provider definition.
+     */
+    identityProvider?: EntraIdentityProviderResponse;
+    /**
+     * The provisioning state of the user.
+     */
+    provisioningState: string;
+    /**
+     * Database roles that are assigned to the user.
+     */
+    roles?: DatabaseRoleResponse[];
 }

@@ -1,0 +1,34 @@
+{
+    "name": "@kengachu-pulumi/azure-native-cloudhealth",
+    "version": "3.6.1",
+    "description": "Pulumi Azure Native package for cloudhealth",
+    "keywords": [
+        "pulumi",
+        "azure",
+        "azure-native",
+        "category/cloud",
+        "kind/native"
+    ],
+    "homepage": "https://pulumi.com",
+    "repository": {
+        "url": "git+https://github.com/Ankvi/pulumi-azure-native.git",
+        "type": "git"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^3.142.0",
+        "@kengachu-pulumi/azure-native-core": "workspace:*"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "devDependencies": {
+        "typescript": "^5.0.0",
+        "@types/node": "^20.0.0"
+    },
+    "scripts": {
+        "build": "tsc",
+        "clean": "tsc --build --clean",
+        "lint": "tsc --noEmit",
+        "prepublishOnly": "./prepublish.sh"
+    }
+}

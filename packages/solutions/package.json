@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-solutions",
-    "version": "3.5.1",
+    "version": "3.6.1",
     "description": "Pulumi Azure Native package for solutions",
     "keywords": [
         "pulumi",

@@ -48,11 +48,11 @@ export class CapacityReservationGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.CapacityReservationGroupInstanceViewResponse>;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Resource name
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -60,11 +60,15 @@ export class CapacityReservationGroup extends pulumi.CustomResource {
      */
     public readonly sharingProfile!: pulumi.Output<types.outputs.ResourceSharingProfileResponse | undefined>;
     /**
-     * Resource tags
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * Resource tags.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -72,7 +76,7 @@ export class CapacityReservationGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly virtualMachinesAssociated!: pulumi.Output<types.outputs.SubResourceReadOnlyResponse[]>;
     /**
-     * Availability Zones to use for this capacity reservation group. The zones can be assigned only during creation. If not provided, the group supports only regional resources in the region. If provided, enforces each capacity reservation in the group to be in one of the zones.
+     * The availability zones.
      */
     public readonly zones!: pulumi.Output<string[] | undefined>;
 
@@ -100,6 +104,7 @@ export class CapacityReservationGroup extends pulumi.CustomResource {
             resourceInputs["capacityReservations"] = undefined /*out*/;
             resourceInputs["instanceView"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["virtualMachinesAssociated"] = undefined /*out*/;
         } else {
@@ -109,6 +114,7 @@ export class CapacityReservationGroup extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["sharingProfile"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["virtualMachinesAssociated"] = undefined /*out*/;
@@ -130,11 +136,11 @@ export interface CapacityReservationGroupArgs {
      */
     capacityReservationGroupName?: pulumi.Input<string>;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
@@ -142,11 +148,11 @@ export interface CapacityReservationGroupArgs {
      */
     sharingProfile?: pulumi.Input<types.inputs.ResourceSharingProfileArgs>;
     /**
-     * Resource tags
+     * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Availability Zones to use for this capacity reservation group. The zones can be assigned only during creation. If not provided, the group supports only regional resources in the region. If provided, enforces each capacity reservation in the group to be in one of the zones.
+     * The availability zones.
      */
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -23,7 +23,7 @@ export interface GetChannelArgs {
      */
     channelName: string;
     /**
-     * The name of the Bot resource group in the user subscription.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
@@ -45,7 +45,7 @@ export interface GetChannelResult {
      */
     readonly etag?: string;
     /**
-     * Specifies the resource ID.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
@@ -53,11 +53,11 @@ export interface GetChannelResult {
      */
     readonly kind?: string;
     /**
-     * Specifies the location of the resource.
+     * The geo-location where the resource lives
      */
-    readonly location?: string;
+    readonly location: string;
     /**
-     * Specifies the name of the resource.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -69,11 +69,15 @@ export interface GetChannelResult {
      */
     readonly sku?: types.outputs.SkuResponse;
     /**
-     * Contains resource tags defined as key/value pairs.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
      */
     readonly tags?: {[key: string]: string};
     /**
-     * Specifies the type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**
@@ -103,7 +107,7 @@ export interface GetChannelOutputArgs {
      */
     channelName: pulumi.Input<string>;
     /**
-     * The name of the Bot resource group in the user subscription.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

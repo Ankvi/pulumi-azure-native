@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Represents a server firewall rule.
+ * Firewall rule.
  *
  * Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
  *
@@ -40,7 +40,7 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
-     * The end IP address of the server firewall rule. Must be IPv4 format.
+     * IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
      */
     public readonly endIpAddress!: pulumi.Output<string>;
     /**
@@ -48,7 +48,7 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The start IP address of the server firewall rule. Must be IPv4 format.
+     * IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
      */
     public readonly startIpAddress!: pulumi.Output<string>;
     /**
@@ -112,11 +112,11 @@ export class FirewallRule extends pulumi.CustomResource {
  */
 export interface FirewallRuleArgs {
     /**
-     * The end IP address of the server firewall rule. Must be IPv4 format.
+     * IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
      */
     endIpAddress: pulumi.Input<string>;
     /**
-     * The name of the server firewall rule.
+     * Name of the firewall rule.
      */
     firewallRuleName?: pulumi.Input<string>;
     /**
@@ -128,7 +128,7 @@ export interface FirewallRuleArgs {
      */
     serverName: pulumi.Input<string>;
     /**
-     * The start IP address of the server firewall rule. Must be IPv4 format.
+     * IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
      */
     startIpAddress: pulumi.Input<string>;
 }

@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Notification Hub Resource.
+ * Gets the notification hub.
  *
  * Uses Azure REST API version 2023-10-01-preview.
  *
@@ -115,7 +115,7 @@ export interface GetNotificationHubResult {
     readonly xiaomiCredential?: types.outputs.XiaomiCredentialResponse;
 }
 /**
- * Notification Hub Resource.
+ * Gets the notification hub.
  *
  * Uses Azure REST API version 2023-10-01-preview.
  *

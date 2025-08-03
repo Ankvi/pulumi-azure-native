@@ -1,0 +1,117 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * Get Execution Resource
+ *
+ * Uses Azure REST API version 2025-06-01.
+ */
+export function getExecution(args: GetExecutionArgs, opts?: pulumi.InvokeOptions): Promise<GetExecutionResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:edge:getExecution", {
+        "contextName": args.contextName,
+        "executionName": args.executionName,
+        "resourceGroupName": args.resourceGroupName,
+        "versionName": args.versionName,
+        "workflowName": args.workflowName,
+    }, opts);
+}
+
+export interface GetExecutionArgs {
+    /**
+     * The name of the Context.
+     */
+    contextName: string;
+    /**
+     * The name of the Execution.
+     */
+    executionName: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+    /**
+     * The name of the workflowVersion.
+     */
+    versionName: string;
+    /**
+     * Name of the workflow
+     */
+    workflowName: string;
+}
+
+/**
+ * Execution Resource
+ */
+export interface GetExecutionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+     */
+    readonly eTag: string;
+    /**
+     * The complex type of the extended location.
+     */
+    readonly extendedLocation?: types.outputs.AzureResourceManagerCommonTypesExtendedLocationResponse;
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    readonly id: string;
+    /**
+     * The name of the resource
+     */
+    readonly name: string;
+    /**
+     * The resource-specific properties for this resource.
+     */
+    readonly properties: types.outputs.ExecutionPropertiesResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    readonly type: string;
+}
+/**
+ * Get Execution Resource
+ *
+ * Uses Azure REST API version 2025-06-01.
+ */
+export function getExecutionOutput(args: GetExecutionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExecutionResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:edge:getExecution", {
+        "contextName": args.contextName,
+        "executionName": args.executionName,
+        "resourceGroupName": args.resourceGroupName,
+        "versionName": args.versionName,
+        "workflowName": args.workflowName,
+    }, opts);
+}
+
+export interface GetExecutionOutputArgs {
+    /**
+     * The name of the Context.
+     */
+    contextName: pulumi.Input<string>;
+    /**
+     * The name of the Execution.
+     */
+    executionName: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * The name of the workflowVersion.
+     */
+    versionName: pulumi.Input<string>;
+    /**
+     * Name of the workflow
+     */
+    workflowName: pulumi.Input<string>;
+}

@@ -20,7 +20,7 @@ export function getVirtualMachineScaleSetVM(args: GetVirtualMachineScaleSetVMArg
 
 export interface GetVirtualMachineScaleSetVMArgs {
     /**
-     * The expand expression to apply on the operation. 'InstanceView' will retrieve the instance view of the virtual machine. 'UserData' will retrieve the UserData of the virtual machine. 'resiliencyView' will retrieve the instance view of the Virtual machine (if applicable) and include 'resilientVMDeletionStatus' as part of it.
+     * The expand expression to apply on the operation. 'InstanceView' will retrieve the instance view of the virtual machine. 'UserData' will retrieve the UserData of the virtual machine.
      */
     expand?: string;
     /**
@@ -28,7 +28,7 @@ export interface GetVirtualMachineScaleSetVMArgs {
      */
     instanceId: string;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
@@ -66,7 +66,7 @@ export interface GetVirtualMachineScaleSetVMResult {
      */
     readonly hardwareProfile?: types.outputs.HardwareProfileResponse;
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
@@ -90,7 +90,7 @@ export interface GetVirtualMachineScaleSetVMResult {
      */
     readonly licenseType?: string;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     readonly location: string;
     /**
@@ -98,7 +98,7 @@ export interface GetVirtualMachineScaleSetVMResult {
      */
     readonly modelDefinitionApplied: string;
     /**
-     * Resource name
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -146,7 +146,11 @@ export interface GetVirtualMachineScaleSetVMResult {
      */
     readonly storageProfile?: types.outputs.StorageProfileResponse;
     /**
-     * Resource tags
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
      */
     readonly tags?: {[key: string]: string};
     /**
@@ -154,7 +158,7 @@ export interface GetVirtualMachineScaleSetVMResult {
      */
     readonly timeCreated: string;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**
@@ -189,7 +193,7 @@ export function getVirtualMachineScaleSetVMOutput(args: GetVirtualMachineScaleSe
 
 export interface GetVirtualMachineScaleSetVMOutputArgs {
     /**
-     * The expand expression to apply on the operation. 'InstanceView' will retrieve the instance view of the virtual machine. 'UserData' will retrieve the UserData of the virtual machine. 'resiliencyView' will retrieve the instance view of the Virtual machine (if applicable) and include 'resilientVMDeletionStatus' as part of it.
+     * The expand expression to apply on the operation. 'InstanceView' will retrieve the instance view of the virtual machine. 'UserData' will retrieve the UserData of the virtual machine.
      */
     expand?: pulumi.Input<string>;
     /**
@@ -197,7 +201,7 @@ export interface GetVirtualMachineScaleSetVMOutputArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

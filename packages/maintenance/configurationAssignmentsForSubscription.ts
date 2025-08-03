@@ -52,7 +52,7 @@ export class ConfigurationAssignmentsForSubscription extends pulumi.CustomResour
      */
     public readonly maintenanceConfigurationId!: pulumi.Output<string | undefined>;
     /**
-     * Name of the resource
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -64,7 +64,7 @@ export class ConfigurationAssignmentsForSubscription extends pulumi.CustomResour
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * Type of the resource
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -110,7 +110,7 @@ export class ConfigurationAssignmentsForSubscription extends pulumi.CustomResour
  */
 export interface ConfigurationAssignmentsForSubscriptionArgs {
     /**
-     * Configuration assignment name
+     * The name of the ConfigurationAssignment
      */
     configurationAssignmentName?: pulumi.Input<string>;
     /**

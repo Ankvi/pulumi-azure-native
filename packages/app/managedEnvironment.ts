@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * An environment for hosting container apps
  *
- * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
+ * Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
  *
- * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ManagedEnvironment extends pulumi.CustomResource {
     /**
@@ -71,6 +71,10 @@ export class ManagedEnvironment extends pulumi.CustomResource {
      * The endpoint of the eventstream of the Environment.
      */
     public /*out*/ readonly eventStreamEndpoint!: pulumi.Output<string>;
+    /**
+     * Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
+     */
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
      */
@@ -151,6 +155,7 @@ export class ManagedEnvironment extends pulumi.CustomResource {
             resourceInputs["daprAIConnectionString"] = args ? args.daprAIConnectionString : undefined;
             resourceInputs["daprAIInstrumentationKey"] = args ? args.daprAIInstrumentationKey : undefined;
             resourceInputs["environmentName"] = args ? args.environmentName : undefined;
+            resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["infrastructureResourceGroup"] = args ? args.infrastructureResourceGroup : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -182,6 +187,7 @@ export class ManagedEnvironment extends pulumi.CustomResource {
             resourceInputs["defaultDomain"] = undefined /*out*/;
             resourceInputs["deploymentErrors"] = undefined /*out*/;
             resourceInputs["eventStreamEndpoint"] = undefined /*out*/;
+            resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["infrastructureResourceGroup"] = undefined /*out*/;
             resourceInputs["kedaConfiguration"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -229,6 +235,10 @@ export interface ManagedEnvironmentArgs {
      * Name of the Environment.
      */
     environmentName?: pulumi.Input<string>;
+    /**
+     * Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
+     */
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
      */

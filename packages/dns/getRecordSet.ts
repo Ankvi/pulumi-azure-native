@@ -74,7 +74,7 @@ export interface GetRecordSetResult {
      */
     readonly fqdn: string;
     /**
-     * The ID of the record set.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
@@ -86,7 +86,7 @@ export interface GetRecordSetResult {
      */
     readonly mxRecords?: types.outputs.MxRecordResponse[];
     /**
-     * The name of the record set.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -114,6 +114,10 @@ export interface GetRecordSetResult {
      */
     readonly srvRecords?: types.outputs.SrvRecordResponse[];
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
      * A reference to an azure resource from where the dns resource value is taken.
      */
     readonly targetResource?: types.outputs.SubResourceResponse;
@@ -134,7 +138,7 @@ export interface GetRecordSetResult {
      */
     readonly txtRecords?: types.outputs.TxtRecordResponse[];
     /**
-     * The type of the record set.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }

@@ -23,7 +23,7 @@ export interface GetSqlVirtualMachineArgs {
      */
     expand?: string;
     /**
-     * Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
@@ -61,7 +61,7 @@ export interface GetSqlVirtualMachineResult {
      */
     readonly enableAutomaticUpgrade?: boolean;
     /**
-     * Resource ID.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
@@ -77,11 +77,11 @@ export interface GetSqlVirtualMachineResult {
      */
     readonly leastPrivilegeMode?: string;
     /**
-     * Resource location.
+     * The geo-location where the resource lives
      */
     readonly location: string;
     /**
-     * Resource name.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -121,7 +121,7 @@ export interface GetSqlVirtualMachineResult {
      */
     readonly storageConfigurationSettings?: types.outputs.StorageConfigurationSettingsResponse;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
@@ -133,7 +133,7 @@ export interface GetSqlVirtualMachineResult {
      */
     readonly troubleshootingStatus: types.outputs.TroubleshootingStatusResponse;
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**
@@ -175,7 +175,7 @@ export interface GetSqlVirtualMachineOutputArgs {
      */
     expand?: pulumi.Input<string>;
     /**
-     * Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

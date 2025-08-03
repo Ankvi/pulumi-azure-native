@@ -29,6 +29,677 @@ export function advancedSettingsArgsProvideDefaults(val: AdvancedSettingsArgs): 
 }
 
 /**
+ * AkriConnectorTemplateAioMetadata properties.
+ */
+export interface AkriConnectorTemplateAioMetadataArgs {
+    /**
+     * The maximum version of AIO required for the connector.
+     */
+    aioMaxVersion?: pulumi.Input<string>;
+    /**
+     * The minimum version of AIO required for the connector.
+     */
+    aioMinVersion?: pulumi.Input<string>;
+}
+
+/**
+ * AkriConnectorTemplateBucketizedAllocation properties.
+ */
+export interface AkriConnectorTemplateBucketizedAllocationArgs {
+    /**
+     * The bucketized allocation of AEPs for connectors.
+     */
+    bucketSize: pulumi.Input<number>;
+    /**
+     * AkriConnectorTemplateAllocationPolicy properties.
+     * Expected value is 'Bucketized'.
+     */
+    policy: pulumi.Input<"Bucketized">;
+}
+
+/**
+ * AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs properties.
+ */
+export interface AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsArgs {
+    /**
+     * The additional configuration schema reference.
+     */
+    additionalConfigSchemaRef?: pulumi.Input<string>;
+    /**
+     * The default configuration schema reference for datasets.
+     */
+    defaultDatasetConfigSchemaRef?: pulumi.Input<string>;
+    /**
+     * The default configuration schema reference for events.
+     */
+    defaultEventsConfigSchemaRef?: pulumi.Input<string>;
+    /**
+     * The default configuration schema reference for process control.
+     */
+    defaultProcessControlConfigSchemaRef?: pulumi.Input<string>;
+    /**
+     * The default configuration schema reference for streams.
+     */
+    defaultStreamsConfigSchemaRef?: pulumi.Input<string>;
+}
+
+/**
+ * AkriConnectorTemplateDeviceInboundEndpointType properties.
+ */
+export interface AkriConnectorTemplateDeviceInboundEndpointTypeArgs {
+    /**
+     * The configuration schema references for the device inbound endpoint.
+     */
+    configurationSchemaRefs?: pulumi.Input<AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsArgs>;
+    /**
+     * A description of the device inbound endpoint.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The type of the device inbound endpoint.
+     */
+    endpointType: pulumi.Input<string>;
+    /**
+     * The version of the device inbound endpoint.
+     */
+    version?: pulumi.Input<string>;
+}
+
+/**
+ * AkriConnectorTemplateDiagnostics properties.
+ */
+export interface AkriConnectorTemplateDiagnosticsArgs {
+    /**
+     * The log settings for the Connector template.
+     */
+    logs: pulumi.Input<AkriConnectorsDiagnosticsLogsArgs>;
+}
+/**
+ * akriConnectorTemplateDiagnosticsArgsProvideDefaults sets the appropriate defaults for AkriConnectorTemplateDiagnosticsArgs
+ */
+export function akriConnectorTemplateDiagnosticsArgsProvideDefaults(val: AkriConnectorTemplateDiagnosticsArgs): AkriConnectorTemplateDiagnosticsArgs {
+    return {
+        ...val,
+        logs: pulumi.output(val.logs).apply(akriConnectorsDiagnosticsLogsArgsProvideDefaults),
+    };
+}
+
+/**
+ * AkriConnectorTemplateHelmAdvancedConfiguration properties.
+ */
+export interface AkriConnectorTemplateHelmAdvancedConfigurationArgs {
+    /**
+     * Delete operation configuration for the Helm chart.
+     */
+    delete?: pulumi.Input<AkriConnectorTemplateHelmDeleteConfigurationArgs>;
+    /**
+     * Install operation configuration for the Helm chart.
+     */
+    install?: pulumi.Input<AkriConnectorTemplateHelmInstallConfigurationArgs>;
+    /**
+     * Upgrade operation configuration for the Helm chart.
+     */
+    upgrade?: pulumi.Input<AkriConnectorTemplateHelmUpgradeConfigurationArgs>;
+}
+
+/**
+ * AkriConnectorTemplateHelmAuthSecretRef properties.
+ */
+export interface AkriConnectorTemplateHelmAuthSecretRefArgs {
+    /**
+     * The key of the password in the secret.
+     */
+    passwordKey: pulumi.Input<string>;
+    /**
+     * The name of the secret.
+     */
+    secretRef: pulumi.Input<string>;
+    /**
+     * The key of the username in the secret.
+     */
+    usernameKey: pulumi.Input<string>;
+}
+
+/**
+ * AkriConnectorTemplateHelmConfiguration properties.
+ */
+export interface AkriConnectorTemplateHelmConfigurationArgs {
+    /**
+     * The Helm configuration settings.
+     */
+    helmConfigurationSettings: pulumi.Input<AkriConnectorTemplateHelmConfigurationSettingsArgs>;
+    /**
+     * Runtime configuration types.
+     * Expected value is 'HelmConfiguration'.
+     */
+    runtimeConfigurationType: pulumi.Input<"HelmConfiguration">;
+}
+
+/**
+ * AkriConnectorTemplateHelmConfiguration properties.
+ */
+export interface AkriConnectorTemplateHelmConfigurationSettingsArgs {
+    /**
+     * Advanced configuration for the Helm chart.
+     * Install, upgrade, and uninstall options for the helm chart such as atomic, wait, timeout, `wait_for_jobs`, and `disable_hooks`.
+     */
+    advancedConfiguration?: pulumi.Input<AkriConnectorTemplateHelmAdvancedConfigurationArgs>;
+    /**
+     * The registry settings for the helm chart to be used.
+     */
+    registrySettings?: pulumi.Input<AkriConnectorTemplateHelmContainerRegistryArgs | AkriConnectorTemplateHelmRegistryEndpointRefArgs>;
+    /**
+     * The release name of the Helm chart.
+     */
+    releaseName: pulumi.Input<string>;
+    /**
+     * The name of the repository
+     */
+    repositoryName: pulumi.Input<string>;
+    /**
+     * A map of values to pass to the helm chart.
+     */
+    values?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The version of the Helm chart.
+     */
+    version: pulumi.Input<string>;
+}
+
+/**
+ * AkriConnectorTemplateHelmContainerRegistry properties.
+ */
+export interface AkriConnectorTemplateHelmContainerRegistryArgs {
+    /**
+     * The registry settings for the container registry.
+     */
+    containerRegistrySettings: pulumi.Input<AkriConnectorTemplateHelmContainerRegistrySettingsArgs>;
+    /**
+     * AkriConnectorTemplateHelmRegistrySettingsType values.
+     * Expected value is 'ContainerRegistry'.
+     */
+    registrySettingsType: pulumi.Input<"ContainerRegistry">;
+}
+
+/**
+ * AkriConnectorTemplateHelmContainerRegistrySettings properties.
+ */
+export interface AkriConnectorTemplateHelmContainerRegistrySettingsArgs {
+    /**
+     * Optional reference to a secret in the same namespace to use for pulling the Helm chart.
+     */
+    authSecretRef?: pulumi.Input<AkriConnectorTemplateHelmAuthSecretRefArgs>;
+    /**
+     * The registry to use for the Helm chart.
+     */
+    registry: pulumi.Input<string>;
+}
+
+/**
+ * AkriConnectorTemplateHelmDeleteConfiguration properties.
+ */
+export interface AkriConnectorTemplateHelmDeleteConfigurationArgs {
+    /**
+     * If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+     */
+    atomic?: pulumi.Input<boolean>;
+    /**
+     * Disable pre/post upgrade hooks for the operation.
+     */
+    disableHooks?: pulumi.Input<boolean>;
+    /**
+     * Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+     */
+    timeout?: pulumi.Input<number>;
+    /**
+     * If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+     */
+    wait?: pulumi.Input<boolean>;
+    /**
+     * If set, the operation will wait for jobs to complete before marking the release as successful.
+     */
+    waitForJobs?: pulumi.Input<boolean>;
+}
+
+/**
+ * AkriConnectorTemplateHelmInstallConfiguration properties.
+ */
+export interface AkriConnectorTemplateHelmInstallConfigurationArgs {
+    /**
+     * If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+     */
+    atomic?: pulumi.Input<boolean>;
+    /**
+     * Disable pre/post upgrade hooks for the operation.
+     */
+    disableHooks?: pulumi.Input<boolean>;
+    /**
+     * Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+     */
+    timeout?: pulumi.Input<number>;
+    /**
+     * If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+     */
+    wait?: pulumi.Input<boolean>;
+    /**
+     * If set, the operation will wait for jobs to complete before marking the release as successful.
+     */
+    waitForJobs?: pulumi.Input<boolean>;
+}
+
+/**
+ * AkriConnectorTemplateHelmRegistryEndpointRef properties.
+ */
+export interface AkriConnectorTemplateHelmRegistryEndpointRefArgs {
+    /**
+     * The name of the registry endpoint.
+     */
+    registryEndpointRef: pulumi.Input<string>;
+    /**
+     * AkriConnectorTemplateHelmRegistrySettingsType values.
+     * Expected value is 'RegistryEndpointRef'.
+     */
+    registrySettingsType: pulumi.Input<"RegistryEndpointRef">;
+}
+
+/**
+ * AkriConnectorTemplateHelmUpgradeConfiguration properties.
+ */
+export interface AkriConnectorTemplateHelmUpgradeConfigurationArgs {
+    /**
+     * If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+     */
+    atomic?: pulumi.Input<boolean>;
+    /**
+     * Disable pre/post upgrade hooks for the operation.
+     */
+    disableHooks?: pulumi.Input<boolean>;
+    /**
+     * Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+     */
+    timeout?: pulumi.Input<number>;
+    /**
+     * If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+     */
+    wait?: pulumi.Input<boolean>;
+    /**
+     * If set, the operation will wait for jobs to complete before marking the release as successful.
+     */
+    waitForJobs?: pulumi.Input<boolean>;
+}
+
+/**
+ * AkriConnectorTemplateManagedConfiguration properties.
+ */
+export interface AkriConnectorTemplateManagedConfigurationArgs {
+    /**
+     * The managed configuration settings.
+     */
+    managedConfigurationSettings: pulumi.Input<AkriConnectorTemplateRuntimeImageConfigurationArgs | AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs>;
+    /**
+     * Runtime configuration types.
+     * Expected value is 'ManagedConfiguration'.
+     */
+    runtimeConfigurationType: pulumi.Input<"ManagedConfiguration">;
+}
+
+/**
+ * AkriConnectorTemplatePersistentVolumeClaim properties.
+ */
+export interface AkriConnectorTemplatePersistentVolumeClaimArgs {
+    /**
+     * The name of the persistent volume claim.
+     */
+    claimName: pulumi.Input<string>;
+    /**
+     * The mount path for the persistent volume claim.
+     */
+    mountPath: pulumi.Input<string>;
+}
+
+/**
+ * AkriConnectorTemplate properties.
+ */
+export interface AkriConnectorTemplatePropertiesArgs {
+    /**
+     * Metadata about AIO.
+     */
+    aioMetadata?: pulumi.Input<AkriConnectorTemplateAioMetadataArgs>;
+    /**
+     * Device inbound endpoint types.
+     */
+    deviceInboundEndpointTypes: pulumi.Input<pulumi.Input<AkriConnectorTemplateDeviceInboundEndpointTypeArgs>[]>;
+    /**
+     * Diagnostics settings for the Connector template.
+     */
+    diagnostics?: pulumi.Input<AkriConnectorTemplateDiagnosticsArgs>;
+    /**
+     * Mqtt connection configuration settings.
+     */
+    mqttConnectionConfiguration?: pulumi.Input<AkriConnectorsMqttConnectionConfigurationArgs>;
+    /**
+     * The runtime configuration for the Connector template.
+     */
+    runtimeConfiguration: pulumi.Input<AkriConnectorTemplateHelmConfigurationArgs | AkriConnectorTemplateManagedConfigurationArgs>;
+}
+/**
+ * akriConnectorTemplatePropertiesArgsProvideDefaults sets the appropriate defaults for AkriConnectorTemplatePropertiesArgs
+ */
+export function akriConnectorTemplatePropertiesArgsProvideDefaults(val: AkriConnectorTemplatePropertiesArgs): AkriConnectorTemplatePropertiesArgs {
+    return {
+        ...val,
+        diagnostics: (val.diagnostics ? pulumi.output(val.diagnostics).apply(akriConnectorTemplateDiagnosticsArgsProvideDefaults) : undefined),
+        mqttConnectionConfiguration: (val.mqttConnectionConfiguration ? pulumi.output(val.mqttConnectionConfiguration).apply(akriConnectorsMqttConnectionConfigurationArgsProvideDefaults) : undefined),
+    };
+}
+
+/**
+ * AkriConnectorTemplateRuntimeImageConfiguration properties.
+ */
+export interface AkriConnectorTemplateRuntimeImageConfigurationArgs {
+    /**
+     * Additional configuration for the image of the managed configuration.
+     */
+    additionalConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Allocation settings for the managed configuration.
+     */
+    allocation?: pulumi.Input<AkriConnectorTemplateBucketizedAllocationArgs>;
+    /**
+     * The image configuration settings.
+     */
+    imageConfigurationSettings: pulumi.Input<AkriConnectorTemplateRuntimeImageConfigurationSettingsArgs>;
+    /**
+     * Managed configuration types.
+     * Expected value is 'ImageConfiguration'.
+     */
+    managedConfigurationType: pulumi.Input<"ImageConfiguration">;
+    /**
+     * The persistent volume claim templates for the managed configuration.
+     * See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
+     */
+    persistentVolumeClaimTemplates?: pulumi.Input<any[]>;
+    /**
+     * The persistent volume claims for the managed configuration.
+     */
+    persistentVolumeClaims?: pulumi.Input<pulumi.Input<AkriConnectorTemplatePersistentVolumeClaimArgs>[]>;
+    /**
+     * Connector secrets that will be mounted onto all connector instances.
+     */
+    secrets?: pulumi.Input<pulumi.Input<AkriConnectorsSecretArgs>[]>;
+    /**
+     * Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
+     */
+    trustSettings?: pulumi.Input<AkriConnectorTemplateTrustListArgs>;
+}
+
+/**
+ * AkriConnectorTemplateRuntimeImageConfiguration properties.
+ */
+export interface AkriConnectorTemplateRuntimeImageConfigurationSettingsArgs {
+    /**
+     * The image name without any registry reference, tag or digest.
+     */
+    imageName: pulumi.Input<string>;
+    /**
+     * The pull policy of the image.
+     */
+    imagePullPolicy?: pulumi.Input<string | enums.AkriConnectorsImagePullPolicy>;
+    /**
+     * The registry settings for the image. You can omit this field if using the default docker hub repository or using a local image.
+     */
+    registrySettings?: pulumi.Input<AkriConnectorsContainerRegistryArgs | AkriConnectorsRegistryEndpointRefArgs>;
+    /**
+     * The number of replicas to be set up.
+     */
+    replicas?: pulumi.Input<number>;
+    /**
+     * Optional image tag or digest. If not specified, the default tag is `latest`.
+     */
+    tagDigestSettings?: pulumi.Input<AkriConnectorsDigestArgs | AkriConnectorsTagArgs>;
+}
+
+/**
+ * AkriConnectorTemplateRuntimeStatefulSetConfiguration properties.
+ */
+export interface AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs {
+    /**
+     * Additional configuration for the image of the managed configuration.
+     */
+    additionalConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Allocation settings for the managed configuration.
+     */
+    allocation?: pulumi.Input<AkriConnectorTemplateBucketizedAllocationArgs>;
+    /**
+     * Managed configuration types.
+     * Expected value is 'StatefulSetConfiguration'.
+     */
+    managedConfigurationType: pulumi.Input<"StatefulSetConfiguration">;
+    /**
+     * The persistent volume claim templates for the managed configuration.
+     * See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
+     */
+    persistentVolumeClaimTemplates?: pulumi.Input<any[]>;
+    /**
+     * The persistent volume claims for the managed configuration.
+     */
+    persistentVolumeClaims?: pulumi.Input<pulumi.Input<AkriConnectorTemplatePersistentVolumeClaimArgs>[]>;
+    /**
+     * Connector secrets that will be mounted onto all connector instances.
+     */
+    secrets?: pulumi.Input<pulumi.Input<AkriConnectorsSecretArgs>[]>;
+    /**
+     * The stateful set configuration settings. This corresponds to the Kubernetes StatefulSet resource.
+     * See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json#/components/schemas/io.k8s.api.apps.v1.StatefulSetSpec
+     */
+    statefulSetConfigurationSettings: any;
+    /**
+     * Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
+     */
+    trustSettings?: pulumi.Input<AkriConnectorTemplateTrustListArgs>;
+}
+
+/**
+ * AkriConnectorTemplateTrustList properties.
+ */
+export interface AkriConnectorTemplateTrustListArgs {
+    /**
+     * The secret reference for certificates to trust.
+     */
+    trustListSecretRef: pulumi.Input<string>;
+}
+
+/**
+ * AkriConnectorsContainerRegistry properties.
+ */
+export interface AkriConnectorsContainerRegistryArgs {
+    /**
+     * The registry settings for the container registry.
+     */
+    containerRegistrySettings: pulumi.Input<AkriConnectorsContainerRegistrySettingsArgs>;
+    /**
+     * AkriConnectorsRegistrySettings properties.
+     * Expected value is 'ContainerRegistry'.
+     */
+    registrySettingsType: pulumi.Input<"ContainerRegistry">;
+}
+
+/**
+ * AkriConnectorsContainerRegistry properties.
+ */
+export interface AkriConnectorsContainerRegistrySettingsArgs {
+    /**
+     * Optional list of references to secrets in the same namespace to use for pulling the connector image.
+     */
+    imagePullSecrets?: pulumi.Input<pulumi.Input<AkriConnectorsImagePullSecretArgs>[]>;
+    /**
+     * The container registry to use for the artifact.
+     */
+    registry: pulumi.Input<string>;
+}
+
+/**
+ * AkriConnectorsDiagnostic Log properties.
+ */
+export interface AkriConnectorsDiagnosticsLogsArgs {
+    /**
+     * The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
+     */
+    level?: pulumi.Input<string>;
+}
+/**
+ * akriConnectorsDiagnosticsLogsArgsProvideDefaults sets the appropriate defaults for AkriConnectorsDiagnosticsLogsArgs
+ */
+export function akriConnectorsDiagnosticsLogsArgsProvideDefaults(val: AkriConnectorsDiagnosticsLogsArgs): AkriConnectorsDiagnosticsLogsArgs {
+    return {
+        ...val,
+        level: (val.level) ?? "info",
+    };
+}
+
+/**
+ * AkriConnectorsDigest properties.
+ */
+export interface AkriConnectorsDigestArgs {
+    /**
+     * The digest of the image.
+     */
+    digest: pulumi.Input<string>;
+    /**
+     * AkriConnectorsTagDigestType values.
+     * Expected value is 'Digest'.
+     */
+    tagDigestType: pulumi.Input<"Digest">;
+}
+
+/**
+ * AkriConnectorsImagePullSecret properties.
+ */
+export interface AkriConnectorsImagePullSecretArgs {
+    /**
+     * The name of the image pull secret.
+     */
+    secretRef: pulumi.Input<string>;
+}
+
+/**
+ * AkriConnectorsMqttConnectionConfiguration properties.
+ */
+export interface AkriConnectorsMqttConnectionConfigurationArgs {
+    /**
+     * Authentication properties.
+     */
+    authentication?: pulumi.Input<AkriConnectorsServiceAccountAuthenticationArgs>;
+    /**
+     * Host of the Broker in the form of <hostname>:<port>.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * KeepAlive for connection in seconds.
+     */
+    keepAliveSeconds?: pulumi.Input<number>;
+    /**
+     * The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack.
+     */
+    maxInflightMessages?: pulumi.Input<number>;
+    /**
+     * The protocol to use for the connection. Currently only `mqtt` is supported.
+     */
+    protocol?: pulumi.Input<string | enums.AkriConnectorsMqttProtocolType>;
+    /**
+     * Session expiry in seconds.
+     */
+    sessionExpirySeconds?: pulumi.Input<number>;
+    /**
+     * TLS configuration.
+     */
+    tls?: pulumi.Input<TlsPropertiesArgs>;
+}
+/**
+ * akriConnectorsMqttConnectionConfigurationArgsProvideDefaults sets the appropriate defaults for AkriConnectorsMqttConnectionConfigurationArgs
+ */
+export function akriConnectorsMqttConnectionConfigurationArgsProvideDefaults(val: AkriConnectorsMqttConnectionConfigurationArgs): AkriConnectorsMqttConnectionConfigurationArgs {
+    return {
+        ...val,
+        tls: (val.tls ? pulumi.output(val.tls).apply(tlsPropertiesArgsProvideDefaults) : undefined),
+    };
+}
+
+/**
+ * AkriConnectorsRegistryEndpointRef properties.
+ */
+export interface AkriConnectorsRegistryEndpointRefArgs {
+    /**
+     * The name of the registry endpoint.
+     */
+    registryEndpointRef: pulumi.Input<string>;
+    /**
+     * AkriConnectorsRegistrySettings properties.
+     * Expected value is 'RegistryEndpointRef'.
+     */
+    registrySettingsType: pulumi.Input<"RegistryEndpointRef">;
+}
+
+/**
+ * AkriConnectorsSecret properties.
+ */
+export interface AkriConnectorsSecretArgs {
+    /**
+     * The application-defined alias for the secret.
+     */
+    secretAlias: pulumi.Input<string>;
+    /**
+     * The key in the secret to be mounted.
+     */
+    secretKey: pulumi.Input<string>;
+    /**
+     * The name of the secret to be mounted.
+     */
+    secretRef: pulumi.Input<string>;
+}
+
+/**
+ * AkriConnectorsServiceAccountAuthentication properties.
+ */
+export interface AkriConnectorsServiceAccountAuthenticationArgs {
+    /**
+     * AkriConnectorsMqttAuthenticationMethod properties.
+     * Expected value is 'ServiceAccountToken'.
+     */
+    method: pulumi.Input<"ServiceAccountToken">;
+    /**
+     * The service account token for the MQTT connection.
+     */
+    serviceAccountTokenSettings: pulumi.Input<AkriConnectorsServiceAccountTokenSettingsArgs>;
+}
+
+/**
+ * AkriConnectorsServiceAccountTokenSettings properties.
+ */
+export interface AkriConnectorsServiceAccountTokenSettingsArgs {
+    /**
+     * The audience for the service account token.
+     */
+    audience: pulumi.Input<string>;
+}
+
+/**
+ * AkriConnectorsTag properties.
+ */
+export interface AkriConnectorsTagArgs {
+    /**
+     * The tag of the image.
+     */
+    tag: pulumi.Input<string>;
+    /**
+     * AkriConnectorsTagDigestType values.
+     * Expected value is 'Tag'.
+     */
+    tagDigestType: pulumi.Input<"Tag">;
+}
+
+/**
  * Broker AuthorizationConfig properties
  */
 export interface AuthorizationConfigArgs {
@@ -1179,6 +1850,228 @@ export function dataflowEndpointPropertiesArgsProvideDefaults(val: DataflowEndpo
 }
 
 /**
+ * DataflowGraph DataflowGraphNode Connection Input.
+ */
+export interface DataflowGraphConnectionInputArgs {
+    /**
+     * Name of the input node.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Schema settings for the input node.
+     */
+    schema?: pulumi.Input<DataflowGraphConnectionSchemaSettingsArgs>;
+}
+
+/**
+ * DataflowGraph DataflowGraphNode Connection Output.
+ */
+export interface DataflowGraphConnectionOutputArgs {
+    /**
+     * Name of the destination node.
+     */
+    name: pulumi.Input<string>;
+}
+
+/**
+ * DataflowGraph connection node output schema settings.
+ */
+export interface DataflowGraphConnectionSchemaSettingsArgs {
+    /**
+     * Reference to the schema that describes the output of the transformation.
+     */
+    schemaRef?: pulumi.Input<string>;
+    /**
+     * Output serialization format.
+     */
+    serializationFormat?: pulumi.Input<string | enums.DataflowGraphConnectionSchemaSerializationFormat>;
+}
+
+/**
+ * DataflowGraph destination node properties.
+ */
+export interface DataflowGraphDestinationNodeArgs {
+    /**
+     * Destination configuration.
+     */
+    destinationSettings: pulumi.Input<DataflowGraphDestinationNodeSettingsArgs>;
+    /**
+     * Name of the node.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * DataflowGraph node types.
+     * Expected value is 'Destination'.
+     */
+    nodeType: pulumi.Input<"Destination">;
+}
+
+/**
+ * DataflowGraph destination node settings.
+ */
+export interface DataflowGraphDestinationNodeSettingsArgs {
+    /**
+     * Data destination at the endpoint.
+     */
+    dataDestination: pulumi.Input<string>;
+    /**
+     * The name of the DataflowEndpoint resource .
+     */
+    endpointRef: pulumi.Input<string>;
+    /**
+     * Output schema settings.
+     */
+    outputSchemaSettings?: pulumi.Input<DataflowGraphDestinationSchemaSettingsArgs>;
+}
+
+/**
+ * DataflowGraph destination node output schema settings.
+ */
+export interface DataflowGraphDestinationSchemaSettingsArgs {
+    /**
+     * Reference to the schema that describes the output of the transformation.
+     */
+    schemaRef?: pulumi.Input<string>;
+    /**
+     * The format of the output data.
+     */
+    serializationFormat: pulumi.Input<string | enums.DataflowGraphDestinationSchemaSerializationFormat>;
+}
+
+/**
+ * DataflowGraph graph node properties.
+ */
+export interface DataflowGraphGraphNodeArgs {
+    /**
+     * Graph configuration.
+     */
+    graphSettings: pulumi.Input<DataflowGraphNodeGraphSettingsArgs>;
+    /**
+     * Name of the node.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * DataflowGraph node types.
+     * Expected value is 'Graph'.
+     */
+    nodeType: pulumi.Input<"Graph">;
+}
+
+/**
+ * DataflowGraph graph node configuration.
+ */
+export interface DataflowGraphGraphNodeConfigurationArgs {
+    /**
+     * Key of the configuration.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Value of the configuration.
+     */
+    value: pulumi.Input<string>;
+}
+
+/**
+ * DataflowGraph DataflowGraphNode Connection.
+ */
+export interface DataflowGraphNodeConnectionArgs {
+    /**
+     * Information about the source node.
+     */
+    from: pulumi.Input<DataflowGraphConnectionInputArgs>;
+    /**
+     * Information about the destination node.
+     */
+    to: pulumi.Input<DataflowGraphConnectionOutputArgs>;
+}
+
+/**
+ * DataflowGraph graph node settings.
+ */
+export interface DataflowGraphNodeGraphSettingsArgs {
+    /**
+     * The artifact name and version to pull. This should be in the format `<artifact-name>:<version>`.
+     */
+    artifact: pulumi.Input<string>;
+    /**
+     * Configuration key-value pairs.
+     */
+    configuration?: pulumi.Input<pulumi.Input<DataflowGraphGraphNodeConfigurationArgs>[]>;
+    /**
+     * Reference to the registry endpoint for pulling the artifact.
+     */
+    registryEndpointRef: pulumi.Input<string>;
+}
+
+/**
+ * DataflowGraph properties.
+ */
+export interface DataflowGraphPropertiesArgs {
+    /**
+     * The mode of the dataflow graph.
+     */
+    mode?: pulumi.Input<string | enums.OperationalMode>;
+    /**
+     * List of connections between nodes in the dataflow graph.
+     */
+    nodeConnections: pulumi.Input<pulumi.Input<DataflowGraphNodeConnectionArgs>[]>;
+    /**
+     * List of nodes in the dataflow graph.
+     */
+    nodes: pulumi.Input<pulumi.Input<DataflowGraphDestinationNodeArgs | DataflowGraphGraphNodeArgs | DataflowGraphSourceNodeArgs>[]>;
+    /**
+     * Disk persistence mode.
+     */
+    requestDiskPersistence?: pulumi.Input<string | enums.OperationalMode>;
+}
+/**
+ * dataflowGraphPropertiesArgsProvideDefaults sets the appropriate defaults for DataflowGraphPropertiesArgs
+ */
+export function dataflowGraphPropertiesArgsProvideDefaults(val: DataflowGraphPropertiesArgs): DataflowGraphPropertiesArgs {
+    return {
+        ...val,
+        mode: (val.mode) ?? "Enabled",
+    };
+}
+
+/**
+ * DataflowGraph source node properties.
+ */
+export interface DataflowGraphSourceNodeArgs {
+    /**
+     * Name of the node.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * DataflowGraph node types.
+     * Expected value is 'Source'.
+     */
+    nodeType: pulumi.Input<"Source">;
+    /**
+     * Source configuration.
+     */
+    sourceSettings: pulumi.Input<DataflowGraphSourceSettingsArgs>;
+}
+
+/**
+ * DataflowGraph source node settings.
+ */
+export interface DataflowGraphSourceSettingsArgs {
+    /**
+     * Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
+     */
+    assetRef?: pulumi.Input<string>;
+    /**
+     * List of data sources.
+     */
+    dataSources: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The endpoint reference for the source.
+     */
+    endpointRef: pulumi.Input<string>;
+}
+
+/**
  * Dataflow Operation properties. NOTE - One only method is allowed to be used for one entry.
  */
 export interface DataflowOperationArgs {
@@ -1556,6 +2449,162 @@ export function profileDiagnosticsArgsProvideDefaults(val: ProfileDiagnosticsArg
         logs: (val.logs ? pulumi.output(val.logs).apply(diagnosticsLogsArgsProvideDefaults) : undefined),
         metrics: (val.metrics ? pulumi.output(val.metrics).apply(metricsArgsProvideDefaults) : undefined),
     };
+}
+
+/**
+ * Anonymous authentication
+ */
+export interface RegistryEndpointAnonymousAuthenticationArgs {
+    /**
+     * Anonymous authentication properties
+     */
+    anonymousSettings: any;
+    /**
+     * The authentication method.
+     * Expected value is 'Anonymous'.
+     */
+    method: pulumi.Input<"Anonymous">;
+}
+
+/**
+ * Artifact Pull Secret authentication
+ */
+export interface RegistryEndpointArtifactPullSecretAuthenticationArgs {
+    /**
+     * Artifact Pull Secret authentication properties
+     */
+    artifactPullSecretSettings: pulumi.Input<RegistryEndpointArtifactPullSecretSettingsArgs>;
+    /**
+     * The authentication method.
+     * Expected value is 'ArtifactPullSecret'.
+     */
+    method: pulumi.Input<"ArtifactPullSecret">;
+}
+
+/**
+ * RegistryEndpoint Artifact Pull Secret authentication properties
+ */
+export interface RegistryEndpointArtifactPullSecretSettingsArgs {
+    /**
+     * The name of the kubernetes secret that contains the artifact pull secret.
+     */
+    secretRef: pulumi.Input<string>;
+}
+
+/**
+ * RegistryEndpoint properties
+ */
+export interface RegistryEndpointPropertiesArgs {
+    /**
+     * The authentication settings for the Azure Container Registry.
+     */
+    authentication: pulumi.Input<RegistryEndpointAnonymousAuthenticationArgs | RegistryEndpointArtifactPullSecretAuthenticationArgs | RegistryEndpointSystemAssignedIdentityAuthenticationArgs | RegistryEndpointUserAssignedIdentityAuthenticationArgs>;
+    /**
+     * The Container Registry endpoint hostname.
+     */
+    host: pulumi.Input<string>;
+    /**
+     * Trust settings for the registry endpoint
+     */
+    trustSettings?: pulumi.Input<RegistryEndpointTrustedSettingsArgs>;
+}
+
+/**
+ * System assigned identity authentication
+ */
+export interface RegistryEndpointSystemAssignedIdentityAuthenticationArgs {
+    /**
+     * The authentication method.
+     * Expected value is 'SystemAssignedManagedIdentity'.
+     */
+    method: pulumi.Input<"SystemAssignedManagedIdentity">;
+    /**
+     * System assigned managed identity properties
+     */
+    systemAssignedManagedIdentitySettings: pulumi.Input<RegistryEndpointSystemAssignedManagedIdentitySettingsArgs>;
+}
+
+/**
+ * System assigned managed identity properties
+ */
+export interface RegistryEndpointSystemAssignedManagedIdentitySettingsArgs {
+    /**
+     * Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
+     */
+    audience?: pulumi.Input<string>;
+}
+
+/**
+ * RegistryEndpointTrustedSettings properties
+ */
+export interface RegistryEndpointTrustedSettingsArgs {
+    /**
+     * The trust properties for the registry endpoint.
+     */
+    trustedSigningKeys: pulumi.Input<RegistryEndpointTrustedSigningKeyConfigMapArgs | RegistryEndpointTrustedSigningKeySecretArgs>;
+}
+
+/**
+ * Settings for RegistryEndpoint trust provided through a configmap.
+ */
+export interface RegistryEndpointTrustedSigningKeyConfigMapArgs {
+    /**
+     * The name of the configmap.
+     */
+    configMapRef: pulumi.Input<string>;
+    /**
+     * RegistryEndpointTrustedSigningKeyType values
+     * Expected value is 'ConfigMap'.
+     */
+    type: pulumi.Input<"ConfigMap">;
+}
+
+/**
+ * Settings for RegistryEndpoint trust provided through a secret.
+ */
+export interface RegistryEndpointTrustedSigningKeySecretArgs {
+    /**
+     * The name of the secret.
+     */
+    secretRef: pulumi.Input<string>;
+    /**
+     * RegistryEndpointTrustedSigningKeyType values
+     * Expected value is 'Secret'.
+     */
+    type: pulumi.Input<"Secret">;
+}
+
+/**
+ * User assigned identity authentication
+ */
+export interface RegistryEndpointUserAssignedIdentityAuthenticationArgs {
+    /**
+     * The authentication method.
+     * Expected value is 'UserAssignedManagedIdentity'.
+     */
+    method: pulumi.Input<"UserAssignedManagedIdentity">;
+    /**
+     * User assigned managed identity properties
+     */
+    userAssignedManagedIdentitySettings: pulumi.Input<RegistryEndpointUserAssignedManagedIdentitySettingsArgs>;
+}
+
+/**
+ * User assigned managed identity properties
+ */
+export interface RegistryEndpointUserAssignedManagedIdentitySettingsArgs {
+    /**
+     * Client ID for the user-assigned managed identity.
+     */
+    clientId: pulumi.Input<string>;
+    /**
+     * Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+     */
+    scope?: pulumi.Input<string>;
+    /**
+     * Tenant ID.
+     */
+    tenantId: pulumi.Input<string>;
 }
 
 /**

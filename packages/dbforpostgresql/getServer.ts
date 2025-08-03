@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Gets information about a server.
+ * Gets information about an existing flexible server.
  *
  * Uses Azure REST API version 2024-08-01.
  *
@@ -28,19 +28,19 @@ export interface GetServerArgs {
 }
 
 /**
- * Represents a server.
+ * Flexible server.
  */
 export interface GetServerResult {
     /**
-     * The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
+     * Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted.
      */
     readonly administratorLogin?: string;
     /**
-     * AuthConfig properties of a server.
+     * Authentication configuration properties of a flexible server.
      */
     readonly authConfig?: types.outputs.AuthConfigResponse;
     /**
-     * availability zone information of the server.
+     * Availability zone of a flexible server.
      */
     readonly availabilityZone?: string;
     /**
@@ -48,19 +48,19 @@ export interface GetServerResult {
      */
     readonly azureApiVersion: string;
     /**
-     * Backup properties of a server.
+     * Backup properties of a flexible server.
      */
     readonly backup?: types.outputs.BackupResponse;
     /**
-     * Data encryption properties of a server.
+     * Data encryption properties of a flexible server.
      */
     readonly dataEncryption?: types.outputs.DataEncryptionResponse;
     /**
-     * The fully qualified domain name of a server.
+     * Fully qualified domain name of a flexible server.
      */
     readonly fullyQualifiedDomainName: string;
     /**
-     * High availability properties of a server.
+     * High availability properties of a flexible server.
      */
     readonly highAvailability?: types.outputs.HighAvailabilityResponse;
     /**
@@ -68,7 +68,7 @@ export interface GetServerResult {
      */
     readonly id: string;
     /**
-     * Describes the identity of the application.
+     * User assigned managed identities assigned to the flexible server.
      */
     readonly identity?: types.outputs.UserAssignedIdentityResponse;
     /**
@@ -76,11 +76,11 @@ export interface GetServerResult {
      */
     readonly location: string;
     /**
-     * Maintenance window properties of a server.
+     * Maintenance window properties of a flexible server.
      */
     readonly maintenanceWindow?: types.outputs.MaintenanceWindowResponse;
     /**
-     * The minor version of the server.
+     * Minor version of PostgreSQL database engine.
      */
     readonly minorVersion: string;
     /**
@@ -88,39 +88,39 @@ export interface GetServerResult {
      */
     readonly name: string;
     /**
-     * Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
+     * Network properties of a flexible server. Only required if you want your server to be integrated into a virtual network provided by customer.
      */
     readonly network?: types.outputs.NetworkResponse;
     /**
-     * List of private endpoint connections associated with the specified resource.
+     * List of private endpoint connections associated with the specified flexible server.
      */
     readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
-     * Replica properties of a server. These Replica properties are required to be passed only in case you want to Promote a server.
+     * Read replica properties of a flexible server. Required only in case that you want to promote a server.
      */
     readonly replica?: types.outputs.ReplicaResponse;
     /**
-     * Replicas allowed for a server.
+     * Maximum number of read replicas allowed for a flexible server.
      */
     readonly replicaCapacity: number;
     /**
-     * Replication role of the server
+     * Role of the server in a replication set.
      */
     readonly replicationRole?: string;
     /**
-     * The SKU (pricing tier) of the server.
+     * Compute tier and size of a flexible server.
      */
     readonly sku?: types.outputs.SkuResponse;
     /**
-     * The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica' or 'ReviveDropped'. This property is returned only for Replica server
+     * Identifier of the flexible server to be used as the source of the new flexible server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target flexible server is a read replica.
      */
     readonly sourceServerResourceId?: string;
     /**
-     * A state of a server that is visible to user.
+     * Possible states of a flexible server.
      */
     readonly state: string;
     /**
-     * Storage properties of a server.
+     * Storage properties of a flexible server.
      */
     readonly storage?: types.outputs.StorageResponse;
     /**
@@ -136,12 +136,12 @@ export interface GetServerResult {
      */
     readonly type: string;
     /**
-     * PostgreSQL Server version.
+     * Major version of PostgreSQL database engine.
      */
     readonly version?: string;
 }
 /**
- * Gets information about a server.
+ * Gets information about an existing flexible server.
  *
  * Uses Azure REST API version 2024-08-01.
  *

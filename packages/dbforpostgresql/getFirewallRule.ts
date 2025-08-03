@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * List all the firewall rules in a given server.
+ * Gets information about a firewall rule in a flexible server.
  *
  * Uses Azure REST API version 2024-08-01.
  *
@@ -19,7 +19,7 @@ export function getFirewallRule(args: GetFirewallRuleArgs, opts?: pulumi.InvokeO
 
 export interface GetFirewallRuleArgs {
     /**
-     * The name of the server firewall rule.
+     * Name of the firewall rule.
      */
     firewallRuleName: string;
     /**
@@ -33,7 +33,7 @@ export interface GetFirewallRuleArgs {
 }
 
 /**
- * Represents a server firewall rule.
+ * Firewall rule.
  */
 export interface GetFirewallRuleResult {
     /**
@@ -41,7 +41,7 @@ export interface GetFirewallRuleResult {
      */
     readonly azureApiVersion: string;
     /**
-     * The end IP address of the server firewall rule. Must be IPv4 format.
+     * IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
      */
     readonly endIpAddress: string;
     /**
@@ -53,7 +53,7 @@ export interface GetFirewallRuleResult {
      */
     readonly name: string;
     /**
-     * The start IP address of the server firewall rule. Must be IPv4 format.
+     * IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
      */
     readonly startIpAddress: string;
     /**
@@ -66,7 +66,7 @@ export interface GetFirewallRuleResult {
     readonly type: string;
 }
 /**
- * List all the firewall rules in a given server.
+ * Gets information about a firewall rule in a flexible server.
  *
  * Uses Azure REST API version 2024-08-01.
  *
@@ -83,7 +83,7 @@ export function getFirewallRuleOutput(args: GetFirewallRuleOutputArgs, opts?: pu
 
 export interface GetFirewallRuleOutputArgs {
     /**
-     * The name of the server firewall rule.
+     * Name of the firewall rule.
      */
     firewallRuleName: pulumi.Input<string>;
     /**

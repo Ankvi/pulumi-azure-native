@@ -38,11 +38,11 @@ export interface GetDnssecConfigResult {
      */
     readonly etag?: string;
     /**
-     * The ID of the DNSSEC configuration.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
-     * The name of the DNSSEC configuration.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -54,11 +54,11 @@ export interface GetDnssecConfigResult {
      */
     readonly signingKeys: types.outputs.SigningKeyResponse[];
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
-     * The type of the DNSSEC configuration.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }

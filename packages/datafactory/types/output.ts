@@ -331,6 +331,14 @@ export interface AmazonRdsForOracleSourceResponse {
      */
     maxConcurrentConnections?: any;
     /**
+     * The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+     */
+    numberPrecision?: any;
+    /**
+     * The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+     */
+    numberScale?: any;
+    /**
      * AmazonRdsForOracle reader query. Type: string (or Expression with resultType string).
      */
     oracleReaderQuery?: any;
@@ -7583,6 +7591,57 @@ export interface DataMapperMappingResponse {
 }
 
 /**
+ * Databricks Job activity.
+ */
+export interface DatabricksJobActivityResponse {
+    /**
+     * Activity depends on condition.
+     */
+    dependsOn?: ActivityDependencyResponse[];
+    /**
+     * Activity description.
+     */
+    description?: string;
+    /**
+     * The Id of the Databricks Job to be executed. Type: string (or Expression with resultType string).
+     */
+    jobId: any;
+    /**
+     * Job parameters to be used for each run of this job. If the job takes a parameter that is not specified, the default value from the job will be used.
+     */
+    jobParameters?: {[key: string]: any};
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName?: LinkedServiceReferenceResponse;
+    /**
+     * Activity name.
+     */
+    name: string;
+    /**
+     * Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+     */
+    onInactiveMarkAs?: string;
+    /**
+     * Activity policy.
+     */
+    policy?: ActivityPolicyResponse;
+    /**
+     * Activity state. This is an optional property and if not provided, the state will be Active by default.
+     */
+    state?: string;
+    /**
+     * Type of activity.
+     * Expected value is 'DatabricksJob'.
+     */
+    type: "DatabricksJob";
+    /**
+     * Activity user properties.
+     */
+    userProperties?: UserPropertyResponse[];
+}
+
+/**
  * DatabricksNotebook activity.
  */
 export interface DatabricksNotebookActivityResponse {
@@ -9812,9 +9871,9 @@ export interface ExpressionV2Response {
      */
     type?: string;
     /**
-     * Value for Constant/Field Type: string.
+     * Value for Constant/Field Type: object.
      */
-    value?: string;
+    value?: any;
 }
 
 /**
@@ -10358,7 +10417,7 @@ export interface ForEachActivityResponse {
     /**
      * List of activities to execute .
      */
-    activities: (AppendVariableActivityResponse | AzureDataExplorerCommandActivityResponse | AzureFunctionActivityResponse | AzureMLBatchExecutionActivityResponse | AzureMLExecutePipelineActivityResponse | AzureMLUpdateResourceActivityResponse | ControlActivityResponse | CopyActivityResponse | CustomActivityResponse | DataLakeAnalyticsUSQLActivityResponse | DatabricksNotebookActivityResponse | DatabricksSparkJarActivityResponse | DatabricksSparkPythonActivityResponse | DeleteActivityResponse | ExecuteDataFlowActivityResponse | ExecutePipelineActivityResponse | ExecuteSSISPackageActivityResponse | ExecuteWranglingDataflowActivityResponse | ExecutionActivityResponse | FailActivityResponse | FilterActivityResponse | ForEachActivityResponse | GetMetadataActivityResponse | HDInsightHiveActivityResponse | HDInsightMapReduceActivityResponse | HDInsightPigActivityResponse | HDInsightSparkActivityResponse | HDInsightStreamingActivityResponse | IfConditionActivityResponse | LookupActivityResponse | ScriptActivityResponse | SetVariableActivityResponse | SqlServerStoredProcedureActivityResponse | SwitchActivityResponse | SynapseNotebookActivityResponse | SynapseSparkJobDefinitionActivityResponse | UntilActivityResponse | ValidationActivityResponse | WaitActivityResponse | WebActivityResponse | WebHookActivityResponse)[];
+    activities: (AppendVariableActivityResponse | AzureDataExplorerCommandActivityResponse | AzureFunctionActivityResponse | AzureMLBatchExecutionActivityResponse | AzureMLExecutePipelineActivityResponse | AzureMLUpdateResourceActivityResponse | ControlActivityResponse | CopyActivityResponse | CustomActivityResponse | DataLakeAnalyticsUSQLActivityResponse | DatabricksJobActivityResponse | DatabricksNotebookActivityResponse | DatabricksSparkJarActivityResponse | DatabricksSparkPythonActivityResponse | DeleteActivityResponse | ExecuteDataFlowActivityResponse | ExecutePipelineActivityResponse | ExecuteSSISPackageActivityResponse | ExecuteWranglingDataflowActivityResponse | ExecutionActivityResponse | FailActivityResponse | FilterActivityResponse | ForEachActivityResponse | GetMetadataActivityResponse | HDInsightHiveActivityResponse | HDInsightMapReduceActivityResponse | HDInsightPigActivityResponse | HDInsightSparkActivityResponse | HDInsightStreamingActivityResponse | IfConditionActivityResponse | LookupActivityResponse | ScriptActivityResponse | SetVariableActivityResponse | SqlServerStoredProcedureActivityResponse | SwitchActivityResponse | SynapseNotebookActivityResponse | SynapseSparkJobDefinitionActivityResponse | UntilActivityResponse | ValidationActivityResponse | WaitActivityResponse | WebActivityResponse | WebHookActivityResponse)[];
     /**
      * Batch count to be used for controlling the number of parallel execution (when isSequential is set to false).
      */
@@ -13055,11 +13114,11 @@ export interface IfConditionActivityResponse {
     /**
      * List of activities to execute if expression is evaluated to false. This is an optional property and if not provided, the activity will exit without any action.
      */
-    ifFalseActivities?: (AppendVariableActivityResponse | AzureDataExplorerCommandActivityResponse | AzureFunctionActivityResponse | AzureMLBatchExecutionActivityResponse | AzureMLExecutePipelineActivityResponse | AzureMLUpdateResourceActivityResponse | ControlActivityResponse | CopyActivityResponse | CustomActivityResponse | DataLakeAnalyticsUSQLActivityResponse | DatabricksNotebookActivityResponse | DatabricksSparkJarActivityResponse | DatabricksSparkPythonActivityResponse | DeleteActivityResponse | ExecuteDataFlowActivityResponse | ExecutePipelineActivityResponse | ExecuteSSISPackageActivityResponse | ExecuteWranglingDataflowActivityResponse | ExecutionActivityResponse | FailActivityResponse | FilterActivityResponse | ForEachActivityResponse | GetMetadataActivityResponse | HDInsightHiveActivityResponse | HDInsightMapReduceActivityResponse | HDInsightPigActivityResponse | HDInsightSparkActivityResponse | HDInsightStreamingActivityResponse | IfConditionActivityResponse | LookupActivityResponse | ScriptActivityResponse | SetVariableActivityResponse | SqlServerStoredProcedureActivityResponse | SwitchActivityResponse | SynapseNotebookActivityResponse | SynapseSparkJobDefinitionActivityResponse | UntilActivityResponse | ValidationActivityResponse | WaitActivityResponse | WebActivityResponse | WebHookActivityResponse)[];
+    ifFalseActivities?: (AppendVariableActivityResponse | AzureDataExplorerCommandActivityResponse | AzureFunctionActivityResponse | AzureMLBatchExecutionActivityResponse | AzureMLExecutePipelineActivityResponse | AzureMLUpdateResourceActivityResponse | ControlActivityResponse | CopyActivityResponse | CustomActivityResponse | DataLakeAnalyticsUSQLActivityResponse | DatabricksJobActivityResponse | DatabricksNotebookActivityResponse | DatabricksSparkJarActivityResponse | DatabricksSparkPythonActivityResponse | DeleteActivityResponse | ExecuteDataFlowActivityResponse | ExecutePipelineActivityResponse | ExecuteSSISPackageActivityResponse | ExecuteWranglingDataflowActivityResponse | ExecutionActivityResponse | FailActivityResponse | FilterActivityResponse | ForEachActivityResponse | GetMetadataActivityResponse | HDInsightHiveActivityResponse | HDInsightMapReduceActivityResponse | HDInsightPigActivityResponse | HDInsightSparkActivityResponse | HDInsightStreamingActivityResponse | IfConditionActivityResponse | LookupActivityResponse | ScriptActivityResponse | SetVariableActivityResponse | SqlServerStoredProcedureActivityResponse | SwitchActivityResponse | SynapseNotebookActivityResponse | SynapseSparkJobDefinitionActivityResponse | UntilActivityResponse | ValidationActivityResponse | WaitActivityResponse | WebActivityResponse | WebHookActivityResponse)[];
     /**
      * List of activities to execute if expression is evaluated to true. This is an optional property and if not provided, the activity will exit without any action.
      */
-    ifTrueActivities?: (AppendVariableActivityResponse | AzureDataExplorerCommandActivityResponse | AzureFunctionActivityResponse | AzureMLBatchExecutionActivityResponse | AzureMLExecutePipelineActivityResponse | AzureMLUpdateResourceActivityResponse | ControlActivityResponse | CopyActivityResponse | CustomActivityResponse | DataLakeAnalyticsUSQLActivityResponse | DatabricksNotebookActivityResponse | DatabricksSparkJarActivityResponse | DatabricksSparkPythonActivityResponse | DeleteActivityResponse | ExecuteDataFlowActivityResponse | ExecutePipelineActivityResponse | ExecuteSSISPackageActivityResponse | ExecuteWranglingDataflowActivityResponse | ExecutionActivityResponse | FailActivityResponse | FilterActivityResponse | ForEachActivityResponse | GetMetadataActivityResponse | HDInsightHiveActivityResponse | HDInsightMapReduceActivityResponse | HDInsightPigActivityResponse | HDInsightSparkActivityResponse | HDInsightStreamingActivityResponse | IfConditionActivityResponse | LookupActivityResponse | ScriptActivityResponse | SetVariableActivityResponse | SqlServerStoredProcedureActivityResponse | SwitchActivityResponse | SynapseNotebookActivityResponse | SynapseSparkJobDefinitionActivityResponse | UntilActivityResponse | ValidationActivityResponse | WaitActivityResponse | WebActivityResponse | WebHookActivityResponse)[];
+    ifTrueActivities?: (AppendVariableActivityResponse | AzureDataExplorerCommandActivityResponse | AzureFunctionActivityResponse | AzureMLBatchExecutionActivityResponse | AzureMLExecutePipelineActivityResponse | AzureMLUpdateResourceActivityResponse | ControlActivityResponse | CopyActivityResponse | CustomActivityResponse | DataLakeAnalyticsUSQLActivityResponse | DatabricksJobActivityResponse | DatabricksNotebookActivityResponse | DatabricksSparkJarActivityResponse | DatabricksSparkPythonActivityResponse | DeleteActivityResponse | ExecuteDataFlowActivityResponse | ExecutePipelineActivityResponse | ExecuteSSISPackageActivityResponse | ExecuteWranglingDataflowActivityResponse | ExecutionActivityResponse | FailActivityResponse | FilterActivityResponse | ForEachActivityResponse | GetMetadataActivityResponse | HDInsightHiveActivityResponse | HDInsightMapReduceActivityResponse | HDInsightPigActivityResponse | HDInsightSparkActivityResponse | HDInsightStreamingActivityResponse | IfConditionActivityResponse | LookupActivityResponse | ScriptActivityResponse | SetVariableActivityResponse | SqlServerStoredProcedureActivityResponse | SwitchActivityResponse | SynapseNotebookActivityResponse | SynapseSparkJobDefinitionActivityResponse | UntilActivityResponse | ValidationActivityResponse | WaitActivityResponse | WebActivityResponse | WebHookActivityResponse)[];
     /**
      * Activity name.
      */
@@ -17396,6 +17455,14 @@ export interface OracleSourceResponse {
      */
     maxConcurrentConnections?: any;
     /**
+     * The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+     */
+    numberPrecision?: any;
+    /**
+     * The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+     */
+    numberScale?: any;
+    /**
      * Oracle reader query. Type: string (or Expression with resultType string).
      */
     oracleReaderQuery?: any;
@@ -18854,15 +18921,15 @@ export interface PurviewConfigurationResponse {
 }
 
 /**
- * QuickBooks server linked service.
+ * QuickBooks server linked service. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
  */
 export interface QuickBooksLinkedServiceResponse {
     /**
-     * The access token for OAuth 1.0 authentication.
+     * The access token for OAuth 2.0 authentication.
      */
     accessToken?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
     /**
-     * The access token secret for OAuth 1.0 authentication.
+     * The access token secret is deprecated for OAuth 1.0 authentication. Only used for version 1.0.
      */
     accessTokenSecret?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
     /**
@@ -18882,11 +18949,11 @@ export interface QuickBooksLinkedServiceResponse {
      */
     connectionProperties?: any;
     /**
-     * The consumer key for OAuth 1.0 authentication.
+     * The consumer key for OAuth 2.0 authentication.
      */
     consumerKey?: any;
     /**
-     * The consumer secret for OAuth 1.0 authentication.
+     * The consumer secret for OAuth 2.0 authentication.
      */
     consumerSecret?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
     /**
@@ -18906,12 +18973,16 @@ export interface QuickBooksLinkedServiceResponse {
      */
     parameters?: {[key: string]: ParameterSpecificationResponse};
     /**
+     * The refresh token for OAuth 2.0 authentication.
+     */
+    refreshToken?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
      * Type of linked service.
      * Expected value is 'QuickBooks'.
      */
     type: "QuickBooks";
     /**
-     * Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
+     * Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true. Only used for version 1.0.
      */
     useEncryptedEndpoints?: any;
     /**
@@ -25175,7 +25246,7 @@ export interface SwitchActivityResponse {
     /**
      * List of activities to execute if no case condition is satisfied. This is an optional property and if not provided, the activity will exit without any action.
      */
-    defaultActivities?: (AppendVariableActivityResponse | AzureDataExplorerCommandActivityResponse | AzureFunctionActivityResponse | AzureMLBatchExecutionActivityResponse | AzureMLExecutePipelineActivityResponse | AzureMLUpdateResourceActivityResponse | ControlActivityResponse | CopyActivityResponse | CustomActivityResponse | DataLakeAnalyticsUSQLActivityResponse | DatabricksNotebookActivityResponse | DatabricksSparkJarActivityResponse | DatabricksSparkPythonActivityResponse | DeleteActivityResponse | ExecuteDataFlowActivityResponse | ExecutePipelineActivityResponse | ExecuteSSISPackageActivityResponse | ExecuteWranglingDataflowActivityResponse | ExecutionActivityResponse | FailActivityResponse | FilterActivityResponse | ForEachActivityResponse | GetMetadataActivityResponse | HDInsightHiveActivityResponse | HDInsightMapReduceActivityResponse | HDInsightPigActivityResponse | HDInsightSparkActivityResponse | HDInsightStreamingActivityResponse | IfConditionActivityResponse | LookupActivityResponse | ScriptActivityResponse | SetVariableActivityResponse | SqlServerStoredProcedureActivityResponse | SwitchActivityResponse | SynapseNotebookActivityResponse | SynapseSparkJobDefinitionActivityResponse | UntilActivityResponse | ValidationActivityResponse | WaitActivityResponse | WebActivityResponse | WebHookActivityResponse)[];
+    defaultActivities?: (AppendVariableActivityResponse | AzureDataExplorerCommandActivityResponse | AzureFunctionActivityResponse | AzureMLBatchExecutionActivityResponse | AzureMLExecutePipelineActivityResponse | AzureMLUpdateResourceActivityResponse | ControlActivityResponse | CopyActivityResponse | CustomActivityResponse | DataLakeAnalyticsUSQLActivityResponse | DatabricksJobActivityResponse | DatabricksNotebookActivityResponse | DatabricksSparkJarActivityResponse | DatabricksSparkPythonActivityResponse | DeleteActivityResponse | ExecuteDataFlowActivityResponse | ExecutePipelineActivityResponse | ExecuteSSISPackageActivityResponse | ExecuteWranglingDataflowActivityResponse | ExecutionActivityResponse | FailActivityResponse | FilterActivityResponse | ForEachActivityResponse | GetMetadataActivityResponse | HDInsightHiveActivityResponse | HDInsightMapReduceActivityResponse | HDInsightPigActivityResponse | HDInsightSparkActivityResponse | HDInsightStreamingActivityResponse | IfConditionActivityResponse | LookupActivityResponse | ScriptActivityResponse | SetVariableActivityResponse | SqlServerStoredProcedureActivityResponse | SwitchActivityResponse | SynapseNotebookActivityResponse | SynapseSparkJobDefinitionActivityResponse | UntilActivityResponse | ValidationActivityResponse | WaitActivityResponse | WebActivityResponse | WebHookActivityResponse)[];
     /**
      * Activity depends on condition.
      */
@@ -25218,7 +25289,7 @@ export interface SwitchCaseResponse {
     /**
      * List of activities to execute for satisfied case condition.
      */
-    activities?: (AppendVariableActivityResponse | AzureDataExplorerCommandActivityResponse | AzureFunctionActivityResponse | AzureMLBatchExecutionActivityResponse | AzureMLExecutePipelineActivityResponse | AzureMLUpdateResourceActivityResponse | ControlActivityResponse | CopyActivityResponse | CustomActivityResponse | DataLakeAnalyticsUSQLActivityResponse | DatabricksNotebookActivityResponse | DatabricksSparkJarActivityResponse | DatabricksSparkPythonActivityResponse | DeleteActivityResponse | ExecuteDataFlowActivityResponse | ExecutePipelineActivityResponse | ExecuteSSISPackageActivityResponse | ExecuteWranglingDataflowActivityResponse | ExecutionActivityResponse | FailActivityResponse | FilterActivityResponse | ForEachActivityResponse | GetMetadataActivityResponse | HDInsightHiveActivityResponse | HDInsightMapReduceActivityResponse | HDInsightPigActivityResponse | HDInsightSparkActivityResponse | HDInsightStreamingActivityResponse | IfConditionActivityResponse | LookupActivityResponse | ScriptActivityResponse | SetVariableActivityResponse | SqlServerStoredProcedureActivityResponse | SwitchActivityResponse | SynapseNotebookActivityResponse | SynapseSparkJobDefinitionActivityResponse | UntilActivityResponse | ValidationActivityResponse | WaitActivityResponse | WebActivityResponse | WebHookActivityResponse)[];
+    activities?: (AppendVariableActivityResponse | AzureDataExplorerCommandActivityResponse | AzureFunctionActivityResponse | AzureMLBatchExecutionActivityResponse | AzureMLExecutePipelineActivityResponse | AzureMLUpdateResourceActivityResponse | ControlActivityResponse | CopyActivityResponse | CustomActivityResponse | DataLakeAnalyticsUSQLActivityResponse | DatabricksJobActivityResponse | DatabricksNotebookActivityResponse | DatabricksSparkJarActivityResponse | DatabricksSparkPythonActivityResponse | DeleteActivityResponse | ExecuteDataFlowActivityResponse | ExecutePipelineActivityResponse | ExecuteSSISPackageActivityResponse | ExecuteWranglingDataflowActivityResponse | ExecutionActivityResponse | FailActivityResponse | FilterActivityResponse | ForEachActivityResponse | GetMetadataActivityResponse | HDInsightHiveActivityResponse | HDInsightMapReduceActivityResponse | HDInsightPigActivityResponse | HDInsightSparkActivityResponse | HDInsightStreamingActivityResponse | IfConditionActivityResponse | LookupActivityResponse | ScriptActivityResponse | SetVariableActivityResponse | SqlServerStoredProcedureActivityResponse | SwitchActivityResponse | SynapseNotebookActivityResponse | SynapseSparkJobDefinitionActivityResponse | UntilActivityResponse | ValidationActivityResponse | WaitActivityResponse | WebActivityResponse | WebHookActivityResponse)[];
     /**
      * Expected value that satisfies the expression result of the 'on' property.
      */
@@ -26201,7 +26272,7 @@ export interface UntilActivityResponse {
     /**
      * List of activities to execute.
      */
-    activities: (AppendVariableActivityResponse | AzureDataExplorerCommandActivityResponse | AzureFunctionActivityResponse | AzureMLBatchExecutionActivityResponse | AzureMLExecutePipelineActivityResponse | AzureMLUpdateResourceActivityResponse | ControlActivityResponse | CopyActivityResponse | CustomActivityResponse | DataLakeAnalyticsUSQLActivityResponse | DatabricksNotebookActivityResponse | DatabricksSparkJarActivityResponse | DatabricksSparkPythonActivityResponse | DeleteActivityResponse | ExecuteDataFlowActivityResponse | ExecutePipelineActivityResponse | ExecuteSSISPackageActivityResponse | ExecuteWranglingDataflowActivityResponse | ExecutionActivityResponse | FailActivityResponse | FilterActivityResponse | ForEachActivityResponse | GetMetadataActivityResponse | HDInsightHiveActivityResponse | HDInsightMapReduceActivityResponse | HDInsightPigActivityResponse | HDInsightSparkActivityResponse | HDInsightStreamingActivityResponse | IfConditionActivityResponse | LookupActivityResponse | ScriptActivityResponse | SetVariableActivityResponse | SqlServerStoredProcedureActivityResponse | SwitchActivityResponse | SynapseNotebookActivityResponse | SynapseSparkJobDefinitionActivityResponse | UntilActivityResponse | ValidationActivityResponse | WaitActivityResponse | WebActivityResponse | WebHookActivityResponse)[];
+    activities: (AppendVariableActivityResponse | AzureDataExplorerCommandActivityResponse | AzureFunctionActivityResponse | AzureMLBatchExecutionActivityResponse | AzureMLExecutePipelineActivityResponse | AzureMLUpdateResourceActivityResponse | ControlActivityResponse | CopyActivityResponse | CustomActivityResponse | DataLakeAnalyticsUSQLActivityResponse | DatabricksJobActivityResponse | DatabricksNotebookActivityResponse | DatabricksSparkJarActivityResponse | DatabricksSparkPythonActivityResponse | DeleteActivityResponse | ExecuteDataFlowActivityResponse | ExecutePipelineActivityResponse | ExecuteSSISPackageActivityResponse | ExecuteWranglingDataflowActivityResponse | ExecutionActivityResponse | FailActivityResponse | FilterActivityResponse | ForEachActivityResponse | GetMetadataActivityResponse | HDInsightHiveActivityResponse | HDInsightMapReduceActivityResponse | HDInsightPigActivityResponse | HDInsightSparkActivityResponse | HDInsightStreamingActivityResponse | IfConditionActivityResponse | LookupActivityResponse | ScriptActivityResponse | SetVariableActivityResponse | SqlServerStoredProcedureActivityResponse | SwitchActivityResponse | SynapseNotebookActivityResponse | SynapseSparkJobDefinitionActivityResponse | UntilActivityResponse | ValidationActivityResponse | WaitActivityResponse | WebActivityResponse | WebHookActivityResponse)[];
     /**
      * Activity depends on condition.
      */

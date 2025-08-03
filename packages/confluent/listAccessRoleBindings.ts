@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Details of the role bindings returned on successful response
+ * Organization role bindings
  *
  * Uses Azure REST API version 2024-07-01.
  *
@@ -50,7 +50,7 @@ export interface ListAccessRoleBindingsResult {
     readonly metadata?: types.outputs.ConfluentListMetadataResponse;
 }
 /**
- * Details of the role bindings returned on successful response
+ * Organization role bindings
  *
  * Uses Azure REST API version 2024-07-01.
  *

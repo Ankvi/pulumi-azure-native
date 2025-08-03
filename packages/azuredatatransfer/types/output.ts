@@ -1,6 +1,40 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Properties specific to API Flow Type
+ */
+export interface ApiFlowOptionsResponse {
+    /**
+     * Remote Calling Mode in the Azure Data Transfer API Flow, which describes how the API Flow will be invoked
+     */
+    apiMode?: string;
+    /**
+     * Optional field to override the audience of the remote endpoint
+     */
+    audienceOverride?: string;
+    /**
+     * Unique CNAME to represent the Azure Data Transfer API Flow instance
+     */
+    cname?: string;
+    /**
+     * Flag for if Azure Data Transfer API Flow should extract the user token
+     */
+    identityTranslation?: string;
+    /**
+     * Remote stub app registration Client ID
+     */
+    remoteCallingModeClientId?: string;
+    /**
+     * Remote host to which communication needs to be made
+     */
+    remoteEndpoint?: string;
+    /**
+     * Sender's app user assigned Manage Identity client ID
+     */
+    senderClientId?: string;
+}
+
+/**
  * Properties of connection
  */
 export interface ConnectionPropertiesResponse {
@@ -87,15 +121,23 @@ export interface ConnectionPropertiesResponse {
  */
 export interface FlowPropertiesResponse {
     /**
+     * The API Flow configuration options for Azure Data Transfer API Flow type.
+     */
+    apiFlowOptions?: ApiFlowOptionsResponse;
+    /**
      * The connection associated with this flow
      */
     connection?: SelectedResourceResponse;
+    /**
+     * Event Hub Consumer Group
+     */
+    consumerGroup?: string;
     /**
      * The URI to the customer managed key for this flow
      */
     customerManagedKeyVaultUri?: string;
     /**
-     * Transfer Storage Blobs or Tables
+     * Type of data to transfer via the flow.
      */
     dataType?: string;
     /**
@@ -107,6 +149,10 @@ export interface FlowPropertiesResponse {
      */
     destinationEndpoints?: string[];
     /**
+     * Event Hub ID
+     */
+    eventHubId?: string;
+    /**
      * Dataflow GUID associated with this flow
      */
     flowId: string;
@@ -115,7 +161,11 @@ export interface FlowPropertiesResponse {
      */
     flowType?: string;
     /**
-     * AME, PME, or TORUS only! AKV Chain Containing SAS Token
+     * Force disablement status of the current flow
+     */
+    forceDisabledStatus: string[];
+    /**
+     * URI to a Key Vault Secret containing a SAS token.
      */
     keyVaultUri?: string;
     /**
@@ -171,6 +221,10 @@ export interface FlowPropertiesResponse {
      */
     storageContainerName?: string;
     /**
+     * Storage Table Name
+     */
+    storageTableName?: string;
+    /**
      * The flow stream identifier
      */
     streamId?: string;
@@ -185,6 +239,48 @@ export interface FlowPropertiesResponse {
 }
 
 /**
+ * The flow resource definition.
+ */
+export interface FlowResponse {
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    id: string;
+    /**
+     * The managed service identities assigned to this resource.
+     */
+    identity?: ManagedServiceIdentityResponse;
+    /**
+     * The geo-location where the resource lives
+     */
+    location: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * Details of the resource plan.
+     */
+    plan?: PlanResponse;
+    /**
+     * Properties of flow
+     */
+    properties?: FlowPropertiesResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
+}
+
+/**
  * Internal metadata of the connection inside pipeline.
  */
 export interface InternalMetadataPropertiesResponse {
@@ -196,6 +292,20 @@ export interface InternalMetadataPropertiesResponse {
      * User that last set the approved status for this connection
      */
     statusSetBy: string;
+}
+
+/**
+ * A connection resource id in addition to all child flow resources under this connection.
+ */
+export interface ListFlowsByPipelineConnectionResponse {
+    /**
+     * List of flows associated with the connection.
+     */
+    flows?: FlowResponse[];
+    /**
+     * ID of the connection.
+     */
+    id?: string;
 }
 
 /**

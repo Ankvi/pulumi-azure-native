@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Represents a virtual endpoint for a server.
+ * Pair of virtual endpoints for a flexible server.
  *
  * Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
  *
@@ -40,11 +40,11 @@ export class VirtualEndpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
-     * The endpoint type for the virtual endpoint.
+     * Type of endpoint for the virtual endpoints.
      */
     public readonly endpointType!: pulumi.Output<string | undefined>;
     /**
-     * List of members for a virtual endpoint
+     * List of flexible servers that one of the virtual endpoints can refer to.
      */
     public readonly members!: pulumi.Output<string[] | undefined>;
     /**
@@ -60,7 +60,7 @@ export class VirtualEndpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * List of virtual endpoints for a server
+     * List of virtual endpoints for a flexible server.
      */
     public /*out*/ readonly virtualEndpoints!: pulumi.Output<string[]>;
 
@@ -112,11 +112,11 @@ export class VirtualEndpoint extends pulumi.CustomResource {
  */
 export interface VirtualEndpointArgs {
     /**
-     * The endpoint type for the virtual endpoint.
+     * Type of endpoint for the virtual endpoints.
      */
     endpointType?: pulumi.Input<string | types.enums.VirtualEndpointType>;
     /**
-     * List of members for a virtual endpoint
+     * List of flexible servers that one of the virtual endpoints can refer to.
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -128,7 +128,7 @@ export interface VirtualEndpointArgs {
      */
     serverName: pulumi.Input<string>;
     /**
-     * The name of the virtual endpoint.
+     * Base name of the virtual endpoints.
      */
     virtualEndpointName?: pulumi.Input<string>;
 }

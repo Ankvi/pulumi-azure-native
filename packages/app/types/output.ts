@@ -146,7 +146,7 @@ export interface AzureActiveDirectoryRegistrationResponse {
     clientSecretSettingName?: string;
     /**
      * The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
+     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
      * This URI is a case-sensitive identifier for the token issuer.
      * More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
      */
@@ -292,9 +292,27 @@ export interface BuildConfigurationResponse {
 }
 
 /**
+ * Properties for a certificate stored in a Key Vault.
+ */
+export interface CertificateKeyVaultPropertiesResponse {
+    /**
+     * Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
+     */
+    identity?: string;
+    /**
+     * URL pointing to the Azure Key Vault secret that holds the certificate.
+     */
+    keyVaultUrl?: string;
+}
+
+/**
  * Certificate resource specific properties
  */
 export interface CertificateResponseProperties {
+    /**
+     * Properties for a certificate stored in a Key Vault.
+     */
+    certificateKeyVaultProperties?: CertificateKeyVaultPropertiesResponse;
     /**
      * Certificate expiration date.
      */
@@ -379,6 +397,10 @@ export interface ConfigurationResponse {
      */
     dapr?: DaprResponse;
     /**
+     * Optional settings for Managed Identities that are assigned to the Container App. If a Managed Identity is not specified here, default settings will be used.
+     */
+    identitySettings?: IdentitySettingsResponse[];
+    /**
      * Ingress configurations.
      */
     ingress?: IngressResponse;
@@ -390,6 +412,10 @@ export interface ConfigurationResponse {
      * Collection of private container registry credentials for containers used by the Container app
      */
     registries?: RegistryCredentialsResponse[];
+    /**
+     * App runtime configuration for the Container App.
+     */
+    runtime?: RuntimeResponse;
     /**
      * Collection of secrets used by a Container app
      */
@@ -690,6 +716,10 @@ export interface CustomContainerTemplateResponse {
  */
 export interface CustomDomainConfigurationResponse {
     /**
+     * Certificate stored in Azure Key Vault.
+     */
+    certificateKeyVaultProperties?: CertificateKeyVaultPropertiesResponse;
+    /**
      * Certificate password
      */
     certificatePassword?: string;
@@ -803,6 +833,10 @@ export interface CustomScaleRuleResponse {
      * Authentication secrets for the custom scale rule.
      */
     auth?: ScaleRuleAuthResponse[];
+    /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: string;
     /**
      * Metadata properties to describe custom scale rule.
      */
@@ -1080,13 +1114,9 @@ export interface DotNetComponentServiceBindResponse {
  */
 export interface DynamicPoolConfigurationResponse {
     /**
-     * The cooldown period of a session in seconds.
+     * The lifecycle configuration of a session in the dynamic session pool
      */
-    cooldownPeriodInSeconds?: number;
-    /**
-     * The execution type of the session pool.
-     */
-    executionType?: string;
+    lifecycleConfiguration?: LifecycleConfigurationResponse;
 }
 
 /**
@@ -1548,6 +1578,10 @@ export interface HttpScaleRuleResponse {
      */
     auth?: ScaleRuleAuthResponse[];
     /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: string;
+    /**
      * Metadata properties to describe http scale rule.
      */
     metadata?: {[key: string]: string};
@@ -1618,6 +1652,29 @@ export interface IdentityProvidersResponse {
      * The configuration settings of the Twitter provider.
      */
     twitter?: TwitterResponse;
+}
+
+/**
+ * Optional settings for a Managed Identity that is assigned to the Container App.
+ */
+export interface IdentitySettingsResponse {
+    /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity: string;
+    /**
+     * Use to select the lifecycle stages of a Container App during which the Managed Identity should be available.
+     */
+    lifecycle?: string;
+}
+/**
+ * identitySettingsResponseProvideDefaults sets the appropriate defaults for IdentitySettingsResponse
+ */
+export function identitySettingsResponseProvideDefaults(val: IdentitySettingsResponse): IdentitySettingsResponse {
+    return {
+        ...val,
+        lifecycle: (val.lifecycle) ?? "All",
+    };
 }
 
 /**
@@ -1834,6 +1891,10 @@ export interface JobConfigurationResponse {
      */
     eventTriggerConfig?: JobConfigurationResponseEventTriggerConfig;
     /**
+     * Optional settings for Managed Identities that are assigned to the Container App Job. If a Managed Identity is not specified here, default settings will be used.
+     */
+    identitySettings?: IdentitySettingsResponse[];
+    /**
      * Manual trigger configuration for a single execution job. Properties replicaCompletionCount and parallelism would be set to 1 by default
      */
     manualTriggerConfig?: JobConfigurationResponseManualTriggerConfig;
@@ -1973,6 +2034,10 @@ export interface JobScaleRuleResponse {
      */
     auth?: ScaleRuleAuthResponse[];
     /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: string;
+    /**
      * Metadata properties to describe the scale rule.
      */
     metadata?: any;
@@ -2027,6 +2092,24 @@ export interface KedaConfigurationResponse {
      * The version of Keda
      */
     version: string;
+}
+
+/**
+ * The lifecycle configuration properties of a session in the dynamic session pool
+ */
+export interface LifecycleConfigurationResponse {
+    /**
+     * The cooldown period of a session in seconds when the lifecycle type is 'Timed'.
+     */
+    cooldownPeriodInSeconds?: number;
+    /**
+     * The lifecycle type of the session pool.
+     */
+    lifecycleType?: string;
+    /**
+     * The maximum alive period of a session in seconds when the lifecycle type is 'OnContainerExit'.
+     */
+    maxAlivePeriodInSeconds?: number;
 }
 
 /**
@@ -2155,6 +2238,10 @@ export interface ManagedEnvironmentStorageResponseProperties {
      * Azure file properties
      */
     azureFile?: AzureFilePropertiesResponse;
+    /**
+     * NFS Azure file properties
+     */
+    nfsAzureFile?: NfsAzureFilePropertiesResponse;
 }
 
 /**
@@ -2213,34 +2300,21 @@ export interface MtlsResponse {
 }
 
 /**
- * Nacos properties.
+ * NFS Azure File Properties.
  */
-export interface NacosComponentResponse {
+export interface NfsAzureFilePropertiesResponse {
     /**
-     * Type of the Java Component.
-     * Expected value is 'Nacos'.
+     * Access mode for storage
      */
-    componentType: "Nacos";
+    accessMode?: string;
     /**
-     * List of Java Components configuration properties
+     * Server for NFS azure file. Specify the Azure storage account server address.
      */
-    configurations?: JavaComponentConfigurationPropertyResponse[];
+    server?: string;
     /**
-     * Java Component Ingress configurations.
+     * NFS Azure file share name.
      */
-    ingress?: JavaComponentIngressResponse;
-    /**
-     * Provisioning state of the Java Component.
-     */
-    provisioningState: string;
-    /**
-     * Java component scaling configurations
-     */
-    scale?: JavaComponentPropertiesResponseScale;
-    /**
-     * List of Java Components that are bound to the Java component
-     */
-    serviceBinds?: JavaComponentServiceBindResponse[];
+    shareName?: string;
 }
 
 /**
@@ -2380,9 +2454,17 @@ export interface PrivateLinkServiceConnectionStateResponse {
  */
 export interface QueueScaleRuleResponse {
     /**
+     * Storage account name. required if using managed identity to authenticate
+     */
+    accountName?: string;
+    /**
      * Authentication secrets for the queue scale rule.
      */
     auth?: ScaleRuleAuthResponse[];
+    /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: string;
     /**
      * Queue length.
      */
@@ -2430,6 +2512,26 @@ export interface RegistryInfoResponse {
 }
 
 /**
+ * Container App Runtime configuration.
+ */
+export interface RuntimeResponse {
+    /**
+     * Java app configuration
+     */
+    java?: RuntimeResponseJava;
+}
+
+/**
+ * Java app configuration
+ */
+export interface RuntimeResponseJava {
+    /**
+     * Enable jmx core metrics for the java app
+     */
+    enableMetrics?: boolean;
+}
+
+/**
  * Scale configuration.
  */
 export interface ScaleConfigurationResponse {
@@ -2448,6 +2550,10 @@ export interface ScaleConfigurationResponse {
  */
 export interface ScaleResponse {
     /**
+     * Optional. KEDA Cooldown Period in seconds. Defaults to 300 seconds if not set.
+     */
+    cooldownPeriod?: number;
+    /**
      * Optional. Maximum number of container replicas. Defaults to 10 if not set.
      */
     maxReplicas?: number;
@@ -2455,6 +2561,10 @@ export interface ScaleResponse {
      * Optional. Minimum number of container replicas.
      */
     minReplicas?: number;
+    /**
+     * Optional. KEDA Polling Interval in seconds. Defaults to 30 seconds if not set.
+     */
+    pollingInterval?: number;
     /**
      * Scaling rules.
      */
@@ -2508,32 +2618,6 @@ export interface ScaleRuleResponse {
      * Tcp requests based scaling.
      */
     tcp?: TcpScaleRuleResponse;
-}
-
-/**
- * Spring Cloud Gateway route definition
- */
-export interface ScgRouteResponse {
-    /**
-     * Filters of the route
-     */
-    filters?: string[];
-    /**
-     * Id of the route
-     */
-    id: string;
-    /**
-     * Order of the route
-     */
-    order?: number;
-    /**
-     * Predicates of the route
-     */
-    predicates?: string[];
-    /**
-     * Uri of the route
-     */
-    uri: string;
 }
 
 /**
@@ -2796,41 +2880,6 @@ export interface SpringCloudEurekaComponentResponse {
 }
 
 /**
- * Spring Cloud Gateway properties.
- */
-export interface SpringCloudGatewayComponentResponse {
-    /**
-     * Type of the Java Component.
-     * Expected value is 'SpringCloudGateway'.
-     */
-    componentType: "SpringCloudGateway";
-    /**
-     * List of Java Components configuration properties
-     */
-    configurations?: JavaComponentConfigurationPropertyResponse[];
-    /**
-     * Java Component Ingress configurations.
-     */
-    ingress?: JavaComponentIngressResponse;
-    /**
-     * Provisioning state of the Java Component.
-     */
-    provisioningState: string;
-    /**
-     * Java component scaling configurations
-     */
-    scale?: JavaComponentPropertiesResponseScale;
-    /**
-     * List of Java Components that are bound to the Java component
-     */
-    serviceBinds?: JavaComponentServiceBindResponse[];
-    /**
-     * Gateway route definition
-     */
-    springCloudGatewayRoutes?: ScgRouteResponse[];
-}
-
-/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -2888,6 +2937,10 @@ export interface TcpScaleRuleResponse {
      * Authentication secrets for the tcp scale rule.
      */
     auth?: ScaleRuleAuthResponse[];
+    /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: string;
     /**
      * Metadata properties to describe tcp scale rule.
      */
@@ -3098,7 +3151,7 @@ export interface VolumeMountResponse {
  */
 export interface VolumeResponse {
     /**
-     * Mount options used while mounting the AzureFile. Must be a comma-separated string.
+     * Mount options used while mounting the Azure file share or NFS Azure file share. Must be a comma-separated string.
      */
     mountOptions?: string;
     /**

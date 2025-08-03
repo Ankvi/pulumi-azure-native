@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-databasefleetmanager",
-    "version": "3.5.1",
+    "version": "3.6.1",
     "description": "Pulumi Azure Native package for databasefleetmanager",
     "keywords": [
         "pulumi",

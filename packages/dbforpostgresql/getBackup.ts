@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Get specific backup for a given server.
+ * Gets information of an on demand backup, given its name.
  *
  * Uses Azure REST API version 2024-08-01.
  *
@@ -19,7 +19,7 @@ export function getBackup(args: GetBackupArgs, opts?: pulumi.InvokeOptions): Pro
 
 export interface GetBackupArgs {
     /**
-     * The name of the backup.
+     * Name of the backup.
      */
     backupName: string;
     /**
@@ -33,7 +33,7 @@ export interface GetBackupArgs {
 }
 
 /**
- * Server backup properties
+ * Properties of a backup.
  */
 export interface GetBackupResult {
     /**
@@ -41,11 +41,11 @@ export interface GetBackupResult {
      */
     readonly azureApiVersion: string;
     /**
-     * Backup type.
+     * Type of backup.
      */
     readonly backupType?: string;
     /**
-     * Backup completed time (ISO8601 format).
+     * Time(ISO8601 format) at which the backup was completed.
      */
     readonly completedTime?: string;
     /**
@@ -57,7 +57,7 @@ export interface GetBackupResult {
      */
     readonly name: string;
     /**
-     * Backup source
+     * Source of the backup.
      */
     readonly source?: string;
     /**
@@ -70,7 +70,7 @@ export interface GetBackupResult {
     readonly type: string;
 }
 /**
- * Get specific backup for a given server.
+ * Gets information of an on demand backup, given its name.
  *
  * Uses Azure REST API version 2024-08-01.
  *
@@ -87,7 +87,7 @@ export function getBackupOutput(args: GetBackupOutputArgs, opts?: pulumi.InvokeO
 
 export interface GetBackupOutputArgs {
     /**
-     * The name of the backup.
+     * Name of the backup.
      */
     backupName: pulumi.Input<string>;
     /**
