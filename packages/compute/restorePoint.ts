@@ -52,7 +52,7 @@ export class RestorePoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.RestorePointInstanceViewResponse>;
     /**
-     * Resource name
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -68,11 +68,15 @@ export class RestorePoint extends pulumi.CustomResource {
      */
     public readonly sourceRestorePoint!: pulumi.Output<types.outputs.ApiEntityReferenceResponse | undefined>;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
      * Gets the creation time of the restore point.
      */
     public readonly timeCreated!: pulumi.Output<string | undefined>;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -105,6 +109,7 @@ export class RestorePoint extends pulumi.CustomResource {
             resourceInputs["instanceView"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -115,6 +120,7 @@ export class RestorePoint extends pulumi.CustomResource {
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["sourceMetadata"] = undefined /*out*/;
             resourceInputs["sourceRestorePoint"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["timeCreated"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
@@ -138,7 +144,7 @@ export interface RestorePointArgs {
      */
     excludeDisks?: pulumi.Input<pulumi.Input<types.inputs.ApiEntityReferenceArgs>[]>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

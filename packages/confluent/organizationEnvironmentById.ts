@@ -5,6 +5,8 @@ import * as types from "./types";
  * Details about environment name, metadata and environment id of an environment
  *
  * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
+ *
+ * Other available API versions: 2025-07-17-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class OrganizationEnvironmentById extends pulumi.CustomResource {
     /**
@@ -46,17 +48,21 @@ export class OrganizationEnvironmentById extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<types.outputs.SCMetadataEntityResponse | undefined>;
     /**
-     * Display name of the environment
+     * The name of the resource
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Stream governance configuration
      */
     public readonly streamGovernanceConfig!: pulumi.Output<types.outputs.StreamGovernanceConfigResponse | undefined>;
     /**
-     * Type of the resource
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationEnvironmentById resource with the given unique name, arguments, and options.
@@ -76,25 +82,26 @@ export class OrganizationEnvironmentById extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["environmentId"] = args ? args.environmentId : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationName"] = args ? args.organizationName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["streamGovernanceConfig"] = args ? args.streamGovernanceConfig : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["streamGovernanceConfig"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:confluent/v20240701:OrganizationEnvironmentById" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:confluent/v20240701:OrganizationEnvironmentById" }, { type: "azure-native:confluent/v20250717preview:OrganizationEnvironmentById" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(OrganizationEnvironmentById.__pulumiType, name, resourceInputs, opts);
     }
@@ -109,10 +116,6 @@ export interface OrganizationEnvironmentByIdArgs {
      */
     environmentId?: pulumi.Input<string>;
     /**
-     * Id of the environment
-     */
-    id?: pulumi.Input<string>;
-    /**
      * Type of environment
      */
     kind?: pulumi.Input<string>;
@@ -120,10 +123,6 @@ export interface OrganizationEnvironmentByIdArgs {
      * Metadata of the record
      */
     metadata?: pulumi.Input<types.inputs.SCMetadataEntityArgs>;
-    /**
-     * Display name of the environment
-     */
-    name?: pulumi.Input<string>;
     /**
      * Organization resource name
      */
@@ -136,8 +135,4 @@ export interface OrganizationEnvironmentByIdArgs {
      * Stream governance configuration
      */
     streamGovernanceConfig?: pulumi.Input<types.inputs.StreamGovernanceConfigArgs>;
-    /**
-     * Type of the resource
-     */
-    type?: pulumi.Input<string>;
 }

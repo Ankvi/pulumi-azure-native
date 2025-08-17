@@ -2570,6 +2570,106 @@ export interface PartialAssessmentPropertiesResponse {
 }
 
 /**
+ * The private endpoint connection resource.
+ */
+export interface PrivateEndpointConnectionResponse {
+    /**
+     * The group ids for the private endpoint resource.
+     */
+    groupIds: string[];
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    id: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * The private endpoint resource.
+     */
+    privateEndpoint?: PrivateEndpointResponse;
+    /**
+     * A collection of information about the state of the connection between service consumer and provider.
+     */
+    privateLinkServiceConnectionState: PrivateLinkServiceConnectionStateResponse;
+    /**
+     * The provisioning state of the private endpoint connection resource.
+     */
+    provisioningState: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
+}
+
+/**
+ * The private endpoint resource.
+ */
+export interface PrivateEndpointResponse {
+    /**
+     * The ARM identifier for private endpoint.
+     */
+    id: string;
+}
+
+/**
+ * A private link resource.
+ */
+export interface PrivateLinkResourceResponse {
+    /**
+     * The private link resource group id.
+     */
+    groupId: string;
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    id: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * The private link resource required member names.
+     */
+    requiredMembers: string[];
+    /**
+     * The private link resource private link DNS zone name.
+     */
+    requiredZoneNames?: string[];
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
+}
+
+/**
+ * A collection of information about the state of the connection between service consumer and provider.
+ */
+export interface PrivateLinkServiceConnectionStateResponse {
+    /**
+     * A message indicating if changes on the service provider require any updates on the consumer.
+     */
+    actionsRequired?: string;
+    /**
+     * The reason for approval/rejection of the connection.
+     */
+    description?: string;
+    /**
+     * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+     */
+    status?: string;
+}
+
+/**
  * For a non-Azure machine that is not connected directly to the internet, specify a proxy server that the non-Azure machine can use.
  */
 export interface ProxyServerPropertiesResponse {

@@ -40,17 +40,13 @@ export interface GetFleetspaceAccountArgs {
  */
 export interface GetFleetspaceAccountResult {
     /**
-     * The location of  global database account in the Fleetspace Account.
-     */
-    readonly accountLocation?: string;
-    /**
-     * The resource identifier of global database account in the Fleetspace Account.
-     */
-    readonly accountResourceIdentifier?: string;
-    /**
      * The Azure API version of the resource.
      */
     readonly azureApiVersion: string;
+    /**
+     * Configuration for fleetspace Account in the fleetspace.
+     */
+    readonly globalDatabaseAccountProperties?: types.outputs.FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */

@@ -5,6 +5,8 @@ import * as types from "./types";
  * This api gets secrets of the ispCacheNode resource install details
  *
  * Uses Azure REST API version 2023-05-01-preview.
+ *
+ * Other available API versions: 2024-11-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getIspCacheNodesOperationCacheNodeInstallDetails(args: GetIspCacheNodesOperationCacheNodeInstallDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetIspCacheNodesOperationCacheNodeInstallDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -67,6 +69,8 @@ export interface GetIspCacheNodesOperationCacheNodeInstallDetailsResult {
  * This api gets secrets of the ispCacheNode resource install details
  *
  * Uses Azure REST API version 2023-05-01-preview.
+ *
+ * Other available API versions: 2024-11-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getIspCacheNodesOperationCacheNodeInstallDetailsOutput(args: GetIspCacheNodesOperationCacheNodeInstallDetailsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIspCacheNodesOperationCacheNodeInstallDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

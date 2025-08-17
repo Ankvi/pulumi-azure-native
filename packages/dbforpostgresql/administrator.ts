@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Represents an Active Directory administrator.
+ * Server administrator associated to a Microsoft Entra principal.
  *
  * Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
  *
@@ -44,15 +44,15 @@ export class Administrator extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The objectId of the Active Directory administrator.
+     * Object identifier of the Microsoft Entra principal.
      */
     public readonly objectId!: pulumi.Output<string | undefined>;
     /**
-     * Active Directory administrator principal name.
+     * Name of the Microsoft Entra principal.
      */
     public readonly principalName!: pulumi.Output<string | undefined>;
     /**
-     * The principal type used to represent the type of Active Directory Administrator.
+     * Type of Microsoft Entra principal to which the server administrator is associated.
      */
     public readonly principalType!: pulumi.Output<string | undefined>;
     /**
@@ -60,7 +60,7 @@ export class Administrator extends pulumi.CustomResource {
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * The tenantId of the Active Directory administrator.
+     * Identifier of the tenant in which the Microsoft Entra principal exists.
      */
     public readonly tenantId!: pulumi.Output<string | undefined>;
     /**
@@ -106,7 +106,7 @@ export class Administrator extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20220308preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20221201:Administrator" }, { type: "azure-native:dbforpostgresql/v20230301preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20230601preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20231201preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20240301preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20240801:Administrator" }, { type: "azure-native:dbforpostgresql/v20241101preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20250101preview:Administrator" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20220308preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20221201:Administrator" }, { type: "azure-native:dbforpostgresql/v20230301preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20230601preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20231201preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20240301preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20240801:Administrator" }, { type: "azure-native:dbforpostgresql/v20241101preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20250101preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20250601preview:Administrator" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Administrator.__pulumiType, name, resourceInputs, opts);
     }
@@ -117,15 +117,15 @@ export class Administrator extends pulumi.CustomResource {
  */
 export interface AdministratorArgs {
     /**
-     * Guid of the objectId for the administrator.
+     * Object identifier of the Microsoft Entra principal.
      */
     objectId?: pulumi.Input<string>;
     /**
-     * Active Directory administrator principal name.
+     * Name of the Microsoft Entra principal.
      */
     principalName?: pulumi.Input<string>;
     /**
-     * The principal type used to represent the type of Active Directory Administrator.
+     * The type of Microsoft Entra principal to which the server administrator is associated.
      */
     principalType?: pulumi.Input<string | types.enums.PrincipalType>;
     /**
@@ -137,7 +137,7 @@ export interface AdministratorArgs {
      */
     serverName: pulumi.Input<string>;
     /**
-     * The tenantId of the Active Directory administrator.
+     * Identifier of the tenant in which the Microsoft Entra principal exists.
      */
     tenantId?: pulumi.Input<string>;
 }

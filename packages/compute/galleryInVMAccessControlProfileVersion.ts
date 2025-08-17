@@ -46,7 +46,7 @@ export class GalleryInVMAccessControlProfileVersion extends pulumi.CustomResourc
      */
     public readonly excludeFromLatest!: pulumi.Output<boolean | undefined>;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -54,7 +54,7 @@ export class GalleryInVMAccessControlProfileVersion extends pulumi.CustomResourc
      */
     public readonly mode!: pulumi.Output<string>;
     /**
-     * Resource name
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -74,7 +74,11 @@ export class GalleryInVMAccessControlProfileVersion extends pulumi.CustomResourc
      */
     public readonly rules!: pulumi.Output<types.outputs.AccessControlRulesResponse | undefined>;
     /**
-     * Resource tags
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * Resource tags.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -82,7 +86,7 @@ export class GalleryInVMAccessControlProfileVersion extends pulumi.CustomResourc
      */
     public readonly targetLocations!: pulumi.Output<types.outputs.TargetRegionResponse[] | undefined>;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -128,6 +132,7 @@ export class GalleryInVMAccessControlProfileVersion extends pulumi.CustomResourc
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["publishedDate"] = undefined /*out*/;
             resourceInputs["replicationStatus"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -140,6 +145,7 @@ export class GalleryInVMAccessControlProfileVersion extends pulumi.CustomResourc
             resourceInputs["publishedDate"] = undefined /*out*/;
             resourceInputs["replicationStatus"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["targetLocations"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -164,19 +170,19 @@ export interface GalleryInVMAccessControlProfileVersionArgs {
      */
     excludeFromLatest?: pulumi.Input<boolean>;
     /**
-     * The name of the Shared Image Gallery in which the inVMAccessControlProfile resides.
+     * The name of the Shared Image Gallery.
      */
     galleryName: pulumi.Input<string>;
     /**
-     * The name of the gallery inVMAccessControlProfile in which the inVMAccessControlProfile version is to be created.
+     * The name of the gallery inVMAccessControlProfile to be retrieved.
      */
     inVMAccessControlProfileName: pulumi.Input<string>;
     /**
-     * The name of the gallery inVMAccessControlProfile version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+     * The name of the gallery inVMAccessControlProfile version to be retrieved.
      */
     inVMAccessControlProfileVersionName?: pulumi.Input<string>;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
@@ -184,7 +190,7 @@ export interface GalleryInVMAccessControlProfileVersionArgs {
      */
     mode: pulumi.Input<string | types.enums.AccessControlRulesMode>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
@@ -192,7 +198,7 @@ export interface GalleryInVMAccessControlProfileVersionArgs {
      */
     rules?: pulumi.Input<types.inputs.AccessControlRulesArgs>;
     /**
-     * Resource tags
+     * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

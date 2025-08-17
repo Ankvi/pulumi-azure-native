@@ -25,7 +25,7 @@ export interface GetGalleryImageVersionArgs {
      */
     expand?: string;
     /**
-     * The name of the gallery image definition in which the Image Version resides.
+     * The name of the gallery image definition to be retrieved.
      */
     galleryImageName: string;
     /**
@@ -33,11 +33,11 @@ export interface GetGalleryImageVersionArgs {
      */
     galleryImageVersionName: string;
     /**
-     * The name of the Shared Image Gallery in which the Image Definition resides.
+     * The name of the Shared Image Gallery.
      */
     galleryName: string;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
@@ -51,15 +51,15 @@ export interface GetGalleryImageVersionResult {
      */
     readonly azureApiVersion: string;
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     readonly location: string;
     /**
-     * Resource name
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -91,11 +91,15 @@ export interface GetGalleryImageVersionResult {
      */
     readonly storageProfile: types.outputs.GalleryImageVersionStorageProfileResponse;
     /**
-     * Resource tags
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
      */
     readonly tags?: {[key: string]: string};
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**
@@ -127,7 +131,7 @@ export interface GetGalleryImageVersionOutputArgs {
      */
     expand?: pulumi.Input<string>;
     /**
-     * The name of the gallery image definition in which the Image Version resides.
+     * The name of the gallery image definition to be retrieved.
      */
     galleryImageName: pulumi.Input<string>;
     /**
@@ -135,11 +139,11 @@ export interface GetGalleryImageVersionOutputArgs {
      */
     galleryImageVersionName: pulumi.Input<string>;
     /**
-     * The name of the Shared Image Gallery in which the Image Definition resides.
+     * The name of the Shared Image Gallery.
      */
     galleryName: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

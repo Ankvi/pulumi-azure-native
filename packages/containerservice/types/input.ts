@@ -416,6 +416,26 @@ export interface IPTagArgs {
 }
 
 /**
+ * Managed identity profile for the identity binding.
+ */
+export interface IdentityBindingManagedIdentityProfileArgs {
+    /**
+     * The resource ID of the managed identity.
+     */
+    resourceId: pulumi.Input<string>;
+}
+
+/**
+ * IdentityBinding properties.
+ */
+export interface IdentityBindingPropertiesArgs {
+    /**
+     * Managed identity profile for the identity binding.
+     */
+    managedIdentity: pulumi.Input<IdentityBindingManagedIdentityProfileArgs>;
+}
+
+/**
  * Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
  */
 export interface IstioCertificateAuthorityArgs {

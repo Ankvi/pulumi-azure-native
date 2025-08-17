@@ -1,19 +1,19 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * Authentication configuration properties of a server
+ * Authentication configuration properties of a flexible server.
  */
 export interface AuthConfigResponse {
     /**
-     * If Enabled, Azure Active Directory authentication is enabled.
+     * Indicates if the server supports Microsoft Entra authentication.
      */
     activeDirectoryAuth?: string;
     /**
-     * If Enabled, Password authentication is enabled.
+     * Indicates if the server supports password based authentication.
      */
     passwordAuth?: string;
     /**
-     * Tenant id of the server.
+     * Identifier of the tenant of the delegated resource.
      */
     tenantId?: string;
 }
@@ -29,19 +29,19 @@ export function authConfigResponseProvideDefaults(val: AuthConfigResponse): Auth
 }
 
 /**
- * Backup properties of a server
+ * Backup properties of a flexible server.
  */
 export interface BackupResponse {
     /**
-     * Backup retention days for the server.
+     * Backup retention days for the flexible server.
      */
     backupRetentionDays?: number;
     /**
-     * The earliest restore point time (ISO8601 format) for server.
+     * Earliest restore point time (ISO8601 format) for a flexible server.
      */
     earliestRestoreDate: string;
     /**
-     * A value indicating whether Geo-Redundant backup is enabled on the server.
+     * Indicates if the server is configured to create geographically redundant backups.
      */
     geoRedundantBackup?: string;
 }
@@ -57,127 +57,127 @@ export function backupResponseProvideDefaults(val: BackupResponse): BackupRespon
 }
 
 /**
- * Data encryption properties of a server
+ * Data encryption properties of a flexible server.
  */
 export interface DataEncryptionResponse {
     /**
-     * Geo-backup encryption key status for Data encryption enabled server.
+     * Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
      */
     geoBackupEncryptionKeyStatus?: string;
     /**
-     * URI for the key in keyvault for data encryption for geo-backup of server.
+     * Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
      */
     geoBackupKeyURI?: string;
     /**
-     * Resource Id for the User assigned identity to be used for data encryption for geo-backup of server.
+     * Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
      */
     geoBackupUserAssignedIdentityId?: string;
     /**
-     * Primary encryption key status for Data encryption enabled server.
+     * Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
      */
     primaryEncryptionKeyStatus?: string;
     /**
-     * URI for the key in keyvault for data encryption of the primary server.
+     * URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a flexible server.
      */
     primaryKeyURI?: string;
     /**
-     * Resource Id for the User assigned identity to be used for data encryption of the primary server.
+     * Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a flexible server.
      */
     primaryUserAssignedIdentityId?: string;
     /**
-     * Data encryption type to depict if it is System Managed vs Azure Key vault.
+     * Data encryption type used by a flexible server.
      */
     type?: string;
 }
 
 /**
- * Validation status summary for an individual database
+ * Validation status summary for a database.
  */
 export interface DbLevelValidationStatusResponse {
     /**
-     * Name of the database
+     * Name of database.
      */
     databaseName?: string;
     /**
-     * End date-time of a database level validation
+     * End time of a database level validation.
      */
     endedOn?: string;
     /**
-     * Start date-time of a database level validation
+     * Start time of a database level validation.
      */
     startedOn?: string;
     /**
-     * Summary of database level validations
+     * Summary of database level validations.
      */
     summary?: ValidationSummaryItemResponse[];
 }
 
 /**
- * Migration status of an individual database
+ * Migration status of a database.
  */
 export interface DbMigrationStatusResponse {
     /**
-     * CDC applied changes counter
+     * Change Data Capture applied changes counter.
      */
     appliedChanges?: number;
     /**
-     * CDC delete counter
+     * Change Data Capture delete counter.
      */
     cdcDeleteCounter?: number;
     /**
-     * CDC insert counter
+     * Change Data Capture insert counter.
      */
     cdcInsertCounter?: number;
     /**
-     * CDC update counter
+     * Change Data Capture update counter.
      */
     cdcUpdateCounter?: number;
     /**
-     * Name of the database
+     * Name of database.
      */
     databaseName?: string;
     /**
-     * End date-time of a migration state
+     * End time of a migration state.
      */
     endedOn?: string;
     /**
-     * Number of tables loaded during the migration of a DB
+     * Number of tables loaded during the migration of a database.
      */
     fullLoadCompletedTables?: number;
     /**
-     * Number of tables errored out during the migration of a DB
+     * Number of tables encountering errors during the migration of a database.
      */
     fullLoadErroredTables?: number;
     /**
-     * Number of tables loading during the migration of a DB
+     * Number of tables loading during the migration of a database.
      */
     fullLoadLoadingTables?: number;
     /**
-     * Number of tables queued for the migration of a DB
+     * Number of tables queued for the migration of a database.
      */
     fullLoadQueuedTables?: number;
     /**
-     * CDC incoming changes counter
+     * Change Data Capture incoming changes counter.
      */
     incomingChanges?: number;
     /**
-     * Lag in seconds between source and target during online phase
+     * Lag in seconds between source and target during online phase.
      */
     latency?: number;
     /**
-     * Error message, if any, for the migration state
+     * Error message, if any, for the migration state.
      */
     message?: string;
     /**
-     * Migration operation of an individual database
+     * Migration operation of a database.
      */
     migrationOperation?: string;
     /**
-     * Migration db state of an individual database
+     * Migration state of a database.
      */
     migrationState?: string;
     /**
-     * Start date-time of a migration state
+     * Start time of a migration state.
      */
     startedOn?: string;
 }
@@ -187,37 +187,37 @@ export interface DbMigrationStatusResponse {
  */
 export interface DbServerMetadataResponse {
     /**
-     * Location of database server
+     * Location of database server.
      */
     location: string;
     /**
-     * SKU for the database server. This object is empty for PG single server
+     * Compute tier and size of the database server. This object is empty for an Azure Database for PostgreSQL single server.
      */
     sku?: ServerSkuResponse;
     /**
-     * Storage size in MB for database server
+     * Storage size (in MB) for database server.
      */
     storageMb?: number;
     /**
-     * Version for database engine
+     * Major version of PostgreSQL database engine.
      */
     version?: string;
 }
 
 /**
- * High availability properties of a server
+ * High availability properties of a flexible server.
  */
 export interface HighAvailabilityResponse {
     /**
-     * The HA mode for the server.
+     * High availability mode for a flexible server.
      */
     mode?: string;
     /**
-     * availability zone information of the standby.
+     * Availability zone associated to the standby server created when high availability is set to SameZone or ZoneRedundant.
      */
     standbyAvailabilityZone?: string;
     /**
-     * A state of a HA server that is visible to user.
+     * Possible states of the standby server created when high availability is set to SameZone or ZoneRedundant.
      */
     state: string;
 }
@@ -244,23 +244,23 @@ export interface IdentityPropertiesResponse {
 }
 
 /**
- * Maintenance window properties of a server.
+ * Maintenance window properties of a flexible server.
  */
 export interface MaintenanceWindowResponse {
     /**
-     * indicates whether custom window is enabled or disabled
+     * Indicates whether custom window is enabled or disabled.
      */
     customWindow?: string;
     /**
-     * day of week for maintenance window
+     * Day of the week to be used for maintenance window.
      */
     dayOfWeek?: number;
     /**
-     * start hour for maintenance window
+     * Start hour to be used for maintenance window.
      */
     startHour?: number;
     /**
-     * start minute for maintenance window
+     * Start minute to be used for maintenance window.
      */
     startMinute?: number;
 }
@@ -278,52 +278,52 @@ export function maintenanceWindowResponseProvideDefaults(val: MaintenanceWindowR
 }
 
 /**
- * Migration status.
+ * State of migration.
  */
 export interface MigrationStatusResponse {
     /**
-     * Current Migration sub state details.
+     * Current migration sub state details.
      */
     currentSubStateDetails: MigrationSubStateDetailsResponse;
     /**
-     * Error message, if any, for the migration state
+     * Error message, if any, for the migration state.
      */
     error: string;
     /**
-     * State of migration
+     * State of migration.
      */
     state: string;
 }
 
 /**
- * Migration sub state details.
+ * Details of migration substate.
  */
 export interface MigrationSubStateDetailsResponse {
     /**
-     * Migration sub state.
+     * Substate of migration.
      */
     currentSubState: string;
     dbDetails?: {[key: string]: DbMigrationStatusResponse};
     /**
-     * Details for the validation for migration
+     * Details for the validation for migration.
      */
     validationDetails?: ValidationDetailsResponse;
 }
 
 /**
- * Network properties of a server.
+ * Network properties of a flexible server.
  */
 export interface NetworkResponse {
     /**
-     * Delegated subnet arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone.
+     * Resource identifier of the delegated subnet. Required during creation of a new server, in case you want the server to be integrated into your own virtual network. For an update operation, you only have to provide this property if you want to change the value assigned for the private DNS zone.
      */
     delegatedSubnetResourceId?: string;
     /**
-     * Private dns zone arm resource id. This is required to be passed during create, in case we want the server to be VNET injected, i.e. Private access server. During update, pass this only if we want to update the value for Private DNS zone.
+     * Identifier of the private DNS zone. Required during creation of a new server, in case you want the server to be integrated into your own virtual network. For an update operation, you only have to provide this property if you want to change the value assigned for the private DNS zone.
      */
     privateDnsZoneArmResourceId?: string;
     /**
-     * public network access is enabled or not
+     * Indicates if public network access is enabled or not.
      */
     publicNetworkAccess?: string;
 }
@@ -402,19 +402,19 @@ export interface PrivateLinkServiceConnectionStateResponse {
 }
 
 /**
- * Replica properties of a server
+ * Replica properties of a flexible server.
  */
 export interface ReplicaResponse {
     /**
-     * Replicas allowed for a server.
+     * Maximum number of read replicas allowed for a flexible server.
      */
     capacity: number;
     /**
-     * Gets the replication state of a replica server. This property is returned only for replicas api call. Supported values are Active, Catchup, Provisioning, Updating, Broken, Reconfiguring
+     * Indicates the replication state of a read replica. This property is returned only when the target flexible server is a read replica. Possible  values are Active, Broken, Catchup, Provisioning, Reconfiguring, and Updating
      */
     replicationState: string;
     /**
-     * Used to indicate role of the server in replication set.
+     * Role of the server in a replication set.
      */
     role?: string;
 }
@@ -544,15 +544,15 @@ export interface ServerPrivateLinkServiceConnectionStatePropertyResponse {
 }
 
 /**
- * Sku information related properties of a server.
+ * Compute information of a flexible server.
  */
 export interface ServerSkuResponse {
     /**
-     * The name of the sku, typically, tier + family + cores, e.g. Standard_D4s_v3.
+     * Compute tier and size of the database server. This object is empty for an Azure Database for PostgreSQL single server.
      */
     name?: string;
     /**
-     * The tier of the particular SKU, e.g. Burstable.
+     * Tier of the compute assigned to a flexible server.
      */
     tier?: string;
 }
@@ -618,15 +618,15 @@ export interface SingleServerSkuResponse {
 }
 
 /**
- * Sku information related properties of a server.
+ * Compute information of a flexible server.
  */
 export interface SkuResponse {
     /**
-     * The name of the sku, typically, tier + family + cores, e.g. Standard_D4s_v3.
+     * Name by which is known a given compute size assigned to a flexible server.
      */
     name: string;
     /**
-     * The tier of the particular SKU, e.g. Burstable.
+     * Tier of the compute assigned to a flexible server.
      */
     tier: string;
 }
@@ -654,31 +654,31 @@ export interface StorageProfileResponse {
 }
 
 /**
- * Storage properties of a server
+ * Storage properties of a flexible server.
  */
 export interface StorageResponse {
     /**
-     * Flag to enable / disable Storage Auto grow for flexible server.
+     * Flag to enable or disable the automatic growth of storage size of a flexible server when available space is nearing zero and conditions allow for automatically growing storage size.
      */
     autoGrow?: string;
     /**
-     * Storage tier IOPS quantity. This property is required to be set for storage Type PremiumV2_LRS
+     * Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS.
      */
     iops?: number;
     /**
-     * Max storage allowed for a server.
+     * Size of storage assigned to a flexible server.
      */
     storageSizeGB?: number;
     /**
-     * Storage throughput for the server. This is required to be set for storage Type PremiumV2_LRS
+     * Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS.
      */
     throughput?: number;
     /**
-     * Name of storage tier for IOPS.
+     * Storage tier of a flexible server.
      */
     tier?: string;
     /**
-     * Storage type for the server. Allowed values are Premium_LRS and PremiumV2_LRS, and default is Premium_LRS if not specified
+     * Type of storage assigned to a flexible server. Allowed values are Premium_LRS or PremiumV2_LRS. If not specified, it defaults to Premium_LRS.
      */
     type?: string;
 }
@@ -726,87 +726,87 @@ export interface UserAssignedIdentityResponse {
      */
     principalId: string;
     /**
-     * Tenant id of the server.
+     * Identifier of the tenant of a flexible server.
      */
     tenantId?: string;
     /**
-     * the types of identities associated with this resource
+     * Types of identities associated with a flexible server.
      */
     type?: string;
     /**
-     * represents user assigned identities map.
+     * Map of user assigned managed identities.
      */
     userAssignedIdentities?: {[key: string]: UserIdentityResponse};
 }
 
 /**
- * Describes a single user-assigned identity associated with the application.
+ * User assigned managed identity associated with a flexible server.
  */
 export interface UserIdentityResponse {
     /**
-     * the client identifier of the Service Principal which this identity represents.
+     * Identifier of the client of the service principal associated to the user assigned managed identity.
      */
     clientId?: string;
     /**
-     * the object identifier of the Service Principal which this identity represents.
+     * Identifier of the object of the service principal associated to the user assigned managed identity.
      */
     principalId?: string;
 }
 
 /**
- * Details for the validation for migration
+ * Details for the validation for migration.
  */
 export interface ValidationDetailsResponse {
     /**
-     * Details of server level validations
+     * Details of server level validations.
      */
     dbLevelValidationDetails?: DbLevelValidationStatusResponse[];
     /**
-     * Details of server level validations
+     * Details of server level validations.
      */
     serverLevelValidationDetails?: ValidationSummaryItemResponse[];
     /**
-     * Validation status for migration
+     * Validation status for migration.
      */
     status?: string;
     /**
-     * Validation End date-time in UTC
+     * End time (UTC) for validation.
      */
     validationEndTimeInUtc?: string;
     /**
-     * Validation Start date-time in UTC
+     * Start time (UTC) for validation.
      */
     validationStartTimeInUtc?: string;
 }
 
 /**
- * Validation message object
+ * Validation message object.
  */
 export interface ValidationMessageResponse {
     /**
-     * Validation message string
+     * Validation message string.
      */
     message?: string;
     /**
-     * Severity of validation message
+     * Severity of validation message.
      */
     state?: string;
 }
 
 /**
- * Validation summary object
+ * Validation summary object.
  */
 export interface ValidationSummaryItemResponse {
     /**
-     * Validation messages
+     * Validation messages.
      */
     messages?: ValidationMessageResponse[];
     /**
-     * Validation status for migration
+     * Validation status for migration.
      */
     state?: string;
     /**
-     * Validation type
+     * Validation type.
      */
     type?: string;
 }

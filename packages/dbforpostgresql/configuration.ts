@@ -2,11 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Represents a Configuration.
+ * Server parameter.
  *
  * Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
  *
- * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Configuration extends pulumi.CustomResource {
     /**
@@ -36,7 +36,7 @@ export class Configuration extends pulumi.CustomResource {
     }
 
     /**
-     * Allowed values of the configuration.
+     * Allowed values of the server parameter.
      */
     public /*out*/ readonly allowedValues!: pulumi.Output<string>;
     /**
@@ -44,31 +44,31 @@ export class Configuration extends pulumi.CustomResource {
      */
     public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
-     * Data type of the configuration.
+     * Data type of the server parameter.
      */
     public /*out*/ readonly dataType!: pulumi.Output<string>;
     /**
-     * Default value of the configuration.
+     * Value assigned by default to the server parameter.
      */
     public /*out*/ readonly defaultValue!: pulumi.Output<string>;
     /**
-     * Description of the configuration.
+     * Description of the server parameter.
      */
     public /*out*/ readonly description!: pulumi.Output<string>;
     /**
-     * Configuration documentation link.
+     * Link pointing to the documentation of the server parameter.
      */
     public /*out*/ readonly documentationLink!: pulumi.Output<string>;
     /**
-     * Configuration is pending restart or not.
+     * Indicates if the value assigned to the server parameter is pending a server restart for the value to take effect.
      */
     public /*out*/ readonly isConfigPendingRestart!: pulumi.Output<boolean>;
     /**
-     * Configuration dynamic or static.
+     * Indicates if it's a dynamic (true) or static (false) server parameter. Static server parameters require a server restart after changing the value assigned to it, for the change to take effect. Dynamic server parameters do not require a server restart after changing the value assigned to it, for the change to take effect.
      */
     public /*out*/ readonly isDynamicConfig!: pulumi.Output<boolean>;
     /**
-     * Configuration read-only or not.
+     * Indicates if it's a read-only (true) or modifiable (false) server parameter.
      */
     public /*out*/ readonly isReadOnly!: pulumi.Output<boolean>;
     /**
@@ -76,7 +76,7 @@ export class Configuration extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Source of the configuration. Required to update the configuration.
+     * Source of the value assigned to the server parameter. Required to update the value assigned to a specific modifiable server parameter.
      */
     public readonly source!: pulumi.Output<string | undefined>;
     /**
@@ -88,11 +88,11 @@ export class Configuration extends pulumi.CustomResource {
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * Configuration unit.
+     * Units in which the server parameter value is expressed.
      */
     public /*out*/ readonly unit!: pulumi.Output<string>;
     /**
-     * Value of the configuration. Required to update the configuration.
+     * Value of the server parameter (also known as configuration). Required to update the value assigned to a specific modifiable server parameter.
      */
     public readonly value!: pulumi.Output<string | undefined>;
 
@@ -149,7 +149,7 @@ export class Configuration extends pulumi.CustomResource {
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20171201:Configuration" }, { type: "azure-native:dbforpostgresql/v20210601:Configuration" }, { type: "azure-native:dbforpostgresql/v20210601preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20210615privatepreview:Configuration" }, { type: "azure-native:dbforpostgresql/v20220120preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20220308preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20221201:Configuration" }, { type: "azure-native:dbforpostgresql/v20230301preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20230601preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20231201preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20240301preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20240801:Configuration" }, { type: "azure-native:dbforpostgresql/v20241101preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20250101preview:Configuration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20171201:Configuration" }, { type: "azure-native:dbforpostgresql/v20210601:Configuration" }, { type: "azure-native:dbforpostgresql/v20210601preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20210615privatepreview:Configuration" }, { type: "azure-native:dbforpostgresql/v20220120preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20220308preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20221201:Configuration" }, { type: "azure-native:dbforpostgresql/v20230301preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20230601preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20231201preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20240301preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20240801:Configuration" }, { type: "azure-native:dbforpostgresql/v20241101preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20250101preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20250601preview:Configuration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Configuration.__pulumiType, name, resourceInputs, opts);
     }
@@ -160,7 +160,7 @@ export class Configuration extends pulumi.CustomResource {
  */
 export interface ConfigurationArgs {
     /**
-     * The name of the server configuration.
+     * Name of the server parameter.
      */
     configurationName?: pulumi.Input<string>;
     /**
@@ -172,11 +172,11 @@ export interface ConfigurationArgs {
      */
     serverName: pulumi.Input<string>;
     /**
-     * Source of the configuration. Required to update the configuration.
+     * Source of the value assigned to the server parameter. Required to update the value assigned to a specific modifiable server parameter.
      */
     source?: pulumi.Input<string>;
     /**
-     * Value of the configuration. Required to update the configuration.
+     * Value of the server parameter (also known as configuration). Required to update the value assigned to a specific modifiable server parameter.
      */
     value?: pulumi.Input<string>;
 }

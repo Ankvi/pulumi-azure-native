@@ -51,15 +51,15 @@ export interface DedicatedCapacityAdministratorsResponse {
  */
 export interface SystemDataResponse {
     /**
-     * The timestamp of resource creation (UTC)
+     * The timestamp of resource creation (UTC).
      */
     createdAt?: string;
     /**
-     * An identifier for the identity that created the resource
+     * The identity that created the resource.
      */
     createdBy?: string;
     /**
-     * The type of identity that created the resource
+     * The type of identity that created the resource.
      */
     createdByType?: string;
     /**
@@ -67,11 +67,11 @@ export interface SystemDataResponse {
      */
     lastModifiedAt?: string;
     /**
-     * An identifier for the identity that last modified the resource
+     * The identity that last modified the resource.
      */
     lastModifiedBy?: string;
     /**
-     * The type of identity that last modified the resource
+     * The type of identity that last modified the resource.
      */
     lastModifiedByType?: string;
 }

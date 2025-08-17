@@ -29,7 +29,7 @@ export interface GetVirtualMachineScaleSetVMExtensionArgs {
      */
     instanceId: string;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
@@ -75,7 +75,7 @@ export interface GetVirtualMachineScaleSetVMExtensionResult {
      */
     readonly location?: string;
     /**
-     * The name of the extension.
+     * Resource name
      */
     readonly name: string;
     /**
@@ -143,7 +143,7 @@ export interface GetVirtualMachineScaleSetVMExtensionOutputArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

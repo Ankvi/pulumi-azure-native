@@ -2,9 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Details of topic record
+ * Get confluent topic by Name
  *
  * Uses Azure REST API version 2024-07-01.
+ *
+ * Other available API versions: 2025-07-17-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getTopic(args: GetTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -53,7 +55,7 @@ export interface GetTopicResult {
      */
     readonly configs?: types.outputs.TopicsRelatedLinkResponse;
     /**
-     * The ARM Resource Id of the Topic
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -69,7 +71,7 @@ export interface GetTopicResult {
      */
     readonly metadata?: types.outputs.TopicMetadataEntityResponse;
     /**
-     * Display name of the topic
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -89,18 +91,24 @@ export interface GetTopicResult {
      */
     readonly replicationFactor?: string;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
      * Topic Id returned by Confluent
      */
     readonly topicId?: string;
     /**
-     * The type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
 /**
- * Details of topic record
+ * Get confluent topic by Name
  *
  * Uses Azure REST API version 2024-07-01.
+ *
+ * Other available API versions: 2025-07-17-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getTopicOutput(args: GetTopicOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTopicResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

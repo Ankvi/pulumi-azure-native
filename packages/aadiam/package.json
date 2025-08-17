@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-aadiam",
-    "version": "3.5.1",
+    "version": "3.7.1",
     "description": "Pulumi Azure Native package for aadiam",
     "keywords": [
         "pulumi",

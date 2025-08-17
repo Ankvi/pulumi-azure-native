@@ -24,7 +24,7 @@ export interface GetRestorePointArgs {
      */
     expand?: string;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
@@ -54,7 +54,7 @@ export interface GetRestorePointResult {
      */
     readonly excludeDisks?: types.outputs.ApiEntityReferenceResponse[];
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
@@ -62,7 +62,7 @@ export interface GetRestorePointResult {
      */
     readonly instanceView: types.outputs.RestorePointInstanceViewResponse;
     /**
-     * Resource name
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -78,11 +78,15 @@ export interface GetRestorePointResult {
      */
     readonly sourceRestorePoint?: types.outputs.ApiEntityReferenceResponse;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
      * Gets the creation time of the restore point.
      */
     readonly timeCreated?: string;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -109,7 +113,7 @@ export interface GetRestorePointOutputArgs {
      */
     expand?: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

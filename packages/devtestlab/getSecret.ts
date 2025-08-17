@@ -26,11 +26,11 @@ export interface GetSecretArgs {
      */
     labName: string;
     /**
-     * The name of the secret.
+     * The name of the Secret
      */
     name: string;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
@@ -106,11 +106,11 @@ export interface GetSecretOutputArgs {
      */
     labName: pulumi.Input<string>;
     /**
-     * The name of the secret.
+     * The name of the Secret
      */
     name: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
