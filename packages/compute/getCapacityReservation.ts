@@ -32,7 +32,7 @@ export interface GetCapacityReservationArgs {
      */
     expand?: string;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
@@ -46,7 +46,7 @@ export interface GetCapacityReservationResult {
      */
     readonly azureApiVersion: string;
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
@@ -54,11 +54,11 @@ export interface GetCapacityReservationResult {
      */
     readonly instanceView: types.outputs.CapacityReservationInstanceViewResponse;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     readonly location: string;
     /**
-     * Resource name
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -82,7 +82,11 @@ export interface GetCapacityReservationResult {
      */
     readonly sku: types.outputs.SkuResponse;
     /**
-     * Resource tags
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
      */
     readonly tags?: {[key: string]: string};
     /**
@@ -90,7 +94,7 @@ export interface GetCapacityReservationResult {
      */
     readonly timeCreated: string;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**
@@ -98,7 +102,7 @@ export interface GetCapacityReservationResult {
      */
     readonly virtualMachinesAssociated: types.outputs.SubResourceReadOnlyResponse[];
     /**
-     * Availability Zone to use for this capacity reservation. The zone has to be single value and also should be part for the list of zones specified during the capacity reservation group creation. The zone can be assigned only during creation. If not provided, the reservation supports only non-zonal deployments. If provided, enforces VM/VMSS using this capacity reservation to be in same zone.
+     * The availability zones.
      */
     readonly zones?: string[];
 }
@@ -133,7 +137,7 @@ export interface GetCapacityReservationOutputArgs {
      */
     expand?: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

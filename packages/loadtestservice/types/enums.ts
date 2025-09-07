@@ -1,3 +1,19 @@
+export const EnablementStatus = {
+    /**
+     * The feature is enabled.
+     */
+    Enabled: "Enabled",
+    /**
+     * The feature is disabled.
+     */
+    Disabled: "Disabled",
+} as const;
+
+/**
+ * Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created.
+ */
+export type EnablementStatus = (typeof EnablementStatus)[keyof typeof EnablementStatus];
+
 export const ManagedServiceIdentityType = {
     None: "None",
     SystemAssigned: "SystemAssigned",

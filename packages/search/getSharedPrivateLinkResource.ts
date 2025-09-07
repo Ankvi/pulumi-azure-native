@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets the details of the shared private link resource managed by the search service in the given resource group.
  *
- * Uses Azure REST API version 2023-11-01.
+ * Uses Azure REST API version 2025-05-01.
  *
- * Other available API versions: 2022-09-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSharedPrivateLinkResource(args: GetSharedPrivateLinkResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetSharedPrivateLinkResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -23,17 +23,17 @@ export interface GetSharedPrivateLinkResourceArgs {
      */
     resourceGroupName: string;
     /**
-     * The name of the search service associated with the specified resource group.
+     * The name of the Azure AI Search service associated with the specified resource group.
      */
     searchServiceName: string;
     /**
-     * The name of the shared private link resource managed by the search service within the specified resource group.
+     * The name of the shared private link resource managed by the Azure AI Search service within the specified resource group.
      */
     sharedPrivateLinkResourceName: string;
 }
 
 /**
- * Describes a Shared Private Link Resource managed by the search service.
+ * Describes a shared private link resource managed by the Azure AI Search service.
  */
 export interface GetSharedPrivateLinkResourceResult {
     /**
@@ -41,7 +41,7 @@ export interface GetSharedPrivateLinkResourceResult {
      */
     readonly azureApiVersion: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -49,9 +49,13 @@ export interface GetSharedPrivateLinkResourceResult {
      */
     readonly name: string;
     /**
-     * Describes the properties of a Shared Private Link Resource managed by the search service.
+     * Describes the properties of a shared private link resource managed by the Azure AI Search service.
      */
     readonly properties: types.outputs.SharedPrivateLinkResourcePropertiesResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -60,9 +64,9 @@ export interface GetSharedPrivateLinkResourceResult {
 /**
  * Gets the details of the shared private link resource managed by the search service in the given resource group.
  *
- * Uses Azure REST API version 2023-11-01.
+ * Uses Azure REST API version 2025-05-01.
  *
- * Other available API versions: 2022-09-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSharedPrivateLinkResourceOutput(args: GetSharedPrivateLinkResourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSharedPrivateLinkResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -79,11 +83,11 @@ export interface GetSharedPrivateLinkResourceOutputArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The name of the search service associated with the specified resource group.
+     * The name of the Azure AI Search service associated with the specified resource group.
      */
     searchServiceName: pulumi.Input<string>;
     /**
-     * The name of the shared private link resource managed by the search service within the specified resource group.
+     * The name of the shared private link resource managed by the Azure AI Search service within the specified resource group.
      */
     sharedPrivateLinkResourceName: pulumi.Input<string>;
 }

@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Maintenance configuration record type
+ * Get Configuration record
  *
  * Uses Azure REST API version 2023-10-01-preview.
  *
@@ -18,11 +18,11 @@ export function getMaintenanceConfiguration(args: GetMaintenanceConfigurationArg
 
 export interface GetMaintenanceConfigurationArgs {
     /**
-     * Resource Group Name
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
-     * Maintenance Configuration Name
+     * The name of the MaintenanceConfiguration
      */
     resourceName: string;
 }
@@ -48,7 +48,7 @@ export interface GetMaintenanceConfigurationResult {
      */
     readonly extensionProperties?: {[key: string]: string};
     /**
-     * Fully qualified identifier of the resource
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -64,7 +64,7 @@ export interface GetMaintenanceConfigurationResult {
      */
     readonly maintenanceScope?: string;
     /**
-     * Name of the resource
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -92,7 +92,7 @@ export interface GetMaintenanceConfigurationResult {
      */
     readonly timeZone?: string;
     /**
-     * Type of the resource
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**
@@ -101,7 +101,7 @@ export interface GetMaintenanceConfigurationResult {
     readonly visibility?: string;
 }
 /**
- * Maintenance configuration record type
+ * Get Configuration record
  *
  * Uses Azure REST API version 2023-10-01-preview.
  *
@@ -117,11 +117,11 @@ export function getMaintenanceConfigurationOutput(args: GetMaintenanceConfigurat
 
 export interface GetMaintenanceConfigurationOutputArgs {
     /**
-     * Resource Group Name
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * Maintenance Configuration Name
+     * The name of the MaintenanceConfiguration
      */
     resourceName: pulumi.Input<string>;
 }

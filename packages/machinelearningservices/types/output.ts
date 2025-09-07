@@ -5200,6 +5200,11 @@ export interface FqdnOutboundRuleResponse {
     category?: string;
     destination?: string;
     /**
+     * Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
+     */
+    errorInformation?: string;
+    parentRuleNames?: string[];
+    /**
      * Type of a managed network Outbound Rule of a machine learning workspace.
      */
     status?: string;
@@ -8755,6 +8760,12 @@ export interface PrivateEndpointOutboundRuleResponse {
      */
     destination?: PrivateEndpointDestinationResponse;
     /**
+     * Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
+     */
+    errorInformation?: string;
+    fqdns?: string[];
+    parentRuleNames?: string[];
+    /**
      * Type of a managed network Outbound Rule of a machine learning workspace.
      */
     status?: string;
@@ -9222,6 +9233,10 @@ export interface RegistryResponse {
      * Details of each region the registry is in
      */
     regionDetails?: RegistryRegionArmDetailsResponse[];
+    /**
+     * RegistryId Guid for this registry
+     */
+    registryId?: string;
     /**
      * Private endpoint connections info used for pending connections in private link portal
      */
@@ -9836,6 +9851,11 @@ export interface ServiceTagOutboundRuleResponse {
      * Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
      */
     destination?: ServiceTagDestinationResponse;
+    /**
+     * Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
+     */
+    errorInformation?: string;
+    parentRuleNames?: string[];
     /**
      * Type of a managed network Outbound Rule of a machine learning workspace.
      */

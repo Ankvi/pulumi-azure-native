@@ -25,6 +25,16 @@ export interface AllowedPrincipalsArgs {
 }
 
 /**
+ * Configuration of Application Insights 
+ */
+export interface AppInsightsConfigurationArgs {
+    /**
+     * Application Insights connection string
+     */
+    connectionString?: pulumi.Input<string>;
+}
+
+/**
  * Configuration of application logs
  */
 export interface AppLogsConfigurationArgs {
@@ -174,7 +184,7 @@ export interface AzureActiveDirectoryRegistrationArgs {
     clientSecretSettingName?: pulumi.Input<string>;
     /**
      * The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
+     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
      * This URI is a case-sensitive identifier for the token issuer.
      * More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
      */
@@ -238,6 +248,10 @@ export interface AzureFilePropertiesArgs {
      */
     accountKey?: pulumi.Input<string>;
     /**
+     * Storage account key stored as an Azure Key Vault secret.
+     */
+    accountKeyVaultProperties?: pulumi.Input<SecretKeyVaultPropertiesArgs>;
+    /**
      * Storage account name for azure file.
      */
     accountName?: pulumi.Input<string>;
@@ -276,9 +290,21 @@ export interface AzureStaticWebAppsRegistrationArgs {
  */
 export interface BlobStorageTokenStoreArgs {
     /**
-     * The name of the app secrets containing the SAS URL of the blob storage containing the tokens.
+     * The URI of the blob storage containing the tokens. Should not be used along with sasUrlSettingName.
      */
-    sasUrlSettingName: pulumi.Input<string>;
+    blobContainerUri?: pulumi.Input<string>;
+    /**
+     * The Client ID of a User-Assigned Managed Identity. Should not be used along with managedIdentityResourceId.
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * The Resource ID of a User-Assigned Managed Identity. Should not be used along with clientId.
+     */
+    managedIdentityResourceId?: pulumi.Input<string>;
+    /**
+     * The name of the app secrets containing the SAS URL of the blob storage containing the tokens. Should not be used along with blobContainerUri.
+     */
+    sasUrlSettingName?: pulumi.Input<string>;
 }
 
 /**
@@ -308,9 +334,31 @@ export interface BuildConfigurationArgs {
 }
 
 /**
+ * Properties for a certificate stored in a Key Vault.
+ */
+export interface CertificateKeyVaultPropertiesArgs {
+    /**
+     * Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
+     */
+    identity?: pulumi.Input<string>;
+    /**
+     * URL pointing to the Azure Key Vault secret that holds the certificate.
+     */
+    keyVaultUrl?: pulumi.Input<string>;
+}
+
+/**
  * Certificate resource specific properties
  */
 export interface CertificatePropertiesArgs {
+    /**
+     * Properties for a certificate stored in a Key Vault.
+     */
+    certificateKeyVaultProperties?: pulumi.Input<CertificateKeyVaultPropertiesArgs>;
+    /**
+     * The type of the certificate. Allowed values are `ServerSSLCertificate` and `ImagePullTrustedCA`
+     */
+    certificateType?: pulumi.Input<string | enums.CertificateType>;
     /**
      * Certificate password.
      */
@@ -359,13 +407,17 @@ export interface ClientRegistrationArgs {
 export interface ConfigurationArgs {
     /**
      * ActiveRevisionsMode controls how active revisions are handled for the Container app:
-     * <list><item>Multiple: multiple revisions can be active.</item><item>Single: Only one revision can be active at a time. Revision weights can not be used in this mode. If no value if provided, this is the default.</item></list>
+     * <list><item>Single: Only one revision can be active at a time. Traffic weights cannot be used. This is the default.</item><item>Multiple: Multiple revisions can be active, including optional traffic weights and labels.</item><item>Labels: Only revisions with labels are active. Traffic weights can be applied to labels.</item></list>
      */
     activeRevisionsMode?: pulumi.Input<string | enums.ActiveRevisionsMode>;
     /**
      * Dapr configuration for the Container App.
      */
     dapr?: pulumi.Input<DaprArgs>;
+    /**
+     * Optional settings for Managed Identities that are assigned to the Container App. If a Managed Identity is not specified here, default settings will be used.
+     */
+    identitySettings?: pulumi.Input<pulumi.Input<IdentitySettingsArgs>[]>;
     /**
      * Ingress configurations.
      */
@@ -379,6 +431,14 @@ export interface ConfigurationArgs {
      */
     registries?: pulumi.Input<pulumi.Input<RegistryCredentialsArgs>[]>;
     /**
+     * Optional. The percent of the total number of replicas that must be brought up before revision transition occurs. Defaults to 100 when none is given. Value must be greater than 0 and less than or equal to 100.
+     */
+    revisionTransitionThreshold?: pulumi.Input<number>;
+    /**
+     * App runtime configuration for the Container App.
+     */
+    runtime?: pulumi.Input<RuntimeArgs>;
+    /**
      * Collection of secrets used by a Container app
      */
     secrets?: pulumi.Input<pulumi.Input<SecretArgs>[]>;
@@ -386,6 +446,10 @@ export interface ConfigurationArgs {
      * Container App to be a dev Container App Service
      */
     service?: pulumi.Input<ServiceArgs>;
+    /**
+     * Required in labels revisions mode. Label to apply to newly created revision.
+     */
+    targetLabel?: pulumi.Input<string>;
 }
 /**
  * configurationArgsProvideDefaults sets the appropriate defaults for ConfigurationArgs
@@ -407,6 +471,10 @@ export interface ConnectedEnvironmentStoragePropertiesArgs {
      * Azure file properties
      */
     azureFile?: pulumi.Input<AzureFilePropertiesArgs>;
+    /**
+     * SMB storage properties
+     */
+    smb?: pulumi.Input<SmbStorageArgs>;
 }
 
 /**
@@ -430,6 +498,10 @@ export interface ContainerArgs {
      */
     image?: pulumi.Input<string>;
     /**
+     * The type of the image. Set to CloudBuild to let the system manages the image, where user will not be able to update image through image field. Set to ContainerImage for user provided image.
+     */
+    imageType?: pulumi.Input<string | enums.ImageType>;
+    /**
      * Custom container name.
      */
     name?: pulumi.Input<string>;
@@ -445,6 +517,16 @@ export interface ContainerArgs {
      * Container volume mounts.
      */
     volumeMounts?: pulumi.Input<pulumi.Input<VolumeMountArgs>[]>;
+}
+
+/**
+ * Container App auto patch configuration.
+ */
+export interface ContainerAppPatchingConfigurationArgs {
+    /**
+     * Patching mode for the container app. Null or default in this field will be interpreted as Automatic by RP. Automatic mode will automatically apply available patches. Manual mode will require the user to manually apply patches. Disabled mode will stop patch detection and auto patching.
+     */
+    patchingMode?: pulumi.Input<string | enums.PatchingMode>;
 }
 
 /**
@@ -580,6 +662,10 @@ export interface ContainerResourcesArgs {
      */
     cpu?: pulumi.Input<number>;
     /**
+     * Required GPU in cores for GPU based app, e.g. 1.0
+     */
+    gpu?: pulumi.Input<number>;
+    /**
      * Required memory, e.g. "250Mb"
      */
     memory?: pulumi.Input<string>;
@@ -670,6 +756,10 @@ export interface CustomDomainArgs {
  */
 export interface CustomDomainConfigurationArgs {
     /**
+     * Certificate stored in Azure Key Vault.
+     */
+    certificateKeyVaultProperties?: pulumi.Input<CertificateKeyVaultPropertiesArgs>;
+    /**
      * Certificate password
      */
     certificatePassword?: pulumi.Input<string>;
@@ -710,6 +800,10 @@ export interface CustomScaleRuleArgs {
      */
     auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
     /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: pulumi.Input<string>;
+    /**
      * Metadata properties to describe custom scale rule.
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -724,6 +818,10 @@ export interface CustomScaleRuleArgs {
  * Container App Dapr configuration.
  */
 export interface DaprArgs {
+    /**
+     * Dapr application health check configuration
+     */
+    appHealth?: pulumi.Input<DaprAppHealthArgs>;
     /**
      * Dapr application identifier
      */
@@ -756,6 +854,10 @@ export interface DaprArgs {
      * Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
      */
     logLevel?: pulumi.Input<string | enums.LogLevel>;
+    /**
+     * Maximum number of concurrent requests, events handled by the Dapr sidecar
+     */
+    maxConcurrency?: pulumi.Input<number>;
 }
 /**
  * daprArgsProvideDefaults sets the appropriate defaults for DaprArgs
@@ -766,6 +868,32 @@ export function daprArgsProvideDefaults(val: DaprArgs): DaprArgs {
         appProtocol: (val.appProtocol) ?? "http",
         enabled: (val.enabled) ?? false,
     };
+}
+
+/**
+ * Dapr application health check configuration
+ */
+export interface DaprAppHealthArgs {
+    /**
+     * Boolean indicating if the health probe is enabled
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Path for the health probe
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Interval for the health probe in seconds
+     */
+    probeIntervalSeconds?: pulumi.Input<number>;
+    /**
+     * Timeout for the health probe in milliseconds
+     */
+    probeTimeoutMilliseconds?: pulumi.Input<number>;
+    /**
+     * Threshold for the health probe
+     */
+    threshold?: pulumi.Input<number>;
 }
 
 /**
@@ -843,6 +971,24 @@ export interface DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs {
 }
 
 /**
+ * Configuration to bind a Dapr Component to a dev ContainerApp Service
+ */
+export interface DaprComponentServiceBindingArgs {
+    /**
+     * Service bind metadata
+     */
+    metadata?: pulumi.Input<DaprServiceBindMetadataArgs>;
+    /**
+     * Name of the service bind
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Resource id of the target service
+     */
+    serviceId?: pulumi.Input<string>;
+}
+
+/**
  * Dapr component metadata.
  */
 export interface DaprMetadataArgs {
@@ -856,6 +1002,20 @@ export interface DaprMetadataArgs {
     secretRef?: pulumi.Input<string>;
     /**
      * Metadata property value.
+     */
+    value?: pulumi.Input<string>;
+}
+
+/**
+ * Dapr component metadata.
+ */
+export interface DaprServiceBindMetadataArgs {
+    /**
+     * Service bind metadata property name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Service bind metadata property value.
      */
     value?: pulumi.Input<string>;
 }
@@ -916,6 +1076,20 @@ export interface DaprSubscriptionRoutesArgs {
 }
 
 /**
+ * Configuration of datadog 
+ */
+export interface DataDogConfigurationArgs {
+    /**
+     * The data dog api key
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * The data dog site
+     */
+    site?: pulumi.Input<string>;
+}
+
+/**
  * The configuration settings of the Azure Active Directory default authorization policy.
  */
 export interface DefaultAuthorizationPolicyArgs {
@@ -927,6 +1101,54 @@ export interface DefaultAuthorizationPolicyArgs {
      * The configuration settings of the Azure Active Directory allowed principals.
      */
     allowedPrincipals?: pulumi.Input<AllowedPrincipalsArgs>;
+}
+
+/**
+ * Configuration of Open Telemetry destinations
+ */
+export interface DestinationsConfigurationArgs {
+    /**
+     * Open telemetry datadog destination configuration
+     */
+    dataDogConfiguration?: pulumi.Input<DataDogConfigurationArgs>;
+    /**
+     * Open telemetry otlp configurations
+     */
+    otlpConfigurations?: pulumi.Input<pulumi.Input<OtlpConfigurationArgs>[]>;
+}
+
+/**
+ * Configuration properties for disk encryption
+ */
+export interface DiskEncryptionConfigurationArgs {
+    /**
+     * The Key Vault that contains your key to use for disk encryption. The Key Vault must be in the same region as the Managed Environment.
+     */
+    keyVaultConfiguration?: pulumi.Input<DiskEncryptionConfigurationKeyVaultConfigurationArgs>;
+}
+
+/**
+ * Configuration properties for the authentication to the Key Vault
+ */
+export interface DiskEncryptionConfigurationAuthArgs {
+    /**
+     * Resource ID of a user-assigned managed identity to authenticate to the Key Vault. The identity must be assigned to the managed environment, in the same tenant as the Key Vault, and it must have the following key permissions on the Key Vault: wrapkey, unwrapkey, get.
+     */
+    identity?: pulumi.Input<string>;
+}
+
+/**
+ * The Key Vault that contains your key to use for disk encryption. The Key Vault must be in the same region as the Managed Environment.
+ */
+export interface DiskEncryptionConfigurationKeyVaultConfigurationArgs {
+    /**
+     * Configuration properties for the authentication to the Key Vault
+     */
+    auth?: pulumi.Input<DiskEncryptionConfigurationAuthArgs>;
+    /**
+     * Key URL pointing to a key in KeyVault. Version segment of the Url is required.
+     */
+    keyUrl?: pulumi.Input<string>;
 }
 
 /**
@@ -962,13 +1184,9 @@ export interface DotNetComponentServiceBindArgs {
  */
 export interface DynamicPoolConfigurationArgs {
     /**
-     * The cooldown period of a session in seconds.
+     * The lifecycle configuration of a session in the dynamic session pool
      */
-    cooldownPeriodInSeconds?: pulumi.Input<number>;
-    /**
-     * The execution type of the session pool.
-     */
-    executionType?: pulumi.Input<string | enums.ExecutionType>;
+    lifecycleConfiguration?: pulumi.Input<LifecycleConfigurationArgs>;
 }
 
 /**
@@ -1098,9 +1316,17 @@ export interface GithubActionConfigurationArgs {
      */
     azureCredentials?: pulumi.Input<AzureCredentialsArgs>;
     /**
+     * List of environment variables to be passed to the build.
+     */
+    buildEnvironmentVariables?: pulumi.Input<pulumi.Input<EnvironmentVariableArgs>[]>;
+    /**
      * Context path
      */
     contextPath?: pulumi.Input<string>;
+    /**
+     * Dockerfile path
+     */
+    dockerfilePath?: pulumi.Input<string>;
     /**
      * One time Github PAT to configure github environment
      */
@@ -1171,6 +1397,20 @@ export interface GoogleArgs {
      * The configuration settings of the Azure Active Directory token validation flow.
      */
     validation?: pulumi.Input<AllowedAudiencesValidationArgs>;
+}
+
+/**
+ * Header of otlp configuration
+ */
+export interface HeaderArgs {
+    /**
+     * The key of otlp configuration header
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * The value of otlp configuration header
+     */
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -1370,6 +1610,10 @@ export interface HttpScaleRuleArgs {
      */
     auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
     /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: pulumi.Input<string>;
+    /**
      * Metadata properties to describe http scale rule.
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1443,6 +1687,29 @@ export interface IdentityProvidersArgs {
 }
 
 /**
+ * Optional settings for a Managed Identity that is assigned to the Container App.
+ */
+export interface IdentitySettingsArgs {
+    /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity: pulumi.Input<string>;
+    /**
+     * Use to select the lifecycle stages of a Container App during which the Managed Identity should be available.
+     */
+    lifecycle?: pulumi.Input<string | enums.IdentitySettingsLifeCycle>;
+}
+/**
+ * identitySettingsArgsProvideDefaults sets the appropriate defaults for IdentitySettingsArgs
+ */
+export function identitySettingsArgsProvideDefaults(val: IdentitySettingsArgs): IdentitySettingsArgs {
+    return {
+        ...val,
+        lifecycle: (val.lifecycle) ?? "All",
+    };
+}
+
+/**
  * Container App Ingress configuration.
  */
 export interface IngressArgs {
@@ -1487,6 +1754,10 @@ export interface IngressArgs {
      */
     targetPort?: pulumi.Input<number>;
     /**
+     * Whether an http app listens on http or https
+     */
+    targetPortHttpScheme?: pulumi.Input<string | enums.IngressTargetPortHttpScheme>;
+    /**
      * Traffic weights for app's revisions
      */
     traffic?: pulumi.Input<pulumi.Input<TrafficWeightArgs>[]>;
@@ -1505,6 +1776,46 @@ export function ingressArgsProvideDefaults(val: IngressArgs): IngressArgs {
         external: (val.external) ?? false,
         transport: (val.transport) ?? "auto",
     };
+}
+
+/**
+ * Settings for the ingress component, including workload profile, scaling, and connection handling.
+ */
+export interface IngressConfigurationArgs {
+    /**
+     * Maximum number of headers per request allowed by the ingress. Must be at least 1. Defaults to 100.
+     */
+    headerCountLimit?: pulumi.Input<number>;
+    /**
+     * Duration (in minutes) before idle requests are timed out. Must be at least 1 minute. Defaults to 4 minutes.
+     */
+    requestIdleTimeout?: pulumi.Input<number>;
+    /**
+     * Scaling configuration for the ingress component. Required.
+     */
+    scale?: pulumi.Input<IngressConfigurationScaleArgs>;
+    /**
+     * Time (in seconds) to allow active connections to complete on termination. Must be between 0 and 3600. Defaults to 480 seconds.
+     */
+    terminationGracePeriodSeconds?: pulumi.Input<number>;
+    /**
+     * Name of the workload profile used by the ingress component. Required.
+     */
+    workloadProfileName?: pulumi.Input<string>;
+}
+
+/**
+ * Scaling configuration for the ingress component. Required.
+ */
+export interface IngressConfigurationScaleArgs {
+    /**
+     * Maximum number of ingress replicas. Must be greater than or equal to minReplicas.
+     */
+    maxReplicas?: pulumi.Input<number>;
+    /**
+     * Minimum number of ingress replicas. Must be at least 2. Required.
+     */
+    minReplicas?: pulumi.Input<number>;
 }
 
 /**
@@ -1555,6 +1866,10 @@ export interface InitContainerArgs {
      * Container image tag.
      */
     image?: pulumi.Input<string>;
+    /**
+     * The type of the image. Set to CloudBuild to let the system manages the image, where user will not be able to update image through image field. Set to ContainerImage for user provided image.
+     */
+    imageType?: pulumi.Input<string | enums.ImageType>;
     /**
      * Custom container name.
      */
@@ -1641,6 +1956,10 @@ export interface JobConfigurationArgs {
      * Trigger configuration of an event driven job.
      */
     eventTriggerConfig?: pulumi.Input<JobConfigurationEventTriggerConfigArgs>;
+    /**
+     * Optional settings for Managed Identities that are assigned to the Container App Job. If a Managed Identity is not specified here, default settings will be used.
+     */
+    identitySettings?: pulumi.Input<pulumi.Input<IdentitySettingsArgs>[]>;
     /**
      * Manual trigger configuration for a single execution job. Properties replicaCompletionCount and parallelism would be set to 1 by default
      */
@@ -1781,6 +2100,10 @@ export interface JobScaleRuleArgs {
      */
     auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
     /**
+     * The resource ID of a user-assigned managed identity that is assigned to the job, or 'system' for system-assigned identity.
+     */
+    identity?: pulumi.Input<string>;
+    /**
      * Metadata properties to describe the scale rule.
      */
     metadata?: any;
@@ -1828,6 +2151,24 @@ export interface JwtClaimChecksArgs {
 }
 
 /**
+ * The lifecycle configuration properties of a session in the dynamic session pool
+ */
+export interface LifecycleConfigurationArgs {
+    /**
+     * The cooldown period of a session in seconds when the lifecycle type is 'Timed'.
+     */
+    cooldownPeriodInSeconds?: pulumi.Input<number>;
+    /**
+     * The lifecycle type of the session pool.
+     */
+    lifecycleType?: pulumi.Input<string | enums.LifecycleType>;
+    /**
+     * The maximum alive period of a session in seconds when the lifecycle type is 'OnContainerExit'.
+     */
+    maxAlivePeriodInSeconds?: pulumi.Input<number>;
+}
+
+/**
  * Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
  */
 export interface LogAnalyticsConfigurationArgs {
@@ -1836,9 +2177,27 @@ export interface LogAnalyticsConfigurationArgs {
      */
     customerId?: pulumi.Input<string>;
     /**
+     * Boolean indicating whether to parse json string log into dynamic json columns
+     */
+    dynamicJsonColumns?: pulumi.Input<boolean>;
+    /**
      * Log analytics customer key
      */
     sharedKey?: pulumi.Input<string>;
+}
+
+/**
+ * Logger settings for java workloads.
+ */
+export interface LoggerSettingArgs {
+    /**
+     * The specified logger's log level.
+     */
+    level: pulumi.Input<string | enums.Level>;
+    /**
+     * Logger name.
+     */
+    logger: pulumi.Input<string>;
 }
 
 /**
@@ -1894,6 +2253,16 @@ export interface LoginScopesArgs {
 }
 
 /**
+ * Configuration of Open Telemetry logs
+ */
+export interface LogsConfigurationArgs {
+    /**
+     * Open telemetry logs destinations
+     */
+    destinations?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
  * Certificate resource specific properties
  */
 export interface ManagedCertificatePropertiesArgs {
@@ -1945,6 +2314,10 @@ export interface ManagedEnvironmentStoragePropertiesArgs {
      * Azure file properties
      */
     azureFile?: pulumi.Input<AzureFilePropertiesArgs>;
+    /**
+     * NFS Azure file properties
+     */
+    nfsAzureFile?: pulumi.Input<NfsAzureFilePropertiesArgs>;
 }
 
 /**
@@ -1985,6 +2358,20 @@ export interface ManagedServiceIdentityArgs {
 }
 
 /**
+ * Configuration of Open Telemetry metrics
+ */
+export interface MetricsConfigurationArgs {
+    /**
+     * Open telemetry metrics destinations
+     */
+    destinations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Boolean indicating if including keda metrics
+     */
+    includeKeda?: pulumi.Input<boolean>;
+}
+
+/**
  * Configuration properties for mutual TLS authentication
  */
 export interface MtlsArgs {
@@ -2015,6 +2402,24 @@ export interface NacosComponentArgs {
      * List of Java Components that are bound to the Java component
      */
     serviceBinds?: pulumi.Input<pulumi.Input<JavaComponentServiceBindArgs>[]>;
+}
+
+/**
+ * NFS Azure File Properties.
+ */
+export interface NfsAzureFilePropertiesArgs {
+    /**
+     * Access mode for storage
+     */
+    accessMode?: pulumi.Input<string | enums.AccessMode>;
+    /**
+     * Server for NFS azure file.
+     */
+    server?: pulumi.Input<string>;
+    /**
+     * NFS Azure file share name.
+     */
+    shareName?: pulumi.Input<string>;
 }
 
 /**
@@ -2104,6 +2509,50 @@ export interface OpenIdConnectRegistrationArgs {
 }
 
 /**
+ * Configuration of Open Telemetry
+ */
+export interface OpenTelemetryConfigurationArgs {
+    /**
+     * Open telemetry destinations configuration
+     */
+    destinationsConfiguration?: pulumi.Input<DestinationsConfigurationArgs>;
+    /**
+     * Open telemetry logs configuration
+     */
+    logsConfiguration?: pulumi.Input<LogsConfigurationArgs>;
+    /**
+     * Open telemetry metrics configuration
+     */
+    metricsConfiguration?: pulumi.Input<MetricsConfigurationArgs>;
+    /**
+     * Open telemetry trace configuration
+     */
+    tracesConfiguration?: pulumi.Input<TracesConfigurationArgs>;
+}
+
+/**
+ * Configuration of otlp 
+ */
+export interface OtlpConfigurationArgs {
+    /**
+     * The endpoint of otlp configuration
+     */
+    endpoint?: pulumi.Input<string>;
+    /**
+     * Headers of otlp configurations
+     */
+    headers?: pulumi.Input<pulumi.Input<HeaderArgs>[]>;
+    /**
+     * Boolean indicating if otlp configuration is insecure
+     */
+    insecure?: pulumi.Input<boolean>;
+    /**
+     * The name of otlp configuration
+     */
+    name?: pulumi.Input<string>;
+}
+
+/**
  * Model representing a pre-build step.
  */
 export interface PreBuildStepArgs {
@@ -2144,9 +2593,17 @@ export interface PrivateLinkServiceConnectionStateArgs {
  */
 export interface QueueScaleRuleArgs {
     /**
+     * Storage account name. required if using managed identity to authenticate
+     */
+    accountName?: pulumi.Input<string>;
+    /**
      * Authentication secrets for the queue scale rule.
      */
     auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
+    /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: pulumi.Input<string>;
     /**
      * Queue length.
      */
@@ -2198,9 +2655,75 @@ export interface RegistryInfoArgs {
 }
 
 /**
+ * Container App Runtime configuration.
+ */
+export interface RuntimeArgs {
+    /**
+     * .NET app configuration
+     */
+    dotnet?: pulumi.Input<RuntimeDotnetArgs>;
+    /**
+     * Java app configuration
+     */
+    java?: pulumi.Input<RuntimeJavaArgs>;
+}
+
+/**
+ * .NET app configuration
+ */
+export interface RuntimeDotnetArgs {
+    /**
+     * Auto configure the ASP.NET Core Data Protection feature
+     */
+    autoConfigureDataProtection?: pulumi.Input<boolean>;
+}
+
+/**
+ * Java app configuration
+ */
+export interface RuntimeJavaArgs {
+    /**
+     * Enable jmx core metrics for the java app
+     */
+    enableMetrics?: pulumi.Input<boolean>;
+    /**
+     * Diagnostic capabilities achieved by java agent
+     */
+    javaAgent?: pulumi.Input<RuntimeJavaAgentArgs>;
+}
+
+/**
+ * Diagnostic capabilities achieved by java agent
+ */
+export interface RuntimeJavaAgentArgs {
+    /**
+     * Enable java agent injection for the java app.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Capabilities on the java logging scenario.
+     */
+    logging?: pulumi.Input<RuntimeLoggingArgs>;
+}
+
+/**
+ * Capabilities on the java logging scenario.
+ */
+export interface RuntimeLoggingArgs {
+    /**
+     * Settings of the logger for the java app.
+     */
+    loggerSettings?: pulumi.Input<pulumi.Input<LoggerSettingArgs>[]>;
+}
+
+/**
  * Container App scaling configurations.
  */
 export interface ScaleArgs {
+    /**
+     * Optional. KEDA Cooldown Period. Defaults to 300 seconds if not set.
+     */
+    cooldownPeriod?: pulumi.Input<number>;
     /**
      * Optional. Maximum number of container replicas. Defaults to 10 if not set.
      */
@@ -2209,6 +2732,10 @@ export interface ScaleArgs {
      * Optional. Minimum number of container replicas.
      */
     minReplicas?: pulumi.Input<number>;
+    /**
+     * Optional. KEDA Polling Interval. Defaults to 30 seconds if not set.
+     */
+    pollingInterval?: pulumi.Input<number>;
     /**
      * Scaling rules.
      */
@@ -2345,6 +2872,20 @@ export interface SecretArgs {
 }
 
 /**
+ * Properties for a secret stored in a Key Vault.
+ */
+export interface SecretKeyVaultPropertiesArgs {
+    /**
+     * Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
+     */
+    identity?: pulumi.Input<string>;
+    /**
+     * URL pointing to the Azure Key Vault secret.
+     */
+    keyVaultUrl?: pulumi.Input<string>;
+}
+
+/**
  * Secret to be added to volume.
  */
 export interface SecretVolumeItemArgs {
@@ -2372,6 +2913,14 @@ export interface ServiceArgs {
  * Configuration to bind a ContainerApp to a dev ContainerApp Service
  */
 export interface ServiceBindArgs {
+    /**
+     * Type of the client to be used to connect to the service
+     */
+    clientType?: pulumi.Input<string>;
+    /**
+     * Customized keys for customizing injected values to the app
+     */
+    customizedKeys?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the service bind
      */
@@ -2406,6 +2955,10 @@ export interface SessionContainerArgs {
      * Custom container name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * List of probes for the container.
+     */
+    probes?: pulumi.Input<pulumi.Input<SessionProbeArgs>[]>;
     /**
      * Container resource requirements.
      */
@@ -2461,6 +3014,102 @@ export interface SessionPoolSecretArgs {
 }
 
 /**
+ * Session probe configuration.
+ */
+export interface SessionProbeArgs {
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. Maximum value is 10.
+     */
+    failureThreshold?: pulumi.Input<number>;
+    /**
+     * HTTPGet specifies the http request to perform.
+     */
+    httpGet?: pulumi.Input<SessionProbeHttpGetArgs>;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. Minimum value is 1. Maximum value is 60.
+     */
+    initialDelaySeconds?: pulumi.Input<number>;
+    /**
+     * How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+     */
+    periodSeconds?: pulumi.Input<number>;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1. Maximum value is 10.
+     */
+    successThreshold?: pulumi.Input<number>;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported.
+     */
+    tcpSocket?: pulumi.Input<SessionProbeTcpSocketArgs>;
+    /**
+     * Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate. Maximum value is 3600 seconds (1 hour)
+     */
+    terminationGracePeriodSeconds?: pulumi.Input<number>;
+    /**
+     * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 240.
+     */
+    timeoutSeconds?: pulumi.Input<number>;
+    /**
+     * Denotes the type of probe. Can be Liveness or Startup, Readiness probe is not supported in sessions. Type must be unique for each probe within the context of a list of probes (SessionProbes).
+     */
+    type?: pulumi.Input<string | enums.SessionProbeType>;
+}
+
+/**
+ * HTTPGet specifies the http request to perform.
+ */
+export interface SessionProbeHttpGetArgs {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Custom headers to set in the request. HTTP allows repeated headers.
+     */
+    httpHeaders?: pulumi.Input<pulumi.Input<SessionProbeHttpHeadersArgs>[]>;
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Scheme to use for connecting to the host. Defaults to HTTP.
+     */
+    scheme?: pulumi.Input<string | enums.Scheme>;
+}
+
+/**
+ * HTTPHeader describes a custom header to be used in HTTP probes
+ */
+export interface SessionProbeHttpHeadersArgs {
+    /**
+     * The header field name
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The header field value
+     */
+    value: pulumi.Input<string>;
+}
+
+/**
+ * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported.
+ */
+export interface SessionProbeTcpSocketArgs {
+    /**
+     * Optional: Host name to connect to, defaults to the pod IP.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: pulumi.Input<number>;
+}
+
+/**
  * Session pool private registry credentials.
  */
 export interface SessionRegistryCredentialsArgs {
@@ -2478,6 +3127,36 @@ export interface SessionRegistryCredentialsArgs {
     server?: pulumi.Input<string>;
     /**
      * Container registry username.
+     */
+    username?: pulumi.Input<string>;
+}
+
+/**
+ * SMB storage properties
+ */
+export interface SmbStorageArgs {
+    /**
+     * Access mode for storage
+     */
+    accessMode?: pulumi.Input<string | enums.AccessMode>;
+    /**
+     * The domain name for the user.
+     */
+    domain?: pulumi.Input<string>;
+    /**
+     * The host name or IP address of the SMB server.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * The password for the user.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * The path to the SMB shared folder.
+     */
+    shareName?: pulumi.Input<string>;
+    /**
+     * The user to log on to the SMB server.
      */
     username?: pulumi.Input<string>;
 }
@@ -2607,6 +3286,10 @@ export interface TcpScaleRuleArgs {
      */
     auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
     /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: pulumi.Input<string>;
+    /**
      * Metadata properties to describe tcp scale rule.
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -2689,6 +3372,20 @@ export interface TokenStoreArgs {
      * call the token refresh API. The default is 72 hours.
      */
     tokenRefreshExtensionHours?: pulumi.Input<number>;
+}
+
+/**
+ * Configuration of Open Telemetry traces
+ */
+export interface TracesConfigurationArgs {
+    /**
+     * Open telemetry traces destinations
+     */
+    destinations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Boolean indicating if including dapr traces
+     */
+    includeDapr?: pulumi.Input<boolean>;
 }
 
 /**
@@ -2784,7 +3481,7 @@ export interface VnetConfigurationArgs {
  */
 export interface VolumeArgs {
     /**
-     * Mount options used while mounting the AzureFile. Must be a comma-separated string.
+     * Mount options used while mounting the Azure file share or NFS Azure file share. Must be a comma-separated string.
      */
     mountOptions?: pulumi.Input<string>;
     /**
@@ -2828,6 +3525,10 @@ export interface VolumeMountArgs {
  */
 export interface WorkloadProfileArgs {
     /**
+     * Whether to use a FIPS-enabled OS. Supported only for dedicated workload profiles.
+     */
+    enableFips?: pulumi.Input<boolean>;
+    /**
      * The maximum capacity.
      */
     maximumCount?: pulumi.Input<number>;
@@ -2843,4 +3544,13 @@ export interface WorkloadProfileArgs {
      * Workload profile type for the workloads to run on.
      */
     workloadProfileType: pulumi.Input<string>;
+}
+/**
+ * workloadProfileArgsProvideDefaults sets the appropriate defaults for WorkloadProfileArgs
+ */
+export function workloadProfileArgsProvideDefaults(val: WorkloadProfileArgs): WorkloadProfileArgs {
+    return {
+        ...val,
+        enableFips: (val.enableFips) ?? false,
+    };
 }

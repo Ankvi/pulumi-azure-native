@@ -21,7 +21,7 @@ export function getConfigurationAssignment(args: GetConfigurationAssignmentArgs,
 
 export interface GetConfigurationAssignmentArgs {
     /**
-     * Configuration assignment name
+     * The name of the ConfigurationAssignment
      */
     configurationAssignmentName: string;
     /**
@@ -29,15 +29,15 @@ export interface GetConfigurationAssignmentArgs {
      */
     providerName: string;
     /**
-     * Resource group name
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
-     * Resource identifier
+     * Resource parent name
      */
     resourceName: string;
     /**
-     * Resource type
+     * Resource parent type
      */
     resourceType: string;
 }
@@ -55,7 +55,7 @@ export interface GetConfigurationAssignmentResult {
      */
     readonly filter?: types.outputs.ConfigurationAssignmentFilterPropertiesResponse;
     /**
-     * Fully qualified identifier of the resource
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -67,7 +67,7 @@ export interface GetConfigurationAssignmentResult {
      */
     readonly maintenanceConfigurationId?: string;
     /**
-     * Name of the resource
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -79,7 +79,7 @@ export interface GetConfigurationAssignmentResult {
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
-     * Type of the resource
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -103,7 +103,7 @@ export function getConfigurationAssignmentOutput(args: GetConfigurationAssignmen
 
 export interface GetConfigurationAssignmentOutputArgs {
     /**
-     * Configuration assignment name
+     * The name of the ConfigurationAssignment
      */
     configurationAssignmentName: pulumi.Input<string>;
     /**
@@ -111,15 +111,15 @@ export interface GetConfigurationAssignmentOutputArgs {
      */
     providerName: pulumi.Input<string>;
     /**
-     * Resource group name
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * Resource identifier
+     * Resource parent name
      */
     resourceName: pulumi.Input<string>;
     /**
-     * Resource type
+     * Resource parent type
      */
     resourceType: pulumi.Input<string>;
 }

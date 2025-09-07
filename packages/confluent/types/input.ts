@@ -154,7 +154,7 @@ export interface ClusterConfigEntityArgs {
  */
 export interface ClusterStatusEntityArgs {
     /**
-     * The number of Confluent Kafka Units 
+     * The number of Confluent Kafka Units
      */
     cku?: pulumi.Input<number>;
     /**
@@ -557,7 +557,7 @@ export interface SCClusterSpecEntityArgs {
      */
     byok?: pulumi.Input<SCClusterByokEntityArgs>;
     /**
-     * The cloud service provider 
+     * The cloud service provider
      */
     cloud?: pulumi.Input<string>;
     /**

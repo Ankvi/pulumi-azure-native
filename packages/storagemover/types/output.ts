@@ -1,6 +1,6 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
-export interface AgentPropertiesResponseErrorDetails {
+export interface AgentPropertiesErrorDetailsResponse {
     /**
      * Error code reported by Agent
      */

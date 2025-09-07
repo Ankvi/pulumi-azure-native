@@ -5,6 +5,8 @@ import * as types from "./types";
  * Details of topic record
  *
  * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
+ *
+ * Other available API versions: 2025-07-17-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Topic extends pulumi.CustomResource {
     /**
@@ -54,7 +56,7 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<types.outputs.TopicMetadataEntityResponse | undefined>;
     /**
-     * Display name of the topic
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -74,11 +76,15 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly replicationFactor!: pulumi.Output<string | undefined>;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
      * Topic Id returned by Confluent
      */
     public readonly topicId!: pulumi.Output<string | undefined>;
     /**
-     * The type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -121,6 +127,7 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["topicName"] = args ? args.topicName : undefined;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -133,11 +140,12 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["partitionsCount"] = undefined /*out*/;
             resourceInputs["partitionsReassignments"] = undefined /*out*/;
             resourceInputs["replicationFactor"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["topicId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:confluent/v20240701:Topic" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:confluent/v20240701:Topic" }, { type: "azure-native:confluent/v20250717preview:Topic" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Topic.__pulumiType, name, resourceInputs, opts);
     }

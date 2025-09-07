@@ -25,21 +25,21 @@ export interface DataPlaneAuthOptionsResponse {
 }
 
 /**
- * Describes a policy that determines how resources within the search service are to be encrypted with customer=managed keys.
+ * Describes a policy that determines how resources within the search service are to be encrypted with customer managed keys.
  */
 export interface EncryptionWithCmkResponse {
     /**
-     * Describes whether the search service is compliant or not with respect to having non-customer-encrypted resources. If a service has more than one non-customer-encrypted resource and 'Enforcement' is 'enabled' then the service will be marked as 'nonCompliant'.
+     * Returns the status of search service compliance with respect to non-CMK-encrypted objects. If a service has more than one unencrypted object, and enforcement is enabled, the service is marked as noncompliant.
      */
     encryptionComplianceStatus: string;
     /**
-     * Describes how a search service should enforce having one or more non-customer-encrypted resources.
+     * Describes how a search service should enforce compliance if it finds objects that aren't encrypted with the customer-managed key.
      */
     enforcement?: string;
 }
 
 /**
- * Identity for the resource.
+ * Details about the search service identity. A null value indicates that the search service has no identity assigned.
  */
 export interface IdentityResponse {
     /**
@@ -51,37 +51,45 @@ export interface IdentityResponse {
      */
     tenantId: string;
     /**
-     * The identity type.
+     * The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an identity created by the system and a set of user assigned identities. The type 'None' will remove all identities from the service.
      */
     type: string;
+    /**
+     * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
 }
 
 /**
- * The IP restriction rule of the search service.
+ * The IP restriction rule of the Azure AI Search service.
  */
 export interface IpRuleResponse {
     /**
-     * Value corresponding to a single IPv4 address (for example, 123.1.2.3) or an IP range in CIDR format (for example, 123.1.2.3/24) to be allowed.
+     * Value corresponding to a single IPv4 address (eg., 123.1.2.3) or an IP range in CIDR format (eg., 123.1.2.3/24) to be allowed.
      */
     value?: string;
 }
 
 /**
- * Network-specific rules that determine how the search service can be reached.
+ * Network specific rules that determine how the Azure AI Search service may be reached.
  */
 export interface NetworkRuleSetResponse {
     /**
-     * A list of IP restriction rules used for an IP firewall. Any IPs that do not match the rules are blocked by the firewall. These rules are only applied when the 'publicNetworkAccess' of the search service is 'enabled'.
+     * Possible origins of inbound traffic that can bypass the rules defined in the 'ipRules' section.
+     */
+    bypass?: string;
+    /**
+     * A list of IP restriction rules that defines the inbound network(s) with allowing access to the search service endpoint. At the meantime, all other public IP networks are blocked by the firewall. These restriction rules are applied only when the 'publicNetworkAccess' of the search service is 'enabled'; otherwise, traffic over public interface is not allowed even with any public IP rules, and private endpoint connections would be the exclusive access method.
      */
     ipRules?: IpRuleResponse[];
 }
 
 /**
- * Describes the properties of an existing Private Endpoint connection to the search service.
+ * Describes the properties of an existing private endpoint connection to the search service.
  */
 export interface PrivateEndpointConnectionPropertiesResponse {
     /**
-     * The group id from the provider of resource the private link service connection is for.
+     * The group ID of the Azure resource for which the private link service is for.
      */
     groupId?: string;
     /**
@@ -89,11 +97,11 @@ export interface PrivateEndpointConnectionPropertiesResponse {
      */
     privateEndpoint?: PrivateEndpointConnectionPropertiesResponsePrivateEndpoint;
     /**
-     * Describes the current state of an existing Private Link Service connection to the Azure Private Endpoint.
+     * Describes the current state of an existing Azure Private Link service connection to the private endpoint.
      */
     privateLinkServiceConnectionState?: PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState;
     /**
-     * The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, or Incomplete
+     * The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, Incomplete, or Canceled.
      */
     provisioningState?: string;
 }
@@ -112,13 +120,13 @@ export function privateEndpointConnectionPropertiesResponseProvideDefaults(val: 
  */
 export interface PrivateEndpointConnectionPropertiesResponsePrivateEndpoint {
     /**
-     * The resource id of the private endpoint resource from Microsoft.Network provider.
+     * The resource ID of the private endpoint resource from Microsoft.Network provider.
      */
     id?: string;
 }
 
 /**
- * Describes the current state of an existing Private Link Service connection to the Azure Private Endpoint.
+ * Describes the current state of an existing Azure Private Link service connection to the private endpoint.
  */
 export interface PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState {
     /**
@@ -145,11 +153,11 @@ export function privateEndpointConnectionPropertiesResponsePrivateLinkServiceCon
 }
 
 /**
- * Describes an existing private endpoint connection to the search service.
+ * Describes an existing private endpoint connection to the Azure AI Search service.
  */
 export interface PrivateEndpointConnectionResponse {
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     id: string;
     /**
@@ -157,9 +165,13 @@ export interface PrivateEndpointConnectionResponse {
      */
     name: string;
     /**
-     * Describes the properties of an existing private endpoint connection to the search service.
+     * Describes the properties of an existing private endpoint connection to the Azure AI Search service.
      */
     properties?: PrivateEndpointConnectionPropertiesResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -176,7 +188,7 @@ export function privateEndpointConnectionResponseProvideDefaults(val: PrivateEnd
 }
 
 /**
- * Describes an API key for a given search service that has permissions for query operations only.
+ * Describes an API key for a given Azure AI Search service that conveys read-only permissions on the docs collection of an index.
  */
 export interface QueryKeyResponse {
     /**
@@ -184,21 +196,21 @@ export interface QueryKeyResponse {
      */
     key: string;
     /**
-     * The name of the query API key; may be empty.
+     * The name of the query API key. Query names are optional, but assigning a name can help you remember how it's used.
      */
     name: string;
 }
 
 /**
- * Describes the properties of an existing Shared Private Link Resource managed by the search service.
+ * Describes the properties of an existing shared private link resource managed by the Azure AI Search service.
  */
 export interface SharedPrivateLinkResourcePropertiesResponse {
     /**
-     * The group id from the provider of resource the shared private link resource is for.
+     * The group ID from the provider of resource the shared private link resource is for.
      */
     groupId?: string;
     /**
-     * The resource id of the resource the shared private link resource is for.
+     * The resource ID of the resource the shared private link resource is for.
      */
     privateLinkResourceId?: string;
     /**
@@ -206,11 +218,11 @@ export interface SharedPrivateLinkResourcePropertiesResponse {
      */
     provisioningState?: string;
     /**
-     * The request message for requesting approval of the shared private link resource.
+     * The message for requesting approval of the shared private link resource.
      */
     requestMessage?: string;
     /**
-     * Optional. Can be used to specify the Azure Resource Manager location of the resource to which a shared private link is to be created. This is only required for those resources whose DNS configuration are regional (such as Azure Kubernetes Service).
+     * Optional. Can be used to specify the Azure Resource Manager location of the resource for which a shared private link is being created. This is only required for those resources whose DNS configuration are regional (such as Azure Kubernetes Service).
      */
     resourceRegion?: string;
     /**
@@ -220,11 +232,11 @@ export interface SharedPrivateLinkResourcePropertiesResponse {
 }
 
 /**
- * Describes a Shared Private Link Resource managed by the search service.
+ * Describes a shared private link resource managed by the Azure AI Search service.
  */
 export interface SharedPrivateLinkResourceResponse {
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     id: string;
     /**
@@ -232,9 +244,13 @@ export interface SharedPrivateLinkResourceResponse {
      */
     name: string;
     /**
-     * Describes the properties of a Shared Private Link Resource managed by the search service.
+     * Describes the properties of a shared private link resource managed by the Azure AI Search service.
      */
     properties?: SharedPrivateLinkResourcePropertiesResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -249,4 +265,48 @@ export interface SkuResponse {
      * The SKU of the search service. Valid values include: 'free': Shared service. 'basic': Dedicated service with up to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12 replicas. 'standard2': Similar to standard, but with more capacity per search unit. 'standard3': The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity'). 'storage_optimized_l1': Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2': Supports 2TB per partition, up to 12 partitions.'
      */
     name?: string;
+}
+
+/**
+ * Metadata pertaining to creation and last modification of the resource.
+ */
+export interface SystemDataResponse {
+    /**
+     * The timestamp of resource creation (UTC).
+     */
+    createdAt?: string;
+    /**
+     * The identity that created the resource.
+     */
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
+}
+
+/**
+ * User assigned identity properties
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId: string;
 }

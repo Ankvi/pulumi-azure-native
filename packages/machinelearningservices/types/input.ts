@@ -6881,6 +6881,7 @@ export interface PrivateEndpointOutboundRuleArgs {
      * Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
      */
     destination?: pulumi.Input<PrivateEndpointDestinationArgs>;
+    fqdns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Type of a managed network Outbound Rule of a machine learning workspace.
      */
@@ -7230,6 +7231,10 @@ export interface RegistryArgs {
      * Details of each region the registry is in
      */
     regionDetails?: pulumi.Input<pulumi.Input<RegistryRegionArmDetailsArgs>[]>;
+    /**
+     * RegistryId Guid for this registry
+     */
+    registryId?: pulumi.Input<string>;
     /**
      * Private endpoint connections info used for pending connections in private link portal
      */
@@ -7897,6 +7902,10 @@ export interface ServiceTagDestinationArgs {
      * The action enum for networking rule.
      */
     action?: pulumi.Input<string | enums.RuleAction>;
+    /**
+     * Optional, if provided, the ServiceTag property will be ignored.
+     */
+    addressPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
     portRanges?: pulumi.Input<string>;
     protocol?: pulumi.Input<string>;
     serviceTag?: pulumi.Input<string>;

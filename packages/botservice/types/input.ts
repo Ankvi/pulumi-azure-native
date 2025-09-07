@@ -369,11 +369,11 @@ export interface DirectLineSiteArgs {
     /**
      * Whether this site is enabled for Bot Framework V1 protocol.
      */
-    isV1Enabled: pulumi.Input<boolean>;
+    isV1Enabled?: pulumi.Input<boolean>;
     /**
      * Whether this site is enabled for Bot Framework V3 protocol.
      */
-    isV3Enabled: pulumi.Input<boolean>;
+    isV3Enabled?: pulumi.Input<boolean>;
     /**
      * Whether this site is enabled for Webchat Speech
      */
@@ -1422,7 +1422,7 @@ export interface WebChatSiteArgs {
     /**
      * Whether this site is enabled for preview versions of Webchat
      */
-    isWebchatPreviewEnabled: pulumi.Input<boolean>;
+    isWebchatPreviewEnabled?: pulumi.Input<boolean>;
     /**
      * Site name
      */

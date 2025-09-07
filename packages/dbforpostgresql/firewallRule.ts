@@ -2,11 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Represents a server firewall rule.
+ * Firewall rule.
  *
  * Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
  *
- * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**
@@ -40,7 +40,7 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
-     * The end IP address of the server firewall rule. Must be IPv4 format.
+     * IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
      */
     public readonly endIpAddress!: pulumi.Output<string>;
     /**
@@ -48,7 +48,7 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The start IP address of the server firewall rule. Must be IPv4 format.
+     * IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
      */
     public readonly startIpAddress!: pulumi.Output<string>;
     /**
@@ -101,7 +101,7 @@ export class FirewallRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20171201:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20200214preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20200214privatepreview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20201005privatepreview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20210410privatepreview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20210601:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20210601preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20210615privatepreview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20220120preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20220308preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20221108:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20221201:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20230301preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20230302preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20230601preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20231201preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20240301preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20240801:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20241101preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20250101preview:FirewallRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20171201:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20200214preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20200214privatepreview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20201005privatepreview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20210410privatepreview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20210601:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20210601preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20210615privatepreview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20220120preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20220308preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20221108:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20221201:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20230301preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20230302preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20230601preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20231201preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20240301preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20240801:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20241101preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20250101preview:FirewallRule" }, { type: "azure-native:dbforpostgresql/v20250601preview:FirewallRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FirewallRule.__pulumiType, name, resourceInputs, opts);
     }
@@ -112,11 +112,11 @@ export class FirewallRule extends pulumi.CustomResource {
  */
 export interface FirewallRuleArgs {
     /**
-     * The end IP address of the server firewall rule. Must be IPv4 format.
+     * IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
      */
     endIpAddress: pulumi.Input<string>;
     /**
-     * The name of the server firewall rule.
+     * Name of the firewall rule.
      */
     firewallRuleName?: pulumi.Input<string>;
     /**
@@ -128,7 +128,7 @@ export interface FirewallRuleArgs {
      */
     serverName: pulumi.Input<string>;
     /**
-     * The start IP address of the server firewall rule. Must be IPv4 format.
+     * IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
      */
     startIpAddress: pulumi.Input<string>;
 }

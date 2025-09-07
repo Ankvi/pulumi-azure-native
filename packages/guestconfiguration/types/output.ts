@@ -186,11 +186,11 @@ export interface GuestConfigurationAssignmentPropertiesResponse {
      */
     latestAssignmentReport?: AssignmentReportResponse;
     /**
-     * Id of the latest report for the guest configuration assignment. 
+     * Id of the latest report for the guest configuration assignment.
      */
     latestReportId: string;
     /**
-     * parameter hash for the guest configuration assignment. 
+     * parameter hash for the guest configuration assignment.
      */
     parameterHash: string;
     /**
@@ -340,7 +340,7 @@ export interface VMSSVMInfoResponse {
      */
     lastComplianceChecked: string;
     /**
-     * Id of the latest report for the guest configuration assignment. 
+     * Id of the latest report for the guest configuration assignment.
      */
     latestReportId: string;
     /**

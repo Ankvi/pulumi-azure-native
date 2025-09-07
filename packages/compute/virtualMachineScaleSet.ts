@@ -72,11 +72,11 @@ export class VirtualMachineScaleSet extends pulumi.CustomResource {
      */
     public readonly identity!: pulumi.Output<types.outputs.VirtualMachineScaleSetIdentityResponse | undefined>;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Resource name
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -136,7 +136,11 @@ export class VirtualMachineScaleSet extends pulumi.CustomResource {
      */
     public readonly spotRestorePolicy!: pulumi.Output<types.outputs.SpotRestorePolicyResponse | undefined>;
     /**
-     * Resource tags
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * Resource tags.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -144,7 +148,7 @@ export class VirtualMachineScaleSet extends pulumi.CustomResource {
      */
     public /*out*/ readonly timeCreated!: pulumi.Output<string>;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -168,7 +172,7 @@ export class VirtualMachineScaleSet extends pulumi.CustomResource {
      */
     public readonly zoneBalance!: pulumi.Output<boolean | undefined>;
     /**
-     * The virtual machine scale set zones.
+     * The availability zones.
      */
     public readonly zones!: pulumi.Output<string[] | undefined>;
 
@@ -219,6 +223,7 @@ export class VirtualMachineScaleSet extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["timeCreated"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;
@@ -248,6 +253,7 @@ export class VirtualMachineScaleSet extends pulumi.CustomResource {
             resourceInputs["sku"] = undefined /*out*/;
             resourceInputs["skuProfile"] = undefined /*out*/;
             resourceInputs["spotRestorePolicy"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["timeCreated"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -298,7 +304,7 @@ export interface VirtualMachineScaleSetArgs {
      */
     identity?: pulumi.Input<types.inputs.VirtualMachineScaleSetIdentityArgs>;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
@@ -330,7 +336,7 @@ export interface VirtualMachineScaleSetArgs {
      */
     resiliencyPolicy?: pulumi.Input<types.inputs.ResiliencyPolicyArgs>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
@@ -358,7 +364,7 @@ export interface VirtualMachineScaleSetArgs {
      */
     spotRestorePolicy?: pulumi.Input<types.inputs.SpotRestorePolicyArgs>;
     /**
-     * Resource tags
+     * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -370,7 +376,7 @@ export interface VirtualMachineScaleSetArgs {
      */
     virtualMachineProfile?: pulumi.Input<types.inputs.VirtualMachineScaleSetVMProfileArgs>;
     /**
-     * The name of the VM scale set to create or update.
+     * The name of the VM scale set.
      */
     vmScaleSetName?: pulumi.Input<string>;
     /**
@@ -382,7 +388,7 @@ export interface VirtualMachineScaleSetArgs {
      */
     zoneBalance?: pulumi.Input<boolean>;
     /**
-     * The virtual machine scale set zones.
+     * The availability zones.
      */
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

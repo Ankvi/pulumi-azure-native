@@ -29,6 +29,691 @@ export function advancedSettingsResponseProvideDefaults(val: AdvancedSettingsRes
 }
 
 /**
+ * AkriConnector properties.
+ */
+export interface AkriConnectorPropertiesResponse {
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+}
+
+/**
+ * AkriConnectorTemplateAioMetadata properties.
+ */
+export interface AkriConnectorTemplateAioMetadataResponse {
+    /**
+     * The maximum version of AIO required for the connector.
+     */
+    aioMaxVersion?: string;
+    /**
+     * The minimum version of AIO required for the connector.
+     */
+    aioMinVersion?: string;
+}
+
+/**
+ * AkriConnectorTemplateBucketizedAllocation properties.
+ */
+export interface AkriConnectorTemplateBucketizedAllocationResponse {
+    /**
+     * The bucketized allocation of AEPs for connectors.
+     */
+    bucketSize: number;
+    /**
+     * AkriConnectorTemplateAllocationPolicy properties.
+     * Expected value is 'Bucketized'.
+     */
+    policy: "Bucketized";
+}
+
+/**
+ * AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs properties.
+ */
+export interface AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse {
+    /**
+     * The additional configuration schema reference.
+     */
+    additionalConfigSchemaRef?: string;
+    /**
+     * The default configuration schema reference for datasets.
+     */
+    defaultDatasetConfigSchemaRef?: string;
+    /**
+     * The default configuration schema reference for events.
+     */
+    defaultEventsConfigSchemaRef?: string;
+    /**
+     * The default configuration schema reference for process control.
+     */
+    defaultProcessControlConfigSchemaRef?: string;
+    /**
+     * The default configuration schema reference for streams.
+     */
+    defaultStreamsConfigSchemaRef?: string;
+}
+
+/**
+ * AkriConnectorTemplateDeviceInboundEndpointType properties.
+ */
+export interface AkriConnectorTemplateDeviceInboundEndpointTypeResponse {
+    /**
+     * The configuration schema references for the device inbound endpoint.
+     */
+    configurationSchemaRefs?: AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse;
+    /**
+     * A description of the device inbound endpoint.
+     */
+    description?: string;
+    /**
+     * The type of the device inbound endpoint.
+     */
+    endpointType: string;
+    /**
+     * The version of the device inbound endpoint.
+     */
+    version?: string;
+}
+
+/**
+ * AkriConnectorTemplateDiagnostics properties.
+ */
+export interface AkriConnectorTemplateDiagnosticsResponse {
+    /**
+     * The log settings for the Connector template.
+     */
+    logs: AkriConnectorsDiagnosticsLogsResponse;
+}
+/**
+ * akriConnectorTemplateDiagnosticsResponseProvideDefaults sets the appropriate defaults for AkriConnectorTemplateDiagnosticsResponse
+ */
+export function akriConnectorTemplateDiagnosticsResponseProvideDefaults(val: AkriConnectorTemplateDiagnosticsResponse): AkriConnectorTemplateDiagnosticsResponse {
+    return {
+        ...val,
+        logs: akriConnectorsDiagnosticsLogsResponseProvideDefaults(val.logs),
+    };
+}
+
+/**
+ * AkriConnectorTemplateHelmAdvancedConfiguration properties.
+ */
+export interface AkriConnectorTemplateHelmAdvancedConfigurationResponse {
+    /**
+     * Delete operation configuration for the Helm chart.
+     */
+    delete?: AkriConnectorTemplateHelmDeleteConfigurationResponse;
+    /**
+     * Install operation configuration for the Helm chart.
+     */
+    install?: AkriConnectorTemplateHelmInstallConfigurationResponse;
+    /**
+     * Upgrade operation configuration for the Helm chart.
+     */
+    upgrade?: AkriConnectorTemplateHelmUpgradeConfigurationResponse;
+}
+
+/**
+ * AkriConnectorTemplateHelmAuthSecretRef properties.
+ */
+export interface AkriConnectorTemplateHelmAuthSecretRefResponse {
+    /**
+     * The key of the password in the secret.
+     */
+    passwordKey: string;
+    /**
+     * The name of the secret.
+     */
+    secretRef: string;
+    /**
+     * The key of the username in the secret.
+     */
+    usernameKey: string;
+}
+
+/**
+ * AkriConnectorTemplateHelmConfiguration properties.
+ */
+export interface AkriConnectorTemplateHelmConfigurationResponse {
+    /**
+     * The Helm configuration settings.
+     */
+    helmConfigurationSettings: AkriConnectorTemplateHelmConfigurationSettingsResponse;
+    /**
+     * Runtime configuration types.
+     * Expected value is 'HelmConfiguration'.
+     */
+    runtimeConfigurationType: "HelmConfiguration";
+}
+
+/**
+ * AkriConnectorTemplateHelmConfiguration properties.
+ */
+export interface AkriConnectorTemplateHelmConfigurationSettingsResponse {
+    /**
+     * Advanced configuration for the Helm chart.
+     * Install, upgrade, and uninstall options for the helm chart such as atomic, wait, timeout, `wait_for_jobs`, and `disable_hooks`.
+     */
+    advancedConfiguration?: AkriConnectorTemplateHelmAdvancedConfigurationResponse;
+    /**
+     * The registry settings for the helm chart to be used.
+     */
+    registrySettings?: AkriConnectorTemplateHelmContainerRegistryResponse | AkriConnectorTemplateHelmRegistryEndpointRefResponse;
+    /**
+     * The release name of the Helm chart.
+     */
+    releaseName: string;
+    /**
+     * The name of the repository
+     */
+    repositoryName: string;
+    /**
+     * A map of values to pass to the helm chart.
+     */
+    values?: {[key: string]: string};
+    /**
+     * The version of the Helm chart.
+     */
+    version: string;
+}
+
+/**
+ * AkriConnectorTemplateHelmContainerRegistry properties.
+ */
+export interface AkriConnectorTemplateHelmContainerRegistryResponse {
+    /**
+     * The registry settings for the container registry.
+     */
+    containerRegistrySettings: AkriConnectorTemplateHelmContainerRegistrySettingsResponse;
+    /**
+     * AkriConnectorTemplateHelmRegistrySettingsType values.
+     * Expected value is 'ContainerRegistry'.
+     */
+    registrySettingsType: "ContainerRegistry";
+}
+
+/**
+ * AkriConnectorTemplateHelmContainerRegistrySettings properties.
+ */
+export interface AkriConnectorTemplateHelmContainerRegistrySettingsResponse {
+    /**
+     * Optional reference to a secret in the same namespace to use for pulling the Helm chart.
+     */
+    authSecretRef?: AkriConnectorTemplateHelmAuthSecretRefResponse;
+    /**
+     * The registry to use for the Helm chart.
+     */
+    registry: string;
+}
+
+/**
+ * AkriConnectorTemplateHelmDeleteConfiguration properties.
+ */
+export interface AkriConnectorTemplateHelmDeleteConfigurationResponse {
+    /**
+     * If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+     */
+    atomic?: boolean;
+    /**
+     * Disable pre/post upgrade hooks for the operation.
+     */
+    disableHooks?: boolean;
+    /**
+     * Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+     */
+    timeout?: number;
+    /**
+     * If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+     */
+    wait?: boolean;
+    /**
+     * If set, the operation will wait for jobs to complete before marking the release as successful.
+     */
+    waitForJobs?: boolean;
+}
+
+/**
+ * AkriConnectorTemplateHelmInstallConfiguration properties.
+ */
+export interface AkriConnectorTemplateHelmInstallConfigurationResponse {
+    /**
+     * If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+     */
+    atomic?: boolean;
+    /**
+     * Disable pre/post upgrade hooks for the operation.
+     */
+    disableHooks?: boolean;
+    /**
+     * Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+     */
+    timeout?: number;
+    /**
+     * If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+     */
+    wait?: boolean;
+    /**
+     * If set, the operation will wait for jobs to complete before marking the release as successful.
+     */
+    waitForJobs?: boolean;
+}
+
+/**
+ * AkriConnectorTemplateHelmRegistryEndpointRef properties.
+ */
+export interface AkriConnectorTemplateHelmRegistryEndpointRefResponse {
+    /**
+     * The name of the registry endpoint.
+     */
+    registryEndpointRef: string;
+    /**
+     * AkriConnectorTemplateHelmRegistrySettingsType values.
+     * Expected value is 'RegistryEndpointRef'.
+     */
+    registrySettingsType: "RegistryEndpointRef";
+}
+
+/**
+ * AkriConnectorTemplateHelmUpgradeConfiguration properties.
+ */
+export interface AkriConnectorTemplateHelmUpgradeConfigurationResponse {
+    /**
+     * If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
+     */
+    atomic?: boolean;
+    /**
+     * Disable pre/post upgrade hooks for the operation.
+     */
+    disableHooks?: boolean;
+    /**
+     * Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
+     */
+    timeout?: number;
+    /**
+     * If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
+     */
+    wait?: boolean;
+    /**
+     * If set, the operation will wait for jobs to complete before marking the release as successful.
+     */
+    waitForJobs?: boolean;
+}
+
+/**
+ * AkriConnectorTemplateManagedConfiguration properties.
+ */
+export interface AkriConnectorTemplateManagedConfigurationResponse {
+    /**
+     * The managed configuration settings.
+     */
+    managedConfigurationSettings: AkriConnectorTemplateRuntimeImageConfigurationResponse | AkriConnectorTemplateRuntimeStatefulSetConfigurationResponse;
+    /**
+     * Runtime configuration types.
+     * Expected value is 'ManagedConfiguration'.
+     */
+    runtimeConfigurationType: "ManagedConfiguration";
+}
+
+/**
+ * AkriConnectorTemplatePersistentVolumeClaim properties.
+ */
+export interface AkriConnectorTemplatePersistentVolumeClaimResponse {
+    /**
+     * The name of the persistent volume claim.
+     */
+    claimName: string;
+    /**
+     * The mount path for the persistent volume claim.
+     */
+    mountPath: string;
+}
+
+/**
+ * AkriConnectorTemplate properties.
+ */
+export interface AkriConnectorTemplatePropertiesResponse {
+    /**
+     * Metadata about AIO.
+     */
+    aioMetadata?: AkriConnectorTemplateAioMetadataResponse;
+    /**
+     * Device inbound endpoint types.
+     */
+    deviceInboundEndpointTypes: AkriConnectorTemplateDeviceInboundEndpointTypeResponse[];
+    /**
+     * Diagnostics settings for the Connector template.
+     */
+    diagnostics?: AkriConnectorTemplateDiagnosticsResponse;
+    /**
+     * Mqtt connection configuration settings.
+     */
+    mqttConnectionConfiguration?: AkriConnectorsMqttConnectionConfigurationResponse;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * The runtime configuration for the Connector template.
+     */
+    runtimeConfiguration: AkriConnectorTemplateHelmConfigurationResponse | AkriConnectorTemplateManagedConfigurationResponse;
+}
+/**
+ * akriConnectorTemplatePropertiesResponseProvideDefaults sets the appropriate defaults for AkriConnectorTemplatePropertiesResponse
+ */
+export function akriConnectorTemplatePropertiesResponseProvideDefaults(val: AkriConnectorTemplatePropertiesResponse): AkriConnectorTemplatePropertiesResponse {
+    return {
+        ...val,
+        diagnostics: (val.diagnostics ? akriConnectorTemplateDiagnosticsResponseProvideDefaults(val.diagnostics) : undefined),
+        mqttConnectionConfiguration: (val.mqttConnectionConfiguration ? akriConnectorsMqttConnectionConfigurationResponseProvideDefaults(val.mqttConnectionConfiguration) : undefined),
+    };
+}
+
+/**
+ * AkriConnectorTemplateRuntimeImageConfiguration properties.
+ */
+export interface AkriConnectorTemplateRuntimeImageConfigurationResponse {
+    /**
+     * Additional configuration for the image of the managed configuration.
+     */
+    additionalConfiguration?: {[key: string]: string};
+    /**
+     * Allocation settings for the managed configuration.
+     */
+    allocation?: AkriConnectorTemplateBucketizedAllocationResponse;
+    /**
+     * The image configuration settings.
+     */
+    imageConfigurationSettings: AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse;
+    /**
+     * Managed configuration types.
+     * Expected value is 'ImageConfiguration'.
+     */
+    managedConfigurationType: "ImageConfiguration";
+    /**
+     * The persistent volume claim templates for the managed configuration.
+     * See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
+     */
+    persistentVolumeClaimTemplates?: any[];
+    /**
+     * The persistent volume claims for the managed configuration.
+     */
+    persistentVolumeClaims?: AkriConnectorTemplatePersistentVolumeClaimResponse[];
+    /**
+     * Connector secrets that will be mounted onto all connector instances.
+     */
+    secrets?: AkriConnectorsSecretResponse[];
+    /**
+     * Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
+     */
+    trustSettings?: AkriConnectorTemplateTrustListResponse;
+}
+
+/**
+ * AkriConnectorTemplateRuntimeImageConfiguration properties.
+ */
+export interface AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse {
+    /**
+     * The image name without any registry reference, tag or digest.
+     */
+    imageName: string;
+    /**
+     * The pull policy of the image.
+     */
+    imagePullPolicy?: string;
+    /**
+     * The registry settings for the image. You can omit this field if using the default docker hub repository or using a local image.
+     */
+    registrySettings?: AkriConnectorsContainerRegistryResponse | AkriConnectorsRegistryEndpointRefResponse;
+    /**
+     * The number of replicas to be set up.
+     */
+    replicas?: number;
+    /**
+     * Optional image tag or digest. If not specified, the default tag is `latest`.
+     */
+    tagDigestSettings?: AkriConnectorsDigestResponse | AkriConnectorsTagResponse;
+}
+
+/**
+ * AkriConnectorTemplateRuntimeStatefulSetConfiguration properties.
+ */
+export interface AkriConnectorTemplateRuntimeStatefulSetConfigurationResponse {
+    /**
+     * Additional configuration for the image of the managed configuration.
+     */
+    additionalConfiguration?: {[key: string]: string};
+    /**
+     * Allocation settings for the managed configuration.
+     */
+    allocation?: AkriConnectorTemplateBucketizedAllocationResponse;
+    /**
+     * Managed configuration types.
+     * Expected value is 'StatefulSetConfiguration'.
+     */
+    managedConfigurationType: "StatefulSetConfiguration";
+    /**
+     * The persistent volume claim templates for the managed configuration.
+     * See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
+     */
+    persistentVolumeClaimTemplates?: any[];
+    /**
+     * The persistent volume claims for the managed configuration.
+     */
+    persistentVolumeClaims?: AkriConnectorTemplatePersistentVolumeClaimResponse[];
+    /**
+     * Connector secrets that will be mounted onto all connector instances.
+     */
+    secrets?: AkriConnectorsSecretResponse[];
+    /**
+     * The stateful set configuration settings. This corresponds to the Kubernetes StatefulSet resource.
+     * See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json#/components/schemas/io.k8s.api.apps.v1.StatefulSetSpec
+     */
+    statefulSetConfigurationSettings: any;
+    /**
+     * Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
+     */
+    trustSettings?: AkriConnectorTemplateTrustListResponse;
+}
+
+/**
+ * AkriConnectorTemplateTrustList properties.
+ */
+export interface AkriConnectorTemplateTrustListResponse {
+    /**
+     * The secret reference for certificates to trust.
+     */
+    trustListSecretRef: string;
+}
+
+/**
+ * AkriConnectorsContainerRegistry properties.
+ */
+export interface AkriConnectorsContainerRegistryResponse {
+    /**
+     * The registry settings for the container registry.
+     */
+    containerRegistrySettings: AkriConnectorsContainerRegistrySettingsResponse;
+    /**
+     * AkriConnectorsRegistrySettings properties.
+     * Expected value is 'ContainerRegistry'.
+     */
+    registrySettingsType: "ContainerRegistry";
+}
+
+/**
+ * AkriConnectorsContainerRegistry properties.
+ */
+export interface AkriConnectorsContainerRegistrySettingsResponse {
+    /**
+     * Optional list of references to secrets in the same namespace to use for pulling the connector image.
+     */
+    imagePullSecrets?: AkriConnectorsImagePullSecretResponse[];
+    /**
+     * The container registry to use for the artifact.
+     */
+    registry: string;
+}
+
+/**
+ * AkriConnectorsDiagnostic Log properties.
+ */
+export interface AkriConnectorsDiagnosticsLogsResponse {
+    /**
+     * The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
+     */
+    level?: string;
+}
+/**
+ * akriConnectorsDiagnosticsLogsResponseProvideDefaults sets the appropriate defaults for AkriConnectorsDiagnosticsLogsResponse
+ */
+export function akriConnectorsDiagnosticsLogsResponseProvideDefaults(val: AkriConnectorsDiagnosticsLogsResponse): AkriConnectorsDiagnosticsLogsResponse {
+    return {
+        ...val,
+        level: (val.level) ?? "info",
+    };
+}
+
+/**
+ * AkriConnectorsDigest properties.
+ */
+export interface AkriConnectorsDigestResponse {
+    /**
+     * The digest of the image.
+     */
+    digest: string;
+    /**
+     * AkriConnectorsTagDigestType values.
+     * Expected value is 'Digest'.
+     */
+    tagDigestType: "Digest";
+}
+
+/**
+ * AkriConnectorsImagePullSecret properties.
+ */
+export interface AkriConnectorsImagePullSecretResponse {
+    /**
+     * The name of the image pull secret.
+     */
+    secretRef: string;
+}
+
+/**
+ * AkriConnectorsMqttConnectionConfiguration properties.
+ */
+export interface AkriConnectorsMqttConnectionConfigurationResponse {
+    /**
+     * Authentication properties.
+     */
+    authentication?: AkriConnectorsServiceAccountAuthenticationResponse;
+    /**
+     * Host of the Broker in the form of <hostname>:<port>.
+     */
+    host?: string;
+    /**
+     * KeepAlive for connection in seconds.
+     */
+    keepAliveSeconds?: number;
+    /**
+     * The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack.
+     */
+    maxInflightMessages?: number;
+    /**
+     * The protocol to use for the connection. Currently only `mqtt` is supported.
+     */
+    protocol?: string;
+    /**
+     * Session expiry in seconds.
+     */
+    sessionExpirySeconds?: number;
+    /**
+     * TLS configuration.
+     */
+    tls?: TlsPropertiesResponse;
+}
+/**
+ * akriConnectorsMqttConnectionConfigurationResponseProvideDefaults sets the appropriate defaults for AkriConnectorsMqttConnectionConfigurationResponse
+ */
+export function akriConnectorsMqttConnectionConfigurationResponseProvideDefaults(val: AkriConnectorsMqttConnectionConfigurationResponse): AkriConnectorsMqttConnectionConfigurationResponse {
+    return {
+        ...val,
+        tls: (val.tls ? tlsPropertiesResponseProvideDefaults(val.tls) : undefined),
+    };
+}
+
+/**
+ * AkriConnectorsRegistryEndpointRef properties.
+ */
+export interface AkriConnectorsRegistryEndpointRefResponse {
+    /**
+     * The name of the registry endpoint.
+     */
+    registryEndpointRef: string;
+    /**
+     * AkriConnectorsRegistrySettings properties.
+     * Expected value is 'RegistryEndpointRef'.
+     */
+    registrySettingsType: "RegistryEndpointRef";
+}
+
+/**
+ * AkriConnectorsSecret properties.
+ */
+export interface AkriConnectorsSecretResponse {
+    /**
+     * The application-defined alias for the secret.
+     */
+    secretAlias: string;
+    /**
+     * The key in the secret to be mounted.
+     */
+    secretKey: string;
+    /**
+     * The name of the secret to be mounted.
+     */
+    secretRef: string;
+}
+
+/**
+ * AkriConnectorsServiceAccountAuthentication properties.
+ */
+export interface AkriConnectorsServiceAccountAuthenticationResponse {
+    /**
+     * AkriConnectorsMqttAuthenticationMethod properties.
+     * Expected value is 'ServiceAccountToken'.
+     */
+    method: "ServiceAccountToken";
+    /**
+     * The service account token for the MQTT connection.
+     */
+    serviceAccountTokenSettings: AkriConnectorsServiceAccountTokenSettingsResponse;
+}
+
+/**
+ * AkriConnectorsServiceAccountTokenSettings properties.
+ */
+export interface AkriConnectorsServiceAccountTokenSettingsResponse {
+    /**
+     * The audience for the service account token.
+     */
+    audience: string;
+}
+
+/**
+ * AkriConnectorsTag properties.
+ */
+export interface AkriConnectorsTagResponse {
+    /**
+     * The tag of the image.
+     */
+    tag: string;
+    /**
+     * AkriConnectorsTagDigestType values.
+     * Expected value is 'Tag'.
+     */
+    tagDigestType: "Tag";
+}
+
+/**
  * Broker AuthorizationConfig properties
  */
 export interface AuthorizationConfigResponse {
@@ -1199,6 +1884,232 @@ export function dataflowEndpointPropertiesResponseProvideDefaults(val: DataflowE
 }
 
 /**
+ * DataflowGraph DataflowGraphNode Connection Input.
+ */
+export interface DataflowGraphConnectionInputResponse {
+    /**
+     * Name of the input node.
+     */
+    name: string;
+    /**
+     * Schema settings for the input node.
+     */
+    schema?: DataflowGraphConnectionSchemaSettingsResponse;
+}
+
+/**
+ * DataflowGraph DataflowGraphNode Connection Output.
+ */
+export interface DataflowGraphConnectionOutputResponse {
+    /**
+     * Name of the destination node.
+     */
+    name: string;
+}
+
+/**
+ * DataflowGraph connection node output schema settings.
+ */
+export interface DataflowGraphConnectionSchemaSettingsResponse {
+    /**
+     * Reference to the schema that describes the output of the transformation.
+     */
+    schemaRef?: string;
+    /**
+     * Output serialization format.
+     */
+    serializationFormat?: string;
+}
+
+/**
+ * DataflowGraph destination node properties.
+ */
+export interface DataflowGraphDestinationNodeResponse {
+    /**
+     * Destination configuration.
+     */
+    destinationSettings: DataflowGraphDestinationNodeSettingsResponse;
+    /**
+     * Name of the node.
+     */
+    name: string;
+    /**
+     * DataflowGraph node types.
+     * Expected value is 'Destination'.
+     */
+    nodeType: "Destination";
+}
+
+/**
+ * DataflowGraph destination node settings.
+ */
+export interface DataflowGraphDestinationNodeSettingsResponse {
+    /**
+     * Data destination at the endpoint.
+     */
+    dataDestination: string;
+    /**
+     * The name of the DataflowEndpoint resource .
+     */
+    endpointRef: string;
+    /**
+     * Output schema settings.
+     */
+    outputSchemaSettings?: DataflowGraphDestinationSchemaSettingsResponse;
+}
+
+/**
+ * DataflowGraph destination node output schema settings.
+ */
+export interface DataflowGraphDestinationSchemaSettingsResponse {
+    /**
+     * Reference to the schema that describes the output of the transformation.
+     */
+    schemaRef?: string;
+    /**
+     * The format of the output data.
+     */
+    serializationFormat: string;
+}
+
+/**
+ * DataflowGraph graph node configuration.
+ */
+export interface DataflowGraphGraphNodeConfigurationResponse {
+    /**
+     * Key of the configuration.
+     */
+    key: string;
+    /**
+     * Value of the configuration.
+     */
+    value: string;
+}
+
+/**
+ * DataflowGraph graph node properties.
+ */
+export interface DataflowGraphGraphNodeResponse {
+    /**
+     * Graph configuration.
+     */
+    graphSettings: DataflowGraphNodeGraphSettingsResponse;
+    /**
+     * Name of the node.
+     */
+    name: string;
+    /**
+     * DataflowGraph node types.
+     * Expected value is 'Graph'.
+     */
+    nodeType: "Graph";
+}
+
+/**
+ * DataflowGraph DataflowGraphNode Connection.
+ */
+export interface DataflowGraphNodeConnectionResponse {
+    /**
+     * Information about the source node.
+     */
+    from: DataflowGraphConnectionInputResponse;
+    /**
+     * Information about the destination node.
+     */
+    to: DataflowGraphConnectionOutputResponse;
+}
+
+/**
+ * DataflowGraph graph node settings.
+ */
+export interface DataflowGraphNodeGraphSettingsResponse {
+    /**
+     * The artifact name and version to pull. This should be in the format `<artifact-name>:<version>`.
+     */
+    artifact: string;
+    /**
+     * Configuration key-value pairs.
+     */
+    configuration?: DataflowGraphGraphNodeConfigurationResponse[];
+    /**
+     * Reference to the registry endpoint for pulling the artifact.
+     */
+    registryEndpointRef: string;
+}
+
+/**
+ * DataflowGraph properties.
+ */
+export interface DataflowGraphPropertiesResponse {
+    /**
+     * The mode of the dataflow graph.
+     */
+    mode?: string;
+    /**
+     * List of connections between nodes in the dataflow graph.
+     */
+    nodeConnections: DataflowGraphNodeConnectionResponse[];
+    /**
+     * List of nodes in the dataflow graph.
+     */
+    nodes: (DataflowGraphDestinationNodeResponse | DataflowGraphGraphNodeResponse | DataflowGraphSourceNodeResponse)[];
+    /**
+     * The provisioning state of the dataflow graph.
+     */
+    provisioningState: string;
+    /**
+     * Disk persistence mode.
+     */
+    requestDiskPersistence?: string;
+}
+/**
+ * dataflowGraphPropertiesResponseProvideDefaults sets the appropriate defaults for DataflowGraphPropertiesResponse
+ */
+export function dataflowGraphPropertiesResponseProvideDefaults(val: DataflowGraphPropertiesResponse): DataflowGraphPropertiesResponse {
+    return {
+        ...val,
+        mode: (val.mode) ?? "Enabled",
+    };
+}
+
+/**
+ * DataflowGraph source node properties.
+ */
+export interface DataflowGraphSourceNodeResponse {
+    /**
+     * Name of the node.
+     */
+    name: string;
+    /**
+     * DataflowGraph node types.
+     * Expected value is 'Source'.
+     */
+    nodeType: "Source";
+    /**
+     * Source configuration.
+     */
+    sourceSettings: DataflowGraphSourceSettingsResponse;
+}
+
+/**
+ * DataflowGraph source node settings.
+ */
+export interface DataflowGraphSourceSettingsResponse {
+    /**
+     * Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
+     */
+    assetRef?: string;
+    /**
+     * List of data sources.
+     */
+    dataSources: string[];
+    /**
+     * The endpoint reference for the source.
+     */
+    endpointRef: string;
+}
+
+/**
  * Dataflow Operation properties. NOTE - One only method is allowed to be used for one entry.
  */
 export interface DataflowOperationResponse {
@@ -1600,6 +2511,166 @@ export function profileDiagnosticsResponseProvideDefaults(val: ProfileDiagnostic
         logs: (val.logs ? diagnosticsLogsResponseProvideDefaults(val.logs) : undefined),
         metrics: (val.metrics ? metricsResponseProvideDefaults(val.metrics) : undefined),
     };
+}
+
+/**
+ * Anonymous authentication
+ */
+export interface RegistryEndpointAnonymousAuthenticationResponse {
+    /**
+     * Anonymous authentication properties
+     */
+    anonymousSettings: any;
+    /**
+     * The authentication method.
+     * Expected value is 'Anonymous'.
+     */
+    method: "Anonymous";
+}
+
+/**
+ * Artifact Pull Secret authentication
+ */
+export interface RegistryEndpointArtifactPullSecretAuthenticationResponse {
+    /**
+     * Artifact Pull Secret authentication properties
+     */
+    artifactPullSecretSettings: RegistryEndpointArtifactPullSecretSettingsResponse;
+    /**
+     * The authentication method.
+     * Expected value is 'ArtifactPullSecret'.
+     */
+    method: "ArtifactPullSecret";
+}
+
+/**
+ * RegistryEndpoint Artifact Pull Secret authentication properties
+ */
+export interface RegistryEndpointArtifactPullSecretSettingsResponse {
+    /**
+     * The name of the kubernetes secret that contains the artifact pull secret.
+     */
+    secretRef: string;
+}
+
+/**
+ * RegistryEndpoint properties
+ */
+export interface RegistryEndpointPropertiesResponse {
+    /**
+     * The authentication settings for the Azure Container Registry.
+     */
+    authentication: RegistryEndpointAnonymousAuthenticationResponse | RegistryEndpointArtifactPullSecretAuthenticationResponse | RegistryEndpointSystemAssignedIdentityAuthenticationResponse | RegistryEndpointUserAssignedIdentityAuthenticationResponse;
+    /**
+     * The Container Registry endpoint hostname.
+     */
+    host: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * Trust settings for the registry endpoint
+     */
+    trustSettings?: RegistryEndpointTrustedSettingsResponse;
+}
+
+/**
+ * System assigned identity authentication
+ */
+export interface RegistryEndpointSystemAssignedIdentityAuthenticationResponse {
+    /**
+     * The authentication method.
+     * Expected value is 'SystemAssignedManagedIdentity'.
+     */
+    method: "SystemAssignedManagedIdentity";
+    /**
+     * System assigned managed identity properties
+     */
+    systemAssignedManagedIdentitySettings: RegistryEndpointSystemAssignedManagedIdentitySettingsResponse;
+}
+
+/**
+ * System assigned managed identity properties
+ */
+export interface RegistryEndpointSystemAssignedManagedIdentitySettingsResponse {
+    /**
+     * Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
+     */
+    audience?: string;
+}
+
+/**
+ * RegistryEndpointTrustedSettings properties
+ */
+export interface RegistryEndpointTrustedSettingsResponse {
+    /**
+     * The trust properties for the registry endpoint.
+     */
+    trustedSigningKeys: RegistryEndpointTrustedSigningKeyConfigMapResponse | RegistryEndpointTrustedSigningKeySecretResponse;
+}
+
+/**
+ * Settings for RegistryEndpoint trust provided through a configmap.
+ */
+export interface RegistryEndpointTrustedSigningKeyConfigMapResponse {
+    /**
+     * The name of the configmap.
+     */
+    configMapRef: string;
+    /**
+     * RegistryEndpointTrustedSigningKeyType values
+     * Expected value is 'ConfigMap'.
+     */
+    type: "ConfigMap";
+}
+
+/**
+ * Settings for RegistryEndpoint trust provided through a secret.
+ */
+export interface RegistryEndpointTrustedSigningKeySecretResponse {
+    /**
+     * The name of the secret.
+     */
+    secretRef: string;
+    /**
+     * RegistryEndpointTrustedSigningKeyType values
+     * Expected value is 'Secret'.
+     */
+    type: "Secret";
+}
+
+/**
+ * User assigned identity authentication
+ */
+export interface RegistryEndpointUserAssignedIdentityAuthenticationResponse {
+    /**
+     * The authentication method.
+     * Expected value is 'UserAssignedManagedIdentity'.
+     */
+    method: "UserAssignedManagedIdentity";
+    /**
+     * User assigned managed identity properties
+     */
+    userAssignedManagedIdentitySettings: RegistryEndpointUserAssignedManagedIdentitySettingsResponse;
+}
+
+/**
+ * User assigned managed identity properties
+ */
+export interface RegistryEndpointUserAssignedManagedIdentitySettingsResponse {
+    /**
+     * Client ID for the user-assigned managed identity.
+     */
+    clientId: string;
+    /**
+     * Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+     */
+    scope?: string;
+    /**
+     * Tenant ID.
+     */
+    tenantId: string;
 }
 
 /**

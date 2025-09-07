@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * The scheduled query rule resource.
  *
- * Uses Azure REST API version 2024-01-01-preview.
+ * Uses Azure REST API version 2025-01-01-preview.
  *
- * Other available API versions: 2023-12-01, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-12-01, 2024-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ScheduledQueryRule extends pulumi.CustomResource {
     /**
@@ -40,7 +40,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
      */
     public readonly actions!: pulumi.Output<types.outputs.ActionsResponse | undefined>;
     /**
-     * The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of the kind LogAlert.
+     * The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
      */
     public readonly autoMitigate!: pulumi.Output<boolean | undefined>;
     /**
@@ -112,7 +112,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
      */
     public readonly overrideQueryTimeRange!: pulumi.Output<string | undefined>;
     /**
-     * Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
+     * Defines the configuration for resolving fired alerts. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
      */
     public readonly resolveConfiguration!: pulumi.Output<types.outputs.RuleResolveConfigurationResponse | undefined>;
     /**
@@ -247,7 +247,7 @@ export interface ScheduledQueryRuleArgs {
      */
     actions?: pulumi.Input<types.inputs.ActionsArgs>;
     /**
-     * The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of the kind LogAlert.
+     * The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
      */
     autoMitigate?: pulumi.Input<boolean>;
     /**
@@ -295,7 +295,7 @@ export interface ScheduledQueryRuleArgs {
      */
     overrideQueryTimeRange?: pulumi.Input<string>;
     /**
-     * Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
+     * Defines the configuration for resolving fired alerts. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
      */
     resolveConfiguration?: pulumi.Input<types.inputs.RuleResolveConfigurationArgs>;
     /**

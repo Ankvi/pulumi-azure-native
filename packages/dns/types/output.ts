@@ -85,7 +85,7 @@ export interface DigestResponse {
  */
 export interface DnsResourceReferenceResponse {
     /**
-     * A list of dns Records 
+     * A list of dns Records
      */
     dnsResources?: SubResourceResponse[];
     /**

@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-dynamics365fraudprotection",
-    "version": "3.5.1",
+    "version": "3.8.0",
     "description": "Pulumi Azure Native package for dynamics365fraudprotection",
     "keywords": [
         "pulumi",

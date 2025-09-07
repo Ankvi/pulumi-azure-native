@@ -25,6 +25,16 @@ export interface AllowedPrincipalsResponse {
 }
 
 /**
+ * Configuration of Application Insights 
+ */
+export interface AppInsightsConfigurationResponse {
+    /**
+     * Application Insights connection string
+     */
+    connectionString?: string;
+}
+
+/**
  * Configuration of application logs
  */
 export interface AppLogsConfigurationResponse {
@@ -146,7 +156,7 @@ export interface AzureActiveDirectoryRegistrationResponse {
     clientSecretSettingName?: string;
     /**
      * The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
+     * When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.
      * This URI is a case-sensitive identifier for the token issuer.
      * More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
      */
@@ -222,6 +232,10 @@ export interface AzureFilePropertiesResponse {
      */
     accountKey?: string;
     /**
+     * Storage account key stored as an Azure Key Vault secret.
+     */
+    accountKeyVaultProperties?: SecretKeyVaultPropertiesResponse;
+    /**
      * Storage account name for azure file.
      */
     accountName?: string;
@@ -260,9 +274,21 @@ export interface AzureStaticWebAppsResponse {
  */
 export interface BlobStorageTokenStoreResponse {
     /**
-     * The name of the app secrets containing the SAS URL of the blob storage containing the tokens.
+     * The URI of the blob storage containing the tokens. Should not be used along with sasUrlSettingName.
      */
-    sasUrlSettingName: string;
+    blobContainerUri?: string;
+    /**
+     * The Client ID of a User-Assigned Managed Identity. Should not be used along with managedIdentityResourceId.
+     */
+    clientId?: string;
+    /**
+     * The Resource ID of a User-Assigned Managed Identity. Should not be used along with clientId.
+     */
+    managedIdentityResourceId?: string;
+    /**
+     * The name of the app secrets containing the SAS URL of the blob storage containing the tokens. Should not be used along with blobContainerUri.
+     */
+    sasUrlSettingName?: string;
 }
 
 /**
@@ -292,9 +318,35 @@ export interface BuildConfigurationResponse {
 }
 
 /**
+ * Properties for a certificate stored in a Key Vault.
+ */
+export interface CertificateKeyVaultPropertiesResponse {
+    /**
+     * Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
+     */
+    identity?: string;
+    /**
+     * URL pointing to the Azure Key Vault secret that holds the certificate.
+     */
+    keyVaultUrl?: string;
+}
+
+/**
  * Certificate resource specific properties
  */
 export interface CertificateResponseProperties {
+    /**
+     * Properties for a certificate stored in a Key Vault.
+     */
+    certificateKeyVaultProperties?: CertificateKeyVaultPropertiesResponse;
+    /**
+     * The type of the certificate. Allowed values are `ServerSSLCertificate` and `ImagePullTrustedCA`
+     */
+    certificateType?: string;
+    /**
+     * Any errors that occurred during deployment or deployment validation
+     */
+    deploymentErrors: string;
     /**
      * Certificate expiration date.
      */
@@ -371,13 +423,17 @@ export interface ClientRegistrationResponse {
 export interface ConfigurationResponse {
     /**
      * ActiveRevisionsMode controls how active revisions are handled for the Container app:
-     * <list><item>Multiple: multiple revisions can be active.</item><item>Single: Only one revision can be active at a time. Revision weights can not be used in this mode. If no value if provided, this is the default.</item></list>
+     * <list><item>Single: Only one revision can be active at a time. Traffic weights cannot be used. This is the default.</item><item>Multiple: Multiple revisions can be active, including optional traffic weights and labels.</item><item>Labels: Only revisions with labels are active. Traffic weights can be applied to labels.</item></list>
      */
     activeRevisionsMode?: string;
     /**
      * Dapr configuration for the Container App.
      */
     dapr?: DaprResponse;
+    /**
+     * Optional settings for Managed Identities that are assigned to the Container App. If a Managed Identity is not specified here, default settings will be used.
+     */
+    identitySettings?: IdentitySettingsResponse[];
     /**
      * Ingress configurations.
      */
@@ -391,6 +447,14 @@ export interface ConfigurationResponse {
      */
     registries?: RegistryCredentialsResponse[];
     /**
+     * Optional. The percent of the total number of replicas that must be brought up before revision transition occurs. Defaults to 100 when none is given. Value must be greater than 0 and less than or equal to 100.
+     */
+    revisionTransitionThreshold?: number;
+    /**
+     * App runtime configuration for the Container App.
+     */
+    runtime?: RuntimeResponse;
+    /**
      * Collection of secrets used by a Container app
      */
     secrets?: SecretResponse[];
@@ -398,6 +462,10 @@ export interface ConfigurationResponse {
      * Container App to be a dev Container App Service
      */
     service?: ServiceResponse;
+    /**
+     * Required in labels revisions mode. Label to apply to newly created revision.
+     */
+    targetLabel?: string;
 }
 /**
  * configurationResponseProvideDefaults sets the appropriate defaults for ConfigurationResponse
@@ -419,6 +487,18 @@ export interface ConnectedEnvironmentStorageResponseProperties {
      * Azure file properties
      */
     azureFile?: AzureFilePropertiesResponse;
+    /**
+     * Any errors that occurred during deployment or deployment validation
+     */
+    deploymentErrors: string;
+    /**
+     * Provisioning state of the storage.
+     */
+    provisioningState: string;
+    /**
+     * SMB storage properties
+     */
+    smb?: SmbStorageResponse;
 }
 
 /**
@@ -518,6 +598,16 @@ export interface ContainerAppProbeResponseTcpSocket {
 }
 
 /**
+ * Container App auto patch configuration.
+ */
+export interface ContainerAppResponsePatchingConfiguration {
+    /**
+     * Patching mode for the container app. Null or default in this field will be interpreted as Automatic by RP. Automatic mode will automatically apply available patches. Manual mode will require the user to manually apply patches. Disabled mode will stop patch detection and auto patching.
+     */
+    patchingMode?: string;
+}
+
+/**
  * Container App Secret.
  */
 export interface ContainerAppSecretResponse {
@@ -580,6 +670,10 @@ export interface ContainerResourcesResponse {
      */
     ephemeralStorage: string;
     /**
+     * Required GPU in cores for GPU based app, e.g. 1.0
+     */
+    gpu?: number;
+    /**
      * Required memory, e.g. "250Mb"
      */
     memory?: string;
@@ -605,6 +699,10 @@ export interface ContainerResponse {
      * Container image tag.
      */
     image?: string;
+    /**
+     * The type of the image. Set to CloudBuild to let the system manages the image, where user will not be able to update image through image field. Set to ContainerImage for user provided image.
+     */
+    imageType?: string;
     /**
      * Custom container name.
      */
@@ -689,6 +787,10 @@ export interface CustomContainerTemplateResponse {
  * Configuration properties for apps environment custom domain
  */
 export interface CustomDomainConfigurationResponse {
+    /**
+     * Certificate stored in Azure Key Vault.
+     */
+    certificateKeyVaultProperties?: CertificateKeyVaultPropertiesResponse;
     /**
      * Certificate password
      */
@@ -804,6 +906,10 @@ export interface CustomScaleRuleResponse {
      */
     auth?: ScaleRuleAuthResponse[];
     /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: string;
+    /**
      * Metadata properties to describe custom scale rule.
      */
     metadata?: {[key: string]: string};
@@ -889,6 +995,24 @@ export interface DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse
 }
 
 /**
+ * Configuration to bind a Dapr Component to a dev ContainerApp Service
+ */
+export interface DaprComponentServiceBindingResponse {
+    /**
+     * Service bind metadata
+     */
+    metadata?: DaprServiceBindMetadataResponse;
+    /**
+     * Name of the service bind
+     */
+    name?: string;
+    /**
+     * Resource id of the target service
+     */
+    serviceId?: string;
+}
+
+/**
  * Configuration properties Dapr component
  */
 export interface DaprConfigurationResponse {
@@ -921,6 +1045,10 @@ export interface DaprMetadataResponse {
  */
 export interface DaprResponse {
     /**
+     * Dapr application health check configuration
+     */
+    appHealth?: DaprResponseAppHealth;
+    /**
      * Dapr application identifier
      */
     appId?: string;
@@ -952,6 +1080,10 @@ export interface DaprResponse {
      * Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
      */
     logLevel?: string;
+    /**
+     * Maximum number of concurrent requests, events handled by the Dapr sidecar
+     */
+    maxConcurrency?: number;
 }
 /**
  * daprResponseProvideDefaults sets the appropriate defaults for DaprResponse
@@ -962,6 +1094,32 @@ export function daprResponseProvideDefaults(val: DaprResponse): DaprResponse {
         appProtocol: (val.appProtocol) ?? "http",
         enabled: (val.enabled) ?? false,
     };
+}
+
+/**
+ * Dapr application health check configuration
+ */
+export interface DaprResponseAppHealth {
+    /**
+     * Boolean indicating if the health probe is enabled
+     */
+    enabled?: boolean;
+    /**
+     * Path for the health probe
+     */
+    path?: string;
+    /**
+     * Interval for the health probe in seconds
+     */
+    probeIntervalSeconds?: number;
+    /**
+     * Timeout for the health probe in milliseconds
+     */
+    probeTimeoutMilliseconds?: number;
+    /**
+     * Threshold for the health probe
+     */
+    threshold?: number;
 }
 
 /**
@@ -976,6 +1134,20 @@ export interface DaprSecretResponse {
      * Secret Value.
      */
     value: string;
+}
+
+/**
+ * Dapr component metadata.
+ */
+export interface DaprServiceBindMetadataResponse {
+    /**
+     * Service bind metadata property name.
+     */
+    name?: string;
+    /**
+     * Service bind metadata property value.
+     */
+    value?: string;
 }
 
 /**
@@ -1034,6 +1206,20 @@ export interface DaprSubscriptionRoutesResponse {
 }
 
 /**
+ * Configuration of datadog 
+ */
+export interface DataDogConfigurationResponse {
+    /**
+     * The data dog api key
+     */
+    key?: string;
+    /**
+     * The data dog site
+     */
+    site?: string;
+}
+
+/**
  * The configuration settings of the Azure Active Directory default authorization policy.
  */
 export interface DefaultAuthorizationPolicyResponse {
@@ -1045,6 +1231,54 @@ export interface DefaultAuthorizationPolicyResponse {
      * The configuration settings of the Azure Active Directory allowed principals.
      */
     allowedPrincipals?: AllowedPrincipalsResponse;
+}
+
+/**
+ * Configuration of Open Telemetry destinations
+ */
+export interface DestinationsConfigurationResponse {
+    /**
+     * Open telemetry datadog destination configuration
+     */
+    dataDogConfiguration?: DataDogConfigurationResponse;
+    /**
+     * Open telemetry otlp configurations
+     */
+    otlpConfigurations?: OtlpConfigurationResponse[];
+}
+
+/**
+ * Configuration properties for disk encryption
+ */
+export interface DiskEncryptionConfigurationResponse {
+    /**
+     * The Key Vault that contains your key to use for disk encryption. The Key Vault must be in the same region as the Managed Environment.
+     */
+    keyVaultConfiguration?: DiskEncryptionConfigurationResponseKeyVaultConfiguration;
+}
+
+/**
+ * Configuration properties for the authentication to the Key Vault
+ */
+export interface DiskEncryptionConfigurationResponseAuth {
+    /**
+     * Resource ID of a user-assigned managed identity to authenticate to the Key Vault. The identity must be assigned to the managed environment, in the same tenant as the Key Vault, and it must have the following key permissions on the Key Vault: wrapkey, unwrapkey, get.
+     */
+    identity?: string;
+}
+
+/**
+ * The Key Vault that contains your key to use for disk encryption. The Key Vault must be in the same region as the Managed Environment.
+ */
+export interface DiskEncryptionConfigurationResponseKeyVaultConfiguration {
+    /**
+     * Configuration properties for the authentication to the Key Vault
+     */
+    auth?: DiskEncryptionConfigurationResponseAuth;
+    /**
+     * Key URL pointing to a key in KeyVault. Version segment of the Url is required.
+     */
+    keyUrl?: string;
 }
 
 /**
@@ -1080,13 +1314,9 @@ export interface DotNetComponentServiceBindResponse {
  */
 export interface DynamicPoolConfigurationResponse {
     /**
-     * The cooldown period of a session in seconds.
+     * The lifecycle configuration of a session in the dynamic session pool
      */
-    cooldownPeriodInSeconds?: number;
-    /**
-     * The execution type of the session pool.
-     */
-    executionType?: string;
+    lifecycleConfiguration?: LifecycleConfigurationResponse;
 }
 
 /**
@@ -1254,9 +1484,17 @@ export interface GithubActionConfigurationResponse {
      */
     azureCredentials?: AzureCredentialsResponse;
     /**
+     * List of environment variables to be passed to the build.
+     */
+    buildEnvironmentVariables?: EnvironmentVariableResponse[];
+    /**
      * Context path
      */
     contextPath?: string;
+    /**
+     * Dockerfile path
+     */
+    dockerfilePath?: string;
     /**
      * Image name
      */
@@ -1349,6 +1587,20 @@ export interface HeaderMatchResponse {
      * Suffix value of the header
      */
     suffixMatch?: string;
+}
+
+/**
+ * Header of otlp configuration
+ */
+export interface HeaderResponse {
+    /**
+     * The key of otlp configuration header
+     */
+    key?: string;
+    /**
+     * The value of otlp configuration header
+     */
+    value?: string;
 }
 
 /**
@@ -1548,6 +1800,10 @@ export interface HttpScaleRuleResponse {
      */
     auth?: ScaleRuleAuthResponse[];
     /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: string;
+    /**
      * Metadata properties to describe http scale rule.
      */
     metadata?: {[key: string]: string};
@@ -1621,6 +1877,69 @@ export interface IdentityProvidersResponse {
 }
 
 /**
+ * Optional settings for a Managed Identity that is assigned to the Container App.
+ */
+export interface IdentitySettingsResponse {
+    /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity: string;
+    /**
+     * Use to select the lifecycle stages of a Container App during which the Managed Identity should be available.
+     */
+    lifecycle?: string;
+}
+/**
+ * identitySettingsResponseProvideDefaults sets the appropriate defaults for IdentitySettingsResponse
+ */
+export function identitySettingsResponseProvideDefaults(val: IdentitySettingsResponse): IdentitySettingsResponse {
+    return {
+        ...val,
+        lifecycle: (val.lifecycle) ?? "All",
+    };
+}
+
+/**
+ * Settings for the ingress component, including workload profile, scaling, and connection handling.
+ */
+export interface IngressConfigurationResponse {
+    /**
+     * Maximum number of headers per request allowed by the ingress. Must be at least 1. Defaults to 100.
+     */
+    headerCountLimit?: number;
+    /**
+     * Duration (in minutes) before idle requests are timed out. Must be at least 1 minute. Defaults to 4 minutes.
+     */
+    requestIdleTimeout?: number;
+    /**
+     * Scaling configuration for the ingress component. Required.
+     */
+    scale?: IngressConfigurationResponseScale;
+    /**
+     * Time (in seconds) to allow active connections to complete on termination. Must be between 0 and 3600. Defaults to 480 seconds.
+     */
+    terminationGracePeriodSeconds?: number;
+    /**
+     * Name of the workload profile used by the ingress component. Required.
+     */
+    workloadProfileName?: string;
+}
+
+/**
+ * Scaling configuration for the ingress component. Required.
+ */
+export interface IngressConfigurationResponseScale {
+    /**
+     * Maximum number of ingress replicas. Must be greater than or equal to minReplicas.
+     */
+    maxReplicas?: number;
+    /**
+     * Minimum number of ingress replicas. Must be at least 2. Required.
+     */
+    minReplicas?: number;
+}
+
+/**
  * Port mappings of container app ingress
  */
 export interface IngressPortMappingResponse {
@@ -1687,6 +2006,10 @@ export interface IngressResponse {
      */
     targetPort?: number;
     /**
+     * Whether an http app listens on http or https
+     */
+    targetPortHttpScheme?: string;
+    /**
      * Traffic weights for app's revisions
      */
     traffic?: TrafficWeightResponse[];
@@ -1737,6 +2060,10 @@ export interface InitContainerResponse {
      * Container image tag.
      */
     image?: string;
+    /**
+     * The type of the image. Set to CloudBuild to let the system manages the image, where user will not be able to update image through image field. Set to ContainerImage for user provided image.
+     */
+    imageType?: string;
     /**
      * Custom container name.
      */
@@ -1833,6 +2160,10 @@ export interface JobConfigurationResponse {
      * Trigger configuration of an event driven job.
      */
     eventTriggerConfig?: JobConfigurationResponseEventTriggerConfig;
+    /**
+     * Optional settings for Managed Identities that are assigned to the Container App Job. If a Managed Identity is not specified here, default settings will be used.
+     */
+    identitySettings?: IdentitySettingsResponse[];
     /**
      * Manual trigger configuration for a single execution job. Properties replicaCompletionCount and parallelism would be set to 1 by default
      */
@@ -1973,6 +2304,10 @@ export interface JobScaleRuleResponse {
      */
     auth?: ScaleRuleAuthResponse[];
     /**
+     * The resource ID of a user-assigned managed identity that is assigned to the job, or 'system' for system-assigned identity.
+     */
+    identity?: string;
+    /**
      * Metadata properties to describe the scale rule.
      */
     metadata?: any;
@@ -2030,6 +2365,24 @@ export interface KedaConfigurationResponse {
 }
 
 /**
+ * The lifecycle configuration properties of a session in the dynamic session pool
+ */
+export interface LifecycleConfigurationResponse {
+    /**
+     * The cooldown period of a session in seconds when the lifecycle type is 'Timed'.
+     */
+    cooldownPeriodInSeconds?: number;
+    /**
+     * The lifecycle type of the session pool.
+     */
+    lifecycleType?: string;
+    /**
+     * The maximum alive period of a session in seconds when the lifecycle type is 'OnContainerExit'.
+     */
+    maxAlivePeriodInSeconds?: number;
+}
+
+/**
  * Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
  */
 export interface LogAnalyticsConfigurationResponse {
@@ -2037,6 +2390,24 @@ export interface LogAnalyticsConfigurationResponse {
      * Log analytics customer id
      */
     customerId?: string;
+    /**
+     * Boolean indicating whether to parse json string log into dynamic json columns
+     */
+    dynamicJsonColumns?: boolean;
+}
+
+/**
+ * Logger settings for java workloads.
+ */
+export interface LoggerSettingResponse {
+    /**
+     * The specified logger's log level.
+     */
+    level: string;
+    /**
+     * Logger name.
+     */
+    logger: string;
 }
 
 /**
@@ -2089,6 +2460,16 @@ export interface LoginScopesResponse {
      * A list of the scopes that should be requested while authenticating.
      */
     scopes?: string[];
+}
+
+/**
+ * Configuration of Open Telemetry logs
+ */
+export interface LogsConfigurationResponse {
+    /**
+     * Open telemetry logs destinations
+     */
+    destinations?: string[];
 }
 
 /**
@@ -2155,6 +2536,10 @@ export interface ManagedEnvironmentStorageResponseProperties {
      * Azure file properties
      */
     azureFile?: AzureFilePropertiesResponse;
+    /**
+     * NFS Azure file properties
+     */
+    nfsAzureFile?: NfsAzureFilePropertiesResponse;
 }
 
 /**
@@ -2203,6 +2588,20 @@ export interface ManagedServiceIdentityResponse {
 }
 
 /**
+ * Configuration of Open Telemetry metrics
+ */
+export interface MetricsConfigurationResponse {
+    /**
+     * Open telemetry metrics destinations
+     */
+    destinations?: string[];
+    /**
+     * Boolean indicating if including keda metrics
+     */
+    includeKeda?: boolean;
+}
+
+/**
  * Configuration properties for mutual TLS authentication
  */
 export interface MtlsResponse {
@@ -2241,6 +2640,24 @@ export interface NacosComponentResponse {
      * List of Java Components that are bound to the Java component
      */
     serviceBinds?: JavaComponentServiceBindResponse[];
+}
+
+/**
+ * NFS Azure File Properties.
+ */
+export interface NfsAzureFilePropertiesResponse {
+    /**
+     * Access mode for storage
+     */
+    accessMode?: string;
+    /**
+     * Server for NFS azure file.
+     */
+    server?: string;
+    /**
+     * NFS Azure file share name.
+     */
+    shareName?: string;
 }
 
 /**
@@ -2330,6 +2747,50 @@ export interface OpenIdConnectRegistrationResponse {
 }
 
 /**
+ * Configuration of Open Telemetry
+ */
+export interface OpenTelemetryConfigurationResponse {
+    /**
+     * Open telemetry destinations configuration
+     */
+    destinationsConfiguration?: DestinationsConfigurationResponse;
+    /**
+     * Open telemetry logs configuration
+     */
+    logsConfiguration?: LogsConfigurationResponse;
+    /**
+     * Open telemetry metrics configuration
+     */
+    metricsConfiguration?: MetricsConfigurationResponse;
+    /**
+     * Open telemetry trace configuration
+     */
+    tracesConfiguration?: TracesConfigurationResponse;
+}
+
+/**
+ * Configuration of otlp 
+ */
+export interface OtlpConfigurationResponse {
+    /**
+     * The endpoint of otlp configuration
+     */
+    endpoint?: string;
+    /**
+     * Headers of otlp configurations
+     */
+    headers?: HeaderResponse[];
+    /**
+     * Boolean indicating if otlp configuration is insecure
+     */
+    insecure?: boolean;
+    /**
+     * The name of otlp configuration
+     */
+    name?: string;
+}
+
+/**
  * Model representing a pre-build step.
  */
 export interface PreBuildStepResponse {
@@ -2345,6 +2806,44 @@ export interface PreBuildStepResponse {
      * List of custom commands to run.
      */
     scripts?: string[];
+}
+
+/**
+ * The Private Endpoint Connection resource.
+ */
+export interface PrivateEndpointConnectionResponse {
+    /**
+     * The group ids for the private endpoint resource.
+     */
+    groupIds: string[];
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    id: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * The resource of private end point.
+     */
+    privateEndpoint?: PrivateEndpointResponse;
+    /**
+     * A collection of information about the state of the connection between service consumer and provider.
+     */
+    privateLinkServiceConnectionState: PrivateLinkServiceConnectionStateResponse;
+    /**
+     * The provisioning state of the private endpoint connection resource.
+     */
+    provisioningState: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
 }
 
 /**
@@ -2380,9 +2879,17 @@ export interface PrivateLinkServiceConnectionStateResponse {
  */
 export interface QueueScaleRuleResponse {
     /**
+     * Storage account name. required if using managed identity to authenticate
+     */
+    accountName?: string;
+    /**
      * Authentication secrets for the queue scale rule.
      */
     auth?: ScaleRuleAuthResponse[];
+    /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: string;
     /**
      * Queue length.
      */
@@ -2430,6 +2937,68 @@ export interface RegistryInfoResponse {
 }
 
 /**
+ * Container App Runtime configuration.
+ */
+export interface RuntimeResponse {
+    /**
+     * .NET app configuration
+     */
+    dotnet?: RuntimeResponseDotnet;
+    /**
+     * Java app configuration
+     */
+    java?: RuntimeResponseJava;
+}
+
+/**
+ * .NET app configuration
+ */
+export interface RuntimeResponseDotnet {
+    /**
+     * Auto configure the ASP.NET Core Data Protection feature
+     */
+    autoConfigureDataProtection?: boolean;
+}
+
+/**
+ * Java app configuration
+ */
+export interface RuntimeResponseJava {
+    /**
+     * Enable jmx core metrics for the java app
+     */
+    enableMetrics?: boolean;
+    /**
+     * Diagnostic capabilities achieved by java agent
+     */
+    javaAgent?: RuntimeResponseJavaAgent;
+}
+
+/**
+ * Diagnostic capabilities achieved by java agent
+ */
+export interface RuntimeResponseJavaAgent {
+    /**
+     * Enable java agent injection for the java app.
+     */
+    enabled?: boolean;
+    /**
+     * Capabilities on the java logging scenario.
+     */
+    logging?: RuntimeResponseLogging;
+}
+
+/**
+ * Capabilities on the java logging scenario.
+ */
+export interface RuntimeResponseLogging {
+    /**
+     * Settings of the logger for the java app.
+     */
+    loggerSettings?: LoggerSettingResponse[];
+}
+
+/**
  * Scale configuration.
  */
 export interface ScaleConfigurationResponse {
@@ -2448,6 +3017,10 @@ export interface ScaleConfigurationResponse {
  */
 export interface ScaleResponse {
     /**
+     * Optional. KEDA Cooldown Period. Defaults to 300 seconds if not set.
+     */
+    cooldownPeriod?: number;
+    /**
      * Optional. Maximum number of container replicas. Defaults to 10 if not set.
      */
     maxReplicas?: number;
@@ -2455,6 +3028,10 @@ export interface ScaleResponse {
      * Optional. Minimum number of container replicas.
      */
     minReplicas?: number;
+    /**
+     * Optional. KEDA Polling Interval. Defaults to 30 seconds if not set.
+     */
+    pollingInterval?: number;
     /**
      * Scaling rules.
      */
@@ -2555,6 +3132,20 @@ export interface ScheduledEntryResponse {
 }
 
 /**
+ * Properties for a secret stored in a Key Vault.
+ */
+export interface SecretKeyVaultPropertiesResponse {
+    /**
+     * Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
+     */
+    identity?: string;
+    /**
+     * URL pointing to the Azure Key Vault secret.
+     */
+    keyVaultUrl?: string;
+}
+
+/**
  * Secret definition.
  */
 export interface SecretResponse {
@@ -2590,6 +3181,14 @@ export interface SecretVolumeItemResponse {
  * Configuration to bind a ContainerApp to a dev ContainerApp Service
  */
 export interface ServiceBindResponse {
+    /**
+     * Type of the client to be used to connect to the service
+     */
+    clientType?: string;
+    /**
+     * Customized keys for customizing injected values to the app
+     */
+    customizedKeys?: {[key: string]: string};
     /**
      * Name of the service bind
      */
@@ -2649,6 +3248,10 @@ export interface SessionContainerResponse {
      */
     name?: string;
     /**
+     * List of probes for the container.
+     */
+    probes?: SessionProbeResponse[];
+    /**
      * Container resource requirements.
      */
     resources?: SessionContainerResourcesResponse;
@@ -2685,6 +3288,102 @@ export interface SessionPoolSecretResponse {
 }
 
 /**
+ * Session probe configuration.
+ */
+export interface SessionProbeResponse {
+    /**
+     * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. Maximum value is 10.
+     */
+    failureThreshold?: number;
+    /**
+     * HTTPGet specifies the http request to perform.
+     */
+    httpGet?: SessionProbeResponseHttpGet;
+    /**
+     * Number of seconds after the container has started before liveness probes are initiated. Minimum value is 1. Maximum value is 60.
+     */
+    initialDelaySeconds?: number;
+    /**
+     * How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+     */
+    periodSeconds?: number;
+    /**
+     * Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1. Maximum value is 10.
+     */
+    successThreshold?: number;
+    /**
+     * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported.
+     */
+    tcpSocket?: SessionProbeResponseTcpSocket;
+    /**
+     * Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate. Maximum value is 3600 seconds (1 hour)
+     */
+    terminationGracePeriodSeconds?: number;
+    /**
+     * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 240.
+     */
+    timeoutSeconds?: number;
+    /**
+     * Denotes the type of probe. Can be Liveness or Startup, Readiness probe is not supported in sessions. Type must be unique for each probe within the context of a list of probes (SessionProbes).
+     */
+    type?: string;
+}
+
+/**
+ * HTTPGet specifies the http request to perform.
+ */
+export interface SessionProbeResponseHttpGet {
+    /**
+     * Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+     */
+    host?: string;
+    /**
+     * Custom headers to set in the request. HTTP allows repeated headers.
+     */
+    httpHeaders?: SessionProbeResponseHttpHeaders[];
+    /**
+     * Path to access on the HTTP server.
+     */
+    path?: string;
+    /**
+     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: number;
+    /**
+     * Scheme to use for connecting to the host. Defaults to HTTP.
+     */
+    scheme?: string;
+}
+
+/**
+ * HTTPHeader describes a custom header to be used in HTTP probes
+ */
+export interface SessionProbeResponseHttpHeaders {
+    /**
+     * The header field name
+     */
+    name: string;
+    /**
+     * The header field value
+     */
+    value: string;
+}
+
+/**
+ * TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported.
+ */
+export interface SessionProbeResponseTcpSocket {
+    /**
+     * Optional: Host name to connect to, defaults to the pod IP.
+     */
+    host?: string;
+    /**
+     * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+     */
+    port: number;
+}
+
+/**
  * Session pool private registry credentials.
  */
 export interface SessionRegistryCredentialsResponse {
@@ -2702,6 +3401,36 @@ export interface SessionRegistryCredentialsResponse {
     server?: string;
     /**
      * Container registry username.
+     */
+    username?: string;
+}
+
+/**
+ * SMB storage properties
+ */
+export interface SmbStorageResponse {
+    /**
+     * Access mode for storage
+     */
+    accessMode?: string;
+    /**
+     * The domain name for the user.
+     */
+    domain?: string;
+    /**
+     * The host name or IP address of the SMB server.
+     */
+    host?: string;
+    /**
+     * The password for the user.
+     */
+    password?: string;
+    /**
+     * The path to the SMB shared folder.
+     */
+    shareName?: string;
+    /**
+     * The user to log on to the SMB server.
      */
     username?: string;
 }
@@ -2889,6 +3618,10 @@ export interface TcpScaleRuleResponse {
      */
     auth?: ScaleRuleAuthResponse[];
     /**
+     * The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
+     */
+    identity?: string;
+    /**
      * Metadata properties to describe tcp scale rule.
      */
     metadata?: {[key: string]: string};
@@ -2971,6 +3704,20 @@ export interface TokenStoreResponse {
      * call the token refresh API. The default is 72 hours.
      */
     tokenRefreshExtensionHours?: number;
+}
+
+/**
+ * Configuration of Open Telemetry traces
+ */
+export interface TracesConfigurationResponse {
+    /**
+     * Open telemetry traces destinations
+     */
+    destinations?: string[];
+    /**
+     * Boolean indicating if including dapr traces
+     */
+    includeDapr?: boolean;
 }
 
 /**
@@ -3098,7 +3845,7 @@ export interface VolumeMountResponse {
  */
 export interface VolumeResponse {
     /**
-     * Mount options used while mounting the AzureFile. Must be a comma-separated string.
+     * Mount options used while mounting the Azure file share or NFS Azure file share. Must be a comma-separated string.
      */
     mountOptions?: string;
     /**
@@ -3156,6 +3903,10 @@ export interface WorkflowHealthResponse {
  */
 export interface WorkloadProfileResponse {
     /**
+     * Whether to use a FIPS-enabled OS. Supported only for dedicated workload profiles.
+     */
+    enableFips?: boolean;
+    /**
      * The maximum capacity.
      */
     maximumCount?: number;
@@ -3171,4 +3922,13 @@ export interface WorkloadProfileResponse {
      * Workload profile type for the workloads to run on.
      */
     workloadProfileType: string;
+}
+/**
+ * workloadProfileResponseProvideDefaults sets the appropriate defaults for WorkloadProfileResponse
+ */
+export function workloadProfileResponseProvideDefaults(val: WorkloadProfileResponse): WorkloadProfileResponse {
+    return {
+        ...val,
+        enableFips: (val.enableFips) ?? false,
+    };
 }

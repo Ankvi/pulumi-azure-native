@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Container App.
  *
- * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
+ * Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
  *
- * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ContainerApp extends pulumi.CustomResource {
     /**
@@ -48,6 +48,10 @@ export class ContainerApp extends pulumi.CustomResource {
      */
     public /*out*/ readonly customDomainVerificationId!: pulumi.Output<string>;
     /**
+     * Any errors that occurred during deployment
+     */
+    public /*out*/ readonly deploymentErrors!: pulumi.Output<string>;
+    /**
      * Resource ID of environment.
      */
     public readonly environmentId!: pulumi.Output<string | undefined>;
@@ -63,6 +67,10 @@ export class ContainerApp extends pulumi.CustomResource {
      * managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
      */
     public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
+    /**
+     * Metadata used to render different experiences for resources of the same type; e.g. WorkflowApp is a kind of Microsoft.App/ContainerApps type. If supported, the resource provider must validate and persist this value.
+     */
+    public readonly kind!: pulumi.Output<string | undefined>;
     /**
      * Name of the latest ready revision of the Container App.
      */
@@ -96,9 +104,17 @@ export class ContainerApp extends pulumi.CustomResource {
      */
     public /*out*/ readonly outboundIpAddresses!: pulumi.Output<string[]>;
     /**
+     * Container App auto patch configuration.
+     */
+    public readonly patchingConfiguration!: pulumi.Output<types.outputs.ContainerAppResponsePatchingConfiguration | undefined>;
+    /**
      * Provisioning state of the Container App.
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    /**
+     * Running status of the Container App.
+     */
+    public /*out*/ readonly runningStatus!: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -139,15 +155,18 @@ export class ContainerApp extends pulumi.CustomResource {
             resourceInputs["environmentId"] = args ? args.environmentId : undefined;
             resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["managedBy"] = args ? args.managedBy : undefined;
             resourceInputs["managedEnvironmentId"] = args ? args.managedEnvironmentId : undefined;
+            resourceInputs["patchingConfiguration"] = args ? args.patchingConfiguration : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["template"] = args ? (args.template ? pulumi.output(args.template).apply(types.inputs.templateArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["workloadProfileName"] = args ? args.workloadProfileName : undefined;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["customDomainVerificationId"] = undefined /*out*/;
+            resourceInputs["deploymentErrors"] = undefined /*out*/;
             resourceInputs["eventStreamEndpoint"] = undefined /*out*/;
             resourceInputs["latestReadyRevisionName"] = undefined /*out*/;
             resourceInputs["latestRevisionFqdn"] = undefined /*out*/;
@@ -155,16 +174,19 @@ export class ContainerApp extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["outboundIpAddresses"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["runningStatus"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["configuration"] = undefined /*out*/;
             resourceInputs["customDomainVerificationId"] = undefined /*out*/;
+            resourceInputs["deploymentErrors"] = undefined /*out*/;
             resourceInputs["environmentId"] = undefined /*out*/;
             resourceInputs["eventStreamEndpoint"] = undefined /*out*/;
             resourceInputs["extendedLocation"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["latestReadyRevisionName"] = undefined /*out*/;
             resourceInputs["latestRevisionFqdn"] = undefined /*out*/;
             resourceInputs["latestRevisionName"] = undefined /*out*/;
@@ -173,7 +195,9 @@ export class ContainerApp extends pulumi.CustomResource {
             resourceInputs["managedEnvironmentId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["outboundIpAddresses"] = undefined /*out*/;
+            resourceInputs["patchingConfiguration"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["runningStatus"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["template"] = undefined /*out*/;
@@ -212,6 +236,10 @@ export interface ContainerAppArgs {
      */
     identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
+     * Metadata used to render different experiences for resources of the same type; e.g. WorkflowApp is a kind of Microsoft.App/ContainerApps type. If supported, the resource provider must validate and persist this value.
+     */
+    kind?: pulumi.Input<string | types.enums.Kind>;
+    /**
      * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
@@ -223,6 +251,10 @@ export interface ContainerAppArgs {
      * Deprecated. Resource ID of the Container App's environment.
      */
     managedEnvironmentId?: pulumi.Input<string>;
+    /**
+     * Container App auto patch configuration.
+     */
+    patchingConfiguration?: pulumi.Input<types.inputs.ContainerAppPatchingConfigurationArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

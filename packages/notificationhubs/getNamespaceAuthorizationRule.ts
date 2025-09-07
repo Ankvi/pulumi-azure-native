@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Response for POST requests that return single SharedAccessAuthorizationRule.
+ * Gets an authorization rule for a namespace by name.
  *
  * Uses Azure REST API version 2023-10-01-preview.
  *
@@ -60,9 +60,6 @@ export interface GetNamespaceAuthorizationRuleResult {
      * Gets a string that describes the authorization rule.
      */
     readonly keyName: string;
-    /**
-     * Deprecated - only for compatibility.
-     */
     readonly location?: string;
     /**
      * Gets the last modified time for this rule
@@ -94,9 +91,6 @@ export interface GetNamespaceAuthorizationRuleResult {
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
-    /**
-     * Deprecated - only for compatibility.
-     */
     readonly tags?: {[key: string]: string};
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -104,7 +98,7 @@ export interface GetNamespaceAuthorizationRuleResult {
     readonly type: string;
 }
 /**
- * Response for POST requests that return single SharedAccessAuthorizationRule.
+ * Gets an authorization rule for a namespace by name.
  *
  * Uses Azure REST API version 2023-10-01-preview.
  *

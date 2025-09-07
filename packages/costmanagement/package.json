@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-costmanagement",
-    "version": "3.5.1",
+    "version": "3.8.0",
     "description": "Pulumi Azure Native package for costmanagement",
     "keywords": [
         "pulumi",

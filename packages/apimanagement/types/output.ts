@@ -535,6 +535,20 @@ export interface CircuitBreakerRuleResponse {
     tripDuration?: string;
 }
 
+/**
+ * Microsoft EntraID client application secrets
+ */
+export interface ClientApplicationSecretsContractResponseEntra {
+    /**
+     * EntraID client application secret
+     */
+    clientSecret?: string;
+    /**
+     * EntraID client application secret expiration date.
+     */
+    expiresAt: string;
+}
+
 export interface DataMaskingEntityResponse {
     /**
      * Data masking mode.

@@ -2,11 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Gets information about a configuration of server.
+ * Gets information about a specific server parameter of a flexible server.
  *
  * Uses Azure REST API version 2024-08-01.
  *
- * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getConfiguration(args: GetConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -19,7 +19,7 @@ export function getConfiguration(args: GetConfigurationArgs, opts?: pulumi.Invok
 
 export interface GetConfigurationArgs {
     /**
-     * The name of the server configuration.
+     * Name of the server parameter.
      */
     configurationName: string;
     /**
@@ -33,11 +33,11 @@ export interface GetConfigurationArgs {
 }
 
 /**
- * Represents a Configuration.
+ * Server parameter.
  */
 export interface GetConfigurationResult {
     /**
-     * Allowed values of the configuration.
+     * Allowed values of the server parameter.
      */
     readonly allowedValues: string;
     /**
@@ -45,19 +45,19 @@ export interface GetConfigurationResult {
      */
     readonly azureApiVersion: string;
     /**
-     * Data type of the configuration.
+     * Data type of the server parameter.
      */
     readonly dataType: string;
     /**
-     * Default value of the configuration.
+     * Value assigned by default to the server parameter.
      */
     readonly defaultValue: string;
     /**
-     * Description of the configuration.
+     * Description of the server parameter.
      */
     readonly description: string;
     /**
-     * Configuration documentation link.
+     * Link pointing to the documentation of the server parameter.
      */
     readonly documentationLink: string;
     /**
@@ -65,15 +65,15 @@ export interface GetConfigurationResult {
      */
     readonly id: string;
     /**
-     * Configuration is pending restart or not.
+     * Indicates if the value assigned to the server parameter is pending a server restart for the value to take effect.
      */
     readonly isConfigPendingRestart: boolean;
     /**
-     * Configuration dynamic or static.
+     * Indicates if it's a dynamic (true) or static (false) server parameter. Static server parameters require a server restart after changing the value assigned to it, for the change to take effect. Dynamic server parameters do not require a server restart after changing the value assigned to it, for the change to take effect.
      */
     readonly isDynamicConfig: boolean;
     /**
-     * Configuration read-only or not.
+     * Indicates if it's a read-only (true) or modifiable (false) server parameter.
      */
     readonly isReadOnly: boolean;
     /**
@@ -81,7 +81,7 @@ export interface GetConfigurationResult {
      */
     readonly name: string;
     /**
-     * Source of the configuration. Required to update the configuration.
+     * Source of the value assigned to the server parameter. Required to update the value assigned to a specific modifiable server parameter.
      */
     readonly source?: string;
     /**
@@ -93,20 +93,20 @@ export interface GetConfigurationResult {
      */
     readonly type: string;
     /**
-     * Configuration unit.
+     * Units in which the server parameter value is expressed.
      */
     readonly unit: string;
     /**
-     * Value of the configuration. Required to update the configuration.
+     * Value of the server parameter (also known as configuration). Required to update the value assigned to a specific modifiable server parameter.
      */
     readonly value?: string;
 }
 /**
- * Gets information about a configuration of server.
+ * Gets information about a specific server parameter of a flexible server.
  *
  * Uses Azure REST API version 2024-08-01.
  *
- * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getConfigurationOutput(args: GetConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConfigurationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -119,7 +119,7 @@ export function getConfigurationOutput(args: GetConfigurationOutputArgs, opts?: 
 
 export interface GetConfigurationOutputArgs {
     /**
-     * The name of the server configuration.
+     * Name of the server parameter.
      */
     configurationName: pulumi.Input<string>;
     /**
