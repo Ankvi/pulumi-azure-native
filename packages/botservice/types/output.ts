@@ -489,11 +489,11 @@ export interface DirectLineSiteResponse {
     /**
      * Whether this site is enabled for Bot Framework V1 protocol.
      */
-    isV1Enabled: boolean;
+    isV1Enabled?: boolean;
     /**
      * Whether this site is enabled for Bot Framework V3 protocol.
      */
-    isV3Enabled: boolean;
+    isV3Enabled?: boolean;
     /**
      * Whether this site is enabled for Webchat Speech
      */
@@ -1026,21 +1026,25 @@ export function networkSecurityPerimeterConfigurationPropertiesResponseProvideDe
  */
 export interface NetworkSecurityPerimeterConfigurationResponse {
     /**
-     * Fully qualified identifier of the resource
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
-    id?: string;
+    id: string;
     /**
-     * Name of the resource
+     * The name of the resource
      */
-    name?: string;
+    name: string;
     /**
      * Properties of the Network Security Perimeter configuration
      */
-    properties: NetworkSecurityPerimeterConfigurationPropertiesResponse;
+    properties?: NetworkSecurityPerimeterConfigurationPropertiesResponse;
     /**
-     * Type of the resource
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    type?: string;
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
 }
 /**
  * networkSecurityPerimeterConfigurationResponseProvideDefaults sets the appropriate defaults for NetworkSecurityPerimeterConfigurationResponse
@@ -1048,7 +1052,7 @@ export interface NetworkSecurityPerimeterConfigurationResponse {
 export function networkSecurityPerimeterConfigurationResponseProvideDefaults(val: NetworkSecurityPerimeterConfigurationResponse): NetworkSecurityPerimeterConfigurationResponse {
     return {
         ...val,
-        properties: networkSecurityPerimeterConfigurationPropertiesResponseProvideDefaults(val.properties),
+        properties: (val.properties ? networkSecurityPerimeterConfigurationPropertiesResponseProvideDefaults(val.properties) : undefined),
     };
 }
 
@@ -1071,23 +1075,9 @@ export interface NetworkSecurityPerimeterResponse {
 }
 
 /**
- * Information of Access Rule in a profile
- */
-export interface NspAccessRuleResponse {
-    /**
-     * Name of the access rule
-     */
-    name?: string;
-    /**
-     * Properties of Access Rule
-     */
-    properties: NspAccessRuleResponseProperties;
-}
-
-/**
  * Properties of Access Rule
  */
-export interface NspAccessRuleResponseProperties {
+export interface NspAccessRulePropertiesResponse {
     /**
      * Address prefixes in the CIDR format for inbound rules
      */
@@ -1115,17 +1105,31 @@ export interface NspAccessRuleResponseProperties {
     /**
      * Subscriptions for inbound rules
      */
-    subscriptions?: NspAccessRuleResponseSubscriptions[];
+    subscriptions?: NspAccessRulePropertiesSubscriptionsItemResponse[];
 }
 
 /**
  * Subscription for inbound rule
  */
-export interface NspAccessRuleResponseSubscriptions {
+export interface NspAccessRulePropertiesSubscriptionsItemResponse {
     /**
      * Fully qualified identifier of subscription
      */
     id?: string;
+}
+
+/**
+ * Information of Access Rule in a profile
+ */
+export interface NspAccessRuleResponse {
+    /**
+     * Name of the access rule
+     */
+    name?: string;
+    /**
+     * Properties of Access Rule
+     */
+    properties: NspAccessRulePropertiesResponse;
 }
 
 /**
@@ -1221,6 +1225,10 @@ export interface PrivateEndpointConnectionResponse {
      */
     provisioningState: string;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
@@ -1281,23 +1289,9 @@ export interface ProfileResponse {
 }
 
 /**
- * Describes Provisioning issue for given Network Security Perimeter configuration
- */
-export interface ProvisioningIssueResponse {
-    /**
-     * Name of the issue
-     */
-    name?: string;
-    /**
-     * Properties of Provisioning Issue
-     */
-    properties: ProvisioningIssueResponseProperties;
-}
-
-/**
  * Properties of Provisioning Issue
  */
-export interface ProvisioningIssueResponseProperties {
+export interface ProvisioningIssuePropertiesResponse {
     /**
      * Description of the issue
      */
@@ -1318,6 +1312,20 @@ export interface ProvisioningIssueResponseProperties {
      * ARM IDs of resources that can be associated to the same perimeter to remediate the issue.
      */
     suggestedResourceIds: string[];
+}
+
+/**
+ * Describes Provisioning issue for given Network Security Perimeter configuration
+ */
+export interface ProvisioningIssueResponse {
+    /**
+     * Name of the issue
+     */
+    name?: string;
+    /**
+     * Properties of Provisioning Issue
+     */
+    properties: ProvisioningIssuePropertiesResponse;
 }
 
 /**
@@ -1367,6 +1375,26 @@ export function searchAssistantResponseProvideDefaults(val: SearchAssistantRespo
 }
 
 /**
+ * the constraints of the bot meta data.
+ */
+export interface ServiceProviderParameterMetadataConstraintsResponse {
+    /**
+     * Whether required the constraints of the bot meta data.
+     */
+    required?: boolean;
+}
+
+/**
+ * Meta data for the Service Provider
+ */
+export interface ServiceProviderParameterMetadataResponse {
+    /**
+     * the constraints of the bot meta data.
+     */
+    constraints?: ServiceProviderParameterMetadataConstraintsResponse;
+}
+
+/**
  * Extra Parameters specific to each Service Provider
  */
 export interface ServiceProviderParameterResponse {
@@ -1389,7 +1417,7 @@ export interface ServiceProviderParameterResponse {
     /**
      * Meta data for the Service Provider
      */
-    metadata: ServiceProviderParameterResponseMetadata;
+    metadata: ServiceProviderParameterMetadataResponse;
     /**
      * Name of the Service Provider
      */
@@ -1398,26 +1426,6 @@ export interface ServiceProviderParameterResponse {
      * Type of the Service Provider
      */
     type: string;
-}
-
-/**
- * the constraints of the bot meta data.
- */
-export interface ServiceProviderParameterResponseConstraints {
-    /**
-     * Whether required the constraints of the bot meta data.
-     */
-    required?: boolean;
-}
-
-/**
- * Meta data for the Service Provider
- */
-export interface ServiceProviderParameterResponseMetadata {
-    /**
-     * the constraints of the bot meta data.
-     */
-    constraints?: ServiceProviderParameterResponseConstraints;
 }
 
 /**
@@ -1825,6 +1833,36 @@ export function smsChannelResponseProvideDefaults(val: SmsChannelResponse): SmsC
 }
 
 /**
+ * Metadata pertaining to creation and last modification of the resource.
+ */
+export interface SystemDataResponse {
+    /**
+     * The timestamp of resource creation (UTC).
+     */
+    createdAt?: string;
+    /**
+     * The identity that created the resource.
+     */
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
+}
+
+/**
  * The parameters to provide for the Telegram channel.
  */
 export interface TelegramChannelPropertiesResponse {
@@ -2129,7 +2167,7 @@ export interface WebChatSiteResponse {
     /**
      * Whether this site is enabled for preview versions of Webchat
      */
-    isWebchatPreviewEnabled: boolean;
+    isWebchatPreviewEnabled?: boolean;
     /**
      * Primary key. Value only returned through POST to the action Channel List API, otherwise empty.
      */

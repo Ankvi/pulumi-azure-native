@@ -24,7 +24,7 @@ export interface GetVirtualMachineExtensionArgs {
      */
     expand?: string;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
@@ -32,7 +32,7 @@ export interface GetVirtualMachineExtensionArgs {
      */
     vmExtensionName: string;
     /**
-     * The name of the virtual machine containing the extension.
+     * The name of the virtual machine.
      */
     vmName: string;
 }
@@ -58,7 +58,7 @@ export interface GetVirtualMachineExtensionResult {
      */
     readonly forceUpdateTag?: string;
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
@@ -66,11 +66,11 @@ export interface GetVirtualMachineExtensionResult {
      */
     readonly instanceView?: types.outputs.VirtualMachineExtensionInstanceViewResponse;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
-    readonly location?: string;
+    readonly location: string;
     /**
-     * Resource name
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -102,11 +102,15 @@ export interface GetVirtualMachineExtensionResult {
      */
     readonly suppressFailures?: boolean;
     /**
-     * Resource tags
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
      */
     readonly tags?: {[key: string]: string};
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**
@@ -137,7 +141,7 @@ export interface GetVirtualMachineExtensionOutputArgs {
      */
     expand?: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
@@ -145,7 +149,7 @@ export interface GetVirtualMachineExtensionOutputArgs {
      */
     vmExtensionName: pulumi.Input<string>;
     /**
-     * The name of the virtual machine containing the extension.
+     * The name of the virtual machine.
      */
     vmName: pulumi.Input<string>;
 }

@@ -2,11 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Describes the RedisEnterprise cluster
+ * Describes the Redis Enterprise cluster
  *
- * Uses Azure REST API version 2024-03-01-preview.
+ * Uses Azure REST API version 2025-05-01-preview.
  *
- * Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class RedisEnterprise extends pulumi.CustomResource {
     /**
@@ -44,6 +44,10 @@ export class RedisEnterprise extends pulumi.CustomResource {
      */
     public readonly encryption!: pulumi.Output<types.outputs.ClusterPropertiesResponseEncryption | undefined>;
     /**
+     * Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss.
+     */
+    public readonly highAvailability!: pulumi.Output<string | undefined>;
+    /**
      * DNS name of the cluster endpoint
      */
     public /*out*/ readonly hostName!: pulumi.Output<string>;
@@ -52,11 +56,15 @@ export class RedisEnterprise extends pulumi.CustomResource {
      */
     public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
+     * Distinguishes the kind of cluster. Read-only.
+     */
+    public /*out*/ readonly kind!: pulumi.Output<string>;
+    /**
      * The geo-location where the resource lives
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The minimum TLS version for the cluster to support, e.g. '1.2'
+     * The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions.
      */
     public readonly minimumTlsVersion!: pulumi.Output<string | undefined>;
     /**
@@ -64,7 +72,7 @@ export class RedisEnterprise extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * List of private endpoint connections associated with the specified RedisEnterprise cluster
+     * List of private endpoint connections associated with the specified Redis Enterprise cluster
      */
     public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
@@ -75,6 +83,10 @@ export class RedisEnterprise extends pulumi.CustomResource {
      * Version of redis the cluster supports, e.g. '6'
      */
     public /*out*/ readonly redisVersion!: pulumi.Output<string>;
+    /**
+     * Explains the current redundancy strategy of the cluster, which affects the expected SLA.
+     */
+    public /*out*/ readonly redundancyMode!: pulumi.Output<string>;
     /**
      * Current resource status of the cluster
      */
@@ -115,6 +127,7 @@ export class RedisEnterprise extends pulumi.CustomResource {
             }
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
+            resourceInputs["highAvailability"] = args ? args.highAvailability : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["minimumTlsVersion"] = args ? args.minimumTlsVersion : undefined;
@@ -124,23 +137,28 @@ export class RedisEnterprise extends pulumi.CustomResource {
             resourceInputs["zones"] = args ? args.zones : undefined;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["hostName"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateEndpointConnections"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["redisVersion"] = undefined /*out*/;
+            resourceInputs["redundancyMode"] = undefined /*out*/;
             resourceInputs["resourceState"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["encryption"] = undefined /*out*/;
+            resourceInputs["highAvailability"] = undefined /*out*/;
             resourceInputs["hostName"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["minimumTlsVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateEndpointConnections"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["redisVersion"] = undefined /*out*/;
+            resourceInputs["redundancyMode"] = undefined /*out*/;
             resourceInputs["resourceState"] = undefined /*out*/;
             resourceInputs["sku"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
@@ -159,13 +177,17 @@ export class RedisEnterprise extends pulumi.CustomResource {
  */
 export interface RedisEnterpriseArgs {
     /**
-     * The name of the Redis Enterprise cluster.
+     * The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
      */
     clusterName?: pulumi.Input<string>;
     /**
      * Encryption-at-rest configuration for the cluster.
      */
     encryption?: pulumi.Input<types.inputs.ClusterPropertiesEncryptionArgs>;
+    /**
+     * Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss.
+     */
+    highAvailability?: pulumi.Input<string | types.enums.HighAvailability>;
     /**
      * The identity of the resource.
      */
@@ -175,7 +197,7 @@ export interface RedisEnterpriseArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * The minimum TLS version for the cluster to support, e.g. '1.2'
+     * The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions.
      */
     minimumTlsVersion?: pulumi.Input<string | types.enums.TlsVersion>;
     /**

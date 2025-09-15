@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * An environment for hosting container apps
  *
- * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
+ * Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
  *
- * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-02-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ManagedEnvironment extends pulumi.CustomResource {
     /**
@@ -36,9 +36,17 @@ export class ManagedEnvironment extends pulumi.CustomResource {
     }
 
     /**
-     * Cluster configuration which enables the log daemon to export app logs to configured destination.
+     * Environment level Application Insights configuration
+     */
+    public readonly appInsightsConfiguration!: pulumi.Output<types.outputs.AppInsightsConfigurationResponse | undefined>;
+    /**
+     * Cluster configuration which enables the log daemon to export app logs to configured destination
      */
     public readonly appLogsConfiguration!: pulumi.Output<types.outputs.AppLogsConfigurationResponse | undefined>;
+    /**
+     * The list of availability zones to use for managed environment
+     */
+    public readonly availabilityZones!: pulumi.Output<string[] | undefined>;
     /**
      * The Azure API version of the resource.
      */
@@ -68,13 +76,25 @@ export class ManagedEnvironment extends pulumi.CustomResource {
      */
     public /*out*/ readonly deploymentErrors!: pulumi.Output<string>;
     /**
+     * Disk encryption configuration for the Managed Environment.
+     */
+    public readonly diskEncryptionConfiguration!: pulumi.Output<types.outputs.DiskEncryptionConfigurationResponse | undefined>;
+    /**
      * The endpoint of the eventstream of the Environment.
      */
     public /*out*/ readonly eventStreamEndpoint!: pulumi.Output<string>;
     /**
+     * Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
+     */
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
+    /**
      * Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
      */
     public readonly infrastructureResourceGroup!: pulumi.Output<string | undefined>;
+    /**
+     * Ingress configuration for the Managed Environment.
+     */
+    public readonly ingressConfiguration!: pulumi.Output<types.outputs.IngressConfigurationResponse | undefined>;
     /**
      * The configuration of Keda component.
      */
@@ -92,6 +112,10 @@ export class ManagedEnvironment extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Environment Open Telemetry configuration
+     */
+    public readonly openTelemetryConfiguration!: pulumi.Output<types.outputs.OpenTelemetryConfigurationResponse | undefined>;
+    /**
      * Peer authentication settings for the Managed Environment
      */
     public readonly peerAuthentication!: pulumi.Output<types.outputs.ManagedEnvironmentResponsePeerAuthentication | undefined>;
@@ -100,9 +124,21 @@ export class ManagedEnvironment extends pulumi.CustomResource {
      */
     public readonly peerTrafficConfiguration!: pulumi.Output<types.outputs.ManagedEnvironmentResponsePeerTrafficConfiguration | undefined>;
     /**
+     * Private endpoint connections to the resource.
+     */
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
+    /**
+     * Private Link Default Domain Name for the environment
+     */
+    public /*out*/ readonly privateLinkDefaultDomain!: pulumi.Output<string>;
+    /**
      * Provisioning state of the Environment.
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    /**
+     * Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled'.
+     */
+    public readonly publicNetworkAccess!: pulumi.Output<string | undefined>;
     /**
      * Static IP of the Environment
      */
@@ -146,16 +182,23 @@ export class ManagedEnvironment extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
+            resourceInputs["appInsightsConfiguration"] = args ? args.appInsightsConfiguration : undefined;
             resourceInputs["appLogsConfiguration"] = args ? args.appLogsConfiguration : undefined;
+            resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
             resourceInputs["customDomainConfiguration"] = args ? args.customDomainConfiguration : undefined;
             resourceInputs["daprAIConnectionString"] = args ? args.daprAIConnectionString : undefined;
             resourceInputs["daprAIInstrumentationKey"] = args ? args.daprAIInstrumentationKey : undefined;
+            resourceInputs["diskEncryptionConfiguration"] = args ? args.diskEncryptionConfiguration : undefined;
             resourceInputs["environmentName"] = args ? args.environmentName : undefined;
+            resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["infrastructureResourceGroup"] = args ? args.infrastructureResourceGroup : undefined;
+            resourceInputs["ingressConfiguration"] = args ? args.ingressConfiguration : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["openTelemetryConfiguration"] = args ? args.openTelemetryConfiguration : undefined;
             resourceInputs["peerAuthentication"] = args ? args.peerAuthentication : undefined;
             resourceInputs["peerTrafficConfiguration"] = args ? args.peerTrafficConfiguration : undefined;
+            resourceInputs["publicNetworkAccess"] = args ? args.publicNetworkAccess : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vnetConfiguration"] = args ? args.vnetConfiguration : undefined;
@@ -168,12 +211,16 @@ export class ManagedEnvironment extends pulumi.CustomResource {
             resourceInputs["eventStreamEndpoint"] = undefined /*out*/;
             resourceInputs["kedaConfiguration"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["privateEndpointConnections"] = undefined /*out*/;
+            resourceInputs["privateLinkDefaultDomain"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["staticIp"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["appInsightsConfiguration"] = undefined /*out*/;
             resourceInputs["appLogsConfiguration"] = undefined /*out*/;
+            resourceInputs["availabilityZones"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["customDomainConfiguration"] = undefined /*out*/;
             resourceInputs["daprAIConnectionString"] = undefined /*out*/;
@@ -181,15 +228,22 @@ export class ManagedEnvironment extends pulumi.CustomResource {
             resourceInputs["daprConfiguration"] = undefined /*out*/;
             resourceInputs["defaultDomain"] = undefined /*out*/;
             resourceInputs["deploymentErrors"] = undefined /*out*/;
+            resourceInputs["diskEncryptionConfiguration"] = undefined /*out*/;
             resourceInputs["eventStreamEndpoint"] = undefined /*out*/;
+            resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["infrastructureResourceGroup"] = undefined /*out*/;
+            resourceInputs["ingressConfiguration"] = undefined /*out*/;
             resourceInputs["kedaConfiguration"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["openTelemetryConfiguration"] = undefined /*out*/;
             resourceInputs["peerAuthentication"] = undefined /*out*/;
             resourceInputs["peerTrafficConfiguration"] = undefined /*out*/;
+            resourceInputs["privateEndpointConnections"] = undefined /*out*/;
+            resourceInputs["privateLinkDefaultDomain"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["publicNetworkAccess"] = undefined /*out*/;
             resourceInputs["staticIp"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
@@ -210,9 +264,17 @@ export class ManagedEnvironment extends pulumi.CustomResource {
  */
 export interface ManagedEnvironmentArgs {
     /**
-     * Cluster configuration which enables the log daemon to export app logs to configured destination.
+     * Environment level Application Insights configuration
+     */
+    appInsightsConfiguration?: pulumi.Input<types.inputs.AppInsightsConfigurationArgs>;
+    /**
+     * Cluster configuration which enables the log daemon to export app logs to configured destination
      */
     appLogsConfiguration?: pulumi.Input<types.inputs.AppLogsConfigurationArgs>;
+    /**
+     * The list of availability zones to use for managed environment
+     */
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Custom domain configuration for the environment
      */
@@ -226,13 +288,25 @@ export interface ManagedEnvironmentArgs {
      */
     daprAIInstrumentationKey?: pulumi.Input<string>;
     /**
+     * Disk encryption configuration for the Managed Environment.
+     */
+    diskEncryptionConfiguration?: pulumi.Input<types.inputs.DiskEncryptionConfigurationArgs>;
+    /**
      * Name of the Environment.
      */
     environmentName?: pulumi.Input<string>;
     /**
+     * Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
+     */
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    /**
      * Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
      */
     infrastructureResourceGroup?: pulumi.Input<string>;
+    /**
+     * Ingress configuration for the Managed Environment.
+     */
+    ingressConfiguration?: pulumi.Input<types.inputs.IngressConfigurationArgs>;
     /**
      * Kind of the Environment.
      */
@@ -242,6 +316,10 @@ export interface ManagedEnvironmentArgs {
      */
     location?: pulumi.Input<string>;
     /**
+     * Environment Open Telemetry configuration
+     */
+    openTelemetryConfiguration?: pulumi.Input<types.inputs.OpenTelemetryConfigurationArgs>;
+    /**
      * Peer authentication settings for the Managed Environment
      */
     peerAuthentication?: pulumi.Input<types.inputs.ManagedEnvironmentPeerAuthenticationArgs>;
@@ -249,6 +327,10 @@ export interface ManagedEnvironmentArgs {
      * Peer traffic settings for the Managed Environment
      */
     peerTrafficConfiguration?: pulumi.Input<types.inputs.ManagedEnvironmentPeerTrafficConfigurationArgs>;
+    /**
+     * Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled'.
+     */
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

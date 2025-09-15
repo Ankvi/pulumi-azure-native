@@ -2,8 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Description of a NotificationHub PNS Credentials. This is a response of the POST requests that return namespace or hubs
- * PNS credentials.
+ * Lists the PNS Credentials associated with a notification hub.
  *
  * Uses Azure REST API version 2023-10-01-preview.
  *
@@ -100,8 +99,7 @@ export interface GetNotificationHubPnsCredentialsResult {
     readonly xiaomiCredential?: types.outputs.XiaomiCredentialResponse;
 }
 /**
- * Description of a NotificationHub PNS Credentials. This is a response of the POST requests that return namespace or hubs
- * PNS credentials.
+ * Lists the PNS Credentials associated with a notification hub.
  *
  * Uses Azure REST API version 2023-10-01-preview.
  *

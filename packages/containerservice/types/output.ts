@@ -496,6 +496,56 @@ export interface IPTagResponse {
 }
 
 /**
+ * Managed identity profile for the identity binding.
+ */
+export interface IdentityBindingManagedIdentityProfileResponse {
+    /**
+     * The client ID of the managed identity.
+     */
+    clientId: string;
+    /**
+     * The object ID of the managed identity.
+     */
+    objectId: string;
+    /**
+     * The resource ID of the managed identity.
+     */
+    resourceId: string;
+    /**
+     * The tenant ID of the managed identity.
+     */
+    tenantId: string;
+}
+
+/**
+ * IdentityBinding OIDC issuer profile.
+ */
+export interface IdentityBindingOidcIssuerProfileResponse {
+    /**
+     * The OIDC issuer URL of the IdentityBinding.
+     */
+    oidcIssuerUrl: string;
+}
+
+/**
+ * IdentityBinding properties.
+ */
+export interface IdentityBindingPropertiesResponse {
+    /**
+     * Managed identity profile for the identity binding.
+     */
+    managedIdentity: IdentityBindingManagedIdentityProfileResponse;
+    /**
+     * The OIDC issuer URL of the IdentityBinding.
+     */
+    oidcIssuer: IdentityBindingOidcIssuerProfileResponse;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+}
+
+/**
  * Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
  */
 export interface IstioCertificateAuthorityResponse {

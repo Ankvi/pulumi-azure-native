@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2021-12-01.
  *
- * Other available API versions: 2021-12-01, 2023-08-22, 2024-02-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-12-01, 2023-08-22, 2024-02-13, 2025-07-17-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Organization extends pulumi.CustomResource {
     /**
@@ -44,11 +44,11 @@ export class Organization extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdTime!: pulumi.Output<string>;
     /**
-     * Location of Organization resource
+     * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -68,15 +68,15 @@ export class Organization extends pulumi.CustomResource {
      */
     public /*out*/ readonly ssoUrl!: pulumi.Output<string>;
     /**
-     * Metadata pertaining to creation and last modification of the resource
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * Organization resource tags
+     * Resource tags.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -134,7 +134,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["userDetail"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:confluent/v20200301:Organization" }, { type: "azure-native:confluent/v20200301preview:Organization" }, { type: "azure-native:confluent/v20210301preview:Organization" }, { type: "azure-native:confluent/v20210901preview:Organization" }, { type: "azure-native:confluent/v20211201:Organization" }, { type: "azure-native:confluent/v20230822:Organization" }, { type: "azure-native:confluent/v20240213:Organization" }, { type: "azure-native:confluent/v20240701:Organization" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:confluent/v20200301:Organization" }, { type: "azure-native:confluent/v20200301preview:Organization" }, { type: "azure-native:confluent/v20210301preview:Organization" }, { type: "azure-native:confluent/v20210901preview:Organization" }, { type: "azure-native:confluent/v20211201:Organization" }, { type: "azure-native:confluent/v20230822:Organization" }, { type: "azure-native:confluent/v20240213:Organization" }, { type: "azure-native:confluent/v20240701:Organization" }, { type: "azure-native:confluent/v20250717preview:Organization" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Organization.__pulumiType, name, resourceInputs, opts);
     }
@@ -149,7 +149,7 @@ export interface OrganizationArgs {
      */
     linkOrganization?: pulumi.Input<types.inputs.LinkOrganizationArgs>;
     /**
-     * Location of Organization resource
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
@@ -161,11 +161,11 @@ export interface OrganizationArgs {
      */
     organizationName?: pulumi.Input<string>;
     /**
-     * Resource group name
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * Organization resource tags
+     * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

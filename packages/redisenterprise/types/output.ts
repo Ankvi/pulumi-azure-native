@@ -117,19 +117,19 @@ export interface ModuleResponse {
 }
 
 /**
- * Persistence-related configuration for the RedisEnterprise database
+ * Persistence-related configuration for the Redis Enterprise database
  */
 export interface PersistenceResponse {
     /**
-     * Sets whether AOF is enabled.
+     * Sets whether AOF is enabled. Note that at most one of AOF or RDB persistence may be enabled.
      */
     aofEnabled?: boolean;
     /**
-     * Sets the frequency at which data is written to disk.
+     * Sets the frequency at which data is written to disk. Defaults to '1s', meaning 'every second'. Note that the 'always' setting is deprecated, because of its performance impact.
      */
     aofFrequency?: string;
     /**
-     * Sets whether RDB is enabled.
+     * Sets whether RDB is enabled. Note that at most one of AOF or RDB persistence may be enabled.
      */
     rdbEnabled?: boolean;
     /**
@@ -211,17 +211,47 @@ export interface SkuDetailsResponse {
 }
 
 /**
- * SKU parameters supplied to the create RedisEnterprise operation.
+ * SKU parameters supplied to the create Redis Enterprise cluster operation.
  */
 export interface SkuResponse {
     /**
-     * The size of the RedisEnterprise cluster. Defaults to 2 or 3 depending on SKU. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
+     * This property is only used with Enterprise and EnterpriseFlash SKUs. Determines the size of the cluster. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for EnterpriseFlash SKUs.
      */
     capacity?: number;
     /**
-     * The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
+     * The level of Redis Enterprise cluster to deploy. Possible values: ('Balanced_B5', 'MemoryOptimized_M10', 'ComputeOptimized_X5', etc.). For more information on SKUs see the latest pricing documentation. Note that additional SKUs may become supported in the future.
      */
     name: string;
+}
+
+/**
+ * Metadata pertaining to creation and last modification of the resource.
+ */
+export interface SystemDataResponse {
+    /**
+     * The timestamp of resource creation (UTC).
+     */
+    createdAt?: string;
+    /**
+     * The identity that created the resource.
+     */
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
 }
 
 /**

@@ -1,0 +1,69 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * Retrived client application secrets.
+ *
+ * Uses Azure REST API version 2024-10-01-preview.
+ */
+export function listClientApplicationSecrets(args: ListClientApplicationSecretsArgs, opts?: pulumi.InvokeOptions): Promise<ListClientApplicationSecretsResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:apimanagement:listClientApplicationSecrets", {
+        "clientApplicationId": args.clientApplicationId,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+    }, opts);
+}
+
+export interface ListClientApplicationSecretsArgs {
+    /**
+     * Client Application identifier. Must be unique in the current API Management service instance.
+     */
+    clientApplicationId: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+    /**
+     * The name of the API Management service.
+     */
+    serviceName: string;
+}
+
+/**
+ * Specifies client application secrets needed to authorize applications API calls
+ */
+export interface ListClientApplicationSecretsResult {
+    /**
+     * Microsoft EntraID client application secrets
+     */
+    readonly entra?: types.outputs.ClientApplicationSecretsContractResponseEntra;
+}
+/**
+ * Retrived client application secrets.
+ *
+ * Uses Azure REST API version 2024-10-01-preview.
+ */
+export function listClientApplicationSecretsOutput(args: ListClientApplicationSecretsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListClientApplicationSecretsResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:apimanagement:listClientApplicationSecrets", {
+        "clientApplicationId": args.clientApplicationId,
+        "resourceGroupName": args.resourceGroupName,
+        "serviceName": args.serviceName,
+    }, opts);
+}
+
+export interface ListClientApplicationSecretsOutputArgs {
+    /**
+     * Client Application identifier. Must be unique in the current API Management service instance.
+     */
+    clientApplicationId: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * The name of the API Management service.
+     */
+    serviceName: pulumi.Input<string>;
+}

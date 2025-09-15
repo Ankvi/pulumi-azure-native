@@ -532,7 +532,7 @@ export function concurrencyConfigurationResponseProvideDefaults(val: Concurrency
  */
 export interface ConditionResponse {
     /**
-     * The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant and required only for dynamic threshold rules of the kind LogAlert.
+     * The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant only for dynamic threshold rules of the kind LogAlert.
      */
     alertSensitivity?: string;
     /**
@@ -559,6 +559,10 @@ export interface ConditionResponse {
      * The name of the metric to be sent. Relevant and required only for rules of the kind LogToMetric.
      */
     metricName?: string;
+    /**
+     * The minimum results count that should be found for triggering an alert. Relevant only for rules of the kind SimpleLogAlert.
+     */
+    minRecurrenceCount?: number;
     /**
      * The criteria operator. Relevant and required only for rules of the kind LogAlert.
      */

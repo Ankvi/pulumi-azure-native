@@ -5,6 +5,8 @@ import * as types from "./types";
  * Gets properties of a DNS resolver policy virtual network link.
  *
  * Uses Azure REST API version 2023-07-01-preview.
+ *
+ * Other available API versions: 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dnsresolver [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDnsResolverPolicyVirtualNetworkLink(args: GetDnsResolverPolicyVirtualNetworkLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsResolverPolicyVirtualNetworkLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -79,6 +81,8 @@ export interface GetDnsResolverPolicyVirtualNetworkLinkResult {
  * Gets properties of a DNS resolver policy virtual network link.
  *
  * Uses Azure REST API version 2023-07-01-preview.
+ *
+ * Other available API versions: 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dnsresolver [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDnsResolverPolicyVirtualNetworkLinkOutput(args: GetDnsResolverPolicyVirtualNetworkLinkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsResolverPolicyVirtualNetworkLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

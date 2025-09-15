@@ -45,33 +45,3 @@ export interface DedicatedCapacityAdministratorsArgs {
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
 }
-
-/**
- * Metadata pertaining to creation and last modification of the resource.
- */
-export interface SystemDataArgs {
-    /**
-     * The timestamp of resource creation (UTC)
-     */
-    createdAt?: pulumi.Input<string>;
-    /**
-     * An identifier for the identity that created the resource
-     */
-    createdBy?: pulumi.Input<string>;
-    /**
-     * The type of identity that created the resource
-     */
-    createdByType?: pulumi.Input<string | enums.IdentityType>;
-    /**
-     * The timestamp of resource last modification (UTC)
-     */
-    lastModifiedAt?: pulumi.Input<string>;
-    /**
-     * An identifier for the identity that last modified the resource
-     */
-    lastModifiedBy?: pulumi.Input<string>;
-    /**
-     * The type of identity that last modified the resource
-     */
-    lastModifiedByType?: pulumi.Input<string | enums.IdentityType>;
-}

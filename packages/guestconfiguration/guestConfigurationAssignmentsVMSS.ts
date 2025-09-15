@@ -44,9 +44,9 @@ export class GuestConfigurationAssignmentsVMSS extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
-     * Name of the guest configuration assignment.
+     * The guest configuration assignment name.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Properties of the Guest configuration assignment.
      */
@@ -109,7 +109,7 @@ export interface GuestConfigurationAssignmentsVMSSArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * Name of the guest configuration assignment.
+     * The guest configuration assignment name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -117,7 +117,7 @@ export interface GuestConfigurationAssignmentsVMSSArgs {
      */
     properties?: pulumi.Input<types.inputs.GuestConfigurationAssignmentPropertiesArgs>;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

@@ -17,7 +17,7 @@ export function getConfigurationAssignmentsForSubscription(args: GetConfiguratio
 
 export interface GetConfigurationAssignmentsForSubscriptionArgs {
     /**
-     * Configuration assignment name
+     * The name of the ConfigurationAssignment
      */
     configurationAssignmentName: string;
 }
@@ -35,7 +35,7 @@ export interface GetConfigurationAssignmentsForSubscriptionResult {
      */
     readonly filter?: types.outputs.ConfigurationAssignmentFilterPropertiesResponse;
     /**
-     * Fully qualified identifier of the resource
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -47,7 +47,7 @@ export interface GetConfigurationAssignmentsForSubscriptionResult {
      */
     readonly maintenanceConfigurationId?: string;
     /**
-     * Name of the resource
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -59,7 +59,7 @@ export interface GetConfigurationAssignmentsForSubscriptionResult {
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
-     * Type of the resource
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -79,7 +79,7 @@ export function getConfigurationAssignmentsForSubscriptionOutput(args: GetConfig
 
 export interface GetConfigurationAssignmentsForSubscriptionOutputArgs {
     /**
-     * Configuration assignment name
+     * The name of the ConfigurationAssignment
      */
     configurationAssignmentName: pulumi.Input<string>;
 }

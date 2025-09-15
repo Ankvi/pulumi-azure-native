@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets information about access policy assignment for database.
  *
- * Uses Azure REST API version 2024-09-01-preview.
+ * Uses Azure REST API version 2025-05-01-preview.
  *
- * Other available API versions: 2025-04-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-09-01-preview, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAccessPolicyAssignment(args: GetAccessPolicyAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPolicyAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -24,7 +24,7 @@ export interface GetAccessPolicyAssignmentArgs {
      */
     accessPolicyAssignmentName: string;
     /**
-     * The name of the Redis Enterprise cluster.
+     * The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
      */
     clusterName: string;
     /**
@@ -73,9 +73,9 @@ export interface GetAccessPolicyAssignmentResult {
 /**
  * Gets information about access policy assignment for database.
  *
- * Uses Azure REST API version 2024-09-01-preview.
+ * Uses Azure REST API version 2025-05-01-preview.
  *
- * Other available API versions: 2025-04-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-09-01-preview, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getAccessPolicyAssignmentOutput(args: GetAccessPolicyAssignmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessPolicyAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -93,7 +93,7 @@ export interface GetAccessPolicyAssignmentOutputArgs {
      */
     accessPolicyAssignmentName: pulumi.Input<string>;
     /**
-     * The name of the Redis Enterprise cluster.
+     * The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
      */
     clusterName: pulumi.Input<string>;
     /**

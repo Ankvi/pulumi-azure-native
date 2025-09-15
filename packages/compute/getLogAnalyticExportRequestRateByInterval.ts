@@ -58,7 +58,7 @@ export interface GetLogAnalyticExportRequestRateByIntervalArgs {
      */
     intervalLength: types.enums.IntervalInMins;
     /**
-     * The location upon which virtual-machine-sizes is queried.
+     * The name of Azure region.
      */
     location: string;
     /**
@@ -133,7 +133,7 @@ export interface GetLogAnalyticExportRequestRateByIntervalOutputArgs {
      */
     intervalLength: pulumi.Input<types.enums.IntervalInMins>;
     /**
-     * The location upon which virtual-machine-sizes is queried.
+     * The name of Azure region.
      */
     location: pulumi.Input<string>;
     /**

@@ -5,6 +5,8 @@ import * as types from "./types";
  * Describes a DNS resolver policy.
  *
  * Uses Azure REST API version 2023-07-01-preview.
+ *
+ * Other available API versions: 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dnsresolver [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DnsResolverPolicy extends pulumi.CustomResource {
     /**
@@ -107,7 +109,7 @@ export class DnsResolverPolicy extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dnsresolver/v20230701preview:DnsResolverPolicy" }, { type: "azure-native:network/v20230701preview:DnsResolverPolicy" }, { type: "azure-native:network:DnsResolverPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dnsresolver/v20230701preview:DnsResolverPolicy" }, { type: "azure-native:dnsresolver/v20250501:DnsResolverPolicy" }, { type: "azure-native:network/v20230701preview:DnsResolverPolicy" }, { type: "azure-native:network:DnsResolverPolicy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DnsResolverPolicy.__pulumiType, name, resourceInputs, opts);
     }

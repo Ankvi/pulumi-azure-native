@@ -26,11 +26,11 @@ export interface GetNotificationChannelArgs {
      */
     labName: string;
     /**
-     * The name of the notification channel.
+     * The name of the NotificationChannel
      */
     name: string;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
@@ -121,11 +121,11 @@ export interface GetNotificationChannelOutputArgs {
      */
     labName: pulumi.Input<string>;
     /**
-     * The name of the notification channel.
+     * The name of the NotificationChannel
      */
     name: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

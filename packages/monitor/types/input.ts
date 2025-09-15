@@ -461,7 +461,7 @@ export function concurrencyConfigurationArgsProvideDefaults(val: ConcurrencyConf
  */
 export interface ConditionArgs {
     /**
-     * The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant and required only for dynamic threshold rules of the kind LogAlert.
+     * The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant only for dynamic threshold rules of the kind LogAlert.
      */
     alertSensitivity?: pulumi.Input<string>;
     /**
@@ -488,6 +488,10 @@ export interface ConditionArgs {
      * The name of the metric to be sent. Relevant and required only for rules of the kind LogToMetric.
      */
     metricName?: pulumi.Input<string>;
+    /**
+     * The minimum results count that should be found for triggering an alert. Relevant only for rules of the kind SimpleLogAlert.
+     */
+    minRecurrenceCount?: pulumi.Input<number>;
     /**
      * The criteria operator. Relevant and required only for rules of the kind LogAlert.
      */

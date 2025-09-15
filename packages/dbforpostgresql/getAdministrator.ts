@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Gets information about a server.
+ * Gets information about a server administrator associated to a Microsoft Entra principal.
  *
  * Uses Azure REST API version 2024-08-01.
  *
@@ -19,7 +19,7 @@ export function getAdministrator(args: GetAdministratorArgs, opts?: pulumi.Invok
 
 export interface GetAdministratorArgs {
     /**
-     * Guid of the objectId for the administrator.
+     * Object identifier of the Microsoft Entra principal.
      */
     objectId: string;
     /**
@@ -33,7 +33,7 @@ export interface GetAdministratorArgs {
 }
 
 /**
- * Represents an Active Directory administrator.
+ * Server administrator associated to a Microsoft Entra principal.
  */
 export interface GetAdministratorResult {
     /**
@@ -49,15 +49,15 @@ export interface GetAdministratorResult {
      */
     readonly name: string;
     /**
-     * The objectId of the Active Directory administrator.
+     * Object identifier of the Microsoft Entra principal.
      */
     readonly objectId?: string;
     /**
-     * Active Directory administrator principal name.
+     * Name of the Microsoft Entra principal.
      */
     readonly principalName?: string;
     /**
-     * The principal type used to represent the type of Active Directory Administrator.
+     * Type of Microsoft Entra principal to which the server administrator is associated.
      */
     readonly principalType?: string;
     /**
@@ -65,7 +65,7 @@ export interface GetAdministratorResult {
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
-     * The tenantId of the Active Directory administrator.
+     * Identifier of the tenant in which the Microsoft Entra principal exists.
      */
     readonly tenantId?: string;
     /**
@@ -74,7 +74,7 @@ export interface GetAdministratorResult {
     readonly type: string;
 }
 /**
- * Gets information about a server.
+ * Gets information about a server administrator associated to a Microsoft Entra principal.
  *
  * Uses Azure REST API version 2024-08-01.
  *
@@ -91,7 +91,7 @@ export function getAdministratorOutput(args: GetAdministratorOutputArgs, opts?: 
 
 export interface GetAdministratorOutputArgs {
     /**
-     * Guid of the objectId for the administrator.
+     * Object identifier of the Microsoft Entra principal.
      */
     objectId: pulumi.Input<string>;
     /**
