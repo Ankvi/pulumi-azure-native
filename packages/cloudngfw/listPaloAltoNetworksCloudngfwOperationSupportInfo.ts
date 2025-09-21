@@ -3,40 +3,32 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Support information for the service
  *
- * Uses Azure REST API version 2025-02-06-preview.
+ * Uses Azure REST API version 2025-05-23.
  *
- * Other available API versions: 2024-01-19-preview, 2024-02-07-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-07-07-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
-export function listPaloAltoNetworksCloudngfwSupportInfo(args?: ListPaloAltoNetworksCloudngfwSupportInfoArgs, opts?: pulumi.InvokeOptions): Promise<ListPaloAltoNetworksCloudngfwSupportInfoResult> {
+export function listPaloAltoNetworksCloudngfwOperationSupportInfo(args?: ListPaloAltoNetworksCloudngfwOperationSupportInfoArgs, opts?: pulumi.InvokeOptions): Promise<ListPaloAltoNetworksCloudngfwOperationSupportInfoResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("azure-native:cloudngfw:listPaloAltoNetworksCloudngfwSupportInfo", {
+    return pulumi.runtime.invoke("azure-native:cloudngfw:listPaloAltoNetworksCloudngfwOperationSupportInfo", {
     }, opts);
 }
 
-export interface ListPaloAltoNetworksCloudngfwSupportInfoArgs {
+export interface ListPaloAltoNetworksCloudngfwOperationSupportInfoArgs {
 }
 
 /**
  * Support information for the service
  */
-export interface ListPaloAltoNetworksCloudngfwSupportInfoResult {
+export interface ListPaloAltoNetworksCloudngfwOperationSupportInfoResult {
     /**
-     * Support account associated with given resource when association type is tenant
+     * Support account associated with given resource
      */
     readonly accountId?: string;
-    /**
-     * Support account associated with given resource when association type is billing
-     */
-    readonly accountIdForBilling?: string;
     /**
      * account registered in Customer Support Portal
      */
     readonly accountRegistrationStatus?: string;
-    /**
-     * Association Type
-     */
-    readonly associationType?: string;
     /**
      * credits purchased, unit per hour
      */
@@ -93,12 +85,12 @@ export interface ListPaloAltoNetworksCloudngfwSupportInfoResult {
 /**
  * Support information for the service
  *
- * Uses Azure REST API version 2025-02-06-preview.
+ * Uses Azure REST API version 2025-05-23.
  *
- * Other available API versions: 2024-01-19-preview, 2024-02-07-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-07-07-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
-export function listPaloAltoNetworksCloudngfwSupportInfoOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListPaloAltoNetworksCloudngfwSupportInfoResult> {
+export function listPaloAltoNetworksCloudngfwOperationSupportInfoOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListPaloAltoNetworksCloudngfwOperationSupportInfoResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("azure-native:cloudngfw:listPaloAltoNetworksCloudngfwSupportInfo", {
+    return pulumi.runtime.invokeOutput("azure-native:cloudngfw:listPaloAltoNetworksCloudngfwOperationSupportInfo", {
     }, opts);
 }
