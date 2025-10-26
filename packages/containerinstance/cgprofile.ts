@@ -2,9 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * container group profile object
+ * A container group profile object
  *
  * Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-11-01-preview.
+ *
+ * Other available API versions: 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CGProfile extends pulumi.CustomResource {
     /**
@@ -44,7 +46,7 @@ export class CGProfile extends pulumi.CustomResource {
     /**
      * The containers within the container group.
      */
-    public readonly containers!: pulumi.Output<types.outputs.ContainerResponse[] | undefined>;
+    public readonly containers!: pulumi.Output<types.outputs.ContainerResponse[]>;
     /**
      * The diagnostic information for a container group.
      */
@@ -80,7 +82,7 @@ export class CGProfile extends pulumi.CustomResource {
     /**
      * The operating system type required by the containers in the container group.
      */
-    public readonly osType!: pulumi.Output<string | undefined>;
+    public readonly osType!: pulumi.Output<string>;
     /**
      * The priority of the container group.
      */
@@ -88,7 +90,7 @@ export class CGProfile extends pulumi.CustomResource {
     /**
      * Registered revisions are calculated at request time based off the records in the table logs.
      */
-    public readonly registeredRevisions!: pulumi.Output<number[] | undefined>;
+    public /*out*/ readonly registeredRevisions!: pulumi.Output<number[]>;
     /**
      * Restart policy for all containers within the container group. 
      * - `Always` Always restart
@@ -99,7 +101,7 @@ export class CGProfile extends pulumi.CustomResource {
     /**
      * Container group profile current revision number
      */
-    public readonly revision!: pulumi.Output<number | undefined>;
+    public /*out*/ readonly revision!: pulumi.Output<number>;
     /**
      * The container security properties.
      */
@@ -152,6 +154,12 @@ export class CGProfile extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.containers === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'containers'");
+            }
+            if ((!args || args.osType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'osType'");
+            }
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
@@ -167,10 +175,8 @@ export class CGProfile extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["osType"] = args ? args.osType : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["registeredRevisions"] = args ? args.registeredRevisions : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["restartPolicy"] = args ? args.restartPolicy : undefined;
-            resourceInputs["revision"] = args ? args.revision : undefined;
             resourceInputs["securityContext"] = args ? args.securityContext : undefined;
             resourceInputs["shutdownGracePeriod"] = args ? args.shutdownGracePeriod : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
@@ -181,6 +187,8 @@ export class CGProfile extends pulumi.CustomResource {
             resourceInputs["zones"] = args ? args.zones : undefined;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["registeredRevisions"] = undefined /*out*/;
+            resourceInputs["revision"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
@@ -212,7 +220,7 @@ export class CGProfile extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerinstance/v20240501preview:CGProfile" }, { type: "azure-native:containerinstance/v20240501preview:ContainerGroupProfile" }, { type: "azure-native:containerinstance/v20241101preview:CGProfile" }, { type: "azure-native:containerinstance:ContainerGroupProfile" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerinstance/v20240501preview:CGProfile" }, { type: "azure-native:containerinstance/v20240501preview:ContainerGroupProfile" }, { type: "azure-native:containerinstance/v20241101preview:CGProfile" }, { type: "azure-native:containerinstance/v20250901:CGProfile" }, { type: "azure-native:containerinstance:ContainerGroupProfile" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CGProfile.__pulumiType, name, resourceInputs, opts);
     }
@@ -233,7 +241,7 @@ export interface CGProfileArgs {
     /**
      * The containers within the container group.
      */
-    containers?: pulumi.Input<pulumi.Input<types.inputs.ContainerArgs>[]>;
+    containers: pulumi.Input<pulumi.Input<types.inputs.ContainerArgs>[]>;
     /**
      * The diagnostic information for a container group.
      */
@@ -265,15 +273,11 @@ export interface CGProfileArgs {
     /**
      * The operating system type required by the containers in the container group.
      */
-    osType?: pulumi.Input<string | types.enums.OperatingSystemTypes>;
+    osType: pulumi.Input<string | types.enums.OperatingSystemTypes>;
     /**
      * The priority of the container group.
      */
     priority?: pulumi.Input<string | types.enums.Priority>;
-    /**
-     * Registered revisions are calculated at request time based off the records in the table logs.
-     */
-    registeredRevisions?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -285,10 +289,6 @@ export interface CGProfileArgs {
      * - `Never` Never restart
      */
     restartPolicy?: pulumi.Input<string | types.enums.ContainerGroupRestartPolicy>;
-    /**
-     * Container group profile current revision number
-     */
-    revision?: pulumi.Input<number>;
     /**
      * The container security properties.
      */

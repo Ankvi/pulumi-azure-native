@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-07-01-preview.
  *
- * Other available API versions: 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dnsresolver [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-05-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dnsresolver [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DnsResolverPolicyVirtualNetworkLink extends pulumi.CustomResource {
     /**
@@ -116,7 +116,7 @@ export class DnsResolverPolicyVirtualNetworkLink extends pulumi.CustomResource {
             resourceInputs["virtualNetwork"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dnsresolver/v20230701preview:DnsResolverPolicyVirtualNetworkLink" }, { type: "azure-native:dnsresolver/v20250501:DnsResolverPolicyVirtualNetworkLink" }, { type: "azure-native:network/v20230701preview:DnsResolverPolicyVirtualNetworkLink" }, { type: "azure-native:network:DnsResolverPolicyVirtualNetworkLink" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dnsresolver/v20230701preview:DnsResolverPolicyVirtualNetworkLink" }, { type: "azure-native:dnsresolver/v20250501:DnsResolverPolicyVirtualNetworkLink" }, { type: "azure-native:dnsresolver/v20251001preview:DnsResolverPolicyVirtualNetworkLink" }, { type: "azure-native:network/v20230701preview:DnsResolverPolicyVirtualNetworkLink" }, { type: "azure-native:network:DnsResolverPolicyVirtualNetworkLink" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DnsResolverPolicyVirtualNetworkLink.__pulumiType, name, resourceInputs, opts);
     }

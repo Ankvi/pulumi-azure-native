@@ -60,11 +60,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
      */
     public readonly provisioningState!: pulumi.Output<string | undefined>;
     /**
-     * The system meta data relating to this resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -138,7 +138,7 @@ export interface PrivateEndpointConnectionArgs {
      */
     provisioningState?: pulumi.Input<string | types.enums.EndPointProvisioningState>;
     /**
-     * Name of the Resource group within the Azure subscription.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

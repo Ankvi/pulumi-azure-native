@@ -5,6 +5,8 @@ import * as types from "./types";
  * Asset definition.
  *
  * Uses Azure REST API version 2025-07-01-preview.
+ *
+ * Other available API versions: 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NamespaceAsset extends pulumi.CustomResource {
     /**
@@ -297,7 +299,7 @@ export class NamespaceAsset extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:deviceregistry/v20250701preview:NamespaceAsset" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:deviceregistry/v20250701preview:NamespaceAsset" }, { type: "azure-native:deviceregistry/v20251001:NamespaceAsset" }, { type: "azure-native:deviceregistry/v20251101preview:NamespaceAsset" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NamespaceAsset.__pulumiType, name, resourceInputs, opts);
     }

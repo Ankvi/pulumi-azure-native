@@ -528,6 +528,102 @@ export interface IstioServiceMeshArgs {
 }
 
 /**
+ * The claim mapping expression for JWTAuthenticator.
+ */
+export interface JWTAuthenticatorClaimMappingExpressionArgs {
+    /**
+     * The CEL expression used to access token claims.
+     */
+    expression: pulumi.Input<string>;
+}
+
+/**
+ * The claim mappings for JWTAuthenticator.
+ */
+export interface JWTAuthenticatorClaimMappingsArgs {
+    /**
+     * The expression to extract extra attribute from the token claims. When not provided, no extra attributes are extracted from the token claims.
+     */
+    extra?: pulumi.Input<pulumi.Input<JWTAuthenticatorExtraClaimMappingExpressionArgs>[]>;
+    /**
+     * The expression to extract groups attribute from the token claims. When not provided, no groups are extracted from the token claims.
+     */
+    groups?: pulumi.Input<JWTAuthenticatorClaimMappingExpressionArgs>;
+    /**
+     * The expression to extract uid attribute from the token claims. When not provided, no uid is extracted from the token claims.
+     */
+    uid?: pulumi.Input<JWTAuthenticatorClaimMappingExpressionArgs>;
+    /**
+     * The expression to extract username attribute from the token claims.
+     */
+    username: pulumi.Input<JWTAuthenticatorClaimMappingExpressionArgs>;
+}
+
+/**
+ * The extra claim mapping expression for JWTAuthenticator.
+ */
+export interface JWTAuthenticatorExtraClaimMappingExpressionArgs {
+    /**
+     * The key of the extra attribute.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The CEL expression used to extract the value of the extra attribute.
+     */
+    valueExpression: pulumi.Input<string>;
+}
+
+/**
+ * The OIDC issuer details for JWTAuthenticator.
+ */
+export interface JWTAuthenticatorIssuerArgs {
+    /**
+     * The set of acceptable audiences the JWT must be issued to. At least one is required. When multiple is set, AudienceMatchPolicy is used in API Server configuration.
+     */
+    audiences: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The issuer URL. The URL must begin with the scheme https and cannot contain a query string or fragment. This must match the "iss" claim in the presented JWT, and the issuer returned from discovery.
+     */
+    url: pulumi.Input<string>;
+}
+
+/**
+ * The properties of JWTAuthenticator. For details on how to configure the properties of a JWT authenticator, please refer to the Kubernetes documentation: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration. Please note that not all fields available in the Kubernetes documentation are supported by AKS. For troubleshooting, please see https://aka.ms/aks-external-issuers-docs.
+ */
+export interface JWTAuthenticatorPropertiesArgs {
+    /**
+     * The mappings that define how user attributes are extracted from the token claims.
+     */
+    claimMappings: pulumi.Input<JWTAuthenticatorClaimMappingsArgs>;
+    /**
+     * The rules that are applied to validate token claims to authenticate users. All the expressions must evaluate to true for validation to succeed.
+     */
+    claimValidationRules?: pulumi.Input<pulumi.Input<JWTAuthenticatorValidationRuleArgs>[]>;
+    /**
+     * The JWT OIDC issuer details.
+     */
+    issuer: pulumi.Input<JWTAuthenticatorIssuerArgs>;
+    /**
+     * The rules that are applied to the mapped user before completing authentication. All the expressions must evaluate to true for validation to succeed.
+     */
+    userValidationRules?: pulumi.Input<pulumi.Input<JWTAuthenticatorValidationRuleArgs>[]>;
+}
+
+/**
+ * The validation rule for JWTAuthenticator.
+ */
+export interface JWTAuthenticatorValidationRuleArgs {
+    /**
+     * The CEL expression used to validate the claim or attribute.
+     */
+    expression: pulumi.Input<string>;
+    /**
+     * The validation error message.
+     */
+    message?: pulumi.Input<string>;
+}
+
+/**
  * See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
  */
 export interface KubeletConfigArgs {
@@ -1721,6 +1817,49 @@ export function networkPoliciesArgsProvideDefaults(val: NetworkPoliciesArgs): Ne
         egress: (val.egress) ?? "AllowAll",
         ingress: (val.ingress) ?? "AllowSameNamespace",
     };
+}
+
+/**
+ * The properties of the Node Customization resource.
+ */
+export interface NodeCustomizationPropertiesArgs {
+    /**
+     * The list of container images to cache on nodes. See https://kubernetes.io/docs/concepts/containers/images/#image-names
+     */
+    containerImages?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The scripts to customize the node before or after image capture.
+     */
+    customizationScripts?: pulumi.Input<pulumi.Input<NodeCustomizationScriptArgs>[]>;
+}
+
+/**
+ * Node customization script
+ */
+export interface NodeCustomizationScriptArgs {
+    /**
+     * The stage at which the script is executed.
+     * Specifying `NodeImageBuildTime` will ensure changes are persisted into the node image.
+     */
+    executionPoint: pulumi.Input<string | enums.ExecutionPoint>;
+    /**
+     * The name for the customization script. 
+     * Must be unique within the node customization resource.
+     * Can only contain lowercase alphanumeric,'-' or '.' characters.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Whether the node should reboot after successful script execution.
+     */
+    rebootAfter?: pulumi.Input<boolean>;
+    /**
+     * The script content to be executed in plain text. Do not include secrets.
+     */
+    script?: pulumi.Input<string>;
+    /**
+     * The runtime environment for the script (e.g. Bash).
+     */
+    scriptType: pulumi.Input<string | enums.ScriptType>;
 }
 
 /**

@@ -40,7 +40,7 @@ export class StorageSyncService extends pulumi.CustomResource {
      */
     public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     /**
-     * managed identities for the Storage Sync service to interact with other Azure services without maintaining any secrets or credentials in code.
+     * The managed service identities assigned to this resource.
      */
     public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com.
  *
- * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+ * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2025-01-01-preview, 2025-04-15, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CustomDomain extends pulumi.CustomResource {
     /**
@@ -56,7 +56,7 @@ export class CustomDomain extends pulumi.CustomResource {
      */
     public readonly hostName!: pulumi.Output<string>;
     /**
-     * Resource name.
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -68,11 +68,11 @@ export class CustomDomain extends pulumi.CustomResource {
      */
     public /*out*/ readonly resourceState!: pulumi.Output<string>;
     /**
-     * Read only system data
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -132,7 +132,7 @@ export class CustomDomain extends pulumi.CustomResource {
             resourceInputs["validationData"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20150601:CustomDomain" }, { type: "azure-native:cdn/v20160402:CustomDomain" }, { type: "azure-native:cdn/v20161002:CustomDomain" }, { type: "azure-native:cdn/v20170402:CustomDomain" }, { type: "azure-native:cdn/v20171012:CustomDomain" }, { type: "azure-native:cdn/v20190415:CustomDomain" }, { type: "azure-native:cdn/v20190615:CustomDomain" }, { type: "azure-native:cdn/v20190615preview:CustomDomain" }, { type: "azure-native:cdn/v20191231:CustomDomain" }, { type: "azure-native:cdn/v20200331:CustomDomain" }, { type: "azure-native:cdn/v20200415:CustomDomain" }, { type: "azure-native:cdn/v20200901:CustomDomain" }, { type: "azure-native:cdn/v20210601:CustomDomain" }, { type: "azure-native:cdn/v20220501preview:CustomDomain" }, { type: "azure-native:cdn/v20221101preview:CustomDomain" }, { type: "azure-native:cdn/v20230501:CustomDomain" }, { type: "azure-native:cdn/v20230701preview:CustomDomain" }, { type: "azure-native:cdn/v20240201:CustomDomain" }, { type: "azure-native:cdn/v20240501preview:CustomDomain" }, { type: "azure-native:cdn/v20240601preview:CustomDomain" }, { type: "azure-native:cdn/v20240901:CustomDomain" }, { type: "azure-native:cdn/v20250101preview:CustomDomain" }, { type: "azure-native:cdn/v20250415:CustomDomain" }, { type: "azure-native:cdn/v20250601:CustomDomain" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20150601:CustomDomain" }, { type: "azure-native:cdn/v20160402:CustomDomain" }, { type: "azure-native:cdn/v20161002:CustomDomain" }, { type: "azure-native:cdn/v20170402:CustomDomain" }, { type: "azure-native:cdn/v20171012:CustomDomain" }, { type: "azure-native:cdn/v20190415:CustomDomain" }, { type: "azure-native:cdn/v20190615:CustomDomain" }, { type: "azure-native:cdn/v20190615preview:CustomDomain" }, { type: "azure-native:cdn/v20191231:CustomDomain" }, { type: "azure-native:cdn/v20200331:CustomDomain" }, { type: "azure-native:cdn/v20200415:CustomDomain" }, { type: "azure-native:cdn/v20200901:CustomDomain" }, { type: "azure-native:cdn/v20210601:CustomDomain" }, { type: "azure-native:cdn/v20220501preview:CustomDomain" }, { type: "azure-native:cdn/v20221101preview:CustomDomain" }, { type: "azure-native:cdn/v20230501:CustomDomain" }, { type: "azure-native:cdn/v20230701preview:CustomDomain" }, { type: "azure-native:cdn/v20240201:CustomDomain" }, { type: "azure-native:cdn/v20240501preview:CustomDomain" }, { type: "azure-native:cdn/v20240601preview:CustomDomain" }, { type: "azure-native:cdn/v20240901:CustomDomain" }, { type: "azure-native:cdn/v20250101preview:CustomDomain" }, { type: "azure-native:cdn/v20250415:CustomDomain" }, { type: "azure-native:cdn/v20250601:CustomDomain" }, { type: "azure-native:cdn/v20250701preview:CustomDomain" }, { type: "azure-native:cdn/v20250901preview:CustomDomain" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CustomDomain.__pulumiType, name, resourceInputs, opts);
     }
@@ -155,11 +155,11 @@ export interface CustomDomainArgs {
      */
     hostName: pulumi.Input<string>;
     /**
-     * Name of the CDN profile which is unique within the resource group.
+     * Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
      */
     profileName: pulumi.Input<string>;
     /**
-     * Name of the Resource group within the Azure subscription.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
  *
- * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+ * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2025-01-01-preview, 2025-04-15, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Origin extends pulumi.CustomResource {
     /**
@@ -56,7 +56,7 @@ export class Origin extends pulumi.CustomResource {
      */
     public readonly httpsPort!: pulumi.Output<number | undefined>;
     /**
-     * Resource name.
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -96,11 +96,11 @@ export class Origin extends pulumi.CustomResource {
      */
     public /*out*/ readonly resourceState!: pulumi.Output<string>;
     /**
-     * Read only system data
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -174,7 +174,7 @@ export class Origin extends pulumi.CustomResource {
             resourceInputs["weight"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20150601:Origin" }, { type: "azure-native:cdn/v20160402:Origin" }, { type: "azure-native:cdn/v20191231:Origin" }, { type: "azure-native:cdn/v20200331:Origin" }, { type: "azure-native:cdn/v20200415:Origin" }, { type: "azure-native:cdn/v20200901:Origin" }, { type: "azure-native:cdn/v20210601:Origin" }, { type: "azure-native:cdn/v20220501preview:Origin" }, { type: "azure-native:cdn/v20221101preview:Origin" }, { type: "azure-native:cdn/v20230501:Origin" }, { type: "azure-native:cdn/v20230701preview:Origin" }, { type: "azure-native:cdn/v20240201:Origin" }, { type: "azure-native:cdn/v20240501preview:Origin" }, { type: "azure-native:cdn/v20240601preview:Origin" }, { type: "azure-native:cdn/v20240901:Origin" }, { type: "azure-native:cdn/v20250101preview:Origin" }, { type: "azure-native:cdn/v20250415:Origin" }, { type: "azure-native:cdn/v20250601:Origin" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20150601:Origin" }, { type: "azure-native:cdn/v20160402:Origin" }, { type: "azure-native:cdn/v20191231:Origin" }, { type: "azure-native:cdn/v20200331:Origin" }, { type: "azure-native:cdn/v20200415:Origin" }, { type: "azure-native:cdn/v20200901:Origin" }, { type: "azure-native:cdn/v20210601:Origin" }, { type: "azure-native:cdn/v20220501preview:Origin" }, { type: "azure-native:cdn/v20221101preview:Origin" }, { type: "azure-native:cdn/v20230501:Origin" }, { type: "azure-native:cdn/v20230701preview:Origin" }, { type: "azure-native:cdn/v20240201:Origin" }, { type: "azure-native:cdn/v20240501preview:Origin" }, { type: "azure-native:cdn/v20240601preview:Origin" }, { type: "azure-native:cdn/v20240901:Origin" }, { type: "azure-native:cdn/v20250101preview:Origin" }, { type: "azure-native:cdn/v20250415:Origin" }, { type: "azure-native:cdn/v20250601:Origin" }, { type: "azure-native:cdn/v20250701preview:Origin" }, { type: "azure-native:cdn/v20250901preview:Origin" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Origin.__pulumiType, name, resourceInputs, opts);
     }
@@ -209,7 +209,7 @@ export interface OriginArgs {
      */
     originHostHeader?: pulumi.Input<string>;
     /**
-     * Name of the origin that is unique within the endpoint.
+     * Name of the origin which is unique within the endpoint.
      */
     originName?: pulumi.Input<string>;
     /**
@@ -233,11 +233,11 @@ export interface OriginArgs {
      */
     privateLinkResourceId?: pulumi.Input<string>;
     /**
-     * Name of the CDN profile which is unique within the resource group.
+     * Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
      */
     profileName: pulumi.Input<string>;
     /**
-     * Name of the Resource group within the Azure subscription.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

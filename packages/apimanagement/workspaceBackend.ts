@@ -61,9 +61,9 @@ export class WorkspaceBackend extends pulumi.CustomResource {
      */
     public readonly properties!: pulumi.Output<types.outputs.BackendPropertiesResponse>;
     /**
-     * Backend communication protocol.
+     * Backend communication protocol. Required when backend type is 'Single'.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    public readonly protocol!: pulumi.Output<string | undefined>;
     /**
      * Backend gateway Contract Properties
      */
@@ -85,9 +85,9 @@ export class WorkspaceBackend extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * Runtime Url of the Backend.
+     * Runtime Url of the Backend. Required when backend type is 'Single'.
      */
-    public readonly url!: pulumi.Output<string>;
+    public readonly url!: pulumi.Output<string | undefined>;
 
     /**
      * Create a WorkspaceBackend resource with the given unique name, arguments, and options.
@@ -100,17 +100,11 @@ export class WorkspaceBackend extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.protocol === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'protocol'");
-            }
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
-            }
-            if ((!args || args.url === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'url'");
             }
             if ((!args || args.workspaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceId'");
@@ -182,9 +176,9 @@ export interface WorkspaceBackendArgs {
      */
     properties?: pulumi.Input<types.inputs.BackendPropertiesArgs>;
     /**
-     * Backend communication protocol.
+     * Backend communication protocol. Required when backend type is 'Single'.
      */
-    protocol: pulumi.Input<string | types.enums.BackendProtocol>;
+    protocol?: pulumi.Input<string | types.enums.BackendProtocol>;
     /**
      * Backend gateway Contract Properties
      */
@@ -214,9 +208,9 @@ export interface WorkspaceBackendArgs {
      */
     type?: pulumi.Input<string | types.enums.BackendType>;
     /**
-     * Runtime Url of the Backend.
+     * Runtime Url of the Backend. Required when backend type is 'Single'.
      */
-    url: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
     /**
      * Workspace identifier. Must be unique in the current API Management service instance.
      */

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Defines web application firewall policy for Azure CDN.
  *
- * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+ * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2025-01-01-preview, 2025-04-15, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Policy extends pulumi.CustomResource {
     /**
@@ -56,7 +56,7 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly extendedProperties!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Resource location.
+     * The geo-location where the resource lives
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -64,7 +64,7 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly managedRules!: pulumi.Output<types.outputs.ManagedRuleSetListResponse | undefined>;
     /**
-     * Resource name.
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -79,13 +79,16 @@ export class Policy extends pulumi.CustomResource {
      * Describes rate limit rules inside the policy.
      */
     public readonly rateLimitRules!: pulumi.Output<types.outputs.RateLimitRuleListResponse | undefined>;
+    /**
+     * Resource status of the policy.
+     */
     public /*out*/ readonly resourceState!: pulumi.Output<string>;
     /**
      * The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy.
      */
     public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
-     * Read only system data
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -93,7 +96,7 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -151,7 +154,7 @@ export class Policy extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20190615:Policy" }, { type: "azure-native:cdn/v20190615preview:Policy" }, { type: "azure-native:cdn/v20200331:Policy" }, { type: "azure-native:cdn/v20200415:Policy" }, { type: "azure-native:cdn/v20200901:Policy" }, { type: "azure-native:cdn/v20210601:Policy" }, { type: "azure-native:cdn/v20220501preview:Policy" }, { type: "azure-native:cdn/v20221101preview:Policy" }, { type: "azure-native:cdn/v20230501:Policy" }, { type: "azure-native:cdn/v20230701preview:Policy" }, { type: "azure-native:cdn/v20240201:Policy" }, { type: "azure-native:cdn/v20240501preview:Policy" }, { type: "azure-native:cdn/v20240601preview:Policy" }, { type: "azure-native:cdn/v20240901:Policy" }, { type: "azure-native:cdn/v20250101preview:Policy" }, { type: "azure-native:cdn/v20250415:Policy" }, { type: "azure-native:cdn/v20250601:Policy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20190615:Policy" }, { type: "azure-native:cdn/v20190615preview:Policy" }, { type: "azure-native:cdn/v20200331:Policy" }, { type: "azure-native:cdn/v20200415:Policy" }, { type: "azure-native:cdn/v20200901:Policy" }, { type: "azure-native:cdn/v20210601:Policy" }, { type: "azure-native:cdn/v20220501preview:Policy" }, { type: "azure-native:cdn/v20221101preview:Policy" }, { type: "azure-native:cdn/v20230501:Policy" }, { type: "azure-native:cdn/v20230701preview:Policy" }, { type: "azure-native:cdn/v20240201:Policy" }, { type: "azure-native:cdn/v20240501preview:Policy" }, { type: "azure-native:cdn/v20240601preview:Policy" }, { type: "azure-native:cdn/v20240901:Policy" }, { type: "azure-native:cdn/v20250101preview:Policy" }, { type: "azure-native:cdn/v20250415:Policy" }, { type: "azure-native:cdn/v20250601:Policy" }, { type: "azure-native:cdn/v20250701preview:Policy" }, { type: "azure-native:cdn/v20250901preview:Policy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Policy.__pulumiType, name, resourceInputs, opts);
     }
@@ -170,7 +173,7 @@ export interface PolicyArgs {
      */
     extendedProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource location.
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
@@ -190,7 +193,7 @@ export interface PolicyArgs {
      */
     rateLimitRules?: pulumi.Input<types.inputs.RateLimitRuleListArgs>;
     /**
-     * Name of the Resource group within the Azure subscription.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

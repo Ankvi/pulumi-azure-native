@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-04-02-preview.
  *
- * Other available API versions: 2025-03-02-preview, 2025-05-02-preview, 2025-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-03-02-preview, 2025-05-02-preview, 2025-06-02-preview, 2025-07-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listManagedNamespaceCredential(args: ListManagedNamespaceCredentialArgs, opts?: pulumi.InvokeOptions): Promise<ListManagedNamespaceCredentialResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -46,7 +46,7 @@ export interface ListManagedNamespaceCredentialResult {
  *
  * Uses Azure REST API version 2025-04-02-preview.
  *
- * Other available API versions: 2025-03-02-preview, 2025-05-02-preview, 2025-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-03-02-preview, 2025-05-02-preview, 2025-06-02-preview, 2025-07-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listManagedNamespaceCredentialOutput(args: ListManagedNamespaceCredentialOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListManagedNamespaceCredentialResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Friendly RuleSet name mapping to the any RuleSet or secret related information.
  *
- * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+ * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2025-01-01-preview, 2025-04-15, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class RuleSet extends pulumi.CustomResource {
     /**
@@ -41,7 +41,7 @@ export class RuleSet extends pulumi.CustomResource {
     public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
     public /*out*/ readonly deploymentStatus!: pulumi.Output<string>;
     /**
-     * Resource name.
+     * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -53,11 +53,11 @@ export class RuleSet extends pulumi.CustomResource {
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
-     * Read only system data
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
@@ -97,7 +97,7 @@ export class RuleSet extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20200901:RuleSet" }, { type: "azure-native:cdn/v20210601:RuleSet" }, { type: "azure-native:cdn/v20220501preview:RuleSet" }, { type: "azure-native:cdn/v20221101preview:RuleSet" }, { type: "azure-native:cdn/v20230501:RuleSet" }, { type: "azure-native:cdn/v20230701preview:RuleSet" }, { type: "azure-native:cdn/v20240201:RuleSet" }, { type: "azure-native:cdn/v20240501preview:RuleSet" }, { type: "azure-native:cdn/v20240601preview:RuleSet" }, { type: "azure-native:cdn/v20240901:RuleSet" }, { type: "azure-native:cdn/v20250101preview:RuleSet" }, { type: "azure-native:cdn/v20250415:RuleSet" }, { type: "azure-native:cdn/v20250601:RuleSet" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20200901:RuleSet" }, { type: "azure-native:cdn/v20210601:RuleSet" }, { type: "azure-native:cdn/v20220501preview:RuleSet" }, { type: "azure-native:cdn/v20221101preview:RuleSet" }, { type: "azure-native:cdn/v20230501:RuleSet" }, { type: "azure-native:cdn/v20230701preview:RuleSet" }, { type: "azure-native:cdn/v20240201:RuleSet" }, { type: "azure-native:cdn/v20240501preview:RuleSet" }, { type: "azure-native:cdn/v20240601preview:RuleSet" }, { type: "azure-native:cdn/v20240901:RuleSet" }, { type: "azure-native:cdn/v20250101preview:RuleSet" }, { type: "azure-native:cdn/v20250415:RuleSet" }, { type: "azure-native:cdn/v20250601:RuleSet" }, { type: "azure-native:cdn/v20250701preview:RuleSet" }, { type: "azure-native:cdn/v20250901preview:RuleSet" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RuleSet.__pulumiType, name, resourceInputs, opts);
     }
@@ -108,15 +108,15 @@ export class RuleSet extends pulumi.CustomResource {
  */
 export interface RuleSetArgs {
     /**
-     * Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+     * Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
      */
     profileName: pulumi.Input<string>;
     /**
-     * Name of the Resource group within the Azure subscription.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * Name of the rule set under the profile which is unique globally
+     * Name of the rule set under the profile which is unique globally.
      */
     ruleSetName?: pulumi.Input<string>;
 }

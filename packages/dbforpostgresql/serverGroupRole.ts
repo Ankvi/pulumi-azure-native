@@ -43,6 +43,9 @@ export class ServerGroupRole extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     public readonly objectId!: pulumi.Output<string>;
     public readonly principalType!: pulumi.Output<string>;
     /**
@@ -54,6 +57,9 @@ export class ServerGroupRole extends pulumi.CustomResource {
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     public readonly tenantId!: pulumi.Output<string | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -122,6 +128,9 @@ export interface ServerGroupRoleArgs {
      * The name of the cluster.
      */
     clusterName: pulumi.Input<string>;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     objectId: pulumi.Input<string>;
     /**
      * The password of the cluster role. If an identity is used, password will not be required.
@@ -137,5 +146,8 @@ export interface ServerGroupRoleArgs {
      */
     roleName?: pulumi.Input<string>;
     roleType?: pulumi.Input<string | types.enums.RoleType>;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     tenantId?: pulumi.Input<string>;
 }

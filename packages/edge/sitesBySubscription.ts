@@ -96,7 +96,7 @@ export interface SitesBySubscriptionArgs {
      */
     properties?: pulumi.Input<types.inputs.SitePropertiesArgs>;
     /**
-     * Name of Site resource
+     * The name of the Site
      */
     siteName?: pulumi.Input<string>;
 }
