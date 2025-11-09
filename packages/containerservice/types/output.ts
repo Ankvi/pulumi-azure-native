@@ -638,6 +638,106 @@ export interface IstioServiceMeshResponse {
 }
 
 /**
+ * The claim mapping expression for JWTAuthenticator.
+ */
+export interface JWTAuthenticatorClaimMappingExpressionResponse {
+    /**
+     * The CEL expression used to access token claims.
+     */
+    expression: string;
+}
+
+/**
+ * The claim mappings for JWTAuthenticator.
+ */
+export interface JWTAuthenticatorClaimMappingsResponse {
+    /**
+     * The expression to extract extra attribute from the token claims. When not provided, no extra attributes are extracted from the token claims.
+     */
+    extra?: JWTAuthenticatorExtraClaimMappingExpressionResponse[];
+    /**
+     * The expression to extract groups attribute from the token claims. When not provided, no groups are extracted from the token claims.
+     */
+    groups?: JWTAuthenticatorClaimMappingExpressionResponse;
+    /**
+     * The expression to extract uid attribute from the token claims. When not provided, no uid is extracted from the token claims.
+     */
+    uid?: JWTAuthenticatorClaimMappingExpressionResponse;
+    /**
+     * The expression to extract username attribute from the token claims.
+     */
+    username: JWTAuthenticatorClaimMappingExpressionResponse;
+}
+
+/**
+ * The extra claim mapping expression for JWTAuthenticator.
+ */
+export interface JWTAuthenticatorExtraClaimMappingExpressionResponse {
+    /**
+     * The key of the extra attribute.
+     */
+    key: string;
+    /**
+     * The CEL expression used to extract the value of the extra attribute.
+     */
+    valueExpression: string;
+}
+
+/**
+ * The OIDC issuer details for JWTAuthenticator.
+ */
+export interface JWTAuthenticatorIssuerResponse {
+    /**
+     * The set of acceptable audiences the JWT must be issued to. At least one is required. When multiple is set, AudienceMatchPolicy is used in API Server configuration.
+     */
+    audiences: string[];
+    /**
+     * The issuer URL. The URL must begin with the scheme https and cannot contain a query string or fragment. This must match the "iss" claim in the presented JWT, and the issuer returned from discovery.
+     */
+    url: string;
+}
+
+/**
+ * The properties of JWTAuthenticator. For details on how to configure the properties of a JWT authenticator, please refer to the Kubernetes documentation: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration. Please note that not all fields available in the Kubernetes documentation are supported by AKS. For troubleshooting, please see https://aka.ms/aks-external-issuers-docs.
+ */
+export interface JWTAuthenticatorPropertiesResponse {
+    /**
+     * The mappings that define how user attributes are extracted from the token claims.
+     */
+    claimMappings: JWTAuthenticatorClaimMappingsResponse;
+    /**
+     * The rules that are applied to validate token claims to authenticate users. All the expressions must evaluate to true for validation to succeed.
+     */
+    claimValidationRules?: JWTAuthenticatorValidationRuleResponse[];
+    /**
+     * The JWT OIDC issuer details.
+     */
+    issuer: JWTAuthenticatorIssuerResponse;
+    /**
+     * The current provisioning state of the JWT authenticator.
+     */
+    provisioningState: string;
+    /**
+     * The rules that are applied to the mapped user before completing authentication. All the expressions must evaluate to true for validation to succeed.
+     */
+    userValidationRules?: JWTAuthenticatorValidationRuleResponse[];
+}
+
+/**
+ * The validation rule for JWTAuthenticator.
+ */
+export interface JWTAuthenticatorValidationRuleResponse {
+    /**
+     * The CEL expression used to validate the claim or attribute.
+     */
+    expression: string;
+    /**
+     * The validation error message.
+     */
+    message?: string;
+}
+
+/**
  * See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
  */
 export interface KubeletConfigResponse {
@@ -2029,6 +2129,63 @@ export interface NetworkProfileForSnapshotResponse {
 }
 
 /**
+ * The properties of the Node Customization resource.
+ */
+export interface NodeCustomizationPropertiesResponse {
+    /**
+     * The list of container images to cache on nodes. See https://kubernetes.io/docs/concepts/containers/images/#image-names
+     */
+    containerImages?: string[];
+    /**
+     * The scripts to customize the node before or after image capture.
+     */
+    customizationScripts?: NodeCustomizationScriptResponse[];
+    /**
+     * The identity used to execute node customization tasks during image build time and provisioning time. 
+     * If not specified the default agentpool identity will be used.
+     * This does not affect provisioned nodes.
+     */
+    identityProfile?: UserAssignedIdentityResponse;
+    /**
+     * The provisioning state of the node customization.
+     */
+    provisioningState: string;
+    /**
+     * An auto-generated value that changes when the other fields of the image customization are changed.
+     */
+    version: string;
+}
+
+/**
+ * Node customization script
+ */
+export interface NodeCustomizationScriptResponse {
+    /**
+     * The stage at which the script is executed.
+     * Specifying `NodeImageBuildTime` will ensure changes are persisted into the node image.
+     */
+    executionPoint: string;
+    /**
+     * The name for the customization script. 
+     * Must be unique within the node customization resource.
+     * Can only contain lowercase alphanumeric,'-' or '.' characters.
+     */
+    name: string;
+    /**
+     * Whether the node should reboot after successful script execution.
+     */
+    rebootAfter?: boolean;
+    /**
+     * The script content to be executed in plain text. Do not include secrets.
+     */
+    script?: string;
+    /**
+     * The runtime environment for the script (e.g. Bash).
+     */
+    scriptType: string;
+}
+
+/**
  * The node image upgrade to be applied to the target nodes in update run.
  */
 export interface NodeImageSelectionResponse {
@@ -2546,13 +2703,13 @@ export interface UpgradeOverrideSettingsResponse {
 }
 
 /**
- * Details about a user assigned identity.
+ * User assigned identity properties
  */
 export interface UserAssignedIdentityResponse {
     /**
-     * The client ID of the user assigned identity.
+     * The client ID of the assigned identity.
      */
-    clientId?: string;
+    clientId: string;
     /**
      * The object ID of the user assigned identity.
      */
@@ -2560,7 +2717,7 @@ export interface UserAssignedIdentityResponse {
     /**
      * The principal ID of the assigned identity.
      */
-    principalId?: string;
+    principalId: string;
     /**
      * The resource ID of the user assigned identity.
      */

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CapacityReservationGroup extends pulumi.CustomResource {
     /**
@@ -38,47 +38,47 @@ export class CapacityReservationGroup extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * A list of all capacity reservation resource ids that belong to capacity reservation group.
      */
-    public /*out*/ readonly capacityReservations!: pulumi.Output<types.outputs.SubResourceReadOnlyResponse[]>;
+    declare public /*out*/ readonly capacityReservations: pulumi.Output<types.outputs.SubResourceReadOnlyResponse[]>;
     /**
      * The capacity reservation group instance view which has the list of instance views for all the capacity reservations that belong to the capacity reservation group.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.CapacityReservationGroupInstanceViewResponse>;
+    declare public /*out*/ readonly instanceView: pulumi.Output<types.outputs.CapacityReservationGroupInstanceViewResponse>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * Specifies the settings to enable sharing across subscriptions for the capacity reservation group resource. Pls. keep in mind the capacity reservation group resource generally can be shared across subscriptions belonging to a single azure AAD tenant or cross AAD tenant if there is a trust relationship established between the AAD tenants. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
+     * Specifies the settings to enable sharing across subscriptions for the capacity reservation group resource. The capacity reservation group resource can generally be shared across subscriptions belonging to a single Azure AAD tenant or across AAD tenants if there is a trust relationship established between the tenants.  Block capacity reservation does not support sharing across subscriptions. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
      */
-    public readonly sharingProfile!: pulumi.Output<types.outputs.ResourceSharingProfileResponse | undefined>;
+    declare public readonly sharingProfile: pulumi.Output<types.outputs.ResourceSharingProfileResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * A list of references to all virtual machines associated to the capacity reservation group.
      */
-    public /*out*/ readonly virtualMachinesAssociated!: pulumi.Output<types.outputs.SubResourceReadOnlyResponse[]>;
+    declare public /*out*/ readonly virtualMachinesAssociated: pulumi.Output<types.outputs.SubResourceReadOnlyResponse[]>;
     /**
      * The availability zones.
      */
-    public readonly zones!: pulumi.Output<string[] | undefined>;
+    declare public readonly zones: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a CapacityReservationGroup resource with the given unique name, arguments, and options.
@@ -91,15 +91,15 @@ export class CapacityReservationGroup extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["capacityReservationGroupName"] = args ? args.capacityReservationGroupName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sharingProfile"] = args ? args.sharingProfile : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["capacityReservationGroupName"] = args?.capacityReservationGroupName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sharingProfile"] = args?.sharingProfile;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zones"] = args?.zones;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["capacityReservations"] = undefined /*out*/;
             resourceInputs["instanceView"] = undefined /*out*/;
@@ -121,7 +121,7 @@ export class CapacityReservationGroup extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20210401:CapacityReservationGroup" }, { type: "azure-native:compute/v20210701:CapacityReservationGroup" }, { type: "azure-native:compute/v20211101:CapacityReservationGroup" }, { type: "azure-native:compute/v20220301:CapacityReservationGroup" }, { type: "azure-native:compute/v20220801:CapacityReservationGroup" }, { type: "azure-native:compute/v20221101:CapacityReservationGroup" }, { type: "azure-native:compute/v20230301:CapacityReservationGroup" }, { type: "azure-native:compute/v20230701:CapacityReservationGroup" }, { type: "azure-native:compute/v20230901:CapacityReservationGroup" }, { type: "azure-native:compute/v20240301:CapacityReservationGroup" }, { type: "azure-native:compute/v20240701:CapacityReservationGroup" }, { type: "azure-native:compute/v20241101:CapacityReservationGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20210401:CapacityReservationGroup" }, { type: "azure-native:compute/v20210701:CapacityReservationGroup" }, { type: "azure-native:compute/v20211101:CapacityReservationGroup" }, { type: "azure-native:compute/v20220301:CapacityReservationGroup" }, { type: "azure-native:compute/v20220801:CapacityReservationGroup" }, { type: "azure-native:compute/v20221101:CapacityReservationGroup" }, { type: "azure-native:compute/v20230301:CapacityReservationGroup" }, { type: "azure-native:compute/v20230701:CapacityReservationGroup" }, { type: "azure-native:compute/v20230901:CapacityReservationGroup" }, { type: "azure-native:compute/v20240301:CapacityReservationGroup" }, { type: "azure-native:compute/v20240701:CapacityReservationGroup" }, { type: "azure-native:compute/v20241101:CapacityReservationGroup" }, { type: "azure-native:compute/v20250401:CapacityReservationGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CapacityReservationGroup.__pulumiType, name, resourceInputs, opts);
     }
@@ -144,7 +144,7 @@ export interface CapacityReservationGroupArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * Specifies the settings to enable sharing across subscriptions for the capacity reservation group resource. Pls. keep in mind the capacity reservation group resource generally can be shared across subscriptions belonging to a single azure AAD tenant or cross AAD tenant if there is a trust relationship established between the AAD tenants. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
+     * Specifies the settings to enable sharing across subscriptions for the capacity reservation group resource. The capacity reservation group resource can generally be shared across subscriptions belonging to a single Azure AAD tenant or across AAD tenants if there is a trust relationship established between the tenants.  Block capacity reservation does not support sharing across subscriptions. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
      */
     sharingProfile?: pulumi.Input<types.inputs.ResourceSharingProfileArgs>;
     /**

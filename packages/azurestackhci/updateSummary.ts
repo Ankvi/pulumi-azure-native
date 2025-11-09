@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class UpdateSummary extends pulumi.CustomResource {
     /**
@@ -38,63 +38,63 @@ export class UpdateSummary extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Current OEM Version.
      */
-    public readonly currentOemVersion!: pulumi.Output<string | undefined>;
+    declare public readonly currentOemVersion: pulumi.Output<string | undefined>;
     /**
      * Current Sbe version of the stamp.
      */
-    public readonly currentSbeVersion!: pulumi.Output<string | undefined>;
+    declare public readonly currentSbeVersion: pulumi.Output<string | undefined>;
     /**
      * Current Solution Bundle version of the stamp.
      */
-    public readonly currentVersion!: pulumi.Output<string | undefined>;
+    declare public readonly currentVersion: pulumi.Output<string | undefined>;
     /**
      * Name of the hardware model.
      */
-    public readonly hardwareModel!: pulumi.Output<string | undefined>;
+    declare public readonly hardwareModel: pulumi.Output<string | undefined>;
     /**
      * Last time the package-specific checks were run.
      */
-    public readonly healthCheckDate!: pulumi.Output<string | undefined>;
+    declare public readonly healthCheckDate: pulumi.Output<string | undefined>;
     /**
      * Last time the update service successfully checked for updates
      */
-    public readonly lastChecked!: pulumi.Output<string | undefined>;
+    declare public readonly lastChecked: pulumi.Output<string | undefined>;
     /**
      * Last time an update installation completed successfully.
      */
-    public readonly lastUpdated!: pulumi.Output<string | undefined>;
+    declare public readonly lastUpdated: pulumi.Output<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * OEM family name.
      */
-    public readonly oemFamily!: pulumi.Output<string | undefined>;
+    declare public readonly oemFamily: pulumi.Output<string | undefined>;
     /**
      * Provisioning state of the UpdateSummaries proxy resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Overall update state of the stamp.
      */
-    public readonly state!: pulumi.Output<string | undefined>;
+    declare public readonly state: pulumi.Output<string | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a UpdateSummary resource with the given unique name, arguments, and options.
@@ -107,24 +107,24 @@ export class UpdateSummary extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["currentOemVersion"] = args ? args.currentOemVersion : undefined;
-            resourceInputs["currentSbeVersion"] = args ? args.currentSbeVersion : undefined;
-            resourceInputs["currentVersion"] = args ? args.currentVersion : undefined;
-            resourceInputs["hardwareModel"] = args ? args.hardwareModel : undefined;
-            resourceInputs["healthCheckDate"] = args ? args.healthCheckDate : undefined;
-            resourceInputs["lastChecked"] = args ? args.lastChecked : undefined;
-            resourceInputs["lastUpdated"] = args ? args.lastUpdated : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["oemFamily"] = args ? args.oemFamily : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["currentOemVersion"] = args?.currentOemVersion;
+            resourceInputs["currentSbeVersion"] = args?.currentSbeVersion;
+            resourceInputs["currentVersion"] = args?.currentVersion;
+            resourceInputs["hardwareModel"] = args?.hardwareModel;
+            resourceInputs["healthCheckDate"] = args?.healthCheckDate;
+            resourceInputs["lastChecked"] = args?.lastChecked;
+            resourceInputs["lastUpdated"] = args?.lastUpdated;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["oemFamily"] = args?.oemFamily;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["state"] = args?.state;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -148,7 +148,7 @@ export class UpdateSummary extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20221201:UpdateSummary" }, { type: "azure-native:azurestackhci/v20221215preview:UpdateSummary" }, { type: "azure-native:azurestackhci/v20230201:UpdateSummary" }, { type: "azure-native:azurestackhci/v20230301:UpdateSummary" }, { type: "azure-native:azurestackhci/v20230601:UpdateSummary" }, { type: "azure-native:azurestackhci/v20230801:UpdateSummary" }, { type: "azure-native:azurestackhci/v20230801preview:UpdateSummary" }, { type: "azure-native:azurestackhci/v20231101preview:UpdateSummary" }, { type: "azure-native:azurestackhci/v20240101:UpdateSummary" }, { type: "azure-native:azurestackhci/v20240215preview:UpdateSummary" }, { type: "azure-native:azurestackhci/v20240401:UpdateSummary" }, { type: "azure-native:azurestackhci/v20240901preview:UpdateSummary" }, { type: "azure-native:azurestackhci/v20241201preview:UpdateSummary" }, { type: "azure-native:azurestackhci/v20250201preview:UpdateSummary" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20221201:UpdateSummary" }, { type: "azure-native:azurestackhci/v20221215preview:UpdateSummary" }, { type: "azure-native:azurestackhci/v20230201:UpdateSummary" }, { type: "azure-native:azurestackhci/v20230301:UpdateSummary" }, { type: "azure-native:azurestackhci/v20230601:UpdateSummary" }, { type: "azure-native:azurestackhci/v20230801:UpdateSummary" }, { type: "azure-native:azurestackhci/v20230801preview:UpdateSummary" }, { type: "azure-native:azurestackhci/v20231101preview:UpdateSummary" }, { type: "azure-native:azurestackhci/v20240101:UpdateSummary" }, { type: "azure-native:azurestackhci/v20240215preview:UpdateSummary" }, { type: "azure-native:azurestackhci/v20240401:UpdateSummary" }, { type: "azure-native:azurestackhci/v20240901preview:UpdateSummary" }, { type: "azure-native:azurestackhci/v20241201preview:UpdateSummary" }, { type: "azure-native:azurestackhci/v20250201preview:UpdateSummary" }, { type: "azure-native:azurestackhci/v20250915preview:UpdateSummary" }, { type: "azure-native:azurestackhci/v20251001:UpdateSummary" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(UpdateSummary.__pulumiType, name, resourceInputs, opts);
     }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CustomIPPrefix extends pulumi.CustomResource {
     /**
@@ -38,95 +38,95 @@ export class CustomIPPrefix extends pulumi.CustomResource {
     /**
      * The ASN for CIDR advertising. Should be an integer as string.
      */
-    public readonly asn!: pulumi.Output<string | undefined>;
+    declare public readonly asn: pulumi.Output<string | undefined>;
     /**
      * Authorization message for WAN validation.
      */
-    public readonly authorizationMessage!: pulumi.Output<string | undefined>;
+    declare public readonly authorizationMessage: pulumi.Output<string | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The list of all Children for IPv6 /48 CustomIpPrefix.
      */
-    public /*out*/ readonly childCustomIpPrefixes!: pulumi.Output<types.outputs.SubResourceResponse[]>;
+    declare public /*out*/ readonly childCustomIpPrefixes: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The prefix range in CIDR notation. Should include the start address and the prefix length.
      */
-    public readonly cidr!: pulumi.Output<string | undefined>;
+    declare public readonly cidr: pulumi.Output<string | undefined>;
     /**
      * The commissioned state of the Custom IP Prefix.
      */
-    public readonly commissionedState!: pulumi.Output<string | undefined>;
+    declare public readonly commissionedState: pulumi.Output<string | undefined>;
     /**
      * The Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
      */
-    public readonly customIpPrefixParent!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
+    declare public readonly customIpPrefixParent: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Whether to do express route advertise.
      */
-    public readonly expressRouteAdvertise!: pulumi.Output<boolean | undefined>;
+    declare public readonly expressRouteAdvertise: pulumi.Output<boolean | undefined>;
     /**
      * The extended location of the custom IP prefix.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The reason why resource is in failed state.
      */
-    public /*out*/ readonly failedReason!: pulumi.Output<string>;
+    declare public /*out*/ readonly failedReason: pulumi.Output<string>;
     /**
      * The Geo for CIDR advertising. Should be an Geo code.
      */
-    public readonly geo!: pulumi.Output<string | undefined>;
+    declare public readonly geo: pulumi.Output<string | undefined>;
     /**
      * Resource location.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Whether to Advertise the range to Internet.
      */
-    public readonly noInternetAdvertise!: pulumi.Output<boolean | undefined>;
+    declare public readonly noInternetAdvertise: pulumi.Output<boolean | undefined>;
     /**
      * Type of custom IP prefix. Should be Singular, Parent, or Child.
      */
-    public readonly prefixType!: pulumi.Output<string | undefined>;
+    declare public readonly prefixType: pulumi.Output<string | undefined>;
     /**
      * The provisioning state of the custom IP prefix resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The list of all referenced PublicIpPrefixes.
      */
-    public /*out*/ readonly publicIpPrefixes!: pulumi.Output<types.outputs.SubResourceResponse[]>;
+    declare public /*out*/ readonly publicIpPrefixes: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The resource GUID property of the custom IP prefix resource.
      */
-    public /*out*/ readonly resourceGuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceGuid: pulumi.Output<string>;
     /**
      * Signed message for WAN validation.
      */
-    public readonly signedMessage!: pulumi.Output<string | undefined>;
+    declare public readonly signedMessage: pulumi.Output<string | undefined>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * A list of availability zones denoting the IP allocated for the resource needs to come from.
      */
-    public readonly zones!: pulumi.Output<string[] | undefined>;
+    declare public readonly zones: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a CustomIPPrefix resource with the given unique name, arguments, and options.
@@ -139,26 +139,26 @@ export class CustomIPPrefix extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["asn"] = args ? args.asn : undefined;
-            resourceInputs["authorizationMessage"] = args ? args.authorizationMessage : undefined;
-            resourceInputs["cidr"] = args ? args.cidr : undefined;
-            resourceInputs["commissionedState"] = args ? args.commissionedState : undefined;
-            resourceInputs["customIpPrefixName"] = args ? args.customIpPrefixName : undefined;
-            resourceInputs["customIpPrefixParent"] = args ? args.customIpPrefixParent : undefined;
-            resourceInputs["expressRouteAdvertise"] = args ? args.expressRouteAdvertise : undefined;
-            resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
-            resourceInputs["geo"] = args ? args.geo : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["noInternetAdvertise"] = args ? args.noInternetAdvertise : undefined;
-            resourceInputs["prefixType"] = args ? args.prefixType : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["signedMessage"] = args ? args.signedMessage : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["asn"] = args?.asn;
+            resourceInputs["authorizationMessage"] = args?.authorizationMessage;
+            resourceInputs["cidr"] = args?.cidr;
+            resourceInputs["commissionedState"] = args?.commissionedState;
+            resourceInputs["customIpPrefixName"] = args?.customIpPrefixName;
+            resourceInputs["customIpPrefixParent"] = args?.customIpPrefixParent;
+            resourceInputs["expressRouteAdvertise"] = args?.expressRouteAdvertise;
+            resourceInputs["extendedLocation"] = args?.extendedLocation;
+            resourceInputs["geo"] = args?.geo;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["noInternetAdvertise"] = args?.noInternetAdvertise;
+            resourceInputs["prefixType"] = args?.prefixType;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["signedMessage"] = args?.signedMessage;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zones"] = args?.zones;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["childCustomIpPrefixes"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -194,7 +194,7 @@ export class CustomIPPrefix extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20200601:CustomIPPrefix" }, { type: "azure-native:network/v20200701:CustomIPPrefix" }, { type: "azure-native:network/v20200801:CustomIPPrefix" }, { type: "azure-native:network/v20201101:CustomIPPrefix" }, { type: "azure-native:network/v20210201:CustomIPPrefix" }, { type: "azure-native:network/v20210301:CustomIPPrefix" }, { type: "azure-native:network/v20210501:CustomIPPrefix" }, { type: "azure-native:network/v20210801:CustomIPPrefix" }, { type: "azure-native:network/v20220101:CustomIPPrefix" }, { type: "azure-native:network/v20220501:CustomIPPrefix" }, { type: "azure-native:network/v20220701:CustomIPPrefix" }, { type: "azure-native:network/v20220901:CustomIPPrefix" }, { type: "azure-native:network/v20221101:CustomIPPrefix" }, { type: "azure-native:network/v20230201:CustomIPPrefix" }, { type: "azure-native:network/v20230401:CustomIPPrefix" }, { type: "azure-native:network/v20230501:CustomIPPrefix" }, { type: "azure-native:network/v20230601:CustomIPPrefix" }, { type: "azure-native:network/v20230901:CustomIPPrefix" }, { type: "azure-native:network/v20231101:CustomIPPrefix" }, { type: "azure-native:network/v20240101:CustomIPPrefix" }, { type: "azure-native:network/v20240301:CustomIPPrefix" }, { type: "azure-native:network/v20240501:CustomIPPrefix" }, { type: "azure-native:network/v20240701:CustomIPPrefix" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20200601:CustomIPPrefix" }, { type: "azure-native:network/v20200701:CustomIPPrefix" }, { type: "azure-native:network/v20200801:CustomIPPrefix" }, { type: "azure-native:network/v20201101:CustomIPPrefix" }, { type: "azure-native:network/v20210201:CustomIPPrefix" }, { type: "azure-native:network/v20210301:CustomIPPrefix" }, { type: "azure-native:network/v20210501:CustomIPPrefix" }, { type: "azure-native:network/v20210801:CustomIPPrefix" }, { type: "azure-native:network/v20220101:CustomIPPrefix" }, { type: "azure-native:network/v20220501:CustomIPPrefix" }, { type: "azure-native:network/v20220701:CustomIPPrefix" }, { type: "azure-native:network/v20220901:CustomIPPrefix" }, { type: "azure-native:network/v20221101:CustomIPPrefix" }, { type: "azure-native:network/v20230201:CustomIPPrefix" }, { type: "azure-native:network/v20230401:CustomIPPrefix" }, { type: "azure-native:network/v20230501:CustomIPPrefix" }, { type: "azure-native:network/v20230601:CustomIPPrefix" }, { type: "azure-native:network/v20230901:CustomIPPrefix" }, { type: "azure-native:network/v20231101:CustomIPPrefix" }, { type: "azure-native:network/v20240101:CustomIPPrefix" }, { type: "azure-native:network/v20240301:CustomIPPrefix" }, { type: "azure-native:network/v20240501:CustomIPPrefix" }, { type: "azure-native:network/v20240701:CustomIPPrefix" }, { type: "azure-native:network/v20241001:CustomIPPrefix" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CustomIPPrefix.__pulumiType, name, resourceInputs, opts);
     }

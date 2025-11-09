@@ -38,59 +38,59 @@ export class Cloud extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Capacity of the cloud.
      */
-    public /*out*/ readonly cloudCapacity!: pulumi.Output<types.outputs.CloudCapacityResponse>;
+    declare public /*out*/ readonly cloudCapacity: pulumi.Output<types.outputs.CloudCapacityResponse>;
     /**
      * Name of the cloud in VMMServer.
      */
-    public readonly cloudName!: pulumi.Output<string>;
+    declare public readonly cloudName: pulumi.Output<string>;
     /**
      * The extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * Gets or sets the inventory Item ID for the resource.
      */
-    public readonly inventoryItemId!: pulumi.Output<string | undefined>;
+    declare public readonly inventoryItemId: pulumi.Output<string | undefined>;
     /**
      * Gets or sets the location.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Resource Name
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Gets or sets the provisioning state.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * List of QoS policies available for the cloud.
      */
-    public /*out*/ readonly storageQoSPolicies!: pulumi.Output<types.outputs.StorageQoSPolicyResponse[]>;
+    declare public /*out*/ readonly storageQoSPolicies: pulumi.Output<types.outputs.StorageQoSPolicyResponse[]>;
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource Type
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Unique ID of the cloud.
      */
-    public readonly uuid!: pulumi.Output<string | undefined>;
+    declare public readonly uuid: pulumi.Output<string | undefined>;
     /**
      * ARM Id of the vmmServer resource in which this resource resides.
      */
-    public readonly vmmServerId!: pulumi.Output<string | undefined>;
+    declare public readonly vmmServerId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Cloud resource with the given unique name, arguments, and options.
@@ -103,20 +103,20 @@ export class Cloud extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.extendedLocation === undefined) && !opts.urn) {
+            if (args?.extendedLocation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'extendedLocation'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["cloudName"] = args ? args.cloudName : undefined;
-            resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
-            resourceInputs["inventoryItemId"] = args ? args.inventoryItemId : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["uuid"] = args ? args.uuid : undefined;
-            resourceInputs["vmmServerId"] = args ? args.vmmServerId : undefined;
+            resourceInputs["cloudName"] = args?.cloudName;
+            resourceInputs["extendedLocation"] = args?.extendedLocation;
+            resourceInputs["inventoryItemId"] = args?.inventoryItemId;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["uuid"] = args?.uuid;
+            resourceInputs["vmmServerId"] = args?.vmmServerId;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["cloudCapacity"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

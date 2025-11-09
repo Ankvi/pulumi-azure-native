@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
  *
- * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Database extends pulumi.CustomResource {
     /**
@@ -38,27 +38,27 @@ export class Database extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Character set of the database.
      */
-    public readonly charset!: pulumi.Output<string | undefined>;
+    declare public readonly charset: pulumi.Output<string | undefined>;
     /**
      * Collation of the database.
      */
-    public readonly collation!: pulumi.Output<string | undefined>;
+    declare public readonly collation: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -71,17 +71,17 @@ export class Database extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.serverName === undefined) && !opts.urn) {
+            if (args?.serverName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverName'");
             }
-            resourceInputs["charset"] = args ? args.charset : undefined;
-            resourceInputs["collation"] = args ? args.collation : undefined;
-            resourceInputs["databaseName"] = args ? args.databaseName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["serverName"] = args ? args.serverName : undefined;
+            resourceInputs["charset"] = args?.charset;
+            resourceInputs["collation"] = args?.collation;
+            resourceInputs["databaseName"] = args?.databaseName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["serverName"] = args?.serverName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -95,7 +95,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20171201:Database" }, { type: "azure-native:dbforpostgresql/v20201105preview:Database" }, { type: "azure-native:dbforpostgresql/v20210601:Database" }, { type: "azure-native:dbforpostgresql/v20210601preview:Database" }, { type: "azure-native:dbforpostgresql/v20220120preview:Database" }, { type: "azure-native:dbforpostgresql/v20220308preview:Database" }, { type: "azure-native:dbforpostgresql/v20221201:Database" }, { type: "azure-native:dbforpostgresql/v20230301preview:Database" }, { type: "azure-native:dbforpostgresql/v20230601preview:Database" }, { type: "azure-native:dbforpostgresql/v20231201preview:Database" }, { type: "azure-native:dbforpostgresql/v20240301preview:Database" }, { type: "azure-native:dbforpostgresql/v20240801:Database" }, { type: "azure-native:dbforpostgresql/v20241101preview:Database" }, { type: "azure-native:dbforpostgresql/v20250101preview:Database" }, { type: "azure-native:dbforpostgresql/v20250601preview:Database" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20171201:Database" }, { type: "azure-native:dbforpostgresql/v20201105preview:Database" }, { type: "azure-native:dbforpostgresql/v20210601:Database" }, { type: "azure-native:dbforpostgresql/v20210601preview:Database" }, { type: "azure-native:dbforpostgresql/v20220120preview:Database" }, { type: "azure-native:dbforpostgresql/v20220308preview:Database" }, { type: "azure-native:dbforpostgresql/v20221201:Database" }, { type: "azure-native:dbforpostgresql/v20230301preview:Database" }, { type: "azure-native:dbforpostgresql/v20230601preview:Database" }, { type: "azure-native:dbforpostgresql/v20231201preview:Database" }, { type: "azure-native:dbforpostgresql/v20240301preview:Database" }, { type: "azure-native:dbforpostgresql/v20240801:Database" }, { type: "azure-native:dbforpostgresql/v20241101preview:Database" }, { type: "azure-native:dbforpostgresql/v20250101preview:Database" }, { type: "azure-native:dbforpostgresql/v20250601preview:Database" }, { type: "azure-native:dbforpostgresql/v20250801:Database" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Database.__pulumiType, name, resourceInputs, opts);
     }

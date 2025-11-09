@@ -71,9 +71,9 @@ export interface GetWorkspaceBackendResult {
      */
     readonly properties: types.outputs.BackendPropertiesResponse;
     /**
-     * Backend communication protocol.
+     * Backend communication protocol. Required when backend type is 'Single'.
      */
-    readonly protocol: string;
+    readonly protocol?: string;
     /**
      * Backend gateway Contract Properties
      */
@@ -95,9 +95,9 @@ export interface GetWorkspaceBackendResult {
      */
     readonly type: string;
     /**
-     * Runtime Url of the Backend.
+     * Runtime Url of the Backend. Required when backend type is 'Single'.
      */
-    readonly url: string;
+    readonly url?: string;
 }
 /**
  * Gets the details of the backend specified by its identifier.

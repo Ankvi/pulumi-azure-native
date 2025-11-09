@@ -2,9 +2,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-08-01-preview.
+ * Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-08-01-preview.
  *
- * Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  *
  * A Serverless Endpoint requires a Marketplace subscription. You can create one via the [MarketplaceSubscription resource](https://www.pulumi.com/registry/packages/azure-native/api-docs/machinelearningservices/marketplacesubscription/) and then making your endpoint [depend](https://www.pulumi.com/docs/iac/concepts/options/dependson/) on it.
  */
@@ -38,43 +38,43 @@ export class ServerlessEndpoint extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
-    public readonly kind!: pulumi.Output<string | undefined>;
+    declare public readonly kind: pulumi.Output<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly serverlessEndpointProperties!: pulumi.Output<types.outputs.ServerlessEndpointResponse>;
+    declare public readonly serverlessEndpointProperties: pulumi.Output<types.outputs.ServerlessEndpointResponse>;
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
+    declare public readonly sku: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ServerlessEndpoint resource with the given unique name, arguments, and options.
@@ -87,24 +87,24 @@ export class ServerlessEndpoint extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.serverlessEndpointProperties === undefined) && !opts.urn) {
+            if (args?.serverlessEndpointProperties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverlessEndpointProperties'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["serverlessEndpointProperties"] = args ? args.serverlessEndpointProperties : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["serverlessEndpointProperties"] = args?.serverlessEndpointProperties;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -121,7 +121,7 @@ export class ServerlessEndpoint extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230801preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20240101preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20240401:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20240401preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20240701preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20241001:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20241001preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250101preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250401:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250401preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250601:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250701preview:ServerlessEndpoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230801preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20240101preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20240401:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20240401preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20240701preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20241001:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20241001preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250101preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250401:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250401preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250601:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250701preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250901:ServerlessEndpoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ServerlessEndpoint.__pulumiType, name, resourceInputs, opts);
     }

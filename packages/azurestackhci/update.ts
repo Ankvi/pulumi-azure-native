@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Update extends pulumi.CustomResource {
     /**
@@ -38,95 +38,95 @@ export class Update extends pulumi.CustomResource {
     /**
      * Extensible KV pairs serialized as a string. This is currently used to report the stamp OEM family and hardware model information when an update is flagged as Invalid for the stamp based on OEM type.
      */
-    public readonly additionalProperties!: pulumi.Output<string | undefined>;
+    declare public readonly additionalProperties: pulumi.Output<string | undefined>;
     /**
      * Indicates the way the update content can be downloaded.
      */
-    public readonly availabilityType!: pulumi.Output<string | undefined>;
+    declare public readonly availabilityType: pulumi.Output<string | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Description of the update.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Display name of the Update
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Last time the package-specific checks were run.
      */
-    public readonly healthCheckDate!: pulumi.Output<string | undefined>;
+    declare public readonly healthCheckDate: pulumi.Output<string | undefined>;
     /**
      * Date that the update was installed.
      */
-    public readonly installedDate!: pulumi.Output<string | undefined>;
+    declare public readonly installedDate: pulumi.Output<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Minimum Sbe Version of the update.
      */
-    public readonly minSbeVersionRequired!: pulumi.Output<string | undefined>;
+    declare public readonly minSbeVersionRequired: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Brief message with instructions for updates of AvailabilityType Notify.
      */
-    public readonly notifyMessage!: pulumi.Output<string | undefined>;
+    declare public readonly notifyMessage: pulumi.Output<string | undefined>;
     /**
      * Path where the update package is available.
      */
-    public readonly packagePath!: pulumi.Output<string | undefined>;
+    declare public readonly packagePath: pulumi.Output<string | undefined>;
     /**
      * Size of the package. This value is a combination of the size from update metadata and size of the payload that results from the live scan operation for OS update content.
      */
-    public readonly packageSizeInMb!: pulumi.Output<number | undefined>;
+    declare public readonly packageSizeInMb: pulumi.Output<number | undefined>;
     /**
      * Customer-visible type of the update.
      */
-    public readonly packageType!: pulumi.Output<string | undefined>;
+    declare public readonly packageType: pulumi.Output<string | undefined>;
     /**
      * If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty.
      */
-    public readonly prerequisites!: pulumi.Output<types.outputs.UpdatePrerequisiteResponse[] | undefined>;
+    declare public readonly prerequisites: pulumi.Output<types.outputs.UpdatePrerequisiteResponse[] | undefined>;
     /**
      * Progress percentage of ongoing operation. Currently this property is only valid when the update is in the Downloading state, where it maps to how much of the update content has been downloaded.
      */
-    public readonly progressPercentage!: pulumi.Output<number | undefined>;
+    declare public readonly progressPercentage: pulumi.Output<number | undefined>;
     /**
      * Provisioning state of the Updates proxy resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Publisher of the update package.
      */
-    public readonly publisher!: pulumi.Output<string | undefined>;
+    declare public readonly publisher: pulumi.Output<string | undefined>;
     /**
      * Link to release notes for the update.
      */
-    public readonly releaseLink!: pulumi.Output<string | undefined>;
+    declare public readonly releaseLink: pulumi.Output<string | undefined>;
     /**
      * State of the update as it relates to this stamp.
      */
-    public readonly state!: pulumi.Output<string | undefined>;
+    declare public readonly state: pulumi.Output<string | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Version of the update.
      */
-    public readonly version!: pulumi.Output<string | undefined>;
+    declare public readonly version: pulumi.Output<string | undefined>;
 
     /**
      * Create a Update resource with the given unique name, arguments, and options.
@@ -139,33 +139,33 @@ export class Update extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["additionalProperties"] = args ? args.additionalProperties : undefined;
-            resourceInputs["availabilityType"] = args ? args.availabilityType : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["healthCheckDate"] = args ? args.healthCheckDate : undefined;
-            resourceInputs["installedDate"] = args ? args.installedDate : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["minSbeVersionRequired"] = args ? args.minSbeVersionRequired : undefined;
-            resourceInputs["notifyMessage"] = args ? args.notifyMessage : undefined;
-            resourceInputs["packagePath"] = args ? args.packagePath : undefined;
-            resourceInputs["packageSizeInMb"] = args ? args.packageSizeInMb : undefined;
-            resourceInputs["packageType"] = args ? args.packageType : undefined;
-            resourceInputs["prerequisites"] = args ? args.prerequisites : undefined;
-            resourceInputs["progressPercentage"] = args ? args.progressPercentage : undefined;
-            resourceInputs["publisher"] = args ? args.publisher : undefined;
-            resourceInputs["releaseLink"] = args ? args.releaseLink : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["updateName"] = args ? args.updateName : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["additionalProperties"] = args?.additionalProperties;
+            resourceInputs["availabilityType"] = args?.availabilityType;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["healthCheckDate"] = args?.healthCheckDate;
+            resourceInputs["installedDate"] = args?.installedDate;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["minSbeVersionRequired"] = args?.minSbeVersionRequired;
+            resourceInputs["notifyMessage"] = args?.notifyMessage;
+            resourceInputs["packagePath"] = args?.packagePath;
+            resourceInputs["packageSizeInMb"] = args?.packageSizeInMb;
+            resourceInputs["packageType"] = args?.packageType;
+            resourceInputs["prerequisites"] = args?.prerequisites;
+            resourceInputs["progressPercentage"] = args?.progressPercentage;
+            resourceInputs["publisher"] = args?.publisher;
+            resourceInputs["releaseLink"] = args?.releaseLink;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["updateName"] = args?.updateName;
+            resourceInputs["version"] = args?.version;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -197,7 +197,7 @@ export class Update extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20221201:Update" }, { type: "azure-native:azurestackhci/v20221215preview:Update" }, { type: "azure-native:azurestackhci/v20230201:Update" }, { type: "azure-native:azurestackhci/v20230301:Update" }, { type: "azure-native:azurestackhci/v20230601:Update" }, { type: "azure-native:azurestackhci/v20230801:Update" }, { type: "azure-native:azurestackhci/v20230801preview:Update" }, { type: "azure-native:azurestackhci/v20231101preview:Update" }, { type: "azure-native:azurestackhci/v20240101:Update" }, { type: "azure-native:azurestackhci/v20240215preview:Update" }, { type: "azure-native:azurestackhci/v20240401:Update" }, { type: "azure-native:azurestackhci/v20240901preview:Update" }, { type: "azure-native:azurestackhci/v20241201preview:Update" }, { type: "azure-native:azurestackhci/v20250201preview:Update" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20221201:Update" }, { type: "azure-native:azurestackhci/v20221215preview:Update" }, { type: "azure-native:azurestackhci/v20230201:Update" }, { type: "azure-native:azurestackhci/v20230301:Update" }, { type: "azure-native:azurestackhci/v20230601:Update" }, { type: "azure-native:azurestackhci/v20230801:Update" }, { type: "azure-native:azurestackhci/v20230801preview:Update" }, { type: "azure-native:azurestackhci/v20231101preview:Update" }, { type: "azure-native:azurestackhci/v20240101:Update" }, { type: "azure-native:azurestackhci/v20240215preview:Update" }, { type: "azure-native:azurestackhci/v20240401:Update" }, { type: "azure-native:azurestackhci/v20240901preview:Update" }, { type: "azure-native:azurestackhci/v20241201preview:Update" }, { type: "azure-native:azurestackhci/v20250201preview:Update" }, { type: "azure-native:azurestackhci/v20250915preview:Update" }, { type: "azure-native:azurestackhci/v20251001:Update" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Update.__pulumiType, name, resourceInputs, opts);
     }

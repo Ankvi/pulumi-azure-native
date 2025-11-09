@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Gets a Deployment stack with a given name at Management Group scope.
+ * Gets the Deployment stack with the given name.
  *
  * Uses Azure REST API version 2024-03-01.
  *
@@ -22,7 +22,7 @@ export interface GetDeploymentStackAtManagementGroupArgs {
      */
     deploymentStackName: string;
     /**
-     * Management Group id.
+     * The name of the management group. The name is case insensitive.
      */
     managementGroupId: string;
 }
@@ -84,15 +84,15 @@ export interface GetDeploymentStackAtManagementGroupResult {
      */
     readonly failedResources: types.outputs.ResourceReferenceExtendedResponse[];
     /**
-     * String Id used to locate any resource on Azure.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
-     * The location of the Deployment stack. It cannot be changed after creation. It must be one of the supported Azure locations.
+     * The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks.
      */
     readonly location?: string;
     /**
-     * Name of this resource.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -120,16 +120,16 @@ export interface GetDeploymentStackAtManagementGroupResult {
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
-     * Deployment stack resource tags.
+     * Resource tags.
      */
     readonly tags?: {[key: string]: string};
     /**
-     * Type of this resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
 /**
- * Gets a Deployment stack with a given name at Management Group scope.
+ * Gets the Deployment stack with the given name.
  *
  * Uses Azure REST API version 2024-03-01.
  *
@@ -149,7 +149,7 @@ export interface GetDeploymentStackAtManagementGroupOutputArgs {
      */
     deploymentStackName: pulumi.Input<string>;
     /**
-     * Management Group id.
+     * The name of the management group. The name is case insensitive.
      */
     managementGroupId: pulumi.Input<string>;
 }

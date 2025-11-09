@@ -38,79 +38,79 @@ export class FrontDoor extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Backend pools available to routing rules.
      */
-    public readonly backendPools!: pulumi.Output<types.outputs.BackendPoolResponse[] | undefined>;
+    declare public readonly backendPools: pulumi.Output<types.outputs.BackendPoolResponse[] | undefined>;
     /**
      * Settings for all backendPools
      */
-    public readonly backendPoolsSettings!: pulumi.Output<types.outputs.BackendPoolsSettingsResponse | undefined>;
+    declare public readonly backendPoolsSettings: pulumi.Output<types.outputs.BackendPoolsSettingsResponse | undefined>;
     /**
      * The host that each frontendEndpoint must CNAME to.
      */
-    public /*out*/ readonly cname!: pulumi.Output<string>;
+    declare public /*out*/ readonly cname: pulumi.Output<string>;
     /**
      * Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled'
      */
-    public readonly enabledState!: pulumi.Output<string | undefined>;
+    declare public readonly enabledState: pulumi.Output<string | undefined>;
     /**
      * Key-Value pair representing additional properties for frontdoor.
      */
-    public /*out*/ readonly extendedProperties!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly extendedProperties: pulumi.Output<{[key: string]: string}>;
     /**
      * A friendly name for the frontDoor
      */
-    public readonly friendlyName!: pulumi.Output<string | undefined>;
+    declare public readonly friendlyName: pulumi.Output<string | undefined>;
     /**
      * The Id of the frontdoor.
      */
-    public /*out*/ readonly frontdoorId!: pulumi.Output<string>;
+    declare public /*out*/ readonly frontdoorId: pulumi.Output<string>;
     /**
      * Frontend endpoints available to routing rules.
      */
-    public readonly frontendEndpoints!: pulumi.Output<types.outputs.FrontendEndpointResponse[] | undefined>;
+    declare public readonly frontendEndpoints: pulumi.Output<types.outputs.FrontendEndpointResponse[] | undefined>;
     /**
      * Health probe settings associated with this Front Door instance.
      */
-    public readonly healthProbeSettings!: pulumi.Output<types.outputs.HealthProbeSettingsModelResponse[] | undefined>;
+    declare public readonly healthProbeSettings: pulumi.Output<types.outputs.HealthProbeSettingsModelResponse[] | undefined>;
     /**
      * Load balancing settings associated with this Front Door instance.
      */
-    public readonly loadBalancingSettings!: pulumi.Output<types.outputs.LoadBalancingSettingsModelResponse[] | undefined>;
+    declare public readonly loadBalancingSettings: pulumi.Output<types.outputs.LoadBalancingSettingsModelResponse[] | undefined>;
     /**
      * Resource location.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Provisioning state of the Front Door.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Resource status of the Front Door.
      */
-    public /*out*/ readonly resourceState!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceState: pulumi.Output<string>;
     /**
      * Routing rules associated with this Front Door.
      */
-    public readonly routingRules!: pulumi.Output<types.outputs.RoutingRuleResponse[] | undefined>;
+    declare public readonly routingRules: pulumi.Output<types.outputs.RoutingRuleResponse[] | undefined>;
     /**
      * Rules Engine Configurations available to routing rules.
      */
-    public /*out*/ readonly rulesEngines!: pulumi.Output<types.outputs.RulesEngineResponse[]>;
+    declare public /*out*/ readonly rulesEngines: pulumi.Output<types.outputs.RulesEngineResponse[]>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a FrontDoor resource with the given unique name, arguments, and options.
@@ -123,21 +123,21 @@ export class FrontDoor extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["backendPools"] = args ? args.backendPools : undefined;
+            resourceInputs["backendPools"] = args?.backendPools;
             resourceInputs["backendPoolsSettings"] = args ? (args.backendPoolsSettings ? pulumi.output(args.backendPoolsSettings).apply(types.inputs.backendPoolsSettingsArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["enabledState"] = args ? args.enabledState : undefined;
-            resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
-            resourceInputs["frontDoorName"] = args ? args.frontDoorName : undefined;
-            resourceInputs["frontendEndpoints"] = args ? args.frontendEndpoints : undefined;
-            resourceInputs["healthProbeSettings"] = args ? args.healthProbeSettings : undefined;
-            resourceInputs["loadBalancingSettings"] = args ? args.loadBalancingSettings : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["routingRules"] = args ? args.routingRules : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["enabledState"] = args?.enabledState;
+            resourceInputs["friendlyName"] = args?.friendlyName;
+            resourceInputs["frontDoorName"] = args?.frontDoorName;
+            resourceInputs["frontendEndpoints"] = args?.frontendEndpoints;
+            resourceInputs["healthProbeSettings"] = args?.healthProbeSettings;
+            resourceInputs["loadBalancingSettings"] = args?.loadBalancingSettings;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["routingRules"] = args?.routingRules;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["cname"] = undefined /*out*/;
             resourceInputs["extendedProperties"] = undefined /*out*/;

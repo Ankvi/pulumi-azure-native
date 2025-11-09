@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * PaloAltoNetworks Firewall
  *
- * Uses Azure REST API version 2025-02-06-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
+ * Uses Azure REST API version 2025-05-23. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
  *
- * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-05-23, 2025-07-07-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Firewall extends pulumi.CustomResource {
     /**
@@ -38,79 +38,79 @@ export class Firewall extends pulumi.CustomResource {
     /**
      * Associated Rulestack
      */
-    public readonly associatedRulestack!: pulumi.Output<types.outputs.RulestackDetailsResponse | undefined>;
+    declare public readonly associatedRulestack: pulumi.Output<types.outputs.RulestackDetailsResponse | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * DNS settings for Firewall
      */
-    public readonly dnsSettings!: pulumi.Output<types.outputs.DNSSettingsResponse>;
+    declare public readonly dnsSettings: pulumi.Output<types.outputs.DNSSettingsResponse>;
     /**
      * Frontend settings for Firewall
      */
-    public readonly frontEndSettings!: pulumi.Output<types.outputs.FrontendSettingResponse[] | undefined>;
+    declare public readonly frontEndSettings: pulumi.Output<types.outputs.FrontendSettingResponse[] | undefined>;
     /**
      * The managed service identities assigned to this resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.AzureResourceManagerManagedIdentityPropertiesResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.AzureResourceManagerManagedIdentityPropertiesResponse | undefined>;
     /**
      * Panorama Managed: Default is False. Default will be CloudSec managed
      */
-    public readonly isPanoramaManaged!: pulumi.Output<string | undefined>;
+    declare public readonly isPanoramaManaged: pulumi.Output<string | undefined>;
     /**
      * Strata Cloud Managed: Default is False. Default will be CloudSec managed
      */
-    public readonly isStrataCloudManaged!: pulumi.Output<string | undefined>;
+    declare public readonly isStrataCloudManaged: pulumi.Output<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Marketplace details
      */
-    public readonly marketplaceDetails!: pulumi.Output<types.outputs.MarketplaceDetailsResponse>;
+    declare public readonly marketplaceDetails: pulumi.Output<types.outputs.MarketplaceDetailsResponse>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Network settings
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.NetworkProfileResponse>;
+    declare public readonly networkProfile: pulumi.Output<types.outputs.NetworkProfileResponse>;
     /**
      * panEtag info
      */
-    public readonly panEtag!: pulumi.Output<string | undefined>;
+    declare public readonly panEtag: pulumi.Output<string | undefined>;
     /**
      * Panorama Configuration
      */
-    public readonly panoramaConfig!: pulumi.Output<types.outputs.PanoramaConfigResponse | undefined>;
+    declare public readonly panoramaConfig: pulumi.Output<types.outputs.PanoramaConfigResponse | undefined>;
     /**
      * Billing plan information.
      */
-    public readonly planData!: pulumi.Output<types.outputs.PlanDataResponse>;
+    declare public readonly planData: pulumi.Output<types.outputs.PlanDataResponse>;
     /**
      * Provisioning state of the resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
      */
-    public readonly strataCloudManagerConfig!: pulumi.Output<types.outputs.StrataCloudManagerConfigResponse | undefined>;
+    declare public readonly strataCloudManagerConfig: pulumi.Output<types.outputs.StrataCloudManagerConfigResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Firewall resource with the given unique name, arguments, and options.
@@ -123,37 +123,37 @@ export class Firewall extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.dnsSettings === undefined) && !opts.urn) {
+            if (args?.dnsSettings === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dnsSettings'");
             }
-            if ((!args || args.marketplaceDetails === undefined) && !opts.urn) {
+            if (args?.marketplaceDetails === undefined && !opts.urn) {
                 throw new Error("Missing required property 'marketplaceDetails'");
             }
-            if ((!args || args.networkProfile === undefined) && !opts.urn) {
+            if (args?.networkProfile === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkProfile'");
             }
-            if ((!args || args.planData === undefined) && !opts.urn) {
+            if (args?.planData === undefined && !opts.urn) {
                 throw new Error("Missing required property 'planData'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["associatedRulestack"] = args ? args.associatedRulestack : undefined;
-            resourceInputs["dnsSettings"] = args ? args.dnsSettings : undefined;
-            resourceInputs["firewallName"] = args ? args.firewallName : undefined;
-            resourceInputs["frontEndSettings"] = args ? args.frontEndSettings : undefined;
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["isPanoramaManaged"] = args ? args.isPanoramaManaged : undefined;
-            resourceInputs["isStrataCloudManaged"] = args ? args.isStrataCloudManaged : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["marketplaceDetails"] = args ? args.marketplaceDetails : undefined;
-            resourceInputs["networkProfile"] = args ? args.networkProfile : undefined;
-            resourceInputs["panEtag"] = args ? args.panEtag : undefined;
-            resourceInputs["panoramaConfig"] = args ? args.panoramaConfig : undefined;
-            resourceInputs["planData"] = args ? args.planData : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["strataCloudManagerConfig"] = args ? args.strataCloudManagerConfig : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["associatedRulestack"] = args?.associatedRulestack;
+            resourceInputs["dnsSettings"] = args?.dnsSettings;
+            resourceInputs["firewallName"] = args?.firewallName;
+            resourceInputs["frontEndSettings"] = args?.frontEndSettings;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["isPanoramaManaged"] = args?.isPanoramaManaged;
+            resourceInputs["isStrataCloudManaged"] = args?.isStrataCloudManaged;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["marketplaceDetails"] = args?.marketplaceDetails;
+            resourceInputs["networkProfile"] = args?.networkProfile;
+            resourceInputs["panEtag"] = args?.panEtag;
+            resourceInputs["panoramaConfig"] = args?.panoramaConfig;
+            resourceInputs["planData"] = args?.planData;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["strataCloudManagerConfig"] = args?.strataCloudManagerConfig;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;

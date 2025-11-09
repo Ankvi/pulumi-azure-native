@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * PaloAltoNetworks LocalRulestack
  *
- * Uses Azure REST API version 2025-02-06-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
+ * Uses Azure REST API version 2025-05-23. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
  *
- * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-05-23, 2025-07-07-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class LocalRulestack extends pulumi.CustomResource {
     /**
@@ -38,67 +38,67 @@ export class LocalRulestack extends pulumi.CustomResource {
     /**
      * subscription scope of global rulestack
      */
-    public readonly associatedSubscriptions!: pulumi.Output<string[] | undefined>;
+    declare public readonly associatedSubscriptions: pulumi.Output<string[] | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Mode for default rules creation
      */
-    public readonly defaultMode!: pulumi.Output<string | undefined>;
+    declare public readonly defaultMode: pulumi.Output<string | undefined>;
     /**
      * rulestack description
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The managed service identities assigned to this resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.AzureResourceManagerManagedIdentityPropertiesResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.AzureResourceManagerManagedIdentityPropertiesResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * minimum version
      */
-    public readonly minAppIdVersion!: pulumi.Output<string | undefined>;
+    declare public readonly minAppIdVersion: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * PanEtag info
      */
-    public readonly panEtag!: pulumi.Output<string | undefined>;
+    declare public readonly panEtag: pulumi.Output<string | undefined>;
     /**
      * Rulestack Location, Required for GlobalRulestacks, Not for LocalRulestacks
      */
-    public readonly panLocation!: pulumi.Output<string | undefined>;
+    declare public readonly panLocation: pulumi.Output<string | undefined>;
     /**
      * Provisioning state of the resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Rulestack Type
      */
-    public readonly scope!: pulumi.Output<string | undefined>;
+    declare public readonly scope: pulumi.Output<string | undefined>;
     /**
      * Security Profile
      */
-    public readonly securityServices!: pulumi.Output<types.outputs.SecurityServicesResponse | undefined>;
+    declare public readonly securityServices: pulumi.Output<types.outputs.SecurityServicesResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a LocalRulestack resource with the given unique name, arguments, and options.
@@ -111,22 +111,22 @@ export class LocalRulestack extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["associatedSubscriptions"] = args ? args.associatedSubscriptions : undefined;
-            resourceInputs["defaultMode"] = args ? args.defaultMode : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["localRulestackName"] = args ? args.localRulestackName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["minAppIdVersion"] = args ? args.minAppIdVersion : undefined;
-            resourceInputs["panEtag"] = args ? args.panEtag : undefined;
-            resourceInputs["panLocation"] = args ? args.panLocation : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["securityServices"] = args ? args.securityServices : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["associatedSubscriptions"] = args?.associatedSubscriptions;
+            resourceInputs["defaultMode"] = args?.defaultMode;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["localRulestackName"] = args?.localRulestackName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["minAppIdVersion"] = args?.minAppIdVersion;
+            resourceInputs["panEtag"] = args?.panEtag;
+            resourceInputs["panLocation"] = args?.panLocation;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["securityServices"] = args?.securityServices;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;

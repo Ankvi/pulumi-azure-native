@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class P2sVpnGateway extends pulumi.CustomResource {
     /**
@@ -38,59 +38,59 @@ export class P2sVpnGateway extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * List of all customer specified DNS servers IP addresses.
      */
-    public readonly customDnsServers!: pulumi.Output<string[] | undefined>;
+    declare public readonly customDnsServers: pulumi.Output<string[] | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Enable Routing Preference property for the Public IP Interface of the P2SVpnGateway.
      */
-    public readonly isRoutingPreferenceInternet!: pulumi.Output<boolean | undefined>;
+    declare public readonly isRoutingPreferenceInternet: pulumi.Output<boolean | undefined>;
     /**
      * Resource location.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * List of all p2s connection configurations of the gateway.
      */
-    public readonly p2SConnectionConfigurations!: pulumi.Output<types.outputs.P2SConnectionConfigurationResponse[] | undefined>;
+    declare public readonly p2SConnectionConfigurations: pulumi.Output<types.outputs.P2SConnectionConfigurationResponse[] | undefined>;
     /**
      * The provisioning state of the P2S VPN gateway resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The VirtualHub to which the gateway belongs.
      */
-    public readonly virtualHub!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
+    declare public readonly virtualHub: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * All P2S VPN clients' connection health status.
      */
-    public /*out*/ readonly vpnClientConnectionHealth!: pulumi.Output<types.outputs.VpnClientConnectionHealthResponse>;
+    declare public /*out*/ readonly vpnClientConnectionHealth: pulumi.Output<types.outputs.VpnClientConnectionHealthResponse>;
     /**
      * The scale unit for this p2s vpn gateway.
      */
-    public readonly vpnGatewayScaleUnit!: pulumi.Output<number | undefined>;
+    declare public readonly vpnGatewayScaleUnit: pulumi.Output<number | undefined>;
     /**
      * The VpnServerConfiguration to which the p2sVpnGateway is attached to.
      */
-    public readonly vpnServerConfiguration!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
+    declare public readonly vpnServerConfiguration: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
 
     /**
      * Create a P2sVpnGateway resource with the given unique name, arguments, and options.
@@ -103,20 +103,20 @@ export class P2sVpnGateway extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["customDnsServers"] = args ? args.customDnsServers : undefined;
-            resourceInputs["gatewayName"] = args ? args.gatewayName : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["isRoutingPreferenceInternet"] = args ? args.isRoutingPreferenceInternet : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["p2SConnectionConfigurations"] = args ? args.p2SConnectionConfigurations : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["virtualHub"] = args ? args.virtualHub : undefined;
-            resourceInputs["vpnGatewayScaleUnit"] = args ? args.vpnGatewayScaleUnit : undefined;
-            resourceInputs["vpnServerConfiguration"] = args ? args.vpnServerConfiguration : undefined;
+            resourceInputs["customDnsServers"] = args?.customDnsServers;
+            resourceInputs["gatewayName"] = args?.gatewayName;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["isRoutingPreferenceInternet"] = args?.isRoutingPreferenceInternet;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["p2SConnectionConfigurations"] = args?.p2SConnectionConfigurations;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["virtualHub"] = args?.virtualHub;
+            resourceInputs["vpnGatewayScaleUnit"] = args?.vpnGatewayScaleUnit;
+            resourceInputs["vpnServerConfiguration"] = args?.vpnServerConfiguration;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -140,7 +140,7 @@ export class P2sVpnGateway extends pulumi.CustomResource {
             resourceInputs["vpnServerConfiguration"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20180801:P2sVpnGateway" }, { type: "azure-native:network/v20181001:P2sVpnGateway" }, { type: "azure-native:network/v20181101:P2sVpnGateway" }, { type: "azure-native:network/v20181201:P2sVpnGateway" }, { type: "azure-native:network/v20190201:P2sVpnGateway" }, { type: "azure-native:network/v20190401:P2sVpnGateway" }, { type: "azure-native:network/v20190601:P2sVpnGateway" }, { type: "azure-native:network/v20190701:P2sVpnGateway" }, { type: "azure-native:network/v20190801:P2sVpnGateway" }, { type: "azure-native:network/v20190901:P2sVpnGateway" }, { type: "azure-native:network/v20191101:P2sVpnGateway" }, { type: "azure-native:network/v20191201:P2sVpnGateway" }, { type: "azure-native:network/v20200301:P2sVpnGateway" }, { type: "azure-native:network/v20200401:P2sVpnGateway" }, { type: "azure-native:network/v20200501:P2sVpnGateway" }, { type: "azure-native:network/v20200601:P2sVpnGateway" }, { type: "azure-native:network/v20200701:P2sVpnGateway" }, { type: "azure-native:network/v20200801:P2sVpnGateway" }, { type: "azure-native:network/v20201101:P2sVpnGateway" }, { type: "azure-native:network/v20210201:P2sVpnGateway" }, { type: "azure-native:network/v20210301:P2sVpnGateway" }, { type: "azure-native:network/v20210501:P2sVpnGateway" }, { type: "azure-native:network/v20210801:P2sVpnGateway" }, { type: "azure-native:network/v20220101:P2sVpnGateway" }, { type: "azure-native:network/v20220501:P2sVpnGateway" }, { type: "azure-native:network/v20220701:P2sVpnGateway" }, { type: "azure-native:network/v20220901:P2sVpnGateway" }, { type: "azure-native:network/v20221101:P2sVpnGateway" }, { type: "azure-native:network/v20230201:P2sVpnGateway" }, { type: "azure-native:network/v20230401:P2sVpnGateway" }, { type: "azure-native:network/v20230501:P2sVpnGateway" }, { type: "azure-native:network/v20230601:P2sVpnGateway" }, { type: "azure-native:network/v20230901:P2sVpnGateway" }, { type: "azure-native:network/v20231101:P2sVpnGateway" }, { type: "azure-native:network/v20240101:P2sVpnGateway" }, { type: "azure-native:network/v20240301:P2sVpnGateway" }, { type: "azure-native:network/v20240501:P2sVpnGateway" }, { type: "azure-native:network/v20240701:P2sVpnGateway" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20180801:P2sVpnGateway" }, { type: "azure-native:network/v20181001:P2sVpnGateway" }, { type: "azure-native:network/v20181101:P2sVpnGateway" }, { type: "azure-native:network/v20181201:P2sVpnGateway" }, { type: "azure-native:network/v20190201:P2sVpnGateway" }, { type: "azure-native:network/v20190401:P2sVpnGateway" }, { type: "azure-native:network/v20190601:P2sVpnGateway" }, { type: "azure-native:network/v20190701:P2sVpnGateway" }, { type: "azure-native:network/v20190801:P2sVpnGateway" }, { type: "azure-native:network/v20190901:P2sVpnGateway" }, { type: "azure-native:network/v20191101:P2sVpnGateway" }, { type: "azure-native:network/v20191201:P2sVpnGateway" }, { type: "azure-native:network/v20200301:P2sVpnGateway" }, { type: "azure-native:network/v20200401:P2sVpnGateway" }, { type: "azure-native:network/v20200501:P2sVpnGateway" }, { type: "azure-native:network/v20200601:P2sVpnGateway" }, { type: "azure-native:network/v20200701:P2sVpnGateway" }, { type: "azure-native:network/v20200801:P2sVpnGateway" }, { type: "azure-native:network/v20201101:P2sVpnGateway" }, { type: "azure-native:network/v20210201:P2sVpnGateway" }, { type: "azure-native:network/v20210301:P2sVpnGateway" }, { type: "azure-native:network/v20210501:P2sVpnGateway" }, { type: "azure-native:network/v20210801:P2sVpnGateway" }, { type: "azure-native:network/v20220101:P2sVpnGateway" }, { type: "azure-native:network/v20220501:P2sVpnGateway" }, { type: "azure-native:network/v20220701:P2sVpnGateway" }, { type: "azure-native:network/v20220901:P2sVpnGateway" }, { type: "azure-native:network/v20221101:P2sVpnGateway" }, { type: "azure-native:network/v20230201:P2sVpnGateway" }, { type: "azure-native:network/v20230401:P2sVpnGateway" }, { type: "azure-native:network/v20230501:P2sVpnGateway" }, { type: "azure-native:network/v20230601:P2sVpnGateway" }, { type: "azure-native:network/v20230901:P2sVpnGateway" }, { type: "azure-native:network/v20231101:P2sVpnGateway" }, { type: "azure-native:network/v20240101:P2sVpnGateway" }, { type: "azure-native:network/v20240301:P2sVpnGateway" }, { type: "azure-native:network/v20240501:P2sVpnGateway" }, { type: "azure-native:network/v20240701:P2sVpnGateway" }, { type: "azure-native:network/v20241001:P2sVpnGateway" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(P2sVpnGateway.__pulumiType, name, resourceInputs, opts);
     }

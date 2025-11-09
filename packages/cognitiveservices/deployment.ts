@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Deployment extends pulumi.CustomResource {
     /**
@@ -38,35 +38,35 @@ export class Deployment extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Resource Etag.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Properties of Cognitive Services account deployment.
      */
-    public readonly properties!: pulumi.Output<types.outputs.DeploymentPropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.DeploymentPropertiesResponse>;
     /**
      * The resource model definition representing SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
+    declare public readonly sku: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Deployment resource with the given unique name, arguments, and options.
@@ -79,18 +79,18 @@ export class Deployment extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["deploymentName"] = args ? args.deploymentName : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["accountName"] = args?.accountName;
+            resourceInputs["deploymentName"] = args?.deploymentName;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -107,7 +107,7 @@ export class Deployment extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20211001:Deployment" }, { type: "azure-native:cognitiveservices/v20220301:Deployment" }, { type: "azure-native:cognitiveservices/v20221001:Deployment" }, { type: "azure-native:cognitiveservices/v20221201:Deployment" }, { type: "azure-native:cognitiveservices/v20230501:Deployment" }, { type: "azure-native:cognitiveservices/v20231001preview:Deployment" }, { type: "azure-native:cognitiveservices/v20240401preview:Deployment" }, { type: "azure-native:cognitiveservices/v20240601preview:Deployment" }, { type: "azure-native:cognitiveservices/v20241001:Deployment" }, { type: "azure-native:cognitiveservices/v20250401preview:Deployment" }, { type: "azure-native:cognitiveservices/v20250601:Deployment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20211001:Deployment" }, { type: "azure-native:cognitiveservices/v20220301:Deployment" }, { type: "azure-native:cognitiveservices/v20221001:Deployment" }, { type: "azure-native:cognitiveservices/v20221201:Deployment" }, { type: "azure-native:cognitiveservices/v20230501:Deployment" }, { type: "azure-native:cognitiveservices/v20231001preview:Deployment" }, { type: "azure-native:cognitiveservices/v20240401preview:Deployment" }, { type: "azure-native:cognitiveservices/v20240601preview:Deployment" }, { type: "azure-native:cognitiveservices/v20241001:Deployment" }, { type: "azure-native:cognitiveservices/v20250401preview:Deployment" }, { type: "azure-native:cognitiveservices/v20250601:Deployment" }, { type: "azure-native:cognitiveservices/v20250701preview:Deployment" }, { type: "azure-native:cognitiveservices/v20250901:Deployment" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Deployment.__pulumiType, name, resourceInputs, opts);
     }

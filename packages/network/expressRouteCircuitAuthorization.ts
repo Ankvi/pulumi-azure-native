@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ExpressRouteCircuitAuthorization extends pulumi.CustomResource {
     /**
@@ -38,35 +38,35 @@ export class ExpressRouteCircuitAuthorization extends pulumi.CustomResource {
     /**
      * The authorization key.
      */
-    public readonly authorizationKey!: pulumi.Output<string | undefined>;
+    declare public readonly authorizationKey: pulumi.Output<string | undefined>;
     /**
      * The authorization use status.
      */
-    public readonly authorizationUseStatus!: pulumi.Output<string | undefined>;
+    declare public readonly authorizationUseStatus: pulumi.Output<string | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The reference to the ExpressRoute connection resource using the authorization.
      */
-    public /*out*/ readonly connectionResourceUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionResourceUri: pulumi.Output<string>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     /**
      * The provisioning state of the authorization resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Type of the resource.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ExpressRouteCircuitAuthorization resource with the given unique name, arguments, and options.
@@ -79,19 +79,19 @@ export class ExpressRouteCircuitAuthorization extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.circuitName === undefined) && !opts.urn) {
+            if (args?.circuitName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'circuitName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["authorizationKey"] = args ? args.authorizationKey : undefined;
-            resourceInputs["authorizationName"] = args ? args.authorizationName : undefined;
-            resourceInputs["authorizationUseStatus"] = args ? args.authorizationUseStatus : undefined;
-            resourceInputs["circuitName"] = args ? args.circuitName : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["authorizationKey"] = args?.authorizationKey;
+            resourceInputs["authorizationName"] = args?.authorizationName;
+            resourceInputs["authorizationUseStatus"] = args?.authorizationUseStatus;
+            resourceInputs["circuitName"] = args?.circuitName;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["connectionResourceUri"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -108,7 +108,7 @@ export class ExpressRouteCircuitAuthorization extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20150501preview:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20150615:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20160330:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20160601:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20160901:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20161201:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20170301:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20170601:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20170801:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20170901:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20171001:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20171101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20180101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20180201:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20180401:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20180601:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20180701:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20180801:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20181001:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20181101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20181201:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20190201:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20190401:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20190601:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20190701:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20190801:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20190901:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20191101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20191201:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20200301:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20200401:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20200501:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20200601:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20200701:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20200801:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20201101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20210201:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20210301:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20210501:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20210801:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20220101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20220501:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20220701:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20220901:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20221101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20230201:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20230401:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20230501:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20230601:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20230901:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20231101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20240101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20240301:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20240501:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20240701:ExpressRouteCircuitAuthorization" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20150501preview:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20150615:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20160330:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20160601:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20160901:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20161201:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20170301:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20170601:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20170801:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20170901:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20171001:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20171101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20180101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20180201:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20180401:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20180601:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20180701:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20180801:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20181001:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20181101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20181201:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20190201:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20190401:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20190601:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20190701:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20190801:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20190901:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20191101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20191201:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20200301:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20200401:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20200501:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20200601:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20200701:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20200801:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20201101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20210201:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20210301:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20210501:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20210801:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20220101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20220501:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20220701:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20220901:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20221101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20230201:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20230401:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20230501:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20230601:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20230901:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20231101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20240101:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20240301:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20240501:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20240701:ExpressRouteCircuitAuthorization" }, { type: "azure-native:network/v20241001:ExpressRouteCircuitAuthorization" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ExpressRouteCircuitAuthorization.__pulumiType, name, resourceInputs, opts);
     }

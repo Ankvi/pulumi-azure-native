@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-05-01-preview.
  *
- * Other available API versions: 2021-04-01-preview, 2021-10-01, 2022-05-01-preview, 2022-10-01-preview, 2023-11-01-preview, 2024-01-01, 2024-06-01-preview, 2024-07-01-preview, 2024-07-15-preview, 2024-12-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kubernetes [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-04-01-preview, 2021-10-01, 2022-05-01-preview, 2022-10-01-preview, 2023-11-01-preview, 2024-01-01, 2024-06-01-preview, 2024-07-01-preview, 2024-07-15-preview, 2024-12-01-preview, 2025-08-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kubernetes [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ConnectedCluster extends pulumi.CustomResource {
     /**
@@ -38,111 +38,111 @@ export class ConnectedCluster extends pulumi.CustomResource {
     /**
      * AAD profile for the connected cluster.
      */
-    public readonly aadProfile!: pulumi.Output<types.outputs.AadProfileResponse | undefined>;
+    declare public readonly aadProfile: pulumi.Output<types.outputs.AadProfileResponse | undefined>;
     /**
      * Base64 encoded public certificate used by the agent to do the initial handshake to the backend services in Azure.
      */
-    public readonly agentPublicKeyCertificate!: pulumi.Output<string>;
+    declare public readonly agentPublicKeyCertificate: pulumi.Output<string>;
     /**
      * Version of the agent running on the connected cluster resource
      */
-    public /*out*/ readonly agentVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly agentVersion: pulumi.Output<string>;
     /**
      * Arc agentry configuration for the provisioned cluster.
      */
-    public readonly arcAgentProfile!: pulumi.Output<types.outputs.ArcAgentProfileResponse | undefined>;
+    declare public readonly arcAgentProfile: pulumi.Output<types.outputs.ArcAgentProfileResponse | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Indicates whether Azure Hybrid Benefit is opted in
      */
-    public readonly azureHybridBenefit!: pulumi.Output<string | undefined>;
+    declare public readonly azureHybridBenefit: pulumi.Output<string | undefined>;
     /**
      * Represents the connectivity status of the connected cluster.
      */
-    public /*out*/ readonly connectivityStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectivityStatus: pulumi.Output<string>;
     /**
      * The Kubernetes distribution running on this connected cluster.
      */
-    public readonly distribution!: pulumi.Output<string | undefined>;
+    declare public readonly distribution: pulumi.Output<string | undefined>;
     /**
      * The Kubernetes distribution version on this connected cluster.
      */
-    public readonly distributionVersion!: pulumi.Output<string | undefined>;
+    declare public readonly distributionVersion: pulumi.Output<string | undefined>;
     /**
      * The identity of the connected cluster.
      */
-    public readonly identity!: pulumi.Output<types.outputs.ConnectedClusterIdentityResponse>;
+    declare public readonly identity: pulumi.Output<types.outputs.ConnectedClusterIdentityResponse>;
     /**
      * The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
      */
-    public readonly infrastructure!: pulumi.Output<string | undefined>;
+    declare public readonly infrastructure: pulumi.Output<string | undefined>;
     /**
      * The kind of connected cluster.
      */
-    public readonly kind!: pulumi.Output<string | undefined>;
+    declare public readonly kind: pulumi.Output<string | undefined>;
     /**
      * The Kubernetes version of the connected cluster resource
      */
-    public /*out*/ readonly kubernetesVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly kubernetesVersion: pulumi.Output<string>;
     /**
      * Time representing the last instance when heart beat was received from the cluster
      */
-    public /*out*/ readonly lastConnectivityTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastConnectivityTime: pulumi.Output<string>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Expiration time of the managed identity certificate
      */
-    public /*out*/ readonly managedIdentityCertificateExpirationTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly managedIdentityCertificateExpirationTime: pulumi.Output<string>;
     /**
      * More properties related to the Connected Cluster
      */
-    public /*out*/ readonly miscellaneousProperties!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly miscellaneousProperties: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Connected cluster offering
      */
-    public /*out*/ readonly offering!: pulumi.Output<string>;
+    declare public /*out*/ readonly offering: pulumi.Output<string>;
     /**
      * The resource id of the private link scope this connected cluster is assigned to, if any.
      */
-    public readonly privateLinkScopeResourceId!: pulumi.Output<string | undefined>;
+    declare public readonly privateLinkScopeResourceId: pulumi.Output<string | undefined>;
     /**
      * Property which describes the state of private link on a connected cluster resource.
      */
-    public readonly privateLinkState!: pulumi.Output<string | undefined>;
+    declare public readonly privateLinkState: pulumi.Output<string | undefined>;
     /**
      * Provisioning state of the connected cluster resource.
      */
-    public readonly provisioningState!: pulumi.Output<string | undefined>;
+    declare public readonly provisioningState: pulumi.Output<string | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Number of CPU cores present in the connected cluster resource
      */
-    public /*out*/ readonly totalCoreCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly totalCoreCount: pulumi.Output<number>;
     /**
      * Number of nodes present in the connected cluster resource
      */
-    public /*out*/ readonly totalNodeCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly totalNodeCount: pulumi.Output<number>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ConnectedCluster resource with the given unique name, arguments, and options.
@@ -155,31 +155,31 @@ export class ConnectedCluster extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.agentPublicKeyCertificate === undefined) && !opts.urn) {
+            if (args?.agentPublicKeyCertificate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'agentPublicKeyCertificate'");
             }
-            if ((!args || args.identity === undefined) && !opts.urn) {
+            if (args?.identity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identity'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["aadProfile"] = args ? args.aadProfile : undefined;
-            resourceInputs["agentPublicKeyCertificate"] = args ? args.agentPublicKeyCertificate : undefined;
+            resourceInputs["aadProfile"] = args?.aadProfile;
+            resourceInputs["agentPublicKeyCertificate"] = args?.agentPublicKeyCertificate;
             resourceInputs["arcAgentProfile"] = args ? (args.arcAgentProfile ? pulumi.output(args.arcAgentProfile).apply(types.inputs.arcAgentProfileArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["azureHybridBenefit"] = (args ? args.azureHybridBenefit : undefined) ?? "NotApplicable";
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["distribution"] = args ? args.distribution : undefined;
-            resourceInputs["distributionVersion"] = args ? args.distributionVersion : undefined;
+            resourceInputs["azureHybridBenefit"] = (args?.azureHybridBenefit) ?? "NotApplicable";
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["distribution"] = args?.distribution;
+            resourceInputs["distributionVersion"] = args?.distributionVersion;
             resourceInputs["identity"] = args ? (args.identity ? pulumi.output(args.identity).apply(types.inputs.connectedClusterIdentityArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["infrastructure"] = args ? args.infrastructure : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["privateLinkScopeResourceId"] = args ? args.privateLinkScopeResourceId : undefined;
-            resourceInputs["privateLinkState"] = (args ? args.privateLinkState : undefined) ?? "Disabled";
-            resourceInputs["provisioningState"] = args ? args.provisioningState : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["infrastructure"] = args?.infrastructure;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["privateLinkScopeResourceId"] = args?.privateLinkScopeResourceId;
+            resourceInputs["privateLinkState"] = (args?.privateLinkState) ?? "Disabled";
+            resourceInputs["provisioningState"] = args?.provisioningState;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["agentVersion"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["connectivityStatus"] = undefined /*out*/;
@@ -223,7 +223,7 @@ export class ConnectedCluster extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:kubernetes/v20200101preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20210301:ConnectedCluster" }, { type: "azure-native:kubernetes/v20210401preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20211001:ConnectedCluster" }, { type: "azure-native:kubernetes/v20220501preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20221001preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20231101preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240101:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240201preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240601preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240701preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240715preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20241201preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20250801preview:ConnectedCluster" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:kubernetes/v20200101preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20210301:ConnectedCluster" }, { type: "azure-native:kubernetes/v20210401preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20211001:ConnectedCluster" }, { type: "azure-native:kubernetes/v20220501preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20221001preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20231101preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240101:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240201preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240601preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240701preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240715preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20241201preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20250801preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20251201preview:ConnectedCluster" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ConnectedCluster.__pulumiType, name, resourceInputs, opts);
     }

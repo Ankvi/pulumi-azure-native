@@ -165,9 +165,27 @@ export interface ActiveDirectoryDomainControllersResponse {
 }
 
 /**
+ * Authentication related configuration for the SQL Server Instance.
+ */
+export interface AuthenticationResponse {
+    /**
+     * Mode of authentication in SqlServer.
+     */
+    mode?: string;
+    /**
+     * Entra Authentication configuration for the SQL Server Instance.
+     */
+    sqlServerEntraIdentity?: EntraAuthenticationResponse[];
+}
+
+/**
  * The specifications of the availability group replica configuration
  */
 export interface AvailabilityGroupConfigureResponse {
+    /**
+     * Property that determines whether a given availability replica can run in synchronous-commit mode
+     */
+    availabilityMode?: string;
     /**
      * The Availability Synchronization mode of the availability group replica.
      */
@@ -177,13 +195,37 @@ export interface AvailabilityGroupConfigureResponse {
      */
     backupPriority?: number;
     /**
+     * Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified.
+     */
+    certificateName?: string;
+    /**
+     * Permitted authentication modes for the mirroring endpoint.
+     */
+    endpointAuthenticationMode?: string;
+    /**
+     * The login which will connect to the mirroring endpoint.
+     */
+    endpointConnectLogin?: string;
+    /**
+     * Name of the mirroring endpoint URL
+     */
+    endpointName?: string;
+    /**
      * Mirroring endpoint URL of availability group replica
      */
     endpointUrl?: string;
     /**
+     * Property to set the failover mode of the availability group replica
+     */
+    failoverMode?: string;
+    /**
      * The failover mode of the availability group replica.
      */
     failoverModeDescription: string;
+    /**
+     * Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections)
+     */
+    primaryAllowConnections?: string;
     /**
      * Whether the availability allows all connections or only read-write connections.
      */
@@ -205,9 +247,17 @@ export interface AvailabilityGroupConfigureResponse {
      */
     replicaModifyDate: string;
     /**
+     * Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections.
+     */
+    secondaryAllowConnections?: string;
+    /**
      * Whether an availability replica that is performing the secondary role (that is, a secondary replica) can accept connections from clients.
      */
     secondaryRoleAllowConnectionsDescription: string;
+    /**
+     * Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica.
+     */
+    seedingMode?: string;
     /**
      * Describes seeding mode.
      */
@@ -258,6 +308,10 @@ export interface AvailabilityGroupInfoResponse {
      * Specifies whether this is a distributed availability group.
      */
     isDistributed?: boolean;
+    /**
+     * The listener for the sql server availability group
+     */
+    listener?: SqlAvailabilityGroupStaticIPListenerPropertiesResponse;
     /**
      * Indicates the recovery health of the primary replica.
      */
@@ -382,6 +436,93 @@ export interface BasicLoginInformationResponse {
 }
 
 /**
+ * Client connection related configuration.
+ */
+export interface ClientConnectionResponse {
+    /**
+     * Indicates if client connection is enabled for this SQL Server instance.
+     */
+    enabled?: boolean;
+}
+
+/**
+ * Database mirroring endpoint related properties.
+ */
+export interface DBMEndpointResponse {
+    /**
+     * Name of the certificate.
+     */
+    certificateName: string;
+    /**
+     * The type of connection authentication required for connections to this endpoint
+     */
+    connectionAuth: string;
+    /**
+     * Encryption Algorithm
+     */
+    encryptionAlgorithm: string;
+    /**
+     * Name of the database mirroring endpoint.
+     */
+    endpointName: string;
+    /**
+     * Listener IP address.
+     */
+    ipAddress: string;
+    /**
+     * Is the port number dynamically assigned.
+     */
+    isDynamicPort: boolean;
+    /**
+     * Is Encryption enabled
+     */
+    isEncryptionEnabled: boolean;
+    /**
+     * The port number that the endpoint is listening on.
+     */
+    port: number;
+    /**
+     * Mirroring Role
+     */
+    role: string;
+}
+
+/**
+ * The migration assessment related configuration.
+ */
+export interface DataBaseMigrationAssessmentResponse {
+    /**
+     * The time when Migration Assessment Report upload was last performed.
+     */
+    assessmentUploadTime: string;
+    /**
+     * Issues and warnings impacting the migration of Database to particular Azure Migration Target.
+     */
+    databaseAssessments: DataBaseMigrationAssessmentResponseDatabaseAssessments[];
+    /**
+     * The target readiness for migration for this database.
+     */
+    targetReadiness: TargetReadinessResponse;
+}
+
+export interface DataBaseMigrationAssessmentResponseDatabaseAssessments {
+    appliesToMigrationTargetPlatform?: string;
+    featureId?: string;
+    issueCategory?: string;
+    moreInformation?: string;
+}
+
+/**
+ * Migration related configuration.
+ */
+export interface DataBaseMigrationResponse {
+    /**
+     * Migration assessments related configuration.
+     */
+    assessment?: DataBaseMigrationAssessmentResponse;
+}
+
+/**
  * The data controller properties.
  */
 export interface DataControllerPropertiesResponse {
@@ -449,6 +590,20 @@ export function dataControllerPropertiesResponseProvideDefaults(val: DataControl
 }
 
 /**
+ * Entra Authentication configuration.
+ */
+export interface EntraAuthenticationResponse {
+    /**
+     * The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity.
+     */
+    clientId?: string;
+    /**
+     * The method used for Entra authentication
+     */
+    identityType?: string;
+}
+
+/**
  * The complex type of the extended location.
  */
 export interface ExtendedLocationResponse {
@@ -466,6 +621,10 @@ export interface ExtendedLocationResponse {
  * Failover Cluster Instance properties.
  */
 export interface FailoverClusterResponse {
+    /**
+     * The IP addresses and subnet masks associated with the SQL Failover Cluster Instance on this host.
+     */
+    hostIPAddresses: HostIPAddressInformationResponse[];
     /**
      * The host names which are part of the SQL FCI resource group.
      */
@@ -557,6 +716,20 @@ export function failoverGroupSpecResponseProvideDefaults(val: FailoverGroupSpecR
         partnerSyncMode: (val.partnerSyncMode) ?? "async",
         role: (val.role) ?? "primary",
     };
+}
+
+/**
+ * IP address and subnet mask.
+ */
+export interface HostIPAddressInformationResponse {
+    /**
+     * IP address
+     */
+    ipAddress: string;
+    /**
+     * Subnet mask
+     */
+    subnetMask: string;
 }
 
 /**
@@ -698,6 +871,52 @@ export interface LogAnalyticsWorkspaceConfigResponse {
 }
 
 /**
+ * The migration assessment related configuration.
+ */
+export interface MigrationAssessmentResponse {
+    /**
+     * The time when Migration Assessment Report upload was last performed.
+     */
+    assessmentUploadTime: string;
+    /**
+     * Indicates if migration assessment is enabled for this SQL Server instance.
+     */
+    enabled?: boolean;
+    /**
+     * Issues and warnings impacting the migration of SQL Server instance to particular Azure Migration Target.
+     */
+    serverAssessments: MigrationAssessmentResponseServerAssessments[];
+    /**
+     * SKU Recommendation results for Azure migration targets for SQL Server.
+     */
+    skuRecommendationResults: SkuRecommendationResultsResponse;
+}
+
+export interface MigrationAssessmentResponseImpactedObjects {
+    impactDetail?: string;
+    name?: string;
+    objectType?: string;
+}
+
+export interface MigrationAssessmentResponseServerAssessments {
+    appliesToMigrationTargetPlatform?: string;
+    featureId?: string;
+    impactedObjects?: MigrationAssessmentResponseImpactedObjects[];
+    issueCategory?: string;
+    moreInformation?: string;
+}
+
+/**
+ * Migration related configuration.
+ */
+export interface MigrationResponse {
+    /**
+     * Migration assessments related configuration.
+     */
+    assessment?: MigrationAssessmentResponse;
+}
+
+/**
  * The monitoring configuration.
  */
 export interface MonitoringResponse {
@@ -814,6 +1033,182 @@ export interface SequencerActionResponse {
 }
 
 /**
+ * SKU Recommendation results for Azure SQL Database.
+ */
+export interface SkuRecommendationResultsAzureSqlDatabaseResponse {
+    /**
+     * The Monthly cost of the particular SKU.
+     */
+    monthlyCost?: SkuRecommendationResultsMonthlyCostResponse;
+    /**
+     * Number of blocker issues to fix before migrating to the target platform.
+     */
+    numberOfServerBlockerIssues?: number;
+    /**
+     * The target recommendation Status for this database.
+     */
+    recommendationStatus?: string;
+    targetSku?: SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku;
+}
+
+export interface SkuRecommendationResultsAzureSqlDatabaseResponseCategory {
+    /**
+     * The compute tier of the target SKU.
+     */
+    computeTier?: string;
+    /**
+     * The hardware type of the target SKU.
+     */
+    hardwareType?: string;
+    /**
+     * The SQL purchasing model of the target SKU.
+     */
+    sqlPurchasingModel?: string;
+    /**
+     * The SQL service tier of the target SKU.
+     */
+    sqlServiceTier?: string;
+    /**
+     * Indicates if zone redundancy is available for the target SKU.
+     */
+    zoneRedundancyAvailable?: boolean;
+}
+
+export interface SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku {
+    category?: SkuRecommendationResultsAzureSqlDatabaseResponseCategory;
+}
+
+/**
+ * SKU Recommendation results for Azure SQL Managed Instance.
+ */
+export interface SkuRecommendationResultsAzureSqlManagedInstanceResponse {
+    /**
+     * The Monthly cost of the particular SKU.
+     */
+    monthlyCost?: SkuRecommendationResultsMonthlyCostResponse;
+    /**
+     * Number of blocker issues to fix before migrating to the target platform.
+     */
+    numberOfServerBlockerIssues?: number;
+    /**
+     * The target recommendation Status for this database.
+     */
+    recommendationStatus?: string;
+    targetSku?: SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku;
+}
+
+export interface SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory {
+    /**
+     * The compute tier of the target SKU.
+     */
+    computeTier?: string;
+    /**
+     * The hardware type of the target SKU.
+     */
+    hardwareType?: string;
+    /**
+     * The SQL purchasing model of the target SKU.
+     */
+    sqlPurchasingModel?: string;
+    /**
+     * The SQL service tier of the target SKU.
+     */
+    sqlServiceTier?: string;
+    /**
+     * Indicates if zone redundancy is available for the target SKU.
+     */
+    zoneRedundancyAvailable?: boolean;
+}
+
+export interface SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku {
+    category?: SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory;
+}
+
+/**
+ * SKU Recommendation results for Azure SQL Virtual Machine.
+ */
+export interface SkuRecommendationResultsAzureSqlVirtualMachineResponse {
+    /**
+     * The Monthly cost of the particular SKU.
+     */
+    monthlyCost?: SkuRecommendationResultsMonthlyCostResponse;
+    /**
+     * Number of blocker issues to fix before migrating to the target platform.
+     */
+    numberOfServerBlockerIssues?: number;
+    /**
+     * The target recommendation Status for this database.
+     */
+    recommendationStatus?: string;
+    targetSku?: SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku;
+}
+
+export interface SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory {
+    /**
+     * Available VM SKUs for the Azure SQL Virtual Machine.
+     */
+    availableVmSkus?: string[];
+    /**
+     * The virtual machine family of the target SKU.
+     */
+    virtualMachineFamily?: string;
+}
+
+export interface SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku {
+    category?: SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory;
+}
+
+/**
+ * The Monthly cost of the particular SKU.
+ */
+export interface SkuRecommendationResultsMonthlyCostResponse {
+    /**
+     * Represents the Cost of Compute.
+     */
+    computeCost?: number;
+    /**
+     * Represents the Cost of Storage.
+     */
+    storageCost?: number;
+    /**
+     * Represents the Total Cost.
+     */
+    totalCost?: number;
+}
+
+/**
+ * SKU Recommendation results for Azure migration targets for SQL Server.
+ */
+export interface SkuRecommendationResultsResponse {
+    /**
+     * SKU Recommendation results for Azure SQL Database.
+     */
+    azureSqlDatabase?: SkuRecommendationResultsAzureSqlDatabaseResponse;
+    /**
+     * SKU Recommendation results for Azure SQL Managed Instance.
+     */
+    azureSqlManagedInstance?: SkuRecommendationResultsAzureSqlManagedInstanceResponse;
+    /**
+     * SKU Recommendation results for Azure SQL Virtual Machine.
+     */
+    azureSqlVirtualMachine?: SkuRecommendationResultsAzureSqlVirtualMachineResponse;
+}
+
+/**
+ * The SKU recommendation summary.
+ */
+export interface SkuRecommendationSummaryResponse {
+    /**
+     * Number of blocker issues to fix before migrating this database to the target platform.
+     */
+    numOfBlockerIssues?: number;
+    /**
+     * The target recommendation Status for this database.
+     */
+    recommendationStatus?: string;
+}
+
+/**
  * The properties of Arc Sql availability group database replica resource
  */
 export interface SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse {
@@ -872,13 +1267,50 @@ export interface SqlAvailabilityGroupReplicaResourcePropertiesResponse {
      */
     replicaId: string;
     /**
-     * the replica name.
+     * The replica name.
      */
     replicaName?: string;
+    /**
+     * Resource id of this replica. This is required for a distributed availability group, in which case it describes the location of the availability group that hosts one replica in the DAG. In a non-distributed availability group this field is optional but can be used to store the Azure resource id for AG.
+     */
+    replicaResourceId?: string;
     /**
      * null
      */
     state?: AvailabilityGroupStateResponse;
+}
+
+/**
+ * The properties of a static IP Arc Sql availability group listener
+ */
+export interface SqlAvailabilityGroupStaticIPListenerPropertiesResponse {
+    /**
+     * the DNS name for the listener.
+     */
+    dnsName?: string;
+    /**
+     * IP V4 Addresses and masks for the listener.
+     */
+    ipV4AddressesAndMasks?: SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks[];
+    /**
+     * IP V6 Addresses for the listener
+     */
+    ipV6Addresses?: string[];
+    /**
+     * Network port for the listener. Default is 1433.
+     */
+    port?: number;
+}
+
+export interface SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks {
+    /**
+     * IPV4 address
+     */
+    ipAddress?: string;
+    /**
+     * IPV4 netmask
+     */
+    mask?: string;
 }
 
 /**
@@ -1048,6 +1480,10 @@ export interface SqlServerAvailabilityGroupResourcePropertiesResponse {
      * the SQL server name.
      */
     serverName: string;
+    /**
+     * The unique ID of the hybrid machine that this resource belongs to.
+     */
+    vmId: string;
 }
 
 /**
@@ -1100,6 +1536,10 @@ export interface SqlServerDatabaseResourcePropertiesResponse {
      */
     createMode?: string;
     /**
+     * Total size in MB for the data (mdf and ndf) files for this database.
+     */
+    dataFileSizeMB?: number;
+    /**
      * Creation date of the database.
      */
     databaseCreationDate?: string;
@@ -1120,6 +1560,14 @@ export interface SqlServerDatabaseResourcePropertiesResponse {
      */
     lastDatabaseUploadTime: string;
     /**
+     * Total size in MB for the log (ldf) files for this database.
+     */
+    logFileSizeMB?: number;
+    /**
+     * Migration related configuration.
+     */
+    migration?: DataBaseMigrationResponse;
+    /**
      * The provisioning state of the Arc-enabled SQL Server database resource.
      */
     provisioningState: string;
@@ -1136,7 +1584,7 @@ export interface SqlServerDatabaseResourcePropertiesResponse {
      */
     sizeMB?: number;
     /**
-     * The resource identifier of the source database associated with create operation of this database.
+     * The name of the source database associated with create operation of this database.
      */
     sourceDatabaseId?: string;
     /**
@@ -1147,6 +1595,10 @@ export interface SqlServerDatabaseResourcePropertiesResponse {
      * State of the database.
      */
     state?: string;
+    /**
+     * The unique ID of the hybrid machine that this resource belongs to.
+     */
+    vmId: string;
 }
 
 export interface SqlServerDatabaseResourcePropertiesResponseBackupInformation {
@@ -1255,6 +1707,10 @@ export interface SqlServerInstancePropertiesResponse {
      */
     alwaysOnRole: string;
     /**
+     * Authentication related configuration for the SQL Server Instance.
+     */
+    authentication?: AuthenticationResponse;
+    /**
      * Status of Azure Defender.
      */
     azureDefenderStatus: string;
@@ -1266,6 +1722,10 @@ export interface SqlServerInstancePropertiesResponse {
      * The backup profile for the SQL server.
      */
     backupPolicy?: BackupPolicyResponse;
+    /**
+     * Client connection related configuration.
+     */
+    clientConnection?: ClientConnectionResponse;
     /**
      * SQL Server collation.
      */
@@ -1287,6 +1747,14 @@ export interface SqlServerInstancePropertiesResponse {
      */
     currentVersion: string;
     /**
+     * Database mirroring endpoint related properties.
+     */
+    databaseMirroringEndpoint?: DBMEndpointResponse;
+    /**
+     * Indicates whether database master key exists in SQL Server.
+     */
+    dbMasterKeyExists: boolean;
+    /**
      * SQL Server edition.
      */
     edition?: string;
@@ -1303,6 +1771,18 @@ export interface SqlServerInstancePropertiesResponse {
      */
     instanceName?: string;
     /**
+     * Indicates whether DigiCert PKI root-authority certificate (trusted by Azure) exists in SQL Server and trusted for Azure database.windows.net domains.
+     */
+    isDigiCertPkiCertTrustConfigured: boolean;
+    /**
+     * Indicates whether always On availability groups is enabled in SQL Server.
+     */
+    isHadrEnabled: boolean;
+    /**
+     * Indicates whether Microsoft PKI root-authority certificate (trusted by Azure) exists in SQL Server and trusted for Azure database.windows.net domains.
+     */
+    isMicrosoftPkiCertTrustConfigured: boolean;
+    /**
      * The time when last successful inventory upload was performed.
      */
     lastInventoryUploadTime: string;
@@ -1314,6 +1794,14 @@ export interface SqlServerInstancePropertiesResponse {
      * SQL Server license type.
      */
     licenseType: string;
+    /**
+     * max server memory (MB) value configured for this instance.
+     */
+    maxServerMemoryMB: number;
+    /**
+     * Migration related configuration.
+     */
+    migration?: MigrationResponse;
     /**
      * The monitoring configuration.
      */
@@ -1331,6 +1819,10 @@ export interface SqlServerInstancePropertiesResponse {
      */
     provisioningState: string;
     /**
+     * Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host.
+     */
+    serviceType?: string;
+    /**
      * The cloud connectivity status.
      */
     status: string;
@@ -1343,6 +1835,10 @@ export interface SqlServerInstancePropertiesResponse {
      */
     tcpStaticPorts: string;
     /**
+     * An array of integers, where each value represents the enabled trace flags in SQL Server.
+     */
+    traceFlags: number[];
+    /**
      * Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
      */
     upgradeLockedUntil?: string;
@@ -1354,6 +1850,10 @@ export interface SqlServerInstancePropertiesResponse {
      * SQL Server version.
      */
     version?: string;
+    /**
+     * The unique ID of the hybrid machine that this resource belongs to.
+     */
+    vmId: string;
 }
 
 /**
@@ -1436,6 +1936,24 @@ export interface SystemDataResponse {
      * The type of identity that last modified the resource.
      */
     lastModifiedByType?: string;
+}
+
+/**
+ * The target readiness for migration for this database.
+ */
+export interface TargetReadinessResponse {
+    /**
+     * The SKU recommendation summary.
+     */
+    azureSqlDatabase?: SkuRecommendationSummaryResponse;
+    /**
+     * The SKU recommendation summary.
+     */
+    azureSqlManagedInstance?: SkuRecommendationSummaryResponse;
+    /**
+     * The SKU recommendation summary.
+     */
+    azureSqlVirtualMachine?: SkuRecommendationSummaryResponse;
 }
 
 /**

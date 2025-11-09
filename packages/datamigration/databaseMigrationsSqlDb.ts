@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-07-15-preview. In version 2.x of the Azure Native provider, it used API version 2022-03-30-preview.
  *
- * Other available API versions: 2022-03-30-preview, 2025-03-15-preview, 2025-06-30. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-03-30-preview, 2025-03-15-preview, 2025-06-30, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DatabaseMigrationsSqlDb extends pulumi.CustomResource {
     /**
@@ -38,17 +38,17 @@ export class DatabaseMigrationsSqlDb extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Database Migration Resource properties for SQL database.
      */
-    public readonly properties!: pulumi.Output<types.outputs.DatabaseMigrationPropertiesSqlDbResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.DatabaseMigrationPropertiesSqlDbResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a DatabaseMigrationsSqlDb resource with the given unique name, arguments, and options.
@@ -61,16 +61,16 @@ export class DatabaseMigrationsSqlDb extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.sqlDbInstanceName === undefined) && !opts.urn) {
+            if (args?.sqlDbInstanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sqlDbInstanceName'");
             }
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sqlDbInstanceName"] = args ? args.sqlDbInstanceName : undefined;
-            resourceInputs["targetDbName"] = args ? args.targetDbName : undefined;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sqlDbInstanceName"] = args?.sqlDbInstanceName;
+            resourceInputs["targetDbName"] = args?.targetDbName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -83,7 +83,7 @@ export class DatabaseMigrationsSqlDb extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:datamigration/v20220330preview:DatabaseMigrationsSqlDb" }, { type: "azure-native:datamigration/v20230715preview:DatabaseMigrationsSqlDb" }, { type: "azure-native:datamigration/v20250315preview:DatabaseMigrationsSqlDb" }, { type: "azure-native:datamigration/v20250630:DatabaseMigrationsSqlDb" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:datamigration/v20220330preview:DatabaseMigrationsSqlDb" }, { type: "azure-native:datamigration/v20230715preview:DatabaseMigrationsSqlDb" }, { type: "azure-native:datamigration/v20250315preview:DatabaseMigrationsSqlDb" }, { type: "azure-native:datamigration/v20250630:DatabaseMigrationsSqlDb" }, { type: "azure-native:datamigration/v20250901preview:DatabaseMigrationsSqlDb" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DatabaseMigrationsSqlDb.__pulumiType, name, resourceInputs, opts);
     }

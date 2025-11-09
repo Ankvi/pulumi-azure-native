@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SentinelOnboardingState extends pulumi.CustomResource {
     /**
@@ -38,27 +38,27 @@ export class SentinelOnboardingState extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Flag that indicates the status of the CMK setting
      */
-    public readonly customerManagedKey!: pulumi.Output<boolean | undefined>;
+    declare public readonly customerManagedKey: pulumi.Output<boolean | undefined>;
     /**
      * Etag of the azure resource
      */
-    public /*out*/ readonly etag!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly etag: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a SentinelOnboardingState resource with the given unique name, arguments, and options.
@@ -71,16 +71,16 @@ export class SentinelOnboardingState extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["customerManagedKey"] = args ? args.customerManagedKey : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sentinelOnboardingStateName"] = args ? args.sentinelOnboardingStateName : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["customerManagedKey"] = args?.customerManagedKey;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sentinelOnboardingStateName"] = args?.sentinelOnboardingStateName;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -95,7 +95,7 @@ export class SentinelOnboardingState extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20210301preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20210901preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20211001:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20211001preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20220101preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20220401preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20220501preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20220601preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20220701preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20220801:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20220801preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20220901preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20221001preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20221101:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20221101preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20221201preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230201:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230201preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230301preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230401preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230501preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230601preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230701preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230801preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230901preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20231001preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20231101:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20231201preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20240101preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20240301:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20240401preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20240901:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20241001preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20250101preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20250301:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20250401preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20250601:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20250701preview:SentinelOnboardingState" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20210301preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20210901preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20211001:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20211001preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20220101preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20220401preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20220501preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20220601preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20220701preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20220801:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20220801preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20220901preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20221001preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20221101:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20221101preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20221201preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230201:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230201preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230301preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230401preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230501preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230601preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230701preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230801preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20230901preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20231001preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20231101:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20231201preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20240101preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20240301:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20240401preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20240901:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20241001preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20250101preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20250301:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20250401preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20250601:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20250701preview:SentinelOnboardingState" }, { type: "azure-native:securityinsights/v20250901:SentinelOnboardingState" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SentinelOnboardingState.__pulumiType, name, resourceInputs, opts);
     }

@@ -1,6 +1,20 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Customized cipher suite set object that will be used for Https when cipherSuiteSetType is Customized.
+ */
+export interface AFDDomainHttpsCustomizedCipherSuiteSetResponse {
+    /**
+     * Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
+     */
+    cipherSuiteSetForTls12?: string[];
+    /**
+     * Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
+     */
+    cipherSuiteSetForTls13?: string[];
+}
+
+/**
  * The JSON object that contains the properties to secure a domain.
  */
 export interface AFDDomainHttpsParametersResponse {
@@ -9,7 +23,15 @@ export interface AFDDomainHttpsParametersResponse {
      */
     certificateType: string;
     /**
-     * TLS protocol version that will be used for Https
+     * cipher suite set type that will be used for Https
+     */
+    cipherSuiteSetType?: string;
+    /**
+     * Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
+     */
+    customizedCipherSuiteSet?: AFDDomainHttpsCustomizedCipherSuiteSetResponse;
+    /**
+     * TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
      */
     minimumTlsVersion?: string;
     /**
@@ -51,6 +73,20 @@ export interface AfdRouteCacheConfigurationResponse {
 }
 
 /**
+ * Defines a path configuration for a web agent.
+ */
+export interface AgentPathResponse {
+    /**
+     * The actual path value.
+     */
+    path: string;
+    /**
+     * The type of the path.
+     */
+    type: string;
+}
+
+/**
  * Azure FirstParty Managed Certificate provided by other first party resource providers to enable HTTPS.
  */
 export interface AzureFirstPartyManagedCertificateParametersResponse {
@@ -63,7 +99,7 @@ export interface AzureFirstPartyManagedCertificateParametersResponse {
      */
     expirationDate: string;
     /**
-     * Resource reference to the Azure Key Vault certificate. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{certificateName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+     * Resource reference to the Azure Key Vault certificate. Expected to be in format of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets/{certificateName}
      */
     secretSource: ResourceReferenceResponse;
     /**
@@ -354,7 +390,7 @@ export interface CustomerCertificateParametersResponse {
     /**
      * The list of SANs.
      */
-    subjectAlternativeNames?: string[];
+    subjectAlternativeNames: string[];
     /**
      * Certificate thumbprint.
      */
@@ -435,7 +471,7 @@ export interface DeepCreatedOriginResponse {
      */
     httpsPort?: number;
     /**
-     * Origin name which must be unique within the endpoint. 
+     * Origin name which must be unique within the endpoint.
      */
     name: string;
     /**
@@ -507,7 +543,7 @@ export interface DeliveryRuleCacheKeyQueryStringActionResponse {
  */
 export interface DeliveryRuleClientPortConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'ClientPort'.
      */
     name: "ClientPort";
@@ -531,7 +567,7 @@ export function deliveryRuleClientPortConditionResponseProvideDefaults(val: Deli
  */
 export interface DeliveryRuleCookiesConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'Cookies'.
      */
     name: "Cookies";
@@ -555,7 +591,7 @@ export function deliveryRuleCookiesConditionResponseProvideDefaults(val: Deliver
  */
 export interface DeliveryRuleHostNameConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'HostName'.
      */
     name: "HostName";
@@ -579,7 +615,7 @@ export function deliveryRuleHostNameConditionResponseProvideDefaults(val: Delive
  */
 export interface DeliveryRuleHttpVersionConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'HttpVersion'.
      */
     name: "HttpVersion";
@@ -603,7 +639,7 @@ export function deliveryRuleHttpVersionConditionResponseProvideDefaults(val: Del
  */
 export interface DeliveryRuleIsDeviceConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'IsDevice'.
      */
     name: "IsDevice";
@@ -627,7 +663,7 @@ export function deliveryRuleIsDeviceConditionResponseProvideDefaults(val: Delive
  */
 export interface DeliveryRulePostArgsConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'PostArgs'.
      */
     name: "PostArgs";
@@ -651,7 +687,7 @@ export function deliveryRulePostArgsConditionResponseProvideDefaults(val: Delive
  */
 export interface DeliveryRuleQueryStringConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'QueryString'.
      */
     name: "QueryString";
@@ -675,7 +711,7 @@ export function deliveryRuleQueryStringConditionResponseProvideDefaults(val: Del
  */
 export interface DeliveryRuleRemoteAddressConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'RemoteAddress'.
      */
     name: "RemoteAddress";
@@ -699,7 +735,7 @@ export function deliveryRuleRemoteAddressConditionResponseProvideDefaults(val: D
  */
 export interface DeliveryRuleRequestBodyConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'RequestBody'.
      */
     name: "RequestBody";
@@ -738,7 +774,7 @@ export interface DeliveryRuleRequestHeaderActionResponse {
  */
 export interface DeliveryRuleRequestHeaderConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'RequestHeader'.
      */
     name: "RequestHeader";
@@ -762,7 +798,7 @@ export function deliveryRuleRequestHeaderConditionResponseProvideDefaults(val: D
  */
 export interface DeliveryRuleRequestMethodConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'RequestMethod'.
      */
     name: "RequestMethod";
@@ -786,7 +822,7 @@ export function deliveryRuleRequestMethodConditionResponseProvideDefaults(val: D
  */
 export interface DeliveryRuleRequestSchemeConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'RequestScheme'.
      */
     name: "RequestScheme";
@@ -810,7 +846,7 @@ export function deliveryRuleRequestSchemeConditionResponseProvideDefaults(val: D
  */
 export interface DeliveryRuleRequestUriConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'RequestUri'.
      */
     name: "RequestUri";
@@ -886,7 +922,7 @@ export interface DeliveryRuleRouteConfigurationOverrideActionResponse {
  */
 export interface DeliveryRuleServerPortConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'ServerPort'.
      */
     name: "ServerPort";
@@ -910,7 +946,7 @@ export function deliveryRuleServerPortConditionResponseProvideDefaults(val: Deli
  */
 export interface DeliveryRuleSocketAddrConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'SocketAddr'.
      */
     name: "SocketAddr";
@@ -934,7 +970,7 @@ export function deliveryRuleSocketAddrConditionResponseProvideDefaults(val: Deli
  */
 export interface DeliveryRuleSslProtocolConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'SslProtocol'.
      */
     name: "SslProtocol";
@@ -958,7 +994,7 @@ export function deliveryRuleSslProtocolConditionResponseProvideDefaults(val: Del
  */
 export interface DeliveryRuleUrlFileExtensionConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'UrlFileExtension'.
      */
     name: "UrlFileExtension";
@@ -982,7 +1018,7 @@ export function deliveryRuleUrlFileExtensionConditionResponseProvideDefaults(val
  */
 export interface DeliveryRuleUrlFileNameConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'UrlFileName'.
      */
     name: "UrlFileName";
@@ -1006,7 +1042,7 @@ export function deliveryRuleUrlFileNameConditionResponseProvideDefaults(val: Del
  */
 export interface DeliveryRuleUrlPathConditionResponse {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'UrlPath'.
      */
     name: "UrlPath";
@@ -1042,7 +1078,7 @@ export interface DomainValidationPropertiesResponse {
 /**
  * A policy that specifies the delivery rules to be used for an endpoint.
  */
-export interface EndpointPropertiesUpdateParametersResponseDeliveryPolicy {
+export interface EndpointPropertiesUpdateParametersDeliveryPolicyResponse {
     /**
      * User-friendly description of the policy.
      */
@@ -1056,7 +1092,7 @@ export interface EndpointPropertiesUpdateParametersResponseDeliveryPolicy {
 /**
  * Defines the Web Application Firewall policy for the endpoint (if applicable)
  */
-export interface EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink {
+export interface EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse {
     /**
      * Resource ID.
      */
@@ -1468,6 +1504,24 @@ export interface MatchConditionResponse {
 }
 
 /**
+ * The JSON object that contains the properties of the origin authentication settings.
+ */
+export interface OriginAuthenticationPropertiesResponse {
+    /**
+     * The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
+     */
+    scope?: string;
+    /**
+     * The type of the authentication for the origin.
+     */
+    type?: string;
+    /**
+     * The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
+     */
+    userAssignedIdentity?: ResourceReferenceResponse;
+}
+
+/**
  * Defines the parameters for the origin group override action.
  */
 export interface OriginGroupOverrideActionParametersResponse {
@@ -1842,7 +1896,7 @@ export function requestMethodMatchConditionParametersResponseProvideDefaults(val
 }
 
 /**
- * Defines the parameters for RequestScheme match conditions 
+ * Defines the parameters for RequestScheme match conditions
  */
 export interface RequestSchemeMatchConditionParametersResponse {
     /**
@@ -2150,19 +2204,19 @@ export function sslProtocolMatchConditionParametersResponseProvideDefaults(val: 
 }
 
 /**
- * Read only system data
+ * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
     /**
-     * The timestamp of resource creation (UTC)
+     * The timestamp of resource creation (UTC).
      */
     createdAt?: string;
     /**
-     * An identifier for the identity that created the resource
+     * The identity that created the resource.
      */
     createdBy?: string;
     /**
-     * The type of identity that created the resource
+     * The type of identity that created the resource.
      */
     createdByType?: string;
     /**
@@ -2170,11 +2224,11 @@ export interface SystemDataResponse {
      */
     lastModifiedAt?: string;
     /**
-     * An identifier for the identity that last modified the resource
+     * The identity that last modified the resource.
      */
     lastModifiedBy?: string;
     /**
-     * The type of identity that last modified the resource
+     * The type of identity that last modified the resource.
      */
     lastModifiedByType?: string;
 }
@@ -2398,7 +2452,7 @@ export interface UrlSigningActionParametersResponse {
      */
     algorithm?: string;
     /**
-     * Defines which query string parameters in the url to be considered for expires, key id etc. 
+     * Defines which query string parameters in the url to be considered for expires, key id etc.
      */
     parameterNameOverride?: UrlSigningParamIdentifierResponse[];
     /**

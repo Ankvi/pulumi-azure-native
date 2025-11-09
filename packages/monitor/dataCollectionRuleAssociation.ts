@@ -5,6 +5,8 @@ import * as types from "./types";
  * Definition of generic ARM proxy resource.
  *
  * Uses Azure REST API version 2022-06-01.
+ *
+ * Other available API versions: 2024-03-11. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DataCollectionRuleAssociation extends pulumi.CustomResource {
     /**
@@ -36,43 +38,43 @@ export class DataCollectionRuleAssociation extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The resource ID of the data collection endpoint that is to be associated.
      */
-    public readonly dataCollectionEndpointId!: pulumi.Output<string | undefined>;
+    declare public readonly dataCollectionEndpointId: pulumi.Output<string | undefined>;
     /**
      * The resource ID of the data collection rule that is to be associated.
      */
-    public readonly dataCollectionRuleId!: pulumi.Output<string | undefined>;
+    declare public readonly dataCollectionRuleId: pulumi.Output<string | undefined>;
     /**
      * Description of the association.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Resource entity tag (ETag).
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Metadata about the resource
      */
-    public /*out*/ readonly metadata!: pulumi.Output<types.outputs.DataCollectionRuleAssociationResponseMetadata>;
+    declare public /*out*/ readonly metadata: pulumi.Output<types.outputs.DataCollectionRuleAssociationResponseMetadata>;
     /**
      * The name of the resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The resource provisioning state.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData>;
     /**
      * The type of the resource.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a DataCollectionRuleAssociation resource with the given unique name, arguments, and options.
@@ -85,14 +87,14 @@ export class DataCollectionRuleAssociation extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceUri === undefined) && !opts.urn) {
+            if (args?.resourceUri === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceUri'");
             }
-            resourceInputs["associationName"] = args ? args.associationName : undefined;
-            resourceInputs["dataCollectionEndpointId"] = args ? args.dataCollectionEndpointId : undefined;
-            resourceInputs["dataCollectionRuleId"] = args ? args.dataCollectionRuleId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["resourceUri"] = args ? args.resourceUri : undefined;
+            resourceInputs["associationName"] = args?.associationName;
+            resourceInputs["dataCollectionEndpointId"] = args?.dataCollectionEndpointId;
+            resourceInputs["dataCollectionRuleId"] = args?.dataCollectionRuleId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["resourceUri"] = args?.resourceUri;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
@@ -113,7 +115,7 @@ export class DataCollectionRuleAssociation extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:insights/v20220601:DataCollectionRuleAssociation" }, { type: "azure-native:insights/v20230311:DataCollectionRuleAssociation" }, { type: "azure-native:insights:DataCollectionRuleAssociation" }, { type: "azure-native:monitor/v20191101preview:DataCollectionRuleAssociation" }, { type: "azure-native:monitor/v20210401:DataCollectionRuleAssociation" }, { type: "azure-native:monitor/v20210901preview:DataCollectionRuleAssociation" }, { type: "azure-native:monitor/v20220601:DataCollectionRuleAssociation" }, { type: "azure-native:monitor/v20230311:DataCollectionRuleAssociation" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:insights/v20220601:DataCollectionRuleAssociation" }, { type: "azure-native:insights/v20230311:DataCollectionRuleAssociation" }, { type: "azure-native:insights:DataCollectionRuleAssociation" }, { type: "azure-native:monitor/v20191101preview:DataCollectionRuleAssociation" }, { type: "azure-native:monitor/v20210401:DataCollectionRuleAssociation" }, { type: "azure-native:monitor/v20210901preview:DataCollectionRuleAssociation" }, { type: "azure-native:monitor/v20220601:DataCollectionRuleAssociation" }, { type: "azure-native:monitor/v20230311:DataCollectionRuleAssociation" }, { type: "azure-native:monitor/v20240311:DataCollectionRuleAssociation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DataCollectionRuleAssociation.__pulumiType, name, resourceInputs, opts);
     }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
  *
- * Other available API versions: 2024-03-01, 2024-07-01, 2024-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-03-01, 2024-07-01, 2024-09-01-preview, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class RoutingRuleCollection extends pulumi.CustomResource {
     /**
@@ -38,43 +38,43 @@ export class RoutingRuleCollection extends pulumi.CustomResource {
     /**
      * Groups for configuration
      */
-    public readonly appliesTo!: pulumi.Output<types.outputs.NetworkManagerRoutingGroupItemResponse[]>;
+    declare public readonly appliesTo: pulumi.Output<types.outputs.NetworkManagerRoutingGroupItemResponse[]>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * A description of the routing rule collection.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Determines whether BGP route propagation is enabled. Defaults to true.
      */
-    public readonly disableBgpRoutePropagation!: pulumi.Output<string | undefined>;
+    declare public readonly disableBgpRoutePropagation: pulumi.Output<string | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The provisioning state of the resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Unique identifier for this resource.
      */
-    public /*out*/ readonly resourceGuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceGuid: pulumi.Output<string>;
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a RoutingRuleCollection resource with the given unique name, arguments, and options.
@@ -87,25 +87,25 @@ export class RoutingRuleCollection extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.appliesTo === undefined) && !opts.urn) {
+            if (args?.appliesTo === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appliesTo'");
             }
-            if ((!args || args.configurationName === undefined) && !opts.urn) {
+            if (args?.configurationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configurationName'");
             }
-            if ((!args || args.networkManagerName === undefined) && !opts.urn) {
+            if (args?.networkManagerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkManagerName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["appliesTo"] = args ? args.appliesTo : undefined;
-            resourceInputs["configurationName"] = args ? args.configurationName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disableBgpRoutePropagation"] = args ? args.disableBgpRoutePropagation : undefined;
-            resourceInputs["networkManagerName"] = args ? args.networkManagerName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["ruleCollectionName"] = args ? args.ruleCollectionName : undefined;
+            resourceInputs["appliesTo"] = args?.appliesTo;
+            resourceInputs["configurationName"] = args?.configurationName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disableBgpRoutePropagation"] = args?.disableBgpRoutePropagation;
+            resourceInputs["networkManagerName"] = args?.networkManagerName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["ruleCollectionName"] = args?.ruleCollectionName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -126,7 +126,7 @@ export class RoutingRuleCollection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20240301:RoutingRuleCollection" }, { type: "azure-native:network/v20240501:RoutingRuleCollection" }, { type: "azure-native:network/v20240701:RoutingRuleCollection" }, { type: "azure-native:network/v20240901preview:RoutingRuleCollection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20240301:RoutingRuleCollection" }, { type: "azure-native:network/v20240501:RoutingRuleCollection" }, { type: "azure-native:network/v20240701:RoutingRuleCollection" }, { type: "azure-native:network/v20240901preview:RoutingRuleCollection" }, { type: "azure-native:network/v20241001:RoutingRuleCollection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RoutingRuleCollection.__pulumiType, name, resourceInputs, opts);
     }

@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
  *
- * Other available API versions: 2023-01-01, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dataprotection [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-01-01, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-02-01, 2025-07-01, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dataprotection [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ResourceGuard extends pulumi.CustomResource {
     /**
@@ -36,35 +36,35 @@ export class ResourceGuard extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Optional ETag.
      */
-    public readonly eTag!: pulumi.Output<string | undefined>;
+    declare public readonly eTag: pulumi.Output<string | undefined>;
     /**
      * Resource location.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Resource name associated with the resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * ResourceGuardResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.ResourceGuardResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.ResourceGuardResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ResourceGuard resource with the given unique name, arguments, and options.
@@ -77,15 +77,15 @@ export class ResourceGuard extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["eTag"] = args ? args.eTag : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["resourceGuardsName"] = args ? args.resourceGuardsName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["eTag"] = args?.eTag;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["resourceGuardsName"] = args?.resourceGuardsName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -101,7 +101,7 @@ export class ResourceGuard extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dataprotection/v20210701:ResourceGuard" }, { type: "azure-native:dataprotection/v20211001preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20211201preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20220101:ResourceGuard" }, { type: "azure-native:dataprotection/v20220201preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20220301:ResourceGuard" }, { type: "azure-native:dataprotection/v20220331preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20220401:ResourceGuard" }, { type: "azure-native:dataprotection/v20220501:ResourceGuard" }, { type: "azure-native:dataprotection/v20220901preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20221001preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20221101preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20221201:ResourceGuard" }, { type: "azure-native:dataprotection/v20230101:ResourceGuard" }, { type: "azure-native:dataprotection/v20230401preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20230501:ResourceGuard" }, { type: "azure-native:dataprotection/v20230601preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20230801preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20231101:ResourceGuard" }, { type: "azure-native:dataprotection/v20231201:ResourceGuard" }, { type: "azure-native:dataprotection/v20240201preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20240301:ResourceGuard" }, { type: "azure-native:dataprotection/v20240401:ResourceGuard" }, { type: "azure-native:dataprotection/v20250101:ResourceGuard" }, { type: "azure-native:dataprotection/v20250201:ResourceGuard" }, { type: "azure-native:dataprotection/v20250701:ResourceGuard" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dataprotection/v20210701:ResourceGuard" }, { type: "azure-native:dataprotection/v20211001preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20211201preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20220101:ResourceGuard" }, { type: "azure-native:dataprotection/v20220201preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20220301:ResourceGuard" }, { type: "azure-native:dataprotection/v20220331preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20220401:ResourceGuard" }, { type: "azure-native:dataprotection/v20220501:ResourceGuard" }, { type: "azure-native:dataprotection/v20220901preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20221001preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20221101preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20221201:ResourceGuard" }, { type: "azure-native:dataprotection/v20230101:ResourceGuard" }, { type: "azure-native:dataprotection/v20230401preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20230501:ResourceGuard" }, { type: "azure-native:dataprotection/v20230601preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20230801preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20231101:ResourceGuard" }, { type: "azure-native:dataprotection/v20231201:ResourceGuard" }, { type: "azure-native:dataprotection/v20240201preview:ResourceGuard" }, { type: "azure-native:dataprotection/v20240301:ResourceGuard" }, { type: "azure-native:dataprotection/v20240401:ResourceGuard" }, { type: "azure-native:dataprotection/v20250101:ResourceGuard" }, { type: "azure-native:dataprotection/v20250201:ResourceGuard" }, { type: "azure-native:dataprotection/v20250701:ResourceGuard" }, { type: "azure-native:dataprotection/v20250901:ResourceGuard" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ResourceGuard.__pulumiType, name, resourceInputs, opts);
     }

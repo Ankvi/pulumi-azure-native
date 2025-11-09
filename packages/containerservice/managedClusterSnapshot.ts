@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-10-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-05-02-preview.
  *
- * Other available API versions: 2022-02-02-preview, 2022-03-02-preview, 2022-04-02-preview, 2022-05-02-preview, 2022-06-02-preview, 2022-07-02-preview, 2022-08-02-preview, 2022-08-03-preview, 2022-09-02-preview, 2022-10-02-preview, 2022-11-02-preview, 2023-01-02-preview, 2023-02-02-preview, 2023-03-02-preview, 2023-04-02-preview, 2023-05-02-preview, 2023-06-02-preview, 2023-07-02-preview, 2023-08-02-preview, 2023-09-02-preview, 2023-10-02-preview, 2023-11-02-preview, 2024-01-02-preview, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview, 2024-07-02-preview, 2024-09-02-preview, 2025-01-02-preview, 2025-02-02-preview, 2025-03-02-preview, 2025-04-02-preview, 2025-05-02-preview, 2025-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-02-02-preview, 2022-03-02-preview, 2022-04-02-preview, 2022-05-02-preview, 2022-06-02-preview, 2022-07-02-preview, 2022-08-02-preview, 2022-08-03-preview, 2022-09-02-preview, 2022-10-02-preview, 2022-11-02-preview, 2023-01-02-preview, 2023-02-02-preview, 2023-03-02-preview, 2023-04-02-preview, 2023-05-02-preview, 2023-06-02-preview, 2023-07-02-preview, 2023-08-02-preview, 2023-09-02-preview, 2023-10-02-preview, 2023-11-02-preview, 2024-01-02-preview, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview, 2024-07-02-preview, 2024-09-02-preview, 2025-01-02-preview, 2025-02-02-preview, 2025-03-02-preview, 2025-04-02-preview, 2025-05-02-preview, 2025-06-02-preview, 2025-07-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ManagedClusterSnapshot extends pulumi.CustomResource {
     /**
@@ -38,39 +38,39 @@ export class ManagedClusterSnapshot extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * CreationData to be used to specify the source resource ID to create this snapshot.
      */
-    public readonly creationData!: pulumi.Output<types.outputs.CreationDataResponse | undefined>;
+    declare public readonly creationData: pulumi.Output<types.outputs.CreationDataResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * What the properties will be showed when getting managed cluster snapshot. Those properties are read-only.
      */
-    public /*out*/ readonly managedClusterPropertiesReadOnly!: pulumi.Output<types.outputs.ManagedClusterPropertiesForSnapshotResponse>;
+    declare public /*out*/ readonly managedClusterPropertiesReadOnly: pulumi.Output<types.outputs.ManagedClusterPropertiesForSnapshotResponse>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The type of a snapshot. The default is NodePool.
      */
-    public readonly snapshotType!: pulumi.Output<string | undefined>;
+    declare public readonly snapshotType: pulumi.Output<string | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ManagedClusterSnapshot resource with the given unique name, arguments, and options.
@@ -83,15 +83,15 @@ export class ManagedClusterSnapshot extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["creationData"] = args ? args.creationData : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["resourceName"] = args ? args.resourceName : undefined;
-            resourceInputs["snapshotType"] = args ? args.snapshotType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["creationData"] = args?.creationData;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["resourceName"] = args?.resourceName;
+            resourceInputs["snapshotType"] = args?.snapshotType;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["managedClusterPropertiesReadOnly"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -109,7 +109,7 @@ export class ManagedClusterSnapshot extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20220202preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20220302preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20220402preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20220502preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20220602preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20220702preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20220802preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20220803preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20220902preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20221002preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20221102preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230102preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230202preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230302preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230402preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230502preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230602preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230702preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230802preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230902preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20231002preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20231102preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20240102preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20240202preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20240302preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20240402preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20240502preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20240602preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20240702preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20240902preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20241002preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20250102preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20250202preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20250302preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20250402preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20250502preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20250602preview:ManagedClusterSnapshot" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20220202preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20220302preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20220402preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20220502preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20220602preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20220702preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20220802preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20220803preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20220902preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20221002preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20221102preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230102preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230202preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230302preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230402preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230502preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230602preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230702preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230802preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20230902preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20231002preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20231102preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20240102preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20240202preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20240302preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20240402preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20240502preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20240602preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20240702preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20240902preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20241002preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20250102preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20250202preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20250302preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20250402preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20250502preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20250602preview:ManagedClusterSnapshot" }, { type: "azure-native:containerservice/v20250702preview:ManagedClusterSnapshot" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedClusterSnapshot.__pulumiType, name, resourceInputs, opts);
     }

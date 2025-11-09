@@ -5,7 +5,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ExpressRoutePortAuthorization extends pulumi.CustomResource {
     /**
@@ -37,35 +37,35 @@ export class ExpressRoutePortAuthorization extends pulumi.CustomResource {
     /**
      * The authorization key.
      */
-    public /*out*/ readonly authorizationKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly authorizationKey: pulumi.Output<string>;
     /**
      * The authorization use status.
      */
-    public /*out*/ readonly authorizationUseStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly authorizationUseStatus: pulumi.Output<string>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The reference to the ExpressRoute circuit resource using the authorization.
      */
-    public /*out*/ readonly circuitResourceUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly circuitResourceUri: pulumi.Output<string>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     /**
      * The provisioning state of the authorization resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Type of the resource.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ExpressRoutePortAuthorization resource with the given unique name, arguments, and options.
@@ -78,17 +78,17 @@ export class ExpressRoutePortAuthorization extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.expressRoutePortName === undefined) && !opts.urn) {
+            if (args?.expressRoutePortName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'expressRoutePortName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["authorizationName"] = args ? args.authorizationName : undefined;
-            resourceInputs["expressRoutePortName"] = args ? args.expressRoutePortName : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["authorizationName"] = args?.authorizationName;
+            resourceInputs["expressRoutePortName"] = args?.expressRoutePortName;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["authorizationKey"] = undefined /*out*/;
             resourceInputs["authorizationUseStatus"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -107,7 +107,7 @@ export class ExpressRoutePortAuthorization extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210801:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20220101:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20220501:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20220701:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20220901:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20221101:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20230201:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20230401:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20230501:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20230601:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20230901:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20231101:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20240101:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20240301:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20240501:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20240701:ExpressRoutePortAuthorization" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210801:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20220101:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20220501:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20220701:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20220901:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20221101:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20230201:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20230401:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20230501:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20230601:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20230901:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20231101:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20240101:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20240301:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20240501:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20240701:ExpressRoutePortAuthorization" }, { type: "azure-native:network/v20241001:ExpressRoutePortAuthorization" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ExpressRoutePortAuthorization.__pulumiType, name, resourceInputs, opts);
     }

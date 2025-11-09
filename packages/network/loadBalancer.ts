@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**
@@ -38,71 +38,71 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Collection of backend address pools used by a load balancer.
      */
-    public readonly backendAddressPools!: pulumi.Output<types.outputs.BackendAddressPoolResponse[] | undefined>;
+    declare public readonly backendAddressPools: pulumi.Output<types.outputs.BackendAddressPoolResponse[] | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The extended location of the load balancer.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * Object representing the frontend IPs to be used for the load balancer.
      */
-    public readonly frontendIPConfigurations!: pulumi.Output<types.outputs.FrontendIPConfigurationResponse[] | undefined>;
+    declare public readonly frontendIPConfigurations: pulumi.Output<types.outputs.FrontendIPConfigurationResponse[] | undefined>;
     /**
      * Defines an external port range for inbound NAT to a single backend port on NICs associated with a load balancer. Inbound NAT rules are created automatically for each NIC associated with the Load Balancer using an external port from this range. Defining an Inbound NAT pool on your Load Balancer is mutually exclusive with defining inbound NAT rules. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an inbound NAT pool. They have to reference individual inbound NAT rules.
      */
-    public readonly inboundNatPools!: pulumi.Output<types.outputs.InboundNatPoolResponse[] | undefined>;
+    declare public readonly inboundNatPools: pulumi.Output<types.outputs.InboundNatPoolResponse[] | undefined>;
     /**
      * Collection of inbound NAT Rules used by a load balancer. Defining inbound NAT rules on your load balancer is mutually exclusive with defining an inbound NAT pool. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an Inbound NAT pool. They have to reference individual inbound NAT rules.
      */
-    public readonly inboundNatRules!: pulumi.Output<types.outputs.InboundNatRuleResponse[] | undefined>;
+    declare public readonly inboundNatRules: pulumi.Output<types.outputs.InboundNatRuleResponse[] | undefined>;
     /**
      * Object collection representing the load balancing rules Gets the provisioning.
      */
-    public readonly loadBalancingRules!: pulumi.Output<types.outputs.LoadBalancingRuleResponse[] | undefined>;
+    declare public readonly loadBalancingRules: pulumi.Output<types.outputs.LoadBalancingRuleResponse[] | undefined>;
     /**
      * Resource location.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The outbound rules.
      */
-    public readonly outboundRules!: pulumi.Output<types.outputs.OutboundRuleResponse[] | undefined>;
+    declare public readonly outboundRules: pulumi.Output<types.outputs.OutboundRuleResponse[] | undefined>;
     /**
      * Collection of probe objects used in the load balancer.
      */
-    public readonly probes!: pulumi.Output<types.outputs.ProbeResponse[] | undefined>;
+    declare public readonly probes: pulumi.Output<types.outputs.ProbeResponse[] | undefined>;
     /**
      * The provisioning state of the load balancer resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The resource GUID property of the load balancer resource.
      */
-    public /*out*/ readonly resourceGuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceGuid: pulumi.Output<string>;
     /**
      * The load balancer SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.LoadBalancerSkuResponse | undefined>;
+    declare public readonly sku: pulumi.Output<types.outputs.LoadBalancerSkuResponse | undefined>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -115,23 +115,23 @@ export class LoadBalancer extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["backendAddressPools"] = args ? args.backendAddressPools : undefined;
-            resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
-            resourceInputs["frontendIPConfigurations"] = args ? args.frontendIPConfigurations : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["inboundNatPools"] = args ? args.inboundNatPools : undefined;
-            resourceInputs["inboundNatRules"] = args ? args.inboundNatRules : undefined;
-            resourceInputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
-            resourceInputs["loadBalancingRules"] = args ? args.loadBalancingRules : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["outboundRules"] = args ? args.outboundRules : undefined;
-            resourceInputs["probes"] = args ? args.probes : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["backendAddressPools"] = args?.backendAddressPools;
+            resourceInputs["extendedLocation"] = args?.extendedLocation;
+            resourceInputs["frontendIPConfigurations"] = args?.frontendIPConfigurations;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["inboundNatPools"] = args?.inboundNatPools;
+            resourceInputs["inboundNatRules"] = args?.inboundNatRules;
+            resourceInputs["loadBalancerName"] = args?.loadBalancerName;
+            resourceInputs["loadBalancingRules"] = args?.loadBalancingRules;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["outboundRules"] = args?.outboundRules;
+            resourceInputs["probes"] = args?.probes;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -158,7 +158,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20150501preview:LoadBalancer" }, { type: "azure-native:network/v20150615:LoadBalancer" }, { type: "azure-native:network/v20160330:LoadBalancer" }, { type: "azure-native:network/v20160601:LoadBalancer" }, { type: "azure-native:network/v20160901:LoadBalancer" }, { type: "azure-native:network/v20161201:LoadBalancer" }, { type: "azure-native:network/v20170301:LoadBalancer" }, { type: "azure-native:network/v20170601:LoadBalancer" }, { type: "azure-native:network/v20170801:LoadBalancer" }, { type: "azure-native:network/v20170901:LoadBalancer" }, { type: "azure-native:network/v20171001:LoadBalancer" }, { type: "azure-native:network/v20171101:LoadBalancer" }, { type: "azure-native:network/v20180101:LoadBalancer" }, { type: "azure-native:network/v20180201:LoadBalancer" }, { type: "azure-native:network/v20180401:LoadBalancer" }, { type: "azure-native:network/v20180601:LoadBalancer" }, { type: "azure-native:network/v20180701:LoadBalancer" }, { type: "azure-native:network/v20180801:LoadBalancer" }, { type: "azure-native:network/v20181001:LoadBalancer" }, { type: "azure-native:network/v20181101:LoadBalancer" }, { type: "azure-native:network/v20181201:LoadBalancer" }, { type: "azure-native:network/v20190201:LoadBalancer" }, { type: "azure-native:network/v20190401:LoadBalancer" }, { type: "azure-native:network/v20190601:LoadBalancer" }, { type: "azure-native:network/v20190701:LoadBalancer" }, { type: "azure-native:network/v20190801:LoadBalancer" }, { type: "azure-native:network/v20190901:LoadBalancer" }, { type: "azure-native:network/v20191101:LoadBalancer" }, { type: "azure-native:network/v20191201:LoadBalancer" }, { type: "azure-native:network/v20200301:LoadBalancer" }, { type: "azure-native:network/v20200401:LoadBalancer" }, { type: "azure-native:network/v20200501:LoadBalancer" }, { type: "azure-native:network/v20200601:LoadBalancer" }, { type: "azure-native:network/v20200701:LoadBalancer" }, { type: "azure-native:network/v20200801:LoadBalancer" }, { type: "azure-native:network/v20201101:LoadBalancer" }, { type: "azure-native:network/v20210201:LoadBalancer" }, { type: "azure-native:network/v20210301:LoadBalancer" }, { type: "azure-native:network/v20210501:LoadBalancer" }, { type: "azure-native:network/v20210801:LoadBalancer" }, { type: "azure-native:network/v20220101:LoadBalancer" }, { type: "azure-native:network/v20220501:LoadBalancer" }, { type: "azure-native:network/v20220701:LoadBalancer" }, { type: "azure-native:network/v20220901:LoadBalancer" }, { type: "azure-native:network/v20221101:LoadBalancer" }, { type: "azure-native:network/v20230201:LoadBalancer" }, { type: "azure-native:network/v20230401:LoadBalancer" }, { type: "azure-native:network/v20230501:LoadBalancer" }, { type: "azure-native:network/v20230601:LoadBalancer" }, { type: "azure-native:network/v20230901:LoadBalancer" }, { type: "azure-native:network/v20231101:LoadBalancer" }, { type: "azure-native:network/v20240101:LoadBalancer" }, { type: "azure-native:network/v20240301:LoadBalancer" }, { type: "azure-native:network/v20240501:LoadBalancer" }, { type: "azure-native:network/v20240701:LoadBalancer" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20150501preview:LoadBalancer" }, { type: "azure-native:network/v20150615:LoadBalancer" }, { type: "azure-native:network/v20160330:LoadBalancer" }, { type: "azure-native:network/v20160601:LoadBalancer" }, { type: "azure-native:network/v20160901:LoadBalancer" }, { type: "azure-native:network/v20161201:LoadBalancer" }, { type: "azure-native:network/v20170301:LoadBalancer" }, { type: "azure-native:network/v20170601:LoadBalancer" }, { type: "azure-native:network/v20170801:LoadBalancer" }, { type: "azure-native:network/v20170901:LoadBalancer" }, { type: "azure-native:network/v20171001:LoadBalancer" }, { type: "azure-native:network/v20171101:LoadBalancer" }, { type: "azure-native:network/v20180101:LoadBalancer" }, { type: "azure-native:network/v20180201:LoadBalancer" }, { type: "azure-native:network/v20180401:LoadBalancer" }, { type: "azure-native:network/v20180601:LoadBalancer" }, { type: "azure-native:network/v20180701:LoadBalancer" }, { type: "azure-native:network/v20180801:LoadBalancer" }, { type: "azure-native:network/v20181001:LoadBalancer" }, { type: "azure-native:network/v20181101:LoadBalancer" }, { type: "azure-native:network/v20181201:LoadBalancer" }, { type: "azure-native:network/v20190201:LoadBalancer" }, { type: "azure-native:network/v20190401:LoadBalancer" }, { type: "azure-native:network/v20190601:LoadBalancer" }, { type: "azure-native:network/v20190701:LoadBalancer" }, { type: "azure-native:network/v20190801:LoadBalancer" }, { type: "azure-native:network/v20190901:LoadBalancer" }, { type: "azure-native:network/v20191101:LoadBalancer" }, { type: "azure-native:network/v20191201:LoadBalancer" }, { type: "azure-native:network/v20200301:LoadBalancer" }, { type: "azure-native:network/v20200401:LoadBalancer" }, { type: "azure-native:network/v20200501:LoadBalancer" }, { type: "azure-native:network/v20200601:LoadBalancer" }, { type: "azure-native:network/v20200701:LoadBalancer" }, { type: "azure-native:network/v20200801:LoadBalancer" }, { type: "azure-native:network/v20201101:LoadBalancer" }, { type: "azure-native:network/v20210201:LoadBalancer" }, { type: "azure-native:network/v20210301:LoadBalancer" }, { type: "azure-native:network/v20210501:LoadBalancer" }, { type: "azure-native:network/v20210801:LoadBalancer" }, { type: "azure-native:network/v20220101:LoadBalancer" }, { type: "azure-native:network/v20220501:LoadBalancer" }, { type: "azure-native:network/v20220701:LoadBalancer" }, { type: "azure-native:network/v20220901:LoadBalancer" }, { type: "azure-native:network/v20221101:LoadBalancer" }, { type: "azure-native:network/v20230201:LoadBalancer" }, { type: "azure-native:network/v20230401:LoadBalancer" }, { type: "azure-native:network/v20230501:LoadBalancer" }, { type: "azure-native:network/v20230601:LoadBalancer" }, { type: "azure-native:network/v20230901:LoadBalancer" }, { type: "azure-native:network/v20231101:LoadBalancer" }, { type: "azure-native:network/v20240101:LoadBalancer" }, { type: "azure-native:network/v20240301:LoadBalancer" }, { type: "azure-native:network/v20240501:LoadBalancer" }, { type: "azure-native:network/v20240701:LoadBalancer" }, { type: "azure-native:network/v20241001:LoadBalancer" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LoadBalancer.__pulumiType, name, resourceInputs, opts);
     }

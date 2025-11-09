@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-06-30.
  *
- * Other available API versions: 2017-07-01, 2018-01-22, 2018-04-01, 2018-12-01-preview, 2019-03-22, 2019-03-22-preview, 2019-07-01-preview, 2019-11-04, 2020-03-01, 2020-04-01, 2020-06-15, 2020-07-10-preview, 2020-08-01, 2020-08-31, 2020-08-31-preview, 2021-02-01-preview, 2021-03-03-preview, 2021-03-31, 2021-07-01, 2021-07-01-preview, 2021-07-02, 2021-07-02-preview, 2022-04-30-preview, 2022-11-15-preview, 2023-06-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iothub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2017-07-01, 2018-01-22, 2018-04-01, 2018-12-01-preview, 2019-03-22, 2019-03-22-preview, 2019-07-01-preview, 2019-11-04, 2020-03-01, 2020-04-01, 2020-06-15, 2020-07-10-preview, 2020-08-01, 2020-08-31, 2020-08-31-preview, 2021-02-01-preview, 2021-03-03-preview, 2021-03-31, 2021-07-01, 2021-07-01-preview, 2021-07-02, 2021-07-02-preview, 2022-04-30-preview, 2022-11-15-preview, 2023-06-30-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iothub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Certificate extends pulumi.CustomResource {
     /**
@@ -38,23 +38,23 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The entity tag.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The name of the certificate.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The description of an X509 CA Certificate.
      */
-    public readonly properties!: pulumi.Output<types.outputs.CertificatePropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.CertificatePropertiesResponse>;
     /**
      * The resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Certificate resource with the given unique name, arguments, and options.
@@ -67,16 +67,16 @@ export class Certificate extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.resourceName === undefined) && !opts.urn) {
+            if (args?.resourceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceName'");
             }
-            resourceInputs["certificateName"] = args ? args.certificateName : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["resourceName"] = args ? args.resourceName : undefined;
+            resourceInputs["certificateName"] = args?.certificateName;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["resourceName"] = args?.resourceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -89,7 +89,7 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:devices/v20200401:Certificate" }, { type: "azure-native:devices/v20220430preview:Certificate" }, { type: "azure-native:devices/v20221115preview:Certificate" }, { type: "azure-native:devices/v20230630:Certificate" }, { type: "azure-native:devices/v20230630preview:Certificate" }, { type: "azure-native:devices:Certificate" }, { type: "azure-native:iothub/v20170701:Certificate" }, { type: "azure-native:iothub/v20180122:Certificate" }, { type: "azure-native:iothub/v20180401:Certificate" }, { type: "azure-native:iothub/v20181201preview:Certificate" }, { type: "azure-native:iothub/v20190322:Certificate" }, { type: "azure-native:iothub/v20190322preview:Certificate" }, { type: "azure-native:iothub/v20190701preview:Certificate" }, { type: "azure-native:iothub/v20191104:Certificate" }, { type: "azure-native:iothub/v20200301:Certificate" }, { type: "azure-native:iothub/v20200401:Certificate" }, { type: "azure-native:iothub/v20200615:Certificate" }, { type: "azure-native:iothub/v20200710preview:Certificate" }, { type: "azure-native:iothub/v20200801:Certificate" }, { type: "azure-native:iothub/v20200831:Certificate" }, { type: "azure-native:iothub/v20200831preview:Certificate" }, { type: "azure-native:iothub/v20210201preview:Certificate" }, { type: "azure-native:iothub/v20210303preview:Certificate" }, { type: "azure-native:iothub/v20210331:Certificate" }, { type: "azure-native:iothub/v20210701:Certificate" }, { type: "azure-native:iothub/v20210701preview:Certificate" }, { type: "azure-native:iothub/v20210702:Certificate" }, { type: "azure-native:iothub/v20210702preview:Certificate" }, { type: "azure-native:iothub/v20220430preview:Certificate" }, { type: "azure-native:iothub/v20221115preview:Certificate" }, { type: "azure-native:iothub/v20230630:Certificate" }, { type: "azure-native:iothub/v20230630preview:Certificate" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:devices/v20200401:Certificate" }, { type: "azure-native:devices/v20220430preview:Certificate" }, { type: "azure-native:devices/v20221115preview:Certificate" }, { type: "azure-native:devices/v20230630:Certificate" }, { type: "azure-native:devices/v20230630preview:Certificate" }, { type: "azure-native:devices:Certificate" }, { type: "azure-native:iothub/v20170701:Certificate" }, { type: "azure-native:iothub/v20180122:Certificate" }, { type: "azure-native:iothub/v20180401:Certificate" }, { type: "azure-native:iothub/v20181201preview:Certificate" }, { type: "azure-native:iothub/v20190322:Certificate" }, { type: "azure-native:iothub/v20190322preview:Certificate" }, { type: "azure-native:iothub/v20190701preview:Certificate" }, { type: "azure-native:iothub/v20191104:Certificate" }, { type: "azure-native:iothub/v20200301:Certificate" }, { type: "azure-native:iothub/v20200401:Certificate" }, { type: "azure-native:iothub/v20200615:Certificate" }, { type: "azure-native:iothub/v20200710preview:Certificate" }, { type: "azure-native:iothub/v20200801:Certificate" }, { type: "azure-native:iothub/v20200831:Certificate" }, { type: "azure-native:iothub/v20200831preview:Certificate" }, { type: "azure-native:iothub/v20210201preview:Certificate" }, { type: "azure-native:iothub/v20210303preview:Certificate" }, { type: "azure-native:iothub/v20210331:Certificate" }, { type: "azure-native:iothub/v20210701:Certificate" }, { type: "azure-native:iothub/v20210701preview:Certificate" }, { type: "azure-native:iothub/v20210702:Certificate" }, { type: "azure-native:iothub/v20210702preview:Certificate" }, { type: "azure-native:iothub/v20220430preview:Certificate" }, { type: "azure-native:iothub/v20221115preview:Certificate" }, { type: "azure-native:iothub/v20230630:Certificate" }, { type: "azure-native:iothub/v20230630preview:Certificate" }, { type: "azure-native:iothub/v20250801preview:Certificate" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Certificate.__pulumiType, name, resourceInputs, opts);
     }

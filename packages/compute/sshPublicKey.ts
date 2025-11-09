@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SshPublicKey extends pulumi.CustomResource {
     /**
@@ -38,31 +38,31 @@ export class SshPublicKey extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * SSH public key used to authenticate to a virtual machine through ssh. If this property is not initially provided when the resource is created, the publicKey property will be populated when generateKeyPair is called. If the public key is provided upon resource creation, the provided public key needs to be at least 2048-bit and in ssh-rsa format.
      */
-    public readonly publicKey!: pulumi.Output<string | undefined>;
+    declare public readonly publicKey: pulumi.Output<string | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a SshPublicKey resource with the given unique name, arguments, and options.
@@ -75,14 +75,14 @@ export class SshPublicKey extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["publicKey"] = args ? args.publicKey : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sshPublicKeyName"] = args ? args.sshPublicKeyName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["publicKey"] = args?.publicKey;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sshPublicKeyName"] = args?.sshPublicKeyName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -97,7 +97,7 @@ export class SshPublicKey extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20191201:SshPublicKey" }, { type: "azure-native:compute/v20200601:SshPublicKey" }, { type: "azure-native:compute/v20201201:SshPublicKey" }, { type: "azure-native:compute/v20210301:SshPublicKey" }, { type: "azure-native:compute/v20210401:SshPublicKey" }, { type: "azure-native:compute/v20210701:SshPublicKey" }, { type: "azure-native:compute/v20211101:SshPublicKey" }, { type: "azure-native:compute/v20220301:SshPublicKey" }, { type: "azure-native:compute/v20220801:SshPublicKey" }, { type: "azure-native:compute/v20221101:SshPublicKey" }, { type: "azure-native:compute/v20230301:SshPublicKey" }, { type: "azure-native:compute/v20230701:SshPublicKey" }, { type: "azure-native:compute/v20230901:SshPublicKey" }, { type: "azure-native:compute/v20240301:SshPublicKey" }, { type: "azure-native:compute/v20240701:SshPublicKey" }, { type: "azure-native:compute/v20241101:SshPublicKey" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20191201:SshPublicKey" }, { type: "azure-native:compute/v20200601:SshPublicKey" }, { type: "azure-native:compute/v20201201:SshPublicKey" }, { type: "azure-native:compute/v20210301:SshPublicKey" }, { type: "azure-native:compute/v20210401:SshPublicKey" }, { type: "azure-native:compute/v20210701:SshPublicKey" }, { type: "azure-native:compute/v20211101:SshPublicKey" }, { type: "azure-native:compute/v20220301:SshPublicKey" }, { type: "azure-native:compute/v20220801:SshPublicKey" }, { type: "azure-native:compute/v20221101:SshPublicKey" }, { type: "azure-native:compute/v20230301:SshPublicKey" }, { type: "azure-native:compute/v20230701:SshPublicKey" }, { type: "azure-native:compute/v20230901:SshPublicKey" }, { type: "azure-native:compute/v20240301:SshPublicKey" }, { type: "azure-native:compute/v20240701:SshPublicKey" }, { type: "azure-native:compute/v20241101:SshPublicKey" }, { type: "azure-native:compute/v20250401:SshPublicKey" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SshPublicKey.__pulumiType, name, resourceInputs, opts);
     }

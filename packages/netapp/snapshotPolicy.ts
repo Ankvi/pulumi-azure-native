@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
  *
- * Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SnapshotPolicy extends pulumi.CustomResource {
     /**
@@ -38,55 +38,55 @@ export class SnapshotPolicy extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Schedule for daily snapshots
      */
-    public readonly dailySchedule!: pulumi.Output<types.outputs.DailyScheduleResponse | undefined>;
+    declare public readonly dailySchedule: pulumi.Output<types.outputs.DailyScheduleResponse | undefined>;
     /**
      * The property to decide policy is enabled or not
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Schedule for hourly snapshots
      */
-    public readonly hourlySchedule!: pulumi.Output<types.outputs.HourlyScheduleResponse | undefined>;
+    declare public readonly hourlySchedule: pulumi.Output<types.outputs.HourlyScheduleResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Schedule for monthly snapshots
      */
-    public readonly monthlySchedule!: pulumi.Output<types.outputs.MonthlyScheduleResponse | undefined>;
+    declare public readonly monthlySchedule: pulumi.Output<types.outputs.MonthlyScheduleResponse | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Azure lifecycle management
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Schedule for weekly snapshots
      */
-    public readonly weeklySchedule!: pulumi.Output<types.outputs.WeeklyScheduleResponse | undefined>;
+    declare public readonly weeklySchedule: pulumi.Output<types.outputs.WeeklyScheduleResponse | undefined>;
 
     /**
      * Create a SnapshotPolicy resource with the given unique name, arguments, and options.
@@ -99,22 +99,22 @@ export class SnapshotPolicy extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["dailySchedule"] = args ? args.dailySchedule : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["hourlySchedule"] = args ? args.hourlySchedule : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["monthlySchedule"] = args ? args.monthlySchedule : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["snapshotPolicyName"] = args ? args.snapshotPolicyName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["weeklySchedule"] = args ? args.weeklySchedule : undefined;
+            resourceInputs["accountName"] = args?.accountName;
+            resourceInputs["dailySchedule"] = args?.dailySchedule;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["hourlySchedule"] = args?.hourlySchedule;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["monthlySchedule"] = args?.monthlySchedule;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["snapshotPolicyName"] = args?.snapshotPolicyName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["weeklySchedule"] = args?.weeklySchedule;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -137,7 +137,7 @@ export class SnapshotPolicy extends pulumi.CustomResource {
             resourceInputs["weeklySchedule"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20200501:SnapshotPolicy" }, { type: "azure-native:netapp/v20200601:SnapshotPolicy" }, { type: "azure-native:netapp/v20200701:SnapshotPolicy" }, { type: "azure-native:netapp/v20200801:SnapshotPolicy" }, { type: "azure-native:netapp/v20200901:SnapshotPolicy" }, { type: "azure-native:netapp/v20201101:SnapshotPolicy" }, { type: "azure-native:netapp/v20201201:SnapshotPolicy" }, { type: "azure-native:netapp/v20210201:SnapshotPolicy" }, { type: "azure-native:netapp/v20210401:SnapshotPolicy" }, { type: "azure-native:netapp/v20210401preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20210601:SnapshotPolicy" }, { type: "azure-native:netapp/v20210801:SnapshotPolicy" }, { type: "azure-native:netapp/v20211001:SnapshotPolicy" }, { type: "azure-native:netapp/v20220101:SnapshotPolicy" }, { type: "azure-native:netapp/v20220301:SnapshotPolicy" }, { type: "azure-native:netapp/v20220501:SnapshotPolicy" }, { type: "azure-native:netapp/v20220901:SnapshotPolicy" }, { type: "azure-native:netapp/v20221101:SnapshotPolicy" }, { type: "azure-native:netapp/v20221101preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20230501:SnapshotPolicy" }, { type: "azure-native:netapp/v20230501preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20230701:SnapshotPolicy" }, { type: "azure-native:netapp/v20230701preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20231101:SnapshotPolicy" }, { type: "azure-native:netapp/v20231101preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20240101:SnapshotPolicy" }, { type: "azure-native:netapp/v20240301:SnapshotPolicy" }, { type: "azure-native:netapp/v20240301preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20240501:SnapshotPolicy" }, { type: "azure-native:netapp/v20240501preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20240701:SnapshotPolicy" }, { type: "azure-native:netapp/v20240701preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20240901:SnapshotPolicy" }, { type: "azure-native:netapp/v20240901preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20250101:SnapshotPolicy" }, { type: "azure-native:netapp/v20250101preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20250301:SnapshotPolicy" }, { type: "azure-native:netapp/v20250301preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20250601:SnapshotPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20200501:SnapshotPolicy" }, { type: "azure-native:netapp/v20200601:SnapshotPolicy" }, { type: "azure-native:netapp/v20200701:SnapshotPolicy" }, { type: "azure-native:netapp/v20200801:SnapshotPolicy" }, { type: "azure-native:netapp/v20200901:SnapshotPolicy" }, { type: "azure-native:netapp/v20201101:SnapshotPolicy" }, { type: "azure-native:netapp/v20201201:SnapshotPolicy" }, { type: "azure-native:netapp/v20210201:SnapshotPolicy" }, { type: "azure-native:netapp/v20210401:SnapshotPolicy" }, { type: "azure-native:netapp/v20210401preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20210601:SnapshotPolicy" }, { type: "azure-native:netapp/v20210801:SnapshotPolicy" }, { type: "azure-native:netapp/v20211001:SnapshotPolicy" }, { type: "azure-native:netapp/v20220101:SnapshotPolicy" }, { type: "azure-native:netapp/v20220301:SnapshotPolicy" }, { type: "azure-native:netapp/v20220501:SnapshotPolicy" }, { type: "azure-native:netapp/v20220901:SnapshotPolicy" }, { type: "azure-native:netapp/v20221101:SnapshotPolicy" }, { type: "azure-native:netapp/v20221101preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20230501:SnapshotPolicy" }, { type: "azure-native:netapp/v20230501preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20230701:SnapshotPolicy" }, { type: "azure-native:netapp/v20230701preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20231101:SnapshotPolicy" }, { type: "azure-native:netapp/v20231101preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20240101:SnapshotPolicy" }, { type: "azure-native:netapp/v20240301:SnapshotPolicy" }, { type: "azure-native:netapp/v20240301preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20240501:SnapshotPolicy" }, { type: "azure-native:netapp/v20240501preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20240701:SnapshotPolicy" }, { type: "azure-native:netapp/v20240701preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20240901:SnapshotPolicy" }, { type: "azure-native:netapp/v20240901preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20250101:SnapshotPolicy" }, { type: "azure-native:netapp/v20250101preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20250301:SnapshotPolicy" }, { type: "azure-native:netapp/v20250301preview:SnapshotPolicy" }, { type: "azure-native:netapp/v20250601:SnapshotPolicy" }, { type: "azure-native:netapp/v20250701preview:SnapshotPolicy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SnapshotPolicy.__pulumiType, name, resourceInputs, opts);
     }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-01-01.
  *
- * Other available API versions: 2022-01-01, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-06-01-preview, 2024-10-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-01-01, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-06-01-preview, 2024-10-01-preview, 2024-12-01-preview, 2024-12-30. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Server extends pulumi.CustomResource {
     /**
@@ -38,99 +38,99 @@ export class Server extends pulumi.CustomResource {
     /**
      * The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
      */
-    public readonly administratorLogin!: pulumi.Output<string | undefined>;
+    declare public readonly administratorLogin: pulumi.Output<string | undefined>;
     /**
      * availability Zone information of the server.
      */
-    public readonly availabilityZone!: pulumi.Output<string | undefined>;
+    declare public readonly availabilityZone: pulumi.Output<string | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Backup related properties of a server.
      */
-    public readonly backup!: pulumi.Output<types.outputs.BackupResponse | undefined>;
+    declare public readonly backup: pulumi.Output<types.outputs.BackupResponse | undefined>;
     /**
      * The Data Encryption for CMK.
      */
-    public readonly dataEncryption!: pulumi.Output<types.outputs.DataEncryptionResponse | undefined>;
+    declare public readonly dataEncryption: pulumi.Output<types.outputs.DataEncryptionResponse | undefined>;
     /**
      * The fully qualified domain name of a server.
      */
-    public /*out*/ readonly fullyQualifiedDomainName!: pulumi.Output<string>;
+    declare public /*out*/ readonly fullyQualifiedDomainName: pulumi.Output<string>;
     /**
      * High availability related properties of a server.
      */
-    public readonly highAvailability!: pulumi.Output<types.outputs.HighAvailabilityResponse | undefined>;
+    declare public readonly highAvailability: pulumi.Output<types.outputs.HighAvailabilityResponse | undefined>;
     /**
      * The cmk identity for the server.
      */
-    public readonly identity!: pulumi.Output<types.outputs.MySQLServerIdentityResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.MySQLServerIdentityResponse | undefined>;
     /**
      * Source properties for import from storage.
      */
-    public readonly importSourceProperties!: pulumi.Output<types.outputs.ImportSourcePropertiesResponse | undefined>;
+    declare public readonly importSourceProperties: pulumi.Output<types.outputs.ImportSourcePropertiesResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Maintenance window of a server.
      */
-    public readonly maintenanceWindow!: pulumi.Output<types.outputs.MaintenanceWindowResponse | undefined>;
+    declare public readonly maintenanceWindow: pulumi.Output<types.outputs.MaintenanceWindowResponse | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Network related properties of a server.
      */
-    public readonly network!: pulumi.Output<types.outputs.NetworkResponse | undefined>;
+    declare public readonly network: pulumi.Output<types.outputs.NetworkResponse | undefined>;
     /**
      * PrivateEndpointConnections related properties of a server.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
+    declare public /*out*/ readonly privateEndpointConnections: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * The maximum number of replicas that a primary server can have.
      */
-    public /*out*/ readonly replicaCapacity!: pulumi.Output<number>;
+    declare public /*out*/ readonly replicaCapacity: pulumi.Output<number>;
     /**
      * The replication role.
      */
-    public readonly replicationRole!: pulumi.Output<string | undefined>;
+    declare public readonly replicationRole: pulumi.Output<string | undefined>;
     /**
      * The SKU (pricing tier) of the server.
      */
-    public readonly sku!: pulumi.Output<types.outputs.MySQLServerSkuResponse | undefined>;
+    declare public readonly sku: pulumi.Output<types.outputs.MySQLServerSkuResponse | undefined>;
     /**
      * The source MySQL server id.
      */
-    public readonly sourceServerResourceId!: pulumi.Output<string | undefined>;
+    declare public readonly sourceServerResourceId: pulumi.Output<string | undefined>;
     /**
      * The state of a server.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Storage related properties of a server.
      */
-    public readonly storage!: pulumi.Output<types.outputs.StorageResponse | undefined>;
+    declare public readonly storage: pulumi.Output<types.outputs.StorageResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Server version.
      */
-    public readonly version!: pulumi.Output<string | undefined>;
+    declare public readonly version: pulumi.Output<string | undefined>;
 
     /**
      * Create a Server resource with the given unique name, arguments, and options.
@@ -143,30 +143,30 @@ export class Server extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["administratorLogin"] = args ? args.administratorLogin : undefined;
-            resourceInputs["administratorLoginPassword"] = args ? args.administratorLoginPassword : undefined;
-            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["administratorLogin"] = args?.administratorLogin;
+            resourceInputs["administratorLoginPassword"] = args?.administratorLoginPassword;
+            resourceInputs["availabilityZone"] = args?.availabilityZone;
             resourceInputs["backup"] = args ? (args.backup ? pulumi.output(args.backup).apply(types.inputs.backupArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["createMode"] = args ? args.createMode : undefined;
-            resourceInputs["dataEncryption"] = args ? args.dataEncryption : undefined;
-            resourceInputs["highAvailability"] = args ? args.highAvailability : undefined;
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["importSourceProperties"] = args ? args.importSourceProperties : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["replicationRole"] = args ? args.replicationRole : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["restorePointInTime"] = args ? args.restorePointInTime : undefined;
-            resourceInputs["serverName"] = args ? args.serverName : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["sourceServerResourceId"] = args ? args.sourceServerResourceId : undefined;
+            resourceInputs["createMode"] = args?.createMode;
+            resourceInputs["dataEncryption"] = args?.dataEncryption;
+            resourceInputs["highAvailability"] = args?.highAvailability;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["importSourceProperties"] = args?.importSourceProperties;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["maintenanceWindow"] = args?.maintenanceWindow;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["replicationRole"] = args?.replicationRole;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["restorePointInTime"] = args?.restorePointInTime;
+            resourceInputs["serverName"] = args?.serverName;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["sourceServerResourceId"] = args?.sourceServerResourceId;
             resourceInputs["storage"] = args ? (args.storage ? pulumi.output(args.storage).apply(types.inputs.storageArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["version"] = args?.version;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["fullyQualifiedDomainName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -202,7 +202,7 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbformysql/v20171201:Server" }, { type: "azure-native:dbformysql/v20180601privatepreview:Server" }, { type: "azure-native:dbformysql/v20200701preview:Server" }, { type: "azure-native:dbformysql/v20200701privatepreview:Server" }, { type: "azure-native:dbformysql/v20210501:Server" }, { type: "azure-native:dbformysql/v20210501preview:Server" }, { type: "azure-native:dbformysql/v20211201preview:Server" }, { type: "azure-native:dbformysql/v20220101:Server" }, { type: "azure-native:dbformysql/v20220930preview:Server" }, { type: "azure-native:dbformysql/v20230601preview:Server" }, { type: "azure-native:dbformysql/v20230630:Server" }, { type: "azure-native:dbformysql/v20231001preview:Server" }, { type: "azure-native:dbformysql/v20231201preview:Server" }, { type: "azure-native:dbformysql/v20231230:Server" }, { type: "azure-native:dbformysql/v20240201preview:Server" }, { type: "azure-native:dbformysql/v20240601preview:Server" }, { type: "azure-native:dbformysql/v20241001preview:Server" }, { type: "azure-native:dbformysql/v20241201preview:Server" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbformysql/v20171201:Server" }, { type: "azure-native:dbformysql/v20180601privatepreview:Server" }, { type: "azure-native:dbformysql/v20200701preview:Server" }, { type: "azure-native:dbformysql/v20200701privatepreview:Server" }, { type: "azure-native:dbformysql/v20210501:Server" }, { type: "azure-native:dbformysql/v20210501preview:Server" }, { type: "azure-native:dbformysql/v20211201preview:Server" }, { type: "azure-native:dbformysql/v20220101:Server" }, { type: "azure-native:dbformysql/v20220930preview:Server" }, { type: "azure-native:dbformysql/v20230601preview:Server" }, { type: "azure-native:dbformysql/v20230630:Server" }, { type: "azure-native:dbformysql/v20231001preview:Server" }, { type: "azure-native:dbformysql/v20231201preview:Server" }, { type: "azure-native:dbformysql/v20231230:Server" }, { type: "azure-native:dbformysql/v20240201preview:Server" }, { type: "azure-native:dbformysql/v20240601preview:Server" }, { type: "azure-native:dbformysql/v20241001preview:Server" }, { type: "azure-native:dbformysql/v20241201preview:Server" }, { type: "azure-native:dbformysql/v20241230:Server" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Server.__pulumiType, name, resourceInputs, opts);
     }
