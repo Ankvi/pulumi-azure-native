@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Rack extends pulumi.CustomResource {
     /**
@@ -36,67 +36,67 @@ export class Rack extends pulumi.CustomResource {
     /**
      * The value that will be used for machines in this rack to represent the availability zones that can be referenced by Hybrid AKS Clusters for node arrangement.
      */
-    public readonly availabilityZone!: pulumi.Output<string>;
+    declare public readonly availabilityZone: pulumi.Output<string>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The resource ID of the cluster the rack is created for. This value is set when the rack is created by the cluster.
      */
-    public /*out*/ readonly clusterId!: pulumi.Output<string>;
+    declare public /*out*/ readonly clusterId: pulumi.Output<string>;
     /**
      * The more detailed status of the rack.
      */
-    public /*out*/ readonly detailedStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly detailedStatus: pulumi.Output<string>;
     /**
      * The descriptive message about the current detailed status.
      */
-    public /*out*/ readonly detailedStatusMessage!: pulumi.Output<string>;
+    declare public /*out*/ readonly detailedStatusMessage: pulumi.Output<string>;
     /**
      * Resource ETag.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The extended location of the cluster associated with the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The provisioning state of the rack resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The free-form description of the rack location. (e.g. “DTN Datacenter, Floor 3, Isle 9, Rack 2B”)
      */
-    public readonly rackLocation!: pulumi.Output<string>;
+    declare public readonly rackLocation: pulumi.Output<string>;
     /**
      * The unique identifier for the rack within Network Cloud cluster. An alternate unique alphanumeric value other than a serial number may be provided if desired.
      */
-    public readonly rackSerialNumber!: pulumi.Output<string>;
+    declare public readonly rackSerialNumber: pulumi.Output<string>;
     /**
      * The SKU for the rack.
      */
-    public readonly rackSkuId!: pulumi.Output<string>;
+    declare public readonly rackSkuId: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Rack resource with the given unique name, arguments, and options.
@@ -109,33 +109,33 @@ export class Rack extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.availabilityZone === undefined) && !opts.urn) {
+            if (args?.availabilityZone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZone'");
             }
-            if ((!args || args.extendedLocation === undefined) && !opts.urn) {
+            if (args?.extendedLocation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'extendedLocation'");
             }
-            if ((!args || args.rackLocation === undefined) && !opts.urn) {
+            if (args?.rackLocation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rackLocation'");
             }
-            if ((!args || args.rackSerialNumber === undefined) && !opts.urn) {
+            if (args?.rackSerialNumber === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rackSerialNumber'");
             }
-            if ((!args || args.rackSkuId === undefined) && !opts.urn) {
+            if (args?.rackSkuId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rackSkuId'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["rackLocation"] = args ? args.rackLocation : undefined;
-            resourceInputs["rackName"] = args ? args.rackName : undefined;
-            resourceInputs["rackSerialNumber"] = args ? args.rackSerialNumber : undefined;
-            resourceInputs["rackSkuId"] = args ? args.rackSkuId : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["availabilityZone"] = args?.availabilityZone;
+            resourceInputs["extendedLocation"] = args?.extendedLocation;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["rackLocation"] = args?.rackLocation;
+            resourceInputs["rackName"] = args?.rackName;
+            resourceInputs["rackSerialNumber"] = args?.rackSerialNumber;
+            resourceInputs["rackSkuId"] = args?.rackSkuId;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["detailedStatus"] = undefined /*out*/;
@@ -164,7 +164,7 @@ export class Rack extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:Rack" }, { type: "azure-native:networkcloud/v20231001preview:Rack" }, { type: "azure-native:networkcloud/v20240601preview:Rack" }, { type: "azure-native:networkcloud/v20240701:Rack" }, { type: "azure-native:networkcloud/v20241001preview:Rack" }, { type: "azure-native:networkcloud/v20250201:Rack" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:Rack" }, { type: "azure-native:networkcloud/v20231001preview:Rack" }, { type: "azure-native:networkcloud/v20240601preview:Rack" }, { type: "azure-native:networkcloud/v20240701:Rack" }, { type: "azure-native:networkcloud/v20241001preview:Rack" }, { type: "azure-native:networkcloud/v20250201:Rack" }, { type: "azure-native:networkcloud/v20250701preview:Rack" }, { type: "azure-native:networkcloud/v20250901:Rack" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Rack.__pulumiType, name, resourceInputs, opts);
     }

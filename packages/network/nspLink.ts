@@ -37,59 +37,59 @@ export class NspLink extends pulumi.CustomResource {
     /**
      * Perimeter ARM Id for the remote NSP with which the link gets created in Auto-approval mode. It should be used when the NSP admin have Microsoft.Network/networkSecurityPerimeters/linkPerimeter/action permission on the remote NSP resource.
      */
-    public readonly autoApprovedRemotePerimeterResourceId!: pulumi.Output<string | undefined>;
+    declare public readonly autoApprovedRemotePerimeterResourceId: pulumi.Output<string | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * A message passed to the owner of the remote NSP link resource with this connection request. In case of Auto-approved flow, it is default to 'Auto Approved'. Restricted to 140 chars.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
      */
-    public readonly localInboundProfiles!: pulumi.Output<string[] | undefined>;
+    declare public readonly localInboundProfiles: pulumi.Output<string[] | undefined>;
     /**
      * Local Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it.
      */
-    public /*out*/ readonly localOutboundProfiles!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly localOutboundProfiles: pulumi.Output<string[]>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The provisioning state of the NSP Link resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
      */
-    public readonly remoteInboundProfiles!: pulumi.Output<string[] | undefined>;
+    declare public readonly remoteInboundProfiles: pulumi.Output<string[] | undefined>;
     /**
      * Remote Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it.
      */
-    public /*out*/ readonly remoteOutboundProfiles!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly remoteOutboundProfiles: pulumi.Output<string[]>;
     /**
      * Remote NSP Guid with which the link gets created.
      */
-    public /*out*/ readonly remotePerimeterGuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly remotePerimeterGuid: pulumi.Output<string>;
     /**
      * Remote NSP location with which the link gets created.
      */
-    public /*out*/ readonly remotePerimeterLocation!: pulumi.Output<string>;
+    declare public /*out*/ readonly remotePerimeterLocation: pulumi.Output<string>;
     /**
      * The NSP link state.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a NspLink resource with the given unique name, arguments, and options.
@@ -102,19 +102,19 @@ export class NspLink extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.networkSecurityPerimeterName === undefined) && !opts.urn) {
+            if (args?.networkSecurityPerimeterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkSecurityPerimeterName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["autoApprovedRemotePerimeterResourceId"] = args ? args.autoApprovedRemotePerimeterResourceId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["linkName"] = args ? args.linkName : undefined;
-            resourceInputs["localInboundProfiles"] = args ? args.localInboundProfiles : undefined;
-            resourceInputs["networkSecurityPerimeterName"] = args ? args.networkSecurityPerimeterName : undefined;
-            resourceInputs["remoteInboundProfiles"] = args ? args.remoteInboundProfiles : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["autoApprovedRemotePerimeterResourceId"] = args?.autoApprovedRemotePerimeterResourceId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["linkName"] = args?.linkName;
+            resourceInputs["localInboundProfiles"] = args?.localInboundProfiles;
+            resourceInputs["networkSecurityPerimeterName"] = args?.networkSecurityPerimeterName;
+            resourceInputs["remoteInboundProfiles"] = args?.remoteInboundProfiles;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["localOutboundProfiles"] = undefined /*out*/;
@@ -142,7 +142,7 @@ export class NspLink extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NspLink" }, { type: "azure-native:network/v20230701preview:NspLink" }, { type: "azure-native:network/v20230801preview:NspLink" }, { type: "azure-native:network/v20240601preview:NspLink" }, { type: "azure-native:network/v20240701:NspLink" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NspLink" }, { type: "azure-native:network/v20230701preview:NspLink" }, { type: "azure-native:network/v20230801preview:NspLink" }, { type: "azure-native:network/v20240601preview:NspLink" }, { type: "azure-native:network/v20240701:NspLink" }, { type: "azure-native:network/v20241001:NspLink" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NspLink.__pulumiType, name, resourceInputs, opts);
     }

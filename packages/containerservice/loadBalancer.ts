@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-10-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-03-02-preview.
  *
- * Other available API versions: 2024-03-02-preview, 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview, 2024-07-02-preview, 2024-09-02-preview, 2025-01-02-preview, 2025-02-02-preview, 2025-03-02-preview, 2025-04-02-preview, 2025-05-02-preview, 2025-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-03-02-preview, 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview, 2024-07-02-preview, 2024-09-02-preview, 2025-01-02-preview, 2025-02-02-preview, 2025-03-02-preview, 2025-04-02-preview, 2025-05-02-preview, 2025-06-02-preview, 2025-07-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**
@@ -38,43 +38,43 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * Whether to automatically place services on the load balancer. If not supplied, the default value is true. If set to false manually, both of the external and the internal load balancer will not be selected for services unless they explicitly target it.
      */
-    public readonly allowServicePlacement!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowServicePlacement: pulumi.Output<boolean | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Nodes that match this selector will be possible members of this load balancer.
      */
-    public readonly nodeSelector!: pulumi.Output<types.outputs.LabelSelectorResponse | undefined>;
+    declare public readonly nodeSelector: pulumi.Output<types.outputs.LabelSelectorResponse | undefined>;
     /**
      * Required field. A string value that must specify the ID of an existing agent pool. All nodes in the given pool will always be added to this load balancer. This agent pool must have at least one node and minCount>=1 for autoscaling operations. An agent pool can only be the primary pool for a single load balancer.
      */
-    public readonly primaryAgentPoolName!: pulumi.Output<string>;
+    declare public readonly primaryAgentPoolName: pulumi.Output<string>;
     /**
      * The current provisioning state.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Only services that must match this selector can be placed on this load balancer.
      */
-    public readonly serviceLabelSelector!: pulumi.Output<types.outputs.LabelSelectorResponse | undefined>;
+    declare public readonly serviceLabelSelector: pulumi.Output<types.outputs.LabelSelectorResponse | undefined>;
     /**
      * Services created in namespaces that match the selector can be placed on this load balancer.
      */
-    public readonly serviceNamespaceSelector!: pulumi.Output<types.outputs.LabelSelectorResponse | undefined>;
+    declare public readonly serviceNamespaceSelector: pulumi.Output<types.outputs.LabelSelectorResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -87,27 +87,27 @@ export class LoadBalancer extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.primaryAgentPoolName === undefined) && !opts.urn) {
+            if (args?.primaryAgentPoolName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'primaryAgentPoolName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.resourceName === undefined) && !opts.urn) {
+            if (args?.resourceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceName'");
             }
-            resourceInputs["allowServicePlacement"] = args ? args.allowServicePlacement : undefined;
-            resourceInputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeSelector"] = args ? args.nodeSelector : undefined;
-            resourceInputs["primaryAgentPoolName"] = args ? args.primaryAgentPoolName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["resourceName"] = args ? args.resourceName : undefined;
-            resourceInputs["serviceLabelSelector"] = args ? args.serviceLabelSelector : undefined;
-            resourceInputs["serviceNamespaceSelector"] = args ? args.serviceNamespaceSelector : undefined;
+            resourceInputs["allowServicePlacement"] = args?.allowServicePlacement;
+            resourceInputs["loadBalancerName"] = args?.loadBalancerName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeSelector"] = args?.nodeSelector;
+            resourceInputs["primaryAgentPoolName"] = args?.primaryAgentPoolName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["resourceName"] = args?.resourceName;
+            resourceInputs["serviceLabelSelector"] = args?.serviceLabelSelector;
+            resourceInputs["serviceNamespaceSelector"] = args?.serviceNamespaceSelector;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -125,7 +125,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20240302preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240402preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240502preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240602preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240702preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240902preview:LoadBalancer" }, { type: "azure-native:containerservice/v20241002preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250102preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250202preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250302preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250402preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250502preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250602preview:LoadBalancer" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20240302preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240402preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240502preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240602preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240702preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240902preview:LoadBalancer" }, { type: "azure-native:containerservice/v20241002preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250102preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250202preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250302preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250402preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250502preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250602preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250702preview:LoadBalancer" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LoadBalancer.__pulumiType, name, resourceInputs, opts);
     }

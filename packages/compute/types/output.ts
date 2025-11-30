@@ -2409,19 +2409,19 @@ export interface PatchSettingsResponse {
 }
 
 /**
- * Describes the user-defined constraints for virtual machine hardware placement.
+ * Describes the user-defined constraints for resource hardware placement.
  */
 export interface PlacementResponse {
     /**
-     * This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.
+     * This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any'/'Auto', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.
      */
     excludeZones?: string[];
     /**
-     * This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.
+     * This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any'/'Auto', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.
      */
     includeZones?: string[];
     /**
-     * Specifies the policy for virtual machine's placement in availability zone. Possible values are: **Any** - An availability zone will be automatically picked by system as part of virtual machine creation.
+     * Specifies the policy for resource's placement in availability zone. Possible values are: **Any** (used for Virtual Machines), **Auto** (used for Virtual Machine Scale Sets) - An availability zone will be automatically picked by system as part of resource creation.
      */
     zonePlacementPolicy?: string;
 }
@@ -2734,7 +2734,7 @@ export interface ResourceRangeResponse {
 
 export interface ResourceSharingProfileResponse {
     /**
-     * Specifies an array of subscription resource IDs that capacity reservation group is shared with. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
+     * Specifies an array of subscription resource IDs that capacity reservation group is shared with. Block Capacity Reservations does not support sharing across subscriptions. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
      */
     subscriptionIds?: SubResourceResponse[];
 }
@@ -4185,11 +4185,11 @@ export interface VirtualMachineRunCommandInstanceViewResponse {
 }
 
 /**
- * Describes the script sources for run command. Use only one of script, scriptUri, commandId.
+ * Describes the script sources for run command. Use only one of these script sources: script, scriptUri, commandId, galleryScriptReferenceId.
  */
 export interface VirtualMachineRunCommandScriptSourceResponse {
     /**
-     * Specifies a commandId of predefined built-in script.
+     * Specifies a commandId of predefined built-in script. Command IDs available for Linux are listed at https://aka.ms/RunCommandManagedLinux#available-commands, Windows at https://aka.ms/RunCommandManagedWindows#available-commands.
      */
     commandId?: string;
     /**

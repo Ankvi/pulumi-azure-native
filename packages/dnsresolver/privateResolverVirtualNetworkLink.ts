@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-07-01-preview.
  *
- * Other available API versions: 2020-04-01-preview, 2022-07-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dnsresolver [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-04-01-preview, 2022-07-01, 2025-05-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dnsresolver [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrivateResolverVirtualNetworkLink extends pulumi.CustomResource {
     /**
@@ -38,35 +38,35 @@ export class PrivateResolverVirtualNetworkLink extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * ETag of the virtual network link.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Metadata attached to the virtual network link.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The current provisioning state of the virtual network link. This is a read-only property and any attempt to set this value will be ignored.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The reference to the virtual network. This cannot be changed after creation.
      */
-    public readonly virtualNetwork!: pulumi.Output<types.outputs.SubResourceResponse>;
+    declare public readonly virtualNetwork: pulumi.Output<types.outputs.SubResourceResponse>;
 
     /**
      * Create a PrivateResolverVirtualNetworkLink resource with the given unique name, arguments, and options.
@@ -79,20 +79,20 @@ export class PrivateResolverVirtualNetworkLink extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.dnsForwardingRulesetName === undefined) && !opts.urn) {
+            if (args?.dnsForwardingRulesetName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dnsForwardingRulesetName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.virtualNetwork === undefined) && !opts.urn) {
+            if (args?.virtualNetwork === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualNetwork'");
             }
-            resourceInputs["dnsForwardingRulesetName"] = args ? args.dnsForwardingRulesetName : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["virtualNetwork"] = args ? args.virtualNetwork : undefined;
-            resourceInputs["virtualNetworkLinkName"] = args ? args.virtualNetworkLinkName : undefined;
+            resourceInputs["dnsForwardingRulesetName"] = args?.dnsForwardingRulesetName;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["virtualNetwork"] = args?.virtualNetwork;
+            resourceInputs["virtualNetworkLinkName"] = args?.virtualNetworkLinkName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -110,7 +110,7 @@ export class PrivateResolverVirtualNetworkLink extends pulumi.CustomResource {
             resourceInputs["virtualNetwork"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dnsresolver/v20200401preview:PrivateResolverVirtualNetworkLink" }, { type: "azure-native:dnsresolver/v20220701:PrivateResolverVirtualNetworkLink" }, { type: "azure-native:dnsresolver/v20230701preview:PrivateResolverVirtualNetworkLink" }, { type: "azure-native:dnsresolver/v20250501:PrivateResolverVirtualNetworkLink" }, { type: "azure-native:network/v20200401preview:PrivateResolverVirtualNetworkLink" }, { type: "azure-native:network/v20220701:PrivateResolverVirtualNetworkLink" }, { type: "azure-native:network/v20230701preview:PrivateResolverVirtualNetworkLink" }, { type: "azure-native:network:PrivateResolverVirtualNetworkLink" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dnsresolver/v20200401preview:PrivateResolverVirtualNetworkLink" }, { type: "azure-native:dnsresolver/v20220701:PrivateResolverVirtualNetworkLink" }, { type: "azure-native:dnsresolver/v20230701preview:PrivateResolverVirtualNetworkLink" }, { type: "azure-native:dnsresolver/v20250501:PrivateResolverVirtualNetworkLink" }, { type: "azure-native:dnsresolver/v20251001preview:PrivateResolverVirtualNetworkLink" }, { type: "azure-native:network/v20200401preview:PrivateResolverVirtualNetworkLink" }, { type: "azure-native:network/v20220701:PrivateResolverVirtualNetworkLink" }, { type: "azure-native:network/v20230701preview:PrivateResolverVirtualNetworkLink" }, { type: "azure-native:network:PrivateResolverVirtualNetworkLink" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateResolverVirtualNetworkLink.__pulumiType, name, resourceInputs, opts);
     }

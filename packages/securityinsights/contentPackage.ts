@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ContentPackage extends pulumi.CustomResource {
     /**
@@ -38,115 +38,115 @@ export class ContentPackage extends pulumi.CustomResource {
     /**
      * The author of the package
      */
-    public readonly author!: pulumi.Output<types.outputs.MetadataAuthorResponse | undefined>;
+    declare public readonly author: pulumi.Output<types.outputs.MetadataAuthorResponse | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The categories of the package
      */
-    public readonly categories!: pulumi.Output<types.outputs.MetadataCategoriesResponse | undefined>;
+    declare public readonly categories: pulumi.Output<types.outputs.MetadataCategoriesResponse | undefined>;
     /**
      * The content id of the package
      */
-    public readonly contentId!: pulumi.Output<string>;
+    declare public readonly contentId: pulumi.Output<string>;
     /**
      * The package kind
      */
-    public readonly contentKind!: pulumi.Output<string>;
+    declare public readonly contentKind: pulumi.Output<string>;
     /**
      * Unique ID for the content. It should be generated based on the contentId, contentKind and the contentVersion of the package
      */
-    public readonly contentProductId!: pulumi.Output<string>;
+    declare public readonly contentProductId: pulumi.Output<string>;
     /**
      * The version of the content schema.
      */
-    public readonly contentSchemaVersion!: pulumi.Output<string | undefined>;
+    declare public readonly contentSchemaVersion: pulumi.Output<string | undefined>;
     /**
      * The support tier of the package
      */
-    public readonly dependencies!: pulumi.Output<types.outputs.MetadataDependenciesResponse | undefined>;
+    declare public readonly dependencies: pulumi.Output<types.outputs.MetadataDependenciesResponse | undefined>;
     /**
      * The description of the package
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The display name of the package
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Etag of the azure resource
      */
-    public /*out*/ readonly etag!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly etag: pulumi.Output<string | undefined>;
     /**
      * first publish date package item
      */
-    public readonly firstPublishDate!: pulumi.Output<string | undefined>;
+    declare public readonly firstPublishDate: pulumi.Output<string | undefined>;
     /**
      * the icon identifier. this id can later be fetched from the content metadata
      */
-    public readonly icon!: pulumi.Output<string | undefined>;
+    declare public readonly icon: pulumi.Output<string | undefined>;
     /**
      * Flag indicates if this template is deprecated
      */
-    public readonly isDeprecated!: pulumi.Output<string | undefined>;
+    declare public readonly isDeprecated: pulumi.Output<string | undefined>;
     /**
      * Flag indicates if this package is among the featured list.
      */
-    public readonly isFeatured!: pulumi.Output<string | undefined>;
+    declare public readonly isFeatured: pulumi.Output<string | undefined>;
     /**
      * Flag indicates if this is a newly published package.
      */
-    public readonly isNew!: pulumi.Output<string | undefined>;
+    declare public readonly isNew: pulumi.Output<string | undefined>;
     /**
      * Flag indicates if this package is in preview.
      */
-    public readonly isPreview!: pulumi.Output<string | undefined>;
+    declare public readonly isPreview: pulumi.Output<string | undefined>;
     /**
      * last publish date for the package item
      */
-    public readonly lastPublishDate!: pulumi.Output<string | undefined>;
+    declare public readonly lastPublishDate: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Providers for the package item
      */
-    public readonly providers!: pulumi.Output<string[] | undefined>;
+    declare public readonly providers: pulumi.Output<string[] | undefined>;
     /**
      * The publisher display name of the package
      */
-    public readonly publisherDisplayName!: pulumi.Output<string | undefined>;
+    declare public readonly publisherDisplayName: pulumi.Output<string | undefined>;
     /**
      * The source of the package
      */
-    public readonly source!: pulumi.Output<types.outputs.MetadataSourceResponse | undefined>;
+    declare public readonly source: pulumi.Output<types.outputs.MetadataSourceResponse | undefined>;
     /**
      * The support tier of the package
      */
-    public readonly support!: pulumi.Output<types.outputs.MetadataSupportResponse | undefined>;
+    declare public readonly support: pulumi.Output<types.outputs.MetadataSupportResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * the tactics the resource covers
      */
-    public readonly threatAnalysisTactics!: pulumi.Output<string[] | undefined>;
+    declare public readonly threatAnalysisTactics: pulumi.Output<string[] | undefined>;
     /**
      * the techniques the resource covers, these have to be aligned with the tactics being used
      */
-    public readonly threatAnalysisTechniques!: pulumi.Output<string[] | undefined>;
+    declare public readonly threatAnalysisTechniques: pulumi.Output<string[] | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * the latest version number of the package
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
 
     /**
      * Create a ContentPackage resource with the given unique name, arguments, and options.
@@ -159,53 +159,53 @@ export class ContentPackage extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.contentId === undefined) && !opts.urn) {
+            if (args?.contentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'contentId'");
             }
-            if ((!args || args.contentKind === undefined) && !opts.urn) {
+            if (args?.contentKind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'contentKind'");
             }
-            if ((!args || args.contentProductId === undefined) && !opts.urn) {
+            if (args?.contentProductId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'contentProductId'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.version === undefined) && !opts.urn) {
+            if (args?.version === undefined && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["author"] = args ? args.author : undefined;
-            resourceInputs["categories"] = args ? args.categories : undefined;
-            resourceInputs["contentId"] = args ? args.contentId : undefined;
-            resourceInputs["contentKind"] = args ? args.contentKind : undefined;
-            resourceInputs["contentProductId"] = args ? args.contentProductId : undefined;
-            resourceInputs["contentSchemaVersion"] = args ? args.contentSchemaVersion : undefined;
-            resourceInputs["dependencies"] = args ? args.dependencies : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["firstPublishDate"] = args ? args.firstPublishDate : undefined;
-            resourceInputs["icon"] = args ? args.icon : undefined;
-            resourceInputs["isDeprecated"] = args ? args.isDeprecated : undefined;
-            resourceInputs["isFeatured"] = args ? args.isFeatured : undefined;
-            resourceInputs["isNew"] = args ? args.isNew : undefined;
-            resourceInputs["isPreview"] = args ? args.isPreview : undefined;
-            resourceInputs["lastPublishDate"] = args ? args.lastPublishDate : undefined;
-            resourceInputs["packageId"] = args ? args.packageId : undefined;
-            resourceInputs["providers"] = args ? args.providers : undefined;
-            resourceInputs["publisherDisplayName"] = args ? args.publisherDisplayName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["support"] = args ? args.support : undefined;
-            resourceInputs["threatAnalysisTactics"] = args ? args.threatAnalysisTactics : undefined;
-            resourceInputs["threatAnalysisTechniques"] = args ? args.threatAnalysisTechniques : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["author"] = args?.author;
+            resourceInputs["categories"] = args?.categories;
+            resourceInputs["contentId"] = args?.contentId;
+            resourceInputs["contentKind"] = args?.contentKind;
+            resourceInputs["contentProductId"] = args?.contentProductId;
+            resourceInputs["contentSchemaVersion"] = args?.contentSchemaVersion;
+            resourceInputs["dependencies"] = args?.dependencies;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["firstPublishDate"] = args?.firstPublishDate;
+            resourceInputs["icon"] = args?.icon;
+            resourceInputs["isDeprecated"] = args?.isDeprecated;
+            resourceInputs["isFeatured"] = args?.isFeatured;
+            resourceInputs["isNew"] = args?.isNew;
+            resourceInputs["isPreview"] = args?.isPreview;
+            resourceInputs["lastPublishDate"] = args?.lastPublishDate;
+            resourceInputs["packageId"] = args?.packageId;
+            resourceInputs["providers"] = args?.providers;
+            resourceInputs["publisherDisplayName"] = args?.publisherDisplayName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["support"] = args?.support;
+            resourceInputs["threatAnalysisTactics"] = args?.threatAnalysisTactics;
+            resourceInputs["threatAnalysisTechniques"] = args?.threatAnalysisTechniques;
+            resourceInputs["version"] = args?.version;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -242,7 +242,7 @@ export class ContentPackage extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20230401preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230501preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230601preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230701preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230801preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230901preview:ContentPackage" }, { type: "azure-native:securityinsights/v20231001preview:ContentPackage" }, { type: "azure-native:securityinsights/v20231101:ContentPackage" }, { type: "azure-native:securityinsights/v20231201preview:ContentPackage" }, { type: "azure-native:securityinsights/v20240101preview:ContentPackage" }, { type: "azure-native:securityinsights/v20240301:ContentPackage" }, { type: "azure-native:securityinsights/v20240401preview:ContentPackage" }, { type: "azure-native:securityinsights/v20240901:ContentPackage" }, { type: "azure-native:securityinsights/v20241001preview:ContentPackage" }, { type: "azure-native:securityinsights/v20250101preview:ContentPackage" }, { type: "azure-native:securityinsights/v20250301:ContentPackage" }, { type: "azure-native:securityinsights/v20250401preview:ContentPackage" }, { type: "azure-native:securityinsights/v20250601:ContentPackage" }, { type: "azure-native:securityinsights/v20250701preview:ContentPackage" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20230401preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230501preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230601preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230701preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230801preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230901preview:ContentPackage" }, { type: "azure-native:securityinsights/v20231001preview:ContentPackage" }, { type: "azure-native:securityinsights/v20231101:ContentPackage" }, { type: "azure-native:securityinsights/v20231201preview:ContentPackage" }, { type: "azure-native:securityinsights/v20240101preview:ContentPackage" }, { type: "azure-native:securityinsights/v20240301:ContentPackage" }, { type: "azure-native:securityinsights/v20240401preview:ContentPackage" }, { type: "azure-native:securityinsights/v20240901:ContentPackage" }, { type: "azure-native:securityinsights/v20241001preview:ContentPackage" }, { type: "azure-native:securityinsights/v20250101preview:ContentPackage" }, { type: "azure-native:securityinsights/v20250301:ContentPackage" }, { type: "azure-native:securityinsights/v20250401preview:ContentPackage" }, { type: "azure-native:securityinsights/v20250601:ContentPackage" }, { type: "azure-native:securityinsights/v20250701preview:ContentPackage" }, { type: "azure-native:securityinsights/v20250901:ContentPackage" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ContentPackage.__pulumiType, name, resourceInputs, opts);
     }

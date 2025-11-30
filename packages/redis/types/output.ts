@@ -23,11 +23,15 @@ export interface ManagedServiceIdentityResponse {
 }
 
 /**
- * The Private Endpoint Connection resource.
+ * The private endpoint connection resource.
  */
 export interface PrivateEndpointConnectionResponse {
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * The group ids for the private endpoint resource.
+     */
+    groupIds: string[];
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     id: string;
     /**
@@ -35,7 +39,7 @@ export interface PrivateEndpointConnectionResponse {
      */
     name: string;
     /**
-     * The resource of private end point.
+     * The private endpoint resource.
      */
     privateEndpoint?: PrivateEndpointResponse;
     /**
@@ -47,17 +51,21 @@ export interface PrivateEndpointConnectionResponse {
      */
     provisioningState: string;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
 }
 
 /**
- * The Private Endpoint resource.
+ * The private endpoint resource.
  */
 export interface PrivateEndpointResponse {
     /**
-     * The ARM identifier for Private Endpoint
+     * The ARM identifier for private endpoint.
      */
     id: string;
 }
@@ -97,7 +105,7 @@ export interface RedisAccessKeysResponse {
 /**
  * All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
  */
-export interface RedisCommonPropertiesResponseRedisConfiguration {
+export interface RedisCommonPropertiesRedisConfigurationResponse {
     /**
      * Specifies whether AAD based authentication has been enabled or disabled for the cache
      */
@@ -115,7 +123,7 @@ export interface RedisCommonPropertiesResponseRedisConfiguration {
      */
     aofStorageConnectionString1?: string;
     /**
-     * Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view.
+     * Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view; you should never disable authentication using this property!
      */
     authnotrequired?: string;
     /**
@@ -151,7 +159,7 @@ export interface RedisCommonPropertiesResponseRedisConfiguration {
      */
     preferredDataPersistenceAuthMethod?: string;
     /**
-     * Specifies whether the rdb backup is enabled
+     * Specifies whether the RDB backup is enabled
      */
     rdbBackupEnabled?: string;
     /**
@@ -225,7 +233,7 @@ export interface ScheduleEntryResponse {
      */
     dayOfWeek: string;
     /**
-     * ISO8601 timespan specifying how much time cache patching can take. 
+     * ISO8601 timespan specifying how much time cache patching can take.
      */
     maintenanceWindow?: string;
     /**
@@ -250,6 +258,36 @@ export interface SkuResponse {
      * The type of Redis cache to deploy. Valid values: (Basic, Standard, Premium)
      */
     name: string;
+}
+
+/**
+ * Metadata pertaining to creation and last modification of the resource.
+ */
+export interface SystemDataResponse {
+    /**
+     * The timestamp of resource creation (UTC).
+     */
+    createdAt?: string;
+    /**
+     * The identity that created the resource.
+     */
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
 }
 
 /**

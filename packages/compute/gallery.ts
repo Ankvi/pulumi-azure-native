@@ -38,55 +38,55 @@ export class Gallery extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The description of this Shared Image Gallery resource. This property is updatable.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Describes the gallery unique name.
      */
-    public /*out*/ readonly identifier!: pulumi.Output<types.outputs.GalleryIdentifierResponse | undefined>;
+    declare public /*out*/ readonly identifier: pulumi.Output<types.outputs.GalleryIdentifierResponse | undefined>;
     /**
      * The identity of the gallery, if configured.
      */
-    public readonly identity!: pulumi.Output<types.outputs.GalleryIdentityResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.GalleryIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The provisioning state, which only appears in the response.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Profile for gallery sharing to subscription or tenant
      */
-    public readonly sharingProfile!: pulumi.Output<types.outputs.SharingProfileResponse | undefined>;
+    declare public readonly sharingProfile: pulumi.Output<types.outputs.SharingProfileResponse | undefined>;
     /**
      * Sharing status of current gallery.
      */
-    public /*out*/ readonly sharingStatus!: pulumi.Output<types.outputs.SharingStatusResponse>;
+    declare public /*out*/ readonly sharingStatus: pulumi.Output<types.outputs.SharingStatusResponse>;
     /**
      * Contains information about the soft deletion policy of the gallery.
      */
-    public readonly softDeletePolicy!: pulumi.Output<types.outputs.SoftDeletePolicyResponse | undefined>;
+    declare public readonly softDeletePolicy: pulumi.Output<types.outputs.SoftDeletePolicyResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Gallery resource with the given unique name, arguments, and options.
@@ -99,17 +99,17 @@ export class Gallery extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["galleryName"] = args ? args.galleryName : undefined;
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sharingProfile"] = args ? args.sharingProfile : undefined;
-            resourceInputs["softDeletePolicy"] = args ? args.softDeletePolicy : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["galleryName"] = args?.galleryName;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sharingProfile"] = args?.sharingProfile;
+            resourceInputs["softDeletePolicy"] = args?.softDeletePolicy;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["identifier"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

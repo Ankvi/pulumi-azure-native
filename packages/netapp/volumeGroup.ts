@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
  *
- * Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VolumeGroup extends pulumi.CustomResource {
     /**
@@ -38,31 +38,31 @@ export class VolumeGroup extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Volume group details
      */
-    public readonly groupMetaData!: pulumi.Output<types.outputs.VolumeGroupMetaDataResponse | undefined>;
+    declare public readonly groupMetaData: pulumi.Output<types.outputs.VolumeGroupMetaDataResponse | undefined>;
     /**
      * Resource location
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Resource name
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Azure lifecycle management
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Resource type
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * List of volumes from group
      */
-    public readonly volumes!: pulumi.Output<types.outputs.VolumeGroupVolumePropertiesResponse[] | undefined>;
+    declare public readonly volumes: pulumi.Output<types.outputs.VolumeGroupVolumePropertiesResponse[] | undefined>;
 
     /**
      * Create a VolumeGroup resource with the given unique name, arguments, and options.
@@ -75,18 +75,18 @@ export class VolumeGroup extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["groupMetaData"] = args ? args.groupMetaData : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["volumeGroupName"] = args ? args.volumeGroupName : undefined;
-            resourceInputs["volumes"] = args ? args.volumes : undefined;
+            resourceInputs["accountName"] = args?.accountName;
+            resourceInputs["groupMetaData"] = args?.groupMetaData;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["volumeGroupName"] = args?.volumeGroupName;
+            resourceInputs["volumes"] = args?.volumes;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -101,7 +101,7 @@ export class VolumeGroup extends pulumi.CustomResource {
             resourceInputs["volumes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20210801:VolumeGroup" }, { type: "azure-native:netapp/v20211001:VolumeGroup" }, { type: "azure-native:netapp/v20220101:VolumeGroup" }, { type: "azure-native:netapp/v20220301:VolumeGroup" }, { type: "azure-native:netapp/v20220501:VolumeGroup" }, { type: "azure-native:netapp/v20220901:VolumeGroup" }, { type: "azure-native:netapp/v20221101:VolumeGroup" }, { type: "azure-native:netapp/v20221101preview:VolumeGroup" }, { type: "azure-native:netapp/v20230501:VolumeGroup" }, { type: "azure-native:netapp/v20230501preview:VolumeGroup" }, { type: "azure-native:netapp/v20230701:VolumeGroup" }, { type: "azure-native:netapp/v20230701preview:VolumeGroup" }, { type: "azure-native:netapp/v20231101:VolumeGroup" }, { type: "azure-native:netapp/v20231101preview:VolumeGroup" }, { type: "azure-native:netapp/v20240101:VolumeGroup" }, { type: "azure-native:netapp/v20240301:VolumeGroup" }, { type: "azure-native:netapp/v20240301preview:VolumeGroup" }, { type: "azure-native:netapp/v20240501:VolumeGroup" }, { type: "azure-native:netapp/v20240501preview:VolumeGroup" }, { type: "azure-native:netapp/v20240701:VolumeGroup" }, { type: "azure-native:netapp/v20240701preview:VolumeGroup" }, { type: "azure-native:netapp/v20240901:VolumeGroup" }, { type: "azure-native:netapp/v20240901preview:VolumeGroup" }, { type: "azure-native:netapp/v20250101:VolumeGroup" }, { type: "azure-native:netapp/v20250101preview:VolumeGroup" }, { type: "azure-native:netapp/v20250301:VolumeGroup" }, { type: "azure-native:netapp/v20250301preview:VolumeGroup" }, { type: "azure-native:netapp/v20250601:VolumeGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20210801:VolumeGroup" }, { type: "azure-native:netapp/v20211001:VolumeGroup" }, { type: "azure-native:netapp/v20220101:VolumeGroup" }, { type: "azure-native:netapp/v20220301:VolumeGroup" }, { type: "azure-native:netapp/v20220501:VolumeGroup" }, { type: "azure-native:netapp/v20220901:VolumeGroup" }, { type: "azure-native:netapp/v20221101:VolumeGroup" }, { type: "azure-native:netapp/v20221101preview:VolumeGroup" }, { type: "azure-native:netapp/v20230501:VolumeGroup" }, { type: "azure-native:netapp/v20230501preview:VolumeGroup" }, { type: "azure-native:netapp/v20230701:VolumeGroup" }, { type: "azure-native:netapp/v20230701preview:VolumeGroup" }, { type: "azure-native:netapp/v20231101:VolumeGroup" }, { type: "azure-native:netapp/v20231101preview:VolumeGroup" }, { type: "azure-native:netapp/v20240101:VolumeGroup" }, { type: "azure-native:netapp/v20240301:VolumeGroup" }, { type: "azure-native:netapp/v20240301preview:VolumeGroup" }, { type: "azure-native:netapp/v20240501:VolumeGroup" }, { type: "azure-native:netapp/v20240501preview:VolumeGroup" }, { type: "azure-native:netapp/v20240701:VolumeGroup" }, { type: "azure-native:netapp/v20240701preview:VolumeGroup" }, { type: "azure-native:netapp/v20240901:VolumeGroup" }, { type: "azure-native:netapp/v20240901preview:VolumeGroup" }, { type: "azure-native:netapp/v20250101:VolumeGroup" }, { type: "azure-native:netapp/v20250101preview:VolumeGroup" }, { type: "azure-native:netapp/v20250301:VolumeGroup" }, { type: "azure-native:netapp/v20250301preview:VolumeGroup" }, { type: "azure-native:netapp/v20250601:VolumeGroup" }, { type: "azure-native:netapp/v20250701preview:VolumeGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VolumeGroup.__pulumiType, name, resourceInputs, opts);
     }

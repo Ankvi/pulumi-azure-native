@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -38,39 +38,39 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Modified whenever there is a change in the state of private endpoint connection.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly etag: pulumi.Output<string | undefined>;
     /**
      * Azure location of the key vault resource.
      */
-    public /*out*/ readonly location!: pulumi.Output<string>;
+    declare public /*out*/ readonly location: pulumi.Output<string>;
     /**
      * Name of the key vault resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Properties of the private endpoint object.
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
+    declare public /*out*/ readonly privateEndpoint: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * Approval state of the private link connection.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse | undefined>;
+    declare public readonly privateLinkServiceConnectionState: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse | undefined>;
     /**
      * Provisioning state of the private endpoint connection.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Tags assigned to the key vault resource.
      */
-    public /*out*/ readonly tags!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * Resource type of the key vault resource.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a PrivateEndpointConnection resource with the given unique name, arguments, and options.
@@ -83,16 +83,16 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.vaultName === undefined) && !opts.urn) {
+            if (args?.vaultName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vaultName'");
             }
-            resourceInputs["privateEndpointConnectionName"] = args ? args.privateEndpointConnectionName : undefined;
-            resourceInputs["privateLinkServiceConnectionState"] = args ? args.privateLinkServiceConnectionState : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["vaultName"] = args ? args.vaultName : undefined;
+            resourceInputs["privateEndpointConnectionName"] = args?.privateEndpointConnectionName;
+            resourceInputs["privateLinkServiceConnectionState"] = args?.privateLinkServiceConnectionState;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["vaultName"] = args?.vaultName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -113,7 +113,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:keyvault/v20180214:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20190901:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20200401preview:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20210401preview:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20210601preview:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20211001:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20211101preview:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20220201preview:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20220701:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20221101:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20230201:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20230701:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20240401preview:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20241101:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20241201preview:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:keyvault/v20180214:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20190901:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20200401preview:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20210401preview:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20210601preview:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20211001:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20211101preview:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20220201preview:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20220701:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20221101:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20230201:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20230701:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20240401preview:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20241101:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20241201preview:PrivateEndpointConnection" }, { type: "azure-native:keyvault/v20250501:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }

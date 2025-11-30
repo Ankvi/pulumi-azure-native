@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com.
  *
- * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+ * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2025-01-01-preview, 2025-04-15, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CustomDomain extends pulumi.CustomResource {
     /**
@@ -38,47 +38,47 @@ export class CustomDomain extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Certificate parameters for securing custom HTTPS
      */
-    public /*out*/ readonly customHttpsParameters!: pulumi.Output<types.outputs.CdnManagedHttpsParametersResponse | types.outputs.UserManagedHttpsParametersResponse | undefined>;
+    declare public /*out*/ readonly customHttpsParameters: pulumi.Output<types.outputs.CdnManagedHttpsParametersResponse | types.outputs.UserManagedHttpsParametersResponse | undefined>;
     /**
      * Provisioning status of the custom domain.
      */
-    public /*out*/ readonly customHttpsProvisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly customHttpsProvisioningState: pulumi.Output<string>;
     /**
      * Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step.
      */
-    public /*out*/ readonly customHttpsProvisioningSubstate!: pulumi.Output<string>;
+    declare public /*out*/ readonly customHttpsProvisioningSubstate: pulumi.Output<string>;
     /**
      * The host name of the custom domain. Must be a domain name.
      */
-    public readonly hostName!: pulumi.Output<string>;
+    declare public readonly hostName: pulumi.Output<string>;
     /**
-     * Resource name.
+     * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Provisioning status of Custom Https of the custom domain.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Resource status of the custom domain.
      */
-    public /*out*/ readonly resourceState!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceState: pulumi.Output<string>;
     /**
-     * Read only system data
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Special validation or data may be required when delivering CDN to some regions due to local compliance reasons. E.g. ICP license number of a custom domain is required to deliver content in China.
      */
-    public /*out*/ readonly validationData!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly validationData: pulumi.Output<string | undefined>;
 
     /**
      * Create a CustomDomain resource with the given unique name, arguments, and options.
@@ -91,23 +91,23 @@ export class CustomDomain extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.endpointName === undefined) && !opts.urn) {
+            if (args?.endpointName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointName'");
             }
-            if ((!args || args.hostName === undefined) && !opts.urn) {
+            if (args?.hostName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostName'");
             }
-            if ((!args || args.profileName === undefined) && !opts.urn) {
+            if (args?.profileName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'profileName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["customDomainName"] = args ? args.customDomainName : undefined;
-            resourceInputs["endpointName"] = args ? args.endpointName : undefined;
-            resourceInputs["hostName"] = args ? args.hostName : undefined;
-            resourceInputs["profileName"] = args ? args.profileName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["customDomainName"] = args?.customDomainName;
+            resourceInputs["endpointName"] = args?.endpointName;
+            resourceInputs["hostName"] = args?.hostName;
+            resourceInputs["profileName"] = args?.profileName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["customHttpsParameters"] = undefined /*out*/;
             resourceInputs["customHttpsProvisioningState"] = undefined /*out*/;
@@ -132,7 +132,7 @@ export class CustomDomain extends pulumi.CustomResource {
             resourceInputs["validationData"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20150601:CustomDomain" }, { type: "azure-native:cdn/v20160402:CustomDomain" }, { type: "azure-native:cdn/v20161002:CustomDomain" }, { type: "azure-native:cdn/v20170402:CustomDomain" }, { type: "azure-native:cdn/v20171012:CustomDomain" }, { type: "azure-native:cdn/v20190415:CustomDomain" }, { type: "azure-native:cdn/v20190615:CustomDomain" }, { type: "azure-native:cdn/v20190615preview:CustomDomain" }, { type: "azure-native:cdn/v20191231:CustomDomain" }, { type: "azure-native:cdn/v20200331:CustomDomain" }, { type: "azure-native:cdn/v20200415:CustomDomain" }, { type: "azure-native:cdn/v20200901:CustomDomain" }, { type: "azure-native:cdn/v20210601:CustomDomain" }, { type: "azure-native:cdn/v20220501preview:CustomDomain" }, { type: "azure-native:cdn/v20221101preview:CustomDomain" }, { type: "azure-native:cdn/v20230501:CustomDomain" }, { type: "azure-native:cdn/v20230701preview:CustomDomain" }, { type: "azure-native:cdn/v20240201:CustomDomain" }, { type: "azure-native:cdn/v20240501preview:CustomDomain" }, { type: "azure-native:cdn/v20240601preview:CustomDomain" }, { type: "azure-native:cdn/v20240901:CustomDomain" }, { type: "azure-native:cdn/v20250101preview:CustomDomain" }, { type: "azure-native:cdn/v20250415:CustomDomain" }, { type: "azure-native:cdn/v20250601:CustomDomain" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20150601:CustomDomain" }, { type: "azure-native:cdn/v20160402:CustomDomain" }, { type: "azure-native:cdn/v20161002:CustomDomain" }, { type: "azure-native:cdn/v20170402:CustomDomain" }, { type: "azure-native:cdn/v20171012:CustomDomain" }, { type: "azure-native:cdn/v20190415:CustomDomain" }, { type: "azure-native:cdn/v20190615:CustomDomain" }, { type: "azure-native:cdn/v20190615preview:CustomDomain" }, { type: "azure-native:cdn/v20191231:CustomDomain" }, { type: "azure-native:cdn/v20200331:CustomDomain" }, { type: "azure-native:cdn/v20200415:CustomDomain" }, { type: "azure-native:cdn/v20200901:CustomDomain" }, { type: "azure-native:cdn/v20210601:CustomDomain" }, { type: "azure-native:cdn/v20220501preview:CustomDomain" }, { type: "azure-native:cdn/v20221101preview:CustomDomain" }, { type: "azure-native:cdn/v20230501:CustomDomain" }, { type: "azure-native:cdn/v20230701preview:CustomDomain" }, { type: "azure-native:cdn/v20240201:CustomDomain" }, { type: "azure-native:cdn/v20240501preview:CustomDomain" }, { type: "azure-native:cdn/v20240601preview:CustomDomain" }, { type: "azure-native:cdn/v20240901:CustomDomain" }, { type: "azure-native:cdn/v20250101preview:CustomDomain" }, { type: "azure-native:cdn/v20250415:CustomDomain" }, { type: "azure-native:cdn/v20250601:CustomDomain" }, { type: "azure-native:cdn/v20250701preview:CustomDomain" }, { type: "azure-native:cdn/v20250901preview:CustomDomain" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CustomDomain.__pulumiType, name, resourceInputs, opts);
     }
@@ -155,11 +155,11 @@ export interface CustomDomainArgs {
      */
     hostName: pulumi.Input<string>;
     /**
-     * Name of the CDN profile which is unique within the resource group.
+     * Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
      */
     profileName: pulumi.Input<string>;
     /**
-     * Name of the Resource group within the Azure subscription.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

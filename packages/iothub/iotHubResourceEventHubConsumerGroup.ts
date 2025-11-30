@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-06-30.
  *
- * Other available API versions: 2016-02-03, 2017-01-19, 2017-07-01, 2018-01-22, 2018-04-01, 2018-12-01-preview, 2019-03-22, 2019-03-22-preview, 2019-07-01-preview, 2019-11-04, 2020-03-01, 2020-04-01, 2020-06-15, 2020-07-10-preview, 2020-08-01, 2020-08-31, 2020-08-31-preview, 2021-02-01-preview, 2021-03-03-preview, 2021-03-31, 2021-07-01, 2021-07-01-preview, 2021-07-02, 2021-07-02-preview, 2022-04-30-preview, 2022-11-15-preview, 2023-06-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iothub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2016-02-03, 2017-01-19, 2017-07-01, 2018-01-22, 2018-04-01, 2018-12-01-preview, 2019-03-22, 2019-03-22-preview, 2019-07-01-preview, 2019-11-04, 2020-03-01, 2020-04-01, 2020-06-15, 2020-07-10-preview, 2020-08-01, 2020-08-31, 2020-08-31-preview, 2021-02-01-preview, 2021-03-03-preview, 2021-03-31, 2021-07-01, 2021-07-01-preview, 2021-07-02, 2021-07-02-preview, 2022-04-30-preview, 2022-11-15-preview, 2023-06-30-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iothub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class IotHubResourceEventHubConsumerGroup extends pulumi.CustomResource {
     /**
@@ -38,23 +38,23 @@ export class IotHubResourceEventHubConsumerGroup extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The etag.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The Event Hub-compatible consumer group name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The tags.
      */
-    public readonly properties!: pulumi.Output<any>;
+    declare public readonly properties: pulumi.Output<any>;
     /**
      * the resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a IotHubResourceEventHubConsumerGroup resource with the given unique name, arguments, and options.
@@ -67,23 +67,23 @@ export class IotHubResourceEventHubConsumerGroup extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.eventHubEndpointName === undefined) && !opts.urn) {
+            if (args?.eventHubEndpointName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'eventHubEndpointName'");
             }
-            if ((!args || args.properties === undefined) && !opts.urn) {
+            if (args?.properties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'properties'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.resourceName === undefined) && !opts.urn) {
+            if (args?.resourceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceName'");
             }
-            resourceInputs["eventHubEndpointName"] = args ? args.eventHubEndpointName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["resourceName"] = args ? args.resourceName : undefined;
+            resourceInputs["eventHubEndpointName"] = args?.eventHubEndpointName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["resourceName"] = args?.resourceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -95,7 +95,7 @@ export class IotHubResourceEventHubConsumerGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:devices/v20210303preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:devices/v20220430preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:devices/v20221115preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:devices/v20230630:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:devices/v20230630preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:devices:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20160203:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20170119:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20170701:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20180122:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20180401:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20181201preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20190322:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20190322preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20190701preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20191104:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20200301:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20200401:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20200615:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20200710preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20200801:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20200831:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20200831preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20210201preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20210303preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20210331:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20210701:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20210701preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20210702:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20210702preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20220430preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20221115preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20230630:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20230630preview:IotHubResourceEventHubConsumerGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:devices/v20210303preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:devices/v20220430preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:devices/v20221115preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:devices/v20230630:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:devices/v20230630preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:devices:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20160203:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20170119:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20170701:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20180122:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20180401:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20181201preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20190322:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20190322preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20190701preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20191104:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20200301:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20200401:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20200615:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20200710preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20200801:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20200831:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20200831preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20210201preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20210303preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20210331:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20210701:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20210701preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20210702:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20210702preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20220430preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20221115preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20230630:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20230630preview:IotHubResourceEventHubConsumerGroup" }, { type: "azure-native:iothub/v20250801preview:IotHubResourceEventHubConsumerGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(IotHubResourceEventHubConsumerGroup.__pulumiType, name, resourceInputs, opts);
     }

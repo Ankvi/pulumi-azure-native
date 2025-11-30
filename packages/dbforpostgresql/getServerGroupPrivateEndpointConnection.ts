@@ -23,7 +23,7 @@ export interface GetServerGroupPrivateEndpointConnectionArgs {
      */
     clusterName: string;
     /**
-     * The name of the private endpoint connection associated with the cluster.
+     * The name of the private endpoint connection associated with the Azure resource.
      */
     privateEndpointConnectionName: string;
     /**
@@ -95,7 +95,7 @@ export interface GetServerGroupPrivateEndpointConnectionOutputArgs {
      */
     clusterName: pulumi.Input<string>;
     /**
-     * The name of the private endpoint connection associated with the cluster.
+     * The name of the private endpoint connection associated with the Azure resource.
      */
     privateEndpointConnectionName: pulumi.Input<string>;
     /**

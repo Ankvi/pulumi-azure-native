@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class JobDefinition extends pulumi.CustomResource {
     /**
@@ -38,75 +38,75 @@ export class JobDefinition extends pulumi.CustomResource {
     /**
      * Name of the Agent to assign for new Job Runs of this Job Definition.
      */
-    public readonly agentName!: pulumi.Output<string | undefined>;
+    declare public readonly agentName: pulumi.Output<string | undefined>;
     /**
      * Fully qualified resource id of the Agent to assign for new Job Runs of this Job Definition.
      */
-    public /*out*/ readonly agentResourceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly agentResourceId: pulumi.Output<string>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Strategy to use for copy.
      */
-    public readonly copyMode!: pulumi.Output<string>;
+    declare public readonly copyMode: pulumi.Output<string>;
     /**
-     * A description for the Job Definition.
+     * A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for migrating data between cloud to cloud.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the Job Run in a non-terminal state, if exists.
      */
-    public /*out*/ readonly latestJobRunName!: pulumi.Output<string>;
+    declare public /*out*/ readonly latestJobRunName: pulumi.Output<string>;
     /**
      * The fully qualified resource ID of the Job Run in a non-terminal state, if exists.
      */
-    public /*out*/ readonly latestJobRunResourceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly latestJobRunResourceId: pulumi.Output<string>;
     /**
      * The current status of the Job Run in a non-terminal state, if exists.
      */
-    public /*out*/ readonly latestJobRunStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly latestJobRunStatus: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The provisioning state of this resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The name of the source Endpoint.
      */
-    public readonly sourceName!: pulumi.Output<string>;
+    declare public readonly sourceName: pulumi.Output<string>;
     /**
      * Fully qualified resource ID of the source Endpoint.
      */
-    public /*out*/ readonly sourceResourceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly sourceResourceId: pulumi.Output<string>;
     /**
      * The subpath to use when reading from the source Endpoint.
      */
-    public readonly sourceSubpath!: pulumi.Output<string | undefined>;
+    declare public readonly sourceSubpath: pulumi.Output<string | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The name of the target Endpoint.
      */
-    public readonly targetName!: pulumi.Output<string>;
+    declare public readonly targetName: pulumi.Output<string>;
     /**
      * Fully qualified resource ID of the target Endpoint.
      */
-    public /*out*/ readonly targetResourceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly targetResourceId: pulumi.Output<string>;
     /**
      * The subpath to use when writing to the target Endpoint.
      */
-    public readonly targetSubpath!: pulumi.Output<string | undefined>;
+    declare public readonly targetSubpath: pulumi.Output<string | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a JobDefinition resource with the given unique name, arguments, and options.
@@ -119,35 +119,35 @@ export class JobDefinition extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.copyMode === undefined) && !opts.urn) {
+            if (args?.copyMode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'copyMode'");
             }
-            if ((!args || args.projectName === undefined) && !opts.urn) {
+            if (args?.projectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.sourceName === undefined) && !opts.urn) {
+            if (args?.sourceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceName'");
             }
-            if ((!args || args.storageMoverName === undefined) && !opts.urn) {
+            if (args?.storageMoverName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageMoverName'");
             }
-            if ((!args || args.targetName === undefined) && !opts.urn) {
+            if (args?.targetName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetName'");
             }
-            resourceInputs["agentName"] = args ? args.agentName : undefined;
-            resourceInputs["copyMode"] = args ? args.copyMode : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["jobDefinitionName"] = args ? args.jobDefinitionName : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sourceName"] = args ? args.sourceName : undefined;
-            resourceInputs["sourceSubpath"] = args ? args.sourceSubpath : undefined;
-            resourceInputs["storageMoverName"] = args ? args.storageMoverName : undefined;
-            resourceInputs["targetName"] = args ? args.targetName : undefined;
-            resourceInputs["targetSubpath"] = args ? args.targetSubpath : undefined;
+            resourceInputs["agentName"] = args?.agentName;
+            resourceInputs["copyMode"] = args?.copyMode;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["jobDefinitionName"] = args?.jobDefinitionName;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sourceName"] = args?.sourceName;
+            resourceInputs["sourceSubpath"] = args?.sourceSubpath;
+            resourceInputs["storageMoverName"] = args?.storageMoverName;
+            resourceInputs["targetName"] = args?.targetName;
+            resourceInputs["targetSubpath"] = args?.targetSubpath;
             resourceInputs["agentResourceId"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["latestJobRunName"] = undefined /*out*/;
@@ -180,7 +180,7 @@ export class JobDefinition extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storagemover/v20220701preview:JobDefinition" }, { type: "azure-native:storagemover/v20230301:JobDefinition" }, { type: "azure-native:storagemover/v20230701preview:JobDefinition" }, { type: "azure-native:storagemover/v20231001:JobDefinition" }, { type: "azure-native:storagemover/v20240701:JobDefinition" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storagemover/v20220701preview:JobDefinition" }, { type: "azure-native:storagemover/v20230301:JobDefinition" }, { type: "azure-native:storagemover/v20230701preview:JobDefinition" }, { type: "azure-native:storagemover/v20231001:JobDefinition" }, { type: "azure-native:storagemover/v20240701:JobDefinition" }, { type: "azure-native:storagemover/v20250701:JobDefinition" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(JobDefinition.__pulumiType, name, resourceInputs, opts);
     }
@@ -199,7 +199,7 @@ export interface JobDefinitionArgs {
      */
     copyMode: pulumi.Input<string | types.enums.CopyMode>;
     /**
-     * A description for the Job Definition.
+     * A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for migrating data between cloud to cloud.
      */
     description?: pulumi.Input<string>;
     /**

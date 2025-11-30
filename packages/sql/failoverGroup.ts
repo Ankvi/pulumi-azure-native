@@ -38,47 +38,47 @@ export class FailoverGroup extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * List of databases in the failover group.
      */
-    public readonly databases!: pulumi.Output<string[] | undefined>;
+    declare public readonly databases: pulumi.Output<string[] | undefined>;
     /**
      * Resource location.
      */
-    public /*out*/ readonly location!: pulumi.Output<string>;
+    declare public /*out*/ readonly location: pulumi.Output<string>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * List of partner server information for the failover group.
      */
-    public readonly partnerServers!: pulumi.Output<types.outputs.PartnerInfoResponse[]>;
+    declare public readonly partnerServers: pulumi.Output<types.outputs.PartnerInfoResponse[]>;
     /**
      * Read-only endpoint of the failover group instance.
      */
-    public readonly readOnlyEndpoint!: pulumi.Output<types.outputs.FailoverGroupReadOnlyEndpointResponse | undefined>;
+    declare public readonly readOnlyEndpoint: pulumi.Output<types.outputs.FailoverGroupReadOnlyEndpointResponse | undefined>;
     /**
      * Read-write endpoint of the failover group instance.
      */
-    public readonly readWriteEndpoint!: pulumi.Output<types.outputs.FailoverGroupReadWriteEndpointResponse>;
+    declare public readonly readWriteEndpoint: pulumi.Output<types.outputs.FailoverGroupReadWriteEndpointResponse>;
     /**
      * Local replication role of the failover group instance.
      */
-    public /*out*/ readonly replicationRole!: pulumi.Output<string>;
+    declare public /*out*/ readonly replicationRole: pulumi.Output<string>;
     /**
      * Replication state of the failover group instance.
      */
-    public /*out*/ readonly replicationState!: pulumi.Output<string>;
+    declare public /*out*/ readonly replicationState: pulumi.Output<string>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a FailoverGroup resource with the given unique name, arguments, and options.
@@ -91,27 +91,27 @@ export class FailoverGroup extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.partnerServers === undefined) && !opts.urn) {
+            if (args?.partnerServers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'partnerServers'");
             }
-            if ((!args || args.readWriteEndpoint === undefined) && !opts.urn) {
+            if (args?.readWriteEndpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'readWriteEndpoint'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.serverName === undefined) && !opts.urn) {
+            if (args?.serverName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverName'");
             }
-            resourceInputs["databases"] = args ? args.databases : undefined;
-            resourceInputs["failoverGroupName"] = args ? args.failoverGroupName : undefined;
-            resourceInputs["partnerServers"] = args ? args.partnerServers : undefined;
-            resourceInputs["readOnlyEndpoint"] = args ? args.readOnlyEndpoint : undefined;
-            resourceInputs["readWriteEndpoint"] = args ? args.readWriteEndpoint : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["secondaryType"] = args ? args.secondaryType : undefined;
-            resourceInputs["serverName"] = args ? args.serverName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["databases"] = args?.databases;
+            resourceInputs["failoverGroupName"] = args?.failoverGroupName;
+            resourceInputs["partnerServers"] = args?.partnerServers;
+            resourceInputs["readOnlyEndpoint"] = args?.readOnlyEndpoint;
+            resourceInputs["readWriteEndpoint"] = args?.readWriteEndpoint;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["secondaryType"] = args?.secondaryType;
+            resourceInputs["serverName"] = args?.serverName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

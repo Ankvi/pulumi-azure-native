@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualHubIpConfiguration extends pulumi.CustomResource {
     /**
@@ -38,39 +38,39 @@ export class VirtualHubIpConfiguration extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Name of the Ip Configuration.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     /**
      * The private IP address of the IP configuration.
      */
-    public readonly privateIPAddress!: pulumi.Output<string | undefined>;
+    declare public readonly privateIPAddress: pulumi.Output<string | undefined>;
     /**
      * The private IP address allocation method.
      */
-    public readonly privateIPAllocationMethod!: pulumi.Output<string | undefined>;
+    declare public readonly privateIPAllocationMethod: pulumi.Output<string | undefined>;
     /**
      * The provisioning state of the IP configuration resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The reference to the public IP resource.
      */
-    public readonly publicIPAddress!: pulumi.Output<types.outputs.PublicIPAddressResponse | undefined>;
+    declare public readonly publicIPAddress: pulumi.Output<types.outputs.PublicIPAddressResponse | undefined>;
     /**
      * The reference to the subnet resource.
      */
-    public readonly subnet!: pulumi.Output<types.outputs.SubnetResponse | undefined>;
+    declare public readonly subnet: pulumi.Output<types.outputs.SubnetResponse | undefined>;
     /**
      * Ipconfiguration type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a VirtualHubIpConfiguration resource with the given unique name, arguments, and options.
@@ -83,21 +83,21 @@ export class VirtualHubIpConfiguration extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.virtualHubName === undefined) && !opts.urn) {
+            if (args?.virtualHubName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualHubName'");
             }
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["ipConfigName"] = args ? args.ipConfigName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["privateIPAddress"] = args ? args.privateIPAddress : undefined;
-            resourceInputs["privateIPAllocationMethod"] = args ? args.privateIPAllocationMethod : undefined;
-            resourceInputs["publicIPAddress"] = args ? args.publicIPAddress : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["ipConfigName"] = args?.ipConfigName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["privateIPAddress"] = args?.privateIPAddress;
+            resourceInputs["privateIPAllocationMethod"] = args?.privateIPAllocationMethod;
+            resourceInputs["publicIPAddress"] = args?.publicIPAddress;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["subnet"] = args ? (args.subnet ? pulumi.output(args.subnet).apply(types.inputs.subnetArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["virtualHubName"] = args ? args.virtualHubName : undefined;
+            resourceInputs["virtualHubName"] = args?.virtualHubName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -114,7 +114,7 @@ export class VirtualHubIpConfiguration extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20200501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20200601:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20200701:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20200801:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20201101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20210201:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20210301:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20210501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20210801:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20220101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20220501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20220701:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20220901:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20221101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230201:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230401:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230601:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230901:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20231101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20240101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20240301:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20240501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20240701:VirtualHubIpConfiguration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20200501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20200601:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20200701:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20200801:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20201101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20210201:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20210301:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20210501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20210801:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20220101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20220501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20220701:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20220901:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20221101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230201:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230401:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230601:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230901:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20231101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20240101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20240301:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20240501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20240701:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20241001:VirtualHubIpConfiguration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualHubIpConfiguration.__pulumiType, name, resourceInputs, opts);
     }

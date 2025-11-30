@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-04-01-preview.
  *
- * Other available API versions: 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ProjectConnection extends pulumi.CustomResource {
     /**
@@ -38,19 +38,19 @@ export class ProjectConnection extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Connection property base schema.
      */
-    public readonly properties!: pulumi.Output<types.outputs.AADAuthTypeConnectionPropertiesResponse | types.outputs.AccessKeyAuthTypeConnectionPropertiesResponse | types.outputs.AccountKeyAuthTypeConnectionPropertiesResponse | types.outputs.ApiKeyAuthConnectionPropertiesResponse | types.outputs.CustomKeysConnectionPropertiesResponse | types.outputs.ManagedIdentityAuthTypeConnectionPropertiesResponse | types.outputs.NoneAuthTypeConnectionPropertiesResponse | types.outputs.OAuth2AuthTypeConnectionPropertiesResponse | types.outputs.PATAuthTypeConnectionPropertiesResponse | types.outputs.SASAuthTypeConnectionPropertiesResponse | types.outputs.ServicePrincipalAuthTypeConnectionPropertiesResponse | types.outputs.UsernamePasswordAuthTypeConnectionPropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.AADAuthTypeConnectionPropertiesResponse | types.outputs.AccessKeyAuthTypeConnectionPropertiesResponse | types.outputs.AccountKeyAuthTypeConnectionPropertiesResponse | types.outputs.ApiKeyAuthConnectionPropertiesResponse | types.outputs.CustomKeysConnectionPropertiesResponse | types.outputs.ManagedIdentityAuthTypeConnectionPropertiesResponse | types.outputs.NoneAuthTypeConnectionPropertiesResponse | types.outputs.OAuth2AuthTypeConnectionPropertiesResponse | types.outputs.PATAuthTypeConnectionPropertiesResponse | types.outputs.SASAuthTypeConnectionPropertiesResponse | types.outputs.ServicePrincipalAuthTypeConnectionPropertiesResponse | types.outputs.UsernamePasswordAuthTypeConnectionPropertiesResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ProjectConnection resource with the given unique name, arguments, and options.
@@ -63,23 +63,23 @@ export class ProjectConnection extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.projectName === undefined) && !opts.urn) {
+            if (args?.projectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            if ((!args || args.properties === undefined) && !opts.urn) {
+            if (args?.properties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'properties'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["connectionName"] = args ? args.connectionName : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["accountName"] = args?.accountName;
+            resourceInputs["connectionName"] = args?.connectionName;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -90,7 +90,7 @@ export class ProjectConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20250401preview:ProjectConnection" }, { type: "azure-native:cognitiveservices/v20250601:ProjectConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20250401preview:ProjectConnection" }, { type: "azure-native:cognitiveservices/v20250601:ProjectConnection" }, { type: "azure-native:cognitiveservices/v20250701preview:ProjectConnection" }, { type: "azure-native:cognitiveservices/v20250901:ProjectConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ProjectConnection.__pulumiType, name, resourceInputs, opts);
     }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-06.
  *
- * Other available API versions: 2023-06-06, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SqlSitesController extends pulumi.CustomResource {
     /**
@@ -38,37 +38,37 @@ export class SqlSitesController extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Gets or sets the discovery scenario.
      */
-    public readonly discoveryScenario!: pulumi.Output<string | undefined>;
+    declare public readonly discoveryScenario: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * provisioning state enum
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Gets the service endpoint.
      */
-    public /*out*/ readonly serviceEndpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceEndpoint: pulumi.Output<string>;
     /**
      * Gets or sets the appliance details used by service to communicate
      *            
      * to the appliance.
      */
-    public readonly siteAppliancePropertiesCollection!: pulumi.Output<types.outputs.SiteAppliancePropertiesResponse[] | undefined>;
+    declare public readonly siteAppliancePropertiesCollection: pulumi.Output<types.outputs.SiteAppliancePropertiesResponse[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a SqlSitesController resource with the given unique name, arguments, and options.
@@ -81,17 +81,17 @@ export class SqlSitesController extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.siteName === undefined) && !opts.urn) {
+            if (args?.siteName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteName'");
             }
-            resourceInputs["discoveryScenario"] = args ? args.discoveryScenario : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["siteAppliancePropertiesCollection"] = args ? args.siteAppliancePropertiesCollection : undefined;
-            resourceInputs["siteName"] = args ? args.siteName : undefined;
-            resourceInputs["sqlSiteName"] = args ? args.sqlSiteName : undefined;
+            resourceInputs["discoveryScenario"] = args?.discoveryScenario;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["siteAppliancePropertiesCollection"] = args?.siteAppliancePropertiesCollection;
+            resourceInputs["siteName"] = args?.siteName;
+            resourceInputs["sqlSiteName"] = args?.sqlSiteName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -109,7 +109,7 @@ export class SqlSitesController extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20230606:SqlSitesController" }, { type: "azure-native:offazure/v20231001preview:SqlSitesController" }, { type: "azure-native:offazure/v20240501preview:SqlSitesController" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20230606:SqlSitesController" }, { type: "azure-native:offazure/v20231001preview:SqlSitesController" }, { type: "azure-native:offazure/v20240501preview:SqlSitesController" }, { type: "azure-native:offazure/v20240701preview:SqlSitesController" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SqlSitesController.__pulumiType, name, resourceInputs, opts);
     }

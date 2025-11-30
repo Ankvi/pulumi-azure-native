@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Extension extends pulumi.CustomResource {
     /**
@@ -38,63 +38,63 @@ export class Extension extends pulumi.CustomResource {
     /**
      * Aggregate state of Arc Extensions across the nodes in this HCI cluster.
      */
-    public /*out*/ readonly aggregateState!: pulumi.Output<string>;
+    declare public /*out*/ readonly aggregateState: pulumi.Output<string>;
     /**
      * Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
      */
-    public readonly autoUpgradeMinorVersion!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoUpgradeMinorVersion: pulumi.Output<boolean | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
      */
-    public readonly enableAutomaticUpgrade!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableAutomaticUpgrade: pulumi.Output<boolean | undefined>;
     /**
      * How the extension handler should be forced to update even if the extension configuration has not changed.
      */
-    public readonly forceUpdateTag!: pulumi.Output<string | undefined>;
+    declare public readonly forceUpdateTag: pulumi.Output<string | undefined>;
     /**
      * Indicates if the extension is managed by azure or the user.
      */
-    public /*out*/ readonly managedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly managedBy: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * State of Arc Extension in each of the nodes.
      */
-    public /*out*/ readonly perNodeExtensionDetails!: pulumi.Output<types.outputs.PerNodeExtensionStateResponse[]>;
+    declare public /*out*/ readonly perNodeExtensionDetails: pulumi.Output<types.outputs.PerNodeExtensionStateResponse[]>;
     /**
      * Protected settings (may contain secrets).
      */
-    public readonly protectedSettings!: pulumi.Output<any | undefined>;
+    declare public readonly protectedSettings: pulumi.Output<any | undefined>;
     /**
      * Provisioning state of the Extension proxy resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The name of the extension handler publisher.
      */
-    public readonly publisher!: pulumi.Output<string | undefined>;
+    declare public readonly publisher: pulumi.Output<string | undefined>;
     /**
      * Json formatted public settings for the extension.
      */
-    public readonly settings!: pulumi.Output<any | undefined>;
+    declare public readonly settings: pulumi.Output<any | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Specifies the version of the script handler. Latest version would be used if not specified.
      */
-    public readonly typeHandlerVersion!: pulumi.Output<string | undefined>;
+    declare public readonly typeHandlerVersion: pulumi.Output<string | undefined>;
 
     /**
      * Create a Extension resource with the given unique name, arguments, and options.
@@ -107,27 +107,27 @@ export class Extension extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.arcSettingName === undefined) && !opts.urn) {
+            if (args?.arcSettingName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'arcSettingName'");
             }
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["arcSettingName"] = args ? args.arcSettingName : undefined;
-            resourceInputs["autoUpgradeMinorVersion"] = args ? args.autoUpgradeMinorVersion : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["enableAutomaticUpgrade"] = args ? args.enableAutomaticUpgrade : undefined;
-            resourceInputs["extensionName"] = args ? args.extensionName : undefined;
-            resourceInputs["forceUpdateTag"] = args ? args.forceUpdateTag : undefined;
-            resourceInputs["protectedSettings"] = args ? args.protectedSettings : undefined;
-            resourceInputs["publisher"] = args ? args.publisher : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["settings"] = args ? args.settings : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["typeHandlerVersion"] = args ? args.typeHandlerVersion : undefined;
+            resourceInputs["arcSettingName"] = args?.arcSettingName;
+            resourceInputs["autoUpgradeMinorVersion"] = args?.autoUpgradeMinorVersion;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["enableAutomaticUpgrade"] = args?.enableAutomaticUpgrade;
+            resourceInputs["extensionName"] = args?.extensionName;
+            resourceInputs["forceUpdateTag"] = args?.forceUpdateTag;
+            resourceInputs["protectedSettings"] = args?.protectedSettings;
+            resourceInputs["publisher"] = args?.publisher;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["settings"] = args?.settings;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["typeHandlerVersion"] = args?.typeHandlerVersion;
             resourceInputs["aggregateState"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["managedBy"] = undefined /*out*/;
@@ -153,7 +153,7 @@ export class Extension extends pulumi.CustomResource {
             resourceInputs["typeHandlerVersion"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20210101preview:Extension" }, { type: "azure-native:azurestackhci/v20210901:Extension" }, { type: "azure-native:azurestackhci/v20210901preview:Extension" }, { type: "azure-native:azurestackhci/v20220101:Extension" }, { type: "azure-native:azurestackhci/v20220301:Extension" }, { type: "azure-native:azurestackhci/v20220501:Extension" }, { type: "azure-native:azurestackhci/v20220901:Extension" }, { type: "azure-native:azurestackhci/v20221001:Extension" }, { type: "azure-native:azurestackhci/v20221201:Extension" }, { type: "azure-native:azurestackhci/v20221215preview:Extension" }, { type: "azure-native:azurestackhci/v20230201:Extension" }, { type: "azure-native:azurestackhci/v20230301:Extension" }, { type: "azure-native:azurestackhci/v20230601:Extension" }, { type: "azure-native:azurestackhci/v20230801:Extension" }, { type: "azure-native:azurestackhci/v20230801preview:Extension" }, { type: "azure-native:azurestackhci/v20231101preview:Extension" }, { type: "azure-native:azurestackhci/v20240101:Extension" }, { type: "azure-native:azurestackhci/v20240215preview:Extension" }, { type: "azure-native:azurestackhci/v20240401:Extension" }, { type: "azure-native:azurestackhci/v20240901preview:Extension" }, { type: "azure-native:azurestackhci/v20241201preview:Extension" }, { type: "azure-native:azurestackhci/v20250201preview:Extension" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20210101preview:Extension" }, { type: "azure-native:azurestackhci/v20210901:Extension" }, { type: "azure-native:azurestackhci/v20210901preview:Extension" }, { type: "azure-native:azurestackhci/v20220101:Extension" }, { type: "azure-native:azurestackhci/v20220301:Extension" }, { type: "azure-native:azurestackhci/v20220501:Extension" }, { type: "azure-native:azurestackhci/v20220901:Extension" }, { type: "azure-native:azurestackhci/v20221001:Extension" }, { type: "azure-native:azurestackhci/v20221201:Extension" }, { type: "azure-native:azurestackhci/v20221215preview:Extension" }, { type: "azure-native:azurestackhci/v20230201:Extension" }, { type: "azure-native:azurestackhci/v20230301:Extension" }, { type: "azure-native:azurestackhci/v20230601:Extension" }, { type: "azure-native:azurestackhci/v20230801:Extension" }, { type: "azure-native:azurestackhci/v20230801preview:Extension" }, { type: "azure-native:azurestackhci/v20231101preview:Extension" }, { type: "azure-native:azurestackhci/v20240101:Extension" }, { type: "azure-native:azurestackhci/v20240215preview:Extension" }, { type: "azure-native:azurestackhci/v20240401:Extension" }, { type: "azure-native:azurestackhci/v20240901preview:Extension" }, { type: "azure-native:azurestackhci/v20241201preview:Extension" }, { type: "azure-native:azurestackhci/v20250201preview:Extension" }, { type: "azure-native:azurestackhci/v20250915preview:Extension" }, { type: "azure-native:azurestackhci/v20251001:Extension" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Extension.__pulumiType, name, resourceInputs, opts);
     }

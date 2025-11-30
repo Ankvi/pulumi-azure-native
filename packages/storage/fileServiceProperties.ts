@@ -38,31 +38,31 @@ export class FileServiceProperties extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Specifies CORS rules for the File service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the File service.
      */
-    public readonly cors!: pulumi.Output<types.outputs.CorsRulesResponse | undefined>;
+    declare public readonly cors: pulumi.Output<types.outputs.CorsRulesResponse | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Protocol settings for file service
      */
-    public readonly protocolSettings!: pulumi.Output<types.outputs.ProtocolSettingsResponse | undefined>;
+    declare public readonly protocolSettings: pulumi.Output<types.outputs.ProtocolSettingsResponse | undefined>;
     /**
      * The file service properties for share soft delete.
      */
-    public readonly shareDeleteRetentionPolicy!: pulumi.Output<types.outputs.DeleteRetentionPolicyResponse | undefined>;
+    declare public readonly shareDeleteRetentionPolicy: pulumi.Output<types.outputs.DeleteRetentionPolicyResponse | undefined>;
     /**
      * Sku name and tier.
      */
-    public /*out*/ readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
+    declare public /*out*/ readonly sku: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a FileServiceProperties resource with the given unique name, arguments, and options.
@@ -75,18 +75,18 @@ export class FileServiceProperties extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["cors"] = args ? args.cors : undefined;
-            resourceInputs["fileServicesName"] = args ? args.fileServicesName : undefined;
-            resourceInputs["protocolSettings"] = args ? args.protocolSettings : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["shareDeleteRetentionPolicy"] = args ? args.shareDeleteRetentionPolicy : undefined;
+            resourceInputs["accountName"] = args?.accountName;
+            resourceInputs["cors"] = args?.cors;
+            resourceInputs["fileServicesName"] = args?.fileServicesName;
+            resourceInputs["protocolSettings"] = args?.protocolSettings;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["shareDeleteRetentionPolicy"] = args?.shareDeleteRetentionPolicy;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["sku"] = undefined /*out*/;

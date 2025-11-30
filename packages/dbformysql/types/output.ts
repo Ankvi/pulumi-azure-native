@@ -134,7 +134,7 @@ export interface MySQLServerIdentityResponse {
     /**
      * Metadata of user assigned identity.
      */
-    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse[]};
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
 }
 
 /**

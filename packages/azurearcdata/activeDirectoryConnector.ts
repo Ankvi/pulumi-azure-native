@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Active directory connector resource
  *
- * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2023-01-15-preview.
+ * Uses Azure REST API version 2025-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-15-preview.
  *
- * Other available API versions: 2023-01-15-preview, 2024-05-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ActiveDirectoryConnector extends pulumi.CustomResource {
     /**
@@ -38,23 +38,23 @@ export class ActiveDirectoryConnector extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * null
      */
-    public readonly properties!: pulumi.Output<types.outputs.ActiveDirectoryConnectorPropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.ActiveDirectoryConnectorPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ActiveDirectoryConnector resource with the given unique name, arguments, and options.
@@ -67,19 +67,19 @@ export class ActiveDirectoryConnector extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.dataControllerName === undefined) && !opts.urn) {
+            if (args?.dataControllerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataControllerName'");
             }
-            if ((!args || args.properties === undefined) && !opts.urn) {
+            if (args?.properties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'properties'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["activeDirectoryConnectorName"] = args ? args.activeDirectoryConnectorName : undefined;
-            resourceInputs["dataControllerName"] = args ? args.dataControllerName : undefined;
+            resourceInputs["activeDirectoryConnectorName"] = args?.activeDirectoryConnectorName;
+            resourceInputs["dataControllerName"] = args?.dataControllerName;
             resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.activeDirectoryConnectorPropertiesArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;

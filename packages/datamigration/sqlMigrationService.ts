@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-07-15-preview. In version 2.x of the Azure Native provider, it used API version 2022-03-30-preview.
  *
- * Other available API versions: 2021-10-30-preview, 2022-01-30-preview, 2022-03-30-preview, 2025-03-15-preview, 2025-06-30. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-10-30-preview, 2022-01-30-preview, 2022-03-30-preview, 2025-03-15-preview, 2025-06-30, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SqlMigrationService extends pulumi.CustomResource {
     /**
@@ -38,20 +38,20 @@ export class SqlMigrationService extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Current state of the Integration runtime.
      */
-    public /*out*/ readonly integrationRuntimeState!: pulumi.Output<string>;
-    public readonly location!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly integrationRuntimeState: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Provisioning state to track the async operation status.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a SqlMigrationService resource with the given unique name, arguments, and options.
@@ -64,13 +64,13 @@ export class SqlMigrationService extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sqlMigrationServiceName"] = args ? args.sqlMigrationServiceName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sqlMigrationServiceName"] = args?.sqlMigrationServiceName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["integrationRuntimeState"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -88,7 +88,7 @@ export class SqlMigrationService extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:datamigration/v20211030preview:SqlMigrationService" }, { type: "azure-native:datamigration/v20220130preview:SqlMigrationService" }, { type: "azure-native:datamigration/v20220330preview:SqlMigrationService" }, { type: "azure-native:datamigration/v20230715preview:SqlMigrationService" }, { type: "azure-native:datamigration/v20250315preview:SqlMigrationService" }, { type: "azure-native:datamigration/v20250630:SqlMigrationService" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:datamigration/v20211030preview:SqlMigrationService" }, { type: "azure-native:datamigration/v20220130preview:SqlMigrationService" }, { type: "azure-native:datamigration/v20220330preview:SqlMigrationService" }, { type: "azure-native:datamigration/v20230715preview:SqlMigrationService" }, { type: "azure-native:datamigration/v20250315preview:SqlMigrationService" }, { type: "azure-native:datamigration/v20250630:SqlMigrationService" }, { type: "azure-native:datamigration/v20250901preview:SqlMigrationService" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SqlMigrationService.__pulumiType, name, resourceInputs, opts);
     }

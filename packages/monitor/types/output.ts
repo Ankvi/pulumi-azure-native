@@ -79,6 +79,24 @@ export interface ActionsResponse {
 }
 
 /**
+ * Alert configuration details
+ */
+export interface AlertConfigurationResponse {
+    /**
+     * Optional list of action group resource IDs to be notified when the alert is triggered.
+     */
+    actionGroupIds?: string[];
+    /**
+     * The alert rule description.
+     */
+    description?: string;
+    /**
+     * The severity of triggered alert.
+     */
+    severity: string;
+}
+
+/**
  * An Activity Log Alert rule condition that is met when all its member conditions are met.
  */
 export interface AlertRuleAllOfConditionResponse {
@@ -135,6 +153,53 @@ export interface AlertRuleLeafConditionResponse {
      * The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
      */
     field?: string;
+}
+
+/**
+ * Discovery rule properties for an Application Insights topology query
+ */
+export interface ApplicationInsightsTopologyDiscoveryRulePropertiesResponse {
+    /**
+     * Whether to add all recommended signals to the discovered entities.
+     */
+    addRecommendedSignals: string;
+    /**
+     * Application Insights resource ID
+     */
+    applicationInsightsResourceId: string;
+    /**
+     * Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+     */
+    authenticationSetting: string;
+    /**
+     * Date when the discovery rule was (soft-)deleted.
+     */
+    deletionDate: string;
+    /**
+     * Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+     */
+    discoverRelationships: string;
+    /**
+     * Discovery rule relationship discovery behavior
+     * Expected value is 'ApplicationInsightsTopology'.
+     */
+    discoveryRuleKind: "ApplicationInsightsTopology";
+    /**
+     * Display name
+     */
+    displayName?: string;
+    /**
+     * Name of the entity which represents the discovery rule. Note: It might take a few minutes after creating the discovery rule until the entity is created.
+     */
+    entityName: string;
+    /**
+     * Error details if the last discovery operation failed.
+     */
+    error: DiscoveryErrorResponse;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
 }
 
 /**
@@ -438,6 +503,24 @@ export interface AzureMonitorWorkspaceResponseMetrics {
 }
 
 /**
+ * A grouping of signal assignments for a Azure Monitor Workspace
+ */
+export interface AzureMonitorWorkspaceSignalGroupResponse {
+    /**
+     * Reference to the name of the authentication setting which is used for querying the data source
+     */
+    authenticationSetting: string;
+    /**
+     * Azure Monitor workspace resource ID
+     */
+    azureMonitorWorkspaceResourceId: string;
+    /**
+     * Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+     */
+    signalAssignments?: SignalAssignmentResponse[];
+}
+
+/**
  * The complex type of the extended location.
  */
 export interface AzureResourceManagerCommonTypesExtendedLocationResponse {
@@ -449,6 +532,24 @@ export interface AzureResourceManagerCommonTypesExtendedLocationResponse {
      * The type of the extended location.
      */
     type: string;
+}
+
+/**
+ * A grouping of signal assignments for an Azure resource
+ */
+export interface AzureResourceSignalGroupResponse {
+    /**
+     * Reference to the name of the authentication setting which is used for querying the data source
+     */
+    authenticationSetting: string;
+    /**
+     * Azure resource ID
+     */
+    azureResourceId: string;
+    /**
+     * Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+     */
+    signalAssignments?: SignalAssignmentResponse[];
 }
 
 /**
@@ -989,6 +1090,33 @@ export interface DataSourcesSpecResponseDataImports {
 }
 
 /**
+ * Properties for dependent entities, i.e. child entities
+ */
+export interface DependenciesSignalGroupResponse {
+    /**
+     * Aggregation type for child dependencies.
+     */
+    aggregationType: string;
+    /**
+     * Degraded threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered degraded when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
+     */
+    degradedThreshold?: string;
+    /**
+     * Unhealthy threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered unhealthy when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
+     */
+    unhealthyThreshold?: string;
+}
+/**
+ * dependenciesSignalGroupResponseProvideDefaults sets the appropriate defaults for DependenciesSignalGroupResponse
+ */
+export function dependenciesSignalGroupResponseProvideDefaults(val: DependenciesSignalGroupResponse): DependenciesSignalGroupResponse {
+    return {
+        ...val,
+        aggregationType: (val.aggregationType) ?? "WorstOf",
+    };
+}
+
+/**
  * Azure Monitor Metrics destination.
  */
 export interface DestinationsSpecResponseAzureMonitorMetrics {
@@ -1045,6 +1173,42 @@ export interface DimensionResponse {
      * List of dimension values
      */
     values: string[];
+}
+
+/**
+ * Error details for a failed discovery operation
+ */
+export interface DiscoveryErrorResponse {
+    /**
+     * Additional context information, like resource IDs or query details
+     */
+    context: string[];
+    /**
+     * Error message
+     */
+    message: string;
+}
+
+/**
+ * ML-based evaluation rule for a signal definition
+ */
+export interface DynamicDetectionRuleResponse {
+    /**
+     * Threshold direction
+     */
+    dynamicThresholdDirection: string;
+    /**
+     * ML model to use for dynamic thresholds
+     */
+    dynamicThresholdModel: string;
+    /**
+     * ML model sensitivity. Lowest value = high sensitivity. Supported step size = 0.5
+     */
+    modelSensitivity: number;
+    /**
+     * Start time of the training in UTC.
+     */
+    trainingStartTime?: string;
 }
 
 /**
@@ -1169,6 +1333,121 @@ export function emailReceiverResponseProvideDefaults(val: EmailReceiverResponse)
         ...val,
         useCommonAlertSchema: (val.useCommonAlertSchema) ?? false,
     };
+}
+
+/**
+ * Alert configuration for an entity
+ */
+export interface EntityAlertsResponse {
+    /**
+     * Alert to be triggered on state change to degraded
+     */
+    degraded?: AlertConfigurationResponse;
+    /**
+     * Alert to be triggered on state change to unhealthy
+     */
+    unhealthy?: AlertConfigurationResponse;
+}
+
+/**
+ * Visual position of the entity
+ */
+export interface EntityCoordinatesResponse {
+    /**
+     * X Coordinate
+     */
+    x: number;
+    /**
+     * Y Coordinate
+     */
+    y: number;
+}
+
+/**
+ * Properties which are common across all kinds of entities
+ */
+export interface EntityPropertiesResponse {
+    /**
+     * Alert configuration for this entity
+     */
+    alerts?: EntityAlertsResponse;
+    /**
+     * Positioning of the entity on the model canvas
+     */
+    canvasPosition?: EntityCoordinatesResponse;
+    /**
+     * Date when the entity was (soft-)deleted
+     */
+    deletionDate: string;
+    /**
+     * Discovered by which discovery rule. If set, the entity cannot be deleted manually.
+     */
+    discoveredBy: string;
+    /**
+     * Display name
+     */
+    displayName?: string;
+    /**
+     * Health objective as a percentage of time the entity should be healthy.
+     */
+    healthObjective?: number;
+    /**
+     * Health state of this entity
+     */
+    healthState: string;
+    /**
+     * Visual icon definition. If not set, a default icon is used.
+     */
+    icon?: IconDefinitionResponse;
+    /**
+     * Impact of the entity in health state propagation
+     */
+    impact?: string;
+    /**
+     * Entity kind
+     */
+    kind?: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * Signal groups which are assigned to this entity
+     */
+    signals?: SignalGroupResponse;
+    /**
+     * Optional set of labels (key-value pairs)
+     */
+    tags?: {[key: string]: string};
+}
+/**
+ * entityPropertiesResponseProvideDefaults sets the appropriate defaults for EntityPropertiesResponse
+ */
+export function entityPropertiesResponseProvideDefaults(val: EntityPropertiesResponse): EntityPropertiesResponse {
+    return {
+        ...val,
+        impact: (val.impact) ?? "Standard",
+        kind: (val.kind) ?? "Default",
+        signals: (val.signals ? signalGroupResponseProvideDefaults(val.signals) : undefined),
+    };
+}
+
+/**
+ * Evaluation rule for a signal definition
+ */
+export interface EvaluationRuleResponse {
+    /**
+     * Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
+     */
+    degradedRule?: ThresholdRuleResponse;
+    /**
+     * Configure to use ML-based dynamic thresholds. When used, degradedRule and unhealthyRule must not be set.
+     */
+    dynamicDetectionRule?: DynamicDetectionRuleResponse;
+    /**
+     * Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
+     */
+    unhealthyRule?: ThresholdRuleResponse;
 }
 
 export interface EventHubDestinationResponse {
@@ -1299,6 +1578,38 @@ export interface ExtensionDataSourceResponse {
 }
 
 /**
+ * HealthModel properties
+ */
+export interface HealthModelPropertiesResponse {
+    /**
+     * Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.
+     */
+    discovery?: ModelDiscoverySettingsResponse;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * The data plane endpoint for querying health data
+     */
+    queryEndpoint: string;
+}
+
+/**
+ * Visual icon definition of an entity
+ */
+export interface IconDefinitionResponse {
+    /**
+     * Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon.
+     */
+    customData?: string;
+    /**
+     * Name of the built-in icon, or 'Custom' to use customData
+     */
+    iconName: string;
+}
+
+/**
  * Identity for the resource.
  */
 export interface IdentityResponse {
@@ -1373,6 +1684,94 @@ export interface IncidentServiceConnectionResponse {
      * The name of the connection.
      */
     name: string;
+}
+
+/**
+ * Details about the execution of the investigation
+ */
+export interface InvestigationExecutionResponse {
+    /**
+     * The time at which the investigation execution completed (in UTC)
+     */
+    completedAt?: string;
+    /**
+     * The state of the investigation execution
+     */
+    runState: string;
+}
+
+/**
+ * Properties of the current investigation
+ */
+export interface InvestigationMetadataResponse {
+    /**
+     * The creation time of the investigation (in UTC)
+     */
+    createdAt: string;
+    /**
+     * The execution details of the investigation
+     */
+    execution: InvestigationExecutionResponse;
+    /**
+     * The unique identifier of the investigation
+     */
+    id: string;
+    /**
+     * The parameters that were used to start the investigation
+     */
+    runParameters: RunParametersResponse;
+}
+
+/**
+ * A single scope of the investigation
+ */
+export interface InvestigationScopeResponse {
+    /**
+     * The ID of the scope of the investigation - either an Azure alert ID or an Azure resource ID
+     */
+    id: string;
+    /**
+     * The origin of the scope
+     */
+    origin: OriginResponse;
+    /**
+     * The relevance of the scope
+     */
+    relevance?: string;
+}
+
+/**
+ * The issue properties
+ */
+export interface IssuePropertiesResponse {
+    /**
+     * The issue impact time (in UTC)
+     */
+    impactTime: string;
+    /**
+     * The list of investigations in the issue
+     */
+    investigations: InvestigationMetadataResponse[];
+    /**
+     * The number of investigations in the issue
+     */
+    investigationsCount: number;
+    /**
+     * The provisioning state of the resource.
+     */
+    provisioningState: string;
+    /**
+     * The issue severity
+     */
+    severity: string;
+    /**
+     * The issue status
+     */
+    status: string;
+    /**
+     * The issue title
+     */
+    title: string;
 }
 
 /**
@@ -1492,6 +1891,84 @@ export interface LogAnalyticsDestinationResponse {
 }
 
 /**
+ * Log Analytics Query Signal Definition properties
+ */
+export interface LogAnalyticsQuerySignalDefinitionPropertiesResponse {
+    /**
+     * Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+     */
+    dataUnit?: string;
+    /**
+     * Date when the signal definition was (soft-)deleted
+     */
+    deletionDate: string;
+    /**
+     * Display name
+     */
+    displayName?: string;
+    /**
+     * Evaluation rules for the signal definition
+     */
+    evaluationRules: EvaluationRuleResponse;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * Query text in KQL syntax
+     */
+    queryText: string;
+    /**
+     * Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+     */
+    refreshInterval?: string;
+    /**
+     * Supported signal kinds as discriminator
+     * Expected value is 'LogAnalyticsQuery'.
+     */
+    signalKind: "LogAnalyticsQuery";
+    /**
+     * Optional set of labels (key-value pairs)
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
+     */
+    timeGrain?: string;
+    /**
+     * Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
+     */
+    valueColumnName?: string;
+}
+/**
+ * logAnalyticsQuerySignalDefinitionPropertiesResponseProvideDefaults sets the appropriate defaults for LogAnalyticsQuerySignalDefinitionPropertiesResponse
+ */
+export function logAnalyticsQuerySignalDefinitionPropertiesResponseProvideDefaults(val: LogAnalyticsQuerySignalDefinitionPropertiesResponse): LogAnalyticsQuerySignalDefinitionPropertiesResponse {
+    return {
+        ...val,
+        refreshInterval: (val.refreshInterval) ?? "PT1M",
+    };
+}
+
+/**
+ * A grouping of signal assignments for a Log Analytics Workspace
+ */
+export interface LogAnalyticsSignalGroupResponse {
+    /**
+     * Reference to the name of the authentication setting which is used for querying the data source
+     */
+    authenticationSetting: string;
+    /**
+     * Log Analytics Workspace resource ID
+     */
+    logAnalyticsWorkspaceResourceId: string;
+    /**
+     * Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
+     */
+    signalAssignments?: SignalAssignmentResponse[];
+}
+
+/**
  * Text settings
  */
 export interface LogFileSettingsResponseText {
@@ -1594,6 +2071,29 @@ export function logicAppReceiverResponseProvideDefaults(val: LogicAppReceiverRes
         ...val,
         useCommonAlertSchema: (val.useCommonAlertSchema) ?? false,
     };
+}
+
+/**
+ * Authentication setting properties for Azure Managed Identity
+ */
+export interface ManagedIdentityAuthenticationSettingPropertiesResponse {
+    /**
+     * Supported kinds of authentication settings as discriminator
+     * Expected value is 'ManagedIdentity'.
+     */
+    authenticationKind: "ManagedIdentity";
+    /**
+     * Display name
+     */
+    displayName?: string;
+    /**
+     * Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
+     */
+    managedIdentityName: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
 }
 
 /**
@@ -1818,6 +2318,24 @@ export interface MetricTriggerResponse {
 }
 
 /**
+ * Settings for automatically discovering entities for the health model.
+ */
+export interface ModelDiscoverySettingsResponse {
+    /**
+     * Whether to add all recommended signals to the discovered entities.
+     */
+    addRecommendedSignals: string;
+    /**
+     * Which Managed Identity of the health model to use for discovery. Defaults to SystemAssigned, if not set. Can be set to 'SystemAssigned' or to the resource id of a user-assigned managed identity which is linked to the health model.
+     */
+    identity?: string;
+    /**
+     * The scope from which entities should be automatically discovered. For example, the resource id of a Service Group.
+     */
+    scope: string;
+}
+
+/**
  * Monitoring account destination.
  */
 export interface MonitoringAccountDestinationResponse {
@@ -1874,6 +2392,20 @@ export interface NetworkingRouteResponse {
      * Route subdomain.
      */
     subdomain?: string;
+}
+
+/**
+ * Details about the origin of the entity - the source that added it to the issue
+ */
+export interface OriginResponse {
+    /**
+     * The ID of the origin - for example, in case of 'Manual', the user ID/app ID, and in case of 'Automatic', the name of the automatic system
+     */
+    addedBy: string;
+    /**
+     * The source of the origin - Manual or Automatic
+     */
+    addedByType: string;
 }
 
 /**
@@ -2138,6 +2670,62 @@ export interface PrometheusForwarderDataSourceResponse {
 }
 
 /**
+ * Prometheus Metrics Signal Definition properties
+ */
+export interface PrometheusMetricsSignalDefinitionPropertiesResponse {
+    /**
+     * Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+     */
+    dataUnit?: string;
+    /**
+     * Date when the signal definition was (soft-)deleted
+     */
+    deletionDate: string;
+    /**
+     * Display name
+     */
+    displayName?: string;
+    /**
+     * Evaluation rules for the signal definition
+     */
+    evaluationRules: EvaluationRuleResponse;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * Query text in PromQL syntax
+     */
+    queryText: string;
+    /**
+     * Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+     */
+    refreshInterval?: string;
+    /**
+     * Supported signal kinds as discriminator
+     * Expected value is 'PrometheusMetricsQuery'.
+     */
+    signalKind: "PrometheusMetricsQuery";
+    /**
+     * Optional set of labels (key-value pairs)
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Time range of signal. ISO duration format like PT10M.
+     */
+    timeGrain?: string;
+}
+/**
+ * prometheusMetricsSignalDefinitionPropertiesResponseProvideDefaults sets the appropriate defaults for PrometheusMetricsSignalDefinitionPropertiesResponse
+ */
+export function prometheusMetricsSignalDefinitionPropertiesResponseProvideDefaults(val: PrometheusMetricsSignalDefinitionPropertiesResponse): PrometheusMetricsSignalDefinitionPropertiesResponse {
+    return {
+        ...val,
+        refreshInterval: (val.refreshInterval) ?? "PT1M",
+    };
+}
+
+/**
  * Receiver Info.
  */
 export interface ReceiverResponse {
@@ -2224,6 +2812,139 @@ export interface RecurrentScheduleResponse {
 }
 
 /**
+ * Properties of an alert which is related to the issue
+ */
+export interface RelatedAlertResponse {
+    /**
+     * The time this relation was added to the issue (in UTC)
+     */
+    addedAt: string;
+    /**
+     * The alert ID
+     */
+    id: string;
+    /**
+     * The last update time of this relation (in UTC)
+     */
+    lastModifiedAt: string;
+    /**
+     * The source that related the alert to the issue
+     */
+    origin: OriginResponse;
+    /**
+     * The alerts's relevance status
+     */
+    relevance: string;
+}
+
+/**
+ * Properties of a resource which is related to the issue
+ */
+export interface RelatedResourceResponse {
+    /**
+     * The time this relation was added to the issue (in UTC)
+     */
+    addedAt: string;
+    /**
+     * The resource ID
+     */
+    id: string;
+    /**
+     * The last update time of this relation (in UTC)
+     */
+    lastModifiedAt: string;
+    /**
+     * The source that related the resource to the issue
+     */
+    origin: OriginResponse;
+    /**
+     * The resource's relevance status
+     */
+    relevance: string;
+}
+
+/**
+ * Relationship properties
+ */
+export interface RelationshipPropertiesResponse {
+    /**
+     * Resource name of the child entity
+     */
+    childEntityName: string;
+    /**
+     * Date when the relationship was (soft-)deleted
+     */
+    deletionDate: string;
+    /**
+     * Discovered by which discovery rule. If set, the relationship cannot be deleted manually.
+     */
+    discoveredBy: string;
+    /**
+     * Display name
+     */
+    displayName?: string;
+    /**
+     * Resource name of the parent entity
+     */
+    parentEntityName: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * Optional set of labels (key-value pairs)
+     */
+    tags?: {[key: string]: string};
+}
+
+/**
+ * Discovery rule properties for an Azure Resource Graph query
+ */
+export interface ResourceGraphQueryDiscoveryRulePropertiesResponse {
+    /**
+     * Whether to add all recommended signals to the discovered entities.
+     */
+    addRecommendedSignals: string;
+    /**
+     * Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
+     */
+    authenticationSetting: string;
+    /**
+     * Date when the discovery rule was (soft-)deleted.
+     */
+    deletionDate: string;
+    /**
+     * Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
+     */
+    discoverRelationships: string;
+    /**
+     * Discovery rule relationship discovery behavior
+     * Expected value is 'ResourceGraphQuery'.
+     */
+    discoveryRuleKind: "ResourceGraphQuery";
+    /**
+     * Display name
+     */
+    displayName?: string;
+    /**
+     * Name of the entity which represents the discovery rule. Note: It might take a few minutes after creating the discovery rule until the entity is created.
+     */
+    entityName: string;
+    /**
+     * Error details if the last discovery operation failed.
+     */
+    error: DiscoveryErrorResponse;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * Azure Resource Graph query text in KQL syntax. The query must return at least a column named 'id' which contains the resource ID of the discovered resources.
+     */
+    resourceGraphQuery: string;
+}
+
+/**
  * Resource map for schema in azure monitor.
  */
 export interface ResourceMapResponse {
@@ -2235,6 +2956,78 @@ export interface ResourceMapResponse {
      * Resource Map Value.
      */
     to: string;
+}
+
+/**
+ * Azure Resource Metric Signal Definition properties
+ */
+export interface ResourceMetricSignalDefinitionPropertiesResponse {
+    /**
+     * Type of aggregation to apply to the metric
+     */
+    aggregationType: string;
+    /**
+     * Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
+     */
+    dataUnit?: string;
+    /**
+     * Date when the signal definition was (soft-)deleted
+     */
+    deletionDate: string;
+    /**
+     * Optional: Dimension to split by
+     */
+    dimension?: string;
+    /**
+     * Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
+     */
+    dimensionFilter?: string;
+    /**
+     * Display name
+     */
+    displayName?: string;
+    /**
+     * Evaluation rules for the signal definition
+     */
+    evaluationRules: EvaluationRuleResponse;
+    /**
+     * Name of the metric
+     */
+    metricName: string;
+    /**
+     * Metric namespace
+     */
+    metricNamespace: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
+     */
+    refreshInterval?: string;
+    /**
+     * Supported signal kinds as discriminator
+     * Expected value is 'AzureResourceMetric'.
+     */
+    signalKind: "AzureResourceMetric";
+    /**
+     * Optional set of labels (key-value pairs)
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Time range of signal. ISO duration format like PT10M.
+     */
+    timeGrain: string;
+}
+/**
+ * resourceMetricSignalDefinitionPropertiesResponseProvideDefaults sets the appropriate defaults for ResourceMetricSignalDefinitionPropertiesResponse
+ */
+export function resourceMetricSignalDefinitionPropertiesResponseProvideDefaults(val: ResourceMetricSignalDefinitionPropertiesResponse): ResourceMetricSignalDefinitionPropertiesResponse {
+    return {
+        ...val,
+        refreshInterval: (val.refreshInterval) ?? "PT1M",
+    };
 }
 
 /**
@@ -2263,6 +3056,24 @@ export interface RuleResolveConfigurationResponse {
      * The duration a rule must evaluate as healthy before the fired alert is automatically resolved represented in ISO 8601 duration format.
      */
     timeToResolve?: string;
+}
+
+/**
+ * The parameters used to run the investigation
+ */
+export interface RunParametersResponse {
+    /**
+     * The alerts used to run the investigation
+     */
+    alerts: InvestigationScopeResponse[];
+    /**
+     * The impact time to investigate (in UTC)
+     */
+    impactTime: string;
+    /**
+     * The resources used to run the investigation
+     */
+    resources: InvestigationScopeResponse[];
 }
 
 /**
@@ -2409,6 +3220,47 @@ export interface ServiceResponse {
      * Pipelines belonging to a given pipeline group.
      */
     pipelines: PipelineResponse[];
+}
+
+/**
+ * Group of signal definition assignments
+ */
+export interface SignalAssignmentResponse {
+    /**
+     * Signal definitions referenced by their names. All definitions are combined with an AND operator.
+     */
+    signalDefinitions: string[];
+}
+
+/**
+ * Contains various signal groups that can be assigned to an entity
+ */
+export interface SignalGroupResponse {
+    /**
+     * Log Analytics Signal Group
+     */
+    azureLogAnalytics?: LogAnalyticsSignalGroupResponse;
+    /**
+     * Azure Monitor Workspace Signal Group
+     */
+    azureMonitorWorkspace?: AzureMonitorWorkspaceSignalGroupResponse;
+    /**
+     * Azure Resource Signal Group
+     */
+    azureResource?: AzureResourceSignalGroupResponse;
+    /**
+     * Settings for dependency signals to control how the health state of child entities influences the health state of the parent entity.
+     */
+    dependencies?: DependenciesSignalGroupResponse;
+}
+/**
+ * signalGroupResponseProvideDefaults sets the appropriate defaults for SignalGroupResponse
+ */
+export function signalGroupResponseProvideDefaults(val: SignalGroupResponse): SignalGroupResponse {
+    return {
+        ...val,
+        dependencies: (val.dependencies ? dependenciesSignalGroupResponseProvideDefaults(val.dependencies) : undefined),
+    };
 }
 
 /**
@@ -2579,6 +3431,20 @@ export interface TcpExporterResponse {
      * TCP url to export.
      */
     url: string;
+}
+
+/**
+ * Threshold-based evaluation rule for a signal definition
+ */
+export interface ThresholdRuleResponse {
+    /**
+     * Operator how to compare the signal value with the threshold
+     */
+    operator: string;
+    /**
+     * Threshold value
+     */
+    threshold: string;
 }
 
 /**

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
  *
- * Other available API versions: 2023-01-01, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dataprotection [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-01-01, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-02-01, 2025-07-01, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dataprotection [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DppResourceGuardProxy extends pulumi.CustomResource {
     /**
@@ -38,23 +38,23 @@ export class DppResourceGuardProxy extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Resource name associated with the resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * ResourceGuardProxyBaseResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.ResourceGuardProxyBaseResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.ResourceGuardProxyBaseResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a DppResourceGuardProxy resource with the given unique name, arguments, and options.
@@ -67,16 +67,16 @@ export class DppResourceGuardProxy extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.vaultName === undefined) && !opts.urn) {
+            if (args?.vaultName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vaultName'");
             }
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["resourceGuardProxyName"] = args ? args.resourceGuardProxyName : undefined;
-            resourceInputs["vaultName"] = args ? args.vaultName : undefined;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["resourceGuardProxyName"] = args?.resourceGuardProxyName;
+            resourceInputs["vaultName"] = args?.vaultName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -89,7 +89,7 @@ export class DppResourceGuardProxy extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dataprotection/v20220901preview:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20221001preview:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20221101preview:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20230101:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20230401preview:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20230501:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20230601preview:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20230801preview:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20231101:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20231201:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20240201preview:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20240301:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20240401:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20250101:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20250201:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20250701:DppResourceGuardProxy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dataprotection/v20220901preview:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20221001preview:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20221101preview:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20230101:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20230401preview:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20230501:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20230601preview:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20230801preview:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20231101:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20231201:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20240201preview:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20240301:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20240401:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20250101:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20250201:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20250701:DppResourceGuardProxy" }, { type: "azure-native:dataprotection/v20250901:DppResourceGuardProxy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DppResourceGuardProxy.__pulumiType, name, resourceInputs, opts);
     }

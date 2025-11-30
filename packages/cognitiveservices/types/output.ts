@@ -1224,6 +1224,44 @@ export interface RaiPolicyPropertiesResponse {
 }
 
 /**
+ * RAI Custom Topic properties.
+ */
+export interface RaiTopicPropertiesResponse {
+    /**
+     * Creation time of the custom topic.
+     */
+    createdAt?: string;
+    /**
+     * Description of the custom topic.
+     */
+    description?: string;
+    /**
+     * Failed reason if the status is Failed.
+     */
+    failedReason?: string;
+    /**
+     * Last modified time of the custom topic.
+     */
+    lastModifiedAt?: string;
+    /**
+     * Sample blob url for the custom topic.
+     */
+    sampleBlobUrl?: string;
+    /**
+     * Status of the custom topic.
+     */
+    status?: string;
+    /**
+     * The unique identifier of the custom topic.
+     */
+    topicId?: string;
+    /**
+     * The name of the custom topic.
+     */
+    topicName?: string;
+}
+
+/**
  * The call rate limit Cognitive Services account.
  */
 export interface RegionSettingResponse {

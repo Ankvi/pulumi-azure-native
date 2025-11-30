@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  *
- * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+ * Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
  *
- * Other available API versions: 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class RegistryComponentContainer extends pulumi.CustomResource {
     /**
@@ -38,23 +38,23 @@ export class RegistryComponentContainer extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly componentContainerProperties!: pulumi.Output<types.outputs.ComponentContainerResponse>;
+    declare public readonly componentContainerProperties: pulumi.Output<types.outputs.ComponentContainerResponse>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a RegistryComponentContainer resource with the given unique name, arguments, and options.
@@ -67,19 +67,19 @@ export class RegistryComponentContainer extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.componentContainerProperties === undefined) && !opts.urn) {
+            if (args?.componentContainerProperties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'componentContainerProperties'");
             }
-            if ((!args || args.registryName === undefined) && !opts.urn) {
+            if (args?.registryName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'registryName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["componentContainerProperties"] = args ? (args.componentContainerProperties ? pulumi.output(args.componentContainerProperties).apply(types.inputs.componentContainerArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["componentName"] = args ? args.componentName : undefined;
-            resourceInputs["registryName"] = args ? args.registryName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["componentName"] = args?.componentName;
+            resourceInputs["registryName"] = args?.registryName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -92,7 +92,7 @@ export class RegistryComponentContainer extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20221001preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20221201preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20230201preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20230401:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20230401preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20230601preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20230801preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20231001:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20240101preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20240401:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20240401preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20240701preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20241001:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20241001preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20250101preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20250401:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20250401preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20250601:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20250701preview:RegistryComponentContainer" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20221001preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20221201preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20230201preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20230401:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20230401preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20230601preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20230801preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20231001:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20240101preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20240401:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20240401preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20240701preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20241001:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20241001preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20250101preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20250401:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20250401preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20250601:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20250701preview:RegistryComponentContainer" }, { type: "azure-native:machinelearningservices/v20250901:RegistryComponentContainer" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RegistryComponentContainer.__pulumiType, name, resourceInputs, opts);
     }

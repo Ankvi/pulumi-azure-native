@@ -38,35 +38,35 @@ export class ProviderInstance extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Defines the provider instance errors.
      */
-    public /*out*/ readonly errors!: pulumi.Output<types.outputs.ErrorDetailResponse>;
+    declare public /*out*/ readonly errors: pulumi.Output<types.outputs.ErrorDetailResponse>;
     /**
      * Resource health details
      */
-    public /*out*/ readonly health!: pulumi.Output<types.outputs.HealthResponse>;
+    declare public /*out*/ readonly health: pulumi.Output<types.outputs.HealthResponse>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Defines the provider specific properties.
      */
-    public readonly providerSettings!: pulumi.Output<types.outputs.Db2ProviderInstancePropertiesResponse | types.outputs.HanaDbProviderInstancePropertiesResponse | types.outputs.MsSqlServerProviderInstancePropertiesResponse | types.outputs.OracleProviderInstancePropertiesResponse | types.outputs.PrometheusHaClusterProviderInstancePropertiesResponse | types.outputs.PrometheusOsProviderInstancePropertiesResponse | types.outputs.SapNetWeaverProviderInstancePropertiesResponse | undefined>;
+    declare public readonly providerSettings: pulumi.Output<types.outputs.Db2ProviderInstancePropertiesResponse | types.outputs.HanaDbProviderInstancePropertiesResponse | types.outputs.MsSqlServerProviderInstancePropertiesResponse | types.outputs.OracleProviderInstancePropertiesResponse | types.outputs.PrometheusHaClusterProviderInstancePropertiesResponse | types.outputs.PrometheusOsProviderInstancePropertiesResponse | types.outputs.SapNetWeaverProviderInstancePropertiesResponse | undefined>;
     /**
      * State of provisioning of the provider instance
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ProviderInstance resource with the given unique name, arguments, and options.
@@ -79,16 +79,16 @@ export class ProviderInstance extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.monitorName === undefined) && !opts.urn) {
+            if (args?.monitorName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'monitorName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["monitorName"] = args ? args.monitorName : undefined;
-            resourceInputs["providerInstanceName"] = args ? args.providerInstanceName : undefined;
-            resourceInputs["providerSettings"] = args ? args.providerSettings : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["monitorName"] = args?.monitorName;
+            resourceInputs["providerInstanceName"] = args?.providerInstanceName;
+            resourceInputs["providerSettings"] = args?.providerSettings;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["health"] = undefined /*out*/;
