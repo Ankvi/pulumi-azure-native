@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DedicatedHostGroup extends pulumi.CustomResource {
     /**
@@ -38,51 +38,51 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
     /**
      * Enables or disables a capability on the dedicated host group. Minimum api-version: 2022-03-01.
      */
-    public readonly additionalCapabilities!: pulumi.Output<types.outputs.DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse | undefined>;
+    declare public readonly additionalCapabilities: pulumi.Output<types.outputs.DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * A list of references to all dedicated hosts in the dedicated host group.
      */
-    public /*out*/ readonly hosts!: pulumi.Output<types.outputs.SubResourceReadOnlyResponse[]>;
+    declare public /*out*/ readonly hosts: pulumi.Output<types.outputs.SubResourceReadOnlyResponse[]>;
     /**
      * The dedicated host group instance view, which has the list of instance view of the dedicated hosts under the dedicated host group.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.DedicatedHostGroupInstanceViewResponse>;
+    declare public /*out*/ readonly instanceView: pulumi.Output<types.outputs.DedicatedHostGroupInstanceViewResponse>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Number of fault domains that the host group can span.
      */
-    public readonly platformFaultDomainCount!: pulumi.Output<number>;
+    declare public readonly platformFaultDomainCount: pulumi.Output<number>;
     /**
      * Specifies whether virtual machines or virtual machine scale sets can be placed automatically on the dedicated host group. Automatic placement means resources are allocated on dedicated hosts, that are chosen by Azure, under the dedicated host group. The value is defaulted to 'false' when not provided. Minimum api-version: 2020-06-01.
      */
-    public readonly supportAutomaticPlacement!: pulumi.Output<boolean | undefined>;
+    declare public readonly supportAutomaticPlacement: pulumi.Output<boolean | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The availability zones.
      */
-    public readonly zones!: pulumi.Output<string[] | undefined>;
+    declare public readonly zones: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a DedicatedHostGroup resource with the given unique name, arguments, and options.
@@ -95,20 +95,20 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.platformFaultDomainCount === undefined) && !opts.urn) {
+            if (args?.platformFaultDomainCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'platformFaultDomainCount'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["additionalCapabilities"] = args ? args.additionalCapabilities : undefined;
-            resourceInputs["hostGroupName"] = args ? args.hostGroupName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["platformFaultDomainCount"] = args ? args.platformFaultDomainCount : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["supportAutomaticPlacement"] = args ? args.supportAutomaticPlacement : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["additionalCapabilities"] = args?.additionalCapabilities;
+            resourceInputs["hostGroupName"] = args?.hostGroupName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["platformFaultDomainCount"] = args?.platformFaultDomainCount;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["supportAutomaticPlacement"] = args?.supportAutomaticPlacement;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zones"] = args?.zones;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["hosts"] = undefined /*out*/;
             resourceInputs["instanceView"] = undefined /*out*/;
@@ -130,7 +130,7 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20190301:DedicatedHostGroup" }, { type: "azure-native:compute/v20190701:DedicatedHostGroup" }, { type: "azure-native:compute/v20191201:DedicatedHostGroup" }, { type: "azure-native:compute/v20200601:DedicatedHostGroup" }, { type: "azure-native:compute/v20201201:DedicatedHostGroup" }, { type: "azure-native:compute/v20210301:DedicatedHostGroup" }, { type: "azure-native:compute/v20210401:DedicatedHostGroup" }, { type: "azure-native:compute/v20210701:DedicatedHostGroup" }, { type: "azure-native:compute/v20211101:DedicatedHostGroup" }, { type: "azure-native:compute/v20220301:DedicatedHostGroup" }, { type: "azure-native:compute/v20220801:DedicatedHostGroup" }, { type: "azure-native:compute/v20221101:DedicatedHostGroup" }, { type: "azure-native:compute/v20230301:DedicatedHostGroup" }, { type: "azure-native:compute/v20230701:DedicatedHostGroup" }, { type: "azure-native:compute/v20230901:DedicatedHostGroup" }, { type: "azure-native:compute/v20240301:DedicatedHostGroup" }, { type: "azure-native:compute/v20240701:DedicatedHostGroup" }, { type: "azure-native:compute/v20241101:DedicatedHostGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20190301:DedicatedHostGroup" }, { type: "azure-native:compute/v20190701:DedicatedHostGroup" }, { type: "azure-native:compute/v20191201:DedicatedHostGroup" }, { type: "azure-native:compute/v20200601:DedicatedHostGroup" }, { type: "azure-native:compute/v20201201:DedicatedHostGroup" }, { type: "azure-native:compute/v20210301:DedicatedHostGroup" }, { type: "azure-native:compute/v20210401:DedicatedHostGroup" }, { type: "azure-native:compute/v20210701:DedicatedHostGroup" }, { type: "azure-native:compute/v20211101:DedicatedHostGroup" }, { type: "azure-native:compute/v20220301:DedicatedHostGroup" }, { type: "azure-native:compute/v20220801:DedicatedHostGroup" }, { type: "azure-native:compute/v20221101:DedicatedHostGroup" }, { type: "azure-native:compute/v20230301:DedicatedHostGroup" }, { type: "azure-native:compute/v20230701:DedicatedHostGroup" }, { type: "azure-native:compute/v20230901:DedicatedHostGroup" }, { type: "azure-native:compute/v20240301:DedicatedHostGroup" }, { type: "azure-native:compute/v20240701:DedicatedHostGroup" }, { type: "azure-native:compute/v20241101:DedicatedHostGroup" }, { type: "azure-native:compute/v20250401:DedicatedHostGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DedicatedHostGroup.__pulumiType, name, resourceInputs, opts);
     }

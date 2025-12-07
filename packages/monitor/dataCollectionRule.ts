@@ -5,6 +5,8 @@ import * as types from "./types";
  * Definition of ARM tracked top level resource.
  *
  * Uses Azure REST API version 2022-06-01.
+ *
+ * Other available API versions: 2024-03-11. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DataCollectionRule extends pulumi.CustomResource {
     /**
@@ -36,76 +38,76 @@ export class DataCollectionRule extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The resource ID of the data collection endpoint that this rule can be used with.
      */
-    public readonly dataCollectionEndpointId!: pulumi.Output<string | undefined>;
+    declare public readonly dataCollectionEndpointId: pulumi.Output<string | undefined>;
     /**
      * The specification of data flows.
      */
-    public readonly dataFlows!: pulumi.Output<types.outputs.DataFlowResponse[] | undefined>;
+    declare public readonly dataFlows: pulumi.Output<types.outputs.DataFlowResponse[] | undefined>;
     /**
      * The specification of data sources. 
      * This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
      */
-    public readonly dataSources!: pulumi.Output<types.outputs.DataCollectionRuleResponseDataSources | undefined>;
+    declare public readonly dataSources: pulumi.Output<types.outputs.DataCollectionRuleResponseDataSources | undefined>;
     /**
      * Description of the data collection rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The specification of destinations.
      */
-    public readonly destinations!: pulumi.Output<types.outputs.DataCollectionRuleResponseDestinations | undefined>;
+    declare public readonly destinations: pulumi.Output<types.outputs.DataCollectionRuleResponseDestinations | undefined>;
     /**
      * Resource entity tag (ETag).
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Managed service identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.DataCollectionRuleResourceResponseIdentity | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.DataCollectionRuleResourceResponseIdentity | undefined>;
     /**
      * The immutable ID of this data collection rule. This property is READ-ONLY.
      */
-    public /*out*/ readonly immutableId!: pulumi.Output<string>;
+    declare public /*out*/ readonly immutableId: pulumi.Output<string>;
     /**
      * The kind of the resource.
      */
-    public readonly kind!: pulumi.Output<string | undefined>;
+    declare public readonly kind: pulumi.Output<string | undefined>;
     /**
      * The geo-location where the resource lives.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Metadata about the resource
      */
-    public /*out*/ readonly metadata!: pulumi.Output<types.outputs.DataCollectionRuleResponseMetadata>;
+    declare public /*out*/ readonly metadata: pulumi.Output<types.outputs.DataCollectionRuleResponseMetadata>;
     /**
      * The name of the resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The resource provisioning state.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Declaration of custom streams used in this rule.
      */
-    public readonly streamDeclarations!: pulumi.Output<{[key: string]: types.outputs.StreamDeclarationResponse} | undefined>;
+    declare public readonly streamDeclarations: pulumi.Output<{[key: string]: types.outputs.StreamDeclarationResponse} | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.DataCollectionRuleResourceResponseSystemData>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.DataCollectionRuleResourceResponseSystemData>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a DataCollectionRule resource with the given unique name, arguments, and options.
@@ -118,21 +120,21 @@ export class DataCollectionRule extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["dataCollectionEndpointId"] = args ? args.dataCollectionEndpointId : undefined;
-            resourceInputs["dataCollectionRuleName"] = args ? args.dataCollectionRuleName : undefined;
-            resourceInputs["dataFlows"] = args ? args.dataFlows : undefined;
-            resourceInputs["dataSources"] = args ? args.dataSources : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinations"] = args ? args.destinations : undefined;
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["streamDeclarations"] = args ? args.streamDeclarations : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["dataCollectionEndpointId"] = args?.dataCollectionEndpointId;
+            resourceInputs["dataCollectionRuleName"] = args?.dataCollectionRuleName;
+            resourceInputs["dataFlows"] = args?.dataFlows;
+            resourceInputs["dataSources"] = args?.dataSources;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinations"] = args?.destinations;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["streamDeclarations"] = args?.streamDeclarations;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["immutableId"] = undefined /*out*/;
@@ -162,7 +164,7 @@ export class DataCollectionRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:insights/v20220601:DataCollectionRule" }, { type: "azure-native:insights/v20230311:DataCollectionRule" }, { type: "azure-native:insights:DataCollectionRule" }, { type: "azure-native:monitor/v20191101preview:DataCollectionRule" }, { type: "azure-native:monitor/v20210401:DataCollectionRule" }, { type: "azure-native:monitor/v20210901preview:DataCollectionRule" }, { type: "azure-native:monitor/v20220601:DataCollectionRule" }, { type: "azure-native:monitor/v20230311:DataCollectionRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:insights/v20220601:DataCollectionRule" }, { type: "azure-native:insights/v20230311:DataCollectionRule" }, { type: "azure-native:insights:DataCollectionRule" }, { type: "azure-native:monitor/v20191101preview:DataCollectionRule" }, { type: "azure-native:monitor/v20210401:DataCollectionRule" }, { type: "azure-native:monitor/v20210901preview:DataCollectionRule" }, { type: "azure-native:monitor/v20220601:DataCollectionRule" }, { type: "azure-native:monitor/v20230311:DataCollectionRule" }, { type: "azure-native:monitor/v20240311:DataCollectionRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DataCollectionRule.__pulumiType, name, resourceInputs, opts);
     }

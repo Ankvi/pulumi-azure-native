@@ -247,6 +247,20 @@ export function controlPlaneProfileArgsProvideDefaults(val: ControlPlaneProfileA
 }
 
 /**
+ * Extended location pointing to the underlying infrastructure
+ */
+export interface ExtendedLocationArgs {
+    /**
+     * ARM Id of the extended location.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The extended location type. Allowed value: 'CustomLocation'
+     */
+    type?: pulumi.Input<string | enums.ExtendedLocationTypes>;
+}
+
+/**
  * Configurations for provisioning the cluster with HTTP proxy servers.
  */
 export interface HttpProxyConfigArgs {

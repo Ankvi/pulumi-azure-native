@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VpnSite extends pulumi.CustomResource {
     /**
@@ -38,67 +38,67 @@ export class VpnSite extends pulumi.CustomResource {
     /**
      * The AddressSpace that contains an array of IP address ranges.
      */
-    public readonly addressSpace!: pulumi.Output<types.outputs.AddressSpaceResponse | undefined>;
+    declare public readonly addressSpace: pulumi.Output<types.outputs.AddressSpaceResponse | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The set of bgp properties.
      */
-    public readonly bgpProperties!: pulumi.Output<types.outputs.BgpSettingsResponse | undefined>;
+    declare public readonly bgpProperties: pulumi.Output<types.outputs.BgpSettingsResponse | undefined>;
     /**
      * The device properties.
      */
-    public readonly deviceProperties!: pulumi.Output<types.outputs.DevicePropertiesResponse | undefined>;
+    declare public readonly deviceProperties: pulumi.Output<types.outputs.DevicePropertiesResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The ip-address for the vpn-site.
      */
-    public readonly ipAddress!: pulumi.Output<string | undefined>;
+    declare public readonly ipAddress: pulumi.Output<string | undefined>;
     /**
      * IsSecuritySite flag.
      */
-    public readonly isSecuritySite!: pulumi.Output<boolean | undefined>;
+    declare public readonly isSecuritySite: pulumi.Output<boolean | undefined>;
     /**
      * Resource location.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Office365 Policy.
      */
-    public readonly o365Policy!: pulumi.Output<types.outputs.O365PolicyPropertiesResponse | undefined>;
+    declare public readonly o365Policy: pulumi.Output<types.outputs.O365PolicyPropertiesResponse | undefined>;
     /**
      * The provisioning state of the VPN site resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The key for vpn-site that can be used for connections.
      */
-    public readonly siteKey!: pulumi.Output<string | undefined>;
+    declare public readonly siteKey: pulumi.Output<string | undefined>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The VirtualWAN to which the vpnSite belongs.
      */
-    public readonly virtualWan!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
+    declare public readonly virtualWan: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * List of all vpn site links.
      */
-    public readonly vpnSiteLinks!: pulumi.Output<types.outputs.VpnSiteLinkResponse[] | undefined>;
+    declare public readonly vpnSiteLinks: pulumi.Output<types.outputs.VpnSiteLinkResponse[] | undefined>;
 
     /**
      * Create a VpnSite resource with the given unique name, arguments, and options.
@@ -111,23 +111,23 @@ export class VpnSite extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["addressSpace"] = args ? args.addressSpace : undefined;
-            resourceInputs["bgpProperties"] = args ? args.bgpProperties : undefined;
-            resourceInputs["deviceProperties"] = args ? args.deviceProperties : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
-            resourceInputs["isSecuritySite"] = args ? args.isSecuritySite : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["o365Policy"] = args ? args.o365Policy : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["siteKey"] = args ? args.siteKey : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["virtualWan"] = args ? args.virtualWan : undefined;
-            resourceInputs["vpnSiteLinks"] = args ? args.vpnSiteLinks : undefined;
-            resourceInputs["vpnSiteName"] = args ? args.vpnSiteName : undefined;
+            resourceInputs["addressSpace"] = args?.addressSpace;
+            resourceInputs["bgpProperties"] = args?.bgpProperties;
+            resourceInputs["deviceProperties"] = args?.deviceProperties;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["ipAddress"] = args?.ipAddress;
+            resourceInputs["isSecuritySite"] = args?.isSecuritySite;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["o365Policy"] = args?.o365Policy;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["siteKey"] = args?.siteKey;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["virtualWan"] = args?.virtualWan;
+            resourceInputs["vpnSiteLinks"] = args?.vpnSiteLinks;
+            resourceInputs["vpnSiteName"] = args?.vpnSiteName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -152,7 +152,7 @@ export class VpnSite extends pulumi.CustomResource {
             resourceInputs["vpnSiteLinks"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20180401:VpnSite" }, { type: "azure-native:network/v20180601:VpnSite" }, { type: "azure-native:network/v20180701:VpnSite" }, { type: "azure-native:network/v20180801:VpnSite" }, { type: "azure-native:network/v20181001:VpnSite" }, { type: "azure-native:network/v20181101:VpnSite" }, { type: "azure-native:network/v20181201:VpnSite" }, { type: "azure-native:network/v20190201:VpnSite" }, { type: "azure-native:network/v20190401:VpnSite" }, { type: "azure-native:network/v20190601:VpnSite" }, { type: "azure-native:network/v20190701:VpnSite" }, { type: "azure-native:network/v20190801:VpnSite" }, { type: "azure-native:network/v20190901:VpnSite" }, { type: "azure-native:network/v20191101:VpnSite" }, { type: "azure-native:network/v20191201:VpnSite" }, { type: "azure-native:network/v20200301:VpnSite" }, { type: "azure-native:network/v20200401:VpnSite" }, { type: "azure-native:network/v20200501:VpnSite" }, { type: "azure-native:network/v20200601:VpnSite" }, { type: "azure-native:network/v20200701:VpnSite" }, { type: "azure-native:network/v20200801:VpnSite" }, { type: "azure-native:network/v20201101:VpnSite" }, { type: "azure-native:network/v20210201:VpnSite" }, { type: "azure-native:network/v20210301:VpnSite" }, { type: "azure-native:network/v20210501:VpnSite" }, { type: "azure-native:network/v20210801:VpnSite" }, { type: "azure-native:network/v20220101:VpnSite" }, { type: "azure-native:network/v20220501:VpnSite" }, { type: "azure-native:network/v20220701:VpnSite" }, { type: "azure-native:network/v20220901:VpnSite" }, { type: "azure-native:network/v20221101:VpnSite" }, { type: "azure-native:network/v20230201:VpnSite" }, { type: "azure-native:network/v20230401:VpnSite" }, { type: "azure-native:network/v20230501:VpnSite" }, { type: "azure-native:network/v20230601:VpnSite" }, { type: "azure-native:network/v20230901:VpnSite" }, { type: "azure-native:network/v20231101:VpnSite" }, { type: "azure-native:network/v20240101:VpnSite" }, { type: "azure-native:network/v20240301:VpnSite" }, { type: "azure-native:network/v20240501:VpnSite" }, { type: "azure-native:network/v20240701:VpnSite" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20180401:VpnSite" }, { type: "azure-native:network/v20180601:VpnSite" }, { type: "azure-native:network/v20180701:VpnSite" }, { type: "azure-native:network/v20180801:VpnSite" }, { type: "azure-native:network/v20181001:VpnSite" }, { type: "azure-native:network/v20181101:VpnSite" }, { type: "azure-native:network/v20181201:VpnSite" }, { type: "azure-native:network/v20190201:VpnSite" }, { type: "azure-native:network/v20190401:VpnSite" }, { type: "azure-native:network/v20190601:VpnSite" }, { type: "azure-native:network/v20190701:VpnSite" }, { type: "azure-native:network/v20190801:VpnSite" }, { type: "azure-native:network/v20190901:VpnSite" }, { type: "azure-native:network/v20191101:VpnSite" }, { type: "azure-native:network/v20191201:VpnSite" }, { type: "azure-native:network/v20200301:VpnSite" }, { type: "azure-native:network/v20200401:VpnSite" }, { type: "azure-native:network/v20200501:VpnSite" }, { type: "azure-native:network/v20200601:VpnSite" }, { type: "azure-native:network/v20200701:VpnSite" }, { type: "azure-native:network/v20200801:VpnSite" }, { type: "azure-native:network/v20201101:VpnSite" }, { type: "azure-native:network/v20210201:VpnSite" }, { type: "azure-native:network/v20210301:VpnSite" }, { type: "azure-native:network/v20210501:VpnSite" }, { type: "azure-native:network/v20210801:VpnSite" }, { type: "azure-native:network/v20220101:VpnSite" }, { type: "azure-native:network/v20220501:VpnSite" }, { type: "azure-native:network/v20220701:VpnSite" }, { type: "azure-native:network/v20220901:VpnSite" }, { type: "azure-native:network/v20221101:VpnSite" }, { type: "azure-native:network/v20230201:VpnSite" }, { type: "azure-native:network/v20230401:VpnSite" }, { type: "azure-native:network/v20230501:VpnSite" }, { type: "azure-native:network/v20230601:VpnSite" }, { type: "azure-native:network/v20230901:VpnSite" }, { type: "azure-native:network/v20231101:VpnSite" }, { type: "azure-native:network/v20240101:VpnSite" }, { type: "azure-native:network/v20240301:VpnSite" }, { type: "azure-native:network/v20240501:VpnSite" }, { type: "azure-native:network/v20240701:VpnSite" }, { type: "azure-native:network/v20241001:VpnSite" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VpnSite.__pulumiType, name, resourceInputs, opts);
     }

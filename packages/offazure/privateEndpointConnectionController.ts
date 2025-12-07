@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-06.
  *
- * Other available API versions: 2023-06-06, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrivateEndpointConnectionController extends pulumi.CustomResource {
     /**
@@ -38,35 +38,35 @@ export class PrivateEndpointConnectionController extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * array of group ids
      */
-    public /*out*/ readonly groupIds!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly groupIds: pulumi.Output<string[]>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * private endpoints
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.ResourceIdResponse>;
+    declare public /*out*/ readonly privateEndpoint: pulumi.Output<types.outputs.ResourceIdResponse>;
     /**
      * private endpoints connection state
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse | undefined>;
+    declare public readonly privateLinkServiceConnectionState: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse | undefined>;
     /**
      * provisioning state enum
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a PrivateEndpointConnectionController resource with the given unique name, arguments, and options.
@@ -79,16 +79,16 @@ export class PrivateEndpointConnectionController extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.siteName === undefined) && !opts.urn) {
+            if (args?.siteName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteName'");
             }
-            resourceInputs["peConnectionName"] = args ? args.peConnectionName : undefined;
-            resourceInputs["privateLinkServiceConnectionState"] = args ? args.privateLinkServiceConnectionState : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["siteName"] = args ? args.siteName : undefined;
+            resourceInputs["peConnectionName"] = args?.peConnectionName;
+            resourceInputs["privateLinkServiceConnectionState"] = args?.privateLinkServiceConnectionState;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["siteName"] = args?.siteName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["groupIds"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -107,7 +107,7 @@ export class PrivateEndpointConnectionController extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20200707:PrivateEndpointConnection" }, { type: "azure-native:offazure/v20200707:PrivateEndpointConnectionController" }, { type: "azure-native:offazure/v20230606:PrivateEndpointConnectionController" }, { type: "azure-native:offazure/v20231001preview:PrivateEndpointConnectionController" }, { type: "azure-native:offazure/v20240501preview:PrivateEndpointConnectionController" }, { type: "azure-native:offazure:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20200707:PrivateEndpointConnection" }, { type: "azure-native:offazure/v20200707:PrivateEndpointConnectionController" }, { type: "azure-native:offazure/v20230606:PrivateEndpointConnectionController" }, { type: "azure-native:offazure/v20231001preview:PrivateEndpointConnectionController" }, { type: "azure-native:offazure/v20240501preview:PrivateEndpointConnectionController" }, { type: "azure-native:offazure/v20240701preview:PrivateEndpointConnectionController" }, { type: "azure-native:offazure:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnectionController.__pulumiType, name, resourceInputs, opts);
     }

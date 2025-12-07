@@ -38,51 +38,51 @@ export class OrderItem extends pulumi.CustomResource {
     /**
      * Represents shipping and return address for order item.
      */
-    public readonly addressDetails!: pulumi.Output<types.outputs.AddressDetailsResponse | undefined>;
+    declare public readonly addressDetails: pulumi.Output<types.outputs.AddressDetailsResponse | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Msi identity of the resource
      */
-    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Id of the order to which order item belongs to.
      */
-    public readonly orderId!: pulumi.Output<string>;
+    declare public readonly orderId: pulumi.Output<string>;
     /**
      * Represents order item details.
      */
-    public readonly orderItemDetails!: pulumi.Output<types.outputs.OrderItemDetailsResponse>;
+    declare public readonly orderItemDetails: pulumi.Output<types.outputs.OrderItemDetailsResponse>;
     /**
      * Provisioning state
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Start time of order item.
      */
-    public /*out*/ readonly startTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly startTime: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a OrderItem resource with the given unique name, arguments, and options.
@@ -95,23 +95,23 @@ export class OrderItem extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.orderId === undefined) && !opts.urn) {
+            if (args?.orderId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orderId'");
             }
-            if ((!args || args.orderItemDetails === undefined) && !opts.urn) {
+            if (args?.orderItemDetails === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orderItemDetails'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["addressDetails"] = args ? args.addressDetails : undefined;
+            resourceInputs["addressDetails"] = args?.addressDetails;
             resourceInputs["identity"] = args ? (args.identity ? pulumi.output(args.identity).apply(types.inputs.resourceIdentityArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["orderId"] = args ? args.orderId : undefined;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["orderId"] = args?.orderId;
             resourceInputs["orderItemDetails"] = args ? (args.orderItemDetails ? pulumi.output(args.orderItemDetails).apply(types.inputs.orderItemDetailsArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["orderItemName"] = args ? args.orderItemName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["orderItemName"] = args?.orderItemName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class RouteFilter extends pulumi.CustomResource {
     /**
@@ -38,43 +38,43 @@ export class RouteFilter extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * A collection of references to express route circuit ipv6 peerings.
      */
-    public /*out*/ readonly ipv6Peerings!: pulumi.Output<types.outputs.ExpressRouteCircuitPeeringResponse[]>;
+    declare public /*out*/ readonly ipv6Peerings: pulumi.Output<types.outputs.ExpressRouteCircuitPeeringResponse[]>;
     /**
      * Resource location.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * A collection of references to express route circuit peerings.
      */
-    public /*out*/ readonly peerings!: pulumi.Output<types.outputs.ExpressRouteCircuitPeeringResponse[]>;
+    declare public /*out*/ readonly peerings: pulumi.Output<types.outputs.ExpressRouteCircuitPeeringResponse[]>;
     /**
      * The provisioning state of the route filter resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Collection of RouteFilterRules contained within a route filter.
      */
-    public readonly rules!: pulumi.Output<types.outputs.RouteFilterRuleResponse[] | undefined>;
+    declare public readonly rules: pulumi.Output<types.outputs.RouteFilterRuleResponse[] | undefined>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a RouteFilter resource with the given unique name, arguments, and options.
@@ -87,15 +87,15 @@ export class RouteFilter extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["routeFilterName"] = args ? args.routeFilterName : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["routeFilterName"] = args?.routeFilterName;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["ipv6Peerings"] = undefined /*out*/;
@@ -116,7 +116,7 @@ export class RouteFilter extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20161201:RouteFilter" }, { type: "azure-native:network/v20170301:RouteFilter" }, { type: "azure-native:network/v20170601:RouteFilter" }, { type: "azure-native:network/v20170801:RouteFilter" }, { type: "azure-native:network/v20170901:RouteFilter" }, { type: "azure-native:network/v20171001:RouteFilter" }, { type: "azure-native:network/v20171101:RouteFilter" }, { type: "azure-native:network/v20180101:RouteFilter" }, { type: "azure-native:network/v20180201:RouteFilter" }, { type: "azure-native:network/v20180401:RouteFilter" }, { type: "azure-native:network/v20180601:RouteFilter" }, { type: "azure-native:network/v20180701:RouteFilter" }, { type: "azure-native:network/v20180801:RouteFilter" }, { type: "azure-native:network/v20181001:RouteFilter" }, { type: "azure-native:network/v20181101:RouteFilter" }, { type: "azure-native:network/v20181201:RouteFilter" }, { type: "azure-native:network/v20190201:RouteFilter" }, { type: "azure-native:network/v20190401:RouteFilter" }, { type: "azure-native:network/v20190601:RouteFilter" }, { type: "azure-native:network/v20190701:RouteFilter" }, { type: "azure-native:network/v20190801:RouteFilter" }, { type: "azure-native:network/v20190901:RouteFilter" }, { type: "azure-native:network/v20191101:RouteFilter" }, { type: "azure-native:network/v20191201:RouteFilter" }, { type: "azure-native:network/v20200301:RouteFilter" }, { type: "azure-native:network/v20200401:RouteFilter" }, { type: "azure-native:network/v20200501:RouteFilter" }, { type: "azure-native:network/v20200601:RouteFilter" }, { type: "azure-native:network/v20200701:RouteFilter" }, { type: "azure-native:network/v20200801:RouteFilter" }, { type: "azure-native:network/v20201101:RouteFilter" }, { type: "azure-native:network/v20210201:RouteFilter" }, { type: "azure-native:network/v20210301:RouteFilter" }, { type: "azure-native:network/v20210501:RouteFilter" }, { type: "azure-native:network/v20210801:RouteFilter" }, { type: "azure-native:network/v20220101:RouteFilter" }, { type: "azure-native:network/v20220501:RouteFilter" }, { type: "azure-native:network/v20220701:RouteFilter" }, { type: "azure-native:network/v20220901:RouteFilter" }, { type: "azure-native:network/v20221101:RouteFilter" }, { type: "azure-native:network/v20230201:RouteFilter" }, { type: "azure-native:network/v20230401:RouteFilter" }, { type: "azure-native:network/v20230501:RouteFilter" }, { type: "azure-native:network/v20230601:RouteFilter" }, { type: "azure-native:network/v20230901:RouteFilter" }, { type: "azure-native:network/v20231101:RouteFilter" }, { type: "azure-native:network/v20240101:RouteFilter" }, { type: "azure-native:network/v20240301:RouteFilter" }, { type: "azure-native:network/v20240501:RouteFilter" }, { type: "azure-native:network/v20240701:RouteFilter" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20161201:RouteFilter" }, { type: "azure-native:network/v20170301:RouteFilter" }, { type: "azure-native:network/v20170601:RouteFilter" }, { type: "azure-native:network/v20170801:RouteFilter" }, { type: "azure-native:network/v20170901:RouteFilter" }, { type: "azure-native:network/v20171001:RouteFilter" }, { type: "azure-native:network/v20171101:RouteFilter" }, { type: "azure-native:network/v20180101:RouteFilter" }, { type: "azure-native:network/v20180201:RouteFilter" }, { type: "azure-native:network/v20180401:RouteFilter" }, { type: "azure-native:network/v20180601:RouteFilter" }, { type: "azure-native:network/v20180701:RouteFilter" }, { type: "azure-native:network/v20180801:RouteFilter" }, { type: "azure-native:network/v20181001:RouteFilter" }, { type: "azure-native:network/v20181101:RouteFilter" }, { type: "azure-native:network/v20181201:RouteFilter" }, { type: "azure-native:network/v20190201:RouteFilter" }, { type: "azure-native:network/v20190401:RouteFilter" }, { type: "azure-native:network/v20190601:RouteFilter" }, { type: "azure-native:network/v20190701:RouteFilter" }, { type: "azure-native:network/v20190801:RouteFilter" }, { type: "azure-native:network/v20190901:RouteFilter" }, { type: "azure-native:network/v20191101:RouteFilter" }, { type: "azure-native:network/v20191201:RouteFilter" }, { type: "azure-native:network/v20200301:RouteFilter" }, { type: "azure-native:network/v20200401:RouteFilter" }, { type: "azure-native:network/v20200501:RouteFilter" }, { type: "azure-native:network/v20200601:RouteFilter" }, { type: "azure-native:network/v20200701:RouteFilter" }, { type: "azure-native:network/v20200801:RouteFilter" }, { type: "azure-native:network/v20201101:RouteFilter" }, { type: "azure-native:network/v20210201:RouteFilter" }, { type: "azure-native:network/v20210301:RouteFilter" }, { type: "azure-native:network/v20210501:RouteFilter" }, { type: "azure-native:network/v20210801:RouteFilter" }, { type: "azure-native:network/v20220101:RouteFilter" }, { type: "azure-native:network/v20220501:RouteFilter" }, { type: "azure-native:network/v20220701:RouteFilter" }, { type: "azure-native:network/v20220901:RouteFilter" }, { type: "azure-native:network/v20221101:RouteFilter" }, { type: "azure-native:network/v20230201:RouteFilter" }, { type: "azure-native:network/v20230401:RouteFilter" }, { type: "azure-native:network/v20230501:RouteFilter" }, { type: "azure-native:network/v20230601:RouteFilter" }, { type: "azure-native:network/v20230901:RouteFilter" }, { type: "azure-native:network/v20231101:RouteFilter" }, { type: "azure-native:network/v20240101:RouteFilter" }, { type: "azure-native:network/v20240301:RouteFilter" }, { type: "azure-native:network/v20240501:RouteFilter" }, { type: "azure-native:network/v20240701:RouteFilter" }, { type: "azure-native:network/v20241001:RouteFilter" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RouteFilter.__pulumiType, name, resourceInputs, opts);
     }

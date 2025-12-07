@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-01-31-preview. In version 2.x of the Azure Native provider, it used API version 2025-01-31-preview.
  *
- * Other available API versions: 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dependencymap [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-05-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dependencymap [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DiscoverySource extends pulumi.CustomResource {
     /**
@@ -38,39 +38,39 @@ export class DiscoverySource extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Provisioning state of Discovery Source resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Source ArmId of Discovery Source resource
      */
-    public readonly sourceId!: pulumi.Output<string>;
+    declare public readonly sourceId: pulumi.Output<string>;
     /**
      * Source type of Discovery Source resource.
      */
-    public readonly sourceType!: pulumi.Output<string>;
+    declare public readonly sourceType: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a DiscoverySource resource with the given unique name, arguments, and options.
@@ -83,25 +83,25 @@ export class DiscoverySource extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.mapName === undefined) && !opts.urn) {
+            if (args?.mapName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mapName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.sourceId === undefined) && !opts.urn) {
+            if (args?.sourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceId'");
             }
-            if ((!args || args.sourceType === undefined) && !opts.urn) {
+            if (args?.sourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceType'");
             }
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["mapName"] = args ? args.mapName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sourceId"] = args ? args.sourceId : undefined;
-            resourceInputs["sourceName"] = args ? args.sourceName : undefined;
-            resourceInputs["sourceType"] = args ? args.sourceType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["mapName"] = args?.mapName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sourceId"] = args?.sourceId;
+            resourceInputs["sourceName"] = args?.sourceName;
+            resourceInputs["sourceType"] = args?.sourceType;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -119,7 +119,7 @@ export class DiscoverySource extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dependencymap/v20250131preview:DiscoverySource" }, { type: "azure-native:dependencymap/v20250501preview:DiscoverySource" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dependencymap/v20250131preview:DiscoverySource" }, { type: "azure-native:dependencymap/v20250501preview:DiscoverySource" }, { type: "azure-native:dependencymap/v20250701preview:DiscoverySource" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DiscoverySource.__pulumiType, name, resourceInputs, opts);
     }

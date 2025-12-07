@@ -36,23 +36,23 @@ export class RegistrationAssignment extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the registration assignment.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The properties of a registration assignment.
      */
-    public readonly properties!: pulumi.Output<types.outputs.RegistrationAssignmentPropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.RegistrationAssignmentPropertiesResponse>;
     /**
      * The metadata for the registration assignment resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the Azure resource (Microsoft.ManagedServices/registrationAssignments).
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a RegistrationAssignment resource with the given unique name, arguments, and options.
@@ -65,12 +65,12 @@ export class RegistrationAssignment extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.scope === undefined) && !opts.urn) {
+            if (args?.scope === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scope'");
             }
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["registrationAssignmentId"] = args ? args.registrationAssignmentId : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["registrationAssignmentId"] = args?.registrationAssignmentId;
+            resourceInputs["scope"] = args?.scope;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;

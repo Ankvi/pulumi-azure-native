@@ -38,23 +38,27 @@ export class PatchSchedule extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The geo-location where the resource lives
      */
-    public /*out*/ readonly location!: pulumi.Output<string>;
+    declare public /*out*/ readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * List of patch schedules for a Redis cache.
      */
-    public readonly scheduleEntries!: pulumi.Output<types.outputs.ScheduleEntryResponse[]>;
+    declare public readonly scheduleEntries: pulumi.Output<types.outputs.ScheduleEntryResponse[]>;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a PatchSchedule resource with the given unique name, arguments, and options.
@@ -67,27 +71,29 @@ export class PatchSchedule extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.scheduleEntries === undefined) && !opts.urn) {
+            if (args?.scheduleEntries === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scheduleEntries'");
             }
-            resourceInputs["default"] = args ? args.default : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["scheduleEntries"] = args ? args.scheduleEntries : undefined;
+            resourceInputs["default"] = args?.default;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["scheduleEntries"] = args?.scheduleEntries;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["scheduleEntries"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -102,11 +108,11 @@ export class PatchSchedule extends pulumi.CustomResource {
  */
 export interface PatchScheduleArgs {
     /**
-     * Default string modeled as parameter for auto generation to work correctly.
+     * The name of the RedisPatchSchedule
      */
     default?: pulumi.Input<string>;
     /**
-     * The name of the Redis cache.
+     * The name of the redis cache.
      */
     name: pulumi.Input<string>;
     /**

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-09-01-preview.
  *
- * Other available API versions: 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-07-01-preview, 2025-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Schema extends pulumi.CustomResource {
     /**
@@ -38,47 +38,47 @@ export class Schema extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Human-readable description of the schema.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Human-readable display name.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Format of the schema.
      */
-    public readonly format!: pulumi.Output<string>;
+    declare public readonly format: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Provisioning state of the resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Type of the schema.
      */
-    public readonly schemaType!: pulumi.Output<string>;
+    declare public readonly schemaType: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Schema tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Globally unique, immutable, non-reusable id.
      */
-    public /*out*/ readonly uuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uuid: pulumi.Output<string>;
 
     /**
      * Create a Schema resource with the given unique name, arguments, and options.
@@ -91,26 +91,26 @@ export class Schema extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.format === undefined) && !opts.urn) {
+            if (args?.format === undefined && !opts.urn) {
                 throw new Error("Missing required property 'format'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.schemaRegistryName === undefined) && !opts.urn) {
+            if (args?.schemaRegistryName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schemaRegistryName'");
             }
-            if ((!args || args.schemaType === undefined) && !opts.urn) {
+            if (args?.schemaType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schemaType'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["format"] = args ? args.format : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["schemaName"] = args ? args.schemaName : undefined;
-            resourceInputs["schemaRegistryName"] = args ? args.schemaRegistryName : undefined;
-            resourceInputs["schemaType"] = args ? args.schemaType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["format"] = args?.format;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["schemaName"] = args?.schemaName;
+            resourceInputs["schemaRegistryName"] = args?.schemaRegistryName;
+            resourceInputs["schemaType"] = args?.schemaType;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -131,7 +131,7 @@ export class Schema extends pulumi.CustomResource {
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:deviceregistry/v20240901preview:Schema" }, { type: "azure-native:deviceregistry/v20250701preview:Schema" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:deviceregistry/v20240901preview:Schema" }, { type: "azure-native:deviceregistry/v20250701preview:Schema" }, { type: "azure-native:deviceregistry/v20251001:Schema" }, { type: "azure-native:deviceregistry/v20251101preview:Schema" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Schema.__pulumiType, name, resourceInputs, opts);
     }

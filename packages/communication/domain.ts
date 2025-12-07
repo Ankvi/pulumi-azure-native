@@ -40,59 +40,59 @@ export class Domain extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The location where the Domains resource data is stored at rest.
      */
-    public /*out*/ readonly dataLocation!: pulumi.Output<string>;
+    declare public /*out*/ readonly dataLocation: pulumi.Output<string>;
     /**
      * Describes how a Domains resource is being managed.
      */
-    public readonly domainManagement!: pulumi.Output<string>;
+    declare public readonly domainManagement: pulumi.Output<string>;
     /**
      * P2 sender domain that is displayed to the email recipients [RFC 5322].
      */
-    public /*out*/ readonly fromSenderDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly fromSenderDomain: pulumi.Output<string>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * P1 sender domain that is present on the email envelope [RFC 5321].
      */
-    public /*out*/ readonly mailFromSenderDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly mailFromSenderDomain: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Provisioning state of the resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Describes whether user engagement tracking is enabled or disabled.
      */
-    public readonly userEngagementTracking!: pulumi.Output<string | undefined>;
+    declare public readonly userEngagementTracking: pulumi.Output<string | undefined>;
     /**
      * List of DnsRecord
      */
-    public /*out*/ readonly verificationRecords!: pulumi.Output<types.outputs.DomainPropertiesResponseVerificationRecords>;
+    declare public /*out*/ readonly verificationRecords: pulumi.Output<types.outputs.DomainPropertiesResponseVerificationRecords>;
     /**
      * List of VerificationStatusRecord
      */
-    public /*out*/ readonly verificationStates!: pulumi.Output<types.outputs.DomainPropertiesResponseVerificationStates>;
+    declare public /*out*/ readonly verificationStates: pulumi.Output<types.outputs.DomainPropertiesResponseVerificationStates>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -105,22 +105,22 @@ export class Domain extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.domainManagement === undefined) && !opts.urn) {
+            if (args?.domainManagement === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainManagement'");
             }
-            if ((!args || args.emailServiceName === undefined) && !opts.urn) {
+            if (args?.emailServiceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'emailServiceName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["domainManagement"] = args ? args.domainManagement : undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["emailServiceName"] = args ? args.emailServiceName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["userEngagementTracking"] = args ? args.userEngagementTracking : undefined;
+            resourceInputs["domainManagement"] = args?.domainManagement;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["emailServiceName"] = args?.emailServiceName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["userEngagementTracking"] = args?.userEngagementTracking;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["dataLocation"] = undefined /*out*/;
             resourceInputs["fromSenderDomain"] = undefined /*out*/;

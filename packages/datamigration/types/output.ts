@@ -23,6 +23,46 @@ export interface AzureActiveDirectoryAppResponse {
 }
 
 /**
+ * Azure Blob Details
+ */
+export interface AzureBlobResponse {
+    /**
+     * Storage Account Key.
+     */
+    accountKey?: string;
+    /**
+     * Authentication type used for accessing Azure Blob Storage.
+     */
+    authType?: string;
+    /**
+     * Blob container name where backups are stored.
+     */
+    blobContainerName?: string;
+    /**
+     * Identity details for authentication using a Managed Identity.
+     */
+    identity?: ManagedServiceIdentityResponse;
+    /**
+     * Resource Id of the storage account where backups are stored.
+     */
+    storageAccountResourceId?: string;
+}
+
+/**
+ * Backup Configuration
+ */
+export interface BackupConfigurationResponse {
+    /**
+     * Source location of backups.
+     */
+    sourceLocation?: SourceLocationResponse;
+    /**
+     * Target location for copying backups.
+     */
+    targetLocation?: TargetLocationResponse;
+}
+
+/**
  * Information of the backup file
  */
 export interface BackupFileInfoResponse {
@@ -1589,6 +1629,156 @@ export interface DatabaseMigrationPropertiesSqlDbResponse {
 }
 
 /**
+ * Database Migration Resource properties for SQL Managed Instance.
+ */
+export interface DatabaseMigrationPropertiesSqlMiResponse {
+    /**
+     * Backup configuration info.
+     */
+    backupConfiguration?: BackupConfigurationResponse;
+    /**
+     * Database migration end time.
+     */
+    endedOn: string;
+    /**
+     *
+     * Expected value is 'SqlMi'.
+     */
+    kind: "SqlMi";
+    /**
+     * Error details in case of migration failure.
+     */
+    migrationFailureError: ErrorInfoResponse;
+    /**
+     * ID for current migration operation.
+     */
+    migrationOperationId?: string;
+    /**
+     * Resource Id of the Migration Service.
+     */
+    migrationService?: string;
+    /**
+     * Migration status.
+     */
+    migrationStatus: string;
+    /**
+     * Detailed migration status. Not included by default.
+     */
+    migrationStatusDetails: MigrationStatusDetailsResponse;
+    /**
+     * Offline configuration.
+     */
+    offlineConfiguration?: OfflineConfigurationResponse;
+    /**
+     * Error message for migration provisioning failure, if any.
+     */
+    provisioningError?: string;
+    /**
+     * Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started.
+     */
+    provisioningState: string;
+    /**
+     * Resource Id of the target resource.
+     */
+    scope?: string;
+    /**
+     * Name of the source database.
+     */
+    sourceDatabaseName?: string;
+    /**
+     * Name of the source sql server.
+     */
+    sourceServerName: string;
+    /**
+     * Source SQL Server connection details.
+     */
+    sourceSqlConnection?: SqlConnectionInformationResponse;
+    /**
+     * Database migration start time.
+     */
+    startedOn: string;
+    /**
+     * Database collation to be used for the target database.
+     */
+    targetDatabaseCollation?: string;
+}
+
+/**
+ * Database Migration Resource properties for SQL Virtual Machine.
+ */
+export interface DatabaseMigrationPropertiesSqlVmResponse {
+    /**
+     * Backup configuration info.
+     */
+    backupConfiguration?: BackupConfigurationResponse;
+    /**
+     * Database migration end time.
+     */
+    endedOn: string;
+    /**
+     *
+     * Expected value is 'SqlVm'.
+     */
+    kind: "SqlVm";
+    /**
+     * Error details in case of migration failure.
+     */
+    migrationFailureError: ErrorInfoResponse;
+    /**
+     * ID for current migration operation.
+     */
+    migrationOperationId?: string;
+    /**
+     * Resource Id of the Migration Service.
+     */
+    migrationService?: string;
+    /**
+     * Migration status.
+     */
+    migrationStatus: string;
+    /**
+     * Detailed migration status. Not included by default.
+     */
+    migrationStatusDetails: MigrationStatusDetailsResponse;
+    /**
+     * Offline configuration.
+     */
+    offlineConfiguration?: OfflineConfigurationResponse;
+    /**
+     * Error message for migration provisioning failure, if any.
+     */
+    provisioningError?: string;
+    /**
+     * Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started.
+     */
+    provisioningState: string;
+    /**
+     * Resource Id of the target resource.
+     */
+    scope?: string;
+    /**
+     * Name of the source database.
+     */
+    sourceDatabaseName?: string;
+    /**
+     * Name of the source sql server.
+     */
+    sourceServerName: string;
+    /**
+     * Source SQL Server connection details.
+     */
+    sourceSqlConnection?: SqlConnectionInformationResponse;
+    /**
+     * Database migration start time.
+     */
+    startedOn: string;
+    /**
+     * Database collation to be used for the target database.
+     */
+    targetDatabaseCollation?: string;
+}
+
+/**
  * Summary of database results in the migration
  */
 export interface DatabaseSummaryResultResponse {
@@ -2221,6 +2411,28 @@ export function getUserTablesSqlTaskPropertiesResponseProvideDefaults(val: GetUs
         ...val,
         input: (val.input ? getUserTablesSqlTaskInputResponseProvideDefaults(val.input) : undefined),
     };
+}
+
+/**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityResponse {
+    /**
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: string;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
 }
 
 /**
@@ -5215,6 +5427,64 @@ export interface MigrationReportResultResponse {
 }
 
 /**
+ * Detailed status of current migration.
+ */
+export interface MigrationStatusDetailsResponse {
+    /**
+     * Backup sets that are currently active.
+     */
+    activeBackupSets: SqlBackupSetInfoResponse[];
+    /**
+     * Name of blob container.
+     */
+    blobContainerName: string;
+    /**
+     * Complete restore error message, if any
+     */
+    completeRestoreErrorMessage: string;
+    /**
+     * File name that is currently being restored.
+     */
+    currentRestoringFilename: string;
+    /**
+     * File upload blocking errors, if any.
+     */
+    fileUploadBlockingErrors: string[];
+    /**
+     * Details of full backup set.
+     */
+    fullBackupSetInfo: SqlBackupSetInfoResponse;
+    /**
+     * Files that are not valid backup files.
+     */
+    invalidFiles: string[];
+    /**
+     * Whether full backup has been applied to the target database or not.
+     */
+    isFullBackupRestored: boolean;
+    /**
+     * Last applied backup set information.
+     */
+    lastRestoredBackupSetInfo: SqlBackupSetInfoResponse;
+    /**
+     * Last restored file name.
+     */
+    lastRestoredFilename: string;
+    /**
+     * Current State of Migration.
+     */
+    migrationState: string;
+    /**
+     * Total pending log backups.
+     */
+    pendingLogBackupsCount: number;
+    /**
+     * Restore blocking reason, if any
+     */
+    restoreBlockingReason: string;
+}
+
+/**
  * Migration Validation Database level summary result
  */
 export interface MigrationValidationDatabaseSummaryResultResponse {
@@ -5985,6 +6255,20 @@ export interface ODataErrorResponse {
 }
 
 /**
+ * Offline configuration
+ */
+export interface OfflineConfigurationResponse {
+    /**
+     * Last backup name for offline migration. This is optional for migrations from file share. If it is not provided, then the service will determine the last backup file name based on latest backup files present in file share.
+     */
+    lastBackupName?: string;
+    /**
+     * Offline migration
+     */
+    offline?: boolean;
+}
+
+/**
  * Information for connecting to Oracle server
  */
 export interface OracleConnectionInfoResponse {
@@ -6309,6 +6593,112 @@ export interface ServiceSkuResponse {
 }
 
 /**
+ * Source Location details of backups.
+ */
+export interface SourceLocationResponse {
+    /**
+     * Source Azure Blob.
+     */
+    azureBlob?: AzureBlobResponse;
+    /**
+     * Source File share.
+     */
+    fileShare?: SqlFileShareResponse;
+    /**
+     * Backup storage Type.
+     */
+    fileStorageType: string;
+}
+
+/**
+ * Information of backup file
+ */
+export interface SqlBackupFileInfoResponse {
+    /**
+     * Copy Duration in seconds
+     */
+    copyDuration: number;
+    /**
+     * Copy throughput in KBps
+     */
+    copyThroughput: number;
+    /**
+     * Bytes read
+     */
+    dataRead: number;
+    /**
+     * Bytes written
+     */
+    dataWritten: number;
+    /**
+     * Media family sequence number
+     */
+    familySequenceNumber: number;
+    /**
+     * File name.
+     */
+    fileName: string;
+    /**
+     * Status of the file. (Initial, Uploading, Uploaded, Restoring, Restored or Skipped)
+     */
+    status: string;
+    /**
+     * File size in bytes
+     */
+    totalSize: number;
+}
+
+/**
+ * Information of backup set
+ */
+export interface SqlBackupSetInfoResponse {
+    /**
+     * Backup end time.
+     */
+    backupFinishDate: string;
+    /**
+     * Backup set id.
+     */
+    backupSetId: string;
+    /**
+     * Backup start date.
+     */
+    backupStartDate: string;
+    /**
+     * Backup type.
+     */
+    backupType: string;
+    /**
+     * Media family count
+     */
+    familyCount: number;
+    /**
+     * First LSN of the backup set.
+     */
+    firstLSN: string;
+    /**
+     * Has Backup Checksums
+     */
+    hasBackupChecksums: boolean;
+    /**
+     * The reasons why the backup set is ignored
+     */
+    ignoreReasons: string[];
+    /**
+     * Whether this backup set has been restored or not.
+     */
+    isBackupRestored: boolean;
+    /**
+     * Last LSN of the backup set.
+     */
+    lastLSN: string;
+    /**
+     * List of files in the backup set.
+     */
+    listOfBackupFiles: SqlBackupFileInfoResponse[];
+}
+
+/**
  * Information for connecting to SQL database server
  */
 export interface SqlConnectionInfoResponse {
@@ -6440,6 +6830,20 @@ export interface SqlDbOfflineConfigurationResponse {
 }
 
 /**
+ * File share
+ */
+export interface SqlFileShareResponse {
+    /**
+     * Location as SMB share or local drive where backups are placed.
+     */
+    path?: string;
+    /**
+     * Username to access the file share location for backups.
+     */
+    username?: string;
+}
+
+/**
  * SSIS migration info with SSIS store type, overwrite policy.
  */
 export interface SsisMigrationInfoResponse {
@@ -6500,6 +6904,34 @@ export interface SystemDataResponse {
     lastModifiedAt?: string;
     lastModifiedBy?: string;
     lastModifiedByType?: string;
+}
+
+/**
+ * Target Location details for optional copy of backups
+ */
+export interface TargetLocationResponse {
+    /**
+     * Storage Account Key.
+     */
+    accountKey?: string;
+    /**
+     * Resource Id of the storage account copying backups.
+     */
+    storageAccountResourceId?: string;
+}
+
+/**
+ * User assigned identity properties
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId: string;
 }
 
 /**

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-01-10. In version 2.x of the Azure Native provider, it used API version 2023-02-08-preview.
  *
- * Other available API versions: 2023-02-08-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotfirmwaredefense [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-08-preview, 2025-04-01-preview, 2025-08-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotfirmwaredefense [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Firmware extends pulumi.CustomResource {
     /**
@@ -38,55 +38,55 @@ export class Firmware extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * User-specified description of the firmware.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * File name for a firmware that user uploaded.
      */
-    public readonly fileName!: pulumi.Output<string | undefined>;
+    declare public readonly fileName: pulumi.Output<string | undefined>;
     /**
      * File size of the uploaded firmware image.
      */
-    public readonly fileSize!: pulumi.Output<number | undefined>;
+    declare public readonly fileSize: pulumi.Output<number | undefined>;
     /**
      * Firmware model.
      */
-    public readonly model!: pulumi.Output<string | undefined>;
+    declare public readonly model: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Provisioning state of the resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The status of firmware scan.
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string | undefined>;
     /**
      * A list of errors or other messages generated during firmware analysis
      */
-    public readonly statusMessages!: pulumi.Output<types.outputs.StatusMessageResponse[] | undefined>;
+    declare public readonly statusMessages: pulumi.Output<types.outputs.StatusMessageResponse[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Firmware vendor.
      */
-    public readonly vendor!: pulumi.Output<string | undefined>;
+    declare public readonly vendor: pulumi.Output<string | undefined>;
     /**
      * Firmware version.
      */
-    public readonly version!: pulumi.Output<string | undefined>;
+    declare public readonly version: pulumi.Output<string | undefined>;
 
     /**
      * Create a Firmware resource with the given unique name, arguments, and options.
@@ -99,23 +99,23 @@ export class Firmware extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["fileName"] = args ? args.fileName : undefined;
-            resourceInputs["fileSize"] = args ? args.fileSize : undefined;
-            resourceInputs["firmwareId"] = args ? args.firmwareId : undefined;
-            resourceInputs["model"] = args ? args.model : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["status"] = (args ? args.status : undefined) ?? "Pending";
-            resourceInputs["statusMessages"] = args ? args.statusMessages : undefined;
-            resourceInputs["vendor"] = args ? args.vendor : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["fileName"] = args?.fileName;
+            resourceInputs["fileSize"] = args?.fileSize;
+            resourceInputs["firmwareId"] = args?.firmwareId;
+            resourceInputs["model"] = args?.model;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["status"] = (args?.status) ?? "Pending";
+            resourceInputs["statusMessages"] = args?.statusMessages;
+            resourceInputs["vendor"] = args?.vendor;
+            resourceInputs["version"] = args?.version;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -137,7 +137,7 @@ export class Firmware extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:iotfirmwaredefense/v20230208preview:Firmware" }, { type: "azure-native:iotfirmwaredefense/v20240110:Firmware" }, { type: "azure-native:iotfirmwaredefense/v20250401preview:Firmware" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:iotfirmwaredefense/v20230208preview:Firmware" }, { type: "azure-native:iotfirmwaredefense/v20240110:Firmware" }, { type: "azure-native:iotfirmwaredefense/v20250401preview:Firmware" }, { type: "azure-native:iotfirmwaredefense/v20250802:Firmware" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Firmware.__pulumiType, name, resourceInputs, opts);
     }

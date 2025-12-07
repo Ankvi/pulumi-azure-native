@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SharedCommitmentPlan extends pulumi.CustomResource {
     /**
@@ -38,43 +38,43 @@ export class SharedCommitmentPlan extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Resource Etag.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The Kind of the resource.
      */
-    public readonly kind!: pulumi.Output<string | undefined>;
+    declare public readonly kind: pulumi.Output<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Properties of Cognitive Services account commitment plan.
      */
-    public readonly properties!: pulumi.Output<types.outputs.CommitmentPlanPropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.CommitmentPlanPropertiesResponse>;
     /**
      * The resource model definition representing SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
+    declare public readonly sku: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a SharedCommitmentPlan resource with the given unique name, arguments, and options.
@@ -87,16 +87,16 @@ export class SharedCommitmentPlan extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["commitmentPlanName"] = args ? args.commitmentPlanName : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["commitmentPlanName"] = args?.commitmentPlanName;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -115,7 +115,7 @@ export class SharedCommitmentPlan extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20221201:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20230501:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20231001preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20240401preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20240601preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20241001:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20250401preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20250601:SharedCommitmentPlan" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20221201:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20230501:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20231001preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20240401preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20240601preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20241001:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20250401preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20250601:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20250701preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20250901:SharedCommitmentPlan" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SharedCommitmentPlan.__pulumiType, name, resourceInputs, opts);
     }

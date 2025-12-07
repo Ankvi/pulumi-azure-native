@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Agent extends pulumi.CustomResource {
     /**
@@ -38,72 +38,72 @@ export class Agent extends pulumi.CustomResource {
     /**
      * The Agent status.
      */
-    public /*out*/ readonly agentStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly agentStatus: pulumi.Output<string>;
     /**
      * The Agent version.
      */
-    public /*out*/ readonly agentVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly agentVersion: pulumi.Output<string>;
     /**
      * The fully qualified resource ID of the Hybrid Compute resource for the Agent.
      */
-    public readonly arcResourceId!: pulumi.Output<string>;
+    declare public readonly arcResourceId: pulumi.Output<string>;
     /**
      * The VM UUID of the Hybrid Compute resource for the Agent.
      */
-    public readonly arcVmUuid!: pulumi.Output<string>;
+    declare public readonly arcVmUuid: pulumi.Output<string>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * A description for the Agent.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly errorDetails!: pulumi.Output<types.outputs.AgentPropertiesErrorDetailsResponse>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly errorDetails: pulumi.Output<types.outputs.AgentPropertiesErrorDetailsResponse>;
     /**
      * The last updated time of the Agent status.
      */
-    public /*out*/ readonly lastStatusUpdate!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastStatusUpdate: pulumi.Output<string>;
     /**
      * Local IP address reported by the Agent.
      */
-    public /*out*/ readonly localIPAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly localIPAddress: pulumi.Output<string>;
     /**
      * Available memory reported by the Agent, in MB.
      */
-    public /*out*/ readonly memoryInMB!: pulumi.Output<number>;
+    declare public /*out*/ readonly memoryInMB: pulumi.Output<number>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Available compute cores reported by the Agent.
      */
-    public /*out*/ readonly numberOfCores!: pulumi.Output<number>;
+    declare public /*out*/ readonly numberOfCores: pulumi.Output<number>;
     /**
      * The provisioning state of this resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The agent's local time zone represented in Windows format.
      */
-    public /*out*/ readonly timeZone!: pulumi.Output<string>;
+    declare public /*out*/ readonly timeZone: pulumi.Output<string>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time.
      */
-    public readonly uploadLimitSchedule!: pulumi.Output<types.outputs.UploadLimitScheduleResponse | undefined>;
+    declare public readonly uploadLimitSchedule: pulumi.Output<types.outputs.UploadLimitScheduleResponse | undefined>;
     /**
      * Uptime of the Agent in seconds.
      */
-    public /*out*/ readonly uptimeInSeconds!: pulumi.Output<number>;
+    declare public /*out*/ readonly uptimeInSeconds: pulumi.Output<number>;
 
     /**
      * Create a Agent resource with the given unique name, arguments, and options.
@@ -116,25 +116,25 @@ export class Agent extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.arcResourceId === undefined) && !opts.urn) {
+            if (args?.arcResourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'arcResourceId'");
             }
-            if ((!args || args.arcVmUuid === undefined) && !opts.urn) {
+            if (args?.arcVmUuid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'arcVmUuid'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.storageMoverName === undefined) && !opts.urn) {
+            if (args?.storageMoverName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageMoverName'");
             }
-            resourceInputs["agentName"] = args ? args.agentName : undefined;
-            resourceInputs["arcResourceId"] = args ? args.arcResourceId : undefined;
-            resourceInputs["arcVmUuid"] = args ? args.arcVmUuid : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["storageMoverName"] = args ? args.storageMoverName : undefined;
-            resourceInputs["uploadLimitSchedule"] = args ? args.uploadLimitSchedule : undefined;
+            resourceInputs["agentName"] = args?.agentName;
+            resourceInputs["arcResourceId"] = args?.arcResourceId;
+            resourceInputs["arcVmUuid"] = args?.arcVmUuid;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["storageMoverName"] = args?.storageMoverName;
+            resourceInputs["uploadLimitSchedule"] = args?.uploadLimitSchedule;
             resourceInputs["agentStatus"] = undefined /*out*/;
             resourceInputs["agentVersion"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -170,7 +170,7 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["uptimeInSeconds"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storagemover/v20220701preview:Agent" }, { type: "azure-native:storagemover/v20230301:Agent" }, { type: "azure-native:storagemover/v20230701preview:Agent" }, { type: "azure-native:storagemover/v20231001:Agent" }, { type: "azure-native:storagemover/v20240701:Agent" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storagemover/v20220701preview:Agent" }, { type: "azure-native:storagemover/v20230301:Agent" }, { type: "azure-native:storagemover/v20230701preview:Agent" }, { type: "azure-native:storagemover/v20231001:Agent" }, { type: "azure-native:storagemover/v20240701:Agent" }, { type: "azure-native:storagemover/v20250701:Agent" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Agent.__pulumiType, name, resourceInputs, opts);
     }

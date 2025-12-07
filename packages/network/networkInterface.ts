@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkInterface extends pulumi.CustomResource {
     /**
@@ -38,123 +38,123 @@ export class NetworkInterface extends pulumi.CustomResource {
     /**
      * Auxiliary mode of Network Interface resource.
      */
-    public readonly auxiliaryMode!: pulumi.Output<string | undefined>;
+    declare public readonly auxiliaryMode: pulumi.Output<string | undefined>;
     /**
      * Auxiliary sku of Network Interface resource.
      */
-    public readonly auxiliarySku!: pulumi.Output<string | undefined>;
+    declare public readonly auxiliarySku: pulumi.Output<string | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Whether default outbound connectivity for nic was configured or not.
      */
-    public /*out*/ readonly defaultOutboundConnectivityEnabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly defaultOutboundConnectivityEnabled: pulumi.Output<boolean>;
     /**
      * Indicates whether to disable tcp state tracking.
      */
-    public readonly disableTcpStateTracking!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableTcpStateTracking: pulumi.Output<boolean | undefined>;
     /**
      * The DNS settings in network interface.
      */
-    public readonly dnsSettings!: pulumi.Output<types.outputs.NetworkInterfaceDnsSettingsResponse | undefined>;
+    declare public readonly dnsSettings: pulumi.Output<types.outputs.NetworkInterfaceDnsSettingsResponse | undefined>;
     /**
      * A reference to the dscp configuration to which the network interface is linked.
      */
-    public /*out*/ readonly dscpConfiguration!: pulumi.Output<types.outputs.SubResourceResponse>;
+    declare public /*out*/ readonly dscpConfiguration: pulumi.Output<types.outputs.SubResourceResponse>;
     /**
      * If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
      */
-    public readonly enableAcceleratedNetworking!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableAcceleratedNetworking: pulumi.Output<boolean | undefined>;
     /**
      * Indicates whether IP forwarding is enabled on this network interface.
      */
-    public readonly enableIPForwarding!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableIPForwarding: pulumi.Output<boolean | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The extended location of the network interface.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * A list of references to linked BareMetal resources.
      */
-    public /*out*/ readonly hostedWorkloads!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly hostedWorkloads: pulumi.Output<string[]>;
     /**
      * A list of IPConfigurations of the network interface.
      */
-    public readonly ipConfigurations!: pulumi.Output<types.outputs.NetworkInterfaceIPConfigurationResponse[] | undefined>;
+    declare public readonly ipConfigurations: pulumi.Output<types.outputs.NetworkInterfaceIPConfigurationResponse[] | undefined>;
     /**
      * Resource location.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The MAC address of the network interface.
      */
-    public /*out*/ readonly macAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly macAddress: pulumi.Output<string>;
     /**
      * Migration phase of Network Interface resource.
      */
-    public readonly migrationPhase!: pulumi.Output<string | undefined>;
+    declare public readonly migrationPhase: pulumi.Output<string | undefined>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The reference to the NetworkSecurityGroup resource.
      */
-    public readonly networkSecurityGroup!: pulumi.Output<types.outputs.NetworkSecurityGroupResponse | undefined>;
+    declare public readonly networkSecurityGroup: pulumi.Output<types.outputs.NetworkSecurityGroupResponse | undefined>;
     /**
      * Type of Network Interface resource.
      */
-    public readonly nicType!: pulumi.Output<string | undefined>;
+    declare public readonly nicType: pulumi.Output<string | undefined>;
     /**
      * Whether this is a primary network interface on a virtual machine.
      */
-    public /*out*/ readonly primary!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly primary: pulumi.Output<boolean>;
     /**
      * A reference to the private endpoint to which the network interface is linked.
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse>;
+    declare public /*out*/ readonly privateEndpoint: pulumi.Output<types.outputs.PrivateEndpointResponse>;
     /**
      * Privatelinkservice of the network interface resource.
      */
-    public readonly privateLinkService!: pulumi.Output<types.outputs.PrivateLinkServiceResponse | undefined>;
+    declare public readonly privateLinkService: pulumi.Output<types.outputs.PrivateLinkServiceResponse | undefined>;
     /**
      * The provisioning state of the network interface resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The resource GUID property of the network interface resource.
      */
-    public /*out*/ readonly resourceGuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceGuid: pulumi.Output<string>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A list of TapConfigurations of the network interface.
      */
-    public /*out*/ readonly tapConfigurations!: pulumi.Output<types.outputs.NetworkInterfaceTapConfigurationResponse[]>;
+    declare public /*out*/ readonly tapConfigurations: pulumi.Output<types.outputs.NetworkInterfaceTapConfigurationResponse[]>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The reference to a virtual machine.
      */
-    public /*out*/ readonly virtualMachine!: pulumi.Output<types.outputs.SubResourceResponse>;
+    declare public /*out*/ readonly virtualMachine: pulumi.Output<types.outputs.SubResourceResponse>;
     /**
      * Whether the virtual machine this nic is attached to supports encryption.
      */
-    public /*out*/ readonly vnetEncryptionSupported!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly vnetEncryptionSupported: pulumi.Output<boolean>;
     /**
      * WorkloadType of the NetworkInterface for BareMetal resources
      */
-    public readonly workloadType!: pulumi.Output<string | undefined>;
+    declare public readonly workloadType: pulumi.Output<string | undefined>;
 
     /**
      * Create a NetworkInterface resource with the given unique name, arguments, and options.
@@ -167,27 +167,27 @@ export class NetworkInterface extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["auxiliaryMode"] = args ? args.auxiliaryMode : undefined;
-            resourceInputs["auxiliarySku"] = args ? args.auxiliarySku : undefined;
-            resourceInputs["disableTcpStateTracking"] = args ? args.disableTcpStateTracking : undefined;
-            resourceInputs["dnsSettings"] = args ? args.dnsSettings : undefined;
-            resourceInputs["enableAcceleratedNetworking"] = args ? args.enableAcceleratedNetworking : undefined;
-            resourceInputs["enableIPForwarding"] = args ? args.enableIPForwarding : undefined;
-            resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["ipConfigurations"] = args ? args.ipConfigurations : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["migrationPhase"] = args ? args.migrationPhase : undefined;
-            resourceInputs["networkInterfaceName"] = args ? args.networkInterfaceName : undefined;
-            resourceInputs["networkSecurityGroup"] = args ? args.networkSecurityGroup : undefined;
-            resourceInputs["nicType"] = args ? args.nicType : undefined;
-            resourceInputs["privateLinkService"] = args ? args.privateLinkService : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["workloadType"] = args ? args.workloadType : undefined;
+            resourceInputs["auxiliaryMode"] = args?.auxiliaryMode;
+            resourceInputs["auxiliarySku"] = args?.auxiliarySku;
+            resourceInputs["disableTcpStateTracking"] = args?.disableTcpStateTracking;
+            resourceInputs["dnsSettings"] = args?.dnsSettings;
+            resourceInputs["enableAcceleratedNetworking"] = args?.enableAcceleratedNetworking;
+            resourceInputs["enableIPForwarding"] = args?.enableIPForwarding;
+            resourceInputs["extendedLocation"] = args?.extendedLocation;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["ipConfigurations"] = args?.ipConfigurations;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["migrationPhase"] = args?.migrationPhase;
+            resourceInputs["networkInterfaceName"] = args?.networkInterfaceName;
+            resourceInputs["networkSecurityGroup"] = args?.networkSecurityGroup;
+            resourceInputs["nicType"] = args?.nicType;
+            resourceInputs["privateLinkService"] = args?.privateLinkService;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["workloadType"] = args?.workloadType;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["defaultOutboundConnectivityEnabled"] = undefined /*out*/;
             resourceInputs["dscpConfiguration"] = undefined /*out*/;
@@ -236,7 +236,7 @@ export class NetworkInterface extends pulumi.CustomResource {
             resourceInputs["workloadType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20150501preview:NetworkInterface" }, { type: "azure-native:network/v20150615:NetworkInterface" }, { type: "azure-native:network/v20160330:NetworkInterface" }, { type: "azure-native:network/v20160601:NetworkInterface" }, { type: "azure-native:network/v20160901:NetworkInterface" }, { type: "azure-native:network/v20161201:NetworkInterface" }, { type: "azure-native:network/v20170301:NetworkInterface" }, { type: "azure-native:network/v20170601:NetworkInterface" }, { type: "azure-native:network/v20170801:NetworkInterface" }, { type: "azure-native:network/v20170901:NetworkInterface" }, { type: "azure-native:network/v20171001:NetworkInterface" }, { type: "azure-native:network/v20171101:NetworkInterface" }, { type: "azure-native:network/v20180101:NetworkInterface" }, { type: "azure-native:network/v20180201:NetworkInterface" }, { type: "azure-native:network/v20180401:NetworkInterface" }, { type: "azure-native:network/v20180601:NetworkInterface" }, { type: "azure-native:network/v20180701:NetworkInterface" }, { type: "azure-native:network/v20180801:NetworkInterface" }, { type: "azure-native:network/v20181001:NetworkInterface" }, { type: "azure-native:network/v20181101:NetworkInterface" }, { type: "azure-native:network/v20181201:NetworkInterface" }, { type: "azure-native:network/v20190201:NetworkInterface" }, { type: "azure-native:network/v20190401:NetworkInterface" }, { type: "azure-native:network/v20190601:NetworkInterface" }, { type: "azure-native:network/v20190701:NetworkInterface" }, { type: "azure-native:network/v20190801:NetworkInterface" }, { type: "azure-native:network/v20190901:NetworkInterface" }, { type: "azure-native:network/v20191101:NetworkInterface" }, { type: "azure-native:network/v20191201:NetworkInterface" }, { type: "azure-native:network/v20200301:NetworkInterface" }, { type: "azure-native:network/v20200401:NetworkInterface" }, { type: "azure-native:network/v20200501:NetworkInterface" }, { type: "azure-native:network/v20200601:NetworkInterface" }, { type: "azure-native:network/v20200701:NetworkInterface" }, { type: "azure-native:network/v20200801:NetworkInterface" }, { type: "azure-native:network/v20201101:NetworkInterface" }, { type: "azure-native:network/v20210201:NetworkInterface" }, { type: "azure-native:network/v20210301:NetworkInterface" }, { type: "azure-native:network/v20210501:NetworkInterface" }, { type: "azure-native:network/v20210801:NetworkInterface" }, { type: "azure-native:network/v20220101:NetworkInterface" }, { type: "azure-native:network/v20220501:NetworkInterface" }, { type: "azure-native:network/v20220701:NetworkInterface" }, { type: "azure-native:network/v20220901:NetworkInterface" }, { type: "azure-native:network/v20221101:NetworkInterface" }, { type: "azure-native:network/v20230201:NetworkInterface" }, { type: "azure-native:network/v20230401:NetworkInterface" }, { type: "azure-native:network/v20230501:NetworkInterface" }, { type: "azure-native:network/v20230601:NetworkInterface" }, { type: "azure-native:network/v20230901:NetworkInterface" }, { type: "azure-native:network/v20231101:NetworkInterface" }, { type: "azure-native:network/v20240101:NetworkInterface" }, { type: "azure-native:network/v20240301:NetworkInterface" }, { type: "azure-native:network/v20240501:NetworkInterface" }, { type: "azure-native:network/v20240701:NetworkInterface" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20150501preview:NetworkInterface" }, { type: "azure-native:network/v20150615:NetworkInterface" }, { type: "azure-native:network/v20160330:NetworkInterface" }, { type: "azure-native:network/v20160601:NetworkInterface" }, { type: "azure-native:network/v20160901:NetworkInterface" }, { type: "azure-native:network/v20161201:NetworkInterface" }, { type: "azure-native:network/v20170301:NetworkInterface" }, { type: "azure-native:network/v20170601:NetworkInterface" }, { type: "azure-native:network/v20170801:NetworkInterface" }, { type: "azure-native:network/v20170901:NetworkInterface" }, { type: "azure-native:network/v20171001:NetworkInterface" }, { type: "azure-native:network/v20171101:NetworkInterface" }, { type: "azure-native:network/v20180101:NetworkInterface" }, { type: "azure-native:network/v20180201:NetworkInterface" }, { type: "azure-native:network/v20180401:NetworkInterface" }, { type: "azure-native:network/v20180601:NetworkInterface" }, { type: "azure-native:network/v20180701:NetworkInterface" }, { type: "azure-native:network/v20180801:NetworkInterface" }, { type: "azure-native:network/v20181001:NetworkInterface" }, { type: "azure-native:network/v20181101:NetworkInterface" }, { type: "azure-native:network/v20181201:NetworkInterface" }, { type: "azure-native:network/v20190201:NetworkInterface" }, { type: "azure-native:network/v20190401:NetworkInterface" }, { type: "azure-native:network/v20190601:NetworkInterface" }, { type: "azure-native:network/v20190701:NetworkInterface" }, { type: "azure-native:network/v20190801:NetworkInterface" }, { type: "azure-native:network/v20190901:NetworkInterface" }, { type: "azure-native:network/v20191101:NetworkInterface" }, { type: "azure-native:network/v20191201:NetworkInterface" }, { type: "azure-native:network/v20200301:NetworkInterface" }, { type: "azure-native:network/v20200401:NetworkInterface" }, { type: "azure-native:network/v20200501:NetworkInterface" }, { type: "azure-native:network/v20200601:NetworkInterface" }, { type: "azure-native:network/v20200701:NetworkInterface" }, { type: "azure-native:network/v20200801:NetworkInterface" }, { type: "azure-native:network/v20201101:NetworkInterface" }, { type: "azure-native:network/v20210201:NetworkInterface" }, { type: "azure-native:network/v20210301:NetworkInterface" }, { type: "azure-native:network/v20210501:NetworkInterface" }, { type: "azure-native:network/v20210801:NetworkInterface" }, { type: "azure-native:network/v20220101:NetworkInterface" }, { type: "azure-native:network/v20220501:NetworkInterface" }, { type: "azure-native:network/v20220701:NetworkInterface" }, { type: "azure-native:network/v20220901:NetworkInterface" }, { type: "azure-native:network/v20221101:NetworkInterface" }, { type: "azure-native:network/v20230201:NetworkInterface" }, { type: "azure-native:network/v20230401:NetworkInterface" }, { type: "azure-native:network/v20230501:NetworkInterface" }, { type: "azure-native:network/v20230601:NetworkInterface" }, { type: "azure-native:network/v20230901:NetworkInterface" }, { type: "azure-native:network/v20231101:NetworkInterface" }, { type: "azure-native:network/v20240101:NetworkInterface" }, { type: "azure-native:network/v20240301:NetworkInterface" }, { type: "azure-native:network/v20240501:NetworkInterface" }, { type: "azure-native:network/v20240701:NetworkInterface" }, { type: "azure-native:network/v20241001:NetworkInterface" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkInterface.__pulumiType, name, resourceInputs, opts);
     }

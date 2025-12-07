@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-11-01-preview.
  *
- * Other available API versions: 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SecuritySetting extends pulumi.CustomResource {
     /**
@@ -38,39 +38,39 @@ export class SecuritySetting extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The status of the last operation.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Secured Core Compliance Assignment
      */
-    public readonly securedCoreComplianceAssignment!: pulumi.Output<string | undefined>;
+    declare public readonly securedCoreComplianceAssignment: pulumi.Output<string | undefined>;
     /**
      * Security Compliance Status
      */
-    public /*out*/ readonly securityComplianceStatus!: pulumi.Output<types.outputs.SecurityComplianceStatusResponse>;
+    declare public /*out*/ readonly securityComplianceStatus: pulumi.Output<types.outputs.SecurityComplianceStatusResponse>;
     /**
      * SMB encryption for intra-cluster traffic Compliance Assignment
      */
-    public readonly smbEncryptionForIntraClusterTrafficComplianceAssignment!: pulumi.Output<string | undefined>;
+    declare public readonly smbEncryptionForIntraClusterTrafficComplianceAssignment: pulumi.Output<string | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * WDAC Compliance Assignment
      */
-    public readonly wdacComplianceAssignment!: pulumi.Output<string | undefined>;
+    declare public readonly wdacComplianceAssignment: pulumi.Output<string | undefined>;
 
     /**
      * Create a SecuritySetting resource with the given unique name, arguments, and options.
@@ -83,18 +83,18 @@ export class SecuritySetting extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["securedCoreComplianceAssignment"] = (args ? args.securedCoreComplianceAssignment : undefined) ?? "Audit";
-            resourceInputs["securitySettingsName"] = args ? args.securitySettingsName : undefined;
-            resourceInputs["smbEncryptionForIntraClusterTrafficComplianceAssignment"] = (args ? args.smbEncryptionForIntraClusterTrafficComplianceAssignment : undefined) ?? "Audit";
-            resourceInputs["wdacComplianceAssignment"] = (args ? args.wdacComplianceAssignment : undefined) ?? "Audit";
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["securedCoreComplianceAssignment"] = (args?.securedCoreComplianceAssignment) ?? "Audit";
+            resourceInputs["securitySettingsName"] = args?.securitySettingsName;
+            resourceInputs["smbEncryptionForIntraClusterTrafficComplianceAssignment"] = (args?.smbEncryptionForIntraClusterTrafficComplianceAssignment) ?? "Audit";
+            resourceInputs["wdacComplianceAssignment"] = (args?.wdacComplianceAssignment) ?? "Audit";
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -113,7 +113,7 @@ export class SecuritySetting extends pulumi.CustomResource {
             resourceInputs["wdacComplianceAssignment"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20231101preview:SecuritySetting" }, { type: "azure-native:azurestackhci/v20240101:SecuritySetting" }, { type: "azure-native:azurestackhci/v20240215preview:SecuritySetting" }, { type: "azure-native:azurestackhci/v20240401:SecuritySetting" }, { type: "azure-native:azurestackhci/v20240901preview:SecuritySetting" }, { type: "azure-native:azurestackhci/v20241201preview:SecuritySetting" }, { type: "azure-native:azurestackhci/v20250201preview:SecuritySetting" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20231101preview:SecuritySetting" }, { type: "azure-native:azurestackhci/v20240101:SecuritySetting" }, { type: "azure-native:azurestackhci/v20240215preview:SecuritySetting" }, { type: "azure-native:azurestackhci/v20240401:SecuritySetting" }, { type: "azure-native:azurestackhci/v20240901preview:SecuritySetting" }, { type: "azure-native:azurestackhci/v20241201preview:SecuritySetting" }, { type: "azure-native:azurestackhci/v20250201preview:SecuritySetting" }, { type: "azure-native:azurestackhci/v20250915preview:SecuritySetting" }, { type: "azure-native:azurestackhci/v20251001:SecuritySetting" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SecuritySetting.__pulumiType, name, resourceInputs, opts);
     }

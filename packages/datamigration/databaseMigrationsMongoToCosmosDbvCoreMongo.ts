@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-07-15-preview. In version 2.x of the Azure Native provider, it used API version 2023-07-15-preview.
  *
- * Other available API versions: 2025-03-15-preview, 2025-06-30. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-03-15-preview, 2025-06-30, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DatabaseMigrationsMongoToCosmosDbvCoreMongo extends pulumi.CustomResource {
     /**
@@ -38,72 +38,72 @@ export class DatabaseMigrationsMongoToCosmosDbvCoreMongo extends pulumi.CustomRe
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * List of Mongo Collections to be migrated.
      */
-    public readonly collectionList!: pulumi.Output<types.outputs.MongoMigrationCollectionResponse[] | undefined>;
+    declare public readonly collectionList: pulumi.Output<types.outputs.MongoMigrationCollectionResponse[] | undefined>;
     /**
      * Database migration end time.
      */
-    public /*out*/ readonly endedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly endedOn: pulumi.Output<string>;
     /**
      *
      * Expected value is 'MongoToCosmosDbMongo'.
      */
-    public readonly kind!: pulumi.Output<"MongoToCosmosDbMongo">;
+    declare public readonly kind: pulumi.Output<"MongoToCosmosDbMongo">;
     /**
      * Error details in case of migration failure.
      */
-    public /*out*/ readonly migrationFailureError!: pulumi.Output<types.outputs.ErrorInfoResponse>;
+    declare public /*out*/ readonly migrationFailureError: pulumi.Output<types.outputs.ErrorInfoResponse>;
     /**
      * ID for current migration operation.
      */
-    public readonly migrationOperationId!: pulumi.Output<string | undefined>;
+    declare public readonly migrationOperationId: pulumi.Output<string | undefined>;
     /**
      * Resource Id of the Migration Service.
      */
-    public readonly migrationService!: pulumi.Output<string | undefined>;
+    declare public readonly migrationService: pulumi.Output<string | undefined>;
     /**
      * Migration status.
      */
-    public /*out*/ readonly migrationStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly migrationStatus: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Error message for migration provisioning failure, if any.
      */
-    public readonly provisioningError!: pulumi.Output<string | undefined>;
+    declare public readonly provisioningError: pulumi.Output<string | undefined>;
     /**
      * Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Resource Id of the target resource.
      */
-    public readonly scope!: pulumi.Output<string | undefined>;
+    declare public readonly scope: pulumi.Output<string | undefined>;
     /**
      * Source Mongo connection details.
      */
-    public readonly sourceMongoConnection!: pulumi.Output<types.outputs.MongoConnectionInformationResponse | undefined>;
+    declare public readonly sourceMongoConnection: pulumi.Output<types.outputs.MongoConnectionInformationResponse | undefined>;
     /**
      * Database migration start time.
      */
-    public /*out*/ readonly startedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly startedOn: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Target Cosmos DB Mongo connection details.
      */
-    public readonly targetMongoConnection!: pulumi.Output<types.outputs.MongoConnectionInformationResponse | undefined>;
+    declare public readonly targetMongoConnection: pulumi.Output<types.outputs.MongoConnectionInformationResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a DatabaseMigrationsMongoToCosmosDbvCoreMongo resource with the given unique name, arguments, and options.
@@ -116,26 +116,26 @@ export class DatabaseMigrationsMongoToCosmosDbvCoreMongo extends pulumi.CustomRe
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.kind === undefined) && !opts.urn) {
+            if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.targetResourceName === undefined) && !opts.urn) {
+            if (args?.targetResourceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetResourceName'");
             }
-            resourceInputs["collectionList"] = args ? args.collectionList : undefined;
+            resourceInputs["collectionList"] = args?.collectionList;
             resourceInputs["kind"] = "MongoToCosmosDbMongo";
-            resourceInputs["migrationName"] = args ? args.migrationName : undefined;
-            resourceInputs["migrationOperationId"] = args ? args.migrationOperationId : undefined;
-            resourceInputs["migrationService"] = args ? args.migrationService : undefined;
-            resourceInputs["provisioningError"] = args ? args.provisioningError : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["sourceMongoConnection"] = args ? args.sourceMongoConnection : undefined;
-            resourceInputs["targetMongoConnection"] = args ? args.targetMongoConnection : undefined;
-            resourceInputs["targetResourceName"] = args ? args.targetResourceName : undefined;
+            resourceInputs["migrationName"] = args?.migrationName;
+            resourceInputs["migrationOperationId"] = args?.migrationOperationId;
+            resourceInputs["migrationService"] = args?.migrationService;
+            resourceInputs["provisioningError"] = args?.provisioningError;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["sourceMongoConnection"] = args?.sourceMongoConnection;
+            resourceInputs["targetMongoConnection"] = args?.targetMongoConnection;
+            resourceInputs["targetResourceName"] = args?.targetResourceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["endedOn"] = undefined /*out*/;
             resourceInputs["migrationFailureError"] = undefined /*out*/;
@@ -165,7 +165,7 @@ export class DatabaseMigrationsMongoToCosmosDbvCoreMongo extends pulumi.CustomRe
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:datamigration/v20230715preview:DatabaseMigrationsMongoToCosmosDbvCoreMongo" }, { type: "azure-native:datamigration/v20250315preview:DatabaseMigrationsMongoToCosmosDbvCoreMongo" }, { type: "azure-native:datamigration/v20250630:DatabaseMigrationsMongoToCosmosDbvCoreMongo" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:datamigration/v20230715preview:DatabaseMigrationsMongoToCosmosDbvCoreMongo" }, { type: "azure-native:datamigration/v20250315preview:DatabaseMigrationsMongoToCosmosDbvCoreMongo" }, { type: "azure-native:datamigration/v20250630:DatabaseMigrationsMongoToCosmosDbvCoreMongo" }, { type: "azure-native:datamigration/v20250901preview:DatabaseMigrationsMongoToCosmosDbvCoreMongo" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DatabaseMigrationsMongoToCosmosDbvCoreMongo.__pulumiType, name, resourceInputs, opts);
     }

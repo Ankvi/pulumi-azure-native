@@ -41,47 +41,47 @@ export class PipelineTopology extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * An optional description of the pipeline topology. It is recommended that the expected use of the topology to be described here.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Topology kind.
      */
-    public readonly kind!: pulumi.Output<string>;
+    declare public readonly kind: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * List of the topology parameter declarations. Parameters declared here can be referenced throughout the topology nodes through the use of "${PARAMETER_NAME}" string pattern. Parameters can have optional default values and can later be defined in individual instances of the pipeline.
      */
-    public readonly parameters!: pulumi.Output<types.outputs.ParameterDeclarationResponse[] | undefined>;
+    declare public readonly parameters: pulumi.Output<types.outputs.ParameterDeclarationResponse[] | undefined>;
     /**
      * List of the topology processor nodes. Processor nodes enable pipeline data to be analyzed, processed or transformed.
      */
-    public readonly processors!: pulumi.Output<types.outputs.EncoderProcessorResponse[] | undefined>;
+    declare public readonly processors: pulumi.Output<types.outputs.EncoderProcessorResponse[] | undefined>;
     /**
      * List of the topology sink nodes. Sink nodes allow pipeline data to be stored or exported.
      */
-    public readonly sinks!: pulumi.Output<types.outputs.VideoSinkResponse[]>;
+    declare public readonly sinks: pulumi.Output<types.outputs.VideoSinkResponse[]>;
     /**
      * Describes the properties of a SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
+    declare public readonly sku: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * List of the topology source nodes. Source nodes enable external data to be ingested by the pipeline.
      */
-    public readonly sources!: pulumi.Output<(types.outputs.RtspSourceResponse | types.outputs.VideoSourceResponse)[]>;
+    declare public readonly sources: pulumi.Output<(types.outputs.RtspSourceResponse | types.outputs.VideoSourceResponse)[]>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a PipelineTopology resource with the given unique name, arguments, and options.
@@ -94,34 +94,34 @@ export class PipelineTopology extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.kind === undefined) && !opts.urn) {
+            if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.sinks === undefined) && !opts.urn) {
+            if (args?.sinks === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sinks'");
             }
-            if ((!args || args.sku === undefined) && !opts.urn) {
+            if (args?.sku === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sku'");
             }
-            if ((!args || args.sources === undefined) && !opts.urn) {
+            if (args?.sources === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sources'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["pipelineTopologyName"] = args ? args.pipelineTopologyName : undefined;
-            resourceInputs["processors"] = args ? args.processors : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sinks"] = args ? args.sinks : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["sources"] = args ? args.sources : undefined;
+            resourceInputs["accountName"] = args?.accountName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["pipelineTopologyName"] = args?.pipelineTopologyName;
+            resourceInputs["processors"] = args?.processors;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sinks"] = args?.sinks;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["sources"] = args?.sources;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-01-preview.
  *
- * Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class RedisEnterprise extends pulumi.CustomResource {
     /**
@@ -38,75 +38,75 @@ export class RedisEnterprise extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Encryption-at-rest configuration for the cluster.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.ClusterPropertiesResponseEncryption | undefined>;
+    declare public readonly encryption: pulumi.Output<types.outputs.ClusterPropertiesResponseEncryption | undefined>;
     /**
      * Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss.
      */
-    public readonly highAvailability!: pulumi.Output<string | undefined>;
+    declare public readonly highAvailability: pulumi.Output<string | undefined>;
     /**
      * DNS name of the cluster endpoint
      */
-    public /*out*/ readonly hostName!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostName: pulumi.Output<string>;
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Distinguishes the kind of cluster. Read-only.
      */
-    public /*out*/ readonly kind!: pulumi.Output<string>;
+    declare public /*out*/ readonly kind: pulumi.Output<string>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions.
      */
-    public readonly minimumTlsVersion!: pulumi.Output<string | undefined>;
+    declare public readonly minimumTlsVersion: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * List of private endpoint connections associated with the specified Redis Enterprise cluster
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
+    declare public /*out*/ readonly privateEndpointConnections: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Current provisioning status of the cluster
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Version of redis the cluster supports, e.g. '6'
      */
-    public /*out*/ readonly redisVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly redisVersion: pulumi.Output<string>;
     /**
      * Explains the current redundancy strategy of the cluster, which affects the expected SLA.
      */
-    public /*out*/ readonly redundancyMode!: pulumi.Output<string>;
+    declare public /*out*/ readonly redundancyMode: pulumi.Output<string>;
     /**
      * Current resource status of the cluster
      */
-    public /*out*/ readonly resourceState!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceState: pulumi.Output<string>;
     /**
      * The SKU to create, which affects price, performance, and features.
      */
-    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
+    declare public readonly sku: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The Availability Zones where this cluster will be deployed.
      */
-    public readonly zones!: pulumi.Output<string[] | undefined>;
+    declare public readonly zones: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a RedisEnterprise resource with the given unique name, arguments, and options.
@@ -119,22 +119,22 @@ export class RedisEnterprise extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.sku === undefined) && !opts.urn) {
+            if (args?.sku === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sku'");
             }
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["encryption"] = args ? args.encryption : undefined;
-            resourceInputs["highAvailability"] = args ? args.highAvailability : undefined;
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["minimumTlsVersion"] = args ? args.minimumTlsVersion : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["encryption"] = args?.encryption;
+            resourceInputs["highAvailability"] = args?.highAvailability;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["minimumTlsVersion"] = args?.minimumTlsVersion;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zones"] = args?.zones;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["hostName"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -166,7 +166,7 @@ export class RedisEnterprise extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cache/v20201001preview:RedisEnterprise" }, { type: "azure-native:cache/v20230301preview:RedisEnterprise" }, { type: "azure-native:cache/v20230701:RedisEnterprise" }, { type: "azure-native:cache/v20230801preview:RedisEnterprise" }, { type: "azure-native:cache/v20231001preview:RedisEnterprise" }, { type: "azure-native:cache/v20231101:RedisEnterprise" }, { type: "azure-native:cache/v20240201:RedisEnterprise" }, { type: "azure-native:cache/v20240301preview:RedisEnterprise" }, { type: "azure-native:cache/v20240601preview:RedisEnterprise" }, { type: "azure-native:cache/v20240901preview:RedisEnterprise" }, { type: "azure-native:cache/v20241001:RedisEnterprise" }, { type: "azure-native:cache:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20201001preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20210201preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20210301:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20210801:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20220101:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20221101preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20230301preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20230701:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20230801preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20231001preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20231101:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20240201:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20240301preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20240601preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20240901preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20241001:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20250401:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20250501preview:RedisEnterprise" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cache/v20201001preview:RedisEnterprise" }, { type: "azure-native:cache/v20230301preview:RedisEnterprise" }, { type: "azure-native:cache/v20230701:RedisEnterprise" }, { type: "azure-native:cache/v20230801preview:RedisEnterprise" }, { type: "azure-native:cache/v20231001preview:RedisEnterprise" }, { type: "azure-native:cache/v20231101:RedisEnterprise" }, { type: "azure-native:cache/v20240201:RedisEnterprise" }, { type: "azure-native:cache/v20240301preview:RedisEnterprise" }, { type: "azure-native:cache/v20240601preview:RedisEnterprise" }, { type: "azure-native:cache/v20240901preview:RedisEnterprise" }, { type: "azure-native:cache/v20241001:RedisEnterprise" }, { type: "azure-native:cache:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20201001preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20210201preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20210301:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20210801:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20220101:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20221101preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20230301preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20230701:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20230801preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20231001preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20231101:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20240201:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20240301preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20240601preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20240901preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20241001:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20250401:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20250501preview:RedisEnterprise" }, { type: "azure-native:redisenterprise/v20250701:RedisEnterprise" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RedisEnterprise.__pulumiType, name, resourceInputs, opts);
     }

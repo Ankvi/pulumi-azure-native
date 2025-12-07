@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01.
  *
- * Other available API versions: 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkVirtualApplianceConnection extends pulumi.CustomResource {
     /**
@@ -38,15 +38,15 @@ export class NetworkVirtualApplianceConnection extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the resource.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     /**
      * Properties of the express route connection.
      */
-    public readonly properties!: pulumi.Output<types.outputs.NetworkVirtualApplianceConnectionPropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.NetworkVirtualApplianceConnectionPropertiesResponse>;
 
     /**
      * Create a NetworkVirtualApplianceConnection resource with the given unique name, arguments, and options.
@@ -59,18 +59,18 @@ export class NetworkVirtualApplianceConnection extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.networkVirtualApplianceName === undefined) && !opts.urn) {
+            if (args?.networkVirtualApplianceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkVirtualApplianceName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["connectionName"] = args ? args.connectionName : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkVirtualApplianceName"] = args ? args.networkVirtualApplianceName : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["connectionName"] = args?.connectionName;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkVirtualApplianceName"] = args?.networkVirtualApplianceName;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -78,7 +78,7 @@ export class NetworkVirtualApplianceConnection extends pulumi.CustomResource {
             resourceInputs["properties"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20230601:NetworkVirtualApplianceConnection" }, { type: "azure-native:network/v20230901:NetworkVirtualApplianceConnection" }, { type: "azure-native:network/v20231101:NetworkVirtualApplianceConnection" }, { type: "azure-native:network/v20240101:NetworkVirtualApplianceConnection" }, { type: "azure-native:network/v20240301:NetworkVirtualApplianceConnection" }, { type: "azure-native:network/v20240501:NetworkVirtualApplianceConnection" }, { type: "azure-native:network/v20240701:NetworkVirtualApplianceConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20230601:NetworkVirtualApplianceConnection" }, { type: "azure-native:network/v20230901:NetworkVirtualApplianceConnection" }, { type: "azure-native:network/v20231101:NetworkVirtualApplianceConnection" }, { type: "azure-native:network/v20240101:NetworkVirtualApplianceConnection" }, { type: "azure-native:network/v20240301:NetworkVirtualApplianceConnection" }, { type: "azure-native:network/v20240501:NetworkVirtualApplianceConnection" }, { type: "azure-native:network/v20240701:NetworkVirtualApplianceConnection" }, { type: "azure-native:network/v20241001:NetworkVirtualApplianceConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkVirtualApplianceConnection.__pulumiType, name, resourceInputs, opts);
     }

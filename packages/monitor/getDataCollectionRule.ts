@@ -5,6 +5,8 @@ import * as types from "./types";
  * Definition of ARM tracked top level resource.
  *
  * Uses Azure REST API version 2022-06-01.
+ *
+ * Other available API versions: 2024-03-11. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDataCollectionRule(args: GetDataCollectionRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetDataCollectionRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -111,6 +113,8 @@ export interface GetDataCollectionRuleResult {
  * Definition of ARM tracked top level resource.
  *
  * Uses Azure REST API version 2022-06-01.
+ *
+ * Other available API versions: 2024-03-11. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDataCollectionRuleOutput(args: GetDataCollectionRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDataCollectionRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

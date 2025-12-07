@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Cluster extends pulumi.CustomResource {
     /**
@@ -38,127 +38,127 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Object id of cluster AAD identity.
      */
-    public readonly aadApplicationObjectId!: pulumi.Output<string | undefined>;
+    declare public readonly aadApplicationObjectId: pulumi.Output<string | undefined>;
     /**
      * App id of cluster AAD identity.
      */
-    public readonly aadClientId!: pulumi.Output<string | undefined>;
+    declare public readonly aadClientId: pulumi.Output<string | undefined>;
     /**
      * Id of cluster identity service principal.
      */
-    public readonly aadServicePrincipalObjectId!: pulumi.Output<string | undefined>;
+    declare public readonly aadServicePrincipalObjectId: pulumi.Output<string | undefined>;
     /**
      * Tenant id of cluster AAD identity.
      */
-    public readonly aadTenantId!: pulumi.Output<string | undefined>;
+    declare public readonly aadTenantId: pulumi.Output<string | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Type of billing applied to the resource.
      */
-    public /*out*/ readonly billingModel!: pulumi.Output<string>;
+    declare public /*out*/ readonly billingModel: pulumi.Output<string>;
     /**
      * Unique, immutable resource id.
      */
-    public /*out*/ readonly cloudId!: pulumi.Output<string>;
+    declare public /*out*/ readonly cloudId: pulumi.Output<string>;
     /**
      * Endpoint configured for management from the Azure portal.
      */
-    public readonly cloudManagementEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly cloudManagementEndpoint: pulumi.Output<string | undefined>;
     /**
      * Overall connectivity status for the cluster resource.
      */
-    public /*out*/ readonly connectivityStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectivityStatus: pulumi.Output<string>;
     /**
      * Desired properties of the cluster.
      */
-    public readonly desiredProperties!: pulumi.Output<types.outputs.ClusterDesiredPropertiesResponse | undefined>;
+    declare public readonly desiredProperties: pulumi.Output<types.outputs.ClusterDesiredPropertiesResponse | undefined>;
     /**
      * Attestation configurations for isolated VM (e.g. TVM, CVM) of the cluster.
      */
-    public /*out*/ readonly isolatedVmAttestationConfiguration!: pulumi.Output<types.outputs.IsolatedVmAttestationConfigurationResponse>;
+    declare public /*out*/ readonly isolatedVmAttestationConfiguration: pulumi.Output<types.outputs.IsolatedVmAttestationConfigurationResponse>;
     /**
      * Most recent billing meter timestamp.
      */
-    public /*out*/ readonly lastBillingTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastBillingTimestamp: pulumi.Output<string>;
     /**
      * Most recent cluster sync timestamp.
      */
-    public /*out*/ readonly lastSyncTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastSyncTimestamp: pulumi.Output<string>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Log Collection properties of the cluster.
      */
-    public /*out*/ readonly logCollectionProperties!: pulumi.Output<types.outputs.LogCollectionPropertiesResponse | undefined>;
+    declare public /*out*/ readonly logCollectionProperties: pulumi.Output<types.outputs.LogCollectionPropertiesResponse | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
      */
-    public /*out*/ readonly principalId!: pulumi.Output<string>;
+    declare public /*out*/ readonly principalId: pulumi.Output<string>;
     /**
      * Provisioning state.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * First cluster sync timestamp.
      */
-    public /*out*/ readonly registrationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly registrationTimestamp: pulumi.Output<string>;
     /**
      * RemoteSupport properties of the cluster.
      */
-    public /*out*/ readonly remoteSupportProperties!: pulumi.Output<types.outputs.RemoteSupportPropertiesResponse | undefined>;
+    declare public /*out*/ readonly remoteSupportProperties: pulumi.Output<types.outputs.RemoteSupportPropertiesResponse | undefined>;
     /**
      * Properties reported by cluster agent.
      */
-    public /*out*/ readonly reportedProperties!: pulumi.Output<types.outputs.ClusterReportedPropertiesResponse>;
+    declare public /*out*/ readonly reportedProperties: pulumi.Output<types.outputs.ClusterReportedPropertiesResponse>;
     /**
      * Object id of RP Service Principal
      */
-    public /*out*/ readonly resourceProviderObjectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceProviderObjectId: pulumi.Output<string>;
     /**
      * Region specific DataPath Endpoint of the cluster.
      */
-    public /*out*/ readonly serviceEndpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceEndpoint: pulumi.Output<string>;
     /**
      * Software Assurance properties of the cluster.
      */
-    public readonly softwareAssuranceProperties!: pulumi.Output<types.outputs.SoftwareAssurancePropertiesResponse | undefined>;
+    declare public readonly softwareAssuranceProperties: pulumi.Output<types.outputs.SoftwareAssurancePropertiesResponse | undefined>;
     /**
      * Status of the cluster agent.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
      */
-    public /*out*/ readonly tenantId!: pulumi.Output<string>;
+    declare public /*out*/ readonly tenantId: pulumi.Output<string>;
     /**
      * Number of days remaining in the trial period.
      */
-    public /*out*/ readonly trialDaysRemaining!: pulumi.Output<number>;
+    declare public /*out*/ readonly trialDaysRemaining: pulumi.Output<number>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    public readonly userAssignedIdentities!: pulumi.Output<{[key: string]: types.outputs.UserAssignedIdentityResponse} | undefined>;
+    declare public readonly userAssignedIdentities: pulumi.Output<{[key: string]: types.outputs.UserAssignedIdentityResponse} | undefined>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -171,25 +171,25 @@ export class Cluster extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["aadApplicationObjectId"] = args ? args.aadApplicationObjectId : undefined;
-            resourceInputs["aadClientId"] = args ? args.aadClientId : undefined;
-            resourceInputs["aadServicePrincipalObjectId"] = args ? args.aadServicePrincipalObjectId : undefined;
-            resourceInputs["aadTenantId"] = args ? args.aadTenantId : undefined;
-            resourceInputs["cloudManagementEndpoint"] = args ? args.cloudManagementEndpoint : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["desiredProperties"] = args ? args.desiredProperties : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["softwareAssuranceProperties"] = args ? args.softwareAssuranceProperties : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["userAssignedIdentities"] = args ? args.userAssignedIdentities : undefined;
+            resourceInputs["aadApplicationObjectId"] = args?.aadApplicationObjectId;
+            resourceInputs["aadClientId"] = args?.aadClientId;
+            resourceInputs["aadServicePrincipalObjectId"] = args?.aadServicePrincipalObjectId;
+            resourceInputs["aadTenantId"] = args?.aadTenantId;
+            resourceInputs["cloudManagementEndpoint"] = args?.cloudManagementEndpoint;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["desiredProperties"] = args?.desiredProperties;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["softwareAssuranceProperties"] = args?.softwareAssuranceProperties;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["userAssignedIdentities"] = args?.userAssignedIdentities;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["billingModel"] = undefined /*out*/;
             resourceInputs["cloudId"] = undefined /*out*/;
@@ -244,7 +244,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["userAssignedIdentities"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20200301preview:Cluster" }, { type: "azure-native:azurestackhci/v20201001:Cluster" }, { type: "azure-native:azurestackhci/v20210101preview:Cluster" }, { type: "azure-native:azurestackhci/v20210901:Cluster" }, { type: "azure-native:azurestackhci/v20210901preview:Cluster" }, { type: "azure-native:azurestackhci/v20220101:Cluster" }, { type: "azure-native:azurestackhci/v20220301:Cluster" }, { type: "azure-native:azurestackhci/v20220501:Cluster" }, { type: "azure-native:azurestackhci/v20220901:Cluster" }, { type: "azure-native:azurestackhci/v20221001:Cluster" }, { type: "azure-native:azurestackhci/v20221201:Cluster" }, { type: "azure-native:azurestackhci/v20221215preview:Cluster" }, { type: "azure-native:azurestackhci/v20230201:Cluster" }, { type: "azure-native:azurestackhci/v20230301:Cluster" }, { type: "azure-native:azurestackhci/v20230601:Cluster" }, { type: "azure-native:azurestackhci/v20230801:Cluster" }, { type: "azure-native:azurestackhci/v20230801preview:Cluster" }, { type: "azure-native:azurestackhci/v20231101preview:Cluster" }, { type: "azure-native:azurestackhci/v20240101:Cluster" }, { type: "azure-native:azurestackhci/v20240215preview:Cluster" }, { type: "azure-native:azurestackhci/v20240401:Cluster" }, { type: "azure-native:azurestackhci/v20240901preview:Cluster" }, { type: "azure-native:azurestackhci/v20241201preview:Cluster" }, { type: "azure-native:azurestackhci/v20250201preview:Cluster" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20200301preview:Cluster" }, { type: "azure-native:azurestackhci/v20201001:Cluster" }, { type: "azure-native:azurestackhci/v20210101preview:Cluster" }, { type: "azure-native:azurestackhci/v20210901:Cluster" }, { type: "azure-native:azurestackhci/v20210901preview:Cluster" }, { type: "azure-native:azurestackhci/v20220101:Cluster" }, { type: "azure-native:azurestackhci/v20220301:Cluster" }, { type: "azure-native:azurestackhci/v20220501:Cluster" }, { type: "azure-native:azurestackhci/v20220901:Cluster" }, { type: "azure-native:azurestackhci/v20221001:Cluster" }, { type: "azure-native:azurestackhci/v20221201:Cluster" }, { type: "azure-native:azurestackhci/v20221215preview:Cluster" }, { type: "azure-native:azurestackhci/v20230201:Cluster" }, { type: "azure-native:azurestackhci/v20230301:Cluster" }, { type: "azure-native:azurestackhci/v20230601:Cluster" }, { type: "azure-native:azurestackhci/v20230801:Cluster" }, { type: "azure-native:azurestackhci/v20230801preview:Cluster" }, { type: "azure-native:azurestackhci/v20231101preview:Cluster" }, { type: "azure-native:azurestackhci/v20240101:Cluster" }, { type: "azure-native:azurestackhci/v20240215preview:Cluster" }, { type: "azure-native:azurestackhci/v20240401:Cluster" }, { type: "azure-native:azurestackhci/v20240901preview:Cluster" }, { type: "azure-native:azurestackhci/v20241201preview:Cluster" }, { type: "azure-native:azurestackhci/v20250201preview:Cluster" }, { type: "azure-native:azurestackhci/v20250915preview:Cluster" }, { type: "azure-native:azurestackhci/v20251001:Cluster" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class RestorePoint extends pulumi.CustomResource {
     /**
@@ -38,47 +38,47 @@ export class RestorePoint extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
      */
-    public readonly consistencyMode!: pulumi.Output<string | undefined>;
+    declare public readonly consistencyMode: pulumi.Output<string | undefined>;
     /**
      * List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
      */
-    public readonly excludeDisks!: pulumi.Output<types.outputs.ApiEntityReferenceResponse[] | undefined>;
+    declare public readonly excludeDisks: pulumi.Output<types.outputs.ApiEntityReferenceResponse[] | undefined>;
     /**
      * The restore point instance view.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.RestorePointInstanceViewResponse>;
+    declare public /*out*/ readonly instanceView: pulumi.Output<types.outputs.RestorePointInstanceViewResponse>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Gets the provisioning state of the restore point.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Gets the details of the VM captured at the time of the restore point creation.
      */
-    public readonly sourceMetadata!: pulumi.Output<types.outputs.RestorePointSourceMetadataResponse | undefined>;
+    declare public readonly sourceMetadata: pulumi.Output<types.outputs.RestorePointSourceMetadataResponse | undefined>;
     /**
      * Resource Id of the source restore point from which a copy needs to be created.
      */
-    public readonly sourceRestorePoint!: pulumi.Output<types.outputs.ApiEntityReferenceResponse | undefined>;
+    declare public readonly sourceRestorePoint: pulumi.Output<types.outputs.ApiEntityReferenceResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Gets the creation time of the restore point.
      */
-    public readonly timeCreated!: pulumi.Output<string | undefined>;
+    declare public readonly timeCreated: pulumi.Output<string | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a RestorePoint resource with the given unique name, arguments, and options.
@@ -91,20 +91,20 @@ export class RestorePoint extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.restorePointCollectionName === undefined) && !opts.urn) {
+            if (args?.restorePointCollectionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'restorePointCollectionName'");
             }
-            resourceInputs["consistencyMode"] = args ? args.consistencyMode : undefined;
-            resourceInputs["excludeDisks"] = args ? args.excludeDisks : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["restorePointCollectionName"] = args ? args.restorePointCollectionName : undefined;
-            resourceInputs["restorePointName"] = args ? args.restorePointName : undefined;
-            resourceInputs["sourceMetadata"] = args ? args.sourceMetadata : undefined;
-            resourceInputs["sourceRestorePoint"] = args ? args.sourceRestorePoint : undefined;
-            resourceInputs["timeCreated"] = args ? args.timeCreated : undefined;
+            resourceInputs["consistencyMode"] = args?.consistencyMode;
+            resourceInputs["excludeDisks"] = args?.excludeDisks;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["restorePointCollectionName"] = args?.restorePointCollectionName;
+            resourceInputs["restorePointName"] = args?.restorePointName;
+            resourceInputs["sourceMetadata"] = args?.sourceMetadata;
+            resourceInputs["sourceRestorePoint"] = args?.sourceRestorePoint;
+            resourceInputs["timeCreated"] = args?.timeCreated;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["instanceView"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -125,7 +125,7 @@ export class RestorePoint extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20210301:RestorePoint" }, { type: "azure-native:compute/v20210401:RestorePoint" }, { type: "azure-native:compute/v20210701:RestorePoint" }, { type: "azure-native:compute/v20211101:RestorePoint" }, { type: "azure-native:compute/v20220301:RestorePoint" }, { type: "azure-native:compute/v20220801:RestorePoint" }, { type: "azure-native:compute/v20221101:RestorePoint" }, { type: "azure-native:compute/v20230301:RestorePoint" }, { type: "azure-native:compute/v20230701:RestorePoint" }, { type: "azure-native:compute/v20230901:RestorePoint" }, { type: "azure-native:compute/v20240301:RestorePoint" }, { type: "azure-native:compute/v20240701:RestorePoint" }, { type: "azure-native:compute/v20241101:RestorePoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20210301:RestorePoint" }, { type: "azure-native:compute/v20210401:RestorePoint" }, { type: "azure-native:compute/v20210701:RestorePoint" }, { type: "azure-native:compute/v20211101:RestorePoint" }, { type: "azure-native:compute/v20220301:RestorePoint" }, { type: "azure-native:compute/v20220801:RestorePoint" }, { type: "azure-native:compute/v20221101:RestorePoint" }, { type: "azure-native:compute/v20230301:RestorePoint" }, { type: "azure-native:compute/v20230701:RestorePoint" }, { type: "azure-native:compute/v20230901:RestorePoint" }, { type: "azure-native:compute/v20240301:RestorePoint" }, { type: "azure-native:compute/v20240701:RestorePoint" }, { type: "azure-native:compute/v20241101:RestorePoint" }, { type: "azure-native:compute/v20250401:RestorePoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RestorePoint.__pulumiType, name, resourceInputs, opts);
     }

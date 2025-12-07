@@ -926,6 +926,44 @@ export interface RaiPolicyPropertiesArgs {
 }
 
 /**
+ * RAI Custom Topic properties.
+ */
+export interface RaiTopicPropertiesArgs {
+    /**
+     * Creation time of the custom topic.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Description of the custom topic.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Failed reason if the status is Failed.
+     */
+    failedReason?: pulumi.Input<string>;
+    /**
+     * Last modified time of the custom topic.
+     */
+    lastModifiedAt?: pulumi.Input<string>;
+    /**
+     * Sample blob url for the custom topic.
+     */
+    sampleBlobUrl?: pulumi.Input<string>;
+    /**
+     * Status of the custom topic.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The unique identifier of the custom topic.
+     */
+    topicId?: pulumi.Input<string>;
+    /**
+     * The name of the custom topic.
+     */
+    topicName?: pulumi.Input<string>;
+}
+
+/**
  * The call rate limit Cognitive Services account.
  */
 export interface RegionSettingArgs {

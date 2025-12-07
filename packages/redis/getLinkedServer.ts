@@ -1,5 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * Gets the detailed information about a linked server of a redis cache (requires Premium SKU).
  *
@@ -18,7 +19,7 @@ export function getLinkedServer(args: GetLinkedServerArgs, opts?: pulumi.InvokeO
 
 export interface GetLinkedServerArgs {
     /**
-     * The name of the linked server.
+     * The name of the RedisLinkedServerWithProperties
      */
     linkedServerName: string;
     /**
@@ -44,7 +45,7 @@ export interface GetLinkedServerResult {
      */
     readonly geoReplicatedPrimaryHostName: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -72,6 +73,10 @@ export interface GetLinkedServerResult {
      */
     readonly serverRole: string;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
@@ -94,7 +99,7 @@ export function getLinkedServerOutput(args: GetLinkedServerOutputArgs, opts?: pu
 
 export interface GetLinkedServerOutputArgs {
     /**
-     * The name of the linked server.
+     * The name of the RedisLinkedServerWithProperties
      */
     linkedServerName: pulumi.Input<string>;
     /**

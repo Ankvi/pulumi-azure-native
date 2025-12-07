@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class TrunkedNetwork extends pulumi.CustomResource {
     /**
@@ -36,79 +36,79 @@ export class TrunkedNetwork extends pulumi.CustomResource {
     /**
      * The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
      */
-    public /*out*/ readonly associatedResourceIds!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly associatedResourceIds: pulumi.Output<string[]>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The resource ID of the Network Cloud cluster this trunked network is associated with.
      */
-    public /*out*/ readonly clusterId!: pulumi.Output<string>;
+    declare public /*out*/ readonly clusterId: pulumi.Output<string>;
     /**
      * The more detailed status of the trunked network.
      */
-    public /*out*/ readonly detailedStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly detailedStatus: pulumi.Output<string>;
     /**
      * The descriptive message about the current detailed status.
      */
-    public /*out*/ readonly detailedStatusMessage!: pulumi.Output<string>;
+    declare public /*out*/ readonly detailedStatusMessage: pulumi.Output<string>;
     /**
      * Resource ETag.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The extended location of the cluster associated with the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this trunked network.
      */
-    public /*out*/ readonly hybridAksClustersAssociatedIds!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly hybridAksClustersAssociatedIds: pulumi.Output<string[]>;
     /**
      * Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
      */
-    public readonly hybridAksPluginType!: pulumi.Output<string | undefined>;
+    declare public readonly hybridAksPluginType: pulumi.Output<string | undefined>;
     /**
      * The default interface name for this trunked network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
      */
-    public readonly interfaceName!: pulumi.Output<string | undefined>;
+    declare public readonly interfaceName: pulumi.Output<string | undefined>;
     /**
      * The list of resource IDs representing the Network Fabric isolation domains. It can be any combination of l2IsolationDomain and l3IsolationDomain resources.
      */
-    public readonly isolationDomainIds!: pulumi.Output<string[]>;
+    declare public readonly isolationDomainIds: pulumi.Output<string[]>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The provisioning state of the trunked network.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this trunked network.
      */
-    public /*out*/ readonly virtualMachinesAssociatedIds!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly virtualMachinesAssociatedIds: pulumi.Output<string[]>;
     /**
      * The list of vlans that are selected from the isolation domains for trunking.
      */
-    public readonly vlans!: pulumi.Output<number[]>;
+    declare public readonly vlans: pulumi.Output<number[]>;
 
     /**
      * Create a TrunkedNetwork resource with the given unique name, arguments, and options.
@@ -121,27 +121,27 @@ export class TrunkedNetwork extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.extendedLocation === undefined) && !opts.urn) {
+            if (args?.extendedLocation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'extendedLocation'");
             }
-            if ((!args || args.isolationDomainIds === undefined) && !opts.urn) {
+            if (args?.isolationDomainIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'isolationDomainIds'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.vlans === undefined) && !opts.urn) {
+            if (args?.vlans === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vlans'");
             }
-            resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
-            resourceInputs["hybridAksPluginType"] = (args ? args.hybridAksPluginType : undefined) ?? "SRIOV";
-            resourceInputs["interfaceName"] = args ? args.interfaceName : undefined;
-            resourceInputs["isolationDomainIds"] = args ? args.isolationDomainIds : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["trunkedNetworkName"] = args ? args.trunkedNetworkName : undefined;
-            resourceInputs["vlans"] = args ? args.vlans : undefined;
+            resourceInputs["extendedLocation"] = args?.extendedLocation;
+            resourceInputs["hybridAksPluginType"] = (args?.hybridAksPluginType) ?? "SRIOV";
+            resourceInputs["interfaceName"] = args?.interfaceName;
+            resourceInputs["isolationDomainIds"] = args?.isolationDomainIds;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["trunkedNetworkName"] = args?.trunkedNetworkName;
+            resourceInputs["vlans"] = args?.vlans;
             resourceInputs["associatedResourceIds"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["clusterId"] = undefined /*out*/;
@@ -176,7 +176,7 @@ export class TrunkedNetwork extends pulumi.CustomResource {
             resourceInputs["vlans"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20231001preview:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20240601preview:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20240701:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20241001preview:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20250201:TrunkedNetwork" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20231001preview:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20240601preview:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20240701:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20241001preview:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20250201:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20250701preview:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20250901:TrunkedNetwork" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TrunkedNetwork.__pulumiType, name, resourceInputs, opts);
     }

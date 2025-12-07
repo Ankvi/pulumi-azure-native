@@ -229,6 +229,64 @@ export interface AmlFilesystemRootSquashSettingsResponse {
 }
 
 /**
+ * The storage account blob change feed status of the auto import job.
+ */
+export interface AutoImportJobResponseBlobSyncEvents {
+    /**
+     * Number of deletions during auto import.
+     */
+    deletions: number;
+    /**
+     * Number of directories imported during auto import.
+     */
+    importedDirectories: number;
+    /**
+     * Number of files imported during auto import.
+     */
+    importedFiles: number;
+    /**
+     * Number of symlinks imported during auto import.
+     */
+    importedSymlinks: number;
+    /**
+     * Date and time of the last Change Feed event consumed.
+     */
+    lastChangeFeedEventConsumedTime: string;
+    /**
+     * Date and time when last fully synchronized.
+     */
+    lastTimeFullySynchronized: string;
+    /**
+     * Number of preexisting directories during auto import.
+     */
+    preexistingDirectories: number;
+    /**
+     * Number of preexisting files during auto import.
+     */
+    preexistingFiles: number;
+    /**
+     * Number of preexisting symlinks during auto import.
+     */
+    preexistingSymlinks: number;
+    /**
+     * Rate of blob import per second during auto import.
+     */
+    rateOfBlobImport: number;
+    /**
+     * Total number of blobs imported during auto import.
+     */
+    totalBlobsImported: number;
+    /**
+     * Total conflicts encountered during auto import.
+     */
+    totalConflicts: number;
+    /**
+     * Total errors encountered during auto import.
+     */
+    totalErrors: number;
+}
+
+/**
  * Properties pertaining to the BlobNfsTarget.
  */
 export interface BlobNfsTargetResponse {

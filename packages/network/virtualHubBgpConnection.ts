@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualHubBgpConnection extends pulumi.CustomResource {
     /**
@@ -38,39 +38,39 @@ export class VirtualHubBgpConnection extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The current state of the VirtualHub to Peer.
      */
-    public /*out*/ readonly connectionState!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionState: pulumi.Output<string>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The reference to the HubVirtualNetworkConnection resource.
      */
-    public readonly hubVirtualNetworkConnection!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
+    declare public readonly hubVirtualNetworkConnection: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * Name of the connection.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     /**
      * Peer ASN.
      */
-    public readonly peerAsn!: pulumi.Output<number | undefined>;
+    declare public readonly peerAsn: pulumi.Output<number | undefined>;
     /**
      * Peer IP.
      */
-    public readonly peerIp!: pulumi.Output<string | undefined>;
+    declare public readonly peerIp: pulumi.Output<string | undefined>;
     /**
      * The provisioning state of the resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Connection type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a VirtualHubBgpConnection resource with the given unique name, arguments, and options.
@@ -83,20 +83,20 @@ export class VirtualHubBgpConnection extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.virtualHubName === undefined) && !opts.urn) {
+            if (args?.virtualHubName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualHubName'");
             }
-            resourceInputs["connectionName"] = args ? args.connectionName : undefined;
-            resourceInputs["hubVirtualNetworkConnection"] = args ? args.hubVirtualNetworkConnection : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["peerAsn"] = args ? args.peerAsn : undefined;
-            resourceInputs["peerIp"] = args ? args.peerIp : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["virtualHubName"] = args ? args.virtualHubName : undefined;
+            resourceInputs["connectionName"] = args?.connectionName;
+            resourceInputs["hubVirtualNetworkConnection"] = args?.hubVirtualNetworkConnection;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["peerAsn"] = args?.peerAsn;
+            resourceInputs["peerIp"] = args?.peerIp;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["virtualHubName"] = args?.virtualHubName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["connectionState"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -114,7 +114,7 @@ export class VirtualHubBgpConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20200501:VirtualHubBgpConnection" }, { type: "azure-native:network/v20200601:VirtualHubBgpConnection" }, { type: "azure-native:network/v20200701:VirtualHubBgpConnection" }, { type: "azure-native:network/v20200801:VirtualHubBgpConnection" }, { type: "azure-native:network/v20201101:VirtualHubBgpConnection" }, { type: "azure-native:network/v20210201:VirtualHubBgpConnection" }, { type: "azure-native:network/v20210301:VirtualHubBgpConnection" }, { type: "azure-native:network/v20210501:VirtualHubBgpConnection" }, { type: "azure-native:network/v20210801:VirtualHubBgpConnection" }, { type: "azure-native:network/v20220101:VirtualHubBgpConnection" }, { type: "azure-native:network/v20220501:VirtualHubBgpConnection" }, { type: "azure-native:network/v20220701:VirtualHubBgpConnection" }, { type: "azure-native:network/v20220901:VirtualHubBgpConnection" }, { type: "azure-native:network/v20221101:VirtualHubBgpConnection" }, { type: "azure-native:network/v20230201:VirtualHubBgpConnection" }, { type: "azure-native:network/v20230401:VirtualHubBgpConnection" }, { type: "azure-native:network/v20230501:VirtualHubBgpConnection" }, { type: "azure-native:network/v20230601:VirtualHubBgpConnection" }, { type: "azure-native:network/v20230901:VirtualHubBgpConnection" }, { type: "azure-native:network/v20231101:VirtualHubBgpConnection" }, { type: "azure-native:network/v20240101:VirtualHubBgpConnection" }, { type: "azure-native:network/v20240301:VirtualHubBgpConnection" }, { type: "azure-native:network/v20240501:VirtualHubBgpConnection" }, { type: "azure-native:network/v20240701:VirtualHubBgpConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20200501:VirtualHubBgpConnection" }, { type: "azure-native:network/v20200601:VirtualHubBgpConnection" }, { type: "azure-native:network/v20200701:VirtualHubBgpConnection" }, { type: "azure-native:network/v20200801:VirtualHubBgpConnection" }, { type: "azure-native:network/v20201101:VirtualHubBgpConnection" }, { type: "azure-native:network/v20210201:VirtualHubBgpConnection" }, { type: "azure-native:network/v20210301:VirtualHubBgpConnection" }, { type: "azure-native:network/v20210501:VirtualHubBgpConnection" }, { type: "azure-native:network/v20210801:VirtualHubBgpConnection" }, { type: "azure-native:network/v20220101:VirtualHubBgpConnection" }, { type: "azure-native:network/v20220501:VirtualHubBgpConnection" }, { type: "azure-native:network/v20220701:VirtualHubBgpConnection" }, { type: "azure-native:network/v20220901:VirtualHubBgpConnection" }, { type: "azure-native:network/v20221101:VirtualHubBgpConnection" }, { type: "azure-native:network/v20230201:VirtualHubBgpConnection" }, { type: "azure-native:network/v20230401:VirtualHubBgpConnection" }, { type: "azure-native:network/v20230501:VirtualHubBgpConnection" }, { type: "azure-native:network/v20230601:VirtualHubBgpConnection" }, { type: "azure-native:network/v20230901:VirtualHubBgpConnection" }, { type: "azure-native:network/v20231101:VirtualHubBgpConnection" }, { type: "azure-native:network/v20240101:VirtualHubBgpConnection" }, { type: "azure-native:network/v20240301:VirtualHubBgpConnection" }, { type: "azure-native:network/v20240501:VirtualHubBgpConnection" }, { type: "azure-native:network/v20240701:VirtualHubBgpConnection" }, { type: "azure-native:network/v20241001:VirtualHubBgpConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualHubBgpConnection.__pulumiType, name, resourceInputs, opts);
     }

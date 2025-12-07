@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-07-01-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-07-01-preview, 2024-05-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class KeyGroup extends pulumi.CustomResource {
     /**
@@ -38,28 +38,28 @@ export class KeyGroup extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
-    public /*out*/ readonly deploymentStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
+    declare public /*out*/ readonly deploymentStatus: pulumi.Output<string>;
     /**
      * Names of UrlSigningKey type secret objects
      */
-    public readonly keyReferences!: pulumi.Output<types.outputs.ResourceReferenceResponse[] | undefined>;
+    declare public readonly keyReferences: pulumi.Output<types.outputs.ResourceReferenceResponse[] | undefined>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Provisioning status
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a KeyGroup resource with the given unique name, arguments, and options.
@@ -72,16 +72,16 @@ export class KeyGroup extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.profileName === undefined) && !opts.urn) {
+            if (args?.profileName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'profileName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["keyGroupName"] = args ? args.keyGroupName : undefined;
-            resourceInputs["keyReferences"] = args ? args.keyReferences : undefined;
-            resourceInputs["profileName"] = args ? args.profileName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["keyGroupName"] = args?.keyGroupName;
+            resourceInputs["keyReferences"] = args?.keyReferences;
+            resourceInputs["profileName"] = args?.profileName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["deploymentStatus"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -98,7 +98,7 @@ export class KeyGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20230701preview:KeyGroup" }, { type: "azure-native:cdn/v20240501preview:KeyGroup" }, { type: "azure-native:cdn/v20240601preview:KeyGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20230701preview:KeyGroup" }, { type: "azure-native:cdn/v20240501preview:KeyGroup" }, { type: "azure-native:cdn/v20240601preview:KeyGroup" }, { type: "azure-native:cdn/v20250901preview:KeyGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(KeyGroup.__pulumiType, name, resourceInputs, opts);
     }

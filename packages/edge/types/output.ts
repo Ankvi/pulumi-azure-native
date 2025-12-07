@@ -33,7 +33,7 @@ export interface AzureResourceManagerCommonTypesExtendedLocationResponse {
 }
 
 /**
- * Capability, to match in Solution Templates & Targets
+ * Capability, to match in Solution Templates and Targets
  */
 export interface CapabilityResponse {
     /**
@@ -415,6 +415,20 @@ export interface SchemaPropertiesResponse {
      * Provisioning state of resource
      */
     provisioningState: string;
+}
+
+/**
+ * Schema Reference Properties
+ */
+export interface SchemaReferencePropertiesResponse {
+    /**
+     * Provisioning state of resource
+     */
+    provisioningState: string;
+    /**
+     * Schema Id of schema reference
+     */
+    schemaId: string;
 }
 
 /**

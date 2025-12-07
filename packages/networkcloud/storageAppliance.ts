@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class StorageAppliance extends pulumi.CustomResource {
     /**
@@ -36,107 +36,107 @@ export class StorageAppliance extends pulumi.CustomResource {
     /**
      * The credentials of the administrative interface on this storage appliance.
      */
-    public readonly administratorCredentials!: pulumi.Output<types.outputs.AdministrativeCredentialsResponse>;
+    declare public readonly administratorCredentials: pulumi.Output<types.outputs.AdministrativeCredentialsResponse>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The total capacity of the storage appliance. Measured in GiB.
      */
-    public /*out*/ readonly capacity!: pulumi.Output<number>;
+    declare public /*out*/ readonly capacity: pulumi.Output<number>;
     /**
      * The amount of storage consumed.
      */
-    public /*out*/ readonly capacityUsed!: pulumi.Output<number>;
+    declare public /*out*/ readonly capacityUsed: pulumi.Output<number>;
     /**
      * The resource ID of the cluster this storage appliance is associated with. Measured in GiB.
      */
-    public /*out*/ readonly clusterId!: pulumi.Output<string>;
+    declare public /*out*/ readonly clusterId: pulumi.Output<string>;
     /**
      * The detailed status of the storage appliance.
      */
-    public /*out*/ readonly detailedStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly detailedStatus: pulumi.Output<string>;
     /**
      * The descriptive message about the current detailed status.
      */
-    public /*out*/ readonly detailedStatusMessage!: pulumi.Output<string>;
+    declare public /*out*/ readonly detailedStatusMessage: pulumi.Output<string>;
     /**
      * Resource ETag.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The extended location of the cluster associated with the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The endpoint for the management interface of the storage appliance.
      */
-    public /*out*/ readonly managementIpv4Address!: pulumi.Output<string>;
+    declare public /*out*/ readonly managementIpv4Address: pulumi.Output<string>;
     /**
      * The manufacturer of the storage appliance.
      */
-    public /*out*/ readonly manufacturer!: pulumi.Output<string>;
+    declare public /*out*/ readonly manufacturer: pulumi.Output<string>;
     /**
      * The model of the storage appliance.
      */
-    public /*out*/ readonly model!: pulumi.Output<string>;
+    declare public /*out*/ readonly model: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The provisioning state of the storage appliance.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The resource ID of the rack where this storage appliance resides.
      */
-    public readonly rackId!: pulumi.Output<string>;
+    declare public readonly rackId: pulumi.Output<string>;
     /**
      * The slot the storage appliance is in the rack based on the BOM configuration.
      */
-    public readonly rackSlot!: pulumi.Output<number>;
+    declare public readonly rackSlot: pulumi.Output<number>;
     /**
      * The indicator of whether the storage appliance supports remote vendor management.
      */
-    public /*out*/ readonly remoteVendorManagementFeature!: pulumi.Output<string>;
+    declare public /*out*/ readonly remoteVendorManagementFeature: pulumi.Output<string>;
     /**
      * The indicator of whether the remote vendor management feature is enabled or disabled, or unsupported if it is an unsupported feature.
      */
-    public /*out*/ readonly remoteVendorManagementStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly remoteVendorManagementStatus: pulumi.Output<string>;
     /**
      * The list of statuses that represent secret rotation activity.
      */
-    public /*out*/ readonly secretRotationStatus!: pulumi.Output<types.outputs.SecretRotationStatusResponse[]>;
+    declare public /*out*/ readonly secretRotationStatus: pulumi.Output<types.outputs.SecretRotationStatusResponse[]>;
     /**
      * The serial number for the storage appliance.
      */
-    public readonly serialNumber!: pulumi.Output<string>;
+    declare public readonly serialNumber: pulumi.Output<string>;
     /**
      * The SKU for the storage appliance.
      */
-    public readonly storageApplianceSkuId!: pulumi.Output<string>;
+    declare public readonly storageApplianceSkuId: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The version of the storage appliance.
      */
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    declare public /*out*/ readonly version: pulumi.Output<string>;
 
     /**
      * Create a StorageAppliance resource with the given unique name, arguments, and options.
@@ -149,37 +149,37 @@ export class StorageAppliance extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.administratorCredentials === undefined) && !opts.urn) {
+            if (args?.administratorCredentials === undefined && !opts.urn) {
                 throw new Error("Missing required property 'administratorCredentials'");
             }
-            if ((!args || args.extendedLocation === undefined) && !opts.urn) {
+            if (args?.extendedLocation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'extendedLocation'");
             }
-            if ((!args || args.rackId === undefined) && !opts.urn) {
+            if (args?.rackId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rackId'");
             }
-            if ((!args || args.rackSlot === undefined) && !opts.urn) {
+            if (args?.rackSlot === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rackSlot'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.serialNumber === undefined) && !opts.urn) {
+            if (args?.serialNumber === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serialNumber'");
             }
-            if ((!args || args.storageApplianceSkuId === undefined) && !opts.urn) {
+            if (args?.storageApplianceSkuId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageApplianceSkuId'");
             }
-            resourceInputs["administratorCredentials"] = args ? args.administratorCredentials : undefined;
-            resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["rackId"] = args ? args.rackId : undefined;
-            resourceInputs["rackSlot"] = args ? args.rackSlot : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["serialNumber"] = args ? args.serialNumber : undefined;
-            resourceInputs["storageApplianceName"] = args ? args.storageApplianceName : undefined;
-            resourceInputs["storageApplianceSkuId"] = args ? args.storageApplianceSkuId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["administratorCredentials"] = args?.administratorCredentials;
+            resourceInputs["extendedLocation"] = args?.extendedLocation;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["rackId"] = args?.rackId;
+            resourceInputs["rackSlot"] = args?.rackSlot;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["serialNumber"] = args?.serialNumber;
+            resourceInputs["storageApplianceName"] = args?.storageApplianceName;
+            resourceInputs["storageApplianceSkuId"] = args?.storageApplianceSkuId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["capacity"] = undefined /*out*/;
             resourceInputs["capacityUsed"] = undefined /*out*/;
@@ -227,7 +227,7 @@ export class StorageAppliance extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:StorageAppliance" }, { type: "azure-native:networkcloud/v20231001preview:StorageAppliance" }, { type: "azure-native:networkcloud/v20240601preview:StorageAppliance" }, { type: "azure-native:networkcloud/v20240701:StorageAppliance" }, { type: "azure-native:networkcloud/v20241001preview:StorageAppliance" }, { type: "azure-native:networkcloud/v20250201:StorageAppliance" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:StorageAppliance" }, { type: "azure-native:networkcloud/v20231001preview:StorageAppliance" }, { type: "azure-native:networkcloud/v20240601preview:StorageAppliance" }, { type: "azure-native:networkcloud/v20240701:StorageAppliance" }, { type: "azure-native:networkcloud/v20241001preview:StorageAppliance" }, { type: "azure-native:networkcloud/v20250201:StorageAppliance" }, { type: "azure-native:networkcloud/v20250701preview:StorageAppliance" }, { type: "azure-native:networkcloud/v20250901:StorageAppliance" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(StorageAppliance.__pulumiType, name, resourceInputs, opts);
     }

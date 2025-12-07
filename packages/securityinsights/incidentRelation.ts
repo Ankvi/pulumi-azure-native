@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class IncidentRelation extends pulumi.CustomResource {
     /**
@@ -38,39 +38,39 @@ export class IncidentRelation extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Etag of the azure resource
      */
-    public /*out*/ readonly etag!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly etag: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The resource ID of the related resource
      */
-    public readonly relatedResourceId!: pulumi.Output<string>;
+    declare public readonly relatedResourceId: pulumi.Output<string>;
     /**
      * The resource kind of the related resource
      */
-    public /*out*/ readonly relatedResourceKind!: pulumi.Output<string>;
+    declare public /*out*/ readonly relatedResourceKind: pulumi.Output<string>;
     /**
      * The name of the related resource
      */
-    public /*out*/ readonly relatedResourceName!: pulumi.Output<string>;
+    declare public /*out*/ readonly relatedResourceName: pulumi.Output<string>;
     /**
      * The resource type of the related resource
      */
-    public /*out*/ readonly relatedResourceType!: pulumi.Output<string>;
+    declare public /*out*/ readonly relatedResourceType: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a IncidentRelation resource with the given unique name, arguments, and options.
@@ -83,23 +83,23 @@ export class IncidentRelation extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.incidentId === undefined) && !opts.urn) {
+            if (args?.incidentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'incidentId'");
             }
-            if ((!args || args.relatedResourceId === undefined) && !opts.urn) {
+            if (args?.relatedResourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'relatedResourceId'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["incidentId"] = args ? args.incidentId : undefined;
-            resourceInputs["relatedResourceId"] = args ? args.relatedResourceId : undefined;
-            resourceInputs["relationName"] = args ? args.relationName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["incidentId"] = args?.incidentId;
+            resourceInputs["relatedResourceId"] = args?.relatedResourceId;
+            resourceInputs["relationName"] = args?.relationName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -120,7 +120,7 @@ export class IncidentRelation extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20190101preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20210301preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20210401:IncidentRelation" }, { type: "azure-native:securityinsights/v20210901preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20211001:IncidentRelation" }, { type: "azure-native:securityinsights/v20211001preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20220101preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20220401preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20220501preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20220601preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20220701preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20220801:IncidentRelation" }, { type: "azure-native:securityinsights/v20220801preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20220901preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20221001preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20221101:IncidentRelation" }, { type: "azure-native:securityinsights/v20221101preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20221201preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20230201:IncidentRelation" }, { type: "azure-native:securityinsights/v20230201preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20230301preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20230401preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20230501preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20230601preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20230701preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20230801preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20230901preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20231001preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20231101:IncidentRelation" }, { type: "azure-native:securityinsights/v20231201preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20240101preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20240301:IncidentRelation" }, { type: "azure-native:securityinsights/v20240401preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20240901:IncidentRelation" }, { type: "azure-native:securityinsights/v20241001preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20250101preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20250301:IncidentRelation" }, { type: "azure-native:securityinsights/v20250401preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20250601:IncidentRelation" }, { type: "azure-native:securityinsights/v20250701preview:IncidentRelation" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20190101preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20210301preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20210401:IncidentRelation" }, { type: "azure-native:securityinsights/v20210901preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20211001:IncidentRelation" }, { type: "azure-native:securityinsights/v20211001preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20220101preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20220401preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20220501preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20220601preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20220701preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20220801:IncidentRelation" }, { type: "azure-native:securityinsights/v20220801preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20220901preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20221001preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20221101:IncidentRelation" }, { type: "azure-native:securityinsights/v20221101preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20221201preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20230201:IncidentRelation" }, { type: "azure-native:securityinsights/v20230201preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20230301preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20230401preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20230501preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20230601preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20230701preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20230801preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20230901preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20231001preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20231101:IncidentRelation" }, { type: "azure-native:securityinsights/v20231201preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20240101preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20240301:IncidentRelation" }, { type: "azure-native:securityinsights/v20240401preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20240901:IncidentRelation" }, { type: "azure-native:securityinsights/v20241001preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20250101preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20250301:IncidentRelation" }, { type: "azure-native:securityinsights/v20250401preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20250601:IncidentRelation" }, { type: "azure-native:securityinsights/v20250701preview:IncidentRelation" }, { type: "azure-native:securityinsights/v20250901:IncidentRelation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(IncidentRelation.__pulumiType, name, resourceInputs, opts);
     }

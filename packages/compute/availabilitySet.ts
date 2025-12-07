@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class AvailabilitySet extends pulumi.CustomResource {
     /**
@@ -38,59 +38,59 @@ export class AvailabilitySet extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Fault Domain count.
      */
-    public readonly platformFaultDomainCount!: pulumi.Output<number | undefined>;
+    declare public readonly platformFaultDomainCount: pulumi.Output<number | undefined>;
     /**
      * Update Domain count.
      */
-    public readonly platformUpdateDomainCount!: pulumi.Output<number | undefined>;
+    declare public readonly platformUpdateDomainCount: pulumi.Output<number | undefined>;
     /**
      * Specifies information about the proximity placement group that the availability set should be assigned to. Minimum api-version: 2018-04-01.
      */
-    public readonly proximityPlacementGroup!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
+    declare public readonly proximityPlacementGroup: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets Scheduled Event related configurations for the availability set.
      */
-    public readonly scheduledEventsPolicy!: pulumi.Output<types.outputs.ScheduledEventsPolicyResponse | undefined>;
+    declare public readonly scheduledEventsPolicy: pulumi.Output<types.outputs.ScheduledEventsPolicyResponse | undefined>;
     /**
      * Sku of the availability set, only name is required to be set. See AvailabilitySetSkuTypes for possible set of values. Use 'Aligned' for virtual machines with managed disks and 'Classic' for virtual machines with unmanaged disks. Default value is 'Classic'.
      */
-    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
+    declare public readonly sku: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The resource status information.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.InstanceViewStatusResponse[]>;
+    declare public /*out*/ readonly statuses: pulumi.Output<types.outputs.InstanceViewStatusResponse[]>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Describes the migration properties on the Availability Set.
      */
-    public /*out*/ readonly virtualMachineScaleSetMigrationInfo!: pulumi.Output<types.outputs.VirtualMachineScaleSetMigrationInfoResponse>;
+    declare public /*out*/ readonly virtualMachineScaleSetMigrationInfo: pulumi.Output<types.outputs.VirtualMachineScaleSetMigrationInfoResponse>;
     /**
      * A list of references to all virtual machines in the availability set.
      */
-    public readonly virtualMachines!: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
+    declare public readonly virtualMachines: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
 
     /**
      * Create a AvailabilitySet resource with the given unique name, arguments, and options.
@@ -103,19 +103,19 @@ export class AvailabilitySet extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["availabilitySetName"] = args ? args.availabilitySetName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["platformFaultDomainCount"] = args ? args.platformFaultDomainCount : undefined;
-            resourceInputs["platformUpdateDomainCount"] = args ? args.platformUpdateDomainCount : undefined;
-            resourceInputs["proximityPlacementGroup"] = args ? args.proximityPlacementGroup : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["scheduledEventsPolicy"] = args ? args.scheduledEventsPolicy : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["virtualMachines"] = args ? args.virtualMachines : undefined;
+            resourceInputs["availabilitySetName"] = args?.availabilitySetName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["platformFaultDomainCount"] = args?.platformFaultDomainCount;
+            resourceInputs["platformUpdateDomainCount"] = args?.platformUpdateDomainCount;
+            resourceInputs["proximityPlacementGroup"] = args?.proximityPlacementGroup;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["scheduledEventsPolicy"] = args?.scheduledEventsPolicy;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["virtualMachines"] = args?.virtualMachines;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["statuses"] = undefined /*out*/;
@@ -139,7 +139,7 @@ export class AvailabilitySet extends pulumi.CustomResource {
             resourceInputs["virtualMachines"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20150615:AvailabilitySet" }, { type: "azure-native:compute/v20160330:AvailabilitySet" }, { type: "azure-native:compute/v20160430preview:AvailabilitySet" }, { type: "azure-native:compute/v20170330:AvailabilitySet" }, { type: "azure-native:compute/v20171201:AvailabilitySet" }, { type: "azure-native:compute/v20180401:AvailabilitySet" }, { type: "azure-native:compute/v20180601:AvailabilitySet" }, { type: "azure-native:compute/v20181001:AvailabilitySet" }, { type: "azure-native:compute/v20190301:AvailabilitySet" }, { type: "azure-native:compute/v20190701:AvailabilitySet" }, { type: "azure-native:compute/v20191201:AvailabilitySet" }, { type: "azure-native:compute/v20200601:AvailabilitySet" }, { type: "azure-native:compute/v20201201:AvailabilitySet" }, { type: "azure-native:compute/v20210301:AvailabilitySet" }, { type: "azure-native:compute/v20210401:AvailabilitySet" }, { type: "azure-native:compute/v20210701:AvailabilitySet" }, { type: "azure-native:compute/v20211101:AvailabilitySet" }, { type: "azure-native:compute/v20220301:AvailabilitySet" }, { type: "azure-native:compute/v20220801:AvailabilitySet" }, { type: "azure-native:compute/v20221101:AvailabilitySet" }, { type: "azure-native:compute/v20230301:AvailabilitySet" }, { type: "azure-native:compute/v20230701:AvailabilitySet" }, { type: "azure-native:compute/v20230901:AvailabilitySet" }, { type: "azure-native:compute/v20240301:AvailabilitySet" }, { type: "azure-native:compute/v20240701:AvailabilitySet" }, { type: "azure-native:compute/v20241101:AvailabilitySet" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20150615:AvailabilitySet" }, { type: "azure-native:compute/v20160330:AvailabilitySet" }, { type: "azure-native:compute/v20160430preview:AvailabilitySet" }, { type: "azure-native:compute/v20170330:AvailabilitySet" }, { type: "azure-native:compute/v20171201:AvailabilitySet" }, { type: "azure-native:compute/v20180401:AvailabilitySet" }, { type: "azure-native:compute/v20180601:AvailabilitySet" }, { type: "azure-native:compute/v20181001:AvailabilitySet" }, { type: "azure-native:compute/v20190301:AvailabilitySet" }, { type: "azure-native:compute/v20190701:AvailabilitySet" }, { type: "azure-native:compute/v20191201:AvailabilitySet" }, { type: "azure-native:compute/v20200601:AvailabilitySet" }, { type: "azure-native:compute/v20201201:AvailabilitySet" }, { type: "azure-native:compute/v20210301:AvailabilitySet" }, { type: "azure-native:compute/v20210401:AvailabilitySet" }, { type: "azure-native:compute/v20210701:AvailabilitySet" }, { type: "azure-native:compute/v20211101:AvailabilitySet" }, { type: "azure-native:compute/v20220301:AvailabilitySet" }, { type: "azure-native:compute/v20220801:AvailabilitySet" }, { type: "azure-native:compute/v20221101:AvailabilitySet" }, { type: "azure-native:compute/v20230301:AvailabilitySet" }, { type: "azure-native:compute/v20230701:AvailabilitySet" }, { type: "azure-native:compute/v20230901:AvailabilitySet" }, { type: "azure-native:compute/v20240301:AvailabilitySet" }, { type: "azure-native:compute/v20240701:AvailabilitySet" }, { type: "azure-native:compute/v20241101:AvailabilitySet" }, { type: "azure-native:compute/v20250401:AvailabilitySet" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AvailabilitySet.__pulumiType, name, resourceInputs, opts);
     }

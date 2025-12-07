@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Secret extends pulumi.CustomResource {
     /**
@@ -38,27 +38,27 @@ export class Secret extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Azure location of the key vault resource.
      */
-    public /*out*/ readonly location!: pulumi.Output<string>;
+    declare public /*out*/ readonly location: pulumi.Output<string>;
     /**
      * Name of the key vault resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Properties of the secret
      */
-    public readonly properties!: pulumi.Output<types.outputs.SecretPropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.SecretPropertiesResponse>;
     /**
      * Tags assigned to the key vault resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * Resource type of the key vault resource.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Secret resource with the given unique name, arguments, and options.
@@ -71,20 +71,20 @@ export class Secret extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.properties === undefined) && !opts.urn) {
+            if (args?.properties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'properties'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.vaultName === undefined) && !opts.urn) {
+            if (args?.vaultName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vaultName'");
             }
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["secretName"] = args ? args.secretName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vaultName"] = args ? args.vaultName : undefined;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["secretName"] = args?.secretName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vaultName"] = args?.vaultName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -98,7 +98,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:keyvault/v20161001:Secret" }, { type: "azure-native:keyvault/v20180214:Secret" }, { type: "azure-native:keyvault/v20180214preview:Secret" }, { type: "azure-native:keyvault/v20190901:Secret" }, { type: "azure-native:keyvault/v20200401preview:Secret" }, { type: "azure-native:keyvault/v20210401preview:Secret" }, { type: "azure-native:keyvault/v20210601preview:Secret" }, { type: "azure-native:keyvault/v20211001:Secret" }, { type: "azure-native:keyvault/v20211101preview:Secret" }, { type: "azure-native:keyvault/v20220201preview:Secret" }, { type: "azure-native:keyvault/v20220701:Secret" }, { type: "azure-native:keyvault/v20221101:Secret" }, { type: "azure-native:keyvault/v20230201:Secret" }, { type: "azure-native:keyvault/v20230701:Secret" }, { type: "azure-native:keyvault/v20240401preview:Secret" }, { type: "azure-native:keyvault/v20241101:Secret" }, { type: "azure-native:keyvault/v20241201preview:Secret" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:keyvault/v20161001:Secret" }, { type: "azure-native:keyvault/v20180214:Secret" }, { type: "azure-native:keyvault/v20180214preview:Secret" }, { type: "azure-native:keyvault/v20190901:Secret" }, { type: "azure-native:keyvault/v20200401preview:Secret" }, { type: "azure-native:keyvault/v20210401preview:Secret" }, { type: "azure-native:keyvault/v20210601preview:Secret" }, { type: "azure-native:keyvault/v20211001:Secret" }, { type: "azure-native:keyvault/v20211101preview:Secret" }, { type: "azure-native:keyvault/v20220201preview:Secret" }, { type: "azure-native:keyvault/v20220701:Secret" }, { type: "azure-native:keyvault/v20221101:Secret" }, { type: "azure-native:keyvault/v20230201:Secret" }, { type: "azure-native:keyvault/v20230701:Secret" }, { type: "azure-native:keyvault/v20240401preview:Secret" }, { type: "azure-native:keyvault/v20241101:Secret" }, { type: "azure-native:keyvault/v20241201preview:Secret" }, { type: "azure-native:keyvault/v20250501:Secret" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Secret.__pulumiType, name, resourceInputs, opts);
     }

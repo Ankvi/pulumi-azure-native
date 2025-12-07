@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Outbound Rule Basic Resource for the managed network of a machine learning workspace.
  *
- * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
+ * Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ManagedNetworkSettingsRule extends pulumi.CustomResource {
     /**
@@ -38,23 +38,23 @@ export class ManagedNetworkSettingsRule extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Outbound Rule for the managed network of a machine learning workspace.
      */
-    public readonly properties!: pulumi.Output<types.outputs.FqdnOutboundRuleResponse | types.outputs.PrivateEndpointOutboundRuleResponse | types.outputs.ServiceTagOutboundRuleResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.FqdnOutboundRuleResponse | types.outputs.PrivateEndpointOutboundRuleResponse | types.outputs.ServiceTagOutboundRuleResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ManagedNetworkSettingsRule resource with the given unique name, arguments, and options.
@@ -67,19 +67,19 @@ export class ManagedNetworkSettingsRule extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.properties === undefined) && !opts.urn) {
+            if (args?.properties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'properties'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -92,7 +92,7 @@ export class ManagedNetworkSettingsRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230401preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20230601preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20230801preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20231001:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20240101preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20240401:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20240401preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20240701preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20241001:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20241001preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20250101preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20250401:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20250401preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20250601:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20250701preview:ManagedNetworkSettingsRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230401preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20230601preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20230801preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20231001:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20240101preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20240401:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20240401preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20240701preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20241001:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20241001preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20250101preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20250401:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20250401preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20250601:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20250701preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20250901:ManagedNetworkSettingsRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedNetworkSettingsRule.__pulumiType, name, resourceInputs, opts);
     }

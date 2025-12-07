@@ -38,31 +38,31 @@ export class ProtectedItem extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Optional ETag.
      */
-    public readonly eTag!: pulumi.Output<string | undefined>;
+    declare public readonly eTag: pulumi.Output<string | undefined>;
     /**
      * Resource location.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Resource name associated with the resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * ProtectedItemResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.AzureFileshareProtectedItemResponse | types.outputs.AzureIaaSClassicComputeVMProtectedItemResponse | types.outputs.AzureIaaSComputeVMProtectedItemResponse | types.outputs.AzureIaaSVMProtectedItemResponse | types.outputs.AzureSqlProtectedItemResponse | types.outputs.AzureVmWorkloadProtectedItemResponse | types.outputs.AzureVmWorkloadSAPAseDatabaseProtectedItemResponse | types.outputs.AzureVmWorkloadSAPHanaDBInstanceProtectedItemResponse | types.outputs.AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse | types.outputs.AzureVmWorkloadSQLDatabaseProtectedItemResponse | types.outputs.DPMProtectedItemResponse | types.outputs.GenericProtectedItemResponse | types.outputs.MabFileFolderProtectedItemResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.AzureFileshareProtectedItemResponse | types.outputs.AzureIaaSClassicComputeVMProtectedItemResponse | types.outputs.AzureIaaSComputeVMProtectedItemResponse | types.outputs.AzureIaaSVMProtectedItemResponse | types.outputs.AzureSqlProtectedItemResponse | types.outputs.AzureVmWorkloadProtectedItemResponse | types.outputs.AzureVmWorkloadSAPAseDatabaseProtectedItemResponse | types.outputs.AzureVmWorkloadSAPHanaDBInstanceProtectedItemResponse | types.outputs.AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse | types.outputs.AzureVmWorkloadSQLDatabaseProtectedItemResponse | types.outputs.DPMProtectedItemResponse | types.outputs.GenericProtectedItemResponse | types.outputs.MabFileFolderProtectedItemResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ProtectedItem resource with the given unique name, arguments, and options.
@@ -75,27 +75,27 @@ export class ProtectedItem extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.containerName === undefined) && !opts.urn) {
+            if (args?.containerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'containerName'");
             }
-            if ((!args || args.fabricName === undefined) && !opts.urn) {
+            if (args?.fabricName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fabricName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.vaultName === undefined) && !opts.urn) {
+            if (args?.vaultName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vaultName'");
             }
-            resourceInputs["containerName"] = args ? args.containerName : undefined;
-            resourceInputs["eTag"] = args ? args.eTag : undefined;
-            resourceInputs["fabricName"] = args ? args.fabricName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["protectedItemName"] = args ? args.protectedItemName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vaultName"] = args ? args.vaultName : undefined;
+            resourceInputs["containerName"] = args?.containerName;
+            resourceInputs["eTag"] = args?.eTag;
+            resourceInputs["fabricName"] = args?.fabricName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["protectedItemName"] = args?.protectedItemName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vaultName"] = args?.vaultName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

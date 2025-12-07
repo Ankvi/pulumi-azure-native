@@ -38,59 +38,59 @@ export class Order extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The contact details.
      */
-    public readonly contactInformation!: pulumi.Output<types.outputs.ContactDetailsResponse>;
+    declare public readonly contactInformation: pulumi.Output<types.outputs.ContactDetailsResponse>;
     /**
      * Current status of the order.
      */
-    public /*out*/ readonly currentStatus!: pulumi.Output<types.outputs.OrderStatusResponse>;
+    declare public /*out*/ readonly currentStatus: pulumi.Output<types.outputs.OrderStatusResponse>;
     /**
      * Tracking information for the package delivered to the customer whether it has an original or a replacement device.
      */
-    public /*out*/ readonly deliveryTrackingInfo!: pulumi.Output<types.outputs.TrackingInfoResponse[]>;
+    declare public /*out*/ readonly deliveryTrackingInfo: pulumi.Output<types.outputs.TrackingInfoResponse[]>;
     /**
      * It specify the order api version.
      */
-    public /*out*/ readonly kind!: pulumi.Output<string>;
+    declare public /*out*/ readonly kind: pulumi.Output<string>;
     /**
      * The object name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * List of status changes in the order.
      */
-    public /*out*/ readonly orderHistory!: pulumi.Output<types.outputs.OrderStatusResponse[]>;
+    declare public /*out*/ readonly orderHistory: pulumi.Output<types.outputs.OrderStatusResponse[]>;
     /**
      * It specify the order resource id.
      */
-    public /*out*/ readonly orderId!: pulumi.Output<string>;
+    declare public /*out*/ readonly orderId: pulumi.Output<string>;
     /**
      * Tracking information for the package returned from the customer whether it has an original or a replacement device.
      */
-    public /*out*/ readonly returnTrackingInfo!: pulumi.Output<types.outputs.TrackingInfoResponse[]>;
+    declare public /*out*/ readonly returnTrackingInfo: pulumi.Output<types.outputs.TrackingInfoResponse[]>;
     /**
      * Serial number of the device.
      */
-    public /*out*/ readonly serialNumber!: pulumi.Output<string>;
+    declare public /*out*/ readonly serialNumber: pulumi.Output<string>;
     /**
      * ShipmentType of the order
      */
-    public readonly shipmentType!: pulumi.Output<string | undefined>;
+    declare public readonly shipmentType: pulumi.Output<string | undefined>;
     /**
      * The shipping address.
      */
-    public readonly shippingAddress!: pulumi.Output<types.outputs.AddressResponse | undefined>;
+    declare public readonly shippingAddress: pulumi.Output<types.outputs.AddressResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of Order
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Order resource with the given unique name, arguments, and options.
@@ -103,20 +103,20 @@ export class Order extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.contactInformation === undefined) && !opts.urn) {
+            if (args?.contactInformation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'contactInformation'");
             }
-            if ((!args || args.deviceName === undefined) && !opts.urn) {
+            if (args?.deviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deviceName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["contactInformation"] = args ? args.contactInformation : undefined;
-            resourceInputs["deviceName"] = args ? args.deviceName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["shipmentType"] = args ? args.shipmentType : undefined;
-            resourceInputs["shippingAddress"] = args ? args.shippingAddress : undefined;
+            resourceInputs["contactInformation"] = args?.contactInformation;
+            resourceInputs["deviceName"] = args?.deviceName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["shipmentType"] = args?.shipmentType;
+            resourceInputs["shippingAddress"] = args?.shippingAddress;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["currentStatus"] = undefined /*out*/;
             resourceInputs["deliveryTrackingInfo"] = undefined /*out*/;

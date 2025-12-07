@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2021-12-01.
  *
- * Other available API versions: 2021-12-01, 2023-08-22, 2024-02-13, 2025-07-17-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-12-01, 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Organization extends pulumi.CustomResource {
     /**
@@ -38,51 +38,51 @@ export class Organization extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createdTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdTime: pulumi.Output<string>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Confluent offer detail
      */
-    public readonly offerDetail!: pulumi.Output<types.outputs.OfferDetailResponse>;
+    declare public readonly offerDetail: pulumi.Output<types.outputs.OfferDetailResponse>;
     /**
      * Id of the Confluent organization.
      */
-    public /*out*/ readonly organizationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly organizationId: pulumi.Output<string>;
     /**
      * Provision states for confluent RP
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * SSO url for the Confluent organization.
      */
-    public /*out*/ readonly ssoUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly ssoUrl: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Subscriber detail
      */
-    public readonly userDetail!: pulumi.Output<types.outputs.UserDetailResponse>;
+    declare public readonly userDetail: pulumi.Output<types.outputs.UserDetailResponse>;
 
     /**
      * Create a Organization resource with the given unique name, arguments, and options.
@@ -95,22 +95,22 @@ export class Organization extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.offerDetail === undefined) && !opts.urn) {
+            if (args?.offerDetail === undefined && !opts.urn) {
                 throw new Error("Missing required property 'offerDetail'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.userDetail === undefined) && !opts.urn) {
+            if (args?.userDetail === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userDetail'");
             }
-            resourceInputs["linkOrganization"] = args ? args.linkOrganization : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["offerDetail"] = args ? args.offerDetail : undefined;
-            resourceInputs["organizationName"] = args ? args.organizationName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["userDetail"] = args ? args.userDetail : undefined;
+            resourceInputs["linkOrganization"] = args?.linkOrganization;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["offerDetail"] = args?.offerDetail;
+            resourceInputs["organizationName"] = args?.organizationName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["userDetail"] = args?.userDetail;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -134,7 +134,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["userDetail"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:confluent/v20200301:Organization" }, { type: "azure-native:confluent/v20200301preview:Organization" }, { type: "azure-native:confluent/v20210301preview:Organization" }, { type: "azure-native:confluent/v20210901preview:Organization" }, { type: "azure-native:confluent/v20211201:Organization" }, { type: "azure-native:confluent/v20230822:Organization" }, { type: "azure-native:confluent/v20240213:Organization" }, { type: "azure-native:confluent/v20240701:Organization" }, { type: "azure-native:confluent/v20250717preview:Organization" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:confluent/v20200301:Organization" }, { type: "azure-native:confluent/v20200301preview:Organization" }, { type: "azure-native:confluent/v20210301preview:Organization" }, { type: "azure-native:confluent/v20210901preview:Organization" }, { type: "azure-native:confluent/v20211201:Organization" }, { type: "azure-native:confluent/v20230822:Organization" }, { type: "azure-native:confluent/v20240213:Organization" }, { type: "azure-native:confluent/v20240701:Organization" }, { type: "azure-native:confluent/v20250717preview:Organization" }, { type: "azure-native:confluent/v20250818preview:Organization" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Organization.__pulumiType, name, resourceInputs, opts);
     }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class HubVirtualNetworkConnection extends pulumi.CustomResource {
     /**
@@ -38,39 +38,39 @@ export class HubVirtualNetworkConnection extends pulumi.CustomResource {
     /**
      * Deprecated: VirtualHub to RemoteVnet transit to enabled or not.
      */
-    public readonly allowHubToRemoteVnetTransit!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowHubToRemoteVnetTransit: pulumi.Output<boolean | undefined>;
     /**
      * Deprecated: Allow RemoteVnet to use Virtual Hub's gateways.
      */
-    public readonly allowRemoteVnetToUseHubVnetGateways!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowRemoteVnetToUseHubVnetGateways: pulumi.Output<boolean | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Enable internet security.
      */
-    public readonly enableInternetSecurity!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableInternetSecurity: pulumi.Output<boolean | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     /**
      * The provisioning state of the hub virtual network connection resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Reference to the remote virtual network.
      */
-    public readonly remoteVirtualNetwork!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
+    declare public readonly remoteVirtualNetwork: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    public readonly routingConfiguration!: pulumi.Output<types.outputs.RoutingConfigurationResponse | undefined>;
+    declare public readonly routingConfiguration: pulumi.Output<types.outputs.RoutingConfigurationResponse | undefined>;
 
     /**
      * Create a HubVirtualNetworkConnection resource with the given unique name, arguments, and options.
@@ -83,22 +83,22 @@ export class HubVirtualNetworkConnection extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.virtualHubName === undefined) && !opts.urn) {
+            if (args?.virtualHubName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualHubName'");
             }
-            resourceInputs["allowHubToRemoteVnetTransit"] = args ? args.allowHubToRemoteVnetTransit : undefined;
-            resourceInputs["allowRemoteVnetToUseHubVnetGateways"] = args ? args.allowRemoteVnetToUseHubVnetGateways : undefined;
-            resourceInputs["connectionName"] = args ? args.connectionName : undefined;
-            resourceInputs["enableInternetSecurity"] = args ? args.enableInternetSecurity : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["remoteVirtualNetwork"] = args ? args.remoteVirtualNetwork : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["routingConfiguration"] = args ? args.routingConfiguration : undefined;
-            resourceInputs["virtualHubName"] = args ? args.virtualHubName : undefined;
+            resourceInputs["allowHubToRemoteVnetTransit"] = args?.allowHubToRemoteVnetTransit;
+            resourceInputs["allowRemoteVnetToUseHubVnetGateways"] = args?.allowRemoteVnetToUseHubVnetGateways;
+            resourceInputs["connectionName"] = args?.connectionName;
+            resourceInputs["enableInternetSecurity"] = args?.enableInternetSecurity;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["remoteVirtualNetwork"] = args?.remoteVirtualNetwork;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["routingConfiguration"] = args?.routingConfiguration;
+            resourceInputs["virtualHubName"] = args?.virtualHubName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -114,7 +114,7 @@ export class HubVirtualNetworkConnection extends pulumi.CustomResource {
             resourceInputs["routingConfiguration"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20200501:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20200601:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20200701:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20200801:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20201101:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20210201:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20210301:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20210501:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20210801:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20220101:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20220501:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20220701:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20220901:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20221101:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20230201:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20230401:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20230501:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20230601:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20230901:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20231101:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20240101:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20240301:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20240501:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20240701:HubVirtualNetworkConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20200501:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20200601:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20200701:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20200801:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20201101:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20210201:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20210301:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20210501:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20210801:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20220101:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20220501:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20220701:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20220901:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20221101:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20230201:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20230401:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20230501:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20230601:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20230901:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20231101:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20240101:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20240301:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20240501:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20240701:HubVirtualNetworkConnection" }, { type: "azure-native:network/v20241001:HubVirtualNetworkConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(HubVirtualNetworkConnection.__pulumiType, name, resourceInputs, opts);
     }

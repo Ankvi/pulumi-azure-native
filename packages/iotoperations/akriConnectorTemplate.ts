@@ -5,6 +5,8 @@ import * as types from "./types";
  * AkriConnectorTemplate resource.
  *
  * Uses Azure REST API version 2025-07-01-preview.
+ *
+ * Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class AkriConnectorTemplate extends pulumi.CustomResource {
     /**
@@ -36,27 +38,27 @@ export class AkriConnectorTemplate extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Edge location of the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The resource-specific properties for this resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.AkriConnectorTemplatePropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.AkriConnectorTemplatePropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a AkriConnectorTemplate resource with the given unique name, arguments, and options.
@@ -69,17 +71,17 @@ export class AkriConnectorTemplate extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instanceName === undefined) && !opts.urn) {
+            if (args?.instanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["akriConnectorTemplateName"] = args ? args.akriConnectorTemplateName : undefined;
-            resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["akriConnectorTemplateName"] = args?.akriConnectorTemplateName;
+            resourceInputs["extendedLocation"] = args?.extendedLocation;
+            resourceInputs["instanceName"] = args?.instanceName;
             resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.akriConnectorTemplatePropertiesArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -93,7 +95,7 @@ export class AkriConnectorTemplate extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20250701preview:AkriConnectorTemplate" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20250701preview:AkriConnectorTemplate" }, { type: "azure-native:iotoperations/v20251001:AkriConnectorTemplate" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AkriConnectorTemplate.__pulumiType, name, resourceInputs, opts);
     }

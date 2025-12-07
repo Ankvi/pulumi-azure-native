@@ -23,6 +23,46 @@ export interface AzureActiveDirectoryAppArgs {
 }
 
 /**
+ * Azure Blob Details
+ */
+export interface AzureBlobArgs {
+    /**
+     * Storage Account Key.
+     */
+    accountKey?: pulumi.Input<string>;
+    /**
+     * Authentication type used for accessing Azure Blob Storage.
+     */
+    authType?: pulumi.Input<enums.AuthType>;
+    /**
+     * Blob container name where backups are stored.
+     */
+    blobContainerName?: pulumi.Input<string>;
+    /**
+     * Identity details for authentication using a Managed Identity.
+     */
+    identity?: pulumi.Input<ManagedServiceIdentityArgs>;
+    /**
+     * Resource Id of the storage account where backups are stored.
+     */
+    storageAccountResourceId?: pulumi.Input<string>;
+}
+
+/**
+ * Backup Configuration
+ */
+export interface BackupConfigurationArgs {
+    /**
+     * Source location of backups.
+     */
+    sourceLocation?: pulumi.Input<SourceLocationArgs>;
+    /**
+     * Target location for copying backups.
+     */
+    targetLocation?: pulumi.Input<TargetLocationArgs>;
+}
+
+/**
  * Blob container storage information.
  */
 export interface BlobShareArgs {
@@ -724,6 +764,100 @@ export interface DatabaseMigrationPropertiesSqlDbArgs {
 }
 
 /**
+ * Database Migration Resource properties for SQL Managed Instance.
+ */
+export interface DatabaseMigrationPropertiesSqlMiArgs {
+    /**
+     * Backup configuration info.
+     */
+    backupConfiguration?: pulumi.Input<BackupConfigurationArgs>;
+    /**
+     *
+     * Expected value is 'SqlMi'.
+     */
+    kind: pulumi.Input<"SqlMi">;
+    /**
+     * ID for current migration operation.
+     */
+    migrationOperationId?: pulumi.Input<string>;
+    /**
+     * Resource Id of the Migration Service.
+     */
+    migrationService?: pulumi.Input<string>;
+    /**
+     * Offline configuration.
+     */
+    offlineConfiguration?: pulumi.Input<OfflineConfigurationArgs>;
+    /**
+     * Error message for migration provisioning failure, if any.
+     */
+    provisioningError?: pulumi.Input<string>;
+    /**
+     * Resource Id of the target resource.
+     */
+    scope?: pulumi.Input<string>;
+    /**
+     * Name of the source database.
+     */
+    sourceDatabaseName?: pulumi.Input<string>;
+    /**
+     * Source SQL Server connection details.
+     */
+    sourceSqlConnection?: pulumi.Input<SqlConnectionInformationArgs>;
+    /**
+     * Database collation to be used for the target database.
+     */
+    targetDatabaseCollation?: pulumi.Input<string>;
+}
+
+/**
+ * Database Migration Resource properties for SQL Virtual Machine.
+ */
+export interface DatabaseMigrationPropertiesSqlVmArgs {
+    /**
+     * Backup configuration info.
+     */
+    backupConfiguration?: pulumi.Input<BackupConfigurationArgs>;
+    /**
+     *
+     * Expected value is 'SqlVm'.
+     */
+    kind: pulumi.Input<"SqlVm">;
+    /**
+     * ID for current migration operation.
+     */
+    migrationOperationId?: pulumi.Input<string>;
+    /**
+     * Resource Id of the Migration Service.
+     */
+    migrationService?: pulumi.Input<string>;
+    /**
+     * Offline configuration.
+     */
+    offlineConfiguration?: pulumi.Input<OfflineConfigurationArgs>;
+    /**
+     * Error message for migration provisioning failure, if any.
+     */
+    provisioningError?: pulumi.Input<string>;
+    /**
+     * Resource Id of the target resource.
+     */
+    scope?: pulumi.Input<string>;
+    /**
+     * Name of the source database.
+     */
+    sourceDatabaseName?: pulumi.Input<string>;
+    /**
+     * Source SQL Server connection details.
+     */
+    sourceSqlConnection?: pulumi.Input<SqlConnectionInformationArgs>;
+    /**
+     * Database collation to be used for the target database.
+     */
+    targetDatabaseCollation?: pulumi.Input<string>;
+}
+
+/**
  * File share information with Path, Username, and Password.
  */
 export interface FileShareArgs {
@@ -1048,6 +1182,20 @@ export function getUserTablesSqlTaskPropertiesArgsProvideDefaults(val: GetUserTa
         ...val,
         input: (val.input ? pulumi.output(val.input).apply(getUserTablesSqlTaskInputArgsProvideDefaults) : undefined),
     };
+}
+
+/**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityArgs {
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: pulumi.Input<string | enums.ManagedServiceIdentityType>;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -2272,6 +2420,20 @@ export function mySqlConnectionInfoArgsProvideDefaults(val: MySqlConnectionInfoA
 }
 
 /**
+ * Offline configuration
+ */
+export interface OfflineConfigurationArgs {
+    /**
+     * Last backup name for offline migration. This is optional for migrations from file share. If it is not provided, then the service will determine the last backup file name based on latest backup files present in file share.
+     */
+    lastBackupName?: pulumi.Input<string>;
+    /**
+     * Offline migration
+     */
+    offline?: pulumi.Input<boolean>;
+}
+
+/**
  * Information for connecting to Oracle server
  */
 export interface OracleConnectionInfoArgs {
@@ -2438,6 +2600,20 @@ export interface ServiceSkuArgs {
 }
 
 /**
+ * Source Location details of backups.
+ */
+export interface SourceLocationArgs {
+    /**
+     * Source Azure Blob.
+     */
+    azureBlob?: pulumi.Input<AzureBlobArgs>;
+    /**
+     * Source File share.
+     */
+    fileShare?: pulumi.Input<SqlFileShareArgs>;
+}
+
+/**
  * Information for connecting to SQL database server
  */
 export interface SqlConnectionInfoArgs {
@@ -2541,6 +2717,24 @@ export interface SqlConnectionInformationArgs {
 }
 
 /**
+ * File share
+ */
+export interface SqlFileShareArgs {
+    /**
+     * Password for username to access file share location.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * Location as SMB share or local drive where backups are placed.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Username to access the file share location for backups.
+     */
+    username?: pulumi.Input<string>;
+}
+
+/**
  * SSIS migration info with SSIS store type, overwrite policy.
  */
 export interface SsisMigrationInfoArgs {
@@ -2556,6 +2750,20 @@ export interface SsisMigrationInfoArgs {
      * The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
      */
     ssisStoreType?: pulumi.Input<string | enums.SsisStoreType>;
+}
+
+/**
+ * Target Location details for optional copy of backups
+ */
+export interface TargetLocationArgs {
+    /**
+     * Storage Account Key.
+     */
+    accountKey?: pulumi.Input<string>;
+    /**
+     * Resource Id of the storage account copying backups.
+     */
+    storageAccountResourceId?: pulumi.Input<string>;
 }
 
 /**

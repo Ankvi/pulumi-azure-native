@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * A profile is a logical grouping of endpoints that share the same settings.
  *
- * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+ * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2025-01-01-preview, 2025-04-15, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Profile extends pulumi.CustomResource {
     /**
@@ -38,63 +38,63 @@ export class Profile extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Key-Value pair representing additional properties for profiles.
      */
-    public /*out*/ readonly extendedProperties!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly extendedProperties: pulumi.Output<{[key: string]: string}>;
     /**
      * The Id of the frontdoor.
      */
-    public /*out*/ readonly frontDoorId!: pulumi.Output<string>;
+    declare public /*out*/ readonly frontDoorId: pulumi.Output<string>;
     /**
-     * Managed service identity (system assigned and/or user assigned identities).
+     * The managed service identities assigned to this resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Kind of the profile. Used by portal to differentiate traditional CDN profile and new AFD profile.
      */
-    public /*out*/ readonly kind!: pulumi.Output<string>;
+    declare public /*out*/ readonly kind: pulumi.Output<string>;
     /**
-     * Resource location.
+     * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
      */
-    public readonly logScrubbing!: pulumi.Output<types.outputs.ProfileLogScrubbingResponse | undefined>;
+    declare public readonly logScrubbing: pulumi.Output<types.outputs.ProfileLogScrubbingResponse | undefined>;
     /**
-     * Resource name.
+     * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns.
      */
-    public readonly originResponseTimeoutSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly originResponseTimeoutSeconds: pulumi.Output<number | undefined>;
     /**
      * Provisioning status of the profile.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Resource status of the profile.
      */
-    public /*out*/ readonly resourceState!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceState: pulumi.Output<string>;
     /**
      * The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile.
      */
-    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
+    declare public readonly sku: pulumi.Output<types.outputs.SkuResponse>;
     /**
-     * Read only system data
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Profile resource with the given unique name, arguments, and options.
@@ -107,20 +107,20 @@ export class Profile extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.sku === undefined) && !opts.urn) {
+            if (args?.sku === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sku'");
             }
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["logScrubbing"] = args ? args.logScrubbing : undefined;
-            resourceInputs["originResponseTimeoutSeconds"] = args ? args.originResponseTimeoutSeconds : undefined;
-            resourceInputs["profileName"] = args ? args.profileName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["logScrubbing"] = args?.logScrubbing;
+            resourceInputs["originResponseTimeoutSeconds"] = args?.originResponseTimeoutSeconds;
+            resourceInputs["profileName"] = args?.profileName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["extendedProperties"] = undefined /*out*/;
             resourceInputs["frontDoorId"] = undefined /*out*/;
@@ -148,7 +148,7 @@ export class Profile extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20150601:Profile" }, { type: "azure-native:cdn/v20160402:Profile" }, { type: "azure-native:cdn/v20161002:Profile" }, { type: "azure-native:cdn/v20170402:Profile" }, { type: "azure-native:cdn/v20171012:Profile" }, { type: "azure-native:cdn/v20190415:Profile" }, { type: "azure-native:cdn/v20190615:Profile" }, { type: "azure-native:cdn/v20190615preview:Profile" }, { type: "azure-native:cdn/v20191231:Profile" }, { type: "azure-native:cdn/v20200331:Profile" }, { type: "azure-native:cdn/v20200415:Profile" }, { type: "azure-native:cdn/v20200901:Profile" }, { type: "azure-native:cdn/v20210601:Profile" }, { type: "azure-native:cdn/v20220501preview:Profile" }, { type: "azure-native:cdn/v20221101preview:Profile" }, { type: "azure-native:cdn/v20230501:Profile" }, { type: "azure-native:cdn/v20230701preview:Profile" }, { type: "azure-native:cdn/v20240201:Profile" }, { type: "azure-native:cdn/v20240501preview:Profile" }, { type: "azure-native:cdn/v20240601preview:Profile" }, { type: "azure-native:cdn/v20240901:Profile" }, { type: "azure-native:cdn/v20250101preview:Profile" }, { type: "azure-native:cdn/v20250415:Profile" }, { type: "azure-native:cdn/v20250601:Profile" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20150601:Profile" }, { type: "azure-native:cdn/v20160402:Profile" }, { type: "azure-native:cdn/v20161002:Profile" }, { type: "azure-native:cdn/v20170402:Profile" }, { type: "azure-native:cdn/v20171012:Profile" }, { type: "azure-native:cdn/v20190415:Profile" }, { type: "azure-native:cdn/v20190615:Profile" }, { type: "azure-native:cdn/v20190615preview:Profile" }, { type: "azure-native:cdn/v20191231:Profile" }, { type: "azure-native:cdn/v20200331:Profile" }, { type: "azure-native:cdn/v20200415:Profile" }, { type: "azure-native:cdn/v20200901:Profile" }, { type: "azure-native:cdn/v20210601:Profile" }, { type: "azure-native:cdn/v20220501preview:Profile" }, { type: "azure-native:cdn/v20221101preview:Profile" }, { type: "azure-native:cdn/v20230501:Profile" }, { type: "azure-native:cdn/v20230701preview:Profile" }, { type: "azure-native:cdn/v20240201:Profile" }, { type: "azure-native:cdn/v20240501preview:Profile" }, { type: "azure-native:cdn/v20240601preview:Profile" }, { type: "azure-native:cdn/v20240901:Profile" }, { type: "azure-native:cdn/v20250101preview:Profile" }, { type: "azure-native:cdn/v20250415:Profile" }, { type: "azure-native:cdn/v20250601:Profile" }, { type: "azure-native:cdn/v20250701preview:Profile" }, { type: "azure-native:cdn/v20250901preview:Profile" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Profile.__pulumiType, name, resourceInputs, opts);
     }
@@ -159,11 +159,11 @@ export class Profile extends pulumi.CustomResource {
  */
 export interface ProfileArgs {
     /**
-     * Managed service identity (system assigned and/or user assigned identities).
+     * The managed service identities assigned to this resource.
      */
     identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
-     * Resource location.
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
@@ -179,7 +179,7 @@ export interface ProfileArgs {
      */
     profileName?: pulumi.Input<string>;
     /**
-     * Name of the Resource group within the Azure subscription.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

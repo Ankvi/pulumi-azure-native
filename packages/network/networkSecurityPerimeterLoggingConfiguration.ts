@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
  *
- * Other available API versions: 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkSecurityPerimeterLoggingConfiguration extends pulumi.CustomResource {
     /**
@@ -38,23 +38,23 @@ export class NetworkSecurityPerimeterLoggingConfiguration extends pulumi.CustomR
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Properties of the NSP logging configuration.
      */
-    public readonly properties!: pulumi.Output<types.outputs.NspLoggingConfigurationPropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.NspLoggingConfigurationPropertiesResponse>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a NetworkSecurityPerimeterLoggingConfiguration resource with the given unique name, arguments, and options.
@@ -67,16 +67,16 @@ export class NetworkSecurityPerimeterLoggingConfiguration extends pulumi.CustomR
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.networkSecurityPerimeterName === undefined) && !opts.urn) {
+            if (args?.networkSecurityPerimeterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkSecurityPerimeterName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["loggingConfigurationName"] = args ? args.loggingConfigurationName : undefined;
-            resourceInputs["networkSecurityPerimeterName"] = args ? args.networkSecurityPerimeterName : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["loggingConfigurationName"] = args?.loggingConfigurationName;
+            resourceInputs["networkSecurityPerimeterName"] = args?.networkSecurityPerimeterName;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -89,7 +89,7 @@ export class NetworkSecurityPerimeterLoggingConfiguration extends pulumi.CustomR
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20240601preview:NetworkSecurityPerimeterLoggingConfiguration" }, { type: "azure-native:network/v20240701:NetworkSecurityPerimeterLoggingConfiguration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20240601preview:NetworkSecurityPerimeterLoggingConfiguration" }, { type: "azure-native:network/v20240701:NetworkSecurityPerimeterLoggingConfiguration" }, { type: "azure-native:network/v20241001:NetworkSecurityPerimeterLoggingConfiguration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkSecurityPerimeterLoggingConfiguration.__pulumiType, name, resourceInputs, opts);
     }

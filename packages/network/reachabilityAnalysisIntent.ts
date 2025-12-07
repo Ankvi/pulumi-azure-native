@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2024-01-01-preview.
  *
- * Other available API versions: 2024-01-01-preview, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-01-01-preview, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ReachabilityAnalysisIntent extends pulumi.CustomResource {
     /**
@@ -38,23 +38,23 @@ export class ReachabilityAnalysisIntent extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Represents the Reachability Analysis Intent properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.ReachabilityAnalysisIntentPropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.ReachabilityAnalysisIntentPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ReachabilityAnalysisIntent resource with the given unique name, arguments, and options.
@@ -67,23 +67,23 @@ export class ReachabilityAnalysisIntent extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.networkManagerName === undefined) && !opts.urn) {
+            if (args?.networkManagerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkManagerName'");
             }
-            if ((!args || args.properties === undefined) && !opts.urn) {
+            if (args?.properties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'properties'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["networkManagerName"] = args ? args.networkManagerName : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["reachabilityAnalysisIntentName"] = args ? args.reachabilityAnalysisIntentName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["networkManagerName"] = args?.networkManagerName;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["reachabilityAnalysisIntentName"] = args?.reachabilityAnalysisIntentName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -96,7 +96,7 @@ export class ReachabilityAnalysisIntent extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20240101preview:ReachabilityAnalysisIntent" }, { type: "azure-native:network/v20240501:ReachabilityAnalysisIntent" }, { type: "azure-native:network/v20240701:ReachabilityAnalysisIntent" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20240101preview:ReachabilityAnalysisIntent" }, { type: "azure-native:network/v20240501:ReachabilityAnalysisIntent" }, { type: "azure-native:network/v20240701:ReachabilityAnalysisIntent" }, { type: "azure-native:network/v20241001:ReachabilityAnalysisIntent" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ReachabilityAnalysisIntent.__pulumiType, name, resourceInputs, opts);
     }

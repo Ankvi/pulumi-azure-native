@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  *
- * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
+ * Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
  *
- * Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FeaturestoreEntityContainerEntity extends pulumi.CustomResource {
     /**
@@ -38,23 +38,23 @@ export class FeaturestoreEntityContainerEntity extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly featurestoreEntityContainerProperties!: pulumi.Output<types.outputs.FeaturestoreEntityContainerResponse>;
+    declare public readonly featurestoreEntityContainerProperties: pulumi.Output<types.outputs.FeaturestoreEntityContainerResponse>;
     /**
      * The name of the resource
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a FeaturestoreEntityContainerEntity resource with the given unique name, arguments, and options.
@@ -67,19 +67,19 @@ export class FeaturestoreEntityContainerEntity extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.featurestoreEntityContainerProperties === undefined) && !opts.urn) {
+            if (args?.featurestoreEntityContainerProperties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'featurestoreEntityContainerProperties'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
             resourceInputs["featurestoreEntityContainerProperties"] = args ? (args.featurestoreEntityContainerProperties ? pulumi.output(args.featurestoreEntityContainerProperties).apply(types.inputs.featurestoreEntityContainerArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -91,7 +91,7 @@ export class FeaturestoreEntityContainerEntity extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230201preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20230401preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20230601preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20230801preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20231001:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20240101preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20240401:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20240401preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20240701preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20241001:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20241001preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20250101preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20250401:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20250401preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20250601:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20250701preview:FeaturestoreEntityContainerEntity" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230201preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20230401preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20230601preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20230801preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20231001:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20240101preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20240401:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20240401preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20240701preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20241001:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20241001preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20250101preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20250401:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20250401preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20250601:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20250701preview:FeaturestoreEntityContainerEntity" }, { type: "azure-native:machinelearningservices/v20250901:FeaturestoreEntityContainerEntity" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FeaturestoreEntityContainerEntity.__pulumiType, name, resourceInputs, opts);
     }

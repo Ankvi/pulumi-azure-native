@@ -5,7 +5,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  *
  * Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
  *
- * Other available API versions: 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkSecurityPerimeterProfile extends pulumi.CustomResource {
     /**
@@ -37,31 +37,31 @@ export class NetworkSecurityPerimeterProfile extends pulumi.CustomResource {
     /**
      * Version number that increases with every update to access rules within the profile.
      */
-    public /*out*/ readonly accessRulesVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessRulesVersion: pulumi.Output<string>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Version number that increases with every update to diagnostic settings within the profile.
      */
-    public /*out*/ readonly diagnosticSettingsVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly diagnosticSettingsVersion: pulumi.Output<string>;
     /**
      * Resource location.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a NetworkSecurityPerimeterProfile resource with the given unique name, arguments, and options.
@@ -74,18 +74,18 @@ export class NetworkSecurityPerimeterProfile extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.networkSecurityPerimeterName === undefined) && !opts.urn) {
+            if (args?.networkSecurityPerimeterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkSecurityPerimeterName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["networkSecurityPerimeterName"] = args ? args.networkSecurityPerimeterName : undefined;
-            resourceInputs["profileName"] = args ? args.profileName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["networkSecurityPerimeterName"] = args?.networkSecurityPerimeterName;
+            resourceInputs["profileName"] = args?.profileName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["accessRulesVersion"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["diagnosticSettingsVersion"] = undefined /*out*/;
@@ -101,7 +101,7 @@ export class NetworkSecurityPerimeterProfile extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20210201preview:NspProfile" }, { type: "azure-native:network/v20230701preview:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20230701preview:NspProfile" }, { type: "azure-native:network/v20230801preview:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20230801preview:NspProfile" }, { type: "azure-native:network/v20240601preview:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20240701:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network:NspProfile" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20210201preview:NspProfile" }, { type: "azure-native:network/v20230701preview:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20230701preview:NspProfile" }, { type: "azure-native:network/v20230801preview:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20230801preview:NspProfile" }, { type: "azure-native:network/v20240601preview:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20240701:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20241001:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network:NspProfile" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkSecurityPerimeterProfile.__pulumiType, name, resourceInputs, opts);
     }

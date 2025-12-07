@@ -107,7 +107,7 @@ export const BackendProtocol = {
 } as const;
 
 /**
- * Backend communication protocol.
+ * Backend communication protocol. Required when backend type is 'Single'.
  */
 export type BackendProtocol = (typeof BackendProtocol)[keyof typeof BackendProtocol];
 

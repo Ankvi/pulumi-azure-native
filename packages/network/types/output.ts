@@ -8186,6 +8186,20 @@ export interface QosPortRangeResponse {
 }
 
 /**
+ * Gateway or VpnServerConfiguration Radius server with radius secret details
+ */
+export interface RadiusAuthServerResponse {
+    /**
+     * Radius server IPAddress
+     */
+    radiusServerAddress?: string;
+    /**
+     * Radius server secret
+     */
+    radiusServerSecret?: string;
+}
+
+/**
  * Radius Server Settings.
  */
 export interface RadiusServerResponse {

@@ -38,27 +38,27 @@ export class PrivateEndpointConnectionControllerPrivateEndpointConnection extend
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Gets the tag for optimistic concurrency control.
      */
-    public readonly eTag!: pulumi.Output<string>;
+    declare public readonly eTag: pulumi.Output<string>;
     /**
      * Gets the name of the resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Gets the properties of the object.
      */
-    public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Gets the resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a PrivateEndpointConnectionControllerPrivateEndpointConnection resource with the given unique name, arguments, and options.
@@ -71,17 +71,17 @@ export class PrivateEndpointConnectionControllerPrivateEndpointConnection extend
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.migrateProjectName === undefined) && !opts.urn) {
+            if (args?.migrateProjectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'migrateProjectName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["eTag"] = args ? args.eTag : undefined;
-            resourceInputs["migrateProjectName"] = args ? args.migrateProjectName : undefined;
-            resourceInputs["peConnectionName"] = args ? args.peConnectionName : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["eTag"] = args?.eTag;
+            resourceInputs["migrateProjectName"] = args?.migrateProjectName;
+            resourceInputs["peConnectionName"] = args?.peConnectionName;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;

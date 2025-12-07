@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ConfigurationPolicyGroup extends pulumi.CustomResource {
     /**
@@ -38,39 +38,39 @@ export class ConfigurationPolicyGroup extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Shows if this is a Default VpnServerConfigurationPolicyGroup or not.
      */
-    public readonly isDefault!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefault: pulumi.Output<boolean | undefined>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     /**
      * List of references to P2SConnectionConfigurations.
      */
-    public /*out*/ readonly p2SConnectionConfigurations!: pulumi.Output<types.outputs.SubResourceResponse[]>;
+    declare public /*out*/ readonly p2SConnectionConfigurations: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * Multiple PolicyMembers for VpnServerConfigurationPolicyGroup.
      */
-    public readonly policyMembers!: pulumi.Output<types.outputs.VpnServerConfigurationPolicyGroupMemberResponse[] | undefined>;
+    declare public readonly policyMembers: pulumi.Output<types.outputs.VpnServerConfigurationPolicyGroupMemberResponse[] | undefined>;
     /**
      * Priority for VpnServerConfigurationPolicyGroup.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * The provisioning state of the VpnServerConfigurationPolicyGroup resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ConfigurationPolicyGroup resource with the given unique name, arguments, and options.
@@ -83,20 +83,20 @@ export class ConfigurationPolicyGroup extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.vpnServerConfigurationName === undefined) && !opts.urn) {
+            if (args?.vpnServerConfigurationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpnServerConfigurationName'");
             }
-            resourceInputs["configurationPolicyGroupName"] = args ? args.configurationPolicyGroupName : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policyMembers"] = args ? args.policyMembers : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["vpnServerConfigurationName"] = args ? args.vpnServerConfigurationName : undefined;
+            resourceInputs["configurationPolicyGroupName"] = args?.configurationPolicyGroupName;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["isDefault"] = args?.isDefault;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["policyMembers"] = args?.policyMembers;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["vpnServerConfigurationName"] = args?.vpnServerConfigurationName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["p2SConnectionConfigurations"] = undefined /*out*/;
@@ -114,7 +114,7 @@ export class ConfigurationPolicyGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210801:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20220101:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20220501:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20220701:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20220901:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20221101:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20230201:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20230401:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20230501:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20230601:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20230901:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20231101:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20240101:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20240301:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20240501:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20240701:ConfigurationPolicyGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210801:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20220101:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20220501:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20220701:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20220901:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20221101:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20230201:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20230401:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20230501:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20230601:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20230901:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20231101:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20240101:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20240301:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20240501:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20240701:ConfigurationPolicyGroup" }, { type: "azure-native:network/v20241001:ConfigurationPolicyGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ConfigurationPolicyGroup.__pulumiType, name, resourceInputs, opts);
     }

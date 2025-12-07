@@ -171,17 +171,59 @@ export interface ActiveDirectoryInformationArgs {
 }
 
 /**
+ * Authentication related configuration for the SQL Server Instance.
+ */
+export interface AuthenticationArgs {
+    /**
+     * Mode of authentication in SqlServer.
+     */
+    mode?: pulumi.Input<string | enums.Mode>;
+    /**
+     * Entra Authentication configuration for the SQL Server Instance.
+     */
+    sqlServerEntraIdentity?: pulumi.Input<pulumi.Input<EntraAuthenticationArgs>[]>;
+}
+
+/**
  * The specifications of the availability group replica configuration
  */
 export interface AvailabilityGroupConfigureArgs {
+    /**
+     * Property that determines whether a given availability replica can run in synchronous-commit mode
+     */
+    availabilityMode?: pulumi.Input<string | enums.ArcSqlServerAvailabilityMode>;
     /**
      * Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
      */
     backupPriority?: pulumi.Input<number>;
     /**
+     * Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified.
+     */
+    certificateName?: pulumi.Input<string>;
+    /**
+     * Permitted authentication modes for the mirroring endpoint.
+     */
+    endpointAuthenticationMode?: pulumi.Input<string | enums.ConnectionAuth>;
+    /**
+     * The login which will connect to the mirroring endpoint.
+     */
+    endpointConnectLogin?: pulumi.Input<string>;
+    /**
+     * Name of the mirroring endpoint URL
+     */
+    endpointName?: pulumi.Input<string>;
+    /**
      * Mirroring endpoint URL of availability group replica
      */
     endpointUrl?: pulumi.Input<string>;
+    /**
+     * Property to set the failover mode of the availability group replica
+     */
+    failoverMode?: pulumi.Input<string | enums.ArcSqlServerFailoverMode>;
+    /**
+     * Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections)
+     */
+    primaryAllowConnections?: pulumi.Input<enums.PrimaryAllowConnections>;
     /**
      * Connectivity endpoint (URL) of the read only availability replica.
      */
@@ -190,6 +232,14 @@ export interface AvailabilityGroupConfigureArgs {
      * Connectivity endpoint (URL) of the read write availability replica.
      */
     readWriteRoutingUrl?: pulumi.Input<string>;
+    /**
+     * Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections.
+     */
+    secondaryAllowConnections?: pulumi.Input<enums.SecondaryAllowConnections>;
+    /**
+     * Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica.
+     */
+    seedingMode?: pulumi.Input<enums.SeedingMode>;
     /**
      * The time-out period of availability group session replica, in seconds.
      */
@@ -228,6 +278,10 @@ export interface AvailabilityGroupInfoArgs {
      * Specifies whether this is a distributed availability group.
      */
     isDistributed?: pulumi.Input<boolean>;
+    /**
+     * The listener for the sql server availability group
+     */
+    listener?: pulumi.Input<SqlAvailabilityGroupStaticIPListenerPropertiesArgs>;
     /**
      * The number of secondary replicas that must be in a synchronized state for a commit to complete.
      */
@@ -268,6 +322,16 @@ export interface BasicLoginInformationArgs {
      * Login username.
      */
     username?: pulumi.Input<string>;
+}
+
+/**
+ * Client connection related configuration.
+ */
+export interface ClientConnectionArgs {
+    /**
+     * Indicates if client connection is enabled for this SQL Server instance.
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 /**
@@ -331,6 +395,20 @@ export function dataControllerPropertiesArgsProvideDefaults(val: DataControllerP
         ...val,
         infrastructure: (val.infrastructure) ?? "other",
     };
+}
+
+/**
+ * Entra Authentication configuration.
+ */
+export interface EntraAuthenticationArgs {
+    /**
+     * The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity.
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * The method used for Entra authentication
+     */
+    identityType?: pulumi.Input<string | enums.IdentityType>;
 }
 
 /**
@@ -571,6 +649,26 @@ export interface LogAnalyticsWorkspaceConfigArgs {
 }
 
 /**
+ * Migration related configuration.
+ */
+export interface MigrationArgs {
+    /**
+     * Migration assessments related configuration.
+     */
+    assessment?: pulumi.Input<MigrationAssessmentArgs>;
+}
+
+/**
+ * The migration assessment related configuration.
+ */
+export interface MigrationAssessmentArgs {
+    /**
+     * Indicates if migration assessment is enabled for this SQL Server instance.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+/**
  * The monitoring configuration.
  */
 export interface MonitoringArgs {
@@ -683,9 +781,46 @@ export interface SqlAvailabilityGroupReplicaResourcePropertiesArgs {
      */
     configure?: pulumi.Input<AvailabilityGroupConfigureArgs>;
     /**
-     * the replica name.
+     * The replica name.
      */
     replicaName?: pulumi.Input<string>;
+    /**
+     * Resource id of this replica. This is required for a distributed availability group, in which case it describes the location of the availability group that hosts one replica in the DAG. In a non-distributed availability group this field is optional but can be used to store the Azure resource id for AG.
+     */
+    replicaResourceId?: pulumi.Input<string>;
+}
+
+/**
+ * The properties of a static IP Arc Sql availability group listener
+ */
+export interface SqlAvailabilityGroupStaticIPListenerPropertiesArgs {
+    /**
+     * the DNS name for the listener.
+     */
+    dnsName?: pulumi.Input<string>;
+    /**
+     * IP V4 Addresses and masks for the listener.
+     */
+    ipV4AddressesAndMasks?: pulumi.Input<pulumi.Input<SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArgs>[]>;
+    /**
+     * IP V6 Addresses for the listener
+     */
+    ipV6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Network port for the listener. Default is 1433.
+     */
+    port?: pulumi.Input<number>;
+}
+
+export interface SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArgs {
+    /**
+     * IPV4 address
+     */
+    ipAddress?: pulumi.Input<string>;
+    /**
+     * IPV4 netmask
+     */
+    mask?: pulumi.Input<string>;
 }
 
 /**
@@ -879,6 +1014,10 @@ export interface SqlServerDatabaseResourcePropertiesArgs {
      */
     createMode?: pulumi.Input<string | enums.DatabaseCreateMode>;
     /**
+     * Total size in MB for the data (mdf and ndf) files for this database.
+     */
+    dataFileSizeMB?: pulumi.Input<number>;
+    /**
      * Creation date of the database.
      */
     databaseCreationDate?: pulumi.Input<string>;
@@ -890,6 +1029,10 @@ export interface SqlServerDatabaseResourcePropertiesArgs {
      * Whether the database is read only or not.
      */
     isReadOnly?: pulumi.Input<boolean>;
+    /**
+     * Total size in MB for the log (ldf) files for this database.
+     */
+    logFileSizeMB?: pulumi.Input<number>;
     /**
      * Status of the database.
      */
@@ -903,7 +1046,7 @@ export interface SqlServerDatabaseResourcePropertiesArgs {
      */
     sizeMB?: pulumi.Input<number>;
     /**
-     * The resource identifier of the source database associated with create operation of this database.
+     * The name of the source database associated with create operation of this database.
      */
     sourceDatabaseId?: pulumi.Input<string>;
     /**
@@ -972,9 +1115,17 @@ export interface SqlServerEsuLicensePropertiesArgs {
  */
 export interface SqlServerInstancePropertiesArgs {
     /**
+     * Authentication related configuration for the SQL Server Instance.
+     */
+    authentication?: pulumi.Input<AuthenticationArgs>;
+    /**
      * The backup profile for the SQL server.
      */
     backupPolicy?: pulumi.Input<BackupPolicyArgs>;
+    /**
+     * Client connection related configuration.
+     */
+    clientConnection?: pulumi.Input<ClientConnectionArgs>;
     /**
      * The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
      */
@@ -992,9 +1143,17 @@ export interface SqlServerInstancePropertiesArgs {
      */
     instanceName?: pulumi.Input<string>;
     /**
+     * Migration related configuration.
+     */
+    migration?: pulumi.Input<MigrationArgs>;
+    /**
      * The monitoring configuration.
      */
     monitoring?: pulumi.Input<MonitoringArgs>;
+    /**
+     * Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host.
+     */
+    serviceType?: pulumi.Input<string | enums.ServiceType>;
     /**
      * Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
      */

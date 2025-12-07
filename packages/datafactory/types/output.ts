@@ -11750,6 +11750,10 @@ export interface HDInsightLinkedServiceResponse {
      */
     annotations?: any[];
     /**
+     * HDInsight cluster authentication type.
+     */
+    clusterAuthType?: string;
+    /**
      * HDInsight cluster URI. Type: string (or Expression with resultType string).
      */
     clusterUri: any;
@@ -11757,6 +11761,10 @@ export interface HDInsightLinkedServiceResponse {
      * The integration runtime reference.
      */
     connectVia?: IntegrationRuntimeReferenceResponse;
+    /**
+     * The credential reference containing MI authentication information for the HDInsight cluster.
+     */
+    credential?: CredentialReferenceResponse;
     /**
      * Linked service description.
      */
@@ -14068,9 +14076,17 @@ export interface LakeHouseLinkedServiceResponse {
      */
     artifactId?: any;
     /**
+     * The authentication type to use.
+     */
+    authenticationType?: string;
+    /**
      * The integration runtime reference.
      */
     connectVia?: IntegrationRuntimeReferenceResponse;
+    /**
+     * The credential reference containing authentication information.
+     */
+    credential?: CredentialReferenceResponse;
     /**
      * Linked service description.
      */
@@ -14524,6 +14540,10 @@ export interface LookupActivityResponse {
      * Activity state. This is an optional property and if not provided, the state will be Active by default.
      */
     state?: string;
+    /**
+     * Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
+     */
+    treatDecimalAsString?: any;
     /**
      * Type of activity.
      * Expected value is 'Lookup'.
@@ -20788,6 +20808,10 @@ export interface SalesforceV2SourceResponse {
      */
     pageSize?: any;
     /**
+     * Partition option for the SalesforceV2 connector in copy activity, AutoDetect or None. Type: string (or Expression with resultType string).
+     */
+    partitionOption?: any;
+    /**
      * You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
      */
     query?: any;
@@ -22181,6 +22205,10 @@ export interface ScriptActivityResponse {
      * Activity state. This is an optional property and if not provided, the state will be Active by default.
      */
     state?: string;
+    /**
+     * Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
+     */
+    treatDecimalAsString?: any;
     /**
      * Type of activity.
      * Expected value is 'Script'.
@@ -23701,6 +23729,10 @@ export interface SnowflakeV2LinkedServiceResponse {
      * Expected value is 'SnowflakeV2'.
      */
     type: "SnowflakeV2";
+    /**
+     * Indicates whether to use UTC timezone for timestamp data types. Type: boolean.
+     */
+    useUtcTimestamps?: any;
     /**
      * The name of the Snowflake user.
      */
@@ -26618,9 +26650,17 @@ export interface WarehouseLinkedServiceResponse {
      */
     artifactId: any;
     /**
+     * The authentication type to use.
+     */
+    authenticationType?: string;
+    /**
      * The integration runtime reference.
      */
     connectVia?: IntegrationRuntimeReferenceResponse;
+    /**
+     * The credential reference containing authentication information.
+     */
+    credential?: CredentialReferenceResponse;
     /**
      * Linked service description.
      */

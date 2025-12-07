@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-01-preview.
  *
- * Other available API versions: 2022-12-01-preview, 2024-08-01-preview, 2025-01-01, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-01-preview, 2024-08-01-preview, 2025-01-01, 2025-02-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DefenderForStorage extends pulumi.CustomResource {
     /**
@@ -38,19 +38,19 @@ export class DefenderForStorage extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Resource name
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Defender for Storage resource properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.DefenderForStorageSettingPropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.DefenderForStorageSettingPropertiesResponse>;
     /**
      * Resource type
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a DefenderForStorage resource with the given unique name, arguments, and options.
@@ -63,12 +63,12 @@ export class DefenderForStorage extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceId === undefined) && !opts.urn) {
+            if (args?.resourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
-            resourceInputs["settingName"] = args ? args.settingName : undefined;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceId"] = args?.resourceId;
+            resourceInputs["settingName"] = args?.settingName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -79,7 +79,7 @@ export class DefenderForStorage extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:security/v20221201preview:DefenderForStorage" }, { type: "azure-native:security/v20240801preview:DefenderForStorage" }, { type: "azure-native:security/v20241001preview:DefenderForStorage" }, { type: "azure-native:security/v20250101:DefenderForStorage" }, { type: "azure-native:security/v20250201preview:DefenderForStorage" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:security/v20221201preview:DefenderForStorage" }, { type: "azure-native:security/v20240801preview:DefenderForStorage" }, { type: "azure-native:security/v20241001preview:DefenderForStorage" }, { type: "azure-native:security/v20250101:DefenderForStorage" }, { type: "azure-native:security/v20250201preview:DefenderForStorage" }, { type: "azure-native:security/v20250601:DefenderForStorage" }, { type: "azure-native:security/v20250701preview:DefenderForStorage" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DefenderForStorage.__pulumiType, name, resourceInputs, opts);
     }

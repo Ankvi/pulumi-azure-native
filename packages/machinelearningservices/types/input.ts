@@ -5931,6 +5931,18 @@ export interface ManagedNetworkProvisionStatusArgs {
  */
 export interface ManagedNetworkSettingsArgs {
     /**
+     * A flag to indicate if monitoring needs to be enabled for the managed network firewall.
+     */
+    enableFirewallLog?: pulumi.Input<boolean>;
+    /**
+     * A flag to indicate if monitoring needs to be enabled for the managed network.
+     */
+    enableNetworkMonitor?: pulumi.Input<boolean>;
+    /**
+     * Public IP address assigned to the Azure Firewall.
+     */
+    firewallPublicIpAddress?: pulumi.Input<string>;
+    /**
      * Firewall Sku used for FQDN Rules
      */
     firewallSku?: pulumi.Input<string | enums.FirewallSku>;
@@ -5938,11 +5950,25 @@ export interface ManagedNetworkSettingsArgs {
      * Isolation mode for the managed network of a machine learning workspace.
      */
     isolationMode?: pulumi.Input<string | enums.IsolationMode>;
+    /**
+     * The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
+     */
+    managedNetworkKind?: pulumi.Input<string | enums.ManagedNetworkKind>;
     outboundRules?: pulumi.Input<{[key: string]: pulumi.Input<FqdnOutboundRuleArgs | PrivateEndpointOutboundRuleArgs | ServiceTagOutboundRuleArgs>}>;
     /**
      * Status of the Provisioning for the managed network of a machine learning workspace.
      */
     status?: pulumi.Input<ManagedNetworkProvisionStatusArgs>;
+}
+/**
+ * managedNetworkSettingsArgsProvideDefaults sets the appropriate defaults for ManagedNetworkSettingsArgs
+ */
+export function managedNetworkSettingsArgsProvideDefaults(val: ManagedNetworkSettingsArgs): ManagedNetworkSettingsArgs {
+    return {
+        ...val,
+        enableFirewallLog: (val.enableFirewallLog) ?? false,
+        enableNetworkMonitor: (val.enableNetworkMonitor) ?? false,
+    };
 }
 
 /**
@@ -7231,10 +7257,6 @@ export interface RegistryArgs {
      * Details of each region the registry is in
      */
     regionDetails?: pulumi.Input<pulumi.Input<RegistryRegionArmDetailsArgs>[]>;
-    /**
-     * RegistryId Guid for this registry
-     */
-    registryId?: pulumi.Input<string>;
     /**
      * Private endpoint connections info used for pending connections in private link portal
      */

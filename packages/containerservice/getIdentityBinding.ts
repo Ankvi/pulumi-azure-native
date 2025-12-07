@@ -5,6 +5,8 @@ import * as types from "./types";
  * The IdentityBinding resource.
  *
  * Uses Azure REST API version 2025-06-02-preview.
+ *
+ * Other available API versions: 2025-07-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getIdentityBinding(args: GetIdentityBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetIdentityBindingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -67,6 +69,8 @@ export interface GetIdentityBindingResult {
  * The IdentityBinding resource.
  *
  * Uses Azure REST API version 2025-06-02-preview.
+ *
+ * Other available API versions: 2025-07-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getIdentityBindingOutput(args: GetIdentityBindingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdentityBindingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

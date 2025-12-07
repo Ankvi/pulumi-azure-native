@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2022-09-01, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -38,23 +38,23 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Describes the properties of an existing private endpoint connection to the Azure AI Search service.
      */
-    public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a PrivateEndpointConnection resource with the given unique name, arguments, and options.
@@ -67,16 +67,16 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.searchServiceName === undefined) && !opts.urn) {
+            if (args?.searchServiceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'searchServiceName'");
             }
-            resourceInputs["privateEndpointConnectionName"] = args ? args.privateEndpointConnectionName : undefined;
+            resourceInputs["privateEndpointConnectionName"] = args?.privateEndpointConnectionName;
             resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.privateEndpointConnectionPropertiesArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["searchServiceName"] = args ? args.searchServiceName : undefined;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["searchServiceName"] = args?.searchServiceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -89,7 +89,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:search/v20191001preview:PrivateEndpointConnection" }, { type: "azure-native:search/v20200313:PrivateEndpointConnection" }, { type: "azure-native:search/v20200801:PrivateEndpointConnection" }, { type: "azure-native:search/v20200801preview:PrivateEndpointConnection" }, { type: "azure-native:search/v20210401preview:PrivateEndpointConnection" }, { type: "azure-native:search/v20220901:PrivateEndpointConnection" }, { type: "azure-native:search/v20231101:PrivateEndpointConnection" }, { type: "azure-native:search/v20240301preview:PrivateEndpointConnection" }, { type: "azure-native:search/v20240601preview:PrivateEndpointConnection" }, { type: "azure-native:search/v20250201preview:PrivateEndpointConnection" }, { type: "azure-native:search/v20250501:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:search/v20191001preview:PrivateEndpointConnection" }, { type: "azure-native:search/v20200313:PrivateEndpointConnection" }, { type: "azure-native:search/v20200801:PrivateEndpointConnection" }, { type: "azure-native:search/v20200801preview:PrivateEndpointConnection" }, { type: "azure-native:search/v20210401preview:PrivateEndpointConnection" }, { type: "azure-native:search/v20220901:PrivateEndpointConnection" }, { type: "azure-native:search/v20231101:PrivateEndpointConnection" }, { type: "azure-native:search/v20240301preview:PrivateEndpointConnection" }, { type: "azure-native:search/v20240601preview:PrivateEndpointConnection" }, { type: "azure-native:search/v20250201preview:PrivateEndpointConnection" }, { type: "azure-native:search/v20250501:PrivateEndpointConnection" }, { type: "azure-native:search/v20251001preview:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }

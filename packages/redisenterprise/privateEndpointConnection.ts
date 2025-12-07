@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-01-preview.
  *
- * Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-10-01-preview, 2021-02-01-preview, 2021-03-01, 2021-08-01, 2022-01-01, 2022-11-01-preview, 2023-03-01-preview, 2023-07-01, 2023-08-01-preview, 2023-10-01-preview, 2023-11-01, 2024-02-01, 2024-03-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-10-01, 2025-04-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -38,27 +38,27 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The resource of private end point.
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
+    declare public /*out*/ readonly privateEndpoint: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse>;
+    declare public readonly privateLinkServiceConnectionState: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse>;
     /**
      * The provisioning state of the private endpoint connection resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a PrivateEndpointConnection resource with the given unique name, arguments, and options.
@@ -71,19 +71,19 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.privateLinkServiceConnectionState === undefined) && !opts.urn) {
+            if (args?.privateLinkServiceConnectionState === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateLinkServiceConnectionState'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["privateEndpointConnectionName"] = args ? args.privateEndpointConnectionName : undefined;
-            resourceInputs["privateLinkServiceConnectionState"] = args ? args.privateLinkServiceConnectionState : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["privateEndpointConnectionName"] = args?.privateEndpointConnectionName;
+            resourceInputs["privateLinkServiceConnectionState"] = args?.privateLinkServiceConnectionState;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateEndpoint"] = undefined /*out*/;
@@ -98,7 +98,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cache/v20230301preview:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20230701:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20230801preview:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20231001preview:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20231101:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20240201:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20240301preview:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20240601preview:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20240901preview:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20241001:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache:EnterprisePrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20201001preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20210201preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20210301:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20210801:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20220101:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20221101preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20230301preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20230701:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20230801preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20231001preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20231101:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20240201:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20240301preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20240601preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20240901preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20241001:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20250401:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20250501preview:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cache/v20230301preview:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20230701:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20230801preview:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20231001preview:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20231101:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20240201:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20240301preview:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20240601preview:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20240901preview:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache/v20241001:EnterprisePrivateEndpointConnection" }, { type: "azure-native:cache:EnterprisePrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20201001preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20210201preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20210301:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20210801:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20220101:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20221101preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20230301preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20230701:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20230801preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20231001preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20231101:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20240201:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20240301preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20240601preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20240901preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20241001:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20250401:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20250501preview:PrivateEndpointConnection" }, { type: "azure-native:redisenterprise/v20250701:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }

@@ -38,67 +38,67 @@ export class LabPlan extends pulumi.CustomResource {
     /**
      * The allowed regions for the lab creator to use when creating labs using this lab plan.
      */
-    public readonly allowedRegions!: pulumi.Output<string[] | undefined>;
+    declare public readonly allowedRegions: pulumi.Output<string[] | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The default lab shutdown profile. This can be changed on a lab resource and only provides a default profile.
      */
-    public readonly defaultAutoShutdownProfile!: pulumi.Output<types.outputs.AutoShutdownProfileResponse | undefined>;
+    declare public readonly defaultAutoShutdownProfile: pulumi.Output<types.outputs.AutoShutdownProfileResponse | undefined>;
     /**
      * The default lab connection profile. This can be changed on a lab resource and only provides a default profile.
      */
-    public readonly defaultConnectionProfile!: pulumi.Output<types.outputs.ConnectionProfileResponse | undefined>;
+    declare public readonly defaultConnectionProfile: pulumi.Output<types.outputs.ConnectionProfileResponse | undefined>;
     /**
      * The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan.
      */
-    public readonly defaultNetworkProfile!: pulumi.Output<types.outputs.LabPlanNetworkProfileResponse | undefined>;
+    declare public readonly defaultNetworkProfile: pulumi.Output<types.outputs.LabPlanNetworkProfileResponse | undefined>;
     /**
      * Managed Identity Information
      */
-    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Base Url of the lms instance this lab plan can link lab rosters against.
      */
-    public readonly linkedLmsInstance!: pulumi.Output<string | undefined>;
+    declare public readonly linkedLmsInstance: pulumi.Output<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Current provisioning state of the lab plan.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Error details of last operation done on lab plan.
      */
-    public /*out*/ readonly resourceOperationError!: pulumi.Output<types.outputs.ResourceOperationErrorResponse>;
+    declare public /*out*/ readonly resourceOperationError: pulumi.Output<types.outputs.ResourceOperationErrorResponse>;
     /**
      * Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
      */
-    public readonly sharedGalleryId!: pulumi.Output<string | undefined>;
+    declare public readonly sharedGalleryId: pulumi.Output<string | undefined>;
     /**
      * Support contact information and instructions for users of the lab plan. This information is displayed to lab owners and virtual machine users for all labs in the lab plan.
      */
-    public readonly supportInfo!: pulumi.Output<types.outputs.SupportInfoResponse | undefined>;
+    declare public readonly supportInfo: pulumi.Output<types.outputs.SupportInfoResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the lab plan.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a LabPlan resource with the given unique name, arguments, and options.
@@ -111,21 +111,21 @@ export class LabPlan extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["allowedRegions"] = args ? args.allowedRegions : undefined;
+            resourceInputs["allowedRegions"] = args?.allowedRegions;
             resourceInputs["defaultAutoShutdownProfile"] = args ? (args.defaultAutoShutdownProfile ? pulumi.output(args.defaultAutoShutdownProfile).apply(types.inputs.autoShutdownProfileArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["defaultConnectionProfile"] = args ? (args.defaultConnectionProfile ? pulumi.output(args.defaultConnectionProfile).apply(types.inputs.connectionProfileArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["defaultNetworkProfile"] = args ? args.defaultNetworkProfile : undefined;
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["labPlanName"] = args ? args.labPlanName : undefined;
-            resourceInputs["linkedLmsInstance"] = args ? args.linkedLmsInstance : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sharedGalleryId"] = args ? args.sharedGalleryId : undefined;
-            resourceInputs["supportInfo"] = args ? args.supportInfo : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["defaultNetworkProfile"] = args?.defaultNetworkProfile;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["labPlanName"] = args?.labPlanName;
+            resourceInputs["linkedLmsInstance"] = args?.linkedLmsInstance;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sharedGalleryId"] = args?.sharedGalleryId;
+            resourceInputs["supportInfo"] = args?.supportInfo;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;

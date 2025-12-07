@@ -17,7 +17,7 @@ export function listRedisKeys(args: ListRedisKeysArgs, opts?: pulumi.InvokeOptio
 
 export interface ListRedisKeysArgs {
     /**
-     * The name of the Redis cache.
+     * The name of the RedisResource
      */
     name: string;
     /**
@@ -56,7 +56,7 @@ export function listRedisKeysOutput(args: ListRedisKeysOutputArgs, opts?: pulumi
 
 export interface ListRedisKeysOutputArgs {
     /**
-     * The name of the Redis cache.
+     * The name of the RedisResource
      */
     name: pulumi.Input<string>;
     /**

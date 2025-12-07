@@ -5202,8 +5202,8 @@ export interface FqdnOutboundRuleResponse {
     /**
      * Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
      */
-    errorInformation?: string;
-    parentRuleNames?: string[];
+    errorInformation: string;
+    parentRuleNames: string[];
     /**
      * Type of a managed network Outbound Rule of a machine learning workspace.
      */
@@ -7613,6 +7613,18 @@ export interface ManagedNetworkProvisionStatusResponse {
  */
 export interface ManagedNetworkSettingsResponse {
     /**
+     * A flag to indicate if monitoring needs to be enabled for the managed network firewall.
+     */
+    enableFirewallLog?: boolean;
+    /**
+     * A flag to indicate if monitoring needs to be enabled for the managed network.
+     */
+    enableNetworkMonitor?: boolean;
+    /**
+     * Public IP address assigned to the Azure Firewall.
+     */
+    firewallPublicIpAddress?: string;
+    /**
      * Firewall Sku used for FQDN Rules
      */
     firewallSku?: string;
@@ -7620,12 +7632,26 @@ export interface ManagedNetworkSettingsResponse {
      * Isolation mode for the managed network of a machine learning workspace.
      */
     isolationMode?: string;
+    /**
+     * The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
+     */
+    managedNetworkKind?: string;
     networkId: string;
     outboundRules?: {[key: string]: FqdnOutboundRuleResponse | PrivateEndpointOutboundRuleResponse | ServiceTagOutboundRuleResponse};
     /**
      * Status of the Provisioning for the managed network of a machine learning workspace.
      */
     status?: ManagedNetworkProvisionStatusResponse;
+}
+/**
+ * managedNetworkSettingsResponseProvideDefaults sets the appropriate defaults for ManagedNetworkSettingsResponse
+ */
+export function managedNetworkSettingsResponseProvideDefaults(val: ManagedNetworkSettingsResponse): ManagedNetworkSettingsResponse {
+    return {
+        ...val,
+        enableFirewallLog: (val.enableFirewallLog) ?? false,
+        enableNetworkMonitor: (val.enableNetworkMonitor) ?? false,
+    };
 }
 
 /**
@@ -7742,6 +7768,26 @@ export interface ManagedOnlineEndpointDeploymentResourcePropertiesResponse {
      * Expected value is 'managedOnlineEndpoint'.
      */
     type: "managedOnlineEndpoint";
+}
+
+/**
+ * Details for managed resource group assigned identities.
+ */
+export interface ManagedResourceGroupAssignedIdentitiesResponse {
+    /**
+     * Identity principal Id
+     */
+    principalId: string;
+}
+
+/**
+ * Managed resource group settings
+ */
+export interface ManagedResourceGroupSettingsResponse {
+    /**
+     * List of assigned identities for the managed resource group
+     */
+    assignedIdentities?: ManagedResourceGroupAssignedIdentitiesResponse[];
 }
 
 /**
@@ -8762,9 +8808,9 @@ export interface PrivateEndpointOutboundRuleResponse {
     /**
      * Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
      */
-    errorInformation?: string;
+    errorInformation: string;
     fqdns?: string[];
-    parentRuleNames?: string[];
+    parentRuleNames: string[];
     /**
      * Type of a managed network Outbound Rule of a machine learning workspace.
      */
@@ -9221,6 +9267,10 @@ export interface RegistryResponse {
      */
     managedResourceGroup?: ArmResourceIdResponse;
     /**
+     * Managed resource group specific settings
+     */
+    managedResourceGroupSettings?: ManagedResourceGroupSettingsResponse;
+    /**
      * MLFlow Registry URI for the Registry
      */
     mlFlowRegistryUri?: string;
@@ -9233,10 +9283,6 @@ export interface RegistryResponse {
      * Details of each region the registry is in
      */
     regionDetails?: RegistryRegionArmDetailsResponse[];
-    /**
-     * RegistryId Guid for this registry
-     */
-    registryId?: string;
     /**
      * Private endpoint connections info used for pending connections in private link portal
      */
@@ -9854,8 +9900,8 @@ export interface ServiceTagOutboundRuleResponse {
     /**
      * Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
      */
-    errorInformation?: string;
-    parentRuleNames?: string[];
+    errorInformation: string;
+    parentRuleNames: string[];
     /**
      * Type of a managed network Outbound Rule of a machine learning workspace.
      */

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class MHSMPrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -38,51 +38,51 @@ export class MHSMPrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Modified whenever there is a change in the state of private endpoint connection.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly etag: pulumi.Output<string | undefined>;
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The supported Azure location where the managed HSM Pool should be created.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The name of the managed HSM Pool.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Properties of the private endpoint object.
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.MHSMPrivateEndpointResponse | undefined>;
+    declare public /*out*/ readonly privateEndpoint: pulumi.Output<types.outputs.MHSMPrivateEndpointResponse | undefined>;
     /**
      * Approval state of the private link connection.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.MHSMPrivateLinkServiceConnectionStateResponse | undefined>;
+    declare public readonly privateLinkServiceConnectionState: pulumi.Output<types.outputs.MHSMPrivateLinkServiceConnectionStateResponse | undefined>;
     /**
      * Provisioning state of the private endpoint connection.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * SKU details
      */
-    public readonly sku!: pulumi.Output<types.outputs.ManagedHsmSkuResponse | undefined>;
+    declare public readonly sku: pulumi.Output<types.outputs.ManagedHsmSkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the key vault resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The resource type of the managed HSM Pool.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a MHSMPrivateEndpointConnection resource with the given unique name, arguments, and options.
@@ -95,20 +95,20 @@ export class MHSMPrivateEndpointConnection extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["privateEndpointConnectionName"] = args ? args.privateEndpointConnectionName : undefined;
-            resourceInputs["privateLinkServiceConnectionState"] = args ? args.privateLinkServiceConnectionState : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["privateEndpointConnectionName"] = args?.privateEndpointConnectionName;
+            resourceInputs["privateLinkServiceConnectionState"] = args?.privateLinkServiceConnectionState;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["privateEndpoint"] = undefined /*out*/;
@@ -130,7 +130,7 @@ export class MHSMPrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:keyvault/v20210401preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20210601preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20211001:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20211101preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20220201preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20220701:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20221101:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20230201:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20230701:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20240401preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20241101:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20241201preview:MHSMPrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:keyvault/v20210401preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20210601preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20211001:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20211101preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20220201preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20220701:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20221101:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20230201:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20230701:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20240401preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20241101:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20241201preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20250501:MHSMPrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(MHSMPrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }

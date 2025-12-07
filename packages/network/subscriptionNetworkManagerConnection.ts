@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SubscriptionNetworkManagerConnection extends pulumi.CustomResource {
     /**
@@ -38,31 +38,31 @@ export class SubscriptionNetworkManagerConnection extends pulumi.CustomResource 
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * A description of the network manager connection.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Network Manager Id.
      */
-    public readonly networkManagerId!: pulumi.Output<string | undefined>;
+    declare public readonly networkManagerId: pulumi.Output<string | undefined>;
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a SubscriptionNetworkManagerConnection resource with the given unique name, arguments, and options.
@@ -75,9 +75,9 @@ export class SubscriptionNetworkManagerConnection extends pulumi.CustomResource 
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["networkManagerConnectionName"] = args ? args.networkManagerConnectionName : undefined;
-            resourceInputs["networkManagerId"] = args ? args.networkManagerId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["networkManagerConnectionName"] = args?.networkManagerConnectionName;
+            resourceInputs["networkManagerId"] = args?.networkManagerId;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -93,7 +93,7 @@ export class SubscriptionNetworkManagerConnection extends pulumi.CustomResource 
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210501preview:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20220101:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20220201preview:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20220401preview:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20220501:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20220701:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20220901:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20221101:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20230201:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20230401:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20230501:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20230601:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20230901:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20231101:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20240101:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20240301:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20240501:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20240701:SubscriptionNetworkManagerConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210501preview:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20220101:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20220201preview:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20220401preview:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20220501:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20220701:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20220901:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20221101:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20230201:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20230401:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20230501:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20230601:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20230901:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20231101:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20240101:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20240301:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20240501:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20240701:SubscriptionNetworkManagerConnection" }, { type: "azure-native:network/v20241001:SubscriptionNetworkManagerConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SubscriptionNetworkManagerConnection.__pulumiType, name, resourceInputs, opts);
     }

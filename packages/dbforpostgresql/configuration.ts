@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
  *
- * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Configuration extends pulumi.CustomResource {
     /**
@@ -38,63 +38,63 @@ export class Configuration extends pulumi.CustomResource {
     /**
      * Allowed values of the server parameter.
      */
-    public /*out*/ readonly allowedValues!: pulumi.Output<string>;
+    declare public /*out*/ readonly allowedValues: pulumi.Output<string>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Data type of the server parameter.
      */
-    public /*out*/ readonly dataType!: pulumi.Output<string>;
+    declare public /*out*/ readonly dataType: pulumi.Output<string>;
     /**
      * Value assigned by default to the server parameter.
      */
-    public /*out*/ readonly defaultValue!: pulumi.Output<string>;
+    declare public /*out*/ readonly defaultValue: pulumi.Output<string>;
     /**
      * Description of the server parameter.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * Link pointing to the documentation of the server parameter.
      */
-    public /*out*/ readonly documentationLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly documentationLink: pulumi.Output<string>;
     /**
      * Indicates if the value assigned to the server parameter is pending a server restart for the value to take effect.
      */
-    public /*out*/ readonly isConfigPendingRestart!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isConfigPendingRestart: pulumi.Output<boolean>;
     /**
      * Indicates if it's a dynamic (true) or static (false) server parameter. Static server parameters require a server restart after changing the value assigned to it, for the change to take effect. Dynamic server parameters do not require a server restart after changing the value assigned to it, for the change to take effect.
      */
-    public /*out*/ readonly isDynamicConfig!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isDynamicConfig: pulumi.Output<boolean>;
     /**
      * Indicates if it's a read-only (true) or modifiable (false) server parameter.
      */
-    public /*out*/ readonly isReadOnly!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isReadOnly: pulumi.Output<boolean>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Source of the value assigned to the server parameter. Required to update the value assigned to a specific modifiable server parameter.
      */
-    public readonly source!: pulumi.Output<string | undefined>;
+    declare public readonly source: pulumi.Output<string | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Units in which the server parameter value is expressed.
      */
-    public /*out*/ readonly unit!: pulumi.Output<string>;
+    declare public /*out*/ readonly unit: pulumi.Output<string>;
     /**
      * Value of the server parameter (also known as configuration). Required to update the value assigned to a specific modifiable server parameter.
      */
-    public readonly value!: pulumi.Output<string | undefined>;
+    declare public readonly value: pulumi.Output<string | undefined>;
 
     /**
      * Create a Configuration resource with the given unique name, arguments, and options.
@@ -107,17 +107,17 @@ export class Configuration extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.serverName === undefined) && !opts.urn) {
+            if (args?.serverName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverName'");
             }
-            resourceInputs["configurationName"] = args ? args.configurationName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["serverName"] = args ? args.serverName : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["configurationName"] = args?.configurationName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["serverName"] = args?.serverName;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["value"] = args?.value;
             resourceInputs["allowedValues"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["dataType"] = undefined /*out*/;
@@ -149,7 +149,7 @@ export class Configuration extends pulumi.CustomResource {
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20171201:Configuration" }, { type: "azure-native:dbforpostgresql/v20210601:Configuration" }, { type: "azure-native:dbforpostgresql/v20210601preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20210615privatepreview:Configuration" }, { type: "azure-native:dbforpostgresql/v20220120preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20220308preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20221201:Configuration" }, { type: "azure-native:dbforpostgresql/v20230301preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20230601preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20231201preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20240301preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20240801:Configuration" }, { type: "azure-native:dbforpostgresql/v20241101preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20250101preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20250601preview:Configuration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20171201:Configuration" }, { type: "azure-native:dbforpostgresql/v20210601:Configuration" }, { type: "azure-native:dbforpostgresql/v20210601preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20210615privatepreview:Configuration" }, { type: "azure-native:dbforpostgresql/v20220120preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20220308preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20221201:Configuration" }, { type: "azure-native:dbforpostgresql/v20230301preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20230601preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20231201preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20240301preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20240801:Configuration" }, { type: "azure-native:dbforpostgresql/v20241101preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20250101preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20250601preview:Configuration" }, { type: "azure-native:dbforpostgresql/v20250801:Configuration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Configuration.__pulumiType, name, resourceInputs, opts);
     }

@@ -53,7 +53,7 @@ export interface RedisCommonPropertiesRedisConfigurationArgs {
      */
     aofStorageConnectionString1?: pulumi.Input<string>;
     /**
-     * Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view.
+     * Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view; you should never disable authentication using this property!
      */
     authnotrequired?: pulumi.Input<string>;
     /**
@@ -81,7 +81,7 @@ export interface RedisCommonPropertiesRedisConfigurationArgs {
      */
     preferredDataPersistenceAuthMethod?: pulumi.Input<string>;
     /**
-     * Specifies whether the rdb backup is enabled
+     * Specifies whether the RDB backup is enabled
      */
     rdbBackupEnabled?: pulumi.Input<string>;
     /**
@@ -111,7 +111,7 @@ export interface ScheduleEntryArgs {
      */
     dayOfWeek: pulumi.Input<enums.DayOfWeek>;
     /**
-     * ISO8601 timespan specifying how much time cache patching can take. 
+     * ISO8601 timespan specifying how much time cache patching can take.
      */
     maintenanceWindow?: pulumi.Input<string>;
     /**

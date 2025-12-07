@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-02-preview.
  *
- * Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ManagedEnvironmentPrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -38,35 +38,35 @@ export class ManagedEnvironmentPrivateEndpointConnection extends pulumi.CustomRe
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The group ids for the private endpoint resource.
      */
-    public /*out*/ readonly groupIds!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly groupIds: pulumi.Output<string[]>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The resource of private end point.
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
+    declare public /*out*/ readonly privateEndpoint: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse>;
+    declare public readonly privateLinkServiceConnectionState: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse>;
     /**
      * The provisioning state of the private endpoint connection resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ManagedEnvironmentPrivateEndpointConnection resource with the given unique name, arguments, and options.
@@ -79,19 +79,19 @@ export class ManagedEnvironmentPrivateEndpointConnection extends pulumi.CustomRe
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.environmentName === undefined) && !opts.urn) {
+            if (args?.environmentName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environmentName'");
             }
-            if ((!args || args.privateLinkServiceConnectionState === undefined) && !opts.urn) {
+            if (args?.privateLinkServiceConnectionState === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateLinkServiceConnectionState'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["environmentName"] = args ? args.environmentName : undefined;
-            resourceInputs["privateEndpointConnectionName"] = args ? args.privateEndpointConnectionName : undefined;
-            resourceInputs["privateLinkServiceConnectionState"] = args ? args.privateLinkServiceConnectionState : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["environmentName"] = args?.environmentName;
+            resourceInputs["privateEndpointConnectionName"] = args?.privateEndpointConnectionName;
+            resourceInputs["privateLinkServiceConnectionState"] = args?.privateLinkServiceConnectionState;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["groupIds"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -110,7 +110,7 @@ export class ManagedEnvironmentPrivateEndpointConnection extends pulumi.CustomRe
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20240202preview:ManagedEnvironmentPrivateEndpointConnection" }, { type: "azure-native:app/v20240802preview:ManagedEnvironmentPrivateEndpointConnection" }, { type: "azure-native:app/v20241002preview:ManagedEnvironmentPrivateEndpointConnection" }, { type: "azure-native:app/v20250202preview:ManagedEnvironmentPrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20240202preview:ManagedEnvironmentPrivateEndpointConnection" }, { type: "azure-native:app/v20240802preview:ManagedEnvironmentPrivateEndpointConnection" }, { type: "azure-native:app/v20241002preview:ManagedEnvironmentPrivateEndpointConnection" }, { type: "azure-native:app/v20250202preview:ManagedEnvironmentPrivateEndpointConnection" }, { type: "azure-native:app/v20250701:ManagedEnvironmentPrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedEnvironmentPrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }

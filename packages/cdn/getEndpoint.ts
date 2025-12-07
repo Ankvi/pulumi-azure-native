@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
  *
- * Uses Azure REST API version 2024-09-01.
+ * Uses Azure REST API version 2025-06-01.
  *
- * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2025-01-01-preview, 2025-04-15, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getEndpoint(args: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -23,11 +23,11 @@ export interface GetEndpointArgs {
      */
     endpointName: string;
     /**
-     * Name of the CDN profile which is unique within the resource group.
+     * Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
      */
     profileName: string;
     /**
-     * Name of the Resource group within the Azure subscription.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
@@ -55,7 +55,7 @@ export interface GetEndpointResult {
     /**
      * A policy that specifies the delivery rules to be used for an endpoint.
      */
-    readonly deliveryPolicy?: types.outputs.EndpointPropertiesUpdateParametersResponseDeliveryPolicy;
+    readonly deliveryPolicy?: types.outputs.EndpointPropertiesUpdateParametersDeliveryPolicyResponse;
     /**
      * List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
      */
@@ -65,7 +65,7 @@ export interface GetEndpointResult {
      */
     readonly hostName: string;
     /**
-     * Resource ID.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -81,11 +81,11 @@ export interface GetEndpointResult {
      */
     readonly isHttpsAllowed?: boolean;
     /**
-     * Resource location.
+     * The geo-location where the resource lives
      */
     readonly location: string;
     /**
-     * Resource name.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -125,7 +125,7 @@ export interface GetEndpointResult {
      */
     readonly resourceState: string;
     /**
-     * Read only system data
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
@@ -133,7 +133,7 @@ export interface GetEndpointResult {
      */
     readonly tags?: {[key: string]: string};
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**
@@ -143,14 +143,14 @@ export interface GetEndpointResult {
     /**
      * Defines the Web Application Firewall policy for the endpoint (if applicable)
      */
-    readonly webApplicationFirewallPolicyLink?: types.outputs.EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink;
+    readonly webApplicationFirewallPolicyLink?: types.outputs.EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse;
 }
 /**
  * Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
  *
- * Uses Azure REST API version 2024-09-01.
+ * Uses Azure REST API version 2025-06-01.
  *
- * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2025-01-01-preview, 2025-04-15, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getEndpointOutput(args: GetEndpointOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -167,11 +167,11 @@ export interface GetEndpointOutputArgs {
      */
     endpointName: pulumi.Input<string>;
     /**
-     * Name of the CDN profile which is unique within the resource group.
+     * Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
      */
     profileName: pulumi.Input<string>;
     /**
-     * Name of the Resource group within the Azure subscription.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

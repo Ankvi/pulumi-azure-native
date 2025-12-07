@@ -36,60 +36,60 @@ export class FusionAlertRule extends pulumi.CustomResource {
     /**
      * The Name of the alert rule template used to create this rule.
      */
-    public readonly alertRuleTemplateName!: pulumi.Output<string>;
+    declare public readonly alertRuleTemplateName: pulumi.Output<string>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The description of the alert rule.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * The display name for alerts created by this alert rule.
      */
-    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    declare public /*out*/ readonly displayName: pulumi.Output<string>;
     /**
      * Determines whether this alert rule is enabled or disabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Etag of the azure resource
      */
-    public /*out*/ readonly etag!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly etag: pulumi.Output<string | undefined>;
     /**
      * The kind of the alert rule
      * Expected value is 'Fusion'.
      */
-    public readonly kind!: pulumi.Output<"Fusion">;
+    declare public readonly kind: pulumi.Output<"Fusion">;
     /**
      * The last time that this alert has been modified.
      */
-    public /*out*/ readonly lastModifiedUtc!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifiedUtc: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The severity for alerts created by this alert rule.
      */
-    public /*out*/ readonly severity!: pulumi.Output<string>;
+    declare public /*out*/ readonly severity: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tactics of the alert rule
      */
-    public /*out*/ readonly tactics!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly tactics: pulumi.Output<string[]>;
     /**
      * The techniques of the alert rule
      */
-    public /*out*/ readonly techniques!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly techniques: pulumi.Output<string[]>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a FusionAlertRule resource with the given unique name, arguments, and options.
@@ -102,27 +102,27 @@ export class FusionAlertRule extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.alertRuleTemplateName === undefined) && !opts.urn) {
+            if (args?.alertRuleTemplateName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alertRuleTemplateName'");
             }
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.kind === undefined) && !opts.urn) {
+            if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["alertRuleTemplateName"] = args ? args.alertRuleTemplateName : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["alertRuleTemplateName"] = args?.alertRuleTemplateName;
+            resourceInputs["enabled"] = args?.enabled;
             resourceInputs["kind"] = "Fusion";
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["ruleId"] = args ? args.ruleId : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["ruleId"] = args?.ruleId;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
@@ -151,7 +151,7 @@ export class FusionAlertRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20190101preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20200101:FusionAlertRule" }, { type: "azure-native:securityinsights/v20210301preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20210301preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20210301preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20210301preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20210301preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20210901preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20211001:FusionAlertRule" }, { type: "azure-native:securityinsights/v20211001preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20211001preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20220101preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20220401preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20220501preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20220601preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20220701preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20220801:FusionAlertRule" }, { type: "azure-native:securityinsights/v20220801preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20220901preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20221001preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20221101:FusionAlertRule" }, { type: "azure-native:securityinsights/v20221101preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20221201preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230201:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230201preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230301preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230401preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230501preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230601preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230601preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20230601preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20230601preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20230601preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20230601preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20230701preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230701preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20230701preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20230701preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20230701preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20230701preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20230801preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230801preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20230801preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20230801preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20230801preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20230801preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20230901preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230901preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20230901preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20230901preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20230901preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20230901preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20231001preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20231001preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20231001preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20231001preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20231001preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20231001preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20231101:FusionAlertRule" }, { type: "azure-native:securityinsights/v20231101:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20231101:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20231201preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20231201preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20231201preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20231201preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20231201preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20231201preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20240101preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20240101preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20240101preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20240101preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20240101preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20240101preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20240301:FusionAlertRule" }, { type: "azure-native:securityinsights/v20240301:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20240301:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20240401preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20240401preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20240401preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20240401preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20240401preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20240401preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20240901:FusionAlertRule" }, { type: "azure-native:securityinsights/v20240901:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20240901:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20241001preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20241001preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20241001preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20241001preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20241001preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20241001preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20250101preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20250301:FusionAlertRule" }, { type: "azure-native:securityinsights/v20250401preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20250601:FusionAlertRule" }, { type: "azure-native:securityinsights/v20250701preview:FusionAlertRule" }, { type: "azure-native:securityinsights:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights:ScheduledAlertRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20190101preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20200101:FusionAlertRule" }, { type: "azure-native:securityinsights/v20210301preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20210301preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20210301preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20210301preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20210301preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20210901preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20211001:FusionAlertRule" }, { type: "azure-native:securityinsights/v20211001preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20211001preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20220101preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20220401preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20220501preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20220601preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20220701preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20220801:FusionAlertRule" }, { type: "azure-native:securityinsights/v20220801preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20220901preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20221001preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20221101:FusionAlertRule" }, { type: "azure-native:securityinsights/v20221101preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20221201preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230201:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230201preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230301preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230401preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230501preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230601preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230601preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20230601preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20230601preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20230601preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20230601preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20230701preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230701preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20230701preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20230701preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20230701preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20230701preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20230801preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230801preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20230801preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20230801preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20230801preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20230801preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20230901preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20230901preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20230901preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20230901preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20230901preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20230901preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20231001preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20231001preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20231001preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20231001preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20231001preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20231001preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20231101:FusionAlertRule" }, { type: "azure-native:securityinsights/v20231101:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20231101:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20231201preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20231201preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20231201preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20231201preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20231201preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20231201preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20240101preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20240101preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20240101preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20240101preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20240101preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20240101preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20240301:FusionAlertRule" }, { type: "azure-native:securityinsights/v20240301:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20240301:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20240401preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20240401preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20240401preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20240401preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20240401preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20240401preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20240901:FusionAlertRule" }, { type: "azure-native:securityinsights/v20240901:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20240901:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20241001preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20241001preview:MLBehaviorAnalyticsAlertRule" }, { type: "azure-native:securityinsights/v20241001preview:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights/v20241001preview:NrtAlertRule" }, { type: "azure-native:securityinsights/v20241001preview:ScheduledAlertRule" }, { type: "azure-native:securityinsights/v20241001preview:ThreatIntelligenceAlertRule" }, { type: "azure-native:securityinsights/v20250101preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20250301:FusionAlertRule" }, { type: "azure-native:securityinsights/v20250401preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20250601:FusionAlertRule" }, { type: "azure-native:securityinsights/v20250701preview:FusionAlertRule" }, { type: "azure-native:securityinsights/v20250901:FusionAlertRule" }, { type: "azure-native:securityinsights:MicrosoftSecurityIncidentCreationAlertRule" }, { type: "azure-native:securityinsights:ScheduledAlertRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FusionAlertRule.__pulumiType, name, resourceInputs, opts);
     }

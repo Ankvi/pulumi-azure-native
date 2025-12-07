@@ -38,71 +38,71 @@ export class PrivateRecordSet extends pulumi.CustomResource {
     /**
      * The list of A records in the record set.
      */
-    public readonly aRecords!: pulumi.Output<types.outputs.ARecordResponse[] | undefined>;
+    declare public readonly aRecords: pulumi.Output<types.outputs.ARecordResponse[] | undefined>;
     /**
      * The list of AAAA records in the record set.
      */
-    public readonly aaaaRecords!: pulumi.Output<types.outputs.AaaaRecordResponse[] | undefined>;
+    declare public readonly aaaaRecords: pulumi.Output<types.outputs.AaaaRecordResponse[] | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The CNAME record in the record set.
      */
-    public readonly cnameRecord!: pulumi.Output<types.outputs.CnameRecordResponse | undefined>;
+    declare public readonly cnameRecord: pulumi.Output<types.outputs.CnameRecordResponse | undefined>;
     /**
      * The ETag of the record set.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly etag: pulumi.Output<string | undefined>;
     /**
      * Fully qualified domain name of the record set.
      */
-    public /*out*/ readonly fqdn!: pulumi.Output<string>;
+    declare public /*out*/ readonly fqdn: pulumi.Output<string>;
     /**
      * Is the record set auto-registered in the Private DNS zone through a virtual network link?
      */
-    public /*out*/ readonly isAutoRegistered!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isAutoRegistered: pulumi.Output<boolean>;
     /**
      * The metadata attached to the record set.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The list of MX records in the record set.
      */
-    public readonly mxRecords!: pulumi.Output<types.outputs.MxRecordResponse[] | undefined>;
+    declare public readonly mxRecords: pulumi.Output<types.outputs.MxRecordResponse[] | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The list of PTR records in the record set.
      */
-    public readonly ptrRecords!: pulumi.Output<types.outputs.PtrRecordResponse[] | undefined>;
+    declare public readonly ptrRecords: pulumi.Output<types.outputs.PtrRecordResponse[] | undefined>;
     /**
      * The SOA record in the record set.
      */
-    public readonly soaRecord!: pulumi.Output<types.outputs.SoaRecordResponse | undefined>;
+    declare public readonly soaRecord: pulumi.Output<types.outputs.SoaRecordResponse | undefined>;
     /**
      * The list of SRV records in the record set.
      */
-    public readonly srvRecords!: pulumi.Output<types.outputs.SrvRecordResponse[] | undefined>;
+    declare public readonly srvRecords: pulumi.Output<types.outputs.SrvRecordResponse[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The TTL (time-to-live) of the records in the record set.
      */
-    public readonly ttl!: pulumi.Output<number | undefined>;
+    declare public readonly ttl: pulumi.Output<number | undefined>;
     /**
      * The list of TXT records in the record set.
      */
-    public readonly txtRecords!: pulumi.Output<types.outputs.TxtRecordResponse[] | undefined>;
+    declare public readonly txtRecords: pulumi.Output<types.outputs.TxtRecordResponse[] | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a PrivateRecordSet resource with the given unique name, arguments, and options.
@@ -115,29 +115,29 @@ export class PrivateRecordSet extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.privateZoneName === undefined) && !opts.urn) {
+            if (args?.privateZoneName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateZoneName'");
             }
-            if ((!args || args.recordType === undefined) && !opts.urn) {
+            if (args?.recordType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'recordType'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["aRecords"] = args ? args.aRecords : undefined;
-            resourceInputs["aaaaRecords"] = args ? args.aaaaRecords : undefined;
-            resourceInputs["cnameRecord"] = args ? args.cnameRecord : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["mxRecords"] = args ? args.mxRecords : undefined;
-            resourceInputs["privateZoneName"] = args ? args.privateZoneName : undefined;
-            resourceInputs["ptrRecords"] = args ? args.ptrRecords : undefined;
-            resourceInputs["recordType"] = args ? args.recordType : undefined;
-            resourceInputs["relativeRecordSetName"] = args ? args.relativeRecordSetName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["soaRecord"] = args ? args.soaRecord : undefined;
-            resourceInputs["srvRecords"] = args ? args.srvRecords : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
-            resourceInputs["txtRecords"] = args ? args.txtRecords : undefined;
+            resourceInputs["aRecords"] = args?.aRecords;
+            resourceInputs["aaaaRecords"] = args?.aaaaRecords;
+            resourceInputs["cnameRecord"] = args?.cnameRecord;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["mxRecords"] = args?.mxRecords;
+            resourceInputs["privateZoneName"] = args?.privateZoneName;
+            resourceInputs["ptrRecords"] = args?.ptrRecords;
+            resourceInputs["recordType"] = args?.recordType;
+            resourceInputs["relativeRecordSetName"] = args?.relativeRecordSetName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["soaRecord"] = args?.soaRecord;
+            resourceInputs["srvRecords"] = args?.srvRecords;
+            resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["txtRecords"] = args?.txtRecords;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["fqdn"] = undefined /*out*/;

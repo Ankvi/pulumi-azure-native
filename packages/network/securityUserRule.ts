@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
  *
- * Other available API versions: 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SecurityUserRule extends pulumi.CustomResource {
     /**
@@ -38,59 +38,59 @@ export class SecurityUserRule extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * A description for this rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The destination port ranges.
      */
-    public readonly destinationPortRanges!: pulumi.Output<string[] | undefined>;
+    declare public readonly destinationPortRanges: pulumi.Output<string[] | undefined>;
     /**
      * The destination address prefixes. CIDR or destination IP ranges.
      */
-    public readonly destinations!: pulumi.Output<types.outputs.AddressPrefixItemResponse[] | undefined>;
+    declare public readonly destinations: pulumi.Output<types.outputs.AddressPrefixItemResponse[] | undefined>;
     /**
      * Indicates if the traffic matched against the rule in inbound or outbound.
      */
-    public readonly direction!: pulumi.Output<string>;
+    declare public readonly direction: pulumi.Output<string>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Network protocol this rule applies to.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The provisioning state of the security configuration user rule resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Unique identifier for this resource.
      */
-    public /*out*/ readonly resourceGuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceGuid: pulumi.Output<string>;
     /**
      * The source port ranges.
      */
-    public readonly sourcePortRanges!: pulumi.Output<string[] | undefined>;
+    declare public readonly sourcePortRanges: pulumi.Output<string[] | undefined>;
     /**
      * The CIDR or source IP ranges.
      */
-    public readonly sources!: pulumi.Output<types.outputs.AddressPrefixItemResponse[] | undefined>;
+    declare public readonly sources: pulumi.Output<types.outputs.AddressPrefixItemResponse[] | undefined>;
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a SecurityUserRule resource with the given unique name, arguments, and options.
@@ -103,36 +103,36 @@ export class SecurityUserRule extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.configurationName === undefined) && !opts.urn) {
+            if (args?.configurationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configurationName'");
             }
-            if ((!args || args.direction === undefined) && !opts.urn) {
+            if (args?.direction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'direction'");
             }
-            if ((!args || args.networkManagerName === undefined) && !opts.urn) {
+            if (args?.networkManagerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkManagerName'");
             }
-            if ((!args || args.protocol === undefined) && !opts.urn) {
+            if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.ruleCollectionName === undefined) && !opts.urn) {
+            if (args?.ruleCollectionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleCollectionName'");
             }
-            resourceInputs["configurationName"] = args ? args.configurationName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationPortRanges"] = args ? args.destinationPortRanges : undefined;
-            resourceInputs["destinations"] = args ? args.destinations : undefined;
-            resourceInputs["direction"] = args ? args.direction : undefined;
-            resourceInputs["networkManagerName"] = args ? args.networkManagerName : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["ruleCollectionName"] = args ? args.ruleCollectionName : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["sourcePortRanges"] = args ? args.sourcePortRanges : undefined;
-            resourceInputs["sources"] = args ? args.sources : undefined;
+            resourceInputs["configurationName"] = args?.configurationName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationPortRanges"] = args?.destinationPortRanges;
+            resourceInputs["destinations"] = args?.destinations;
+            resourceInputs["direction"] = args?.direction;
+            resourceInputs["networkManagerName"] = args?.networkManagerName;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["ruleCollectionName"] = args?.ruleCollectionName;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["sourcePortRanges"] = args?.sourcePortRanges;
+            resourceInputs["sources"] = args?.sources;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -157,7 +157,7 @@ export class SecurityUserRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:SecurityUserRule" }, { type: "azure-native:network/v20210501preview:DefaultUserRule" }, { type: "azure-native:network/v20210501preview:SecurityUserRule" }, { type: "azure-native:network/v20210501preview:UserRule" }, { type: "azure-native:network/v20220201preview:SecurityUserRule" }, { type: "azure-native:network/v20220401preview:DefaultUserRule" }, { type: "azure-native:network/v20220401preview:SecurityUserRule" }, { type: "azure-native:network/v20220401preview:UserRule" }, { type: "azure-native:network/v20240301:SecurityUserRule" }, { type: "azure-native:network/v20240501:SecurityUserRule" }, { type: "azure-native:network/v20240701:SecurityUserRule" }, { type: "azure-native:network:DefaultUserRule" }, { type: "azure-native:network:UserRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:SecurityUserRule" }, { type: "azure-native:network/v20210501preview:DefaultUserRule" }, { type: "azure-native:network/v20210501preview:SecurityUserRule" }, { type: "azure-native:network/v20210501preview:UserRule" }, { type: "azure-native:network/v20220201preview:SecurityUserRule" }, { type: "azure-native:network/v20220401preview:DefaultUserRule" }, { type: "azure-native:network/v20220401preview:SecurityUserRule" }, { type: "azure-native:network/v20220401preview:UserRule" }, { type: "azure-native:network/v20240301:SecurityUserRule" }, { type: "azure-native:network/v20240501:SecurityUserRule" }, { type: "azure-native:network/v20240701:SecurityUserRule" }, { type: "azure-native:network/v20241001:SecurityUserRule" }, { type: "azure-native:network:DefaultUserRule" }, { type: "azure-native:network:UserRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SecurityUserRule.__pulumiType, name, resourceInputs, opts);
     }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PublicIPPrefix extends pulumi.CustomResource {
     /**
@@ -38,79 +38,79 @@ export class PublicIPPrefix extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The customIpPrefix that this prefix is associated with.
      */
-    public readonly customIPPrefix!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
+    declare public readonly customIPPrefix: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The extended location of the public ip address.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The allocated Prefix.
      */
-    public /*out*/ readonly ipPrefix!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipPrefix: pulumi.Output<string>;
     /**
      * The list of tags associated with the public IP prefix.
      */
-    public readonly ipTags!: pulumi.Output<types.outputs.IpTagResponse[] | undefined>;
+    declare public readonly ipTags: pulumi.Output<types.outputs.IpTagResponse[] | undefined>;
     /**
      * The reference to load balancer frontend IP configuration associated with the public IP prefix.
      */
-    public /*out*/ readonly loadBalancerFrontendIpConfiguration!: pulumi.Output<types.outputs.SubResourceResponse>;
+    declare public /*out*/ readonly loadBalancerFrontendIpConfiguration: pulumi.Output<types.outputs.SubResourceResponse>;
     /**
      * Resource location.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * NatGateway of Public IP Prefix.
      */
-    public readonly natGateway!: pulumi.Output<types.outputs.NatGatewayResponse | undefined>;
+    declare public readonly natGateway: pulumi.Output<types.outputs.NatGatewayResponse | undefined>;
     /**
      * The Length of the Public IP Prefix.
      */
-    public readonly prefixLength!: pulumi.Output<number | undefined>;
+    declare public readonly prefixLength: pulumi.Output<number | undefined>;
     /**
      * The provisioning state of the public IP prefix resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The public IP address version.
      */
-    public readonly publicIPAddressVersion!: pulumi.Output<string | undefined>;
+    declare public readonly publicIPAddressVersion: pulumi.Output<string | undefined>;
     /**
      * The list of all referenced PublicIPAddresses.
      */
-    public /*out*/ readonly publicIPAddresses!: pulumi.Output<types.outputs.ReferencedPublicIpAddressResponse[]>;
+    declare public /*out*/ readonly publicIPAddresses: pulumi.Output<types.outputs.ReferencedPublicIpAddressResponse[]>;
     /**
      * The resource GUID property of the public IP prefix resource.
      */
-    public /*out*/ readonly resourceGuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceGuid: pulumi.Output<string>;
     /**
      * The public IP prefix SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.PublicIPPrefixSkuResponse | undefined>;
+    declare public readonly sku: pulumi.Output<types.outputs.PublicIPPrefixSkuResponse | undefined>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * A list of availability zones denoting the IP allocated for the resource needs to come from.
      */
-    public readonly zones!: pulumi.Output<string[] | undefined>;
+    declare public readonly zones: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a PublicIPPrefix resource with the given unique name, arguments, and options.
@@ -123,22 +123,22 @@ export class PublicIPPrefix extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["customIPPrefix"] = args ? args.customIPPrefix : undefined;
-            resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["ipTags"] = args ? args.ipTags : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["natGateway"] = args ? args.natGateway : undefined;
-            resourceInputs["prefixLength"] = args ? args.prefixLength : undefined;
-            resourceInputs["publicIPAddressVersion"] = args ? args.publicIPAddressVersion : undefined;
-            resourceInputs["publicIpPrefixName"] = args ? args.publicIpPrefixName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["customIPPrefix"] = args?.customIPPrefix;
+            resourceInputs["extendedLocation"] = args?.extendedLocation;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["ipTags"] = args?.ipTags;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["natGateway"] = args?.natGateway;
+            resourceInputs["prefixLength"] = args?.prefixLength;
+            resourceInputs["publicIPAddressVersion"] = args?.publicIPAddressVersion;
+            resourceInputs["publicIpPrefixName"] = args?.publicIpPrefixName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zones"] = args?.zones;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["ipPrefix"] = undefined /*out*/;
@@ -170,7 +170,7 @@ export class PublicIPPrefix extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20180701:PublicIPPrefix" }, { type: "azure-native:network/v20180801:PublicIPPrefix" }, { type: "azure-native:network/v20181001:PublicIPPrefix" }, { type: "azure-native:network/v20181101:PublicIPPrefix" }, { type: "azure-native:network/v20181201:PublicIPPrefix" }, { type: "azure-native:network/v20190201:PublicIPPrefix" }, { type: "azure-native:network/v20190401:PublicIPPrefix" }, { type: "azure-native:network/v20190601:PublicIPPrefix" }, { type: "azure-native:network/v20190701:PublicIPPrefix" }, { type: "azure-native:network/v20190801:PublicIPPrefix" }, { type: "azure-native:network/v20190901:PublicIPPrefix" }, { type: "azure-native:network/v20191101:PublicIPPrefix" }, { type: "azure-native:network/v20191201:PublicIPPrefix" }, { type: "azure-native:network/v20200301:PublicIPPrefix" }, { type: "azure-native:network/v20200401:PublicIPPrefix" }, { type: "azure-native:network/v20200501:PublicIPPrefix" }, { type: "azure-native:network/v20200601:PublicIPPrefix" }, { type: "azure-native:network/v20200701:PublicIPPrefix" }, { type: "azure-native:network/v20200801:PublicIPPrefix" }, { type: "azure-native:network/v20201101:PublicIPPrefix" }, { type: "azure-native:network/v20210201:PublicIPPrefix" }, { type: "azure-native:network/v20210301:PublicIPPrefix" }, { type: "azure-native:network/v20210501:PublicIPPrefix" }, { type: "azure-native:network/v20210801:PublicIPPrefix" }, { type: "azure-native:network/v20220101:PublicIPPrefix" }, { type: "azure-native:network/v20220501:PublicIPPrefix" }, { type: "azure-native:network/v20220701:PublicIPPrefix" }, { type: "azure-native:network/v20220901:PublicIPPrefix" }, { type: "azure-native:network/v20221101:PublicIPPrefix" }, { type: "azure-native:network/v20230201:PublicIPPrefix" }, { type: "azure-native:network/v20230401:PublicIPPrefix" }, { type: "azure-native:network/v20230501:PublicIPPrefix" }, { type: "azure-native:network/v20230601:PublicIPPrefix" }, { type: "azure-native:network/v20230901:PublicIPPrefix" }, { type: "azure-native:network/v20231101:PublicIPPrefix" }, { type: "azure-native:network/v20240101:PublicIPPrefix" }, { type: "azure-native:network/v20240301:PublicIPPrefix" }, { type: "azure-native:network/v20240501:PublicIPPrefix" }, { type: "azure-native:network/v20240701:PublicIPPrefix" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20180701:PublicIPPrefix" }, { type: "azure-native:network/v20180801:PublicIPPrefix" }, { type: "azure-native:network/v20181001:PublicIPPrefix" }, { type: "azure-native:network/v20181101:PublicIPPrefix" }, { type: "azure-native:network/v20181201:PublicIPPrefix" }, { type: "azure-native:network/v20190201:PublicIPPrefix" }, { type: "azure-native:network/v20190401:PublicIPPrefix" }, { type: "azure-native:network/v20190601:PublicIPPrefix" }, { type: "azure-native:network/v20190701:PublicIPPrefix" }, { type: "azure-native:network/v20190801:PublicIPPrefix" }, { type: "azure-native:network/v20190901:PublicIPPrefix" }, { type: "azure-native:network/v20191101:PublicIPPrefix" }, { type: "azure-native:network/v20191201:PublicIPPrefix" }, { type: "azure-native:network/v20200301:PublicIPPrefix" }, { type: "azure-native:network/v20200401:PublicIPPrefix" }, { type: "azure-native:network/v20200501:PublicIPPrefix" }, { type: "azure-native:network/v20200601:PublicIPPrefix" }, { type: "azure-native:network/v20200701:PublicIPPrefix" }, { type: "azure-native:network/v20200801:PublicIPPrefix" }, { type: "azure-native:network/v20201101:PublicIPPrefix" }, { type: "azure-native:network/v20210201:PublicIPPrefix" }, { type: "azure-native:network/v20210301:PublicIPPrefix" }, { type: "azure-native:network/v20210501:PublicIPPrefix" }, { type: "azure-native:network/v20210801:PublicIPPrefix" }, { type: "azure-native:network/v20220101:PublicIPPrefix" }, { type: "azure-native:network/v20220501:PublicIPPrefix" }, { type: "azure-native:network/v20220701:PublicIPPrefix" }, { type: "azure-native:network/v20220901:PublicIPPrefix" }, { type: "azure-native:network/v20221101:PublicIPPrefix" }, { type: "azure-native:network/v20230201:PublicIPPrefix" }, { type: "azure-native:network/v20230401:PublicIPPrefix" }, { type: "azure-native:network/v20230501:PublicIPPrefix" }, { type: "azure-native:network/v20230601:PublicIPPrefix" }, { type: "azure-native:network/v20230901:PublicIPPrefix" }, { type: "azure-native:network/v20231101:PublicIPPrefix" }, { type: "azure-native:network/v20240101:PublicIPPrefix" }, { type: "azure-native:network/v20240301:PublicIPPrefix" }, { type: "azure-native:network/v20240501:PublicIPPrefix" }, { type: "azure-native:network/v20240701:PublicIPPrefix" }, { type: "azure-native:network/v20241001:PublicIPPrefix" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PublicIPPrefix.__pulumiType, name, resourceInputs, opts);
     }

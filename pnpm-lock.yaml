@@ -2053,22 +2053,6 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
-  packages/hybriddata:
-    dependencies:
-      '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:*
-        version: link:../core
-      '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.142.0(ts-node@7.0.1)(typescript@5.2.2)
-    devDependencies:
-      '@types/node':
-        specifier: ^20.0.0
-        version: 20.6.2
-      typescript:
-        specifier: ^5.0.0
-        version: 5.2.2
-
   packages/hybridnetwork:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -3750,22 +3734,6 @@ importers:
         version: 5.2.2
 
   packages/storagesync:
-    dependencies:
-      '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:*
-        version: link:../core
-      '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.142.0(ts-node@7.0.1)(typescript@5.2.2)
-    devDependencies:
-      '@types/node':
-        specifier: ^20.0.0
-        version: 20.6.2
-      typescript:
-        specifier: ^5.0.0
-        version: 5.2.2
-
-  packages/storsimple:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
         specifier: workspace:*

@@ -644,6 +644,34 @@ export interface FleetspacePropertiesThroughputPoolConfigurationArgs {
 }
 
 /**
+ * Represents the full text path specification.
+ */
+export interface FullTextPathArgs {
+    /**
+     * The language of the full text field in the document.
+     */
+    language?: pulumi.Input<string>;
+    /**
+     * The path to the full text field in the document.
+     */
+    path: pulumi.Input<string>;
+}
+
+/**
+ * Cosmos DB FullText Policy
+ */
+export interface FullTextPolicyArgs {
+    /**
+     * The default language for a full text paths.
+     */
+    defaultLanguage?: pulumi.Input<string>;
+    /**
+     * List of FullText Paths
+     */
+    fullTextPaths?: pulumi.Input<pulumi.Input<FullTextPathArgs>[]>;
+}
+
+/**
  * Properties for Create or Update request for GraphAPIComputeServiceResource
  */
 export interface GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs {
@@ -1258,6 +1286,10 @@ export interface SqlContainerResourceArgs {
      * Default time to live
      */
     defaultTtl?: pulumi.Input<number>;
+    /**
+     * The FullText policy for the container.
+     */
+    fullTextPolicy?: pulumi.Input<FullTextPolicyArgs>;
     /**
      * Name of the Cosmos DB SQL container
      */

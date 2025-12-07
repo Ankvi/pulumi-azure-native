@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FlowLog extends pulumi.CustomResource {
     /**
@@ -38,67 +38,67 @@ export class FlowLog extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Flag to enable/disable flow logging.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Optional field to filter network traffic logs based on SrcIP, SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not specified, all network traffic will be logged.
      */
-    public readonly enabledFilteringCriteria!: pulumi.Output<string | undefined>;
+    declare public readonly enabledFilteringCriteria: pulumi.Output<string | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Parameters that define the configuration of traffic analytics.
      */
-    public readonly flowAnalyticsConfiguration!: pulumi.Output<types.outputs.TrafficAnalyticsPropertiesResponse | undefined>;
+    declare public readonly flowAnalyticsConfiguration: pulumi.Output<types.outputs.TrafficAnalyticsPropertiesResponse | undefined>;
     /**
      * Parameters that define the flow log format.
      */
-    public readonly format!: pulumi.Output<types.outputs.FlowLogFormatParametersResponse | undefined>;
+    declare public readonly format: pulumi.Output<types.outputs.FlowLogFormatParametersResponse | undefined>;
     /**
      * FlowLog resource Managed Identity
      */
-    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Resource location.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The provisioning state of the flow log.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Parameters that define the retention policy for flow log.
      */
-    public readonly retentionPolicy!: pulumi.Output<types.outputs.RetentionPolicyParametersResponse | undefined>;
+    declare public readonly retentionPolicy: pulumi.Output<types.outputs.RetentionPolicyParametersResponse | undefined>;
     /**
      * ID of the storage account which is used to store the flow log.
      */
-    public readonly storageId!: pulumi.Output<string>;
+    declare public readonly storageId: pulumi.Output<string>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Guid of network security group to which flow log will be applied.
      */
-    public /*out*/ readonly targetResourceGuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly targetResourceGuid: pulumi.Output<string>;
     /**
      * ID of network security group to which flow log will be applied.
      */
-    public readonly targetResourceId!: pulumi.Output<string>;
+    declare public readonly targetResourceId: pulumi.Output<string>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a FlowLog resource with the given unique name, arguments, and options.
@@ -111,32 +111,32 @@ export class FlowLog extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.networkWatcherName === undefined) && !opts.urn) {
+            if (args?.networkWatcherName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkWatcherName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.storageId === undefined) && !opts.urn) {
+            if (args?.storageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageId'");
             }
-            if ((!args || args.targetResourceId === undefined) && !opts.urn) {
+            if (args?.targetResourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetResourceId'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["enabledFilteringCriteria"] = args ? args.enabledFilteringCriteria : undefined;
-            resourceInputs["flowAnalyticsConfiguration"] = args ? args.flowAnalyticsConfiguration : undefined;
-            resourceInputs["flowLogName"] = args ? args.flowLogName : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["enabledFilteringCriteria"] = args?.enabledFilteringCriteria;
+            resourceInputs["flowAnalyticsConfiguration"] = args?.flowAnalyticsConfiguration;
+            resourceInputs["flowLogName"] = args?.flowLogName;
             resourceInputs["format"] = args ? (args.format ? pulumi.output(args.format).apply(types.inputs.flowLogFormatParametersArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["networkWatcherName"] = args ? args.networkWatcherName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["networkWatcherName"] = args?.networkWatcherName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["retentionPolicy"] = args ? (args.retentionPolicy ? pulumi.output(args.retentionPolicy).apply(types.inputs.retentionPolicyParametersArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["storageId"] = args ? args.storageId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["targetResourceId"] = args ? args.targetResourceId : undefined;
+            resourceInputs["storageId"] = args?.storageId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["targetResourceId"] = args?.targetResourceId;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -162,7 +162,7 @@ export class FlowLog extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20191101:FlowLog" }, { type: "azure-native:network/v20191201:FlowLog" }, { type: "azure-native:network/v20200301:FlowLog" }, { type: "azure-native:network/v20200401:FlowLog" }, { type: "azure-native:network/v20200501:FlowLog" }, { type: "azure-native:network/v20200601:FlowLog" }, { type: "azure-native:network/v20200701:FlowLog" }, { type: "azure-native:network/v20200801:FlowLog" }, { type: "azure-native:network/v20201101:FlowLog" }, { type: "azure-native:network/v20210201:FlowLog" }, { type: "azure-native:network/v20210301:FlowLog" }, { type: "azure-native:network/v20210501:FlowLog" }, { type: "azure-native:network/v20210801:FlowLog" }, { type: "azure-native:network/v20220101:FlowLog" }, { type: "azure-native:network/v20220501:FlowLog" }, { type: "azure-native:network/v20220701:FlowLog" }, { type: "azure-native:network/v20220901:FlowLog" }, { type: "azure-native:network/v20221101:FlowLog" }, { type: "azure-native:network/v20230201:FlowLog" }, { type: "azure-native:network/v20230401:FlowLog" }, { type: "azure-native:network/v20230501:FlowLog" }, { type: "azure-native:network/v20230601:FlowLog" }, { type: "azure-native:network/v20230901:FlowLog" }, { type: "azure-native:network/v20231101:FlowLog" }, { type: "azure-native:network/v20240101:FlowLog" }, { type: "azure-native:network/v20240301:FlowLog" }, { type: "azure-native:network/v20240501:FlowLog" }, { type: "azure-native:network/v20240701:FlowLog" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20191101:FlowLog" }, { type: "azure-native:network/v20191201:FlowLog" }, { type: "azure-native:network/v20200301:FlowLog" }, { type: "azure-native:network/v20200401:FlowLog" }, { type: "azure-native:network/v20200501:FlowLog" }, { type: "azure-native:network/v20200601:FlowLog" }, { type: "azure-native:network/v20200701:FlowLog" }, { type: "azure-native:network/v20200801:FlowLog" }, { type: "azure-native:network/v20201101:FlowLog" }, { type: "azure-native:network/v20210201:FlowLog" }, { type: "azure-native:network/v20210301:FlowLog" }, { type: "azure-native:network/v20210501:FlowLog" }, { type: "azure-native:network/v20210801:FlowLog" }, { type: "azure-native:network/v20220101:FlowLog" }, { type: "azure-native:network/v20220501:FlowLog" }, { type: "azure-native:network/v20220701:FlowLog" }, { type: "azure-native:network/v20220901:FlowLog" }, { type: "azure-native:network/v20221101:FlowLog" }, { type: "azure-native:network/v20230201:FlowLog" }, { type: "azure-native:network/v20230401:FlowLog" }, { type: "azure-native:network/v20230501:FlowLog" }, { type: "azure-native:network/v20230601:FlowLog" }, { type: "azure-native:network/v20230901:FlowLog" }, { type: "azure-native:network/v20231101:FlowLog" }, { type: "azure-native:network/v20240101:FlowLog" }, { type: "azure-native:network/v20240301:FlowLog" }, { type: "azure-native:network/v20240501:FlowLog" }, { type: "azure-native:network/v20240701:FlowLog" }, { type: "azure-native:network/v20241001:FlowLog" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FlowLog.__pulumiType, name, resourceInputs, opts);
     }

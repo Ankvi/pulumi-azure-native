@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * An Azure Cosmos DB SQL Role Definition.
  *
- * Uses Azure REST API version 2024-11-15.
+ * Uses Azure REST API version 2025-04-15.
  *
- * Other available API versions: 2020-06-01-preview, 2021-03-01-preview, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-06-01-preview, 2021-03-01-preview, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SqlResourceSqlRoleDefinition extends pulumi.CustomResource {
     /**
@@ -38,27 +38,27 @@ export class SqlResourceSqlRoleDefinition extends pulumi.CustomResource {
     /**
      * A set of fully qualified Scopes at or below which Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist.
      */
-    public readonly assignableScopes!: pulumi.Output<string[] | undefined>;
+    declare public readonly assignableScopes: pulumi.Output<string[] | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the database account.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The set of operations allowed through this Role Definition.
      */
-    public readonly permissions!: pulumi.Output<types.outputs.PermissionResponse[] | undefined>;
+    declare public readonly permissions: pulumi.Output<types.outputs.PermissionResponse[] | undefined>;
     /**
      * A user-friendly name for the Role Definition. Must be unique for the database account.
      */
-    public readonly roleName!: pulumi.Output<string | undefined>;
+    declare public readonly roleName: pulumi.Output<string | undefined>;
     /**
      * The type of Azure resource.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a SqlResourceSqlRoleDefinition resource with the given unique name, arguments, and options.
@@ -71,19 +71,19 @@ export class SqlResourceSqlRoleDefinition extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["assignableScopes"] = args ? args.assignableScopes : undefined;
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["roleDefinitionId"] = args ? args.roleDefinitionId : undefined;
-            resourceInputs["roleName"] = args ? args.roleName : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accountName"] = args?.accountName;
+            resourceInputs["assignableScopes"] = args?.assignableScopes;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["roleDefinitionId"] = args?.roleDefinitionId;
+            resourceInputs["roleName"] = args?.roleName;
+            resourceInputs["type"] = args?.type;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         } else {

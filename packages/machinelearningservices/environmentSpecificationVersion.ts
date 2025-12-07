@@ -36,23 +36,23 @@ export class EnvironmentSpecificationVersion extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly properties!: pulumi.Output<types.outputs.EnvironmentSpecificationVersionResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.EnvironmentSpecificationVersionResponse>;
     /**
      * System data associated with resource provider
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a EnvironmentSpecificationVersion resource with the given unique name, arguments, and options.
@@ -65,23 +65,23 @@ export class EnvironmentSpecificationVersion extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.properties === undefined) && !opts.urn) {
+            if (args?.properties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'properties'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["version"] = args?.version;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -93,7 +93,7 @@ export class EnvironmentSpecificationVersion extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20210301preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20220201preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20220201preview:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20220501:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20220601preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20221001:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20221001preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20221201preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20230201preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20230401:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20230401:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20230401preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20230401preview:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20230601preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20230601preview:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20230801preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20230801preview:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20231001:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20231001:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20240101preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20240101preview:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20240401:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20240401:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20240401preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20240401preview:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20240701preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20240701preview:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20241001:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20241001:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20241001preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20241001preview:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20250101preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20250401:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20250401preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20250601:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20250701preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices:EnvironmentVersion" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20210301preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20220201preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20220201preview:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20220501:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20220601preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20221001:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20221001preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20221201preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20230201preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20230401:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20230401:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20230401preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20230401preview:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20230601preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20230601preview:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20230801preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20230801preview:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20231001:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20231001:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20240101preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20240101preview:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20240401:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20240401:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20240401preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20240401preview:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20240701preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20240701preview:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20241001:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20241001:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20241001preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20241001preview:EnvironmentVersion" }, { type: "azure-native:machinelearningservices/v20250101preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20250401:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20250401preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20250601:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20250701preview:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices/v20250901:EnvironmentSpecificationVersion" }, { type: "azure-native:machinelearningservices:EnvironmentVersion" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(EnvironmentSpecificationVersion.__pulumiType, name, resourceInputs, opts);
     }

@@ -38,47 +38,47 @@ export class SystemTopic extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Identity information for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.IdentityInfoResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.IdentityInfoResponse | undefined>;
     /**
      * Location of the resource.
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Metric resource id for the system topic.
      */
-    public /*out*/ readonly metricResourceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly metricResourceId: pulumi.Output<string>;
     /**
      * Name of the resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Provisioning state of the system topic.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Source for the system topic.
      */
-    public readonly source!: pulumi.Output<string | undefined>;
+    declare public readonly source: pulumi.Output<string | undefined>;
     /**
      * The system metadata relating to the Event Grid resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * TopicType for the system topic.
      */
-    public readonly topicType!: pulumi.Output<string | undefined>;
+    declare public readonly topicType: pulumi.Output<string | undefined>;
     /**
      * Type of the resource.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a SystemTopic resource with the given unique name, arguments, and options.
@@ -91,16 +91,16 @@ export class SystemTopic extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["systemTopicName"] = args ? args.systemTopicName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["topicType"] = args ? args.topicType : undefined;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["systemTopicName"] = args?.systemTopicName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["topicType"] = args?.topicType;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["metricResourceId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

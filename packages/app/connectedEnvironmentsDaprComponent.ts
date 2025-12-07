@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
  *
- * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ConnectedEnvironmentsDaprComponent extends pulumi.CustomResource {
     /**
@@ -38,63 +38,63 @@ export class ConnectedEnvironmentsDaprComponent extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Component type
      */
-    public readonly componentType!: pulumi.Output<string | undefined>;
+    declare public readonly componentType: pulumi.Output<string | undefined>;
     /**
      * Any errors that occurred during deployment or deployment validation
      */
-    public /*out*/ readonly deploymentErrors!: pulumi.Output<string>;
+    declare public /*out*/ readonly deploymentErrors: pulumi.Output<string>;
     /**
      * Boolean describing if the component errors are ignores
      */
-    public readonly ignoreErrors!: pulumi.Output<boolean | undefined>;
+    declare public readonly ignoreErrors: pulumi.Output<boolean | undefined>;
     /**
      * Initialization timeout
      */
-    public readonly initTimeout!: pulumi.Output<string | undefined>;
+    declare public readonly initTimeout: pulumi.Output<string | undefined>;
     /**
      * Component metadata
      */
-    public readonly metadata!: pulumi.Output<types.outputs.DaprMetadataResponse[] | undefined>;
+    declare public readonly metadata: pulumi.Output<types.outputs.DaprMetadataResponse[] | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Provisioning state of the Connected Environment Dapr Component.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Names of container apps that can use this Dapr component
      */
-    public readonly scopes!: pulumi.Output<string[] | undefined>;
+    declare public readonly scopes: pulumi.Output<string[] | undefined>;
     /**
      * Name of a Dapr component to retrieve component secrets from
      */
-    public readonly secretStoreComponent!: pulumi.Output<string | undefined>;
+    declare public readonly secretStoreComponent: pulumi.Output<string | undefined>;
     /**
      * Collection of secrets used by a Dapr component
      */
-    public readonly secrets!: pulumi.Output<types.outputs.SecretResponse[] | undefined>;
+    declare public readonly secrets: pulumi.Output<types.outputs.SecretResponse[] | undefined>;
     /**
      * List of container app services that are bound to the Dapr component
      */
-    public readonly serviceComponentBind!: pulumi.Output<types.outputs.DaprComponentServiceBindingResponse[] | undefined>;
+    declare public readonly serviceComponentBind: pulumi.Output<types.outputs.DaprComponentServiceBindingResponse[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Component version
      */
-    public readonly version!: pulumi.Output<string | undefined>;
+    declare public readonly version: pulumi.Output<string | undefined>;
 
     /**
      * Create a ConnectedEnvironmentsDaprComponent resource with the given unique name, arguments, and options.
@@ -107,24 +107,24 @@ export class ConnectedEnvironmentsDaprComponent extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.connectedEnvironmentName === undefined) && !opts.urn) {
+            if (args?.connectedEnvironmentName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectedEnvironmentName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["componentName"] = args ? args.componentName : undefined;
-            resourceInputs["componentType"] = args ? args.componentType : undefined;
-            resourceInputs["connectedEnvironmentName"] = args ? args.connectedEnvironmentName : undefined;
-            resourceInputs["ignoreErrors"] = (args ? args.ignoreErrors : undefined) ?? false;
-            resourceInputs["initTimeout"] = args ? args.initTimeout : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["scopes"] = args ? args.scopes : undefined;
-            resourceInputs["secretStoreComponent"] = args ? args.secretStoreComponent : undefined;
-            resourceInputs["secrets"] = args ? args.secrets : undefined;
-            resourceInputs["serviceComponentBind"] = args ? args.serviceComponentBind : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["componentName"] = args?.componentName;
+            resourceInputs["componentType"] = args?.componentType;
+            resourceInputs["connectedEnvironmentName"] = args?.connectedEnvironmentName;
+            resourceInputs["ignoreErrors"] = (args?.ignoreErrors) ?? false;
+            resourceInputs["initTimeout"] = args?.initTimeout;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["scopes"] = args?.scopes;
+            resourceInputs["secretStoreComponent"] = args?.secretStoreComponent;
+            resourceInputs["secrets"] = args?.secrets;
+            resourceInputs["serviceComponentBind"] = args?.serviceComponentBind;
+            resourceInputs["version"] = args?.version;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["deploymentErrors"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -149,7 +149,7 @@ export class ConnectedEnvironmentsDaprComponent extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20220601preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20221001:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20221101preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20230401preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20230501:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20230502preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20230801preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20231102preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20240202preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20240301:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20240802preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20241002preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20250101:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20250202preview:ConnectedEnvironmentsDaprComponent" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20220601preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20221001:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20221101preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20230401preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20230501:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20230502preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20230801preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20231102preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20240202preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20240301:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20240802preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20241002preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20250101:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20250202preview:ConnectedEnvironmentsDaprComponent" }, { type: "azure-native:app/v20250701:ConnectedEnvironmentsDaprComponent" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ConnectedEnvironmentsDaprComponent.__pulumiType, name, resourceInputs, opts);
     }

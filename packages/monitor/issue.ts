@@ -1,0 +1,126 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * The Issue resource
+ *
+ * Uses Azure REST API version 2025-05-03-preview.
+ */
+export class Issue extends pulumi.CustomResource {
+    /**
+     * Get an existing Issue resource's state with the given name, ID, and optional extra
+     * properties used to qualify the lookup.
+     *
+     * @param name The _unique_ name of the resulting resource.
+     * @param id The _unique_ provider ID of the resource to lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): Issue {
+        return new Issue(name, undefined as any, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'azure-native:monitor:Issue';
+
+    /**
+     * Returns true if the given object is an instance of Issue.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Issue {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Issue.__pulumiType;
+    }
+
+    /**
+     * The Azure API version of the resource.
+     */
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
+    /**
+     * The name of the resource
+     */
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * The resource-specific properties for this resource.
+     */
+    declare public readonly properties: pulumi.Output<types.outputs.IssuePropertiesResponse>;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    declare public /*out*/ readonly type: pulumi.Output<string>;
+
+    /**
+     * Create a Issue resource with the given unique name, arguments, and options.
+     *
+     * @param name The _unique_ name of the resource.
+     * @param args The arguments to use to populate this resource's properties.
+     * @param opts A bag of options that control this resource's behavior.
+     */
+    constructor(name: string, args: IssueArgs, opts?: pulumi.CustomResourceOptions) {
+        let resourceInputs: pulumi.Inputs = {};
+        opts = opts || {};
+        if (!opts.id) {
+            if (args?.azureMonitorWorkspaceName === undefined && !opts.urn) {
+                throw new Error("Missing required property 'azureMonitorWorkspaceName'");
+            }
+            if (args?.resourceGroupName === undefined && !opts.urn) {
+                throw new Error("Missing required property 'resourceGroupName'");
+            }
+            resourceInputs["azureMonitorWorkspaceName"] = args?.azureMonitorWorkspaceName;
+            resourceInputs["issueName"] = args?.issueName;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["related"] = args?.related;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["startInvestigation"] = args?.startInvestigation;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+        } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["properties"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "azure-native:monitor/v20250503preview:Issue" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
+        super(Issue.__pulumiType, name, resourceInputs, opts);
+    }
+}
+
+/**
+ * The set of arguments for constructing a Issue resource.
+ */
+export interface IssueArgs {
+    /**
+     * The name of the Azure Monitor Workspace. The name is case insensitive
+     */
+    azureMonitorWorkspaceName: pulumi.Input<string>;
+    /**
+     * The name of the IssueResource
+     */
+    issueName?: pulumi.Input<string>;
+    /**
+     * The resource-specific properties for this resource.
+     */
+    properties?: pulumi.Input<types.inputs.IssuePropertiesArgs>;
+    /**
+     * Related resource or alert that is to be added to the issue (default: empty - the issue will be created without any related resources or alerts)
+     */
+    related?: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * Whether to automatically start an investigation once the issue is created (default: false)
+     */
+    startInvestigation?: pulumi.Input<boolean>;
+}

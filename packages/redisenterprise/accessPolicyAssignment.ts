@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-01-preview.
  *
- * Other available API versions: 2024-09-01-preview, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-09-01-preview, 2025-04-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redisenterprise [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class AccessPolicyAssignment extends pulumi.CustomResource {
     /**
@@ -38,27 +38,27 @@ export class AccessPolicyAssignment extends pulumi.CustomResource {
     /**
      * Name of access policy under specific access policy assignment. Only "default" policy is supported for now.
      */
-    public readonly accessPolicyName!: pulumi.Output<string>;
+    declare public readonly accessPolicyName: pulumi.Output<string>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Current provisioning status of the access policy assignment.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The user associated with the access policy.
      */
-    public readonly user!: pulumi.Output<types.outputs.AccessPolicyAssignmentPropertiesResponseUser>;
+    declare public readonly user: pulumi.Output<types.outputs.AccessPolicyAssignmentPropertiesResponseUser>;
 
     /**
      * Create a AccessPolicyAssignment resource with the given unique name, arguments, and options.
@@ -71,27 +71,27 @@ export class AccessPolicyAssignment extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accessPolicyName === undefined) && !opts.urn) {
+            if (args?.accessPolicyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessPolicyName'");
             }
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.databaseName === undefined) && !opts.urn) {
+            if (args?.databaseName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.user === undefined) && !opts.urn) {
+            if (args?.user === undefined && !opts.urn) {
                 throw new Error("Missing required property 'user'");
             }
-            resourceInputs["accessPolicyAssignmentName"] = args ? args.accessPolicyAssignmentName : undefined;
-            resourceInputs["accessPolicyName"] = args ? args.accessPolicyName : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["databaseName"] = args ? args.databaseName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["accessPolicyAssignmentName"] = args?.accessPolicyAssignmentName;
+            resourceInputs["accessPolicyName"] = args?.accessPolicyName;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["databaseName"] = args?.databaseName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["user"] = args?.user;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -105,7 +105,7 @@ export class AccessPolicyAssignment extends pulumi.CustomResource {
             resourceInputs["user"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cache/v20240901preview:AccessPolicyAssignment" }, { type: "azure-native:redisenterprise/v20240901preview:AccessPolicyAssignment" }, { type: "azure-native:redisenterprise/v20250401:AccessPolicyAssignment" }, { type: "azure-native:redisenterprise/v20250501preview:AccessPolicyAssignment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cache/v20240901preview:AccessPolicyAssignment" }, { type: "azure-native:redisenterprise/v20240901preview:AccessPolicyAssignment" }, { type: "azure-native:redisenterprise/v20250401:AccessPolicyAssignment" }, { type: "azure-native:redisenterprise/v20250501preview:AccessPolicyAssignment" }, { type: "azure-native:redisenterprise/v20250701:AccessPolicyAssignment" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessPolicyAssignment.__pulumiType, name, resourceInputs, opts);
     }

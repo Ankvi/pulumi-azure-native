@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-01-21. In version 2.x of the Azure Native provider, it used API version 2023-10-30-preview.
  *
- * Other available API versions: 2023-10-30-preview, 2023-12-13-preview, 2024-03-26-preview, 2024-04-04-preview, 2024-10-19. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devopsinfrastructure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-10-30-preview, 2023-12-13-preview, 2024-03-26-preview, 2024-04-04-preview, 2024-10-19, 2025-09-20. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devopsinfrastructure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Pool extends pulumi.CustomResource {
     /**
@@ -38,55 +38,55 @@ export class Pool extends pulumi.CustomResource {
     /**
      * Defines how the machine will be handled once it executed a job.
      */
-    public readonly agentProfile!: pulumi.Output<types.outputs.StatefulResponse | types.outputs.StatelessAgentProfileResponse>;
+    declare public readonly agentProfile: pulumi.Output<types.outputs.StatefulResponse | types.outputs.StatelessAgentProfileResponse>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The resource id of the DevCenter Project the pool belongs to.
      */
-    public readonly devCenterProjectResourceId!: pulumi.Output<string>;
+    declare public readonly devCenterProjectResourceId: pulumi.Output<string>;
     /**
      * Defines the type of fabric the agent will run on.
      */
-    public readonly fabricProfile!: pulumi.Output<types.outputs.VmssFabricProfileResponse>;
+    declare public readonly fabricProfile: pulumi.Output<types.outputs.VmssFabricProfileResponse>;
     /**
      * The managed service identities assigned to this resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Defines how many resources can there be created at any given time.
      */
-    public readonly maximumConcurrency!: pulumi.Output<number>;
+    declare public readonly maximumConcurrency: pulumi.Output<number>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Defines the organization in which the pool will be used.
      */
-    public readonly organizationProfile!: pulumi.Output<types.outputs.AzureDevOpsOrganizationProfileResponse | types.outputs.GitHubOrganizationProfileResponse>;
+    declare public readonly organizationProfile: pulumi.Output<types.outputs.AzureDevOpsOrganizationProfileResponse | types.outputs.GitHubOrganizationProfileResponse>;
     /**
      * The status of the current operation.
      */
-    public readonly provisioningState!: pulumi.Output<string | undefined>;
+    declare public readonly provisioningState: pulumi.Output<string | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Pool resource with the given unique name, arguments, and options.
@@ -99,35 +99,35 @@ export class Pool extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.agentProfile === undefined) && !opts.urn) {
+            if (args?.agentProfile === undefined && !opts.urn) {
                 throw new Error("Missing required property 'agentProfile'");
             }
-            if ((!args || args.devCenterProjectResourceId === undefined) && !opts.urn) {
+            if (args?.devCenterProjectResourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'devCenterProjectResourceId'");
             }
-            if ((!args || args.fabricProfile === undefined) && !opts.urn) {
+            if (args?.fabricProfile === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fabricProfile'");
             }
-            if ((!args || args.maximumConcurrency === undefined) && !opts.urn) {
+            if (args?.maximumConcurrency === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maximumConcurrency'");
             }
-            if ((!args || args.organizationProfile === undefined) && !opts.urn) {
+            if (args?.organizationProfile === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationProfile'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["agentProfile"] = args ? args.agentProfile : undefined;
-            resourceInputs["devCenterProjectResourceId"] = args ? args.devCenterProjectResourceId : undefined;
-            resourceInputs["fabricProfile"] = args ? args.fabricProfile : undefined;
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["maximumConcurrency"] = args ? args.maximumConcurrency : undefined;
-            resourceInputs["organizationProfile"] = args ? args.organizationProfile : undefined;
-            resourceInputs["poolName"] = args ? args.poolName : undefined;
-            resourceInputs["provisioningState"] = args ? args.provisioningState : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["agentProfile"] = args?.agentProfile;
+            resourceInputs["devCenterProjectResourceId"] = args?.devCenterProjectResourceId;
+            resourceInputs["fabricProfile"] = args?.fabricProfile;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["maximumConcurrency"] = args?.maximumConcurrency;
+            resourceInputs["organizationProfile"] = args?.organizationProfile;
+            resourceInputs["poolName"] = args?.poolName;
+            resourceInputs["provisioningState"] = args?.provisioningState;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -148,7 +148,7 @@ export class Pool extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:devopsinfrastructure/v20231030preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20231213preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20240326preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20240404preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20241019:Pool" }, { type: "azure-native:devopsinfrastructure/v20250121:Pool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:devopsinfrastructure/v20231030preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20231213preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20240326preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20240404preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20241019:Pool" }, { type: "azure-native:devopsinfrastructure/v20250121:Pool" }, { type: "azure-native:devopsinfrastructure/v20250920:Pool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Pool.__pulumiType, name, resourceInputs, opts);
     }

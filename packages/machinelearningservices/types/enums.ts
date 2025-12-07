@@ -1264,6 +1264,16 @@ export const MLAssistConfigurationType = {
  */
 export type MLAssistConfigurationType = (typeof MLAssistConfigurationType)[keyof typeof MLAssistConfigurationType];
 
+export const ManagedNetworkKind = {
+    V1: "V1",
+    V2: "V2",
+} as const;
+
+/**
+ * The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
+ */
+export type ManagedNetworkKind = (typeof ManagedNetworkKind)[keyof typeof ManagedNetworkKind];
+
 export const ManagedNetworkStatus = {
     Inactive: "Inactive",
     Active: "Active",
@@ -1891,6 +1901,9 @@ export type RuleCategory = (typeof RuleCategory)[keyof typeof RuleCategory];
 export const RuleStatus = {
     Inactive: "Inactive",
     Active: "Active",
+    Provisioning: "Provisioning",
+    Deleting: "Deleting",
+    Failed: "Failed",
 } as const;
 
 /**
@@ -2148,6 +2161,17 @@ export const StochasticOptimizer = {
  * Type of optimizer.
  */
 export type StochasticOptimizer = (typeof StochasticOptimizer)[keyof typeof StochasticOptimizer];
+
+export const SystemDatastoresAuthMode = {
+    AccessKey: "AccessKey",
+    Identity: "Identity",
+    UserDelegationSAS: "UserDelegationSAS",
+} as const;
+
+/**
+ * The auth mode used for accessing the system datastores of the workspace.
+ */
+export type SystemDatastoresAuthMode = (typeof SystemDatastoresAuthMode)[keyof typeof SystemDatastoresAuthMode];
 
 export const TargetAggregationFunction = {
     /**

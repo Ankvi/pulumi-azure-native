@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ThreatIntelligenceIndicator extends pulumi.CustomResource {
     /**
@@ -38,27 +38,27 @@ export class ThreatIntelligenceIndicator extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Etag of the azure resource
      */
-    public /*out*/ readonly etag!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly etag: pulumi.Output<string | undefined>;
     /**
      * The kind of the entity.
      */
-    public readonly kind!: pulumi.Output<string>;
+    declare public readonly kind: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ThreatIntelligenceIndicator resource with the given unique name, arguments, and options.
@@ -71,47 +71,47 @@ export class ThreatIntelligenceIndicator extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.kind === undefined) && !opts.urn) {
+            if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["confidence"] = args ? args.confidence : undefined;
-            resourceInputs["created"] = args ? args.created : undefined;
-            resourceInputs["createdByRef"] = args ? args.createdByRef : undefined;
-            resourceInputs["defanged"] = args ? args.defanged : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["extensions"] = args ? args.extensions : undefined;
-            resourceInputs["externalId"] = args ? args.externalId : undefined;
-            resourceInputs["externalLastUpdatedTimeUtc"] = args ? args.externalLastUpdatedTimeUtc : undefined;
-            resourceInputs["externalReferences"] = args ? args.externalReferences : undefined;
-            resourceInputs["granularMarkings"] = args ? args.granularMarkings : undefined;
-            resourceInputs["indicatorTypes"] = args ? args.indicatorTypes : undefined;
-            resourceInputs["killChainPhases"] = args ? args.killChainPhases : undefined;
+            resourceInputs["confidence"] = args?.confidence;
+            resourceInputs["created"] = args?.created;
+            resourceInputs["createdByRef"] = args?.createdByRef;
+            resourceInputs["defanged"] = args?.defanged;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["extensions"] = args?.extensions;
+            resourceInputs["externalId"] = args?.externalId;
+            resourceInputs["externalLastUpdatedTimeUtc"] = args?.externalLastUpdatedTimeUtc;
+            resourceInputs["externalReferences"] = args?.externalReferences;
+            resourceInputs["granularMarkings"] = args?.granularMarkings;
+            resourceInputs["indicatorTypes"] = args?.indicatorTypes;
+            resourceInputs["killChainPhases"] = args?.killChainPhases;
             resourceInputs["kind"] = "indicator";
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["language"] = args ? args.language : undefined;
-            resourceInputs["lastUpdatedTimeUtc"] = args ? args.lastUpdatedTimeUtc : undefined;
-            resourceInputs["modified"] = args ? args.modified : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["objectMarkingRefs"] = args ? args.objectMarkingRefs : undefined;
-            resourceInputs["parsedPattern"] = args ? args.parsedPattern : undefined;
-            resourceInputs["pattern"] = args ? args.pattern : undefined;
-            resourceInputs["patternType"] = args ? args.patternType : undefined;
-            resourceInputs["patternVersion"] = args ? args.patternVersion : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["revoked"] = args ? args.revoked : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["threatIntelligenceTags"] = args ? args.threatIntelligenceTags : undefined;
-            resourceInputs["threatTypes"] = args ? args.threatTypes : undefined;
-            resourceInputs["validFrom"] = args ? args.validFrom : undefined;
-            resourceInputs["validUntil"] = args ? args.validUntil : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["language"] = args?.language;
+            resourceInputs["lastUpdatedTimeUtc"] = args?.lastUpdatedTimeUtc;
+            resourceInputs["modified"] = args?.modified;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["objectMarkingRefs"] = args?.objectMarkingRefs;
+            resourceInputs["parsedPattern"] = args?.parsedPattern;
+            resourceInputs["pattern"] = args?.pattern;
+            resourceInputs["patternType"] = args?.patternType;
+            resourceInputs["patternVersion"] = args?.patternVersion;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["revoked"] = args?.revoked;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["threatIntelligenceTags"] = args?.threatIntelligenceTags;
+            resourceInputs["threatTypes"] = args?.threatTypes;
+            resourceInputs["validFrom"] = args?.validFrom;
+            resourceInputs["validUntil"] = args?.validUntil;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -125,7 +125,7 @@ export class ThreatIntelligenceIndicator extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20190101preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20210401:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20210901preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20211001:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20211001preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20220101preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20220401preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20220501preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20220601preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20220701preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20220801:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20220801preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20220901preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20221001preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20221101:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20221101preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20221201preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230201:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230201preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230301preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230401preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230501preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230601preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230701preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230801preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230901preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20231001preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20231101:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20231201preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20240101preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20240301:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20240401preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20240901:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20241001preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20250101preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20250301:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20250401preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20250601:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20250701preview:ThreatIntelligenceIndicator" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20190101preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20210401:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20210901preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20211001:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20211001preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20220101preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20220401preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20220501preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20220601preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20220701preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20220801:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20220801preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20220901preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20221001preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20221101:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20221101preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20221201preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230201:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230201preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230301preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230401preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230501preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230601preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230701preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230801preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20230901preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20231001preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20231101:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20231201preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20240101preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20240301:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20240401preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20240901:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20241001preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20250101preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20250301:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20250401preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20250601:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20250701preview:ThreatIntelligenceIndicator" }, { type: "azure-native:securityinsights/v20250901:ThreatIntelligenceIndicator" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ThreatIntelligenceIndicator.__pulumiType, name, resourceInputs, opts);
     }

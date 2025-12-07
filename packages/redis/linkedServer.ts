@@ -38,39 +38,43 @@ export class LinkedServer extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The unchanging DNS name which will always point to current geo-primary cache among the linked redis caches for seamless Geo Failover experience.
      */
-    public /*out*/ readonly geoReplicatedPrimaryHostName!: pulumi.Output<string>;
+    declare public /*out*/ readonly geoReplicatedPrimaryHostName: pulumi.Output<string>;
     /**
      * Fully qualified resourceId of the linked redis cache.
      */
-    public readonly linkedRedisCacheId!: pulumi.Output<string>;
+    declare public readonly linkedRedisCacheId: pulumi.Output<string>;
     /**
      * Location of the linked redis cache.
      */
-    public readonly linkedRedisCacheLocation!: pulumi.Output<string>;
+    declare public readonly linkedRedisCacheLocation: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The changing DNS name that resolves to the current geo-primary cache among the linked redis caches before or after the Geo Failover.
      */
-    public /*out*/ readonly primaryHostName!: pulumi.Output<string>;
+    declare public /*out*/ readonly primaryHostName: pulumi.Output<string>;
     /**
      * Terminal state of the link between primary and secondary redis cache.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Role of the linked server.
      */
-    public readonly serverRole!: pulumi.Output<string>;
+    declare public readonly serverRole: pulumi.Output<string>;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a LinkedServer resource with the given unique name, arguments, and options.
@@ -83,31 +87,32 @@ export class LinkedServer extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.linkedRedisCacheId === undefined) && !opts.urn) {
+            if (args?.linkedRedisCacheId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'linkedRedisCacheId'");
             }
-            if ((!args || args.linkedRedisCacheLocation === undefined) && !opts.urn) {
+            if (args?.linkedRedisCacheLocation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'linkedRedisCacheLocation'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.serverRole === undefined) && !opts.urn) {
+            if (args?.serverRole === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverRole'");
             }
-            resourceInputs["linkedRedisCacheId"] = args ? args.linkedRedisCacheId : undefined;
-            resourceInputs["linkedRedisCacheLocation"] = args ? args.linkedRedisCacheLocation : undefined;
-            resourceInputs["linkedServerName"] = args ? args.linkedServerName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["serverRole"] = args ? args.serverRole : undefined;
+            resourceInputs["linkedRedisCacheId"] = args?.linkedRedisCacheId;
+            resourceInputs["linkedRedisCacheLocation"] = args?.linkedRedisCacheLocation;
+            resourceInputs["linkedServerName"] = args?.linkedServerName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["serverRole"] = args?.serverRole;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["geoReplicatedPrimaryHostName"] = undefined /*out*/;
             resourceInputs["primaryHostName"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -118,6 +123,7 @@ export class LinkedServer extends pulumi.CustomResource {
             resourceInputs["primaryHostName"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["serverRole"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -140,11 +146,11 @@ export interface LinkedServerArgs {
      */
     linkedRedisCacheLocation: pulumi.Input<string>;
     /**
-     * The name of the linked server that is being added to the Redis cache.
+     * The name of the RedisLinkedServerWithProperties
      */
     linkedServerName?: pulumi.Input<string>;
     /**
-     * The name of the Redis cache.
+     * The name of the redis cache.
      */
     name: pulumi.Input<string>;
     /**

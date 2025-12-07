@@ -11715,6 +11715,10 @@ export interface HDInsightLinkedServiceArgs {
      */
     annotations?: pulumi.Input<any[]>;
     /**
+     * HDInsight cluster authentication type.
+     */
+    clusterAuthType?: pulumi.Input<string | enums.HDInsightClusterAuthenticationType>;
+    /**
      * HDInsight cluster URI. Type: string (or Expression with resultType string).
      */
     clusterUri: any;
@@ -11722,6 +11726,10 @@ export interface HDInsightLinkedServiceArgs {
      * The integration runtime reference.
      */
     connectVia?: pulumi.Input<IntegrationRuntimeReferenceArgs>;
+    /**
+     * The credential reference containing MI authentication information for the HDInsight cluster.
+     */
+    credential?: pulumi.Input<CredentialReferenceArgs>;
     /**
      * Linked service description.
      */
@@ -14033,9 +14041,17 @@ export interface LakeHouseLinkedServiceArgs {
      */
     artifactId?: any;
     /**
+     * The authentication type to use.
+     */
+    authenticationType?: pulumi.Input<string | enums.LakehouseAuthenticationType>;
+    /**
      * The integration runtime reference.
      */
     connectVia?: pulumi.Input<IntegrationRuntimeReferenceArgs>;
+    /**
+     * The credential reference containing authentication information.
+     */
+    credential?: pulumi.Input<CredentialReferenceArgs>;
     /**
      * Linked service description.
      */
@@ -14463,6 +14479,10 @@ export interface LookupActivityArgs {
      * Activity state. This is an optional property and if not provided, the state will be Active by default.
      */
     state?: pulumi.Input<string | enums.ActivityState>;
+    /**
+     * Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
+     */
+    treatDecimalAsString?: any;
     /**
      * Type of activity.
      * Expected value is 'Lookup'.
@@ -20607,6 +20627,10 @@ export interface SalesforceV2SourceArgs {
      */
     pageSize?: any;
     /**
+     * Partition option for the SalesforceV2 connector in copy activity, AutoDetect or None. Type: string (or Expression with resultType string).
+     */
+    partitionOption?: any;
+    /**
      * You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
      */
     query?: any;
@@ -21970,6 +21994,10 @@ export interface ScriptActivityArgs {
      * Activity state. This is an optional property and if not provided, the state will be Active by default.
      */
     state?: pulumi.Input<string | enums.ActivityState>;
+    /**
+     * Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
+     */
+    treatDecimalAsString?: any;
     /**
      * Type of activity.
      * Expected value is 'Script'.
@@ -23351,6 +23379,10 @@ export interface SnowflakeV2LinkedServiceArgs {
      * Expected value is 'SnowflakeV2'.
      */
     type: pulumi.Input<"SnowflakeV2">;
+    /**
+     * Indicates whether to use UTC timezone for timestamp data types. Type: boolean.
+     */
+    useUtcTimestamps?: any;
     /**
      * The name of the Snowflake user.
      */
@@ -25996,9 +26028,17 @@ export interface WarehouseLinkedServiceArgs {
      */
     artifactId: any;
     /**
+     * The authentication type to use.
+     */
+    authenticationType?: pulumi.Input<string | enums.WarehouseAuthenticationType>;
+    /**
      * The integration runtime reference.
      */
     connectVia?: pulumi.Input<IntegrationRuntimeReferenceArgs>;
+    /**
+     * The credential reference containing authentication information.
+     */
+    credential?: pulumi.Input<CredentialReferenceArgs>;
     /**
      * Linked service description.
      */

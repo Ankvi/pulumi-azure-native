@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  *
- * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+ * Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
  *
- * Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CodeContainer extends pulumi.CustomResource {
     /**
@@ -38,23 +38,23 @@ export class CodeContainer extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly codeContainerProperties!: pulumi.Output<types.outputs.CodeContainerResponse>;
+    declare public readonly codeContainerProperties: pulumi.Output<types.outputs.CodeContainerResponse>;
     /**
      * The name of the resource
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a CodeContainer resource with the given unique name, arguments, and options.
@@ -67,19 +67,19 @@ export class CodeContainer extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.codeContainerProperties === undefined) && !opts.urn) {
+            if (args?.codeContainerProperties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'codeContainerProperties'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
             resourceInputs["codeContainerProperties"] = args ? (args.codeContainerProperties ? pulumi.output(args.codeContainerProperties).apply(types.inputs.codeContainerArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -91,7 +91,7 @@ export class CodeContainer extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20210301preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20220201preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20220501:CodeContainer" }, { type: "azure-native:machinelearningservices/v20220601preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20221001:CodeContainer" }, { type: "azure-native:machinelearningservices/v20221001preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20221201preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20230201preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20230401:CodeContainer" }, { type: "azure-native:machinelearningservices/v20230401preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20230601preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20230801preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20231001:CodeContainer" }, { type: "azure-native:machinelearningservices/v20240101preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20240401:CodeContainer" }, { type: "azure-native:machinelearningservices/v20240401preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20240701preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20241001:CodeContainer" }, { type: "azure-native:machinelearningservices/v20241001preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20250101preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20250401:CodeContainer" }, { type: "azure-native:machinelearningservices/v20250401preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20250601:CodeContainer" }, { type: "azure-native:machinelearningservices/v20250701preview:CodeContainer" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20210301preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20220201preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20220501:CodeContainer" }, { type: "azure-native:machinelearningservices/v20220601preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20221001:CodeContainer" }, { type: "azure-native:machinelearningservices/v20221001preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20221201preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20230201preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20230401:CodeContainer" }, { type: "azure-native:machinelearningservices/v20230401preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20230601preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20230801preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20231001:CodeContainer" }, { type: "azure-native:machinelearningservices/v20240101preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20240401:CodeContainer" }, { type: "azure-native:machinelearningservices/v20240401preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20240701preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20241001:CodeContainer" }, { type: "azure-native:machinelearningservices/v20241001preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20250101preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20250401:CodeContainer" }, { type: "azure-native:machinelearningservices/v20250401preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20250601:CodeContainer" }, { type: "azure-native:machinelearningservices/v20250701preview:CodeContainer" }, { type: "azure-native:machinelearningservices/v20250901:CodeContainer" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CodeContainer.__pulumiType, name, resourceInputs, opts);
     }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-01.
  *
- * Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CapacityPoolSubvolume extends pulumi.CustomResource {
     /**
@@ -38,35 +38,35 @@ export class CapacityPoolSubvolume extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * parent path to the subvolume
      */
-    public readonly parentPath!: pulumi.Output<string | undefined>;
+    declare public readonly parentPath: pulumi.Output<string | undefined>;
     /**
      * Path to the subvolume
      */
-    public readonly path!: pulumi.Output<string | undefined>;
+    declare public readonly path: pulumi.Output<string | undefined>;
     /**
      * Azure lifecycle management
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Truncate subvolume to the provided size in bytes
      */
-    public readonly size!: pulumi.Output<number | undefined>;
+    declare public readonly size: pulumi.Output<number | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a CapacityPoolSubvolume resource with the given unique name, arguments, and options.
@@ -79,26 +79,26 @@ export class CapacityPoolSubvolume extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.poolName === undefined) && !opts.urn) {
+            if (args?.poolName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'poolName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.volumeName === undefined) && !opts.urn) {
+            if (args?.volumeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volumeName'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["parentPath"] = args ? args.parentPath : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["poolName"] = args ? args.poolName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["subvolumeName"] = args ? args.subvolumeName : undefined;
-            resourceInputs["volumeName"] = args ? args.volumeName : undefined;
+            resourceInputs["accountName"] = args?.accountName;
+            resourceInputs["parentPath"] = args?.parentPath;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["poolName"] = args?.poolName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["subvolumeName"] = args?.subvolumeName;
+            resourceInputs["volumeName"] = args?.volumeName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -115,7 +115,7 @@ export class CapacityPoolSubvolume extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20211001:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20220101:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20220301:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20220501:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20220901:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20221101:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20221101:Subvolume" }, { type: "azure-native:netapp/v20221101preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20221101preview:Subvolume" }, { type: "azure-native:netapp/v20230501:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20230501:Subvolume" }, { type: "azure-native:netapp/v20230501preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20230501preview:Subvolume" }, { type: "azure-native:netapp/v20230701:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20230701:Subvolume" }, { type: "azure-native:netapp/v20230701preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20230701preview:Subvolume" }, { type: "azure-native:netapp/v20231101:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20231101:Subvolume" }, { type: "azure-native:netapp/v20231101preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20231101preview:Subvolume" }, { type: "azure-native:netapp/v20240101:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20240101:Subvolume" }, { type: "azure-native:netapp/v20240301:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20240301:Subvolume" }, { type: "azure-native:netapp/v20240301preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20240301preview:Subvolume" }, { type: "azure-native:netapp/v20240501:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20240501:Subvolume" }, { type: "azure-native:netapp/v20240501preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20240501preview:Subvolume" }, { type: "azure-native:netapp/v20240701:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20240701:Subvolume" }, { type: "azure-native:netapp/v20240701preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20240701preview:Subvolume" }, { type: "azure-native:netapp/v20240901:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20240901:Subvolume" }, { type: "azure-native:netapp/v20240901preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20250101:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20250101preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20250301:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20250301preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20250601:CapacityPoolSubvolume" }, { type: "azure-native:netapp:Subvolume" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20211001:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20220101:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20220301:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20220501:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20220901:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20221101:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20221101:Subvolume" }, { type: "azure-native:netapp/v20221101preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20221101preview:Subvolume" }, { type: "azure-native:netapp/v20230501:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20230501:Subvolume" }, { type: "azure-native:netapp/v20230501preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20230501preview:Subvolume" }, { type: "azure-native:netapp/v20230701:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20230701:Subvolume" }, { type: "azure-native:netapp/v20230701preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20230701preview:Subvolume" }, { type: "azure-native:netapp/v20231101:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20231101:Subvolume" }, { type: "azure-native:netapp/v20231101preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20231101preview:Subvolume" }, { type: "azure-native:netapp/v20240101:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20240101:Subvolume" }, { type: "azure-native:netapp/v20240301:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20240301:Subvolume" }, { type: "azure-native:netapp/v20240301preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20240301preview:Subvolume" }, { type: "azure-native:netapp/v20240501:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20240501:Subvolume" }, { type: "azure-native:netapp/v20240501preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20240501preview:Subvolume" }, { type: "azure-native:netapp/v20240701:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20240701:Subvolume" }, { type: "azure-native:netapp/v20240701preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20240701preview:Subvolume" }, { type: "azure-native:netapp/v20240901:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20240901:Subvolume" }, { type: "azure-native:netapp/v20240901preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20250101:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20250101preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20250301:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20250301preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20250601:CapacityPoolSubvolume" }, { type: "azure-native:netapp/v20250701preview:CapacityPoolSubvolume" }, { type: "azure-native:netapp:Subvolume" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CapacityPoolSubvolume.__pulumiType, name, resourceInputs, opts);
     }

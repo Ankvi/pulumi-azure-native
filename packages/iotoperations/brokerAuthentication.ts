@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01-preview.
  *
- * Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class BrokerAuthentication extends pulumi.CustomResource {
     /**
@@ -38,27 +38,27 @@ export class BrokerAuthentication extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Edge location of the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The resource-specific properties for this resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.BrokerAuthenticationPropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.BrokerAuthenticationPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a BrokerAuthentication resource with the given unique name, arguments, and options.
@@ -71,24 +71,24 @@ export class BrokerAuthentication extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.brokerName === undefined) && !opts.urn) {
+            if (args?.brokerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'brokerName'");
             }
-            if ((!args || args.extendedLocation === undefined) && !opts.urn) {
+            if (args?.extendedLocation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'extendedLocation'");
             }
-            if ((!args || args.instanceName === undefined) && !opts.urn) {
+            if (args?.instanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["authenticationName"] = args ? args.authenticationName : undefined;
-            resourceInputs["brokerName"] = args ? args.brokerName : undefined;
-            resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["authenticationName"] = args?.authenticationName;
+            resourceInputs["brokerName"] = args?.brokerName;
+            resourceInputs["extendedLocation"] = args?.extendedLocation;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -102,7 +102,7 @@ export class BrokerAuthentication extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20240701preview:BrokerAuthentication" }, { type: "azure-native:iotoperations/v20240815preview:BrokerAuthentication" }, { type: "azure-native:iotoperations/v20240915preview:BrokerAuthentication" }, { type: "azure-native:iotoperations/v20241101:BrokerAuthentication" }, { type: "azure-native:iotoperations/v20250401:BrokerAuthentication" }, { type: "azure-native:iotoperations/v20250701preview:BrokerAuthentication" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20240701preview:BrokerAuthentication" }, { type: "azure-native:iotoperations/v20240815preview:BrokerAuthentication" }, { type: "azure-native:iotoperations/v20240915preview:BrokerAuthentication" }, { type: "azure-native:iotoperations/v20241101:BrokerAuthentication" }, { type: "azure-native:iotoperations/v20250401:BrokerAuthentication" }, { type: "azure-native:iotoperations/v20250701preview:BrokerAuthentication" }, { type: "azure-native:iotoperations/v20251001:BrokerAuthentication" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(BrokerAuthentication.__pulumiType, name, resourceInputs, opts);
     }

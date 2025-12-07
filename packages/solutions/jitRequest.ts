@@ -38,59 +38,59 @@ export class JitRequest extends pulumi.CustomResource {
     /**
      * The parent application id.
      */
-    public readonly applicationResourceId!: pulumi.Output<string>;
+    declare public readonly applicationResourceId: pulumi.Output<string>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The client entity that created the JIT request.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<types.outputs.ApplicationClientDetailsResponse>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<types.outputs.ApplicationClientDetailsResponse>;
     /**
      * The JIT authorization policies.
      */
-    public readonly jitAuthorizationPolicies!: pulumi.Output<types.outputs.JitAuthorizationPoliciesResponse[]>;
+    declare public readonly jitAuthorizationPolicies: pulumi.Output<types.outputs.JitAuthorizationPoliciesResponse[]>;
     /**
      * The JIT request state.
      */
-    public /*out*/ readonly jitRequestState!: pulumi.Output<string>;
+    declare public /*out*/ readonly jitRequestState: pulumi.Output<string>;
     /**
      * The JIT request properties.
      */
-    public readonly jitSchedulingPolicy!: pulumi.Output<types.outputs.JitSchedulingPolicyResponse>;
+    declare public readonly jitSchedulingPolicy: pulumi.Output<types.outputs.JitSchedulingPolicyResponse>;
     /**
      * Resource location
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Resource name
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The JIT request provisioning state.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The publisher tenant id.
      */
-    public /*out*/ readonly publisherTenantId!: pulumi.Output<string>;
+    declare public /*out*/ readonly publisherTenantId: pulumi.Output<string>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource type
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The client entity that last updated the JIT request.
      */
-    public /*out*/ readonly updatedBy!: pulumi.Output<types.outputs.ApplicationClientDetailsResponse>;
+    declare public /*out*/ readonly updatedBy: pulumi.Output<types.outputs.ApplicationClientDetailsResponse>;
 
     /**
      * Create a JitRequest resource with the given unique name, arguments, and options.
@@ -103,25 +103,25 @@ export class JitRequest extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.applicationResourceId === undefined) && !opts.urn) {
+            if (args?.applicationResourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationResourceId'");
             }
-            if ((!args || args.jitAuthorizationPolicies === undefined) && !opts.urn) {
+            if (args?.jitAuthorizationPolicies === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jitAuthorizationPolicies'");
             }
-            if ((!args || args.jitSchedulingPolicy === undefined) && !opts.urn) {
+            if (args?.jitSchedulingPolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jitSchedulingPolicy'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["applicationResourceId"] = args ? args.applicationResourceId : undefined;
-            resourceInputs["jitAuthorizationPolicies"] = args ? args.jitAuthorizationPolicies : undefined;
-            resourceInputs["jitRequestName"] = args ? args.jitRequestName : undefined;
-            resourceInputs["jitSchedulingPolicy"] = args ? args.jitSchedulingPolicy : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["applicationResourceId"] = args?.applicationResourceId;
+            resourceInputs["jitAuthorizationPolicies"] = args?.jitAuthorizationPolicies;
+            resourceInputs["jitRequestName"] = args?.jitRequestName;
+            resourceInputs["jitSchedulingPolicy"] = args?.jitSchedulingPolicy;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["jitRequestState"] = undefined /*out*/;

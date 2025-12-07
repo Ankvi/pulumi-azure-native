@@ -15,7 +15,7 @@ export interface AzureResourceManagerCommonTypesExtendedLocationArgs {
 }
 
 /**
- * Capability, to match in Solution Templates & Targets
+ * Capability, to match in Solution Templates and Targets
  */
 export interface CapabilityArgs {
     /**
@@ -175,6 +175,16 @@ export interface ReconciliationPolicyPropertiesArgs {
      * The state of the ReconciliationPolicy
      */
     state: pulumi.Input<string | enums.ReconciliationState>;
+}
+
+/**
+ * Schema Reference Properties
+ */
+export interface SchemaReferencePropertiesArgs {
+    /**
+     * Schema Id of schema reference
+     */
+    schemaId: pulumi.Input<string>;
 }
 
 /**

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  *
- * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+ * Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
  *
- * Other available API versions: 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ComponentVersion extends pulumi.CustomResource {
     /**
@@ -38,23 +38,23 @@ export class ComponentVersion extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly componentVersionProperties!: pulumi.Output<types.outputs.ComponentVersionResponse>;
+    declare public readonly componentVersionProperties: pulumi.Output<types.outputs.ComponentVersionResponse>;
     /**
      * The name of the resource
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ComponentVersion resource with the given unique name, arguments, and options.
@@ -67,23 +67,23 @@ export class ComponentVersion extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.componentVersionProperties === undefined) && !opts.urn) {
+            if (args?.componentVersionProperties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'componentVersionProperties'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
             resourceInputs["componentVersionProperties"] = args ? (args.componentVersionProperties ? pulumi.output(args.componentVersionProperties).apply(types.inputs.componentVersionArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["version"] = args?.version;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -95,7 +95,7 @@ export class ComponentVersion extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20220201preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20220501:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20220601preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20221001:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20221001preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20221201preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20230201preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20230401:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20230401preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20230601preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20230801preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20231001:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20240101preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20240401:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20240401preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20240701preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20241001:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20241001preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20250101preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20250401:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20250401preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20250601:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20250701preview:ComponentVersion" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20220201preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20220501:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20220601preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20221001:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20221001preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20221201preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20230201preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20230401:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20230401preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20230601preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20230801preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20231001:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20240101preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20240401:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20240401preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20240701preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20241001:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20241001preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20250101preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20250401:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20250401preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20250601:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20250701preview:ComponentVersion" }, { type: "azure-native:machinelearningservices/v20250901:ComponentVersion" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ComponentVersion.__pulumiType, name, resourceInputs, opts);
     }

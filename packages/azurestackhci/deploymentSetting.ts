@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-08-01-preview.
  *
- * Other available API versions: 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DeploymentSetting extends pulumi.CustomResource {
     /**
@@ -38,43 +38,43 @@ export class DeploymentSetting extends pulumi.CustomResource {
     /**
      * Azure resource ids of Arc machines to be part of cluster.
      */
-    public readonly arcNodeResourceIds!: pulumi.Output<string[]>;
+    declare public readonly arcNodeResourceIds: pulumi.Output<string[]>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Scale units will contains list of deployment data
      */
-    public readonly deploymentConfiguration!: pulumi.Output<types.outputs.DeploymentConfigurationResponse>;
+    declare public readonly deploymentConfiguration: pulumi.Output<types.outputs.DeploymentConfigurationResponse>;
     /**
      * The deployment mode for cluster deployment.
      */
-    public readonly deploymentMode!: pulumi.Output<string>;
+    declare public readonly deploymentMode: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The intended operation for a cluster.
      */
-    public readonly operationType!: pulumi.Output<string | undefined>;
+    declare public readonly operationType: pulumi.Output<string | undefined>;
     /**
      * DeploymentSetting provisioning state
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Deployment Status reported from cluster.
      */
-    public /*out*/ readonly reportedProperties!: pulumi.Output<types.outputs.EceReportedPropertiesResponse>;
+    declare public /*out*/ readonly reportedProperties: pulumi.Output<types.outputs.EceReportedPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a DeploymentSetting resource with the given unique name, arguments, and options.
@@ -87,28 +87,28 @@ export class DeploymentSetting extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.arcNodeResourceIds === undefined) && !opts.urn) {
+            if (args?.arcNodeResourceIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'arcNodeResourceIds'");
             }
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.deploymentConfiguration === undefined) && !opts.urn) {
+            if (args?.deploymentConfiguration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deploymentConfiguration'");
             }
-            if ((!args || args.deploymentMode === undefined) && !opts.urn) {
+            if (args?.deploymentMode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deploymentMode'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["arcNodeResourceIds"] = args ? args.arcNodeResourceIds : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["deploymentConfiguration"] = args ? args.deploymentConfiguration : undefined;
-            resourceInputs["deploymentMode"] = args ? args.deploymentMode : undefined;
-            resourceInputs["deploymentSettingsName"] = args ? args.deploymentSettingsName : undefined;
-            resourceInputs["operationType"] = (args ? args.operationType : undefined) ?? "ClusterProvisioning";
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["arcNodeResourceIds"] = args?.arcNodeResourceIds;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["deploymentConfiguration"] = args?.deploymentConfiguration;
+            resourceInputs["deploymentMode"] = args?.deploymentMode;
+            resourceInputs["deploymentSettingsName"] = args?.deploymentSettingsName;
+            resourceInputs["operationType"] = (args?.operationType) ?? "ClusterProvisioning";
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -128,7 +128,7 @@ export class DeploymentSetting extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20230801preview:DeploymentSetting" }, { type: "azure-native:azurestackhci/v20231101preview:DeploymentSetting" }, { type: "azure-native:azurestackhci/v20240101:DeploymentSetting" }, { type: "azure-native:azurestackhci/v20240215preview:DeploymentSetting" }, { type: "azure-native:azurestackhci/v20240401:DeploymentSetting" }, { type: "azure-native:azurestackhci/v20240901preview:DeploymentSetting" }, { type: "azure-native:azurestackhci/v20241201preview:DeploymentSetting" }, { type: "azure-native:azurestackhci/v20250201preview:DeploymentSetting" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20230801preview:DeploymentSetting" }, { type: "azure-native:azurestackhci/v20231101preview:DeploymentSetting" }, { type: "azure-native:azurestackhci/v20240101:DeploymentSetting" }, { type: "azure-native:azurestackhci/v20240215preview:DeploymentSetting" }, { type: "azure-native:azurestackhci/v20240401:DeploymentSetting" }, { type: "azure-native:azurestackhci/v20240901preview:DeploymentSetting" }, { type: "azure-native:azurestackhci/v20241201preview:DeploymentSetting" }, { type: "azure-native:azurestackhci/v20250201preview:DeploymentSetting" }, { type: "azure-native:azurestackhci/v20250915preview:DeploymentSetting" }, { type: "azure-native:azurestackhci/v20251001:DeploymentSetting" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DeploymentSetting.__pulumiType, name, resourceInputs, opts);
     }

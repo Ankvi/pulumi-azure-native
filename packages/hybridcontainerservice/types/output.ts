@@ -306,6 +306,20 @@ export interface CredentialResultResponse {
 }
 
 /**
+ * Extended location pointing to the underlying infrastructure
+ */
+export interface ExtendedLocationResponse {
+    /**
+     * ARM Id of the extended location.
+     */
+    name?: string;
+    /**
+     * The extended location type. Allowed value: 'CustomLocation'
+     */
+    type?: string;
+}
+
+/**
  * Configurations for provisioning the cluster with HTTP proxy servers.
  */
 export interface HttpProxyConfigResponseResponse {
@@ -329,6 +343,80 @@ export interface HttpProxyConfigResponseResponse {
      * Username to use for connecting to proxy server
      */
     username?: string;
+}
+
+/**
+ * Kubernetes Patch Version profile
+ */
+export interface KubernetesPatchVersionsResponse {
+    /**
+     * Indicates whether the kubernetes version image is ready or not
+     */
+    readiness?: KubernetesVersionReadinessResponse[];
+    /**
+     * Possible upgrade paths for given patch version
+     */
+    upgrades?: string[];
+}
+
+export interface KubernetesVersionProfileResponseProperties {
+    /**
+     * Provisioning state of the resource
+     */
+    provisioningState: string;
+    /**
+     * List of supported Kubernetes versions
+     */
+    values?: KubernetesVersionPropertiesResponse[];
+}
+
+/**
+ * Kubernetes version profile for given major.minor release
+ */
+export interface KubernetesVersionPropertiesResponse {
+    /**
+     * Whether this version is in preview mode.
+     */
+    isPreview: boolean;
+    /**
+     * Patch versions of a Kubernetes release
+     */
+    patchVersions: {[key: string]: KubernetesPatchVersionsResponse};
+    /**
+     * major.minor version of Kubernetes release
+     */
+    version: string;
+}
+
+/**
+ * Indicates whether the kubernetes version image is ready or not
+ */
+export interface KubernetesVersionReadinessResponse {
+    /**
+     * The error message for version not being ready
+     */
+    errorMessage: string;
+    /**
+     * Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows.
+     */
+    osSku?: string;
+    /**
+     * The particular KubernetesVersion Image OS Type (Linux, Windows)
+     */
+    osType: string;
+    /**
+     * Whether the kubernetes version image is ready or not
+     */
+    ready: boolean;
+}
+/**
+ * kubernetesVersionReadinessResponseProvideDefaults sets the appropriate defaults for KubernetesVersionReadinessResponse
+ */
+export function kubernetesVersionReadinessResponseProvideDefaults(val: KubernetesVersionReadinessResponse): KubernetesVersionReadinessResponse {
+    return {
+        ...val,
+        osType: (val.osType) ?? "Linux",
+    };
 }
 
 /**
@@ -1000,6 +1088,57 @@ export interface VirtualNetworksResponseExtendedLocation {
      * The extended location type.
      */
     type?: string;
+}
+
+/**
+ * Describes the VM SKU capabilities like MemoryGB, vCPUs, etc.
+ */
+export interface VmSkuCapabilitiesResponse {
+    /**
+     * Name of the VM SKU capability
+     */
+    name: string;
+    /**
+     * Value of the VM SKU capability
+     */
+    value: string;
+}
+
+export interface VmSkuProfileResponseProperties {
+    /**
+     * Provisioning state of the resource
+     */
+    provisioningState: string;
+    /**
+     * List of supported VM SKUs.
+     */
+    values?: VmSkuPropertiesResponse[];
+}
+
+/**
+ * The profile for supported VM SKUs
+ */
+export interface VmSkuPropertiesResponse {
+    /**
+     * The list of name-value pairs to describe VM SKU capabilities like MemoryGB, vCPUs, etc.
+     */
+    capabilities: VmSkuCapabilitiesResponse[];
+    /**
+     * The name of the VM SKU
+     */
+    name: string;
+    /**
+     * The type of resource the SKU applies to.
+     */
+    resourceType: string;
+    /**
+     * The size of the VM SKU
+     */
+    size: string;
+    /**
+     * The tier of the VM SKU
+     */
+    tier: string;
 }
 
 /**

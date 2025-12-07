@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ManagedHsm extends pulumi.CustomResource {
     /**
@@ -38,39 +38,39 @@ export class ManagedHsm extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The supported Azure location where the managed HSM Pool should be created.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The name of the managed HSM Pool.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Properties of the managed HSM
      */
-    public readonly properties!: pulumi.Output<types.outputs.ManagedHsmPropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.ManagedHsmPropertiesResponse>;
     /**
      * SKU details
      */
-    public readonly sku!: pulumi.Output<types.outputs.ManagedHsmSkuResponse | undefined>;
+    declare public readonly sku: pulumi.Output<types.outputs.ManagedHsmSkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the key vault resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The resource type of the managed HSM Pool.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ManagedHsm resource with the given unique name, arguments, and options.
@@ -83,16 +83,16 @@ export class ManagedHsm extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
             resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.managedHsmPropertiesArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -108,7 +108,7 @@ export class ManagedHsm extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:keyvault/v20200401preview:ManagedHsm" }, { type: "azure-native:keyvault/v20210401preview:ManagedHsm" }, { type: "azure-native:keyvault/v20210601preview:ManagedHsm" }, { type: "azure-native:keyvault/v20211001:ManagedHsm" }, { type: "azure-native:keyvault/v20211101preview:ManagedHsm" }, { type: "azure-native:keyvault/v20220201preview:ManagedHsm" }, { type: "azure-native:keyvault/v20220701:ManagedHsm" }, { type: "azure-native:keyvault/v20221101:ManagedHsm" }, { type: "azure-native:keyvault/v20230201:ManagedHsm" }, { type: "azure-native:keyvault/v20230701:ManagedHsm" }, { type: "azure-native:keyvault/v20240401preview:ManagedHsm" }, { type: "azure-native:keyvault/v20241101:ManagedHsm" }, { type: "azure-native:keyvault/v20241201preview:ManagedHsm" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:keyvault/v20200401preview:ManagedHsm" }, { type: "azure-native:keyvault/v20210401preview:ManagedHsm" }, { type: "azure-native:keyvault/v20210601preview:ManagedHsm" }, { type: "azure-native:keyvault/v20211001:ManagedHsm" }, { type: "azure-native:keyvault/v20211101preview:ManagedHsm" }, { type: "azure-native:keyvault/v20220201preview:ManagedHsm" }, { type: "azure-native:keyvault/v20220701:ManagedHsm" }, { type: "azure-native:keyvault/v20221101:ManagedHsm" }, { type: "azure-native:keyvault/v20230201:ManagedHsm" }, { type: "azure-native:keyvault/v20230701:ManagedHsm" }, { type: "azure-native:keyvault/v20240401preview:ManagedHsm" }, { type: "azure-native:keyvault/v20241101:ManagedHsm" }, { type: "azure-native:keyvault/v20241201preview:ManagedHsm" }, { type: "azure-native:keyvault/v20250501:ManagedHsm" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedHsm.__pulumiType, name, resourceInputs, opts);
     }

@@ -508,7 +508,7 @@ export interface ManagedResourceReferenceResponse {
      */
     denyStatus?: string;
     /**
-     * The resourceId of a resource managed by the deployment stack.
+     * The ARM Resource ID of a resource managed by the deployment stack.
      */
     id: string;
     /**
@@ -712,7 +712,7 @@ export interface ResourceReferenceExtendedResponse {
      */
     error?: ErrorDetailResponse;
     /**
-     * The resourceId of a resource managed by the deployment stack.
+     * The ARM Resource ID of a resource managed by the deployment stack.
      */
     id: string;
 }
@@ -722,7 +722,7 @@ export interface ResourceReferenceExtendedResponse {
  */
 export interface ResourceReferenceResponse {
     /**
-     * The resourceId of a resource managed by the deployment stack.
+     * The ARM Resource ID of a resource managed by the deployment stack.
      */
     id: string;
 }

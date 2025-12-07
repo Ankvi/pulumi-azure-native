@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Machine Learning compute object wrapped into ARM resource envelope.
  *
- * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+ * Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
  *
- * Other available API versions: 2021-03-01-preview, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-03-01-preview, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Compute extends pulumi.CustomResource {
     /**
@@ -38,39 +38,39 @@ export class Compute extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Compute properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.AKSResponse | types.outputs.AmlComputeResponse | types.outputs.ComputeInstanceResponse | types.outputs.DataFactoryResponse | types.outputs.DataLakeAnalyticsResponse | types.outputs.DatabricksResponse | types.outputs.HDInsightResponse | types.outputs.KubernetesResponse | types.outputs.SynapseSparkResponse | types.outputs.VirtualMachineResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.AKSResponse | types.outputs.AmlComputeResponse | types.outputs.ComputeInstanceResponse | types.outputs.DataFactoryResponse | types.outputs.DataLakeAnalyticsResponse | types.outputs.DatabricksResponse | types.outputs.HDInsightResponse | types.outputs.KubernetesResponse | types.outputs.SynapseSparkResponse | types.outputs.VirtualMachineResponse>;
     /**
      * The sku of the workspace.
      */
-    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
+    declare public readonly sku: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Compute resource with the given unique name, arguments, and options.
@@ -83,20 +83,20 @@ export class Compute extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["computeName"] = args ? args.computeName : undefined;
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["computeName"] = args?.computeName;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -113,7 +113,7 @@ export class Compute extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20180301preview:Compute" }, { type: "azure-native:machinelearningservices/v20181119:Compute" }, { type: "azure-native:machinelearningservices/v20190501:Compute" }, { type: "azure-native:machinelearningservices/v20190601:Compute" }, { type: "azure-native:machinelearningservices/v20191101:Compute" }, { type: "azure-native:machinelearningservices/v20200101:Compute" }, { type: "azure-native:machinelearningservices/v20200218preview:Compute" }, { type: "azure-native:machinelearningservices/v20200301:Compute" }, { type: "azure-native:machinelearningservices/v20200401:Compute" }, { type: "azure-native:machinelearningservices/v20200501preview:Compute" }, { type: "azure-native:machinelearningservices/v20200515preview:Compute" }, { type: "azure-native:machinelearningservices/v20200601:Compute" }, { type: "azure-native:machinelearningservices/v20200801:Compute" }, { type: "azure-native:machinelearningservices/v20200901preview:Compute" }, { type: "azure-native:machinelearningservices/v20210101:Compute" }, { type: "azure-native:machinelearningservices/v20210301preview:Compute" }, { type: "azure-native:machinelearningservices/v20210401:Compute" }, { type: "azure-native:machinelearningservices/v20210401:MachineLearningCompute" }, { type: "azure-native:machinelearningservices/v20210701:Compute" }, { type: "azure-native:machinelearningservices/v20220101preview:Compute" }, { type: "azure-native:machinelearningservices/v20220201preview:Compute" }, { type: "azure-native:machinelearningservices/v20220501:Compute" }, { type: "azure-native:machinelearningservices/v20220601preview:Compute" }, { type: "azure-native:machinelearningservices/v20221001:Compute" }, { type: "azure-native:machinelearningservices/v20221001preview:Compute" }, { type: "azure-native:machinelearningservices/v20221201preview:Compute" }, { type: "azure-native:machinelearningservices/v20230201preview:Compute" }, { type: "azure-native:machinelearningservices/v20230401:Compute" }, { type: "azure-native:machinelearningservices/v20230401preview:Compute" }, { type: "azure-native:machinelearningservices/v20230601preview:Compute" }, { type: "azure-native:machinelearningservices/v20230801preview:Compute" }, { type: "azure-native:machinelearningservices/v20231001:Compute" }, { type: "azure-native:machinelearningservices/v20240101preview:Compute" }, { type: "azure-native:machinelearningservices/v20240401:Compute" }, { type: "azure-native:machinelearningservices/v20240401preview:Compute" }, { type: "azure-native:machinelearningservices/v20240701preview:Compute" }, { type: "azure-native:machinelearningservices/v20241001:Compute" }, { type: "azure-native:machinelearningservices/v20241001preview:Compute" }, { type: "azure-native:machinelearningservices/v20250101preview:Compute" }, { type: "azure-native:machinelearningservices/v20250401:Compute" }, { type: "azure-native:machinelearningservices/v20250401preview:Compute" }, { type: "azure-native:machinelearningservices/v20250601:Compute" }, { type: "azure-native:machinelearningservices/v20250701preview:Compute" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20180301preview:Compute" }, { type: "azure-native:machinelearningservices/v20181119:Compute" }, { type: "azure-native:machinelearningservices/v20190501:Compute" }, { type: "azure-native:machinelearningservices/v20190601:Compute" }, { type: "azure-native:machinelearningservices/v20191101:Compute" }, { type: "azure-native:machinelearningservices/v20200101:Compute" }, { type: "azure-native:machinelearningservices/v20200218preview:Compute" }, { type: "azure-native:machinelearningservices/v20200301:Compute" }, { type: "azure-native:machinelearningservices/v20200401:Compute" }, { type: "azure-native:machinelearningservices/v20200501preview:Compute" }, { type: "azure-native:machinelearningservices/v20200515preview:Compute" }, { type: "azure-native:machinelearningservices/v20200601:Compute" }, { type: "azure-native:machinelearningservices/v20200801:Compute" }, { type: "azure-native:machinelearningservices/v20200901preview:Compute" }, { type: "azure-native:machinelearningservices/v20210101:Compute" }, { type: "azure-native:machinelearningservices/v20210301preview:Compute" }, { type: "azure-native:machinelearningservices/v20210401:Compute" }, { type: "azure-native:machinelearningservices/v20210401:MachineLearningCompute" }, { type: "azure-native:machinelearningservices/v20210701:Compute" }, { type: "azure-native:machinelearningservices/v20220101preview:Compute" }, { type: "azure-native:machinelearningservices/v20220201preview:Compute" }, { type: "azure-native:machinelearningservices/v20220501:Compute" }, { type: "azure-native:machinelearningservices/v20220601preview:Compute" }, { type: "azure-native:machinelearningservices/v20221001:Compute" }, { type: "azure-native:machinelearningservices/v20221001preview:Compute" }, { type: "azure-native:machinelearningservices/v20221201preview:Compute" }, { type: "azure-native:machinelearningservices/v20230201preview:Compute" }, { type: "azure-native:machinelearningservices/v20230401:Compute" }, { type: "azure-native:machinelearningservices/v20230401preview:Compute" }, { type: "azure-native:machinelearningservices/v20230601preview:Compute" }, { type: "azure-native:machinelearningservices/v20230801preview:Compute" }, { type: "azure-native:machinelearningservices/v20231001:Compute" }, { type: "azure-native:machinelearningservices/v20240101preview:Compute" }, { type: "azure-native:machinelearningservices/v20240401:Compute" }, { type: "azure-native:machinelearningservices/v20240401preview:Compute" }, { type: "azure-native:machinelearningservices/v20240701preview:Compute" }, { type: "azure-native:machinelearningservices/v20241001:Compute" }, { type: "azure-native:machinelearningservices/v20241001preview:Compute" }, { type: "azure-native:machinelearningservices/v20250101preview:Compute" }, { type: "azure-native:machinelearningservices/v20250401:Compute" }, { type: "azure-native:machinelearningservices/v20250401preview:Compute" }, { type: "azure-native:machinelearningservices/v20250601:Compute" }, { type: "azure-native:machinelearningservices/v20250701preview:Compute" }, { type: "azure-native:machinelearningservices/v20250901:Compute" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Compute.__pulumiType, name, resourceInputs, opts);
     }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Incident extends pulumi.CustomResource {
     /**
@@ -38,99 +38,99 @@ export class Incident extends pulumi.CustomResource {
     /**
      * Additional data on the incident
      */
-    public /*out*/ readonly additionalData!: pulumi.Output<types.outputs.IncidentAdditionalDataResponse>;
+    declare public /*out*/ readonly additionalData: pulumi.Output<types.outputs.IncidentAdditionalDataResponse>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The reason the incident was closed
      */
-    public readonly classification!: pulumi.Output<string | undefined>;
+    declare public readonly classification: pulumi.Output<string | undefined>;
     /**
      * Describes the reason the incident was closed
      */
-    public readonly classificationComment!: pulumi.Output<string | undefined>;
+    declare public readonly classificationComment: pulumi.Output<string | undefined>;
     /**
      * The classification reason the incident was closed with
      */
-    public readonly classificationReason!: pulumi.Output<string | undefined>;
+    declare public readonly classificationReason: pulumi.Output<string | undefined>;
     /**
      * The time the incident was created
      */
-    public /*out*/ readonly createdTimeUtc!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdTimeUtc: pulumi.Output<string>;
     /**
      * The description of the incident
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Etag of the azure resource
      */
-    public /*out*/ readonly etag!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly etag: pulumi.Output<string | undefined>;
     /**
      * The time of the first activity in the incident
      */
-    public readonly firstActivityTimeUtc!: pulumi.Output<string | undefined>;
+    declare public readonly firstActivityTimeUtc: pulumi.Output<string | undefined>;
     /**
      * A sequential number
      */
-    public /*out*/ readonly incidentNumber!: pulumi.Output<number>;
+    declare public /*out*/ readonly incidentNumber: pulumi.Output<number>;
     /**
      * The deep-link url to the incident in Azure portal
      */
-    public /*out*/ readonly incidentUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly incidentUrl: pulumi.Output<string>;
     /**
      * List of labels relevant to this incident
      */
-    public readonly labels!: pulumi.Output<types.outputs.IncidentLabelResponse[] | undefined>;
+    declare public readonly labels: pulumi.Output<types.outputs.IncidentLabelResponse[] | undefined>;
     /**
      * The time of the last activity in the incident
      */
-    public readonly lastActivityTimeUtc!: pulumi.Output<string | undefined>;
+    declare public readonly lastActivityTimeUtc: pulumi.Output<string | undefined>;
     /**
      * The last time the incident was updated
      */
-    public /*out*/ readonly lastModifiedTimeUtc!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifiedTimeUtc: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Describes a user that the incident is assigned to
      */
-    public readonly owner!: pulumi.Output<types.outputs.IncidentOwnerInfoResponse | undefined>;
+    declare public readonly owner: pulumi.Output<types.outputs.IncidentOwnerInfoResponse | undefined>;
     /**
      * The incident ID assigned by the incident provider
      */
-    public /*out*/ readonly providerIncidentId!: pulumi.Output<string>;
+    declare public /*out*/ readonly providerIncidentId: pulumi.Output<string>;
     /**
      * The name of the source provider that generated the incident
      */
-    public /*out*/ readonly providerName!: pulumi.Output<string>;
+    declare public /*out*/ readonly providerName: pulumi.Output<string>;
     /**
      * List of resource ids of Analytic rules related to the incident
      */
-    public /*out*/ readonly relatedAnalyticRuleIds!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly relatedAnalyticRuleIds: pulumi.Output<string[]>;
     /**
      * The severity of the incident
      */
-    public readonly severity!: pulumi.Output<string>;
+    declare public readonly severity: pulumi.Output<string>;
     /**
      * The status of the incident
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The title of the incident
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Incident resource with the given unique name, arguments, and options.
@@ -143,35 +143,35 @@ export class Incident extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.severity === undefined) && !opts.urn) {
+            if (args?.severity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'severity'");
             }
-            if ((!args || args.status === undefined) && !opts.urn) {
+            if (args?.status === undefined && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
-            if ((!args || args.title === undefined) && !opts.urn) {
+            if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["classification"] = args ? args.classification : undefined;
-            resourceInputs["classificationComment"] = args ? args.classificationComment : undefined;
-            resourceInputs["classificationReason"] = args ? args.classificationReason : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["firstActivityTimeUtc"] = args ? args.firstActivityTimeUtc : undefined;
-            resourceInputs["incidentId"] = args ? args.incidentId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["lastActivityTimeUtc"] = args ? args.lastActivityTimeUtc : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["severity"] = args ? args.severity : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["classification"] = args?.classification;
+            resourceInputs["classificationComment"] = args?.classificationComment;
+            resourceInputs["classificationReason"] = args?.classificationReason;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["firstActivityTimeUtc"] = args?.firstActivityTimeUtc;
+            resourceInputs["incidentId"] = args?.incidentId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["lastActivityTimeUtc"] = args?.lastActivityTimeUtc;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["severity"] = args?.severity;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["title"] = args?.title;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["additionalData"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdTimeUtc"] = undefined /*out*/;
@@ -212,7 +212,7 @@ export class Incident extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20190101preview:Incident" }, { type: "azure-native:securityinsights/v20200101:Incident" }, { type: "azure-native:securityinsights/v20210301preview:Incident" }, { type: "azure-native:securityinsights/v20210401:Incident" }, { type: "azure-native:securityinsights/v20210901preview:Incident" }, { type: "azure-native:securityinsights/v20211001:Incident" }, { type: "azure-native:securityinsights/v20211001preview:Incident" }, { type: "azure-native:securityinsights/v20220101preview:Incident" }, { type: "azure-native:securityinsights/v20220401preview:Incident" }, { type: "azure-native:securityinsights/v20220501preview:Incident" }, { type: "azure-native:securityinsights/v20220601preview:Incident" }, { type: "azure-native:securityinsights/v20220701preview:Incident" }, { type: "azure-native:securityinsights/v20220801:Incident" }, { type: "azure-native:securityinsights/v20220801preview:Incident" }, { type: "azure-native:securityinsights/v20220901preview:Incident" }, { type: "azure-native:securityinsights/v20221001preview:Incident" }, { type: "azure-native:securityinsights/v20221101:Incident" }, { type: "azure-native:securityinsights/v20221101preview:Incident" }, { type: "azure-native:securityinsights/v20221201preview:Incident" }, { type: "azure-native:securityinsights/v20230201:Incident" }, { type: "azure-native:securityinsights/v20230201preview:Incident" }, { type: "azure-native:securityinsights/v20230301preview:Incident" }, { type: "azure-native:securityinsights/v20230401preview:Incident" }, { type: "azure-native:securityinsights/v20230501preview:Incident" }, { type: "azure-native:securityinsights/v20230601preview:Incident" }, { type: "azure-native:securityinsights/v20230701preview:Incident" }, { type: "azure-native:securityinsights/v20230801preview:Incident" }, { type: "azure-native:securityinsights/v20230901preview:Incident" }, { type: "azure-native:securityinsights/v20231001preview:Incident" }, { type: "azure-native:securityinsights/v20231101:Incident" }, { type: "azure-native:securityinsights/v20231201preview:Incident" }, { type: "azure-native:securityinsights/v20240101preview:Incident" }, { type: "azure-native:securityinsights/v20240301:Incident" }, { type: "azure-native:securityinsights/v20240401preview:Incident" }, { type: "azure-native:securityinsights/v20240901:Incident" }, { type: "azure-native:securityinsights/v20241001preview:Incident" }, { type: "azure-native:securityinsights/v20250101preview:Incident" }, { type: "azure-native:securityinsights/v20250301:Incident" }, { type: "azure-native:securityinsights/v20250401preview:Incident" }, { type: "azure-native:securityinsights/v20250601:Incident" }, { type: "azure-native:securityinsights/v20250701preview:Incident" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20190101preview:Incident" }, { type: "azure-native:securityinsights/v20200101:Incident" }, { type: "azure-native:securityinsights/v20210301preview:Incident" }, { type: "azure-native:securityinsights/v20210401:Incident" }, { type: "azure-native:securityinsights/v20210901preview:Incident" }, { type: "azure-native:securityinsights/v20211001:Incident" }, { type: "azure-native:securityinsights/v20211001preview:Incident" }, { type: "azure-native:securityinsights/v20220101preview:Incident" }, { type: "azure-native:securityinsights/v20220401preview:Incident" }, { type: "azure-native:securityinsights/v20220501preview:Incident" }, { type: "azure-native:securityinsights/v20220601preview:Incident" }, { type: "azure-native:securityinsights/v20220701preview:Incident" }, { type: "azure-native:securityinsights/v20220801:Incident" }, { type: "azure-native:securityinsights/v20220801preview:Incident" }, { type: "azure-native:securityinsights/v20220901preview:Incident" }, { type: "azure-native:securityinsights/v20221001preview:Incident" }, { type: "azure-native:securityinsights/v20221101:Incident" }, { type: "azure-native:securityinsights/v20221101preview:Incident" }, { type: "azure-native:securityinsights/v20221201preview:Incident" }, { type: "azure-native:securityinsights/v20230201:Incident" }, { type: "azure-native:securityinsights/v20230201preview:Incident" }, { type: "azure-native:securityinsights/v20230301preview:Incident" }, { type: "azure-native:securityinsights/v20230401preview:Incident" }, { type: "azure-native:securityinsights/v20230501preview:Incident" }, { type: "azure-native:securityinsights/v20230601preview:Incident" }, { type: "azure-native:securityinsights/v20230701preview:Incident" }, { type: "azure-native:securityinsights/v20230801preview:Incident" }, { type: "azure-native:securityinsights/v20230901preview:Incident" }, { type: "azure-native:securityinsights/v20231001preview:Incident" }, { type: "azure-native:securityinsights/v20231101:Incident" }, { type: "azure-native:securityinsights/v20231201preview:Incident" }, { type: "azure-native:securityinsights/v20240101preview:Incident" }, { type: "azure-native:securityinsights/v20240301:Incident" }, { type: "azure-native:securityinsights/v20240401preview:Incident" }, { type: "azure-native:securityinsights/v20240901:Incident" }, { type: "azure-native:securityinsights/v20241001preview:Incident" }, { type: "azure-native:securityinsights/v20250101preview:Incident" }, { type: "azure-native:securityinsights/v20250301:Incident" }, { type: "azure-native:securityinsights/v20250401preview:Incident" }, { type: "azure-native:securityinsights/v20250601:Incident" }, { type: "azure-native:securityinsights/v20250701preview:Incident" }, { type: "azure-native:securityinsights/v20250901:Incident" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Incident.__pulumiType, name, resourceInputs, opts);
     }

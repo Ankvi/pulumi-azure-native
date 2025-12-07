@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-12-30. In version 2.x of the Azure Native provider, it used API version 2022-01-01.
  *
- * Other available API versions: 2022-01-01, 2023-06-01-preview, 2023-06-30, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-01-01, 2023-06-01-preview, 2023-06-30, 2024-12-01-preview, 2024-12-30. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**
@@ -38,27 +38,27 @@ export class FirewallRule extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The end IP address of the server firewall rule. Must be IPv4 format.
      */
-    public readonly endIpAddress!: pulumi.Output<string>;
+    declare public readonly endIpAddress: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The start IP address of the server firewall rule. Must be IPv4 format.
      */
-    public readonly startIpAddress!: pulumi.Output<string>;
+    declare public readonly startIpAddress: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a FirewallRule resource with the given unique name, arguments, and options.
@@ -71,23 +71,23 @@ export class FirewallRule extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.endIpAddress === undefined) && !opts.urn) {
+            if (args?.endIpAddress === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endIpAddress'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.serverName === undefined) && !opts.urn) {
+            if (args?.serverName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverName'");
             }
-            if ((!args || args.startIpAddress === undefined) && !opts.urn) {
+            if (args?.startIpAddress === undefined && !opts.urn) {
                 throw new Error("Missing required property 'startIpAddress'");
             }
-            resourceInputs["endIpAddress"] = args ? args.endIpAddress : undefined;
-            resourceInputs["firewallRuleName"] = args ? args.firewallRuleName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["serverName"] = args ? args.serverName : undefined;
-            resourceInputs["startIpAddress"] = args ? args.startIpAddress : undefined;
+            resourceInputs["endIpAddress"] = args?.endIpAddress;
+            resourceInputs["firewallRuleName"] = args?.firewallRuleName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["serverName"] = args?.serverName;
+            resourceInputs["startIpAddress"] = args?.startIpAddress;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -101,7 +101,7 @@ export class FirewallRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbformysql/v20171201:FirewallRule" }, { type: "azure-native:dbformysql/v20200701preview:FirewallRule" }, { type: "azure-native:dbformysql/v20200701privatepreview:FirewallRule" }, { type: "azure-native:dbformysql/v20210501:FirewallRule" }, { type: "azure-native:dbformysql/v20210501preview:FirewallRule" }, { type: "azure-native:dbformysql/v20211201preview:FirewallRule" }, { type: "azure-native:dbformysql/v20220101:FirewallRule" }, { type: "azure-native:dbformysql/v20230601preview:FirewallRule" }, { type: "azure-native:dbformysql/v20230630:FirewallRule" }, { type: "azure-native:dbformysql/v20231230:FirewallRule" }, { type: "azure-native:dbformysql/v20241201preview:FirewallRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbformysql/v20171201:FirewallRule" }, { type: "azure-native:dbformysql/v20200701preview:FirewallRule" }, { type: "azure-native:dbformysql/v20200701privatepreview:FirewallRule" }, { type: "azure-native:dbformysql/v20210501:FirewallRule" }, { type: "azure-native:dbformysql/v20210501preview:FirewallRule" }, { type: "azure-native:dbformysql/v20211201preview:FirewallRule" }, { type: "azure-native:dbformysql/v20220101:FirewallRule" }, { type: "azure-native:dbformysql/v20230601preview:FirewallRule" }, { type: "azure-native:dbformysql/v20230630:FirewallRule" }, { type: "azure-native:dbformysql/v20231230:FirewallRule" }, { type: "azure-native:dbformysql/v20241201preview:FirewallRule" }, { type: "azure-native:dbformysql/v20241230:FirewallRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FirewallRule.__pulumiType, name, resourceInputs, opts);
     }
