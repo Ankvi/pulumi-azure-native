@@ -65,9 +65,32 @@ export interface AdvancedNetworkingResponse {
  */
 export interface AdvancedNetworkingSecurityResponse {
     /**
+     * Enable advanced network policies. This allows users to configure Layer 7 network policies (FQDN, HTTP, Kafka). Policies themselves must be configured via the Cilium Network Policy resources, see https://docs.cilium.io/en/latest/security/policy/index.html. This can be enabled only on cilium-based clusters. If not specified, the default value is FQDN if security.enabled is set to true.
+     */
+    advancedNetworkPolicies?: string;
+    /**
      * This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based clusters. If not specified, the default is false.
      */
     enabled?: boolean;
+}
+
+/**
+ * Profile of the managed cluster gateway agent pool.
+ */
+export interface AgentPoolGatewayProfileResponse {
+    /**
+     * The Gateway agent pool associates one public IPPrefix for each static egress gateway to provide public egress. The size of Public IPPrefix should be selected by the user. Each node in the agent pool is assigned with one IP from the IPPrefix. The IPPrefix size thus serves as a cap on the size of the Gateway agent pool. Due to Azure public IPPrefix size limitation, the valid value range is [28, 31] (/31 = 2 nodes/IPs, /30 = 4 nodes/IPs, /29 = 8 nodes/IPs, /28 = 16 nodes/IPs). The default value is 31.
+     */
+    publicIPPrefixSize?: number;
+}
+/**
+ * agentPoolGatewayProfileResponseProvideDefaults sets the appropriate defaults for AgentPoolGatewayProfileResponse
+ */
+export function agentPoolGatewayProfileResponseProvideDefaults(val: AgentPoolGatewayProfileResponse): AgentPoolGatewayProfileResponse {
+    return {
+        ...val,
+        publicIPPrefixSize: (val.publicIPPrefixSize) ?? 31,
+    };
 }
 
 /**
@@ -100,6 +123,20 @@ export interface AgentPoolSecurityProfileResponse {
      * vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
      */
     enableVTPM?: boolean;
+    /**
+     * SSH access method of an agent pool.
+     */
+    sshAccess?: string;
+}
+
+/**
+ * Contains read-only information about the Agent Pool.
+ */
+export interface AgentPoolStatusResponse {
+    /**
+     * The error detail information of the agent pool. Preserves the detailed info of failure. If there was no error, this field is omitted.
+     */
+    provisioningError: ErrorDetailResponse;
 }
 
 /**
@@ -107,17 +144,25 @@ export interface AgentPoolSecurityProfileResponse {
  */
 export interface AgentPoolUpgradeSettingsResponse {
     /**
-     * The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.
+     * The drain timeout for a node. The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.
      */
     drainTimeoutInMinutes?: number;
     /**
-     * This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+     * The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information, including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
      */
     maxSurge?: string;
     /**
-     * The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes.
+     * The maximum number or percentage of nodes that can be simultaneously unavailable during upgrade. This can either be set to an integer (e.g. '1') or a percentage (e.g. '5%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 0. For more information, including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
+     */
+    maxUnavailable?: string;
+    /**
+     * The soak duration for a node. The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes.
      */
     nodeSoakDurationInMinutes?: number;
+    /**
+     * Defines the behavior for undrainable nodes during upgrade. The most common cause of undrainable nodes is Pod Disruption Budgets (PDBs), but other issues, such as pod termination grace period is exceeding the remaining per-node drain timeout or pod is still being in a running state, can also cause undrainable nodes.
+     */
+    undrainableNodeBehavior?: string;
 }
 
 /**
@@ -125,7 +170,7 @@ export interface AgentPoolUpgradeSettingsResponse {
  */
 export interface AgentPoolWindowsProfileResponse {
     /**
-     * The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
+     * Whether to disable OutboundNAT in windows nodes. The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
      */
     disableOutboundNat?: boolean;
 }
@@ -167,7 +212,7 @@ export interface AzureKeyVaultKmsResponse {
      */
     keyId?: string;
     /**
-     * Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link. The default value is `Public`.
+     * Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link. The default value is `Public`.
      */
     keyVaultNetworkAccess?: string;
     /**
@@ -222,7 +267,7 @@ export interface ContainerServiceNetworkProfileResponse {
      */
     dnsServiceIP?: string;
     /**
-     * IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6.
+     * The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6.
      */
     ipFamilies?: string[];
     /**
@@ -230,7 +275,7 @@ export interface ContainerServiceNetworkProfileResponse {
      */
     loadBalancerProfile?: ManagedClusterLoadBalancerProfileResponse;
     /**
-     * The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more information about the differences between load balancer SKUs.
+     * The load balancer sku for the managed cluster. The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more information about the differences between load balancer SKUs.
      */
     loadBalancerSku?: string;
     /**
@@ -242,7 +287,7 @@ export interface ContainerServiceNetworkProfileResponse {
      */
     networkDataplane?: string;
     /**
-     * This cannot be specified if networkPlugin is anything other than 'azure'.
+     * The network mode Azure CNI is configured with. This cannot be specified if networkPlugin is anything other than 'azure'.
      */
     networkMode?: string;
     /**
@@ -258,7 +303,7 @@ export interface ContainerServiceNetworkProfileResponse {
      */
     networkPolicy?: string;
     /**
-     * This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
+     * The outbound (egress) routing method. This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
      */
     outboundType?: string;
     /**
@@ -266,7 +311,7 @@ export interface ContainerServiceNetworkProfileResponse {
      */
     podCidr?: string;
     /**
-     * One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
+     * The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
      */
     podCidrs?: string[];
     /**
@@ -274,9 +319,13 @@ export interface ContainerServiceNetworkProfileResponse {
      */
     serviceCidr?: string;
     /**
-     * One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges.
+     * The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges.
      */
     serviceCidrs?: string[];
+    /**
+     * The profile for Static Egress Gateway addon. For more details about Static Egress Gateway, see https://aka.ms/aks/static-egress-gateway.
+     */
+    staticEgressGatewayProfile?: ManagedClusterStaticEgressGatewayProfileResponse;
 }
 /**
  * containerServiceNetworkProfileResponseProvideDefaults sets the appropriate defaults for ContainerServiceNetworkProfileResponse
@@ -348,7 +397,7 @@ export interface DailyScheduleResponse {
 }
 
 /**
- * For example, between '2022-12-23' and '2023-01-05'.
+ * A date range. For example, between '2022-12-23' and '2023-01-05'.
  */
 export interface DateSpanResponse {
     /**
@@ -479,6 +528,16 @@ export interface FleetHubProfileResponse {
      * The Azure Portal FQDN of the Fleet hub.
      */
     portalFqdn: string;
+}
+
+/**
+ * GPU settings for the Agent Pool.
+ */
+export interface GPUProfileResponse {
+    /**
+     * Whether to install GPU drivers. When it's not specified, default is Install.
+     */
+    driver?: string;
 }
 
 /**
@@ -638,7 +697,107 @@ export interface IstioServiceMeshResponse {
 }
 
 /**
- * See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+ * The claim mapping expression for JWTAuthenticator.
+ */
+export interface JWTAuthenticatorClaimMappingExpressionResponse {
+    /**
+     * The CEL expression used to access token claims.
+     */
+    expression: string;
+}
+
+/**
+ * The claim mappings for JWTAuthenticator.
+ */
+export interface JWTAuthenticatorClaimMappingsResponse {
+    /**
+     * The expression to extract extra attribute from the token claims. When not provided, no extra attributes are extracted from the token claims.
+     */
+    extra?: JWTAuthenticatorExtraClaimMappingExpressionResponse[];
+    /**
+     * The expression to extract groups attribute from the token claims. When not provided, no groups are extracted from the token claims.
+     */
+    groups?: JWTAuthenticatorClaimMappingExpressionResponse;
+    /**
+     * The expression to extract uid attribute from the token claims. When not provided, no uid is extracted from the token claims.
+     */
+    uid?: JWTAuthenticatorClaimMappingExpressionResponse;
+    /**
+     * The expression to extract username attribute from the token claims.
+     */
+    username: JWTAuthenticatorClaimMappingExpressionResponse;
+}
+
+/**
+ * The extra claim mapping expression for JWTAuthenticator.
+ */
+export interface JWTAuthenticatorExtraClaimMappingExpressionResponse {
+    /**
+     * The key of the extra attribute.
+     */
+    key: string;
+    /**
+     * The CEL expression used to extract the value of the extra attribute.
+     */
+    valueExpression: string;
+}
+
+/**
+ * The OIDC issuer details for JWTAuthenticator.
+ */
+export interface JWTAuthenticatorIssuerResponse {
+    /**
+     * The set of acceptable audiences the JWT must be issued to. At least one is required. When multiple is set, AudienceMatchPolicy is used in API Server configuration.
+     */
+    audiences: string[];
+    /**
+     * The issuer URL. The URL must begin with the scheme https and cannot contain a query string or fragment. This must match the "iss" claim in the presented JWT, and the issuer returned from discovery.
+     */
+    url: string;
+}
+
+/**
+ * The properties of JWTAuthenticator. For details on how to configure the properties of a JWT authenticator, please refer to the Kubernetes documentation: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration. Please note that not all fields available in the Kubernetes documentation are supported by AKS. For troubleshooting, please see https://aka.ms/aks-external-issuers-docs.
+ */
+export interface JWTAuthenticatorPropertiesResponse {
+    /**
+     * The mappings that define how user attributes are extracted from the token claims.
+     */
+    claimMappings: JWTAuthenticatorClaimMappingsResponse;
+    /**
+     * The rules that are applied to validate token claims to authenticate users. All the expressions must evaluate to true for validation to succeed.
+     */
+    claimValidationRules?: JWTAuthenticatorValidationRuleResponse[];
+    /**
+     * The JWT OIDC issuer details.
+     */
+    issuer: JWTAuthenticatorIssuerResponse;
+    /**
+     * The current provisioning state of the JWT authenticator.
+     */
+    provisioningState: string;
+    /**
+     * The rules that are applied to the mapped user before completing authentication. All the expressions must evaluate to true for validation to succeed.
+     */
+    userValidationRules?: JWTAuthenticatorValidationRuleResponse[];
+}
+
+/**
+ * The validation rule for JWTAuthenticator.
+ */
+export interface JWTAuthenticatorValidationRuleResponse {
+    /**
+     * The CEL expression used to validate the claim or attribute.
+     */
+    expression: string;
+    /**
+     * The validation error message.
+     */
+    message?: string;
+}
+
+/**
+ * Kubelet configurations of agent nodes. See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
  */
 export interface KubeletConfigResponse {
     /**
@@ -654,15 +813,15 @@ export interface KubeletConfigResponse {
      */
     containerLogMaxSizeMB?: number;
     /**
-     * The default is true.
+     * If CPU CFS quota enforcement is enabled for containers that specify CPU limits. The default is true.
      */
     cpuCfsQuota?: boolean;
     /**
-     * The default is '100ms.' Valid values are a sequence of decimal numbers with an optional fraction and a unit suffix. For example: '300ms', '2h45m'. Supported units are 'ns', 'us', 'ms', 's', 'm', and 'h'.
+     * The CPU CFS quota period value. The default is '100ms.' Valid values are a sequence of decimal numbers with an optional fraction and a unit suffix. For example: '300ms', '2h45m'. Supported units are 'ns', 'us', 'ms', 's', 'm', and 'h'.
      */
     cpuCfsQuotaPeriod?: string;
     /**
-     * The default is 'none'. See [Kubernetes CPU management policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies) for more information. Allowed values are 'none' and 'static'.
+     * The CPU Manager policy to use. The default is 'none'. See [Kubernetes CPU management policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies) for more information. Allowed values are 'none' and 'static'.
      */
     cpuManagerPolicy?: string;
     /**
@@ -670,11 +829,11 @@ export interface KubeletConfigResponse {
      */
     failSwapOn?: boolean;
     /**
-     * To disable image garbage collection, set to 100. The default is 85%
+     * The percent of disk usage after which image garbage collection is always run. To disable image garbage collection, set to 100. The default is 85%
      */
     imageGcHighThreshold?: number;
     /**
-     * This cannot be set higher than imageGcHighThreshold. The default is 80%
+     * The percent of disk usage before which image garbage collection is never run. This cannot be set higher than imageGcHighThreshold. The default is 80%
      */
     imageGcLowThreshold?: number;
     /**
@@ -682,7 +841,7 @@ export interface KubeletConfigResponse {
      */
     podMaxPids?: number;
     /**
-     * For more information see [Kubernetes Topology Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager). The default is 'none'. Allowed values are 'none', 'best-effort', 'restricted', and 'single-numa-node'.
+     * The Topology Manager policy to use. For more information see [Kubernetes Topology Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager). The default is 'none'. Allowed values are 'none', 'best-effort', 'restricted', and 'single-numa-node'.
      */
     topologyManagerPolicy?: string;
 }
@@ -720,7 +879,7 @@ export interface LabelSelectorResponse {
 }
 
 /**
- * See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+ * OS configurations of Linux agent nodes. See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
  */
 export interface LinuxOSConfigResponse {
     /**
@@ -732,11 +891,11 @@ export interface LinuxOSConfigResponse {
      */
     sysctls?: SysctlConfigResponse;
     /**
-     * Valid values are 'always', 'defer', 'defer+madvise', 'madvise' and 'never'. The default is 'madvise'. For more information see [Transparent Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
+     * Whether the kernel should make aggressive use of memory compaction to make more hugepages available. Valid values are 'always', 'defer', 'defer+madvise', 'madvise' and 'never'. The default is 'madvise'. For more information see [Transparent Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
      */
     transparentHugePageDefrag?: string;
     /**
-     * Valid values are 'always', 'madvise', and 'never'. The default is 'always'. For more information see [Transparent Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
+     * Whether transparent hugepages are enabled. Valid values are 'always', 'madvise', and 'never'. The default is 'always'. For more information see [Transparent Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
      */
     transparentHugePageEnabled?: string;
 }
@@ -781,7 +940,7 @@ export function maintenanceWindowResponseProvideDefaults(val: MaintenanceWindowR
 }
 
 /**
- * For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
+ * AADProfile specifies attributes for Azure Active Directory integration. For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
  */
 export interface ManagedClusterAADProfileResponse {
     /**
@@ -815,11 +974,21 @@ export interface ManagedClusterAADProfileResponse {
 }
 
 /**
+ * When enabling the operator, a set of AKS managed CRDs and controllers will be installed in the cluster. The operator automates the deployment of OSS models for inference and/or training purposes. It provides a set of preset models and enables distributed inference against them.
+ */
+export interface ManagedClusterAIToolchainOperatorProfileResponse {
+    /**
+     * Whether to enable AI toolchain operator to the cluster. Indicates if AI toolchain operator  enabled or not.
+     */
+    enabled?: boolean;
+}
+
+/**
  * Access profile for managed cluster API server.
  */
 export interface ManagedClusterAPIServerAccessProfileResponse {
     /**
-     * IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
+     * The IP ranges authorized to access the Kubernetes API server. IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
      */
     authorizedIPRanges?: string[];
     /**
@@ -827,7 +996,7 @@ export interface ManagedClusterAPIServerAccessProfileResponse {
      */
     disableRunCommand?: boolean;
     /**
-     * For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
+     * Whether to create the cluster as a private cluster or not. For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
      */
     enablePrivateCluster?: boolean;
     /**
@@ -835,9 +1004,17 @@ export interface ManagedClusterAPIServerAccessProfileResponse {
      */
     enablePrivateClusterPublicFQDN?: boolean;
     /**
-     * The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone). Allowed values are 'system' and 'none'.
+     * Whether to enable apiserver vnet integration for the cluster or not. See aka.ms/AksVnetIntegration for more details.
+     */
+    enableVnetIntegration?: boolean;
+    /**
+     * The private DNS zone mode for the cluster. The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone). Allowed values are 'system' and 'none'.
      */
     privateDNSZone?: string;
+    /**
+     * The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new cluster with BYO Vnet, or when updating an existing cluster to enable apiserver vnet integration.
+     */
+    subnetId?: string;
 }
 
 /**
@@ -897,7 +1074,7 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     creationData?: CreationDataResponse;
     /**
-     * If orchestratorVersion is a fully specified version <major.minor.patch>, this field will be exactly equal to it. If orchestratorVersion is <major.minor>, this field will contain the full <major.minor.patch> version being used.
+     * The version of Kubernetes the Agent Pool is running. If orchestratorVersion is a fully specified version <major.minor.patch>, this field will be exactly equal to it. If orchestratorVersion is <major.minor>, this field will contain the full <major.minor.patch> version being used.
      */
     currentOrchestratorVersion: string;
     /**
@@ -909,15 +1086,15 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     enableAutoScaling?: boolean;
     /**
-     * This is only supported on certain VM sizes and in certain Azure regions. For more information, see: https://docs.microsoft.com/azure/aks/enable-host-encryption
+     * Whether to enable host based OS and data drive encryption. This is only supported on certain VM sizes and in certain Azure regions. For more information, see: https://docs.microsoft.com/azure/aks/enable-host-encryption
      */
     enableEncryptionAtHost?: boolean;
     /**
-     * See [Add a FIPS-enabled node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview) for more details.
+     * Whether to use a FIPS-enabled OS. See [Add a FIPS-enabled node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview) for more details.
      */
     enableFIPS?: boolean;
     /**
-     * Some scenarios may require nodes in a node pool to receive their own dedicated public IP addresses. A common scenario is for gaming workloads, where a console needs to make a direct connection to a cloud virtual machine to minimize hops. For more information see [assigning a public IP per node](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#assign-a-public-ip-per-node-for-your-node-pools). The default is false.
+     * Whether each node is allocated its own public IP. Some scenarios may require nodes in a node pool to receive their own dedicated public IP addresses. A common scenario is for gaming workloads, where a console needs to make a direct connection to a cloud virtual machine to minimize hops. For more information see [assigning a public IP per node](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#assign-a-public-ip-per-node-for-your-node-pools). The default is false.
      */
     enableNodePublicIP?: boolean;
     /**
@@ -925,11 +1102,19 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     enableUltraSSD?: boolean;
     /**
+     * Profile specific to a managed agent pool in Gateway mode. This field cannot be set if agent pool mode is not Gateway.
+     */
+    gatewayProfile?: AgentPoolGatewayProfileResponse;
+    /**
      * GPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.
      */
     gpuInstanceProfile?: string;
     /**
-     * This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}. For more information see [Azure dedicated hosts](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts).
+     * GPU settings for the Agent Pool.
+     */
+    gpuProfile?: GPUProfileResponse;
+    /**
+     * The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}. For more information see [Azure dedicated hosts](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts).
      */
     hostGroupID?: string;
     /**
@@ -953,7 +1138,7 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     maxPods?: number;
     /**
-     * A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).
+     * Message of the day for Linux nodes, base64-encoded. A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).
      */
     messageOfTheDay?: string;
     /**
@@ -961,11 +1146,11 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     minCount?: number;
     /**
-     * A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
+     * The mode of an agent pool. A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
      */
     mode?: string;
     /**
-     * Windows agent pool names must be 6 characters or less.
+     * Unique name of the agent pool profile in the context of the subscription and resource group. Windows agent pool names must be 6 characters or less.
      */
     name: string;
     /**
@@ -981,7 +1166,7 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     nodeLabels?: {[key: string]: string};
     /**
-     * This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
+     * The public IP prefix ID which VM nodes should use IPs from. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
      */
     nodePublicIPPrefixID?: string;
     /**
@@ -989,7 +1174,7 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     nodeTaints?: string[];
     /**
-     * Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. As a best practice, you should upgrade all node pools in an AKS cluster to the same Kubernetes version. The node pool version must have the same major version as the control plane. The node pool minor version must be within two minor versions of the control plane version. The node pool version cannot be greater than the control plane version. For more information see [upgrading a node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool).
+     * The version of Kubernetes specified by the user. Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. As a best practice, you should upgrade all node pools in an AKS cluster to the same Kubernetes version. The node pool version must have the same major version as the control plane. The node pool minor version must be within two minor versions of the control plane version. The node pool version cannot be greater than the control plane version. For more information see [upgrading a node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool).
      */
     orchestratorVersion?: string;
     /**
@@ -997,7 +1182,7 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     osDiskSizeGB?: number;
     /**
-     * The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
+     * The OS disk type to be used for machines in the agent pool. The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
      */
     osDiskType?: string;
     /**
@@ -1009,11 +1194,15 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     osType?: string;
     /**
-     * If omitted, pod IPs are statically assigned on the node subnet (see vnetSubnetID for more details). This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+     * Pod IP Allocation Mode. The IP allocation mode for pods in the agent pool. Must be used with podSubnetId. The default is 'DynamicIndividual'.
+     */
+    podIPAllocationMode?: string;
+    /**
+     * The ID of the subnet which pods will join when launched. If omitted, pod IPs are statically assigned on the node subnet (see vnetSubnetID for more details). This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
      */
     podSubnetID?: string;
     /**
-     * When an Agent Pool is first created it is initially Running. The Agent Pool can be stopped by setting this field to Stopped. A stopped Agent Pool stops all of its VMs and does not accrue billing charges. An Agent Pool can only be stopped if it is Running and provisioning state is Succeeded
+     * Whether the Agent Pool is running or stopped. When an Agent Pool is first created it is initially Running. The Agent Pool can be stopped by setting this field to Stopped. A stopped Agent Pool stops all of its VMs and does not accrue billing charges. An Agent Pool can only be stopped if it is Running and provisioning state is Succeeded
      */
     powerState?: PowerStateResponse;
     /**
@@ -1025,11 +1214,11 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     proximityPlacementGroupID?: string;
     /**
-     * This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete.
+     * The scale down mode to use when scaling the Agent Pool. This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete.
      */
     scaleDownMode?: string;
     /**
-     * This cannot be specified unless the scaleSetPriority is 'Spot'. If not specified, the default is 'Delete'.
+     * The Virtual Machine Scale Set eviction policy to use. This cannot be specified unless the scaleSetPriority is 'Spot'. If not specified, the default is 'Delete'.
      */
     scaleSetEvictionPolicy?: string;
     /**
@@ -1041,9 +1230,13 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     securityProfile?: AgentPoolSecurityProfileResponse;
     /**
-     * Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
+     * The max price (in US Dollars) you are willing to pay for spot instances. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand. Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
      */
     spotMaxPrice?: number;
+    /**
+     * Contains read-only information about the Agent Pool.
+     */
+    status?: AgentPoolStatusResponse;
     /**
      * The tags to be persisted on the agent pool virtual machine scale set.
      */
@@ -1057,11 +1250,19 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     upgradeSettings?: AgentPoolUpgradeSettingsResponse;
     /**
-     * VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. If this field is not specified, AKS will attempt to find an appropriate VM SKU for your pool, based on quota and capacity. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
+     * The status of nodes in a VirtualMachines agent pool.
+     */
+    virtualMachineNodesStatus?: VirtualMachineNodesResponse[];
+    /**
+     * Specifications on VirtualMachines agent pool.
+     */
+    virtualMachinesProfile?: VirtualMachinesProfileResponse;
+    /**
+     * The size of the agent pool VMs. VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
      */
     vmSize?: string;
     /**
-     * If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+     * The ID of the subnet which agent pool nodes and optionally pods will join on startup. If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
      */
     vnetSubnetID?: string;
     /**
@@ -1073,17 +1274,26 @@ export interface ManagedClusterAgentPoolProfileResponse {
      */
     workloadRuntime?: string;
 }
+/**
+ * managedClusterAgentPoolProfileResponseProvideDefaults sets the appropriate defaults for ManagedClusterAgentPoolProfileResponse
+ */
+export function managedClusterAgentPoolProfileResponseProvideDefaults(val: ManagedClusterAgentPoolProfileResponse): ManagedClusterAgentPoolProfileResponse {
+    return {
+        ...val,
+        gatewayProfile: (val.gatewayProfile ? agentPoolGatewayProfileResponseProvideDefaults(val.gatewayProfile) : undefined),
+    };
+}
 
 /**
  * Auto upgrade profile for a managed cluster.
  */
 export interface ManagedClusterAutoUpgradeProfileResponse {
     /**
-     * Manner in which the OS on your nodes is updated. The default is NodeImage.
+     * Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage.
      */
     nodeOSUpgradeChannel?: string;
     /**
-     * For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
+     * The upgrade channel for auto upgrade. The default is 'none'. For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
      */
     upgradeChannel?: string;
 }
@@ -1127,11 +1337,34 @@ export interface ManagedClusterAzureMonitorProfileResponse {
 }
 
 /**
+ * The bootstrap profile.
+ */
+export interface ManagedClusterBootstrapProfileResponse {
+    /**
+     * The artifact source. The source where the artifacts are downloaded from.
+     */
+    artifactSource?: string;
+    /**
+     * The resource Id of Azure Container Registry. The registry must have private network access, premium SKU and zone redundancy.
+     */
+    containerRegistryId?: string;
+}
+/**
+ * managedClusterBootstrapProfileResponseProvideDefaults sets the appropriate defaults for ManagedClusterBootstrapProfileResponse
+ */
+export function managedClusterBootstrapProfileResponseProvideDefaults(val: ManagedClusterBootstrapProfileResponse): ManagedClusterBootstrapProfileResponse {
+    return {
+        ...val,
+        artifactSource: (val.artifactSource) ?? "Direct",
+    };
+}
+
+/**
  * The cost analysis configuration for the cluster
  */
 export interface ManagedClusterCostAnalysisResponse {
     /**
-     * The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
+     * Whether to enable cost analysis. The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
      */
     enabled?: boolean;
 }
@@ -1175,11 +1408,11 @@ export interface ManagedClusterIdentityResponse {
      */
     tenantId: string;
     /**
-     * For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
+     * The type of identity used for the managed cluster. For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
      */
     type?: string;
     /**
-     * The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     * The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
     userAssignedIdentities?: {[key: string]: ManagedClusterIdentityResponseUserAssignedIdentities};
 }
@@ -1193,6 +1426,13 @@ export interface ManagedClusterIdentityResponseUserAssignedIdentities {
      * The principal id of user assigned identity.
      */
     principalId: string;
+}
+
+export interface ManagedClusterIngressProfileNginxResponse {
+    /**
+     * Ingress type for the default NginxIngressController custom resource
+     */
+    defaultIngressControllerType?: string;
 }
 
 /**
@@ -1221,6 +1461,10 @@ export interface ManagedClusterIngressProfileWebAppRoutingResponse {
      * Managed identity of the Application Routing add-on. This is the identity that should be granted permissions, for example, to manage the associated Azure DNS resource and get certificates from Azure Key Vault. See [this overview of the add-on](https://learn.microsoft.com/en-us/azure/aks/web-app-routing?tabs=with-osm) for more instructions.
      */
     identity: UserAssignedIdentityResponse;
+    /**
+     * Configuration for the default NginxIngressController. See more at https://learn.microsoft.com/en-us/azure/aks/app-routing-nginx-configuration#the-default-nginx-ingress-controller.
+     */
+    nginx?: ManagedClusterIngressProfileNginxResponse;
 }
 
 /**
@@ -1238,7 +1482,7 @@ export interface ManagedClusterLoadBalancerProfileResponse {
     /**
      * The effective outbound IP resources of the cluster load balancer.
      */
-    effectiveOutboundIPs?: ResourceReferenceResponse[];
+    effectiveOutboundIPs: ResourceReferenceResponse[];
     /**
      * Enable multiple standard load balancers per AKS cluster or not.
      */
@@ -1341,7 +1585,7 @@ export function managedClusterManagedOutboundIPProfileResponseProvideDefaults(va
  */
 export interface ManagedClusterMetricsProfileResponse {
     /**
-     * The cost analysis configuration for the cluster
+     * The configuration for detailed per-Kubernetes resource cost analysis.
      */
     costAnalysis?: ManagedClusterCostAnalysisResponse;
 }
@@ -1353,7 +1597,7 @@ export interface ManagedClusterNATGatewayProfileResponse {
     /**
      * The effective outbound IP resources of the cluster NAT gateway.
      */
-    effectiveOutboundIPs?: ResourceReferenceResponse[];
+    effectiveOutboundIPs: ResourceReferenceResponse[];
     /**
      * Desired outbound flow idle timeout in minutes. Allowed values are in the range of 4 to 120 (inclusive). The default value is 4 minutes.
      */
@@ -1371,6 +1615,26 @@ export function managedClusterNATGatewayProfileResponseProvideDefaults(val: Mana
         ...val,
         idleTimeoutInMinutes: (val.idleTimeoutInMinutes) ?? 4,
         managedOutboundIPProfile: (val.managedOutboundIPProfile ? managedClusterManagedOutboundIPProfileResponseProvideDefaults(val.managedOutboundIPProfile) : undefined),
+    };
+}
+
+export interface ManagedClusterNodeProvisioningProfileResponse {
+    /**
+     * The set of default Karpenter NodePools (CRDs) configured for node provisioning. This field has no effect unless mode is 'Auto'. Warning: Changing this from Auto to None on an existing cluster will cause the default Karpenter NodePools to be deleted, which will drain and delete the nodes associated with those pools. It is strongly recommended to not do this unless there are idle nodes ready to take the pods evicted by that action. If not specified, the default is Auto. For more information see aka.ms/aks/nap#node-pools.
+     */
+    defaultNodePools?: string;
+    /**
+     * The node provisioning mode. If not specified, the default is Manual.
+     */
+    mode?: string;
+}
+/**
+ * managedClusterNodeProvisioningProfileResponseProvideDefaults sets the appropriate defaults for ManagedClusterNodeProvisioningProfileResponse
+ */
+export function managedClusterNodeProvisioningProfileResponseProvideDefaults(val: ManagedClusterNodeProvisioningProfileResponse): ManagedClusterNodeProvisioningProfileResponse {
+    return {
+        ...val,
+        defaultNodePools: (val.defaultNodePools) ?? "Auto",
     };
 }
 
@@ -1399,7 +1663,7 @@ export interface ManagedClusterOIDCIssuerProfileResponse {
 }
 
 /**
- * See [disable AAD Pod Identity for a specific Pod/Application](https://azure.github.io/aad-pod-identity/docs/configure/application_exception/) for more details.
+ * A pod identity exception, which allows pods with certain labels to access the Azure Instance Metadata Service (IMDS) endpoint without being intercepted by the node-managed identity (NMI) server. See [disable AAD Pod Identity for a specific Pod/Application](https://azure.github.io/aad-pod-identity/docs/configure/application_exception/) for more details.
  */
 export interface ManagedClusterPodIdentityExceptionResponse {
     /**
@@ -1417,11 +1681,11 @@ export interface ManagedClusterPodIdentityExceptionResponse {
 }
 
 /**
- * See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod identity integration.
+ * The pod identity profile of the Managed Cluster. See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod identity integration.
  */
 export interface ManagedClusterPodIdentityProfileResponse {
     /**
-     * Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities) for more information.
+     * Whether pod identity is allowed to run on clusters with Kubenet networking. Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities) for more information.
      */
     allowNetworkPluginKubenet?: boolean;
     /**
@@ -1531,83 +1795,83 @@ export interface ManagedClusterPropertiesForSnapshotResponse {
  */
 export interface ManagedClusterPropertiesResponseAutoScalerProfile {
     /**
-     * Valid values are 'true' and 'false'
+     * Detects similar node pools and balances the number of nodes between them. Valid values are 'true' and 'false'
      */
     balanceSimilarNodeGroups?: string;
     /**
-     * If set to true, all daemonset pods on empty nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+     * DaemonSet pods will be gracefully terminated from empty nodes. If set to true, all daemonset pods on empty nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
      */
     daemonsetEvictionForEmptyNodes?: boolean;
     /**
-     * If set to true, all daemonset pods on occupied nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+     * DaemonSet pods will be gracefully terminated from non-empty nodes. If set to true, all daemonset pods on occupied nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
      */
     daemonsetEvictionForOccupiedNodes?: boolean;
     /**
-     * If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
+     * The expander to use when scaling up. If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
      */
     expander?: string;
     /**
-     * If set to true, the resources used by daemonset will be taken into account when making scaling down decisions.
+     * Should CA ignore DaemonSet pods when calculating resource utilization for scaling down. If set to true, the resources used by daemonset will be taken into account when making scaling down decisions.
      */
     ignoreDaemonsetsUtilization?: boolean;
     /**
-     * The default is 10.
+     * The maximum number of empty nodes that can be deleted at the same time. This must be a positive integer. The default is 10.
      */
     maxEmptyBulkDelete?: string;
     /**
-     * The default is 600.
+     * The maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node. The default is 600.
      */
     maxGracefulTerminationSec?: string;
     /**
-     * The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+     * The maximum time the autoscaler waits for a node to be provisioned. The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
      */
     maxNodeProvisionTime?: string;
     /**
-     * The default is 45. The maximum is 100 and the minimum is 0.
+     * The maximum percentage of unready nodes in the cluster. After this percentage is exceeded, cluster autoscaler halts operations. The default is 45. The maximum is 100 and the minimum is 0.
      */
     maxTotalUnreadyPercentage?: string;
     /**
-     * For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).
+     * Ignore unscheduled pods before they're a certain age. For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).
      */
     newPodScaleUpDelay?: string;
     /**
-     * This must be an integer. The default is 3.
+     * The number of allowed unready nodes, irrespective of max-total-unready-percentage. This must be an integer. The default is 3.
      */
     okTotalUnreadyCount?: string;
     /**
-     * The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+     * How long after scale up that scale down evaluation resumes. The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
      */
     scaleDownDelayAfterAdd?: string;
     /**
-     * The default is the scan-interval. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+     * How long after node deletion that scale down evaluation resumes. The default is the scan-interval. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
      */
     scaleDownDelayAfterDelete?: string;
     /**
-     * The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+     * How long after scale down failure that scale down evaluation resumes. The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
      */
     scaleDownDelayAfterFailure?: string;
     /**
-     * The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+     * How long a node should be unneeded before it is eligible for scale down. The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
      */
     scaleDownUnneededTime?: string;
     /**
-     * The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+     * How long an unready node should be unneeded before it is eligible for scale down. The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
      */
     scaleDownUnreadyTime?: string;
     /**
-     * The default is '0.5'.
+     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down. The default is '0.5'.
      */
     scaleDownUtilizationThreshold?: string;
     /**
-     * The default is '10'. Values must be an integer number of seconds.
+     * How often cluster is reevaluated for scale up or down. The default is '10'. Values must be an integer number of seconds.
      */
     scanInterval?: string;
     /**
-     * The default is true.
+     * If cluster autoscaler will skip deleting nodes with pods with local storage, for example, EmptyDir or HostPath. The default is true.
      */
     skipNodesWithLocalStorage?: string;
     /**
-     * The default is true.
+     * If cluster autoscaler will skip deleting nodes with pods from kube-system (except for DaemonSet or mirror pods). The default is true.
      */
     skipNodesWithSystemPods?: string;
 }
@@ -1673,6 +1937,10 @@ export interface ManagedClusterSecurityProfileResponse {
      */
     azureKeyVaultKms?: AzureKeyVaultKmsResponse;
     /**
+     * A list of up to 10 base64 encoded CAs that will be added to the trust store on all nodes in the cluster. For more information see [Custom CA Trust Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).
+     */
+    customCATrustCertificates?: string[];
+    /**
      * Microsoft Defender settings for the security profile.
      */
     defender?: ManagedClusterSecurityProfileDefenderResponse;
@@ -1717,6 +1985,26 @@ export interface ManagedClusterServicePrincipalProfileResponse {
      * The secret password associated with the service principal in plain text.
      */
     secret?: string;
+}
+
+/**
+ * The Static Egress Gateway addon configuration for the cluster.
+ */
+export interface ManagedClusterStaticEgressGatewayProfileResponse {
+    /**
+     * Enable Static Egress Gateway addon. Indicates if Static Egress Gateway addon is enabled or not.
+     */
+    enabled?: boolean;
+}
+
+/**
+ * Contains read-only information about the Managed Cluster.
+ */
+export interface ManagedClusterStatusResponse {
+    /**
+     * The error details information of the managed cluster. Preserves the detailed info of failure. If there was no error, this field is omitted.
+     */
+    provisioningError: ErrorDetailResponse;
 }
 
 /**
@@ -1822,7 +2110,7 @@ export interface ManagedClusterWindowsProfileResponse {
      */
     adminUsername: string;
     /**
-     * For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
+     * Whether to enable CSI proxy. For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
      */
     enableCSIProxy?: boolean;
     /**
@@ -1907,6 +2195,20 @@ export interface ManagedServiceIdentityResponse {
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
     userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
+ * Specifications on number of machines.
+ */
+export interface ManualScaleProfileResponse {
+    /**
+     * Number of nodes.
+     */
+    count?: number;
+    /**
+     * VM size that AKS will use when creating and scaling e.g. 'Standard_E4s_v3', 'Standard_E16s_v3' or 'Standard_D16s_v5'.
+     */
+    size?: string;
 }
 
 /**
@@ -2026,6 +2328,63 @@ export interface NetworkProfileForSnapshotResponse {
      * networkPolicy for managed cluster snapshot.
      */
     networkPolicy?: string;
+}
+
+/**
+ * The properties of the Node Customization resource.
+ */
+export interface NodeCustomizationPropertiesResponse {
+    /**
+     * The list of container images to cache on nodes. See https://kubernetes.io/docs/concepts/containers/images/#image-names
+     */
+    containerImages?: string[];
+    /**
+     * The scripts to customize the node before or after image capture.
+     */
+    customizationScripts?: NodeCustomizationScriptResponse[];
+    /**
+     * The identity used to execute node customization tasks during image build time and provisioning time. 
+     * If not specified the default agentpool identity will be used.
+     * This does not affect provisioned nodes.
+     */
+    identityProfile?: UserAssignedIdentityResponse;
+    /**
+     * The provisioning state of the node customization.
+     */
+    provisioningState: string;
+    /**
+     * An auto-generated value that changes when the other fields of the image customization are changed.
+     */
+    version: string;
+}
+
+/**
+ * Node customization script
+ */
+export interface NodeCustomizationScriptResponse {
+    /**
+     * The stage at which the script is executed.
+     * Specifying `NodeImageBuildTime` will ensure changes are persisted into the node image.
+     */
+    executionPoint: string;
+    /**
+     * The name for the customization script. 
+     * Must be unique within the node customization resource.
+     * Can only contain lowercase alphanumeric,'-' or '.' characters.
+     */
+    name: string;
+    /**
+     * Whether the node should reboot after successful script execution.
+     */
+    rebootAfter?: boolean;
+    /**
+     * The script content to be executed in plain text. Do not include secrets.
+     */
+    script?: string;
+    /**
+     * The runtime environment for the script (e.g. Bash).
+     */
+    scriptType: string;
 }
 
 /**
@@ -2157,7 +2516,7 @@ export interface RelativeMonthlyScheduleResponse {
      */
     intervalMonths: number;
     /**
-     * Specifies on which week of the month the dayOfWeek applies.
+     * The week index. Specifies on which week of the month the dayOfWeek applies.
      */
     weekIndex: string;
 }
@@ -2192,6 +2551,16 @@ export interface ResourceReferenceResponse {
      * The fully qualified Azure resource id.
      */
     id?: string;
+}
+
+/**
+ * Specifications on how to scale a VirtualMachines agent pool.
+ */
+export interface ScaleProfileResponse {
+    /**
+     * Specifications on how to scale the VirtualMachines agent pool to a fixed size.
+     */
+    manual?: ManualScaleProfileResponse[];
 }
 
 /**
@@ -2387,13 +2756,13 @@ export interface TimeInWeekResponse {
      */
     day?: string;
     /**
-     * Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range.
+     * A list of hours in the day used to identify a time range. Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range.
      */
     hourSlots?: number[];
 }
 
 /**
- * For example, between 2021-05-25T13:00:00Z and 2021-05-25T14:00:00Z.
+ * A time range. For example, between 2021-05-25T13:00:00Z and 2021-05-25T14:00:00Z.
  */
 export interface TimeSpanResponse {
     /**
@@ -2546,13 +2915,13 @@ export interface UpgradeOverrideSettingsResponse {
 }
 
 /**
- * Details about a user assigned identity.
+ * User assigned identity properties
  */
 export interface UserAssignedIdentityResponse {
     /**
-     * The client ID of the user assigned identity.
+     * The client ID of the assigned identity.
      */
-    clientId?: string;
+    clientId: string;
     /**
      * The object ID of the user assigned identity.
      */
@@ -2560,11 +2929,35 @@ export interface UserAssignedIdentityResponse {
     /**
      * The principal ID of the assigned identity.
      */
-    principalId?: string;
+    principalId: string;
     /**
      * The resource ID of the user assigned identity.
      */
     resourceId?: string;
+}
+
+/**
+ * Current status on a group of nodes of the same vm size.
+ */
+export interface VirtualMachineNodesResponse {
+    /**
+     * Number of nodes.
+     */
+    count?: number;
+    /**
+     * The VM size of the agents used to host this group of nodes.
+     */
+    size?: string;
+}
+
+/**
+ * Specifications on VirtualMachines agent pool.
+ */
+export interface VirtualMachinesProfileResponse {
+    /**
+     * Specifications on how to scale a VirtualMachines agent pool.
+     */
+    scale?: ScaleProfileResponse;
 }
 
 /**
@@ -2604,7 +2997,7 @@ export interface WindowsGmsaProfileResponse {
      */
     dnsServer?: string;
     /**
-     * Specifies whether to enable Windows gMSA in the managed cluster.
+     * Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster.
      */
     enabled?: boolean;
     /**

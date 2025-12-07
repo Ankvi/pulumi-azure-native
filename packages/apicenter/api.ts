@@ -38,59 +38,59 @@ export class Api extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The set of contacts
      */
-    public readonly contacts!: pulumi.Output<types.outputs.ContactResponse[] | undefined>;
+    declare public readonly contacts: pulumi.Output<types.outputs.ContactResponse[] | undefined>;
     /**
      * The custom metadata defined for API catalog entities.
      */
-    public readonly customProperties!: pulumi.Output<any | undefined>;
+    declare public readonly customProperties: pulumi.Output<any | undefined>;
     /**
      * Description of the API.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The set of external documentation
      */
-    public readonly externalDocumentation!: pulumi.Output<types.outputs.ExternalDocumentationResponse[] | undefined>;
+    declare public readonly externalDocumentation: pulumi.Output<types.outputs.ExternalDocumentationResponse[] | undefined>;
     /**
      * Kind of API. For example, REST or GraphQL.
      */
-    public readonly kind!: pulumi.Output<string>;
+    declare public readonly kind: pulumi.Output<string>;
     /**
      * The license information for the API.
      */
-    public readonly license!: pulumi.Output<types.outputs.LicenseResponse | undefined>;
+    declare public readonly license: pulumi.Output<types.outputs.LicenseResponse | undefined>;
     /**
      * Current lifecycle stage of the API.
      */
-    public /*out*/ readonly lifecycleStage!: pulumi.Output<string>;
+    declare public /*out*/ readonly lifecycleStage: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Short description of the API.
      */
-    public readonly summary!: pulumi.Output<string | undefined>;
+    declare public readonly summary: pulumi.Output<string | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Terms of service for the API.
      */
-    public readonly termsOfService!: pulumi.Output<types.outputs.TermsOfServiceResponse | undefined>;
+    declare public readonly termsOfService: pulumi.Output<types.outputs.TermsOfServiceResponse | undefined>;
     /**
      * API title.
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Api resource with the given unique name, arguments, and options.
@@ -103,34 +103,34 @@ export class Api extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.kind === undefined) && !opts.urn) {
+            if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.title === undefined) && !opts.urn) {
+            if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["apiName"] = args ? args.apiName : undefined;
-            resourceInputs["contacts"] = args ? args.contacts : undefined;
-            resourceInputs["customProperties"] = args ? args.customProperties : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["externalDocumentation"] = args ? args.externalDocumentation : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["license"] = args ? args.license : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["summary"] = args ? args.summary : undefined;
-            resourceInputs["termsOfService"] = args ? args.termsOfService : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["apiName"] = args?.apiName;
+            resourceInputs["contacts"] = args?.contacts;
+            resourceInputs["customProperties"] = args?.customProperties;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["externalDocumentation"] = args?.externalDocumentation;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["license"] = args?.license;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["summary"] = args?.summary;
+            resourceInputs["termsOfService"] = args?.termsOfService;
+            resourceInputs["title"] = args?.title;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["lifecycleStage"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

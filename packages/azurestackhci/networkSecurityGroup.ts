@@ -38,51 +38,51 @@ export class NetworkSecurityGroup extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
      */
-    public /*out*/ readonly eTag!: pulumi.Output<string>;
+    declare public /*out*/ readonly eTag: pulumi.Output<string>;
     /**
      * The extendedLocation of the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * A collection of references to network interfaces that are currently using this NSG.
      */
-    public /*out*/ readonly networkInterfaces!: pulumi.Output<types.outputs.NetworkInterfaceArmReferenceResponse[]>;
+    declare public /*out*/ readonly networkInterfaces: pulumi.Output<types.outputs.NetworkInterfaceArmReferenceResponse[]>;
     /**
      * The provisioning state of the network security group resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The observed state of Network Security Group
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.NetworkSecurityGroupStatusResponse>;
+    declare public /*out*/ readonly status: pulumi.Output<types.outputs.NetworkSecurityGroupStatusResponse>;
     /**
      * A collection of references to logical networks that are currently using this NSG
      */
-    public /*out*/ readonly subnets!: pulumi.Output<types.outputs.LogicalNetworkArmReferenceResponse[]>;
+    declare public /*out*/ readonly subnets: pulumi.Output<types.outputs.LogicalNetworkArmReferenceResponse[]>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a NetworkSecurityGroup resource with the given unique name, arguments, and options.
@@ -95,14 +95,14 @@ export class NetworkSecurityGroup extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["networkSecurityGroupName"] = args ? args.networkSecurityGroupName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["extendedLocation"] = args?.extendedLocation;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["networkSecurityGroupName"] = args?.networkSecurityGroupName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

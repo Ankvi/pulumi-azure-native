@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ProximityPlacementGroup extends pulumi.CustomResource {
     /**
@@ -38,55 +38,55 @@ export class ProximityPlacementGroup extends pulumi.CustomResource {
     /**
      * A list of references to all availability sets in the proximity placement group.
      */
-    public /*out*/ readonly availabilitySets!: pulumi.Output<types.outputs.SubResourceWithColocationStatusResponse[]>;
+    declare public /*out*/ readonly availabilitySets: pulumi.Output<types.outputs.SubResourceWithColocationStatusResponse[]>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Describes colocation status of the Proximity Placement Group.
      */
-    public readonly colocationStatus!: pulumi.Output<types.outputs.InstanceViewStatusResponse | undefined>;
+    declare public readonly colocationStatus: pulumi.Output<types.outputs.InstanceViewStatusResponse | undefined>;
     /**
      * Specifies the user intent of the proximity placement group.
      */
-    public readonly intent!: pulumi.Output<types.outputs.ProximityPlacementGroupPropertiesIntentResponse | undefined>;
+    declare public readonly intent: pulumi.Output<types.outputs.ProximityPlacementGroupPropertiesIntentResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Specifies the type of the proximity placement group. Possible values are: **Standard** : Co-locate resources within an Azure region or Availability Zone. **Ultra** : For future use.
      */
-    public readonly proximityPlacementGroupType!: pulumi.Output<string | undefined>;
+    declare public readonly proximityPlacementGroupType: pulumi.Output<string | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * A list of references to all virtual machine scale sets in the proximity placement group.
      */
-    public /*out*/ readonly virtualMachineScaleSets!: pulumi.Output<types.outputs.SubResourceWithColocationStatusResponse[]>;
+    declare public /*out*/ readonly virtualMachineScaleSets: pulumi.Output<types.outputs.SubResourceWithColocationStatusResponse[]>;
     /**
      * A list of references to all virtual machines in the proximity placement group.
      */
-    public /*out*/ readonly virtualMachines!: pulumi.Output<types.outputs.SubResourceWithColocationStatusResponse[]>;
+    declare public /*out*/ readonly virtualMachines: pulumi.Output<types.outputs.SubResourceWithColocationStatusResponse[]>;
     /**
      * The availability zones.
      */
-    public readonly zones!: pulumi.Output<string[] | undefined>;
+    declare public readonly zones: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ProximityPlacementGroup resource with the given unique name, arguments, and options.
@@ -99,17 +99,17 @@ export class ProximityPlacementGroup extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["colocationStatus"] = args ? args.colocationStatus : undefined;
-            resourceInputs["intent"] = args ? args.intent : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["proximityPlacementGroupName"] = args ? args.proximityPlacementGroupName : undefined;
-            resourceInputs["proximityPlacementGroupType"] = args ? args.proximityPlacementGroupType : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["colocationStatus"] = args?.colocationStatus;
+            resourceInputs["intent"] = args?.intent;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["proximityPlacementGroupName"] = args?.proximityPlacementGroupName;
+            resourceInputs["proximityPlacementGroupType"] = args?.proximityPlacementGroupType;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zones"] = args?.zones;
             resourceInputs["availabilitySets"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -133,7 +133,7 @@ export class ProximityPlacementGroup extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20180401:ProximityPlacementGroup" }, { type: "azure-native:compute/v20180601:ProximityPlacementGroup" }, { type: "azure-native:compute/v20181001:ProximityPlacementGroup" }, { type: "azure-native:compute/v20190301:ProximityPlacementGroup" }, { type: "azure-native:compute/v20190701:ProximityPlacementGroup" }, { type: "azure-native:compute/v20191201:ProximityPlacementGroup" }, { type: "azure-native:compute/v20200601:ProximityPlacementGroup" }, { type: "azure-native:compute/v20201201:ProximityPlacementGroup" }, { type: "azure-native:compute/v20210301:ProximityPlacementGroup" }, { type: "azure-native:compute/v20210401:ProximityPlacementGroup" }, { type: "azure-native:compute/v20210701:ProximityPlacementGroup" }, { type: "azure-native:compute/v20211101:ProximityPlacementGroup" }, { type: "azure-native:compute/v20220301:ProximityPlacementGroup" }, { type: "azure-native:compute/v20220801:ProximityPlacementGroup" }, { type: "azure-native:compute/v20221101:ProximityPlacementGroup" }, { type: "azure-native:compute/v20230301:ProximityPlacementGroup" }, { type: "azure-native:compute/v20230701:ProximityPlacementGroup" }, { type: "azure-native:compute/v20230901:ProximityPlacementGroup" }, { type: "azure-native:compute/v20240301:ProximityPlacementGroup" }, { type: "azure-native:compute/v20240701:ProximityPlacementGroup" }, { type: "azure-native:compute/v20241101:ProximityPlacementGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20180401:ProximityPlacementGroup" }, { type: "azure-native:compute/v20180601:ProximityPlacementGroup" }, { type: "azure-native:compute/v20181001:ProximityPlacementGroup" }, { type: "azure-native:compute/v20190301:ProximityPlacementGroup" }, { type: "azure-native:compute/v20190701:ProximityPlacementGroup" }, { type: "azure-native:compute/v20191201:ProximityPlacementGroup" }, { type: "azure-native:compute/v20200601:ProximityPlacementGroup" }, { type: "azure-native:compute/v20201201:ProximityPlacementGroup" }, { type: "azure-native:compute/v20210301:ProximityPlacementGroup" }, { type: "azure-native:compute/v20210401:ProximityPlacementGroup" }, { type: "azure-native:compute/v20210701:ProximityPlacementGroup" }, { type: "azure-native:compute/v20211101:ProximityPlacementGroup" }, { type: "azure-native:compute/v20220301:ProximityPlacementGroup" }, { type: "azure-native:compute/v20220801:ProximityPlacementGroup" }, { type: "azure-native:compute/v20221101:ProximityPlacementGroup" }, { type: "azure-native:compute/v20230301:ProximityPlacementGroup" }, { type: "azure-native:compute/v20230701:ProximityPlacementGroup" }, { type: "azure-native:compute/v20230901:ProximityPlacementGroup" }, { type: "azure-native:compute/v20240301:ProximityPlacementGroup" }, { type: "azure-native:compute/v20240701:ProximityPlacementGroup" }, { type: "azure-native:compute/v20241101:ProximityPlacementGroup" }, { type: "azure-native:compute/v20250401:ProximityPlacementGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ProximityPlacementGroup.__pulumiType, name, resourceInputs, opts);
     }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-07-15-preview. In version 2.x of the Azure Native provider, it used API version 2021-06-30.
  *
- * Other available API versions: 2021-06-30, 2021-10-30-preview, 2022-01-30-preview, 2022-03-30-preview, 2025-03-15-preview, 2025-06-30. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-06-30, 2021-10-30-preview, 2022-01-30-preview, 2022-03-30-preview, 2025-03-15-preview, 2025-06-30, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Service extends pulumi.CustomResource {
     /**
@@ -38,48 +38,48 @@ export class Service extends pulumi.CustomResource {
     /**
      * The time delay before the service is auto-stopped when idle.
      */
-    public readonly autoStopDelay!: pulumi.Output<string | undefined>;
+    declare public readonly autoStopDelay: pulumi.Output<string | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Whether service resources should be deleted when stopped. (Turned on by default)
      */
-    public readonly deleteResourcesOnStop!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteResourcesOnStop: pulumi.Output<boolean | undefined>;
     /**
      * HTTP strong entity tag value. Ignored if submitted
      */
-    public /*out*/ readonly etag!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly etag: pulumi.Output<string | undefined>;
     /**
      * The resource kind. Only 'vm' (the default) is supported.
      */
-    public readonly kind!: pulumi.Output<string | undefined>;
-    public readonly location!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public readonly kind: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The resource's provisioning state
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The public key of the service, used to encrypt secrets sent to the service
      */
-    public readonly publicKey!: pulumi.Output<string | undefined>;
+    declare public readonly publicKey: pulumi.Output<string | undefined>;
     /**
      * Service SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.ServiceSkuResponse | undefined>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public readonly sku: pulumi.Output<types.outputs.ServiceSkuResponse | undefined>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The ID of the Microsoft.Network/networkInterfaces resource which the service have
      */
-    public readonly virtualNicId!: pulumi.Output<string | undefined>;
+    declare public readonly virtualNicId: pulumi.Output<string | undefined>;
     /**
      * The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined
      */
-    public readonly virtualSubnetId!: pulumi.Output<string | undefined>;
+    declare public readonly virtualSubnetId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -92,20 +92,20 @@ export class Service extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.groupName === undefined) && !opts.urn) {
+            if (args?.groupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            resourceInputs["autoStopDelay"] = args ? args.autoStopDelay : undefined;
-            resourceInputs["deleteResourcesOnStop"] = args ? args.deleteResourcesOnStop : undefined;
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["publicKey"] = args ? args.publicKey : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["virtualNicId"] = args ? args.virtualNicId : undefined;
-            resourceInputs["virtualSubnetId"] = args ? args.virtualSubnetId : undefined;
+            resourceInputs["autoStopDelay"] = args?.autoStopDelay;
+            resourceInputs["deleteResourcesOnStop"] = args?.deleteResourcesOnStop;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["publicKey"] = args?.publicKey;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["virtualNicId"] = args?.virtualNicId;
+            resourceInputs["virtualSubnetId"] = args?.virtualSubnetId;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -130,7 +130,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["virtualSubnetId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:datamigration/v20171115preview:Service" }, { type: "azure-native:datamigration/v20180315preview:Service" }, { type: "azure-native:datamigration/v20180331preview:Service" }, { type: "azure-native:datamigration/v20180419:Service" }, { type: "azure-native:datamigration/v20180715preview:Service" }, { type: "azure-native:datamigration/v20210630:Service" }, { type: "azure-native:datamigration/v20211030preview:Service" }, { type: "azure-native:datamigration/v20220130preview:Service" }, { type: "azure-native:datamigration/v20220330preview:Service" }, { type: "azure-native:datamigration/v20230715preview:Service" }, { type: "azure-native:datamigration/v20250315preview:Service" }, { type: "azure-native:datamigration/v20250630:Service" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:datamigration/v20171115preview:Service" }, { type: "azure-native:datamigration/v20180315preview:Service" }, { type: "azure-native:datamigration/v20180331preview:Service" }, { type: "azure-native:datamigration/v20180419:Service" }, { type: "azure-native:datamigration/v20180715preview:Service" }, { type: "azure-native:datamigration/v20210630:Service" }, { type: "azure-native:datamigration/v20211030preview:Service" }, { type: "azure-native:datamigration/v20220130preview:Service" }, { type: "azure-native:datamigration/v20220330preview:Service" }, { type: "azure-native:datamigration/v20230715preview:Service" }, { type: "azure-native:datamigration/v20250315preview:Service" }, { type: "azure-native:datamigration/v20250630:Service" }, { type: "azure-native:datamigration/v20250901preview:Service" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Service.__pulumiType, name, resourceInputs, opts);
     }

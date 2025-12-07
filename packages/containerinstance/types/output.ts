@@ -1,6 +1,40 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * The API entity reference.
+ */
+export interface ApiEntityReferenceResponse {
+    /**
+     * The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+     */
+    id?: string;
+}
+
+/**
+ * NGroups application gateway backend address pool
+ */
+export interface ApplicationGatewayBackendAddressPoolResponse {
+    /**
+     * The application gateway backend address pool ARM resource Id.
+     */
+    resource?: string;
+}
+
+/**
+ * Application Gateway the CG profile will use to interact with CGs in a backend pool
+ */
+export interface ApplicationGatewayResponse {
+    /**
+     * List of Application Gateway Backend Address Pools.
+     */
+    backendAddressPools?: ApplicationGatewayBackendAddressPoolResponse[];
+    /**
+     * The Application Gateway ARM resource Id.
+     */
+    resource?: string;
+}
+
+/**
  * The properties of the Azure File volume. Azure File shares are mounted as volumes.
  */
 export interface AzureFileVolumeResponse {
@@ -100,6 +134,32 @@ export interface ContainerGroupProfileReferenceDefinitionResponse {
      * The container group profile reference revision.
      */
     revision?: number;
+}
+
+/**
+ * The object that contains a reference to a Container Group Profile and it's other related properties.
+ */
+export interface ContainerGroupProfileStubResponse {
+    /**
+     *  Container Group properties which can be set while creating or updating the NGroups.
+     */
+    containerGroupProperties?: NGroupContainerGroupPropertiesResponse;
+    /**
+     * A network profile for network settings of a ContainerGroupProfile.
+     */
+    networkProfile?: NetworkProfileResponse;
+    /**
+     * A reference to the container group profile ARM resource hosted in ACI RP.
+     */
+    resource?: ApiEntityReferenceResponse;
+    /**
+     * The revision of the CG profile is an optional property. If customer does not to provide a revision then NGroups will pickup the latest revision of CGProfile.
+     */
+    revision?: number;
+    /**
+     * Storage profile for storage related settings of a container group profile.
+     */
+    storageProfile?: StorageProfileResponse;
 }
 
 /**
@@ -347,6 +407,35 @@ export interface DnsConfigurationResponse {
 }
 
 /**
+ * Describes the elastic profile of the NGroup
+ */
+export interface ElasticProfileResponse {
+    /**
+     * Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
+     */
+    containerGroupNamingPolicy?: ElasticProfileResponseContainerGroupNamingPolicy;
+    desiredCount?: number;
+    /**
+     * Flag that indicates whether desiredCount should be maintained when customer deletes SPECIFIC container groups (CGs) from the NGroups. In this case, new CGs will be created by NGroup to compensate for the specific deleted ones.
+     */
+    maintainDesiredCount?: boolean;
+}
+
+/**
+ * Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
+ */
+export interface ElasticProfileResponseContainerGroupNamingPolicy {
+    guidNamingPolicy?: ElasticProfileResponseGuidNamingPolicy;
+}
+
+export interface ElasticProfileResponseGuidNamingPolicy {
+    /**
+     * The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
+     */
+    prefix?: string;
+}
+
+/**
  * The container group encryption properties.
  */
 export interface EncryptionPropertiesResponse {
@@ -418,6 +507,45 @@ export interface EventResponse {
      * The event type.
      */
     type: string;
+}
+
+/**
+ * File shares that can be mounted on container groups.
+ */
+export interface FileShareResponse {
+    name?: string;
+    properties?: FileShareResponseProperties;
+    resourceGroupName?: string;
+    storageAccountName?: string;
+}
+/**
+ * fileShareResponseProvideDefaults sets the appropriate defaults for FileShareResponse
+ */
+export function fileShareResponseProvideDefaults(val: FileShareResponse): FileShareResponse {
+    return {
+        ...val,
+        properties: (val.properties ? fileShareResponsePropertiesProvideDefaults(val.properties) : undefined),
+    };
+}
+
+export interface FileShareResponseProperties {
+    /**
+     * Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
+     */
+    shareAccessTier?: string;
+    /**
+     *  Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
+     */
+    shareAccessType?: string;
+}
+/**
+ * fileShareResponsePropertiesProvideDefaults sets the appropriate defaults for FileShareResponseProperties
+ */
+export function fileShareResponsePropertiesProvideDefaults(val: FileShareResponseProperties): FileShareResponseProperties {
+    return {
+        ...val,
+        shareAccessTier: (val.shareAccessTier) ?? "TransactionOptimized",
+    };
 }
 
 /**
@@ -592,6 +720,26 @@ export function ipAddressResponseProvideDefaults(val: IpAddressResponse): IpAddr
 }
 
 /**
+ * NGroups load balancer backend address pool
+ */
+export interface LoadBalancerBackendAddressPoolResponse {
+    /**
+     * The Load Balancer backend address pool ARM resource Id.
+     */
+    resource?: string;
+}
+
+/**
+ * LoadBalancer the CG profile will use to interact with CGs in a backend pool
+ */
+export interface LoadBalancerResponse {
+    /**
+     * List of Load Balancer Backend Address Pools.
+     */
+    backendAddressPools?: LoadBalancerBackendAddressPoolResponse[];
+}
+
+/**
  * Container group log analytics information.
  */
 export interface LogAnalyticsResponse {
@@ -615,6 +763,105 @@ export interface LogAnalyticsResponse {
      * The workspace resource id for log analytics
      */
     workspaceResourceId?: string;
+}
+
+/**
+ * Container properties that can be provided with NGroups object.
+ */
+export interface NGroupCGPropertyContainerResponse {
+    /**
+     * container name
+     */
+    name?: string;
+    /**
+     * container properties
+     */
+    properties?: NGroupCGPropertyContainerResponseProperties;
+}
+
+/**
+ * container properties
+ */
+export interface NGroupCGPropertyContainerResponseProperties {
+    volumeMounts?: VolumeMountResponse[];
+}
+
+/**
+ * Contains information about the volumes that can be mounted by Containers in the Container Groups.
+ */
+export interface NGroupCGPropertyVolumeResponse {
+    /**
+     * The Azure File volume.
+     */
+    azureFile?: AzureFileVolumeResponse;
+    /**
+     * The name of the volume.
+     */
+    name: string;
+}
+
+/**
+ * Container Group properties which can be set while creating or updating the NGroups.
+ */
+export interface NGroupContainerGroupPropertiesResponse {
+    /**
+     * Contains information about Container which can be set while creating or updating the NGroups.
+     */
+    containers?: NGroupCGPropertyContainerResponse[];
+    /**
+     * Contains information about Virtual Network Subnet ARM Resource
+     */
+    subnetIds?: ContainerGroupSubnetIdResponse[];
+    /**
+     * Contains information about the volumes that can be mounted by Containers in the Container Groups.
+     */
+    volumes?: NGroupCGPropertyVolumeResponse[];
+}
+
+/**
+ * Identity for the NGroup.
+ */
+export interface NGroupIdentityResponse {
+    /**
+     * The principal id of the NGroup identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant id associated with the NGroup. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * The type of identity used for the NGroup. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the NGroup.
+     */
+    type?: string;
+    /**
+     * The list of user identities associated with the NGroup.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentitiesResponse};
+}
+
+/**
+ * A network profile for network settings of a ContainerGroupProfile. Used to manage load balancer and application gateway backend pools, specifically updating the IP addresses of CGs within the backend pool.
+ */
+export interface NetworkProfileResponse {
+    /**
+     * Application Gateway the CG profile will use to interact with CGs in a backend pool
+     */
+    applicationGateway?: ApplicationGatewayResponse;
+    /**
+     * LoadBalancer the CG profile will use to interact with CGs in a backend pool
+     */
+    loadBalancer?: LoadBalancerResponse;
+}
+
+/**
+ * Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
+ */
+export interface PlacementProfileResponse {
+    /**
+     * The number of fault domains to be used to spread CGs in the NGroups resource. This can only be specified during NGroup creation and is immutable after that.
+     */
+    faultDomainCount?: number;
 }
 
 /**
@@ -740,6 +987,13 @@ export interface StandbyPoolProfileDefinitionResponse {
 }
 
 /**
+ * Storage profile for storage related settings of a container group profile.
+ */
+export interface StorageProfileResponse {
+    fileShares?: FileShareResponse[];
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -767,6 +1021,39 @@ export interface SystemDataResponse {
      * The type of identity that last modified the resource.
      */
     lastModifiedByType?: string;
+}
+
+/**
+ * Used by the customer to specify the way to update the Container Groups in NGroup.
+ */
+export interface UpdateProfileResponse {
+    /**
+     * This profile allows the customers to customize the rolling update.
+     */
+    rollingUpdateProfile?: UpdateProfileResponseRollingUpdateProfile;
+    updateMode?: string;
+}
+
+/**
+ * This profile allows the customers to customize the rolling update.
+ */
+export interface UpdateProfileResponseRollingUpdateProfile {
+    /**
+     * Default is false. If set to true, the CGs will be updated in-place instead of creating new CG and deleting old ones.
+     */
+    inPlaceUpdate?: boolean;
+    /**
+     * Maximum percentage of total Container Groups which can be updated simultaneously by rolling update in one batch.
+     */
+    maxBatchPercent?: number;
+    /**
+     * Maximum percentage of the updated Container Groups which can be in unhealthy state after each batch is updated.
+     */
+    maxUnhealthyPercent?: number;
+    /**
+     * The wait time between batches after completing the one batch of the rolling update and starting the next batch. The time duration should be specified in ISO 8601 format for duration.
+     */
+    pauseTimeBetweenBatches?: string;
 }
 
 /**

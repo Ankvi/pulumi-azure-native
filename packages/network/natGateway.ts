@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NatGateway extends pulumi.CustomResource {
     /**
@@ -38,59 +38,59 @@ export class NatGateway extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The idle timeout of the nat gateway.
      */
-    public readonly idleTimeoutInMinutes!: pulumi.Output<number | undefined>;
+    declare public readonly idleTimeoutInMinutes: pulumi.Output<number | undefined>;
     /**
      * Resource location.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The provisioning state of the NAT gateway resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * An array of public ip addresses associated with the nat gateway resource.
      */
-    public readonly publicIpAddresses!: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
+    declare public readonly publicIpAddresses: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
     /**
      * An array of public ip prefixes associated with the nat gateway resource.
      */
-    public readonly publicIpPrefixes!: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
+    declare public readonly publicIpPrefixes: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
     /**
      * The resource GUID property of the NAT gateway resource.
      */
-    public /*out*/ readonly resourceGuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceGuid: pulumi.Output<string>;
     /**
      * The nat gateway SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.NatGatewaySkuResponse | undefined>;
+    declare public readonly sku: pulumi.Output<types.outputs.NatGatewaySkuResponse | undefined>;
     /**
      * An array of references to the subnets using this nat gateway resource.
      */
-    public /*out*/ readonly subnets!: pulumi.Output<types.outputs.SubResourceResponse[]>;
+    declare public /*out*/ readonly subnets: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * A list of availability zones denoting the zone in which Nat Gateway should be deployed.
      */
-    public readonly zones!: pulumi.Output<string[] | undefined>;
+    declare public readonly zones: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a NatGateway resource with the given unique name, arguments, and options.
@@ -103,19 +103,19 @@ export class NatGateway extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["idleTimeoutInMinutes"] = args ? args.idleTimeoutInMinutes : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["natGatewayName"] = args ? args.natGatewayName : undefined;
-            resourceInputs["publicIpAddresses"] = args ? args.publicIpAddresses : undefined;
-            resourceInputs["publicIpPrefixes"] = args ? args.publicIpPrefixes : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["idleTimeoutInMinutes"] = args?.idleTimeoutInMinutes;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["natGatewayName"] = args?.natGatewayName;
+            resourceInputs["publicIpAddresses"] = args?.publicIpAddresses;
+            resourceInputs["publicIpPrefixes"] = args?.publicIpPrefixes;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zones"] = args?.zones;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -140,7 +140,7 @@ export class NatGateway extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20190201:NatGateway" }, { type: "azure-native:network/v20190401:NatGateway" }, { type: "azure-native:network/v20190601:NatGateway" }, { type: "azure-native:network/v20190701:NatGateway" }, { type: "azure-native:network/v20190801:NatGateway" }, { type: "azure-native:network/v20190901:NatGateway" }, { type: "azure-native:network/v20191101:NatGateway" }, { type: "azure-native:network/v20191201:NatGateway" }, { type: "azure-native:network/v20200301:NatGateway" }, { type: "azure-native:network/v20200401:NatGateway" }, { type: "azure-native:network/v20200501:NatGateway" }, { type: "azure-native:network/v20200601:NatGateway" }, { type: "azure-native:network/v20200701:NatGateway" }, { type: "azure-native:network/v20200801:NatGateway" }, { type: "azure-native:network/v20201101:NatGateway" }, { type: "azure-native:network/v20210201:NatGateway" }, { type: "azure-native:network/v20210301:NatGateway" }, { type: "azure-native:network/v20210501:NatGateway" }, { type: "azure-native:network/v20210801:NatGateway" }, { type: "azure-native:network/v20220101:NatGateway" }, { type: "azure-native:network/v20220501:NatGateway" }, { type: "azure-native:network/v20220701:NatGateway" }, { type: "azure-native:network/v20220901:NatGateway" }, { type: "azure-native:network/v20221101:NatGateway" }, { type: "azure-native:network/v20230201:NatGateway" }, { type: "azure-native:network/v20230401:NatGateway" }, { type: "azure-native:network/v20230501:NatGateway" }, { type: "azure-native:network/v20230601:NatGateway" }, { type: "azure-native:network/v20230901:NatGateway" }, { type: "azure-native:network/v20231101:NatGateway" }, { type: "azure-native:network/v20240101:NatGateway" }, { type: "azure-native:network/v20240301:NatGateway" }, { type: "azure-native:network/v20240501:NatGateway" }, { type: "azure-native:network/v20240701:NatGateway" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20190201:NatGateway" }, { type: "azure-native:network/v20190401:NatGateway" }, { type: "azure-native:network/v20190601:NatGateway" }, { type: "azure-native:network/v20190701:NatGateway" }, { type: "azure-native:network/v20190801:NatGateway" }, { type: "azure-native:network/v20190901:NatGateway" }, { type: "azure-native:network/v20191101:NatGateway" }, { type: "azure-native:network/v20191201:NatGateway" }, { type: "azure-native:network/v20200301:NatGateway" }, { type: "azure-native:network/v20200401:NatGateway" }, { type: "azure-native:network/v20200501:NatGateway" }, { type: "azure-native:network/v20200601:NatGateway" }, { type: "azure-native:network/v20200701:NatGateway" }, { type: "azure-native:network/v20200801:NatGateway" }, { type: "azure-native:network/v20201101:NatGateway" }, { type: "azure-native:network/v20210201:NatGateway" }, { type: "azure-native:network/v20210301:NatGateway" }, { type: "azure-native:network/v20210501:NatGateway" }, { type: "azure-native:network/v20210801:NatGateway" }, { type: "azure-native:network/v20220101:NatGateway" }, { type: "azure-native:network/v20220501:NatGateway" }, { type: "azure-native:network/v20220701:NatGateway" }, { type: "azure-native:network/v20220901:NatGateway" }, { type: "azure-native:network/v20221101:NatGateway" }, { type: "azure-native:network/v20230201:NatGateway" }, { type: "azure-native:network/v20230401:NatGateway" }, { type: "azure-native:network/v20230501:NatGateway" }, { type: "azure-native:network/v20230601:NatGateway" }, { type: "azure-native:network/v20230901:NatGateway" }, { type: "azure-native:network/v20231101:NatGateway" }, { type: "azure-native:network/v20240101:NatGateway" }, { type: "azure-native:network/v20240301:NatGateway" }, { type: "azure-native:network/v20240501:NatGateway" }, { type: "azure-native:network/v20240701:NatGateway" }, { type: "azure-native:network/v20241001:NatGateway" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NatGateway.__pulumiType, name, resourceInputs, opts);
     }

@@ -36,63 +36,63 @@ export class VideoAnalyzer extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The account encryption properties.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.AccountEncryptionResponse | undefined>;
+    declare public readonly encryption: pulumi.Output<types.outputs.AccountEncryptionResponse | undefined>;
     /**
      * The endpoints associated with this resource.
      */
-    public /*out*/ readonly endpoints!: pulumi.Output<types.outputs.EndpointResponse[]>;
+    declare public /*out*/ readonly endpoints: pulumi.Output<types.outputs.EndpointResponse[]>;
     /**
      * The identities associated to the Video Analyzer resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.VideoAnalyzerIdentityResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.VideoAnalyzerIdentityResponse | undefined>;
     /**
      * The IoT Hubs for this resource.
      */
-    public readonly iotHubs!: pulumi.Output<types.outputs.IotHubResponse[] | undefined>;
+    declare public readonly iotHubs: pulumi.Output<types.outputs.IotHubResponse[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Network access control for Video Analyzer.
      */
-    public readonly networkAccessControl!: pulumi.Output<types.outputs.NetworkAccessControlResponse | undefined>;
+    declare public readonly networkAccessControl: pulumi.Output<types.outputs.NetworkAccessControlResponse | undefined>;
     /**
      * Private Endpoint Connections created under Video Analyzer account.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
+    declare public /*out*/ readonly privateEndpointConnections: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Provisioning state of the Video Analyzer account.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Whether or not public network access is allowed for resources under the Video Analyzer account.
      */
-    public readonly publicNetworkAccess!: pulumi.Output<string | undefined>;
+    declare public readonly publicNetworkAccess: pulumi.Output<string | undefined>;
     /**
      * The storage accounts for this resource.
      */
-    public readonly storageAccounts!: pulumi.Output<types.outputs.StorageAccountResponse[]>;
+    declare public readonly storageAccounts: pulumi.Output<types.outputs.StorageAccountResponse[]>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a VideoAnalyzer resource with the given unique name, arguments, and options.
@@ -105,22 +105,22 @@ export class VideoAnalyzer extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.storageAccounts === undefined) && !opts.urn) {
+            if (args?.storageAccounts === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageAccounts'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["encryption"] = args ? args.encryption : undefined;
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["iotHubs"] = args ? args.iotHubs : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["networkAccessControl"] = args ? args.networkAccessControl : undefined;
-            resourceInputs["publicNetworkAccess"] = args ? args.publicNetworkAccess : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["storageAccounts"] = args ? args.storageAccounts : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["accountName"] = args?.accountName;
+            resourceInputs["encryption"] = args?.encryption;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["iotHubs"] = args?.iotHubs;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["networkAccessControl"] = args?.networkAccessControl;
+            resourceInputs["publicNetworkAccess"] = args?.publicNetworkAccess;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["storageAccounts"] = args?.storageAccounts;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["endpoints"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

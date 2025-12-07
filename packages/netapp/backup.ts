@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
  *
- * Other available API versions: 2022-11-01-preview, 2023-05-01-preview, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-11-01-preview, 2023-05-01-preview, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Backup extends pulumi.CustomResource {
     /**
@@ -38,63 +38,63 @@ export class Backup extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * UUID v4 used to identify the Backup
      */
-    public /*out*/ readonly backupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly backupId: pulumi.Output<string>;
     /**
      * ResourceId used to identify the backup policy
      */
-    public /*out*/ readonly backupPolicyResourceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly backupPolicyResourceId: pulumi.Output<string>;
     /**
      * Type of backup Manual or Scheduled
      */
-    public /*out*/ readonly backupType!: pulumi.Output<string>;
+    declare public /*out*/ readonly backupType: pulumi.Output<string>;
     /**
      * The creation date of the backup
      */
-    public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationDate: pulumi.Output<string>;
     /**
      * Failure reason
      */
-    public /*out*/ readonly failureReason!: pulumi.Output<string>;
+    declare public /*out*/ readonly failureReason: pulumi.Output<string>;
     /**
      * Label for backup
      */
-    public readonly label!: pulumi.Output<string | undefined>;
+    declare public readonly label: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Azure lifecycle management
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Size of backup in bytes
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * The name of the snapshot
      */
-    public readonly snapshotName!: pulumi.Output<string | undefined>;
+    declare public readonly snapshotName: pulumi.Output<string | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
      */
-    public readonly useExistingSnapshot!: pulumi.Output<boolean | undefined>;
+    declare public readonly useExistingSnapshot: pulumi.Output<boolean | undefined>;
     /**
      * ResourceId used to identify the Volume
      */
-    public readonly volumeResourceId!: pulumi.Output<string>;
+    declare public readonly volumeResourceId: pulumi.Output<string>;
 
     /**
      * Create a Backup resource with the given unique name, arguments, and options.
@@ -107,26 +107,26 @@ export class Backup extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.backupVaultName === undefined) && !opts.urn) {
+            if (args?.backupVaultName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupVaultName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.volumeResourceId === undefined) && !opts.urn) {
+            if (args?.volumeResourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volumeResourceId'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["backupName"] = args ? args.backupName : undefined;
-            resourceInputs["backupVaultName"] = args ? args.backupVaultName : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["snapshotName"] = args ? args.snapshotName : undefined;
-            resourceInputs["useExistingSnapshot"] = (args ? args.useExistingSnapshot : undefined) ?? false;
-            resourceInputs["volumeResourceId"] = args ? args.volumeResourceId : undefined;
+            resourceInputs["accountName"] = args?.accountName;
+            resourceInputs["backupName"] = args?.backupName;
+            resourceInputs["backupVaultName"] = args?.backupVaultName;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["snapshotName"] = args?.snapshotName;
+            resourceInputs["useExistingSnapshot"] = (args?.useExistingSnapshot) ?? false;
+            resourceInputs["volumeResourceId"] = args?.volumeResourceId;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["backupId"] = undefined /*out*/;
             resourceInputs["backupPolicyResourceId"] = undefined /*out*/;
@@ -156,7 +156,7 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["volumeResourceId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20221101:Backup" }, { type: "azure-native:netapp/v20221101preview:Backup" }, { type: "azure-native:netapp/v20230501preview:Backup" }, { type: "azure-native:netapp/v20230701preview:Backup" }, { type: "azure-native:netapp/v20231101:Backup" }, { type: "azure-native:netapp/v20231101preview:Backup" }, { type: "azure-native:netapp/v20240101:Backup" }, { type: "azure-native:netapp/v20240301:Backup" }, { type: "azure-native:netapp/v20240301preview:Backup" }, { type: "azure-native:netapp/v20240501:Backup" }, { type: "azure-native:netapp/v20240501preview:Backup" }, { type: "azure-native:netapp/v20240701:Backup" }, { type: "azure-native:netapp/v20240701preview:Backup" }, { type: "azure-native:netapp/v20240901:Backup" }, { type: "azure-native:netapp/v20240901preview:Backup" }, { type: "azure-native:netapp/v20250101:Backup" }, { type: "azure-native:netapp/v20250101preview:Backup" }, { type: "azure-native:netapp/v20250301:Backup" }, { type: "azure-native:netapp/v20250301preview:Backup" }, { type: "azure-native:netapp/v20250601:Backup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20221101:Backup" }, { type: "azure-native:netapp/v20221101preview:Backup" }, { type: "azure-native:netapp/v20230501preview:Backup" }, { type: "azure-native:netapp/v20230701preview:Backup" }, { type: "azure-native:netapp/v20231101:Backup" }, { type: "azure-native:netapp/v20231101preview:Backup" }, { type: "azure-native:netapp/v20240101:Backup" }, { type: "azure-native:netapp/v20240301:Backup" }, { type: "azure-native:netapp/v20240301preview:Backup" }, { type: "azure-native:netapp/v20240501:Backup" }, { type: "azure-native:netapp/v20240501preview:Backup" }, { type: "azure-native:netapp/v20240701:Backup" }, { type: "azure-native:netapp/v20240701preview:Backup" }, { type: "azure-native:netapp/v20240901:Backup" }, { type: "azure-native:netapp/v20240901preview:Backup" }, { type: "azure-native:netapp/v20250101:Backup" }, { type: "azure-native:netapp/v20250101preview:Backup" }, { type: "azure-native:netapp/v20250301:Backup" }, { type: "azure-native:netapp/v20250301preview:Backup" }, { type: "azure-native:netapp/v20250601:Backup" }, { type: "azure-native:netapp/v20250701preview:Backup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Backup.__pulumiType, name, resourceInputs, opts);
     }

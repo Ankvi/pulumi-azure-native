@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * The Private Endpoint Connection resource.
  *
- * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+ * Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
  *
- * Other available API versions: 2020-05-01-preview, 2020-05-15-preview, 2020-06-01, 2020-08-01, 2020-09-01-preview, 2021-01-01, 2021-03-01-preview, 2021-04-01, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-05-01-preview, 2020-05-15-preview, 2020-06-01, 2020-08-01, 2020-09-01-preview, 2021-01-01, 2021-03-01-preview, 2021-04-01, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -38,47 +38,47 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The resource of private end point.
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
+    declare public /*out*/ readonly privateEndpoint: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse>;
+    declare public readonly privateLinkServiceConnectionState: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse>;
     /**
      * The provisioning state of the private endpoint connection resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The sku of the workspace.
      */
-    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
+    declare public readonly sku: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a PrivateEndpointConnection resource with the given unique name, arguments, and options.
@@ -91,23 +91,23 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.privateLinkServiceConnectionState === undefined) && !opts.urn) {
+            if (args?.privateLinkServiceConnectionState === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateLinkServiceConnectionState'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["privateEndpointConnectionName"] = args ? args.privateEndpointConnectionName : undefined;
-            resourceInputs["privateLinkServiceConnectionState"] = args ? args.privateLinkServiceConnectionState : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["privateEndpointConnectionName"] = args?.privateEndpointConnectionName;
+            resourceInputs["privateLinkServiceConnectionState"] = args?.privateLinkServiceConnectionState;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateEndpoint"] = undefined /*out*/;
@@ -128,7 +128,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20200101:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20200218preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20200301:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20200401:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20200501preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20200515preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20200601:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20200801:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20200901preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20210101:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20210301preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20210401:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20210701:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20220101preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20220201preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20220501:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20220601preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20221001:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20221001preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20221201preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20230201preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20230401:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20230401preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20230601preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20230801preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20231001:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20240101preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20240401:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20240401preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20240701preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20241001:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20241001preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20250101preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20250401:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20250401preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20250601:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20250701preview:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20200101:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20200218preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20200301:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20200401:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20200501preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20200515preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20200601:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20200801:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20200901preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20210101:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20210301preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20210401:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20210701:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20220101preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20220201preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20220501:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20220601preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20221001:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20221001preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20221201preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20230201preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20230401:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20230401preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20230601preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20230801preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20231001:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20240101preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20240401:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20240401preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20240701preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20241001:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20241001preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20250101preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20250401:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20250401preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20250601:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20250701preview:PrivateEndpointConnection" }, { type: "azure-native:machinelearningservices/v20250901:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }

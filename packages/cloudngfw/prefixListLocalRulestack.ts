@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * LocalRulestack prefixList
  *
- * Uses Azure REST API version 2025-02-06-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
+ * Uses Azure REST API version 2025-05-23. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
  *
- * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-05-23, 2025-07-07-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrefixListLocalRulestack extends pulumi.CustomResource {
     /**
@@ -38,39 +38,39 @@ export class PrefixListLocalRulestack extends pulumi.CustomResource {
     /**
      * comment for this object
      */
-    public readonly auditComment!: pulumi.Output<string | undefined>;
+    declare public readonly auditComment: pulumi.Output<string | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * prefix description
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * etag info
      */
-    public /*out*/ readonly etag!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly etag: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * prefix list
      */
-    public readonly prefixList!: pulumi.Output<string[]>;
+    declare public readonly prefixList: pulumi.Output<string[]>;
     /**
      * Provisioning state of the resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a PrefixListLocalRulestack resource with the given unique name, arguments, and options.
@@ -83,21 +83,21 @@ export class PrefixListLocalRulestack extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.localRulestackName === undefined) && !opts.urn) {
+            if (args?.localRulestackName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'localRulestackName'");
             }
-            if ((!args || args.prefixList === undefined) && !opts.urn) {
+            if (args?.prefixList === undefined && !opts.urn) {
                 throw new Error("Missing required property 'prefixList'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["auditComment"] = args ? args.auditComment : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["localRulestackName"] = args ? args.localRulestackName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["prefixList"] = args ? args.prefixList : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["auditComment"] = args?.auditComment;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["localRulestackName"] = args?.localRulestackName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["prefixList"] = args?.prefixList;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;

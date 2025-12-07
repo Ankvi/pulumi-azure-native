@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-02-preview.
  *
- * Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class LogicApp extends pulumi.CustomResource {
     /**
@@ -38,19 +38,19 @@ export class LogicApp extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a LogicApp resource with the given unique name, arguments, and options.
@@ -63,15 +63,15 @@ export class LogicApp extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.containerAppName === undefined) && !opts.urn) {
+            if (args?.containerAppName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'containerAppName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["containerAppName"] = args ? args.containerAppName : undefined;
-            resourceInputs["logicAppName"] = args ? args.logicAppName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["containerAppName"] = args?.containerAppName;
+            resourceInputs["logicAppName"] = args?.logicAppName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -83,7 +83,7 @@ export class LogicApp extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20240202preview:LogicApp" }, { type: "azure-native:app/v20240802preview:LogicApp" }, { type: "azure-native:app/v20241002preview:LogicApp" }, { type: "azure-native:app/v20250202preview:LogicApp" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20240202preview:LogicApp" }, { type: "azure-native:app/v20240802preview:LogicApp" }, { type: "azure-native:app/v20241002preview:LogicApp" }, { type: "azure-native:app/v20250202preview:LogicApp" }, { type: "azure-native:app/v20250701:LogicApp" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LogicApp.__pulumiType, name, resourceInputs, opts);
     }

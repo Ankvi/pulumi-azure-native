@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-01.
  *
- * Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CapacityPoolVolumeQuotaRule extends pulumi.CustomResource {
     /**
@@ -38,43 +38,43 @@ export class CapacityPoolVolumeQuotaRule extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Gets the status of the VolumeQuotaRule at the time the operation was called.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Size of quota
      */
-    public readonly quotaSizeInKiBs!: pulumi.Output<number | undefined>;
+    declare public readonly quotaSizeInKiBs: pulumi.Output<number | undefined>;
     /**
      * UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running ‘id’ or ‘getent’ command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid>
      */
-    public readonly quotaTarget!: pulumi.Output<string | undefined>;
+    declare public readonly quotaTarget: pulumi.Output<string | undefined>;
     /**
      * Type of quota
      */
-    public readonly quotaType!: pulumi.Output<string | undefined>;
+    declare public readonly quotaType: pulumi.Output<string | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a CapacityPoolVolumeQuotaRule resource with the given unique name, arguments, and options.
@@ -87,28 +87,28 @@ export class CapacityPoolVolumeQuotaRule extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.poolName === undefined) && !opts.urn) {
+            if (args?.poolName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'poolName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.volumeName === undefined) && !opts.urn) {
+            if (args?.volumeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volumeName'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["poolName"] = args ? args.poolName : undefined;
-            resourceInputs["quotaSizeInKiBs"] = args ? args.quotaSizeInKiBs : undefined;
-            resourceInputs["quotaTarget"] = args ? args.quotaTarget : undefined;
-            resourceInputs["quotaType"] = args ? args.quotaType : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["volumeName"] = args ? args.volumeName : undefined;
-            resourceInputs["volumeQuotaRuleName"] = args ? args.volumeQuotaRuleName : undefined;
+            resourceInputs["accountName"] = args?.accountName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["poolName"] = args?.poolName;
+            resourceInputs["quotaSizeInKiBs"] = args?.quotaSizeInKiBs;
+            resourceInputs["quotaTarget"] = args?.quotaTarget;
+            resourceInputs["quotaType"] = args?.quotaType;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["volumeName"] = args?.volumeName;
+            resourceInputs["volumeQuotaRuleName"] = args?.volumeQuotaRuleName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -127,7 +127,7 @@ export class CapacityPoolVolumeQuotaRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20220101:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20220301:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20220501:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20220901:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20221101:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20221101:VolumeQuotaRule" }, { type: "azure-native:netapp/v20221101preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20221101preview:VolumeQuotaRule" }, { type: "azure-native:netapp/v20230501:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20230501:VolumeQuotaRule" }, { type: "azure-native:netapp/v20230501preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20230501preview:VolumeQuotaRule" }, { type: "azure-native:netapp/v20230701:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20230701:VolumeQuotaRule" }, { type: "azure-native:netapp/v20230701preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20230701preview:VolumeQuotaRule" }, { type: "azure-native:netapp/v20231101:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20231101:VolumeQuotaRule" }, { type: "azure-native:netapp/v20231101preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20231101preview:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240101:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20240101:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240301:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20240301:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240301preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20240301preview:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240501:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20240501:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240501preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20240501preview:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240701:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20240701:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240701preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20240701preview:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240901:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20240901:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240901preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20250101:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20250101preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20250301:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20250301preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20250601:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp:VolumeQuotaRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20220101:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20220301:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20220501:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20220901:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20221101:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20221101:VolumeQuotaRule" }, { type: "azure-native:netapp/v20221101preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20221101preview:VolumeQuotaRule" }, { type: "azure-native:netapp/v20230501:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20230501:VolumeQuotaRule" }, { type: "azure-native:netapp/v20230501preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20230501preview:VolumeQuotaRule" }, { type: "azure-native:netapp/v20230701:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20230701:VolumeQuotaRule" }, { type: "azure-native:netapp/v20230701preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20230701preview:VolumeQuotaRule" }, { type: "azure-native:netapp/v20231101:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20231101:VolumeQuotaRule" }, { type: "azure-native:netapp/v20231101preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20231101preview:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240101:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20240101:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240301:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20240301:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240301preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20240301preview:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240501:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20240501:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240501preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20240501preview:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240701:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20240701:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240701preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20240701preview:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240901:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20240901:VolumeQuotaRule" }, { type: "azure-native:netapp/v20240901preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20250101:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20250101preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20250301:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20250301preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20250601:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp/v20250701preview:CapacityPoolVolumeQuotaRule" }, { type: "azure-native:netapp:VolumeQuotaRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CapacityPoolVolumeQuotaRule.__pulumiType, name, resourceInputs, opts);
     }

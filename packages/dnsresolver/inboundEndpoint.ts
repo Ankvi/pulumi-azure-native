@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-07-01-preview.
  *
- * Other available API versions: 2020-04-01-preview, 2022-07-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dnsresolver [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-04-01-preview, 2022-07-01, 2025-05-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dnsresolver [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class InboundEndpoint extends pulumi.CustomResource {
     /**
@@ -38,43 +38,43 @@ export class InboundEndpoint extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * ETag of the inbound endpoint.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * IP configurations for the inbound endpoint.
      */
-    public readonly ipConfigurations!: pulumi.Output<types.outputs.IpConfigurationResponse[]>;
+    declare public readonly ipConfigurations: pulumi.Output<types.outputs.IpConfigurationResponse[]>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The current provisioning state of the inbound endpoint. This is a read-only property and any attempt to set this value will be ignored.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The resourceGuid property of the inbound endpoint resource.
      */
-    public /*out*/ readonly resourceGuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceGuid: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a InboundEndpoint resource with the given unique name, arguments, and options.
@@ -87,21 +87,21 @@ export class InboundEndpoint extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.dnsResolverName === undefined) && !opts.urn) {
+            if (args?.dnsResolverName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dnsResolverName'");
             }
-            if ((!args || args.ipConfigurations === undefined) && !opts.urn) {
+            if (args?.ipConfigurations === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipConfigurations'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["dnsResolverName"] = args ? args.dnsResolverName : undefined;
-            resourceInputs["inboundEndpointName"] = args ? args.inboundEndpointName : undefined;
-            resourceInputs["ipConfigurations"] = args ? args.ipConfigurations : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["dnsResolverName"] = args?.dnsResolverName;
+            resourceInputs["inboundEndpointName"] = args?.inboundEndpointName;
+            resourceInputs["ipConfigurations"] = args?.ipConfigurations;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -122,7 +122,7 @@ export class InboundEndpoint extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dnsresolver/v20200401preview:InboundEndpoint" }, { type: "azure-native:dnsresolver/v20220701:InboundEndpoint" }, { type: "azure-native:dnsresolver/v20230701preview:InboundEndpoint" }, { type: "azure-native:dnsresolver/v20250501:InboundEndpoint" }, { type: "azure-native:network/v20200401preview:InboundEndpoint" }, { type: "azure-native:network/v20220701:InboundEndpoint" }, { type: "azure-native:network/v20230701preview:InboundEndpoint" }, { type: "azure-native:network:InboundEndpoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dnsresolver/v20200401preview:InboundEndpoint" }, { type: "azure-native:dnsresolver/v20220701:InboundEndpoint" }, { type: "azure-native:dnsresolver/v20230701preview:InboundEndpoint" }, { type: "azure-native:dnsresolver/v20250501:InboundEndpoint" }, { type: "azure-native:dnsresolver/v20251001preview:InboundEndpoint" }, { type: "azure-native:network/v20200401preview:InboundEndpoint" }, { type: "azure-native:network/v20220701:InboundEndpoint" }, { type: "azure-native:network/v20230701preview:InboundEndpoint" }, { type: "azure-native:network:InboundEndpoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(InboundEndpoint.__pulumiType, name, resourceInputs, opts);
     }

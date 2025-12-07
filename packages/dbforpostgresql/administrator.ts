@@ -38,35 +38,35 @@ export class Administrator extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Object identifier of the Microsoft Entra principal.
      */
-    public readonly objectId!: pulumi.Output<string | undefined>;
+    declare public readonly objectId: pulumi.Output<string | undefined>;
     /**
      * Name of the Microsoft Entra principal.
      */
-    public readonly principalName!: pulumi.Output<string | undefined>;
+    declare public readonly principalName: pulumi.Output<string | undefined>;
     /**
      * Type of Microsoft Entra principal to which the server administrator is associated.
      */
-    public readonly principalType!: pulumi.Output<string | undefined>;
+    declare public readonly principalType: pulumi.Output<string | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Identifier of the tenant in which the Microsoft Entra principal exists.
      */
-    public readonly tenantId!: pulumi.Output<string | undefined>;
+    declare public readonly tenantId: pulumi.Output<string | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Administrator resource with the given unique name, arguments, and options.
@@ -79,18 +79,18 @@ export class Administrator extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.serverName === undefined) && !opts.urn) {
+            if (args?.serverName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverName'");
             }
-            resourceInputs["objectId"] = args ? args.objectId : undefined;
-            resourceInputs["principalName"] = args ? args.principalName : undefined;
-            resourceInputs["principalType"] = args ? args.principalType : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["serverName"] = args ? args.serverName : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["objectId"] = args?.objectId;
+            resourceInputs["principalName"] = args?.principalName;
+            resourceInputs["principalType"] = args?.principalType;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["serverName"] = args?.serverName;
+            resourceInputs["tenantId"] = args?.tenantId;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -106,7 +106,7 @@ export class Administrator extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20220308preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20221201:Administrator" }, { type: "azure-native:dbforpostgresql/v20230301preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20230601preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20231201preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20240301preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20240801:Administrator" }, { type: "azure-native:dbforpostgresql/v20241101preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20250101preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20250601preview:Administrator" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20220308preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20221201:Administrator" }, { type: "azure-native:dbforpostgresql/v20230301preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20230601preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20231201preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20240301preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20240801:Administrator" }, { type: "azure-native:dbforpostgresql/v20241101preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20250101preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20250601preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20250801:Administrator" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Administrator.__pulumiType, name, resourceInputs, opts);
     }

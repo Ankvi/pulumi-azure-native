@@ -2,9 +2,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+ * Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
  *
- * Other available API versions: 2020-06-01, 2020-08-01, 2020-09-01-preview, 2021-01-01, 2021-03-01-preview, 2021-04-01, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-06-01, 2020-08-01, 2020-09-01-preview, 2021-01-01, 2021-03-01-preview, 2021-04-01, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WorkspaceConnection extends pulumi.CustomResource {
     /**
@@ -36,20 +36,20 @@ export class WorkspaceConnection extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.AADAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.AccessKeyAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.AccountKeyAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.ApiKeyAuthWorkspaceConnectionPropertiesResponse | types.outputs.CustomKeysWorkspaceConnectionPropertiesResponse | types.outputs.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.NoneAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.OAuth2AuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.PATAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.SASAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    declare public readonly properties: pulumi.Output<types.outputs.AADAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.AccessKeyAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.AccountKeyAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.ApiKeyAuthWorkspaceConnectionPropertiesResponse | types.outputs.CustomKeysWorkspaceConnectionPropertiesResponse | types.outputs.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.NoneAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.OAuth2AuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.PATAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.SASAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a WorkspaceConnection resource with the given unique name, arguments, and options.
@@ -62,19 +62,19 @@ export class WorkspaceConnection extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.properties === undefined) && !opts.urn) {
+            if (args?.properties === undefined && !opts.urn) {
                 throw new Error("Missing required property 'properties'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["connectionName"] = args ? args.connectionName : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["connectionName"] = args?.connectionName;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -87,7 +87,7 @@ export class WorkspaceConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20200601:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20200801:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20200901preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20210101:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20210301preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20210401:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20210701:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20220101preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20220201preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20220501:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20220601preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20221001:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20221001preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20221201preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20230201preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20230401:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20230401preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20230601preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20230801preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20231001:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20240101preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20240401:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20240401preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20240701preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20241001:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20241001preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20250101preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20250401:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20250401preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20250601:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20250701preview:WorkspaceConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20200601:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20200801:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20200901preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20210101:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20210301preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20210401:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20210701:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20220101preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20220201preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20220501:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20220601preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20221001:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20221001preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20221201preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20230201preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20230401:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20230401preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20230601preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20230801preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20231001:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20240101preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20240401:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20240401preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20240701preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20241001:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20241001preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20250101preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20250401:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20250401preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20250601:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20250701preview:WorkspaceConnection" }, { type: "azure-native:machinelearningservices/v20250901:WorkspaceConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkspaceConnection.__pulumiType, name, resourceInputs, opts);
     }

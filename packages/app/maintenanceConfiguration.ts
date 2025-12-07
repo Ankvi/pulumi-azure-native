@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-02-preview.
  *
- * Other available API versions: 2024-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-10-02-preview, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class MaintenanceConfiguration extends pulumi.CustomResource {
     /**
@@ -38,23 +38,23 @@ export class MaintenanceConfiguration extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * List of maintenance schedules for a managed environment.
      */
-    public readonly scheduledEntries!: pulumi.Output<types.outputs.ScheduledEntryResponse[]>;
+    declare public readonly scheduledEntries: pulumi.Output<types.outputs.ScheduledEntryResponse[]>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a MaintenanceConfiguration resource with the given unique name, arguments, and options.
@@ -67,19 +67,19 @@ export class MaintenanceConfiguration extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.environmentName === undefined) && !opts.urn) {
+            if (args?.environmentName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environmentName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.scheduledEntries === undefined) && !opts.urn) {
+            if (args?.scheduledEntries === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scheduledEntries'");
             }
-            resourceInputs["configName"] = args ? args.configName : undefined;
-            resourceInputs["environmentName"] = args ? args.environmentName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["scheduledEntries"] = args ? args.scheduledEntries : undefined;
+            resourceInputs["configName"] = args?.configName;
+            resourceInputs["environmentName"] = args?.environmentName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["scheduledEntries"] = args?.scheduledEntries;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -92,7 +92,7 @@ export class MaintenanceConfiguration extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20241002preview:MaintenanceConfiguration" }, { type: "azure-native:app/v20250202preview:MaintenanceConfiguration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20241002preview:MaintenanceConfiguration" }, { type: "azure-native:app/v20250202preview:MaintenanceConfiguration" }, { type: "azure-native:app/v20250701:MaintenanceConfiguration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(MaintenanceConfiguration.__pulumiType, name, resourceInputs, opts);
     }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2021-02-01-preview, 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-02-01-preview, 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ConnectivityConfiguration extends pulumi.CustomResource {
     /**
@@ -38,55 +38,55 @@ export class ConnectivityConfiguration extends pulumi.CustomResource {
     /**
      * Groups for configuration
      */
-    public readonly appliesToGroups!: pulumi.Output<types.outputs.ConnectivityGroupItemResponse[]>;
+    declare public readonly appliesToGroups: pulumi.Output<types.outputs.ConnectivityGroupItemResponse[]>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Connectivity topology type.
      */
-    public readonly connectivityTopology!: pulumi.Output<string>;
+    declare public readonly connectivityTopology: pulumi.Output<string>;
     /**
      * Flag if need to remove current existing peerings.
      */
-    public readonly deleteExistingPeering!: pulumi.Output<string | undefined>;
+    declare public readonly deleteExistingPeering: pulumi.Output<string | undefined>;
     /**
      * A description of the connectivity configuration.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * List of hubItems
      */
-    public readonly hubs!: pulumi.Output<types.outputs.HubResponse[] | undefined>;
+    declare public readonly hubs: pulumi.Output<types.outputs.HubResponse[] | undefined>;
     /**
      * Flag if global mesh is supported.
      */
-    public readonly isGlobal!: pulumi.Output<string | undefined>;
+    declare public readonly isGlobal: pulumi.Output<string | undefined>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The provisioning state of the connectivity configuration resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Unique identifier for this resource.
      */
-    public /*out*/ readonly resourceGuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceGuid: pulumi.Output<string>;
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ConnectivityConfiguration resource with the given unique name, arguments, and options.
@@ -99,27 +99,27 @@ export class ConnectivityConfiguration extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.appliesToGroups === undefined) && !opts.urn) {
+            if (args?.appliesToGroups === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appliesToGroups'");
             }
-            if ((!args || args.connectivityTopology === undefined) && !opts.urn) {
+            if (args?.connectivityTopology === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectivityTopology'");
             }
-            if ((!args || args.networkManagerName === undefined) && !opts.urn) {
+            if (args?.networkManagerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkManagerName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["appliesToGroups"] = args ? args.appliesToGroups : undefined;
-            resourceInputs["configurationName"] = args ? args.configurationName : undefined;
-            resourceInputs["connectivityTopology"] = args ? args.connectivityTopology : undefined;
-            resourceInputs["deleteExistingPeering"] = args ? args.deleteExistingPeering : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["hubs"] = args ? args.hubs : undefined;
-            resourceInputs["isGlobal"] = args ? args.isGlobal : undefined;
-            resourceInputs["networkManagerName"] = args ? args.networkManagerName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["appliesToGroups"] = args?.appliesToGroups;
+            resourceInputs["configurationName"] = args?.configurationName;
+            resourceInputs["connectivityTopology"] = args?.connectivityTopology;
+            resourceInputs["deleteExistingPeering"] = args?.deleteExistingPeering;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["hubs"] = args?.hubs;
+            resourceInputs["isGlobal"] = args?.isGlobal;
+            resourceInputs["networkManagerName"] = args?.networkManagerName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -143,7 +143,7 @@ export class ConnectivityConfiguration extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:ConnectivityConfiguration" }, { type: "azure-native:network/v20210501preview:ConnectivityConfiguration" }, { type: "azure-native:network/v20220101:ConnectivityConfiguration" }, { type: "azure-native:network/v20220201preview:ConnectivityConfiguration" }, { type: "azure-native:network/v20220401preview:ConnectivityConfiguration" }, { type: "azure-native:network/v20220501:ConnectivityConfiguration" }, { type: "azure-native:network/v20220701:ConnectivityConfiguration" }, { type: "azure-native:network/v20220901:ConnectivityConfiguration" }, { type: "azure-native:network/v20221101:ConnectivityConfiguration" }, { type: "azure-native:network/v20230201:ConnectivityConfiguration" }, { type: "azure-native:network/v20230401:ConnectivityConfiguration" }, { type: "azure-native:network/v20230501:ConnectivityConfiguration" }, { type: "azure-native:network/v20230601:ConnectivityConfiguration" }, { type: "azure-native:network/v20230901:ConnectivityConfiguration" }, { type: "azure-native:network/v20231101:ConnectivityConfiguration" }, { type: "azure-native:network/v20240101:ConnectivityConfiguration" }, { type: "azure-native:network/v20240301:ConnectivityConfiguration" }, { type: "azure-native:network/v20240501:ConnectivityConfiguration" }, { type: "azure-native:network/v20240701:ConnectivityConfiguration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:ConnectivityConfiguration" }, { type: "azure-native:network/v20210501preview:ConnectivityConfiguration" }, { type: "azure-native:network/v20220101:ConnectivityConfiguration" }, { type: "azure-native:network/v20220201preview:ConnectivityConfiguration" }, { type: "azure-native:network/v20220401preview:ConnectivityConfiguration" }, { type: "azure-native:network/v20220501:ConnectivityConfiguration" }, { type: "azure-native:network/v20220701:ConnectivityConfiguration" }, { type: "azure-native:network/v20220901:ConnectivityConfiguration" }, { type: "azure-native:network/v20221101:ConnectivityConfiguration" }, { type: "azure-native:network/v20230201:ConnectivityConfiguration" }, { type: "azure-native:network/v20230401:ConnectivityConfiguration" }, { type: "azure-native:network/v20230501:ConnectivityConfiguration" }, { type: "azure-native:network/v20230601:ConnectivityConfiguration" }, { type: "azure-native:network/v20230901:ConnectivityConfiguration" }, { type: "azure-native:network/v20231101:ConnectivityConfiguration" }, { type: "azure-native:network/v20240101:ConnectivityConfiguration" }, { type: "azure-native:network/v20240301:ConnectivityConfiguration" }, { type: "azure-native:network/v20240501:ConnectivityConfiguration" }, { type: "azure-native:network/v20240701:ConnectivityConfiguration" }, { type: "azure-native:network/v20241001:ConnectivityConfiguration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ConnectivityConfiguration.__pulumiType, name, resourceInputs, opts);
     }

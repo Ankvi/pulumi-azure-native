@@ -34,11 +34,11 @@ export class ImportCollector extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
-    public readonly eTag!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.ImportCollectorPropertiesResponse>;
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
+    declare public readonly eTag: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    declare public readonly properties: pulumi.Output<types.outputs.ImportCollectorPropertiesResponse>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a ImportCollector resource with the given unique name, arguments, and options.
@@ -51,17 +51,17 @@ export class ImportCollector extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectName === undefined) && !opts.urn) {
+            if (args?.projectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["eTag"] = args ? args.eTag : undefined;
-            resourceInputs["importCollectorName"] = args ? args.importCollectorName : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["eTag"] = args?.eTag;
+            resourceInputs["importCollectorName"] = args?.importCollectorName;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

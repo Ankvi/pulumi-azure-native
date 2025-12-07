@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FirewallPolicy extends pulumi.CustomResource {
     /**
@@ -38,95 +38,95 @@ export class FirewallPolicy extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The parent firewall policy from which rules are inherited.
      */
-    public readonly basePolicy!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
+    declare public readonly basePolicy: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * List of references to Child Firewall Policies.
      */
-    public /*out*/ readonly childPolicies!: pulumi.Output<types.outputs.SubResourceResponse[]>;
+    declare public /*out*/ readonly childPolicies: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * DNS Proxy Settings definition.
      */
-    public readonly dnsSettings!: pulumi.Output<types.outputs.DnsSettingsResponse | undefined>;
+    declare public readonly dnsSettings: pulumi.Output<types.outputs.DnsSettingsResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Explicit Proxy Settings definition.
      */
-    public readonly explicitProxy!: pulumi.Output<types.outputs.ExplicitProxyResponse | undefined>;
+    declare public readonly explicitProxy: pulumi.Output<types.outputs.ExplicitProxyResponse | undefined>;
     /**
      * List of references to Azure Firewalls that this Firewall Policy is associated with.
      */
-    public /*out*/ readonly firewalls!: pulumi.Output<types.outputs.SubResourceResponse[]>;
+    declare public /*out*/ readonly firewalls: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The identity of the firewall policy.
      */
-    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Insights on Firewall Policy.
      */
-    public readonly insights!: pulumi.Output<types.outputs.FirewallPolicyInsightsResponse | undefined>;
+    declare public readonly insights: pulumi.Output<types.outputs.FirewallPolicyInsightsResponse | undefined>;
     /**
      * The configuration for Intrusion detection.
      */
-    public readonly intrusionDetection!: pulumi.Output<types.outputs.FirewallPolicyIntrusionDetectionResponse | undefined>;
+    declare public readonly intrusionDetection: pulumi.Output<types.outputs.FirewallPolicyIntrusionDetectionResponse | undefined>;
     /**
      * Resource location.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The provisioning state of the firewall policy resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * List of references to FirewallPolicyRuleCollectionGroups.
      */
-    public /*out*/ readonly ruleCollectionGroups!: pulumi.Output<types.outputs.SubResourceResponse[]>;
+    declare public /*out*/ readonly ruleCollectionGroups: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * A read-only string that represents the size of the FirewallPolicyPropertiesFormat in MB. (ex 0.5MB)
      */
-    public /*out*/ readonly size!: pulumi.Output<string>;
+    declare public /*out*/ readonly size: pulumi.Output<string>;
     /**
      * The Firewall Policy SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.FirewallPolicySkuResponse | undefined>;
+    declare public readonly sku: pulumi.Output<types.outputs.FirewallPolicySkuResponse | undefined>;
     /**
      * The private IP addresses/IP ranges to which traffic will not be SNAT.
      */
-    public readonly snat!: pulumi.Output<types.outputs.FirewallPolicySNATResponse | undefined>;
+    declare public readonly snat: pulumi.Output<types.outputs.FirewallPolicySNATResponse | undefined>;
     /**
      * SQL Settings definition.
      */
-    public readonly sql!: pulumi.Output<types.outputs.FirewallPolicySQLResponse | undefined>;
+    declare public readonly sql: pulumi.Output<types.outputs.FirewallPolicySQLResponse | undefined>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The operation mode for Threat Intelligence.
      */
-    public readonly threatIntelMode!: pulumi.Output<string | undefined>;
+    declare public readonly threatIntelMode: pulumi.Output<string | undefined>;
     /**
      * ThreatIntel Whitelist for Firewall Policy.
      */
-    public readonly threatIntelWhitelist!: pulumi.Output<types.outputs.FirewallPolicyThreatIntelWhitelistResponse | undefined>;
+    declare public readonly threatIntelWhitelist: pulumi.Output<types.outputs.FirewallPolicyThreatIntelWhitelistResponse | undefined>;
     /**
      * TLS Configuration definition.
      */
-    public readonly transportSecurity!: pulumi.Output<types.outputs.FirewallPolicyTransportSecurityResponse | undefined>;
+    declare public readonly transportSecurity: pulumi.Output<types.outputs.FirewallPolicyTransportSecurityResponse | undefined>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a FirewallPolicy resource with the given unique name, arguments, and options.
@@ -139,26 +139,26 @@ export class FirewallPolicy extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["basePolicy"] = args ? args.basePolicy : undefined;
-            resourceInputs["dnsSettings"] = args ? args.dnsSettings : undefined;
-            resourceInputs["explicitProxy"] = args ? args.explicitProxy : undefined;
-            resourceInputs["firewallPolicyName"] = args ? args.firewallPolicyName : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["insights"] = args ? args.insights : undefined;
-            resourceInputs["intrusionDetection"] = args ? args.intrusionDetection : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? args.sku : undefined;
-            resourceInputs["snat"] = args ? args.snat : undefined;
-            resourceInputs["sql"] = args ? args.sql : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["threatIntelMode"] = args ? args.threatIntelMode : undefined;
-            resourceInputs["threatIntelWhitelist"] = args ? args.threatIntelWhitelist : undefined;
-            resourceInputs["transportSecurity"] = args ? args.transportSecurity : undefined;
+            resourceInputs["basePolicy"] = args?.basePolicy;
+            resourceInputs["dnsSettings"] = args?.dnsSettings;
+            resourceInputs["explicitProxy"] = args?.explicitProxy;
+            resourceInputs["firewallPolicyName"] = args?.firewallPolicyName;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["insights"] = args?.insights;
+            resourceInputs["intrusionDetection"] = args?.intrusionDetection;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sku"] = args?.sku;
+            resourceInputs["snat"] = args?.snat;
+            resourceInputs["sql"] = args?.sql;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["threatIntelMode"] = args?.threatIntelMode;
+            resourceInputs["threatIntelWhitelist"] = args?.threatIntelWhitelist;
+            resourceInputs["transportSecurity"] = args?.transportSecurity;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["childPolicies"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -194,7 +194,7 @@ export class FirewallPolicy extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20190601:FirewallPolicy" }, { type: "azure-native:network/v20190701:FirewallPolicy" }, { type: "azure-native:network/v20190801:FirewallPolicy" }, { type: "azure-native:network/v20190901:FirewallPolicy" }, { type: "azure-native:network/v20191101:FirewallPolicy" }, { type: "azure-native:network/v20191201:FirewallPolicy" }, { type: "azure-native:network/v20200301:FirewallPolicy" }, { type: "azure-native:network/v20200401:FirewallPolicy" }, { type: "azure-native:network/v20200501:FirewallPolicy" }, { type: "azure-native:network/v20200601:FirewallPolicy" }, { type: "azure-native:network/v20200701:FirewallPolicy" }, { type: "azure-native:network/v20200801:FirewallPolicy" }, { type: "azure-native:network/v20201101:FirewallPolicy" }, { type: "azure-native:network/v20210201:FirewallPolicy" }, { type: "azure-native:network/v20210301:FirewallPolicy" }, { type: "azure-native:network/v20210501:FirewallPolicy" }, { type: "azure-native:network/v20210801:FirewallPolicy" }, { type: "azure-native:network/v20220101:FirewallPolicy" }, { type: "azure-native:network/v20220501:FirewallPolicy" }, { type: "azure-native:network/v20220701:FirewallPolicy" }, { type: "azure-native:network/v20220901:FirewallPolicy" }, { type: "azure-native:network/v20221101:FirewallPolicy" }, { type: "azure-native:network/v20230201:FirewallPolicy" }, { type: "azure-native:network/v20230401:FirewallPolicy" }, { type: "azure-native:network/v20230501:FirewallPolicy" }, { type: "azure-native:network/v20230601:FirewallPolicy" }, { type: "azure-native:network/v20230901:FirewallPolicy" }, { type: "azure-native:network/v20231101:FirewallPolicy" }, { type: "azure-native:network/v20240101:FirewallPolicy" }, { type: "azure-native:network/v20240301:FirewallPolicy" }, { type: "azure-native:network/v20240501:FirewallPolicy" }, { type: "azure-native:network/v20240701:FirewallPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20190601:FirewallPolicy" }, { type: "azure-native:network/v20190701:FirewallPolicy" }, { type: "azure-native:network/v20190801:FirewallPolicy" }, { type: "azure-native:network/v20190901:FirewallPolicy" }, { type: "azure-native:network/v20191101:FirewallPolicy" }, { type: "azure-native:network/v20191201:FirewallPolicy" }, { type: "azure-native:network/v20200301:FirewallPolicy" }, { type: "azure-native:network/v20200401:FirewallPolicy" }, { type: "azure-native:network/v20200501:FirewallPolicy" }, { type: "azure-native:network/v20200601:FirewallPolicy" }, { type: "azure-native:network/v20200701:FirewallPolicy" }, { type: "azure-native:network/v20200801:FirewallPolicy" }, { type: "azure-native:network/v20201101:FirewallPolicy" }, { type: "azure-native:network/v20210201:FirewallPolicy" }, { type: "azure-native:network/v20210301:FirewallPolicy" }, { type: "azure-native:network/v20210501:FirewallPolicy" }, { type: "azure-native:network/v20210801:FirewallPolicy" }, { type: "azure-native:network/v20220101:FirewallPolicy" }, { type: "azure-native:network/v20220501:FirewallPolicy" }, { type: "azure-native:network/v20220701:FirewallPolicy" }, { type: "azure-native:network/v20220901:FirewallPolicy" }, { type: "azure-native:network/v20221101:FirewallPolicy" }, { type: "azure-native:network/v20230201:FirewallPolicy" }, { type: "azure-native:network/v20230401:FirewallPolicy" }, { type: "azure-native:network/v20230501:FirewallPolicy" }, { type: "azure-native:network/v20230601:FirewallPolicy" }, { type: "azure-native:network/v20230901:FirewallPolicy" }, { type: "azure-native:network/v20231101:FirewallPolicy" }, { type: "azure-native:network/v20240101:FirewallPolicy" }, { type: "azure-native:network/v20240301:FirewallPolicy" }, { type: "azure-native:network/v20240501:FirewallPolicy" }, { type: "azure-native:network/v20240701:FirewallPolicy" }, { type: "azure-native:network/v20241001:FirewallPolicy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FirewallPolicy.__pulumiType, name, resourceInputs, opts);
     }

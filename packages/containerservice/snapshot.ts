@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * A node pool snapshot resource.
  *
- * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+ * Uses Azure REST API version 2025-08-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
  *
- * Other available API versions: 2021-08-01, 2021-09-01, 2021-10-01, 2021-11-01-preview, 2022-01-01, 2022-01-02-preview, 2022-02-01, 2022-02-02-preview, 2022-03-01, 2022-03-02-preview, 2022-04-01, 2022-04-02-preview, 2022-05-02-preview, 2022-06-01, 2022-06-02-preview, 2022-07-01, 2022-07-02-preview, 2022-08-02-preview, 2022-08-03-preview, 2022-09-01, 2022-09-02-preview, 2022-10-02-preview, 2022-11-01, 2022-11-02-preview, 2023-01-01, 2023-01-02-preview, 2023-02-01, 2023-02-02-preview, 2023-03-01, 2023-03-02-preview, 2023-04-01, 2023-04-02-preview, 2023-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview, 2024-08-01, 2024-09-01, 2024-09-02-preview, 2024-10-02-preview, 2025-01-01, 2025-01-02-preview, 2025-02-01, 2025-02-02-preview, 2025-03-01, 2025-03-02-preview, 2025-04-01, 2025-04-02-preview, 2025-05-01, 2025-05-02-preview, 2025-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-08-01, 2021-09-01, 2021-10-01, 2021-11-01-preview, 2022-01-01, 2022-01-02-preview, 2022-02-01, 2022-02-02-preview, 2022-03-01, 2022-03-02-preview, 2022-04-01, 2022-04-02-preview, 2022-05-02-preview, 2022-06-01, 2022-06-02-preview, 2022-07-01, 2022-07-02-preview, 2022-08-02-preview, 2022-08-03-preview, 2022-09-01, 2022-09-02-preview, 2022-10-02-preview, 2022-11-01, 2022-11-02-preview, 2023-01-01, 2023-01-02-preview, 2023-02-01, 2023-02-02-preview, 2023-03-01, 2023-03-02-preview, 2023-04-01, 2023-04-02-preview, 2023-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview, 2024-08-01, 2024-09-01, 2024-09-02-preview, 2024-10-01, 2024-10-02-preview, 2025-01-01, 2025-01-02-preview, 2025-02-01, 2025-02-02-preview, 2025-03-01, 2025-03-02-preview, 2025-04-01, 2025-04-02-preview, 2025-05-01, 2025-05-02-preview, 2025-06-02-preview, 2025-07-01, 2025-07-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Snapshot extends pulumi.CustomResource {
     /**
@@ -38,59 +38,59 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * CreationData to be used to specify the source agent pool resource ID to create this snapshot.
      */
-    public readonly creationData!: pulumi.Output<types.outputs.CreationDataResponse | undefined>;
+    declare public readonly creationData: pulumi.Output<types.outputs.CreationDataResponse | undefined>;
     /**
      * Whether to use a FIPS-enabled OS.
      */
-    public /*out*/ readonly enableFIPS!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enableFIPS: pulumi.Output<boolean>;
     /**
      * The version of Kubernetes.
      */
-    public /*out*/ readonly kubernetesVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly kubernetesVersion: pulumi.Output<string>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The version of node image.
      */
-    public /*out*/ readonly nodeImageVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly nodeImageVersion: pulumi.Output<string>;
     /**
      * Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.
      */
-    public /*out*/ readonly osSku!: pulumi.Output<string>;
+    declare public /*out*/ readonly osSku: pulumi.Output<string>;
     /**
      * The operating system type. The default is Linux.
      */
-    public /*out*/ readonly osType!: pulumi.Output<string>;
+    declare public /*out*/ readonly osType: pulumi.Output<string>;
     /**
      * The type of a snapshot. The default is NodePool.
      */
-    public readonly snapshotType!: pulumi.Output<string | undefined>;
+    declare public readonly snapshotType: pulumi.Output<string | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The size of the VM.
      */
-    public /*out*/ readonly vmSize!: pulumi.Output<string>;
+    declare public /*out*/ readonly vmSize: pulumi.Output<string>;
 
     /**
      * Create a Snapshot resource with the given unique name, arguments, and options.
@@ -103,15 +103,15 @@ export class Snapshot extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["creationData"] = args ? args.creationData : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["resourceName"] = args ? args.resourceName : undefined;
-            resourceInputs["snapshotType"] = args ? args.snapshotType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["creationData"] = args?.creationData;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["resourceName"] = args?.resourceName;
+            resourceInputs["snapshotType"] = args?.snapshotType;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["enableFIPS"] = undefined /*out*/;
             resourceInputs["kubernetesVersion"] = undefined /*out*/;
@@ -139,7 +139,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["vmSize"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20210801:Snapshot" }, { type: "azure-native:containerservice/v20210901:Snapshot" }, { type: "azure-native:containerservice/v20211001:Snapshot" }, { type: "azure-native:containerservice/v20211101preview:Snapshot" }, { type: "azure-native:containerservice/v20220101:Snapshot" }, { type: "azure-native:containerservice/v20220102preview:Snapshot" }, { type: "azure-native:containerservice/v20220201:Snapshot" }, { type: "azure-native:containerservice/v20220202preview:Snapshot" }, { type: "azure-native:containerservice/v20220301:Snapshot" }, { type: "azure-native:containerservice/v20220302preview:Snapshot" }, { type: "azure-native:containerservice/v20220401:Snapshot" }, { type: "azure-native:containerservice/v20220402preview:Snapshot" }, { type: "azure-native:containerservice/v20220502preview:Snapshot" }, { type: "azure-native:containerservice/v20220601:Snapshot" }, { type: "azure-native:containerservice/v20220602preview:Snapshot" }, { type: "azure-native:containerservice/v20220701:Snapshot" }, { type: "azure-native:containerservice/v20220702preview:Snapshot" }, { type: "azure-native:containerservice/v20220802preview:Snapshot" }, { type: "azure-native:containerservice/v20220803preview:Snapshot" }, { type: "azure-native:containerservice/v20220901:Snapshot" }, { type: "azure-native:containerservice/v20220902preview:Snapshot" }, { type: "azure-native:containerservice/v20221002preview:Snapshot" }, { type: "azure-native:containerservice/v20221101:Snapshot" }, { type: "azure-native:containerservice/v20221102preview:Snapshot" }, { type: "azure-native:containerservice/v20230101:Snapshot" }, { type: "azure-native:containerservice/v20230102preview:Snapshot" }, { type: "azure-native:containerservice/v20230201:Snapshot" }, { type: "azure-native:containerservice/v20230202preview:Snapshot" }, { type: "azure-native:containerservice/v20230301:Snapshot" }, { type: "azure-native:containerservice/v20230302preview:Snapshot" }, { type: "azure-native:containerservice/v20230401:Snapshot" }, { type: "azure-native:containerservice/v20230402preview:Snapshot" }, { type: "azure-native:containerservice/v20230501:Snapshot" }, { type: "azure-native:containerservice/v20230502preview:Snapshot" }, { type: "azure-native:containerservice/v20230601:Snapshot" }, { type: "azure-native:containerservice/v20230602preview:Snapshot" }, { type: "azure-native:containerservice/v20230701:Snapshot" }, { type: "azure-native:containerservice/v20230702preview:Snapshot" }, { type: "azure-native:containerservice/v20230801:Snapshot" }, { type: "azure-native:containerservice/v20230802preview:Snapshot" }, { type: "azure-native:containerservice/v20230901:Snapshot" }, { type: "azure-native:containerservice/v20230902preview:Snapshot" }, { type: "azure-native:containerservice/v20231001:Snapshot" }, { type: "azure-native:containerservice/v20231002preview:Snapshot" }, { type: "azure-native:containerservice/v20231101:Snapshot" }, { type: "azure-native:containerservice/v20231102preview:Snapshot" }, { type: "azure-native:containerservice/v20240101:Snapshot" }, { type: "azure-native:containerservice/v20240102preview:Snapshot" }, { type: "azure-native:containerservice/v20240201:Snapshot" }, { type: "azure-native:containerservice/v20240202preview:Snapshot" }, { type: "azure-native:containerservice/v20240302preview:Snapshot" }, { type: "azure-native:containerservice/v20240402preview:Snapshot" }, { type: "azure-native:containerservice/v20240501:Snapshot" }, { type: "azure-native:containerservice/v20240502preview:Snapshot" }, { type: "azure-native:containerservice/v20240602preview:Snapshot" }, { type: "azure-native:containerservice/v20240701:Snapshot" }, { type: "azure-native:containerservice/v20240702preview:Snapshot" }, { type: "azure-native:containerservice/v20240801:Snapshot" }, { type: "azure-native:containerservice/v20240901:Snapshot" }, { type: "azure-native:containerservice/v20240902preview:Snapshot" }, { type: "azure-native:containerservice/v20241001:Snapshot" }, { type: "azure-native:containerservice/v20241002preview:Snapshot" }, { type: "azure-native:containerservice/v20250101:Snapshot" }, { type: "azure-native:containerservice/v20250102preview:Snapshot" }, { type: "azure-native:containerservice/v20250201:Snapshot" }, { type: "azure-native:containerservice/v20250202preview:Snapshot" }, { type: "azure-native:containerservice/v20250301:Snapshot" }, { type: "azure-native:containerservice/v20250302preview:Snapshot" }, { type: "azure-native:containerservice/v20250401:Snapshot" }, { type: "azure-native:containerservice/v20250402preview:Snapshot" }, { type: "azure-native:containerservice/v20250501:Snapshot" }, { type: "azure-native:containerservice/v20250502preview:Snapshot" }, { type: "azure-native:containerservice/v20250602preview:Snapshot" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20210801:Snapshot" }, { type: "azure-native:containerservice/v20210901:Snapshot" }, { type: "azure-native:containerservice/v20211001:Snapshot" }, { type: "azure-native:containerservice/v20211101preview:Snapshot" }, { type: "azure-native:containerservice/v20220101:Snapshot" }, { type: "azure-native:containerservice/v20220102preview:Snapshot" }, { type: "azure-native:containerservice/v20220201:Snapshot" }, { type: "azure-native:containerservice/v20220202preview:Snapshot" }, { type: "azure-native:containerservice/v20220301:Snapshot" }, { type: "azure-native:containerservice/v20220302preview:Snapshot" }, { type: "azure-native:containerservice/v20220401:Snapshot" }, { type: "azure-native:containerservice/v20220402preview:Snapshot" }, { type: "azure-native:containerservice/v20220502preview:Snapshot" }, { type: "azure-native:containerservice/v20220601:Snapshot" }, { type: "azure-native:containerservice/v20220602preview:Snapshot" }, { type: "azure-native:containerservice/v20220701:Snapshot" }, { type: "azure-native:containerservice/v20220702preview:Snapshot" }, { type: "azure-native:containerservice/v20220802preview:Snapshot" }, { type: "azure-native:containerservice/v20220803preview:Snapshot" }, { type: "azure-native:containerservice/v20220901:Snapshot" }, { type: "azure-native:containerservice/v20220902preview:Snapshot" }, { type: "azure-native:containerservice/v20221002preview:Snapshot" }, { type: "azure-native:containerservice/v20221101:Snapshot" }, { type: "azure-native:containerservice/v20221102preview:Snapshot" }, { type: "azure-native:containerservice/v20230101:Snapshot" }, { type: "azure-native:containerservice/v20230102preview:Snapshot" }, { type: "azure-native:containerservice/v20230201:Snapshot" }, { type: "azure-native:containerservice/v20230202preview:Snapshot" }, { type: "azure-native:containerservice/v20230301:Snapshot" }, { type: "azure-native:containerservice/v20230302preview:Snapshot" }, { type: "azure-native:containerservice/v20230401:Snapshot" }, { type: "azure-native:containerservice/v20230402preview:Snapshot" }, { type: "azure-native:containerservice/v20230501:Snapshot" }, { type: "azure-native:containerservice/v20230502preview:Snapshot" }, { type: "azure-native:containerservice/v20230601:Snapshot" }, { type: "azure-native:containerservice/v20230602preview:Snapshot" }, { type: "azure-native:containerservice/v20230701:Snapshot" }, { type: "azure-native:containerservice/v20230702preview:Snapshot" }, { type: "azure-native:containerservice/v20230801:Snapshot" }, { type: "azure-native:containerservice/v20230802preview:Snapshot" }, { type: "azure-native:containerservice/v20230901:Snapshot" }, { type: "azure-native:containerservice/v20230902preview:Snapshot" }, { type: "azure-native:containerservice/v20231001:Snapshot" }, { type: "azure-native:containerservice/v20231002preview:Snapshot" }, { type: "azure-native:containerservice/v20231101:Snapshot" }, { type: "azure-native:containerservice/v20231102preview:Snapshot" }, { type: "azure-native:containerservice/v20240101:Snapshot" }, { type: "azure-native:containerservice/v20240102preview:Snapshot" }, { type: "azure-native:containerservice/v20240201:Snapshot" }, { type: "azure-native:containerservice/v20240202preview:Snapshot" }, { type: "azure-native:containerservice/v20240302preview:Snapshot" }, { type: "azure-native:containerservice/v20240402preview:Snapshot" }, { type: "azure-native:containerservice/v20240501:Snapshot" }, { type: "azure-native:containerservice/v20240502preview:Snapshot" }, { type: "azure-native:containerservice/v20240602preview:Snapshot" }, { type: "azure-native:containerservice/v20240701:Snapshot" }, { type: "azure-native:containerservice/v20240702preview:Snapshot" }, { type: "azure-native:containerservice/v20240801:Snapshot" }, { type: "azure-native:containerservice/v20240901:Snapshot" }, { type: "azure-native:containerservice/v20240902preview:Snapshot" }, { type: "azure-native:containerservice/v20241001:Snapshot" }, { type: "azure-native:containerservice/v20241002preview:Snapshot" }, { type: "azure-native:containerservice/v20250101:Snapshot" }, { type: "azure-native:containerservice/v20250102preview:Snapshot" }, { type: "azure-native:containerservice/v20250201:Snapshot" }, { type: "azure-native:containerservice/v20250202preview:Snapshot" }, { type: "azure-native:containerservice/v20250301:Snapshot" }, { type: "azure-native:containerservice/v20250302preview:Snapshot" }, { type: "azure-native:containerservice/v20250401:Snapshot" }, { type: "azure-native:containerservice/v20250402preview:Snapshot" }, { type: "azure-native:containerservice/v20250501:Snapshot" }, { type: "azure-native:containerservice/v20250502preview:Snapshot" }, { type: "azure-native:containerservice/v20250602preview:Snapshot" }, { type: "azure-native:containerservice/v20250701:Snapshot" }, { type: "azure-native:containerservice/v20250702preview:Snapshot" }, { type: "azure-native:containerservice/v20250801:Snapshot" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Snapshot.__pulumiType, name, resourceInputs, opts);
     }

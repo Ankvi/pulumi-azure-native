@@ -31,13 +31,44 @@ export const AfdCertificateType = {
  */
 export type AfdCertificateType = (typeof AfdCertificateType)[keyof typeof AfdCertificateType];
 
-export const AfdMinimumTlsVersion = {
-    TLS10: "TLS10",
-    TLS12: "TLS12",
+export const AfdCipherSuiteSetType = {
+    Customized: "Customized",
+    TLS10_2019: "TLS10_2019",
+    TLS12_2022: "TLS12_2022",
+    TLS12_2023: "TLS12_2023",
 } as const;
 
 /**
- * TLS protocol version that will be used for Https
+ * cipher suite set type that will be used for Https
+ */
+export type AfdCipherSuiteSetType = (typeof AfdCipherSuiteSetType)[keyof typeof AfdCipherSuiteSetType];
+
+export const AfdCustomizedCipherSuiteForTls12 = {
+    ECDHE_RSA_AES128_GCM_SHA256: "ECDHE_RSA_AES128_GCM_SHA256",
+    ECDHE_RSA_AES256_GCM_SHA384: "ECDHE_RSA_AES256_GCM_SHA384",
+    DHE_RSA_AES256_GCM_SHA384: "DHE_RSA_AES256_GCM_SHA384",
+    DHE_RSA_AES128_GCM_SHA256: "DHE_RSA_AES128_GCM_SHA256",
+    ECDHE_RSA_AES128_SHA256: "ECDHE_RSA_AES128_SHA256",
+    ECDHE_RSA_AES256_SHA384: "ECDHE_RSA_AES256_SHA384",
+} as const;
+
+export type AfdCustomizedCipherSuiteForTls12 = (typeof AfdCustomizedCipherSuiteForTls12)[keyof typeof AfdCustomizedCipherSuiteForTls12];
+
+export const AfdCustomizedCipherSuiteForTls13 = {
+    TLS_AES_128_GCM_SHA256: "TLS_AES_128_GCM_SHA256",
+    TLS_AES_256_GCM_SHA384: "TLS_AES_256_GCM_SHA384",
+} as const;
+
+export type AfdCustomizedCipherSuiteForTls13 = (typeof AfdCustomizedCipherSuiteForTls13)[keyof typeof AfdCustomizedCipherSuiteForTls13];
+
+export const AfdMinimumTlsVersion = {
+    TLS10: "TLS10",
+    TLS12: "TLS12",
+    TLS13: "TLS13",
+} as const;
+
+/**
+ * TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
  */
 export type AfdMinimumTlsVersion = (typeof AfdMinimumTlsVersion)[keyof typeof AfdMinimumTlsVersion];
 
@@ -52,6 +83,16 @@ export const AfdQueryStringCachingBehavior = {
  * Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.
  */
 export type AfdQueryStringCachingBehavior = (typeof AfdQueryStringCachingBehavior)[keyof typeof AfdQueryStringCachingBehavior];
+
+export const AgentPathType = {
+    Chat: "Chat",
+    McpServer: "McpServer",
+} as const;
+
+/**
+ * The type of the path.
+ */
+export type AgentPathType = (typeof AgentPathType)[keyof typeof AgentPathType];
 
 export const Algorithm = {
     SHA256: "SHA256",
@@ -317,6 +358,29 @@ export const KeyVaultSigningKeyParametersType = {
 
 export type KeyVaultSigningKeyParametersType = (typeof KeyVaultSigningKeyParametersType)[keyof typeof KeyVaultSigningKeyParametersType];
 
+export const KnowledgeSourceType = {
+    SchemaOrgMarkup: "SchemaOrgMarkup",
+    RssFeeds: "RssFeeds",
+    Sitemap: "Sitemap",
+} as const;
+
+/**
+ * Format or origin of the knowledge source.
+ */
+export type KnowledgeSourceType = (typeof KnowledgeSourceType)[keyof typeof KnowledgeSourceType];
+
+export const KnowledgeSourceUpdateFrequency = {
+    EverySixHours: "EverySixHours",
+    Daily: "Daily",
+    Weekly: "Weekly",
+    Monthly: "Monthly",
+} as const;
+
+/**
+ * Specifies the units of time for scheduling update intervals for the knowledge source.
+ */
+export type KnowledgeSourceUpdateFrequency = (typeof KnowledgeSourceUpdateFrequency)[keyof typeof KnowledgeSourceUpdateFrequency];
+
 export const LinkToDefaultDomain = {
     Enabled: "Enabled",
     Disabled: "Disabled",
@@ -341,7 +405,7 @@ export const ManagedServiceIdentityType = {
     None: "None",
     SystemAssigned: "SystemAssigned",
     UserAssigned: "UserAssigned",
-    SystemAssigned_UserAssigned: "SystemAssigned, UserAssigned",
+    SystemAssigned_UserAssigned: "SystemAssigned,UserAssigned",
 } as const;
 
 /**
@@ -418,6 +482,16 @@ export const OptimizationType = {
  * Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g. Download, Media services. With this information, CDN can apply scenario driven optimization.
  */
 export type OptimizationType = (typeof OptimizationType)[keyof typeof OptimizationType];
+
+export const OriginAuthenticationType = {
+    SystemAssignedIdentity: "SystemAssignedIdentity",
+    UserAssignedIdentity: "UserAssignedIdentity",
+} as const;
+
+/**
+ * The type of the authentication for the origin.
+ */
+export type OriginAuthenticationType = (typeof OriginAuthenticationType)[keyof typeof OriginAuthenticationType];
 
 export const ParamIndicator = {
     Expires: "Expires",
@@ -610,6 +684,15 @@ export const RequestMethodOperator = {
  * Describes operator to be matched
  */
 export type RequestMethodOperator = (typeof RequestMethodOperator)[keyof typeof RequestMethodOperator];
+
+export const RequestSchemeMatchConditionParametersOperator = {
+    Equal: "Equal",
+} as const;
+
+/**
+ * Describes operator to be matched
+ */
+export type RequestSchemeMatchConditionParametersOperator = (typeof RequestSchemeMatchConditionParametersOperator)[keyof typeof RequestSchemeMatchConditionParametersOperator];
 
 export const RequestSchemeMatchValue = {
     HTTP: "HTTP",

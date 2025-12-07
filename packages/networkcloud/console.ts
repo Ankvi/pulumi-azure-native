@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Console extends pulumi.CustomResource {
     /**
@@ -36,67 +36,67 @@ export class Console extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The more detailed status of the console.
      */
-    public /*out*/ readonly detailedStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly detailedStatus: pulumi.Output<string>;
     /**
      * The descriptive message about the current detailed status.
      */
-    public /*out*/ readonly detailedStatusMessage!: pulumi.Output<string>;
+    declare public /*out*/ readonly detailedStatusMessage: pulumi.Output<string>;
     /**
      * The indicator of whether the console access is enabled.
      */
-    public readonly enabled!: pulumi.Output<string>;
+    declare public readonly enabled: pulumi.Output<string>;
     /**
      * Resource ETag.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The date and time after which the key will be disallowed access.
      */
-    public readonly expiration!: pulumi.Output<string | undefined>;
+    declare public readonly expiration: pulumi.Output<string | undefined>;
     /**
      * The extended location of the cluster manager associated with the cluster this virtual machine is created on.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The resource ID of the private link service that is used to provide virtual machine console access.
      */
-    public /*out*/ readonly privateLinkServiceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateLinkServiceId: pulumi.Output<string>;
     /**
      * The provisioning state of the virtual machine console.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
      */
-    public readonly sshPublicKey!: pulumi.Output<types.outputs.SshPublicKeyResponse>;
+    declare public readonly sshPublicKey: pulumi.Output<types.outputs.SshPublicKeyResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The unique identifier for the virtual machine that is used to access the console.
      */
-    public /*out*/ readonly virtualMachineAccessId!: pulumi.Output<string>;
+    declare public /*out*/ readonly virtualMachineAccessId: pulumi.Output<string>;
 
     /**
      * Create a Console resource with the given unique name, arguments, and options.
@@ -109,30 +109,30 @@ export class Console extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.extendedLocation === undefined) && !opts.urn) {
+            if (args?.extendedLocation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'extendedLocation'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.sshPublicKey === undefined) && !opts.urn) {
+            if (args?.sshPublicKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sshPublicKey'");
             }
-            if ((!args || args.virtualMachineName === undefined) && !opts.urn) {
+            if (args?.virtualMachineName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineName'");
             }
-            resourceInputs["consoleName"] = args ? args.consoleName : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["expiration"] = args ? args.expiration : undefined;
-            resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sshPublicKey"] = args ? args.sshPublicKey : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["virtualMachineName"] = args ? args.virtualMachineName : undefined;
+            resourceInputs["consoleName"] = args?.consoleName;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["expiration"] = args?.expiration;
+            resourceInputs["extendedLocation"] = args?.extendedLocation;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["sshPublicKey"] = args?.sshPublicKey;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["virtualMachineName"] = args?.virtualMachineName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["detailedStatus"] = undefined /*out*/;
             resourceInputs["detailedStatusMessage"] = undefined /*out*/;
@@ -162,7 +162,7 @@ export class Console extends pulumi.CustomResource {
             resourceInputs["virtualMachineAccessId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:Console" }, { type: "azure-native:networkcloud/v20231001preview:Console" }, { type: "azure-native:networkcloud/v20240601preview:Console" }, { type: "azure-native:networkcloud/v20240701:Console" }, { type: "azure-native:networkcloud/v20241001preview:Console" }, { type: "azure-native:networkcloud/v20250201:Console" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:Console" }, { type: "azure-native:networkcloud/v20231001preview:Console" }, { type: "azure-native:networkcloud/v20240601preview:Console" }, { type: "azure-native:networkcloud/v20240701:Console" }, { type: "azure-native:networkcloud/v20241001preview:Console" }, { type: "azure-native:networkcloud/v20250201:Console" }, { type: "azure-native:networkcloud/v20250701preview:Console" }, { type: "azure-native:networkcloud/v20250901:Console" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Console.__pulumiType, name, resourceInputs, opts);
     }

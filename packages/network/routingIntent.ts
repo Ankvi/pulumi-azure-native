@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class RoutingIntent extends pulumi.CustomResource {
     /**
@@ -38,27 +38,27 @@ export class RoutingIntent extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     /**
      * The provisioning state of the RoutingIntent resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * List of routing policies.
      */
-    public readonly routingPolicies!: pulumi.Output<types.outputs.RoutingPolicyResponse[] | undefined>;
+    declare public readonly routingPolicies: pulumi.Output<types.outputs.RoutingPolicyResponse[] | undefined>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a RoutingIntent resource with the given unique name, arguments, and options.
@@ -71,18 +71,18 @@ export class RoutingIntent extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.virtualHubName === undefined) && !opts.urn) {
+            if (args?.virtualHubName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualHubName'");
             }
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["routingIntentName"] = args ? args.routingIntentName : undefined;
-            resourceInputs["routingPolicies"] = args ? args.routingPolicies : undefined;
-            resourceInputs["virtualHubName"] = args ? args.virtualHubName : undefined;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["routingIntentName"] = args?.routingIntentName;
+            resourceInputs["routingPolicies"] = args?.routingPolicies;
+            resourceInputs["virtualHubName"] = args?.virtualHubName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -96,7 +96,7 @@ export class RoutingIntent extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210501:RoutingIntent" }, { type: "azure-native:network/v20210801:RoutingIntent" }, { type: "azure-native:network/v20220101:RoutingIntent" }, { type: "azure-native:network/v20220501:RoutingIntent" }, { type: "azure-native:network/v20220701:RoutingIntent" }, { type: "azure-native:network/v20220901:RoutingIntent" }, { type: "azure-native:network/v20221101:RoutingIntent" }, { type: "azure-native:network/v20230201:RoutingIntent" }, { type: "azure-native:network/v20230401:RoutingIntent" }, { type: "azure-native:network/v20230501:RoutingIntent" }, { type: "azure-native:network/v20230601:RoutingIntent" }, { type: "azure-native:network/v20230901:RoutingIntent" }, { type: "azure-native:network/v20231101:RoutingIntent" }, { type: "azure-native:network/v20240101:RoutingIntent" }, { type: "azure-native:network/v20240301:RoutingIntent" }, { type: "azure-native:network/v20240501:RoutingIntent" }, { type: "azure-native:network/v20240701:RoutingIntent" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210501:RoutingIntent" }, { type: "azure-native:network/v20210801:RoutingIntent" }, { type: "azure-native:network/v20220101:RoutingIntent" }, { type: "azure-native:network/v20220501:RoutingIntent" }, { type: "azure-native:network/v20220701:RoutingIntent" }, { type: "azure-native:network/v20220901:RoutingIntent" }, { type: "azure-native:network/v20221101:RoutingIntent" }, { type: "azure-native:network/v20230201:RoutingIntent" }, { type: "azure-native:network/v20230401:RoutingIntent" }, { type: "azure-native:network/v20230501:RoutingIntent" }, { type: "azure-native:network/v20230601:RoutingIntent" }, { type: "azure-native:network/v20230901:RoutingIntent" }, { type: "azure-native:network/v20231101:RoutingIntent" }, { type: "azure-native:network/v20240101:RoutingIntent" }, { type: "azure-native:network/v20240301:RoutingIntent" }, { type: "azure-native:network/v20240501:RoutingIntent" }, { type: "azure-native:network/v20240701:RoutingIntent" }, { type: "azure-native:network/v20241001:RoutingIntent" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RoutingIntent.__pulumiType, name, resourceInputs, opts);
     }

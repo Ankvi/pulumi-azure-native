@@ -1,6 +1,20 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Customized cipher suite set object that will be used for Https when cipherSuiteSetType is Customized.
+ */
+export interface AFDDomainHttpsCustomizedCipherSuiteSetArgs {
+    /**
+     * Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
+     */
+    cipherSuiteSetForTls12?: pulumi.Input<pulumi.Input<string | enums.AfdCustomizedCipherSuiteForTls12>[]>;
+    /**
+     * Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
+     */
+    cipherSuiteSetForTls13?: pulumi.Input<pulumi.Input<string | enums.AfdCustomizedCipherSuiteForTls13>[]>;
+}
+
+/**
  * The JSON object that contains the properties to secure a domain.
  */
 export interface AFDDomainHttpsParametersArgs {
@@ -9,7 +23,15 @@ export interface AFDDomainHttpsParametersArgs {
      */
     certificateType: pulumi.Input<string | enums.AfdCertificateType>;
     /**
-     * TLS protocol version that will be used for Https
+     * cipher suite set type that will be used for Https
+     */
+    cipherSuiteSetType?: pulumi.Input<string | enums.AfdCipherSuiteSetType>;
+    /**
+     * Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
+     */
+    customizedCipherSuiteSet?: pulumi.Input<AFDDomainHttpsCustomizedCipherSuiteSetArgs>;
+    /**
+     * TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
      */
     minimumTlsVersion?: pulumi.Input<enums.AfdMinimumTlsVersion>;
     /**
@@ -44,6 +66,20 @@ export interface AfdRouteCacheConfigurationArgs {
      * Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.
      */
     queryStringCachingBehavior?: pulumi.Input<string | enums.AfdQueryStringCachingBehavior>;
+}
+
+/**
+ * Defines a path configuration for a web agent.
+ */
+export interface AgentPathArgs {
+    /**
+     * The actual path value.
+     */
+    path: pulumi.Input<string>;
+    /**
+     * The type of the path.
+     */
+    type: pulumi.Input<string | enums.AgentPathType>;
 }
 
 /**
@@ -268,10 +304,6 @@ export interface CustomerCertificateParametersArgs {
      */
     secretVersion?: pulumi.Input<string>;
     /**
-     * The list of SANs.
-     */
-    subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * The type of the secret resource.
      * Expected value is 'CustomerCertificate'.
      */
@@ -303,7 +335,7 @@ export interface DeepCreatedOriginArgs {
      */
     httpsPort?: pulumi.Input<number>;
     /**
-     * Origin name which must be unique within the endpoint. 
+     * Origin name which must be unique within the endpoint.
      */
     name: pulumi.Input<string>;
     /**
@@ -419,7 +451,7 @@ export interface DeliveryRuleCacheKeyQueryStringActionArgs {
  */
 export interface DeliveryRuleClientPortConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'ClientPort'.
      */
     name: pulumi.Input<"ClientPort">;
@@ -443,7 +475,7 @@ export function deliveryRuleClientPortConditionArgsProvideDefaults(val: Delivery
  */
 export interface DeliveryRuleCookiesConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'Cookies'.
      */
     name: pulumi.Input<"Cookies">;
@@ -467,7 +499,7 @@ export function deliveryRuleCookiesConditionArgsProvideDefaults(val: DeliveryRul
  */
 export interface DeliveryRuleHostNameConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'HostName'.
      */
     name: pulumi.Input<"HostName">;
@@ -491,7 +523,7 @@ export function deliveryRuleHostNameConditionArgsProvideDefaults(val: DeliveryRu
  */
 export interface DeliveryRuleHttpVersionConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'HttpVersion'.
      */
     name: pulumi.Input<"HttpVersion">;
@@ -515,7 +547,7 @@ export function deliveryRuleHttpVersionConditionArgsProvideDefaults(val: Deliver
  */
 export interface DeliveryRuleIsDeviceConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'IsDevice'.
      */
     name: pulumi.Input<"IsDevice">;
@@ -539,7 +571,7 @@ export function deliveryRuleIsDeviceConditionArgsProvideDefaults(val: DeliveryRu
  */
 export interface DeliveryRulePostArgsConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'PostArgs'.
      */
     name: pulumi.Input<"PostArgs">;
@@ -563,7 +595,7 @@ export function deliveryRulePostArgsConditionArgsProvideDefaults(val: DeliveryRu
  */
 export interface DeliveryRuleQueryStringConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'QueryString'.
      */
     name: pulumi.Input<"QueryString">;
@@ -587,7 +619,7 @@ export function deliveryRuleQueryStringConditionArgsProvideDefaults(val: Deliver
  */
 export interface DeliveryRuleRemoteAddressConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'RemoteAddress'.
      */
     name: pulumi.Input<"RemoteAddress">;
@@ -611,7 +643,7 @@ export function deliveryRuleRemoteAddressConditionArgsProvideDefaults(val: Deliv
  */
 export interface DeliveryRuleRequestBodyConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'RequestBody'.
      */
     name: pulumi.Input<"RequestBody">;
@@ -650,7 +682,7 @@ export interface DeliveryRuleRequestHeaderActionArgs {
  */
 export interface DeliveryRuleRequestHeaderConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'RequestHeader'.
      */
     name: pulumi.Input<"RequestHeader">;
@@ -674,7 +706,7 @@ export function deliveryRuleRequestHeaderConditionArgsProvideDefaults(val: Deliv
  */
 export interface DeliveryRuleRequestMethodConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'RequestMethod'.
      */
     name: pulumi.Input<"RequestMethod">;
@@ -698,7 +730,7 @@ export function deliveryRuleRequestMethodConditionArgsProvideDefaults(val: Deliv
  */
 export interface DeliveryRuleRequestSchemeConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'RequestScheme'.
      */
     name: pulumi.Input<"RequestScheme">;
@@ -722,7 +754,7 @@ export function deliveryRuleRequestSchemeConditionArgsProvideDefaults(val: Deliv
  */
 export interface DeliveryRuleRequestUriConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'RequestUri'.
      */
     name: pulumi.Input<"RequestUri">;
@@ -776,7 +808,7 @@ export interface DeliveryRuleRouteConfigurationOverrideActionArgs {
  */
 export interface DeliveryRuleServerPortConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'ServerPort'.
      */
     name: pulumi.Input<"ServerPort">;
@@ -800,7 +832,7 @@ export function deliveryRuleServerPortConditionArgsProvideDefaults(val: Delivery
  */
 export interface DeliveryRuleSocketAddrConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'SocketAddr'.
      */
     name: pulumi.Input<"SocketAddr">;
@@ -824,7 +856,7 @@ export function deliveryRuleSocketAddrConditionArgsProvideDefaults(val: Delivery
  */
 export interface DeliveryRuleSslProtocolConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'SslProtocol'.
      */
     name: pulumi.Input<"SslProtocol">;
@@ -848,7 +880,7 @@ export function deliveryRuleSslProtocolConditionArgsProvideDefaults(val: Deliver
  */
 export interface DeliveryRuleUrlFileExtensionConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'UrlFileExtension'.
      */
     name: pulumi.Input<"UrlFileExtension">;
@@ -872,7 +904,7 @@ export function deliveryRuleUrlFileExtensionConditionArgsProvideDefaults(val: De
  */
 export interface DeliveryRuleUrlFileNameConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'UrlFileName'.
      */
     name: pulumi.Input<"UrlFileName">;
@@ -896,7 +928,7 @@ export function deliveryRuleUrlFileNameConditionArgsProvideDefaults(val: Deliver
  */
 export interface DeliveryRuleUrlPathConditionArgs {
     /**
-     * The name of the condition for the delivery rule.
+     * Request variable to compare with.
      * Expected value is 'UrlPath'.
      */
     name: pulumi.Input<"UrlPath">;
@@ -1289,6 +1321,24 @@ export interface MatchConditionArgs {
 }
 
 /**
+ * The JSON object that contains the properties of the origin authentication settings.
+ */
+export interface OriginAuthenticationPropertiesArgs {
+    /**
+     * The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
+     */
+    scope?: pulumi.Input<string>;
+    /**
+     * The type of the authentication for the origin.
+     */
+    type?: pulumi.Input<string | enums.OriginAuthenticationType>;
+    /**
+     * The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
+     */
+    userAssignedIdentity?: pulumi.Input<ResourceReferenceArgs>;
+}
+
+/**
  * Defines the parameters for the origin group override configuration.
  */
 export interface OriginGroupOverrideArgs {
@@ -1663,7 +1713,7 @@ export function requestMethodMatchConditionParametersArgsProvideDefaults(val: Re
 }
 
 /**
- * Defines the parameters for RequestScheme match conditions 
+ * Defines the parameters for RequestScheme match conditions
  */
 export interface RequestSchemeMatchConditionParametersArgs {
     /**
@@ -1677,7 +1727,7 @@ export interface RequestSchemeMatchConditionParametersArgs {
     /**
      * Describes operator to be matched
      */
-    operator: pulumi.Input<string>;
+    operator: pulumi.Input<string | enums.RequestSchemeMatchConditionParametersOperator>;
     /**
      * List of transforms
      */
@@ -2204,7 +2254,7 @@ export interface UrlSigningActionParametersArgs {
      */
     algorithm?: pulumi.Input<string | enums.Algorithm>;
     /**
-     * Defines which query string parameters in the url to be considered for expires, key id etc. 
+     * Defines which query string parameters in the url to be considered for expires, key id etc.
      */
     parameterNameOverride?: pulumi.Input<pulumi.Input<UrlSigningParamIdentifierArgs>[]>;
     /**

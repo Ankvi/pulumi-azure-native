@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Project extends pulumi.CustomResource {
     /**
@@ -38,27 +38,27 @@ export class Project extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * A description for the Project.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The provisioning state of this resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -71,16 +71,16 @@ export class Project extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.storageMoverName === undefined) && !opts.urn) {
+            if (args?.storageMoverName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageMoverName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["storageMoverName"] = args ? args.storageMoverName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["storageMoverName"] = args?.storageMoverName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -95,7 +95,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storagemover/v20220701preview:Project" }, { type: "azure-native:storagemover/v20230301:Project" }, { type: "azure-native:storagemover/v20230701preview:Project" }, { type: "azure-native:storagemover/v20231001:Project" }, { type: "azure-native:storagemover/v20240701:Project" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storagemover/v20220701preview:Project" }, { type: "azure-native:storagemover/v20230301:Project" }, { type: "azure-native:storagemover/v20230701preview:Project" }, { type: "azure-native:storagemover/v20231001:Project" }, { type: "azure-native:storagemover/v20240701:Project" }, { type: "azure-native:storagemover/v20250701:Project" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Project.__pulumiType, name, resourceInputs, opts);
     }

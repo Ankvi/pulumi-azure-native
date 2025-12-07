@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualNetwork extends pulumi.CustomResource {
     /**
@@ -38,91 +38,91 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * The AddressSpace that contains an array of IP address ranges that can be used by subnets.
      */
-    public readonly addressSpace!: pulumi.Output<types.outputs.AddressSpaceResponse | undefined>;
+    declare public readonly addressSpace: pulumi.Output<types.outputs.AddressSpaceResponse | undefined>;
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
      */
-    public readonly bgpCommunities!: pulumi.Output<types.outputs.VirtualNetworkBgpCommunitiesResponse | undefined>;
+    declare public readonly bgpCommunities: pulumi.Output<types.outputs.VirtualNetworkBgpCommunitiesResponse | undefined>;
     /**
      * The DDoS protection plan associated with the virtual network.
      */
-    public readonly ddosProtectionPlan!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
+    declare public readonly ddosProtectionPlan: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
      */
-    public readonly dhcpOptions!: pulumi.Output<types.outputs.DhcpOptionsResponse | undefined>;
+    declare public readonly dhcpOptions: pulumi.Output<types.outputs.DhcpOptionsResponse | undefined>;
     /**
      * Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
      */
-    public readonly enableDdosProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableDdosProtection: pulumi.Output<boolean | undefined>;
     /**
      * Indicates if VM protection is enabled for all the subnets in the virtual network.
      */
-    public readonly enableVmProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableVmProtection: pulumi.Output<boolean | undefined>;
     /**
      * Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.VirtualNetworkEncryptionResponse | undefined>;
+    declare public readonly encryption: pulumi.Output<types.outputs.VirtualNetworkEncryptionResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The extended location of the virtual network.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * A collection of references to flow log resources.
      */
-    public /*out*/ readonly flowLogs!: pulumi.Output<types.outputs.FlowLogResponse[]>;
+    declare public /*out*/ readonly flowLogs: pulumi.Output<types.outputs.FlowLogResponse[]>;
     /**
      * The FlowTimeout value (in minutes) for the Virtual Network
      */
-    public readonly flowTimeoutInMinutes!: pulumi.Output<number | undefined>;
+    declare public readonly flowTimeoutInMinutes: pulumi.Output<number | undefined>;
     /**
      * Array of IpAllocation which reference this VNET.
      */
-    public readonly ipAllocations!: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
+    declare public readonly ipAllocations: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
     /**
      * Resource location.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * Resource name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Private Endpoint VNet Policies.
      */
-    public readonly privateEndpointVNetPolicies!: pulumi.Output<string | undefined>;
+    declare public readonly privateEndpointVNetPolicies: pulumi.Output<string | undefined>;
     /**
      * The provisioning state of the virtual network resource.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The resourceGuid property of the Virtual Network resource.
      */
-    public /*out*/ readonly resourceGuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceGuid: pulumi.Output<string>;
     /**
      * A list of subnets in a Virtual Network.
      */
-    public readonly subnets!: pulumi.Output<types.outputs.SubnetResponse[] | undefined>;
+    declare public readonly subnets: pulumi.Output<types.outputs.SubnetResponse[] | undefined>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * A list of peerings in a Virtual Network.
      */
-    public readonly virtualNetworkPeerings!: pulumi.Output<types.outputs.VirtualNetworkPeeringResponse[] | undefined>;
+    declare public readonly virtualNetworkPeerings: pulumi.Output<types.outputs.VirtualNetworkPeeringResponse[] | undefined>;
 
     /**
      * Create a VirtualNetwork resource with the given unique name, arguments, and options.
@@ -135,27 +135,27 @@ export class VirtualNetwork extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["addressSpace"] = args ? args.addressSpace : undefined;
-            resourceInputs["bgpCommunities"] = args ? args.bgpCommunities : undefined;
-            resourceInputs["ddosProtectionPlan"] = args ? args.ddosProtectionPlan : undefined;
-            resourceInputs["dhcpOptions"] = args ? args.dhcpOptions : undefined;
-            resourceInputs["enableDdosProtection"] = (args ? args.enableDdosProtection : undefined) ?? false;
-            resourceInputs["enableVmProtection"] = (args ? args.enableVmProtection : undefined) ?? false;
-            resourceInputs["encryption"] = args ? args.encryption : undefined;
-            resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
-            resourceInputs["flowTimeoutInMinutes"] = args ? args.flowTimeoutInMinutes : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["ipAllocations"] = args ? args.ipAllocations : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["privateEndpointVNetPolicies"] = args ? args.privateEndpointVNetPolicies : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["subnets"] = args ? args.subnets : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["virtualNetworkName"] = args ? args.virtualNetworkName : undefined;
-            resourceInputs["virtualNetworkPeerings"] = args ? args.virtualNetworkPeerings : undefined;
+            resourceInputs["addressSpace"] = args?.addressSpace;
+            resourceInputs["bgpCommunities"] = args?.bgpCommunities;
+            resourceInputs["ddosProtectionPlan"] = args?.ddosProtectionPlan;
+            resourceInputs["dhcpOptions"] = args?.dhcpOptions;
+            resourceInputs["enableDdosProtection"] = (args?.enableDdosProtection) ?? false;
+            resourceInputs["enableVmProtection"] = (args?.enableVmProtection) ?? false;
+            resourceInputs["encryption"] = args?.encryption;
+            resourceInputs["extendedLocation"] = args?.extendedLocation;
+            resourceInputs["flowTimeoutInMinutes"] = args?.flowTimeoutInMinutes;
+            resourceInputs["id"] = args?.id;
+            resourceInputs["ipAllocations"] = args?.ipAllocations;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["privateEndpointVNetPolicies"] = args?.privateEndpointVNetPolicies;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["subnets"] = args?.subnets;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["virtualNetworkName"] = args?.virtualNetworkName;
+            resourceInputs["virtualNetworkPeerings"] = args?.virtualNetworkPeerings;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["flowLogs"] = undefined /*out*/;
@@ -188,7 +188,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
             resourceInputs["virtualNetworkPeerings"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20150501preview:VirtualNetwork" }, { type: "azure-native:network/v20150615:VirtualNetwork" }, { type: "azure-native:network/v20160330:VirtualNetwork" }, { type: "azure-native:network/v20160601:VirtualNetwork" }, { type: "azure-native:network/v20160901:VirtualNetwork" }, { type: "azure-native:network/v20161201:VirtualNetwork" }, { type: "azure-native:network/v20170301:VirtualNetwork" }, { type: "azure-native:network/v20170601:VirtualNetwork" }, { type: "azure-native:network/v20170801:VirtualNetwork" }, { type: "azure-native:network/v20170901:VirtualNetwork" }, { type: "azure-native:network/v20171001:VirtualNetwork" }, { type: "azure-native:network/v20171101:VirtualNetwork" }, { type: "azure-native:network/v20180101:VirtualNetwork" }, { type: "azure-native:network/v20180201:VirtualNetwork" }, { type: "azure-native:network/v20180401:VirtualNetwork" }, { type: "azure-native:network/v20180601:VirtualNetwork" }, { type: "azure-native:network/v20180701:VirtualNetwork" }, { type: "azure-native:network/v20180801:VirtualNetwork" }, { type: "azure-native:network/v20181001:VirtualNetwork" }, { type: "azure-native:network/v20181101:VirtualNetwork" }, { type: "azure-native:network/v20181201:VirtualNetwork" }, { type: "azure-native:network/v20190201:VirtualNetwork" }, { type: "azure-native:network/v20190401:VirtualNetwork" }, { type: "azure-native:network/v20190601:VirtualNetwork" }, { type: "azure-native:network/v20190701:VirtualNetwork" }, { type: "azure-native:network/v20190801:VirtualNetwork" }, { type: "azure-native:network/v20190901:VirtualNetwork" }, { type: "azure-native:network/v20191101:VirtualNetwork" }, { type: "azure-native:network/v20191201:VirtualNetwork" }, { type: "azure-native:network/v20200301:VirtualNetwork" }, { type: "azure-native:network/v20200401:VirtualNetwork" }, { type: "azure-native:network/v20200501:VirtualNetwork" }, { type: "azure-native:network/v20200601:VirtualNetwork" }, { type: "azure-native:network/v20200701:VirtualNetwork" }, { type: "azure-native:network/v20200801:VirtualNetwork" }, { type: "azure-native:network/v20201101:VirtualNetwork" }, { type: "azure-native:network/v20210201:VirtualNetwork" }, { type: "azure-native:network/v20210301:VirtualNetwork" }, { type: "azure-native:network/v20210501:VirtualNetwork" }, { type: "azure-native:network/v20210801:VirtualNetwork" }, { type: "azure-native:network/v20220101:VirtualNetwork" }, { type: "azure-native:network/v20220501:VirtualNetwork" }, { type: "azure-native:network/v20220701:VirtualNetwork" }, { type: "azure-native:network/v20220901:VirtualNetwork" }, { type: "azure-native:network/v20221101:VirtualNetwork" }, { type: "azure-native:network/v20230201:VirtualNetwork" }, { type: "azure-native:network/v20230401:VirtualNetwork" }, { type: "azure-native:network/v20230501:VirtualNetwork" }, { type: "azure-native:network/v20230601:VirtualNetwork" }, { type: "azure-native:network/v20230901:VirtualNetwork" }, { type: "azure-native:network/v20231101:VirtualNetwork" }, { type: "azure-native:network/v20240101:VirtualNetwork" }, { type: "azure-native:network/v20240301:VirtualNetwork" }, { type: "azure-native:network/v20240501:VirtualNetwork" }, { type: "azure-native:network/v20240701:VirtualNetwork" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20150501preview:VirtualNetwork" }, { type: "azure-native:network/v20150615:VirtualNetwork" }, { type: "azure-native:network/v20160330:VirtualNetwork" }, { type: "azure-native:network/v20160601:VirtualNetwork" }, { type: "azure-native:network/v20160901:VirtualNetwork" }, { type: "azure-native:network/v20161201:VirtualNetwork" }, { type: "azure-native:network/v20170301:VirtualNetwork" }, { type: "azure-native:network/v20170601:VirtualNetwork" }, { type: "azure-native:network/v20170801:VirtualNetwork" }, { type: "azure-native:network/v20170901:VirtualNetwork" }, { type: "azure-native:network/v20171001:VirtualNetwork" }, { type: "azure-native:network/v20171101:VirtualNetwork" }, { type: "azure-native:network/v20180101:VirtualNetwork" }, { type: "azure-native:network/v20180201:VirtualNetwork" }, { type: "azure-native:network/v20180401:VirtualNetwork" }, { type: "azure-native:network/v20180601:VirtualNetwork" }, { type: "azure-native:network/v20180701:VirtualNetwork" }, { type: "azure-native:network/v20180801:VirtualNetwork" }, { type: "azure-native:network/v20181001:VirtualNetwork" }, { type: "azure-native:network/v20181101:VirtualNetwork" }, { type: "azure-native:network/v20181201:VirtualNetwork" }, { type: "azure-native:network/v20190201:VirtualNetwork" }, { type: "azure-native:network/v20190401:VirtualNetwork" }, { type: "azure-native:network/v20190601:VirtualNetwork" }, { type: "azure-native:network/v20190701:VirtualNetwork" }, { type: "azure-native:network/v20190801:VirtualNetwork" }, { type: "azure-native:network/v20190901:VirtualNetwork" }, { type: "azure-native:network/v20191101:VirtualNetwork" }, { type: "azure-native:network/v20191201:VirtualNetwork" }, { type: "azure-native:network/v20200301:VirtualNetwork" }, { type: "azure-native:network/v20200401:VirtualNetwork" }, { type: "azure-native:network/v20200501:VirtualNetwork" }, { type: "azure-native:network/v20200601:VirtualNetwork" }, { type: "azure-native:network/v20200701:VirtualNetwork" }, { type: "azure-native:network/v20200801:VirtualNetwork" }, { type: "azure-native:network/v20201101:VirtualNetwork" }, { type: "azure-native:network/v20210201:VirtualNetwork" }, { type: "azure-native:network/v20210301:VirtualNetwork" }, { type: "azure-native:network/v20210501:VirtualNetwork" }, { type: "azure-native:network/v20210801:VirtualNetwork" }, { type: "azure-native:network/v20220101:VirtualNetwork" }, { type: "azure-native:network/v20220501:VirtualNetwork" }, { type: "azure-native:network/v20220701:VirtualNetwork" }, { type: "azure-native:network/v20220901:VirtualNetwork" }, { type: "azure-native:network/v20221101:VirtualNetwork" }, { type: "azure-native:network/v20230201:VirtualNetwork" }, { type: "azure-native:network/v20230401:VirtualNetwork" }, { type: "azure-native:network/v20230501:VirtualNetwork" }, { type: "azure-native:network/v20230601:VirtualNetwork" }, { type: "azure-native:network/v20230901:VirtualNetwork" }, { type: "azure-native:network/v20231101:VirtualNetwork" }, { type: "azure-native:network/v20240101:VirtualNetwork" }, { type: "azure-native:network/v20240301:VirtualNetwork" }, { type: "azure-native:network/v20240501:VirtualNetwork" }, { type: "azure-native:network/v20240701:VirtualNetwork" }, { type: "azure-native:network/v20241001:VirtualNetwork" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualNetwork.__pulumiType, name, resourceInputs, opts);
     }

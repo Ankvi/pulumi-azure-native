@@ -38,35 +38,35 @@ export class PipelineRun extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * How the pipeline run should be forced to recreate even if the pipeline run configuration has not changed.
      */
-    public readonly forceUpdateTag!: pulumi.Output<string | undefined>;
+    declare public readonly forceUpdateTag: pulumi.Output<string | undefined>;
     /**
      * The name of the resource.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The provisioning state of a pipeline run.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * The request parameters for a pipeline run.
      */
-    public readonly request!: pulumi.Output<types.outputs.PipelineRunRequestResponse | undefined>;
+    declare public readonly request: pulumi.Output<types.outputs.PipelineRunRequestResponse | undefined>;
     /**
      * The response of a pipeline run.
      */
-    public /*out*/ readonly response!: pulumi.Output<types.outputs.PipelineRunResponseResponse>;
+    declare public /*out*/ readonly response: pulumi.Output<types.outputs.PipelineRunResponseResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a PipelineRun resource with the given unique name, arguments, and options.
@@ -79,17 +79,17 @@ export class PipelineRun extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.registryName === undefined) && !opts.urn) {
+            if (args?.registryName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'registryName'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["forceUpdateTag"] = args ? args.forceUpdateTag : undefined;
-            resourceInputs["pipelineRunName"] = args ? args.pipelineRunName : undefined;
-            resourceInputs["registryName"] = args ? args.registryName : undefined;
+            resourceInputs["forceUpdateTag"] = args?.forceUpdateTag;
+            resourceInputs["pipelineRunName"] = args?.pipelineRunName;
+            resourceInputs["registryName"] = args?.registryName;
             resourceInputs["request"] = args ? (args.request ? pulumi.output(args.request).apply(types.inputs.pipelineRunRequestArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;

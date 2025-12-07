@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
  *
- * Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Job extends pulumi.CustomResource {
     /**
@@ -38,67 +38,67 @@ export class Job extends pulumi.CustomResource {
     /**
      * The Azure API version of the resource.
      */
-    public /*out*/ readonly azureApiVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * Container Apps Job configuration properties.
      */
-    public readonly configuration!: pulumi.Output<types.outputs.JobConfigurationResponse | undefined>;
+    declare public readonly configuration: pulumi.Output<types.outputs.JobConfigurationResponse | undefined>;
     /**
      * Resource ID of environment.
      */
-    public readonly environmentId!: pulumi.Output<string | undefined>;
+    declare public readonly environmentId: pulumi.Output<string | undefined>;
     /**
      * The endpoint of the eventstream of the container apps job.
      */
-    public /*out*/ readonly eventStreamEndpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly eventStreamEndpoint: pulumi.Output<string>;
     /**
      * The complex type of the extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * Managed identities needed by a container app job to interact with other Azure services to not maintain any secrets or credentials in code.
      */
-    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Outbound IP Addresses of a container apps job.
      */
-    public /*out*/ readonly outboundIpAddresses!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly outboundIpAddresses: pulumi.Output<string[]>;
     /**
      * Provisioning state of the Container Apps Job.
      */
-    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Current running state of the job
      */
-    public /*out*/ readonly runningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly runningState: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Container Apps job definition.
      */
-    public readonly template!: pulumi.Output<types.outputs.JobTemplateResponse | undefined>;
+    declare public readonly template: pulumi.Output<types.outputs.JobTemplateResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Workload profile name to pin for container apps job execution.
      */
-    public readonly workloadProfileName!: pulumi.Output<string | undefined>;
+    declare public readonly workloadProfileName: pulumi.Output<string | undefined>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -111,19 +111,19 @@ export class Job extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["configuration"] = args ? (args.configuration ? pulumi.output(args.configuration).apply(types.inputs.jobConfigurationArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
-            resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["jobName"] = args ? args.jobName : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["template"] = args ? args.template : undefined;
-            resourceInputs["workloadProfileName"] = args ? args.workloadProfileName : undefined;
+            resourceInputs["environmentId"] = args?.environmentId;
+            resourceInputs["extendedLocation"] = args?.extendedLocation;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["jobName"] = args?.jobName;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["template"] = args?.template;
+            resourceInputs["workloadProfileName"] = args?.workloadProfileName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["eventStreamEndpoint"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -151,7 +151,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["workloadProfileName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20221101preview:Job" }, { type: "azure-native:app/v20230401preview:Job" }, { type: "azure-native:app/v20230501:Job" }, { type: "azure-native:app/v20230502preview:Job" }, { type: "azure-native:app/v20230801preview:Job" }, { type: "azure-native:app/v20231102preview:Job" }, { type: "azure-native:app/v20240202preview:Job" }, { type: "azure-native:app/v20240301:Job" }, { type: "azure-native:app/v20240802preview:Job" }, { type: "azure-native:app/v20241002preview:Job" }, { type: "azure-native:app/v20250101:Job" }, { type: "azure-native:app/v20250202preview:Job" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20221101preview:Job" }, { type: "azure-native:app/v20230401preview:Job" }, { type: "azure-native:app/v20230501:Job" }, { type: "azure-native:app/v20230502preview:Job" }, { type: "azure-native:app/v20230801preview:Job" }, { type: "azure-native:app/v20231102preview:Job" }, { type: "azure-native:app/v20240202preview:Job" }, { type: "azure-native:app/v20240301:Job" }, { type: "azure-native:app/v20240802preview:Job" }, { type: "azure-native:app/v20241002preview:Job" }, { type: "azure-native:app/v20250101:Job" }, { type: "azure-native:app/v20250202preview:Job" }, { type: "azure-native:app/v20250701:Job" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Job.__pulumiType, name, resourceInputs, opts);
     }

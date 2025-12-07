@@ -5,6 +5,8 @@ import * as types from "./types";
  * Get the properties of the specified container group profile.
  *
  * Uses Azure REST API version 2024-11-01-preview.
+ *
+ * Other available API versions: 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getCGProfile(args: GetCGProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetCGProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -26,7 +28,7 @@ export interface GetCGProfileArgs {
 }
 
 /**
- * container group profile object
+ * A container group profile object
  */
 export interface GetCGProfileResult {
     /**
@@ -40,7 +42,7 @@ export interface GetCGProfileResult {
     /**
      * The containers within the container group.
      */
-    readonly containers?: types.outputs.ContainerResponse[];
+    readonly containers: types.outputs.ContainerResponse[];
     /**
      * The diagnostic information for a container group.
      */
@@ -80,7 +82,7 @@ export interface GetCGProfileResult {
     /**
      * The operating system type required by the containers in the container group.
      */
-    readonly osType?: string;
+    readonly osType: string;
     /**
      * The priority of the container group.
      */
@@ -88,7 +90,7 @@ export interface GetCGProfileResult {
     /**
      * Registered revisions are calculated at request time based off the records in the table logs.
      */
-    readonly registeredRevisions?: number[];
+    readonly registeredRevisions: number[];
     /**
      * Restart policy for all containers within the container group. 
      * - `Always` Always restart
@@ -99,7 +101,7 @@ export interface GetCGProfileResult {
     /**
      * Container group profile current revision number
      */
-    readonly revision?: number;
+    readonly revision: number;
     /**
      * The container security properties.
      */
@@ -145,6 +147,8 @@ export interface GetCGProfileResult {
  * Get the properties of the specified container group profile.
  *
  * Uses Azure REST API version 2024-11-01-preview.
+ *
+ * Other available API versions: 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getCGProfileOutput(args: GetCGProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCGProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
