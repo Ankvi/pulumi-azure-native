@@ -818,6 +818,34 @@ export interface FleetspacePropertiesResponseThroughputPoolConfiguration {
 }
 
 /**
+ * Represents the full text path specification.
+ */
+export interface FullTextPathResponse {
+    /**
+     * The language of the full text field in the document.
+     */
+    language?: string;
+    /**
+     * The path to the full text field in the document.
+     */
+    path: string;
+}
+
+/**
+ * Cosmos DB FullText Policy
+ */
+export interface FullTextPolicyResponse {
+    /**
+     * The default language for a full text paths.
+     */
+    defaultLanguage?: string;
+    /**
+     * List of FullText Paths
+     */
+    fullTextPaths?: FullTextPathResponse[];
+}
+
+/**
  * Resource for a regional service location.
  */
 export interface GraphAPIComputeRegionalServiceResourceResponse {
@@ -1663,6 +1691,10 @@ export interface SqlContainerGetPropertiesResponseResource {
      * A system generated property representing the resource etag required for optimistic concurrency control.
      */
     etag: string;
+    /**
+     * The FullText policy for the container.
+     */
+    fullTextPolicy?: FullTextPolicyResponse;
     /**
      * Name of the Cosmos DB SQL container
      */

@@ -65,9 +65,32 @@ export interface AdvancedNetworkingObservabilityArgs {
  */
 export interface AdvancedNetworkingSecurityArgs {
     /**
+     * Enable advanced network policies. This allows users to configure Layer 7 network policies (FQDN, HTTP, Kafka). Policies themselves must be configured via the Cilium Network Policy resources, see https://docs.cilium.io/en/latest/security/policy/index.html. This can be enabled only on cilium-based clusters. If not specified, the default value is FQDN if security.enabled is set to true.
+     */
+    advancedNetworkPolicies?: pulumi.Input<string | enums.AdvancedNetworkPolicies>;
+    /**
      * This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based clusters. If not specified, the default is false.
      */
     enabled?: pulumi.Input<boolean>;
+}
+
+/**
+ * Profile of the managed cluster gateway agent pool.
+ */
+export interface AgentPoolGatewayProfileArgs {
+    /**
+     * The Gateway agent pool associates one public IPPrefix for each static egress gateway to provide public egress. The size of Public IPPrefix should be selected by the user. Each node in the agent pool is assigned with one IP from the IPPrefix. The IPPrefix size thus serves as a cap on the size of the Gateway agent pool. Due to Azure public IPPrefix size limitation, the valid value range is [28, 31] (/31 = 2 nodes/IPs, /30 = 4 nodes/IPs, /29 = 8 nodes/IPs, /28 = 16 nodes/IPs). The default value is 31.
+     */
+    publicIPPrefixSize?: pulumi.Input<number>;
+}
+/**
+ * agentPoolGatewayProfileArgsProvideDefaults sets the appropriate defaults for AgentPoolGatewayProfileArgs
+ */
+export function agentPoolGatewayProfileArgsProvideDefaults(val: AgentPoolGatewayProfileArgs): AgentPoolGatewayProfileArgs {
+    return {
+        ...val,
+        publicIPPrefixSize: (val.publicIPPrefixSize) ?? 31,
+    };
 }
 
 /**
@@ -100,6 +123,10 @@ export interface AgentPoolSecurityProfileArgs {
      * vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
      */
     enableVTPM?: pulumi.Input<boolean>;
+    /**
+     * SSH access method of an agent pool.
+     */
+    sshAccess?: pulumi.Input<string | enums.AgentPoolSSHAccess>;
 }
 
 /**
@@ -107,17 +134,25 @@ export interface AgentPoolSecurityProfileArgs {
  */
 export interface AgentPoolUpgradeSettingsArgs {
     /**
-     * The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.
+     * The drain timeout for a node. The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.
      */
     drainTimeoutInMinutes?: pulumi.Input<number>;
     /**
-     * This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+     * The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information, including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
      */
     maxSurge?: pulumi.Input<string>;
     /**
-     * The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes.
+     * The maximum number or percentage of nodes that can be simultaneously unavailable during upgrade. This can either be set to an integer (e.g. '1') or a percentage (e.g. '5%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 0. For more information, including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
+     */
+    maxUnavailable?: pulumi.Input<string>;
+    /**
+     * The soak duration for a node. The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes.
      */
     nodeSoakDurationInMinutes?: pulumi.Input<number>;
+    /**
+     * Defines the behavior for undrainable nodes during upgrade. The most common cause of undrainable nodes is Pod Disruption Budgets (PDBs), but other issues, such as pod termination grace period is exceeding the remaining per-node drain timeout or pod is still being in a running state, can also cause undrainable nodes.
+     */
+    undrainableNodeBehavior?: pulumi.Input<string | enums.UndrainableNodeBehavior>;
 }
 
 /**
@@ -125,7 +160,7 @@ export interface AgentPoolUpgradeSettingsArgs {
  */
 export interface AgentPoolWindowsProfileArgs {
     /**
-     * The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
+     * Whether to disable OutboundNAT in windows nodes. The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
      */
     disableOutboundNat?: pulumi.Input<boolean>;
 }
@@ -167,7 +202,7 @@ export interface AzureKeyVaultKmsArgs {
      */
     keyId?: pulumi.Input<string>;
     /**
-     * Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link. The default value is `Public`.
+     * Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link. The default value is `Public`.
      */
     keyVaultNetworkAccess?: pulumi.Input<string | enums.KeyVaultNetworkAccessTypes>;
     /**
@@ -222,7 +257,7 @@ export interface ContainerServiceNetworkProfileArgs {
      */
     dnsServiceIP?: pulumi.Input<string>;
     /**
-     * IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6.
+     * The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6.
      */
     ipFamilies?: pulumi.Input<pulumi.Input<string | enums.IpFamily>[]>;
     /**
@@ -230,7 +265,7 @@ export interface ContainerServiceNetworkProfileArgs {
      */
     loadBalancerProfile?: pulumi.Input<ManagedClusterLoadBalancerProfileArgs>;
     /**
-     * The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more information about the differences between load balancer SKUs.
+     * The load balancer sku for the managed cluster. The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more information about the differences between load balancer SKUs.
      */
     loadBalancerSku?: pulumi.Input<string | enums.LoadBalancerSku>;
     /**
@@ -242,7 +277,7 @@ export interface ContainerServiceNetworkProfileArgs {
      */
     networkDataplane?: pulumi.Input<string | enums.NetworkDataplane>;
     /**
-     * This cannot be specified if networkPlugin is anything other than 'azure'.
+     * The network mode Azure CNI is configured with. This cannot be specified if networkPlugin is anything other than 'azure'.
      */
     networkMode?: pulumi.Input<string | enums.NetworkMode>;
     /**
@@ -258,7 +293,7 @@ export interface ContainerServiceNetworkProfileArgs {
      */
     networkPolicy?: pulumi.Input<string | enums.NetworkPolicy>;
     /**
-     * This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
+     * The outbound (egress) routing method. This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
      */
     outboundType?: pulumi.Input<string | enums.OutboundType>;
     /**
@@ -266,7 +301,7 @@ export interface ContainerServiceNetworkProfileArgs {
      */
     podCidr?: pulumi.Input<string>;
     /**
-     * One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
+     * The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
      */
     podCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -274,9 +309,13 @@ export interface ContainerServiceNetworkProfileArgs {
      */
     serviceCidr?: pulumi.Input<string>;
     /**
-     * One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges.
+     * The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges.
      */
     serviceCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The profile for Static Egress Gateway addon. For more details about Static Egress Gateway, see https://aka.ms/aks/static-egress-gateway.
+     */
+    staticEgressGatewayProfile?: pulumi.Input<ManagedClusterStaticEgressGatewayProfileArgs>;
 }
 /**
  * containerServiceNetworkProfileArgsProvideDefaults sets the appropriate defaults for ContainerServiceNetworkProfileArgs
@@ -334,7 +373,7 @@ export interface DailyScheduleArgs {
 }
 
 /**
- * For example, between '2022-12-23' and '2023-01-05'.
+ * A date range. For example, between '2022-12-23' and '2023-01-05'.
  */
 export interface DateSpanArgs {
     /**
@@ -399,6 +438,16 @@ export interface FleetHubProfileArgs {
      * DNS prefix used to create the FQDN for the Fleet hub.
      */
     dnsPrefix?: pulumi.Input<string>;
+}
+
+/**
+ * GPU settings for the Agent Pool.
+ */
+export interface GPUProfileArgs {
+    /**
+     * Whether to install GPU drivers. When it's not specified, default is Install.
+     */
+    driver?: pulumi.Input<string | enums.GPUDriver>;
 }
 
 /**
@@ -624,7 +673,7 @@ export interface JWTAuthenticatorValidationRuleArgs {
 }
 
 /**
- * See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+ * Kubelet configurations of agent nodes. See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
  */
 export interface KubeletConfigArgs {
     /**
@@ -640,15 +689,15 @@ export interface KubeletConfigArgs {
      */
     containerLogMaxSizeMB?: pulumi.Input<number>;
     /**
-     * The default is true.
+     * If CPU CFS quota enforcement is enabled for containers that specify CPU limits. The default is true.
      */
     cpuCfsQuota?: pulumi.Input<boolean>;
     /**
-     * The default is '100ms.' Valid values are a sequence of decimal numbers with an optional fraction and a unit suffix. For example: '300ms', '2h45m'. Supported units are 'ns', 'us', 'ms', 's', 'm', and 'h'.
+     * The CPU CFS quota period value. The default is '100ms.' Valid values are a sequence of decimal numbers with an optional fraction and a unit suffix. For example: '300ms', '2h45m'. Supported units are 'ns', 'us', 'ms', 's', 'm', and 'h'.
      */
     cpuCfsQuotaPeriod?: pulumi.Input<string>;
     /**
-     * The default is 'none'. See [Kubernetes CPU management policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies) for more information. Allowed values are 'none' and 'static'.
+     * The CPU Manager policy to use. The default is 'none'. See [Kubernetes CPU management policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies) for more information. Allowed values are 'none' and 'static'.
      */
     cpuManagerPolicy?: pulumi.Input<string>;
     /**
@@ -656,11 +705,11 @@ export interface KubeletConfigArgs {
      */
     failSwapOn?: pulumi.Input<boolean>;
     /**
-     * To disable image garbage collection, set to 100. The default is 85%
+     * The percent of disk usage after which image garbage collection is always run. To disable image garbage collection, set to 100. The default is 85%
      */
     imageGcHighThreshold?: pulumi.Input<number>;
     /**
-     * This cannot be set higher than imageGcHighThreshold. The default is 80%
+     * The percent of disk usage before which image garbage collection is never run. This cannot be set higher than imageGcHighThreshold. The default is 80%
      */
     imageGcLowThreshold?: pulumi.Input<number>;
     /**
@@ -668,7 +717,7 @@ export interface KubeletConfigArgs {
      */
     podMaxPids?: pulumi.Input<number>;
     /**
-     * For more information see [Kubernetes Topology Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager). The default is 'none'. Allowed values are 'none', 'best-effort', 'restricted', and 'single-numa-node'.
+     * The Topology Manager policy to use. For more information see [Kubernetes Topology Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager). The default is 'none'. Allowed values are 'none', 'best-effort', 'restricted', and 'single-numa-node'.
      */
     topologyManagerPolicy?: pulumi.Input<string>;
 }
@@ -706,7 +755,7 @@ export interface LabelSelectorRequirementArgs {
 }
 
 /**
- * See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+ * OS configurations of Linux agent nodes. See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
  */
 export interface LinuxOSConfigArgs {
     /**
@@ -718,11 +767,11 @@ export interface LinuxOSConfigArgs {
      */
     sysctls?: pulumi.Input<SysctlConfigArgs>;
     /**
-     * Valid values are 'always', 'defer', 'defer+madvise', 'madvise' and 'never'. The default is 'madvise'. For more information see [Transparent Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
+     * Whether the kernel should make aggressive use of memory compaction to make more hugepages available. Valid values are 'always', 'defer', 'defer+madvise', 'madvise' and 'never'. The default is 'madvise'. For more information see [Transparent Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
      */
     transparentHugePageDefrag?: pulumi.Input<string>;
     /**
-     * Valid values are 'always', 'madvise', and 'never'. The default is 'always'. For more information see [Transparent Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
+     * Whether transparent hugepages are enabled. Valid values are 'always', 'madvise', and 'never'. The default is 'always'. For more information see [Transparent Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
      */
     transparentHugePageEnabled?: pulumi.Input<string>;
 }
@@ -767,7 +816,7 @@ export function maintenanceWindowArgsProvideDefaults(val: MaintenanceWindowArgs)
 }
 
 /**
- * For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
+ * AADProfile specifies attributes for Azure Active Directory integration. For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
  */
 export interface ManagedClusterAADProfileArgs {
     /**
@@ -801,11 +850,21 @@ export interface ManagedClusterAADProfileArgs {
 }
 
 /**
+ * When enabling the operator, a set of AKS managed CRDs and controllers will be installed in the cluster. The operator automates the deployment of OSS models for inference and/or training purposes. It provides a set of preset models and enables distributed inference against them.
+ */
+export interface ManagedClusterAIToolchainOperatorProfileArgs {
+    /**
+     * Whether to enable AI toolchain operator to the cluster. Indicates if AI toolchain operator  enabled or not.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+/**
  * Access profile for managed cluster API server.
  */
 export interface ManagedClusterAPIServerAccessProfileArgs {
     /**
-     * IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
+     * The IP ranges authorized to access the Kubernetes API server. IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
      */
     authorizedIPRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -813,7 +872,7 @@ export interface ManagedClusterAPIServerAccessProfileArgs {
      */
     disableRunCommand?: pulumi.Input<boolean>;
     /**
-     * For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
+     * Whether to create the cluster as a private cluster or not. For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
      */
     enablePrivateCluster?: pulumi.Input<boolean>;
     /**
@@ -821,9 +880,17 @@ export interface ManagedClusterAPIServerAccessProfileArgs {
      */
     enablePrivateClusterPublicFQDN?: pulumi.Input<boolean>;
     /**
-     * The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone). Allowed values are 'system' and 'none'.
+     * Whether to enable apiserver vnet integration for the cluster or not. See aka.ms/AksVnetIntegration for more details.
+     */
+    enableVnetIntegration?: pulumi.Input<boolean>;
+    /**
+     * The private DNS zone mode for the cluster. The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone). Allowed values are 'system' and 'none'.
      */
     privateDNSZone?: pulumi.Input<string>;
+    /**
+     * The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new cluster with BYO Vnet, or when updating an existing cluster to enable apiserver vnet integration.
+     */
+    subnetId?: pulumi.Input<string>;
 }
 
 /**
@@ -865,15 +932,15 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     enableAutoScaling?: pulumi.Input<boolean>;
     /**
-     * This is only supported on certain VM sizes and in certain Azure regions. For more information, see: https://docs.microsoft.com/azure/aks/enable-host-encryption
+     * Whether to enable host based OS and data drive encryption. This is only supported on certain VM sizes and in certain Azure regions. For more information, see: https://docs.microsoft.com/azure/aks/enable-host-encryption
      */
     enableEncryptionAtHost?: pulumi.Input<boolean>;
     /**
-     * See [Add a FIPS-enabled node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview) for more details.
+     * Whether to use a FIPS-enabled OS. See [Add a FIPS-enabled node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview) for more details.
      */
     enableFIPS?: pulumi.Input<boolean>;
     /**
-     * Some scenarios may require nodes in a node pool to receive their own dedicated public IP addresses. A common scenario is for gaming workloads, where a console needs to make a direct connection to a cloud virtual machine to minimize hops. For more information see [assigning a public IP per node](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#assign-a-public-ip-per-node-for-your-node-pools). The default is false.
+     * Whether each node is allocated its own public IP. Some scenarios may require nodes in a node pool to receive their own dedicated public IP addresses. A common scenario is for gaming workloads, where a console needs to make a direct connection to a cloud virtual machine to minimize hops. For more information see [assigning a public IP per node](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#assign-a-public-ip-per-node-for-your-node-pools). The default is false.
      */
     enableNodePublicIP?: pulumi.Input<boolean>;
     /**
@@ -881,11 +948,19 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     enableUltraSSD?: pulumi.Input<boolean>;
     /**
+     * Profile specific to a managed agent pool in Gateway mode. This field cannot be set if agent pool mode is not Gateway.
+     */
+    gatewayProfile?: pulumi.Input<AgentPoolGatewayProfileArgs>;
+    /**
      * GPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.
      */
     gpuInstanceProfile?: pulumi.Input<string | enums.GPUInstanceProfile>;
     /**
-     * This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}. For more information see [Azure dedicated hosts](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts).
+     * GPU settings for the Agent Pool.
+     */
+    gpuProfile?: pulumi.Input<GPUProfileArgs>;
+    /**
+     * The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}. For more information see [Azure dedicated hosts](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts).
      */
     hostGroupID?: pulumi.Input<string>;
     /**
@@ -909,7 +984,7 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     maxPods?: pulumi.Input<number>;
     /**
-     * A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).
+     * Message of the day for Linux nodes, base64-encoded. A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).
      */
     messageOfTheDay?: pulumi.Input<string>;
     /**
@@ -917,11 +992,11 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     minCount?: pulumi.Input<number>;
     /**
-     * A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
+     * The mode of an agent pool. A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
      */
     mode?: pulumi.Input<string | enums.AgentPoolMode>;
     /**
-     * Windows agent pool names must be 6 characters or less.
+     * Unique name of the agent pool profile in the context of the subscription and resource group. Windows agent pool names must be 6 characters or less.
      */
     name: pulumi.Input<string>;
     /**
@@ -933,7 +1008,7 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     nodeLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
+     * The public IP prefix ID which VM nodes should use IPs from. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
      */
     nodePublicIPPrefixID?: pulumi.Input<string>;
     /**
@@ -941,7 +1016,7 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     nodeTaints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. As a best practice, you should upgrade all node pools in an AKS cluster to the same Kubernetes version. The node pool version must have the same major version as the control plane. The node pool minor version must be within two minor versions of the control plane version. The node pool version cannot be greater than the control plane version. For more information see [upgrading a node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool).
+     * The version of Kubernetes specified by the user. Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. As a best practice, you should upgrade all node pools in an AKS cluster to the same Kubernetes version. The node pool version must have the same major version as the control plane. The node pool minor version must be within two minor versions of the control plane version. The node pool version cannot be greater than the control plane version. For more information see [upgrading a node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool).
      */
     orchestratorVersion?: pulumi.Input<string>;
     /**
@@ -949,7 +1024,7 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     osDiskSizeGB?: pulumi.Input<number>;
     /**
-     * The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
+     * The OS disk type to be used for machines in the agent pool. The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
      */
     osDiskType?: pulumi.Input<string | enums.OSDiskType>;
     /**
@@ -961,11 +1036,15 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     osType?: pulumi.Input<string | enums.OSType>;
     /**
-     * If omitted, pod IPs are statically assigned on the node subnet (see vnetSubnetID for more details). This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+     * Pod IP Allocation Mode. The IP allocation mode for pods in the agent pool. Must be used with podSubnetId. The default is 'DynamicIndividual'.
+     */
+    podIPAllocationMode?: pulumi.Input<string | enums.PodIPAllocationMode>;
+    /**
+     * The ID of the subnet which pods will join when launched. If omitted, pod IPs are statically assigned on the node subnet (see vnetSubnetID for more details). This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
      */
     podSubnetID?: pulumi.Input<string>;
     /**
-     * When an Agent Pool is first created it is initially Running. The Agent Pool can be stopped by setting this field to Stopped. A stopped Agent Pool stops all of its VMs and does not accrue billing charges. An Agent Pool can only be stopped if it is Running and provisioning state is Succeeded
+     * Whether the Agent Pool is running or stopped. When an Agent Pool is first created it is initially Running. The Agent Pool can be stopped by setting this field to Stopped. A stopped Agent Pool stops all of its VMs and does not accrue billing charges. An Agent Pool can only be stopped if it is Running and provisioning state is Succeeded
      */
     powerState?: pulumi.Input<PowerStateArgs>;
     /**
@@ -973,11 +1052,11 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     proximityPlacementGroupID?: pulumi.Input<string>;
     /**
-     * This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete.
+     * The scale down mode to use when scaling the Agent Pool. This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete.
      */
     scaleDownMode?: pulumi.Input<string | enums.ScaleDownMode>;
     /**
-     * This cannot be specified unless the scaleSetPriority is 'Spot'. If not specified, the default is 'Delete'.
+     * The Virtual Machine Scale Set eviction policy to use. This cannot be specified unless the scaleSetPriority is 'Spot'. If not specified, the default is 'Delete'.
      */
     scaleSetEvictionPolicy?: pulumi.Input<string | enums.ScaleSetEvictionPolicy>;
     /**
@@ -989,7 +1068,7 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     securityProfile?: pulumi.Input<AgentPoolSecurityProfileArgs>;
     /**
-     * Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
+     * The max price (in US Dollars) you are willing to pay for spot instances. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand. Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
      */
     spotMaxPrice?: pulumi.Input<number>;
     /**
@@ -1005,11 +1084,19 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     upgradeSettings?: pulumi.Input<AgentPoolUpgradeSettingsArgs>;
     /**
-     * VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. If this field is not specified, AKS will attempt to find an appropriate VM SKU for your pool, based on quota and capacity. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
+     * The status of nodes in a VirtualMachines agent pool.
+     */
+    virtualMachineNodesStatus?: pulumi.Input<pulumi.Input<VirtualMachineNodesArgs>[]>;
+    /**
+     * Specifications on VirtualMachines agent pool.
+     */
+    virtualMachinesProfile?: pulumi.Input<VirtualMachinesProfileArgs>;
+    /**
+     * The size of the agent pool VMs. VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
      */
     vmSize?: pulumi.Input<string>;
     /**
-     * If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+     * The ID of the subnet which agent pool nodes and optionally pods will join on startup. If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
      */
     vnetSubnetID?: pulumi.Input<string>;
     /**
@@ -1021,17 +1108,26 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     workloadRuntime?: pulumi.Input<string | enums.WorkloadRuntime>;
 }
+/**
+ * managedClusterAgentPoolProfileArgsProvideDefaults sets the appropriate defaults for ManagedClusterAgentPoolProfileArgs
+ */
+export function managedClusterAgentPoolProfileArgsProvideDefaults(val: ManagedClusterAgentPoolProfileArgs): ManagedClusterAgentPoolProfileArgs {
+    return {
+        ...val,
+        gatewayProfile: (val.gatewayProfile ? pulumi.output(val.gatewayProfile).apply(agentPoolGatewayProfileArgsProvideDefaults) : undefined),
+    };
+}
 
 /**
  * Auto upgrade profile for a managed cluster.
  */
 export interface ManagedClusterAutoUpgradeProfileArgs {
     /**
-     * Manner in which the OS on your nodes is updated. The default is NodeImage.
+     * Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage.
      */
     nodeOSUpgradeChannel?: pulumi.Input<string | enums.NodeOSUpgradeChannel>;
     /**
-     * For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
+     * The upgrade channel for auto upgrade. The default is 'none'. For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
      */
     upgradeChannel?: pulumi.Input<string | enums.UpgradeChannel>;
 }
@@ -1075,11 +1171,34 @@ export interface ManagedClusterAzureMonitorProfileMetricsArgs {
 }
 
 /**
+ * The bootstrap profile.
+ */
+export interface ManagedClusterBootstrapProfileArgs {
+    /**
+     * The artifact source. The source where the artifacts are downloaded from.
+     */
+    artifactSource?: pulumi.Input<string | enums.ArtifactSource>;
+    /**
+     * The resource Id of Azure Container Registry. The registry must have private network access, premium SKU and zone redundancy.
+     */
+    containerRegistryId?: pulumi.Input<string>;
+}
+/**
+ * managedClusterBootstrapProfileArgsProvideDefaults sets the appropriate defaults for ManagedClusterBootstrapProfileArgs
+ */
+export function managedClusterBootstrapProfileArgsProvideDefaults(val: ManagedClusterBootstrapProfileArgs): ManagedClusterBootstrapProfileArgs {
+    return {
+        ...val,
+        artifactSource: (val.artifactSource) ?? "Direct",
+    };
+}
+
+/**
  * The cost analysis configuration for the cluster
  */
 export interface ManagedClusterCostAnalysisArgs {
     /**
-     * The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
+     * Whether to enable cost analysis. The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
      */
     enabled?: pulumi.Input<boolean>;
 }
@@ -1115,11 +1234,11 @@ export interface ManagedClusterIdentityArgs {
      */
     delegatedResources?: pulumi.Input<{[key: string]: pulumi.Input<DelegatedResourceArgs>}>;
     /**
-     * For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
+     * The type of identity used for the managed cluster. For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
      */
     type?: pulumi.Input<enums.ResourceIdentityType>;
     /**
-     * The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     * The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
     userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -1134,6 +1253,13 @@ export interface ManagedClusterIngressProfileArgs {
     webAppRouting?: pulumi.Input<ManagedClusterIngressProfileWebAppRoutingArgs>;
 }
 
+export interface ManagedClusterIngressProfileNginxArgs {
+    /**
+     * Ingress type for the default NginxIngressController custom resource
+     */
+    defaultIngressControllerType?: pulumi.Input<string | enums.NginxIngressControllerType>;
+}
+
 /**
  * Application Routing add-on settings for the ingress profile.
  */
@@ -1146,6 +1272,10 @@ export interface ManagedClusterIngressProfileWebAppRoutingArgs {
      * Whether to enable the Application Routing add-on.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Configuration for the default NginxIngressController. See more at https://learn.microsoft.com/en-us/azure/aks/app-routing-nginx-configuration#the-default-nginx-ingress-controller.
+     */
+    nginx?: pulumi.Input<ManagedClusterIngressProfileNginxArgs>;
 }
 
 /**
@@ -1160,10 +1290,6 @@ export interface ManagedClusterLoadBalancerProfileArgs {
      * The type of the managed inbound Load Balancer BackendPool.
      */
     backendPoolType?: pulumi.Input<string | enums.BackendPoolType>;
-    /**
-     * The effective outbound IP resources of the cluster load balancer.
-     */
-    effectiveOutboundIPs?: pulumi.Input<pulumi.Input<ResourceReferenceArgs>[]>;
     /**
      * Enable multiple standard load balancers per AKS cluster or not.
      */
@@ -1266,7 +1392,7 @@ export function managedClusterManagedOutboundIPProfileArgsProvideDefaults(val: M
  */
 export interface ManagedClusterMetricsProfileArgs {
     /**
-     * The cost analysis configuration for the cluster
+     * The configuration for detailed per-Kubernetes resource cost analysis.
      */
     costAnalysis?: pulumi.Input<ManagedClusterCostAnalysisArgs>;
 }
@@ -1275,10 +1401,6 @@ export interface ManagedClusterMetricsProfileArgs {
  * Profile of the managed cluster NAT gateway.
  */
 export interface ManagedClusterNATGatewayProfileArgs {
-    /**
-     * The effective outbound IP resources of the cluster NAT gateway.
-     */
-    effectiveOutboundIPs?: pulumi.Input<pulumi.Input<ResourceReferenceArgs>[]>;
     /**
      * Desired outbound flow idle timeout in minutes. Allowed values are in the range of 4 to 120 (inclusive). The default value is 4 minutes.
      */
@@ -1296,6 +1418,26 @@ export function managedClusterNATGatewayProfileArgsProvideDefaults(val: ManagedC
         ...val,
         idleTimeoutInMinutes: (val.idleTimeoutInMinutes) ?? 4,
         managedOutboundIPProfile: (val.managedOutboundIPProfile ? pulumi.output(val.managedOutboundIPProfile).apply(managedClusterManagedOutboundIPProfileArgsProvideDefaults) : undefined),
+    };
+}
+
+export interface ManagedClusterNodeProvisioningProfileArgs {
+    /**
+     * The set of default Karpenter NodePools (CRDs) configured for node provisioning. This field has no effect unless mode is 'Auto'. Warning: Changing this from Auto to None on an existing cluster will cause the default Karpenter NodePools to be deleted, which will drain and delete the nodes associated with those pools. It is strongly recommended to not do this unless there are idle nodes ready to take the pods evicted by that action. If not specified, the default is Auto. For more information see aka.ms/aks/nap#node-pools.
+     */
+    defaultNodePools?: pulumi.Input<string | enums.NodeProvisioningDefaultNodePools>;
+    /**
+     * The node provisioning mode. If not specified, the default is Manual.
+     */
+    mode?: pulumi.Input<string | enums.NodeProvisioningMode>;
+}
+/**
+ * managedClusterNodeProvisioningProfileArgsProvideDefaults sets the appropriate defaults for ManagedClusterNodeProvisioningProfileArgs
+ */
+export function managedClusterNodeProvisioningProfileArgsProvideDefaults(val: ManagedClusterNodeProvisioningProfileArgs): ManagedClusterNodeProvisioningProfileArgs {
+    return {
+        ...val,
+        defaultNodePools: (val.defaultNodePools) ?? "Auto",
     };
 }
 
@@ -1342,7 +1484,7 @@ export interface ManagedClusterPodIdentityArgs {
 }
 
 /**
- * See [disable AAD Pod Identity for a specific Pod/Application](https://azure.github.io/aad-pod-identity/docs/configure/application_exception/) for more details.
+ * A pod identity exception, which allows pods with certain labels to access the Azure Instance Metadata Service (IMDS) endpoint without being intercepted by the node-managed identity (NMI) server. See [disable AAD Pod Identity for a specific Pod/Application](https://azure.github.io/aad-pod-identity/docs/configure/application_exception/) for more details.
  */
 export interface ManagedClusterPodIdentityExceptionArgs {
     /**
@@ -1360,11 +1502,11 @@ export interface ManagedClusterPodIdentityExceptionArgs {
 }
 
 /**
- * See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod identity integration.
+ * The pod identity profile of the Managed Cluster. See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod identity integration.
  */
 export interface ManagedClusterPodIdentityProfileArgs {
     /**
-     * Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities) for more information.
+     * Whether pod identity is allowed to run on clusters with Kubenet networking. Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities) for more information.
      */
     allowNetworkPluginKubenet?: pulumi.Input<boolean>;
     /**
@@ -1386,83 +1528,83 @@ export interface ManagedClusterPodIdentityProfileArgs {
  */
 export interface ManagedClusterPropertiesAutoScalerProfileArgs {
     /**
-     * Valid values are 'true' and 'false'
+     * Detects similar node pools and balances the number of nodes between them. Valid values are 'true' and 'false'
      */
     balanceSimilarNodeGroups?: pulumi.Input<string>;
     /**
-     * If set to true, all daemonset pods on empty nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+     * DaemonSet pods will be gracefully terminated from empty nodes. If set to true, all daemonset pods on empty nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
      */
     daemonsetEvictionForEmptyNodes?: pulumi.Input<boolean>;
     /**
-     * If set to true, all daemonset pods on occupied nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+     * DaemonSet pods will be gracefully terminated from non-empty nodes. If set to true, all daemonset pods on occupied nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
      */
     daemonsetEvictionForOccupiedNodes?: pulumi.Input<boolean>;
     /**
-     * If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
+     * The expander to use when scaling up. If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
      */
     expander?: pulumi.Input<string | enums.Expander>;
     /**
-     * If set to true, the resources used by daemonset will be taken into account when making scaling down decisions.
+     * Should CA ignore DaemonSet pods when calculating resource utilization for scaling down. If set to true, the resources used by daemonset will be taken into account when making scaling down decisions.
      */
     ignoreDaemonsetsUtilization?: pulumi.Input<boolean>;
     /**
-     * The default is 10.
+     * The maximum number of empty nodes that can be deleted at the same time. This must be a positive integer. The default is 10.
      */
     maxEmptyBulkDelete?: pulumi.Input<string>;
     /**
-     * The default is 600.
+     * The maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node. The default is 600.
      */
     maxGracefulTerminationSec?: pulumi.Input<string>;
     /**
-     * The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+     * The maximum time the autoscaler waits for a node to be provisioned. The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
      */
     maxNodeProvisionTime?: pulumi.Input<string>;
     /**
-     * The default is 45. The maximum is 100 and the minimum is 0.
+     * The maximum percentage of unready nodes in the cluster. After this percentage is exceeded, cluster autoscaler halts operations. The default is 45. The maximum is 100 and the minimum is 0.
      */
     maxTotalUnreadyPercentage?: pulumi.Input<string>;
     /**
-     * For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).
+     * Ignore unscheduled pods before they're a certain age. For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).
      */
     newPodScaleUpDelay?: pulumi.Input<string>;
     /**
-     * This must be an integer. The default is 3.
+     * The number of allowed unready nodes, irrespective of max-total-unready-percentage. This must be an integer. The default is 3.
      */
     okTotalUnreadyCount?: pulumi.Input<string>;
     /**
-     * The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+     * How long after scale up that scale down evaluation resumes. The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
      */
     scaleDownDelayAfterAdd?: pulumi.Input<string>;
     /**
-     * The default is the scan-interval. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+     * How long after node deletion that scale down evaluation resumes. The default is the scan-interval. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
      */
     scaleDownDelayAfterDelete?: pulumi.Input<string>;
     /**
-     * The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+     * How long after scale down failure that scale down evaluation resumes. The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
      */
     scaleDownDelayAfterFailure?: pulumi.Input<string>;
     /**
-     * The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+     * How long a node should be unneeded before it is eligible for scale down. The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
      */
     scaleDownUnneededTime?: pulumi.Input<string>;
     /**
-     * The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+     * How long an unready node should be unneeded before it is eligible for scale down. The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
      */
     scaleDownUnreadyTime?: pulumi.Input<string>;
     /**
-     * The default is '0.5'.
+     * Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down. The default is '0.5'.
      */
     scaleDownUtilizationThreshold?: pulumi.Input<string>;
     /**
-     * The default is '10'. Values must be an integer number of seconds.
+     * How often cluster is reevaluated for scale up or down. The default is '10'. Values must be an integer number of seconds.
      */
     scanInterval?: pulumi.Input<string>;
     /**
-     * The default is true.
+     * If cluster autoscaler will skip deleting nodes with pods with local storage, for example, EmptyDir or HostPath. The default is true.
      */
     skipNodesWithLocalStorage?: pulumi.Input<string>;
     /**
-     * The default is true.
+     * If cluster autoscaler will skip deleting nodes with pods from kube-system (except for DaemonSet or mirror pods). The default is true.
      */
     skipNodesWithSystemPods?: pulumi.Input<string>;
 }
@@ -1476,7 +1618,7 @@ export interface ManagedClusterSKUArgs {
      */
     name?: pulumi.Input<string | enums.ManagedClusterSKUName>;
     /**
-     * If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details.
+     * The tier of a managed cluster SKU. If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details.
      */
     tier?: pulumi.Input<string | enums.ManagedClusterSKUTier>;
 }
@@ -1489,6 +1631,10 @@ export interface ManagedClusterSecurityProfileArgs {
      * Azure Key Vault [key management service](https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/) settings for the security profile.
      */
     azureKeyVaultKms?: pulumi.Input<AzureKeyVaultKmsArgs>;
+    /**
+     * A list of up to 10 base64 encoded CAs that will be added to the trust store on all nodes in the cluster. For more information see [Custom CA Trust Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).
+     */
+    customCATrustCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Microsoft Defender settings for the security profile.
      */
@@ -1572,6 +1718,16 @@ export interface ManagedClusterServicePrincipalProfileArgs {
      * The secret password associated with the service principal in plain text.
      */
     secret?: pulumi.Input<string>;
+}
+
+/**
+ * The Static Egress Gateway addon configuration for the cluster.
+ */
+export interface ManagedClusterStaticEgressGatewayProfileArgs {
+    /**
+     * Enable Static Egress Gateway addon. Indicates if Static Egress Gateway addon is enabled or not.
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 /**
@@ -1677,7 +1833,7 @@ export interface ManagedClusterWindowsProfileArgs {
      */
     adminUsername: pulumi.Input<string>;
     /**
-     * For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
+     * Whether to enable CSI proxy. For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
      */
     enableCSIProxy?: pulumi.Input<boolean>;
     /**
@@ -1754,6 +1910,20 @@ export interface ManagedServiceIdentityArgs {
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
     userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Specifications on number of machines.
+ */
+export interface ManualScaleProfileArgs {
+    /**
+     * Number of nodes.
+     */
+    count?: pulumi.Input<number>;
+    /**
+     * VM size that AKS will use when creating and scaling e.g. 'Standard_E4s_v3', 'Standard_E16s_v3' or 'Standard_D16s_v5'.
+     */
+    size?: pulumi.Input<string>;
 }
 
 /**
@@ -1963,7 +2133,7 @@ export interface RelativeMonthlyScheduleArgs {
      */
     intervalMonths: pulumi.Input<number>;
     /**
-     * Specifies on which week of the month the dayOfWeek applies.
+     * The week index. Specifies on which week of the month the dayOfWeek applies.
      */
     weekIndex: pulumi.Input<string | enums.Type>;
 }
@@ -1998,6 +2168,16 @@ export interface ResourceReferenceArgs {
      * The fully qualified Azure resource id.
      */
     id?: pulumi.Input<string>;
+}
+
+/**
+ * Specifications on how to scale a VirtualMachines agent pool.
+ */
+export interface ScaleProfileArgs {
+    /**
+     * Specifications on how to scale the VirtualMachines agent pool to a fixed size.
+     */
+    manual?: pulumi.Input<pulumi.Input<ManualScaleProfileArgs>[]>;
 }
 
 /**
@@ -2163,13 +2343,13 @@ export interface TimeInWeekArgs {
      */
     day?: pulumi.Input<string | enums.WeekDay>;
     /**
-     * Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range.
+     * A list of hours in the day used to identify a time range. Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range.
      */
     hourSlots?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
 /**
- * For example, between 2021-05-25T13:00:00Z and 2021-05-25T14:00:00Z.
+ * A time range. For example, between 2021-05-25T13:00:00Z and 2021-05-25T14:00:00Z.
  */
 export interface TimeSpanArgs {
     /**
@@ -2260,6 +2440,30 @@ export interface UserAssignedIdentityArgs {
 }
 
 /**
+ * Current status on a group of nodes of the same vm size.
+ */
+export interface VirtualMachineNodesArgs {
+    /**
+     * Number of nodes.
+     */
+    count?: pulumi.Input<number>;
+    /**
+     * The VM size of the agents used to host this group of nodes.
+     */
+    size?: pulumi.Input<string>;
+}
+
+/**
+ * Specifications on VirtualMachines agent pool.
+ */
+export interface VirtualMachinesProfileArgs {
+    /**
+     * Specifications on how to scale a VirtualMachines agent pool.
+     */
+    scale?: pulumi.Input<ScaleProfileArgs>;
+}
+
+/**
  * For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
  */
 export interface WeeklyScheduleArgs {
@@ -2282,7 +2486,7 @@ export interface WindowsGmsaProfileArgs {
      */
     dnsServer?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable Windows gMSA in the managed cluster.
+     * Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster.
      */
     enabled?: pulumi.Input<boolean>;
     /**
