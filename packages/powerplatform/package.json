@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-powerplatform",
-    "version": "3.12.0",
+    "version": "3.12.1",
     "description": "Pulumi Azure Native package for powerplatform",
     "keywords": [
         "pulumi",
