@@ -1076,6 +1076,20 @@ export interface DomainValidationPropertiesResponse {
 }
 
 /**
+ * Edge action attachment information
+ */
+export interface EdgeActionAttachmentResponse {
+    /**
+     * The attached resource Id
+     */
+    attachedResourceId: string;
+    /**
+     * The edge action attachment id
+     */
+    id: string;
+}
+
+/**
  * A policy that specifies the delivery rules to be used for an endpoint.
  */
 export interface EndpointPropertiesUpdateParametersDeliveryPolicyResponse {
@@ -2129,6 +2143,20 @@ export interface SkuResponse {
      * Name of the pricing tier.
      */
     name?: string;
+}
+
+/**
+ * The SKU type for the edge action
+ */
+export interface SkuTypeResponse {
+    /**
+     * The name of the SKU
+     */
+    name: string;
+    /**
+     * The tier of the SKU
+     */
+    tier: string;
 }
 
 /**

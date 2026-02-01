@@ -147,6 +147,76 @@ export function accountPropertiesArgsProvideDefaults(val: AccountPropertiesArgs)
 }
 
 /**
+ * Type modeling the protocol and version used by an agent/exposed by a deployment.
+ */
+export interface AgentProtocolVersionArgs {
+    /**
+     * The protocol used by the agent/exposed by a deployment.
+     */
+    protocol?: pulumi.Input<string | enums.AgentProtocol>;
+    /**
+     * The version of the protocol.
+     */
+    version?: pulumi.Input<string>;
+}
+
+/**
+ * Type modeling a reference to a version of an agent definition.
+ */
+export interface AgentReferenceArgs {
+    /**
+     * Gets the agent's unique identifier within the organization (subscription).
+     */
+    agentId?: pulumi.Input<string>;
+    /**
+     * Gets the agent's name (unique within the project/app).
+     */
+    agentName?: pulumi.Input<string>;
+}
+
+/**
+ * Resource type representing an agentic application as a management construct.
+ */
+export interface AgenticApplicationArgs {
+    /**
+     * The EntraId Agentic Blueprint of the application.
+     */
+    agentIdentityBlueprint?: pulumi.Input<AssignedIdentityArgs>;
+    /**
+     * The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application.
+     */
+    agents?: pulumi.Input<pulumi.Input<AgentReferenceArgs>[]>;
+    /**
+     * Gets or sets the authorization policy associated with this agentic application instance.
+     */
+    authorizationPolicy?: pulumi.Input<ChannelsBuiltInAuthorizationPolicyArgs | OrganizationSharedBuiltInAuthorizationPolicyArgs | RoleBasedBuiltInAuthorizationPolicyArgs>;
+    /**
+     * The application's dedicated invocation endpoint.
+     */
+    baseUrl?: pulumi.Input<string>;
+    /**
+     * The (default) agent instance identity of the application.
+     */
+    defaultInstanceIdentity?: pulumi.Input<AssignedIdentityArgs>;
+    /**
+     * The asset description text.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The display name of the application.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Tag dictionary. Tags can be added, removed, and updated.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Gets or sets the traffic routing policy for the application's deployments.
+     */
+    trafficRoutingPolicy?: pulumi.Input<ApplicationTrafficRoutingPolicyArgs>;
+}
+
+/**
  * This connection type covers the generic ApiKey auth connection categories, for examples:
  * AzureOpenAI:
  *     Category:= AzureOpenAI
@@ -242,6 +312,50 @@ export interface ApiPropertiesArgs {
     websiteName?: pulumi.Input<string>;
 }
 
+/**
+ * Type representing an application traffic policy as a property of an agentic application.
+ */
+export interface ApplicationTrafficRoutingPolicyArgs {
+    /**
+     * Methodology used to route traffic to the application's deployments.
+     */
+    protocol?: pulumi.Input<string | enums.TrafficRoutingProtocol>;
+    /**
+     * Gets or sets the collection of traffic routing rules.
+     */
+    rules?: pulumi.Input<pulumi.Input<TrafficRoutingRuleArgs>[]>;
+}
+
+/**
+ * Type representing an identity assignment
+ */
+export interface AssignedIdentityArgs {
+    /**
+     * The client ID of the identity.
+     */
+    clientId: pulumi.Input<string>;
+    /**
+     * Specifies the kind of Entra identity described by this object.
+     */
+    kind: pulumi.Input<string | enums.IdentityKind>;
+    /**
+     * The principal ID of the identity.
+     */
+    principalId: pulumi.Input<string>;
+    /**
+     * The subject of this identity assignment.
+     */
+    subject?: pulumi.Input<string>;
+    /**
+     * The tenant ID of the identity.
+     */
+    tenantId: pulumi.Input<string>;
+    /**
+     * Enumeration of identity types, from the perspective of management.
+     */
+    type: pulumi.Input<string | enums.IdentityManagementType>;
+}
+
 export interface CapabilityHostArgs {
     /**
      * List of AI services connections.
@@ -284,6 +398,17 @@ export function capabilityHostArgsProvideDefaults(val: CapabilityHostArgs): Capa
         ...val,
         capabilityHostKind: (val.capabilityHostKind) ?? "Agents",
     };
+}
+
+/**
+ * Represents a built-in authorization policy specific to Azure Bot Service/Channels authentication.
+ */
+export interface ChannelsBuiltInAuthorizationPolicyArgs {
+    /**
+     * Authorization scheme type.
+     * Expected value is 'Channels'.
+     */
+    type: pulumi.Input<"Channels">;
 }
 
 /**
@@ -473,6 +598,24 @@ export interface CustomKeysConnectionPropertiesArgs {
 }
 
 /**
+ * Gets or sets the source to which filter applies.
+ */
+export interface CustomTopicConfigArgs {
+    /**
+     * If blocking would occur.
+     */
+    blocking?: pulumi.Input<boolean>;
+    /**
+     * Content source to apply the Content Filters.
+     */
+    source?: pulumi.Input<string | enums.RaiPolicyContentSource>;
+    /**
+     * Name of RAI topic.
+     */
+    topicName?: pulumi.Input<string>;
+}
+
+/**
  * Internal use only.
  */
 export interface DeploymentCapacitySettingsArgs {
@@ -615,6 +758,73 @@ export function encryptionScopePropertiesArgsProvideDefaults(val: EncryptionScop
 }
 
 /**
+ * FQDN Outbound Rule for the managed network of a cognitive services account.
+ */
+export interface FqdnOutboundRuleArgs {
+    /**
+     * Category of a managed network Outbound Rule of a cognitive services account.
+     */
+    category?: pulumi.Input<string | enums.RuleCategory>;
+    destination?: pulumi.Input<string>;
+    /**
+     * Type of a managed network Outbound Rule of a cognitive services account.
+     */
+    status?: pulumi.Input<string | enums.RuleStatus>;
+    /**
+     * Type of a managed network Outbound Rule of a cognitive services account.
+     * Expected value is 'FQDN'.
+     */
+    type: pulumi.Input<"FQDN">;
+}
+
+/**
+ * Represents a hosted agent deployment where the underlying infrastructure is owned by the platform.
+ */
+export interface HostedAgentDeploymentArgs {
+    /**
+     * Returns a flat list of agent:version deployed in this deployment.
+     */
+    agents?: pulumi.Input<pulumi.Input<VersionedAgentReferenceArgs>[]>;
+    /**
+     * Gets or sets the unique identifier of the deployment.
+     */
+    deploymentId?: pulumi.Input<string>;
+    /**
+     * Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed.
+     * Expected value is 'Hosted'.
+     */
+    deploymentType: pulumi.Input<"Hosted">;
+    /**
+     * The asset description text.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Gets or sets the display name of the deployment.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Gets or sets the maximum number of replicas for this hosted deployment.
+     */
+    maxReplicas?: pulumi.Input<number>;
+    /**
+     * Gets or sets the minimum number of replicas for this hosted deployment.
+     */
+    minReplicas?: pulumi.Input<number>;
+    /**
+     * Gets or sets the supported protocol types and versions exposed by this deployment.
+     */
+    protocols?: pulumi.Input<pulumi.Input<AgentProtocolVersionArgs>[]>;
+    /**
+     * Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
+     */
+    state?: pulumi.Input<string | enums.AgentDeploymentState>;
+    /**
+     * Tag dictionary. Tags can be added, removed, and updated.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+/**
  * Identity for the resource.
  */
 export interface IdentityArgs {
@@ -655,6 +865,45 @@ export interface KeyVaultPropertiesArgs {
      * Version of the Key from KeyVault
      */
     keyVersion?: pulumi.Input<string>;
+}
+
+/**
+ * Represents a managed agent deployment where the underlying infrastructure is managed by the platform in the deployer's subscription.
+ */
+export interface ManagedAgentDeploymentArgs {
+    /**
+     * Returns a flat list of agent:version deployed in this deployment.
+     */
+    agents?: pulumi.Input<pulumi.Input<VersionedAgentReferenceArgs>[]>;
+    /**
+     * Gets or sets the unique identifier of the deployment.
+     */
+    deploymentId?: pulumi.Input<string>;
+    /**
+     * Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed.
+     * Expected value is 'Managed'.
+     */
+    deploymentType: pulumi.Input<"Managed">;
+    /**
+     * The asset description text.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Gets or sets the display name of the deployment.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Gets or sets the supported protocol types and versions exposed by this deployment.
+     */
+    protocols?: pulumi.Input<pulumi.Input<AgentProtocolVersionArgs>[]>;
+    /**
+     * Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
+     */
+    state?: pulumi.Input<string | enums.AgentDeploymentState>;
+    /**
+     * Tag dictionary. Tags can be added, removed, and updated.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface ManagedIdentityAuthTypeConnectionPropertiesArgs {
@@ -768,6 +1017,17 @@ export interface OAuth2AuthTypeConnectionPropertiesArgs {
     useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
 }
 
+/**
+ * Built-in authorization policy scoped to organization/tenant.
+ */
+export interface OrganizationSharedBuiltInAuthorizationPolicyArgs {
+    /**
+     * Authorization scheme type.
+     * Expected value is 'OrganizationScope'.
+     */
+    type: pulumi.Input<"OrganizationScope">;
+}
+
 export interface PATAuthTypeConnectionPropertiesArgs {
     /**
      * Authentication type of the connection target
@@ -825,6 +1085,25 @@ export interface PrivateLinkServiceConnectionStateArgs {
     status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
 }
 
+export interface ProjectCapabilityHostArgs {
+    /**
+     * List of AI services connections.
+     */
+    aiServicesConnections?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of connection names from those available in the account or project to be used as a storage resource.
+     */
+    storageConnections?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of connection names from those available in the account or project to be used for Thread storage.
+     */
+    threadStorageConnections?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
+     */
+    vectorStoreConnections?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 /**
  * Properties of Cognitive Services Project'.
  */
@@ -864,6 +1143,40 @@ export interface RaiBlocklistPropertiesArgs {
 }
 
 /**
+ * RAI External SafetyProvider schema properties.
+ */
+export interface RaiExternalSafetyProviderSchemaPropertiesArgs {
+    /**
+     * The Key Vault URI that contains the api key for safety provider urls.
+     */
+    keyVaultUri?: pulumi.Input<string>;
+    /**
+     * The managed identity to access the Key Vault.
+     */
+    managedIdentity?: pulumi.Input<string>;
+    /**
+     * Safety provider mode sync/async.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * The unique identifier of the safety provider.
+     */
+    providerId?: pulumi.Input<string>;
+    /**
+     * Name of the safety provider.
+     */
+    providerName?: pulumi.Input<string>;
+    /**
+     * The name of the secret in Key Vault that contains the api key to access the webhook.
+     */
+    secretName?: pulumi.Input<string>;
+    /**
+     * Webhook URL for the safety provider.
+     */
+    url?: pulumi.Input<string>;
+}
+
+/**
  * Cognitive Services Rai Monitor Config.
  */
 export interface RaiMonitorConfigArgs {
@@ -881,6 +1194,10 @@ export interface RaiMonitorConfigArgs {
  * Azure OpenAI Content Filter.
  */
 export interface RaiPolicyContentFilterArgs {
+    /**
+     * The action types to apply to the content filters
+     */
+    action?: pulumi.Input<string | enums.RaiActionType>;
     /**
      * If blocking would occur.
      */
@@ -920,9 +1237,56 @@ export interface RaiPolicyPropertiesArgs {
      */
     customBlocklists?: pulumi.Input<pulumi.Input<CustomBlocklistConfigArgs>[]>;
     /**
-     * Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
+     * The list of custom rai topics.
+     */
+    customTopics?: pulumi.Input<pulumi.Input<CustomTopicConfigArgs>[]>;
+    /**
+     * Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
      */
     mode?: pulumi.Input<string | enums.RaiPolicyMode>;
+    /**
+     * The list of Safety Providers.
+     */
+    safetyProviders?: pulumi.Input<pulumi.Input<SafetyProviderConfigArgs>[]>;
+}
+
+/**
+ * RAI Tool Label properties.
+ */
+export interface RaiToolLabelPropertiesArgs {
+    /**
+     * Account-level tool label definition.
+     */
+    accountScope?: pulumi.Input<RaiToolLabelPropertiesAccountScopeArgs>;
+    /**
+     * List of project-level tool label definitions.
+     */
+    projectScopes?: pulumi.Input<pulumi.Input<RaiToolLabelPropertiesProjectScopesArgs>[]>;
+    /**
+     * The unique tool connection name, e.g., 'Web_Search'.
+     */
+    toolConnectionName: pulumi.Input<string>;
+}
+
+/**
+ * Account-level tool label definition.
+ */
+export interface RaiToolLabelPropertiesAccountScopeArgs {
+    /**
+     * Dictionary of label key-value pairs for the account scope.
+     */
+    labelValues?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface RaiToolLabelPropertiesProjectScopesArgs {
+    /**
+     * Dictionary of label key-value pairs for the project scope.
+     */
+    labelValues: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Project name to which this scope applies.
+     */
+    project: pulumi.Input<string>;
 }
 
 /**
@@ -981,6 +1345,17 @@ export interface RegionSettingArgs {
     value?: pulumi.Input<number>;
 }
 
+/**
+ * Built-in role-based authorization policy.
+ */
+export interface RoleBasedBuiltInAuthorizationPolicyArgs {
+    /**
+     * Authorization scheme type.
+     * Expected value is 'Default'.
+     */
+    type: pulumi.Input<"Default">;
+}
+
 export interface SASAuthTypeConnectionPropertiesArgs {
     /**
      * Authentication type of the connection target
@@ -1004,6 +1379,24 @@ export interface SASAuthTypeConnectionPropertiesArgs {
     sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
     target?: pulumi.Input<string>;
     useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+}
+
+/**
+ * Gets or sets the source to which safety providers applies.
+ */
+export interface SafetyProviderConfigArgs {
+    /**
+     * If blocking would occur.
+     */
+    blocking?: pulumi.Input<boolean>;
+    /**
+     * Name of RAI Safety Provider.
+     */
+    safetyProviderName?: pulumi.Input<string>;
+    /**
+     * Content source to apply the Content Filters.
+     */
+    source?: pulumi.Input<string | enums.RaiPolicyContentSource>;
 }
 
 export interface ServicePrincipalAuthTypeConnectionPropertiesArgs {
@@ -1058,6 +1451,28 @@ export interface SkuArgs {
 }
 
 /**
+ * Represents a rule for routing traffic to a specific deployment.
+ */
+export interface TrafficRoutingRuleArgs {
+    /**
+     * The unique identifier of the deployment to which traffic is routed by this rule.
+     */
+    deploymentId?: pulumi.Input<string>;
+    /**
+     * A user-provided description for this traffic routing rule.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The identifier of this traffic routing rule.
+     */
+    ruleId?: pulumi.Input<string>;
+    /**
+     * Gets or sets the percentage of traffic allocated to this instance.
+     */
+    trafficPercentage?: pulumi.Input<number>;
+}
+
+/**
  * The user owned AML workspace for Cognitive Services account.
  */
 export interface UserOwnedAmlWorkspaceArgs {
@@ -1105,6 +1520,24 @@ export interface UsernamePasswordAuthTypeConnectionPropertiesArgs {
     sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
     target?: pulumi.Input<string>;
     useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+}
+
+/**
+ * Type modeling a reference to a version of an agent definition.
+ */
+export interface VersionedAgentReferenceArgs {
+    /**
+     * Gets the agent's unique identifier within the organization (subscription).
+     */
+    agentId?: pulumi.Input<string>;
+    /**
+     * Gets the agent's name (unique within the project/app).
+     */
+    agentName?: pulumi.Input<string>;
+    /**
+     * Gets the agent's version (unique for each agent lineage).
+     */
+    agentVersion?: pulumi.Input<string>;
 }
 
 /**

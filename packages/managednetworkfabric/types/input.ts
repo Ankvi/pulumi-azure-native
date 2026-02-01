@@ -193,6 +193,67 @@ export function bfdConfigurationArgsProvideDefaults(val: BfdConfigurationArgs): 
 }
 
 /**
+ * BGP Monitoring Protocol (BMP) Configuration properties.
+ */
+export interface BmpConfigurationPropertiesArgs {
+    /**
+     * Export Policy for the BMP Configuration.
+     */
+    exportPolicy?: pulumi.Input<string | enums.BmpExportPolicy>;
+    /**
+     * Monitored Address Families for the BMP Configuration.
+     */
+    monitoredAddressFamilies?: pulumi.Input<pulumi.Input<string | enums.BmpMonitoredAddressFamily>[]>;
+    /**
+     * The List of Network ID's that need to be monitored.
+     */
+    monitoredNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Scope resource ARM Identifier.
+     */
+    scopeResourceId?: pulumi.Input<string>;
+    /**
+     * Enabling a station. Either True/False.
+     */
+    stationConfigurationState?: pulumi.Input<string | enums.StationConfigurationState>;
+    /**
+     * Station Connection Mode.
+     */
+    stationConnectionMode?: pulumi.Input<string | enums.StationConnectionMode>;
+    /**
+     * Station Connection Properties.
+     */
+    stationConnectionProperties?: pulumi.Input<StationConnectionPropertiesArgs>;
+    /**
+     * IP Address of the station.
+     */
+    stationIp?: pulumi.Input<string>;
+    /**
+     * Name of the station.
+     */
+    stationName?: pulumi.Input<string>;
+    /**
+     * Network of the station
+     */
+    stationNetwork?: pulumi.Input<string>;
+    /**
+     * Port of the station. Default value is 5000.
+     */
+    stationPort?: pulumi.Input<number>;
+}
+/**
+ * bmpConfigurationPropertiesArgsProvideDefaults sets the appropriate defaults for BmpConfigurationPropertiesArgs
+ */
+export function bmpConfigurationPropertiesArgsProvideDefaults(val: BmpConfigurationPropertiesArgs): BmpConfigurationPropertiesArgs {
+    return {
+        ...val,
+        exportPolicy: (val.exportPolicy) ?? "All",
+        stationConnectionProperties: (val.stationConnectionProperties ? pulumi.output(val.stationConnectionProperties).apply(stationConnectionPropertiesArgsProvideDefaults) : undefined),
+        stationPort: (val.stationPort) ?? 5000,
+    };
+}
+
+/**
  * Dynamic match configuration object.
  */
 export interface CommonDynamicMatchConfigurationArgs {
@@ -728,6 +789,29 @@ export interface NeighborGroupDestinationArgs {
 }
 
 /**
+ * Network Monitor Properties defines the properties of the resource.
+ */
+export interface NetworkMonitorPropertiesArgs {
+    /**
+     * Switch configuration description.
+     */
+    annotation?: pulumi.Input<string>;
+    /**
+     * BMP Configurations for the Network Fabric.
+     */
+    bmpConfiguration?: pulumi.Input<BmpConfigurationPropertiesArgs>;
+}
+/**
+ * networkMonitorPropertiesArgsProvideDefaults sets the appropriate defaults for NetworkMonitorPropertiesArgs
+ */
+export function networkMonitorPropertiesArgsProvideDefaults(val: NetworkMonitorPropertiesArgs): NetworkMonitorPropertiesArgs {
+    return {
+        ...val,
+        bmpConfiguration: (val.bmpConfiguration ? pulumi.output(val.bmpConfiguration).apply(bmpConfigurationPropertiesArgsProvideDefaults) : undefined),
+    };
+}
+
+/**
  * Destination.
  */
 export interface NetworkTapPropertiesDestinationsArgs {
@@ -1065,6 +1149,35 @@ export interface StaticRoutePropertiesArgs {
      * Prefix of the route.
      */
     prefix: pulumi.Input<string>;
+}
+
+/**
+ * Station Connection Properties.
+ */
+export interface StationConnectionPropertiesArgs {
+    /**
+     * Connection keepalive idle time in seconds
+     */
+    keepaliveIdleTime?: pulumi.Input<number>;
+    /**
+     * Probe count, default value is 10
+     */
+    probeCount?: pulumi.Input<number>;
+    /**
+     * Probe interval in seconds, default value is 60
+     */
+    probeInterval?: pulumi.Input<number>;
+}
+/**
+ * stationConnectionPropertiesArgsProvideDefaults sets the appropriate defaults for StationConnectionPropertiesArgs
+ */
+export function stationConnectionPropertiesArgsProvideDefaults(val: StationConnectionPropertiesArgs): StationConnectionPropertiesArgs {
+    return {
+        ...val,
+        keepaliveIdleTime: (val.keepaliveIdleTime) ?? 180,
+        probeCount: (val.probeCount) ?? 10,
+        probeInterval: (val.probeInterval) ?? 60,
+    };
 }
 
 /**

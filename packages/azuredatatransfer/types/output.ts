@@ -181,6 +181,36 @@ export function dataSizeRulesetResponseProvideDefaults(val: DataSizeRulesetRespo
 }
 
 /**
+ * The FlowProfile Metadata used to concisely provide all publicly viewable information.
+ */
+export interface FlowProfileMetadataResponse {
+    /**
+     * A description of the FlowProfile and its rulesets. The description should describe the flowprofile's purpose and rulesets applied.
+     */
+    description: string;
+    /**
+     * A guid represented as a string for the FlowProfile resource, assigned by the system.
+     */
+    flowProfileId: string;
+    /**
+     * The name of the FlowProfile.
+     */
+    name: string;
+    /**
+     * The name of the parent Pipeline Azure resource associated with this FlowProfile.
+     */
+    pipeline: string;
+    /**
+     * The data replication scenario handled by this FlowProfile. Please note, that this value cannot be updated after creation. See the FlowProfilePatchProperties to see updateable properties.
+     */
+    replicationScenario: string;
+    /**
+     * The operational status of the FlowProfile.
+     */
+    status: string;
+}
+
+/**
  * Defines the full set of properties for a FlowProfile resource.
  */
 export interface FlowProfilePropertiesResponse {

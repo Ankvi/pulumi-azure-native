@@ -1209,7 +1209,7 @@ export interface ExecutedValidationResponse {
     /**
      * This property specifies the status of the validationProfile of the image version.
      */
-    status?: string;
+    status: string;
     /**
      * This property specifies the type of image version validation.
      */
@@ -1342,7 +1342,7 @@ export interface GalleryApplicationVersionPublishingProfileResponse {
      */
     source: UserArtifactSourceResponse;
     /**
-     * Specifies the storage account type to be used to store the image. This property is not updatable.
+     * Specifies the storage account type to be used to store the image. Cannot be specified along with storageAccountStrategy. This property is not updatable.
      */
     storageAccountType?: string;
     /**
@@ -1527,7 +1527,7 @@ export interface GalleryImageVersionPublishingProfileResponse {
      */
     replicationMode?: string;
     /**
-     * Specifies the storage account type to be used to store the image. This property is not updatable.
+     * Specifies the storage account type to be used to store the image. Cannot be specified along with storageAccountStrategy. This property is not updatable.
      */
     storageAccountType?: string;
     /**
@@ -1632,6 +1632,156 @@ export interface GalleryOSDiskImageResponse {
      * The source for the disk image.
      */
     source?: GalleryDiskImageSourceResponse;
+}
+
+/**
+ * The definition of a parameter that can be passed to a script of a Gallery Script Version.
+ */
+export interface GalleryScriptParameterResponse {
+    /**
+     * The default value of the parameter, only applies to string types.
+     */
+    defaultValue?: string;
+    /**
+     * A description to help users understand what this parameter means
+     */
+    description?: string;
+    /**
+     * A list of permissible values. Only applicable values are from 'enum' values defined in 'GalleryScriptParameter'.
+     */
+    enumValues?: string[];
+    /**
+     * The minimum value of parameter.
+     */
+    maxValue?: string;
+    /**
+     * The minimum value of parameter.
+     */
+    minValue?: string;
+    /**
+     * The name of the parameter.
+     */
+    name: string;
+    /**
+     * Indicates whether this parameter must be passed.
+     */
+    required?: boolean;
+    /**
+     * Specifies the type of the Gallery Script parameter. Possible values are: String, Int, Double, Boolean, Enum
+     */
+    type?: string;
+}
+
+/**
+ * Describes the properties of a gallery script definition.
+ */
+export interface GalleryScriptPropertiesResponse {
+    /**
+     * The description of this gallery script definition resource. This property is updatable.
+     */
+    description?: string;
+    /**
+     * The end of life date of the gallery Script Definition. This property can be used for decommissioning purposes. This property is updatable.
+     */
+    endOfLifeDate?: string;
+    /**
+     * The Eula agreement (End User License Agreement) for the gallery Script Definition.
+     */
+    eula?: string;
+    /**
+     * The privacy statement uri.
+     */
+    privacyStatementUri?: string;
+    /**
+     * The provisioning state, which only appears in the response.
+     */
+    provisioningState: string;
+    /**
+     * The release note uri.
+     */
+    releaseNoteUri?: string;
+    /**
+     * This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
+     */
+    supportedOSType: string;
+}
+
+/**
+ * Describes the properties of a gallery script version.
+ */
+export interface GalleryScriptVersionPropertiesResponse {
+    /**
+     * The provisioning state, which only appears in the response.
+     */
+    provisioningState: string;
+    /**
+     * The publishing profile of a gallery image version.
+     */
+    publishingProfile: GalleryScriptVersionPublishingProfileResponse;
+    /**
+     * This is the replication status of the gallery image version.
+     */
+    replicationStatus: ReplicationStatusResponse;
+    /**
+     * The safety profile of the Gallery Script Version.
+     */
+    safetyProfile?: GalleryScriptVersionSafetyProfileResponse;
+}
+
+/**
+ * The publishing profile of a gallery image version.
+ */
+export interface GalleryScriptVersionPublishingProfileResponse {
+    /**
+     * The end of life date of the gallery image version. This property can be used for decommissioning purposes. This property is updatable.
+     */
+    endOfLifeDate?: string;
+    /**
+     * If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
+     */
+    excludeFromLatest?: boolean;
+    /**
+     * The timestamp for when the gallery image version is published.
+     */
+    publishedDate: string;
+    /**
+     * The number of replicas of the Image Version to be created per region. This property would take effect for a region when regionalReplicaCount is not specified. This property is updatable.
+     */
+    replicaCount?: number;
+    /**
+     * Optional parameter which specifies the mode to be used for replication. This property is not updatable.
+     */
+    replicationMode?: string;
+    /**
+     * The source script from which the Script Version is going to be created.
+     */
+    source: ScriptSourceResponse;
+    /**
+     * Specifies the strategy to be used when selecting the storage account type. Cannot be specified along with storageAccountType, but can be overridden per region by specifying targetRegions[].storageAccountType. This property is not updatable.
+     */
+    storageAccountStrategy?: string;
+    /**
+     * Specifies the storage account type to be used to store the image. Cannot be specified along with storageAccountStrategy. This property is not updatable.
+     */
+    storageAccountType?: string;
+    /**
+     * The target extended locations where the Image Version is going to be replicated to. This property is updatable.
+     */
+    targetExtendedLocations?: GalleryTargetExtendedLocationResponse[];
+    /**
+     * The target regions where the Image Version is going to be replicated to. This property is updatable.
+     */
+    targetRegions?: TargetRegionResponse[];
+}
+
+/**
+ * The safety profile of the Gallery Script Version.
+ */
+export interface GalleryScriptVersionSafetyProfileResponse {
+    /**
+     * Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.
+     */
+    allowDeletionOfReplicatedLocations?: boolean;
 }
 
 export interface GalleryTargetExtendedLocationResponse {
@@ -3085,6 +3235,20 @@ export interface ScheduledEventsProfileResponse {
      * Specifies Terminate Scheduled Event related configurations.
      */
     terminateNotificationProfile?: TerminateNotificationProfileResponse;
+}
+
+/**
+ * The source script from which the Script Version is going to be created.
+ */
+export interface ScriptSourceResponse {
+    /**
+     * Optional. Any input parameters that needs to passed to the script and are accessed within the script for its execution.
+     */
+    parameters?: GalleryScriptParameterResponse[];
+    /**
+     * Required. The link of the source script, it must be a readable storage blob with SAS URI or publicly accessible URI or managed identity enabled.
+     */
+    scriptLink: string;
 }
 
 /**
@@ -4709,7 +4873,7 @@ export interface VirtualMachineScaleSetVMInstanceViewResponse {
      */
     bootDiagnostics?: BootDiagnosticsInstanceViewResponse;
     /**
-     * Specifies the host OS name of the virtual machine. <br><br> This name cannot be updated after the VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For naming conventions and restrictions see [Azure infrastructure services implementation guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+     * Specifies the host OS name of the virtual machine. <br><br> This name cannot be updated after the VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For naming conventions and restrictions see [Azure infrastructure services implementation guidelines](https://learn.microsoft.com/previous-versions/azure/virtual-machines/linux/infrastructure-example?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json#1-naming-conventions).
      */
     computerName?: string;
     /**

@@ -1,6 +1,12 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
+/**
+ * Link to an application package inside the batch account
+ */
 export interface ApplicationPackageReferenceArgs {
+    /**
+     * The ID of the application package to install. This must be inside the same batch account as the pool. This can either be a reference to a specific version or the default version if one exists.
+     */
     id: pulumi.Input<string>;
     /**
      * If this is omitted, and no default version is specified for this application, the request fails with the error code InvalidApplicationPackageReferences. If you are calling the REST API directly, the HTTP status code is 409.
@@ -8,11 +14,17 @@ export interface ApplicationPackageReferenceArgs {
     version?: pulumi.Input<string>;
 }
 
+/**
+ * AutoScale settings for the pool.
+ */
 export interface AutoScaleSettingsArgs {
     /**
      * If omitted, the default value is 15 minutes (PT15M).
      */
     evaluationInterval?: pulumi.Input<string>;
+    /**
+     * A formula for the desired number of compute nodes in the pool.
+     */
     formula: pulumi.Input<string>;
 }
 
@@ -43,6 +55,9 @@ export function autoStorageBasePropertiesArgsProvideDefaults(val: AutoStorageBas
     };
 }
 
+/**
+ * Specifies the parameters for the auto user that runs a task on the Batch service.
+ */
 export interface AutoUserSpecificationArgs {
     /**
      * The default value is nonAdmin.
@@ -76,16 +91,25 @@ export interface AutomaticOSUpgradePolicyArgs {
     useRollingUpgradePolicy?: pulumi.Input<boolean>;
 }
 
+/**
+ * Information used to connect to an Azure Storage Container using Blobfuse.
+ */
 export interface AzureBlobFileSystemConfigurationArgs {
     /**
      * This property is mutually exclusive with both sasKey and identity; exactly one must be specified.
      */
     accountKey?: pulumi.Input<string>;
+    /**
+     * The Azure Storage Account name.
+     */
     accountName: pulumi.Input<string>;
     /**
      * These are 'net use' options in Windows and 'mount' options in Linux.
      */
     blobfuseOptions?: pulumi.Input<string>;
+    /**
+     * The Azure Blob Storage Container name.
+     */
     containerName: pulumi.Input<string>;
     /**
      * This property is mutually exclusive with both accountKey and sasKey; exactly one must be specified.
@@ -101,8 +125,17 @@ export interface AzureBlobFileSystemConfigurationArgs {
     sasKey?: pulumi.Input<string>;
 }
 
+/**
+ * Information used to connect to an Azure Fileshare.
+ */
 export interface AzureFileShareConfigurationArgs {
+    /**
+     * The Azure Storage account key.
+     */
     accountKey: pulumi.Input<string>;
+    /**
+     * The Azure Storage account name.
+     */
     accountName: pulumi.Input<string>;
     /**
      * This is of the form 'https://{account}.file.core.windows.net/'.
@@ -146,17 +179,29 @@ export interface BatchPoolIdentityArgs {
     userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+/**
+ * Information used to connect to a CIFS file system.
+ */
 export interface CIFSMountConfigurationArgs {
     /**
      * These are 'net use' options in Windows and 'mount' options in Linux.
      */
     mountOptions?: pulumi.Input<string>;
+    /**
+     * The password to use for authentication against the CIFS file system.
+     */
     password: pulumi.Input<string>;
     /**
      * All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
      */
     relativeMountPath: pulumi.Input<string>;
+    /**
+     * The URI of the file system to mount.
+     */
     source: pulumi.Input<string>;
+    /**
+     * The user to use for authentication against the CIFS file system.
+     */
     userName: pulumi.Input<string>;
 }
 
@@ -164,6 +209,9 @@ export interface CIFSMountConfigurationArgs {
  * Warning: This object is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
  */
 export interface CertificateReferenceArgs {
+    /**
+     * The fully qualified ID of the certificate to install on the pool. This must be inside the same batch account as the pool.
+     */
     id: pulumi.Input<string>;
     /**
      * The default value is currentUser. This property is applicable only for pools configured with Windows compute nodes. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
@@ -173,6 +221,9 @@ export interface CertificateReferenceArgs {
      * This property is applicable only for pools configured with Windows compute nodes. Common store names include: My, Root, CA, Trust, Disallowed, TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any custom store name can also be used. The default value is My.
      */
     storeName?: pulumi.Input<string>;
+    /**
+     * Which user accounts on the compute node should have access to the private data of the certificate.
+     */
     visibility?: pulumi.Input<pulumi.Input<enums.CertificateVisibility>[]>;
 }
 
@@ -186,6 +237,9 @@ export interface ComputeNodeIdentityReferenceArgs {
     resourceId?: pulumi.Input<string>;
 }
 
+/**
+ * The configuration for container-enabled pools.
+ */
 export interface ContainerConfigurationArgs {
     /**
      * This is the full image reference, as would be specified to "docker pull". An image will be sourced from the default Docker registry unless the image is fully qualified with an alternative registry.
@@ -195,27 +249,45 @@ export interface ContainerConfigurationArgs {
      * If any images must be downloaded from a private registry which requires credentials, then those credentials must be provided here.
      */
     containerRegistries?: pulumi.Input<pulumi.Input<ContainerRegistryArgs>[]>;
+    /**
+     * The container technology to be used.
+     */
     type: pulumi.Input<string | enums.ContainerType>;
 }
 
+/**
+ * The entry of path and mount mode you want to mount into task container.
+ */
 export interface ContainerHostBatchBindMountEntryArgs {
     /**
      * For Linux, if you mount this path as a read/write mode, this does not mean that all users in container have the read/write access for the path, it depends on the access in host VM. If this path is mounted read-only, all users within the container will not be able to modify the path.
      */
     isReadOnly?: pulumi.Input<boolean>;
+    /**
+     * The paths which will be mounted to container task's container.
+     */
     source?: pulumi.Input<string | enums.ContainerHostDataPath>;
 }
 
+/**
+ * A private container registry.
+ */
 export interface ContainerRegistryArgs {
     /**
      * The reference to a user assigned identity associated with the Batch pool which a compute node will use.
      */
     identityReference?: pulumi.Input<ComputeNodeIdentityReferenceArgs>;
+    /**
+     * The password to log into the registry server.
+     */
     password?: pulumi.Input<string>;
     /**
      * If omitted, the default is "docker.io".
      */
     registryServer?: pulumi.Input<string>;
+    /**
+     * The user name to log into the registry server.
+     */
     userName?: pulumi.Input<string>;
 }
 
@@ -226,13 +298,16 @@ export interface DataDiskArgs {
     /**
      * Values are:
      *
-     *  none - The caching mode for the disk is not enabled.
-     *  readOnly - The caching mode for the disk is read only.
-     *  readWrite - The caching mode for the disk is read and write.
+     * none - The caching mode for the disk is not enabled.
+     * readOnly - The caching mode for the disk is read only.
+     * readWrite - The caching mode for the disk is read and write.
      *
-     *  The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
+     * The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      */
     caching?: pulumi.Input<enums.CachingType>;
+    /**
+     * The initial disk size in GB when creating new data disk.
+     */
     diskSizeGB: pulumi.Input<number>;
     /**
      * The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun. The value must be between 0 and 63, inclusive.
@@ -241,16 +316,25 @@ export interface DataDiskArgs {
     /**
      * If omitted, the default is "Standard_LRS". Values are:
      *
-     *  Standard_LRS - The data disk should use standard locally redundant storage.
-     *  Premium_LRS - The data disk should use premium locally redundant storage.
+     * Standard_LRS - The data disk should use standard locally redundant storage.
+     * Premium_LRS - The data disk should use premium locally redundant storage.
      */
     storageAccountType?: pulumi.Input<enums.StorageAccountType>;
 }
 
+/**
+ * Deployment configuration properties.
+ */
 export interface DeploymentConfigurationArgs {
+    /**
+     * The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
+     */
     virtualMachineConfiguration?: pulumi.Input<VirtualMachineConfigurationArgs>;
 }
 
+/**
+ * Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
+ */
 export interface DiffDiskSettingsArgs {
     /**
      * This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
@@ -296,11 +380,23 @@ export interface EndpointAccessProfileArgs {
     ipRules?: pulumi.Input<pulumi.Input<IPRuleArgs>[]>;
 }
 
+/**
+ * An environment variable to be set on a task process.
+ */
 export interface EnvironmentSettingArgs {
+    /**
+     * The name of the environment variable.
+     */
     name: pulumi.Input<string>;
+    /**
+     * The value of the environment variable.
+     */
     value?: pulumi.Input<string>;
 }
 
+/**
+ * Fixed scale settings for the pool.
+ */
 export interface FixedScaleSettingsArgs {
     /**
      * If omitted, the default value is Requeue.
@@ -343,6 +439,9 @@ export interface IPRuleArgs {
     value: pulumi.Input<string>;
 }
 
+/**
+ * A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
+ */
 export interface ImageReferenceArgs {
     /**
      * This property is mutually exclusive with other properties and can be fetched from community gallery image GET call.
@@ -374,6 +473,9 @@ export interface ImageReferenceArgs {
     version?: pulumi.Input<string>;
 }
 
+/**
+ * A inbound NAT pool that can be used to address specific ports on compute nodes in a Batch pool externally.
+ */
 export interface InboundNatPoolArgs {
     /**
      * This must be unique within a Batch pool. Acceptable values are between 1 and 65535 except for 29876 and 29877 as these are reserved. If any reserved values are provided the request fails with HTTP status code 400.
@@ -395,6 +497,9 @@ export interface InboundNatPoolArgs {
      * The maximum number of rules that can be specified across all the endpoints on a Batch pool is 25. If no network security group rules are specified, a default rule will be created to allow inbound access to the specified backendPort. If the maximum number of network security group rules is exceeded the request fails with HTTP status code 400.
      */
     networkSecurityGroupRules?: pulumi.Input<pulumi.Input<NetworkSecurityGroupRuleArgs>[]>;
+    /**
+     * The protocol of the endpoint.
+     */
     protocol: pulumi.Input<enums.InboundEndpointProtocol>;
 }
 
@@ -405,9 +510,9 @@ export interface KeyVaultPropertiesArgs {
     /**
      * Full path to the secret with or without version. Example https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053. or https://mykeyvault.vault.azure.net/keys/testkey. To be usable the following prerequisites must be met:
      *
-     *  The Batch Account has a System Assigned identity
-     *  The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
-     *  The KeyVault has soft-delete and purge protection enabled
+     * The Batch Account has a System Assigned identity
+     * The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
+     * The KeyVault has soft-delete and purge protection enabled
      */
     keyIdentifier?: pulumi.Input<string>;
 }
@@ -426,6 +531,9 @@ export interface KeyVaultReferenceArgs {
     url: pulumi.Input<string>;
 }
 
+/**
+ * Properties used to create a user account on a Linux node.
+ */
 export interface LinuxUserConfigurationArgs {
     /**
      * The uid and gid properties must be specified together or not at all. If not specified the underlying operating system picks the gid.
@@ -446,6 +554,9 @@ export interface ManagedDiskArgs {
      * Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
      */
     securityProfile?: pulumi.Input<VMDiskSecurityProfileArgs>;
+    /**
+     * The storage account type for use in creating data disks or OS disk.
+     */
     storageAccountType?: pulumi.Input<enums.StorageAccountType>;
 }
 
@@ -453,10 +564,19 @@ export interface ManagedDiskArgs {
  * The Batch service does not assign any meaning to this metadata; it is solely for the use of user code.
  */
 export interface MetadataItemArgs {
+    /**
+     * The name of the metadata item.
+     */
     name: pulumi.Input<string>;
+    /**
+     * The value of the metadata item.
+     */
     value: pulumi.Input<string>;
 }
 
+/**
+ * The file system to mount on each node.
+ */
 export interface MountConfigurationArgs {
     /**
      * This property is mutually exclusive with all other properties.
@@ -476,6 +596,9 @@ export interface MountConfigurationArgs {
     nfsMountConfiguration?: pulumi.Input<NFSMountConfigurationArgs>;
 }
 
+/**
+ * Information used to connect to an NFS file system.
+ */
 export interface NFSMountConfigurationArgs {
     /**
      * These are 'net use' options in Windows and 'mount' options in Linux.
@@ -485,6 +608,9 @@ export interface NFSMountConfigurationArgs {
      * All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
      */
     relativeMountPath: pulumi.Input<string>;
+    /**
+     * The URI of the file system to mount.
+     */
     source: pulumi.Input<string>;
 }
 
@@ -492,11 +618,17 @@ export interface NFSMountConfigurationArgs {
  * The network configuration for a pool.
  */
 export interface NetworkConfigurationArgs {
+    /**
+     * The scope of dynamic vnet assignment.
+     */
     dynamicVnetAssignmentScope?: pulumi.Input<enums.DynamicVNetAssignmentScope>;
     /**
      * Accelerated networking enables single root I/O virtualization (SR-IOV) to a VM, which may lead to improved networking performance. For more details, see: https://learn.microsoft.com/azure/virtual-network/accelerated-networking-overview.
      */
     enableAcceleratedNetworking?: pulumi.Input<boolean>;
+    /**
+     * The endpoint configuration for a pool.
+     */
     endpointConfiguration?: pulumi.Input<PoolEndpointConfigurationArgs>;
     /**
      * The public IP Address configuration of the networking configuration of a Pool.
@@ -531,7 +663,13 @@ export interface NetworkProfileArgs {
     nodeManagementAccess?: pulumi.Input<EndpointAccessProfileArgs>;
 }
 
+/**
+ * A network security group rule to apply to an inbound endpoint.
+ */
 export interface NetworkSecurityGroupRuleArgs {
+    /**
+     * The action that should be taken for a specified IP address, subnet range or tag.
+     */
     access: pulumi.Input<enums.NetworkSecurityGroupRuleAccess>;
     /**
      * Priorities within a pool must be unique and are evaluated in order of priority. The lower the number the higher the priority. For example, rules could be specified with order numbers of 150, 250, and 350. The rule with the order number of 150 takes precedence over the rule that has an order of 250. Allowed priorities are 150 to 4096. If any reserved or duplicate values are provided the request fails with HTTP status code 400.
@@ -557,14 +695,32 @@ export interface NodePlacementConfigurationArgs {
     policy?: pulumi.Input<enums.NodePlacementPolicyType>;
 }
 
+/**
+ * Settings for the operating system disk of the virtual machine.
+ */
 export interface OSDiskArgs {
+    /**
+     * The type of caching to enable for the disk.
+     */
     caching?: pulumi.Input<enums.CachingType>;
+    /**
+     * The initial disk size in GB when creating new OS disk.
+     */
     diskSizeGB?: pulumi.Input<number>;
+    /**
+     * Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
+     */
     ephemeralOSDiskSettings?: pulumi.Input<DiffDiskSettingsArgs>;
     managedDisk?: pulumi.Input<ManagedDiskArgs>;
+    /**
+     * Specifies whether writeAccelerator should be enabled or disabled on the disk.
+     */
     writeAcceleratorEnabled?: pulumi.Input<boolean>;
 }
 
+/**
+ * The endpoint configuration for a pool.
+ */
 export interface PoolEndpointConfigurationArgs {
     /**
      * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded the request fails with HTTP status code 400. This cannot be specified if the IPAddressProvisioningType is NoPublicIPAddresses.
@@ -586,6 +742,9 @@ export interface PublicIPAddressConfigurationArgs {
     provision?: pulumi.Input<enums.IPAddressProvisioningType>;
 }
 
+/**
+ * A single file or multiple files to be downloaded to a compute node.
+ */
 export interface ResourceFileArgs {
     /**
      * The autoStorageContainerName, storageContainerUrl and httpUrl properties are mutually exclusive and one of them must be specified.
@@ -682,6 +841,9 @@ export interface SecurityProfileArgs {
      * This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself.
      */
     encryptionAtHost?: pulumi.Input<boolean>;
+    /**
+     * Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings.
+     */
     securityType?: pulumi.Input<enums.SecurityTypes>;
     /**
      * Specifies the security settings like secure boot and vTPM used while creating the virtual machine.
@@ -711,11 +873,17 @@ export interface StartTaskArgs {
      * When this is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are mapped into the container, all task environment variables are mapped into the container, and the task command line is executed in the container.
      */
     containerSettings?: pulumi.Input<TaskContainerSettingsArgs>;
+    /**
+     * A list of environment variable settings for the start task.
+     */
     environmentSettings?: pulumi.Input<pulumi.Input<EnvironmentSettingArgs>[]>;
     /**
      * The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0
      */
     maxTaskRetryCount?: pulumi.Input<number>;
+    /**
+     * A list of files that the Batch service will download to the compute node before running the command line.
+     */
     resourceFiles?: pulumi.Input<pulumi.Input<ResourceFileArgs>[]>;
     /**
      * If omitted, the task runs as a non-administrative user unique to the task.
@@ -736,6 +904,9 @@ export function startTaskArgsProvideDefaults(val: StartTaskArgs): StartTaskArgs 
     };
 }
 
+/**
+ * The container settings for a task.
+ */
 export interface TaskContainerSettingsArgs {
     /**
      * If this array is null or be not present, container task will mount entire temporary disk drive in windows (or AZ_BATCH_NODE_ROOT_DIR in Linux). It won't' mount any data paths into container if this array is set as empty.
@@ -753,10 +924,19 @@ export interface TaskContainerSettingsArgs {
      * This setting can be omitted if was already provided at pool creation.
      */
     registry?: pulumi.Input<ContainerRegistryArgs>;
+    /**
+     * A flag to indicate where the container task working directory is. The default is 'taskWorkingDirectory'.
+     */
     workingDirectory?: pulumi.Input<enums.ContainerWorkingDirectory>;
 }
 
+/**
+ * Specifies how tasks should be distributed across compute nodes.
+ */
 export interface TaskSchedulingPolicyArgs {
+    /**
+     * How tasks should be distributed across compute nodes.
+     */
     nodeFillType: pulumi.Input<enums.ComputeNodeFillType>;
 }
 /**
@@ -791,6 +971,9 @@ export interface UpgradePolicyArgs {
      * The configuration parameters used for performing automatic OS upgrade.
      */
     automaticOSUpgradePolicy?: pulumi.Input<AutomaticOSUpgradePolicyArgs>;
+    /**
+     * Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are automatically updated at the same time.<br /><br /> **Rolling** - Scale set performs updates in batches with an optional pause time in between.
+     */
     mode: pulumi.Input<enums.UpgradeMode>;
     /**
      * The configuration parameters used while performing a rolling upgrade.
@@ -798,6 +981,9 @@ export interface UpgradePolicyArgs {
     rollingUpgradePolicy?: pulumi.Input<RollingUpgradePolicyArgs>;
 }
 
+/**
+ * Properties used to create a user on an Azure Batch node.
+ */
 export interface UserAccountArgs {
     /**
      * nonAdmin - The auto user is a standard user without elevated access. admin - The auto user is a user with elevated access and operates with full Administrator permissions. The default value is nonAdmin.
@@ -807,7 +993,13 @@ export interface UserAccountArgs {
      * This property is ignored if specified on a Windows pool. If not specified, the user is created with the default options.
      */
     linuxUserConfiguration?: pulumi.Input<LinuxUserConfigurationArgs>;
+    /**
+     * The name of the user account. Names can contain any Unicode characters up to a maximum length of 20.
+     */
     name: pulumi.Input<string>;
+    /**
+     * The password for the user account.
+     */
     password: pulumi.Input<string>;
     /**
      * This property can only be specified if the user is on a Windows pool. If not specified and on a Windows pool, the user is created with the default options.
@@ -833,9 +1025,15 @@ export interface UserIdentityArgs {
  * Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
  */
 export interface VMDiskSecurityProfileArgs {
+    /**
+     * Specifies the EncryptionType of the managed disk. It is set to VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob. **Note**: It can be set for only Confidential VMs and required when using Confidential VMs.
+     */
     securityEncryptionType?: pulumi.Input<string | enums.SecurityEncryptionTypes>;
 }
 
+/**
+ * The configuration for virtual machine extensions.
+ */
 export interface VMExtensionArgs {
     /**
      * Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
@@ -845,21 +1043,39 @@ export interface VMExtensionArgs {
      * Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
      */
     enableAutomaticUpgrade?: pulumi.Input<boolean>;
+    /**
+     * The name of the virtual machine extension.
+     */
     name: pulumi.Input<string>;
     /**
-     * The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. 
+     * The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
      */
     protectedSettings?: any;
     /**
      * Collection of extension names after which this extension needs to be provisioned.
      */
     provisionAfterExtensions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the extension handler publisher.
+     */
     publisher: pulumi.Input<string>;
+    /**
+     * JSON formatted public settings for the extension.
+     */
     settings?: any;
+    /**
+     * The type of the extensions.
+     */
     type: pulumi.Input<string>;
+    /**
+     * The version of script handler.
+     */
     typeHandlerVersion?: pulumi.Input<string>;
 }
 
+/**
+ * The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
+ */
 export interface VirtualMachineConfigurationArgs {
     /**
      * If specified, setup is performed on each node in the pool to allow tasks to run in containers. All regular tasks and job manager tasks run on this pool must specify the containerSettings property, and all other tasks may specify it.
@@ -877,12 +1093,15 @@ export interface VirtualMachineConfigurationArgs {
      * If specified, the extensions mentioned in this configuration will be installed on each node.
      */
     extensions?: pulumi.Input<pulumi.Input<VMExtensionArgs>[]>;
+    /**
+     * A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
+     */
     imageReference: pulumi.Input<ImageReferenceArgs>;
     /**
      * This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are:
      *
-     *  Windows_Server - The on-premises license is for Windows Server.
-     *  Windows_Client - The on-premises license is for Windows Client.
+     * Windows_Server - The on-premises license is for Windows Server.
+     * Windows_Client - The on-premises license is for Windows Client.
      */
     licenseType?: pulumi.Input<string>;
     /**
@@ -911,6 +1130,9 @@ export interface VirtualMachineConfigurationArgs {
     windowsConfiguration?: pulumi.Input<WindowsConfigurationArgs>;
 }
 
+/**
+ * Windows operating system settings to apply to the virtual machine.
+ */
 export interface WindowsConfigurationArgs {
     /**
      * If omitted, the default value is true.
@@ -918,6 +1140,9 @@ export interface WindowsConfigurationArgs {
     enableAutomaticUpdates?: pulumi.Input<boolean>;
 }
 
+/**
+ * Properties used to create a user account on a Windows node.
+ */
 export interface WindowsUserConfigurationArgs {
     /**
      * Specifies login mode for the user. The default value is Interactive.

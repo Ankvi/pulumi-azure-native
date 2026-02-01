@@ -46,7 +46,7 @@ export class Endpoint extends pulumi.CustomResource {
     /**
      * List of custom headers.
      */
-    declare public readonly customHeaders: pulumi.Output<types.outputs.EndpointPropertiesResponseCustomHeaders[] | undefined>;
+    declare public readonly customHeaders: pulumi.Output<types.outputs.EndpointPropertiesCustomHeadersItemResponse[] | undefined>;
     /**
      * Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
      */
@@ -86,7 +86,7 @@ export class Endpoint extends pulumi.CustomResource {
     /**
      * The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
      */
-    declare public readonly subnets: pulumi.Output<types.outputs.EndpointPropertiesResponseSubnets[] | undefined>;
+    declare public readonly subnets: pulumi.Output<types.outputs.EndpointPropertiesSubnetsItemResponse[] | undefined>;
     /**
      * The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
      */
@@ -183,7 +183,7 @@ export interface EndpointArgs {
     /**
      * List of custom headers.
      */
-    customHeaders?: pulumi.Input<pulumi.Input<types.inputs.EndpointPropertiesCustomHeadersArgs>[]>;
+    customHeaders?: pulumi.Input<pulumi.Input<types.inputs.EndpointPropertiesCustomHeadersItemArgs>[]>;
     /**
      * Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
      */
@@ -193,7 +193,7 @@ export interface EndpointArgs {
      */
     endpointMonitorStatus?: pulumi.Input<string | types.enums.EndpointMonitorStatus>;
     /**
-     * The name of the Traffic Manager endpoint to be created or updated.
+     * The name of the Traffic Manager endpoint.
      */
     endpointName?: pulumi.Input<string>;
     /**
@@ -201,7 +201,7 @@ export interface EndpointArgs {
      */
     endpointStatus?: pulumi.Input<string | types.enums.EndpointStatus>;
     /**
-     * The type of the Traffic Manager endpoint to be created or updated.
+     * The type of the Traffic Manager endpoint.
      */
     endpointType: pulumi.Input<string>;
     /**
@@ -243,7 +243,7 @@ export interface EndpointArgs {
     /**
      * The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
      */
-    subnets?: pulumi.Input<pulumi.Input<types.inputs.EndpointPropertiesSubnetsArgs>[]>;
+    subnets?: pulumi.Input<pulumi.Input<types.inputs.EndpointPropertiesSubnetsItemArgs>[]>;
     /**
      * The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
      */

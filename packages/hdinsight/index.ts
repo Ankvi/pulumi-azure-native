@@ -11,15 +11,25 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
-export { ClusterPoolArgs } from "./clusterPool";
-export type ClusterPool = import("./clusterPool").ClusterPool;
-export const ClusterPool: typeof import("./clusterPool").ClusterPool = null as any;
-utilities.lazyLoad(exports, ["ClusterPool"], () => require("./clusterPool"));
+export { ExtensionArgs } from "./extension";
+export type Extension = import("./extension").Extension;
+export const Extension: typeof import("./extension").Extension = null as any;
+utilities.lazyLoad(exports, ["Extension"], () => require("./extension"));
 
-export { ClusterPoolClusterArgs } from "./clusterPoolCluster";
-export type ClusterPoolCluster = import("./clusterPoolCluster").ClusterPoolCluster;
-export const ClusterPoolCluster: typeof import("./clusterPoolCluster").ClusterPoolCluster = null as any;
-utilities.lazyLoad(exports, ["ClusterPoolCluster"], () => require("./clusterPoolCluster"));
+export { ExtensionAzureMonitorAgentStatusArgs } from "./extensionAzureMonitorAgentStatus";
+export type ExtensionAzureMonitorAgentStatus = import("./extensionAzureMonitorAgentStatus").ExtensionAzureMonitorAgentStatus;
+export const ExtensionAzureMonitorAgentStatus: typeof import("./extensionAzureMonitorAgentStatus").ExtensionAzureMonitorAgentStatus = null as any;
+utilities.lazyLoad(exports, ["ExtensionAzureMonitorAgentStatus"], () => require("./extensionAzureMonitorAgentStatus"));
+
+export { ExtensionAzureMonitorStatusArgs } from "./extensionAzureMonitorStatus";
+export type ExtensionAzureMonitorStatus = import("./extensionAzureMonitorStatus").ExtensionAzureMonitorStatus;
+export const ExtensionAzureMonitorStatus: typeof import("./extensionAzureMonitorStatus").ExtensionAzureMonitorStatus = null as any;
+utilities.lazyLoad(exports, ["ExtensionAzureMonitorStatus"], () => require("./extensionAzureMonitorStatus"));
+
+export { ExtensionMonitoringStatusArgs } from "./extensionMonitoringStatus";
+export type ExtensionMonitoringStatus = import("./extensionMonitoringStatus").ExtensionMonitoringStatus;
+export const ExtensionMonitoringStatus: typeof import("./extensionMonitoringStatus").ExtensionMonitoringStatus = null as any;
+utilities.lazyLoad(exports, ["ExtensionMonitoringStatus"], () => require("./extensionMonitoringStatus"));
 
 export { GetApplicationArgs, GetApplicationResult, GetApplicationOutputArgs } from "./getApplication";
 export const getApplication: typeof import("./getApplication").getApplication = null as any;
@@ -36,15 +46,25 @@ export const getClusterGatewaySettings: typeof import("./getClusterGatewaySettin
 export const getClusterGatewaySettingsOutput: typeof import("./getClusterGatewaySettings").getClusterGatewaySettingsOutput = null as any;
 utilities.lazyLoad(exports, ["getClusterGatewaySettings","getClusterGatewaySettingsOutput"], () => require("./getClusterGatewaySettings"));
 
-export { GetClusterPoolArgs, GetClusterPoolResult, GetClusterPoolOutputArgs } from "./getClusterPool";
-export const getClusterPool: typeof import("./getClusterPool").getClusterPool = null as any;
-export const getClusterPoolOutput: typeof import("./getClusterPool").getClusterPoolOutput = null as any;
-utilities.lazyLoad(exports, ["getClusterPool","getClusterPoolOutput"], () => require("./getClusterPool"));
+export { GetExtensionArgs, GetExtensionResult, GetExtensionOutputArgs } from "./getExtension";
+export const getExtension: typeof import("./getExtension").getExtension = null as any;
+export const getExtensionOutput: typeof import("./getExtension").getExtensionOutput = null as any;
+utilities.lazyLoad(exports, ["getExtension","getExtensionOutput"], () => require("./getExtension"));
 
-export { GetClusterPoolClusterArgs, GetClusterPoolClusterResult, GetClusterPoolClusterOutputArgs } from "./getClusterPoolCluster";
-export const getClusterPoolCluster: typeof import("./getClusterPoolCluster").getClusterPoolCluster = null as any;
-export const getClusterPoolClusterOutput: typeof import("./getClusterPoolCluster").getClusterPoolClusterOutput = null as any;
-utilities.lazyLoad(exports, ["getClusterPoolCluster","getClusterPoolClusterOutput"], () => require("./getClusterPoolCluster"));
+export { GetExtensionAzureMonitorAgentStatusArgs, GetExtensionAzureMonitorAgentStatusResult, GetExtensionAzureMonitorAgentStatusOutputArgs } from "./getExtensionAzureMonitorAgentStatus";
+export const getExtensionAzureMonitorAgentStatus: typeof import("./getExtensionAzureMonitorAgentStatus").getExtensionAzureMonitorAgentStatus = null as any;
+export const getExtensionAzureMonitorAgentStatusOutput: typeof import("./getExtensionAzureMonitorAgentStatus").getExtensionAzureMonitorAgentStatusOutput = null as any;
+utilities.lazyLoad(exports, ["getExtensionAzureMonitorAgentStatus","getExtensionAzureMonitorAgentStatusOutput"], () => require("./getExtensionAzureMonitorAgentStatus"));
+
+export { GetExtensionAzureMonitorStatusArgs, GetExtensionAzureMonitorStatusResult, GetExtensionAzureMonitorStatusOutputArgs } from "./getExtensionAzureMonitorStatus";
+export const getExtensionAzureMonitorStatus: typeof import("./getExtensionAzureMonitorStatus").getExtensionAzureMonitorStatus = null as any;
+export const getExtensionAzureMonitorStatusOutput: typeof import("./getExtensionAzureMonitorStatus").getExtensionAzureMonitorStatusOutput = null as any;
+utilities.lazyLoad(exports, ["getExtensionAzureMonitorStatus","getExtensionAzureMonitorStatusOutput"], () => require("./getExtensionAzureMonitorStatus"));
+
+export { GetExtensionMonitoringStatusArgs, GetExtensionMonitoringStatusResult, GetExtensionMonitoringStatusOutputArgs } from "./getExtensionMonitoringStatus";
+export const getExtensionMonitoringStatus: typeof import("./getExtensionMonitoringStatus").getExtensionMonitoringStatus = null as any;
+export const getExtensionMonitoringStatusOutput: typeof import("./getExtensionMonitoringStatus").getExtensionMonitoringStatusOutput = null as any;
+utilities.lazyLoad(exports, ["getExtensionMonitoringStatus","getExtensionMonitoringStatusOutput"], () => require("./getExtensionMonitoringStatus"));
 
 export { GetPrivateEndpointConnectionArgs, GetPrivateEndpointConnectionResult, GetPrivateEndpointConnectionOutputArgs } from "./getPrivateEndpointConnection";
 export const getPrivateEndpointConnection: typeof import("./getPrivateEndpointConnection").getPrivateEndpointConnection = null as any;
@@ -68,10 +88,14 @@ const _module = {
                 return new Application(name, <any>undefined, { urn })
             case "azure-native:hdinsight:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
-            case "azure-native:hdinsight:ClusterPool":
-                return new ClusterPool(name, <any>undefined, { urn })
-            case "azure-native:hdinsight:ClusterPoolCluster":
-                return new ClusterPoolCluster(name, <any>undefined, { urn })
+            case "azure-native:hdinsight:Extension":
+                return new Extension(name, <any>undefined, { urn })
+            case "azure-native:hdinsight:ExtensionAzureMonitorAgentStatus":
+                return new ExtensionAzureMonitorAgentStatus(name, <any>undefined, { urn })
+            case "azure-native:hdinsight:ExtensionAzureMonitorStatus":
+                return new ExtensionAzureMonitorStatus(name, <any>undefined, { urn })
+            case "azure-native:hdinsight:ExtensionMonitoringStatus":
+                return new ExtensionMonitoringStatus(name, <any>undefined, { urn })
             case "azure-native:hdinsight:PrivateEndpointConnection":
                 return new PrivateEndpointConnection(name, <any>undefined, { urn })
             default:

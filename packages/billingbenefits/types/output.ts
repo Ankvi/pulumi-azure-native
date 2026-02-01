@@ -1,11 +1,40 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Optional field to record suppression reason for automatic shortfall.
+ */
+export interface AutomaticShortfallSuppressReasonResponse {
+    /**
+     * Code for the suppression reason.
+     */
+    code?: string;
+    /**
+     * Message for suppression reason.
+     */
+    message?: string;
+}
+
+/**
  * Catalog claim for a discount.
  */
 export interface CatalogClaimsItemResponse {
     catalogClaimsItemType?: string;
     value?: string;
+}
+
+/**
+ * Commitment towards the benefit.
+ */
+export interface CommitmentResponse {
+    amount?: number;
+    /**
+     * The ISO 4217 3-letter currency code for the currency used by this purchase record.
+     */
+    currencyCode?: string;
+    /**
+     * The grain of the commitment.
+     */
+    grain?: string;
 }
 
 /**
@@ -18,6 +47,70 @@ export interface ConditionsItemResponse {
      * These items are open-ended strings.
      */
     value?: string[];
+}
+
+/**
+ * Credit breakdown item representing a milestone, line-item, or no-charge service
+ */
+export interface CreditBreakdownItemResponse {
+    /**
+     * Allocation details including currency and amount for this breakdown item
+     */
+    allocation?: CommitmentResponse;
+    /**
+     * Key-value pairs for additional parameters and metadata
+     */
+    dimensions?: CreditDimensionResponse[];
+    /**
+     * End DateTime in UTC.
+     */
+    endAt?: string;
+    /**
+     * Start DateTime.
+     */
+    startAt?: string;
+}
+
+/**
+ * Key-value pair for additional credit parameters and metadata
+ */
+export interface CreditDimensionResponse {
+    /**
+     * The dimension key (e.g., productFamily, description, creditType)
+     */
+    key: string;
+    /**
+     * The dimension value
+     */
+    value: string;
+}
+
+/**
+ * Credit breakdown item representing a milestone, line-item, or no-charge service
+ */
+export interface CreditPoliciesResponse {
+    /**
+     * Expiration policy of the Credit
+     */
+    expiration?: string;
+    /**
+     * Redemption policy of the Credit
+     */
+    redemption?: string;
+}
+
+/**
+ * The reason for the credit. Not required if not applicable.
+ */
+export interface CreditReasonResponse {
+    /**
+     * The reason code for credit.
+     */
+    code: number;
+    /**
+     * The free string description of the credit.
+     */
+    description: string;
 }
 
 /**
@@ -392,6 +485,40 @@ export interface EntityTypePrimaryDiscountResponse {
 }
 
 /**
+ * MACC milestone represents interim targets within the period of MACC.
+ */
+export interface MaccMilestoneResponse {
+    /**
+     * Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
+     */
+    automaticShortfall?: string;
+    /**
+     * Optional field to record suppression reason for automatic shortfall.
+     */
+    automaticShortfallSuppressReason?: AutomaticShortfallSuppressReasonResponse;
+    /**
+     * Commitment associated with this milestone.
+     */
+    commitment?: PriceResponse;
+    /**
+     * End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
+     */
+    endAt?: string;
+    /**
+     * Globally unique identifier for the milestone. Format: {guid}
+     */
+    milestoneId?: string;
+    /**
+     * Details of the shortfall associated with this milestone.
+     */
+    shortfall?: ShortfallResponse;
+    /**
+     * Represents the current status of the Milestone.
+     */
+    status?: string;
+}
+
+/**
  * Managed service identity (system assigned and/or user assigned identities)
  */
 export interface ManagedServiceIdentityResponse {
@@ -437,7 +564,7 @@ export interface PlanResponse {
      */
     name: string;
     /**
-     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
+     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. 
      */
     product: string;
     /**
@@ -468,6 +595,48 @@ export interface PriceGuaranteePropertiesResponse {
     pricingPolicy?: string;
 }
 
+export interface PriceResponse {
+    amount?: number;
+    /**
+     * The ISO 4217 3-letter currency code for the currency used by this purchase record.
+     */
+    currencyCode?: string;
+}
+
+/**
+ * MACC shortfall
+ */
+export interface ShortfallResponse {
+    /**
+     * Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+     */
+    balanceVersion?: number;
+    /**
+     * Shortfall amount with grain.
+     */
+    charge?: CommitmentResponse;
+    /**
+     * End DateTime in UTC.
+     */
+    endAt?: string;
+    /**
+     * Represents catalog UPN.
+     */
+    productCode?: string;
+    /**
+     * Fully-qualified resource identifier of the credits associated with the shortfall.
+     */
+    resourceId?: string;
+    /**
+     * Start DateTime.
+     */
+    startAt?: string;
+    /**
+     * This is an identifier of the shortfall which will not change for its lifetime.
+     */
+    systemId?: string;
+}
+
 /**
  * The resource model definition representing SKU
  */
@@ -485,7 +654,7 @@ export interface SkuResponse {
      */
     name: string;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
      */
     size?: string;
     /**

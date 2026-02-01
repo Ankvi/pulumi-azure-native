@@ -980,7 +980,7 @@ export interface GalleryApplicationVersionPublishingProfileArgs {
      */
     source: pulumi.Input<UserArtifactSourceArgs>;
     /**
-     * Specifies the storage account type to be used to store the image. This property is not updatable.
+     * Specifies the storage account type to be used to store the image. Cannot be specified along with storageAccountStrategy. This property is not updatable.
      */
     storageAccountType?: pulumi.Input<string | enums.StorageAccountType>;
     /**
@@ -1139,7 +1139,7 @@ export interface GalleryImageVersionPublishingProfileArgs {
      */
     replicationMode?: pulumi.Input<string | enums.ReplicationMode>;
     /**
-     * Specifies the storage account type to be used to store the image. This property is not updatable.
+     * Specifies the storage account type to be used to store the image. Cannot be specified along with storageAccountStrategy. This property is not updatable.
      */
     storageAccountType?: pulumi.Input<string | enums.StorageAccountType>;
     /**
@@ -1228,6 +1228,140 @@ export interface GalleryOSDiskImageArgs {
      * The source for the disk image.
      */
     source?: pulumi.Input<GalleryDiskImageSourceArgs>;
+}
+
+/**
+ * The definition of a parameter that can be passed to a script of a Gallery Script Version.
+ */
+export interface GalleryScriptParameterArgs {
+    /**
+     * The default value of the parameter, only applies to string types.
+     */
+    defaultValue?: pulumi.Input<string>;
+    /**
+     * A description to help users understand what this parameter means
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * A list of permissible values. Only applicable values are from 'enum' values defined in 'GalleryScriptParameter'.
+     */
+    enumValues?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The minimum value of parameter.
+     */
+    maxValue?: pulumi.Input<string>;
+    /**
+     * The minimum value of parameter.
+     */
+    minValue?: pulumi.Input<string>;
+    /**
+     * The name of the parameter.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Indicates whether this parameter must be passed.
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * Specifies the type of the Gallery Script parameter. Possible values are: String, Int, Double, Boolean, Enum
+     */
+    type?: pulumi.Input<string | enums.GalleryScriptParameterType>;
+}
+
+/**
+ * Describes the properties of a gallery script definition.
+ */
+export interface GalleryScriptPropertiesArgs {
+    /**
+     * The description of this gallery script definition resource. This property is updatable.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The end of life date of the gallery Script Definition. This property can be used for decommissioning purposes. This property is updatable.
+     */
+    endOfLifeDate?: pulumi.Input<string>;
+    /**
+     * The Eula agreement (End User License Agreement) for the gallery Script Definition.
+     */
+    eula?: pulumi.Input<string>;
+    /**
+     * The privacy statement uri.
+     */
+    privacyStatementUri?: pulumi.Input<string>;
+    /**
+     * The release note uri.
+     */
+    releaseNoteUri?: pulumi.Input<string>;
+    /**
+     * This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
+     */
+    supportedOSType: pulumi.Input<enums.OperatingSystemTypes>;
+}
+
+/**
+ * Describes the properties of a gallery script version.
+ */
+export interface GalleryScriptVersionPropertiesArgs {
+    /**
+     * The publishing profile of a gallery image version.
+     */
+    publishingProfile: pulumi.Input<GalleryScriptVersionPublishingProfileArgs>;
+    /**
+     * The safety profile of the Gallery Script Version.
+     */
+    safetyProfile?: pulumi.Input<GalleryScriptVersionSafetyProfileArgs>;
+}
+
+/**
+ * The publishing profile of a gallery image version.
+ */
+export interface GalleryScriptVersionPublishingProfileArgs {
+    /**
+     * The end of life date of the gallery image version. This property can be used for decommissioning purposes. This property is updatable.
+     */
+    endOfLifeDate?: pulumi.Input<string>;
+    /**
+     * If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
+     */
+    excludeFromLatest?: pulumi.Input<boolean>;
+    /**
+     * The number of replicas of the Image Version to be created per region. This property would take effect for a region when regionalReplicaCount is not specified. This property is updatable.
+     */
+    replicaCount?: pulumi.Input<number>;
+    /**
+     * Optional parameter which specifies the mode to be used for replication. This property is not updatable.
+     */
+    replicationMode?: pulumi.Input<string | enums.ReplicationMode>;
+    /**
+     * The source script from which the Script Version is going to be created.
+     */
+    source: pulumi.Input<ScriptSourceArgs>;
+    /**
+     * Specifies the strategy to be used when selecting the storage account type. Cannot be specified along with storageAccountType, but can be overridden per region by specifying targetRegions[].storageAccountType. This property is not updatable.
+     */
+    storageAccountStrategy?: pulumi.Input<string | enums.StorageAccountStrategy>;
+    /**
+     * Specifies the storage account type to be used to store the image. Cannot be specified along with storageAccountStrategy. This property is not updatable.
+     */
+    storageAccountType?: pulumi.Input<string | enums.StorageAccountType>;
+    /**
+     * The target extended locations where the Image Version is going to be replicated to. This property is updatable.
+     */
+    targetExtendedLocations?: pulumi.Input<pulumi.Input<GalleryTargetExtendedLocationArgs>[]>;
+    /**
+     * The target regions where the Image Version is going to be replicated to. This property is updatable.
+     */
+    targetRegions?: pulumi.Input<pulumi.Input<TargetRegionArgs>[]>;
+}
+
+/**
+ * The safety profile of the Gallery Script Version.
+ */
+export interface GalleryScriptVersionSafetyProfileArgs {
+    /**
+     * Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.
+     */
+    allowDeletionOfReplicatedLocations?: pulumi.Input<boolean>;
 }
 
 export interface GalleryTargetExtendedLocationArgs {
@@ -2281,6 +2415,20 @@ export interface ScheduledEventsProfileArgs {
      * Specifies Terminate Scheduled Event related configurations.
      */
     terminateNotificationProfile?: pulumi.Input<TerminateNotificationProfileArgs>;
+}
+
+/**
+ * The source script from which the Script Version is going to be created.
+ */
+export interface ScriptSourceArgs {
+    /**
+     * Optional. Any input parameters that needs to passed to the script and are accessed within the script for its execution.
+     */
+    parameters?: pulumi.Input<pulumi.Input<GalleryScriptParameterArgs>[]>;
+    /**
+     * Required. The link of the source script, it must be a readable storage blob with SAS URI or publicly accessible URI or managed identity enabled.
+     */
+    scriptLink: pulumi.Input<string>;
 }
 
 /**

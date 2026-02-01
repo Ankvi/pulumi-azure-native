@@ -11,6 +11,20 @@ export interface AzureMonitorWorkspaceIntegrationResponse {
 }
 
 /**
+ * Properties specific to the dashboard definition.
+ */
+export interface DashboardDefinitionPropertiesResponse {
+    /**
+     * The provisioning state of the dashboard definition resource.
+     */
+    provisioningState: string;
+    /**
+     * The dashboard definition data in JSON format.
+     */
+    serializedData?: string;
+}
+
+/**
  * Enterprise settings of a Grafana instance
  */
 export interface EnterpriseConfigurationsResponse {

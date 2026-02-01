@@ -110,11 +110,11 @@ export interface CustomRolloutPropertiesResponse {
     /**
      * The specification.
      */
-    specification: CustomRolloutPropertiesResponseSpecification;
+    specification: CustomRolloutPropertiesSpecificationResponse;
     /**
      * The status.
      */
-    status?: CustomRolloutPropertiesResponseStatus;
+    status?: CustomRolloutPropertiesStatusResponse;
 }
 /**
  * customRolloutPropertiesResponseProvideDefaults sets the appropriate defaults for CustomRolloutPropertiesResponse
@@ -122,26 +122,26 @@ export interface CustomRolloutPropertiesResponse {
 export function customRolloutPropertiesResponseProvideDefaults(val: CustomRolloutPropertiesResponse): CustomRolloutPropertiesResponse {
     return {
         ...val,
-        specification: customRolloutPropertiesResponseSpecificationProvideDefaults(val.specification),
+        specification: customRolloutPropertiesSpecificationResponseProvideDefaults(val.specification),
     };
 }
 
 /**
  * The specification.
  */
-export interface CustomRolloutPropertiesResponseSpecification {
+export interface CustomRolloutPropertiesSpecificationResponse {
     /**
      * The auto provisioning configuration.
      */
-    autoProvisionConfig?: CustomRolloutSpecificationResponseAutoProvisionConfig;
+    autoProvisionConfig?: CustomRolloutSpecificationAutoProvisionConfigResponse;
     /**
      * The canary region configuration.
      */
-    canary?: CustomRolloutSpecificationResponseCanary;
+    canary?: CustomRolloutSpecificationCanaryResponse;
     /**
      * The provider registration.
      */
-    providerRegistration?: CustomRolloutSpecificationResponseProviderRegistration;
+    providerRegistration?: CustomRolloutSpecificationProviderRegistrationResponse;
     /**
      * Whether refreshing subscription registration is enabled or disabled.
      */
@@ -160,19 +160,19 @@ export interface CustomRolloutPropertiesResponseSpecification {
     skipReleaseScopeValidation?: boolean;
 }
 /**
- * customRolloutPropertiesResponseSpecificationProvideDefaults sets the appropriate defaults for CustomRolloutPropertiesResponseSpecification
+ * customRolloutPropertiesSpecificationResponseProvideDefaults sets the appropriate defaults for CustomRolloutPropertiesSpecificationResponse
  */
-export function customRolloutPropertiesResponseSpecificationProvideDefaults(val: CustomRolloutPropertiesResponseSpecification): CustomRolloutPropertiesResponseSpecification {
+export function customRolloutPropertiesSpecificationResponseProvideDefaults(val: CustomRolloutPropertiesSpecificationResponse): CustomRolloutPropertiesSpecificationResponse {
     return {
         ...val,
-        providerRegistration: (val.providerRegistration ? customRolloutSpecificationResponseProviderRegistrationProvideDefaults(val.providerRegistration) : undefined),
+        providerRegistration: (val.providerRegistration ? customRolloutSpecificationProviderRegistrationResponseProvideDefaults(val.providerRegistration) : undefined),
     };
 }
 
 /**
  * The status.
  */
-export interface CustomRolloutPropertiesResponseStatus {
+export interface CustomRolloutPropertiesStatusResponse {
     /**
      * The completed regions.
      */
@@ -184,13 +184,13 @@ export interface CustomRolloutPropertiesResponseStatus {
     /**
      * The manifest checkin status.
      */
-    manifestCheckinStatus?: CustomRolloutStatusResponseManifestCheckinStatus;
+    manifestCheckinStatus?: CustomRolloutStatusManifestCheckinStatusResponse;
 }
 
 /**
  * The auto provisioning configuration.
  */
-export interface CustomRolloutSpecificationResponseAutoProvisionConfig {
+export interface CustomRolloutSpecificationAutoProvisionConfigResponse {
     resourceGraph?: boolean;
     storage?: boolean;
 }
@@ -198,14 +198,14 @@ export interface CustomRolloutSpecificationResponseAutoProvisionConfig {
 /**
  * The canary region configuration.
  */
-export interface CustomRolloutSpecificationResponseCanary {
+export interface CustomRolloutSpecificationCanaryResponse {
     regions?: string[];
 }
 
 /**
  * The provider registration.
  */
-export interface CustomRolloutSpecificationResponseProviderRegistration {
+export interface CustomRolloutSpecificationProviderRegistrationResponse {
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -229,9 +229,9 @@ export interface CustomRolloutSpecificationResponseProviderRegistration {
     type: string;
 }
 /**
- * customRolloutSpecificationResponseProviderRegistrationProvideDefaults sets the appropriate defaults for CustomRolloutSpecificationResponseProviderRegistration
+ * customRolloutSpecificationProviderRegistrationResponseProvideDefaults sets the appropriate defaults for CustomRolloutSpecificationProviderRegistrationResponse
  */
-export function customRolloutSpecificationResponseProviderRegistrationProvideDefaults(val: CustomRolloutSpecificationResponseProviderRegistration): CustomRolloutSpecificationResponseProviderRegistration {
+export function customRolloutSpecificationProviderRegistrationResponseProvideDefaults(val: CustomRolloutSpecificationProviderRegistrationResponse): CustomRolloutSpecificationProviderRegistrationResponse {
     return {
         ...val,
         kind: (val.kind) ?? "Managed",
@@ -241,7 +241,7 @@ export function customRolloutSpecificationResponseProviderRegistrationProvideDef
 /**
  * The manifest checkin status.
  */
-export interface CustomRolloutStatusResponseManifestCheckinStatus {
+export interface CustomRolloutStatusManifestCheckinStatusResponse {
     /**
      * The commit id.
      */
@@ -268,11 +268,11 @@ export interface DefaultRolloutPropertiesResponse {
     /**
      * The default rollout specification.
      */
-    specification?: DefaultRolloutPropertiesResponseSpecification;
+    specification?: DefaultRolloutPropertiesSpecificationResponse;
     /**
      * The default rollout status.
      */
-    status?: DefaultRolloutPropertiesResponseStatus;
+    status?: DefaultRolloutPropertiesStatusResponse;
 }
 /**
  * defaultRolloutPropertiesResponseProvideDefaults sets the appropriate defaults for DefaultRolloutPropertiesResponse
@@ -280,42 +280,42 @@ export interface DefaultRolloutPropertiesResponse {
 export function defaultRolloutPropertiesResponseProvideDefaults(val: DefaultRolloutPropertiesResponse): DefaultRolloutPropertiesResponse {
     return {
         ...val,
-        specification: (val.specification ? defaultRolloutPropertiesResponseSpecificationProvideDefaults(val.specification) : undefined),
+        specification: (val.specification ? defaultRolloutPropertiesSpecificationResponseProvideDefaults(val.specification) : undefined),
     };
 }
 
 /**
  * The default rollout specification.
  */
-export interface DefaultRolloutPropertiesResponseSpecification {
+export interface DefaultRolloutPropertiesSpecificationResponse {
     /**
      * The auto provisioning config.
      */
-    autoProvisionConfig?: DefaultRolloutSpecificationResponseAutoProvisionConfig;
+    autoProvisionConfig?: DefaultRolloutSpecificationAutoProvisionConfigResponse;
     /**
      * The canary traffic region configuration.
      */
-    canary?: DefaultRolloutSpecificationResponseCanary;
+    canary?: DefaultRolloutSpecificationCanaryResponse;
     /**
      * The expedited rollout definition.
      */
-    expeditedRollout?: DefaultRolloutSpecificationResponseExpeditedRollout;
+    expeditedRollout?: DefaultRolloutSpecificationExpeditedRolloutResponse;
     /**
      * The high traffic region configuration.
      */
-    highTraffic?: DefaultRolloutSpecificationResponseHighTraffic;
+    highTraffic?: DefaultRolloutSpecificationHighTrafficResponse;
     /**
      * The low traffic region configuration.
      */
-    lowTraffic?: DefaultRolloutSpecificationResponseLowTraffic;
+    lowTraffic?: DefaultRolloutSpecificationLowTrafficResponse;
     /**
      * The medium traffic region configuration.
      */
-    mediumTraffic?: DefaultRolloutSpecificationResponseMediumTraffic;
+    mediumTraffic?: DefaultRolloutSpecificationMediumTrafficResponse;
     /**
      * The provider registration.
      */
-    providerRegistration?: DefaultRolloutSpecificationResponseProviderRegistration;
+    providerRegistration?: DefaultRolloutSpecificationProviderRegistrationResponse;
     /**
      * The resource type registrations.
      */
@@ -323,26 +323,26 @@ export interface DefaultRolloutPropertiesResponseSpecification {
     /**
      * The rest of the world group one region configuration.
      */
-    restOfTheWorldGroupOne?: DefaultRolloutSpecificationResponseRestOfTheWorldGroupOne;
+    restOfTheWorldGroupOne?: DefaultRolloutSpecificationRestOfTheWorldGroupOneResponse;
     /**
      * The rest of the world group two region configuration.
      */
-    restOfTheWorldGroupTwo?: DefaultRolloutSpecificationResponseRestOfTheWorldGroupTwo;
+    restOfTheWorldGroupTwo?: DefaultRolloutSpecificationRestOfTheWorldGroupTwoResponse;
 }
 /**
- * defaultRolloutPropertiesResponseSpecificationProvideDefaults sets the appropriate defaults for DefaultRolloutPropertiesResponseSpecification
+ * defaultRolloutPropertiesSpecificationResponseProvideDefaults sets the appropriate defaults for DefaultRolloutPropertiesSpecificationResponse
  */
-export function defaultRolloutPropertiesResponseSpecificationProvideDefaults(val: DefaultRolloutPropertiesResponseSpecification): DefaultRolloutPropertiesResponseSpecification {
+export function defaultRolloutPropertiesSpecificationResponseProvideDefaults(val: DefaultRolloutPropertiesSpecificationResponse): DefaultRolloutPropertiesSpecificationResponse {
     return {
         ...val,
-        providerRegistration: (val.providerRegistration ? defaultRolloutSpecificationResponseProviderRegistrationProvideDefaults(val.providerRegistration) : undefined),
+        providerRegistration: (val.providerRegistration ? defaultRolloutSpecificationProviderRegistrationResponseProvideDefaults(val.providerRegistration) : undefined),
     };
 }
 
 /**
  * The default rollout status.
  */
-export interface DefaultRolloutPropertiesResponseStatus {
+export interface DefaultRolloutPropertiesStatusResponse {
     /**
      * The completed regions.
      */
@@ -354,7 +354,7 @@ export interface DefaultRolloutPropertiesResponseStatus {
     /**
      * The manifest checkin status.
      */
-    manifestCheckinStatus?: DefaultRolloutStatusResponseManifestCheckinStatus;
+    manifestCheckinStatus?: DefaultRolloutStatusManifestCheckinStatusResponse;
     /**
      * The next traffic region.
      */
@@ -372,7 +372,7 @@ export interface DefaultRolloutPropertiesResponseStatus {
 /**
  * The auto provisioning config.
  */
-export interface DefaultRolloutSpecificationResponseAutoProvisionConfig {
+export interface DefaultRolloutSpecificationAutoProvisionConfigResponse {
     /**
      * Whether auto provisioning for resource graph is enabled.
      */
@@ -386,7 +386,7 @@ export interface DefaultRolloutSpecificationResponseAutoProvisionConfig {
 /**
  * The canary traffic region configuration.
  */
-export interface DefaultRolloutSpecificationResponseCanary {
+export interface DefaultRolloutSpecificationCanaryResponse {
     /**
      * The regions.
      */
@@ -400,7 +400,7 @@ export interface DefaultRolloutSpecificationResponseCanary {
 /**
  * The expedited rollout definition.
  */
-export interface DefaultRolloutSpecificationResponseExpeditedRollout {
+export interface DefaultRolloutSpecificationExpeditedRolloutResponse {
     /**
      * Indicates whether expedited rollout is enabled/disabled
      */
@@ -410,7 +410,7 @@ export interface DefaultRolloutSpecificationResponseExpeditedRollout {
 /**
  * The high traffic region configuration.
  */
-export interface DefaultRolloutSpecificationResponseHighTraffic {
+export interface DefaultRolloutSpecificationHighTrafficResponse {
     regions?: string[];
     /**
      * The wait duration.
@@ -421,7 +421,7 @@ export interface DefaultRolloutSpecificationResponseHighTraffic {
 /**
  * The low traffic region configuration.
  */
-export interface DefaultRolloutSpecificationResponseLowTraffic {
+export interface DefaultRolloutSpecificationLowTrafficResponse {
     regions?: string[];
     /**
      * The wait duration.
@@ -432,7 +432,7 @@ export interface DefaultRolloutSpecificationResponseLowTraffic {
 /**
  * The medium traffic region configuration.
  */
-export interface DefaultRolloutSpecificationResponseMediumTraffic {
+export interface DefaultRolloutSpecificationMediumTrafficResponse {
     regions?: string[];
     /**
      * The wait duration.
@@ -443,7 +443,7 @@ export interface DefaultRolloutSpecificationResponseMediumTraffic {
 /**
  * The provider registration.
  */
-export interface DefaultRolloutSpecificationResponseProviderRegistration {
+export interface DefaultRolloutSpecificationProviderRegistrationResponse {
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -467,9 +467,9 @@ export interface DefaultRolloutSpecificationResponseProviderRegistration {
     type: string;
 }
 /**
- * defaultRolloutSpecificationResponseProviderRegistrationProvideDefaults sets the appropriate defaults for DefaultRolloutSpecificationResponseProviderRegistration
+ * defaultRolloutSpecificationProviderRegistrationResponseProvideDefaults sets the appropriate defaults for DefaultRolloutSpecificationProviderRegistrationResponse
  */
-export function defaultRolloutSpecificationResponseProviderRegistrationProvideDefaults(val: DefaultRolloutSpecificationResponseProviderRegistration): DefaultRolloutSpecificationResponseProviderRegistration {
+export function defaultRolloutSpecificationProviderRegistrationResponseProvideDefaults(val: DefaultRolloutSpecificationProviderRegistrationResponse): DefaultRolloutSpecificationProviderRegistrationResponse {
     return {
         ...val,
         kind: (val.kind) ?? "Managed",
@@ -479,7 +479,7 @@ export function defaultRolloutSpecificationResponseProviderRegistrationProvideDe
 /**
  * The rest of the world group one region configuration.
  */
-export interface DefaultRolloutSpecificationResponseRestOfTheWorldGroupOne {
+export interface DefaultRolloutSpecificationRestOfTheWorldGroupOneResponse {
     regions?: string[];
     /**
      * The wait duration.
@@ -490,7 +490,7 @@ export interface DefaultRolloutSpecificationResponseRestOfTheWorldGroupOne {
 /**
  * The rest of the world group two region configuration.
  */
-export interface DefaultRolloutSpecificationResponseRestOfTheWorldGroupTwo {
+export interface DefaultRolloutSpecificationRestOfTheWorldGroupTwoResponse {
     regions?: string[];
     /**
      * The wait duration.
@@ -501,7 +501,7 @@ export interface DefaultRolloutSpecificationResponseRestOfTheWorldGroupTwo {
 /**
  * The manifest checkin status.
  */
-export interface DefaultRolloutStatusResponseManifestCheckinStatus {
+export interface DefaultRolloutStatusManifestCheckinStatusResponse {
     /**
      * The commit id.
      */
@@ -584,29 +584,10 @@ export interface ExtendedLocationOptionsResponse {
     type?: string;
 }
 
-export interface FanoutLinkedNotificationRuleResponse {
-    /**
-     * The actions.
-     */
-    actions?: string[];
-    /**
-     * The dsts configuration.
-     */
-    dstsConfiguration?: FanoutLinkedNotificationRuleResponseDstsConfiguration;
-    /**
-     * The endpoints.
-     */
-    endpoints?: ResourceProviderEndpointResponse[];
-    /**
-     * The token auth configuration.
-     */
-    tokenAuthConfiguration?: TokenAuthConfigurationResponse;
-}
-
 /**
  * The dsts configuration.
  */
-export interface FanoutLinkedNotificationRuleResponseDstsConfiguration {
+export interface FanoutLinkedNotificationRuleDstsConfigurationResponse {
     /**
      * This is a URI property.
      */
@@ -615,6 +596,25 @@ export interface FanoutLinkedNotificationRuleResponseDstsConfiguration {
      * The service name.
      */
     serviceName: string;
+}
+
+export interface FanoutLinkedNotificationRuleResponse {
+    /**
+     * The actions.
+     */
+    actions?: string[];
+    /**
+     * The dsts configuration.
+     */
+    dstsConfiguration?: FanoutLinkedNotificationRuleDstsConfigurationResponse;
+    /**
+     * The endpoints.
+     */
+    endpoints?: ResourceProviderEndpointResponse[];
+    /**
+     * The token auth configuration.
+     */
+    tokenAuthConfiguration?: TokenAuthConfigurationResponse;
 }
 
 export interface FilterRuleResponse {
@@ -726,6 +726,20 @@ export interface LocationQuotaRuleResponse {
     quotaId?: string;
 }
 
+/**
+ * The hidden property paths.
+ */
+export interface LoggingRuleHiddenPropertyPathsResponse {
+    /**
+     * The hidden paths on request.
+     */
+    hiddenPathsOnRequest?: string[];
+    /**
+     * The hidden paths on response.
+     */
+    hiddenPathsOnResponse?: string[];
+}
+
 export interface LoggingRuleResponse {
     /**
      * The action.
@@ -742,21 +756,7 @@ export interface LoggingRuleResponse {
     /**
      * The hidden property paths.
      */
-    hiddenPropertyPaths?: LoggingRuleResponseHiddenPropertyPaths;
-}
-
-/**
- * The hidden property paths.
- */
-export interface LoggingRuleResponseHiddenPropertyPaths {
-    /**
-     * The hidden paths on request.
-     */
-    hiddenPathsOnRequest?: string[];
-    /**
-     * The hidden paths on response.
-     */
-    hiddenPathsOnResponse?: string[];
+    hiddenPropertyPaths?: LoggingRuleHiddenPropertyPathsResponse;
 }
 
 export interface NotificationEndpointResponse {
@@ -821,7 +821,7 @@ export interface OpenApiValidationResponse {
 /**
  * The provider authentication.
  */
-export interface ProviderHubMetadataResponseProviderAuthentication {
+export interface ProviderHubMetadataProviderAuthenticationResponse {
     /**
      * The allowed audiences.
      */
@@ -831,7 +831,7 @@ export interface ProviderHubMetadataResponseProviderAuthentication {
 /**
  * The third party provider authorization.
  */
-export interface ProviderHubMetadataResponseThirdPartyProviderAuthorization {
+export interface ProviderHubMetadataThirdPartyProviderAuthorizationResponse {
     /**
      * The authorizations.
      */
@@ -847,6 +847,46 @@ export interface ProviderMonitorSettingPropertiesResponse {
      * The provisioning state.
      */
     provisioningState: string;
+}
+
+/**
+ * The private resource provider configuration.
+ */
+export interface ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse {
+    /**
+     * The allowed subscriptions.
+     */
+    allowedSubscriptions?: string[];
+}
+
+/**
+ * The provider hub metadata.
+ */
+export interface ProviderRegistrationPropertiesProviderHubMetadataResponse {
+    /**
+     * The direct RP role definition id.
+     */
+    directRpRoleDefinitionId?: string;
+    /**
+     * The global async operation resource type name.
+     */
+    globalAsyncOperationResourceTypeName?: string;
+    /**
+     * The provider authentication.
+     */
+    providerAuthentication?: ProviderHubMetadataProviderAuthenticationResponse;
+    /**
+     * The provider authorizations.
+     */
+    providerAuthorizations?: ResourceProviderAuthorizationResponse[];
+    /**
+     * The regional async operation resource type name.
+     */
+    regionalAsyncOperationResourceTypeName?: string;
+    /**
+     * The third party provider authorization.
+     */
+    thirdPartyProviderAuthorization?: ProviderHubMetadataThirdPartyProviderAuthorizationResponse;
 }
 
 export interface ProviderRegistrationPropertiesResponse {
@@ -865,7 +905,7 @@ export interface ProviderRegistrationPropertiesResponse {
     /**
      * The dsts configuration.
      */
-    dstsConfiguration?: ResourceProviderManifestPropertiesResponseDstsConfiguration;
+    dstsConfiguration?: ResourceProviderManifestPropertiesDstsConfigurationResponse;
     /**
      * The enable tenant linked notification.
      */
@@ -873,7 +913,7 @@ export interface ProviderRegistrationPropertiesResponse {
     /**
      * The features rule.
      */
-    featuresRule?: ResourceProviderManifestPropertiesResponseFeaturesRule;
+    featuresRule?: ResourceProviderManifestPropertiesFeaturesRuleResponse;
     /**
      * The global notification endpoints.
      */
@@ -893,7 +933,7 @@ export interface ProviderRegistrationPropertiesResponse {
     /**
      * The resource provider management.
      */
-    management?: ResourceProviderManifestPropertiesResponseManagement;
+    management?: ResourceProviderManifestPropertiesManagementResponse;
     /**
      * Management groups global notification endpoints.
      */
@@ -913,7 +953,7 @@ export interface ProviderRegistrationPropertiesResponse {
     /**
      * Notification settings.
      */
-    notificationSettings?: ResourceProviderManifestPropertiesResponseNotificationSettings;
+    notificationSettings?: ResourceProviderManifestPropertiesNotificationSettingsResponse;
     /**
      * The notifications.
      */
@@ -925,11 +965,11 @@ export interface ProviderRegistrationPropertiesResponse {
     /**
      * The private resource provider configuration.
      */
-    privateResourceProviderConfiguration?: ProviderRegistrationPropertiesResponsePrivateResourceProviderConfiguration;
+    privateResourceProviderConfiguration?: ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse;
     /**
      * The provider authentication.
      */
-    providerAuthentication?: ResourceProviderManifestPropertiesResponseProviderAuthentication;
+    providerAuthentication?: ResourceProviderManifestPropertiesProviderAuthenticationResponse;
     /**
      * The provider authorizations.
      */
@@ -937,7 +977,7 @@ export interface ProviderRegistrationPropertiesResponse {
     /**
      * The provider hub metadata.
      */
-    providerHubMetadata?: ProviderRegistrationPropertiesResponseProviderHubMetadata;
+    providerHubMetadata?: ProviderRegistrationPropertiesProviderHubMetadataResponse;
     /**
      * The provider type.
      */
@@ -953,7 +993,7 @@ export interface ProviderRegistrationPropertiesResponse {
     /**
      * The request header options.
      */
-    requestHeaderOptions?: ResourceProviderManifestPropertiesResponseRequestHeaderOptions;
+    requestHeaderOptions?: ResourceProviderManifestPropertiesRequestHeaderOptionsResponse;
     /**
      * The required features.
      */
@@ -961,7 +1001,7 @@ export interface ProviderRegistrationPropertiesResponse {
     /**
      * Resource group lock option during move.
      */
-    resourceGroupLockOptionDuringMove?: ResourceProviderManifestPropertiesResponseResourceGroupLockOptionDuringMove;
+    resourceGroupLockOptionDuringMove?: ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse;
     /**
      * resource hydration accounts
      */
@@ -973,7 +1013,7 @@ export interface ProviderRegistrationPropertiesResponse {
     /**
      * Response options.
      */
-    responseOptions?: ResourceProviderManifestPropertiesResponseResponseOptions;
+    responseOptions?: ResourceProviderManifestPropertiesResponseOptionsResponse;
     /**
      * The service name.
      */
@@ -985,11 +1025,11 @@ export interface ProviderRegistrationPropertiesResponse {
     /**
      * The subscription lifecycle notification specifications.
      */
-    subscriptionLifecycleNotificationSpecifications?: ProviderRegistrationPropertiesResponseSubscriptionLifecycleNotificationSpecifications;
+    subscriptionLifecycleNotificationSpecifications?: ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse;
     /**
      * The template deployment options.
      */
-    templateDeploymentOptions?: ResourceProviderManifestPropertiesResponseTemplateDeploymentOptions;
+    templateDeploymentOptions?: ResourceProviderManifestPropertiesTemplateDeploymentOptionsResponse;
     /**
      * The token auth configuration.
      */
@@ -997,49 +1037,9 @@ export interface ProviderRegistrationPropertiesResponse {
 }
 
 /**
- * The private resource provider configuration.
- */
-export interface ProviderRegistrationPropertiesResponsePrivateResourceProviderConfiguration {
-    /**
-     * The allowed subscriptions.
-     */
-    allowedSubscriptions?: string[];
-}
-
-/**
- * The provider hub metadata.
- */
-export interface ProviderRegistrationPropertiesResponseProviderHubMetadata {
-    /**
-     * The direct RP role definition id.
-     */
-    directRpRoleDefinitionId?: string;
-    /**
-     * The global async operation resource type name.
-     */
-    globalAsyncOperationResourceTypeName?: string;
-    /**
-     * The provider authentication.
-     */
-    providerAuthentication?: ProviderHubMetadataResponseProviderAuthentication;
-    /**
-     * The provider authorizations.
-     */
-    providerAuthorizations?: ResourceProviderAuthorizationResponse[];
-    /**
-     * The regional async operation resource type name.
-     */
-    regionalAsyncOperationResourceTypeName?: string;
-    /**
-     * The third party provider authorization.
-     */
-    thirdPartyProviderAuthorization?: ProviderHubMetadataResponseThirdPartyProviderAuthorization;
-}
-
-/**
  * The subscription lifecycle notification specifications.
  */
-export interface ProviderRegistrationPropertiesResponseSubscriptionLifecycleNotificationSpecifications {
+export interface ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse {
     /**
      * The soft delete TTL.
      */
@@ -1102,6 +1102,21 @@ export interface ResourceHydrationAccountResponse {
     subscriptionId?: string;
 }
 
+/**
+ * Managed by authorization.
+ */
+export interface ResourceProviderAuthorizationManagedByAuthorizationResponse {
+    additionalAuthorizations?: AdditionalAuthorizationResponse[];
+    /**
+     * Indicates whether the managed by resource role definition ID should be inherited.
+     */
+    allowManagedByInheritance?: boolean;
+    /**
+     * The managed by resource role definition ID for the application.
+     */
+    managedByResourceRoleDefinitionId?: string;
+}
+
 export interface ResourceProviderAuthorizationResponse {
     /**
      * The allowed third party extensions.
@@ -1118,7 +1133,7 @@ export interface ResourceProviderAuthorizationResponse {
     /**
      * Managed by authorization.
      */
-    managedByAuthorization?: ResourceProviderAuthorizationResponseManagedByAuthorization;
+    managedByAuthorization?: ResourceProviderAuthorizationManagedByAuthorizationResponse;
     /**
      * The managed by role definition id.
      */
@@ -1127,21 +1142,6 @@ export interface ResourceProviderAuthorizationResponse {
      * The role definition id.
      */
     roleDefinitionId?: string;
-}
-
-/**
- * Managed by authorization.
- */
-export interface ResourceProviderAuthorizationResponseManagedByAuthorization {
-    additionalAuthorizations?: AdditionalAuthorizationResponse[];
-    /**
-     * Indicates whether the managed by resource role definition ID should be inherited.
-     */
-    allowManagedByInheritance?: boolean;
-    /**
-     * The managed by resource role definition ID for the application.
-     */
-    managedByResourceRoleDefinitionId?: string;
 }
 
 export interface ResourceProviderAuthorizationRulesResponse {
@@ -1166,6 +1166,16 @@ export interface ResourceProviderCapabilitiesResponse {
     requiredFeatures?: string[];
 }
 
+/**
+ * The feature rules.
+ */
+export interface ResourceProviderEndpointFeaturesRuleResponse {
+    /**
+     * The required feature policy.
+     */
+    requiredFeaturesPolicy: string;
+}
+
 export interface ResourceProviderEndpointResponse {
     /**
      * The api versions.
@@ -1186,7 +1196,7 @@ export interface ResourceProviderEndpointResponse {
     /**
      * The feature rules.
      */
-    featuresRule?: ResourceProviderEndpointResponseFeaturesRule;
+    featuresRule?: ResourceProviderEndpointFeaturesRuleResponse;
     /**
      * The locations.
      */
@@ -1206,19 +1216,9 @@ export interface ResourceProviderEndpointResponse {
 }
 
 /**
- * The feature rules.
- */
-export interface ResourceProviderEndpointResponseFeaturesRule {
-    /**
-     * The required feature policy.
-     */
-    requiredFeaturesPolicy: string;
-}
-
-/**
  * Options for error response messages.
  */
-export interface ResourceProviderManagementResponseErrorResponseMessageOptions {
+export interface ResourceProviderManagementErrorResponseMessageOptionsResponse {
     /**
      * Type of server failure response message.
      */
@@ -1228,7 +1228,7 @@ export interface ResourceProviderManagementResponseErrorResponseMessageOptions {
 /**
  * Metadata for expedited rollout.
  */
-export interface ResourceProviderManagementResponseExpeditedRolloutMetadata {
+export interface ResourceProviderManagementExpeditedRolloutMetadataResponse {
     /**
      * Expedited rollout enabled?
      */
@@ -1242,7 +1242,7 @@ export interface ResourceProviderManagementResponseExpeditedRolloutMetadata {
 /**
  * The dsts configuration.
  */
-export interface ResourceProviderManifestPropertiesResponseDstsConfiguration {
+export interface ResourceProviderManifestPropertiesDstsConfigurationResponse {
     /**
      * This is a URI property.
      */
@@ -1256,7 +1256,7 @@ export interface ResourceProviderManifestPropertiesResponseDstsConfiguration {
 /**
  * The features rule.
  */
-export interface ResourceProviderManifestPropertiesResponseFeaturesRule {
+export interface ResourceProviderManifestPropertiesFeaturesRuleResponse {
     /**
      * The required feature policy.
      */
@@ -1266,7 +1266,7 @@ export interface ResourceProviderManifestPropertiesResponseFeaturesRule {
 /**
  * The resource provider management.
  */
-export interface ResourceProviderManifestPropertiesResponseManagement {
+export interface ResourceProviderManifestPropertiesManagementResponse {
     /**
      * The authorization owners.
      */
@@ -1278,11 +1278,11 @@ export interface ResourceProviderManifestPropertiesResponseManagement {
     /**
      * Options for error response messages.
      */
-    errorResponseMessageOptions?: ResourceProviderManagementResponseErrorResponseMessageOptions;
+    errorResponseMessageOptions?: ResourceProviderManagementErrorResponseMessageOptionsResponse;
     /**
      * Metadata for expedited rollout.
      */
-    expeditedRolloutMetadata?: ResourceProviderManagementResponseExpeditedRolloutMetadata;
+    expeditedRolloutMetadata?: ResourceProviderManagementExpeditedRolloutMetadataResponse;
     /**
      * List of expedited rollout submitters.
      */
@@ -1332,14 +1332,14 @@ export interface ResourceProviderManifestPropertiesResponseManagement {
 /**
  * Notification settings.
  */
-export interface ResourceProviderManifestPropertiesResponseNotificationSettings {
+export interface ResourceProviderManifestPropertiesNotificationSettingsResponse {
     subscriberSettings?: SubscriberSettingResponse[];
 }
 
 /**
  * The provider authentication.
  */
-export interface ResourceProviderManifestPropertiesResponseProviderAuthentication {
+export interface ResourceProviderManifestPropertiesProviderAuthenticationResponse {
     /**
      * The allowed audiences.
      */
@@ -1349,7 +1349,7 @@ export interface ResourceProviderManifestPropertiesResponseProviderAuthenticatio
 /**
  * The request header options.
  */
-export interface ResourceProviderManifestPropertiesResponseRequestHeaderOptions {
+export interface ResourceProviderManifestPropertiesRequestHeaderOptionsResponse {
     /**
      * The opt in headers.
      */
@@ -1363,7 +1363,7 @@ export interface ResourceProviderManifestPropertiesResponseRequestHeaderOptions 
 /**
  * Resource group lock option during move.
  */
-export interface ResourceProviderManifestPropertiesResponseResourceGroupLockOptionDuringMove {
+export interface ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse {
     /**
      * The action verb that will be blocked when the resource group is locked during move.
      */
@@ -1373,14 +1373,14 @@ export interface ResourceProviderManifestPropertiesResponseResourceGroupLockOpti
 /**
  * Response options.
  */
-export interface ResourceProviderManifestPropertiesResponseResponseOptions {
+export interface ResourceProviderManifestPropertiesResponseOptionsResponse {
     serviceClientOptionsType?: string;
 }
 
 /**
  * The template deployment options.
  */
-export interface ResourceProviderManifestPropertiesResponseTemplateDeploymentOptions {
+export interface ResourceProviderManifestPropertiesTemplateDeploymentOptionsResponse {
     /**
      * The preflight options.
      */
@@ -1405,6 +1405,30 @@ export interface ResourceProviderServiceResponse {
     status?: string;
 }
 
+/**
+ * The dsts configuration.
+ */
+export interface ResourceTypeEndpointDstsConfigurationResponse {
+    /**
+     * This is a URI property.
+     */
+    serviceDnsName?: string;
+    /**
+     * The service name.
+     */
+    serviceName: string;
+}
+
+/**
+ * The features rule.
+ */
+export interface ResourceTypeEndpointFeaturesRuleResponse {
+    /**
+     * The required feature policy.
+     */
+    requiredFeaturesPolicy: string;
+}
+
 export interface ResourceTypeEndpointResponse {
     /**
      * Api version.
@@ -1421,7 +1445,7 @@ export interface ResourceTypeEndpointResponse {
     /**
      * The dsts configuration.
      */
-    dstsConfiguration?: ResourceTypeEndpointResponseDstsConfiguration;
+    dstsConfiguration?: ResourceTypeEndpointDstsConfigurationResponse;
     /**
      * Whether the endpoint is enabled.
      */
@@ -1441,7 +1465,7 @@ export interface ResourceTypeEndpointResponse {
     /**
      * The features rule.
      */
-    featuresRule?: ResourceTypeEndpointResponseFeaturesRule;
+    featuresRule?: ResourceTypeEndpointFeaturesRuleResponse;
     /**
      * Resource type endpoint kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -1482,33 +1506,9 @@ export function resourceTypeEndpointResponseProvideDefaults(val: ResourceTypeEnd
 }
 
 /**
- * The dsts configuration.
- */
-export interface ResourceTypeEndpointResponseDstsConfiguration {
-    /**
-     * This is a URI property.
-     */
-    serviceDnsName?: string;
-    /**
-     * The service name.
-     */
-    serviceName: string;
-}
-
-/**
- * The features rule.
- */
-export interface ResourceTypeEndpointResponseFeaturesRule {
-    /**
-     * The required feature policy.
-     */
-    requiredFeaturesPolicy: string;
-}
-
-/**
  * Resource creation begin.
  */
-export interface ResourceTypeExtensionOptionsResponseResourceCreationBegin {
+export interface ResourceTypeExtensionOptionsResourceCreationBeginResponse {
     /**
      * The request.
      */
@@ -1543,6 +1543,299 @@ export interface ResourceTypeOnBehalfOfTokenResponse {
      * This is a TimeSpan property.
      */
     lifeTime?: string;
+}
+
+/**
+ * The availability zone rule.
+ */
+export interface ResourceTypeRegistrationPropertiesAvailabilityZoneRuleResponse {
+    availabilityZonePolicy?: string;
+}
+
+/**
+ * Capacity rule.
+ */
+export interface ResourceTypeRegistrationPropertiesCapacityRuleResponse {
+    /**
+     * Capacity policy.
+     */
+    capacityPolicy?: string;
+    /**
+     * Sku alias
+     */
+    skuAlias?: string;
+}
+
+/**
+ * The check name availability specifications.
+ */
+export interface ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsResponse {
+    /**
+     * Whether default validation is enabled.
+     */
+    enableDefaultValidation?: boolean;
+    /**
+     * The resource types with custom validation.
+     */
+    resourceTypesWithCustomValidation?: string[];
+}
+
+/**
+ * The dsts configuration.
+ */
+export interface ResourceTypeRegistrationPropertiesDstsConfigurationResponse {
+    /**
+     * This is a URI property.
+     */
+    serviceDnsName?: string;
+    /**
+     * The service name.
+     */
+    serviceName: string;
+}
+
+/**
+ * The extension options.
+ */
+export interface ResourceTypeRegistrationPropertiesExtensionOptionsResponse {
+    /**
+     * Resource creation begin.
+     */
+    resourceCreationBegin?: ResourceTypeExtensionOptionsResourceCreationBeginResponse;
+}
+
+/**
+ * The features rule.
+ */
+export interface ResourceTypeRegistrationPropertiesFeaturesRuleResponse {
+    /**
+     * The required feature policy.
+     */
+    requiredFeaturesPolicy: string;
+}
+
+/**
+ * The identity management.
+ */
+export interface ResourceTypeRegistrationPropertiesIdentityManagementResponse {
+    /**
+     * The application id.
+     */
+    applicationId?: string;
+    /**
+     * The application ids.
+     */
+    applicationIds?: string[];
+    /**
+     * The delegation app ids.
+     */
+    delegationAppIds?: string[];
+    /**
+     * The type.
+     */
+    type?: string;
+}
+
+/**
+ * The legacy policy.
+ */
+export interface ResourceTypeRegistrationPropertiesLegacyPolicyResponse {
+    disallowedConditions?: LegacyDisallowedConditionResponse[];
+    disallowedLegacyOperations?: string[];
+}
+
+/**
+ * The resource provider management.
+ */
+export interface ResourceTypeRegistrationPropertiesManagementResponse {
+    /**
+     * The authorization owners.
+     */
+    authorizationOwners?: string[];
+    /**
+     * List of manifest owners for canary.
+     */
+    canaryManifestOwners?: string[];
+    /**
+     * Options for error response messages.
+     */
+    errorResponseMessageOptions?: ResourceProviderManagementErrorResponseMessageOptionsResponse;
+    /**
+     * Metadata for expedited rollout.
+     */
+    expeditedRolloutMetadata?: ResourceProviderManagementExpeditedRolloutMetadataResponse;
+    /**
+     * List of expedited rollout submitters.
+     */
+    expeditedRolloutSubmitters?: string[];
+    /**
+     * The incident contact email.
+     */
+    incidentContactEmail?: string;
+    /**
+     * The incident routing service.
+     */
+    incidentRoutingService?: string;
+    /**
+     * The incident routing team.
+     */
+    incidentRoutingTeam?: string;
+    /**
+     * The manifest owners.
+     */
+    manifestOwners?: string[];
+    /**
+     * The profit center code for the subscription.
+     */
+    pcCode?: string;
+    /**
+     * The profit center program id for the subscription.
+     */
+    profitCenterProgramId?: string;
+    /**
+     * The resource access policy.
+     */
+    resourceAccessPolicy?: string;
+    /**
+     * The resource access roles.
+     */
+    resourceAccessRoles?: ResourceAccessRoleResponse[];
+    /**
+     * The schema owners.
+     */
+    schemaOwners?: string[];
+    /**
+     * The service tree infos.
+     */
+    serviceTreeInfos?: ServiceTreeInfoResponse[];
+}
+
+/**
+ * Marketplace options.
+ */
+export interface ResourceTypeRegistrationPropertiesMarketplaceOptionsResponse {
+    /**
+     * Add-on plan conversion allowed.
+     */
+    addOnPlanConversionAllowed?: boolean;
+}
+
+/**
+ * The request header options.
+ */
+export interface ResourceTypeRegistrationPropertiesRequestHeaderOptionsResponse {
+    /**
+     * The opt in headers.
+     */
+    optInHeaders?: string;
+    /**
+     * The opt out headers.
+     */
+    optOutHeaders?: string;
+}
+
+/**
+ * Resource cache options.
+ */
+export interface ResourceTypeRegistrationPropertiesResourceCacheResponse {
+    /**
+     * Enable resource cache.
+     */
+    enableResourceCache?: boolean;
+    /**
+     * Resource cache expiration timespan. This is a TimeSpan property.
+     */
+    resourceCacheExpirationTimespan?: string;
+}
+
+/**
+ * The resource graph configuration.
+ */
+export interface ResourceTypeRegistrationPropertiesResourceGraphConfigurationResponse {
+    /**
+     * The api version.
+     */
+    apiVersion?: string;
+    /**
+     * Whether it's enabled.
+     */
+    enabled?: boolean;
+}
+
+/**
+ * Batch provisioning support.
+ */
+export interface ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportResponse {
+    /**
+     * Supported operations.
+     */
+    supportedOperations?: string;
+}
+
+/**
+ * Nested provisioning support.
+ */
+export interface ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupportResponse {
+    /**
+     * Minimum API version.
+     */
+    minimumApiVersion?: string;
+}
+
+/**
+ * Resource management options.
+ */
+export interface ResourceTypeRegistrationPropertiesResourceManagementOptionsResponse {
+    /**
+     * Batch provisioning support.
+     */
+    batchProvisioningSupport?: ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportResponse;
+    /**
+     * Delete dependencies.
+     */
+    deleteDependencies?: DeleteDependencyResponse[];
+    /**
+     * Nested provisioning support.
+     */
+    nestedProvisioningSupport?: ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupportResponse;
+}
+
+/**
+ * The resource move policy.
+ */
+export interface ResourceTypeRegistrationPropertiesResourceMovePolicyResponse {
+    /**
+     * Whether cross resource group move is enabled.
+     */
+    crossResourceGroupMoveEnabled?: boolean;
+    /**
+     * Whether cross subscription move is enabled.
+     */
+    crossSubscriptionMoveEnabled?: boolean;
+    /**
+     * Whether validation is required.
+     */
+    validationRequired?: boolean;
+}
+
+/**
+ * Resource query management options.
+ */
+export interface ResourceTypeRegistrationPropertiesResourceQueryManagementResponse {
+    /**
+     * Filter option.
+     */
+    filterOption?: string;
+}
+
+/**
+ * Resource type common attribute management.
+ */
+export interface ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagementResponse {
+    /**
+     * Common api versions merge mode.
+     */
+    commonApiVersionsMergeMode?: string;
 }
 
 export interface ResourceTypeRegistrationPropertiesResponse {
@@ -1593,11 +1886,11 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * The availability zone rule.
      */
-    availabilityZoneRule?: ResourceTypeRegistrationPropertiesResponseAvailabilityZoneRule;
+    availabilityZoneRule?: ResourceTypeRegistrationPropertiesAvailabilityZoneRuleResponse;
     /**
      * Capacity rule.
      */
-    capacityRule?: ResourceTypeRegistrationPropertiesResponseCapacityRule;
+    capacityRule?: ResourceTypeRegistrationPropertiesCapacityRuleResponse;
     /**
      * The category.
      */
@@ -1605,7 +1898,7 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * The check name availability specifications.
      */
-    checkNameAvailabilitySpecifications?: ResourceTypeRegistrationPropertiesResponseCheckNameAvailabilitySpecifications;
+    checkNameAvailabilitySpecifications?: ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsResponse;
     /**
      * Common API versions for the resource type.
      */
@@ -1629,7 +1922,7 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * The dsts configuration.
      */
-    dstsConfiguration?: ResourceTypeRegistrationPropertiesResponseDstsConfiguration;
+    dstsConfiguration?: ResourceTypeRegistrationPropertiesDstsConfigurationResponse;
     /**
      * Whether async operation is enabled.
      */
@@ -1649,11 +1942,11 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * The extension options.
      */
-    extensionOptions?: ResourceTypeRegistrationPropertiesResponseExtensionOptions;
+    extensionOptions?: ResourceTypeRegistrationPropertiesExtensionOptionsResponse;
     /**
      * The features rule.
      */
-    featuresRule?: ResourceTypeRegistrationPropertiesResponseFeaturesRule;
+    featuresRule?: ResourceTypeRegistrationPropertiesFeaturesRuleResponse;
     /**
      * The frontdoor request mode.
      */
@@ -1665,7 +1958,7 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * The identity management.
      */
-    identityManagement?: ResourceTypeRegistrationPropertiesResponseIdentityManagement;
+    identityManagement?: ResourceTypeRegistrationPropertiesIdentityManagementResponse;
     /**
      * Whether it is pure proxy.
      */
@@ -1681,7 +1974,7 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * The legacy policy.
      */
-    legacyPolicy?: ResourceTypeRegistrationPropertiesResponseLegacyPolicy;
+    legacyPolicy?: ResourceTypeRegistrationPropertiesLegacyPolicyResponse;
     /**
      * The linked access checks.
      */
@@ -1701,7 +1994,7 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * The resource provider management.
      */
-    management?: ResourceTypeRegistrationPropertiesResponseManagement;
+    management?: ResourceTypeRegistrationPropertiesManagementResponse;
     /**
      * Manifest link.
      */
@@ -1709,7 +2002,7 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * Marketplace options.
      */
-    marketplaceOptions?: ResourceTypeRegistrationPropertiesResponseMarketplaceOptions;
+    marketplaceOptions?: ResourceTypeRegistrationPropertiesMarketplaceOptionsResponse;
     /**
      * The marketplace type.
      */
@@ -1717,7 +2010,7 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * The metadata.
      */
-    metadata?: {[key: string]: any};
+    metadata?: any;
     /**
      * The notifications.
      */
@@ -1749,7 +2042,7 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * The request header options.
      */
-    requestHeaderOptions?: ResourceTypeRegistrationPropertiesResponseRequestHeaderOptions;
+    requestHeaderOptions?: ResourceTypeRegistrationPropertiesRequestHeaderOptionsResponse;
     /**
      * The required features.
      */
@@ -1757,7 +2050,7 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * Resource cache options.
      */
-    resourceCache?: ResourceTypeRegistrationPropertiesResponseResourceCache;
+    resourceCache?: ResourceTypeRegistrationPropertiesResourceCacheResponse;
     /**
      * The resource concurrency control options.
      */
@@ -1769,15 +2062,15 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * The resource graph configuration.
      */
-    resourceGraphConfiguration?: ResourceTypeRegistrationPropertiesResponseResourceGraphConfiguration;
+    resourceGraphConfiguration?: ResourceTypeRegistrationPropertiesResourceGraphConfigurationResponse;
     /**
      * Resource management options.
      */
-    resourceManagementOptions?: ResourceTypeRegistrationPropertiesResponseResourceManagementOptions;
+    resourceManagementOptions?: ResourceTypeRegistrationPropertiesResourceManagementOptionsResponse;
     /**
      * The resource move policy.
      */
-    resourceMovePolicy?: ResourceTypeRegistrationPropertiesResponseResourceMovePolicy;
+    resourceMovePolicy?: ResourceTypeRegistrationPropertiesResourceMovePolicyResponse;
     /**
      * The resource provider authorization rules.
      */
@@ -1785,7 +2078,7 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * Resource query management options.
      */
-    resourceQueryManagement?: ResourceTypeRegistrationPropertiesResponseResourceQueryManagement;
+    resourceQueryManagement?: ResourceTypeRegistrationPropertiesResourceQueryManagementResponse;
     /**
      * The resource sub type.
      */
@@ -1793,7 +2086,7 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * Resource type common attribute management.
      */
-    resourceTypeCommonAttributeManagement?: ResourceTypeRegistrationPropertiesResponseResourceTypeCommonAttributeManagement;
+    resourceTypeCommonAttributeManagement?: ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagementResponse;
     /**
      * The resource validation.
      */
@@ -1801,7 +2094,7 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * Routing rule.
      */
-    routingRule?: ResourceTypeRegistrationPropertiesResponseRoutingRule;
+    routingRule?: ResourceTypeRegistrationPropertiesRoutingRuleResponse;
     /**
      * The resource routing type.
      */
@@ -1817,7 +2110,7 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * The subscription lifecycle notification specifications.
      */
-    subscriptionLifecycleNotificationSpecifications?: ResourceTypeRegistrationPropertiesResponseSubscriptionLifecycleNotificationSpecifications;
+    subscriptionLifecycleNotificationSpecifications?: ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse;
     /**
      * The subscription state rules.
      */
@@ -1833,11 +2126,11 @@ export interface ResourceTypeRegistrationPropertiesResponse {
     /**
      * The template deployment options.
      */
-    templateDeploymentOptions?: ResourceTypeRegistrationPropertiesResponseTemplateDeploymentOptions;
+    templateDeploymentOptions?: ResourceTypeRegistrationPropertiesTemplateDeploymentOptionsResponse;
     /**
      * The template deployment policy.
      */
-    templateDeploymentPolicy?: ResourceTypeRegistrationPropertiesResponseTemplateDeploymentPolicy;
+    templateDeploymentPolicy?: ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyResponse;
     /**
      * The throttling rules.
      */
@@ -1849,302 +2142,9 @@ export interface ResourceTypeRegistrationPropertiesResponse {
 }
 
 /**
- * The availability zone rule.
- */
-export interface ResourceTypeRegistrationPropertiesResponseAvailabilityZoneRule {
-    availabilityZonePolicy?: string;
-}
-
-/**
- * Batch provisioning support.
- */
-export interface ResourceTypeRegistrationPropertiesResponseBatchProvisioningSupport {
-    /**
-     * Supported operations.
-     */
-    supportedOperations?: string;
-}
-
-/**
- * Capacity rule.
- */
-export interface ResourceTypeRegistrationPropertiesResponseCapacityRule {
-    /**
-     * Capacity policy.
-     */
-    capacityPolicy?: string;
-    /**
-     * Sku alias
-     */
-    skuAlias?: string;
-}
-
-/**
- * The check name availability specifications.
- */
-export interface ResourceTypeRegistrationPropertiesResponseCheckNameAvailabilitySpecifications {
-    /**
-     * Whether default validation is enabled.
-     */
-    enableDefaultValidation?: boolean;
-    /**
-     * The resource types with custom validation.
-     */
-    resourceTypesWithCustomValidation?: string[];
-}
-
-/**
- * The dsts configuration.
- */
-export interface ResourceTypeRegistrationPropertiesResponseDstsConfiguration {
-    /**
-     * This is a URI property.
-     */
-    serviceDnsName?: string;
-    /**
-     * The service name.
-     */
-    serviceName: string;
-}
-
-/**
- * The extension options.
- */
-export interface ResourceTypeRegistrationPropertiesResponseExtensionOptions {
-    /**
-     * Resource creation begin.
-     */
-    resourceCreationBegin?: ResourceTypeExtensionOptionsResponseResourceCreationBegin;
-}
-
-/**
- * The features rule.
- */
-export interface ResourceTypeRegistrationPropertiesResponseFeaturesRule {
-    /**
-     * The required feature policy.
-     */
-    requiredFeaturesPolicy: string;
-}
-
-/**
- * The identity management.
- */
-export interface ResourceTypeRegistrationPropertiesResponseIdentityManagement {
-    /**
-     * The application id.
-     */
-    applicationId?: string;
-    /**
-     * The application ids.
-     */
-    applicationIds?: string[];
-    /**
-     * The delegation app ids.
-     */
-    delegationAppIds?: string[];
-    /**
-     * The type.
-     */
-    type?: string;
-}
-
-/**
- * The legacy policy.
- */
-export interface ResourceTypeRegistrationPropertiesResponseLegacyPolicy {
-    disallowedConditions?: LegacyDisallowedConditionResponse[];
-    disallowedLegacyOperations?: string[];
-}
-
-/**
- * The resource provider management.
- */
-export interface ResourceTypeRegistrationPropertiesResponseManagement {
-    /**
-     * The authorization owners.
-     */
-    authorizationOwners?: string[];
-    /**
-     * List of manifest owners for canary.
-     */
-    canaryManifestOwners?: string[];
-    /**
-     * Options for error response messages.
-     */
-    errorResponseMessageOptions?: ResourceProviderManagementResponseErrorResponseMessageOptions;
-    /**
-     * Metadata for expedited rollout.
-     */
-    expeditedRolloutMetadata?: ResourceProviderManagementResponseExpeditedRolloutMetadata;
-    /**
-     * List of expedited rollout submitters.
-     */
-    expeditedRolloutSubmitters?: string[];
-    /**
-     * The incident contact email.
-     */
-    incidentContactEmail?: string;
-    /**
-     * The incident routing service.
-     */
-    incidentRoutingService?: string;
-    /**
-     * The incident routing team.
-     */
-    incidentRoutingTeam?: string;
-    /**
-     * The manifest owners.
-     */
-    manifestOwners?: string[];
-    /**
-     * The profit center code for the subscription.
-     */
-    pcCode?: string;
-    /**
-     * The profit center program id for the subscription.
-     */
-    profitCenterProgramId?: string;
-    /**
-     * The resource access policy.
-     */
-    resourceAccessPolicy?: string;
-    /**
-     * The resource access roles.
-     */
-    resourceAccessRoles?: ResourceAccessRoleResponse[];
-    /**
-     * The schema owners.
-     */
-    schemaOwners?: string[];
-    /**
-     * The service tree infos.
-     */
-    serviceTreeInfos?: ServiceTreeInfoResponse[];
-}
-
-/**
- * Marketplace options.
- */
-export interface ResourceTypeRegistrationPropertiesResponseMarketplaceOptions {
-    /**
-     * Add-on plan conversion allowed.
-     */
-    addOnPlanConversionAllowed?: boolean;
-}
-
-/**
- * Nested provisioning support.
- */
-export interface ResourceTypeRegistrationPropertiesResponseNestedProvisioningSupport {
-    /**
-     * Minimum API version.
-     */
-    minimumApiVersion?: string;
-}
-
-/**
- * The request header options.
- */
-export interface ResourceTypeRegistrationPropertiesResponseRequestHeaderOptions {
-    /**
-     * The opt in headers.
-     */
-    optInHeaders?: string;
-    /**
-     * The opt out headers.
-     */
-    optOutHeaders?: string;
-}
-
-/**
- * Resource cache options.
- */
-export interface ResourceTypeRegistrationPropertiesResponseResourceCache {
-    /**
-     * Enable resource cache.
-     */
-    enableResourceCache?: boolean;
-    /**
-     * Resource cache expiration timespan. This is a TimeSpan property.
-     */
-    resourceCacheExpirationTimespan?: string;
-}
-
-/**
- * The resource graph configuration.
- */
-export interface ResourceTypeRegistrationPropertiesResponseResourceGraphConfiguration {
-    /**
-     * The api version.
-     */
-    apiVersion?: string;
-    /**
-     * Whether it's enabled.
-     */
-    enabled?: boolean;
-}
-
-/**
- * Resource management options.
- */
-export interface ResourceTypeRegistrationPropertiesResponseResourceManagementOptions {
-    /**
-     * Batch provisioning support.
-     */
-    batchProvisioningSupport?: ResourceTypeRegistrationPropertiesResponseBatchProvisioningSupport;
-    /**
-     * Delete dependencies.
-     */
-    deleteDependencies?: DeleteDependencyResponse[];
-    /**
-     * Nested provisioning support.
-     */
-    nestedProvisioningSupport?: ResourceTypeRegistrationPropertiesResponseNestedProvisioningSupport;
-}
-
-/**
- * The resource move policy.
- */
-export interface ResourceTypeRegistrationPropertiesResponseResourceMovePolicy {
-    /**
-     * Whether cross resource group move is enabled.
-     */
-    crossResourceGroupMoveEnabled?: boolean;
-    /**
-     * Whether cross subscription move is enabled.
-     */
-    crossSubscriptionMoveEnabled?: boolean;
-    /**
-     * Whether validation is required.
-     */
-    validationRequired?: boolean;
-}
-
-/**
- * Resource query management options.
- */
-export interface ResourceTypeRegistrationPropertiesResponseResourceQueryManagement {
-    /**
-     * Filter option.
-     */
-    filterOption?: string;
-}
-
-/**
- * Resource type common attribute management.
- */
-export interface ResourceTypeRegistrationPropertiesResponseResourceTypeCommonAttributeManagement {
-    /**
-     * Common api versions merge mode.
-     */
-    commonApiVersionsMergeMode?: string;
-}
-
-/**
  * Routing rule.
  */
-export interface ResourceTypeRegistrationPropertiesResponseRoutingRule {
+export interface ResourceTypeRegistrationPropertiesRoutingRuleResponse {
     /**
      * Hosted resource type.
      */
@@ -2154,7 +2154,7 @@ export interface ResourceTypeRegistrationPropertiesResponseRoutingRule {
 /**
  * The subscription lifecycle notification specifications.
  */
-export interface ResourceTypeRegistrationPropertiesResponseSubscriptionLifecycleNotificationSpecifications {
+export interface ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse {
     /**
      * The soft delete TTL.
      */
@@ -2168,7 +2168,7 @@ export interface ResourceTypeRegistrationPropertiesResponseSubscriptionLifecycle
 /**
  * The template deployment options.
  */
-export interface ResourceTypeRegistrationPropertiesResponseTemplateDeploymentOptions {
+export interface ResourceTypeRegistrationPropertiesTemplateDeploymentOptionsResponse {
     /**
      * The preflight options.
      */
@@ -2182,7 +2182,7 @@ export interface ResourceTypeRegistrationPropertiesResponseTemplateDeploymentOpt
 /**
  * The template deployment policy.
  */
-export interface ResourceTypeRegistrationPropertiesResponseTemplateDeploymentPolicy {
+export interface ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyResponse {
     /**
      * The capabilities.
      */
@@ -2197,6 +2197,9 @@ export interface ResourceTypeRegistrationPropertiesResponseTemplateDeploymentPol
     preflightOptions: string;
 }
 
+/**
+ * Concrete proxy resource types can be created by aliasing this type using a specific property type.
+ */
 export interface ResourceTypeRegistrationResponse {
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -2294,7 +2297,7 @@ export interface SkuLocationInfoResponse {
     zones?: string[];
 }
 
-export interface SkuResourceResponseProperties {
+export interface SkuResourcePropertiesResponse {
     /**
      * The provisioning state.
      */
@@ -2305,6 +2308,28 @@ export interface SkuResourceResponseProperties {
     skuSettings: SkuSettingResponse[];
 }
 
+/**
+ * The capacity.
+ */
+export interface SkuSettingCapacityResponse {
+    /**
+     * The default.
+     */
+    default?: number;
+    /**
+     * The maximum.
+     */
+    maximum?: number;
+    /**
+     * The minimum.
+     */
+    minimum: number;
+    /**
+     * The scale type.
+     */
+    scaleType?: string;
+}
+
 export interface SkuSettingResponse {
     /**
      * The capabilities.
@@ -2313,7 +2338,7 @@ export interface SkuSettingResponse {
     /**
      * The capacity.
      */
-    capacity?: SkuSettingResponseCapacity;
+    capacity?: SkuSettingCapacityResponse;
     /**
      * The costs.
      */
@@ -2354,28 +2379,6 @@ export interface SkuSettingResponse {
      * The tier.
      */
     tier?: string;
-}
-
-/**
- * The capacity.
- */
-export interface SkuSettingResponseCapacity {
-    /**
-     * The default.
-     */
-    default?: number;
-    /**
-     * The maximum.
-     */
-    maximum?: number;
-    /**
-     * The minimum.
-     */
-    minimum: number;
-    /**
-     * The scale type.
-     */
-    scaleType?: string;
 }
 
 export interface SkuZoneDetailResponse {

@@ -2,21 +2,592 @@
 
 ### Does the PR have any schema changes?
 
-Looking good! No breaking changes found.
-No new resources/functions.
+Found 698 breaking changes:
 
-<!-- Release notes generated using configuration in .github/release.yml at v3.12.0 -->
+#### Resources
+- "azure-native:avs:Addon":
+    - `🟡` inputs: "addonType" missing
+    - properties:
+        - `🟡` "addonType" missing output "addonType"
+        - `🟡` "provisioningState" missing output "provisioningState"
+- "azure-native:avs:PlacementPolicy":
+    - inputs:
+        - `🟡` "displayName" missing
+        - `🟡` "state" missing
+        - `🟡` "type" missing
+    - properties:
+        - `🟡` "displayName" missing output "displayName"
+        - `🟡` "provisioningState" missing output "provisioningState"
+        - `🟡` "state" missing output "state"
+- "azure-native:avs:WorkloadNetworkDhcp":
+    - inputs:
+        - `🟡` "dhcpType" missing
+        - `🟡` "displayName" missing
+        - `🟡` "revision" missing
+    - properties:
+        - `🟡` "dhcpType" missing output "dhcpType"
+        - `🟡` "displayName" missing output "displayName"
+        - `🟡` "provisioningState" missing output "provisioningState"
+        - `🟡` "revision" missing output "revision"
+        - `🟡` "segments" missing output "segments"
+- "azure-native:azurestackhci:GalleryImage":
+    - `🟡` inputs: "vmImageRepositoryCredentials" missing
+    - `🟡` properties: "vmImageRepositoryCredentials" missing output "vmImageRepositoryCredentials"
+- `🟢` "azure-native:batch:BatchAccount": required: "tags" property is no longer Required
+- "azure-native:cognitiveservices:ProjectCapabilityHost":
+    - `🟡` inputs: "capabilityHostProperties" missing
+    - `🟡` properties: "capabilityHostProperties" missing output "capabilityHostProperties"
+    - `🟢` required inputs: "projectCapabilityHostProperties" input has changed to Required
+- "azure-native:databasewatcher:Target":
+    - inputs:
+        - `🟡` "connectionServerName" missing
+        - `🟡` "targetAuthenticationType" missing
+        - `🟡` "targetType" missing
+        - `🟡` "targetVault" missing
+    - properties:
+        - `🟡` "connectionServerName" missing output "connectionServerName"
+        - `🟡` "provisioningState" missing output "provisioningState"
+        - `🟡` "targetAuthenticationType" missing output "targetAuthenticationType"
+        - `🟡` "targetType" missing output "targetType"
+        - `🟡` "targetVault" missing output "targetVault"
+- "azure-native:dbforpostgresql:Migration":
+    - inputs:
+        - `🟡` "subscriptionId" missing
+        - `🟡` "targetDbServerName" missing
+    - `🟢` required inputs: "serverName" input has changed to Required
+- "azure-native:dependencymap:DiscoverySource":
+    - inputs:
+        - `🟡` "sourceId" missing
+        - `🟡` "sourceType" missing
+    - properties:
+        - `🟡` "provisioningState" missing output "provisioningState"
+        - `🟡` "sourceId" missing output "sourceId"
+        - `🟡` "sourceType" missing output "sourceType"
+- `🔴` "azure-native:hdinsight:ClusterPool" missing
+- `🔴` "azure-native:hdinsight:ClusterPoolCluster" missing
+- `🟡` "azure-native:management:ManagementGroupSubscription": inputs: "subscriptionId" missing
+- `🔴` "azure-native:mixedreality:ObjectAnchorsAccount" missing
+- `🔴` "azure-native:mixedreality:RemoteRenderingAccount" missing
+- `🔴` "azure-native:mixedreality:SpatialAnchorsAccount" missing
+- `🔴` "azure-native:mobilenetwork:AttachedDataNetwork" missing
+- `🔴` "azure-native:mobilenetwork:DataNetwork" missing
+- `🔴` "azure-native:mobilenetwork:DiagnosticsPackage" missing
+- `🔴` "azure-native:mobilenetwork:MobileNetwork" missing
+- `🔴` "azure-native:mobilenetwork:PacketCapture" missing
+- `🔴` "azure-native:mobilenetwork:PacketCoreControlPlane" missing
+- `🔴` "azure-native:mobilenetwork:PacketCoreDataPlane" missing
+- `🔴` "azure-native:mobilenetwork:Service" missing
+- `🔴` "azure-native:mobilenetwork:Sim" missing
+- `🔴` "azure-native:mobilenetwork:SimGroup" missing
+- `🔴` "azure-native:mobilenetwork:SimPolicy" missing
+- `🔴` "azure-native:mobilenetwork:Site" missing
+- `🔴` "azure-native:mobilenetwork:Slice" missing
+- `🟡` "azure-native:providerhub:Skus": properties: "properties" type changed from "#/types/azure-native:providerhub:SkuResourceResponseProperties" to "#/types/azure-native:providerhub:SkuResourcePropertiesResponse"
+- `🟡` "azure-native:providerhub:SkusNestedResourceTypeFirst": properties: "properties" type changed from "#/types/azure-native:providerhub:SkuResourceResponseProperties" to "#/types/azure-native:providerhub:SkuResourcePropertiesResponse"
+- `🟡` "azure-native:providerhub:SkusNestedResourceTypeSecond": properties: "properties" type changed from "#/types/azure-native:providerhub:SkuResourceResponseProperties" to "#/types/azure-native:providerhub:SkuResourcePropertiesResponse"
+- `🟡` "azure-native:providerhub:SkusNestedResourceTypeThird": properties: "properties" type changed from "#/types/azure-native:providerhub:SkuResourceResponseProperties" to "#/types/azure-native:providerhub:SkuResourcePropertiesResponse"
+- `🟡` "azure-native:resourceconnector:Appliance": properties: "infrastructureConfig" type changed from "#/types/azure-native:resourceconnector:AppliancePropertiesResponseInfrastructureConfig" to "#/types/azure-native:resourceconnector:AppliancePropertiesInfrastructureConfigResponse"
+- `🟢` "azure-native:securityinsights:AADDataConnector": required inputs: "tenantId" input has changed to Required
+- `🟢` "azure-native:securityinsights:AATPDataConnector": required inputs: "tenantId" input has changed to Required
+- `🟢` "azure-native:securityinsights:AwsCloudTrailDataConnector": required inputs: "dataTypes" input has changed to Required
+- `🔴` "azure-native:securityinsights:BusinessApplicationAgent" missing
+- "azure-native:securityinsights:MCASDataConnector": required inputs:
+    - `🟢` "dataTypes" input has changed to Required
+    - `🟢` "tenantId" input has changed to Required
+- `🟢` "azure-native:securityinsights:MDATPDataConnector": required inputs: "tenantId" input has changed to Required
+- `🟢` "azure-native:securityinsights:MSTIDataConnector": required inputs: "tenantId" input has changed to Required
+- "azure-native:securityinsights:OfficeDataConnector": required inputs:
+    - `🟢` "dataTypes" input has changed to Required
+    - `🟢` "tenantId" input has changed to Required
+- `🟢` "azure-native:securityinsights:PremiumMicrosoftDefenderForThreatIntelligence": required inputs: "tenantId" input has changed to Required
+- `🔴` "azure-native:securityinsights:System" missing
+- "azure-native:securityinsights:TIDataConnector": required inputs:
+    - `🟢` "dataTypes" input has changed to Required
+    - `🟢` "tenantId" input has changed to Required
+- "azure-native:trafficmanager:Endpoint":
+    - inputs:
+        - `🟡` "customHeaders": items type changed from "#/types/azure-native:trafficmanager:EndpointPropertiesCustomHeaders" to "#/types/azure-native:trafficmanager:EndpointPropertiesCustomHeadersItem"
+        - `🟡` "subnets": items type changed from "#/types/azure-native:trafficmanager:EndpointPropertiesSubnets" to "#/types/azure-native:trafficmanager:EndpointPropertiesSubnetsItem"
+    - properties:
+        - `🟡` "customHeaders": items type changed from "#/types/azure-native:trafficmanager:EndpointPropertiesResponseCustomHeaders" to "#/types/azure-native:trafficmanager:EndpointPropertiesCustomHeadersItemResponse"
+        - `🟡` "subnets": items type changed from "#/types/azure-native:trafficmanager:EndpointPropertiesResponseSubnets" to "#/types/azure-native:trafficmanager:EndpointPropertiesSubnetsItemResponse"
+- `🔴` "azure-native:videoanalyzer:AccessPolicy" missing
+- `🔴` "azure-native:videoanalyzer:EdgeModule" missing
+- `🔴` "azure-native:videoanalyzer:LivePipeline" missing
+- `🔴` "azure-native:videoanalyzer:PipelineJob" missing
+- `🔴` "azure-native:videoanalyzer:PipelineTopology" missing
+- `🔴` "azure-native:videoanalyzer:PrivateEndpointConnection" missing
+- `🔴` "azure-native:videoanalyzer:Video" missing
+- `🔴` "azure-native:videoanalyzer:VideoAnalyzer" missing
+#### Functions
+- "azure-native:dbforpostgresql:getMigration": inputs:
+    - `🟡` "subscriptionId" missing input "subscriptionId"
+    - `🟡` "targetDbServerName" missing input "targetDbServerName"
+    - `🟢` required: "serverName" input has changed to Required
+- `🔴` "azure-native:hdinsight:getClusterPool" missing
+- `🔴` "azure-native:hdinsight:getClusterPoolCluster" missing
+- `🟡` "azure-native:management:getManagementGroupSubscription": inputs: "subscriptionId" missing input "subscriptionId"
+- `🔴` "azure-native:mixedreality:getObjectAnchorsAccount" missing
+- `🔴` "azure-native:mixedreality:getRemoteRenderingAccount" missing
+- `🔴` "azure-native:mixedreality:getSpatialAnchorsAccount" missing
+- `🔴` "azure-native:mixedreality:listObjectAnchorsAccountKeys" missing
+- `🔴` "azure-native:mixedreality:listRemoteRenderingAccountKeys" missing
+- `🔴` "azure-native:mixedreality:listSpatialAnchorsAccountKeys" missing
+- `🔴` "azure-native:mobilenetwork:getAttachedDataNetwork" missing
+- `🔴` "azure-native:mobilenetwork:getDataNetwork" missing
+- `🔴` "azure-native:mobilenetwork:getDiagnosticsPackage" missing
+- `🔴` "azure-native:mobilenetwork:getMobileNetwork" missing
+- `🔴` "azure-native:mobilenetwork:getPacketCapture" missing
+- `🔴` "azure-native:mobilenetwork:getPacketCoreControlPlane" missing
+- `🔴` "azure-native:mobilenetwork:getPacketCoreDataPlane" missing
+- `🔴` "azure-native:mobilenetwork:getService" missing
+- `🔴` "azure-native:mobilenetwork:getSim" missing
+- `🔴` "azure-native:mobilenetwork:getSimGroup" missing
+- `🔴` "azure-native:mobilenetwork:getSimPolicy" missing
+- `🔴` "azure-native:mobilenetwork:getSite" missing
+- `🔴` "azure-native:mobilenetwork:getSlice" missing
+- `🔴` "azure-native:mobilenetwork:listMobileNetworkSimGroups" missing
+- `🔴` "azure-native:mobilenetwork:listMobileNetworkSimIds" missing
+- `🔴` "azure-native:securityinsights:getBusinessApplicationAgent" missing
+- `🔴` "azure-native:securityinsights:getSystem" missing
+- `🔴` "azure-native:securityinsights:listSystemActions" missing
+- `🔴` "azure-native:videoanalyzer:getAccessPolicy" missing
+- `🔴` "azure-native:videoanalyzer:getEdgeModule" missing
+- `🔴` "azure-native:videoanalyzer:getLivePipeline" missing
+- `🔴` "azure-native:videoanalyzer:getPipelineJob" missing
+- `🔴` "azure-native:videoanalyzer:getPipelineTopology" missing
+- `🔴` "azure-native:videoanalyzer:getPrivateEndpointConnection" missing
+- `🔴` "azure-native:videoanalyzer:getVideo" missing
+- `🔴` "azure-native:videoanalyzer:getVideoAnalyzer" missing
+- `🔴` "azure-native:videoanalyzer:listEdgeModuleProvisioningToken" missing
+- `🔴` "azure-native:videoanalyzer:listVideoContentToken" missing
+#### Types
+- `🟡` "azure-native:attestation:AttestationServiceCreationSpecificParams": properties: "policySigningCertificates" type changed from "#/types/azure-native:attestation:JSONWebKeySet" to "#/types/azure-native:attestation:JsonWebKeySet"
+- `🔴` "azure-native:attestation:JSONWebKey" missing
+- `🔴` "azure-native:attestation:JSONWebKeySet" missing
+- `🟢` "azure-native:attestation:PrivateEndpointConnectionResponse": required: "systemData" property has changed to Required
+- `🔴` "azure-native:azurestackhci:VmImageRepositoryCredentials" missing
+- `🔴` "azure-native:azurestackhci:VmImageRepositoryCredentialsResponse" missing
+- `🟢` "azure-native:batch:PrivateEndpointConnectionResponse": required: "systemData" property has changed to Required
+- `🟢` "azure-native:compute:ExecutedValidationResponse": required: "status" property has changed to Required
+- `🟢` "azure-native:containerservice:IstioEgressGateway": required: "name" property has changed to Required
+- `🟢` "azure-native:containerservice:IstioEgressGatewayResponse": required: "name" property has changed to Required
+- "azure-native:cosmosdb:FleetspacePropertiesResponseThroughputPoolConfiguration": properties:
+    - `🟡` "dataRegions" missing
+    - `🟡` "serviceTier" missing
+- "azure-native:cosmosdb:FleetspacePropertiesThroughputPoolConfiguration": properties:
+    - `🟡` "dataRegions" missing
+    - `🟡` "serviceTier" missing
+- `🔴` "azure-native:dbforpostgresql:ActiveDirectoryAuthEnum" missing
+- `🔴` "azure-native:dbforpostgresql:ArmServerKeyType" missing
+- `🔴` "azure-native:dbforpostgresql:AzureManagedDiskPerformanceTiers" missing
+- `🔴` "azure-native:dbforpostgresql:CancelEnum" missing
+- "azure-native:dbforpostgresql:DataEncryption": properties:
+    - `🟡` "geoBackupEncryptionKeyStatus" missing
+    - `🟡` "primaryEncryptionKeyStatus" missing
+- "azure-native:dbforpostgresql:DataEncryptionResponse": required:
+    - `🟢` "geoBackupEncryptionKeyStatus" property has changed to Required
+    - `🟢` "primaryEncryptionKeyStatus" property has changed to Required
+- `🔴` "azure-native:dbforpostgresql:DbMigrationStatusResponse" missing
+- `🔴` "azure-native:dbforpostgresql:GeoRedundantBackupEnum" missing
+- `🔴` "azure-native:dbforpostgresql:HighAvailabilityMode" missing
+- `🔴` "azure-native:dbforpostgresql:KeyStatusEnum" missing
+- `🔴` "azure-native:dbforpostgresql:LogicalReplicationOnSourceDbEnum" missing
+- `🔴` "azure-native:dbforpostgresql:MigrateRolesEnum" missing
+- `🟡` "azure-native:dbforpostgresql:MigrationStatusResponse": properties: "currentSubStateDetails" type changed from "#/types/azure-native:dbforpostgresql:MigrationSubStateDetailsResponse" to "#/types/azure-native:dbforpostgresql:MigrationSubstateDetailsResponse"
+- `🔴` "azure-native:dbforpostgresql:MigrationSubStateDetailsResponse" missing
+- `🔴` "azure-native:dbforpostgresql:OverwriteDbsInTargetEnum" missing
+- `🔴` "azure-native:dbforpostgresql:PasswordAuthEnum" missing
+- `🔴` "azure-native:dbforpostgresql:ReplicationPromoteOption" missing
+- `🔴` "azure-native:dbforpostgresql:ServerVersion" missing
+- `🔴` "azure-native:dbforpostgresql:StartDataMigrationEnum" missing
+- `🔴` "azure-native:dbforpostgresql:TriggerCutoverEnum" missing
+- `🟢` "azure-native:edge:ConfigTemplatePropertiesResponse": required: "uniqueIdentifier" property has changed to Required
+- `🟢` "azure-native:edge:SolutionTemplatePropertiesResponse": required: "uniqueIdentifier" property has changed to Required
+- `🔴` "azure-native:hdinsight:AksClusterProfileResponseAksClusterAgentPoolIdentityProfile" missing
+- `🔴` "azure-native:hdinsight:AuthorizationProfile" missing
+- `🔴` "azure-native:hdinsight:AuthorizationProfileResponse" missing
+- `🔴` "azure-native:hdinsight:AutoscaleProfile" missing
+- `🔴` "azure-native:hdinsight:AutoscaleProfileResponse" missing
+- `🔴` "azure-native:hdinsight:AutoscaleType" missing
+- `🔴` "azure-native:hdinsight:CatalogOptions" missing
+- `🔴` "azure-native:hdinsight:CatalogOptionsResponse" missing
+- `🔴` "azure-native:hdinsight:ClusterAccessProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterAccessProfileResponse" missing
+- `🔴` "azure-native:hdinsight:ClusterConfigFile" missing
+- `🔴` "azure-native:hdinsight:ClusterConfigFileResponse" missing
+- `🔴` "azure-native:hdinsight:ClusterLogAnalyticsApplicationLogs" missing
+- `🔴` "azure-native:hdinsight:ClusterLogAnalyticsApplicationLogsResponse" missing
+- `🔴` "azure-native:hdinsight:ClusterLogAnalyticsProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterLogAnalyticsProfileResponse" missing
+- `🔴` "azure-native:hdinsight:ClusterPoolComputeProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterPoolComputeProfileResponse" missing
+- `🔴` "azure-native:hdinsight:ClusterPoolResourcePropertiesClusterPoolProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterPoolResourcePropertiesComputeProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterPoolResourcePropertiesLogAnalyticsProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterPoolResourcePropertiesNetworkProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterPoolResourcePropertiesResponseAksClusterProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterPoolResourcePropertiesResponseClusterPoolProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterPoolResourcePropertiesResponseComputeProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterPoolResourcePropertiesResponseLogAnalyticsProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterPoolResourcePropertiesResponseNetworkProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterPoolSshProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterPoolSshProfileResponse" missing
+- `🔴` "azure-native:hdinsight:ClusterProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterProfileResponse" missing
+- `🔴` "azure-native:hdinsight:ClusterProfileResponseComponents" missing
+- `🔴` "azure-native:hdinsight:ClusterPrometheusProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterPrometheusProfileResponse" missing
+- `🔴` "azure-native:hdinsight:ClusterRangerPluginProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterRangerPluginProfileResponse" missing
+- `🔴` "azure-native:hdinsight:ClusterServiceConfig" missing
+- `🔴` "azure-native:hdinsight:ClusterServiceConfigResponse" missing
+- `🔴` "azure-native:hdinsight:ClusterServiceConfigsProfile" missing
+- `🔴` "azure-native:hdinsight:ClusterServiceConfigsProfileResponse" missing
+- `🔴` "azure-native:hdinsight:ComparisonOperator" missing
+- `🔴` "azure-native:hdinsight:ComparisonRule" missing
+- `🔴` "azure-native:hdinsight:ComparisonRuleResponse" missing
+- `🔴` "azure-native:hdinsight:ComputeResourceDefinition" missing
+- `🔴` "azure-native:hdinsight:ComputeResourceDefinitionResponse" missing
+- `🔴` "azure-native:hdinsight:ConnectivityProfileResponse" missing
+- `🔴` "azure-native:hdinsight:ConnectivityProfileResponseWeb" missing
+- `🔴` "azure-native:hdinsight:ContentEncoding" missing
+- `🔴` "azure-native:hdinsight:DataDiskType" missing
+- `🔴` "azure-native:hdinsight:DbConnectionAuthenticationMode" missing
+- `🔴` "azure-native:hdinsight:DeploymentMode" missing
+- `🔴` "azure-native:hdinsight:DiskStorageProfile" missing
+- `🔴` "azure-native:hdinsight:DiskStorageProfileResponse" missing
+- `🔴` "azure-native:hdinsight:FlinkCatalogOptions" missing
+- `🔴` "azure-native:hdinsight:FlinkCatalogOptionsResponse" missing
+- `🔴` "azure-native:hdinsight:FlinkHiveCatalogOption" missing
+- `🔴` "azure-native:hdinsight:FlinkHiveCatalogOptionResponse" missing
+- `🔴` "azure-native:hdinsight:FlinkJobProfile" missing
+- `🔴` "azure-native:hdinsight:FlinkJobProfileResponse" missing
+- `🔴` "azure-native:hdinsight:FlinkProfile" missing
+- `🔴` "azure-native:hdinsight:FlinkProfileResponse" missing
+- `🔴` "azure-native:hdinsight:FlinkStorageProfile" missing
+- `🔴` "azure-native:hdinsight:FlinkStorageProfileResponse" missing
+- `🔴` "azure-native:hdinsight:HiveCatalogOption" missing
+- `🔴` "azure-native:hdinsight:HiveCatalogOptionResponse" missing
+- `🔴` "azure-native:hdinsight:IdentityProfile" missing
+- `🔴` "azure-native:hdinsight:IdentityProfileResponse" missing
+- `🔴` "azure-native:hdinsight:KafkaConnectivityEndpointsResponse" missing
+- `🔴` "azure-native:hdinsight:KafkaProfile" missing
+- `🔴` "azure-native:hdinsight:KafkaProfileResponse" missing
+- `🔴` "azure-native:hdinsight:KeyVaultObjectType" missing
+- `🔴` "azure-native:hdinsight:LoadBasedConfig" missing
+- `🔴` "azure-native:hdinsight:LoadBasedConfigResponse" missing
+- `🔴` "azure-native:hdinsight:ManagedIdentityProfile" missing
+- `🔴` "azure-native:hdinsight:ManagedIdentityProfileResponse" missing
+- `🔴` "azure-native:hdinsight:ManagedIdentitySpec" missing
+- `🔴` "azure-native:hdinsight:ManagedIdentitySpecResponse" missing
+- `🔴` "azure-native:hdinsight:ManagedIdentityType" missing
+- `🔴` "azure-native:hdinsight:MetastoreDbConnectionAuthenticationMode" missing
+- `🔴` "azure-native:hdinsight:NodeProfile" missing
+- `🔴` "azure-native:hdinsight:NodeProfileResponse" missing
+- `🔴` "azure-native:hdinsight:OutboundType" missing
+- `🔴` "azure-native:hdinsight:RangerAdminSpec" missing
+- `🔴` "azure-native:hdinsight:RangerAdminSpecDatabase" missing
+- `🔴` "azure-native:hdinsight:RangerAdminSpecResponse" missing
+- `🔴` "azure-native:hdinsight:RangerAdminSpecResponseDatabase" missing
+- `🔴` "azure-native:hdinsight:RangerAuditSpec" missing
+- `🔴` "azure-native:hdinsight:RangerAuditSpecResponse" missing
+- `🔴` "azure-native:hdinsight:RangerProfile" missing
+- `🔴` "azure-native:hdinsight:RangerProfileResponse" missing
+- `🔴` "azure-native:hdinsight:RangerUsersyncMode" missing
+- `🔴` "azure-native:hdinsight:RangerUsersyncSpec" missing
+- `🔴` "azure-native:hdinsight:RangerUsersyncSpecResponse" missing
+- `🔴` "azure-native:hdinsight:ScaleActionType" missing
+- `🔴` "azure-native:hdinsight:ScalingRule" missing
+- `🔴` "azure-native:hdinsight:ScalingRuleResponse" missing
+- `🔴` "azure-native:hdinsight:Schedule" missing
+- `🔴` "azure-native:hdinsight:ScheduleBasedConfig" missing
+- `🔴` "azure-native:hdinsight:ScheduleBasedConfigResponse" missing
+- `🔴` "azure-native:hdinsight:ScheduleDay" missing
+- `🔴` "azure-native:hdinsight:ScheduleResponse" missing
+- `🔴` "azure-native:hdinsight:ScriptActionProfile" missing
+- `🔴` "azure-native:hdinsight:ScriptActionProfileResponse" missing
+- `🔴` "azure-native:hdinsight:SecretReference" missing
+- `🔴` "azure-native:hdinsight:SecretReferenceResponse" missing
+- `🔴` "azure-native:hdinsight:SecretsProfile" missing
+- `🔴` "azure-native:hdinsight:SecretsProfileResponse" missing
+- `🔴` "azure-native:hdinsight:SparkMetastoreSpec" missing
+- `🔴` "azure-native:hdinsight:SparkMetastoreSpecResponse" missing
+- `🔴` "azure-native:hdinsight:SparkProfile" missing
+- `🔴` "azure-native:hdinsight:SparkProfileResponse" missing
+- `🔴` "azure-native:hdinsight:SparkUserPlugin" missing
+- `🔴` "azure-native:hdinsight:SparkUserPluginResponse" missing
+- `🔴` "azure-native:hdinsight:SparkUserPlugins" missing
+- `🔴` "azure-native:hdinsight:SparkUserPluginsResponse" missing
+- `🔴` "azure-native:hdinsight:SshConnectivityEndpointResponse" missing
+- `🔴` "azure-native:hdinsight:TrinoCoordinator" missing
+- `🔴` "azure-native:hdinsight:TrinoCoordinatorResponse" missing
+- `🔴` "azure-native:hdinsight:TrinoProfile" missing
+- `🔴` "azure-native:hdinsight:TrinoProfileResponse" missing
+- `🔴` "azure-native:hdinsight:TrinoTelemetryConfig" missing
+- `🔴` "azure-native:hdinsight:TrinoTelemetryConfigResponse" missing
+- `🔴` "azure-native:hdinsight:TrinoUserPlugin" missing
+- `🔴` "azure-native:hdinsight:TrinoUserPluginResponse" missing
+- `🔴` "azure-native:hdinsight:TrinoUserPlugins" missing
+- `🔴` "azure-native:hdinsight:TrinoUserPluginsResponse" missing
+- `🔴` "azure-native:hdinsight:TrinoUserTelemetry" missing
+- `🔴` "azure-native:hdinsight:TrinoUserTelemetryResponse" missing
+- `🔴` "azure-native:hdinsight:TrinoWorker" missing
+- `🔴` "azure-native:hdinsight:TrinoWorkerResponse" missing
+- `🔴` "azure-native:hdinsight:UpgradeMode" missing
+- `🟡` "azure-native:management:ManagementGroupDetailsResponse": properties: "version" type changed from "number" to "integer"
+- `🔴` "azure-native:mixedreality:Identity" missing
+- `🔴` "azure-native:mixedreality:IdentityResponse" missing
+- `🔴` "azure-native:mixedreality:ObjectAnchorsAccountIdentity" missing
+- `🔴` "azure-native:mixedreality:ObjectAnchorsAccountResponseIdentity" missing
+- `🔴` "azure-native:mixedreality:ResourceIdentityType" missing
+- `🔴` "azure-native:mixedreality:Sku" missing
+- `🔴` "azure-native:mixedreality:SkuResponse" missing
+- `🔴` "azure-native:mixedreality:SkuTier" missing
+- `🔴` "azure-native:mixedreality:SystemDataResponse" missing
+- `🔴` "azure-native:mobilenetwork:Ambr" missing
+- `🔴` "azure-native:mobilenetwork:AmbrResponse" missing
+- `🔴` "azure-native:mobilenetwork:AsyncOperationIdResponse" missing
+- `🔴` "azure-native:mobilenetwork:AttachedDataNetworkResourceId" missing
+- `🔴` "azure-native:mobilenetwork:AttachedDataNetworkResourceIdResponse" missing
+- `🔴` "azure-native:mobilenetwork:AuthenticationType" missing
+- `🔴` "azure-native:mobilenetwork:AzureStackEdgeDeviceResourceId" missing
+- `🔴` "azure-native:mobilenetwork:AzureStackEdgeDeviceResourceIdResponse" missing
+- `🔴` "azure-native:mobilenetwork:AzureStackHCIClusterResourceId" missing
+- `🔴` "azure-native:mobilenetwork:AzureStackHCIClusterResourceIdResponse" missing
+- `🔴` "azure-native:mobilenetwork:BillingSku" missing
+- `🔴` "azure-native:mobilenetwork:CertificateProvisioningResponse" missing
+- `🔴` "azure-native:mobilenetwork:ConnectedClusterResourceId" missing
+- `🔴` "azure-native:mobilenetwork:ConnectedClusterResourceIdResponse" missing
+- `🔴` "azure-native:mobilenetwork:CoreNetworkType" missing
+- `🔴` "azure-native:mobilenetwork:CustomLocationResourceId" missing
+- `🔴` "azure-native:mobilenetwork:CustomLocationResourceIdResponse" missing
+- `🔴` "azure-native:mobilenetwork:DataNetworkConfiguration" missing
+- `🔴` "azure-native:mobilenetwork:DataNetworkConfigurationResponse" missing
+- `🔴` "azure-native:mobilenetwork:DataNetworkResourceId" missing
+- `🔴` "azure-native:mobilenetwork:DataNetworkResourceIdResponse" missing
+- `🔴` "azure-native:mobilenetwork:DesiredInstallationState" missing
+- `🔴` "azure-native:mobilenetwork:DiagnosticsUploadConfiguration" missing
+- `🔴` "azure-native:mobilenetwork:DiagnosticsUploadConfigurationResponse" missing
+- `🔴` "azure-native:mobilenetwork:EventHubConfiguration" missing
+- `🔴` "azure-native:mobilenetwork:EventHubConfigurationResponse" missing
+- `🔴` "azure-native:mobilenetwork:HomeNetworkPrivateKeysProvisioningResponse" missing
+- `🔴` "azure-native:mobilenetwork:HomeNetworkPublicKey" missing
+- `🔴` "azure-native:mobilenetwork:HomeNetworkPublicKeyResponse" missing
+- `🔴` "azure-native:mobilenetwork:HttpsServerCertificate" missing
+- `🔴` "azure-native:mobilenetwork:HttpsServerCertificateResponse" missing
+- `🔴` "azure-native:mobilenetwork:Installation" missing
+- `🔴` "azure-native:mobilenetwork:InstallationResponse" missing
+- `🔴` "azure-native:mobilenetwork:InterfaceProperties" missing
+- `🔴` "azure-native:mobilenetwork:InterfacePropertiesResponse" missing
+- `🔴` "azure-native:mobilenetwork:KeyVaultKey" missing
+- `🔴` "azure-native:mobilenetwork:KeyVaultKeyResponse" missing
+- `🔴` "azure-native:mobilenetwork:LocalDiagnosticsAccessConfiguration" missing
+- `🔴` "azure-native:mobilenetwork:LocalDiagnosticsAccessConfigurationResponse" missing
+- `🔴` "azure-native:mobilenetwork:ManagedServiceIdentity" missing
+- `🔴` "azure-native:mobilenetwork:ManagedServiceIdentityResponse" missing
+- `🔴` "azure-native:mobilenetwork:ManagedServiceIdentityType" missing
+- `🔴` "azure-native:mobilenetwork:MobileNetworkResourceId" missing
+- `🔴` "azure-native:mobilenetwork:MobileNetworkResourceIdResponse" missing
+- `🔴` "azure-native:mobilenetwork:NASRerouteConfiguration" missing
+- `🔴` "azure-native:mobilenetwork:NASRerouteConfigurationResponse" missing
+- `🔴` "azure-native:mobilenetwork:NaptConfiguration" missing
+- `🔴` "azure-native:mobilenetwork:NaptConfigurationResponse" missing
+- `🔴` "azure-native:mobilenetwork:NaptEnabled" missing
+- `🔴` "azure-native:mobilenetwork:NasEncryptionType" missing
+- `🔴` "azure-native:mobilenetwork:PccRuleConfiguration" missing
+- `🔴` "azure-native:mobilenetwork:PccRuleConfigurationResponse" missing
+- `🔴` "azure-native:mobilenetwork:PccRuleQosPolicy" missing
+- `🔴` "azure-native:mobilenetwork:PccRuleQosPolicyResponse" missing
+- `🔴` "azure-native:mobilenetwork:PduSessionType" missing
+- `🔴` "azure-native:mobilenetwork:PinholeTimeouts" missing
+- `🔴` "azure-native:mobilenetwork:PinholeTimeoutsResponse" missing
+- `🔴` "azure-native:mobilenetwork:PlatformConfiguration" missing
+- `🔴` "azure-native:mobilenetwork:PlatformConfigurationResponse" missing
+- `🔴` "azure-native:mobilenetwork:PlatformType" missing
+- `🔴` "azure-native:mobilenetwork:PlmnId" missing
+- `🔴` "azure-native:mobilenetwork:PlmnIdResponse" missing
+- `🔴` "azure-native:mobilenetwork:PortRange" missing
+- `🔴` "azure-native:mobilenetwork:PortRangeResponse" missing
+- `🔴` "azure-native:mobilenetwork:PortReuseHoldTimes" missing
+- `🔴` "azure-native:mobilenetwork:PortReuseHoldTimesResponse" missing
+- `🔴` "azure-native:mobilenetwork:PreemptionCapability" missing
+- `🔴` "azure-native:mobilenetwork:PreemptionVulnerability" missing
+- `🔴` "azure-native:mobilenetwork:PublicLandMobileNetwork" missing
+- `🔴` "azure-native:mobilenetwork:PublicLandMobileNetworkHomeNetworkPublicKeys" missing
+- `🔴` "azure-native:mobilenetwork:PublicLandMobileNetworkResponse" missing
+- `🔴` "azure-native:mobilenetwork:PublicLandMobileNetworkResponseHomeNetworkPublicKeys" missing
+- `🔴` "azure-native:mobilenetwork:QosPolicy" missing
+- `🔴` "azure-native:mobilenetwork:QosPolicyResponse" missing
+- `🔴` "azure-native:mobilenetwork:SdfDirection" missing
+- `🔴` "azure-native:mobilenetwork:ServiceDataFlowTemplate" missing
+- `🔴` "azure-native:mobilenetwork:ServiceDataFlowTemplateResponse" missing
+- `🔴` "azure-native:mobilenetwork:ServiceResourceId" missing
+- `🔴` "azure-native:mobilenetwork:ServiceResourceIdResponse" missing
+- `🔴` "azure-native:mobilenetwork:SignalingConfiguration" missing
+- `🔴` "azure-native:mobilenetwork:SignalingConfigurationResponse" missing
+- `🔴` "azure-native:mobilenetwork:SimGroupResponse" missing
+- `🔴` "azure-native:mobilenetwork:SimPolicyResourceId" missing
+- `🔴` "azure-native:mobilenetwork:SimPolicyResourceIdResponse" missing
+- `🔴` "azure-native:mobilenetwork:SimStaticIpProperties" missing
+- `🔴` "azure-native:mobilenetwork:SimStaticIpPropertiesResponse" missing
+- `🔴` "azure-native:mobilenetwork:SimStaticIpPropertiesResponseStaticIp" missing
+- `🔴` "azure-native:mobilenetwork:SimStaticIpPropertiesStaticIp" missing
+- `🔴` "azure-native:mobilenetwork:SiteResourceId" missing
+- `🔴` "azure-native:mobilenetwork:SiteResourceIdResponse" missing
+- `🔴` "azure-native:mobilenetwork:SliceConfiguration" missing
+#### New resources:
+
+- `apimanagement.ApiGatewayHostnameBinding`
+- `apimanagement.ApiTool`
+- `avs.License`
+- `azurestackhci.EdgeMachine`
+- `azurestackhci.EdgeMachineJob`
+- `azurestackhci.LoadBalancer`
+- `azurestackhci.NatGateway`
+- `azurestackhci.PublicIPAddress`
+- `azurestackhci.VirtualNetworkSubnet`
+- `billingbenefits.ConditionalCredit`
+- `billingbenefits.Credit`
+- `billingbenefits.FreeService`
+- `billingbenefits.Macc`
+- `billingbenefits.Source`
+- `cdn.EdgeAction`
+- `cdn.EdgeActionExecutionFilter`
+- `cdn.EdgeActionVersion`
+- `cognitiveservices.AgentApplication`
+- `cognitiveservices.AgentDeployment`
+- `cognitiveservices.OutboundRule`
+- `cognitiveservices.RaiExternalSafetyProvider`
+- `cognitiveservices.RaiToolLabel`
+- `cognitiveservices.SubscriptionRaiPolicy`
+- `compute.GalleryScript`
+- `compute.GalleryScriptVersion`
+- `computelimit.GuestSubscription`
+- `computelimit.SharedLimit`
+- `containerservice.FleetManagedNamespace`
+- `containerservice.MeshMembership`
+- `cosmosdb.GarnetCluster`
+- `dashboard.DashboardDefinition`
+- `dbformysql.LongRunningBackup`
+- `dbforpostgresql.AdministratorsMicrosoftEntra`
+- `dbforpostgresql.BackupsAutomaticAndOnDemand`
+- `deviceregistry.Credential`
+- `deviceregistry.Policy`
+- `fileshares.FileShareSnapshot`
+- `fluidrelay.FluidRelayPrivateEndpointConnection`
+- `hdinsight.Extension`
+- `hdinsight.ExtensionAzureMonitorAgentStatus`
+- `hdinsight.ExtensionAzureMonitorStatus`
+- `hdinsight.ExtensionMonitoringStatus`
+- `managednetworkfabric.NetworkMonitor`
+- `managedops.ManagedOp`
+- `migrate.MigrationEntity`
+- `migrate.MigrationEntityGroup`
+- `migrate.Task`
+- `migrate.Wave`
+- `netapp.ActiveDirectoryConfig`
+- `netapp.CapacityPoolCache`
+- `netapp.ElasticAccount`
+- `netapp.ElasticBackup`
+- `netapp.ElasticBackupPolicy`
+- `netapp.ElasticBackupVault`
+- `netapp.ElasticCapacityPool`
+- `netapp.ElasticSnapshot`
+- `netapp.ElasticSnapshotPolicy`
+- `netapp.ElasticVolume`
+- `network.ServiceGateway`
+- `network.VirtualNetworkAppliance`
+- `operationalinsights.SummaryLog`
+- `resources.DeploymentStacksWhatIfResultsAtManagementGroup`
+- `resources.DeploymentStacksWhatIfResultsAtResourceGroup`
+- `resources.DeploymentStacksWhatIfResultsAtSubscription`
+
+#### New functions:
+
+- `apimanagement.getApiGatewayHostnameBinding`
+- `apimanagement.getApiTool`
+- `avs.getLicense`
+- `avs.getPrivateCloudVcfLicense`
+- `azuredatatransfer.listAzureDataTransferFlowProfiles`
+- `azurestackhci.getEdgeMachine`
+- `azurestackhci.getEdgeMachineJob`
+- `azurestackhci.getLoadBalancer`
+- `azurestackhci.getNatGateway`
+- `azurestackhci.getPublicIPAddress`
+- `azurestackhci.getVirtualNetworkSubnet`
+- `billingbenefits.getConditionalCredit`
+- `billingbenefits.getCredit`
+- `billingbenefits.getFreeService`
+- `billingbenefits.getMacc`
+- `billingbenefits.getSource`
+- `cdn.getEdgeAction`
+- `cdn.getEdgeActionExecutionFilter`
+- `cdn.getEdgeActionVersion`
+- `cdn.getEdgeActionVersionCode`
+- `cognitiveservices.getAgentApplication`
+- `cognitiveservices.getAgentDeployment`
+- `cognitiveservices.getOutboundRule`
+- `cognitiveservices.getRaiExternalSafetyProvider`
+- `cognitiveservices.getRaiToolLabel`
+- `cognitiveservices.getSubscriptionRaiPolicy`
+- `cognitiveservices.listAgentApplicationAgents`
+- `compute.getGalleryScript`
+- `compute.getGalleryScriptVersion`
+- `computelimit.getGuestSubscription`
+- `computelimit.getSharedLimit`
+- `containerservice.getFleetManagedNamespace`
+- `containerservice.getMeshMembership`
+- `cosmosdb.getGarnetCluster`
+- `dashboard.getDashboardDefinition`
+- `datadog.getMonitorDefaultApplicationKey`
+- `dbformysql.getLongRunningBackup`
+- `dbforpostgresql.getAdministratorsMicrosoftEntra`
+- `dbforpostgresql.getBackupsAutomaticAndOnDemand`
+- `deviceregistry.getCredential`
+- `deviceregistry.getPolicy`
+- `fileshares.getFileShareSnapshot`
+- `fluidrelay.getFluidRelayPrivateEndpointConnection`
+- `hdinsight.getExtension`
+- `hdinsight.getExtensionAzureMonitorAgentStatus`
+- `hdinsight.getExtensionAzureMonitorStatus`
+- `hdinsight.getExtensionMonitoringStatus`
+- `managednetworkfabric.getNetworkMonitor`
+- `managedops.getManagedOp`
+- `migrate.getMigrationEntity`
+- `migrate.getMigrationEntityGroup`
+- `migrate.getTask`
+- `migrate.getWave`
+- `netapp.getActiveDirectoryConfig`
+- `netapp.getCapacityPoolCache`
+- `netapp.getElasticAccount`
+- `netapp.getElasticBackup`
+- `netapp.getElasticBackupPolicy`
+- `netapp.getElasticBackupVault`
+- `netapp.getElasticCapacityPool`
+- `netapp.getElasticSnapshot`
+- `netapp.getElasticSnapshotPolicy`
+- `netapp.getElasticVolume`
+- `netapp.listCapacityPoolCachePeeringPassphrases`
+- `network.getServiceGateway`
+- `network.getVirtualNetworkAppliance`
+- `operationalinsights.getSummaryLog`
+- `resources.getDeploymentStacksWhatIfResultsAtManagementGroup`
+- `resources.getDeploymentStacksWhatIfResultsAtResourceGroup`
+- `resources.getDeploymentStacksWhatIfResultsAtSubscription`
+- `web.getAppServicePlanServerFarmRdpPassword`
+- `web.listAppServicePlanServerFarmInstanceDetails`
+
+<!-- Release notes generated using configuration in .github/release.yml at v3.13.0 -->
 
 ## What's Changed
-* Update first-party Pulumi dependencies to v3.11.0 by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4456
-* Update module github.com/pulumi/pulumi-azure-native-sdk/v3 to v3.11.0 by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4457
-* Add serialization for Web App resources by @guineveresaenger in https://github.com/pulumi/pulumi-azure-native/pull/4458
-* Pin dependencies by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4462
-* Update dependency @pulumi/pulumi to v3.211.0 by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4464
-* Update dependency @pulumi/pulumi to v3.212.0 by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4465
-* Update dependency @pulumi/pulumi to v3.213.0 by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4468
-* testing: update the k8s versions in go-aks by @pgavlin in https://github.com/pulumi/pulumi-azure-native/pull/4467
-* testing: update the k8s versions in go-aks by @pgavlin in https://github.com/pulumi/pulumi-azure-native/pull/4472
+* Update pulumi/pulumi dependencies in examples module by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4485
+* DBforPostgreSQL API Version Upgrade: 2024-08-01 to 2025-08-01 by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4491
+* Update azure-rest-api-specs to latest 2026-01-27 by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4496
+* Handle and retry StorageAccount specific in-progress operation errors by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4497
+* Remove dead code using "required explicit resources" by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4500
+* Tell users to pulumi refresh --run-program when API versions have changed by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4502
+* Fix postgres example due to enum type name changing by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4503
 
 
-**Full Changelog**: https://github.com/pulumi/pulumi-azure-native/compare/v3.11.0...v3.12.0
+**Full Changelog**: https://github.com/pulumi/pulumi-azure-native/compare/v3.12.1...v3.13.0

@@ -4,6 +4,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the details of the client application specified by its identifier.
  *
  * Uses Azure REST API version 2024-10-01-preview.
+ *
+ * Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getClientApplication(args: GetClientApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetClientApplicationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -78,6 +80,8 @@ export interface GetClientApplicationResult {
  * Gets the details of the client application specified by its identifier.
  *
  * Uses Azure REST API version 2024-10-01-preview.
+ *
+ * Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getClientApplicationOutput(args: GetClientApplicationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClientApplicationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

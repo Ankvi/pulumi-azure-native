@@ -198,6 +198,67 @@ export function bfdConfigurationResponseProvideDefaults(val: BfdConfigurationRes
 }
 
 /**
+ * BGP Monitoring Protocol (BMP) Configuration properties.
+ */
+export interface BmpConfigurationPropertiesResponse {
+    /**
+     * Export Policy for the BMP Configuration.
+     */
+    exportPolicy?: string;
+    /**
+     * Monitored Address Families for the BMP Configuration.
+     */
+    monitoredAddressFamilies?: string[];
+    /**
+     * The List of Network ID's that need to be monitored.
+     */
+    monitoredNetworks?: string[];
+    /**
+     * Scope resource ARM Identifier.
+     */
+    scopeResourceId?: string;
+    /**
+     * Enabling a station. Either True/False.
+     */
+    stationConfigurationState?: string;
+    /**
+     * Station Connection Mode.
+     */
+    stationConnectionMode?: string;
+    /**
+     * Station Connection Properties.
+     */
+    stationConnectionProperties?: StationConnectionPropertiesResponse;
+    /**
+     * IP Address of the station.
+     */
+    stationIp?: string;
+    /**
+     * Name of the station.
+     */
+    stationName?: string;
+    /**
+     * Network of the station
+     */
+    stationNetwork?: string;
+    /**
+     * Port of the station. Default value is 5000.
+     */
+    stationPort?: number;
+}
+/**
+ * bmpConfigurationPropertiesResponseProvideDefaults sets the appropriate defaults for BmpConfigurationPropertiesResponse
+ */
+export function bmpConfigurationPropertiesResponseProvideDefaults(val: BmpConfigurationPropertiesResponse): BmpConfigurationPropertiesResponse {
+    return {
+        ...val,
+        exportPolicy: (val.exportPolicy) ?? "All",
+        stationConnectionProperties: (val.stationConnectionProperties ? stationConnectionPropertiesResponseProvideDefaults(val.stationConnectionProperties) : undefined),
+        stationPort: (val.stationPort) ?? 5000,
+    };
+}
+
+/**
  * Dynamic match configuration object.
  */
 export interface CommonDynamicMatchConfigurationResponse {
@@ -710,6 +771,16 @@ export interface L3OptionBPropertiesResponse {
 }
 
 /**
+ * Details of the last operations performed on the resource
+ */
+export interface LastOperationPropertiesResponse {
+    /**
+     * Details status of the last operation performed on the resource.
+     */
+    details: string;
+}
+
+/**
  * Common properties for Layer2 Configuration.
  */
 export interface Layer2ConfigurationResponse {
@@ -796,6 +867,45 @@ export interface NeighborGroupDestinationResponse {
      * Array of IPv6 Addresses.
      */
     ipv6Addresses?: string[];
+}
+
+/**
+ * Network Monitor Properties defines the properties of the resource.
+ */
+export interface NetworkMonitorPropertiesResponse {
+    /**
+     * Administrative state of the resource.
+     */
+    administrativeState: string;
+    /**
+     * Switch configuration description.
+     */
+    annotation?: string;
+    /**
+     * BMP Configurations for the Network Fabric.
+     */
+    bmpConfiguration?: BmpConfigurationPropertiesResponse;
+    /**
+     * Configuration state of the resource.
+     */
+    configurationState: string;
+    /**
+     * Details of the last operation performed on the resource
+     */
+    lastOperation: LastOperationPropertiesResponse;
+    /**
+     * Provides you the latest status of the NetworkMonitor resource
+     */
+    provisioningState: string;
+}
+/**
+ * networkMonitorPropertiesResponseProvideDefaults sets the appropriate defaults for NetworkMonitorPropertiesResponse
+ */
+export function networkMonitorPropertiesResponseProvideDefaults(val: NetworkMonitorPropertiesResponse): NetworkMonitorPropertiesResponse {
+    return {
+        ...val,
+        bmpConfiguration: (val.bmpConfiguration ? bmpConfigurationPropertiesResponseProvideDefaults(val.bmpConfiguration) : undefined),
+    };
 }
 
 /**
@@ -1140,6 +1250,35 @@ export interface StaticRoutePropertiesResponse {
      * Prefix of the route.
      */
     prefix: string;
+}
+
+/**
+ * Station Connection Properties.
+ */
+export interface StationConnectionPropertiesResponse {
+    /**
+     * Connection keepalive idle time in seconds
+     */
+    keepaliveIdleTime?: number;
+    /**
+     * Probe count, default value is 10
+     */
+    probeCount?: number;
+    /**
+     * Probe interval in seconds, default value is 60
+     */
+    probeInterval?: number;
+}
+/**
+ * stationConnectionPropertiesResponseProvideDefaults sets the appropriate defaults for StationConnectionPropertiesResponse
+ */
+export function stationConnectionPropertiesResponseProvideDefaults(val: StationConnectionPropertiesResponse): StationConnectionPropertiesResponse {
+    return {
+        ...val,
+        keepaliveIdleTime: (val.keepaliveIdleTime) ?? 180,
+        probeCount: (val.probeCount) ?? 10,
+        probeInterval: (val.probeInterval) ?? 60,
+    };
 }
 
 /**

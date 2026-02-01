@@ -5,6 +5,8 @@ import * as types from "./types";
  * Get a SignalDefinition
  *
  * Uses Azure REST API version 2025-05-01-preview.
+ *
+ * Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSignalDefinition(args: GetSignalDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetSignalDefinitionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -63,6 +65,8 @@ export interface GetSignalDefinitionResult {
  * Get a SignalDefinition
  *
  * Uses Azure REST API version 2025-05-01-preview.
+ *
+ * Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSignalDefinitionOutput(args: GetSignalDefinitionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSignalDefinitionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

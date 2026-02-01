@@ -1255,7 +1255,7 @@ export interface ResourceProviderManifestPropertiesManagementArgs {
     /**
      * The resource access policy.
      */
-    resourceAccessPolicy?: pulumi.Input<string | enums.ResourceAccessPolicy>;
+    resourceAccessPolicy?: pulumi.Input<enums.ResourceAccessPolicy>;
     /**
      * The resource access roles.
      */
@@ -1486,6 +1486,9 @@ export interface ResourceTypeOnBehalfOfTokenArgs {
     lifeTime?: pulumi.Input<string>;
 }
 
+/**
+ * Concrete proxy resource types can be created by aliasing this type using a specific property type.
+ */
 export interface ResourceTypeRegistrationArgs {
     /**
      * Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -1671,11 +1674,11 @@ export interface ResourceTypeRegistrationPropertiesArgs {
     /**
      * The marketplace type.
      */
-    marketplaceType?: pulumi.Input<string | enums.MarketplaceType>;
+    marketplaceType?: pulumi.Input<enums.MarketplaceType>;
     /**
      * The metadata.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: any;
     /**
      * The notifications.
      */
@@ -1807,16 +1810,6 @@ export interface ResourceTypeRegistrationPropertiesArgs {
  */
 export interface ResourceTypeRegistrationPropertiesAvailabilityZoneRuleArgs {
     availabilityZonePolicy?: pulumi.Input<string | enums.AvailabilityZonePolicy>;
-}
-
-/**
- * Batch provisioning support.
- */
-export interface ResourceTypeRegistrationPropertiesBatchProvisioningSupportArgs {
-    /**
-     * Supported operations.
-     */
-    supportedOperations?: pulumi.Input<string | enums.SupportedOperations>;
 }
 
 /**
@@ -1962,7 +1955,7 @@ export interface ResourceTypeRegistrationPropertiesManagementArgs {
     /**
      * The resource access policy.
      */
-    resourceAccessPolicy?: pulumi.Input<string | enums.ResourceAccessPolicy>;
+    resourceAccessPolicy?: pulumi.Input<enums.ResourceAccessPolicy>;
     /**
      * The resource access roles.
      */
@@ -1985,16 +1978,6 @@ export interface ResourceTypeRegistrationPropertiesMarketplaceOptionsArgs {
      * Add-on plan conversion allowed.
      */
     addOnPlanConversionAllowed?: pulumi.Input<boolean>;
-}
-
-/**
- * Nested provisioning support.
- */
-export interface ResourceTypeRegistrationPropertiesNestedProvisioningSupportArgs {
-    /**
-     * Minimum API version.
-     */
-    minimumApiVersion?: pulumi.Input<string>;
 }
 
 /**
@@ -2046,7 +2029,7 @@ export interface ResourceTypeRegistrationPropertiesResourceManagementOptionsArgs
     /**
      * Batch provisioning support.
      */
-    batchProvisioningSupport?: pulumi.Input<ResourceTypeRegistrationPropertiesBatchProvisioningSupportArgs>;
+    batchProvisioningSupport?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportArgs>;
     /**
      * Delete dependencies.
      */
@@ -2054,7 +2037,27 @@ export interface ResourceTypeRegistrationPropertiesResourceManagementOptionsArgs
     /**
      * Nested provisioning support.
      */
-    nestedProvisioningSupport?: pulumi.Input<ResourceTypeRegistrationPropertiesNestedProvisioningSupportArgs>;
+    nestedProvisioningSupport?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupportArgs>;
+}
+
+/**
+ * Batch provisioning support.
+ */
+export interface ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportArgs {
+    /**
+     * Supported operations.
+     */
+    supportedOperations?: pulumi.Input<string | enums.SupportedOperations>;
+}
+
+/**
+ * Nested provisioning support.
+ */
+export interface ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupportArgs {
+    /**
+     * Minimum API version.
+     */
+    minimumApiVersion?: pulumi.Input<string>;
 }
 
 /**

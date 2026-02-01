@@ -17,7 +17,7 @@ export interface ApplianceCredentialKubeconfigResponse {
 /**
  * Contains infrastructure information about the Appliance
  */
-export interface AppliancePropertiesResponseInfrastructureConfig {
+export interface AppliancePropertiesInfrastructureConfigResponse {
     /**
      * Information about the connected appliance.
      */

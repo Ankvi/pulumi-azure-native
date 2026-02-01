@@ -322,6 +322,16 @@ export interface AppSvcNativeSettingsArgs {
 }
 
 /**
+ * ARG query and other details to create workloads within a wave.
+ */
+export interface ArgArgs {
+    /**
+     * The query to create workloads within the wave.
+     */
+    query: pulumi.Input<string>;
+}
+
+/**
  * Properties of an assessment.
  */
 export interface AssessmentPropertiesArgs {
@@ -1807,6 +1817,86 @@ export interface MigrationConfigurationArgs {
 }
 
 /**
+ * Migration Entity Group Properties class.
+ */
+export interface MigrationEntityGroupPropertiesArgs {
+    /**
+     * Display Name of the Workload.
+     */
+    applicationDisplayName: pulumi.Input<string>;
+    /**
+     * Application id 
+     */
+    applicationId: pulumi.Input<string>;
+    /**
+     * Associated Assessment Id
+     */
+    associatedAssessmentId?: pulumi.Input<string>;
+    /**
+     * associated Wave Id
+     */
+    associatedWaveIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Migration path
+     */
+    migrationPath?: pulumi.Input<string>;
+}
+
+/**
+ * Migration Entity Properties class.
+ */
+export interface MigrationEntityPropertiesArgs {
+    /**
+     * Assessed Entity ARM Id
+     */
+    assessedEntityArmId?: pulumi.Input<string>;
+    /**
+     * Associated Assessment Id
+     */
+    associatedAssessmentId?: pulumi.Input<string>;
+    /**
+     * inventory resource id 
+     */
+    associatedInventoryResourceId: pulumi.Input<string>;
+    /**
+     * associated Migration Entity Group Id
+     */
+    associatedMigrationEntityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * associated Wave Id
+     */
+    associatedWaveId?: pulumi.Input<string>;
+    /**
+     * Display Name of the Workload.
+     */
+    inventoryDisplayName: pulumi.Input<string>;
+    /**
+     * Migration path
+     */
+    migrationPath?: pulumi.Input<string>;
+    /**
+     * Migration specific properties for the entity.
+     */
+    migrationSpecificProperties?: pulumi.Input<ServerMigrationSpecificPropertiesArgs>;
+    /**
+     * Migration Tool of the Migration Entity.
+     */
+    migrationTool?: pulumi.Input<string>;
+    /**
+     * ARM Resource Identifier for the partner resource.
+     */
+    partnerResourceArmId?: pulumi.Input<string>;
+    /**
+     * Target of the Migration Entity.
+     */
+    target?: pulumi.Input<string>;
+    /**
+     * target Azure Resource ARM Id.
+     */
+    targetAzureResourceArmId?: pulumi.Input<string>;
+}
+
+/**
  * ModernizeProject properties.
  */
 export interface ModernizeProjectModelPropertiesArgs {
@@ -2382,6 +2472,25 @@ export interface SecuritySettingsArgs {
 }
 
 /**
+ * Represents a Server Migration Specific properties base model.
+ */
+export interface ServerMigrationSpecificPropertiesArgs {
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
+    currentJobId?: pulumi.Input<string>;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
+    drApplianceInventoryId?: pulumi.Input<string>;
+    /**
+     * Migration Specific Properties Instance Types.
+     * Expected value is 'ServerMigration'.
+     */
+    instanceType: pulumi.Input<"ServerMigration">;
+}
+
+/**
  * Business case settings.
  */
 export interface SettingsArgs {
@@ -2850,6 +2959,36 @@ export interface TargetStorageProfileArgs {
 }
 
 /**
+ * Task Properties class.
+ */
+export interface TaskPropertiesArgs {
+    /**
+     * Task Description
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Task Dislay Name 
+     */
+    displayName: pulumi.Input<string>;
+    /**
+     * Task Scope
+     */
+    scope: pulumi.Input<string | enums.TaskScope>;
+    /**
+     * associated Wave Id
+     */
+    scopeId: pulumi.Input<string>;
+    /**
+     * Task Stage
+     */
+    stage?: pulumi.Input<string>;
+    /**
+     * Task Status
+     */
+    status: pulumi.Input<string>;
+}
+
+/**
  * Third Party Management settings.
  */
 export interface ThirdPartyManagementSettingsArgs {
@@ -2989,6 +3128,32 @@ export interface VmUptimeArgs {
      * Number of hours per day for VM uptime.
      */
     hoursPerDay?: pulumi.Input<number>;
+}
+
+/**
+ * Migration Wave Properties class.
+ */
+export interface WavePropertiesArgs {
+    /**
+     * ARG query and other details to create workloads within a wave
+     */
+    arg: pulumi.Input<ArgArgs>;
+    /**
+     * Description of the wave.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Display Name of the wave.
+     */
+    displayName: pulumi.Input<string>;
+    /**
+     * Planned completion date of the wave.
+     */
+    plannedCompletionDate?: pulumi.Input<string>;
+    /**
+     * Planned start date of the wave.
+     */
+    plannedStartDate: pulumi.Input<string>;
 }
 
 /**

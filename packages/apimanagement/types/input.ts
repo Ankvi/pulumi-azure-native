@@ -568,6 +568,17 @@ export interface FailureStatusCodeRangeArgs {
     min?: pulumi.Input<number>;
 }
 
+export interface GatewayHostnameBindingKeyVaultArgs {
+    /**
+     * The default hostname of the data-plane gateway.
+     */
+    identityClientId?: pulumi.Input<string>;
+    /**
+     * The current provisioning state of the API Management gateway hostname binding.
+     */
+    secretId: pulumi.Input<string>;
+}
+
 /**
  * Custom hostname configuration.
  */

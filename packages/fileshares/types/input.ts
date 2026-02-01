@@ -67,6 +67,16 @@ export interface FileShareProvisioningRecommendationInputArgs {
 }
 
 /**
+ * FileShareSnapshot properties
+ */
+export interface FileShareSnapshotPropertiesArgs {
+    /**
+     * The metadata
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+/**
  * Properties specific to the NFS protocol.
  */
 export interface NfsProtocolPropertiesArgs {

@@ -142,6 +142,36 @@ export interface RestoredLogsArgs {
 }
 
 /**
+ * Rule definition parameters.
+ */
+export interface RuleDefinitionArgs {
+    /**
+     * The minimum delay in seconds before bin processing.
+     */
+    binDelay?: pulumi.Input<number>;
+    /**
+     * Scheduled window in minutes. Allowed values: 20, 30, 60, 120, 180, 360, 720, 1440.
+     */
+    binSize?: pulumi.Input<number>;
+    /**
+     * The start time (UTC) when Summary rule execution starts.
+     */
+    binStartTime?: pulumi.Input<string>;
+    /**
+     * The destination table used for the Summary rule results.
+     */
+    destinationTable?: pulumi.Input<string>;
+    /**
+     * Summary rule query.
+     */
+    query?: pulumi.Input<string>;
+    /**
+     * The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
+     */
+    timeSelector?: pulumi.Input<string | enums.TimeSelectorEnum>;
+}
+
+/**
  * Table's schema.
  */
 export interface SchemaArgs {

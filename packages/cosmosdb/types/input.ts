@@ -248,13 +248,21 @@ export interface ClusterKeyArgs {
 }
 
 /**
- * Properties of a managed Cassandra cluster.
+ * Properties of a Garnet cache cluster.
  */
 export interface ClusterResourcePropertiesArgs {
+    /**
+     * Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
+     */
+    allocationState?: pulumi.Input<string | enums.AllocationState>;
     /**
      * Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'.
      */
     authenticationMethod?: pulumi.Input<string | enums.AuthenticationMethod>;
+    /**
+     * If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
+     */
+    availabilityZone?: pulumi.Input<boolean>;
     /**
      * How to connect to the azure services needed for running the cluster
      */
@@ -276,6 +284,10 @@ export interface ClusterResourcePropertiesArgs {
      */
     clusterNameOverride?: pulumi.Input<string>;
     /**
+     * Type of the cluster. If set to Production, some operations might not be permitted on cluster.
+     */
+    clusterType?: pulumi.Input<string | enums.ClusterType>;
+    /**
      * Whether the cluster and associated data centers has been deallocated.
      */
     deallocated?: pulumi.Input<boolean>;
@@ -283,6 +295,10 @@ export interface ClusterResourcePropertiesArgs {
      * Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
      */
     delegatedManagementSubnetId?: pulumi.Input<string>;
+    /**
+     * Extensions to be added or updated on cluster.
+     */
+    extensions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property.
      */
@@ -300,6 +316,14 @@ export interface ClusterResourcePropertiesArgs {
      */
     initialCassandraAdminPassword?: pulumi.Input<string>;
     /**
+     * Number of nodes
+     */
+    nodeCount?: pulumi.Input<number>;
+    /**
+     * Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+     */
+    nodeSku?: pulumi.Input<string>;
+    /**
      * Hostname or IP address where the Prometheus endpoint containing data about the managed Cassandra nodes can be reached.
      */
     prometheusEndpoint?: pulumi.Input<SeedNodeArgs>;
@@ -316,9 +340,17 @@ export interface ClusterResourcePropertiesArgs {
      */
     repairEnabled?: pulumi.Input<boolean>;
     /**
+     * Number of copies of data maintained by the cluster
+     */
+    replicationFactor?: pulumi.Input<number>;
+    /**
      * To create an empty cluster, omit this field or set it to null. To restore a backup into a new cluster, set this field to the resource id of the backup.
      */
     restoreFromBackupId?: pulumi.Input<string>;
+    /**
+     * Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
+     */
+    subnetId?: pulumi.Input<string>;
 }
 
 /**
@@ -626,10 +658,6 @@ export interface FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs 
  */
 export interface FleetspacePropertiesThroughputPoolConfigurationArgs {
     /**
-     * List of data regions assigned to the fleetspace. Eg [westus2]
-     */
-    dataRegions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * Maximum throughput for the pool.
      */
     maxThroughput?: pulumi.Input<number>;
@@ -637,10 +665,16 @@ export interface FleetspacePropertiesThroughputPoolConfigurationArgs {
      * Minimum throughput for the pool.
      */
     minThroughput?: pulumi.Input<number>;
+}
+
+/**
+ * Represents the full text index path.
+ */
+export interface FullTextIndexPathArgs {
     /**
-     * Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+     * The path to the full text field in the document.
      */
-    serviceTier?: pulumi.Input<string | enums.ServiceTier>;
+    path: pulumi.Input<string>;
 }
 
 /**
@@ -843,6 +877,10 @@ export interface IndexingPolicyArgs {
      * List of paths to exclude from indexing
      */
     excludedPaths?: pulumi.Input<pulumi.Input<ExcludedPathArgs>[]>;
+    /**
+     * List of paths to include in the full text indexing
+     */
+    fullTextIndexes?: pulumi.Input<pulumi.Input<FullTextIndexPathArgs>[]>;
     /**
      * List of paths to include in the indexing
      */
@@ -1221,6 +1259,10 @@ export interface RestoreParametersArgs {
      */
     restoreWithTtlDisabled?: pulumi.Input<boolean>;
     /**
+     * The source backup location for restore.
+     */
+    sourceBackupLocation?: pulumi.Input<string>;
+    /**
      * List of specific tables available for restore.
      */
     tablesToRestore?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1490,13 +1532,34 @@ export interface VectorEmbeddingPolicyArgs {
 
 export interface VectorIndexArgs {
     /**
+     * This is the size of the candidate list of approximate neighbors stored while building the DiskANN index as part of the optimization processes. Large values may improve recall at the expense of latency. This is only applicable for the diskANN vector index type.
+     */
+    indexingSearchListSize?: pulumi.Input<number>;
+    /**
      * The path to the vector field in the document.
      */
     path: pulumi.Input<string>;
     /**
+     * The number of bytes used in product quantization of the vectors. A larger value may result in better recall for vector searches at the expense of latency. This is only applicable for the quantizedFlat and diskANN vector index types.
+     */
+    quantizationByteSize?: pulumi.Input<number>;
+    /**
      * The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported.
      */
     type: pulumi.Input<string | enums.VectorIndexType>;
+    /**
+     * Array of shard keys for the vector index. This is only applicable for the quantizedFlat and diskANN vector index types.
+     */
+    vectorIndexShardKey?: pulumi.Input<pulumi.Input<string>[]>;
+}
+/**
+ * vectorIndexArgsProvideDefaults sets the appropriate defaults for VectorIndexArgs
+ */
+export function vectorIndexArgsProvideDefaults(val: VectorIndexArgs): VectorIndexArgs {
+    return {
+        ...val,
+        indexingSearchListSize: (val.indexingSearchListSize) ?? 100,
+    };
 }
 
 /**
