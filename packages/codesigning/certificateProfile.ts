@@ -40,6 +40,10 @@ export class CertificateProfile extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
+     * List of renewed certificates.
+     */
+    declare public /*out*/ readonly certificates: pulumi.Output<types.outputs.CertificateResponse[]>;
+    /**
      * Identity validation id used for the certificate subject name.
      */
     declare public readonly identityValidationId: pulumi.Output<string>;
@@ -122,6 +126,7 @@ export class CertificateProfile extends pulumi.CustomResource {
             resourceInputs["profileType"] = args?.profileType;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["certificates"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -129,6 +134,7 @@ export class CertificateProfile extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["certificates"] = undefined /*out*/;
             resourceInputs["identityValidationId"] = undefined /*out*/;
             resourceInputs["includeCity"] = undefined /*out*/;
             resourceInputs["includeCountry"] = undefined /*out*/;

@@ -16,6 +16,10 @@ export interface ActionOnUnmanageResponse {
      * Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
      */
     resources: string;
+    /**
+     * Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+     */
+    resourcesWithoutDeleteSupport?: string;
 }
 
 export interface AliasPathMetadataResponse {
@@ -211,6 +215,46 @@ export interface DependencyResponse {
 }
 
 /**
+ * The value or how to get a value for an extension config property.
+ */
+export interface DeploymentExtensionConfigItemResponse {
+    /**
+     * The key vault reference of the config item.
+     */
+    keyVaultReference?: KeyVaultParameterReferenceResponse;
+    /**
+     * The type of the value.
+     */
+    type: string;
+    /**
+     * The value of the config item. The type is determined by the extension config schema.
+     */
+    value?: any;
+}
+
+/**
+ * Details about the usage of a deployment extension.
+ */
+export interface DeploymentExtensionResponse {
+    /**
+     * The configuration used for deployment. The keys of this object should align with the extension config schema.
+     */
+    config?: {[key: string]: DeploymentExtensionConfigItemResponse};
+    /**
+     * The configuration ID of the extension usage. It uniquely identifies a target the extension deploys to.
+     */
+    configId?: string;
+    /**
+     * The extension name.
+     */
+    name: string;
+    /**
+     * The extension version.
+     */
+    version: string;
+}
+
+/**
  * Deployment parameter for the template.
  */
 export interface DeploymentParameterResponse {
@@ -313,6 +357,32 @@ export interface DeploymentStacksDebugSettingResponse {
 }
 
 /**
+ * The error additional info
+ */
+export interface DeploymentStacksDiagnosticResponse {
+    /**
+     * Additional error information.
+     */
+    additionalInfo?: ErrorAdditionalInfoResponse[];
+    /**
+     * The error code.
+     */
+    code: string;
+    /**
+     * Denotes the additional response level.
+     */
+    level: string;
+    /**
+     * The error message.
+     */
+    message: string;
+    /**
+     * The error target.
+     */
+    target?: string;
+}
+
+/**
  * Entity representing the reference to the deployment parameters.
  */
 export interface DeploymentStacksParametersLinkResponse {
@@ -324,6 +394,256 @@ export interface DeploymentStacksParametersLinkResponse {
      * The URI of the parameters file.
      */
     uri: string;
+}
+
+/**
+ * Changes predicted to the deployment stack as a result of the what-if operation.
+ */
+export interface DeploymentStacksWhatIfChangeResponse {
+    /**
+     * Predicted changes to the deployment stack deny settings.
+     */
+    denySettingsChange: DeploymentStacksWhatIfChangeResponseDenySettingsChange;
+    /**
+     * Predicted changes to the deployment scope for the deployment stack.
+     */
+    deploymentScopeChange?: DeploymentStacksWhatIfChangeResponseDeploymentScopeChange;
+    /**
+     * List of resource changes predicted by What-If operation.
+     */
+    resourceChanges: DeploymentStacksWhatIfResourceChangeResponse[];
+}
+
+/**
+ * Predicted changes to the deployment stack deny settings.
+ */
+export interface DeploymentStacksWhatIfChangeResponseDenySettingsChange {
+    /**
+     * The predicted value after the deployment is executed.
+     */
+    after?: DenySettingsResponse;
+    /**
+     * The predicted value before the deployment is executed.
+     */
+    before?: DenySettingsResponse;
+    /**
+     * The predicted changes to the properties."
+     */
+    delta?: DeploymentStacksWhatIfPropertyChangeResponse[];
+}
+
+/**
+ * Predicted changes to the deployment scope for the deployment stack.
+ */
+export interface DeploymentStacksWhatIfChangeResponseDeploymentScopeChange {
+    /**
+     * The predicted value after the deployment is executed.
+     */
+    after?: string;
+    /**
+     * The predicted value before the deployment is executed.
+     */
+    before?: string;
+}
+
+/**
+ * The predicted change to the resource property.
+ */
+export interface DeploymentStacksWhatIfPropertyChangeResponse {
+    /**
+     * The predicted value after the deployment is executed.
+     */
+    after?: any;
+    /**
+     * The predicted value before the deployment is executed.
+     */
+    before?: any;
+    /**
+     * Type of change that will be made to the resource when the deployment is executed.
+     */
+    changeType: string;
+    /**
+     * Nested property changes.
+     */
+    children?: DeploymentStacksWhatIfPropertyChangeResponse[];
+    /**
+     * Type of change that will be made to the resource when the deployment is executed.
+     */
+    path: string;
+}
+
+/**
+ * Information about a single resource change predicted by What-If operation.
+ */
+export interface DeploymentStacksWhatIfResourceChangeResponse {
+    /**
+     * The API version the resource was deployed with
+     */
+    apiVersion: string;
+    /**
+     * The confidence level of the predicted change.
+     */
+    changeCertainty: string;
+    /**
+     * Type of change that will be made to the resource when the deployment is executed.
+     */
+    changeType: string;
+    /**
+     * The predicted changes to the deployment stack deny status of the resource.
+     */
+    denyStatusChange?: DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange;
+    /**
+     * The resource id of the Deployment responsible for this change.
+     */
+    deploymentId?: string;
+    /**
+     * The extension the resource was deployed with.
+     */
+    extension: DeploymentExtensionResponse;
+    /**
+     * The ARM Resource ID of a resource managed by the deployment stack.
+     */
+    id: string;
+    /**
+     * The extensible resource identifiers.
+     */
+    identifiers: any;
+    /**
+     * The predicted changes to the deployment stack management status of the resource.
+     */
+    managementStatusChange?: DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange;
+    /**
+     * The predicted changes to the resource configuration.
+     */
+    resourceConfigurationChanges?: DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges;
+    /**
+     * The symbolic name of the resource being changed.
+     */
+    symbolicName?: string;
+    /**
+     * The resource type.
+     */
+    type: string;
+    /**
+     * The explanation about why the resource is unsupported by What-If.
+     */
+    unsupportedReason?: string;
+}
+
+/**
+ * The predicted changes to the deployment stack deny status of the resource.
+ */
+export interface DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange {
+    /**
+     * The predicted value after the deployment is executed.
+     */
+    after?: string;
+    /**
+     * The predicted value before the deployment is executed.
+     */
+    before?: string;
+}
+
+/**
+ * The predicted changes to the deployment stack management status of the resource.
+ */
+export interface DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange {
+    /**
+     * The predicted value after the deployment is executed.
+     */
+    after?: string;
+    /**
+     * The predicted value before the deployment is executed.
+     */
+    before?: string;
+}
+
+/**
+ * The predicted changes to the resource configuration.
+ */
+export interface DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges {
+    /**
+     * The predicted value after the deployment is executed.
+     */
+    after?: any;
+    /**
+     * The predicted value before the deployment is executed.
+     */
+    before?: any;
+    /**
+     * The predicted changes to the properties."
+     */
+    delta?: DeploymentStacksWhatIfPropertyChangeResponse[];
+}
+
+/**
+ * DeploymentStack WhatIfResult Properties
+ */
+export interface DeploymentStacksWhatIfResultPropertiesResponse {
+    /**
+     * Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
+     */
+    actionOnUnmanage: ActionOnUnmanageResponse;
+    /**
+     * All of the changes predicted by the deployment stack what-if operation.
+     */
+    changes: DeploymentStacksWhatIfChangeResponse;
+    /**
+     * The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
+     */
+    correlationId: string;
+    /**
+     * The debug setting of the deployment.
+     */
+    debugSetting?: DeploymentStacksDebugSettingResponse;
+    /**
+     * Defines how resources deployed by the stack are locked.
+     */
+    denySettings: DenySettingsResponse;
+    /**
+     * The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
+     */
+    deploymentScope?: string;
+    /**
+     * The timestamp for when the deployment stack was last modified. This can be used to determine if the what-if data is still current.
+     */
+    deploymentStackLastModified: string;
+    /**
+     * The deployment stack id to use as the basis for comparison.
+     */
+    deploymentStackResourceId: string;
+    /**
+     * Deployment stack description. Max length of 4096 characters.
+     */
+    description?: string;
+    /**
+     * List of resource diagnostics detected by What-If operation.
+     */
+    diagnostics: DeploymentStacksDiagnosticResponse[];
+    /**
+     * The error detail.
+     */
+    error?: ErrorDetailResponse;
+    /**
+     * Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
+     */
+    parameters?: {[key: string]: DeploymentParameterResponse};
+    /**
+     * The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
+     */
+    parametersLink?: DeploymentStacksParametersLinkResponse;
+    /**
+     * State of the deployment stack.
+     */
+    provisioningState: string;
+    /**
+     * The interval to persist the deployment stack what-if result in ISO 8601 format.
+     */
+    retentionInterval: string;
+    /**
+     * The validation level of the deployment stack
+     */
+    validationLevel?: string;
 }
 
 /**

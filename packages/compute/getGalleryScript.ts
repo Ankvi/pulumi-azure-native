@@ -1,0 +1,97 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * Retrieves information about a gallery script definition.
+ *
+ * Uses Azure REST API version 2025-03-03.
+ */
+export function getGalleryScript(args: GetGalleryScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetGalleryScriptResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:compute:getGalleryScript", {
+        "galleryName": args.galleryName,
+        "galleryScriptName": args.galleryScriptName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetGalleryScriptArgs {
+    /**
+     * The name of the Shared Image Gallery.
+     */
+    galleryName: string;
+    /**
+     * The name of the gallery Script Definition to be retrieved.
+     */
+    galleryScriptName: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+}
+
+/**
+ * Specifies information about the gallery Script Definition that you want to create or update.
+ */
+export interface GetGalleryScriptResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     */
+    readonly id: string;
+    /**
+     * The geo-location where the resource lives
+     */
+    readonly location: string;
+    /**
+     * The name of the resource
+     */
+    readonly name: string;
+    /**
+     * Describes the properties of a gallery Script Definition.
+     */
+    readonly properties: types.outputs.GalleryScriptPropertiesResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
+     */
+    readonly tags?: {[key: string]: string};
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    readonly type: string;
+}
+/**
+ * Retrieves information about a gallery script definition.
+ *
+ * Uses Azure REST API version 2025-03-03.
+ */
+export function getGalleryScriptOutput(args: GetGalleryScriptOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGalleryScriptResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:compute:getGalleryScript", {
+        "galleryName": args.galleryName,
+        "galleryScriptName": args.galleryScriptName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetGalleryScriptOutputArgs {
+    /**
+     * The name of the Shared Image Gallery.
+     */
+    galleryName: pulumi.Input<string>;
+    /**
+     * The name of the gallery Script Definition to be retrieved.
+     */
+    galleryScriptName: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

@@ -251,7 +251,7 @@ export function entityPropertiesResponseProvideDefaults(val: EntityPropertiesRes
  */
 export interface EvaluationRuleResponse {
     /**
-     * Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
+     * Degraded rule with static threshold.
      */
     degradedRule?: ThresholdRuleResponse;
     /**
@@ -259,7 +259,7 @@ export interface EvaluationRuleResponse {
      */
     dynamicDetectionRule?: DynamicDetectionRuleResponse;
     /**
-     * Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
+     * Unhealthy rule with static threshold.
      */
     unhealthyRule?: ThresholdRuleResponse;
 }

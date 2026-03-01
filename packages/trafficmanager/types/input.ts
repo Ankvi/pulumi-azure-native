@@ -25,7 +25,7 @@ export interface EndpointArgs {
     /**
      * List of custom headers.
      */
-    customHeaders?: pulumi.Input<pulumi.Input<EndpointPropertiesCustomHeadersArgs>[]>;
+    customHeaders?: pulumi.Input<pulumi.Input<EndpointPropertiesCustomHeadersItemArgs>[]>;
     /**
      * Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
      */
@@ -69,7 +69,7 @@ export interface EndpointArgs {
     /**
      * The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
      */
-    subnets?: pulumi.Input<pulumi.Input<EndpointPropertiesSubnetsArgs>[]>;
+    subnets?: pulumi.Input<pulumi.Input<EndpointPropertiesSubnetsItemArgs>[]>;
     /**
      * The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
      */
@@ -91,7 +91,7 @@ export interface EndpointArgs {
 /**
  * Custom header name and value.
  */
-export interface EndpointPropertiesCustomHeadersArgs {
+export interface EndpointPropertiesCustomHeadersItemArgs {
     /**
      * Header name.
      */
@@ -105,7 +105,7 @@ export interface EndpointPropertiesCustomHeadersArgs {
 /**
  * Subnet first address, scope, and/or last address.
  */
-export interface EndpointPropertiesSubnetsArgs {
+export interface EndpointPropertiesSubnetsItemArgs {
     /**
      * First address in the subnet.
      */
@@ -127,11 +127,11 @@ export interface MonitorConfigArgs {
     /**
      * List of custom headers.
      */
-    customHeaders?: pulumi.Input<pulumi.Input<MonitorConfigCustomHeadersArgs>[]>;
+    customHeaders?: pulumi.Input<pulumi.Input<MonitorConfigCustomHeadersItemArgs>[]>;
     /**
      * List of expected status code ranges.
      */
-    expectedStatusCodeRanges?: pulumi.Input<pulumi.Input<MonitorConfigExpectedStatusCodeRangesArgs>[]>;
+    expectedStatusCodeRanges?: pulumi.Input<pulumi.Input<MonitorConfigExpectedStatusCodeRangesItemArgs>[]>;
     /**
      * The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile.
      */
@@ -165,7 +165,7 @@ export interface MonitorConfigArgs {
 /**
  * Custom header name and value.
  */
-export interface MonitorConfigCustomHeadersArgs {
+export interface MonitorConfigCustomHeadersItemArgs {
     /**
      * Header name.
      */
@@ -179,7 +179,7 @@ export interface MonitorConfigCustomHeadersArgs {
 /**
  * Min and max value of a status code range.
  */
-export interface MonitorConfigExpectedStatusCodeRangesArgs {
+export interface MonitorConfigExpectedStatusCodeRangesItemArgs {
     /**
      * Max status code.
      */

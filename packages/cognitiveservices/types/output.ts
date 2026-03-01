@@ -14,6 +14,9 @@ export interface AADAuthTypeConnectionPropertiesResponse {
      */
     category?: string;
     createdByWorkspaceArmId: string;
+    /**
+     * Provides the error message if the connection fails
+     */
     error?: string;
     expiryTime?: string;
     /**
@@ -25,9 +28,18 @@ export interface AADAuthTypeConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    /**
+     * Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+     */
     peRequirement?: string;
+    /**
+     * Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+     */
     peStatus?: string;
     sharedUserList?: string[];
+    /**
+     * The connection URL to be used.
+     */
     target?: string;
     useWorkspaceManagedIdentity?: boolean;
 }
@@ -62,6 +74,9 @@ export interface AccessKeyAuthTypeConnectionPropertiesResponse {
     category?: string;
     createdByWorkspaceArmId: string;
     credentials?: ConnectionAccessKeyResponse;
+    /**
+     * Provides the error message if the connection fails
+     */
     error?: string;
     expiryTime?: string;
     /**
@@ -73,9 +88,18 @@ export interface AccessKeyAuthTypeConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    /**
+     * Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+     */
     peRequirement?: string;
+    /**
+     * Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+     */
     peStatus?: string;
     sharedUserList?: string[];
+    /**
+     * The connection URL to be used.
+     */
     target?: string;
     useWorkspaceManagedIdentity?: boolean;
 }
@@ -98,6 +122,9 @@ export interface AccountKeyAuthTypeConnectionPropertiesResponse {
      * Account key object for connection credential.
      */
     credentials?: ConnectionAccountKeyResponse;
+    /**
+     * Provides the error message if the connection fails
+     */
     error?: string;
     expiryTime?: string;
     /**
@@ -109,9 +136,18 @@ export interface AccountKeyAuthTypeConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    /**
+     * Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+     */
     peRequirement?: string;
+    /**
+     * Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+     */
     peStatus?: string;
     sharedUserList?: string[];
+    /**
+     * The connection URL to be used.
+     */
     target?: string;
     useWorkspaceManagedIdentity?: boolean;
 }
@@ -124,15 +160,23 @@ export interface AccountPropertiesResponse {
      * The abuse penalty.
      */
     abusePenalty: AbusePenaltyResponse;
+    /**
+     * Specifies whether this resource support project management as child resources, used as containers for access management, data isolation and cost in AI Foundry.
+     */
+    allowProjectManagement?: boolean;
     allowedFqdnList?: string[];
     /**
-     * The user owned AML workspace properties.
+     * The user owned AML account properties.
      */
     amlWorkspace?: UserOwnedAmlWorkspaceResponse;
     /**
      * The api properties for special APIs.
      */
     apiProperties?: ApiPropertiesResponse;
+    /**
+     * Specifies the projects, by project name, that are associated with this resource.
+     */
+    associatedProjects?: string[];
     /**
      * The call rate limit Cognitive Services account.
      */
@@ -153,6 +197,10 @@ export interface AccountPropertiesResponse {
      * Gets the date of cognitive services account creation.
      */
     dateCreated: string;
+    /**
+     * Specifies the project, by project name, that is targeted when data plane endpoints are called without a project parameter.
+     */
+    defaultProject?: string;
     /**
      * The deletion date, only available for deleted account.
      */
@@ -191,6 +239,7 @@ export interface AccountPropertiesResponse {
      * A collection of rules governing the accessibility from specific network locations.
      */
     networkAcls?: NetworkRuleSetResponse;
+    networkInjections?: NetworkInjectionResponse[];
     /**
      * The private endpoint connection associated with the Cognitive Services account.
      */
@@ -233,6 +282,110 @@ export function accountPropertiesResponseProvideDefaults(val: AccountPropertiesR
 }
 
 /**
+ * Type modeling the protocol and version used by an agent/exposed by a deployment.
+ */
+export interface AgentProtocolVersionResponse {
+    /**
+     * The protocol used by the agent/exposed by a deployment.
+     */
+    protocol?: string;
+    /**
+     * The version of the protocol.
+     */
+    version?: string;
+}
+
+/**
+ * Agent Reference resource
+ */
+export interface AgentReferenceResourceResponse {
+    /**
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     */
+    id: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * [Required] Additional attributes of the entity.
+     */
+    properties: AgentReferenceResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
+}
+
+/**
+ * Type modeling a reference to a version of an agent definition.
+ */
+export interface AgentReferenceResponse {
+    /**
+     * Gets the agent's unique identifier within the organization (subscription).
+     */
+    agentId?: string;
+    /**
+     * Gets the agent's name (unique within the project/app).
+     */
+    agentName?: string;
+}
+
+/**
+ * Resource type representing an agentic application as a management construct.
+ */
+export interface AgenticApplicationResponse {
+    /**
+     * The EntraId Agentic Blueprint of the application.
+     */
+    agentIdentityBlueprint?: AssignedIdentityResponse;
+    /**
+     * The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application.
+     */
+    agents?: AgentReferenceResponse[];
+    /**
+     * Gets or sets the authorization policy associated with this agentic application instance.
+     */
+    authorizationPolicy?: ChannelsBuiltInAuthorizationPolicyResponse | OrganizationSharedBuiltInAuthorizationPolicyResponse | RoleBasedBuiltInAuthorizationPolicyResponse;
+    /**
+     * The application's dedicated invocation endpoint.
+     */
+    baseUrl?: string;
+    /**
+     * The (default) agent instance identity of the application.
+     */
+    defaultInstanceIdentity?: AssignedIdentityResponse;
+    /**
+     * The asset description text.
+     */
+    description?: string;
+    /**
+     * The display name of the application.
+     */
+    displayName?: string;
+    /**
+     * Enabledstate of the application.
+     */
+    isEnabled: boolean;
+    /**
+     * Provisioning state of the application.
+     */
+    provisioningState: string;
+    /**
+     * Tag dictionary. Tags can be added, removed, and updated.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Gets or sets the traffic routing policy for the application's deployments.
+     */
+    trafficRoutingPolicy?: ApplicationTrafficRoutingPolicyResponse;
+}
+
+/**
  * This connection type covers the generic ApiKey auth connection categories, for examples:
  * AzureOpenAI:
  *     Category:= AzureOpenAI
@@ -269,6 +422,9 @@ export interface ApiKeyAuthConnectionPropertiesResponse {
      * Api key object for connection credential.
      */
     credentials?: ConnectionApiKeyResponse;
+    /**
+     * Provides the error message if the connection fails
+     */
     error?: string;
     expiryTime?: string;
     /**
@@ -280,9 +436,18 @@ export interface ApiKeyAuthConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    /**
+     * Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+     */
     peRequirement?: string;
+    /**
+     * Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+     */
     peStatus?: string;
     sharedUserList?: string[];
+    /**
+     * The connection URL to be used.
+     */
     target?: string;
     useWorkspaceManagedIdentity?: boolean;
 }
@@ -334,6 +499,54 @@ export interface ApiPropertiesResponse {
 }
 
 /**
+ * Type representing an application traffic policy as a property of an agentic application.
+ */
+export interface ApplicationTrafficRoutingPolicyResponse {
+    /**
+     * Methodology used to route traffic to the application's deployments.
+     */
+    protocol?: string;
+    /**
+     * Gets or sets the collection of traffic routing rules.
+     */
+    rules?: TrafficRoutingRuleResponse[];
+}
+
+/**
+ * Type representing an identity assignment
+ */
+export interface AssignedIdentityResponse {
+    /**
+     * The client ID of the identity.
+     */
+    clientId: string;
+    /**
+     * Specifies the kind of Entra identity described by this object.
+     */
+    kind: string;
+    /**
+     * The principal ID of the identity.
+     */
+    principalId: string;
+    /**
+     * Represents the provisioning state of an identity resource.
+     */
+    provisioningState: string;
+    /**
+     * The subject of this identity assignment.
+     */
+    subject?: string;
+    /**
+     * The tenant ID of the identity.
+     */
+    tenantId: string;
+    /**
+     * Enumeration of identity types, from the perspective of management.
+     */
+    type: string;
+}
+
+/**
  * The call rate limit Cognitive Services account.
  */
 export interface CallRateLimitResponse {
@@ -370,7 +583,7 @@ export interface CapabilityHostResponse {
      */
     provisioningState: string;
     /**
-     * List of Storage connections.
+     * List of connection names from those available in the account or project to be used as a storage resource.
      */
     storageConnections?: string[];
     /**
@@ -378,22 +591,24 @@ export interface CapabilityHostResponse {
      */
     tags?: {[key: string]: string};
     /**
-     * List of Thread storage connections.
+     * List of connection names from those available in the account or project to be used for Thread storage.
      */
     threadStorageConnections?: string[];
     /**
-     * List of VectorStore connections.
+     * List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
      */
     vectorStoreConnections?: string[];
 }
+
 /**
- * capabilityHostResponseProvideDefaults sets the appropriate defaults for CapabilityHostResponse
+ * Represents a built-in authorization policy specific to Azure Bot Service/Channels authentication.
  */
-export function capabilityHostResponseProvideDefaults(val: CapabilityHostResponse): CapabilityHostResponse {
-    return {
-        ...val,
-        capabilityHostKind: (val.capabilityHostKind) ?? "Agents",
-    };
+export interface ChannelsBuiltInAuthorizationPolicyResponse {
+    /**
+     * Authorization scheme type.
+     * Expected value is 'Channels'.
+     */
+    type: "Channels";
 }
 
 /**
@@ -614,6 +829,9 @@ export interface CustomKeysConnectionPropertiesResponse {
      * Custom Keys credential object
      */
     credentials?: CustomKeysResponse;
+    /**
+     * Provides the error message if the connection fails
+     */
     error?: string;
     expiryTime?: string;
     /**
@@ -625,9 +843,18 @@ export interface CustomKeysConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    /**
+     * Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+     */
     peRequirement?: string;
+    /**
+     * Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+     */
     peStatus?: string;
     sharedUserList?: string[];
+    /**
+     * The connection URL to be used.
+     */
     target?: string;
     useWorkspaceManagedIdentity?: boolean;
 }
@@ -637,6 +864,24 @@ export interface CustomKeysConnectionPropertiesResponse {
  */
 export interface CustomKeysResponse {
     keys?: {[key: string]: string};
+}
+
+/**
+ * Gets or sets the source to which filter applies.
+ */
+export interface CustomTopicConfigResponse {
+    /**
+     * If blocking would occur.
+     */
+    blocking?: boolean;
+    /**
+     * Content source to apply the Content Filters.
+     */
+    source?: string;
+    /**
+     * Name of RAI topic.
+     */
+    topicName?: string;
 }
 
 /**
@@ -733,6 +978,10 @@ export interface DeploymentPropertiesResponse {
      */
     scaleSettings?: DeploymentScaleSettingsResponse;
     /**
+     * Specifies the deployment name that should serve requests when the request would have otherwise been throttled due to reaching current deployment throughput limit.
+     */
+    spilloverDeploymentName?: string;
+    /**
      * Deployment model version upgrade option.
      */
     versionUpgradeOption?: string;
@@ -811,6 +1060,82 @@ export function encryptionScopePropertiesResponseProvideDefaults(val: Encryption
 }
 
 /**
+ * FQDN Outbound Rule for the managed network of a cognitive services account.
+ */
+export interface FqdnOutboundRuleResponse {
+    /**
+     * Category of a managed network Outbound Rule of a cognitive services account.
+     */
+    category?: string;
+    destination?: string;
+    /**
+     * Error information about an outbound rule of a cognitive services account if RuleStatus is failed.
+     */
+    errorInformation: string;
+    parentRuleNames: string[];
+    /**
+     * Type of a managed network Outbound Rule of a cognitive services account.
+     */
+    status?: string;
+    /**
+     * Type of a managed network Outbound Rule of a cognitive services account.
+     * Expected value is 'FQDN'.
+     */
+    type: "FQDN";
+}
+
+/**
+ * Represents a hosted agent deployment where the underlying infrastructure is owned by the platform.
+ */
+export interface HostedAgentDeploymentResponse {
+    /**
+     * Returns a flat list of agent:version deployed in this deployment.
+     */
+    agents?: VersionedAgentReferenceResponse[];
+    /**
+     * Gets or sets the unique identifier of the deployment.
+     */
+    deploymentId?: string;
+    /**
+     * Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed.
+     * Expected value is 'Hosted'.
+     */
+    deploymentType: "Hosted";
+    /**
+     * The asset description text.
+     */
+    description?: string;
+    /**
+     * Gets or sets the display name of the deployment.
+     */
+    displayName?: string;
+    /**
+     * Gets or sets the maximum number of replicas for this hosted deployment.
+     */
+    maxReplicas?: number;
+    /**
+     * Gets or sets the minimum number of replicas for this hosted deployment.
+     */
+    minReplicas?: number;
+    /**
+     * Gets or sets the supported protocol types and versions exposed by this deployment.
+     */
+    protocols?: AgentProtocolVersionResponse[];
+    /**
+     * Gets or sets the provisioning state of the agent deployment.
+     */
+    provisioningState: string;
+    /**
+     * Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
+     */
+    state?: string;
+    /**
+     * Tag dictionary. Tags can be added, removed, and updated.
+     */
+    tags?: {[key: string]: string};
+}
+
+/**
  * Identity for the resource.
  */
 export interface IdentityResponse {
@@ -861,6 +1186,49 @@ export interface KeyVaultPropertiesResponse {
     keyVersion?: string;
 }
 
+/**
+ * Represents a managed agent deployment where the underlying infrastructure is managed by the platform in the deployer's subscription.
+ */
+export interface ManagedAgentDeploymentResponse {
+    /**
+     * Returns a flat list of agent:version deployed in this deployment.
+     */
+    agents?: VersionedAgentReferenceResponse[];
+    /**
+     * Gets or sets the unique identifier of the deployment.
+     */
+    deploymentId?: string;
+    /**
+     * Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed.
+     * Expected value is 'Managed'.
+     */
+    deploymentType: "Managed";
+    /**
+     * The asset description text.
+     */
+    description?: string;
+    /**
+     * Gets or sets the display name of the deployment.
+     */
+    displayName?: string;
+    /**
+     * Gets or sets the supported protocol types and versions exposed by this deployment.
+     */
+    protocols?: AgentProtocolVersionResponse[];
+    /**
+     * Gets or sets the provisioning state of the agent deployment.
+     */
+    provisioningState: string;
+    /**
+     * Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
+     */
+    state?: string;
+    /**
+     * Tag dictionary. Tags can be added, removed, and updated.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface ManagedIdentityAuthTypeConnectionPropertiesResponse {
     /**
      * Authentication type of the connection target
@@ -873,6 +1241,9 @@ export interface ManagedIdentityAuthTypeConnectionPropertiesResponse {
     category?: string;
     createdByWorkspaceArmId: string;
     credentials?: ConnectionManagedIdentityResponse;
+    /**
+     * Provides the error message if the connection fails
+     */
     error?: string;
     expiryTime?: string;
     /**
@@ -884,9 +1255,18 @@ export interface ManagedIdentityAuthTypeConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    /**
+     * Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+     */
     peRequirement?: string;
+    /**
+     * Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+     */
     peStatus?: string;
     sharedUserList?: string[];
+    /**
+     * The connection URL to be used.
+     */
     target?: string;
     useWorkspaceManagedIdentity?: boolean;
 }
@@ -900,6 +1280,24 @@ export interface MultiRegionSettingsResponse {
      * Multiregion routing methods.
      */
     routingMethod?: string;
+}
+
+/**
+ * Specifies in AI Foundry where virtual network injection occurs to secure scenarios like Agents entirely within the user's private network, eliminating public internet exposure while maintaining control over network configurations and resources.
+ */
+export interface NetworkInjectionResponse {
+    /**
+     * Specifies what features in AI Foundry network injection applies to. Currently only supports 'agent' for agent scenarios. 'none' means no network injection.
+     */
+    scenario?: string;
+    /**
+     * Specify the subnet for which your Agent Client is injected into.
+     */
+    subnetArmId?: string;
+    /**
+     * Boolean to enable Microsoft Managed Network for subnet delegation
+     */
+    useMicrosoftManagedNetwork?: boolean;
 }
 
 /**
@@ -935,6 +1333,9 @@ export interface NoneAuthTypeConnectionPropertiesResponse {
      */
     category?: string;
     createdByWorkspaceArmId: string;
+    /**
+     * Provides the error message if the connection fails
+     */
     error?: string;
     expiryTime?: string;
     /**
@@ -946,9 +1347,18 @@ export interface NoneAuthTypeConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    /**
+     * Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+     */
     peRequirement?: string;
+    /**
+     * Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+     */
     peStatus?: string;
     sharedUserList?: string[];
+    /**
+     * The connection URL to be used.
+     */
     target?: string;
     useWorkspaceManagedIdentity?: boolean;
 }
@@ -969,6 +1379,9 @@ export interface OAuth2AuthTypeConnectionPropertiesResponse {
      * depending on each OAuth2 provider's implementation.
      */
     credentials?: ConnectionOAuth2Response;
+    /**
+     * Provides the error message if the connection fails
+     */
     error?: string;
     expiryTime?: string;
     /**
@@ -980,11 +1393,31 @@ export interface OAuth2AuthTypeConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    /**
+     * Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+     */
     peRequirement?: string;
+    /**
+     * Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+     */
     peStatus?: string;
     sharedUserList?: string[];
+    /**
+     * The connection URL to be used.
+     */
     target?: string;
     useWorkspaceManagedIdentity?: boolean;
+}
+
+/**
+ * Built-in authorization policy scoped to organization/tenant.
+ */
+export interface OrganizationSharedBuiltInAuthorizationPolicyResponse {
+    /**
+     * Authorization scheme type.
+     * Expected value is 'OrganizationScope'.
+     */
+    type: "OrganizationScope";
 }
 
 export interface PATAuthTypeConnectionPropertiesResponse {
@@ -999,6 +1432,9 @@ export interface PATAuthTypeConnectionPropertiesResponse {
     category?: string;
     createdByWorkspaceArmId: string;
     credentials?: ConnectionPersonalAccessTokenResponse;
+    /**
+     * Provides the error message if the connection fails
+     */
     error?: string;
     expiryTime?: string;
     /**
@@ -1010,9 +1446,18 @@ export interface PATAuthTypeConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    /**
+     * Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+     */
     peRequirement?: string;
+    /**
+     * Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+     */
     peStatus?: string;
     sharedUserList?: string[];
+    /**
+     * The connection URL to be used.
+     */
     target?: string;
     useWorkspaceManagedIdentity?: boolean;
 }
@@ -1101,6 +1546,29 @@ export interface PrivateLinkServiceConnectionStateResponse {
     status?: string;
 }
 
+export interface ProjectCapabilityHostResponse {
+    /**
+     * List of AI services connections.
+     */
+    aiServicesConnections?: string[];
+    /**
+     * Provisioning state for the CapabilityHost.
+     */
+    provisioningState: string;
+    /**
+     * List of connection names from those available in the account or project to be used as a storage resource.
+     */
+    storageConnections?: string[];
+    /**
+     * List of connection names from those available in the account or project to be used for Thread storage.
+     */
+    threadStorageConnections?: string[];
+    /**
+     * List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
+     */
+    vectorStoreConnections?: string[];
+}
+
 /**
  * Properties of Cognitive Services Project'.
  */
@@ -1158,6 +1626,48 @@ export interface RaiBlocklistPropertiesResponse {
 }
 
 /**
+ * RAI External SafetyProvider schema properties.
+ */
+export interface RaiExternalSafetyProviderSchemaPropertiesResponse {
+    /**
+     * Creation time of the safety provider.
+     */
+    createdAt: string;
+    /**
+     * The Key Vault URI that contains the api key for safety provider urls.
+     */
+    keyVaultUri?: string;
+    /**
+     * Last modified time of the safety provider.
+     */
+    lastModifiedAt: string;
+    /**
+     * The managed identity to access the Key Vault.
+     */
+    managedIdentity?: string;
+    /**
+     * Safety provider mode sync/async.
+     */
+    mode?: string;
+    /**
+     * The unique identifier of the safety provider.
+     */
+    providerId?: string;
+    /**
+     * Name of the safety provider.
+     */
+    providerName?: string;
+    /**
+     * The name of the secret in Key Vault that contains the api key to access the webhook.
+     */
+    secretName?: string;
+    /**
+     * Webhook URL for the safety provider.
+     */
+    url?: string;
+}
+
+/**
  * Cognitive Services Rai Monitor Config.
  */
 export interface RaiMonitorConfigResponse {
@@ -1175,6 +1685,10 @@ export interface RaiMonitorConfigResponse {
  * Azure OpenAI Content Filter.
  */
 export interface RaiPolicyContentFilterResponse {
+    /**
+     * The action types to apply to the content filters
+     */
+    action?: string;
     /**
      * If blocking would occur.
      */
@@ -1214,13 +1728,60 @@ export interface RaiPolicyPropertiesResponse {
      */
     customBlocklists?: CustomBlocklistConfigResponse[];
     /**
-     * Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
+     * The list of custom rai topics.
+     */
+    customTopics?: CustomTopicConfigResponse[];
+    /**
+     * Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
      */
     mode?: string;
+    /**
+     * The list of Safety Providers.
+     */
+    safetyProviders?: SafetyProviderConfigResponse[];
     /**
      * Content Filters policy type.
      */
     type: string;
+}
+
+/**
+ * RAI Tool Label properties.
+ */
+export interface RaiToolLabelPropertiesResponse {
+    /**
+     * Account-level tool label definition.
+     */
+    accountScope?: RaiToolLabelPropertiesResponseAccountScope;
+    /**
+     * List of project-level tool label definitions.
+     */
+    projectScopes?: RaiToolLabelPropertiesResponseProjectScopes[];
+    /**
+     * The unique tool connection name, e.g., 'Web_Search'.
+     */
+    toolConnectionName: string;
+}
+
+/**
+ * Account-level tool label definition.
+ */
+export interface RaiToolLabelPropertiesResponseAccountScope {
+    /**
+     * Dictionary of label key-value pairs for the account scope.
+     */
+    labelValues?: {[key: string]: string};
+}
+
+export interface RaiToolLabelPropertiesResponseProjectScopes {
+    /**
+     * Dictionary of label key-value pairs for the project scope.
+     */
+    labelValues: {[key: string]: string};
+    /**
+     * Project name to which this scope applies.
+     */
+    project: string;
 }
 
 /**
@@ -1284,6 +1845,17 @@ export interface RequestMatchPatternResponse {
     path?: string;
 }
 
+/**
+ * Built-in role-based authorization policy.
+ */
+export interface RoleBasedBuiltInAuthorizationPolicyResponse {
+    /**
+     * Authorization scheme type.
+     * Expected value is 'Default'.
+     */
+    type: "Default";
+}
+
 export interface SASAuthTypeConnectionPropertiesResponse {
     /**
      * Authentication type of the connection target
@@ -1296,6 +1868,9 @@ export interface SASAuthTypeConnectionPropertiesResponse {
     category?: string;
     createdByWorkspaceArmId: string;
     credentials?: ConnectionSharedAccessSignatureResponse;
+    /**
+     * Provides the error message if the connection fails
+     */
     error?: string;
     expiryTime?: string;
     /**
@@ -1307,11 +1882,38 @@ export interface SASAuthTypeConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    /**
+     * Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+     */
     peRequirement?: string;
+    /**
+     * Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+     */
     peStatus?: string;
     sharedUserList?: string[];
+    /**
+     * The connection URL to be used.
+     */
     target?: string;
     useWorkspaceManagedIdentity?: boolean;
+}
+
+/**
+ * Gets or sets the source to which safety providers applies.
+ */
+export interface SafetyProviderConfigResponse {
+    /**
+     * If blocking would occur.
+     */
+    blocking?: boolean;
+    /**
+     * Name of RAI Safety Provider.
+     */
+    safetyProviderName?: string;
+    /**
+     * Content source to apply the Content Filters.
+     */
+    source?: string;
 }
 
 export interface ServicePrincipalAuthTypeConnectionPropertiesResponse {
@@ -1326,6 +1928,9 @@ export interface ServicePrincipalAuthTypeConnectionPropertiesResponse {
     category?: string;
     createdByWorkspaceArmId: string;
     credentials?: ConnectionServicePrincipalResponse;
+    /**
+     * Provides the error message if the connection fails
+     */
     error?: string;
     expiryTime?: string;
     /**
@@ -1337,9 +1942,18 @@ export interface ServicePrincipalAuthTypeConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    /**
+     * Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+     */
     peRequirement?: string;
+    /**
+     * Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+     */
     peStatus?: string;
     sharedUserList?: string[];
+    /**
+     * The connection URL to be used.
+     */
     target?: string;
     useWorkspaceManagedIdentity?: boolean;
 }
@@ -1442,6 +2056,28 @@ export interface ThrottlingRuleResponse {
 }
 
 /**
+ * Represents a rule for routing traffic to a specific deployment.
+ */
+export interface TrafficRoutingRuleResponse {
+    /**
+     * The unique identifier of the deployment to which traffic is routed by this rule.
+     */
+    deploymentId?: string;
+    /**
+     * A user-provided description for this traffic routing rule.
+     */
+    description?: string;
+    /**
+     * The identifier of this traffic routing rule.
+     */
+    ruleId?: string;
+    /**
+     * Gets or sets the percentage of traffic allocated to this instance.
+     */
+    trafficPercentage?: number;
+}
+
+/**
  * User-assigned managed identity.
  */
 export interface UserAssignedIdentityResponse {
@@ -1456,15 +2092,15 @@ export interface UserAssignedIdentityResponse {
 }
 
 /**
- * The user owned AML workspace for Cognitive Services account.
+ * The user owned AML account for Cognitive Services account.
  */
 export interface UserOwnedAmlWorkspaceResponse {
     /**
-     * Identity Client id of a AML workspace resource.
+     * Identity Client id of a AML account resource.
      */
     identityClientId?: string;
     /**
-     * Full resource id of a AML workspace resource.
+     * Full resource id of a AML account resource.
      */
     resourceId?: string;
 }
@@ -1492,6 +2128,9 @@ export interface UsernamePasswordAuthTypeConnectionPropertiesResponse {
     category?: string;
     createdByWorkspaceArmId: string;
     credentials?: ConnectionUsernamePasswordResponse;
+    /**
+     * Provides the error message if the connection fails
+     */
     error?: string;
     expiryTime?: string;
     /**
@@ -1503,11 +2142,38 @@ export interface UsernamePasswordAuthTypeConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    /**
+     * Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
+     */
     peRequirement?: string;
+    /**
+     * Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
+     */
     peStatus?: string;
     sharedUserList?: string[];
+    /**
+     * The connection URL to be used.
+     */
     target?: string;
     useWorkspaceManagedIdentity?: boolean;
+}
+
+/**
+ * Type modeling a reference to a version of an agent definition.
+ */
+export interface VersionedAgentReferenceResponse {
+    /**
+     * Gets the agent's unique identifier within the organization (subscription).
+     */
+    agentId?: string;
+    /**
+     * Gets the agent's name (unique within the project/app).
+     */
+    agentName?: string;
+    /**
+     * Gets the agent's version (unique for each agent lineage).
+     */
+    agentVersion?: string;
 }
 
 /**

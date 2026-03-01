@@ -11,6 +11,60 @@ export interface AccountSkuResponse {
 }
 
 /**
+ * Properties of the certificate.
+ */
+export interface CertificateResponse {
+    /**
+     * Certificate created date.
+     */
+    createdDate?: string;
+    /**
+     * The timestamp when the revocation is effective.
+     */
+    effectiveAt?: string;
+    /**
+     * Enhanced key usage of the certificate.
+     */
+    enhancedKeyUsage?: string;
+    /**
+     * Certificate expiry date.
+     */
+    expiryDate?: string;
+    /**
+     * Reason for the revocation failure.
+     */
+    failureReason?: string;
+    /**
+     * Reason for revocation.
+     */
+    reason?: string;
+    /**
+     * Remarks for the revocation.
+     */
+    remarks?: string;
+    /**
+     * The timestamp when the revocation is requested.
+     */
+    requestedAt?: string;
+    /**
+     * Serial number of the certificate.
+     */
+    serialNumber?: string;
+    /**
+     * Status of the certificate.
+     */
+    status: string;
+    /**
+     * Subject name of the certificate.
+     */
+    subjectName?: string;
+    /**
+     * Thumbprint of the certificate.
+     */
+    thumbprint?: string;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {

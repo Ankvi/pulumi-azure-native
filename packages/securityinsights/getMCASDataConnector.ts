@@ -41,7 +41,7 @@ export interface GetMCASDataConnectorResult {
     /**
      * The available data types for the connector.
      */
-    readonly dataTypes?: types.outputs.MCASDataConnectorDataTypesResponse;
+    readonly dataTypes: types.outputs.MCASDataConnectorDataTypesResponse;
     /**
      * Etag of the azure resource
      */
@@ -66,7 +66,7 @@ export interface GetMCASDataConnectorResult {
     /**
      * The tenant id to connect to, and get the data from.
      */
-    readonly tenantId?: string;
+    readonly tenantId: string;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

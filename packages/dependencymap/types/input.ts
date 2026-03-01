@@ -21,6 +21,21 @@ export interface DependencyProcessFilterArgs {
 }
 
 /**
+ * OffAzure discovery source resource properties
+ */
+export interface OffAzureDiscoverySourceResourcePropertiesArgs {
+    /**
+     * Source ArmId of Discovery Source resource
+     */
+    sourceId: pulumi.Input<string>;
+    /**
+     * Source type of the discoverySource
+     * Expected value is 'OffAzure'.
+     */
+    sourceType: pulumi.Input<"OffAzure">;
+}
+
+/**
  * Process name filter for dependency map visualization apis
  */
 export interface ProcessNameFilter {

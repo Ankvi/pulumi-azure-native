@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  *
- * Uses Azure REST API version 2025-04-01-preview.
+ * Uses Azure REST API version 2025-06-01.
  *
- * Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class AccountCapabilityHost extends pulumi.CustomResource {
     /**
@@ -74,7 +74,7 @@ export class AccountCapabilityHost extends pulumi.CustomResource {
             }
             resourceInputs["accountName"] = args?.accountName;
             resourceInputs["capabilityHostName"] = args?.capabilityHostName;
-            resourceInputs["capabilityHostProperties"] = args ? (args.capabilityHostProperties ? pulumi.output(args.capabilityHostProperties).apply(types.inputs.capabilityHostArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["capabilityHostProperties"] = args?.capabilityHostProperties;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -86,7 +86,7 @@ export class AccountCapabilityHost extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20250401preview:AccountCapabilityHost" }, { type: "azure-native:cognitiveservices/v20250601:AccountCapabilityHost" }, { type: "azure-native:cognitiveservices/v20250701preview:AccountCapabilityHost" }, { type: "azure-native:cognitiveservices/v20250901:AccountCapabilityHost" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20250401preview:AccountCapabilityHost" }, { type: "azure-native:cognitiveservices/v20250601:AccountCapabilityHost" }, { type: "azure-native:cognitiveservices/v20250701preview:AccountCapabilityHost" }, { type: "azure-native:cognitiveservices/v20250901:AccountCapabilityHost" }, { type: "azure-native:cognitiveservices/v20251001preview:AccountCapabilityHost" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccountCapabilityHost.__pulumiType, name, resourceInputs, opts);
     }

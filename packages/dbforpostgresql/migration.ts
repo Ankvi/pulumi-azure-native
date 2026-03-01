@@ -2,11 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Migration.
+ * Properties of a migration.
  *
- * Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
+ * Uses Azure REST API version 2025-08-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Migration extends pulumi.CustomResource {
     /**
@@ -100,7 +100,7 @@ export class Migration extends pulumi.CustomResource {
      */
     declare public readonly overwriteDbsInTarget: pulumi.Output<string | undefined>;
     /**
-     * Indicates whether to setup LogicalReplicationOnSourceDb, if needed.
+     * Indicates whether to setup logical replication on source server, if needed.
      */
     declare public readonly setupLogicalReplicationOnSourceDbIfNeeded: pulumi.Output<string | undefined>;
     /**
@@ -170,8 +170,8 @@ export class Migration extends pulumi.CustomResource {
             if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if (args?.targetDbServerName === undefined && !opts.urn) {
-                throw new Error("Missing required property 'targetDbServerName'");
+            if (args?.serverName === undefined && !opts.urn) {
+                throw new Error("Missing required property 'serverName'");
             }
             resourceInputs["cancel"] = args?.cancel;
             resourceInputs["dbsToCancelMigrationOn"] = args?.dbsToCancelMigrationOn;
@@ -188,16 +188,15 @@ export class Migration extends pulumi.CustomResource {
             resourceInputs["overwriteDbsInTarget"] = args?.overwriteDbsInTarget;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["secretParameters"] = args?.secretParameters;
+            resourceInputs["serverName"] = args?.serverName;
             resourceInputs["setupLogicalReplicationOnSourceDbIfNeeded"] = args?.setupLogicalReplicationOnSourceDbIfNeeded;
             resourceInputs["sourceDbServerFullyQualifiedDomainName"] = args?.sourceDbServerFullyQualifiedDomainName;
             resourceInputs["sourceDbServerResourceId"] = args?.sourceDbServerResourceId;
             resourceInputs["sourceType"] = args?.sourceType;
             resourceInputs["sslMode"] = args?.sslMode;
             resourceInputs["startDataMigration"] = args?.startDataMigration;
-            resourceInputs["subscriptionId"] = args?.subscriptionId;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["targetDbServerFullyQualifiedDomainName"] = args?.targetDbServerFullyQualifiedDomainName;
-            resourceInputs["targetDbServerName"] = args?.targetDbServerName;
             resourceInputs["triggerCutover"] = args?.triggerCutover;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["currentStatus"] = undefined /*out*/;
@@ -241,7 +240,7 @@ export class Migration extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20210615privatepreview:Migration" }, { type: "azure-native:dbforpostgresql/v20220501preview:Migration" }, { type: "azure-native:dbforpostgresql/v20230301preview:Migration" }, { type: "azure-native:dbforpostgresql/v20230601preview:Migration" }, { type: "azure-native:dbforpostgresql/v20231201preview:Migration" }, { type: "azure-native:dbforpostgresql/v20240301preview:Migration" }, { type: "azure-native:dbforpostgresql/v20240801:Migration" }, { type: "azure-native:dbforpostgresql/v20241101preview:Migration" }, { type: "azure-native:dbforpostgresql/v20250101preview:Migration" }, { type: "azure-native:dbforpostgresql/v20250601preview:Migration" }, { type: "azure-native:dbforpostgresql/v20250801:Migration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20210615privatepreview:Migration" }, { type: "azure-native:dbforpostgresql/v20220501preview:Migration" }, { type: "azure-native:dbforpostgresql/v20230301preview:Migration" }, { type: "azure-native:dbforpostgresql/v20230601preview:Migration" }, { type: "azure-native:dbforpostgresql/v20231201preview:Migration" }, { type: "azure-native:dbforpostgresql/v20240301preview:Migration" }, { type: "azure-native:dbforpostgresql/v20240801:Migration" }, { type: "azure-native:dbforpostgresql/v20241101preview:Migration" }, { type: "azure-native:dbforpostgresql/v20250101preview:Migration" }, { type: "azure-native:dbforpostgresql/v20250601preview:Migration" }, { type: "azure-native:dbforpostgresql/v20250801:Migration" }, { type: "azure-native:dbforpostgresql/v20260101preview:Migration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Migration.__pulumiType, name, resourceInputs, opts);
     }
@@ -254,7 +253,7 @@ export interface MigrationArgs {
     /**
      * Indicates if cancel must be triggered for the entire migration.
      */
-    cancel?: pulumi.Input<string | types.enums.CancelEnum>;
+    cancel?: pulumi.Input<string | types.enums.Cancel>;
     /**
      * When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array.
      */
@@ -274,7 +273,7 @@ export interface MigrationArgs {
     /**
      * Indicates if roles and permissions must be migrated.
      */
-    migrateRoles?: pulumi.Input<string | types.enums.MigrateRolesEnum>;
+    migrateRoles?: pulumi.Input<string | types.enums.MigrateRolesAndPermissions>;
     /**
      * Identifier of the private endpoint migration instance.
      */
@@ -302,9 +301,9 @@ export interface MigrationArgs {
     /**
      * Indicates if databases on the target server can be overwritten when already present. If set to 'False', when the migration workflow detects that the database already exists on the target server, it will wait for a confirmation.
      */
-    overwriteDbsInTarget?: pulumi.Input<string | types.enums.OverwriteDbsInTargetEnum>;
+    overwriteDbsInTarget?: pulumi.Input<string | types.enums.OverwriteDatabasesOnTargetServer>;
     /**
-     * Name of resource group of target database server.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
@@ -312,9 +311,13 @@ export interface MigrationArgs {
      */
     secretParameters?: pulumi.Input<types.inputs.MigrationSecretParametersArgs>;
     /**
-     * Indicates whether to setup LogicalReplicationOnSourceDb, if needed.
+     * The name of the server.
      */
-    setupLogicalReplicationOnSourceDbIfNeeded?: pulumi.Input<string | types.enums.LogicalReplicationOnSourceDbEnum>;
+    serverName: pulumi.Input<string>;
+    /**
+     * Indicates whether to setup logical replication on source server, if needed.
+     */
+    setupLogicalReplicationOnSourceDbIfNeeded?: pulumi.Input<string | types.enums.LogicalReplicationOnSourceServer>;
     /**
      * Fully qualified domain name (FQDN) or IP address of the source server. This property is optional. When provided, the migration service will always use it to connect to the source server.
      */
@@ -334,11 +337,7 @@ export interface MigrationArgs {
     /**
      * Indicates if data migration must start right away.
      */
-    startDataMigration?: pulumi.Input<string | types.enums.StartDataMigrationEnum>;
-    /**
-     * Identifier of subscription of target database server.
-     */
-    subscriptionId?: pulumi.Input<string>;
+    startDataMigration?: pulumi.Input<string | types.enums.StartDataMigration>;
     /**
      * Resource tags.
      */
@@ -348,11 +347,7 @@ export interface MigrationArgs {
      */
     targetDbServerFullyQualifiedDomainName?: pulumi.Input<string>;
     /**
-     * Name of target database server.
-     */
-    targetDbServerName: pulumi.Input<string>;
-    /**
      * Indicates if cutover must be triggered for the entire migration.
      */
-    triggerCutover?: pulumi.Input<string | types.enums.TriggerCutoverEnum>;
+    triggerCutover?: pulumi.Input<string | types.enums.TriggerCutover>;
 }

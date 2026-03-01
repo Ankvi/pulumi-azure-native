@@ -623,6 +623,51 @@ export interface GatewayConfigurationApiResponse {
     hostname: string;
 }
 
+export interface GatewayHostnameBindingCertificateResponse {
+    /**
+     * The expiration date of the certificate.
+     */
+    expiry: string;
+    /**
+     * The subject of the certificate.
+     */
+    subject: string;
+    /**
+     * The thumbprint of the certificate.
+     */
+    thumbprint: string;
+}
+
+export interface GatewayHostnameBindingKeyVaultLastStatusResponse {
+    /**
+     * The last status of the Key Vault certificate fetch process.
+     */
+    code: string;
+    /**
+     * The last time the Key Vault certificate fetch process was successful. Only when the fetch process has succeeded at least once and current state is failed.  The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+     */
+    lastSuccessTimeStampUtc: string;
+    /**
+     * The last time the Key Vault certificate fetch process was attempted. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+     */
+    timeStampUtc: string;
+}
+
+export interface GatewayHostnameBindingKeyVaultResponse {
+    /**
+     * The default hostname of the data-plane gateway.
+     */
+    identityClientId?: string;
+    /**
+     * The last status of the Key Vault certificate fetch process.
+     */
+    lastStatus?: GatewayHostnameBindingKeyVaultLastStatusResponse;
+    /**
+     * The current provisioning state of the API Management gateway hostname binding.
+     */
+    secretId: string;
+}
+
 /**
  * Group contract Properties.
  */
