@@ -4842,6 +4842,10 @@ export interface FlowLogResponse {
      */
     provisioningState: string;
     /**
+     * Optional field to filter network traffic logs based on flow states. Value of this field could be any comma separated combination string of letters B,C,E or D. B represents Begin, when a flow is created. C represents Continue for an ongoing flow generated at every five-minute interval. E represents End, when a flow is terminated. D represents Deny, when a flow is denied. If not specified, all network traffic will be logged.
+     */
+    recordTypes?: string;
+    /**
      * Parameters that define the retention policy for flow log.
      */
     retentionPolicy?: RetentionPolicyParametersResponse;
@@ -6070,17 +6074,33 @@ export interface NatGatewayResponse {
      */
     publicIpAddresses?: SubResourceResponse[];
     /**
+     * An array of public ip addresses V6 associated with the nat gateway resource.
+     */
+    publicIpAddressesV6?: SubResourceResponse[];
+    /**
      * An array of public ip prefixes associated with the nat gateway resource.
      */
     publicIpPrefixes?: SubResourceResponse[];
+    /**
+     * An array of public ip prefixes V6 associated with the nat gateway resource.
+     */
+    publicIpPrefixesV6?: SubResourceResponse[];
     /**
      * The resource GUID property of the NAT gateway resource.
      */
     resourceGuid: string;
     /**
+     * Reference to an existing service gateway.
+     */
+    serviceGateway?: SubResourceResponse;
+    /**
      * The nat gateway SKU.
      */
     sku?: NatGatewaySkuResponse;
+    /**
+     * A reference to the source virtual network using this nat gateway resource.
+     */
+    sourceVirtualNetwork?: SubResourceResponse;
     /**
      * An array of references to the subnets using this nat gateway resource.
      */
@@ -7629,6 +7649,10 @@ export interface PrivateEndpointResponse {
      */
     ipConfigurations?: PrivateEndpointIPConfigurationResponse[];
     /**
+     * Specifies the IP version type for the private IPs of the private endpoint. If not defined, this defaults to IPv4.
+     */
+    ipVersionType?: string;
+    /**
      * Resource location.
      */
     location?: string;
@@ -7671,6 +7695,7 @@ export interface PrivateEndpointResponse {
 export function privateEndpointResponseProvideDefaults(val: PrivateEndpointResponse): PrivateEndpointResponse {
     return {
         ...val,
+        ipVersionType: (val.ipVersionType) ?? "IPv4",
         subnet: (val.subnet ? subnetResponseProvideDefaults(val.subnet) : undefined),
     };
 }
@@ -7814,6 +7839,10 @@ export interface PrivateLinkServicePropertiesResponseVisibility {
  * Private link service resource.
  */
 export interface PrivateLinkServiceResponse {
+    /**
+     * The access mode of the private link service.
+     */
+    accessMode?: string;
     /**
      * The alias of the private link service.
      */
@@ -8563,6 +8592,33 @@ export interface RouteTableResponse {
 }
 
 /**
+ * Properties of route target address
+ */
+export interface RouteTargetAddressPropertiesFormatResponse {
+    /**
+     * The private IPv4 or IPv6 address of the service gateway route target address.
+     */
+    privateIPAddress?: string;
+    /**
+     * The Private IP allocation method.
+     */
+    privateIPAllocationMethod?: string;
+    /**
+     * The reference to the subnet resource.
+     */
+    subnet?: SubnetResponse;
+}
+/**
+ * routeTargetAddressPropertiesFormatResponseProvideDefaults sets the appropriate defaults for RouteTargetAddressPropertiesFormatResponse
+ */
+export function routeTargetAddressPropertiesFormatResponseProvideDefaults(val: RouteTargetAddressPropertiesFormatResponse): RouteTargetAddressPropertiesFormatResponse {
+    return {
+        ...val,
+        subnet: (val.subnet ? subnetResponseProvideDefaults(val.subnet) : undefined),
+    };
+}
+
+/**
  * Routing Configuration indicating the associated and propagated route tables for this connection.
  */
 export interface RoutingConfigurationResponse {
@@ -8891,6 +8947,20 @@ export interface ServiceEndpointPropertiesFormatResponse {
 }
 
 /**
+ * SKU of a service gateway.
+ */
+export interface ServiceGatewaySkuResponse {
+    /**
+     * Name of a service gateway SKU.
+     */
+    name?: string;
+    /**
+     * Tier of a service gateway SKU.
+     */
+    tier?: string;
+}
+
+/**
  * Parameters for SharedKey.
  */
 export interface SharedKeyPropertiesResponse {
@@ -9143,6 +9213,10 @@ export interface SubnetResponse {
      * An array of service endpoints.
      */
     serviceEndpoints?: ServiceEndpointPropertiesFormatResponse[];
+    /**
+     * Reference to an existing service gateway.
+     */
+    serviceGateway?: SubResourceResponse;
     /**
      * Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
      */
@@ -9500,6 +9574,48 @@ export interface VirtualHubRouteV2Response {
      * NextHops ip address.
      */
     nextHops?: string[];
+}
+
+/**
+ * The virtual network appliance ip configuration.
+ */
+export interface VirtualNetworkApplianceIpConfigurationResponse {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The name of virtual network appliance ip configuration.
+     */
+    name?: string;
+    /**
+     * Whether the ip configuration is primary or not.
+     */
+    primary?: boolean;
+    /**
+     * The private IP address of the IP configuration.
+     */
+    privateIPAddress?: string;
+    /**
+     * Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4.
+     */
+    privateIPAddressVersion?: string;
+    /**
+     * The private IP address allocation method.
+     */
+    privateIPAllocationMethod?: string;
+    /**
+     * The provisioning state of the private link service IP configuration resource.
+     */
+    provisioningState: string;
+    /**
+     * The resource type.
+     */
+    type: string;
 }
 
 /**
@@ -9947,6 +10063,114 @@ export interface VirtualNetworkPeeringResponse {
      * If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
      */
     useRemoteGateways?: boolean;
+}
+
+/**
+ * Virtual Network resource.
+ */
+export interface VirtualNetworkResponse {
+    /**
+     * The AddressSpace that contains an array of IP address ranges that can be used by subnets.
+     */
+    addressSpace?: AddressSpaceResponse;
+    /**
+     * Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
+     */
+    bgpCommunities?: VirtualNetworkBgpCommunitiesResponse;
+    /**
+     * The DDoS protection plan associated with the virtual network.
+     */
+    ddosProtectionPlan?: SubResourceResponse;
+    /**
+     * A reference to the default public nat gateway being used by this virtual network resource.
+     */
+    defaultPublicNatGateway: SubResourceResponse;
+    /**
+     * The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
+     */
+    dhcpOptions?: DhcpOptionsResponse;
+    /**
+     * Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
+     */
+    enableDdosProtection?: boolean;
+    /**
+     * Indicates if VM protection is enabled for all the subnets in the virtual network.
+     */
+    enableVmProtection?: boolean;
+    /**
+     * Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
+     */
+    encryption?: VirtualNetworkEncryptionResponse;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * The extended location of the virtual network.
+     */
+    extendedLocation?: ExtendedLocationResponse;
+    /**
+     * A collection of references to flow log resources.
+     */
+    flowLogs: FlowLogResponse[];
+    /**
+     * The FlowTimeout value (in minutes) for the Virtual Network
+     */
+    flowTimeoutInMinutes?: number;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Array of IpAllocation which reference this VNET.
+     */
+    ipAllocations?: SubResourceResponse[];
+    /**
+     * Resource location.
+     */
+    location?: string;
+    /**
+     * Resource name.
+     */
+    name: string;
+    /**
+     * Private Endpoint VNet Policies.
+     */
+    privateEndpointVNetPolicies?: string;
+    /**
+     * The provisioning state of the virtual network resource.
+     */
+    provisioningState: string;
+    /**
+     * The resourceGuid property of the Virtual Network resource.
+     */
+    resourceGuid: string;
+    /**
+     * A list of subnets in a Virtual Network.
+     */
+    subnets?: SubnetResponse[];
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Resource type.
+     */
+    type: string;
+    /**
+     * A list of peerings in a Virtual Network.
+     */
+    virtualNetworkPeerings?: VirtualNetworkPeeringResponse[];
+}
+/**
+ * virtualNetworkResponseProvideDefaults sets the appropriate defaults for VirtualNetworkResponse
+ */
+export function virtualNetworkResponseProvideDefaults(val: VirtualNetworkResponse): VirtualNetworkResponse {
+    return {
+        ...val,
+        enableDdosProtection: (val.enableDdosProtection) ?? false,
+        enableVmProtection: (val.enableVmProtection) ?? false,
+    };
 }
 
 /**

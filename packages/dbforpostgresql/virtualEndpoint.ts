@@ -2,11 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Pair of virtual endpoints for a flexible server.
+ * Pair of virtual endpoints for a server.
  *
- * Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
+ * Uses Azure REST API version 2025-08-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualEndpoint extends pulumi.CustomResource {
     /**
@@ -44,7 +44,7 @@ export class VirtualEndpoint extends pulumi.CustomResource {
      */
     declare public readonly endpointType: pulumi.Output<string | undefined>;
     /**
-     * List of flexible servers that one of the virtual endpoints can refer to.
+     * List of servers that one of the virtual endpoints can refer to.
      */
     declare public readonly members: pulumi.Output<string[] | undefined>;
     /**
@@ -60,7 +60,7 @@ export class VirtualEndpoint extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
-     * List of virtual endpoints for a flexible server.
+     * List of virtual endpoints for a server.
      */
     declare public /*out*/ readonly virtualEndpoints: pulumi.Output<string[]>;
 
@@ -101,7 +101,7 @@ export class VirtualEndpoint extends pulumi.CustomResource {
             resourceInputs["virtualEndpoints"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20230601preview:VirtualEndpoint" }, { type: "azure-native:dbforpostgresql/v20231201preview:VirtualEndpoint" }, { type: "azure-native:dbforpostgresql/v20240301preview:VirtualEndpoint" }, { type: "azure-native:dbforpostgresql/v20240801:VirtualEndpoint" }, { type: "azure-native:dbforpostgresql/v20241101preview:VirtualEndpoint" }, { type: "azure-native:dbforpostgresql/v20250101preview:VirtualEndpoint" }, { type: "azure-native:dbforpostgresql/v20250601preview:VirtualEndpoint" }, { type: "azure-native:dbforpostgresql/v20250801:VirtualEndpoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20230601preview:VirtualEndpoint" }, { type: "azure-native:dbforpostgresql/v20231201preview:VirtualEndpoint" }, { type: "azure-native:dbforpostgresql/v20240301preview:VirtualEndpoint" }, { type: "azure-native:dbforpostgresql/v20240801:VirtualEndpoint" }, { type: "azure-native:dbforpostgresql/v20241101preview:VirtualEndpoint" }, { type: "azure-native:dbforpostgresql/v20250101preview:VirtualEndpoint" }, { type: "azure-native:dbforpostgresql/v20250601preview:VirtualEndpoint" }, { type: "azure-native:dbforpostgresql/v20250801:VirtualEndpoint" }, { type: "azure-native:dbforpostgresql/v20260101preview:VirtualEndpoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualEndpoint.__pulumiType, name, resourceInputs, opts);
     }
@@ -116,7 +116,7 @@ export interface VirtualEndpointArgs {
      */
     endpointType?: pulumi.Input<string | types.enums.VirtualEndpointType>;
     /**
-     * List of flexible servers that one of the virtual endpoints can refer to.
+     * List of servers that one of the virtual endpoints can refer to.
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**

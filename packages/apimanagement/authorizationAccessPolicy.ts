@@ -3,9 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Authorization access policy contract.
  *
- * Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+ * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
  *
- * Other available API versions: 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class AuthorizationAccessPolicy extends pulumi.CustomResource {
     /**
@@ -34,6 +34,10 @@ export class AuthorizationAccessPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === AuthorizationAccessPolicy.__pulumiType;
     }
 
+    /**
+     * The allowed Azure Active Directory Application IDs
+     */
+    declare public readonly appIds: pulumi.Output<string[] | undefined>;
     /**
      * The Azure API version of the resource.
      */
@@ -78,6 +82,7 @@ export class AuthorizationAccessPolicy extends pulumi.CustomResource {
             if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
+            resourceInputs["appIds"] = args?.appIds;
             resourceInputs["authorizationAccessPolicyId"] = args?.authorizationAccessPolicyId;
             resourceInputs["authorizationId"] = args?.authorizationId;
             resourceInputs["authorizationProviderId"] = args?.authorizationProviderId;
@@ -89,6 +94,7 @@ export class AuthorizationAccessPolicy extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["appIds"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["objectId"] = undefined /*out*/;
@@ -96,7 +102,7 @@ export class AuthorizationAccessPolicy extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220401preview:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20220801:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20220901preview:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20230301preview:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20230501preview:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20230901preview:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20240501:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20240601preview:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20241001preview:AuthorizationAccessPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220401preview:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20220801:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20220901preview:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20230301preview:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20230501preview:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20230901preview:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20240501:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20240601preview:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20241001preview:AuthorizationAccessPolicy" }, { type: "azure-native:apimanagement/v20250301preview:AuthorizationAccessPolicy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AuthorizationAccessPolicy.__pulumiType, name, resourceInputs, opts);
     }
@@ -106,6 +112,10 @@ export class AuthorizationAccessPolicy extends pulumi.CustomResource {
  * The set of arguments for constructing a AuthorizationAccessPolicy resource.
  */
 export interface AuthorizationAccessPolicyArgs {
+    /**
+     * The allowed Azure Active Directory Application IDs
+     */
+    appIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Identifier of the authorization access policy.
      */

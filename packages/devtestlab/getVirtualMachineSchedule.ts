@@ -61,15 +61,15 @@ export interface GetVirtualMachineScheduleResult {
      */
     readonly hourlyRecurrence?: types.outputs.HourDetailsResponse;
     /**
-     * The identifier of the resource.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
-     * The location of the resource.
+     * The geo-location where the resource lives
      */
     readonly location?: string;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -85,7 +85,11 @@ export interface GetVirtualMachineScheduleResult {
      */
     readonly status?: string;
     /**
-     * The tags of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
      */
     readonly tags?: {[key: string]: string};
     /**
@@ -101,7 +105,7 @@ export interface GetVirtualMachineScheduleResult {
      */
     readonly timeZoneId?: string;
     /**
-     * The type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**

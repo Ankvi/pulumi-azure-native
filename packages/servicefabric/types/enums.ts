@@ -221,7 +221,7 @@ export const PartitionScheme = {
 } as const;
 
 /**
- * Enumerates the ways that a service can be partitioned.
+ * Specifies how the service is partitioned.
  */
 export type PartitionScheme = (typeof PartitionScheme)[keyof typeof PartitionScheme];
 
@@ -430,7 +430,7 @@ export const ServiceScalingMechanismKind = {
 } as const;
 
 /**
- * Enumerates the ways that a service can be partitioned.
+ * Specifies the mechanism associated with this scaling policy.
  */
 export type ServiceScalingMechanismKind = (typeof ServiceScalingMechanismKind)[keyof typeof ServiceScalingMechanismKind];
 
@@ -446,7 +446,7 @@ export const ServiceScalingTriggerKind = {
 } as const;
 
 /**
- * Enumerates the ways that a service can be partitioned.
+ * Specifies the trigger associated with this scaling policy.
  */
 export type ServiceScalingTriggerKind = (typeof ServiceScalingTriggerKind)[keyof typeof ServiceScalingTriggerKind];
 

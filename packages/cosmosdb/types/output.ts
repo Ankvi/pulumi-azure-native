@@ -756,6 +756,46 @@ export interface DatabaseRestoreResourceResponse {
     databaseName?: string;
 }
 
+/**
+ * The resource management error additional info.
+ */
+export interface ErrorAdditionalInfoResponse {
+    /**
+     * The additional info.
+     */
+    info: any;
+    /**
+     * The additional info type.
+     */
+    type: string;
+}
+
+/**
+ * The error detail.
+ */
+export interface ErrorDetailResponse {
+    /**
+     * The error additional info.
+     */
+    additionalInfo: ErrorAdditionalInfoResponse[];
+    /**
+     * The error code.
+     */
+    code: string;
+    /**
+     * The error details.
+     */
+    details: ErrorDetailResponse[];
+    /**
+     * The error message.
+     */
+    message: string;
+    /**
+     * The error target.
+     */
+    target: string;
+}
+
 export interface ExcludedPathResponse {
     /**
      * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
@@ -800,10 +840,6 @@ export interface FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropert
  */
 export interface FleetspacePropertiesResponseThroughputPoolConfiguration {
     /**
-     * List of data regions assigned to the fleetspace. Eg [westus2]
-     */
-    dataRegions?: string[];
-    /**
      * Maximum throughput for the pool.
      */
     maxThroughput?: number;
@@ -811,10 +847,16 @@ export interface FleetspacePropertiesResponseThroughputPoolConfiguration {
      * Minimum throughput for the pool.
      */
     minThroughput?: number;
+}
+
+/**
+ * Represents the full text index path.
+ */
+export interface FullTextIndexPathResponse {
     /**
-     * Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+     * The path to the full text field in the document.
      */
-    serviceTier?: string;
+    path: string;
 }
 
 /**
@@ -843,6 +885,67 @@ export interface FullTextPolicyResponse {
      * List of FullText Paths
      */
     fullTextPaths?: FullTextPathResponse[];
+}
+
+export interface GarnetClusterResourceResponseEndPoints {
+    /**
+     * Ipv4 address of the endpoint
+     */
+    ipAddress?: string;
+    /**
+     * Port number
+     */
+    port?: number;
+}
+
+/**
+ * Properties of a Garnet cache cluster.
+ */
+export interface GarnetClusterResourceResponseProperties {
+    /**
+     * Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
+     */
+    allocationState?: string;
+    /**
+     * If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
+     */
+    availabilityZone?: boolean;
+    /**
+     * Type of the cluster. If set to Production, some operations might not be permitted on cluster.
+     */
+    clusterType?: string;
+    /**
+     * endpoints for clients to connect to the cluster.
+     */
+    endPoints: GarnetClusterResourceResponseEndPoints[];
+    /**
+     * Extensions to be added or updated on cluster.
+     */
+    extensions?: string[];
+    /**
+     * Number of nodes
+     */
+    nodeCount?: number;
+    /**
+     * Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+     */
+    nodeSku?: string;
+    /**
+     * Error related to resource provisioning.
+     */
+    provisionError?: ErrorDetailResponse;
+    /**
+     * The status of the resource at the time the operation was called.
+     */
+    provisioningState: string;
+    /**
+     * Number of copies of data maintained by the cluster
+     */
+    replicationFactor?: number;
+    /**
+     * Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
+     */
+    subnetId?: string;
 }
 
 /**
@@ -1103,6 +1206,10 @@ export interface IndexingPolicyResponse {
      * List of paths to exclude from indexing
      */
     excludedPaths?: ExcludedPathResponse[];
+    /**
+     * List of paths to include in the full text indexing
+     */
+    fullTextIndexes?: FullTextIndexPathResponse[];
     /**
      * List of paths to include in the indexing
      */
@@ -1614,6 +1721,10 @@ export interface RestoreParametersResponse {
      */
     restoreWithTtlDisabled?: boolean;
     /**
+     * The source backup location for restore.
+     */
+    sourceBackupLocation?: string;
+    /**
      * List of specific tables available for restore.
      */
     tablesToRestore?: string[];
@@ -2046,13 +2157,34 @@ export interface VectorEmbeddingResponse {
 
 export interface VectorIndexResponse {
     /**
+     * This is the size of the candidate list of approximate neighbors stored while building the DiskANN index as part of the optimization processes. Large values may improve recall at the expense of latency. This is only applicable for the diskANN vector index type.
+     */
+    indexingSearchListSize?: number;
+    /**
      * The path to the vector field in the document.
      */
     path: string;
     /**
+     * The number of bytes used in product quantization of the vectors. A larger value may result in better recall for vector searches at the expense of latency. This is only applicable for the quantizedFlat and diskANN vector index types.
+     */
+    quantizationByteSize?: number;
+    /**
      * The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported.
      */
     type: string;
+    /**
+     * Array of shard keys for the vector index. This is only applicable for the quantizedFlat and diskANN vector index types.
+     */
+    vectorIndexShardKey?: string[];
+}
+/**
+ * vectorIndexResponseProvideDefaults sets the appropriate defaults for VectorIndexResponse
+ */
+export function vectorIndexResponseProvideDefaults(val: VectorIndexResponse): VectorIndexResponse {
+    return {
+        ...val,
+        indexingSearchListSize: (val.indexingSearchListSize) ?? 100,
+    };
 }
 
 /**

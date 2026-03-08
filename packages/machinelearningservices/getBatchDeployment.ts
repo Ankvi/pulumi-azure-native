@@ -2,9 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Uses Azure REST API version 2025-09-01.
+ * Gets a batch inference deployment by id.
  *
- * Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Uses Azure REST API version 2025-12-01.
+ *
+ * Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getBatchDeployment(args: GetBatchDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetBatchDeploymentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -22,7 +24,7 @@ export interface GetBatchDeploymentArgs {
      */
     deploymentName: string;
     /**
-     * Endpoint name
+     * Name for the Batch Endpoint.
      */
     endpointName: string;
     /**
@@ -30,20 +32,19 @@ export interface GetBatchDeploymentArgs {
      */
     resourceGroupName: string;
     /**
-     * Name of Azure Machine Learning workspace.
+     * Azure Machine Learning Workspace Name
      */
     workspaceName: string;
 }
 
+/**
+ * Concrete tracked resource types can be created by aliasing this type using a specific property type.
+ */
 export interface GetBatchDeploymentResult {
     /**
      * The Azure API version of the resource.
      */
     readonly azureApiVersion: string;
-    /**
-     * [Required] Additional attributes of the entity.
-     */
-    readonly batchDeploymentProperties: types.outputs.BatchDeploymentResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -65,6 +66,10 @@ export interface GetBatchDeploymentResult {
      */
     readonly name: string;
     /**
+     * [Required] Additional attributes of the entity.
+     */
+    readonly properties: types.outputs.BatchDeploymentPropertiesResponse;
+    /**
      * Sku details required for ARM contract for Autoscaling.
      */
     readonly sku?: types.outputs.SkuResponse;
@@ -82,9 +87,11 @@ export interface GetBatchDeploymentResult {
     readonly type: string;
 }
 /**
- * Uses Azure REST API version 2025-09-01.
+ * Gets a batch inference deployment by id.
  *
- * Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Uses Azure REST API version 2025-12-01.
+ *
+ * Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getBatchDeploymentOutput(args: GetBatchDeploymentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBatchDeploymentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -102,7 +109,7 @@ export interface GetBatchDeploymentOutputArgs {
      */
     deploymentName: pulumi.Input<string>;
     /**
-     * Endpoint name
+     * Name for the Batch Endpoint.
      */
     endpointName: pulumi.Input<string>;
     /**
@@ -110,7 +117,7 @@ export interface GetBatchDeploymentOutputArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * Name of Azure Machine Learning workspace.
+     * Azure Machine Learning Workspace Name
      */
     workspaceName: pulumi.Input<string>;
 }

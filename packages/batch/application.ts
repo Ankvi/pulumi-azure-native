@@ -1,11 +1,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * Contains information about an application in a Batch account.
  *
  * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Application extends pulumi.CustomResource {
     /**
@@ -55,15 +56,19 @@ export class Application extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tags of the resource.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -94,6 +99,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["allowUpdates"] = undefined /*out*/;
@@ -102,11 +108,12 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:batch/v20151201:Application" }, { type: "azure-native:batch/v20170101:Application" }, { type: "azure-native:batch/v20170501:Application" }, { type: "azure-native:batch/v20170901:Application" }, { type: "azure-native:batch/v20181201:Application" }, { type: "azure-native:batch/v20190401:Application" }, { type: "azure-native:batch/v20190801:Application" }, { type: "azure-native:batch/v20200301:Application" }, { type: "azure-native:batch/v20200501:Application" }, { type: "azure-native:batch/v20200901:Application" }, { type: "azure-native:batch/v20210101:Application" }, { type: "azure-native:batch/v20210601:Application" }, { type: "azure-native:batch/v20220101:Application" }, { type: "azure-native:batch/v20220601:Application" }, { type: "azure-native:batch/v20221001:Application" }, { type: "azure-native:batch/v20230501:Application" }, { type: "azure-native:batch/v20231101:Application" }, { type: "azure-native:batch/v20240201:Application" }, { type: "azure-native:batch/v20240701:Application" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:batch/v20151201:Application" }, { type: "azure-native:batch/v20170101:Application" }, { type: "azure-native:batch/v20170501:Application" }, { type: "azure-native:batch/v20170901:Application" }, { type: "azure-native:batch/v20181201:Application" }, { type: "azure-native:batch/v20190401:Application" }, { type: "azure-native:batch/v20190801:Application" }, { type: "azure-native:batch/v20200301:Application" }, { type: "azure-native:batch/v20200501:Application" }, { type: "azure-native:batch/v20200901:Application" }, { type: "azure-native:batch/v20210101:Application" }, { type: "azure-native:batch/v20210601:Application" }, { type: "azure-native:batch/v20220101:Application" }, { type: "azure-native:batch/v20220601:Application" }, { type: "azure-native:batch/v20221001:Application" }, { type: "azure-native:batch/v20230501:Application" }, { type: "azure-native:batch/v20231101:Application" }, { type: "azure-native:batch/v20240201:Application" }, { type: "azure-native:batch/v20240701:Application" }, { type: "azure-native:batch/v20250601:Application" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Application.__pulumiType, name, resourceInputs, opts);
     }
@@ -117,7 +124,7 @@ export class Application extends pulumi.CustomResource {
  */
 export interface ApplicationArgs {
     /**
-     * The name of the Batch account.
+     * A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
      */
     accountName: pulumi.Input<string>;
     /**
@@ -137,7 +144,7 @@ export interface ApplicationArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The name of the resource group that contains the Batch account.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

@@ -19,7 +19,7 @@ export function getCertificateProfile(args: GetCertificateProfileArgs, opts?: pu
 
 export interface GetCertificateProfileArgs {
     /**
-     * Trusted Signing account name.
+     * Artifact Signing account name.
      */
     accountName: string;
     /**
@@ -40,6 +40,10 @@ export interface GetCertificateProfileResult {
      * The Azure API version of the resource.
      */
     readonly azureApiVersion: string;
+    /**
+     * List of renewed certificates.
+     */
+    readonly certificates: types.outputs.CertificateResponse[];
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -111,7 +115,7 @@ export function getCertificateProfileOutput(args: GetCertificateProfileOutputArg
 
 export interface GetCertificateProfileOutputArgs {
     /**
-     * Trusted Signing account name.
+     * Artifact Signing account name.
      */
     accountName: pulumi.Input<string>;
     /**

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Backend details.
  *
- * Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+ * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
  *
- * Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Backend extends pulumi.CustomResource {
     /**
@@ -55,14 +55,15 @@ export class Backend extends pulumi.CustomResource {
      * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
+    declare public readonly pool: pulumi.Output<types.outputs.BackendBaseParametersResponsePool | undefined>;
     /**
      * Backend Properties contract
      */
     declare public readonly properties: pulumi.Output<types.outputs.BackendPropertiesResponse>;
     /**
-     * Backend communication protocol.
+     * Backend communication protocol. Required when backend type is 'Single'.
      */
-    declare public readonly protocol: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string | undefined>;
     /**
      * Backend gateway Contract Properties
      */
@@ -82,11 +83,11 @@ export class Backend extends pulumi.CustomResource {
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
-    declare public /*out*/ readonly type: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
-     * Runtime Url of the Backend.
+     * Runtime Url of the Backend. Required when backend type is 'Single'.
      */
-    declare public readonly url: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string | undefined>;
 
     /**
      * Create a Backend resource with the given unique name, arguments, and options.
@@ -99,22 +100,17 @@ export class Backend extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if (args?.protocol === undefined && !opts.urn) {
-                throw new Error("Missing required property 'protocol'");
-            }
             if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if (args?.url === undefined && !opts.urn) {
-                throw new Error("Missing required property 'url'");
-            }
             resourceInputs["backendId"] = args?.backendId;
             resourceInputs["circuitBreaker"] = args?.circuitBreaker;
             resourceInputs["credentials"] = args?.credentials;
             resourceInputs["description"] = args?.description;
+            resourceInputs["pool"] = args?.pool;
             resourceInputs["properties"] = args?.properties;
             resourceInputs["protocol"] = args?.protocol;
             resourceInputs["proxy"] = args?.proxy;
@@ -123,16 +119,17 @@ export class Backend extends pulumi.CustomResource {
             resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["title"] = args?.title;
             resourceInputs["tls"] = args ? (args.tls ? pulumi.output(args.tls).apply(types.inputs.backendTlsPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["type"] = args?.type;
             resourceInputs["url"] = args?.url;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["circuitBreaker"] = undefined /*out*/;
             resourceInputs["credentials"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pool"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["protocol"] = undefined /*out*/;
             resourceInputs["proxy"] = undefined /*out*/;
@@ -143,7 +140,7 @@ export class Backend extends pulumi.CustomResource {
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20160707:Backend" }, { type: "azure-native:apimanagement/v20161010:Backend" }, { type: "azure-native:apimanagement/v20170301:Backend" }, { type: "azure-native:apimanagement/v20180101:Backend" }, { type: "azure-native:apimanagement/v20180601preview:Backend" }, { type: "azure-native:apimanagement/v20190101:Backend" }, { type: "azure-native:apimanagement/v20191201:Backend" }, { type: "azure-native:apimanagement/v20191201preview:Backend" }, { type: "azure-native:apimanagement/v20200601preview:Backend" }, { type: "azure-native:apimanagement/v20201201:Backend" }, { type: "azure-native:apimanagement/v20210101preview:Backend" }, { type: "azure-native:apimanagement/v20210401preview:Backend" }, { type: "azure-native:apimanagement/v20210801:Backend" }, { type: "azure-native:apimanagement/v20211201preview:Backend" }, { type: "azure-native:apimanagement/v20220401preview:Backend" }, { type: "azure-native:apimanagement/v20220801:Backend" }, { type: "azure-native:apimanagement/v20220901preview:Backend" }, { type: "azure-native:apimanagement/v20230301preview:Backend" }, { type: "azure-native:apimanagement/v20230501preview:Backend" }, { type: "azure-native:apimanagement/v20230901preview:Backend" }, { type: "azure-native:apimanagement/v20240501:Backend" }, { type: "azure-native:apimanagement/v20240601preview:Backend" }, { type: "azure-native:apimanagement/v20241001preview:Backend" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20160707:Backend" }, { type: "azure-native:apimanagement/v20161010:Backend" }, { type: "azure-native:apimanagement/v20170301:Backend" }, { type: "azure-native:apimanagement/v20180101:Backend" }, { type: "azure-native:apimanagement/v20180601preview:Backend" }, { type: "azure-native:apimanagement/v20190101:Backend" }, { type: "azure-native:apimanagement/v20191201:Backend" }, { type: "azure-native:apimanagement/v20191201preview:Backend" }, { type: "azure-native:apimanagement/v20200601preview:Backend" }, { type: "azure-native:apimanagement/v20201201:Backend" }, { type: "azure-native:apimanagement/v20210101preview:Backend" }, { type: "azure-native:apimanagement/v20210401preview:Backend" }, { type: "azure-native:apimanagement/v20210801:Backend" }, { type: "azure-native:apimanagement/v20211201preview:Backend" }, { type: "azure-native:apimanagement/v20220401preview:Backend" }, { type: "azure-native:apimanagement/v20220801:Backend" }, { type: "azure-native:apimanagement/v20220901preview:Backend" }, { type: "azure-native:apimanagement/v20230301preview:Backend" }, { type: "azure-native:apimanagement/v20230501preview:Backend" }, { type: "azure-native:apimanagement/v20230901preview:Backend" }, { type: "azure-native:apimanagement/v20240501:Backend" }, { type: "azure-native:apimanagement/v20240601preview:Backend" }, { type: "azure-native:apimanagement/v20241001preview:Backend" }, { type: "azure-native:apimanagement/v20250301preview:Backend" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Backend.__pulumiType, name, resourceInputs, opts);
     }
@@ -169,14 +166,15 @@ export interface BackendArgs {
      * Backend Description.
      */
     description?: pulumi.Input<string>;
+    pool?: pulumi.Input<types.inputs.BackendBaseParametersPoolArgs>;
     /**
      * Backend Properties contract
      */
     properties?: pulumi.Input<types.inputs.BackendPropertiesArgs>;
     /**
-     * Backend communication protocol.
+     * Backend communication protocol. Required when backend type is 'Single'.
      */
-    protocol: pulumi.Input<string | types.enums.BackendProtocol>;
+    protocol?: pulumi.Input<string | types.enums.BackendProtocol>;
     /**
      * Backend gateway Contract Properties
      */
@@ -202,7 +200,11 @@ export interface BackendArgs {
      */
     tls?: pulumi.Input<types.inputs.BackendTlsPropertiesArgs>;
     /**
-     * Runtime Url of the Backend.
+     * Type of the backend. A backend can be either Single or Pool.
      */
-    url: pulumi.Input<string>;
+    type?: pulumi.Input<string | types.enums.BackendType>;
+    /**
+     * Runtime Url of the Backend. Required when backend type is 'Single'.
+     */
+    url?: pulumi.Input<string>;
 }

@@ -368,6 +368,16 @@ export interface AppSvcNativeSettingsResponse {
 }
 
 /**
+ * ARG query and other details to create workloads within a wave.
+ */
+export interface ArgResponse {
+    /**
+     * The query to create workloads within the wave.
+     */
+    query: string;
+}
+
+/**
  * Assessment details class.
  */
 export interface AssessmentDetailsResponse {
@@ -2503,6 +2513,122 @@ export interface MigrationConfigurationResponse {
 }
 
 /**
+ * Migration Entity Group Properties class.
+ */
+export interface MigrationEntityGroupPropertiesResponse {
+    /**
+     * Display Name of the Workload.
+     */
+    applicationDisplayName: string;
+    /**
+     * Application id 
+     */
+    applicationId: string;
+    /**
+     * Associated Assessment Id
+     */
+    associatedAssessmentId?: string;
+    /**
+     * associated Wave Id
+     */
+    associatedWaveIds?: string[];
+    /**
+     * Execution Start Date
+     */
+    executionStartDate: string;
+    /**
+     * Migration Entity Group Status
+     */
+    executionStatus: string;
+    /**
+     * Migration path
+     */
+    migrationPath?: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+}
+
+/**
+ * Migration Entity Properties class.
+ */
+export interface MigrationEntityPropertiesResponse {
+    /**
+     * Assessed Entity ARM Id
+     */
+    assessedEntityArmId?: string;
+    /**
+     * Associated Assessment Id
+     */
+    associatedAssessmentId?: string;
+    /**
+     * inventory resource id 
+     */
+    associatedInventoryResourceId: string;
+    /**
+     * associated Migration Entity Group Id
+     */
+    associatedMigrationEntityGroupIds?: string[];
+    /**
+     * associated Wave Id
+     */
+    associatedWaveId?: string;
+    /**
+     * Execution Readiness of Migration Entity.
+     */
+    executionReadiness: string;
+    /**
+     * Execution Stage of Migration Entity.
+     */
+    executionStage: string;
+    /**
+     * Execution start date for Migration Entity.
+     */
+    executionStartDate: string;
+    /**
+     * Execution Status of Migration Entity.
+     */
+    executionStatus: string;
+    /**
+     * Display Name of the Workload.
+     */
+    inventoryDisplayName: string;
+    /**
+     * Migration path
+     */
+    migrationPath?: string;
+    /**
+     * Migration specific properties for the entity.
+     */
+    migrationSpecificProperties?: ServerMigrationSpecificPropertiesResponse;
+    /**
+     * Strategy of Migration Entity.
+     */
+    migrationStrategy: string;
+    /**
+     * Migration Tool of the Migration Entity.
+     */
+    migrationTool?: string;
+    /**
+     * ARM Resource Identifier for the partner resource.
+     */
+    partnerResourceArmId?: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * Target of the Migration Entity.
+     */
+    target?: string;
+    /**
+     * target Azure Resource ARM Id.
+     */
+    targetAzureResourceArmId?: string;
+}
+
+/**
  * ModernizeProject properties.
  */
 export interface ModernizeProjectModelPropertiesResponse {
@@ -3403,6 +3529,25 @@ export interface SecuritySettingsResponse {
 }
 
 /**
+ * Represents a Server Migration Specific properties base model.
+ */
+export interface ServerMigrationSpecificPropertiesResponse {
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
+    currentJobId?: string;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
+    drApplianceInventoryId?: string;
+    /**
+     * Migration Specific Properties Instance Types.
+     * Expected value is 'ServerMigration'.
+     */
+    instanceType: "ServerMigration";
+}
+
+/**
  * Class representing the servers project summary.
  */
 export interface ServersProjectSummaryResponse {
@@ -3987,6 +4132,52 @@ export interface TargetStorageProfileResponse {
 }
 
 /**
+ * Task Properties class.
+ */
+export interface TaskPropertiesResponse {
+    /**
+     * Task completion Date
+     */
+    completionDate: string;
+    /**
+     * Task Description
+     */
+    description?: string;
+    /**
+     * Task Dislay Name 
+     */
+    displayName: string;
+    /**
+     * Indicates whether the task is editable.
+     */
+    isEditable: boolean;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * Task Scope
+     */
+    scope: string;
+    /**
+     * associated Wave Id
+     */
+    scopeId: string;
+    /**
+     * Task Stage
+     */
+    stage?: string;
+    /**
+     * Task Status
+     */
+    status: string;
+    /**
+     * Task Type
+     */
+    taskType: string;
+}
+
+/**
  * Third Party Management settings.
  */
 export interface ThirdPartyManagementSettingsResponse {
@@ -4126,6 +4317,48 @@ export interface VmUptimeResponse {
      * Number of hours per day for VM uptime.
      */
     hoursPerDay?: number;
+}
+
+/**
+ * Migration Wave Properties class.
+ */
+export interface WavePropertiesResponse {
+    /**
+     * Actual start date of the wave.
+     */
+    actualStartDate: string;
+    /**
+     * ARG query and other details to create workloads within a wave
+     */
+    arg: ArgResponse;
+    /**
+     * Description of the wave.
+     */
+    description?: string;
+    /**
+     * Display Name of the wave.
+     */
+    displayName: string;
+    /**
+     * Planned completion date of the wave.
+     */
+    plannedCompletionDate?: string;
+    /**
+     * Planned start date of the wave.
+     */
+    plannedStartDate: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * The current stage of the wave.
+     */
+    stage: string;
+    /**
+     * The status of the wave.
+     */
+    status: string;
 }
 
 /**

@@ -21,7 +21,7 @@ export interface GetServiceRunnerArgs {
      */
     labName: string;
     /**
-     * The name of the ServiceRunner
+     * The name of the service runner.
      */
     name: string;
     /**
@@ -39,7 +39,7 @@ export interface GetServiceRunnerResult {
      */
     readonly azureApiVersion: string;
     /**
-     * The identifier of the resource.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
@@ -47,19 +47,23 @@ export interface GetServiceRunnerResult {
      */
     readonly identity?: types.outputs.IdentityPropertiesResponse;
     /**
-     * The location of the resource.
+     * The geo-location where the resource lives
      */
     readonly location?: string;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     readonly name: string;
     /**
-     * The tags of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
      */
     readonly tags?: {[key: string]: string};
     /**
-     * The type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -83,7 +87,7 @@ export interface GetServiceRunnerOutputArgs {
      */
     labName: pulumi.Input<string>;
     /**
-     * The name of the ServiceRunner
+     * The name of the service runner.
      */
     name: pulumi.Input<string>;
     /**

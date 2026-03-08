@@ -2472,6 +2472,24 @@ export interface ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse 
 }
 
 /**
+ * Represents details of a single instance in a server farm.
+ */
+export interface ServerFarmInstanceResponse {
+    /**
+     * The instance name.
+     */
+    instanceName?: string;
+    /**
+     * The instance IP address.
+     */
+    ipAddress?: string;
+    /**
+     * The instance status.
+     */
+    status?: string;
+}
+
+/**
  * Configuration of an App Service app.
  */
 export interface SiteConfigResponse {

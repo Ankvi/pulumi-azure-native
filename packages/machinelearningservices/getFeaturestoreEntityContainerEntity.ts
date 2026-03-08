@@ -2,11 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Azure Resource Manager resource envelope.
+ * Get container.
  *
- * Uses Azure REST API version 2025-09-01.
+ * Uses Azure REST API version 2025-12-01.
  *
- * Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getFeaturestoreEntityContainerEntity(args: GetFeaturestoreEntityContainerEntityArgs, opts?: pulumi.InvokeOptions): Promise<GetFeaturestoreEntityContainerEntityResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -27,7 +27,7 @@ export interface GetFeaturestoreEntityContainerEntityArgs {
      */
     resourceGroupName: string;
     /**
-     * Name of Azure Machine Learning workspace.
+     * Azure Machine Learning Workspace Name
      */
     workspaceName: string;
 }
@@ -41,10 +41,6 @@ export interface GetFeaturestoreEntityContainerEntityResult {
      */
     readonly azureApiVersion: string;
     /**
-     * [Required] Additional attributes of the entity.
-     */
-    readonly featurestoreEntityContainerProperties: types.outputs.FeaturestoreEntityContainerResponse;
-    /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
@@ -52,6 +48,10 @@ export interface GetFeaturestoreEntityContainerEntityResult {
      * The name of the resource
      */
     readonly name: string;
+    /**
+     * [Required] Additional attributes of the entity.
+     */
+    readonly properties: types.outputs.FeaturestoreEntityContainerPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -62,11 +62,11 @@ export interface GetFeaturestoreEntityContainerEntityResult {
     readonly type: string;
 }
 /**
- * Azure Resource Manager resource envelope.
+ * Get container.
  *
- * Uses Azure REST API version 2025-09-01.
+ * Uses Azure REST API version 2025-12-01.
  *
- * Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getFeaturestoreEntityContainerEntityOutput(args: GetFeaturestoreEntityContainerEntityOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFeaturestoreEntityContainerEntityResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -87,7 +87,7 @@ export interface GetFeaturestoreEntityContainerEntityOutputArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * Name of Azure Machine Learning workspace.
+     * Azure Machine Learning Workspace Name
      */
     workspaceName: pulumi.Input<string>;
 }

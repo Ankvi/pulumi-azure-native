@@ -591,6 +591,11 @@ export const getRouteTable: typeof import("./getRouteTable").getRouteTable = nul
 export const getRouteTableOutput: typeof import("./getRouteTable").getRouteTableOutput = null as any;
 utilities.lazyLoad(exports, ["getRouteTable","getRouteTableOutput"], () => require("./getRouteTable"));
 
+export { GetRoutingConfigurationArgs, GetRoutingConfigurationResult, GetRoutingConfigurationOutputArgs } from "./getRoutingConfiguration";
+export const getRoutingConfiguration: typeof import("./getRoutingConfiguration").getRoutingConfiguration = null as any;
+export const getRoutingConfigurationOutput: typeof import("./getRoutingConfiguration").getRoutingConfigurationOutput = null as any;
+utilities.lazyLoad(exports, ["getRoutingConfiguration","getRoutingConfigurationOutput"], () => require("./getRoutingConfiguration"));
+
 export { GetRoutingIntentArgs, GetRoutingIntentResult, GetRoutingIntentOutputArgs } from "./getRoutingIntent";
 export const getRoutingIntent: typeof import("./getRoutingIntent").getRoutingIntent = null as any;
 export const getRoutingIntentOutput: typeof import("./getRoutingIntent").getRoutingIntentOutput = null as any;
@@ -650,6 +655,11 @@ export { GetServiceEndpointPolicyDefinitionArgs, GetServiceEndpointPolicyDefinit
 export const getServiceEndpointPolicyDefinition: typeof import("./getServiceEndpointPolicyDefinition").getServiceEndpointPolicyDefinition = null as any;
 export const getServiceEndpointPolicyDefinitionOutput: typeof import("./getServiceEndpointPolicyDefinition").getServiceEndpointPolicyDefinitionOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceEndpointPolicyDefinition","getServiceEndpointPolicyDefinitionOutput"], () => require("./getServiceEndpointPolicyDefinition"));
+
+export { GetServiceGatewayArgs, GetServiceGatewayResult, GetServiceGatewayOutputArgs } from "./getServiceGateway";
+export const getServiceGateway: typeof import("./getServiceGateway").getServiceGateway = null as any;
+export const getServiceGatewayOutput: typeof import("./getServiceGateway").getServiceGatewayOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceGateway","getServiceGatewayOutput"], () => require("./getServiceGateway"));
 
 export { GetStaticCidrArgs, GetStaticCidrResult, GetStaticCidrOutputArgs } from "./getStaticCidr";
 export const getStaticCidr: typeof import("./getStaticCidr").getStaticCidr = null as any;
@@ -715,6 +725,11 @@ export { GetVirtualNetworkArgs, GetVirtualNetworkResult, GetVirtualNetworkOutput
 export const getVirtualNetwork: typeof import("./getVirtualNetwork").getVirtualNetwork = null as any;
 export const getVirtualNetworkOutput: typeof import("./getVirtualNetwork").getVirtualNetworkOutput = null as any;
 utilities.lazyLoad(exports, ["getVirtualNetwork","getVirtualNetworkOutput"], () => require("./getVirtualNetwork"));
+
+export { GetVirtualNetworkApplianceArgs, GetVirtualNetworkApplianceResult, GetVirtualNetworkApplianceOutputArgs } from "./getVirtualNetworkAppliance";
+export const getVirtualNetworkAppliance: typeof import("./getVirtualNetworkAppliance").getVirtualNetworkAppliance = null as any;
+export const getVirtualNetworkApplianceOutput: typeof import("./getVirtualNetworkAppliance").getVirtualNetworkApplianceOutput = null as any;
+utilities.lazyLoad(exports, ["getVirtualNetworkAppliance","getVirtualNetworkApplianceOutput"], () => require("./getVirtualNetworkAppliance"));
 
 export { GetVirtualNetworkGatewayArgs, GetVirtualNetworkGatewayResult, GetVirtualNetworkGatewayOutputArgs } from "./getVirtualNetworkGateway";
 export const getVirtualNetworkGateway: typeof import("./getVirtualNetworkGateway").getVirtualNetworkGateway = null as any;
@@ -1176,6 +1191,11 @@ export type RouteTable = import("./routeTable").RouteTable;
 export const RouteTable: typeof import("./routeTable").RouteTable = null as any;
 utilities.lazyLoad(exports, ["RouteTable"], () => require("./routeTable"));
 
+export { RoutingConfigurationArgs } from "./routingConfiguration";
+export type RoutingConfiguration = import("./routingConfiguration").RoutingConfiguration;
+export const RoutingConfiguration: typeof import("./routingConfiguration").RoutingConfiguration = null as any;
+utilities.lazyLoad(exports, ["RoutingConfiguration"], () => require("./routingConfiguration"));
+
 export { RoutingIntentArgs } from "./routingIntent";
 export type RoutingIntent = import("./routingIntent").RoutingIntent;
 export const RoutingIntent: typeof import("./routingIntent").RoutingIntent = null as any;
@@ -1235,6 +1255,11 @@ export { ServiceEndpointPolicyDefinitionArgs } from "./serviceEndpointPolicyDefi
 export type ServiceEndpointPolicyDefinition = import("./serviceEndpointPolicyDefinition").ServiceEndpointPolicyDefinition;
 export const ServiceEndpointPolicyDefinition: typeof import("./serviceEndpointPolicyDefinition").ServiceEndpointPolicyDefinition = null as any;
 utilities.lazyLoad(exports, ["ServiceEndpointPolicyDefinition"], () => require("./serviceEndpointPolicyDefinition"));
+
+export { ServiceGatewayArgs } from "./serviceGateway";
+export type ServiceGateway = import("./serviceGateway").ServiceGateway;
+export const ServiceGateway: typeof import("./serviceGateway").ServiceGateway = null as any;
+utilities.lazyLoad(exports, ["ServiceGateway"], () => require("./serviceGateway"));
 
 export { StaticCidrArgs } from "./staticCidr";
 export type StaticCidr = import("./staticCidr").StaticCidr;
@@ -1300,6 +1325,11 @@ export { VirtualNetworkArgs } from "./virtualNetwork";
 export type VirtualNetwork = import("./virtualNetwork").VirtualNetwork;
 export const VirtualNetwork: typeof import("./virtualNetwork").VirtualNetwork = null as any;
 utilities.lazyLoad(exports, ["VirtualNetwork"], () => require("./virtualNetwork"));
+
+export { VirtualNetworkApplianceArgs } from "./virtualNetworkAppliance";
+export type VirtualNetworkAppliance = import("./virtualNetworkAppliance").VirtualNetworkAppliance;
+export const VirtualNetworkAppliance: typeof import("./virtualNetworkAppliance").VirtualNetworkAppliance = null as any;
+utilities.lazyLoad(exports, ["VirtualNetworkAppliance"], () => require("./virtualNetworkAppliance"));
 
 export { VirtualNetworkGatewayArgs } from "./virtualNetworkGateway";
 export type VirtualNetworkGateway = import("./virtualNetworkGateway").VirtualNetworkGateway;
@@ -1534,6 +1564,8 @@ const _module = {
                 return new RouteMap(name, <any>undefined, { urn })
             case "azure-native:network:RouteTable":
                 return new RouteTable(name, <any>undefined, { urn })
+            case "azure-native:network:RoutingConfiguration":
+                return new RoutingConfiguration(name, <any>undefined, { urn })
             case "azure-native:network:RoutingIntent":
                 return new RoutingIntent(name, <any>undefined, { urn })
             case "azure-native:network:RoutingRule":
@@ -1558,6 +1590,8 @@ const _module = {
                 return new ServiceEndpointPolicy(name, <any>undefined, { urn })
             case "azure-native:network:ServiceEndpointPolicyDefinition":
                 return new ServiceEndpointPolicyDefinition(name, <any>undefined, { urn })
+            case "azure-native:network:ServiceGateway":
+                return new ServiceGateway(name, <any>undefined, { urn })
             case "azure-native:network:StaticCidr":
                 return new StaticCidr(name, <any>undefined, { urn })
             case "azure-native:network:StaticMember":
@@ -1584,6 +1618,8 @@ const _module = {
                 return new VirtualHubRouteTableV2(name, <any>undefined, { urn })
             case "azure-native:network:VirtualNetwork":
                 return new VirtualNetwork(name, <any>undefined, { urn })
+            case "azure-native:network:VirtualNetworkAppliance":
+                return new VirtualNetworkAppliance(name, <any>undefined, { urn })
             case "azure-native:network:VirtualNetworkGateway":
                 return new VirtualNetworkGateway(name, <any>undefined, { urn })
             case "azure-native:network:VirtualNetworkGatewayConnection":

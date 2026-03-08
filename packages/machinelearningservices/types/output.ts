@@ -13,7 +13,11 @@ export interface AADAuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     createdByWorkspaceArmId: string;
+    error?: string;
     expiryTime?: string;
     /**
      * Group based on connection category
@@ -24,16 +28,11 @@ export interface AADAuthTypeWorkspaceConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
     sharedUserList?: string[];
     target?: string;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: string;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: string;
+    useWorkspaceManagedIdentity?: boolean;
 }
 
 /**
@@ -72,7 +71,7 @@ export interface AKSResponse {
     /**
      * AKS properties
      */
-    properties?: AKSSchemaResponseProperties;
+    properties?: AKSSchemaPropertiesResponse;
     /**
      * Errors during provisioning
      */
@@ -92,14 +91,14 @@ export interface AKSResponse {
 export function aksresponseProvideDefaults(val: AKSResponse): AKSResponse {
     return {
         ...val,
-        properties: (val.properties ? aksschemaResponsePropertiesProvideDefaults(val.properties) : undefined),
+        properties: (val.properties ? aksschemaPropertiesResponseProvideDefaults(val.properties) : undefined),
     };
 }
 
 /**
  * AKS properties
  */
-export interface AKSSchemaResponseProperties {
+export interface AKSSchemaPropertiesResponse {
     /**
      * Number of agents
      */
@@ -138,9 +137,9 @@ export interface AKSSchemaResponseProperties {
     systemServices: SystemServiceResponse[];
 }
 /**
- * aksschemaResponsePropertiesProvideDefaults sets the appropriate defaults for AKSSchemaResponseProperties
+ * aksschemaPropertiesResponseProvideDefaults sets the appropriate defaults for AKSSchemaPropertiesResponse
  */
-export function aksschemaResponsePropertiesProvideDefaults(val: AKSSchemaResponseProperties): AKSSchemaResponseProperties {
+export function aksschemaPropertiesResponseProvideDefaults(val: AKSSchemaPropertiesResponse): AKSSchemaPropertiesResponse {
     return {
         ...val,
         clusterPurpose: (val.clusterPurpose) ?? "FastProd",
@@ -158,8 +157,12 @@ export interface AccessKeyAuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     createdByWorkspaceArmId: string;
     credentials?: WorkspaceConnectionAccessKeyResponse;
+    error?: string;
     expiryTime?: string;
     /**
      * Group based on connection category
@@ -170,16 +173,11 @@ export interface AccessKeyAuthTypeWorkspaceConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
     sharedUserList?: string[];
     target?: string;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: string;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: string;
+    useWorkspaceManagedIdentity?: boolean;
 }
 
 export interface AccountApiKeysResponse {
@@ -200,8 +198,15 @@ export interface AccountKeyAuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     createdByWorkspaceArmId: string;
+    /**
+     * Account key object for workspace connection credential.
+     */
     credentials?: WorkspaceConnectionAccountKeyResponse;
+    error?: string;
     expiryTime?: string;
     /**
      * Group based on connection category
@@ -212,16 +217,11 @@ export interface AccountKeyAuthTypeWorkspaceConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
     sharedUserList?: string[];
     target?: string;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: string;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: string;
+    useWorkspaceManagedIdentity?: boolean;
 }
 
 /**
@@ -523,23 +523,23 @@ export interface AmlTokenResponse {
 /**
  * This connection type covers the generic ApiKey auth connection categories, for examples:
  * AzureOpenAI:
- *     Category:= AzureOpenAI
- *     AuthType:= ApiKey (as type discriminator)
- *     Credentials:= {ApiKey} as Microsoft.MachineLearning.AccountRP.Contracts.WorkspaceConnection.ApiKey
- *     Target:= {ApiBase}
- *             
+ * Category:= AzureOpenAI
+ * AuthType:= ApiKey (as type discriminator)
+ * Credentials:= {ApiKey} as Microsoft.MachineLearning.AccountRP.Contracts.WorkspaceConnection.ApiKey
+ * Target:= {ApiBase}
+ *
  * CognitiveService:
- *     Category:= CognitiveService
- *     AuthType:= ApiKey (as type discriminator)
- *     Credentials:= {SubscriptionKey} as Microsoft.MachineLearning.AccountRP.Contracts.WorkspaceConnection.ApiKey
- *     Target:= ServiceRegion={serviceRegion}
- *             
+ * Category:= CognitiveService
+ * AuthType:= ApiKey (as type discriminator)
+ * Credentials:= {SubscriptionKey} as Microsoft.MachineLearning.AccountRP.Contracts.WorkspaceConnection.ApiKey
+ * Target:= ServiceRegion={serviceRegion}
+ *
  * CognitiveSearch:
- *     Category:= CognitiveSearch
- *     AuthType:= ApiKey (as type discriminator)
- *     Credentials:= {Key} as Microsoft.MachineLearning.AccountRP.Contracts.WorkspaceConnection.ApiKey
- *     Target:= {Endpoint}
- *             
+ * Category:= CognitiveSearch
+ * AuthType:= ApiKey (as type discriminator)
+ * Credentials:= {Key} as Microsoft.MachineLearning.AccountRP.Contracts.WorkspaceConnection.ApiKey
+ * Target:= {Endpoint}
+ *
  * Use Metadata property bag for ApiType, ApiVersion, Kind and other metadata fields
  */
 export interface ApiKeyAuthWorkspaceConnectionPropertiesResponse {
@@ -552,11 +552,15 @@ export interface ApiKeyAuthWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     createdByWorkspaceArmId: string;
     /**
      * Api key object for workspace connection credential.
      */
     credentials?: WorkspaceConnectionApiKeyResponse;
+    error?: string;
     expiryTime?: string;
     /**
      * Group based on connection category
@@ -567,16 +571,11 @@ export interface ApiKeyAuthWorkspaceConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
     sharedUserList?: string[];
     target?: string;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: string;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: string;
+    useWorkspaceManagedIdentity?: boolean;
 }
 
 /**
@@ -1431,7 +1430,7 @@ export function banditPolicyResponseProvideDefaults(val: BanditPolicyResponse): 
 /**
  * Batch inference settings per deployment.
  */
-export interface BatchDeploymentResponse {
+export interface BatchDeploymentPropertiesResponse {
     /**
      * Code configuration for the endpoint deployment.
      */
@@ -1465,7 +1464,9 @@ export interface BatchDeploymentResponse {
      */
     errorThreshold?: number;
     /**
-     * Logging level for batch inference operation.
+     * Log verbosity for batch inferencing.
+     * Increasing verbosity order for logging is : Warning, Info and Debug.
+     * The default value is Info.
      */
     loggingLevel?: string;
     /**
@@ -1483,7 +1484,7 @@ export interface BatchDeploymentResponse {
      */
     model?: DataPathAssetReferenceResponse | IdAssetReferenceResponse | OutputPathAssetReferenceResponse;
     /**
-     * Indicates how the output will be organized.
+     * Enum to determine how batch inferencing will handle output
      */
     outputAction?: string;
     /**
@@ -1510,9 +1511,9 @@ export interface BatchDeploymentResponse {
     retrySettings?: BatchRetrySettingsResponse;
 }
 /**
- * batchDeploymentResponseProvideDefaults sets the appropriate defaults for BatchDeploymentResponse
+ * batchDeploymentPropertiesResponseProvideDefaults sets the appropriate defaults for BatchDeploymentPropertiesResponse
  */
-export function batchDeploymentResponseProvideDefaults(val: BatchDeploymentResponse): BatchDeploymentResponse {
+export function batchDeploymentPropertiesResponseProvideDefaults(val: BatchDeploymentPropertiesResponse): BatchDeploymentPropertiesResponse {
     return {
         ...val,
         errorThreshold: (val.errorThreshold) ?? -1,
@@ -1540,7 +1541,7 @@ export interface BatchEndpointDefaultsResponse {
 /**
  * Batch endpoint configuration.
  */
-export interface BatchEndpointResponse {
+export interface BatchEndpointPropertiesResponse {
     /**
      * [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
      */
@@ -1633,9 +1634,6 @@ export interface BayesianSamplingAlgorithmResponse {
     samplingAlgorithmType: "Bayesian";
 }
 
-/**
- * Describes the bind options for the container
- */
 export interface BindOptionsResponse {
     /**
      * Indicate whether to create host path.
@@ -1676,7 +1674,11 @@ export function buildContextResponseProvideDefaults(val: BuildContextResponse): 
     };
 }
 
-export interface CapabilityHostResponse {
+export interface CapabilityHostPropertiesResponse {
+    /**
+     * List of Aca Environment connections.
+     */
+    acaEnvironmentConnections?: string[];
     /**
      * List of AI services connections.
      */
@@ -1693,6 +1695,10 @@ export interface CapabilityHostResponse {
      * The asset description text.
      */
     description?: string;
+    /**
+     * List of messages containing errors.
+     */
+    messages: string[];
     /**
      * The asset property dictionary.
      */
@@ -1719,9 +1725,9 @@ export interface CapabilityHostResponse {
     vectorStoreConnections?: string[];
 }
 /**
- * capabilityHostResponseProvideDefaults sets the appropriate defaults for CapabilityHostResponse
+ * capabilityHostPropertiesResponseProvideDefaults sets the appropriate defaults for CapabilityHostPropertiesResponse
  */
-export function capabilityHostResponseProvideDefaults(val: CapabilityHostResponse): CapabilityHostResponse {
+export function capabilityHostPropertiesResponseProvideDefaults(val: CapabilityHostPropertiesResponse): CapabilityHostPropertiesResponse {
     return {
         ...val,
         capabilityHostKind: (val.capabilityHostKind) ?? "Agents",
@@ -1835,7 +1841,7 @@ export interface ClassificationResponse {
      */
     limitSettings?: TableVerticalLimitSettingsResponse;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: string;
     /**
@@ -1848,7 +1854,7 @@ export interface ClassificationResponse {
      */
     positiveLabel?: string;
     /**
-     * Primary metric for the task.
+     * Primary metrics for classification tasks.
      */
     primaryMetric?: string;
     /**
@@ -2033,7 +2039,7 @@ export interface CodeConfigurationResponse {
 /**
  * Container for code asset versions.
  */
-export interface CodeContainerResponse {
+export interface CodeContainerPropertiesResponse {
     /**
      * The asset description text.
      */
@@ -2064,9 +2070,9 @@ export interface CodeContainerResponse {
     tags?: {[key: string]: string};
 }
 /**
- * codeContainerResponseProvideDefaults sets the appropriate defaults for CodeContainerResponse
+ * codeContainerPropertiesResponseProvideDefaults sets the appropriate defaults for CodeContainerPropertiesResponse
  */
-export function codeContainerResponseProvideDefaults(val: CodeContainerResponse): CodeContainerResponse {
+export function codeContainerPropertiesResponseProvideDefaults(val: CodeContainerPropertiesResponse): CodeContainerPropertiesResponse {
     return {
         ...val,
         isArchived: (val.isArchived) ?? false,
@@ -2076,7 +2082,7 @@ export function codeContainerResponseProvideDefaults(val: CodeContainerResponse)
 /**
  * Code asset version details.
  */
-export interface CodeVersionResponse {
+export interface CodeVersionPropertiesResponse {
     /**
      * Uri where code is located
      */
@@ -2107,9 +2113,9 @@ export interface CodeVersionResponse {
     tags?: {[key: string]: string};
 }
 /**
- * codeVersionResponseProvideDefaults sets the appropriate defaults for CodeVersionResponse
+ * codeVersionPropertiesResponseProvideDefaults sets the appropriate defaults for CodeVersionPropertiesResponse
  */
-export function codeVersionResponseProvideDefaults(val: CodeVersionResponse): CodeVersionResponse {
+export function codeVersionPropertiesResponseProvideDefaults(val: CodeVersionPropertiesResponse): CodeVersionPropertiesResponse {
     return {
         ...val,
         isAnonymous: (val.isAnonymous) ?? false,
@@ -2305,7 +2311,7 @@ export function commandJobResponseProvideDefaults(val: CommandJobResponse): Comm
  * Component container definition.
  * <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
  */
-export interface ComponentContainerResponse {
+export interface ComponentContainerPropertiesResponse {
     /**
      * The asset description text.
      */
@@ -2336,9 +2342,9 @@ export interface ComponentContainerResponse {
     tags?: {[key: string]: string};
 }
 /**
- * componentContainerResponseProvideDefaults sets the appropriate defaults for ComponentContainerResponse
+ * componentContainerPropertiesResponseProvideDefaults sets the appropriate defaults for ComponentContainerPropertiesResponse
  */
-export function componentContainerResponseProvideDefaults(val: ComponentContainerResponse): ComponentContainerResponse {
+export function componentContainerPropertiesResponseProvideDefaults(val: ComponentContainerPropertiesResponse): ComponentContainerPropertiesResponse {
     return {
         ...val,
         isArchived: (val.isArchived) ?? false,
@@ -2348,7 +2354,7 @@ export function componentContainerResponseProvideDefaults(val: ComponentContaine
 /**
  * Definition of a component version: defines resources that span component types.
  */
-export interface ComponentVersionResponse {
+export interface ComponentVersionPropertiesResponse {
     /**
      * Defines Component definition details.
      * <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
@@ -2380,9 +2386,9 @@ export interface ComponentVersionResponse {
     tags?: {[key: string]: string};
 }
 /**
- * componentVersionResponseProvideDefaults sets the appropriate defaults for ComponentVersionResponse
+ * componentVersionPropertiesResponseProvideDefaults sets the appropriate defaults for ComponentVersionPropertiesResponse
  */
-export function componentVersionResponseProvideDefaults(val: ComponentVersionResponse): ComponentVersionResponse {
+export function componentVersionPropertiesResponseProvideDefaults(val: ComponentVersionPropertiesResponse): ComponentVersionPropertiesResponse {
     return {
         ...val,
         isAnonymous: (val.isAnonymous) ?? false,
@@ -2514,6 +2520,10 @@ export interface ComputeInstanceDataMountResponse {
      */
     mountAction?: string;
     /**
+     * Mount Mode.
+     */
+    mountMode?: string;
+    /**
      * name of the ComputeInstance data mount.
      */
     mountName?: string;
@@ -2620,9 +2630,17 @@ export interface ComputeInstancePropertiesResponse {
      */
     enableNodePublicIp?: boolean;
     /**
+     * Enable SSO (single sign on). Possible values are: true, false.
+     */
+    enableSSO?: boolean;
+    /**
      * Collection of errors encountered on this ComputeInstance.
      */
     errors: ErrorResponseResponse[];
+    /**
+     * Stops compute instance after user defined period of inactivity. Time is defined in ISO8601 format. Minimum is 15 min, maximum is 3 days.
+     */
+    idleTimeBeforeShutdown?: string;
     /**
      * The last operation on ComputeInstance.
      */
@@ -2672,6 +2690,7 @@ export function computeInstancePropertiesResponseProvideDefaults(val: ComputeIns
         ...val,
         applicationSharingPolicy: (val.applicationSharingPolicy) ?? "Shared",
         computeInstanceAuthorizationType: (val.computeInstanceAuthorizationType) ?? "personal",
+        enableSSO: (val.enableSSO) ?? true,
         sshSettings: (val.sshSettings ? computeInstanceSshSettingsResponseProvideDefaults(val.sshSettings) : undefined),
     };
 }
@@ -2796,9 +2815,6 @@ export interface ComputeRecurrenceScheduleResponse {
     weekDays?: string[];
 }
 
-/**
- * Compute runtime config for feature store type workspace.
- */
 export interface ComputeRuntimeDtoResponse {
     sparkRuntimeVersion?: string;
 }
@@ -2930,9 +2946,6 @@ export interface ContentSafetyResponse {
 }
 
 export interface CosmosDbSettingsResponse {
-    /**
-     * The throughput of the collections in cosmosdb database
-     */
     collectionsThroughput?: number;
 }
 
@@ -3053,11 +3066,15 @@ export interface CustomKeysWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     createdByWorkspaceArmId: string;
     /**
      * Custom Keys credential object
      */
     credentials?: CustomKeysResponse;
+    error?: string;
     expiryTime?: string;
     /**
      * Group based on connection category
@@ -3068,16 +3085,11 @@ export interface CustomKeysWorkspaceConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
     sharedUserList?: string[];
     target?: string;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: string;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: string;
+    useWorkspaceManagedIdentity?: boolean;
 }
 
 export interface CustomMetricThresholdResponse {
@@ -3102,7 +3114,7 @@ export interface CustomModelJobInputResponse {
      */
     jobInputType: "custom_model";
     /**
-     * Input Asset Delivery Mode.
+     * Enum to determine the input data delivery mode.
      */
     mode?: string;
     /**
@@ -3122,6 +3134,10 @@ export function customModelJobInputResponseProvideDefaults(val: CustomModelJobIn
 
 export interface CustomModelJobOutputResponse {
     /**
+     * Output Asset Name.
+     */
+    assetName?: string;
+    /**
      * Description for the output.
      */
     description?: string;
@@ -3131,7 +3147,7 @@ export interface CustomModelJobOutputResponse {
      */
     jobOutputType: "custom_model";
     /**
-     * Output Asset Delivery Mode.
+     * Output data delivery mode enums.
      */
     mode?: string;
     /**
@@ -3229,6 +3245,10 @@ export interface CustomServiceResponse {
      */
     image?: ImageResponse;
     /**
+     * Describes the jupyter kernel settings for the image if its a custom environment
+     */
+    kernel?: JupyterKernelConfigResponse;
+    /**
      * Name of the Custom Service
      */
     name?: string;
@@ -3302,7 +3322,7 @@ export function dataCollectorResponseProvideDefaults(val: DataCollectorResponse)
 /**
  * Container for data asset versions.
  */
-export interface DataContainerResponse {
+export interface DataContainerPropertiesResponse {
     /**
      * [Required] Specifies the type of data.
      */
@@ -3333,9 +3353,9 @@ export interface DataContainerResponse {
     tags?: {[key: string]: string};
 }
 /**
- * dataContainerResponseProvideDefaults sets the appropriate defaults for DataContainerResponse
+ * dataContainerPropertiesResponseProvideDefaults sets the appropriate defaults for DataContainerPropertiesResponse
  */
-export function dataContainerResponseProvideDefaults(val: DataContainerResponse): DataContainerResponse {
+export function dataContainerPropertiesResponseProvideDefaults(val: DataContainerPropertiesResponse): DataContainerPropertiesResponse {
     return {
         ...val,
         isArchived: (val.isArchived) ?? false,
@@ -3471,7 +3491,7 @@ export interface DataLakeAnalyticsResponse {
      * The time at which the compute was last modified.
      */
     modifiedOn: string;
-    properties?: DataLakeAnalyticsSchemaResponseProperties;
+    properties?: DataLakeAnalyticsSchemaPropertiesResponse;
     /**
      * Errors during provisioning
      */
@@ -3486,7 +3506,7 @@ export interface DataLakeAnalyticsResponse {
     resourceId?: string;
 }
 
-export interface DataLakeAnalyticsSchemaResponseProperties {
+export interface DataLakeAnalyticsSchemaPropertiesResponse {
     /**
      * DataLake Store Account Name
      */
@@ -3624,6 +3644,20 @@ export interface DatabricksResponse {
      * ARM resource id of the underlying compute
      */
     resourceId?: string;
+}
+
+/**
+ * Dataset reference object.
+ */
+export interface DatasetReferenceResponse {
+    /**
+     * The fully qualified ARM id of the dataset reference.
+     */
+    id?: string;
+    /**
+     * The name of the dataset reference.
+     */
+    name?: string;
 }
 
 /**
@@ -4030,9 +4064,6 @@ export interface DockerImageResponse {
     platform?: DockerImagePlatformResponse;
 }
 
-/**
- * Docker container configuration
- */
 export interface DockerResponse {
     /**
      * Indicate whether container shall run in privileged or non-privileged mode.
@@ -4040,34 +4071,34 @@ export interface DockerResponse {
     privileged?: boolean;
 }
 
-export interface EncryptionKeyVaultPropertiesResponse {
-    /**
-     * For future use - The client id of the identity which will be used to access key vault.
-     */
-    identityClientId?: string;
-    /**
-     * Key vault uri to access the encryption key.
-     */
-    keyIdentifier: string;
-    /**
-     * The ArmId of the keyVault where the customer owned encryption key is present.
-     */
-    keyVaultArmId: string;
-}
-
 export interface EncryptionPropertyResponse {
     /**
-     * The identity that will be used to access the key vault for encryption at rest.
+     * The byok cosmosdb account that customer brings to store customer's data
+     * with encryption
+     */
+    cosmosDbResourceId?: string;
+    /**
+     * Identity to be used with the keyVault
      */
     identity?: IdentityForCmkResponse;
     /**
-     * Customer Key vault properties.
+     * KeyVault details to do the encryption
      */
-    keyVaultProperties: EncryptionKeyVaultPropertiesResponse;
+    keyVaultProperties: KeyVaultPropertiesResponse;
+    /**
+     * The byok search account that customer brings to store customer's data
+     * with encryption
+     */
+    searchAccountResourceId?: string;
     /**
      * Indicates whether or not the encryption is enabled for the workspace.
      */
     status: string;
+    /**
+     * The byok storage account that customer brings to store customer's data
+     * with encryption
+     */
+    storageAccountResourceId?: string;
 }
 
 export interface EndpointDeploymentModelResponse {
@@ -4211,9 +4242,6 @@ export interface EndpointModelSkuRateLimitRulePropertiesResponse {
     renewalPeriod?: number;
 }
 
-/**
- * Describes the endpoint configuration for the container
- */
 export interface EndpointResponse {
     /**
      * Host IP over which the application is exposed from the container
@@ -4262,7 +4290,7 @@ export interface EndpointScheduleActionResponse {
 /**
  * Container for environment specification versions.
  */
-export interface EnvironmentContainerResponse {
+export interface EnvironmentContainerPropertiesResponse {
     /**
      * The asset description text.
      */
@@ -4293,9 +4321,9 @@ export interface EnvironmentContainerResponse {
     tags?: {[key: string]: string};
 }
 /**
- * environmentContainerResponseProvideDefaults sets the appropriate defaults for EnvironmentContainerResponse
+ * environmentContainerPropertiesResponseProvideDefaults sets the appropriate defaults for EnvironmentContainerPropertiesResponse
  */
-export function environmentContainerResponseProvideDefaults(val: EnvironmentContainerResponse): EnvironmentContainerResponse {
+export function environmentContainerPropertiesResponseProvideDefaults(val: EnvironmentContainerPropertiesResponse): EnvironmentContainerPropertiesResponse {
     return {
         ...val,
         isArchived: (val.isArchived) ?? false,
@@ -4343,9 +4371,6 @@ export interface EnvironmentSpecificationVersionResponse {
     tags?: {[key: string]: string};
 }
 
-/**
- * Environment Variables for the container
- */
 export interface EnvironmentVariableResponse {
     /**
      * Type of the Environment Variable. Possible values are: local - For local variable
@@ -4369,9 +4394,9 @@ export function environmentVariableResponseProvideDefaults(val: EnvironmentVaria
 /**
  * Environment version details.
  */
-export interface EnvironmentVersionResponse {
+export interface EnvironmentVersionPropertiesResponse {
     /**
-     * Defines if image needs to be rebuilt based on base image changes.
+     * AutoRebuild setting for the derived image
      */
     autoRebuild?: string;
     /**
@@ -4410,7 +4435,7 @@ export interface EnvironmentVersionResponse {
      */
     isArchived?: boolean;
     /**
-     * The OS type of the environment.
+     * The type of operating system.
      */
     osType?: string;
     /**
@@ -4431,9 +4456,9 @@ export interface EnvironmentVersionResponse {
     tags?: {[key: string]: string};
 }
 /**
- * environmentVersionResponseProvideDefaults sets the appropriate defaults for EnvironmentVersionResponse
+ * environmentVersionPropertiesResponseProvideDefaults sets the appropriate defaults for EnvironmentVersionPropertiesResponse
  */
-export function environmentVersionResponseProvideDefaults(val: EnvironmentVersionResponse): EnvironmentVersionResponse {
+export function environmentVersionPropertiesResponseProvideDefaults(val: EnvironmentVersionPropertiesResponse): EnvironmentVersionPropertiesResponse {
     return {
         ...val,
         autoRebuild: (val.autoRebuild) ?? "Disabled",
@@ -4637,13 +4662,7 @@ export function featureResponseProvideDefaults(val: FeatureResponse): FeatureRes
     };
 }
 
-/**
- * Settings for feature store type workspace.
- */
 export interface FeatureStoreSettingsResponse {
-    /**
-     * Compute runtime config for feature store type workspace.
-     */
     computeRuntime?: ComputeRuntimeDtoResponse;
     offlineStoreConnectionName?: string;
     onlineStoreConnectionName?: string;
@@ -4678,7 +4697,7 @@ export interface FeatureWindowResponse {
 /**
  * DTO object representing feature set
  */
-export interface FeaturesetContainerResponse {
+export interface FeaturesetContainerPropertiesResponse {
     /**
      * The asset description text.
      */
@@ -4709,9 +4728,9 @@ export interface FeaturesetContainerResponse {
     tags?: {[key: string]: string};
 }
 /**
- * featuresetContainerResponseProvideDefaults sets the appropriate defaults for FeaturesetContainerResponse
+ * featuresetContainerPropertiesResponseProvideDefaults sets the appropriate defaults for FeaturesetContainerPropertiesResponse
  */
-export function featuresetContainerResponseProvideDefaults(val: FeaturesetContainerResponse): FeaturesetContainerResponse {
+export function featuresetContainerPropertiesResponseProvideDefaults(val: FeaturesetContainerPropertiesResponse): FeaturesetContainerPropertiesResponse {
     return {
         ...val,
         isArchived: (val.isArchived) ?? false,
@@ -4783,7 +4802,7 @@ export interface FeaturesetSpecificationResponse {
 /**
  * DTO object representing feature set version
  */
-export interface FeaturesetVersionResponse {
+export interface FeaturesetVersionPropertiesResponse {
     /**
      * The asset description text.
      */
@@ -4826,9 +4845,9 @@ export interface FeaturesetVersionResponse {
     tags?: {[key: string]: string};
 }
 /**
- * featuresetVersionResponseProvideDefaults sets the appropriate defaults for FeaturesetVersionResponse
+ * featuresetVersionPropertiesResponseProvideDefaults sets the appropriate defaults for FeaturesetVersionPropertiesResponse
  */
-export function featuresetVersionResponseProvideDefaults(val: FeaturesetVersionResponse): FeaturesetVersionResponse {
+export function featuresetVersionPropertiesResponseProvideDefaults(val: FeaturesetVersionPropertiesResponse): FeaturesetVersionPropertiesResponse {
     return {
         ...val,
         isAnonymous: (val.isAnonymous) ?? false,
@@ -4840,7 +4859,7 @@ export function featuresetVersionResponseProvideDefaults(val: FeaturesetVersionR
 /**
  * DTO object representing feature entity
  */
-export interface FeaturestoreEntityContainerResponse {
+export interface FeaturestoreEntityContainerPropertiesResponse {
     /**
      * The asset description text.
      */
@@ -4871,9 +4890,9 @@ export interface FeaturestoreEntityContainerResponse {
     tags?: {[key: string]: string};
 }
 /**
- * featurestoreEntityContainerResponseProvideDefaults sets the appropriate defaults for FeaturestoreEntityContainerResponse
+ * featurestoreEntityContainerPropertiesResponseProvideDefaults sets the appropriate defaults for FeaturestoreEntityContainerPropertiesResponse
  */
-export function featurestoreEntityContainerResponseProvideDefaults(val: FeaturestoreEntityContainerResponse): FeaturestoreEntityContainerResponse {
+export function featurestoreEntityContainerPropertiesResponseProvideDefaults(val: FeaturestoreEntityContainerPropertiesResponse): FeaturestoreEntityContainerPropertiesResponse {
     return {
         ...val,
         isArchived: (val.isArchived) ?? false,
@@ -4883,7 +4902,7 @@ export function featurestoreEntityContainerResponseProvideDefaults(val: Features
 /**
  * DTO object representing feature entity version
  */
-export interface FeaturestoreEntityVersionResponse {
+export interface FeaturestoreEntityVersionPropertiesResponse {
     /**
      * The asset description text.
      */
@@ -4918,9 +4937,9 @@ export interface FeaturestoreEntityVersionResponse {
     tags?: {[key: string]: string};
 }
 /**
- * featurestoreEntityVersionResponseProvideDefaults sets the appropriate defaults for FeaturestoreEntityVersionResponse
+ * featurestoreEntityVersionPropertiesResponseProvideDefaults sets the appropriate defaults for FeaturestoreEntityVersionPropertiesResponse
  */
-export function featurestoreEntityVersionResponseProvideDefaults(val: FeaturestoreEntityVersionResponse): FeaturestoreEntityVersionResponse {
+export function featurestoreEntityVersionPropertiesResponseProvideDefaults(val: FeaturestoreEntityVersionPropertiesResponse): FeaturestoreEntityVersionPropertiesResponse {
     return {
         ...val,
         isAnonymous: (val.isAnonymous) ?? false,
@@ -4983,7 +5002,7 @@ export interface ForecastingResponse {
      */
     limitSettings?: TableVerticalLimitSettingsResponse;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: string;
     /**
@@ -4992,7 +5011,7 @@ export interface ForecastingResponse {
      */
     nCrossValidations?: AutoNCrossValidationsResponse | CustomNCrossValidationsResponse;
     /**
-     * Primary metric for forecasting task.
+     * Primary metrics for Forecasting task.
      */
     primaryMetric?: string;
     /**
@@ -5072,7 +5091,7 @@ export interface ForecastingSettingsResponse {
      */
     cvStepSize?: number;
     /**
-     * Flag for generating lags for the numeric features with 'auto' or null.
+     * Flag for generating lags for the numeric features.
      */
     featureLags?: string;
     /**
@@ -5093,8 +5112,7 @@ export interface ForecastingSettingsResponse {
      */
     shortSeriesHandlingConfig?: string;
     /**
-     * The function to be used to aggregate the time series target column to conform to a user specified frequency.
-     * If the TargetAggregateFunction is set i.e. not 'None', but the freq parameter is not set, the error is raised. The possible target aggregation functions are: "sum", "max", "min" and "mean".
+     * Target aggregate function.
      */
     targetAggregateFunction?: string;
     /**
@@ -5372,11 +5390,11 @@ export interface IdAssetReferenceResponse {
 }
 
 /**
- * Identity that will be used to access key vault for encryption at rest
+ * Identity object used for encryption.
  */
 export interface IdentityForCmkResponse {
     /**
-     * The ArmId of the user assigned identity that will be used to access the customer managed key vault
+     * UserAssignedIdentity to be used to fetch the encryption key from keyVault
      */
     userAssignedIdentity?: string;
 }
@@ -5413,7 +5431,7 @@ export interface ImageClassificationMultilabelResponse {
      */
     limitSettings: ImageLimitSettingsResponse;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: string;
     /**
@@ -5421,7 +5439,7 @@ export interface ImageClassificationMultilabelResponse {
      */
     modelSettings?: ImageModelSettingsClassificationResponse;
     /**
-     * Primary metric to optimize for this task.
+     * Primary metrics for classification multilabel tasks.
      */
     primaryMetric?: string;
     /**
@@ -5482,7 +5500,7 @@ export interface ImageClassificationResponse {
      */
     limitSettings: ImageLimitSettingsResponse;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: string;
     /**
@@ -5490,7 +5508,7 @@ export interface ImageClassificationResponse {
      */
     modelSettings?: ImageModelSettingsClassificationResponse;
     /**
-     * Primary metric to optimize for this task.
+     * Primary metrics for classification tasks.
      */
     primaryMetric?: string;
     /**
@@ -5551,7 +5569,7 @@ export interface ImageInstanceSegmentationResponse {
      */
     limitSettings: ImageLimitSettingsResponse;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: string;
     /**
@@ -5559,7 +5577,7 @@ export interface ImageInstanceSegmentationResponse {
      */
     modelSettings?: ImageModelSettingsObjectDetectionResponse;
     /**
-     * Primary metric to optimize for this task.
+     * Primary metrics for InstanceSegmentation tasks.
      */
     primaryMetric?: string;
     /**
@@ -5655,6 +5673,10 @@ export interface ImageMetadataResponse {
      * Specifies the latest available operating system image version.
      */
     latestImageVersion?: string;
+    /**
+     * Metadata about the os patching.
+     */
+    osPatchingStatus: OsPatchingStatusResponse;
 }
 
 /**
@@ -6102,7 +6124,7 @@ export interface ImageModelSettingsClassificationResponse {
      */
     learningRate?: number;
     /**
-     * Type of learning rate scheduler. Must be 'warmup_cosine' or 'step'.
+     * Learning rate scheduler enum.
      */
     learningRateScheduler?: string;
     /**
@@ -6128,7 +6150,7 @@ export interface ImageModelSettingsClassificationResponse {
      */
     numberOfWorkers?: number;
     /**
-     * Type of optimizer.
+     * Stochastic optimizer for image models.
      */
     optimizer?: string;
     /**
@@ -6291,7 +6313,7 @@ export interface ImageModelSettingsObjectDetectionResponse {
      */
     learningRate?: number;
     /**
-     * Type of learning rate scheduler. Must be 'warmup_cosine' or 'step'.
+     * Learning rate scheduler enum.
      */
     learningRateScheduler?: string;
     /**
@@ -6313,9 +6335,7 @@ export interface ImageModelSettingsObjectDetectionResponse {
      */
     modelName?: string;
     /**
-     * Model size. Must be 'small', 'medium', 'large', or 'xlarge'.
-     * Note: training run may get into CUDA OOM if the model size is too big.
-     * Note: This settings is only supported for the 'yolov5' algorithm.
+     * Image model size.
      */
     modelSize?: string;
     /**
@@ -6345,7 +6365,7 @@ export interface ImageModelSettingsObjectDetectionResponse {
      */
     numberOfWorkers?: number;
     /**
-     * Type of optimizer.
+     * Stochastic optimizer for image models.
      */
     optimizer?: string;
     /**
@@ -6390,7 +6410,7 @@ export interface ImageModelSettingsObjectDetectionResponse {
      */
     validationIouThreshold?: number;
     /**
-     * Metric computation method to use for validation metrics.
+     * Metric computation method to use for validation metrics in image tasks.
      */
     validationMetricType?: string;
     /**
@@ -6430,7 +6450,7 @@ export interface ImageObjectDetectionResponse {
      */
     limitSettings: ImageLimitSettingsResponse;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: string;
     /**
@@ -6438,7 +6458,7 @@ export interface ImageObjectDetectionResponse {
      */
     modelSettings?: ImageModelSettingsObjectDetectionResponse;
     /**
-     * Primary metric to optimize for this task.
+     * Primary metrics for Image ObjectDetection task.
      */
     primaryMetric?: string;
     /**
@@ -6489,18 +6509,19 @@ export function imageObjectDetectionResponseProvideDefaults(val: ImageObjectDete
     };
 }
 
-/**
- * Describes the Image Specifications
- */
 export interface ImageResponse {
     /**
-     * Image reference
+     * Image reference URL if type is docker. Environment name if type is azureml
      */
     reference?: string;
     /**
-     * Type of the image. Possible values are: docker - For docker images. azureml - For AzureML images
+     * Type of the image. Possible values are: docker - For docker images. azureml - For AzureML Environment images (custom and curated)
      */
     type?: string;
+    /**
+     * Version of image being used. If latest then skip this field
+     */
+    version?: string;
 }
 /**
  * imageResponseProvideDefaults sets the appropriate defaults for ImageResponse
@@ -6686,23 +6707,9 @@ export function inferencePoolResponseProvideDefaults(val: InferencePoolResponse)
 }
 
 /**
- * Instance type schema.
- */
-export interface InstanceTypeSchemaResponse {
-    /**
-     * Node Selector
-     */
-    nodeSelector?: {[key: string]: string};
-    /**
-     * Resource requests/limits for this instance type
-     */
-    resources?: InstanceTypeSchemaResponseResources;
-}
-
-/**
  * Resource requests/limits for this instance type
  */
-export interface InstanceTypeSchemaResponseResources {
+export interface InstanceTypeSchemaResourcesResponse {
     /**
      * Resource limits for this instance type
      */
@@ -6713,11 +6720,29 @@ export interface InstanceTypeSchemaResponseResources {
     requests?: {[key: string]: string};
 }
 
+/**
+ * Instance type schema.
+ */
+export interface InstanceTypeSchemaResponse {
+    /**
+     * Node Selector
+     */
+    nodeSelector?: {[key: string]: string};
+    /**
+     * Resource requests/limits for this instance type
+     */
+    resources?: InstanceTypeSchemaResourcesResponse;
+}
+
 export interface JobResourceConfigurationResponse {
     /**
      * Extra arguments to pass to the Docker run command. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
      */
     dockerArgs?: string;
+    /**
+     * Extra arguments to pass to the Docker run command, as a collection. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
+     */
+    dockerArgsList?: string[];
     /**
      * Optional number of instances or nodes used by the compute target.
      */
@@ -6755,7 +6780,7 @@ export interface JobScheduleActionResponse {
     /**
      * [Required] Defines Schedule action definition details.
      */
-    jobBaseProperties: AutoMLJobResponse | CommandJobResponse | PipelineJobResponse | SparkJobResponse | SweepJobResponse;
+    jobDefinition: AutoMLJobResponse | CommandJobResponse | PipelineJobResponse | SparkJobResponse | SweepJobResponse;
 }
 
 /**
@@ -6794,6 +6819,43 @@ export interface JobServiceResponse {
 }
 
 /**
+ * Jupyter kernel configuration.
+ */
+export interface JupyterKernelConfigResponse {
+    /**
+     * Argument to the the runtime
+     */
+    argv?: string[];
+    /**
+     * Display name of the kernel
+     */
+    displayName?: string;
+    /**
+     * Language of the kernel [Example value: python]
+     */
+    language?: string;
+}
+
+/**
+ * Customer Key vault properties.
+ */
+export interface KeyVaultPropertiesResponse {
+    /**
+     * Currently, we support only SystemAssigned MSI.
+     * We need this when we support UserAssignedIdentities
+     */
+    identityClientId?: string;
+    /**
+     * KeyVault key identifier to encrypt the data
+     */
+    keyIdentifier: string;
+    /**
+     * KeyVault Arm Id that contains the data encryption key
+     */
+    keyVaultArmId: string;
+}
+
+/**
  * Properties specific to a KubernetesOnlineDeployment.
  */
 export interface KubernetesOnlineDeploymentResponse {
@@ -6818,7 +6880,7 @@ export interface KubernetesOnlineDeploymentResponse {
      */
     description?: string;
     /**
-     * If Enabled, allow egress public network access. If Disabled, this will create secure egress. Default: Enabled.
+     * Enum to determine whether PublicNetworkAccess is Enabled or Disabled for egress of a deployment.
      */
     egressPublicNetworkAccess?: string;
     /**
@@ -7307,7 +7369,13 @@ export interface LinkedWorkspacePropsResponse {
 }
 
 export interface ListNotebookKeysResultResponse {
+    /**
+     * The primary access key of the Notebook
+     */
     primaryAccessKey: string;
+    /**
+     * The secondary access key of the Notebook
+     */
     secondaryAccessKey: string;
 }
 
@@ -7371,7 +7439,7 @@ export interface MLFlowModelJobInputResponse {
      */
     jobInputType: "mlflow_model";
     /**
-     * Input Asset Delivery Mode.
+     * Enum to determine the input data delivery mode.
      */
     mode?: string;
     /**
@@ -7391,6 +7459,10 @@ export function mlflowModelJobInputResponseProvideDefaults(val: MLFlowModelJobIn
 
 export interface MLFlowModelJobOutputResponse {
     /**
+     * Output Asset Name.
+     */
+    assetName?: string;
+    /**
      * Description for the output.
      */
     description?: string;
@@ -7400,7 +7472,7 @@ export interface MLFlowModelJobOutputResponse {
      */
     jobOutputType: "mlflow_model";
     /**
-     * Output Asset Delivery Mode.
+     * Output data delivery mode enums.
      */
     mode?: string;
     /**
@@ -7478,7 +7550,7 @@ export interface MLTableJobInputResponse {
      */
     jobInputType: "mltable";
     /**
-     * Input Asset Delivery Mode.
+     * Enum to determine the input data delivery mode.
      */
     mode?: string;
     /**
@@ -7498,6 +7570,10 @@ export function mltableJobInputResponseProvideDefaults(val: MLTableJobInputRespo
 
 export interface MLTableJobOutputResponse {
     /**
+     * Output Asset Name.
+     */
+    assetName?: string;
+    /**
      * Description for the output.
      */
     description?: string;
@@ -7507,7 +7583,7 @@ export interface MLTableJobOutputResponse {
      */
     jobOutputType: "mltable";
     /**
-     * Output Asset Delivery Mode.
+     * Output data delivery mode enums.
      */
     mode?: string;
     /**
@@ -7550,8 +7626,12 @@ export interface ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     createdByWorkspaceArmId: string;
     credentials?: WorkspaceConnectionManagedIdentityResponse;
+    error?: string;
     expiryTime?: string;
     /**
      * Group based on connection category
@@ -7562,16 +7642,11 @@ export interface ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
     sharedUserList?: string[];
     target?: string;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: string;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: string;
+    useWorkspaceManagedIdentity?: boolean;
 }
 
 /**
@@ -7613,17 +7688,13 @@ export interface ManagedNetworkProvisionStatusResponse {
  */
 export interface ManagedNetworkSettingsResponse {
     /**
-     * A flag to indicate if monitoring needs to be enabled for the managed network firewall.
-     */
-    enableFirewallLog?: boolean;
-    /**
      * A flag to indicate if monitoring needs to be enabled for the managed network.
      */
     enableNetworkMonitor?: boolean;
     /**
      * Public IP address assigned to the Azure Firewall.
      */
-    firewallPublicIpAddress?: string;
+    firewallPublicIpAddress: string;
     /**
      * Firewall Sku used for FQDN Rules
      */
@@ -7637,6 +7708,9 @@ export interface ManagedNetworkSettingsResponse {
      */
     managedNetworkKind?: string;
     networkId: string;
+    /**
+     * Dictionary of <OutboundRule>
+     */
     outboundRules?: {[key: string]: FqdnOutboundRuleResponse | PrivateEndpointOutboundRuleResponse | ServiceTagOutboundRuleResponse};
     /**
      * Status of the Provisioning for the managed network of a machine learning workspace.
@@ -7649,7 +7723,6 @@ export interface ManagedNetworkSettingsResponse {
 export function managedNetworkSettingsResponseProvideDefaults(val: ManagedNetworkSettingsResponse): ManagedNetworkSettingsResponse {
     return {
         ...val,
-        enableFirewallLog: (val.enableFirewallLog) ?? false,
         enableNetworkMonitor: (val.enableNetworkMonitor) ?? false,
     };
 }
@@ -7675,7 +7748,7 @@ export interface ManagedOnlineDeploymentResponse {
      */
     description?: string;
     /**
-     * If Enabled, allow egress public network access. If Disabled, this will create secure egress. Default: Enabled.
+     * Enum to determine whether PublicNetworkAccess is Enabled or Disabled for egress of a deployment.
      */
     egressPublicNetworkAccess?: string;
     /**
@@ -7777,7 +7850,7 @@ export interface ManagedResourceGroupAssignedIdentitiesResponse {
     /**
      * Identity principal Id
      */
-    principalId: string;
+    principalId?: string;
 }
 
 /**
@@ -7827,7 +7900,7 @@ export interface MarketplacePlanResponse {
     publisherId: string;
 }
 
-export interface MarketplaceSubscriptionResponse {
+export interface MarketplaceSubscriptionPropertiesResponse {
     /**
      * Marketplace Plan associated with the Marketplace Subscription.
      */
@@ -7918,7 +7991,7 @@ export function medianStoppingPolicyResponseProvideDefaults(val: MedianStoppingP
     };
 }
 
-export interface ModelContainerResponse {
+export interface ModelContainerPropertiesResponse {
     /**
      * The asset description text.
      */
@@ -7949,9 +8022,9 @@ export interface ModelContainerResponse {
     tags?: {[key: string]: string};
 }
 /**
- * modelContainerResponseProvideDefaults sets the appropriate defaults for ModelContainerResponse
+ * modelContainerPropertiesResponseProvideDefaults sets the appropriate defaults for ModelContainerPropertiesResponse
  */
-export function modelContainerResponseProvideDefaults(val: ModelContainerResponse): ModelContainerResponse {
+export function modelContainerPropertiesResponseProvideDefaults(val: ModelContainerPropertiesResponse): ModelContainerPropertiesResponse {
     return {
         ...val,
         isArchived: (val.isArchived) ?? false,
@@ -7968,7 +8041,11 @@ export interface ModelSettingsResponse {
 /**
  * Model asset version details.
  */
-export interface ModelVersionResponse {
+export interface ModelVersionPropertiesResponse {
+    /**
+     * Array of dataset references
+     */
+    datasets?: DatasetReferenceResponse[];
     /**
      * The asset description text.
      */
@@ -8015,9 +8092,9 @@ export interface ModelVersionResponse {
     tags?: {[key: string]: string};
 }
 /**
- * modelVersionResponseProvideDefaults sets the appropriate defaults for ModelVersionResponse
+ * modelVersionPropertiesResponseProvideDefaults sets the appropriate defaults for ModelVersionPropertiesResponse
  */
-export function modelVersionResponseProvideDefaults(val: ModelVersionResponse): ModelVersionResponse {
+export function modelVersionPropertiesResponseProvideDefaults(val: ModelVersionPropertiesResponse): ModelVersionPropertiesResponse {
     return {
         ...val,
         isAnonymous: (val.isAnonymous) ?? false,
@@ -8197,7 +8274,11 @@ export interface NoneAuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     createdByWorkspaceArmId: string;
+    error?: string;
     expiryTime?: string;
     /**
      * Group based on connection category
@@ -8208,16 +8289,11 @@ export interface NoneAuthTypeWorkspaceConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
     sharedUserList?: string[];
     target?: string;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: string;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: string;
+    useWorkspaceManagedIdentity?: boolean;
 }
 
 /**
@@ -8238,6 +8314,7 @@ export interface NotebookPreparationErrorResponse {
 
 export interface NotebookResourceInfoResponse {
     fqdn?: string;
+    isPrivateLinkEnabled?: boolean;
     /**
      * The error that occurs when preparing notebook.
      */
@@ -8324,12 +8401,16 @@ export interface OAuth2AuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     createdByWorkspaceArmId: string;
     /**
      * ClientId and ClientSecret are required. Other properties are optional
      * depending on each OAuth2 provider's implementation.
      */
     credentials?: WorkspaceConnectionOAuth2Response;
+    error?: string;
     expiryTime?: string;
     /**
      * Group based on connection category
@@ -8340,16 +8421,11 @@ export interface OAuth2AuthTypeWorkspaceConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
     sharedUserList?: string[];
     target?: string;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: string;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: string;
+    useWorkspaceManagedIdentity?: boolean;
 }
 
 /**
@@ -8425,7 +8501,7 @@ export function oneLakeDatastoreResponseProvideDefaults(val: OneLakeDatastoreRes
 /**
  * Online endpoint configuration
  */
-export interface OnlineEndpointResponse {
+export interface OnlineEndpointPropertiesResponse {
     /**
      * [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
      */
@@ -8452,7 +8528,7 @@ export interface OnlineEndpointResponse {
      */
     provisioningState: string;
     /**
-     * Set to "Enabled" for endpoints that should allow public access when Private Link is enabled.
+     * Enum to determine whether PublicNetworkAccess is Enabled or Disabled.
      */
     publicNetworkAccess?: string;
     /**
@@ -8469,9 +8545,9 @@ export interface OnlineEndpointResponse {
     traffic?: {[key: string]: number};
 }
 /**
- * onlineEndpointResponseProvideDefaults sets the appropriate defaults for OnlineEndpointResponse
+ * onlineEndpointPropertiesResponseProvideDefaults sets the appropriate defaults for OnlineEndpointPropertiesResponse
  */
-export function onlineEndpointResponseProvideDefaults(val: OnlineEndpointResponse): OnlineEndpointResponse {
+export function onlineEndpointPropertiesResponseProvideDefaults(val: OnlineEndpointPropertiesResponse): OnlineEndpointPropertiesResponse {
     return {
         ...val,
         publicNetworkAccess: (val.publicNetworkAccess) ?? "Enabled",
@@ -8540,6 +8616,32 @@ export interface OpenAIEndpointDeploymentResourcePropertiesResponse {
 }
 
 /**
+ * Returns metadata about the os patching.
+ */
+export interface OsPatchingStatusResponse {
+    /**
+     * Time of the latest os patching.
+     */
+    latestPatchTime?: string;
+    /**
+     * Collection of errors encountered when doing os patching.
+     */
+    osPatchingErrors?: ErrorResponseResponse[];
+    /**
+     * The os patching status.
+     */
+    patchStatus?: string;
+    /**
+     * Specifies whether this compute instance is pending for reboot to finish os patching.
+     */
+    rebootPending?: boolean;
+    /**
+     * Time of scheduled reboot.
+     */
+    scheduledRebootTime?: string;
+}
+
+/**
  * Reference to an asset via its path in a job output.
  */
 export interface OutputPathAssetReferenceResponse {
@@ -8568,8 +8670,12 @@ export interface PATAuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     createdByWorkspaceArmId: string;
     credentials?: WorkspaceConnectionPersonalAccessTokenResponse;
+    error?: string;
     expiryTime?: string;
     /**
      * Group based on connection category
@@ -8580,16 +8686,11 @@ export interface PATAuthTypeWorkspaceConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
     sharedUserList?: string[];
     target?: string;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: string;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: string;
+    useWorkspaceManagedIdentity?: boolean;
 }
 
 export interface PasswordResponse {
@@ -8739,11 +8840,11 @@ export interface PrivateEndpointConnectionResponse {
      */
     id: string;
     /**
-     * The identity of the resource.
+     * The managed service identities assigned to this resource.
      */
     identity?: ManagedServiceIdentityResponse;
     /**
-     * Specifies the location of the resource.
+     * *Same as workspace location.
      */
     location?: string;
     /**
@@ -8751,28 +8852,25 @@ export interface PrivateEndpointConnectionResponse {
      */
     name: string;
     /**
-     * The resource of private end point.
+     * The Private Endpoint resource.
      */
-    privateEndpoint?: PrivateEndpointResponse;
+    privateEndpoint?: WorkspacePrivateEndpointResourceResponse;
     /**
-     * A collection of information about the state of the connection between service consumer and provider.
+     * The connection state.
      */
-    privateLinkServiceConnectionState: PrivateLinkServiceConnectionStateResponse;
+    privateLinkServiceConnectionState?: PrivateLinkServiceConnectionStateResponse;
     /**
-     * The provisioning state of the private endpoint connection resource.
+     * The current provisioning state.
      */
     provisioningState: string;
     /**
-     * The sku of the workspace.
+     * Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
      */
     sku?: SkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     systemData: SystemDataResponse;
-    /**
-     * Contains resource tags defined as key/value pairs.
-     */
     tags?: {[key: string]: string};
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -8784,6 +8882,9 @@ export interface PrivateEndpointConnectionResponse {
  * Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
  */
 export interface PrivateEndpointDestinationResponse {
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     serviceResourceId?: string;
     sparkEnabled?: boolean;
     /**
@@ -8837,29 +8938,19 @@ export interface PrivateEndpointResourceResponse {
 }
 
 /**
- * The Private Endpoint resource.
- */
-export interface PrivateEndpointResponse {
-    /**
-     * The ARM identifier for Private Endpoint
-     */
-    id: string;
-}
-
-/**
  * A collection of information about the state of the connection between service consumer and provider.
  */
 export interface PrivateLinkServiceConnectionStateResponse {
     /**
-     * A message indicating if changes on the service provider require any updates on the consumer.
+     * Some RP chose "None". Other RPs use this for region expansion.
      */
     actionsRequired?: string;
     /**
-     * The reason for approval/rejection of the connection.
+     * User-defined message that, per NRP doc, may be used for approval-related message.
      */
     description?: string;
     /**
-     * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+     * Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
      */
     status?: string;
 }
@@ -8941,7 +9032,7 @@ export interface PyTorchResponse {
 
 export interface QueueSettingsResponse {
     /**
-     * Controls the compute job tier
+     * Enum to determine the job tier.
      */
     jobTier?: string;
 }
@@ -9168,19 +9259,34 @@ export function recurrenceTriggerResponseProvideDefaults(val: RecurrenceTriggerR
 }
 
 export interface RegistryListCredentialsResultResponse {
+    /**
+     * The location of the workspace ACR
+     */
     location: string;
     passwords?: PasswordResponse[];
+    /**
+     * The username of the workspace ACR
+     */
     username: string;
 }
 
 /**
- * Properties of the Private Endpoint Connection
+ * Private endpoint connection definition.
  */
-export interface RegistryPrivateEndpointConnectionPropertiesResponse {
+export interface RegistryPrivateEndpointConnectionResponse {
     /**
      * The group ids
      */
     groupIds?: string[];
+    /**
+     * This is the private endpoint connection name created on SRP
+     * Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
+     */
+    id?: string;
+    /**
+     * Same as workspace location.
+     */
+    location?: string;
     /**
      * The PE network resource that is linked to this PE connection.
      */
@@ -9193,25 +9299,6 @@ export interface RegistryPrivateEndpointConnectionPropertiesResponse {
      * The connection state.
      */
     registryPrivateLinkServiceConnectionState?: RegistryPrivateLinkServiceConnectionStateResponse;
-}
-
-/**
- * Private endpoint connection definition.
- */
-export interface RegistryPrivateEndpointConnectionResponse {
-    /**
-     * This is the private endpoint connection name created on SRP
-     * Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
-     */
-    id?: string;
-    /**
-     * Same as workspace location.
-     */
-    location?: string;
-    /**
-     * Properties of the Private Endpoint Connection
-     */
-    properties?: RegistryPrivateEndpointConnectionPropertiesResponse;
 }
 
 /**
@@ -9251,45 +9338,6 @@ export interface RegistryRegionArmDetailsResponse {
 }
 
 /**
- * Details of the Registry
- */
-export interface RegistryResponse {
-    /**
-     * Discovery URL for the Registry
-     */
-    discoveryUrl?: string;
-    /**
-     * IntellectualPropertyPublisher for the registry
-     */
-    intellectualPropertyPublisher?: string;
-    /**
-     * ResourceId of the managed RG if the registry has system created resources
-     */
-    managedResourceGroup?: ArmResourceIdResponse;
-    /**
-     * Managed resource group specific settings
-     */
-    managedResourceGroupSettings?: ManagedResourceGroupSettingsResponse;
-    /**
-     * MLFlow Registry URI for the Registry
-     */
-    mlFlowRegistryUri?: string;
-    /**
-     * Is the Registry accessible from the internet?
-     * Possible values: "Enabled" or "Disabled"
-     */
-    publicNetworkAccess?: string;
-    /**
-     * Details of each region the registry is in
-     */
-    regionDetails?: RegistryRegionArmDetailsResponse[];
-    /**
-     * Private endpoint connections info used for pending connections in private link portal
-     */
-    registryPrivateEndpointConnections?: RegistryPrivateEndpointConnectionResponse[];
-}
-
-/**
  * Regression task in AutoML Table vertical.
  */
 export interface RegressionResponse {
@@ -9306,7 +9354,7 @@ export interface RegressionResponse {
      */
     limitSettings?: TableVerticalLimitSettingsResponse;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: string;
     /**
@@ -9315,7 +9363,7 @@ export interface RegressionResponse {
      */
     nCrossValidations?: AutoNCrossValidationsResponse | CustomNCrossValidationsResponse;
     /**
-     * Primary metric for regression task.
+     * Primary metrics for Regression task.
      */
     primaryMetric?: string;
     /**
@@ -9538,8 +9586,12 @@ export interface SASAuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     createdByWorkspaceArmId: string;
     credentials?: WorkspaceConnectionSharedAccessSignatureResponse;
+    error?: string;
     expiryTime?: string;
     /**
      * Group based on connection category
@@ -9550,16 +9602,11 @@ export interface SASAuthTypeWorkspaceConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
     sharedUserList?: string[];
     target?: string;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: string;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: string;
+    useWorkspaceManagedIdentity?: boolean;
 }
 
 /**
@@ -9641,7 +9688,7 @@ export interface ScheduleBaseResponse {
 /**
  * Base definition of a schedule
  */
-export interface ScheduleResponse {
+export interface SchedulePropertiesResponse {
     /**
      * [Required] Specifies the action of the schedule
      */
@@ -9676,9 +9723,9 @@ export interface ScheduleResponse {
     trigger: CronTriggerResponse | RecurrenceTriggerResponse;
 }
 /**
- * scheduleResponseProvideDefaults sets the appropriate defaults for ScheduleResponse
+ * schedulePropertiesResponseProvideDefaults sets the appropriate defaults for SchedulePropertiesResponse
  */
-export function scheduleResponseProvideDefaults(val: ScheduleResponse): ScheduleResponse {
+export function schedulePropertiesResponseProvideDefaults(val: SchedulePropertiesResponse): SchedulePropertiesResponse {
     return {
         ...val,
         isEnabled: (val.isEnabled) ?? true,
@@ -9698,7 +9745,7 @@ export interface ScriptReferenceResponse {
      */
     scriptData?: string;
     /**
-     * The storage source of the script: workspace.
+     * The storage source of the script: inline, workspace.
      */
     scriptSource?: string;
     /**
@@ -9747,7 +9794,7 @@ export interface ServerlessComputeSettingsResponse {
     serverlessComputeNoPublicIP?: boolean;
 }
 
-export interface ServerlessEndpointResponse {
+export interface ServerlessEndpointPropertiesResponse {
     /**
      * [Required] Specifies the authentication mode for the Serverless endpoint.
      */
@@ -9773,7 +9820,7 @@ export interface ServerlessEndpointResponse {
      */
     modelSettings?: ModelSettingsResponse;
     /**
-     * Provisioning state for the endpoint.
+     * State of endpoint provisioning.
      */
     provisioningState: string;
 }
@@ -9801,9 +9848,6 @@ export interface ServerlessOfferResponse {
 }
 
 export interface ServiceManagedResourcesSettingsResponse {
-    /**
-     * The settings for the service managed cosmosdb account.
-     */
     cosmosDb?: CosmosDbSettingsResponse;
 }
 
@@ -9817,8 +9861,12 @@ export interface ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     createdByWorkspaceArmId: string;
     credentials?: WorkspaceConnectionServicePrincipalResponse;
+    error?: string;
     expiryTime?: string;
     /**
      * Group based on connection category
@@ -9829,16 +9877,11 @@ export interface ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
     sharedUserList?: string[];
     target?: string;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: string;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: string;
+    useWorkspaceManagedIdentity?: boolean;
 }
 
 /**
@@ -9879,7 +9922,7 @@ export interface ServiceTagDestinationResponse {
     /**
      * Optional, if provided, the ServiceTag property will be ignored.
      */
-    addressPrefixes: string[];
+    addressPrefixes?: string[];
     portRanges?: string;
     protocol?: string;
     serviceTag?: string;
@@ -9925,23 +9968,23 @@ export interface SetupScriptsResponse {
 
 export interface SharedPrivateLinkResourceResponse {
     /**
-     * The private link resource group id.
+     * group id of the private link
      */
     groupId?: string;
     /**
-     * Unique name of the private link.
+     * Unique name of the private link
      */
     name?: string;
     /**
-     * The resource id that private link links to.
+     * the resource id that private link links to
      */
     privateLinkResourceId?: string;
     /**
-     * Request message.
+     * Request message
      */
     requestMessage?: string;
     /**
-     * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+     * Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
      */
     status?: string;
 }
@@ -10217,7 +10260,7 @@ export interface StackEnsembleSettingsResponse {
      */
     stackMetaLearnerTrainPercentage?: number;
     /**
-     * The meta-learner is a model trained on the output of the individual heterogeneous models.
+     * The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
      */
     stackMetaLearnerType?: string;
 }
@@ -10444,55 +10487,7 @@ export function sweepJobResponseProvideDefaults(val: SweepJobResponse): SweepJob
     };
 }
 
-/**
- * A SynapseSpark compute.
- */
-export interface SynapseSparkResponse {
-    /**
-     * Location for the underlying compute
-     */
-    computeLocation?: string;
-    /**
-     * The type of compute
-     * Expected value is 'SynapseSpark'.
-     */
-    computeType: "SynapseSpark";
-    /**
-     * The time at which the compute was created.
-     */
-    createdOn: string;
-    /**
-     * The description of the Machine Learning compute.
-     */
-    description?: string;
-    /**
-     * Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-     */
-    disableLocalAuth?: boolean;
-    /**
-     * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
-     */
-    isAttachedCompute: boolean;
-    /**
-     * The time at which the compute was last modified.
-     */
-    modifiedOn: string;
-    properties?: SynapseSparkResponseProperties;
-    /**
-     * Errors during provisioning
-     */
-    provisioningErrors: ErrorResponseResponse[];
-    /**
-     * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
-     */
-    provisioningState: string;
-    /**
-     * ARM resource id of the underlying compute
-     */
-    resourceId?: string;
-}
-
-export interface SynapseSparkResponseProperties {
+export interface SynapseSparkPropertiesResponse {
     /**
      * Auto pause properties.
      */
@@ -10533,6 +10528,54 @@ export interface SynapseSparkResponseProperties {
      * Name of Azure Machine Learning workspace.
      */
     workspaceName?: string;
+}
+
+/**
+ * A SynapseSpark compute.
+ */
+export interface SynapseSparkResponse {
+    /**
+     * Location for the underlying compute
+     */
+    computeLocation?: string;
+    /**
+     * The type of compute
+     * Expected value is 'SynapseSpark'.
+     */
+    computeType: "SynapseSpark";
+    /**
+     * The time at which the compute was created.
+     */
+    createdOn: string;
+    /**
+     * The description of the Machine Learning compute.
+     */
+    description?: string;
+    /**
+     * Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+     */
+    disableLocalAuth?: boolean;
+    /**
+     * Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+     */
+    isAttachedCompute: boolean;
+    /**
+     * The time at which the compute was last modified.
+     */
+    modifiedOn: string;
+    properties?: SynapseSparkPropertiesResponse;
+    /**
+     * Errors during provisioning
+     */
+    provisioningErrors: ErrorResponseResponse[];
+    /**
+     * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+     */
+    provisioningState: string;
+    /**
+     * ARM resource id of the underlying compute
+     */
+    resourceId?: string;
 }
 
 export interface SystemCreatedAcrAccountResponse {
@@ -10797,7 +10840,7 @@ export interface TextClassificationMultilabelResponse {
      */
     limitSettings?: NlpVerticalLimitSettingsResponse;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: string;
     /**
@@ -10851,11 +10894,11 @@ export interface TextClassificationResponse {
      */
     limitSettings?: NlpVerticalLimitSettingsResponse;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: string;
     /**
-     * Primary metric for Text-Classification task.
+     * Primary metrics for classification tasks.
      */
     primaryMetric?: string;
     /**
@@ -10906,7 +10949,7 @@ export interface TextNerResponse {
      */
     limitSettings?: NlpVerticalLimitSettingsResponse;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: string;
     /**
@@ -10946,9 +10989,6 @@ export function textNerResponseProvideDefaults(val: TextNerResponse): TextNerRes
     };
 }
 
-/**
- * Describes the tmpfs options for the container
- */
 export interface TmpfsOptionsResponse {
     /**
      * Mention the Tmpfs size
@@ -11027,7 +11067,7 @@ export interface TritonModelJobInputResponse {
      */
     jobInputType: "triton_model";
     /**
-     * Input Asset Delivery Mode.
+     * Enum to determine the input data delivery mode.
      */
     mode?: string;
     /**
@@ -11047,6 +11087,10 @@ export function tritonModelJobInputResponseProvideDefaults(val: TritonModelJobIn
 
 export interface TritonModelJobOutputResponse {
     /**
+     * Output Asset Name.
+     */
+    assetName?: string;
+    /**
      * Description for the output.
      */
     description?: string;
@@ -11056,7 +11100,7 @@ export interface TritonModelJobOutputResponse {
      */
     jobOutputType: "triton_model";
     /**
-     * Output Asset Delivery Mode.
+     * Output data delivery mode enums.
      */
     mode?: string;
     /**
@@ -11164,7 +11208,7 @@ export interface UriFileJobInputResponse {
      */
     jobInputType: "uri_file";
     /**
-     * Input Asset Delivery Mode.
+     * Enum to determine the input data delivery mode.
      */
     mode?: string;
     /**
@@ -11184,6 +11228,10 @@ export function uriFileJobInputResponseProvideDefaults(val: UriFileJobInputRespo
 
 export interface UriFileJobOutputResponse {
     /**
+     * Output Asset Name.
+     */
+    assetName?: string;
+    /**
      * Description for the output.
      */
     description?: string;
@@ -11193,7 +11241,7 @@ export interface UriFileJobOutputResponse {
      */
     jobOutputType: "uri_file";
     /**
-     * Output Asset Delivery Mode.
+     * Output data delivery mode enums.
      */
     mode?: string;
     /**
@@ -11267,7 +11315,7 @@ export interface UriFolderJobInputResponse {
      */
     jobInputType: "uri_folder";
     /**
-     * Input Asset Delivery Mode.
+     * Enum to determine the input data delivery mode.
      */
     mode?: string;
     /**
@@ -11287,6 +11335,10 @@ export function uriFolderJobInputResponseProvideDefaults(val: UriFolderJobInputR
 
 export interface UriFolderJobOutputResponse {
     /**
+     * Output Asset Name.
+     */
+    assetName?: string;
+    /**
      * Description for the output.
      */
     description?: string;
@@ -11296,7 +11348,7 @@ export interface UriFolderJobOutputResponse {
      */
     jobOutputType: "uri_folder";
     /**
-     * Output Asset Delivery Mode.
+     * Output data delivery mode enums.
      */
     mode?: string;
     /**
@@ -11405,8 +11457,12 @@ export interface UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse {
      * Category of the connection
      */
     category?: string;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     createdByWorkspaceArmId: string;
     credentials?: WorkspaceConnectionUsernamePasswordResponse;
+    error?: string;
     expiryTime?: string;
     /**
      * Group based on connection category
@@ -11417,16 +11473,11 @@ export interface UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse {
      * Store user metadata for this connection
      */
     metadata?: {[key: string]: string};
+    peRequirement?: string;
+    peStatus?: string;
     sharedUserList?: string[];
     target?: string;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: string;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: string;
+    useWorkspaceManagedIdentity?: boolean;
 }
 
 /**
@@ -11472,7 +11523,7 @@ export interface VirtualMachineResponse {
      * The time at which the compute was last modified.
      */
     modifiedOn: string;
-    properties?: VirtualMachineSchemaResponseProperties;
+    properties?: VirtualMachineSchemaPropertiesResponse;
     /**
      * Errors during provisioning
      */
@@ -11487,7 +11538,7 @@ export interface VirtualMachineResponse {
     resourceId?: string;
 }
 
-export interface VirtualMachineSchemaResponseProperties {
+export interface VirtualMachineSchemaPropertiesResponse {
     /**
      * Public IP address of the virtual machine.
      */
@@ -11586,9 +11637,6 @@ export interface VirtualMachineSshCredentialsResponse {
     username?: string;
 }
 
-/**
- * Describes the volume configuration for the container
- */
 export interface VolumeDefinitionResponse {
     /**
      * Bind Options of the mount
@@ -11633,9 +11681,6 @@ export function volumeDefinitionResponseProvideDefaults(val: VolumeDefinitionRes
     };
 }
 
-/**
- * Describes the volume options for the container
- */
 export interface VolumeOptionsResponse {
     /**
      * Indicate whether volume is nocopy
@@ -11648,6 +11693,9 @@ export interface WorkspaceConnectionAccessKeyResponse {
     secretAccessKey?: string;
 }
 
+/**
+ * Account key object for workspace connection credential.
+ */
 export interface WorkspaceConnectionAccountKeyResponse {
     key?: string;
 }
@@ -11728,4 +11776,18 @@ export interface WorkspaceConnectionUsernamePasswordResponse {
 export interface WorkspaceHubConfigResponse {
     additionalWorkspaceStorageAccounts?: string[];
     defaultWorkspaceResourceGroup?: string;
+}
+
+/**
+ * The Private Endpoint resource.
+ */
+export interface WorkspacePrivateEndpointResourceResponse {
+    /**
+     * e.g. /subscriptions/{networkSubscriptionId}/resourceGroups/{rgName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
+     */
+    id: string;
+    /**
+     * The subnetId that the private endpoint is connected to.
+     */
+    subnetArmId: string;
 }

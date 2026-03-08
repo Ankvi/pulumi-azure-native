@@ -51,6 +51,25 @@ export interface GetDependencyViewForAllMachinesResultPropertiesResponse {
 }
 
 /**
+ * OffAzure discovery source resource properties
+ */
+export interface OffAzureDiscoverySourceResourcePropertiesResponse {
+    /**
+     * Provisioning state of Discovery Source resource.
+     */
+    provisioningState: string;
+    /**
+     * Source ArmId of Discovery Source resource
+     */
+    sourceId: string;
+    /**
+     * Source type of the discoverySource
+     * Expected value is 'OffAzure'.
+     */
+    sourceType: "OffAzure";
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {

@@ -126,6 +126,42 @@ export interface BrokerStateStoreDestinationConfigurationResponse {
 }
 
 /**
+ * The configuration to set up an ICA.
+ */
+export interface CertificateAuthorityConfigurationResponse {
+    /**
+     * Crypto type: ECC.
+     */
+    keyType: string;
+    /**
+     * Certificate subject.
+     */
+    subject: string;
+    /**
+     * Certificate is valid not after this date. Format ISO8601. Generated based on validity period.
+     */
+    validityNotAfter: string;
+    /**
+     * Certificate is valid not before this date. Format ISO8601. Generated based on on validity period.
+     */
+    validityNotBefore: string;
+}
+
+/**
+ * The certificate configuration.
+ */
+export interface CertificateConfigurationResponse {
+    /**
+     * The configuration to set up an ICA.
+     */
+    certificateAuthorityConfiguration: CertificateAuthorityConfigurationResponse;
+    /**
+     * The leaf certificate configuration.
+     */
+    leafCertificateConfiguration: LeafCertificateConfigurationResponse;
+}
+
+/**
  * Defines the data point properties.
  */
 export interface DataPointResponse {
@@ -620,6 +656,16 @@ export function inboundEndpointsResponseProvideDefaults(val: InboundEndpointsRes
         ...val,
         authentication: (val.authentication ? hostAuthenticationResponseProvideDefaults(val.authentication) : undefined),
     };
+}
+
+/**
+ * The leaf certificate configuration.
+ */
+export interface LeafCertificateConfigurationResponse {
+    /**
+     * The validity period in days.
+     */
+    validityPeriodInDays: number;
 }
 
 /**
@@ -1296,6 +1342,20 @@ export interface OutboundEndpointsResponse {
      * Set of most recently removed endpoints.
      */
     unassigned?: {[key: string]: DeviceMessagingEndpointResponse};
+}
+
+/**
+ * Details of the Credential Policy.
+ */
+export interface PolicyPropertiesResponse {
+    /**
+     * The certificate configuration.
+     */
+    certificate?: CertificateConfigurationResponse;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
 }
 
 /**

@@ -11,10 +11,30 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
+export { ClusterJobArgs } from "./clusterJob";
+export type ClusterJob = import("./clusterJob").ClusterJob;
+export const ClusterJob: typeof import("./clusterJob").ClusterJob = null as any;
+utilities.lazyLoad(exports, ["ClusterJob"], () => require("./clusterJob"));
+
 export { DeploymentSettingArgs } from "./deploymentSetting";
 export type DeploymentSetting = import("./deploymentSetting").DeploymentSetting;
 export const DeploymentSetting: typeof import("./deploymentSetting").DeploymentSetting = null as any;
 utilities.lazyLoad(exports, ["DeploymentSetting"], () => require("./deploymentSetting"));
+
+export { DevicePoolArgs } from "./devicePool";
+export type DevicePool = import("./devicePool").DevicePool;
+export const DevicePool: typeof import("./devicePool").DevicePool = null as any;
+utilities.lazyLoad(exports, ["DevicePool"], () => require("./devicePool"));
+
+export { EdgeMachineArgs } from "./edgeMachine";
+export type EdgeMachine = import("./edgeMachine").EdgeMachine;
+export const EdgeMachine: typeof import("./edgeMachine").EdgeMachine = null as any;
+utilities.lazyLoad(exports, ["EdgeMachine"], () => require("./edgeMachine"));
+
+export { EdgeMachineJobArgs } from "./edgeMachineJob";
+export type EdgeMachineJob = import("./edgeMachineJob").EdgeMachineJob;
+export const EdgeMachineJob: typeof import("./edgeMachineJob").EdgeMachineJob = null as any;
+utilities.lazyLoad(exports, ["EdgeMachineJob"], () => require("./edgeMachineJob"));
 
 export { ExtensionArgs } from "./extension";
 export type Extension = import("./extension").Extension;
@@ -36,10 +56,30 @@ export const getCluster: typeof import("./getCluster").getCluster = null as any;
 export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
 
+export { GetClusterJobArgs, GetClusterJobResult, GetClusterJobOutputArgs } from "./getClusterJob";
+export const getClusterJob: typeof import("./getClusterJob").getClusterJob = null as any;
+export const getClusterJobOutput: typeof import("./getClusterJob").getClusterJobOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterJob","getClusterJobOutput"], () => require("./getClusterJob"));
+
 export { GetDeploymentSettingArgs, GetDeploymentSettingResult, GetDeploymentSettingOutputArgs } from "./getDeploymentSetting";
 export const getDeploymentSetting: typeof import("./getDeploymentSetting").getDeploymentSetting = null as any;
 export const getDeploymentSettingOutput: typeof import("./getDeploymentSetting").getDeploymentSettingOutput = null as any;
 utilities.lazyLoad(exports, ["getDeploymentSetting","getDeploymentSettingOutput"], () => require("./getDeploymentSetting"));
+
+export { GetDevicePoolArgs, GetDevicePoolResult, GetDevicePoolOutputArgs } from "./getDevicePool";
+export const getDevicePool: typeof import("./getDevicePool").getDevicePool = null as any;
+export const getDevicePoolOutput: typeof import("./getDevicePool").getDevicePoolOutput = null as any;
+utilities.lazyLoad(exports, ["getDevicePool","getDevicePoolOutput"], () => require("./getDevicePool"));
+
+export { GetEdgeMachineArgs, GetEdgeMachineResult, GetEdgeMachineOutputArgs } from "./getEdgeMachine";
+export const getEdgeMachine: typeof import("./getEdgeMachine").getEdgeMachine = null as any;
+export const getEdgeMachineOutput: typeof import("./getEdgeMachine").getEdgeMachineOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeMachine","getEdgeMachineOutput"], () => require("./getEdgeMachine"));
+
+export { GetEdgeMachineJobArgs, GetEdgeMachineJobResult, GetEdgeMachineJobOutputArgs } from "./getEdgeMachineJob";
+export const getEdgeMachineJob: typeof import("./getEdgeMachineJob").getEdgeMachineJob = null as any;
+export const getEdgeMachineJobOutput: typeof import("./getEdgeMachineJob").getEdgeMachineJobOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeMachineJob","getEdgeMachineJobOutput"], () => require("./getEdgeMachineJob"));
 
 export { GetExtensionArgs, GetExtensionResult, GetExtensionOutputArgs } from "./getExtension";
 export const getExtension: typeof import("./getExtension").getExtension = null as any;
@@ -71,6 +111,11 @@ export const getHybridIdentityMetadatum: typeof import("./getHybridIdentityMetad
 export const getHybridIdentityMetadatumOutput: typeof import("./getHybridIdentityMetadatum").getHybridIdentityMetadatumOutput = null as any;
 utilities.lazyLoad(exports, ["getHybridIdentityMetadatum","getHybridIdentityMetadatumOutput"], () => require("./getHybridIdentityMetadatum"));
 
+export { GetLoadBalancerArgs, GetLoadBalancerResult, GetLoadBalancerOutputArgs } from "./getLoadBalancer";
+export const getLoadBalancer: typeof import("./getLoadBalancer").getLoadBalancer = null as any;
+export const getLoadBalancerOutput: typeof import("./getLoadBalancer").getLoadBalancerOutput = null as any;
+utilities.lazyLoad(exports, ["getLoadBalancer","getLoadBalancerOutput"], () => require("./getLoadBalancer"));
+
 export { GetLogicalNetworkArgs, GetLogicalNetworkResult, GetLogicalNetworkOutputArgs } from "./getLogicalNetwork";
 export const getLogicalNetwork: typeof import("./getLogicalNetwork").getLogicalNetwork = null as any;
 export const getLogicalNetworkOutput: typeof import("./getLogicalNetwork").getLogicalNetworkOutput = null as any;
@@ -86,6 +131,11 @@ export const getMarketplaceGalleryImage: typeof import("./getMarketplaceGalleryI
 export const getMarketplaceGalleryImageOutput: typeof import("./getMarketplaceGalleryImage").getMarketplaceGalleryImageOutput = null as any;
 utilities.lazyLoad(exports, ["getMarketplaceGalleryImage","getMarketplaceGalleryImageOutput"], () => require("./getMarketplaceGalleryImage"));
 
+export { GetNatGatewayArgs, GetNatGatewayResult, GetNatGatewayOutputArgs } from "./getNatGateway";
+export const getNatGateway: typeof import("./getNatGateway").getNatGateway = null as any;
+export const getNatGatewayOutput: typeof import("./getNatGateway").getNatGatewayOutput = null as any;
+utilities.lazyLoad(exports, ["getNatGateway","getNatGatewayOutput"], () => require("./getNatGateway"));
+
 export { GetNetworkInterfaceArgs, GetNetworkInterfaceResult, GetNetworkInterfaceOutputArgs } from "./getNetworkInterface";
 export const getNetworkInterface: typeof import("./getNetworkInterface").getNetworkInterface = null as any;
 export const getNetworkInterfaceOutput: typeof import("./getNetworkInterface").getNetworkInterfaceOutput = null as any;
@@ -96,6 +146,11 @@ export const getNetworkSecurityGroup: typeof import("./getNetworkSecurityGroup")
 export const getNetworkSecurityGroupOutput: typeof import("./getNetworkSecurityGroup").getNetworkSecurityGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getNetworkSecurityGroup","getNetworkSecurityGroupOutput"], () => require("./getNetworkSecurityGroup"));
 
+export { GetPublicIPAddressArgs, GetPublicIPAddressResult, GetPublicIPAddressOutputArgs } from "./getPublicIPAddress";
+export const getPublicIPAddress: typeof import("./getPublicIPAddress").getPublicIPAddress = null as any;
+export const getPublicIPAddressOutput: typeof import("./getPublicIPAddress").getPublicIPAddressOutput = null as any;
+utilities.lazyLoad(exports, ["getPublicIPAddress","getPublicIPAddressOutput"], () => require("./getPublicIPAddress"));
+
 export { GetSecurityRuleArgs, GetSecurityRuleResult, GetSecurityRuleOutputArgs } from "./getSecurityRule";
 export const getSecurityRule: typeof import("./getSecurityRule").getSecurityRule = null as any;
 export const getSecurityRuleOutput: typeof import("./getSecurityRule").getSecurityRuleOutput = null as any;
@@ -105,6 +160,11 @@ export { GetSecuritySettingArgs, GetSecuritySettingResult, GetSecuritySettingOut
 export const getSecuritySetting: typeof import("./getSecuritySetting").getSecuritySetting = null as any;
 export const getSecuritySettingOutput: typeof import("./getSecuritySetting").getSecuritySettingOutput = null as any;
 utilities.lazyLoad(exports, ["getSecuritySetting","getSecuritySettingOutput"], () => require("./getSecuritySetting"));
+
+export { GetSnapshotArgs, GetSnapshotResult, GetSnapshotOutputArgs } from "./getSnapshot";
+export const getSnapshot: typeof import("./getSnapshot").getSnapshot = null as any;
+export const getSnapshotOutput: typeof import("./getSnapshot").getSnapshotOutput = null as any;
+utilities.lazyLoad(exports, ["getSnapshot","getSnapshotOutput"], () => require("./getSnapshot"));
 
 export { GetStorageContainerArgs, GetStorageContainerResult, GetStorageContainerOutputArgs } from "./getStorageContainer";
 export const getStorageContainer: typeof import("./getStorageContainer").getStorageContainer = null as any;
@@ -146,6 +206,11 @@ export const getVirtualNetwork: typeof import("./getVirtualNetwork").getVirtualN
 export const getVirtualNetworkOutput: typeof import("./getVirtualNetwork").getVirtualNetworkOutput = null as any;
 utilities.lazyLoad(exports, ["getVirtualNetwork","getVirtualNetworkOutput"], () => require("./getVirtualNetwork"));
 
+export { GetVirtualNetworkSubnetArgs, GetVirtualNetworkSubnetResult, GetVirtualNetworkSubnetOutputArgs } from "./getVirtualNetworkSubnet";
+export const getVirtualNetworkSubnet: typeof import("./getVirtualNetworkSubnet").getVirtualNetworkSubnet = null as any;
+export const getVirtualNetworkSubnetOutput: typeof import("./getVirtualNetworkSubnet").getVirtualNetworkSubnetOutput = null as any;
+utilities.lazyLoad(exports, ["getVirtualNetworkSubnet","getVirtualNetworkSubnetOutput"], () => require("./getVirtualNetworkSubnet"));
+
 export { GuestAgentArgs } from "./guestAgent";
 export type GuestAgent = import("./guestAgent").GuestAgent;
 export const GuestAgent: typeof import("./guestAgent").GuestAgent = null as any;
@@ -166,6 +231,11 @@ export type HybridIdentityMetadatum = import("./hybridIdentityMetadatum").Hybrid
 export const HybridIdentityMetadatum: typeof import("./hybridIdentityMetadatum").HybridIdentityMetadatum = null as any;
 utilities.lazyLoad(exports, ["HybridIdentityMetadatum"], () => require("./hybridIdentityMetadatum"));
 
+export { LoadBalancerArgs } from "./loadBalancer";
+export type LoadBalancer = import("./loadBalancer").LoadBalancer;
+export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
+utilities.lazyLoad(exports, ["LoadBalancer"], () => require("./loadBalancer"));
+
 export { LogicalNetworkArgs } from "./logicalNetwork";
 export type LogicalNetwork = import("./logicalNetwork").LogicalNetwork;
 export const LogicalNetwork: typeof import("./logicalNetwork").LogicalNetwork = null as any;
@@ -181,6 +251,11 @@ export type MarketplaceGalleryImage = import("./marketplaceGalleryImage").Market
 export const MarketplaceGalleryImage: typeof import("./marketplaceGalleryImage").MarketplaceGalleryImage = null as any;
 utilities.lazyLoad(exports, ["MarketplaceGalleryImage"], () => require("./marketplaceGalleryImage"));
 
+export { NatGatewayArgs } from "./natGateway";
+export type NatGateway = import("./natGateway").NatGateway;
+export const NatGateway: typeof import("./natGateway").NatGateway = null as any;
+utilities.lazyLoad(exports, ["NatGateway"], () => require("./natGateway"));
+
 export { NetworkInterfaceArgs } from "./networkInterface";
 export type NetworkInterface = import("./networkInterface").NetworkInterface;
 export const NetworkInterface: typeof import("./networkInterface").NetworkInterface = null as any;
@@ -191,6 +266,11 @@ export type NetworkSecurityGroup = import("./networkSecurityGroup").NetworkSecur
 export const NetworkSecurityGroup: typeof import("./networkSecurityGroup").NetworkSecurityGroup = null as any;
 utilities.lazyLoad(exports, ["NetworkSecurityGroup"], () => require("./networkSecurityGroup"));
 
+export { PublicIPAddressArgs } from "./publicIPAddress";
+export type PublicIPAddress = import("./publicIPAddress").PublicIPAddress;
+export const PublicIPAddress: typeof import("./publicIPAddress").PublicIPAddress = null as any;
+utilities.lazyLoad(exports, ["PublicIPAddress"], () => require("./publicIPAddress"));
+
 export { SecurityRuleArgs } from "./securityRule";
 export type SecurityRule = import("./securityRule").SecurityRule;
 export const SecurityRule: typeof import("./securityRule").SecurityRule = null as any;
@@ -200,6 +280,11 @@ export { SecuritySettingArgs } from "./securitySetting";
 export type SecuritySetting = import("./securitySetting").SecuritySetting;
 export const SecuritySetting: typeof import("./securitySetting").SecuritySetting = null as any;
 utilities.lazyLoad(exports, ["SecuritySetting"], () => require("./securitySetting"));
+
+export { SnapshotArgs } from "./snapshot";
+export type Snapshot = import("./snapshot").Snapshot;
+export const Snapshot: typeof import("./snapshot").Snapshot = null as any;
+utilities.lazyLoad(exports, ["Snapshot"], () => require("./snapshot"));
 
 export { StorageContainerArgs } from "./storageContainer";
 export type StorageContainer = import("./storageContainer").StorageContainer;
@@ -241,6 +326,11 @@ export type VirtualNetwork = import("./virtualNetwork").VirtualNetwork;
 export const VirtualNetwork: typeof import("./virtualNetwork").VirtualNetwork = null as any;
 utilities.lazyLoad(exports, ["VirtualNetwork"], () => require("./virtualNetwork"));
 
+export { VirtualNetworkSubnetArgs } from "./virtualNetworkSubnet";
+export type VirtualNetworkSubnet = import("./virtualNetworkSubnet").VirtualNetworkSubnet;
+export const VirtualNetworkSubnet: typeof import("./virtualNetworkSubnet").VirtualNetworkSubnet = null as any;
+utilities.lazyLoad(exports, ["VirtualNetworkSubnet"], () => require("./virtualNetworkSubnet"));
+
 
 // Export enums:
 export * from "./types/enums";
@@ -253,8 +343,16 @@ const _module = {
                 return new ArcSetting(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
+            case "azure-native:azurestackhci:ClusterJob":
+                return new ClusterJob(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:DeploymentSetting":
                 return new DeploymentSetting(name, <any>undefined, { urn })
+            case "azure-native:azurestackhci:DevicePool":
+                return new DevicePool(name, <any>undefined, { urn })
+            case "azure-native:azurestackhci:EdgeMachine":
+                return new EdgeMachine(name, <any>undefined, { urn })
+            case "azure-native:azurestackhci:EdgeMachineJob":
+                return new EdgeMachineJob(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:Extension":
                 return new Extension(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:GalleryImage":
@@ -267,20 +365,28 @@ const _module = {
                 return new HciEdgeDeviceJob(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:HybridIdentityMetadatum":
                 return new HybridIdentityMetadatum(name, <any>undefined, { urn })
+            case "azure-native:azurestackhci:LoadBalancer":
+                return new LoadBalancer(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:LogicalNetwork":
                 return new LogicalNetwork(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:MachineExtension":
                 return new MachineExtension(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:MarketplaceGalleryImage":
                 return new MarketplaceGalleryImage(name, <any>undefined, { urn })
+            case "azure-native:azurestackhci:NatGateway":
+                return new NatGateway(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:NetworkInterface":
                 return new NetworkInterface(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:NetworkSecurityGroup":
                 return new NetworkSecurityGroup(name, <any>undefined, { urn })
+            case "azure-native:azurestackhci:PublicIPAddress":
+                return new PublicIPAddress(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:SecurityRule":
                 return new SecurityRule(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:SecuritySetting":
                 return new SecuritySetting(name, <any>undefined, { urn })
+            case "azure-native:azurestackhci:Snapshot":
+                return new Snapshot(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:StorageContainer":
                 return new StorageContainer(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:Update":
@@ -297,6 +403,8 @@ const _module = {
                 return new VirtualMachineInstance(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:VirtualNetwork":
                 return new VirtualNetwork(name, <any>undefined, { urn })
+            case "azure-native:azurestackhci:VirtualNetworkSubnet":
+                return new VirtualNetworkSubnet(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -27,7 +27,7 @@ export interface GetPrivateEndpointConnectionArgs {
      */
     privateEndpointConnectionName: string;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
@@ -41,11 +41,11 @@ export interface GetPrivateEndpointConnectionResult {
      */
     readonly azureApiVersion: string;
     /**
-     * Gets or sets the identifier.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
-     * Gets or sets the name.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -61,11 +61,11 @@ export interface GetPrivateEndpointConnectionResult {
      */
     readonly provisioningState: string;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.ProxyResourceResponseSystemData;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
-     * Gets or sets the type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -95,7 +95,7 @@ export interface GetPrivateEndpointConnectionOutputArgs {
      */
     privateEndpointConnectionName: pulumi.Input<string>;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

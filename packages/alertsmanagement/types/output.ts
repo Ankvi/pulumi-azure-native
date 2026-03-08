@@ -93,7 +93,7 @@ export interface AlertProcessingRulePropertiesResponse {
      */
     conditions?: ConditionResponse[];
     /**
-     * Description of alert processing rule.
+     * Actions to be applied.Description of alert processing rule.
      */
     description?: string;
     /**
@@ -182,7 +182,7 @@ export interface DailyRecurrenceResponse {
     /**
      * End time for recurrence.
      */
-    endTime: string;
+    endTime?: string;
     /**
      * Specifies when the recurrence should be applied.
      * Expected value is 'Daily'.
@@ -191,7 +191,7 @@ export interface DailyRecurrenceResponse {
     /**
      * Start time for recurrence.
      */
-    startTime: string;
+    startTime?: string;
 }
 
 /**

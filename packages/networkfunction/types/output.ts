@@ -65,7 +65,7 @@ export interface ResourceReferenceResponse {
 /**
  * Metadata pertaining to creation and last modification of the resource.
  */
-export interface TrackedResourceResponseSystemData {
+export interface SystemDataResponse {
     /**
      * The timestamp of resource creation (UTC).
      */
@@ -78,6 +78,10 @@ export interface TrackedResourceResponseSystemData {
      * The type of identity that created the resource.
      */
     createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
     /**
      * The identity that last modified the resource.
      */

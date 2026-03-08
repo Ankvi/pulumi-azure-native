@@ -768,7 +768,7 @@ export interface ServicePlacementInvalidDomainPolicyArgs {
 }
 
 /**
- * The type of placement policy for a service fabric service. Following are the possible values.
+ * The name of the domain that should used for placement as per this policy.
  */
 export interface ServicePlacementNonPartiallyPlaceServicePolicyArgs {
     /**
@@ -779,7 +779,7 @@ export interface ServicePlacementNonPartiallyPlaceServicePolicyArgs {
 }
 
 /**
- * Describes the policy to be used for placement of a Service Fabric service where the service's
+ * Describes the policy to be used for placement of a Service Fabric service where the service's 
  * Primary replicas should optimally be placed in a particular domain.
  *
  * This placement policy is usually used with fault domains in scenarios where the Service Fabric

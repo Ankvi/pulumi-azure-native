@@ -254,6 +254,36 @@ export interface ResultStatisticsResponse {
 }
 
 /**
+ * Rule definition parameters.
+ */
+export interface RuleDefinitionResponse {
+    /**
+     * The minimum delay in seconds before bin processing.
+     */
+    binDelay?: number;
+    /**
+     * Scheduled window in minutes. Allowed values: 20, 30, 60, 120, 180, 360, 720, 1440.
+     */
+    binSize?: number;
+    /**
+     * The start time (UTC) when Summary rule execution starts.
+     */
+    binStartTime?: string;
+    /**
+     * The destination table used for the Summary rule results.
+     */
+    destinationTable?: string;
+    /**
+     * Summary rule query.
+     */
+    query?: string;
+    /**
+     * The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
+     */
+    timeSelector?: string;
+}
+
+/**
  * Table's schema.
  */
 export interface SchemaResponse {

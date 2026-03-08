@@ -85,6 +85,40 @@ export interface AzureStorageSmbFileShareEndpointPropertiesResponse {
 }
 
 /**
+ * Properties of the Connection resource.
+ */
+export interface ConnectionPropertiesResponse {
+    /**
+     * The connection status.
+     */
+    connectionStatus: string;
+    /**
+     * A description for the Connection.
+     */
+    description?: string;
+    /**
+     * List of job definitions associated with this connection.
+     */
+    jobList?: string[];
+    /**
+     * The PrivateEndpointName associated with the connection.
+     */
+    privateEndpointName: string;
+    /**
+     * The privateEndpoint resource Id
+     */
+    privateEndpointResourceId: string;
+    /**
+     * The PrivateLinkServiceId for the connection.
+     */
+    privateLinkServiceId: string;
+    /**
+     * The provisioning state of this resource.
+     */
+    provisioningState: string;
+}
+
+/**
  * The properties of NFS share endpoint.
  */
 export interface NfsMountEndpointPropertiesResponse {

@@ -127,6 +127,52 @@ export function activeDirectoryArgsProvideDefaults(val: ActiveDirectoryArgs): Ac
 }
 
 /**
+ * Active Directory Configuration properties
+ */
+export interface ActiveDirectoryConfigPropertiesArgs {
+    /**
+     * Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
+     */
+    administrators?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+     */
+    backupOperators?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An array of DNS server IP addresses(IPv4 only) for the Active Directory
+     */
+    dns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of the Active Directory domain
+     */
+    domain: pulumi.Input<string>;
+    /**
+     * The Organizational Unit (OU) within the Windows Active Directory
+     */
+    organizationalUnit?: pulumi.Input<string>;
+    /**
+     * Access password from Azure KeyVault Secrets to connect Active Directory
+     */
+    secretPassword: pulumi.Input<SecretPasswordArgs>;
+    /**
+     * Domain Users in the Active directory to be given SecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
+     */
+    securityOperators?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Active Directory site the service will limit Domain Controller discovery to
+     */
+    site?: pulumi.Input<string>;
+    /**
+     * NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
+     */
+    smbServerName?: pulumi.Input<string>;
+    /**
+     * A domain user account with permission to create machine accounts
+     */
+    userName?: pulumi.Input<string>;
+}
+
+/**
  * Properties of the server managing the lifecycle of volume buckets
  */
 export interface BucketServerPropertiesArgs {
@@ -138,6 +184,90 @@ export interface BucketServerPropertiesArgs {
      * The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
      */
     fqdn?: pulumi.Input<string>;
+}
+
+/**
+ * Cache resource properties
+ */
+export interface CachePropertiesArgs {
+    /**
+     * The Azure Resource URI for a delegated cache subnet that will be used to allocate data IPs.
+     */
+    cacheSubnetResourceId: pulumi.Input<string>;
+    /**
+     * Flag indicating whether a CIFS change notification is enabled for the cache.
+     */
+    cifsChangeNotifications?: pulumi.Input<string | enums.CifsChangeNotifyState>;
+    /**
+     * Source of key used to encrypt data in the cache. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
+     */
+    encryptionKeySource: pulumi.Input<string | enums.EncryptionKeySource>;
+    /**
+     * Set of export policy rules
+     */
+    exportPolicy?: pulumi.Input<CachePropertiesExportPolicyArgs>;
+    /**
+     * The file path of the Cache.
+     */
+    filepath: pulumi.Input<string>;
+    /**
+     * Flag indicating whether the global file lock is enabled for the cache.
+     */
+    globalFileLocking?: pulumi.Input<string | enums.GlobalFileLockingState>;
+    /**
+     * Describe if a cache is Kerberos enabled.
+     */
+    kerberos?: pulumi.Input<string | enums.KerberosState>;
+    /**
+     * The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+     */
+    keyVaultPrivateEndpointResourceId?: pulumi.Input<string>;
+    /**
+     * Specifies whether LDAP is enabled or not for flexcache volume.
+     */
+    ldap?: pulumi.Input<string | enums.LdapState>;
+    /**
+     * Specifies the type of LDAP server for flexcache volume.
+     */
+    ldapServerType?: pulumi.Input<string | enums.LdapServerType>;
+    /**
+     * Origin cluster information
+     */
+    originClusterInformation: pulumi.Input<OriginClusterInformationArgs>;
+    /**
+     * The Azure Resource URI for a delegated subnet that will be used for ANF Intercluster Interface IP addresses.
+     */
+    peeringSubnetResourceId: pulumi.Input<string>;
+    /**
+     * Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol
+     */
+    protocolTypes?: pulumi.Input<pulumi.Input<string | enums.ProtocolTypes>[]>;
+    /**
+     * Maximum storage quota allowed for a file system in bytes. Valid values are in the range 50GiB to 1PiB. Values expressed in bytes as multiples of 1GiB.
+     */
+    size: pulumi.Input<number>;
+    /**
+     * SMB information for the cache
+     */
+    smbSettings?: pulumi.Input<SmbSettingsArgs>;
+    /**
+     * Maximum throughput in MiB/s that can be achieved by this cache volume and this will be accepted as input only for manual qosType cache
+     */
+    throughputMibps?: pulumi.Input<number>;
+    /**
+     * Flag indicating whether writeback is enabled for the cache.
+     */
+    writeBack?: pulumi.Input<string | enums.EnableWriteBackState>;
+}
+
+/**
+ * Set of export policy rules
+ */
+export interface CachePropertiesExportPolicyArgs {
+    /**
+     * Export policy rule
+     */
+    rules?: pulumi.Input<pulumi.Input<ExportPolicyRuleArgs>[]>;
 }
 
 /**
@@ -173,6 +303,421 @@ export interface DailyScheduleArgs {
 }
 
 /**
+ * NetApp elastic account properties
+ */
+export interface ElasticAccountPropertiesArgs {
+    /**
+     * Encryption settings
+     */
+    encryption?: pulumi.Input<ElasticEncryptionArgs>;
+}
+
+/**
+ * Elastic Backup Policy properties
+ */
+export interface ElasticBackupPolicyPropertiesArgs {
+    /**
+     * Daily backups count to keep
+     */
+    dailyBackupsToKeep?: pulumi.Input<number>;
+    /**
+     * Monthly backups count to keep
+     */
+    monthlyBackupsToKeep?: pulumi.Input<number>;
+    /**
+     * The property to identify whether Backup Policy is enabled or not
+     */
+    policyState?: pulumi.Input<string | enums.ElasticBackupPolicyState>;
+    /**
+     * Weekly backups count to keep
+     */
+    weeklyBackupsToKeep?: pulumi.Input<number>;
+}
+
+/**
+ * Elastic Backup properties
+ */
+export interface ElasticBackupPropertiesArgs {
+    /**
+     * ResourceId used to identify the elastic snapshot resource. This is required when an existing snapshot needs to be used for creating a manual backup
+     */
+    elasticSnapshotResourceId?: pulumi.Input<string>;
+    /**
+     * ResourceId used to identify the Elastic Volume
+     */
+    elasticVolumeResourceId: pulumi.Input<string>;
+    /**
+     * Label for backup
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * Manual backup using an already existing snapshot. This will always be CreateNewSnapshot for scheduled backups and UseExistingSnapshot/CreateNewSnapshot for manual backups
+     */
+    snapshotUsage?: pulumi.Input<string | enums.SnapshotUsage>;
+}
+/**
+ * elasticBackupPropertiesArgsProvideDefaults sets the appropriate defaults for ElasticBackupPropertiesArgs
+ */
+export function elasticBackupPropertiesArgsProvideDefaults(val: ElasticBackupPropertiesArgs): ElasticBackupPropertiesArgs {
+    return {
+        ...val,
+        snapshotUsage: (val.snapshotUsage) ?? "CreateNewSnapshot",
+    };
+}
+
+/**
+ * Elastic capacity pool properties
+ */
+export interface ElasticCapacityPoolPropertiesArgs {
+    /**
+     * The Azure Resource URI for an Active Directory configuration. This is used by all the SMB volumes within the pool
+     */
+    activeDirectoryConfigResourceId?: pulumi.Input<string>;
+    /**
+     * Encryption settings
+     */
+    encryption?: pulumi.Input<ElasticEncryptionConfigurationArgs>;
+    /**
+     * The service level of the elastic capacity pool
+     */
+    serviceLevel: pulumi.Input<string | enums.ElasticServiceLevel>;
+    /**
+     * Provisioned size of the pool (in bytes). For zoneRedundant service level pool, value must be in the range 1TiB to 16TiB or 1TiB to 128TiB for supported region. Values expressed in bytes as multiples of 1TiB till 16TiB and in multiples of 8TiB from 24TiB to 128TiB. Pool size can't be shrunk once it is created.
+     */
+    size: pulumi.Input<number>;
+    /**
+     * The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/elasticVolumes, this is used by all the volumes within the pool
+     */
+    subnetResourceId: pulumi.Input<string>;
+}
+
+/**
+ * Encryption settings
+ */
+export interface ElasticEncryptionArgs {
+    /**
+     * Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+     */
+    identity?: pulumi.Input<ElasticEncryptionIdentityArgs>;
+    /**
+     * The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault
+     */
+    keySource?: pulumi.Input<string | enums.KeySource>;
+    /**
+     * Properties provided by KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+     */
+    keyVaultProperties?: pulumi.Input<ElasticKeyVaultPropertiesArgs>;
+}
+
+/**
+ * CMK Encryption Configuration
+ */
+export interface ElasticEncryptionConfigurationArgs {
+    /**
+     * Pool Encryption Key Source.
+     */
+    elasticPoolEncryptionKeySource: pulumi.Input<string | enums.ElasticPoolEncryptionKeySource>;
+    /**
+     * The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+     */
+    keyVaultPrivateEndpointResourceId: pulumi.Input<string>;
+}
+
+/**
+ * Identity used to authenticate with key vault.
+ */
+export interface ElasticEncryptionIdentityArgs {
+    /**
+     * The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+     */
+    userAssignedIdentity?: pulumi.Input<string>;
+}
+
+/**
+ * Set of export policy rules
+ */
+export interface ElasticExportPolicyArgs {
+    /**
+     * Export policy rule
+     */
+    rules?: pulumi.Input<pulumi.Input<ElasticExportPolicyRuleArgs>[]>;
+}
+
+/**
+ * Elastic Volume Export Policy Rule
+ */
+export interface ElasticExportPolicyRuleArgs {
+    /**
+     * Client ingress specification for the export policy as list of IPv4 CIDRs, IPv4 host addresses and host names.
+     */
+    allowedClients?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allows clients to access the volume with the NFSv3 protocol. Enable only for NFSv3 type volumes
+     */
+    nfsv3?: pulumi.Input<string | enums.ElasticNfsv3Access>;
+    /**
+     * Allows clients to access the volume with at least NFSv4.1 protocol.
+     */
+    nfsv4?: pulumi.Input<string | enums.ElasticNfsv4Access>;
+    /**
+     * Indicates whether root access to the volume is granted to clients affected by this rule
+     */
+    rootAccess?: pulumi.Input<string | enums.ElasticRootAccess>;
+    /**
+     * Controls the priority of the export policy rule. When connecting to the volume the rule with the lowest index that applies to the connecting client is used
+     */
+    ruleIndex?: pulumi.Input<number>;
+    /**
+     * Specifies the Unix file access level for the volume. It encompasses both read-only and read-write permissions. Additionally, NoAccess can be set to block all access to the volume
+     */
+    unixAccessRule?: pulumi.Input<string | enums.ElasticUnixAccessRule>;
+}
+/**
+ * elasticExportPolicyRuleArgsProvideDefaults sets the appropriate defaults for ElasticExportPolicyRuleArgs
+ */
+export function elasticExportPolicyRuleArgsProvideDefaults(val: ElasticExportPolicyRuleArgs): ElasticExportPolicyRuleArgs {
+    return {
+        ...val,
+        nfsv3: (val.nfsv3) ?? "Disabled",
+        nfsv4: (val.nfsv4) ?? "Disabled",
+        rootAccess: (val.rootAccess) ?? "Disabled",
+        unixAccessRule: (val.unixAccessRule) ?? "NoAccess",
+    };
+}
+
+/**
+ * Properties of key vault.
+ */
+export interface ElasticKeyVaultPropertiesArgs {
+    /**
+     * The name of KeyVault key.
+     */
+    keyName?: pulumi.Input<string>;
+    /**
+     * The resource ID of KeyVault.
+     */
+    keyVaultResourceId?: pulumi.Input<string>;
+    /**
+     * The Uri of KeyVault.
+     */
+    keyVaultUri?: pulumi.Input<string>;
+}
+
+/**
+ * SMB Properties
+ */
+export interface ElasticSmbPropertiesArgs {
+    /**
+     * Used to enable or disable encryption for in-flight SMB data volume. This flag can be modified during Elastic volume update operation as well. Only applicable for SMB protocol Elastic volumes.
+     */
+    smbEncryption?: pulumi.Input<string | enums.ElasticSmbEncryption>;
+}
+/**
+ * elasticSmbPropertiesArgsProvideDefaults sets the appropriate defaults for ElasticSmbPropertiesArgs
+ */
+export function elasticSmbPropertiesArgsProvideDefaults(val: ElasticSmbPropertiesArgs): ElasticSmbPropertiesArgs {
+    return {
+        ...val,
+        smbEncryption: (val.smbEncryption) ?? "Disabled",
+    };
+}
+
+/**
+ * Daily Schedule properties used to create NetApp snapshot policy
+ */
+export interface ElasticSnapshotPolicyDailyScheduleArgs {
+    /**
+     * Indicates which hour in UTC timezone a snapshot should be taken
+     */
+    hour?: pulumi.Input<number>;
+    /**
+     * Indicates which minute snapshot should be taken
+     */
+    minute?: pulumi.Input<number>;
+    /**
+     * Daily snapshot count to keep
+     */
+    snapshotsToKeep?: pulumi.Input<number>;
+}
+
+/**
+ * Hourly Schedule properties used to create NetApp snapshot policy
+ */
+export interface ElasticSnapshotPolicyHourlyScheduleArgs {
+    /**
+     * Indicates which minute snapshot should be taken
+     */
+    minute?: pulumi.Input<number>;
+    /**
+     * Hourly snapshot count to keep
+     */
+    snapshotsToKeep?: pulumi.Input<number>;
+}
+
+/**
+ * Monthly Schedule properties used to create NetApp snapshot policy
+ */
+export interface ElasticSnapshotPolicyMonthlyScheduleArgs {
+    /**
+     * Indicates which days of the month snapshot (1-31) should be taken, accepts a list of integers
+     */
+    daysOfMonth?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Indicates which hour in UTC timezone a snapshot should be taken
+     */
+    hour?: pulumi.Input<number>;
+    /**
+     * Indicates which minute snapshot should be taken
+     */
+    minute?: pulumi.Input<number>;
+    /**
+     * Monthly snapshot count to keep
+     */
+    snapshotsToKeep?: pulumi.Input<number>;
+}
+
+/**
+ * Elastic Snapshot policy properties
+ */
+export interface ElasticSnapshotPolicyPropertiesArgs {
+    /**
+     * Schedule for daily snapshots
+     */
+    dailySchedule?: pulumi.Input<ElasticSnapshotPolicyDailyScheduleArgs>;
+    /**
+     * Schedule for hourly snapshots
+     */
+    hourlySchedule?: pulumi.Input<ElasticSnapshotPolicyHourlyScheduleArgs>;
+    /**
+     * Schedule for monthly snapshots
+     */
+    monthlySchedule?: pulumi.Input<ElasticSnapshotPolicyMonthlyScheduleArgs>;
+    /**
+     * Configures if the snapshot policy is enabled on the volumes connected to the policy.
+     */
+    policyStatus?: pulumi.Input<string | enums.PolicyStatus>;
+    /**
+     * Schedule for weekly snapshots
+     */
+    weeklySchedule?: pulumi.Input<ElasticSnapshotPolicyWeeklyScheduleArgs>;
+}
+
+/**
+ * Weekly Schedule properties used to create NetApp snapshot policy
+ */
+export interface ElasticSnapshotPolicyWeeklyScheduleArgs {
+    /**
+     * Indicates which weekday(s) snapshot(s) should be taken, accepts a list of week day names in english
+     */
+    days?: pulumi.Input<pulumi.Input<string | enums.DayOfWeek>[]>;
+    /**
+     * Indicates which hour in UTC timezone a snapshot should be taken
+     */
+    hour?: pulumi.Input<number>;
+    /**
+     * Indicates which minute snapshot should be taken
+     */
+    minute?: pulumi.Input<number>;
+    /**
+     * Weekly snapshot count to keep
+     */
+    snapshotsToKeep?: pulumi.Input<number>;
+}
+
+/**
+ * Elastic Volume Backup Properties
+ */
+export interface ElasticVolumeBackupPropertiesArgs {
+    /**
+     * ResourceId used to identify Elastic Backup Policy
+     */
+    elasticBackupPolicyResourceId?: pulumi.Input<string>;
+    /**
+     * ResourceId used to identify Elastic Backup Vault
+     */
+    elasticBackupVaultResourceId?: pulumi.Input<string>;
+    /**
+     * The property to decide policy is enforced or not on the volume
+     */
+    policyEnforcement?: pulumi.Input<string | enums.ElasticVolumePolicyEnforcement>;
+}
+
+/**
+ * Data protection configuration option for the volume, including snapshot policies and backup.
+ */
+export interface ElasticVolumeDataProtectionPropertiesArgs {
+    /**
+     * Used to configure backups on an elastic volume.
+     */
+    backup?: pulumi.Input<ElasticVolumeBackupPropertiesArgs>;
+    /**
+     * Used to apply a snapshot policy to a volume.
+     */
+    snapshot?: pulumi.Input<ElasticVolumeSnapshotPropertiesArgs>;
+}
+
+/**
+ * Elastic Volume properties
+ */
+export interface ElasticVolumePropertiesArgs {
+    /**
+     * Resource identifier used to identify the Elastic Backup.
+     */
+    backupResourceId?: pulumi.Input<string>;
+    /**
+     * Data protection configuration option for the volume, including snapshot policies and backup.
+     */
+    dataProtection?: pulumi.Input<ElasticVolumeDataProtectionPropertiesArgs>;
+    /**
+     * Set of export policy rules
+     */
+    exportPolicy?: pulumi.Input<ElasticExportPolicyArgs>;
+    /**
+     * A unique file path for the volume. Used when creating mount targets. This needs to be unique within the elastic capacity pool.
+     */
+    filePath: pulumi.Input<string>;
+    /**
+     * Set of support protocol types for the elastic volume
+     */
+    protocolTypes: pulumi.Input<pulumi.Input<string | enums.ElasticProtocolType>[]>;
+    /**
+     * Maximum size allowed for a volume in bytes. Valid values are in the range 1GiB to 16TiB. Values expressed in bytes as multiples of 1 GiB.
+     */
+    size: pulumi.Input<number>;
+    /**
+     * SMB Properties
+     */
+    smbProperties?: pulumi.Input<ElasticSmbPropertiesArgs>;
+    /**
+     * Controls the visibility of the volume's read-only snapshot directory, which provides access to each of the volume's snapshots.
+     */
+    snapshotDirectoryVisibility?: pulumi.Input<string | enums.SnapshotDirectoryVisibility>;
+    /**
+     * Resource identifier used to identify the Elastic Snapshot.
+     */
+    snapshotResourceId?: pulumi.Input<string>;
+}
+/**
+ * elasticVolumePropertiesArgsProvideDefaults sets the appropriate defaults for ElasticVolumePropertiesArgs
+ */
+export function elasticVolumePropertiesArgsProvideDefaults(val: ElasticVolumePropertiesArgs): ElasticVolumePropertiesArgs {
+    return {
+        ...val,
+        smbProperties: (val.smbProperties ? pulumi.output(val.smbProperties).apply(elasticSmbPropertiesArgsProvideDefaults) : undefined),
+    };
+}
+
+/**
+ * Elastic Volume Snapshot Properties
+ */
+export interface ElasticVolumeSnapshotPropertiesArgs {
+    /**
+     * Snapshot Policy ResourceId
+     */
+    snapshotPolicyResourceId?: pulumi.Input<string>;
+}
+
+/**
  * Identity used to authenticate with key vault.
  */
 export interface EncryptionIdentityArgs {
@@ -202,6 +747,22 @@ export interface ExportPolicyRuleArgs {
      * Has root access to volume
      */
     hasRootAccess?: pulumi.Input<boolean>;
+    /**
+     * Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5IReadOnly?: pulumi.Input<boolean>;
+    /**
+     * Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5IReadWrite?: pulumi.Input<boolean>;
+    /**
+     * Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5PReadOnly?: pulumi.Input<boolean>;
+    /**
+     * Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5PReadWrite?: pulumi.Input<boolean>;
     /**
      * Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
      */
@@ -255,6 +816,10 @@ export function exportPolicyRuleArgsProvideDefaults(val: ExportPolicyRuleArgs): 
         ...val,
         chownMode: (val.chownMode) ?? "Restricted",
         hasRootAccess: (val.hasRootAccess) ?? true,
+        kerberos5IReadOnly: (val.kerberos5IReadOnly) ?? false,
+        kerberos5IReadWrite: (val.kerberos5IReadWrite) ?? false,
+        kerberos5PReadOnly: (val.kerberos5PReadOnly) ?? false,
+        kerberos5PReadWrite: (val.kerberos5PReadWrite) ?? false,
         kerberos5ReadOnly: (val.kerberos5ReadOnly) ?? false,
         kerberos5ReadWrite: (val.kerberos5ReadWrite) ?? false,
         kerberos5iReadOnly: (val.kerberos5iReadOnly) ?? false,
@@ -387,6 +952,28 @@ export interface NfsUserArgs {
 }
 
 /**
+ * Stores the origin cluster information associated to a cache.
+ */
+export interface OriginClusterInformationArgs {
+    /**
+     * ONTAP Intercluster LIF IP addresses. One IP address per cluster node is required
+     */
+    peerAddresses: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ONTAP cluster name of external cluster hosting the origin volume
+     */
+    peerClusterName: pulumi.Input<string>;
+    /**
+     * External origin volume name associated to this cache
+     */
+    peerVolumeName: pulumi.Input<string>;
+    /**
+     * External Vserver (SVM) name  name of the SVM hosting the origin volume
+     */
+    peerVserverName: pulumi.Input<string>;
+}
+
+/**
  * Application specific parameters for the placement of volumes in the volume group
  */
 export interface PlacementKeyValuePairsArgs {
@@ -442,6 +1029,62 @@ export interface ReplicationObjectArgs {
      * Schedule
      */
     replicationSchedule?: pulumi.Input<string | enums.ReplicationSchedule>;
+}
+
+/**
+ * Access password from Azure KeyVault Secrets to connect Active Directory
+ */
+export interface SecretPasswordArgs {
+    /**
+     * Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+     */
+    identity?: pulumi.Input<SecretPasswordIdentityArgs>;
+    /**
+     * Properties provided by KeyVault.
+     */
+    keyVaultProperties?: pulumi.Input<SecretPasswordKeyVaultPropertiesArgs>;
+}
+
+/**
+ * Identity used to authenticate with key vault.
+ */
+export interface SecretPasswordIdentityArgs {
+    /**
+     * The Azure resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+     */
+    userAssignedIdentity?: pulumi.Input<string>;
+}
+
+/**
+ * Properties of key vault to get the secrets for password.
+ */
+export interface SecretPasswordKeyVaultPropertiesArgs {
+    /**
+     * The Uri of KeyVault.
+     */
+    keyVaultUri: pulumi.Input<string>;
+    /**
+     * The name of KeyVault password secret.
+     */
+    secretName: pulumi.Input<string>;
+}
+
+/**
+ * SMB settings for the cache
+ */
+export interface SmbSettingsArgs {
+    /**
+     * Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+     */
+    smbAccessBasedEnumeration?: pulumi.Input<string | enums.SmbAccessBasedEnumeration>;
+    /**
+     * Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache.
+     */
+    smbEncryption?: pulumi.Input<string | enums.SmbEncryptionState>;
+    /**
+     * Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+     */
+    smbNonBrowsable?: pulumi.Input<string | enums.SmbNonBrowsable>;
 }
 
 /**

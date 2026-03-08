@@ -5483,6 +5483,33 @@ export interface RouteTableArgs {
 }
 
 /**
+ * Properties of route target address
+ */
+export interface RouteTargetAddressPropertiesFormatArgs {
+    /**
+     * The private IPv4 or IPv6 address of the service gateway route target address.
+     */
+    privateIPAddress?: pulumi.Input<string>;
+    /**
+     * The Private IP allocation method.
+     */
+    privateIPAllocationMethod?: pulumi.Input<string | enums.IPAllocationMethod>;
+    /**
+     * The reference to the subnet resource.
+     */
+    subnet?: pulumi.Input<SubnetArgs>;
+}
+/**
+ * routeTargetAddressPropertiesFormatArgsProvideDefaults sets the appropriate defaults for RouteTargetAddressPropertiesFormatArgs
+ */
+export function routeTargetAddressPropertiesFormatArgsProvideDefaults(val: RouteTargetAddressPropertiesFormatArgs): RouteTargetAddressPropertiesFormatArgs {
+    return {
+        ...val,
+        subnet: (val.subnet ? pulumi.output(val.subnet).apply(subnetArgsProvideDefaults) : undefined),
+    };
+}
+
+/**
  * Routing Configuration indicating the associated and propagated route tables for this connection.
  */
 export interface RoutingConfigurationArgs {
@@ -5763,6 +5790,20 @@ export interface ServiceEndpointPropertiesFormatArgs {
 }
 
 /**
+ * SKU of a service gateway.
+ */
+export interface ServiceGatewaySkuArgs {
+    /**
+     * Name of a service gateway SKU.
+     */
+    name?: pulumi.Input<string | enums.ServiceGatewaySkuName>;
+    /**
+     * Tier of a service gateway SKU.
+     */
+    tier?: pulumi.Input<string | enums.ServiceGatewaySkuTier>;
+}
+
+/**
  * The sku of this Bastion Host.
  */
 export interface SkuArgs {
@@ -5934,6 +5975,10 @@ export interface SubnetArgs {
      * An array of service endpoints.
      */
     serviceEndpoints?: pulumi.Input<pulumi.Input<ServiceEndpointPropertiesFormatArgs>[]>;
+    /**
+     * Reference to an existing service gateway.
+     */
+    serviceGateway?: pulumi.Input<SubResourceArgs>;
     /**
      * Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
      */
@@ -6207,6 +6252,86 @@ export interface VirtualHubRouteV2Args {
      * NextHops ip address.
      */
     nextHops?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Virtual Network resource.
+ */
+export interface VirtualNetworkArgs {
+    /**
+     * The AddressSpace that contains an array of IP address ranges that can be used by subnets.
+     */
+    addressSpace?: pulumi.Input<AddressSpaceArgs>;
+    /**
+     * Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
+     */
+    bgpCommunities?: pulumi.Input<VirtualNetworkBgpCommunitiesArgs>;
+    /**
+     * The DDoS protection plan associated with the virtual network.
+     */
+    ddosProtectionPlan?: pulumi.Input<SubResourceArgs>;
+    /**
+     * The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
+     */
+    dhcpOptions?: pulumi.Input<DhcpOptionsArgs>;
+    /**
+     * Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
+     */
+    enableDdosProtection?: pulumi.Input<boolean>;
+    /**
+     * Indicates if VM protection is enabled for all the subnets in the virtual network.
+     */
+    enableVmProtection?: pulumi.Input<boolean>;
+    /**
+     * Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
+     */
+    encryption?: pulumi.Input<VirtualNetworkEncryptionArgs>;
+    /**
+     * The extended location of the virtual network.
+     */
+    extendedLocation?: pulumi.Input<ExtendedLocationArgs>;
+    /**
+     * The FlowTimeout value (in minutes) for the Virtual Network
+     */
+    flowTimeoutInMinutes?: pulumi.Input<number>;
+    /**
+     * Resource ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Array of IpAllocation which reference this VNET.
+     */
+    ipAllocations?: pulumi.Input<pulumi.Input<SubResourceArgs>[]>;
+    /**
+     * Resource location.
+     */
+    location?: pulumi.Input<string>;
+    /**
+     * Private Endpoint VNet Policies.
+     */
+    privateEndpointVNetPolicies?: pulumi.Input<string | enums.PrivateEndpointVNetPolicies>;
+    /**
+     * A list of subnets in a Virtual Network.
+     */
+    subnets?: pulumi.Input<pulumi.Input<SubnetArgs>[]>;
+    /**
+     * Resource tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A list of peerings in a Virtual Network.
+     */
+    virtualNetworkPeerings?: pulumi.Input<pulumi.Input<VirtualNetworkPeeringArgs>[]>;
+}
+/**
+ * virtualNetworkArgsProvideDefaults sets the appropriate defaults for VirtualNetworkArgs
+ */
+export function virtualNetworkArgsProvideDefaults(val: VirtualNetworkArgs): VirtualNetworkArgs {
+    return {
+        ...val,
+        enableDdosProtection: (val.enableDdosProtection) ?? false,
+        enableVmProtection: (val.enableVmProtection) ?? false,
+    };
 }
 
 /**

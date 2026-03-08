@@ -1,5 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * Get policy.
  *
@@ -26,7 +27,7 @@ export interface GetPolicyArgs {
      */
     labName: string;
     /**
-     * The name of the Schedule
+     * The name of the Policy
      */
     name: string;
     /**
@@ -68,7 +69,7 @@ export interface GetPolicyResult {
      */
     readonly factName?: string;
     /**
-     * The identifier of the resource.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
@@ -76,7 +77,7 @@ export interface GetPolicyResult {
      */
     readonly location?: string;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -88,6 +89,10 @@ export interface GetPolicyResult {
      */
     readonly status?: string;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
      * The tags of the resource.
      */
     readonly tags?: {[key: string]: string};
@@ -96,7 +101,7 @@ export interface GetPolicyResult {
      */
     readonly threshold?: string;
     /**
-     * The type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**
@@ -130,7 +135,7 @@ export interface GetPolicyOutputArgs {
      */
     labName: pulumi.Input<string>;
     /**
-     * The name of the Schedule
+     * The name of the Policy
      */
     name: pulumi.Input<string>;
     /**

@@ -46,7 +46,7 @@ export interface GetActionResult {
      */
     readonly azureApiVersion: string;
     /**
-     * Etag of the action.
+     * ETag of the action.
      */
     readonly etag?: string;
     /**

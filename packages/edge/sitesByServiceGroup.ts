@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Site as ARM Resource
+ * Site as Extension Resource
  *
  * Uses Azure REST API version 2025-03-01-preview.
  *

@@ -38,7 +38,7 @@ export interface AccountMergeInfoResponse {
 /**
  * Gets or sets the status of the account.
  */
-export interface AccountPropertiesResponseAccountStatus {
+export interface AccountPropertiesAccountStatusResponse {
     /**
      * Gets the account status code.
      */
@@ -46,13 +46,13 @@ export interface AccountPropertiesResponseAccountStatus {
     /**
      * Gets the account error details.
      */
-    errorDetails: AccountStatusResponseErrorDetails;
+    errorDetails: AccountStatusErrorDetailsResponse;
 }
 
 /**
  * The URIs that are the public endpoints of the account.
  */
-export interface AccountPropertiesResponseEndpoints {
+export interface AccountPropertiesEndpointsResponse {
     /**
      * Gets the catalog endpoint.
      */
@@ -66,7 +66,7 @@ export interface AccountPropertiesResponseEndpoints {
 /**
  * Gets the resource identifiers of the managed resources.
  */
-export interface AccountPropertiesResponseManagedResources {
+export interface AccountPropertiesManagedResourcesResponse {
     /**
      * Gets the managed event hub namespace resource identifier.
      */
@@ -82,9 +82,9 @@ export interface AccountPropertiesResponseManagedResources {
 }
 
 /**
- * Gets or sets the Sku.
+ * The Sku
  */
-export interface AccountResponseSku {
+export interface AccountSkuResponse {
     /**
      * Gets or sets the sku capacity.
      */
@@ -98,7 +98,7 @@ export interface AccountResponseSku {
 /**
  * Gets the account error details.
  */
-export interface AccountStatusResponseErrorDetails {
+export interface AccountStatusErrorDetailsResponse {
     /**
      * Gets or sets the code.
      */
@@ -209,11 +209,11 @@ export interface IngestionStorageResponse {
  */
 export interface PrivateEndpointConnectionResponse {
     /**
-     * Gets or sets the identifier.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     id: string;
     /**
-     * Gets or sets the name.
+     * The name of the resource
      */
     name: string;
     /**
@@ -229,11 +229,11 @@ export interface PrivateEndpointConnectionResponse {
      */
     provisioningState: string;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    systemData: ProxyResourceResponseSystemData;
+    systemData: SystemDataResponse;
     /**
-     * Gets or sets the type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
 }
@@ -269,61 +269,31 @@ export interface PrivateLinkServiceConnectionStateResponse {
 /**
  * Metadata pertaining to creation and last modification of the resource.
  */
-export interface ProxyResourceResponseSystemData {
+export interface SystemDataResponse {
     /**
      * The timestamp of resource creation (UTC).
      */
-    createdAt: string;
+    createdAt?: string;
     /**
      * The identity that created the resource.
      */
-    createdBy: string;
+    createdBy?: string;
     /**
      * The type of identity that created the resource.
      */
-    createdByType: string;
+    createdByType?: string;
     /**
-     * The timestamp of the last modification the resource (UTC).
+     * The timestamp of resource last modification (UTC)
      */
-    lastModifiedAt: string;
-    /**
-     * The identity that last modified the resource.
-     */
-    lastModifiedBy: string;
-    /**
-     * The type of identity that last modified the resource.
-     */
-    lastModifiedByType: string;
-}
-
-/**
- * Metadata pertaining to creation and last modification of the resource.
- */
-export interface TrackedResourceResponseSystemData {
-    /**
-     * The timestamp of resource creation (UTC).
-     */
-    createdAt: string;
-    /**
-     * The identity that created the resource.
-     */
-    createdBy: string;
-    /**
-     * The type of identity that created the resource.
-     */
-    createdByType: string;
-    /**
-     * The timestamp of the last modification the resource (UTC).
-     */
-    lastModifiedAt: string;
+    lastModifiedAt?: string;
     /**
      * The identity that last modified the resource.
      */
-    lastModifiedBy: string;
+    lastModifiedBy?: string;
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType: string;
+    lastModifiedByType?: string;
 }
 
 /**

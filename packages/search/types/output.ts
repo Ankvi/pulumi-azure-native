@@ -85,40 +85,9 @@ export interface NetworkRuleSetResponse {
 }
 
 /**
- * Describes the properties of an existing private endpoint connection to the search service.
- */
-export interface PrivateEndpointConnectionPropertiesResponse {
-    /**
-     * The group ID of the Azure resource for which the private link service is for.
-     */
-    groupId?: string;
-    /**
-     * The private endpoint resource from Microsoft.Network provider.
-     */
-    privateEndpoint?: PrivateEndpointConnectionPropertiesResponsePrivateEndpoint;
-    /**
-     * Describes the current state of an existing Azure Private Link service connection to the private endpoint.
-     */
-    privateLinkServiceConnectionState?: PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState;
-    /**
-     * The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, Incomplete, or Canceled.
-     */
-    provisioningState?: string;
-}
-/**
- * privateEndpointConnectionPropertiesResponseProvideDefaults sets the appropriate defaults for PrivateEndpointConnectionPropertiesResponse
- */
-export function privateEndpointConnectionPropertiesResponseProvideDefaults(val: PrivateEndpointConnectionPropertiesResponse): PrivateEndpointConnectionPropertiesResponse {
-    return {
-        ...val,
-        privateLinkServiceConnectionState: (val.privateLinkServiceConnectionState ? privateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateProvideDefaults(val.privateLinkServiceConnectionState) : undefined),
-    };
-}
-
-/**
  * The private endpoint resource from Microsoft.Network provider.
  */
-export interface PrivateEndpointConnectionPropertiesResponsePrivateEndpoint {
+export interface PrivateEndpointConnectionPropertiesPrivateEndpointResponse {
     /**
      * The resource ID of the private endpoint resource from Microsoft.Network provider.
      */
@@ -128,7 +97,7 @@ export interface PrivateEndpointConnectionPropertiesResponsePrivateEndpoint {
 /**
  * Describes the current state of an existing Azure Private Link service connection to the private endpoint.
  */
-export interface PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState {
+export interface PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse {
     /**
      * A description of any extra actions that may be required.
      */
@@ -143,12 +112,43 @@ export interface PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceCo
     status?: string;
 }
 /**
- * privateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateProvideDefaults sets the appropriate defaults for PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState
+ * privateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseProvideDefaults sets the appropriate defaults for PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse
  */
-export function privateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionStateProvideDefaults(val: PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState): PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState {
+export function privateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseProvideDefaults(val: PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse): PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse {
     return {
         ...val,
         actionsRequired: (val.actionsRequired) ?? "None",
+    };
+}
+
+/**
+ * Describes the properties of an existing private endpoint connection to the search service.
+ */
+export interface PrivateEndpointConnectionPropertiesResponse {
+    /**
+     * The group ID of the Azure resource for which the private link service is for.
+     */
+    groupId?: string;
+    /**
+     * The private endpoint resource from Microsoft.Network provider.
+     */
+    privateEndpoint?: PrivateEndpointConnectionPropertiesPrivateEndpointResponse;
+    /**
+     * Describes the current state of an existing Azure Private Link service connection to the private endpoint.
+     */
+    privateLinkServiceConnectionState?: PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse;
+    /**
+     * The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, Incomplete, or Canceled.
+     */
+    provisioningState?: string;
+}
+/**
+ * privateEndpointConnectionPropertiesResponseProvideDefaults sets the appropriate defaults for PrivateEndpointConnectionPropertiesResponse
+ */
+export function privateEndpointConnectionPropertiesResponseProvideDefaults(val: PrivateEndpointConnectionPropertiesResponse): PrivateEndpointConnectionPropertiesResponse {
+    return {
+        ...val,
+        privateLinkServiceConnectionState: (val.privateLinkServiceConnectionState ? privateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponseProvideDefaults(val.privateLinkServiceConnectionState) : undefined),
     };
 }
 

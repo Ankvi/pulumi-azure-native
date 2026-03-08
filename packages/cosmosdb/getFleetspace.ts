@@ -4,7 +4,9 @@ import * as types from "./types";
 /**
  * Retrieves the properties of an existing Azure Cosmos DB fleetspace under a fleet
  *
- * Uses Azure REST API version 2025-05-01-preview.
+ * Uses Azure REST API version 2025-10-15.
+ *
+ * Other available API versions: 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getFleetspace(args: GetFleetspaceArgs, opts?: pulumi.InvokeOptions): Promise<GetFleetspaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,6 +41,10 @@ export interface GetFleetspaceResult {
      */
     readonly azureApiVersion: string;
     /**
+     * List of data regions assigned to the fleetspace. Eg [westus2]
+     */
+    readonly dataRegions?: string[];
+    /**
      * The kind of API this fleetspace belongs to. Acceptable values: 'NoSQL'
      */
     readonly fleetspaceApiKind?: string;
@@ -55,6 +61,10 @@ export interface GetFleetspaceResult {
      */
     readonly provisioningState: string;
     /**
+     * Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+     */
+    readonly serviceTier?: string;
+    /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
@@ -70,7 +80,9 @@ export interface GetFleetspaceResult {
 /**
  * Retrieves the properties of an existing Azure Cosmos DB fleetspace under a fleet
  *
- * Uses Azure REST API version 2025-05-01-preview.
+ * Uses Azure REST API version 2025-10-15.
+ *
+ * Other available API versions: 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getFleetspaceOutput(args: GetFleetspaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFleetspaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

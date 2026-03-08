@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-04-01-preview.
  *
- * Other available API versions: 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDevCenterCatalogImageDefinitionBuildDetails(args: GetDevCenterCatalogImageDefinitionBuildDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetDevCenterCatalogImageDefinitionBuildDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -92,7 +92,7 @@ export interface GetDevCenterCatalogImageDefinitionBuildDetailsResult {
  *
  * Uses Azure REST API version 2025-04-01-preview.
  *
- * Other available API versions: 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDevCenterCatalogImageDefinitionBuildDetailsOutput(args: GetDevCenterCatalogImageDefinitionBuildDetailsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDevCenterCatalogImageDefinitionBuildDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
