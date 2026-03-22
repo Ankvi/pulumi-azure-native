@@ -5,6 +5,8 @@ import * as types from "./types";
  * A HealthModel resource
  *
  * Uses Azure REST API version 2025-05-01-preview.
+ *
+ * Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class HealthModel extends pulumi.CustomResource {
     /**
@@ -101,7 +103,7 @@ export class HealthModel extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cloudhealth/v20250501preview:HealthModel" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cloudhealth/v20250501preview:HealthModel" }, { type: "azure-native:cloudhealth/v20260101preview:HealthModel" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(HealthModel.__pulumiType, name, resourceInputs, opts);
     }

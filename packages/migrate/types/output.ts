@@ -368,6 +368,16 @@ export interface AppSvcNativeSettingsResponse {
 }
 
 /**
+ * ARG query and other details to create workloads within a wave.
+ */
+export interface ArgResponse {
+    /**
+     * The query to create workloads within the wave.
+     */
+    query: string;
+}
+
+/**
  * Assessment details class.
  */
 export interface AssessmentDetailsResponse {
@@ -2298,7 +2308,7 @@ export interface MachineAssessmentSettingsResponse {
      * Gets or sets the duration for which the VMs are up in the on-premises
      * environment.
      */
-    vmUptime?: VmUptimeResponse;
+    vmUptime?: VmUptimeResponseV2;
 }
 
 /**
@@ -2436,9 +2446,35 @@ export interface MigrateAgentModelResponseSystemData {
 }
 
 /**
- * Properties of a migrate project.
+ * Class for migrate project properties.
  */
 export interface MigrateProjectPropertiesResponse {
+    /**
+     * Gets the last time the project summary was refreshed.
+     */
+    lastSummaryRefreshedTime: string;
+    /**
+     * Provisioning state of the migrate project.
+     */
+    provisioningState?: string;
+    /**
+     * Gets the refresh summary state.
+     */
+    refreshSummaryState: string;
+    /**
+     * Gets or sets the list of tools registered with the migrate project.
+     */
+    registeredTools?: string[];
+    /**
+     * Gets the summary of the migrate project.
+     */
+    summary: {[key: string]: DatabaseProjectSummaryResponse | ServersProjectSummaryResponse};
+}
+
+/**
+ * Properties of a migrate project.
+ */
+export interface MigrateProjectPropertiesResponseV1 {
     /**
      * Last summary refresh time.
      */
@@ -2446,11 +2482,7 @@ export interface MigrateProjectPropertiesResponse {
     /**
      * Gets the private endpoint connections.
      */
-    privateEndpointConnections: PrivateEndpointConnectionResponse[];
-    /**
-     * Provisioning state of the migrate project.
-     */
-    provisioningState?: string;
+    privateEndpointConnections: PrivateEndpointConnectionResponseV1[];
     /**
      * Gets or sets the state of public network access.
      */
@@ -2470,7 +2502,7 @@ export interface MigrateProjectPropertiesResponse {
     /**
      * Project summary.
      */
-    summary: {[key: string]: DatabaseProjectSummaryResponse | ServersProjectSummaryResponse | ProjectSummaryResponse};
+    summary: {[key: string]: ProjectSummaryResponse};
     /**
      * Utility storage account id.
      */
@@ -2500,6 +2532,122 @@ export interface MigrationConfigurationResponse {
      * Gets or sets the storage account resource Id.
      */
     storageAccountResourceId?: string;
+}
+
+/**
+ * Migration Entity Group Properties class.
+ */
+export interface MigrationEntityGroupPropertiesResponse {
+    /**
+     * Display Name of the Workload.
+     */
+    applicationDisplayName: string;
+    /**
+     * Application id 
+     */
+    applicationId: string;
+    /**
+     * Associated Assessment Id
+     */
+    associatedAssessmentId?: string;
+    /**
+     * associated Wave Id
+     */
+    associatedWaveIds?: string[];
+    /**
+     * Execution Start Date
+     */
+    executionStartDate: string;
+    /**
+     * Migration Entity Group Status
+     */
+    executionStatus: string;
+    /**
+     * Migration path
+     */
+    migrationPath?: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+}
+
+/**
+ * Migration Entity Properties class.
+ */
+export interface MigrationEntityPropertiesResponse {
+    /**
+     * Assessed Entity ARM Id
+     */
+    assessedEntityArmId?: string;
+    /**
+     * Associated Assessment Id
+     */
+    associatedAssessmentId?: string;
+    /**
+     * inventory resource id 
+     */
+    associatedInventoryResourceId: string;
+    /**
+     * associated Migration Entity Group Id
+     */
+    associatedMigrationEntityGroupIds?: string[];
+    /**
+     * associated Wave Id
+     */
+    associatedWaveId?: string;
+    /**
+     * Execution Readiness of Migration Entity.
+     */
+    executionReadiness: string;
+    /**
+     * Execution Stage of Migration Entity.
+     */
+    executionStage: string;
+    /**
+     * Execution start date for Migration Entity.
+     */
+    executionStartDate: string;
+    /**
+     * Execution Status of Migration Entity.
+     */
+    executionStatus: string;
+    /**
+     * Display Name of the Workload.
+     */
+    inventoryDisplayName: string;
+    /**
+     * Migration path
+     */
+    migrationPath?: string;
+    /**
+     * Migration specific properties for the entity.
+     */
+    migrationSpecificProperties?: ServerMigrationSpecificPropertiesResponse;
+    /**
+     * Strategy of Migration Entity.
+     */
+    migrationStrategy: string;
+    /**
+     * Migration Tool of the Migration Entity.
+     */
+    migrationTool?: string;
+    /**
+     * ARM Resource Identifier for the partner resource.
+     */
+    partnerResourceArmId?: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * Target of the Migration Entity.
+     */
+    target?: string;
+    /**
+     * target Azure Resource ARM Id.
+     */
+    targetAzureResourceArmId?: string;
 }
 
 /**
@@ -3071,23 +3219,19 @@ export interface PrivateEndpointConnectionPropertiesResponse {
 }
 
 /**
- * A private endpoint connection for a project.
+ * Private endpoint connection resource.
  */
 export interface PrivateEndpointConnectionResponse {
     /**
-     * For optimistic concurrency control.
-     */
-    eTag?: string;
-    /**
      * The group ids for the private endpoint resource.
      */
-    groupIds?: string[];
+    groupIds: string[];
     /**
-     * Path reference to this private endpoint endpoint connection. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     id: string;
     /**
-     * Name of the private endpoint endpoint connection.
+     * The name of the resource
      */
     name: string;
     /**
@@ -3097,19 +3241,71 @@ export interface PrivateEndpointConnectionResponse {
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
-    privateLinkServiceConnectionState?: PrivateLinkServiceConnectionStateResponse;
+    privateLinkServiceConnectionState: PrivateLinkServiceConnectionStateResponse;
+    /**
+     * The provisioning state of the private endpoint connection resource.
+     */
+    provisioningState: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
+}
+
+/**
+ * REST model used to encapsulate the user visible state of a PrivateEndpoint.
+ */
+export interface PrivateEndpointConnectionResponseV1 {
+    /**
+     * Gets the tag for optimistic concurrency control.
+     */
+    eTag: string;
+    /**
+     * Relative URL to get this Sites.
+     */
+    id: string;
+    /**
+     * Gets the name of the resource.
+     */
+    name: string;
+    /**
+     * Gets the properties of the object.
+     */
+    properties: PrivateEndpointConnectionPropertiesResponse;
+    /**
+     * Metadata pertaining to creation and last modification of the resource.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * Gets the resource type.
+     */
+    type: string;
+}
+
+/**
+ * A private endpoint connection for a project.
+ */
+export interface PrivateEndpointConnectionResponseV2 {
+    /**
+     * For optimistic concurrency control.
+     */
+    eTag?: string;
+    /**
+     * Path reference to this private endpoint endpoint connection. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}
+     */
+    id: string;
+    /**
+     * Name of the private endpoint endpoint connection.
+     */
+    name: string;
     /**
      * Properties of the private endpoint endpoint connection.
      */
     properties: PrivateEndpointConnectionPropertiesResponse;
-    /**
-     * The provisioning state of the private endpoint connection resource.
-     */
-    provisioningState?: string;
-    /**
-     * Metadata pertaining to creation and last modification of the resource.
-     */
-    systemData?: SystemDataResponse;
     /**
      * Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
      */
@@ -3187,7 +3383,7 @@ export interface ProjectPropertiesResponse {
     /**
      * The list of private endpoint connections to the project.
      */
-    privateEndpointConnections: PrivateEndpointConnectionResponse[];
+    privateEndpointConnections: PrivateEndpointConnectionResponseV2[];
     /**
      * Assessment project status.
      */
@@ -3400,6 +3596,25 @@ export interface SecuritySettingsResponse {
      * Virtual machines per administrator.
      */
     sqlServerSecurityCostPerServerPerYear: number;
+}
+
+/**
+ * Represents a Server Migration Specific properties base model.
+ */
+export interface ServerMigrationSpecificPropertiesResponse {
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
+    currentJobId?: string;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
+    drApplianceInventoryId?: string;
+    /**
+     * Migration Specific Properties Instance Types.
+     * Expected value is 'ServerMigration'.
+     */
+    instanceType: "ServerMigration";
 }
 
 /**
@@ -3987,6 +4202,52 @@ export interface TargetStorageProfileResponse {
 }
 
 /**
+ * Task Properties class.
+ */
+export interface TaskPropertiesResponse {
+    /**
+     * Task completion Date
+     */
+    completionDate: string;
+    /**
+     * Task Description
+     */
+    description?: string;
+    /**
+     * Task Dislay Name 
+     */
+    displayName: string;
+    /**
+     * Indicates whether the task is editable.
+     */
+    isEditable: boolean;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * Task Scope
+     */
+    scope: string;
+    /**
+     * associated Wave Id
+     */
+    scopeId: string;
+    /**
+     * Task Stage
+     */
+    stage?: string;
+    /**
+     * Task Status
+     */
+    status: string;
+    /**
+     * Task Type
+     */
+    taskType: string;
+}
+
+/**
  * Third Party Management settings.
  */
 export interface ThirdPartyManagementSettingsResponse {
@@ -4114,9 +4375,6 @@ export interface VirtualizationSoftwareSettingsResponse {
     vMwareCloudFoundationLicenseCost: number;
 }
 
-/**
- * Details on the total up-time for the VM.
- */
 export interface VmUptimeResponse {
     /**
      * Number of days in a month for VM uptime.
@@ -4126,6 +4384,76 @@ export interface VmUptimeResponse {
      * Number of hours per day for VM uptime.
      */
     hoursPerDay?: number;
+}
+
+/**
+ * Details on the total up-time for the VM.
+ */
+export interface VmUptimeResponseV1 {
+    /**
+     * Number of days in a month for VM uptime.
+     */
+    daysPerMonth?: number;
+    /**
+     * Number of hours per day for VM uptime.
+     */
+    hoursPerDay?: number;
+}
+
+/**
+ * Details on the total up-time for the VM.
+ */
+export interface VmUptimeResponseV2 {
+    /**
+     * Number of days in a month for VM uptime.
+     */
+    daysPerMonth?: number;
+    /**
+     * Number of hours per day for VM uptime.
+     */
+    hoursPerDay?: number;
+}
+
+/**
+ * Migration Wave Properties class.
+ */
+export interface WavePropertiesResponse {
+    /**
+     * Actual start date of the wave.
+     */
+    actualStartDate: string;
+    /**
+     * ARG query and other details to create workloads within a wave
+     */
+    arg: ArgResponse;
+    /**
+     * Description of the wave.
+     */
+    description?: string;
+    /**
+     * Display Name of the wave.
+     */
+    displayName: string;
+    /**
+     * Planned completion date of the wave.
+     */
+    plannedCompletionDate?: string;
+    /**
+     * Planned start date of the wave.
+     */
+    plannedStartDate: string;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * The current stage of the wave.
+     */
+    stage: string;
+    /**
+     * The status of the wave.
+     */
+    status: string;
 }
 
 /**

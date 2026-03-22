@@ -514,6 +514,25 @@ export interface CircuitBreakerRuleArgs {
     tripDuration?: pulumi.Input<string>;
 }
 
+/**
+ * Information regarding the Configuration API of the API Management service.
+ */
+export interface ConfigurationApiArgs {
+    /**
+     * Indication whether or not the legacy Configuration API (v1) should be exposed on the API Management service. Value is optional but must be 'Enabled' or 'Disabled'. If 'Disabled', legacy Configuration API (v1) will not be available for self-hosted gateways. Default value is 'Enabled'
+     */
+    legacyApi?: pulumi.Input<string | enums.LegacyApiState>;
+}
+/**
+ * configurationApiArgsProvideDefaults sets the appropriate defaults for ConfigurationApiArgs
+ */
+export function configurationApiArgsProvideDefaults(val: ConfigurationApiArgs): ConfigurationApiArgs {
+    return {
+        ...val,
+        legacyApi: (val.legacyApi) ?? "Enabled",
+    };
+}
+
 export interface DataMaskingArgs {
     /**
      * Masking settings for headers
@@ -566,6 +585,17 @@ export interface FailureStatusCodeRangeArgs {
      * The minimum http status code.
      */
     min?: pulumi.Input<number>;
+}
+
+export interface GatewayHostnameBindingKeyVaultArgs {
+    /**
+     * The default hostname of the data-plane gateway.
+     */
+    identityClientId?: pulumi.Input<string>;
+    /**
+     * The current provisioning state of the API Management gateway hostname binding.
+     */
+    secretId: pulumi.Input<string>;
 }
 
 /**
@@ -658,38 +688,6 @@ export interface KeyVaultContractCreatePropertiesArgs {
      * Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires API Management service to be configured with aka.ms/apimmsi
      */
     secretIdentifier?: pulumi.Input<string>;
-}
-
-/**
- * Diagnostic settings for Large Language Models
- */
-export interface LLMDiagnosticSettingsArgs {
-    /**
-     * Specifies whether default diagnostic should be enabled for Large Language Models or not.
-     */
-    logs?: pulumi.Input<string | enums.LlmDiagnosticSettings>;
-    /**
-     * Diagnostic settings for Large Language Models requests.
-     */
-    requests?: pulumi.Input<LLMMessageDiagnosticSettingsArgs>;
-    /**
-     * Diagnostic settings for Large Language Models responses.
-     */
-    responses?: pulumi.Input<LLMMessageDiagnosticSettingsArgs>;
-}
-
-/**
- * Diagnostic settings for Large Language Models Messages
- */
-export interface LLMMessageDiagnosticSettingsArgs {
-    /**
-     * Maximum size of message to logs in bytes. The default size is 32KB.
-     */
-    maxSizeInBytes?: pulumi.Input<number>;
-    /**
-     * Specifies which message should be logged. Currently there is only 'all' option.
-     */
-    messages?: pulumi.Input<string | enums.LlmMessageLogTypes>;
 }
 
 /**

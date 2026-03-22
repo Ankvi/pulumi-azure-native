@@ -1,0 +1,71 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * Description for Get the instance details for an app service plan.
+ *
+ * Uses Azure REST API version 2025-03-01.
+ *
+ * Other available API versions: 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ */
+export function listAppServicePlanServerFarmInstanceDetails(args: ListAppServicePlanServerFarmInstanceDetailsArgs, opts?: pulumi.InvokeOptions): Promise<ListAppServicePlanServerFarmInstanceDetailsResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:web:listAppServicePlanServerFarmInstanceDetails", {
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface ListAppServicePlanServerFarmInstanceDetailsArgs {
+    /**
+     * Name of the App Service plan.
+     */
+    name: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+}
+
+/**
+ * Represents instance details for an app service plan.
+ */
+export interface ListAppServicePlanServerFarmInstanceDetailsResult {
+    /**
+     * The total number of instances.
+     */
+    readonly instanceCount?: number;
+    /**
+     * The list of server farm instances.
+     */
+    readonly instances?: types.outputs.ServerFarmInstanceResponse[];
+    /**
+     * The server farm name.
+     */
+    readonly serverFarmName?: string;
+}
+/**
+ * Description for Get the instance details for an app service plan.
+ *
+ * Uses Azure REST API version 2025-03-01.
+ *
+ * Other available API versions: 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ */
+export function listAppServicePlanServerFarmInstanceDetailsOutput(args: ListAppServicePlanServerFarmInstanceDetailsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListAppServicePlanServerFarmInstanceDetailsResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:web:listAppServicePlanServerFarmInstanceDetails", {
+        "name": args.name,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface ListAppServicePlanServerFarmInstanceDetailsOutputArgs {
+    /**
+     * Name of the App Service plan.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

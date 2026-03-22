@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01-preview.
  *
- * Other available API versions: 2022-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01-preview, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DeploymentStackAtSubscription extends pulumi.CustomResource {
     /**
@@ -82,7 +82,7 @@ export class DeploymentStackAtSubscription extends pulumi.CustomResource {
     /**
      * The error detail.
      */
-    declare public /*out*/ readonly error: pulumi.Output<types.outputs.ErrorDetailResponse | undefined>;
+    declare public /*out*/ readonly error: pulumi.Output<types.outputs.ErrorDetailResponse>;
     /**
      * An array of resources that failed to reach goal state during the most recent update. Each resourceId is accompanied by an error message.
      */
@@ -198,7 +198,7 @@ export class DeploymentStackAtSubscription extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:resources/v20220801preview:DeploymentStackAtSubscription" }, { type: "azure-native:resources/v20240301:DeploymentStackAtSubscription" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:resources/v20220801preview:DeploymentStackAtSubscription" }, { type: "azure-native:resources/v20240301:DeploymentStackAtSubscription" }, { type: "azure-native:resources/v20250701:DeploymentStackAtSubscription" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DeploymentStackAtSubscription.__pulumiType, name, resourceInputs, opts);
     }

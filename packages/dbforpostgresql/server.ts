@@ -2,11 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Flexible server.
+ * Properties of a server.
  *
- * Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
+ * Uses Azure REST API version 2025-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
  *
- * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Server extends pulumi.CustomResource {
     /**
@@ -40,11 +40,11 @@ export class Server extends pulumi.CustomResource {
      */
     declare public readonly administratorLogin: pulumi.Output<string | undefined>;
     /**
-     * Authentication configuration properties of a flexible server.
+     * Authentication configuration properties of a server.
      */
     declare public readonly authConfig: pulumi.Output<types.outputs.AuthConfigResponse | undefined>;
     /**
-     * Availability zone of a flexible server.
+     * Availability zone of a server.
      */
     declare public readonly availabilityZone: pulumi.Output<string | undefined>;
     /**
@@ -52,23 +52,27 @@ export class Server extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
-     * Backup properties of a flexible server.
+     * Backup properties of a server.
      */
     declare public readonly backup: pulumi.Output<types.outputs.BackupResponse | undefined>;
     /**
-     * Data encryption properties of a flexible server.
+     * Cluster properties of a server.
+     */
+    declare public readonly cluster: pulumi.Output<types.outputs.ClusterResponse | undefined>;
+    /**
+     * Data encryption properties of a server.
      */
     declare public readonly dataEncryption: pulumi.Output<types.outputs.DataEncryptionResponse | undefined>;
     /**
-     * Fully qualified domain name of a flexible server.
+     * Fully qualified domain name of a server.
      */
     declare public /*out*/ readonly fullyQualifiedDomainName: pulumi.Output<string>;
     /**
-     * High availability properties of a flexible server.
+     * High availability properties of a server.
      */
     declare public readonly highAvailability: pulumi.Output<types.outputs.HighAvailabilityResponse | undefined>;
     /**
-     * User assigned managed identities assigned to the flexible server.
+     * User assigned managed identities assigned to the server.
      */
     declare public readonly identity: pulumi.Output<types.outputs.UserAssignedIdentityResponse | undefined>;
     /**
@@ -76,7 +80,7 @@ export class Server extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
-     * Maintenance window properties of a flexible server.
+     * Maintenance window properties of a server.
      */
     declare public readonly maintenanceWindow: pulumi.Output<types.outputs.MaintenanceWindowResponse | undefined>;
     /**
@@ -88,19 +92,19 @@ export class Server extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * Network properties of a flexible server. Only required if you want your server to be integrated into a virtual network provided by customer.
+     * Network properties of a server. Only required if you want your server to be integrated into a virtual network provided by customer.
      */
     declare public readonly network: pulumi.Output<types.outputs.NetworkResponse | undefined>;
     /**
-     * List of private endpoint connections associated with the specified flexible server.
+     * List of private endpoint connections associated with the specified server.
      */
     declare public /*out*/ readonly privateEndpointConnections: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
-     * Read replica properties of a flexible server. Required only in case that you want to promote a server.
+     * Read replica properties of a server. Required only in case that you want to promote a server.
      */
     declare public readonly replica: pulumi.Output<types.outputs.ReplicaResponse | undefined>;
     /**
-     * Maximum number of read replicas allowed for a flexible server.
+     * Maximum number of read replicas allowed for a server.
      */
     declare public /*out*/ readonly replicaCapacity: pulumi.Output<number>;
     /**
@@ -108,19 +112,19 @@ export class Server extends pulumi.CustomResource {
      */
     declare public readonly replicationRole: pulumi.Output<string | undefined>;
     /**
-     * Compute tier and size of a flexible server.
+     * Compute tier and size of a server.
      */
     declare public readonly sku: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
-     * Identifier of the flexible server to be used as the source of the new flexible server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target flexible server is a read replica.
+     * Identifier of the server to be used as the source of the new server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target server is a read replica.
      */
     declare public readonly sourceServerResourceId: pulumi.Output<string | undefined>;
     /**
-     * Possible states of a flexible server.
+     * Possible states of a server.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
-     * Storage properties of a flexible server.
+     * Storage properties of a server.
      */
     declare public readonly storage: pulumi.Output<types.outputs.StorageResponse | undefined>;
     /**
@@ -159,6 +163,7 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["authConfig"] = args ? (args.authConfig ? pulumi.output(args.authConfig).apply(types.inputs.authConfigArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["availabilityZone"] = (args?.availabilityZone) ?? "";
             resourceInputs["backup"] = args ? (args.backup ? pulumi.output(args.backup).apply(types.inputs.backupArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["cluster"] = args ? (args.cluster ? pulumi.output(args.cluster).apply(types.inputs.clusterArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["createMode"] = args?.createMode;
             resourceInputs["dataEncryption"] = args?.dataEncryption;
             resourceInputs["highAvailability"] = args ? (args.highAvailability ? pulumi.output(args.highAvailability).apply(types.inputs.highAvailabilityArgsProvideDefaults) : undefined) : undefined;
@@ -191,6 +196,7 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["availabilityZone"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["backup"] = undefined /*out*/;
+            resourceInputs["cluster"] = undefined /*out*/;
             resourceInputs["dataEncryption"] = undefined /*out*/;
             resourceInputs["fullyQualifiedDomainName"] = undefined /*out*/;
             resourceInputs["highAvailability"] = undefined /*out*/;
@@ -214,7 +220,7 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20171201:Server" }, { type: "azure-native:dbforpostgresql/v20171201preview:Server" }, { type: "azure-native:dbforpostgresql/v20200214preview:Server" }, { type: "azure-native:dbforpostgresql/v20200214privatepreview:Server" }, { type: "azure-native:dbforpostgresql/v20210410privatepreview:Server" }, { type: "azure-native:dbforpostgresql/v20210601:Server" }, { type: "azure-native:dbforpostgresql/v20210601preview:Server" }, { type: "azure-native:dbforpostgresql/v20210615privatepreview:Server" }, { type: "azure-native:dbforpostgresql/v20220120preview:Server" }, { type: "azure-native:dbforpostgresql/v20220308preview:Server" }, { type: "azure-native:dbforpostgresql/v20221201:Server" }, { type: "azure-native:dbforpostgresql/v20230301preview:Server" }, { type: "azure-native:dbforpostgresql/v20230601preview:Server" }, { type: "azure-native:dbforpostgresql/v20231201preview:Server" }, { type: "azure-native:dbforpostgresql/v20240301preview:Server" }, { type: "azure-native:dbforpostgresql/v20240801:Server" }, { type: "azure-native:dbforpostgresql/v20241101preview:Server" }, { type: "azure-native:dbforpostgresql/v20250101preview:Server" }, { type: "azure-native:dbforpostgresql/v20250601preview:Server" }, { type: "azure-native:dbforpostgresql/v20250801:Server" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20171201:Server" }, { type: "azure-native:dbforpostgresql/v20171201preview:Server" }, { type: "azure-native:dbforpostgresql/v20200214preview:Server" }, { type: "azure-native:dbforpostgresql/v20200214privatepreview:Server" }, { type: "azure-native:dbforpostgresql/v20210410privatepreview:Server" }, { type: "azure-native:dbforpostgresql/v20210601:Server" }, { type: "azure-native:dbforpostgresql/v20210601preview:Server" }, { type: "azure-native:dbforpostgresql/v20210615privatepreview:Server" }, { type: "azure-native:dbforpostgresql/v20220120preview:Server" }, { type: "azure-native:dbforpostgresql/v20220308preview:Server" }, { type: "azure-native:dbforpostgresql/v20221201:Server" }, { type: "azure-native:dbforpostgresql/v20230301preview:Server" }, { type: "azure-native:dbforpostgresql/v20230601preview:Server" }, { type: "azure-native:dbforpostgresql/v20231201preview:Server" }, { type: "azure-native:dbforpostgresql/v20240301preview:Server" }, { type: "azure-native:dbforpostgresql/v20240801:Server" }, { type: "azure-native:dbforpostgresql/v20241101preview:Server" }, { type: "azure-native:dbforpostgresql/v20250101preview:Server" }, { type: "azure-native:dbforpostgresql/v20250601preview:Server" }, { type: "azure-native:dbforpostgresql/v20250801:Server" }, { type: "azure-native:dbforpostgresql/v20260101preview:Server" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Server.__pulumiType, name, resourceInputs, opts);
     }
@@ -233,31 +239,35 @@ export interface ServerArgs {
      */
     administratorLoginPassword?: pulumi.Input<string>;
     /**
-     * Authentication configuration properties of a flexible server.
+     * Authentication configuration properties of a server.
      */
     authConfig?: pulumi.Input<types.inputs.AuthConfigArgs>;
     /**
-     * Availability zone of a flexible server.
+     * Availability zone of a server.
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * Backup properties of a flexible server.
+     * Backup properties of a server.
      */
     backup?: pulumi.Input<types.inputs.BackupArgs>;
     /**
-     * Creation mode of a new flexible server.
+     * Cluster properties of a server.
+     */
+    cluster?: pulumi.Input<types.inputs.ClusterArgs>;
+    /**
+     * Creation mode of a new server.
      */
     createMode?: pulumi.Input<string | types.enums.CreateMode>;
     /**
-     * Data encryption properties of a flexible server.
+     * Data encryption properties of a server.
      */
     dataEncryption?: pulumi.Input<types.inputs.DataEncryptionArgs>;
     /**
-     * High availability properties of a flexible server.
+     * High availability properties of a server.
      */
     highAvailability?: pulumi.Input<types.inputs.HighAvailabilityArgs>;
     /**
-     * User assigned managed identities assigned to the flexible server.
+     * User assigned managed identities assigned to the server.
      */
     identity?: pulumi.Input<types.inputs.UserAssignedIdentityArgs>;
     /**
@@ -265,19 +275,19 @@ export interface ServerArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * Maintenance window properties of a flexible server.
+     * Maintenance window properties of a server.
      */
     maintenanceWindow?: pulumi.Input<types.inputs.MaintenanceWindowArgs>;
     /**
-     * Network properties of a flexible server. Only required if you want your server to be integrated into a virtual network provided by customer.
+     * Network properties of a server. Only required if you want your server to be integrated into a virtual network provided by customer.
      */
     network?: pulumi.Input<types.inputs.NetworkArgs>;
     /**
-     * Creation time (in ISO8601 format) of the backup which you want to restore in the new flexible server. It's required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', or 'ReviveDropped'.
+     * Creation time (in ISO8601 format) of the backup which you want to restore in the new server. It's required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', or 'ReviveDropped'.
      */
     pointInTimeUTC?: pulumi.Input<string>;
     /**
-     * Read replica properties of a flexible server. Required only in case that you want to promote a server.
+     * Read replica properties of a server. Required only in case that you want to promote a server.
      */
     replica?: pulumi.Input<types.inputs.ReplicaArgs>;
     /**
@@ -293,15 +303,15 @@ export interface ServerArgs {
      */
     serverName?: pulumi.Input<string>;
     /**
-     * Compute tier and size of a flexible server.
+     * Compute tier and size of a server.
      */
     sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
-     * Identifier of the flexible server to be used as the source of the new flexible server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target flexible server is a read replica.
+     * Identifier of the server to be used as the source of the new server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target server is a read replica.
      */
     sourceServerResourceId?: pulumi.Input<string>;
     /**
-     * Storage properties of a flexible server.
+     * Storage properties of a server.
      */
     storage?: pulumi.Input<types.inputs.StorageArgs>;
     /**
@@ -311,5 +321,5 @@ export interface ServerArgs {
     /**
      * Major version of PostgreSQL database engine.
      */
-    version?: pulumi.Input<string | types.enums.ServerVersion>;
+    version?: pulumi.Input<string | types.enums.PostgresMajorVersion>;
 }

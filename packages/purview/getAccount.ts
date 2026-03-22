@@ -22,7 +22,7 @@ export interface GetAccountArgs {
      */
     accountName: string;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
@@ -34,7 +34,7 @@ export interface GetAccountResult {
     /**
      * Gets or sets the status of the account.
      */
-    readonly accountStatus: types.outputs.AccountPropertiesResponseAccountStatus;
+    readonly accountStatus: types.outputs.AccountPropertiesAccountStatusResponse;
     /**
      * The Azure API version of the resource.
      */
@@ -62,13 +62,13 @@ export interface GetAccountResult {
     /**
      * The URIs that are the public endpoints of the account.
      */
-    readonly endpoints: types.outputs.AccountPropertiesResponseEndpoints;
+    readonly endpoints: types.outputs.AccountPropertiesEndpointsResponse;
     /**
      * Gets or sets the friendly name.
      */
     readonly friendlyName: string;
     /**
-     * Gets or sets the identifier.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
@@ -80,7 +80,7 @@ export interface GetAccountResult {
      */
     readonly ingestionStorage?: types.outputs.IngestionStorageResponse;
     /**
-     * Gets or sets the location.
+     * The geo-location where the resource lives
      */
     readonly location?: string;
     /**
@@ -94,7 +94,7 @@ export interface GetAccountResult {
     /**
      * Gets the resource identifiers of the managed resources.
      */
-    readonly managedResources: types.outputs.AccountPropertiesResponseManagedResources;
+    readonly managedResources: types.outputs.AccountPropertiesManagedResourcesResponse;
     /**
      * Gets or sets the public network access for managed resources.
      */
@@ -104,7 +104,7 @@ export interface GetAccountResult {
      */
     readonly mergeInfo?: types.outputs.AccountMergeInfoResponse;
     /**
-     * Gets or sets the name.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -122,13 +122,13 @@ export interface GetAccountResult {
     /**
      * Gets or sets the Sku.
      */
-    readonly sku?: types.outputs.AccountResponseSku;
+    readonly sku?: types.outputs.AccountSkuResponse;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.TrackedResourceResponseSystemData;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
-     * Tags on the azure resource.
+     * Resource tags.
      */
     readonly tags?: {[key: string]: string};
     /**
@@ -136,7 +136,7 @@ export interface GetAccountResult {
      */
     readonly tenantEndpointState?: string;
     /**
-     * Gets or sets the type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -161,7 +161,7 @@ export interface GetAccountOutputArgs {
      */
     accountName: pulumi.Input<string>;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

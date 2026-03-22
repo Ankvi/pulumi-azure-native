@@ -2,21 +2,1084 @@
 
 ### Does the PR have any schema changes?
 
-Looking good! No breaking changes found.
-No new resources/functions.
+Found 550 breaking changes:
 
-<!-- Release notes generated using configuration in .github/release.yml at v3.12.0 -->
+#### Resources
+- "azure-native:apimanagement:WorkspaceApiDiagnostic":
+    - inputs:
+        - `🟡` "largeLanguageModel" missing
+    - properties:
+        - `🟡` missing output "largeLanguageModel"
+- "azure-native:apimanagement:WorkspaceDiagnostic":
+    - inputs:
+        - `🟡` "largeLanguageModel" missing
+    - properties:
+        - `🟡` missing output "largeLanguageModel"
+- "azure-native:automation:HybridRunbookWorker":
+    - inputs:
+        - `🟡` "name" missing
+- "azure-native:cognitiveservices:AgentApplication":
+    - inputs:
+        - `🟡` type changed from "#/types/azure-native:cognitiveservices:AgenticApplication" to "#/types/azure-native:cognitiveservices:AgenticApplicationProperties"
+    - properties:
+        - `🟡` type changed from "#/types/azure-native:cognitiveservices:AgenticApplicationResponse" to "#/types/azure-native:cognitiveservices:AgenticApplicationPropertiesResponse"
+- "azure-native:cognitiveservices:SubscriptionRaiPolicy":
+    - properties:
+        - `🟡` type changed from "#/types/azure-native:cognitiveservices:RaiPolicyPropertiesResponse" to "#/types/azure-native:cognitiveservices:RaiPolicyPropertiesResponseV1"
+- "azure-native:compute:CloudService":
+    - properties:
+        - `🟡` "systemData" type changed from "#/types/azure-native:compute:SystemDataResponse" to "#/types/azure-native:compute:SystemDataResponseV1"
+- "azure-native:connectedvmwarevsphere:VMInstanceGuestAgent":
+    - properties:
+        - `🟡` "credentials" type changed from "#/types/azure-native:connectedvmwarevsphere:GuestCredentialResponse" to "#/types/azure-native:connectedvmwarevsphere:GuestCredentialResponseV1"
+- "azure-native:containerinstance:ContainerGroup":
+    - properties:
+        - `🟡` "containers" type changed from "#/types/azure-native:containerinstance:ContainerResponse" to "#/types/azure-native:containerinstance:ContainerResponseV1"
+        - `🟡` "imageRegistryCredentials" type changed from "#/types/azure-native:containerinstance:ImageRegistryCredentialResponse" to "#/types/azure-native:containerinstance:ImageRegistryCredentialResponseV1"
+        - `🟡` "volumes" type changed from "#/types/azure-native:containerinstance:VolumeResponse" to "#/types/azure-native:containerinstance:VolumeResponseV1"
+- "azure-native:containerinstance:ContainerGroupProfile":
+    - properties:
+        - `🟡` "containers" type changed from "#/types/azure-native:containerinstance:ContainerResponse" to "#/types/azure-native:containerinstance:ContainerResponseV2"
+        - `🟡` "imageRegistryCredentials" type changed from "#/types/azure-native:containerinstance:ImageRegistryCredentialResponse" to "#/types/azure-native:containerinstance:ImageRegistryCredentialResponseV2"
+        - `🟡` "volumes" type changed from "#/types/azure-native:containerinstance:VolumeResponse" to "#/types/azure-native:containerinstance:VolumeResponseV2"
+- "azure-native:containerservice:ManagedCluster":
+    - properties:
+        - `🟡` "identityProfile" type changed from "#/types/azure-native:containerservice:UserAssignedIdentityResponse" to "#/types/azure-native:containerservice:UserAssignedIdentityResponseV1"
+- "azure-native:containerservice:Namespace":
+    - properties:
+        - `🟡` type changed from "#/types/azure-native:containerservice:NamespacePropertiesResponse" to "#/types/azure-native:containerservice:NamespacePropertiesResponseV1"
+- "azure-native:cosmosdb:GarnetCluster":
+    - inputs:
+        - `🟡` type changed from "#/types/azure-native:cosmosdb:ClusterResourceProperties" to "#/types/azure-native:cosmosdb:GarnetClusterResourceProperties"
+    - properties:
+        - `🟡` type changed from "#/types/azure-native:cosmosdb:ClusterResourceResponsePropertiesV1" to "#/types/azure-native:cosmosdb:GarnetClusterResourceResponseProperties"
+- "azure-native:cosmosdb:SqlResourceSqlRoleDefinition":
+    - properties:
+        - `🟡` "permissions" type changed from "#/types/azure-native:cosmosdb:PermissionResponse" to "#/types/azure-native:cosmosdb:PermissionResponseV1"
+- "azure-native:costmanagement:Connector":
+    - properties:
+        - `🟡` "collection" type changed from "#/types/azure-native:costmanagement:ConnectorCollectionInfoResponse" to "#/types/azure-native:costmanagement:ConnectorCollectionInfoResponseV1"
+- "azure-native:deviceregistry:Policy":
+    - inputs:
+        - `🟡` "certificate" missing
+    - properties:
+        - `🟡` missing output "certificate"
+        - `🟡` missing output "provisioningState"
+- "azure-native:edge:SitesByServiceGroup":
+    - properties:
+        - `🟡` type changed from "#/types/azure-native:edge:SitePropertiesResponse" to "#/types/azure-native:edge:SitePropertiesResponseV1"
+- "azure-native:elastic:TagRule":
+    - properties:
+        - `🟡` type changed from "#/types/azure-native:elastic:MonitoringTagRulesPropertiesResponse" to "#/types/azure-native:elastic:MonitoringTagRulesPropertiesResponseV1"
+- "azure-native:machinelearningservices:BatchDeployment":
+    - inputs:
+        - `🟡` "batchDeploymentProperties" missing
+    - properties:
+        - `🟡` missing output "batchDeploymentProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:BatchEndpoint":
+    - inputs:
+        - `🟡` "batchEndpointProperties" missing
+    - properties:
+        - `🟡` missing output "batchEndpointProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:CapabilityHost":
+    - inputs:
+        - `🟡` "capabilityHostProperties" missing
+    - properties:
+        - `🟡` missing output "capabilityHostProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:CodeContainer":
+    - inputs:
+        - `🟡` "codeContainerProperties" missing
+    - properties:
+        - `🟡` missing output "codeContainerProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:CodeVersion":
+    - inputs:
+        - `🟡` "codeVersionProperties" missing
+    - properties:
+        - `🟡` missing output "codeVersionProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:ComponentContainer":
+    - inputs:
+        - `🟡` "componentContainerProperties" missing
+    - properties:
+        - `🟡` missing output "componentContainerProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:ComponentVersion":
+    - inputs:
+        - `🟡` "componentVersionProperties" missing
+    - properties:
+        - `🟡` missing output "componentVersionProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:DataContainer":
+    - inputs:
+        - `🟡` "dataContainerProperties" missing
+    - properties:
+        - `🟡` missing output "dataContainerProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:DataVersion":
+    - inputs:
+        - `🟡` "dataVersionBaseProperties" missing
+    - properties:
+        - `🟡` missing output "dataVersionBaseProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:Datastore":
+    - inputs:
+        - `🟡` "datastoreProperties" missing
+    - properties:
+        - `🟡` missing output "datastoreProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:EnvironmentContainer":
+    - inputs:
+        - `🟡` "environmentContainerProperties" missing
+    - properties:
+        - `🟡` missing output "environmentContainerProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:EnvironmentVersion":
+    - inputs:
+        - `🟡` "environmentVersionProperties" missing
+    - properties:
+        - `🟡` missing output "environmentVersionProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:FeaturesetContainerEntity":
+    - inputs:
+        - `🟡` "featuresetContainerProperties" missing
+    - properties:
+        - `🟡` missing output "featuresetContainerProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:FeaturesetVersion":
+    - inputs:
+        - `🟡` "featuresetVersionProperties" missing
+    - properties:
+        - `🟡` missing output "featuresetVersionProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:FeaturestoreEntityContainerEntity":
+    - inputs:
+        - `🟡` "featurestoreEntityContainerProperties" missing
+    - properties:
+        - `🟡` missing output "featurestoreEntityContainerProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:FeaturestoreEntityVersion":
+    - inputs:
+        - `🟡` "featurestoreEntityVersionProperties" missing
+    - properties:
+        - `🟡` missing output "featurestoreEntityVersionProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:Job":
+    - inputs:
+        - `🟡` "jobBaseProperties" missing
+    - properties:
+        - `🟡` missing output "jobBaseProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:MachineLearningDataset":
+    - properties:
+        - `🟡` "identity" type changed from "#/types/azure-native:machinelearningservices:IdentityResponse" to "#/types/azure-native:machinelearningservices:IdentityResponseV1"
+        - `🟡` "sku" type changed from "#/types/azure-native:machinelearningservices:SkuResponse" to "#/types/azure-native:machinelearningservices:SkuResponseV1"
+- "azure-native:machinelearningservices:MachineLearningDatastore":
+    - properties:
+        - `🟡` "identity" type changed from "#/types/azure-native:machinelearningservices:IdentityResponse" to "#/types/azure-native:machinelearningservices:IdentityResponseV2"
+        - `🟡` "sku" type changed from "#/types/azure-native:machinelearningservices:SkuResponse" to "#/types/azure-native:machinelearningservices:SkuResponseV2"
+- "azure-native:machinelearningservices:MarketplaceSubscription":
+    - inputs:
+        - `🟡` "marketplaceSubscriptionProperties" missing
+    - properties:
+        - `🟡` missing output "marketplaceSubscriptionProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:ModelContainer":
+    - inputs:
+        - `🟡` "modelContainerProperties" missing
+    - properties:
+        - `🟡` missing output "modelContainerProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:ModelVersion":
+    - inputs:
+        - `🟡` "modelVersionProperties" missing
+    - properties:
+        - `🟡` missing output "modelVersionProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:OnlineDeployment":
+    - inputs:
+        - `🟡` "onlineDeploymentProperties" missing
+    - properties:
+        - `🟡` missing output "onlineDeploymentProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:OnlineEndpoint":
+    - inputs:
+        - `🟡` "onlineEndpointProperties" missing
+    - properties:
+        - `🟡` missing output "onlineEndpointProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:PrivateEndpointConnection":
+    - properties:
+        - `🟡` "privateEndpoint" type changed from "#/types/azure-native:machinelearningservices:PrivateEndpointResponse" to "#/types/azure-native:machinelearningservices:WorkspacePrivateEndpointResourceResponse"
+- "azure-native:machinelearningservices:Registry":
+    - inputs:
+        - `🟡` "registryProperties" missing
+    - properties:
+        - `🟡` missing output "registryProperties"
+- "azure-native:machinelearningservices:RegistryCodeContainer":
+    - inputs:
+        - `🟡` "codeContainerProperties" missing
+    - properties:
+        - `🟡` missing output "codeContainerProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:RegistryCodeVersion":
+    - inputs:
+        - `🟡` "codeVersionProperties" missing
+    - properties:
+        - `🟡` missing output "codeVersionProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:RegistryComponentContainer":
+    - inputs:
+        - `🟡` "componentContainerProperties" missing
+    - properties:
+        - `🟡` missing output "componentContainerProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:RegistryComponentVersion":
+    - inputs:
+        - `🟡` "componentVersionProperties" missing
+    - properties:
+        - `🟡` missing output "componentVersionProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:RegistryDataContainer":
+    - inputs:
+        - `🟡` "dataContainerProperties" missing
+    - properties:
+        - `🟡` missing output "dataContainerProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:RegistryDataVersion":
+    - inputs:
+        - `🟡` "dataVersionBaseProperties" missing
+    - properties:
+        - `🟡` missing output "dataVersionBaseProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:RegistryEnvironmentContainer":
+    - inputs:
+        - `🟡` "environmentContainerProperties" missing
+    - properties:
+        - `🟡` missing output "environmentContainerProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:RegistryEnvironmentVersion":
+    - inputs:
+        - `🟡` "environmentVersionProperties" missing
+    - properties:
+        - `🟡` missing output "environmentVersionProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:RegistryModelContainer":
+    - inputs:
+        - `🟡` "modelContainerProperties" missing
+    - properties:
+        - `🟡` missing output "modelContainerProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:RegistryModelVersion":
+    - inputs:
+        - `🟡` "modelVersionProperties" missing
+    - properties:
+        - `🟡` missing output "modelVersionProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:Schedule":
+    - inputs:
+        - `🟡` "scheduleProperties" missing
+    - properties:
+        - `🟡` missing output "scheduleProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:machinelearningservices:ServerlessEndpoint":
+    - inputs:
+        - `🟡` "serverlessEndpointProperties" missing
+    - properties:
+        - `🟡` missing output "serverlessEndpointProperties"
+    - required inputs:
+        - `🔴` input has changed to Required
+- "azure-native:migrate:AssessmentsOperation":
+    - properties:
+        - `🟡` "vmUptime" type changed from "#/types/azure-native:migrate:VmUptimeResponse" to "#/types/azure-native:migrate:VmUptimeResponseV1"
+- "azure-native:migrate:MigrateProjectsControllerMigrateProject":
+    - properties:
+        - `🟡` type changed from "#/types/azure-native:migrate:MigrateProjectPropertiesResponse" to "#/types/azure-native:migrate:MigrateProjectPropertiesResponseV1"
+- "azure-native:monitor:PrivateLinkScope":
+    - properties:
+        - `🟡` "privateEndpointConnections" type changed from "#/types/azure-native:monitor:PrivateEndpointConnectionResponse" to "#/types/azure-native:monitor:PrivateEndpointConnectionResponseV1"
+- "azure-native:monitor:TenantActionGroup":
+    - properties:
+        - `🟡` "webhookReceivers" type changed from "#/types/azure-native:monitor:WebhookReceiverResponse" to "#/types/azure-native:monitor:WebhookReceiverResponseV1"
+- "azure-native:network:InterfaceEndpoint":
+    - properties:
+        - `🟡` "networkInterfaces" type changed from "#/types/azure-native:network:NetworkInterfaceResponse" to "#/types/azure-native:network:NetworkInterfaceResponseV1"
+- "azure-native:network:VirtualNetworkAppliance":
+    - properties:
+        - `🟡` "subnet" type changed from "#/types/azure-native:network:SubnetResponse" to "#/types/azure-native:network:SubnetResponseV3"
+- "azure-native:networkfunction:AzureTrafficCollector":
+    - properties:
+        - `🟡` "systemData" type changed from "#/types/azure-native:networkfunction:TrackedResourceResponseSystemData" to "#/types/azure-native:networkfunction:SystemDataResponse"
+- "azure-native:networkfunction:CollectorPolicy":
+    - properties:
+        - `🟡` "systemData" type changed from "#/types/azure-native:networkfunction:TrackedResourceResponseSystemData" to "#/types/azure-native:networkfunction:SystemDataResponse"
+- "azure-native:purview:Account":
+    - properties:
+        - `🟡` "accountStatus" type changed from "#/types/azure-native:purview:AccountPropertiesResponseAccountStatus" to "#/types/azure-native:purview:AccountPropertiesAccountStatusResponse"
+        - `🟡` "endpoints" type changed from "#/types/azure-native:purview:AccountPropertiesResponseEndpoints" to "#/types/azure-native:purview:AccountPropertiesEndpointsResponse"
+        - `🟡` "managedResources" type changed from "#/types/azure-native:purview:AccountPropertiesResponseManagedResources" to "#/types/azure-native:purview:AccountPropertiesManagedResourcesResponse"
+        - `🟡` "sku" type changed from "#/types/azure-native:purview:AccountResponseSku" to "#/types/azure-native:purview:AccountSkuResponse"
+        - `🟡` "systemData" type changed from "#/types/azure-native:purview:TrackedResourceResponseSystemData" to "#/types/azure-native:purview:SystemDataResponse"
+- "azure-native:purview:KafkaConfiguration":
+    - properties:
+        - `🟡` "systemData" type changed from "#/types/azure-native:purview:ProxyResourceResponseSystemData" to "#/types/azure-native:purview:SystemDataResponse"
+- "azure-native:purview:PrivateEndpointConnection":
+    - properties:
+        - `🟡` "systemData" type changed from "#/types/azure-native:purview:ProxyResourceResponseSystemData" to "#/types/azure-native:purview:SystemDataResponse"
+- "azure-native:resources:DeploymentStacksWhatIfResultsAtResourceGroup":
+    - properties:
+        - `🟡` type changed from "#/types/azure-native:resources:DeploymentStacksWhatIfResultPropertiesResponse" to "#/types/azure-native:resources:DeploymentStacksWhatIfResultPropertiesResponseV1"
+- "azure-native:resources:DeploymentStacksWhatIfResultsAtSubscription":
+    - properties:
+        - `🟡` type changed from "#/types/azure-native:resources:DeploymentStacksWhatIfResultPropertiesResponse" to "#/types/azure-native:resources:DeploymentStacksWhatIfResultPropertiesResponseV2"
+- `🔴` "azure-native:security:Connector" missing
+- `🔴` "azure-native:security:CustomAssessmentAutomation" missing
+- `🔴` "azure-native:security:CustomEntityStoreAssignment" missing
+- `🔴` "azure-native:servicefabric:Application" missing
+- `🔴` "azure-native:servicefabric:ApplicationType" missing
+- `🔴` "azure-native:servicefabric:ApplicationTypeVersion" missing
+- `🔴` "azure-native:servicefabric:Service" missing
+- "azure-native:web:WebApp":
+    - inputs:
+        - `🟡` "vnetBackupRestoreEnabled" missing
+        - `🟡` "vnetContentShareEnabled" missing
+        - `🟡` "vnetImagePullEnabled" missing
+        - `🟡` "vnetRouteAllEnabled" missing
+    - properties:
+        - `🟡` missing output "siteConfig"
+        - `🟡` missing output "vnetBackupRestoreEnabled"
+        - `🟡` missing output "vnetContentShareEnabled"
+        - `🟡` missing output "vnetImagePullEnabled"
+        - `🟡` missing output "vnetRouteAllEnabled"
+- "azure-native:web:WebAppSlot":
+    - inputs:
+        - `🟡` "vnetBackupRestoreEnabled" missing
+        - `🟡` "vnetContentShareEnabled" missing
+        - `🟡` "vnetImagePullEnabled" missing
+        - `🟡` "vnetRouteAllEnabled" missing
+    - properties:
+        - `🟡` missing output "siteConfig"
+        - `🟡` missing output "vnetBackupRestoreEnabled"
+        - `🟡` missing output "vnetContentShareEnabled"
+        - `🟡` missing output "vnetImagePullEnabled"
+        - `🟡` missing output "vnetRouteAllEnabled"
+- "azure-native:workloads:SapInstance":
+    - properties:
+        - `🟡` "errors" type changed from "#/types/azure-native:workloads:SAPMigrateErrorResponse" to "#/types/azure-native:workloads:SAPMigrateErrorResponseV1"
+- "azure-native:workloads:ServerInstance":
+    - properties:
+        - `🟡` "errors" type changed from "#/types/azure-native:workloads:SAPMigrateErrorResponse" to "#/types/azure-native:workloads:SAPMigrateErrorResponseV2"
+
+#### Functions
+- `🔴` "azure-native:security:getConnector" missing
+- `🔴` "azure-native:security:getCustomAssessmentAutomation" missing
+- `🔴` "azure-native:security:getCustomEntityStoreAssignment" missing
+- `🔴` "azure-native:servicefabric:getApplication" missing
+- `🔴` "azure-native:servicefabric:getApplicationType" missing
+- `🔴` "azure-native:servicefabric:getApplicationTypeVersion" missing
+- `🔴` "azure-native:servicefabric:getService" missing
+
+#### Types
+- "azure-native:alertsmanagement:AlertProcessingRulePropertiesResponse":
+    - properties:
+        - `🟡` "conditions" type changed from "#/types/azure-native:alertsmanagement:ConditionResponse" to "#/types/azure-native:alertsmanagement:ConditionResponseV1"
+- "azure-native:alertsmanagement:ConditionResponse":
+    - properties:
+        - `🟡` "field" missing
+- `🔴` "azure-native:apimanagement:LLMDiagnosticSettings" missing
+- `🔴` "azure-native:apimanagement:LLMDiagnosticSettingsResponse" missing
+- `🔴` "azure-native:apimanagement:LLMMessageDiagnosticSettings" missing
+- `🔴` "azure-native:apimanagement:LLMMessageDiagnosticSettingsResponse" missing
+- `🔴` "azure-native:apimanagement:LlmDiagnosticSettings" missing
+- `🔴` "azure-native:apimanagement:LlmMessageLogTypes" missing
+- "azure-native:automation:PrivateEndpointConnectionResponse":
+    - required:
+        - `🟡` "systemData" property has changed to Required
+- "azure-native:awsconnector:AwsEc2NetworkInterfacePropertiesResponse":
+    - properties:
+        - `🟡` "ipv6Addresses" type changed from "#/types/azure-native:awsconnector:InstanceIpv6AddressResponse" to "#/types/azure-native:awsconnector:InstanceIpv6AddressResponseV1"
+- "azure-native:awsconnector:AwsEfsFileSystemPropertiesResponse":
+    - properties:
+        - `🟡` "lifecyclePolicies" type changed from "#/types/azure-native:awsconnector:LifecyclePolicyResponse" to "#/types/azure-native:awsconnector:LifecyclePolicyResponseV1"
+- "azure-native:awsconnector:AwsEksClusterPropertiesResponse":
+    - properties:
+        - `🟡` "logging" type changed from "#/types/azure-native:awsconnector:LoggingResponse" to "#/types/azure-native:awsconnector:LoggingResponseV1"
+- "azure-native:awsconnector:AwsEksNodegroupPropertiesResponse":
+    - properties:
+        - `🟡` "launchTemplate" type changed from "#/types/azure-native:awsconnector:LaunchTemplateSpecificationResponse" to "#/types/azure-native:awsconnector:LaunchTemplateSpecificationResponseV1"
+- "azure-native:awsconnector:AwsElasticLoadBalancingV2ListenerPropertiesResponse":
+    - properties:
+        - `🟡` "certificates" type changed from "#/types/azure-native:awsconnector:CertificateResponse" to "#/types/azure-native:awsconnector:CertificateResponseV1"
+- "azure-native:awsconnector:AwsLambdaFunctionPropertiesResponse":
+    - properties:
+        - `🟡` "ephemeralStorage" type changed from "#/types/azure-native:awsconnector:EphemeralStorageResponse" to "#/types/azure-native:awsconnector:EphemeralStorageResponseV1"
+        - `🟡` "vpcConfig" type changed from "#/types/azure-native:awsconnector:VpcConfigResponse" to "#/types/azure-native:awsconnector:VpcConfigResponseV1"
+- "azure-native:awsconnector:AwsNetworkFirewallFirewallPropertiesResponse":
+    - properties:
+        - `🟡` "subnetMappings" type changed from "#/types/azure-native:awsconnector:SubnetMappingResponse" to "#/types/azure-native:awsconnector:SubnetMappingResponseV1"
+- "azure-native:awsconnector:AwsRedshiftClusterParameterGroupPropertiesResponse":
+    - properties:
+        - `🟡` "parameters" type changed from "#/types/azure-native:awsconnector:ParameterResponse" to "#/types/azure-native:awsconnector:ParameterResponseV1"
+- "azure-native:awsconnector:AwsS3BucketPropertiesResponse":
+    - properties:
+        - `🟡` "replicationConfiguration" type changed from "#/types/azure-native:awsconnector:ReplicationConfigurationResponse" to "#/types/azure-native:awsconnector:ReplicationConfigurationResponseV1"
+- "azure-native:awsconnector:AwsSnsTopicPropertiesResponse":
+    - properties:
+        - `🟡` "deliveryStatusLogging" type changed from "#/types/azure-native:awsconnector:LoggingConfigResponse" to "#/types/azure-native:awsconnector:LoggingConfigResponseV1"
+- "azure-native:awsconnector:CertificateResponse":
+    - properties:
+        - `🟡` "certificateArn" missing
+- "azure-native:awsconnector:DimensionResponse":
+    - properties:
+        - `🟡` "key" missing
+- "azure-native:awsconnector:EncryptionConfigurationResponse":
+    - properties:
+        - `🟡` "replicaKmsKeyID" missing
+- "azure-native:awsconnector:EphemeralStorageResponse":
+    - properties:
+        - `🟡` "size" missing
+- "azure-native:awsconnector:FilterResponse":
+    - properties:
+        - `🟡` "behavior" missing
+        - `🟡` "conditions" missing
+        - `🟡` "requirement" missing
+- "azure-native:awsconnector:LaunchTemplateSpecificationResponse":
+    - properties:
+        - `🟡` "id" missing
+        - `🟡` "name" missing
+- "azure-native:awsconnector:LifecyclePolicyResponse":
+    - properties:
+        - `🟡` "transitionToArchive" missing
+        - `🟡` "transitionToIA" missing
+        - `🟡` "transitionToPrimaryStorageClass" missing
+- "azure-native:awsconnector:LoggingConfigResponse":
+    - properties:
+        - `🟡` "failureFeedbackRoleArn" missing
+        - `🟡` "protocol" missing
+        - `🟡` "successFeedbackRoleArn" missing
+        - `🟡` "successFeedbackSampleRate" missing
+- "azure-native:awsconnector:LoggingFilterModelPropertiesResponse":
+    - properties:
+        - `🟡` "filters" type changed from "#/types/azure-native:awsconnector:FilterResponse" to "#/types/azure-native:awsconnector:FilterResponseV1"
+- "azure-native:awsconnector:LoggingResponse":
+    - properties:
+        - `🟡` "clusterLogging" missing
+- "azure-native:awsconnector:MetricTransformationResponse":
+    - properties:
+        - `🟡` "dimensions" type changed from "#/types/azure-native:awsconnector:DimensionResponse" to "#/types/azure-native:awsconnector:DimensionResponseV1"
+- "azure-native:awsconnector:ParameterResponse":
+    - properties:
+        - `🟡` "parameterName" missing
+- "azure-native:awsconnector:PublishMetricActionResponse":
+    - properties:
+        - `🟡` "dimensions" type changed from "#/types/azure-native:awsconnector:DimensionResponse" to "#/types/azure-native:awsconnector:DimensionResponseV2"
+- "azure-native:awsconnector:ReplicationConfigurationResponse":
+    - properties:
+        - `🟡` "role" missing
+        - `🟡` "rules" missing
+- "azure-native:awsconnector:ReplicationDestinationResponse":
+    - properties:
+        - `🟡` "accessControlTranslation" missing
+        - `🟡` "account" missing
+        - `🟡` "bucket" missing
+        - `🟡` "encryptionConfiguration" missing
+        - `🟡` "metrics" missing
+        - `🟡` "replicationTime" missing
+        - `🟡` "storageClass" missing
+- "azure-native:awsconnector:ReplicationRuleResponse":
+    - properties:
+        - `🟡` "destination" type changed from "#/types/azure-native:awsconnector:ReplicationDestinationResponse" to "#/types/azure-native:awsconnector:ReplicationDestinationResponseV1"
+- "azure-native:awsconnector:StatelessRulesAndCustomActionsResponse":
+    - properties:
+        - `🟡` "customActions" type changed from "#/types/azure-native:awsconnector:CustomActionResponse" to "#/types/azure-native:awsconnector:CustomActionResponseV1"
+- "azure-native:awsconnector:SubnetMappingResponse":
+    - properties:
+        - `🟡` "ipAddressType" missing
+- "azure-native:awsconnector:VpcConfigResponse":
+    - properties:
+        - `🟡` "ipv6AllowedForDualStack" missing
+- "azure-native:azuredatatransfer:FlowPropertiesResponse":
+    - properties:
+        - `🟡` "apiFlowOptions" missing
+        - `🟡` "consumerGroup" missing
+        - `🟡` "eventHubId" missing
+        - `🟡` "forceDisabledStatus" missing
+        - `🟡` "storageTableName" missing
+- "azure-native:azuredatatransfer:FlowResponse":
+    - properties:
+        - `🟡` type changed from "#/types/azure-native:azuredatatransfer:FlowPropertiesResponse" to "#/types/azure-native:azuredatatransfer:FlowPropertiesResponseV1"
+- "azure-native:azurestackhci:ErrorDetailResponse":
+    - properties:
+        - `🟡` "exception" missing
+- "azure-native:azurestackhci:ExtensionResponse":
+    - properties:
+        - `🟡` "errorDetails" type changed from "#/types/azure-native:azurestackhci:ErrorDetailResponse" to "#/types/azure-native:azurestackhci:ErrorDetailResponseV1"
+- "azure-native:azurestackhci:HciNetworkProfileResponse":
+    - properties:
+        - `🟡` "hostNetwork" type changed from "#/types/azure-native:azurestackhci:HostNetworkResponse" to "#/types/azure-native:azurestackhci:HostNetworkResponseV1"
+- "azure-native:azurestackhci:IntentsResponse":
+    - properties:
+        - `🟡` "intentAdapters" missing
+        - `🟡` "intentName" missing
+        - `🟡` "intentType" missing
+        - `🟡` "isComputeIntentSet" missing
+        - `🟡` "isManagementIntentSet" missing
+        - `🟡` "isNetworkIntentType" missing
+        - `🟡` "isOnlyStorage" missing
+        - `🟡` "isOnlyStretch" missing
+        - `🟡` "isStorageIntentSet" missing
+        - `🟡` "isStretchIntentSet" missing
+        - `🟡` "scope" missing
+- "azure-native:azurestackhci:StorageNetworksResponse":
+    - properties:
+        - `🟡` "storageVlanId" missing
+- `🔴` "azure-native:cognitiveservices:AgentReference" missing
+- `🔴` "azure-native:cognitiveservices:AgentReferenceResourceResponse" missing
+- "azure-native:cognitiveservices:AgentReferenceResponse":
+    - properties:
+        - `🟡` "agentId" missing
+        - `🟡` "agentName" missing
+    - required:
+        - `🟡` "id" property has changed to Required
+        - `🟡` "name" property has changed to Required
+        - `🟡` "systemData" property has changed to Required
+        - `🟡` "type" property has changed to Required
+        - `🟡` property has changed to Required
+- `🔴` "azure-native:cognitiveservices:AgenticApplication" missing
+- `🔴` "azure-native:cognitiveservices:AgenticApplicationResponse" missing
+- "azure-native:cognitiveservices:RaiPolicyContentFilterResponse":
+    - properties:
+        - `🟡` "action" missing
+- "azure-native:cognitiveservices:RaiPolicyPropertiesResponse":
+    - properties:
+        - `🟡` "customTopics" missing
+        - `🟡` "safetyProviders" missing
+- "azure-native:connectedvmwarevsphere:GuestCredentialResponse":
+    - properties:
+        - `🟡` "privateKey" missing
+- "azure-native:containerservice:NamespacePropertiesResponse":
+    - required:
+        - `🟡` "portalFqdn" property has changed to Required
+- "azure-native:containerservice:UserAssignedIdentityResponse":
+    - properties:
+        - `🟡` "objectId" missing
+        - `🟡` "resourceId" missing
+- "azure-native:cosmosdb:ClusterResourceProperties":
+    - properties:
+        - `🟡` "allocationState" missing
+        - `🟡` "availabilityZone" missing
+        - `🟡` "clusterType" missing
+        - `🟡` "extensions" missing
+        - `🟡` "nodeCount" missing
+        - `🟡` "nodeSku" missing
+        - `🟡` "replicationFactor" missing
+        - `🟡` "subnetId" missing
+- `🔴` "azure-native:cosmosdb:ClusterResourceResponseEndPoints" missing
+- `🔴` "azure-native:cosmosdb:ClusterResourceResponsePropertiesV1" missing
+- "azure-native:cosmosdb:ContainerPartitionKeyResponse":
+    - properties:
+        - `🟡` "systemKey" missing
+        - `🟡` "version" missing
+- "azure-native:cosmosdb:GremlinGraphGetPropertiesResponseResource":
+    - properties:
+        - `🟡` "indexingPolicy" type changed from "#/types/azure-native:cosmosdb:IndexingPolicyResponse" to "#/types/azure-native:cosmosdb:IndexingPolicyResponseV1"
+        - `🟡` "partitionKey" type changed from "#/types/azure-native:cosmosdb:ContainerPartitionKeyResponse" to "#/types/azure-native:cosmosdb:ContainerPartitionKeyResponseV1"
+- "azure-native:cosmosdb:IndexingPolicyResponse":
+    - properties:
+        - `🟡` "compositeIndexes" missing
+        - `🟡` "fullTextIndexes" missing
+        - `🟡` "spatialIndexes" missing
+        - `🟡` "vectorIndexes" missing
+- "azure-native:cosmosdb:SqlContainerGetPropertiesResponseResource":
+    - properties:
+        - `🟡` "indexingPolicy" type changed from "#/types/azure-native:cosmosdb:IndexingPolicyResponse" to "#/types/azure-native:cosmosdb:IndexingPolicyResponseV2"
+        - `🟡` "partitionKey" type changed from "#/types/azure-native:cosmosdb:ContainerPartitionKeyResponse" to "#/types/azure-native:cosmosdb:ContainerPartitionKeyResponseV2"
+- "azure-native:costmanagement:ConnectorCollectionErrorInfoResponse":
+    - required:
+        - `🟡` "errorInnerMessage" property has changed to Required
+- "azure-native:costmanagement:ConnectorCollectionInfoResponse":
+    - properties:
+        - `🟡` "lastRun" missing
+    - required:
+        - `🟡` "lastChecked" property has changed to Required
+- "azure-native:dbforpostgresql:IdentityPropertiesResponse":
+    - properties:
+        - `🟡` "userAssignedIdentities" type changed from "#/types/azure-native:dbforpostgresql:UserAssignedIdentityResponse" to "#/types/azure-native:dbforpostgresql:UserAssignedIdentityResponseV1"
+- "azure-native:dbforpostgresql:UserAssignedIdentityResponse":
+    - properties:
+        - `🟡` "clientId" missing
+    - required:
+        - `🟡` "tenantId" property has changed to Required
+        - `🟡` "type" property has changed to Required
+- "azure-native:devtestlab:ApplicableScheduleResponse":
+    - required:
+        - `🟡` "systemData" property has changed to Required
+- "azure-native:devtestlab:ScheduleResponse":
+    - required:
+        - `🟡` "systemData" property has changed to Required
+- "azure-native:edge:SitePropertiesResponse":
+    - properties:
+        - `🟡` "labels" missing
+        - `🟡` "siteAddress" missing
+- "azure-native:elastic:MonitoringTagRulesPropertiesResponse":
+    - required:
+        - `🟡` "provisioningState" property has changed to Required
+- "azure-native:machinelearningservices:AADAuthTypeWorkspaceConnectionProperties":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:AADAuthTypeWorkspaceConnectionPropertiesResponse":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:AKSResponse":
+    - properties:
+        - `🟡` type changed from "#/types/azure-native:machinelearningservices:AKSSchemaResponseProperties" to "#/types/azure-native:machinelearningservices:AKSSchemaPropertiesResponse"
+- `🔴` "azure-native:machinelearningservices:AKSSchemaResponseProperties" missing
+- "azure-native:machinelearningservices:AccessKeyAuthTypeWorkspaceConnectionProperties":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:AccessKeyAuthTypeWorkspaceConnectionPropertiesResponse":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:AccountKeyAuthTypeWorkspaceConnectionProperties":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:AccountKeyAuthTypeWorkspaceConnectionPropertiesResponse":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:AmlComputeNodeInformationResponse":
+    - properties:
+        - `🟡` "port" type changed from "number" to "integer"
+- "azure-native:machinelearningservices:ApiKeyAuthWorkspaceConnectionProperties":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:ApiKeyAuthWorkspaceConnectionPropertiesResponse":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- `🔴` "azure-native:machinelearningservices:BatchDeployment" missing
+- `🔴` "azure-native:machinelearningservices:BatchDeploymentResponse" missing
+- `🔴` "azure-native:machinelearningservices:BatchEndpoint" missing
+- `🔴` "azure-native:machinelearningservices:BatchEndpointResponse" missing
+- `🔴` "azure-native:machinelearningservices:CapabilityHost" missing
+- `🔴` "azure-native:machinelearningservices:CapabilityHostResponse" missing
+- `🔴` "azure-native:machinelearningservices:CodeContainer" missing
+- `🔴` "azure-native:machinelearningservices:CodeContainerResponse" missing
+- `🔴` "azure-native:machinelearningservices:CodeVersion" missing
+- `🔴` "azure-native:machinelearningservices:CodeVersionResponse" missing
+- `🔴` "azure-native:machinelearningservices:ComponentContainer" missing
+- `🔴` "azure-native:machinelearningservices:ComponentContainerResponse" missing
+- `🔴` "azure-native:machinelearningservices:ComponentVersion" missing
+- `🔴` "azure-native:machinelearningservices:ComponentVersionResponse" missing
+- "azure-native:machinelearningservices:CustomKeysWorkspaceConnectionProperties":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:CustomKeysWorkspaceConnectionPropertiesResponse":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- `🔴` "azure-native:machinelearningservices:DataContainer" missing
+- `🔴` "azure-native:machinelearningservices:DataContainerResponse" missing
+- "azure-native:machinelearningservices:DataLakeAnalyticsResponse":
+    - properties:
+        - `🟡` type changed from "#/types/azure-native:machinelearningservices:DataLakeAnalyticsSchemaResponseProperties" to "#/types/azure-native:machinelearningservices:DataLakeAnalyticsSchemaPropertiesResponse"
+- `🔴` "azure-native:machinelearningservices:DataLakeAnalyticsSchemaResponseProperties" missing
+- `🔴` "azure-native:machinelearningservices:EncryptionKeyVaultProperties" missing
+- `🔴` "azure-native:machinelearningservices:EncryptionKeyVaultPropertiesResponse" missing
+- "azure-native:machinelearningservices:EncryptionProperty":
+    - properties:
+        - `🟡` "keyVaultProperties" type changed from "#/types/azure-native:machinelearningservices:EncryptionKeyVaultProperties" to "#/types/azure-native:machinelearningservices:KeyVaultProperties"
+- "azure-native:machinelearningservices:EncryptionPropertyResponse":
+    - properties:
+        - `🟡` "keyVaultProperties" type changed from "#/types/azure-native:machinelearningservices:EncryptionKeyVaultPropertiesResponse" to "#/types/azure-native:machinelearningservices:KeyVaultPropertiesResponse"
+- `🔴` "azure-native:machinelearningservices:EnvironmentContainer" missing
+- `🔴` "azure-native:machinelearningservices:EnvironmentContainerResponse" missing
+- `🔴` "azure-native:machinelearningservices:EnvironmentVersion" missing
+- `🔴` "azure-native:machinelearningservices:EnvironmentVersionResponse" missing
+- `🔴` "azure-native:machinelearningservices:FeaturesetContainer" missing
+- `🔴` "azure-native:machinelearningservices:FeaturesetContainerResponse" missing
+- `🔴` "azure-native:machinelearningservices:FeaturesetVersion" missing
+- `🔴` "azure-native:machinelearningservices:FeaturesetVersionResponse" missing
+- `🔴` "azure-native:machinelearningservices:FeaturestoreEntityContainer" missing
+- `🔴` "azure-native:machinelearningservices:FeaturestoreEntityContainerResponse" missing
+- `🔴` "azure-native:machinelearningservices:FeaturestoreEntityVersion" missing
+- `🔴` "azure-native:machinelearningservices:FeaturestoreEntityVersionResponse" missing
+- "azure-native:machinelearningservices:IdentityResponse":
+    - properties:
+        - `🟡` "userAssignedIdentities" type changed from "#/types/azure-native:machinelearningservices:UserAssignedIdentityResponse" to "#/types/azure-native:machinelearningservices:UserAssignedIdentityResponseV1"
+- "azure-native:machinelearningservices:ImageMetadataResponse":
+    - required:
+        - `🟡` "osPatchingStatus" property has changed to Required
+- "azure-native:machinelearningservices:InferenceContainerPropertiesResponse":
+    - properties:
+        - `🟡` "startupRoute" missing
+- "azure-native:machinelearningservices:InstanceTypeSchemaResponse":
+    - properties:
+        - `🟡` "resources" type changed from "#/types/azure-native:machinelearningservices:InstanceTypeSchemaResponseResources" to "#/types/azure-native:machinelearningservices:InstanceTypeSchemaResourcesResponse"
+- `🔴` "azure-native:machinelearningservices:InstanceTypeSchemaResponseResources" missing
+- "azure-native:machinelearningservices:JobScheduleAction":
+    - properties:
+        - `🟡` "jobBaseProperties" missing
+    - required:
+        - `🟡` "jobDefinition" property has changed to Required
+- "azure-native:machinelearningservices:JobScheduleActionResponse":
+    - properties:
+        - `🟡` "jobBaseProperties" missing
+    - required:
+        - `🟡` "jobDefinition" property has changed to Required
+- "azure-native:machinelearningservices:ManagedIdentityAuthTypeWorkspaceConnectionProperties":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:ManagedNetworkSettings":
+    - properties:
+        - `🟡` "enableFirewallLog" missing
+        - `🟡` "firewallPublicIpAddress" missing
+- "azure-native:machinelearningservices:ManagedNetworkSettingsResponse":
+    - properties:
+        - `🟡` "enableFirewallLog" missing
+    - required:
+        - `🟡` "firewallPublicIpAddress" property has changed to Required
+- `🔴` "azure-native:machinelearningservices:MarketplaceSubscription" missing
+- `🔴` "azure-native:machinelearningservices:MarketplaceSubscriptionResponse" missing
+- `🔴` "azure-native:machinelearningservices:ModelContainer" missing
+- `🔴` "azure-native:machinelearningservices:ModelContainerResponse" missing
+- `🔴` "azure-native:machinelearningservices:ModelVersion" missing
+- `🔴` "azure-native:machinelearningservices:ModelVersionResponse" missing
+- "azure-native:machinelearningservices:NoneAuthTypeWorkspaceConnectionProperties":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:NoneAuthTypeWorkspaceConnectionPropertiesResponse":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:OAuth2AuthTypeWorkspaceConnectionProperties":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:OAuth2AuthTypeWorkspaceConnectionPropertiesResponse":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- `🔴` "azure-native:machinelearningservices:OnlineEndpoint" missing
+- `🔴` "azure-native:machinelearningservices:OnlineEndpointResponse" missing
+- "azure-native:machinelearningservices:PATAuthTypeWorkspaceConnectionProperties":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:PATAuthTypeWorkspaceConnectionPropertiesResponse":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:PrivateEndpointConnectionResponse":
+    - properties:
+        - `🟡` "privateEndpoint" type changed from "#/types/azure-native:machinelearningservices:PrivateEndpointResponse" to "#/types/azure-native:machinelearningservices:WorkspacePrivateEndpointResourceResponse"
+- `🔴` "azure-native:machinelearningservices:PrivateEndpointResponse" missing
+- `🔴` "azure-native:machinelearningservices:PrivateEndpointServiceConnectionStatus" missing
+- `🔴` "azure-native:machinelearningservices:PublicNetworkAccess" missing
+- `🔴` "azure-native:machinelearningservices:Registry" missing
+- "azure-native:machinelearningservices:RegistryPrivateEndpointConnection":
+    - properties:
+        - `🟡` missing
+- `🔴` "azure-native:machinelearningservices:RegistryPrivateEndpointConnectionProperties" missing
+- `🔴` "azure-native:machinelearningservices:RegistryPrivateEndpointConnectionPropertiesResponse" missing
+- "azure-native:machinelearningservices:RegistryPrivateEndpointConnectionResponse":
+    - properties:
+        - `🟡` missing
+- `🔴` "azure-native:machinelearningservices:RegistryResponse" missing
+- "azure-native:machinelearningservices:SASAuthTypeWorkspaceConnectionProperties":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:SASAuthTypeWorkspaceConnectionPropertiesResponse":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- `🔴` "azure-native:machinelearningservices:Schedule" missing
+- `🔴` "azure-native:machinelearningservices:ScheduleResponse" missing
+- `🔴` "azure-native:machinelearningservices:ServerlessEndpoint" missing
+- `🔴` "azure-native:machinelearningservices:ServerlessEndpointResponse" missing
+- "azure-native:machinelearningservices:ServicePrincipalAuthTypeWorkspaceConnectionProperties":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:SynapseSparkResponse":
+    - properties:
+        - `🟡` type changed from "#/types/azure-native:machinelearningservices:SynapseSparkResponseProperties" to "#/types/azure-native:machinelearningservices:SynapseSparkPropertiesResponse"
+- `🔴` "azure-native:machinelearningservices:SynapseSparkResponseProperties" missing
+- "azure-native:machinelearningservices:UserAssignedIdentityResponse":
+    - properties:
+        - `🟡` "tenantId" missing
+- "azure-native:machinelearningservices:UsernamePasswordAuthTypeWorkspaceConnectionProperties":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- "azure-native:machinelearningservices:UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse":
+    - properties:
+        - `🟡` "value" missing
+        - `🟡` "valueFormat" missing
+- `🔴` "azure-native:machinelearningservices:ValueFormat" missing
+- "azure-native:machinelearningservices:VirtualMachineResponse":
+    - properties:
+        - `🟡` type changed from "#/types/azure-native:machinelearningservices:VirtualMachineSchemaResponseProperties" to "#/types/azure-native:machinelearningservices:VirtualMachineSchemaPropertiesResponse"
+- `🔴` "azure-native:machinelearningservices:VirtualMachineSchemaResponseProperties" missing
+- `🔴` "azure-native:managedops:DefenderCspm" missing
+- `🔴` "azure-native:managedops:DefenderForServers" missing
+- "azure-native:migrate:MachineAssessmentSettingsResponse":
+    - properties:
+        - `🟡` "vmUptime" type changed from "#/types/azure-native:migrate:VmUptimeResponse" to "#/types/azure-native:migrate:VmUptimeResponseV2"
+- "azure-native:migrate:MigrateProjectPropertiesResponse":
+    - properties:
+        - `🟡` "privateEndpointConnections" missing
+        - `🟡` "publicNetworkAccess" missing
+        - `🟡` "serviceEndpoint" missing
+        - `🟡` "utilityStorageAccountId" missing
+- "azure-native:migrate:PrivateEndpointConnectionResponse":
+    - properties:
+        - `🟡` "eTag" missing
+        - `🟡` missing
+    - required:
+        - `🟡` "groupIds" property has changed to Required
+        - `🟡` "privateLinkServiceConnectionState" property has changed to Required
+        - `🟡` "provisioningState" property has changed to Required
+        - `🟡` "systemData" property has changed to Required
+- "azure-native:migrate:ProjectPropertiesResponse":
+    - properties:
+        - `🟡` "privateEndpointConnections" type changed from "#/types/azure-native:migrate:PrivateEndpointConnectionResponse" to "#/types/azure-native:migrate:PrivateEndpointConnectionResponseV2"
+- "azure-native:monitor:PrivateEndpointConnectionResponse":
+    - required:
+        - `🟡` "groupIds" property has changed to Required
+        - `🟡` "systemData" property has changed to Required
+- "azure-native:netapp:ExportPolicyRuleResponse":
+    - properties:
+        - `🟡` "kerberos5iReadOnly" missing
+        - `🟡` "kerberos5iReadWrite" missing
+        - `🟡` "kerberos5pReadOnly" missing
+        - `🟡` "kerberos5pReadWrite" missing
+- "azure-native:netapp:VolumeGroupVolumePropertiesResponse":
+    - properties:
+        - `🟡` "exportPolicy" type changed from "#/types/azure-native:netapp:VolumePropertiesResponseExportPolicy" to "#/types/azure-native:netapp:VolumePropertiesResponseExportPolicyV1"
+- "azure-native:netapp:VolumePropertiesResponseExportPolicy":
+    - properties:
+        - `🟡` "rules" type changed from "#/types/azure-native:netapp:ExportPolicyRuleResponse" to "#/types/azure-native:netapp:ExportPolicyRuleResponseV1"
+- "azure-native:network:ActiveConnectivityConfigurationResponse":
+    - properties:
+        - `🟡` "appliesToGroups" type changed from "#/types/azure-native:network:ConnectivityGroupItemResponse" to "#/types/azure-native:network:ConnectivityGroupItemResponseV1"
+        - `🟡` "resourceGuid" missing
+- "azure-native:network:ActiveDefaultSecurityAdminRuleResponse":
+    - properties:
+        - `🟡` "resourceGuid" missing
+        - `🟡` "ruleCollectionAppliesToGroups" type changed from "#/types/azure-native:network:NetworkManagerSecurityGroupItemResponse" to "#/types/azure-native:network:NetworkManagerSecurityGroupItemResponseV1"
+    - required:
+        - `🟡` "displayName" property has changed to Required
+- "azure-native:network:ActiveDefaultSecurityUserRuleResponse":
+    - properties:
+        - `🟡` "ruleCollectionAppliesToGroups" type changed from "#/types/azure-native:network:NetworkManagerSecurityGroupItemResponse" to "#/types/azure-native:network:NetworkManagerSecurityGroupItemResponseV2"
+    - required:
+        - `🟡` "displayName" property has changed to Required
+- "azure-native:network:ActiveSecurityAdminRuleResponse":
+    - properties:
+        - `🟡` "resourceGuid" missing
+- "azure-native:network:ConfigurationGroupResponse":
+    - properties:
+        - `🟡` "resourceGuid" missing
+- "azure-native:network:DdosSettingsResponse":
+    - properties:
+        - `🟡` "ddosCustomPolicy" missing
+        - `🟡` "protectionCoverage" missing
+- "azure-native:network:EffectiveConnectivityConfigurationResponse":
+    - properties:
+        - `🟡` "appliesToGroups" type changed from "#/types/azure-native:network:ConnectivityGroupItemResponse" to "#/types/azure-native:network:ConnectivityGroupItemResponseV2"
+        - `🟡` "resourceGuid" missing
+- "azure-native:network:EffectiveDefaultSecurityAdminRuleResponse":
+    - properties:
+        - `🟡` "resourceGuid" missing
+        - `🟡` "ruleCollectionAppliesToGroups" type changed from "#/types/azure-native:network:NetworkManagerSecurityGroupItemResponse" to "#/types/azure-native:network:NetworkManagerSecurityGroupItemResponseV3"
+    - required:
+        - `🟡` "displayName" property has changed to Required
+- "azure-native:network:EffectiveSecurityAdminRuleResponse":
+    - properties:
+        - `🟡` "resourceGuid" missing
+- "azure-native:network:FlowLogResponse":
+    - properties:
+        - `🟡` "recordTypes" missing
+- "azure-native:network:InterfaceEndpointResponse":
+    - properties:
+        - `🟡` "subnet" type changed from "#/types/azure-native:network:SubnetResponse" to "#/types/azure-native:network:SubnetResponseV1"
+- "azure-native:network:NatGatewayResponse":
+    - properties:
+        - `🟡` "publicIpAddressesV6" missing
+        - `🟡` "publicIpPrefixesV6" missing
+        - `🟡` "serviceGateway" missing
+        - `🟡` "sourceVirtualNetwork" missing
+- "azure-native:network:NetworkInterfaceResponse":
+    - properties:
+        - `🟡` "interfaceEndpoint" missing
+- "azure-native:network:PrivateEndpointResponse":
+    - properties:
+        - `🟡` "ipVersionType" missing
+- "azure-native:network:PrivateLinkServiceResponse":
+    - properties:
+        - `🟡` "accessMode" missing
+- "azure-native:network:RouteTargetAddressPropertiesFormatResponse":
+    - properties:
+        - `🟡` "subnet" type changed from "#/types/azure-native:network:SubnetResponse" to "#/types/azure-native:network:SubnetResponseV2"
+- "azure-native:network:SubnetResponse":
+    - properties:
+        - `🟡` "interfaceEndpoints" missing
+        - `🟡` "serviceGateway" missing
+- `🔴` "azure-native:networkfunction:TrackedResourceResponseSystemData" missing
+- `🔴` "azure-native:purview:AccountPropertiesResponseAccountStatus" missing
+- `🔴` "azure-native:purview:AccountPropertiesResponseEndpoints" missing
+- `🔴` "azure-native:purview:AccountPropertiesResponseManagedResources" missing
+- `🔴` "azure-native:purview:AccountResponseSku" missing
+- `🔴` "azure-native:purview:AccountStatusResponseErrorDetails" missing
+- "azure-native:purview:PrivateEndpointConnectionResponse":
+    - properties:
+        - `🟡` "systemData" type changed from "#/types/azure-native:purview:ProxyResourceResponseSystemData" to "#/types/azure-native:purview:SystemDataResponse"
+- `🔴` "azure-native:purview:ProxyResourceResponseSystemData" missing
+- `🔴` "azure-native:purview:TrackedResourceResponseSystemData" missing
+- "azure-native:recoveryservices:VaultPrivateEndpointConnectionResponse":
+    - properties:
+        - `🟡` "privateEndpoint" type changed from "#/types/azure-native:recoveryservices:PrivateEndpointResponse" to "#/types/azure-native:recoveryservices:PrivateEndpointResponseV1"
+- "azure-native:resourceconnector:SSHKeyResponse":
+    - properties:
+        - `🟡` "certificate" missing
+Showing 500 of 550 breaking changes.
+
+#### New resources:
+
+- `azurestackhci.ClusterJob`
+- `azurestackhci.DevicePool`
+- `azurestackhci.Snapshot`
+- `computebulkactions.BulkAction`
+- `desktopvirtualization.SessionHost`
+- `discovery.Bookshelf`
+- `discovery.BookshelfPrivateEndpointConnection`
+- `discovery.ChatModelDeployment`
+- `discovery.NodePool`
+- `discovery.Project`
+- `discovery.StorageAsset`
+- `discovery.StorageContainer`
+- `discovery.Supercomputer`
+- `discovery.Tool`
+- `discovery.Workspace`
+- `discovery.WorkspacePrivateEndpointConnection`
+- `durabletask.SchedulerPrivateEndpointConnection`
+- `fileshares.PrivateEndpointConnection`
+- `iotoperations.AkriService`
+- `marketplace.UserSolution`
+- `network.RoutingConfiguration`
+- `networkcloud.AccessBridge`
+- `networkcloud.KubernetesVersion`
+- `storagemover.Connection`
+
+#### New functions:
+
+- `authorization.listSubscriptions`
+- `azurestackhci.getClusterJob`
+- `azurestackhci.getDevicePool`
+- `azurestackhci.getSnapshot`
+- `cloudhealth.getEntityHistory`
+- `cloudhealth.getEntitySignalHistory`
+- `computebulkactions.getBulkAction`
+- `desktopvirtualization.getSessionHost`
+- `desktopvirtualization.listSessionHostSingleRegistrationTokens`
+- `discovery.getBookshelf`
+- `discovery.getBookshelfPrivateEndpointConnection`
+- `discovery.getChatModelDeployment`
+- `discovery.getNodePool`
+- `discovery.getProject`
+- `discovery.getStorageAsset`
+- `discovery.getStorageContainer`
+- `discovery.getSupercomputer`
+- `discovery.getTool`
+- `discovery.getWorkspace`
+- `discovery.getWorkspacePrivateEndpointConnection`
+- `durabletask.getSchedulerPrivateEndpointConnection`
+- `fileshares.getPrivateEndpointConnection`
+- `iotoperations.getAkriService`
+- `marketplace.getUserSolution`
+- `network.getRoutingConfiguration`
+- `networkcloud.getAccessBridge`
+- `networkcloud.getKubernetesVersion`
+- `storagemover.getConnection`
+
+<!-- Release notes generated using configuration in .github/release.yml at v3.16.0 -->
 
 ## What's Changed
-* Update first-party Pulumi dependencies to v3.11.0 by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4456
-* Update module github.com/pulumi/pulumi-azure-native-sdk/v3 to v3.11.0 by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4457
-* Add serialization for Web App resources by @guineveresaenger in https://github.com/pulumi/pulumi-azure-native/pull/4458
-* Pin dependencies by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4462
-* Update dependency @pulumi/pulumi to v3.211.0 by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4464
-* Update dependency @pulumi/pulumi to v3.212.0 by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4465
-* Update dependency @pulumi/pulumi to v3.213.0 by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4468
-* testing: update the k8s versions in go-aks by @pgavlin in https://github.com/pulumi/pulumi-azure-native/pull/4467
-* testing: update the k8s versions in go-aks by @pgavlin in https://github.com/pulumi/pulumi-azure-native/pull/4472
+* Update first-party Pulumi dependencies by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4578
+* Update docs schema for v3.15.0 by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4579
+* Update first-party Pulumi dependencies to v3.225.0 by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4582
+* Update golang version to 1.25.8 to fix CVEs by @GrzegorzFedorykaRel in https://github.com/pulumi/pulumi-azure-native/pull/4592
+* Make generate_docs output deterministic by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4593
+* Upgrade Web API version from 2024-04-01 to 2024-11-01 by @pgavlin in https://github.com/pulumi/pulumi-azure-native/pull/4591
+* Fix ManagedCluster identityProfile losing objectId and resourceId after v3.10.0 by @nelsonfigueroa in https://github.com/pulumi/pulumi-azure-native/pull/4586
+* Replace TestAccSql in C# to YAML and separate these tests in CI by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4598
+* Recognize SubscriptionNotFound and RoleAssignmentNotFound as not found errors for refresh by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4599
+* Implement CLI for version tracking automation by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4603
+* Disambiguate type tokens instead of merging types by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4602
+* Update first-party Pulumi dependencies by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4600
+* fix: switch publish-provider release steps to GitHub App auth by @pose in https://github.com/pulumi/pulumi-azure-native/pull/4613
+* Update module github.com/pulumi/pulumi/pkg/v3 to v3.227.0 by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4614
+* fix: use built-in GITHUB_TOKEN with contents:write for release creation by @pose in https://github.com/pulumi/pulumi-azure-native/pull/4617
+* fix: grant contents:write to publish job callers by @pose in https://github.com/pulumi/pulumi-azure-native/pull/4618
 
+## New Contributors
+* @GrzegorzFedorykaRel made their first contribution in https://github.com/pulumi/pulumi-azure-native/pull/4592
+* @nelsonfigueroa made their first contribution in https://github.com/pulumi/pulumi-azure-native/pull/4586
+* @pose made their first contribution in https://github.com/pulumi/pulumi-azure-native/pull/4613
 
-**Full Changelog**: https://github.com/pulumi/pulumi-azure-native/compare/v3.11.0...v3.12.0
+**Full Changelog**: https://github.com/pulumi/pulumi-azure-native/compare/v3.15.0...v3.16.0

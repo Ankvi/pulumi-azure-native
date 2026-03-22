@@ -41,10 +41,6 @@ export interface GetTargetResult {
      */
     readonly azureApiVersion: string;
     /**
-     * The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
-     */
-    readonly connectionServerName: string;
-    /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
@@ -53,25 +49,13 @@ export interface GetTargetResult {
      */
     readonly name: string;
     /**
-     * The provisioning state of the resource.
+     * The resource-specific properties for this resource.
      */
-    readonly provisioningState: string;
+    readonly properties: types.outputs.SqlDbElasticPoolTargetPropertiesResponse | types.outputs.SqlDbSingleDatabaseTargetPropertiesResponse | types.outputs.SqlMiTargetPropertiesResponse | types.outputs.SqlVmTargetPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
-    /**
-     * The type of authentication to use when connecting to a target.
-     */
-    readonly targetAuthenticationType: string;
-    /**
-     * Discriminator property for TargetProperties.
-     */
-    readonly targetType: string;
-    /**
-     * To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
-     */
-    readonly targetVault?: types.outputs.VaultSecretResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -28,6 +28,60 @@ export function accountEncryptionResponseProvideDefaults(val: AccountEncryptionR
 }
 
 /**
+ * Active Directory Configuration properties
+ */
+export interface ActiveDirectoryConfigPropertiesResponse {
+    /**
+     * Status of the Active Directory
+     */
+    activeDirectoryStatus: string;
+    /**
+     * Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
+     */
+    administrators?: string[];
+    /**
+     * Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
+     */
+    backupOperators?: string[];
+    /**
+     * An array of DNS server IP addresses(IPv4 only) for the Active Directory
+     */
+    dns?: string[];
+    /**
+     * Name of the Active Directory domain
+     */
+    domain: string;
+    /**
+     * The Organizational Unit (OU) within the Windows Active Directory
+     */
+    organizationalUnit?: string;
+    /**
+     * Azure lifecycle management.
+     */
+    provisioningState: string;
+    /**
+     * Access password from Azure KeyVault Secrets to connect Active Directory
+     */
+    secretPassword: SecretPasswordResponse;
+    /**
+     * Domain Users in the Active directory to be given SecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
+     */
+    securityOperators?: string[];
+    /**
+     * The Active Directory site the service will limit Domain Controller discovery to
+     */
+    site?: string;
+    /**
+     * NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
+     */
+    smbServerName?: string;
+    /**
+     * A domain user account with permission to create machine accounts
+     */
+    userName?: string;
+}
+
+/**
  * Active Directory
  */
 export interface ActiveDirectoryResponse {
@@ -157,6 +211,136 @@ export interface BucketServerPropertiesResponse {
 }
 
 /**
+ * Contains all the information needed to mount a cache
+ */
+export interface CacheMountTargetPropertiesResponse {
+    /**
+     * The mount target's IPv4 address, used to mount the cache.
+     */
+    ipAddress: string;
+    /**
+     * UUID v4 used to identify the MountTarget
+     */
+    mountTargetId: string;
+    /**
+     * The SMB server's Fully Qualified Domain Name, FQDN
+     */
+    smbServerFqdn: string;
+}
+
+/**
+ * Set of export policy rules
+ */
+export interface CachePropertiesExportPolicyResponse {
+    /**
+     * Export policy rule
+     */
+    rules?: ExportPolicyRuleResponse[];
+}
+
+/**
+ * Cache resource properties
+ */
+export interface CachePropertiesResponse {
+    /**
+     * Actual throughput in MiB/s for auto qosType volumes calculated based on size and serviceLevel
+     */
+    actualThroughputMibps: number;
+    /**
+     * Azure NetApp Files Cache lifecycle management
+     */
+    cacheState: string;
+    /**
+     * The Azure Resource URI for a delegated cache subnet that will be used to allocate data IPs.
+     */
+    cacheSubnetResourceId: string;
+    /**
+     * Flag indicating whether a CIFS change notification is enabled for the cache.
+     */
+    cifsChangeNotifications?: string;
+    /**
+     * Specifies if the cache is encryption or not.
+     */
+    encryption: string;
+    /**
+     * Source of key used to encrypt data in the cache. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
+     */
+    encryptionKeySource: string;
+    /**
+     * Set of export policy rules
+     */
+    exportPolicy?: CachePropertiesExportPolicyResponse;
+    /**
+     * The file path of the Cache.
+     */
+    filepath: string;
+    /**
+     * Flag indicating whether the global file lock is enabled for the cache.
+     */
+    globalFileLocking?: string;
+    /**
+     * Describe if a cache is Kerberos enabled.
+     */
+    kerberos?: string;
+    /**
+     * The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+     */
+    keyVaultPrivateEndpointResourceId?: string;
+    /**
+     * Language supported for volume.
+     */
+    language: string;
+    /**
+     * Specifies whether LDAP is enabled or not for flexcache volume.
+     */
+    ldap?: string;
+    /**
+     * Specifies the type of LDAP server for flexcache volume.
+     */
+    ldapServerType?: string;
+    /**
+     * Maximum number of files allowed.
+     */
+    maximumNumberOfFiles: number;
+    /**
+     * List of mount targets that can be used to mount this cache
+     */
+    mountTargets: CacheMountTargetPropertiesResponse[];
+    /**
+     * Origin cluster information
+     */
+    originClusterInformation: OriginClusterInformationResponse;
+    /**
+     * The Azure Resource URI for a delegated subnet that will be used for ANF Intercluster Interface IP addresses.
+     */
+    peeringSubnetResourceId: string;
+    /**
+     * Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol
+     */
+    protocolTypes?: string[];
+    /**
+     * Azure lifecycle management
+     */
+    provisioningState: string;
+    /**
+     * Maximum storage quota allowed for a file system in bytes. Valid values are in the range 50GiB to 1PiB. Values expressed in bytes as multiples of 1GiB.
+     */
+    size: number;
+    /**
+     * SMB information for the cache
+     */
+    smbSettings?: SmbSettingsResponse;
+    /**
+     * Maximum throughput in MiB/s that can be achieved by this cache volume and this will be accepted as input only for manual qosType cache
+     */
+    throughputMibps?: number;
+    /**
+     * Flag indicating whether writeback is enabled for the cache.
+     */
+    writeBack?: string;
+}
+
+/**
  * The effective CIFS username when accessing the volume data.
  */
 export interface CifsUserResponse {
@@ -189,6 +373,547 @@ export interface DailyScheduleResponse {
 }
 
 /**
+ * NetApp elastic account properties
+ */
+export interface ElasticAccountPropertiesResponse {
+    /**
+     * Encryption settings
+     */
+    encryption?: ElasticEncryptionResponse;
+    /**
+     * Azure lifecycle management.
+     */
+    provisioningState: string;
+}
+
+/**
+ * Elastic Backup Policy properties
+ */
+export interface ElasticBackupPolicyPropertiesResponse {
+    /**
+     * The number of volumes currently using this Backup Policy.
+     */
+    assignedVolumesCount: number;
+    /**
+     * Daily backups count to keep
+     */
+    dailyBackupsToKeep?: number;
+    /**
+     * Monthly backups count to keep
+     */
+    monthlyBackupsToKeep?: number;
+    /**
+     * The property to identify whether Backup Policy is enabled or not
+     */
+    policyState?: string;
+    /**
+     * Azure lifecycle management.
+     */
+    provisioningState: string;
+    /**
+     * Weekly backups count to keep
+     */
+    weeklyBackupsToKeep?: number;
+}
+
+/**
+ * Elastic Backup properties
+ */
+export interface ElasticBackupPropertiesResponse {
+    /**
+     * Type of backup Manual or Scheduled
+     */
+    backupType: string;
+    /**
+     * The completion date of the backup
+     */
+    completionDate: string;
+    /**
+     * The creation date of the backup
+     */
+    creationDate: string;
+    /**
+     * ResourceId used to identify the elastic backup policy
+     */
+    elasticBackupPolicyResourceId: string;
+    /**
+     * ResourceId used to identify the elastic snapshot resource. This is required when an existing snapshot needs to be used for creating a manual backup
+     */
+    elasticSnapshotResourceId?: string;
+    /**
+     * ResourceId used to identify the Elastic Volume
+     */
+    elasticVolumeResourceId: string;
+    /**
+     * Failure reason
+     */
+    failureReason: string;
+    /**
+     * Label for backup
+     */
+    label?: string;
+    /**
+     * Azure lifecycle management.
+     */
+    provisioningState: string;
+    /**
+     * Size of backup in bytes
+     */
+    size: number;
+    /**
+     * The snapshot creation date of the backup
+     */
+    snapshotCreationDate: string;
+    /**
+     * Manual backup using an already existing snapshot. This will always be CreateNewSnapshot for scheduled backups and UseExistingSnapshot/CreateNewSnapshot for manual backups
+     */
+    snapshotUsage?: string;
+    /**
+     * Specifies if the backup is for a large volume.
+     */
+    volumeSize: string;
+}
+/**
+ * elasticBackupPropertiesResponseProvideDefaults sets the appropriate defaults for ElasticBackupPropertiesResponse
+ */
+export function elasticBackupPropertiesResponseProvideDefaults(val: ElasticBackupPropertiesResponse): ElasticBackupPropertiesResponse {
+    return {
+        ...val,
+        snapshotUsage: (val.snapshotUsage) ?? "CreateNewSnapshot",
+    };
+}
+
+/**
+ * Elastic Backup Vault properties
+ */
+export interface ElasticBackupVaultPropertiesResponse {
+    /**
+     * Azure lifecycle management.
+     */
+    provisioningState: string;
+}
+
+/**
+ * Elastic capacity pool properties
+ */
+export interface ElasticCapacityPoolPropertiesResponse {
+    /**
+     * The Azure Resource URI for an Active Directory configuration. This is used by all the SMB volumes within the pool
+     */
+    activeDirectoryConfigResourceId?: string;
+    /**
+     * Current availability status of the resource.
+     */
+    availabilityStatus: string;
+    /**
+     * Indicates the current zone of the pool. This can be changed for zoneRedundant service level pool with the changeZone action
+     */
+    currentZone: string;
+    /**
+     * Encryption settings
+     */
+    encryption?: ElasticEncryptionConfigurationResponse;
+    /**
+     * Azure lifecycle management.
+     */
+    provisioningState: string;
+    /**
+     * The service level of the elastic capacity pool
+     */
+    serviceLevel: string;
+    /**
+     * Provisioned size of the pool (in bytes). For zoneRedundant service level pool, value must be in the range 1TiB to 16TiB or 1TiB to 128TiB for supported region. Values expressed in bytes as multiples of 1TiB till 16TiB and in multiples of 8TiB from 24TiB to 128TiB. Pool size can't be shrunk once it is created.
+     */
+    size: number;
+    /**
+     * The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/elasticVolumes, this is used by all the volumes within the pool
+     */
+    subnetResourceId: string;
+    /**
+     * Total throughput of the pool in MiB/s
+     */
+    totalThroughputMibps: number;
+}
+
+/**
+ * CMK Encryption Configuration
+ */
+export interface ElasticEncryptionConfigurationResponse {
+    /**
+     * Pool Encryption Key Source.
+     */
+    elasticPoolEncryptionKeySource: string;
+    /**
+     * The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
+     */
+    keyVaultPrivateEndpointResourceId: string;
+}
+
+/**
+ * Identity used to authenticate with key vault.
+ */
+export interface ElasticEncryptionIdentityResponse {
+    /**
+     * The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.
+     */
+    principalId: string;
+    /**
+     * The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+     */
+    userAssignedIdentity?: string;
+}
+
+/**
+ * Encryption settings
+ */
+export interface ElasticEncryptionResponse {
+    /**
+     * Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+     */
+    identity?: ElasticEncryptionIdentityResponse;
+    /**
+     * The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault
+     */
+    keySource?: string;
+    /**
+     * Properties provided by KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+     */
+    keyVaultProperties?: ElasticKeyVaultPropertiesResponse;
+}
+
+/**
+ * Set of export policy rules
+ */
+export interface ElasticExportPolicyResponse {
+    /**
+     * Export policy rule
+     */
+    rules?: ElasticExportPolicyRuleResponse[];
+}
+
+/**
+ * Elastic Volume Export Policy Rule
+ */
+export interface ElasticExportPolicyRuleResponse {
+    /**
+     * Client ingress specification for the export policy as list of IPv4 CIDRs, IPv4 host addresses and host names.
+     */
+    allowedClients?: string[];
+    /**
+     * Allows clients to access the volume with the NFSv3 protocol. Enable only for NFSv3 type volumes
+     */
+    nfsv3?: string;
+    /**
+     * Allows clients to access the volume with at least NFSv4.1 protocol.
+     */
+    nfsv4?: string;
+    /**
+     * Indicates whether root access to the volume is granted to clients affected by this rule
+     */
+    rootAccess?: string;
+    /**
+     * Controls the priority of the export policy rule. When connecting to the volume the rule with the lowest index that applies to the connecting client is used
+     */
+    ruleIndex?: number;
+    /**
+     * Specifies the Unix file access level for the volume. It encompasses both read-only and read-write permissions. Additionally, NoAccess can be set to block all access to the volume
+     */
+    unixAccessRule?: string;
+}
+/**
+ * elasticExportPolicyRuleResponseProvideDefaults sets the appropriate defaults for ElasticExportPolicyRuleResponse
+ */
+export function elasticExportPolicyRuleResponseProvideDefaults(val: ElasticExportPolicyRuleResponse): ElasticExportPolicyRuleResponse {
+    return {
+        ...val,
+        nfsv3: (val.nfsv3) ?? "Disabled",
+        nfsv4: (val.nfsv4) ?? "Disabled",
+        rootAccess: (val.rootAccess) ?? "Disabled",
+        unixAccessRule: (val.unixAccessRule) ?? "NoAccess",
+    };
+}
+
+/**
+ * Properties of key vault.
+ */
+export interface ElasticKeyVaultPropertiesResponse {
+    /**
+     * The name of KeyVault key.
+     */
+    keyName?: string;
+    /**
+     * The resource ID of KeyVault.
+     */
+    keyVaultResourceId?: string;
+    /**
+     * The Uri of KeyVault.
+     */
+    keyVaultUri?: string;
+    /**
+     * Status of the KeyVault connection.
+     */
+    status: string;
+}
+
+/**
+ * Contains all the information needed to mount an elastic volume
+ */
+export interface ElasticMountTargetPropertiesResponse {
+    /**
+     * The mount target's IPv4 address, used to mount the volume
+     */
+    ipAddress: string;
+    /**
+     * The SMB server's Fully Qualified Domain Name, FQDN
+     */
+    smbServerFqdn: string;
+}
+
+/**
+ * SMB Properties
+ */
+export interface ElasticSmbPropertiesResponse {
+    /**
+     * Used to enable or disable encryption for in-flight SMB data volume. This flag can be modified during Elastic volume update operation as well. Only applicable for SMB protocol Elastic volumes.
+     */
+    smbEncryption?: string;
+}
+/**
+ * elasticSmbPropertiesResponseProvideDefaults sets the appropriate defaults for ElasticSmbPropertiesResponse
+ */
+export function elasticSmbPropertiesResponseProvideDefaults(val: ElasticSmbPropertiesResponse): ElasticSmbPropertiesResponse {
+    return {
+        ...val,
+        smbEncryption: (val.smbEncryption) ?? "Disabled",
+    };
+}
+
+/**
+ * Daily Schedule properties used to create NetApp snapshot policy
+ */
+export interface ElasticSnapshotPolicyDailyScheduleResponse {
+    /**
+     * Indicates which hour in UTC timezone a snapshot should be taken
+     */
+    hour?: number;
+    /**
+     * Indicates which minute snapshot should be taken
+     */
+    minute?: number;
+    /**
+     * Daily snapshot count to keep
+     */
+    snapshotsToKeep?: number;
+}
+
+/**
+ * Hourly Schedule properties used to create NetApp snapshot policy
+ */
+export interface ElasticSnapshotPolicyHourlyScheduleResponse {
+    /**
+     * Indicates which minute snapshot should be taken
+     */
+    minute?: number;
+    /**
+     * Hourly snapshot count to keep
+     */
+    snapshotsToKeep?: number;
+}
+
+/**
+ * Monthly Schedule properties used to create NetApp snapshot policy
+ */
+export interface ElasticSnapshotPolicyMonthlyScheduleResponse {
+    /**
+     * Indicates which days of the month snapshot (1-31) should be taken, accepts a list of integers
+     */
+    daysOfMonth?: number[];
+    /**
+     * Indicates which hour in UTC timezone a snapshot should be taken
+     */
+    hour?: number;
+    /**
+     * Indicates which minute snapshot should be taken
+     */
+    minute?: number;
+    /**
+     * Monthly snapshot count to keep
+     */
+    snapshotsToKeep?: number;
+}
+
+/**
+ * Elastic Snapshot policy properties
+ */
+export interface ElasticSnapshotPolicyPropertiesResponse {
+    /**
+     * Schedule for daily snapshots
+     */
+    dailySchedule?: ElasticSnapshotPolicyDailyScheduleResponse;
+    /**
+     * Schedule for hourly snapshots
+     */
+    hourlySchedule?: ElasticSnapshotPolicyHourlyScheduleResponse;
+    /**
+     * Schedule for monthly snapshots
+     */
+    monthlySchedule?: ElasticSnapshotPolicyMonthlyScheduleResponse;
+    /**
+     * Configures if the snapshot policy is enabled on the volumes connected to the policy.
+     */
+    policyStatus?: string;
+    /**
+     * Azure lifecycle management.
+     */
+    provisioningState: string;
+    /**
+     * Schedule for weekly snapshots
+     */
+    weeklySchedule?: ElasticSnapshotPolicyWeeklyScheduleResponse;
+}
+
+/**
+ * Weekly Schedule properties used to create NetApp snapshot policy
+ */
+export interface ElasticSnapshotPolicyWeeklyScheduleResponse {
+    /**
+     * Indicates which weekday(s) snapshot(s) should be taken, accepts a list of week day names in english
+     */
+    days?: string[];
+    /**
+     * Indicates which hour in UTC timezone a snapshot should be taken
+     */
+    hour?: number;
+    /**
+     * Indicates which minute snapshot should be taken
+     */
+    minute?: number;
+    /**
+     * Weekly snapshot count to keep
+     */
+    snapshotsToKeep?: number;
+}
+
+/**
+ * Elastic Snapshot properties
+ */
+export interface ElasticSnapshotPropertiesResponse {
+    /**
+     * Azure lifecycle management.
+     */
+    provisioningState: string;
+}
+
+/**
+ * Elastic Volume Backup Properties
+ */
+export interface ElasticVolumeBackupPropertiesResponse {
+    /**
+     * ResourceId used to identify Elastic Backup Policy
+     */
+    elasticBackupPolicyResourceId?: string;
+    /**
+     * ResourceId used to identify Elastic Backup Vault
+     */
+    elasticBackupVaultResourceId?: string;
+    /**
+     * The property to decide policy is enforced or not on the volume
+     */
+    policyEnforcement?: string;
+}
+
+/**
+ * Data protection configuration option for the volume, including snapshot policies and backup.
+ */
+export interface ElasticVolumeDataProtectionPropertiesResponse {
+    /**
+     * Used to configure backups on an elastic volume.
+     */
+    backup?: ElasticVolumeBackupPropertiesResponse;
+    /**
+     * Used to apply a snapshot policy to a volume.
+     */
+    snapshot?: ElasticVolumeSnapshotPropertiesResponse;
+}
+
+/**
+ * Elastic Volume properties
+ */
+export interface ElasticVolumePropertiesResponse {
+    /**
+     * Current availability status of the resource.
+     */
+    availabilityStatus: string;
+    /**
+     * Resource identifier used to identify the Elastic Backup.
+     */
+    backupResourceId?: string;
+    /**
+     * Data protection configuration option for the volume, including snapshot policies and backup.
+     */
+    dataProtection?: ElasticVolumeDataProtectionPropertiesResponse;
+    /**
+     * Set of export policy rules
+     */
+    exportPolicy?: ElasticExportPolicyResponse;
+    /**
+     * A unique file path for the volume. Used when creating mount targets. This needs to be unique within the elastic capacity pool.
+     */
+    filePath: string;
+    /**
+     * List of mount targets that can be used to mount this volume
+     */
+    mountTargets: ElasticMountTargetPropertiesResponse[];
+    /**
+     * Set of support protocol types for the elastic volume
+     */
+    protocolTypes: string[];
+    /**
+     * Azure lifecycle management.
+     */
+    provisioningState: string;
+    /**
+     * The current state of the restoration process.
+     */
+    restorationState: string;
+    /**
+     * Maximum size allowed for a volume in bytes. Valid values are in the range 1GiB to 16TiB. Values expressed in bytes as multiples of 1 GiB.
+     */
+    size: number;
+    /**
+     * SMB Properties
+     */
+    smbProperties?: ElasticSmbPropertiesResponse;
+    /**
+     * Controls the visibility of the volume's read-only snapshot directory, which provides access to each of the volume's snapshots.
+     */
+    snapshotDirectoryVisibility?: string;
+    /**
+     * Resource identifier used to identify the Elastic Snapshot.
+     */
+    snapshotResourceId?: string;
+}
+/**
+ * elasticVolumePropertiesResponseProvideDefaults sets the appropriate defaults for ElasticVolumePropertiesResponse
+ */
+export function elasticVolumePropertiesResponseProvideDefaults(val: ElasticVolumePropertiesResponse): ElasticVolumePropertiesResponse {
+    return {
+        ...val,
+        smbProperties: (val.smbProperties ? elasticSmbPropertiesResponseProvideDefaults(val.smbProperties) : undefined),
+    };
+}
+
+/**
+ * Elastic Volume Snapshot Properties
+ */
+export interface ElasticVolumeSnapshotPropertiesResponse {
+    /**
+     * Snapshot Policy ResourceId
+     */
+    snapshotPolicyResourceId?: string;
+}
+
+/**
  * Identity used to authenticate with key vault.
  */
 export interface EncryptionIdentityResponse {
@@ -206,6 +931,88 @@ export interface EncryptionIdentityResponse {
  * Volume Export Policy Rule
  */
 export interface ExportPolicyRuleResponse {
+    /**
+     * Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
+     */
+    allowedClients?: string;
+    /**
+     * This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own.
+     */
+    chownMode?: string;
+    /**
+     * Allows CIFS protocol
+     */
+    cifs?: boolean;
+    /**
+     * Has root access to volume
+     */
+    hasRootAccess?: boolean;
+    /**
+     * Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5IReadOnly?: boolean;
+    /**
+     * Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5IReadWrite?: boolean;
+    /**
+     * Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5PReadOnly?: boolean;
+    /**
+     * Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5PReadWrite?: boolean;
+    /**
+     * Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5ReadOnly?: boolean;
+    /**
+     * Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5ReadWrite?: boolean;
+    /**
+     * Allows NFSv3 protocol. Enable only for NFSv3 type volumes
+     */
+    nfsv3?: boolean;
+    /**
+     * Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
+     */
+    nfsv41?: boolean;
+    /**
+     * Order index
+     */
+    ruleIndex?: number;
+    /**
+     * Read only access
+     */
+    unixReadOnly?: boolean;
+    /**
+     * Read and write access
+     */
+    unixReadWrite?: boolean;
+}
+/**
+ * exportPolicyRuleResponseProvideDefaults sets the appropriate defaults for ExportPolicyRuleResponse
+ */
+export function exportPolicyRuleResponseProvideDefaults(val: ExportPolicyRuleResponse): ExportPolicyRuleResponse {
+    return {
+        ...val,
+        chownMode: (val.chownMode) ?? "Restricted",
+        hasRootAccess: (val.hasRootAccess) ?? true,
+        kerberos5IReadOnly: (val.kerberos5IReadOnly) ?? false,
+        kerberos5IReadWrite: (val.kerberos5IReadWrite) ?? false,
+        kerberos5PReadOnly: (val.kerberos5PReadOnly) ?? false,
+        kerberos5PReadWrite: (val.kerberos5PReadWrite) ?? false,
+        kerberos5ReadOnly: (val.kerberos5ReadOnly) ?? false,
+        kerberos5ReadWrite: (val.kerberos5ReadWrite) ?? false,
+    };
+}
+
+/**
+ * Volume Export Policy Rule
+ */
+export interface ExportPolicyRuleResponseV1 {
     /**
      * Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
      */
@@ -268,9 +1075,91 @@ export interface ExportPolicyRuleResponse {
     unixReadWrite?: boolean;
 }
 /**
- * exportPolicyRuleResponseProvideDefaults sets the appropriate defaults for ExportPolicyRuleResponse
+ * exportPolicyRuleResponseV1ProvideDefaults sets the appropriate defaults for ExportPolicyRuleResponseV1
  */
-export function exportPolicyRuleResponseProvideDefaults(val: ExportPolicyRuleResponse): ExportPolicyRuleResponse {
+export function exportPolicyRuleResponseV1ProvideDefaults(val: ExportPolicyRuleResponseV1): ExportPolicyRuleResponseV1 {
+    return {
+        ...val,
+        chownMode: (val.chownMode) ?? "Restricted",
+        hasRootAccess: (val.hasRootAccess) ?? true,
+        kerberos5ReadOnly: (val.kerberos5ReadOnly) ?? false,
+        kerberos5ReadWrite: (val.kerberos5ReadWrite) ?? false,
+        kerberos5iReadOnly: (val.kerberos5iReadOnly) ?? false,
+        kerberos5iReadWrite: (val.kerberos5iReadWrite) ?? false,
+        kerberos5pReadOnly: (val.kerberos5pReadOnly) ?? false,
+        kerberos5pReadWrite: (val.kerberos5pReadWrite) ?? false,
+    };
+}
+
+/**
+ * Volume Export Policy Rule
+ */
+export interface ExportPolicyRuleResponseV2 {
+    /**
+     * Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
+     */
+    allowedClients?: string;
+    /**
+     * This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own.
+     */
+    chownMode?: string;
+    /**
+     * Allows CIFS protocol
+     */
+    cifs?: boolean;
+    /**
+     * Has root access to volume
+     */
+    hasRootAccess?: boolean;
+    /**
+     * Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5ReadOnly?: boolean;
+    /**
+     * Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5ReadWrite?: boolean;
+    /**
+     * Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5iReadOnly?: boolean;
+    /**
+     * Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5iReadWrite?: boolean;
+    /**
+     * Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5pReadOnly?: boolean;
+    /**
+     * Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5pReadWrite?: boolean;
+    /**
+     * Allows NFSv3 protocol. Enable only for NFSv3 type volumes
+     */
+    nfsv3?: boolean;
+    /**
+     * Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
+     */
+    nfsv41?: boolean;
+    /**
+     * Order index
+     */
+    ruleIndex?: number;
+    /**
+     * Read only access
+     */
+    unixReadOnly?: boolean;
+    /**
+     * Read and write access
+     */
+    unixReadWrite?: boolean;
+}
+/**
+ * exportPolicyRuleResponseV2ProvideDefaults sets the appropriate defaults for ExportPolicyRuleResponseV2
+ */
+export function exportPolicyRuleResponseV2ProvideDefaults(val: ExportPolicyRuleResponseV2): ExportPolicyRuleResponseV2 {
     return {
         ...val,
         chownMode: (val.chownMode) ?? "Restricted",
@@ -459,6 +1348,28 @@ export interface NfsUserResponse {
 }
 
 /**
+ * Stores the origin cluster information associated to a cache.
+ */
+export interface OriginClusterInformationResponse {
+    /**
+     * ONTAP Intercluster LIF IP addresses. One IP address per cluster node is required
+     */
+    peerAddresses: string[];
+    /**
+     * ONTAP cluster name of external cluster hosting the origin volume
+     */
+    peerClusterName: string;
+    /**
+     * External origin volume name associated to this cache
+     */
+    peerVolumeName: string;
+    /**
+     * External Vserver (SVM) name  name of the SVM hosting the origin volume
+     */
+    peerVserverName: string;
+}
+
+/**
  * Application specific parameters for the placement of volumes in the volume group
  */
 export interface PlacementKeyValuePairsResponse {
@@ -574,6 +1485,66 @@ export interface ReplicationResponse {
      * Schedule
      */
     replicationSchedule?: string;
+}
+
+/**
+ * Identity used to authenticate with key vault.
+ */
+export interface SecretPasswordIdentityResponse {
+    /**
+     * The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.
+     */
+    principalId: string;
+    /**
+     * The Azure resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
+     */
+    userAssignedIdentity?: string;
+}
+
+/**
+ * Properties of key vault to get the secrets for password.
+ */
+export interface SecretPasswordKeyVaultPropertiesResponse {
+    /**
+     * The Uri of KeyVault.
+     */
+    keyVaultUri: string;
+    /**
+     * The name of KeyVault password secret.
+     */
+    secretName: string;
+}
+
+/**
+ * Access password from Azure KeyVault Secrets to connect Active Directory
+ */
+export interface SecretPasswordResponse {
+    /**
+     * Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
+     */
+    identity?: SecretPasswordIdentityResponse;
+    /**
+     * Properties provided by KeyVault.
+     */
+    keyVaultProperties?: SecretPasswordKeyVaultPropertiesResponse;
+}
+
+/**
+ * SMB settings for the cache
+ */
+export interface SmbSettingsResponse {
+    /**
+     * Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+     */
+    smbAccessBasedEnumeration?: string;
+    /**
+     * Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache.
+     */
+    smbEncryption?: string;
+    /**
+     * Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+     */
+    smbNonBrowsable?: string;
 }
 
 /**
@@ -776,7 +1747,7 @@ export interface VolumeGroupVolumePropertiesResponse {
     /**
      * Set of export policy rules
      */
-    exportPolicy?: VolumePropertiesResponseExportPolicy;
+    exportPolicy?: VolumePropertiesResponseExportPolicyV1;
     /**
      * Flag indicating whether file access logs are enabled for the volume, based on active diagnostic settings present on the volume.
      */
@@ -989,7 +1960,17 @@ export interface VolumePropertiesResponseExportPolicy {
     /**
      * Export policy rule
      */
-    rules?: ExportPolicyRuleResponse[];
+    rules?: ExportPolicyRuleResponseV1[];
+}
+
+/**
+ * Set of export policy rules
+ */
+export interface VolumePropertiesResponseExportPolicyV1 {
+    /**
+     * Export policy rule
+     */
+    rules?: ExportPolicyRuleResponseV2[];
 }
 
 /**

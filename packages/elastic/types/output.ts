@@ -380,6 +380,20 @@ export interface MonitoringTagRulesPropertiesResponse {
     /**
      * Provisioning state of the monitoring tag rules.
      */
+    provisioningState: string;
+}
+
+/**
+ * Definition of the properties for a TagRules resource.
+ */
+export interface MonitoringTagRulesPropertiesResponseV1 {
+    /**
+     * Rules for sending logs.
+     */
+    logRules?: LogRulesResponse;
+    /**
+     * Provisioning state of the monitoring tag rules.
+     */
     provisioningState?: string;
 }
 

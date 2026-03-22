@@ -1,5 +1,11 @@
 export const AccountSkuName = {
+    /**
+     * Standard
+     */
     Standard: "Standard",
+    /**
+     * Free
+     */
     Free: "Free",
 } as const;
 
@@ -9,7 +15,13 @@ export const AccountSkuName = {
 export type AccountSkuName = (typeof AccountSkuName)[keyof typeof AccountSkuName];
 
 export const EventHubType = {
+    /**
+     * Notification
+     */
     Notification: "Notification",
+    /**
+     * Hook
+     */
     Hook: "Hook",
 } as const;
 
@@ -19,7 +31,13 @@ export const EventHubType = {
 export type EventHubType = (typeof EventHubType)[keyof typeof EventHubType];
 
 export const EventStreamingState = {
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
 } as const;
 
@@ -29,8 +47,17 @@ export const EventStreamingState = {
 export type EventStreamingState = (typeof EventStreamingState)[keyof typeof EventStreamingState];
 
 export const EventStreamingType = {
+    /**
+     * None
+     */
     None: "None",
+    /**
+     * Managed
+     */
     Managed: "Managed",
+    /**
+     * Azure
+     */
     Azure: "Azure",
 } as const;
 
@@ -40,8 +67,17 @@ export const EventStreamingType = {
 export type EventStreamingType = (typeof EventStreamingType)[keyof typeof EventStreamingType];
 
 export const KafkaConfigurationIdentityType = {
+    /**
+     * None
+     */
     None: "None",
+    /**
+     * SystemAssigned
+     */
     SystemAssigned: "SystemAssigned",
+    /**
+     * UserAssigned
+     */
     UserAssigned: "UserAssigned",
 } as const;
 
@@ -51,8 +87,17 @@ export const KafkaConfigurationIdentityType = {
 export type KafkaConfigurationIdentityType = (typeof KafkaConfigurationIdentityType)[keyof typeof KafkaConfigurationIdentityType];
 
 export const ManagedEventHubState = {
+    /**
+     * NotSpecified
+     */
     NotSpecified: "NotSpecified",
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
 } as const;
 
@@ -62,8 +107,17 @@ export const ManagedEventHubState = {
 export type ManagedEventHubState = (typeof ManagedEventHubState)[keyof typeof ManagedEventHubState];
 
 export const ManagedIdentityType = {
+    /**
+     * None
+     */
     None: "None",
+    /**
+     * SystemAssigned
+     */
     SystemAssigned: "SystemAssigned",
+    /**
+     * UserAssigned
+     */
     UserAssigned: "UserAssigned",
 } as const;
 
@@ -73,10 +127,25 @@ export const ManagedIdentityType = {
 export type ManagedIdentityType = (typeof ManagedIdentityType)[keyof typeof ManagedIdentityType];
 
 export const PrivateEndpointConnectionStatus = {
+    /**
+     * Unknown
+     */
     Unknown: "Unknown",
+    /**
+     * Pending
+     */
     Pending: "Pending",
+    /**
+     * Approved
+     */
     Approved: "Approved",
+    /**
+     * Rejected
+     */
     Rejected: "Rejected",
+    /**
+     * Disconnected
+     */
     Disconnected: "Disconnected",
 } as const;
 
@@ -86,8 +155,17 @@ export const PrivateEndpointConnectionStatus = {
 export type PrivateEndpointConnectionStatus = (typeof PrivateEndpointConnectionStatus)[keyof typeof PrivateEndpointConnectionStatus];
 
 export const PublicNetworkAccess = {
+    /**
+     * NotSpecified
+     */
     NotSpecified: "NotSpecified",
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
 } as const;
 
@@ -97,8 +175,17 @@ export const PublicNetworkAccess = {
 export type PublicNetworkAccess = (typeof PublicNetworkAccess)[keyof typeof PublicNetworkAccess];
 
 export const TenantEndpointState = {
+    /**
+     * NotSpecified
+     */
     NotSpecified: "NotSpecified",
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
 } as const;
 

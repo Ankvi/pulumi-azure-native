@@ -13,22 +13,18 @@ export interface AADAuthTypeWorkspaceConnectionPropertiesArgs {
      * Category of the connection
      */
     category?: pulumi.Input<string | enums.ConnectionCategory>;
+    error?: pulumi.Input<string>;
     expiryTime?: pulumi.Input<string>;
     isSharedToAll?: pulumi.Input<boolean>;
     /**
      * Store user metadata for this connection
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
     sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
     target?: pulumi.Input<string>;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: pulumi.Input<string>;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: pulumi.Input<string | enums.ValueFormat>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
 }
 
 /**
@@ -130,22 +126,18 @@ export interface AccessKeyAuthTypeWorkspaceConnectionPropertiesArgs {
      */
     category?: pulumi.Input<string | enums.ConnectionCategory>;
     credentials?: pulumi.Input<WorkspaceConnectionAccessKeyArgs>;
+    error?: pulumi.Input<string>;
     expiryTime?: pulumi.Input<string>;
     isSharedToAll?: pulumi.Input<boolean>;
     /**
      * Store user metadata for this connection
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
     sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
     target?: pulumi.Input<string>;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: pulumi.Input<string>;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: pulumi.Input<string | enums.ValueFormat>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
 }
 
 /**
@@ -161,23 +153,22 @@ export interface AccountKeyAuthTypeWorkspaceConnectionPropertiesArgs {
      * Category of the connection
      */
     category?: pulumi.Input<string | enums.ConnectionCategory>;
+    /**
+     * Account key object for workspace connection credential.
+     */
     credentials?: pulumi.Input<WorkspaceConnectionAccountKeyArgs>;
+    error?: pulumi.Input<string>;
     expiryTime?: pulumi.Input<string>;
     isSharedToAll?: pulumi.Input<boolean>;
     /**
      * Store user metadata for this connection
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
     sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
     target?: pulumi.Input<string>;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: pulumi.Input<string>;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: pulumi.Input<string | enums.ValueFormat>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
 }
 
 /**
@@ -388,23 +379,23 @@ export interface AmlTokenComputeIdentityArgs {
 /**
  * This connection type covers the generic ApiKey auth connection categories, for examples:
  * AzureOpenAI:
- *     Category:= AzureOpenAI
- *     AuthType:= ApiKey (as type discriminator)
- *     Credentials:= {ApiKey} as Microsoft.MachineLearning.AccountRP.Contracts.WorkspaceConnection.ApiKey
- *     Target:= {ApiBase}
- *             
+ * Category:= AzureOpenAI
+ * AuthType:= ApiKey (as type discriminator)
+ * Credentials:= {ApiKey} as Microsoft.MachineLearning.AccountRP.Contracts.WorkspaceConnection.ApiKey
+ * Target:= {ApiBase}
+ *
  * CognitiveService:
- *     Category:= CognitiveService
- *     AuthType:= ApiKey (as type discriminator)
- *     Credentials:= {SubscriptionKey} as Microsoft.MachineLearning.AccountRP.Contracts.WorkspaceConnection.ApiKey
- *     Target:= ServiceRegion={serviceRegion}
- *             
+ * Category:= CognitiveService
+ * AuthType:= ApiKey (as type discriminator)
+ * Credentials:= {SubscriptionKey} as Microsoft.MachineLearning.AccountRP.Contracts.WorkspaceConnection.ApiKey
+ * Target:= ServiceRegion={serviceRegion}
+ *
  * CognitiveSearch:
- *     Category:= CognitiveSearch
- *     AuthType:= ApiKey (as type discriminator)
- *     Credentials:= {Key} as Microsoft.MachineLearning.AccountRP.Contracts.WorkspaceConnection.ApiKey
- *     Target:= {Endpoint}
- *             
+ * Category:= CognitiveSearch
+ * AuthType:= ApiKey (as type discriminator)
+ * Credentials:= {Key} as Microsoft.MachineLearning.AccountRP.Contracts.WorkspaceConnection.ApiKey
+ * Target:= {Endpoint}
+ *
  * Use Metadata property bag for ApiType, ApiVersion, Kind and other metadata fields
  */
 export interface ApiKeyAuthWorkspaceConnectionPropertiesArgs {
@@ -421,22 +412,18 @@ export interface ApiKeyAuthWorkspaceConnectionPropertiesArgs {
      * Api key object for workspace connection credential.
      */
     credentials?: pulumi.Input<WorkspaceConnectionApiKeyArgs>;
+    error?: pulumi.Input<string>;
     expiryTime?: pulumi.Input<string>;
     isSharedToAll?: pulumi.Input<boolean>;
     /**
      * Store user metadata for this connection
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
     sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
     target?: pulumi.Input<string>;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: pulumi.Input<string>;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: pulumi.Input<string | enums.ValueFormat>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
 }
 
 /**
@@ -927,7 +914,7 @@ export function banditPolicyArgsProvideDefaults(val: BanditPolicyArgs): BanditPo
 /**
  * Batch inference settings per deployment.
  */
-export interface BatchDeploymentArgs {
+export interface BatchDeploymentPropertiesArgs {
     /**
      * Code configuration for the endpoint deployment.
      */
@@ -961,7 +948,9 @@ export interface BatchDeploymentArgs {
      */
     errorThreshold?: pulumi.Input<number>;
     /**
-     * Logging level for batch inference operation.
+     * Log verbosity for batch inferencing.
+     * Increasing verbosity order for logging is : Warning, Info and Debug.
+     * The default value is Info.
      */
     loggingLevel?: pulumi.Input<string | enums.BatchLoggingLevel>;
     /**
@@ -979,7 +968,7 @@ export interface BatchDeploymentArgs {
      */
     model?: pulumi.Input<DataPathAssetReferenceArgs | IdAssetReferenceArgs | OutputPathAssetReferenceArgs>;
     /**
-     * Indicates how the output will be organized.
+     * Enum to determine how batch inferencing will handle output
      */
     outputAction?: pulumi.Input<string | enums.BatchOutputAction>;
     /**
@@ -1002,9 +991,9 @@ export interface BatchDeploymentArgs {
     retrySettings?: pulumi.Input<BatchRetrySettingsArgs>;
 }
 /**
- * batchDeploymentArgsProvideDefaults sets the appropriate defaults for BatchDeploymentArgs
+ * batchDeploymentPropertiesArgsProvideDefaults sets the appropriate defaults for BatchDeploymentPropertiesArgs
  */
-export function batchDeploymentArgsProvideDefaults(val: BatchDeploymentArgs): BatchDeploymentArgs {
+export function batchDeploymentPropertiesArgsProvideDefaults(val: BatchDeploymentPropertiesArgs): BatchDeploymentPropertiesArgs {
     return {
         ...val,
         errorThreshold: (val.errorThreshold) ?? -1,
@@ -1019,9 +1008,20 @@ export function batchDeploymentArgsProvideDefaults(val: BatchDeploymentArgs): Ba
 }
 
 /**
+ * Batch endpoint default values
+ */
+export interface BatchEndpointDefaultsArgs {
+    /**
+     * Name of the deployment that will be default for the endpoint.
+     * This deployment will end up getting 100% traffic when the endpoint scoring URL is invoked.
+     */
+    deploymentName?: pulumi.Input<string>;
+}
+
+/**
  * Batch endpoint configuration.
  */
-export interface BatchEndpointArgs {
+export interface BatchEndpointPropertiesArgs {
     /**
      * [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
      */
@@ -1043,17 +1043,6 @@ export interface BatchEndpointArgs {
      * Property dictionary. Properties can be added, but not removed or altered.
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-}
-
-/**
- * Batch endpoint default values
- */
-export interface BatchEndpointDefaultsArgs {
-    /**
-     * Name of the deployment that will be default for the endpoint.
-     * This deployment will end up getting 100% traffic when the endpoint scoring URL is invoked.
-     */
-    deploymentName?: pulumi.Input<string>;
 }
 
 /**
@@ -1118,9 +1107,6 @@ export interface BayesianSamplingAlgorithmArgs {
     samplingAlgorithmType: pulumi.Input<"Bayesian">;
 }
 
-/**
- * Describes the bind options for the container
- */
 export interface BindOptionsArgs {
     /**
      * Indicate whether to create host path.
@@ -1161,7 +1147,11 @@ export function buildContextArgsProvideDefaults(val: BuildContextArgs): BuildCon
     };
 }
 
-export interface CapabilityHostArgs {
+export interface CapabilityHostPropertiesArgs {
+    /**
+     * List of Aca Environment connections.
+     */
+    acaEnvironmentConnections?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of AI services connections.
      */
@@ -1200,9 +1190,9 @@ export interface CapabilityHostArgs {
     vectorStoreConnections?: pulumi.Input<pulumi.Input<string>[]>;
 }
 /**
- * capabilityHostArgsProvideDefaults sets the appropriate defaults for CapabilityHostArgs
+ * capabilityHostPropertiesArgsProvideDefaults sets the appropriate defaults for CapabilityHostPropertiesArgs
  */
-export function capabilityHostArgsProvideDefaults(val: CapabilityHostArgs): CapabilityHostArgs {
+export function capabilityHostPropertiesArgsProvideDefaults(val: CapabilityHostPropertiesArgs): CapabilityHostPropertiesArgs {
     return {
         ...val,
         capabilityHostKind: (val.capabilityHostKind) ?? "Agents",
@@ -1335,7 +1325,7 @@ export interface ClassificationArgs {
      */
     limitSettings?: pulumi.Input<TableVerticalLimitSettingsArgs>;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
     /**
@@ -1348,7 +1338,7 @@ export interface ClassificationArgs {
      */
     positiveLabel?: pulumi.Input<string>;
     /**
-     * Primary metric for the task.
+     * Primary metrics for classification tasks.
      */
     primaryMetric?: pulumi.Input<string | enums.ClassificationPrimaryMetrics>;
     /**
@@ -1486,7 +1476,7 @@ export interface CodeConfigurationArgs {
 /**
  * Container for code asset versions.
  */
-export interface CodeContainerArgs {
+export interface CodeContainerPropertiesArgs {
     /**
      * The asset description text.
      */
@@ -1505,9 +1495,9 @@ export interface CodeContainerArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 /**
- * codeContainerArgsProvideDefaults sets the appropriate defaults for CodeContainerArgs
+ * codeContainerPropertiesArgsProvideDefaults sets the appropriate defaults for CodeContainerPropertiesArgs
  */
-export function codeContainerArgsProvideDefaults(val: CodeContainerArgs): CodeContainerArgs {
+export function codeContainerPropertiesArgsProvideDefaults(val: CodeContainerPropertiesArgs): CodeContainerPropertiesArgs {
     return {
         ...val,
         isArchived: (val.isArchived) ?? false,
@@ -1517,7 +1507,7 @@ export function codeContainerArgsProvideDefaults(val: CodeContainerArgs): CodeCo
 /**
  * Code asset version details.
  */
-export interface CodeVersionArgs {
+export interface CodeVersionPropertiesArgs {
     /**
      * Uri where code is located
      */
@@ -1544,9 +1534,9 @@ export interface CodeVersionArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 /**
- * codeVersionArgsProvideDefaults sets the appropriate defaults for CodeVersionArgs
+ * codeVersionPropertiesArgsProvideDefaults sets the appropriate defaults for CodeVersionPropertiesArgs
  */
-export function codeVersionArgsProvideDefaults(val: CodeVersionArgs): CodeVersionArgs {
+export function codeVersionPropertiesArgsProvideDefaults(val: CodeVersionPropertiesArgs): CodeVersionPropertiesArgs {
     return {
         ...val,
         isAnonymous: (val.isAnonymous) ?? false,
@@ -1734,7 +1724,7 @@ export interface CommandJobLimitsArgs {
  * Component container definition.
  * <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
  */
-export interface ComponentContainerArgs {
+export interface ComponentContainerPropertiesArgs {
     /**
      * The asset description text.
      */
@@ -1753,9 +1743,9 @@ export interface ComponentContainerArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 /**
- * componentContainerArgsProvideDefaults sets the appropriate defaults for ComponentContainerArgs
+ * componentContainerPropertiesArgsProvideDefaults sets the appropriate defaults for ComponentContainerPropertiesArgs
  */
-export function componentContainerArgsProvideDefaults(val: ComponentContainerArgs): ComponentContainerArgs {
+export function componentContainerPropertiesArgsProvideDefaults(val: ComponentContainerPropertiesArgs): ComponentContainerPropertiesArgs {
     return {
         ...val,
         isArchived: (val.isArchived) ?? false,
@@ -1765,7 +1755,7 @@ export function componentContainerArgsProvideDefaults(val: ComponentContainerArg
 /**
  * Definition of a component version: defines resources that span component types.
  */
-export interface ComponentVersionArgs {
+export interface ComponentVersionPropertiesArgs {
     /**
      * Defines Component definition details.
      * <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
@@ -1793,9 +1783,9 @@ export interface ComponentVersionArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 /**
- * componentVersionArgsProvideDefaults sets the appropriate defaults for ComponentVersionArgs
+ * componentVersionPropertiesArgsProvideDefaults sets the appropriate defaults for ComponentVersionPropertiesArgs
  */
-export function componentVersionArgsProvideDefaults(val: ComponentVersionArgs): ComponentVersionArgs {
+export function componentVersionPropertiesArgsProvideDefaults(val: ComponentVersionPropertiesArgs): ComponentVersionPropertiesArgs {
     return {
         ...val,
         isAnonymous: (val.isAnonymous) ?? false,
@@ -1864,6 +1854,14 @@ export interface ComputeInstancePropertiesArgs {
      */
     enableNodePublicIp?: pulumi.Input<boolean>;
     /**
+     * Enable SSO (single sign on). Possible values are: true, false.
+     */
+    enableSSO?: pulumi.Input<boolean>;
+    /**
+     * Stops compute instance after user defined period of inactivity. Time is defined in ISO8601 format. Minimum is 15 min, maximum is 3 days.
+     */
+    idleTimeBeforeShutdown?: pulumi.Input<string>;
+    /**
      * Settings for a personal compute instance.
      */
     personalComputeInstanceSettings?: pulumi.Input<PersonalComputeInstanceSettingsArgs>;
@@ -1896,6 +1894,7 @@ export function computeInstancePropertiesArgsProvideDefaults(val: ComputeInstanc
         ...val,
         applicationSharingPolicy: (val.applicationSharingPolicy) ?? "Shared",
         computeInstanceAuthorizationType: (val.computeInstanceAuthorizationType) ?? "personal",
+        enableSSO: (val.enableSSO) ?? true,
         sshSettings: (val.sshSettings ? pulumi.output(val.sshSettings).apply(computeInstanceSshSettingsArgsProvideDefaults) : undefined),
     };
 }
@@ -1942,9 +1941,6 @@ export interface ComputeRecurrenceScheduleArgs {
     weekDays?: pulumi.Input<pulumi.Input<string | enums.ComputeWeekDay>[]>;
 }
 
-/**
- * Compute runtime config for feature store type workspace.
- */
 export interface ComputeRuntimeDtoArgs {
     sparkRuntimeVersion?: pulumi.Input<string>;
 }
@@ -2064,9 +2060,6 @@ export interface ContentSafetyEndpointDeploymentResourcePropertiesArgs {
 }
 
 export interface CosmosDbSettingsArgs {
-    /**
-     * The throughput of the collections in cosmosdb database
-     */
     collectionsThroughput?: pulumi.Input<number>;
 }
 
@@ -2191,22 +2184,18 @@ export interface CustomKeysWorkspaceConnectionPropertiesArgs {
      * Custom Keys credential object
      */
     credentials?: pulumi.Input<CustomKeysArgs>;
+    error?: pulumi.Input<string>;
     expiryTime?: pulumi.Input<string>;
     isSharedToAll?: pulumi.Input<boolean>;
     /**
      * Store user metadata for this connection
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
     sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
     target?: pulumi.Input<string>;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: pulumi.Input<string>;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: pulumi.Input<string | enums.ValueFormat>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
 }
 
 export interface CustomMetricThresholdArgs {
@@ -2231,7 +2220,7 @@ export interface CustomModelJobInputArgs {
      */
     jobInputType: pulumi.Input<"custom_model">;
     /**
-     * Input Asset Delivery Mode.
+     * Enum to determine the input data delivery mode.
      */
     mode?: pulumi.Input<string | enums.InputDeliveryMode>;
     /**
@@ -2251,6 +2240,10 @@ export function customModelJobInputArgsProvideDefaults(val: CustomModelJobInputA
 
 export interface CustomModelJobOutputArgs {
     /**
+     * Output Asset Name.
+     */
+    assetName?: pulumi.Input<string>;
+    /**
      * Description for the output.
      */
     description?: pulumi.Input<string>;
@@ -2260,7 +2253,7 @@ export interface CustomModelJobOutputArgs {
      */
     jobOutputType: pulumi.Input<"custom_model">;
     /**
-     * Output Asset Delivery Mode.
+     * Output data delivery mode enums.
      */
     mode?: pulumi.Input<string | enums.OutputDeliveryMode>;
     /**
@@ -2358,6 +2351,10 @@ export interface CustomServiceArgs {
      */
     image?: pulumi.Input<ImageArgs>;
     /**
+     * Describes the jupyter kernel settings for the image if its a custom environment
+     */
+    kernel?: pulumi.Input<JupyterKernelConfigArgs>;
+    /**
      * Name of the Custom Service
      */
     name?: pulumi.Input<string>;
@@ -2431,7 +2428,7 @@ export function dataCollectorArgsProvideDefaults(val: DataCollectorArgs): DataCo
 /**
  * Container for data asset versions.
  */
-export interface DataContainerArgs {
+export interface DataContainerPropertiesArgs {
     /**
      * [Required] Specifies the type of data.
      */
@@ -2454,9 +2451,9 @@ export interface DataContainerArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 /**
- * dataContainerArgsProvideDefaults sets the appropriate defaults for DataContainerArgs
+ * dataContainerPropertiesArgsProvideDefaults sets the appropriate defaults for DataContainerPropertiesArgs
  */
-export function dataContainerArgsProvideDefaults(val: DataContainerArgs): DataContainerArgs {
+export function dataContainerPropertiesArgsProvideDefaults(val: DataContainerPropertiesArgs): DataContainerPropertiesArgs {
     return {
         ...val,
         isArchived: (val.isArchived) ?? false,
@@ -2777,6 +2774,20 @@ export interface DatasetCreateRequestTimeSeriesArgs {
     fineGrainTimestamp?: pulumi.Input<string>;
 }
 
+/**
+ * Dataset reference object.
+ */
+export interface DatasetReferenceArgs {
+    /**
+     * The fully qualified ARM id of the dataset reference.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The name of the dataset reference.
+     */
+    name?: pulumi.Input<string>;
+}
+
 export interface DefaultScaleSettingsArgs {
     /**
      *
@@ -2809,9 +2820,6 @@ export function deploymentResourceConfigurationArgsProvideDefaults(val: Deployme
     };
 }
 
-/**
- * Docker container configuration
- */
 export interface DockerArgs {
     /**
      * Indicate whether container shall run in privileged or non-privileged mode.
@@ -2872,39 +2880,36 @@ export interface DockerImagePlatformArgs {
     operatingSystemType?: pulumi.Input<string | enums.OperatingSystemType>;
 }
 
-export interface EncryptionKeyVaultPropertiesArgs {
-    /**
-     * For future use - The client id of the identity which will be used to access key vault.
-     */
-    identityClientId?: pulumi.Input<string>;
-    /**
-     * Key vault uri to access the encryption key.
-     */
-    keyIdentifier: pulumi.Input<string>;
-    /**
-     * The ArmId of the keyVault where the customer owned encryption key is present.
-     */
-    keyVaultArmId: pulumi.Input<string>;
-}
-
 export interface EncryptionPropertyArgs {
     /**
-     * The identity that will be used to access the key vault for encryption at rest.
+     * The byok cosmosdb account that customer brings to store customer's data
+     * with encryption
+     */
+    cosmosDbResourceId?: pulumi.Input<string>;
+    /**
+     * Identity to be used with the keyVault
      */
     identity?: pulumi.Input<IdentityForCmkArgs>;
     /**
-     * Customer Key vault properties.
+     * KeyVault details to do the encryption
      */
-    keyVaultProperties: pulumi.Input<EncryptionKeyVaultPropertiesArgs>;
+    keyVaultProperties: pulumi.Input<KeyVaultPropertiesArgs>;
+    /**
+     * The byok search account that customer brings to store customer's data
+     * with encryption
+     */
+    searchAccountResourceId?: pulumi.Input<string>;
     /**
      * Indicates whether or not the encryption is enabled for the workspace.
      */
     status: pulumi.Input<string | enums.EncryptionStatus>;
+    /**
+     * The byok storage account that customer brings to store customer's data
+     * with encryption
+     */
+    storageAccountResourceId?: pulumi.Input<string>;
 }
 
-/**
- * Describes the endpoint configuration for the container
- */
 export interface EndpointArgs {
     /**
      * Host IP over which the application is exposed from the container
@@ -2986,7 +2991,7 @@ export interface EndpointScheduleActionArgs {
 /**
  * Container for environment specification versions.
  */
-export interface EnvironmentContainerArgs {
+export interface EnvironmentContainerPropertiesArgs {
     /**
      * The asset description text.
      */
@@ -3005,9 +3010,9 @@ export interface EnvironmentContainerArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 /**
- * environmentContainerArgsProvideDefaults sets the appropriate defaults for EnvironmentContainerArgs
+ * environmentContainerPropertiesArgsProvideDefaults sets the appropriate defaults for EnvironmentContainerPropertiesArgs
  */
-export function environmentContainerArgsProvideDefaults(val: EnvironmentContainerArgs): EnvironmentContainerArgs {
+export function environmentContainerPropertiesArgsProvideDefaults(val: EnvironmentContainerPropertiesArgs): EnvironmentContainerPropertiesArgs {
     return {
         ...val,
         isArchived: (val.isArchived) ?? false,
@@ -3050,9 +3055,6 @@ export interface EnvironmentSpecificationVersionArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
-/**
- * Environment Variables for the container
- */
 export interface EnvironmentVariableArgs {
     /**
      * Type of the Environment Variable. Possible values are: local - For local variable
@@ -3076,9 +3078,9 @@ export function environmentVariableArgsProvideDefaults(val: EnvironmentVariableA
 /**
  * Environment version details.
  */
-export interface EnvironmentVersionArgs {
+export interface EnvironmentVersionPropertiesArgs {
     /**
-     * Defines if image needs to be rebuilt based on base image changes.
+     * AutoRebuild setting for the derived image
      */
     autoRebuild?: pulumi.Input<string | enums.AutoRebuildSetting>;
     /**
@@ -3112,7 +3114,7 @@ export interface EnvironmentVersionArgs {
      */
     isArchived?: pulumi.Input<boolean>;
     /**
-     * The OS type of the environment.
+     * The type of operating system.
      */
     osType?: pulumi.Input<string | enums.OperatingSystemType>;
     /**
@@ -3129,9 +3131,9 @@ export interface EnvironmentVersionArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 /**
- * environmentVersionArgsProvideDefaults sets the appropriate defaults for EnvironmentVersionArgs
+ * environmentVersionPropertiesArgsProvideDefaults sets the appropriate defaults for EnvironmentVersionPropertiesArgs
  */
-export function environmentVersionArgsProvideDefaults(val: EnvironmentVersionArgs): EnvironmentVersionArgs {
+export function environmentVersionPropertiesArgsProvideDefaults(val: EnvironmentVersionPropertiesArgs): EnvironmentVersionPropertiesArgs {
     return {
         ...val,
         autoRebuild: (val.autoRebuild) ?? "Disabled",
@@ -3218,13 +3220,7 @@ export function featureImportanceSettingsArgsProvideDefaults(val: FeatureImporta
     };
 }
 
-/**
- * Settings for feature store type workspace.
- */
 export interface FeatureStoreSettingsArgs {
-    /**
-     * Compute runtime config for feature store type workspace.
-     */
     computeRuntime?: pulumi.Input<ComputeRuntimeDtoArgs>;
     offlineStoreConnectionName?: pulumi.Input<string>;
     onlineStoreConnectionName?: pulumi.Input<string>;
@@ -3245,7 +3241,7 @@ export interface FeatureSubsetArgs {
 /**
  * DTO object representing feature set
  */
-export interface FeaturesetContainerArgs {
+export interface FeaturesetContainerPropertiesArgs {
     /**
      * The asset description text.
      */
@@ -3264,9 +3260,9 @@ export interface FeaturesetContainerArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 /**
- * featuresetContainerArgsProvideDefaults sets the appropriate defaults for FeaturesetContainerArgs
+ * featuresetContainerPropertiesArgsProvideDefaults sets the appropriate defaults for FeaturesetContainerPropertiesArgs
  */
-export function featuresetContainerArgsProvideDefaults(val: FeaturesetContainerArgs): FeaturesetContainerArgs {
+export function featuresetContainerPropertiesArgsProvideDefaults(val: FeaturesetContainerPropertiesArgs): FeaturesetContainerPropertiesArgs {
     return {
         ...val,
         isArchived: (val.isArchived) ?? false,
@@ -3286,7 +3282,7 @@ export interface FeaturesetSpecificationArgs {
 /**
  * DTO object representing feature set version
  */
-export interface FeaturesetVersionArgs {
+export interface FeaturesetVersionPropertiesArgs {
     /**
      * The asset description text.
      */
@@ -3325,9 +3321,9 @@ export interface FeaturesetVersionArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 /**
- * featuresetVersionArgsProvideDefaults sets the appropriate defaults for FeaturesetVersionArgs
+ * featuresetVersionPropertiesArgsProvideDefaults sets the appropriate defaults for FeaturesetVersionPropertiesArgs
  */
-export function featuresetVersionArgsProvideDefaults(val: FeaturesetVersionArgs): FeaturesetVersionArgs {
+export function featuresetVersionPropertiesArgsProvideDefaults(val: FeaturesetVersionPropertiesArgs): FeaturesetVersionPropertiesArgs {
     return {
         ...val,
         isAnonymous: (val.isAnonymous) ?? false,
@@ -3339,7 +3335,7 @@ export function featuresetVersionArgsProvideDefaults(val: FeaturesetVersionArgs)
 /**
  * DTO object representing feature entity
  */
-export interface FeaturestoreEntityContainerArgs {
+export interface FeaturestoreEntityContainerPropertiesArgs {
     /**
      * The asset description text.
      */
@@ -3358,9 +3354,9 @@ export interface FeaturestoreEntityContainerArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 /**
- * featurestoreEntityContainerArgsProvideDefaults sets the appropriate defaults for FeaturestoreEntityContainerArgs
+ * featurestoreEntityContainerPropertiesArgsProvideDefaults sets the appropriate defaults for FeaturestoreEntityContainerPropertiesArgs
  */
-export function featurestoreEntityContainerArgsProvideDefaults(val: FeaturestoreEntityContainerArgs): FeaturestoreEntityContainerArgs {
+export function featurestoreEntityContainerPropertiesArgsProvideDefaults(val: FeaturestoreEntityContainerPropertiesArgs): FeaturestoreEntityContainerPropertiesArgs {
     return {
         ...val,
         isArchived: (val.isArchived) ?? false,
@@ -3370,7 +3366,7 @@ export function featurestoreEntityContainerArgsProvideDefaults(val: Featurestore
 /**
  * DTO object representing feature entity version
  */
-export interface FeaturestoreEntityVersionArgs {
+export interface FeaturestoreEntityVersionPropertiesArgs {
     /**
      * The asset description text.
      */
@@ -3401,9 +3397,9 @@ export interface FeaturestoreEntityVersionArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 /**
- * featurestoreEntityVersionArgsProvideDefaults sets the appropriate defaults for FeaturestoreEntityVersionArgs
+ * featurestoreEntityVersionPropertiesArgsProvideDefaults sets the appropriate defaults for FeaturestoreEntityVersionPropertiesArgs
  */
-export function featurestoreEntityVersionArgsProvideDefaults(val: FeaturestoreEntityVersionArgs): FeaturestoreEntityVersionArgs {
+export function featurestoreEntityVersionPropertiesArgsProvideDefaults(val: FeaturestoreEntityVersionPropertiesArgs): FeaturestoreEntityVersionPropertiesArgs {
     return {
         ...val,
         isAnonymous: (val.isAnonymous) ?? false,
@@ -3466,7 +3462,7 @@ export interface ForecastingArgs {
      */
     limitSettings?: pulumi.Input<TableVerticalLimitSettingsArgs>;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
     /**
@@ -3475,7 +3471,7 @@ export interface ForecastingArgs {
      */
     nCrossValidations?: pulumi.Input<AutoNCrossValidationsArgs | CustomNCrossValidationsArgs>;
     /**
-     * Primary metric for forecasting task.
+     * Primary metrics for Forecasting task.
      */
     primaryMetric?: pulumi.Input<string | enums.ForecastingPrimaryMetrics>;
     /**
@@ -3555,7 +3551,7 @@ export interface ForecastingSettingsArgs {
      */
     cvStepSize?: pulumi.Input<number>;
     /**
-     * Flag for generating lags for the numeric features with 'auto' or null.
+     * Flag for generating lags for the numeric features.
      */
     featureLags?: pulumi.Input<string | enums.FeatureLags>;
     /**
@@ -3576,8 +3572,7 @@ export interface ForecastingSettingsArgs {
      */
     shortSeriesHandlingConfig?: pulumi.Input<string | enums.ShortSeriesHandlingConfiguration>;
     /**
-     * The function to be used to aggregate the time series target column to conform to a user specified frequency.
-     * If the TargetAggregateFunction is set i.e. not 'None', but the freq parameter is not set, the error is raised. The possible target aggregation functions are: "sum", "max", "min" and "mean".
+     * Target aggregate function.
      */
     targetAggregateFunction?: pulumi.Input<string | enums.TargetAggregationFunction>;
     /**
@@ -3830,27 +3825,28 @@ export interface IdentityArgs {
 }
 
 /**
- * Identity that will be used to access key vault for encryption at rest
+ * Identity object used for encryption.
  */
 export interface IdentityForCmkArgs {
     /**
-     * The ArmId of the user assigned identity that will be used to access the customer managed key vault
+     * UserAssignedIdentity to be used to fetch the encryption key from keyVault
      */
     userAssignedIdentity?: pulumi.Input<string>;
 }
 
-/**
- * Describes the Image Specifications
- */
 export interface ImageArgs {
     /**
-     * Image reference
+     * Image reference URL if type is docker. Environment name if type is azureml
      */
     reference?: pulumi.Input<string>;
     /**
-     * Type of the image. Possible values are: docker - For docker images. azureml - For AzureML images
+     * Type of the image. Possible values are: docker - For docker images. azureml - For AzureML Environment images (custom and curated)
      */
     type?: pulumi.Input<string | enums.ImageType>;
+    /**
+     * Version of image being used. If latest then skip this field
+     */
+    version?: pulumi.Input<string>;
 }
 /**
  * imageArgsProvideDefaults sets the appropriate defaults for ImageArgs
@@ -3872,7 +3868,7 @@ export interface ImageClassificationArgs {
      */
     limitSettings: pulumi.Input<ImageLimitSettingsArgs>;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
     /**
@@ -3880,7 +3876,7 @@ export interface ImageClassificationArgs {
      */
     modelSettings?: pulumi.Input<ImageModelSettingsClassificationArgs>;
     /**
-     * Primary metric to optimize for this task.
+     * Primary metrics for classification tasks.
      */
     primaryMetric?: pulumi.Input<string | enums.ClassificationPrimaryMetrics>;
     /**
@@ -3941,7 +3937,7 @@ export interface ImageClassificationMultilabelArgs {
      */
     limitSettings: pulumi.Input<ImageLimitSettingsArgs>;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
     /**
@@ -3949,7 +3945,7 @@ export interface ImageClassificationMultilabelArgs {
      */
     modelSettings?: pulumi.Input<ImageModelSettingsClassificationArgs>;
     /**
-     * Primary metric to optimize for this task.
+     * Primary metrics for classification multilabel tasks.
      */
     primaryMetric?: pulumi.Input<string | enums.ClassificationMultilabelPrimaryMetrics>;
     /**
@@ -4010,7 +4006,7 @@ export interface ImageInstanceSegmentationArgs {
      */
     limitSettings: pulumi.Input<ImageLimitSettingsArgs>;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
     /**
@@ -4018,7 +4014,7 @@ export interface ImageInstanceSegmentationArgs {
      */
     modelSettings?: pulumi.Input<ImageModelSettingsObjectDetectionArgs>;
     /**
-     * Primary metric to optimize for this task.
+     * Primary metrics for InstanceSegmentation tasks.
      */
     primaryMetric?: pulumi.Input<string | enums.InstanceSegmentationPrimaryMetrics>;
     /**
@@ -4543,7 +4539,7 @@ export interface ImageModelSettingsClassificationArgs {
      */
     learningRate?: pulumi.Input<number>;
     /**
-     * Type of learning rate scheduler. Must be 'warmup_cosine' or 'step'.
+     * Learning rate scheduler enum.
      */
     learningRateScheduler?: pulumi.Input<string | enums.LearningRateScheduler>;
     /**
@@ -4569,7 +4565,7 @@ export interface ImageModelSettingsClassificationArgs {
      */
     numberOfWorkers?: pulumi.Input<number>;
     /**
-     * Type of optimizer.
+     * Stochastic optimizer for image models.
      */
     optimizer?: pulumi.Input<string | enums.StochasticOptimizer>;
     /**
@@ -4732,7 +4728,7 @@ export interface ImageModelSettingsObjectDetectionArgs {
      */
     learningRate?: pulumi.Input<number>;
     /**
-     * Type of learning rate scheduler. Must be 'warmup_cosine' or 'step'.
+     * Learning rate scheduler enum.
      */
     learningRateScheduler?: pulumi.Input<string | enums.LearningRateScheduler>;
     /**
@@ -4754,9 +4750,7 @@ export interface ImageModelSettingsObjectDetectionArgs {
      */
     modelName?: pulumi.Input<string>;
     /**
-     * Model size. Must be 'small', 'medium', 'large', or 'xlarge'.
-     * Note: training run may get into CUDA OOM if the model size is too big.
-     * Note: This settings is only supported for the 'yolov5' algorithm.
+     * Image model size.
      */
     modelSize?: pulumi.Input<string | enums.ModelSize>;
     /**
@@ -4786,7 +4780,7 @@ export interface ImageModelSettingsObjectDetectionArgs {
      */
     numberOfWorkers?: pulumi.Input<number>;
     /**
-     * Type of optimizer.
+     * Stochastic optimizer for image models.
      */
     optimizer?: pulumi.Input<string | enums.StochasticOptimizer>;
     /**
@@ -4831,7 +4825,7 @@ export interface ImageModelSettingsObjectDetectionArgs {
      */
     validationIouThreshold?: pulumi.Input<number>;
     /**
-     * Metric computation method to use for validation metrics.
+     * Metric computation method to use for validation metrics in image tasks.
      */
     validationMetricType?: pulumi.Input<string | enums.ValidationMetricType>;
     /**
@@ -4871,7 +4865,7 @@ export interface ImageObjectDetectionArgs {
      */
     limitSettings: pulumi.Input<ImageLimitSettingsArgs>;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
     /**
@@ -4879,7 +4873,7 @@ export interface ImageObjectDetectionArgs {
      */
     modelSettings?: pulumi.Input<ImageModelSettingsObjectDetectionArgs>;
     /**
-     * Primary metric to optimize for this task.
+     * Primary metrics for Image ObjectDetection task.
      */
     primaryMetric?: pulumi.Input<string | enums.ObjectDetectionPrimaryMetrics>;
     /**
@@ -5121,6 +5115,10 @@ export interface JobResourceConfigurationArgs {
      */
     dockerArgs?: pulumi.Input<string>;
     /**
+     * Extra arguments to pass to the Docker run command, as a collection. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
+     */
+    dockerArgsList?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Optional number of instances or nodes used by the compute target.
      */
     instanceCount?: pulumi.Input<number>;
@@ -5157,7 +5155,7 @@ export interface JobScheduleActionArgs {
     /**
      * [Required] Defines Schedule action definition details.
      */
-    jobBaseProperties: pulumi.Input<AutoMLJobArgs | CommandJobArgs | PipelineJobArgs | SparkJobArgs | SweepJobArgs>;
+    jobDefinition: pulumi.Input<AutoMLJobArgs | CommandJobArgs | PipelineJobArgs | SparkJobArgs | SweepJobArgs>;
 }
 
 /**
@@ -5185,6 +5183,43 @@ export interface JobServiceArgs {
      * Additional properties to set on the endpoint.
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+/**
+ * Jupyter kernel configuration.
+ */
+export interface JupyterKernelConfigArgs {
+    /**
+     * Argument to the the runtime
+     */
+    argv?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Display name of the kernel
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Language of the kernel [Example value: python]
+     */
+    language?: pulumi.Input<string>;
+}
+
+/**
+ * Customer Key vault properties.
+ */
+export interface KeyVaultPropertiesArgs {
+    /**
+     * Currently, we support only SystemAssigned MSI.
+     * We need this when we support UserAssignedIdentities
+     */
+    identityClientId?: pulumi.Input<string>;
+    /**
+     * KeyVault key identifier to encrypt the data
+     */
+    keyIdentifier: pulumi.Input<string>;
+    /**
+     * KeyVault Arm Id that contains the data encryption key
+     */
+    keyVaultArmId: pulumi.Input<string>;
 }
 
 /**
@@ -5252,7 +5287,7 @@ export interface KubernetesOnlineDeploymentArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * If Enabled, allow egress public network access. If Disabled, this will create secure egress. Default: Enabled.
+     * Enum to determine whether PublicNetworkAccess is Enabled or Disabled for egress of a deployment.
      */
     egressPublicNetworkAccess?: pulumi.Input<string | enums.EgressPublicNetworkAccessType>;
     /**
@@ -5694,7 +5729,7 @@ export interface MLFlowModelJobInputArgs {
      */
     jobInputType: pulumi.Input<"mlflow_model">;
     /**
-     * Input Asset Delivery Mode.
+     * Enum to determine the input data delivery mode.
      */
     mode?: pulumi.Input<string | enums.InputDeliveryMode>;
     /**
@@ -5714,6 +5749,10 @@ export function mlflowModelJobInputArgsProvideDefaults(val: MLFlowModelJobInputA
 
 export interface MLFlowModelJobOutputArgs {
     /**
+     * Output Asset Name.
+     */
+    assetName?: pulumi.Input<string>;
+    /**
      * Description for the output.
      */
     description?: pulumi.Input<string>;
@@ -5723,7 +5762,7 @@ export interface MLFlowModelJobOutputArgs {
      */
     jobOutputType: pulumi.Input<"mlflow_model">;
     /**
-     * Output Asset Delivery Mode.
+     * Output data delivery mode enums.
      */
     mode?: pulumi.Input<string | enums.OutputDeliveryMode>;
     /**
@@ -5801,7 +5840,7 @@ export interface MLTableJobInputArgs {
      */
     jobInputType: pulumi.Input<"mltable">;
     /**
-     * Input Asset Delivery Mode.
+     * Enum to determine the input data delivery mode.
      */
     mode?: pulumi.Input<string | enums.InputDeliveryMode>;
     /**
@@ -5821,6 +5860,10 @@ export function mltableJobInputArgsProvideDefaults(val: MLTableJobInputArgs): ML
 
 export interface MLTableJobOutputArgs {
     /**
+     * Output Asset Name.
+     */
+    assetName?: pulumi.Input<string>;
+    /**
      * Description for the output.
      */
     description?: pulumi.Input<string>;
@@ -5830,7 +5873,7 @@ export interface MLTableJobOutputArgs {
      */
     jobOutputType: pulumi.Input<"mltable">;
     /**
-     * Output Asset Delivery Mode.
+     * Output data delivery mode enums.
      */
     mode?: pulumi.Input<string | enums.OutputDeliveryMode>;
     /**
@@ -5897,22 +5940,18 @@ export interface ManagedIdentityAuthTypeWorkspaceConnectionPropertiesArgs {
      */
     category?: pulumi.Input<string | enums.ConnectionCategory>;
     credentials?: pulumi.Input<WorkspaceConnectionManagedIdentityArgs>;
+    error?: pulumi.Input<string>;
     expiryTime?: pulumi.Input<string>;
     isSharedToAll?: pulumi.Input<boolean>;
     /**
      * Store user metadata for this connection
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
     sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
     target?: pulumi.Input<string>;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: pulumi.Input<string>;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: pulumi.Input<string | enums.ValueFormat>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
 }
 
 /**
@@ -5931,17 +5970,9 @@ export interface ManagedNetworkProvisionStatusArgs {
  */
 export interface ManagedNetworkSettingsArgs {
     /**
-     * A flag to indicate if monitoring needs to be enabled for the managed network firewall.
-     */
-    enableFirewallLog?: pulumi.Input<boolean>;
-    /**
      * A flag to indicate if monitoring needs to be enabled for the managed network.
      */
     enableNetworkMonitor?: pulumi.Input<boolean>;
-    /**
-     * Public IP address assigned to the Azure Firewall.
-     */
-    firewallPublicIpAddress?: pulumi.Input<string>;
     /**
      * Firewall Sku used for FQDN Rules
      */
@@ -5954,6 +5985,9 @@ export interface ManagedNetworkSettingsArgs {
      * The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
      */
     managedNetworkKind?: pulumi.Input<string | enums.ManagedNetworkKind>;
+    /**
+     * Dictionary of <OutboundRule>
+     */
     outboundRules?: pulumi.Input<{[key: string]: pulumi.Input<FqdnOutboundRuleArgs | PrivateEndpointOutboundRuleArgs | ServiceTagOutboundRuleArgs>}>;
     /**
      * Status of the Provisioning for the managed network of a machine learning workspace.
@@ -5966,7 +6000,6 @@ export interface ManagedNetworkSettingsArgs {
 export function managedNetworkSettingsArgsProvideDefaults(val: ManagedNetworkSettingsArgs): ManagedNetworkSettingsArgs {
     return {
         ...val,
-        enableFirewallLog: (val.enableFirewallLog) ?? false,
         enableNetworkMonitor: (val.enableNetworkMonitor) ?? false,
     };
 }
@@ -5992,7 +6025,7 @@ export interface ManagedOnlineDeploymentArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * If Enabled, allow egress public network access. If Disabled, this will create secure egress. Default: Enabled.
+     * Enum to determine whether PublicNetworkAccess is Enabled or Disabled for egress of a deployment.
      */
     egressPublicNetworkAccess?: pulumi.Input<string | enums.EgressPublicNetworkAccessType>;
     /**
@@ -6080,6 +6113,26 @@ export interface ManagedOnlineEndpointDeploymentResourcePropertiesArgs {
 }
 
 /**
+ * Details for managed resource group assigned identities.
+ */
+export interface ManagedResourceGroupAssignedIdentitiesArgs {
+    /**
+     * Identity principal Id
+     */
+    principalId?: pulumi.Input<string>;
+}
+
+/**
+ * Managed resource group settings
+ */
+export interface ManagedResourceGroupSettingsArgs {
+    /**
+     * List of assigned identities for the managed resource group
+     */
+    assignedIdentities?: pulumi.Input<pulumi.Input<ManagedResourceGroupAssignedIdentitiesArgs>[]>;
+}
+
+/**
  * Managed service identity (system assigned and/or user assigned identities)
  */
 export interface ManagedServiceIdentityArgs {
@@ -6093,7 +6146,7 @@ export interface ManagedServiceIdentityArgs {
     userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface MarketplaceSubscriptionArgs {
+export interface MarketplaceSubscriptionPropertiesArgs {
     /**
      * [Required] Target Marketplace Model ID to create a Marketplace Subscription for.
      */
@@ -6172,7 +6225,7 @@ export function medianStoppingPolicyArgsProvideDefaults(val: MedianStoppingPolic
     };
 }
 
-export interface ModelContainerArgs {
+export interface ModelContainerPropertiesArgs {
     /**
      * The asset description text.
      */
@@ -6191,9 +6244,9 @@ export interface ModelContainerArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 /**
- * modelContainerArgsProvideDefaults sets the appropriate defaults for ModelContainerArgs
+ * modelContainerPropertiesArgsProvideDefaults sets the appropriate defaults for ModelContainerPropertiesArgs
  */
-export function modelContainerArgsProvideDefaults(val: ModelContainerArgs): ModelContainerArgs {
+export function modelContainerPropertiesArgsProvideDefaults(val: ModelContainerPropertiesArgs): ModelContainerPropertiesArgs {
     return {
         ...val,
         isArchived: (val.isArchived) ?? false,
@@ -6210,7 +6263,11 @@ export interface ModelSettingsArgs {
 /**
  * Model asset version details.
  */
-export interface ModelVersionArgs {
+export interface ModelVersionPropertiesArgs {
+    /**
+     * Array of dataset references
+     */
+    datasets?: pulumi.Input<pulumi.Input<DatasetReferenceArgs>[]>;
     /**
      * The asset description text.
      */
@@ -6253,9 +6310,9 @@ export interface ModelVersionArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 /**
- * modelVersionArgsProvideDefaults sets the appropriate defaults for ModelVersionArgs
+ * modelVersionPropertiesArgsProvideDefaults sets the appropriate defaults for ModelVersionPropertiesArgs
  */
-export function modelVersionArgsProvideDefaults(val: ModelVersionArgs): ModelVersionArgs {
+export function modelVersionPropertiesArgsProvideDefaults(val: ModelVersionPropertiesArgs): ModelVersionPropertiesArgs {
     return {
         ...val,
         isAnonymous: (val.isAnonymous) ?? false,
@@ -6405,22 +6462,18 @@ export interface NoneAuthTypeWorkspaceConnectionPropertiesArgs {
      * Category of the connection
      */
     category?: pulumi.Input<string | enums.ConnectionCategory>;
+    error?: pulumi.Input<string>;
     expiryTime?: pulumi.Input<string>;
     isSharedToAll?: pulumi.Input<boolean>;
     /**
      * Store user metadata for this connection
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
     sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
     target?: pulumi.Input<string>;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: pulumi.Input<string>;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: pulumi.Input<string | enums.ValueFormat>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
 }
 
 /**
@@ -6515,22 +6568,18 @@ export interface OAuth2AuthTypeWorkspaceConnectionPropertiesArgs {
      * depending on each OAuth2 provider's implementation.
      */
     credentials?: pulumi.Input<WorkspaceConnectionOAuth2Args>;
+    error?: pulumi.Input<string>;
     expiryTime?: pulumi.Input<string>;
     isSharedToAll?: pulumi.Input<boolean>;
     /**
      * Store user metadata for this connection
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
     sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
     target?: pulumi.Input<string>;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: pulumi.Input<string>;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: pulumi.Input<string | enums.ValueFormat>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
 }
 
 /**
@@ -6602,7 +6651,7 @@ export function oneLakeDatastoreArgsProvideDefaults(val: OneLakeDatastoreArgs): 
 /**
  * Online endpoint configuration
  */
-export interface OnlineEndpointArgs {
+export interface OnlineEndpointPropertiesArgs {
     /**
      * [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
      */
@@ -6630,7 +6679,7 @@ export interface OnlineEndpointArgs {
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Set to "Enabled" for endpoints that should allow public access when Private Link is enabled.
+     * Enum to determine whether PublicNetworkAccess is Enabled or Disabled.
      */
     publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccessType>;
     /**
@@ -6639,9 +6688,9 @@ export interface OnlineEndpointArgs {
     traffic?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
 }
 /**
- * onlineEndpointArgsProvideDefaults sets the appropriate defaults for OnlineEndpointArgs
+ * onlineEndpointPropertiesArgsProvideDefaults sets the appropriate defaults for OnlineEndpointPropertiesArgs
  */
-export function onlineEndpointArgsProvideDefaults(val: OnlineEndpointArgs): OnlineEndpointArgs {
+export function onlineEndpointPropertiesArgsProvideDefaults(val: OnlineEndpointPropertiesArgs): OnlineEndpointPropertiesArgs {
     return {
         ...val,
         publicNetworkAccess: (val.publicNetworkAccess) ?? "Enabled",
@@ -6735,22 +6784,18 @@ export interface PATAuthTypeWorkspaceConnectionPropertiesArgs {
      */
     category?: pulumi.Input<string | enums.ConnectionCategory>;
     credentials?: pulumi.Input<WorkspaceConnectionPersonalAccessTokenArgs>;
+    error?: pulumi.Input<string>;
     expiryTime?: pulumi.Input<string>;
     isSharedToAll?: pulumi.Input<boolean>;
     /**
      * Store user metadata for this connection
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
     sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
     target?: pulumi.Input<string>;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: pulumi.Input<string>;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: pulumi.Input<string | enums.ValueFormat>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
 }
 
 /**
@@ -6886,6 +6931,9 @@ export interface PredictionDriftMonitoringSignalArgs {
  * Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
  */
 export interface PrivateEndpointDestinationArgs {
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     serviceResourceId?: pulumi.Input<string>;
     sparkEnabled?: pulumi.Input<boolean>;
     /**
@@ -6934,17 +6982,17 @@ export interface PrivateEndpointResourceArgs {
  */
 export interface PrivateLinkServiceConnectionStateArgs {
     /**
-     * A message indicating if changes on the service provider require any updates on the consumer.
+     * Some RP chose "None". Other RPs use this for region expansion.
      */
     actionsRequired?: pulumi.Input<string>;
     /**
-     * The reason for approval/rejection of the connection.
+     * User-defined message that, per NRP doc, may be used for approval-related message.
      */
     description?: pulumi.Input<string>;
     /**
-     * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+     * Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.EndpointServiceConnectionStatus>;
 }
 
 /**
@@ -7002,7 +7050,7 @@ export interface PyTorchArgs {
 
 export interface QueueSettingsArgs {
     /**
-     * Controls the compute job tier
+     * Enum to determine the job tier.
      */
     jobTier?: pulumi.Input<string | enums.JobTier>;
 }
@@ -7229,44 +7277,13 @@ export function recurrenceTriggerArgsProvideDefaults(val: RecurrenceTriggerArgs)
 }
 
 /**
- * Details of the Registry
- */
-export interface RegistryArgs {
-    /**
-     * Discovery URL for the Registry
-     */
-    discoveryUrl?: pulumi.Input<string>;
-    /**
-     * IntellectualPropertyPublisher for the registry
-     */
-    intellectualPropertyPublisher?: pulumi.Input<string>;
-    /**
-     * ResourceId of the managed RG if the registry has system created resources
-     */
-    managedResourceGroup?: pulumi.Input<ArmResourceIdArgs>;
-    /**
-     * MLFlow Registry URI for the Registry
-     */
-    mlFlowRegistryUri?: pulumi.Input<string>;
-    /**
-     * Is the Registry accessible from the internet?
-     * Possible values: "Enabled" or "Disabled"
-     */
-    publicNetworkAccess?: pulumi.Input<string>;
-    /**
-     * Details of each region the registry is in
-     */
-    regionDetails?: pulumi.Input<pulumi.Input<RegistryRegionArmDetailsArgs>[]>;
-    /**
-     * Private endpoint connections info used for pending connections in private link portal
-     */
-    registryPrivateEndpointConnections?: pulumi.Input<pulumi.Input<RegistryPrivateEndpointConnectionArgs>[]>;
-}
-
-/**
  * Private endpoint connection definition.
  */
 export interface RegistryPrivateEndpointConnectionArgs {
+    /**
+     * The group ids
+     */
+    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * This is the private endpoint connection name created on SRP
      * Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
@@ -7276,20 +7293,6 @@ export interface RegistryPrivateEndpointConnectionArgs {
      * Same as workspace location.
      */
     location?: pulumi.Input<string>;
-    /**
-     * Properties of the Private Endpoint Connection
-     */
-    properties?: pulumi.Input<RegistryPrivateEndpointConnectionPropertiesArgs>;
-}
-
-/**
- * Properties of the Private Endpoint Connection
- */
-export interface RegistryPrivateEndpointConnectionPropertiesArgs {
-    /**
-     * The group ids
-     */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The PE network resource that is linked to this PE connection.
      */
@@ -7357,7 +7360,7 @@ export interface RegressionArgs {
      */
     limitSettings?: pulumi.Input<TableVerticalLimitSettingsArgs>;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
     /**
@@ -7366,7 +7369,7 @@ export interface RegressionArgs {
      */
     nCrossValidations?: pulumi.Input<AutoNCrossValidationsArgs | CustomNCrossValidationsArgs>;
     /**
-     * Primary metric for regression task.
+     * Primary metrics for Regression task.
      */
     primaryMetric?: pulumi.Input<string | enums.RegressionPrimaryMetrics>;
     /**
@@ -7590,22 +7593,18 @@ export interface SASAuthTypeWorkspaceConnectionPropertiesArgs {
      */
     category?: pulumi.Input<string | enums.ConnectionCategory>;
     credentials?: pulumi.Input<WorkspaceConnectionSharedAccessSignatureArgs>;
+    error?: pulumi.Input<string>;
     expiryTime?: pulumi.Input<string>;
     isSharedToAll?: pulumi.Input<boolean>;
     /**
      * Store user metadata for this connection
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
     sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
     target?: pulumi.Input<string>;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: pulumi.Input<string>;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: pulumi.Input<string | enums.ValueFormat>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
 }
 
 /**
@@ -7688,10 +7687,25 @@ export function scaleUnitConfigurationArgsProvideDefaults(val: ScaleUnitConfigur
     };
 }
 
+export interface ScheduleBaseArgs {
+    /**
+     * A system assigned id for the schedule.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The current deployment state of schedule.
+     */
+    provisioningStatus?: pulumi.Input<string | enums.ScheduleProvisioningState>;
+    /**
+     * Is the schedule enabled or disabled?
+     */
+    status?: pulumi.Input<string | enums.ScheduleStatus>;
+}
+
 /**
  * Base definition of a schedule
  */
-export interface ScheduleArgs {
+export interface SchedulePropertiesArgs {
     /**
      * [Required] Specifies the action of the schedule
      */
@@ -7722,28 +7736,13 @@ export interface ScheduleArgs {
     trigger: pulumi.Input<CronTriggerArgs | RecurrenceTriggerArgs>;
 }
 /**
- * scheduleArgsProvideDefaults sets the appropriate defaults for ScheduleArgs
+ * schedulePropertiesArgsProvideDefaults sets the appropriate defaults for SchedulePropertiesArgs
  */
-export function scheduleArgsProvideDefaults(val: ScheduleArgs): ScheduleArgs {
+export function schedulePropertiesArgsProvideDefaults(val: SchedulePropertiesArgs): SchedulePropertiesArgs {
     return {
         ...val,
         isEnabled: (val.isEnabled) ?? true,
     };
-}
-
-export interface ScheduleBaseArgs {
-    /**
-     * A system assigned id for the schedule.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The current deployment state of schedule.
-     */
-    provisioningStatus?: pulumi.Input<string | enums.ScheduleProvisioningState>;
-    /**
-     * Is the schedule enabled or disabled?
-     */
-    status?: pulumi.Input<string | enums.ScheduleStatus>;
 }
 
 /**
@@ -7759,7 +7758,7 @@ export interface ScriptReferenceArgs {
      */
     scriptData?: pulumi.Input<string>;
     /**
-     * The storage source of the script: workspace.
+     * The storage source of the script: inline, workspace.
      */
     scriptSource?: pulumi.Input<string>;
     /**
@@ -7808,7 +7807,7 @@ export interface ServerlessComputeSettingsArgs {
     serverlessComputeNoPublicIP?: pulumi.Input<boolean>;
 }
 
-export interface ServerlessEndpointArgs {
+export interface ServerlessEndpointPropertiesArgs {
     /**
      * [Required] Specifies the authentication mode for the Serverless endpoint.
      */
@@ -7835,9 +7834,6 @@ export interface ServerlessOfferArgs {
 }
 
 export interface ServiceManagedResourcesSettingsArgs {
-    /**
-     * The settings for the service managed cosmosdb account.
-     */
     cosmosDb?: pulumi.Input<CosmosDbSettingsArgs>;
 }
 
@@ -7852,22 +7848,18 @@ export interface ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs {
      */
     category?: pulumi.Input<string | enums.ConnectionCategory>;
     credentials?: pulumi.Input<WorkspaceConnectionServicePrincipalArgs>;
+    error?: pulumi.Input<string>;
     expiryTime?: pulumi.Input<string>;
     isSharedToAll?: pulumi.Input<boolean>;
     /**
      * Store user metadata for this connection
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
     sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
     target?: pulumi.Input<string>;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: pulumi.Input<string>;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: pulumi.Input<string | enums.ValueFormat>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
 }
 
 /**
@@ -7968,25 +7960,25 @@ export interface SetupScriptsArgs {
 
 export interface SharedPrivateLinkResourceArgs {
     /**
-     * The private link resource group id.
+     * group id of the private link
      */
     groupId?: pulumi.Input<string>;
     /**
-     * Unique name of the private link.
+     * Unique name of the private link
      */
     name?: pulumi.Input<string>;
     /**
-     * The resource id that private link links to.
+     * the resource id that private link links to
      */
     privateLinkResourceId?: pulumi.Input<string>;
     /**
-     * Request message.
+     * Request message
      */
     requestMessage?: pulumi.Input<string>;
     /**
-     * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+     * Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.EndpointServiceConnectionStatus>;
 }
 
 /**
@@ -8252,7 +8244,7 @@ export interface StackEnsembleSettingsArgs {
      */
     stackMetaLearnerTrainPercentage?: pulumi.Input<number>;
     /**
-     * The meta-learner is a model trained on the output of the individual heterogeneous models.
+     * The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
      */
     stackMetaLearnerType?: pulumi.Input<string | enums.StackMetaLearnerType>;
 }
@@ -8738,11 +8730,11 @@ export interface TextClassificationArgs {
      */
     limitSettings?: pulumi.Input<NlpVerticalLimitSettingsArgs>;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
     /**
-     * Primary metric for Text-Classification task.
+     * Primary metrics for classification tasks.
      */
     primaryMetric?: pulumi.Input<string | enums.ClassificationPrimaryMetrics>;
     /**
@@ -8792,7 +8784,7 @@ export interface TextClassificationMultilabelArgs {
      */
     limitSettings?: pulumi.Input<NlpVerticalLimitSettingsArgs>;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
     /**
@@ -8842,7 +8834,7 @@ export interface TextNerArgs {
      */
     limitSettings?: pulumi.Input<NlpVerticalLimitSettingsArgs>;
     /**
-     * Log verbosity for the job.
+     * Enum for setting log verbosity.
      */
     logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
     /**
@@ -8877,9 +8869,6 @@ export function textNerArgsProvideDefaults(val: TextNerArgs): TextNerArgs {
     };
 }
 
-/**
- * Describes the tmpfs options for the container
- */
 export interface TmpfsOptionsArgs {
     /**
      * Mention the Tmpfs size
@@ -8958,7 +8947,7 @@ export interface TritonModelJobInputArgs {
      */
     jobInputType: pulumi.Input<"triton_model">;
     /**
-     * Input Asset Delivery Mode.
+     * Enum to determine the input data delivery mode.
      */
     mode?: pulumi.Input<string | enums.InputDeliveryMode>;
     /**
@@ -8978,6 +8967,10 @@ export function tritonModelJobInputArgsProvideDefaults(val: TritonModelJobInputA
 
 export interface TritonModelJobOutputArgs {
     /**
+     * Output Asset Name.
+     */
+    assetName?: pulumi.Input<string>;
+    /**
      * Description for the output.
      */
     description?: pulumi.Input<string>;
@@ -8987,7 +8980,7 @@ export interface TritonModelJobOutputArgs {
      */
     jobOutputType: pulumi.Input<"triton_model">;
     /**
-     * Output Asset Delivery Mode.
+     * Output data delivery mode enums.
      */
     mode?: pulumi.Input<string | enums.OutputDeliveryMode>;
     /**
@@ -9095,7 +9088,7 @@ export interface UriFileJobInputArgs {
      */
     jobInputType: pulumi.Input<"uri_file">;
     /**
-     * Input Asset Delivery Mode.
+     * Enum to determine the input data delivery mode.
      */
     mode?: pulumi.Input<string | enums.InputDeliveryMode>;
     /**
@@ -9115,6 +9108,10 @@ export function uriFileJobInputArgsProvideDefaults(val: UriFileJobInputArgs): Ur
 
 export interface UriFileJobOutputArgs {
     /**
+     * Output Asset Name.
+     */
+    assetName?: pulumi.Input<string>;
+    /**
      * Description for the output.
      */
     description?: pulumi.Input<string>;
@@ -9124,7 +9121,7 @@ export interface UriFileJobOutputArgs {
      */
     jobOutputType: pulumi.Input<"uri_file">;
     /**
-     * Output Asset Delivery Mode.
+     * Output data delivery mode enums.
      */
     mode?: pulumi.Input<string | enums.OutputDeliveryMode>;
     /**
@@ -9198,7 +9195,7 @@ export interface UriFolderJobInputArgs {
      */
     jobInputType: pulumi.Input<"uri_folder">;
     /**
-     * Input Asset Delivery Mode.
+     * Enum to determine the input data delivery mode.
      */
     mode?: pulumi.Input<string | enums.InputDeliveryMode>;
     /**
@@ -9218,6 +9215,10 @@ export function uriFolderJobInputArgsProvideDefaults(val: UriFolderJobInputArgs)
 
 export interface UriFolderJobOutputArgs {
     /**
+     * Output Asset Name.
+     */
+    assetName?: pulumi.Input<string>;
+    /**
      * Description for the output.
      */
     description?: pulumi.Input<string>;
@@ -9227,7 +9228,7 @@ export interface UriFolderJobOutputArgs {
      */
     jobOutputType: pulumi.Input<"uri_folder">;
     /**
-     * Output Asset Delivery Mode.
+     * Output data delivery mode enums.
      */
     mode?: pulumi.Input<string | enums.OutputDeliveryMode>;
     /**
@@ -9285,22 +9286,18 @@ export interface UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs {
      */
     category?: pulumi.Input<string | enums.ConnectionCategory>;
     credentials?: pulumi.Input<WorkspaceConnectionUsernamePasswordArgs>;
+    error?: pulumi.Input<string>;
     expiryTime?: pulumi.Input<string>;
     isSharedToAll?: pulumi.Input<boolean>;
     /**
      * Store user metadata for this connection
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
     sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
     target?: pulumi.Input<string>;
-    /**
-     * Value details of the workspace connection.
-     */
-    value?: pulumi.Input<string>;
-    /**
-     * format for the workspace connection value
-     */
-    valueFormat?: pulumi.Input<string | enums.ValueFormat>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
 }
 
 /**
@@ -9390,9 +9387,6 @@ export interface VirtualMachineSshCredentialsArgs {
     username?: pulumi.Input<string>;
 }
 
-/**
- * Describes the volume configuration for the container
- */
 export interface VolumeDefinitionArgs {
     /**
      * Bind Options of the mount
@@ -9437,9 +9431,6 @@ export function volumeDefinitionArgsProvideDefaults(val: VolumeDefinitionArgs): 
     };
 }
 
-/**
- * Describes the volume options for the container
- */
 export interface VolumeOptionsArgs {
     /**
      * Indicate whether volume is nocopy
@@ -9452,6 +9443,9 @@ export interface WorkspaceConnectionAccessKeyArgs {
     secretAccessKey?: pulumi.Input<string>;
 }
 
+/**
+ * Account key object for workspace connection credential.
+ */
 export interface WorkspaceConnectionAccountKeyArgs {
     key?: pulumi.Input<string>;
 }

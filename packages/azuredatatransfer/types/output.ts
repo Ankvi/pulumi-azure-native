@@ -181,6 +181,36 @@ export function dataSizeRulesetResponseProvideDefaults(val: DataSizeRulesetRespo
 }
 
 /**
+ * The FlowProfile Metadata used to concisely provide all publicly viewable information.
+ */
+export interface FlowProfileMetadataResponse {
+    /**
+     * A description of the FlowProfile and its rulesets. The description should describe the flowprofile's purpose and rulesets applied.
+     */
+    description: string;
+    /**
+     * A guid represented as a string for the FlowProfile resource, assigned by the system.
+     */
+    flowProfileId: string;
+    /**
+     * The name of the FlowProfile.
+     */
+    name: string;
+    /**
+     * The name of the parent Pipeline Azure resource associated with this FlowProfile.
+     */
+    pipeline: string;
+    /**
+     * The data replication scenario handled by this FlowProfile. Please note, that this value cannot be updated after creation. See the FlowProfilePatchProperties to see updateable properties.
+     */
+    replicationScenario: string;
+    /**
+     * The operational status of the FlowProfile.
+     */
+    status: string;
+}
+
+/**
  * Defines the full set of properties for a FlowProfile resource.
  */
 export interface FlowProfilePropertiesResponse {
@@ -263,6 +293,108 @@ export function flowProfileRulesetsResponseProvideDefaults(val: FlowProfileRules
  * Properties of flow
  */
 export interface FlowPropertiesResponse {
+    /**
+     * The connection associated with this flow
+     */
+    connection?: SelectedResourceResponse;
+    /**
+     * The URI to the customer managed key for this flow
+     */
+    customerManagedKeyVaultUri?: string;
+    /**
+     * Transfer Storage Blobs or Tables
+     */
+    dataType?: string;
+    /**
+     * The destination endpoint ports of the stream
+     */
+    destinationEndpointPorts?: number[];
+    /**
+     * The destination endpoints of the stream
+     */
+    destinationEndpoints?: string[];
+    /**
+     * Dataflow GUID associated with this flow
+     */
+    flowId: string;
+    /**
+     * The flow type for this flow
+     */
+    flowType?: string;
+    /**
+     * AME, PME, or TORUS only! AKV Chain Containing SAS Token
+     */
+    keyVaultUri?: string;
+    /**
+     * Link status of the current flow
+     */
+    linkStatus: string;
+    /**
+     * Resource ID of the linked flow
+     */
+    linkedFlowId: string;
+    /**
+     * The messaging options for this flow
+     */
+    messagingOptions?: MessagingOptionsResponse;
+    /**
+     * The passphrase used for SRT streams
+     */
+    passphrase?: string;
+    /**
+     * The policies for this flow
+     */
+    policies?: string[];
+    /**
+     * Provisioning state of the flow
+     */
+    provisioningState: string;
+    /**
+     * The selected schema for this flow
+     */
+    schema?: SchemaResponse;
+    /**
+     * Service Bus Queue ID
+     */
+    serviceBusQueueId?: string;
+    /**
+     * The source IP address and CIDR ranges of the stream
+     */
+    sourceAddresses?: StreamSourceAddressesResponse;
+    /**
+     * Status of the current flow
+     */
+    status?: string;
+    /**
+     * Storage Account ID
+     */
+    storageAccountId?: string;
+    /**
+     * Storage Account
+     */
+    storageAccountName?: string;
+    /**
+     * Storage Container Name
+     */
+    storageContainerName?: string;
+    /**
+     * The flow stream identifier
+     */
+    streamId?: string;
+    /**
+     * The latency of the stream in milliseconds
+     */
+    streamLatency?: number;
+    /**
+     * The protocol of the stream
+     */
+    streamProtocol?: string;
+}
+
+/**
+ * Properties of flow
+ */
+export interface FlowPropertiesResponseV1 {
     /**
      * The API Flow configuration options for Azure Data Transfer API Flow type.
      */
@@ -408,7 +540,7 @@ export interface FlowResponse {
     /**
      * Properties of flow
      */
-    properties?: FlowPropertiesResponse;
+    properties?: FlowPropertiesResponseV1;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */

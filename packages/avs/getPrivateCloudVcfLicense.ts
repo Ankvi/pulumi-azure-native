@@ -1,0 +1,62 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+/**
+ * Get the license for the private cloud
+ *
+ * Uses Azure REST API version 2025-09-01.
+ */
+export function getPrivateCloudVcfLicense(args: GetPrivateCloudVcfLicenseArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateCloudVcfLicenseResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:avs:getPrivateCloudVcfLicense", {
+        "privateCloudName": args.privateCloudName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetPrivateCloudVcfLicenseArgs {
+    /**
+     * Name of the private cloud
+     */
+    privateCloudName: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+}
+
+/**
+ * A VMware Cloud Foundation license
+ */
+export interface GetPrivateCloudVcfLicenseResult {
+    /**
+     * License kind
+     */
+    readonly kind: string;
+    /**
+     * The state of the license provisioning
+     */
+    readonly provisioningState: string;
+}
+/**
+ * Get the license for the private cloud
+ *
+ * Uses Azure REST API version 2025-09-01.
+ */
+export function getPrivateCloudVcfLicenseOutput(args: GetPrivateCloudVcfLicenseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateCloudVcfLicenseResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:avs:getPrivateCloudVcfLicense", {
+        "privateCloudName": args.privateCloudName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetPrivateCloudVcfLicenseOutputArgs {
+    /**
+     * Name of the private cloud
+     */
+    privateCloudName: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

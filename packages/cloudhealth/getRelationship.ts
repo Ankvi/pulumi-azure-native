@@ -5,6 +5,8 @@ import * as types from "./types";
  * Get a Relationship
  *
  * Uses Azure REST API version 2025-05-01-preview.
+ *
+ * Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getRelationship(args: GetRelationshipArgs, opts?: pulumi.InvokeOptions): Promise<GetRelationshipResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -63,6 +65,8 @@ export interface GetRelationshipResult {
  * Get a Relationship
  *
  * Uses Azure REST API version 2025-05-01-preview.
+ *
+ * Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getRelationshipOutput(args: GetRelationshipOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRelationshipResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

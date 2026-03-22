@@ -1,6 +1,12 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
+/**
+ * Link to an application package inside the batch account
+ */
 export interface ApplicationPackageReferenceResponse {
+    /**
+     * The ID of the application package to install. This must be inside the same batch account as the pool. This can either be a reference to a specific version or the default version if one exists.
+     */
     id: string;
     /**
      * If this is omitted, and no default version is specified for this application, the request fails with the error code InvalidApplicationPackageReferences. If you are calling the REST API directly, the HTTP status code is 409.
@@ -8,11 +14,17 @@ export interface ApplicationPackageReferenceResponse {
     version?: string;
 }
 
+/**
+ * An error that occurred when autoscaling a pool.
+ */
 export interface AutoScaleRunErrorResponse {
     /**
      * An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
      */
     code: string;
+    /**
+     * Additional details about the error.
+     */
     details?: AutoScaleRunErrorResponse[];
     /**
      * A message describing the error, intended to be suitable for display in a user interface.
@@ -20,8 +32,17 @@ export interface AutoScaleRunErrorResponse {
     message: string;
 }
 
+/**
+ * The results and errors from an execution of a pool autoscale formula.
+ */
 export interface AutoScaleRunResponse {
+    /**
+     * An error that occurred when autoscaling a pool.
+     */
     error?: AutoScaleRunErrorResponse;
+    /**
+     * The time at which the autoscale formula was last evaluated.
+     */
     evaluationTime: string;
     /**
      * Each variable value is returned in the form $variable=value, and variables are separated by semicolons.
@@ -29,11 +50,17 @@ export interface AutoScaleRunResponse {
     results?: string;
 }
 
+/**
+ * AutoScale settings for the pool.
+ */
 export interface AutoScaleSettingsResponse {
     /**
      * If omitted, the default value is 15 minutes (PT15M).
      */
     evaluationInterval?: string;
+    /**
+     * A formula for the desired number of compute nodes in the pool.
+     */
     formula: string;
 }
 
@@ -68,6 +95,9 @@ export function autoStoragePropertiesResponseProvideDefaults(val: AutoStoragePro
     };
 }
 
+/**
+ * Specifies the parameters for the auto user that runs a task on the Batch service.
+ */
 export interface AutoUserSpecificationResponse {
     /**
      * The default value is nonAdmin.
@@ -101,16 +131,25 @@ export interface AutomaticOSUpgradePolicyResponse {
     useRollingUpgradePolicy?: boolean;
 }
 
+/**
+ * Information used to connect to an Azure Storage Container using Blobfuse.
+ */
 export interface AzureBlobFileSystemConfigurationResponse {
     /**
      * This property is mutually exclusive with both sasKey and identity; exactly one must be specified.
      */
     accountKey?: string;
+    /**
+     * The Azure Storage Account name.
+     */
     accountName: string;
     /**
      * These are 'net use' options in Windows and 'mount' options in Linux.
      */
     blobfuseOptions?: string;
+    /**
+     * The Azure Blob Storage Container name.
+     */
     containerName: string;
     /**
      * This property is mutually exclusive with both accountKey and sasKey; exactly one must be specified.
@@ -126,8 +165,17 @@ export interface AzureBlobFileSystemConfigurationResponse {
     sasKey?: string;
 }
 
+/**
+ * Information used to connect to an Azure Fileshare.
+ */
 export interface AzureFileShareConfigurationResponse {
+    /**
+     * The Azure Storage account key.
+     */
     accountKey: string;
+    /**
+     * The Azure Storage account name.
+     */
     accountName: string;
     /**
      * This is of the form 'https://{account}.file.core.windows.net/'.
@@ -179,17 +227,29 @@ export interface BatchPoolIdentityResponse {
     userAssignedIdentities?: {[key: string]: UserAssignedIdentitiesResponse};
 }
 
+/**
+ * Information used to connect to a CIFS file system.
+ */
 export interface CIFSMountConfigurationResponse {
     /**
      * These are 'net use' options in Windows and 'mount' options in Linux.
      */
     mountOptions?: string;
+    /**
+     * The password to use for authentication against the CIFS file system.
+     */
     password: string;
     /**
      * All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
      */
     relativeMountPath: string;
+    /**
+     * The URI of the file system to mount.
+     */
     source: string;
+    /**
+     * The user to use for authentication against the CIFS file system.
+     */
     userName: string;
 }
 
@@ -197,6 +257,9 @@ export interface CIFSMountConfigurationResponse {
  * Warning: This object is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
  */
 export interface CertificateReferenceResponse {
+    /**
+     * The fully qualified ID of the certificate to install on the pool. This must be inside the same batch account as the pool.
+     */
     id: string;
     /**
      * The default value is currentUser. This property is applicable only for pools configured with Windows compute nodes. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
@@ -206,6 +269,9 @@ export interface CertificateReferenceResponse {
      * This property is applicable only for pools configured with Windows compute nodes. Common store names include: My, Root, CA, Trust, Disallowed, TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any custom store name can also be used. The default value is My.
      */
     storeName?: string;
+    /**
+     * Which user accounts on the compute node should have access to the private data of the certificate.
+     */
     visibility?: string[];
 }
 
@@ -219,6 +285,9 @@ export interface ComputeNodeIdentityReferenceResponse {
     resourceId?: string;
 }
 
+/**
+ * The configuration for container-enabled pools.
+ */
 export interface ContainerConfigurationResponse {
     /**
      * This is the full image reference, as would be specified to "docker pull". An image will be sourced from the default Docker registry unless the image is fully qualified with an alternative registry.
@@ -228,27 +297,45 @@ export interface ContainerConfigurationResponse {
      * If any images must be downloaded from a private registry which requires credentials, then those credentials must be provided here.
      */
     containerRegistries?: ContainerRegistryResponse[];
+    /**
+     * The container technology to be used.
+     */
     type: string;
 }
 
+/**
+ * The entry of path and mount mode you want to mount into task container.
+ */
 export interface ContainerHostBatchBindMountEntryResponse {
     /**
      * For Linux, if you mount this path as a read/write mode, this does not mean that all users in container have the read/write access for the path, it depends on the access in host VM. If this path is mounted read-only, all users within the container will not be able to modify the path.
      */
     isReadOnly?: boolean;
+    /**
+     * The paths which will be mounted to container task's container.
+     */
     source?: string;
 }
 
+/**
+ * A private container registry.
+ */
 export interface ContainerRegistryResponse {
     /**
      * The reference to a user assigned identity associated with the Batch pool which a compute node will use.
      */
     identityReference?: ComputeNodeIdentityReferenceResponse;
+    /**
+     * The password to log into the registry server.
+     */
     password?: string;
     /**
      * If omitted, the default is "docker.io".
      */
     registryServer?: string;
+    /**
+     * The user name to log into the registry server.
+     */
     userName?: string;
 }
 
@@ -259,13 +346,16 @@ export interface DataDiskResponse {
     /**
      * Values are:
      *
-     *  none - The caching mode for the disk is not enabled.
-     *  readOnly - The caching mode for the disk is read only.
-     *  readWrite - The caching mode for the disk is read and write.
+     * none - The caching mode for the disk is not enabled.
+     * readOnly - The caching mode for the disk is read only.
+     * readWrite - The caching mode for the disk is read and write.
      *
-     *  The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
+     * The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      */
     caching?: string;
+    /**
+     * The initial disk size in GB when creating new data disk.
+     */
     diskSizeGB: number;
     /**
      * The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun. The value must be between 0 and 63, inclusive.
@@ -274,16 +364,25 @@ export interface DataDiskResponse {
     /**
      * If omitted, the default is "Standard_LRS". Values are:
      *
-     *  Standard_LRS - The data disk should use standard locally redundant storage.
-     *  Premium_LRS - The data disk should use premium locally redundant storage.
+     * Standard_LRS - The data disk should use standard locally redundant storage.
+     * Premium_LRS - The data disk should use premium locally redundant storage.
      */
     storageAccountType?: string;
 }
 
+/**
+ * Deployment configuration properties.
+ */
 export interface DeploymentConfigurationResponse {
+    /**
+     * The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
+     */
     virtualMachineConfiguration?: VirtualMachineConfigurationResponse;
 }
 
+/**
+ * Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
+ */
 export interface DiffDiskSettingsResponse {
     /**
      * This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
@@ -329,11 +428,23 @@ export interface EndpointAccessProfileResponse {
     ipRules?: IPRuleResponse[];
 }
 
+/**
+ * An environment variable to be set on a task process.
+ */
 export interface EnvironmentSettingResponse {
+    /**
+     * The name of the environment variable.
+     */
     name: string;
+    /**
+     * The value of the environment variable.
+     */
     value?: string;
 }
 
+/**
+ * Fixed scale settings for the pool.
+ */
 export interface FixedScaleSettingsResponse {
     /**
      * The default value is 15 minutes. Timeout values use ISO 8601 format. For example, use PT10M for 10 minutes. The minimum value is 5 minutes. If you specify a value less than 5 minutes, the Batch service rejects the request with an error; if you are calling the REST API directly, the HTTP status code is 400 (Bad Request).
@@ -372,6 +483,9 @@ export interface IPRuleResponse {
     value: string;
 }
 
+/**
+ * A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
+ */
 export interface ImageReferenceResponse {
     /**
      * This property is mutually exclusive with other properties and can be fetched from community gallery image GET call.
@@ -403,6 +517,9 @@ export interface ImageReferenceResponse {
     version?: string;
 }
 
+/**
+ * A inbound NAT pool that can be used to address specific ports on compute nodes in a Batch pool externally.
+ */
 export interface InboundNatPoolResponse {
     /**
      * This must be unique within a Batch pool. Acceptable values are between 1 and 65535 except for 29876 and 29877 as these are reserved. If any reserved values are provided the request fails with HTTP status code 400.
@@ -424,6 +541,9 @@ export interface InboundNatPoolResponse {
      * The maximum number of rules that can be specified across all the endpoints on a Batch pool is 25. If no network security group rules are specified, a default rule will be created to allow inbound access to the specified backendPort. If the maximum number of network security group rules is exceeded the request fails with HTTP status code 400.
      */
     networkSecurityGroupRules?: NetworkSecurityGroupRuleResponse[];
+    /**
+     * The protocol of the endpoint.
+     */
     protocol: string;
 }
 
@@ -434,9 +554,9 @@ export interface KeyVaultPropertiesResponse {
     /**
      * Full path to the secret with or without version. Example https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053. or https://mykeyvault.vault.azure.net/keys/testkey. To be usable the following prerequisites must be met:
      *
-     *  The Batch Account has a System Assigned identity
-     *  The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
-     *  The KeyVault has soft-delete and purge protection enabled
+     * The Batch Account has a System Assigned identity
+     * The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
+     * The KeyVault has soft-delete and purge protection enabled
      */
     keyIdentifier?: string;
 }
@@ -455,6 +575,9 @@ export interface KeyVaultReferenceResponse {
     url: string;
 }
 
+/**
+ * Properties used to create a user account on a Linux node.
+ */
 export interface LinuxUserConfigurationResponse {
     /**
      * The uid and gid properties must be specified together or not at all. If not specified the underlying operating system picks the gid.
@@ -470,11 +593,17 @@ export interface LinuxUserConfigurationResponse {
     uid?: number;
 }
 
+/**
+ * The managed disk parameters.
+ */
 export interface ManagedDiskResponse {
     /**
      * Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
      */
     securityProfile?: VMDiskSecurityProfileResponse;
+    /**
+     * The storage account type for use in creating data disks or OS disk.
+     */
     storageAccountType?: string;
 }
 
@@ -482,10 +611,19 @@ export interface ManagedDiskResponse {
  * The Batch service does not assign any meaning to this metadata; it is solely for the use of user code.
  */
 export interface MetadataItemResponse {
+    /**
+     * The name of the metadata item.
+     */
     name: string;
+    /**
+     * The value of the metadata item.
+     */
     value: string;
 }
 
+/**
+ * The file system to mount on each node.
+ */
 export interface MountConfigurationResponse {
     /**
      * This property is mutually exclusive with all other properties.
@@ -505,6 +643,9 @@ export interface MountConfigurationResponse {
     nfsMountConfiguration?: NFSMountConfigurationResponse;
 }
 
+/**
+ * Information used to connect to an NFS file system.
+ */
 export interface NFSMountConfigurationResponse {
     /**
      * These are 'net use' options in Windows and 'mount' options in Linux.
@@ -514,6 +655,9 @@ export interface NFSMountConfigurationResponse {
      * All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
      */
     relativeMountPath: string;
+    /**
+     * The URI of the file system to mount.
+     */
     source: string;
 }
 
@@ -521,11 +665,17 @@ export interface NFSMountConfigurationResponse {
  * The network configuration for a pool.
  */
 export interface NetworkConfigurationResponse {
+    /**
+     * The scope of dynamic vnet assignment.
+     */
     dynamicVnetAssignmentScope?: string;
     /**
      * Accelerated networking enables single root I/O virtualization (SR-IOV) to a VM, which may lead to improved networking performance. For more details, see: https://learn.microsoft.com/azure/virtual-network/accelerated-networking-overview.
      */
     enableAcceleratedNetworking?: boolean;
+    /**
+     * The endpoint configuration for a pool.
+     */
     endpointConfiguration?: PoolEndpointConfigurationResponse;
     /**
      * The public IP Address configuration of the networking configuration of a Pool.
@@ -560,7 +710,13 @@ export interface NetworkProfileResponse {
     nodeManagementAccess?: EndpointAccessProfileResponse;
 }
 
+/**
+ * A network security group rule to apply to an inbound endpoint.
+ */
 export interface NetworkSecurityGroupRuleResponse {
+    /**
+     * The action that should be taken for a specified IP address, subnet range or tag.
+     */
     access: string;
     /**
      * Priorities within a pool must be unique and are evaluated in order of priority. The lower the number the higher the priority. For example, rules could be specified with order numbers of 150, 250, and 350. The rule with the order number of 150 takes precedence over the rule that has an order of 250. Allowed priorities are 150 to 4096. If any reserved or duplicate values are provided the request fails with HTTP status code 400.
@@ -586,14 +742,35 @@ export interface NodePlacementConfigurationResponse {
     policy?: string;
 }
 
+/**
+ * Settings for the operating system disk of the virtual machine.
+ */
 export interface OSDiskResponse {
+    /**
+     * The type of caching to enable for the disk.
+     */
     caching?: string;
+    /**
+     * The initial disk size in GB when creating new OS disk.
+     */
     diskSizeGB?: number;
+    /**
+     * Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
+     */
     ephemeralOSDiskSettings?: DiffDiskSettingsResponse;
+    /**
+     * The managed disk parameters.
+     */
     managedDisk?: ManagedDiskResponse;
+    /**
+     * Specifies whether writeAccelerator should be enabled or disabled on the disk.
+     */
     writeAcceleratorEnabled?: boolean;
 }
 
+/**
+ * The endpoint configuration for a pool.
+ */
 export interface PoolEndpointConfigurationResponse {
     /**
      * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded the request fails with HTTP status code 400. This cannot be specified if the IPAddressProvisioningType is NoPublicIPAddresses.
@@ -614,11 +791,11 @@ export interface PrivateEndpointConnectionResponse {
      */
     groupIds: string[];
     /**
-     * The ID of the resource.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     id: string;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     name: string;
     /**
@@ -626,16 +803,23 @@ export interface PrivateEndpointConnectionResponse {
      */
     privateEndpoint: PrivateEndpointResponse;
     /**
-     * The private link service connection state of the private endpoint connection
+     * The private link service connection state of the private endpoint connection.
      */
     privateLinkServiceConnectionState?: PrivateLinkServiceConnectionStateResponse;
+    /**
+     * The provisioning state of the private endpoint connection.
+     */
     provisioningState: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
     /**
      * The tags of the resource.
      */
     tags?: {[key: string]: string};
     /**
-     * The type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
 }
@@ -644,6 +828,9 @@ export interface PrivateEndpointConnectionResponse {
  * The private endpoint of the private endpoint connection.
  */
 export interface PrivateEndpointResponse {
+    /**
+     * The ARM resource identifier of the private endpoint. This is of the form /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/privateEndpoints/{privateEndpoint}.
+     */
     id: string;
 }
 
@@ -651,8 +838,17 @@ export interface PrivateEndpointResponse {
  * The private link service connection state of the private endpoint connection
  */
 export interface PrivateLinkServiceConnectionStateResponse {
+    /**
+     * Action required on the private connection state
+     */
     actionsRequired: string;
+    /**
+     * Description of the private Connection state
+     */
     description?: string;
+    /**
+     * The status of the Batch private endpoint connection
+     */
     status: string;
 }
 
@@ -670,11 +866,17 @@ export interface PublicIPAddressConfigurationResponse {
     provision?: string;
 }
 
+/**
+ * An error that occurred when resizing a pool.
+ */
 export interface ResizeErrorResponse {
     /**
      * An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
      */
     code: string;
+    /**
+     * Additional details about the error.
+     */
     details?: ResizeErrorResponse[];
     /**
      * A message describing the error, intended to be suitable for display in a user interface.
@@ -694,11 +896,23 @@ export interface ResizeOperationStatusResponse {
      * The default value is 15 minutes. The minimum value is 5 minutes. If you specify a value less than 5 minutes, the Batch service returns an error; if you are calling the REST API directly, the HTTP status code is 400 (Bad Request).
      */
     resizeTimeout?: string;
+    /**
+     * The time when this resize operation was started.
+     */
     startTime?: string;
+    /**
+     * The desired number of dedicated compute nodes in the pool.
+     */
     targetDedicatedNodes?: number;
+    /**
+     * The desired number of Spot/low-priority compute nodes in the pool.
+     */
     targetLowPriorityNodes?: number;
 }
 
+/**
+ * A single file or multiple files to be downloaded to a compute node.
+ */
 export interface ResourceFileResponse {
     /**
      * The autoStorageContainerName, storageContainerUrl and httpUrl properties are mutually exclusive and one of them must be specified.
@@ -795,6 +1009,9 @@ export interface SecurityProfileResponse {
      * This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself.
      */
     encryptionAtHost?: boolean;
+    /**
+     * Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings.
+     */
     securityType?: string;
     /**
      * Specifies the security settings like secure boot and vTPM used while creating the virtual machine.
@@ -824,11 +1041,17 @@ export interface StartTaskResponse {
      * When this is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are mapped into the container, all task environment variables are mapped into the container, and the task command line is executed in the container.
      */
     containerSettings?: TaskContainerSettingsResponse;
+    /**
+     * A list of environment variable settings for the start task.
+     */
     environmentSettings?: EnvironmentSettingResponse[];
     /**
      * The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0
      */
     maxTaskRetryCount?: number;
+    /**
+     * A list of files that the Batch service will download to the compute node before running the command line.
+     */
     resourceFiles?: ResourceFileResponse[];
     /**
      * If omitted, the task runs as a non-administrative user unique to the task.
@@ -849,6 +1072,39 @@ export function startTaskResponseProvideDefaults(val: StartTaskResponse): StartT
     };
 }
 
+/**
+ * Metadata pertaining to creation and last modification of the resource.
+ */
+export interface SystemDataResponse {
+    /**
+     * The timestamp of resource creation (UTC).
+     */
+    createdAt?: string;
+    /**
+     * The identity that created the resource.
+     */
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
+}
+
+/**
+ * The container settings for a task.
+ */
 export interface TaskContainerSettingsResponse {
     /**
      * If this array is null or be not present, container task will mount entire temporary disk drive in windows (or AZ_BATCH_NODE_ROOT_DIR in Linux). It won't' mount any data paths into container if this array is set as empty.
@@ -866,10 +1122,19 @@ export interface TaskContainerSettingsResponse {
      * This setting can be omitted if was already provided at pool creation.
      */
     registry?: ContainerRegistryResponse;
+    /**
+     * A flag to indicate where the container task working directory is. The default is 'taskWorkingDirectory'.
+     */
     workingDirectory?: string;
 }
 
+/**
+ * Specifies how tasks should be distributed across compute nodes.
+ */
 export interface TaskSchedulingPolicyResponse {
+    /**
+     * How tasks should be distributed across compute nodes.
+     */
     nodeFillType: string;
 }
 /**
@@ -904,6 +1169,9 @@ export interface UpgradePolicyResponse {
      * The configuration parameters used for performing automatic OS upgrade.
      */
     automaticOSUpgradePolicy?: AutomaticOSUpgradePolicyResponse;
+    /**
+     * Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are automatically updated at the same time.<br /><br /> **Rolling** - Scale set performs updates in batches with an optional pause time in between.
+     */
     mode: string;
     /**
      * The configuration parameters used while performing a rolling upgrade.
@@ -911,6 +1179,9 @@ export interface UpgradePolicyResponse {
     rollingUpgradePolicy?: RollingUpgradePolicyResponse;
 }
 
+/**
+ * Properties used to create a user on an Azure Batch node.
+ */
 export interface UserAccountResponse {
     /**
      * nonAdmin - The auto user is a standard user without elevated access. admin - The auto user is a user with elevated access and operates with full Administrator permissions. The default value is nonAdmin.
@@ -920,7 +1191,13 @@ export interface UserAccountResponse {
      * This property is ignored if specified on a Windows pool. If not specified, the user is created with the default options.
      */
     linuxUserConfiguration?: LinuxUserConfigurationResponse;
+    /**
+     * The name of the user account. Names can contain any Unicode characters up to a maximum length of 20.
+     */
     name: string;
+    /**
+     * The password for the user account.
+     */
     password: string;
     /**
      * This property can only be specified if the user is on a Windows pool. If not specified and on a Windows pool, the user is created with the default options.
@@ -960,9 +1237,15 @@ export interface UserIdentityResponse {
  * Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
  */
 export interface VMDiskSecurityProfileResponse {
+    /**
+     * Specifies the EncryptionType of the managed disk. It is set to VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob. **Note**: It can be set for only Confidential VMs and required when using Confidential VMs.
+     */
     securityEncryptionType?: string;
 }
 
+/**
+ * The configuration for virtual machine extensions.
+ */
 export interface VMExtensionResponse {
     /**
      * Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
@@ -972,21 +1255,39 @@ export interface VMExtensionResponse {
      * Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
      */
     enableAutomaticUpgrade?: boolean;
+    /**
+     * The name of the virtual machine extension.
+     */
     name: string;
     /**
-     * The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. 
+     * The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
      */
     protectedSettings?: any;
     /**
      * Collection of extension names after which this extension needs to be provisioned.
      */
     provisionAfterExtensions?: string[];
+    /**
+     * The name of the extension handler publisher.
+     */
     publisher: string;
+    /**
+     * JSON formatted public settings for the extension.
+     */
     settings?: any;
+    /**
+     * The type of the extensions.
+     */
     type: string;
+    /**
+     * The version of script handler.
+     */
     typeHandlerVersion?: string;
 }
 
+/**
+ * The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
+ */
 export interface VirtualMachineConfigurationResponse {
     /**
      * If specified, setup is performed on each node in the pool to allow tasks to run in containers. All regular tasks and job manager tasks run on this pool must specify the containerSettings property, and all other tasks may specify it.
@@ -1004,12 +1305,15 @@ export interface VirtualMachineConfigurationResponse {
      * If specified, the extensions mentioned in this configuration will be installed on each node.
      */
     extensions?: VMExtensionResponse[];
+    /**
+     * A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
+     */
     imageReference: ImageReferenceResponse;
     /**
      * This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are:
      *
-     *  Windows_Server - The on-premises license is for Windows Server.
-     *  Windows_Client - The on-premises license is for Windows Client.
+     * Windows_Server - The on-premises license is for Windows Server.
+     * Windows_Client - The on-premises license is for Windows Client.
      */
     licenseType?: string;
     /**
@@ -1052,6 +1356,9 @@ export interface VirtualMachineFamilyCoreQuotaResponse {
     name: string;
 }
 
+/**
+ * Windows operating system settings to apply to the virtual machine.
+ */
 export interface WindowsConfigurationResponse {
     /**
      * If omitted, the default value is true.
@@ -1059,6 +1366,9 @@ export interface WindowsConfigurationResponse {
     enableAutomaticUpdates?: boolean;
 }
 
+/**
+ * Properties used to create a user account on a Windows node.
+ */
 export interface WindowsUserConfigurationResponse {
     /**
      * Specifies login mode for the user. The default value is Interactive.

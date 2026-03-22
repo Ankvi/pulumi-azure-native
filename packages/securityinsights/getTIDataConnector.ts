@@ -41,7 +41,7 @@ export interface GetTIDataConnectorResult {
     /**
      * The available data types for the connector.
      */
-    readonly dataTypes?: types.outputs.TIDataConnectorDataTypesResponse;
+    readonly dataTypes: types.outputs.TIDataConnectorDataTypesResponse;
     /**
      * Etag of the azure resource
      */
@@ -66,7 +66,7 @@ export interface GetTIDataConnectorResult {
     /**
      * The tenant id to connect to, and get the data from.
      */
-    readonly tenantId?: string;
+    readonly tenantId: string;
     /**
      * The lookback period for the feed to be imported.
      */

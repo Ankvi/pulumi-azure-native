@@ -27,7 +27,7 @@ export interface GetKafkaConfigurationArgs {
      */
     kafkaConfigurationName: string;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
@@ -52,6 +52,9 @@ export interface GetKafkaConfigurationResult {
      * Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
      */
     readonly eventHubPartitionId?: string;
+    /**
+     * A type definition that refers the id to an Azure Resource Manager resource.
+     */
     readonly eventHubResourceId?: string;
     /**
      * The event hub type.
@@ -66,19 +69,19 @@ export interface GetKafkaConfigurationResult {
      */
     readonly eventStreamingType?: string;
     /**
-     * Gets or sets the identifier.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
-     * Gets or sets the name.
+     * The name of the resource
      */
     readonly name: string;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.ProxyResourceResponseSystemData;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
-     * Gets or sets the type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -108,7 +111,7 @@ export interface GetKafkaConfigurationOutputArgs {
      */
     kafkaConfigurationName: pulumi.Input<string>;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

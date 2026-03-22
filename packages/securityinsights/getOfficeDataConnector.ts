@@ -41,7 +41,7 @@ export interface GetOfficeDataConnectorResult {
     /**
      * The available data types for the connector.
      */
-    readonly dataTypes?: types.outputs.OfficeDataConnectorDataTypesResponse;
+    readonly dataTypes: types.outputs.OfficeDataConnectorDataTypesResponse;
     /**
      * Etag of the azure resource
      */
@@ -66,7 +66,7 @@ export interface GetOfficeDataConnectorResult {
     /**
      * The tenant id to connect to, and get the data from.
      */
-    readonly tenantId?: string;
+    readonly tenantId: string;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

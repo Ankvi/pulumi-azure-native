@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Site as ARM Resource
+ * Site as Extension Resource
  *
  * Uses Azure REST API version 2025-03-01-preview.
  *
@@ -46,7 +46,7 @@ export class SitesByServiceGroup extends pulumi.CustomResource {
     /**
      * The resource-specific properties for this resource.
      */
-    declare public readonly properties: pulumi.Output<types.outputs.SitePropertiesResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.SitePropertiesResponseV1>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */

@@ -77,7 +77,7 @@ export interface AlertProcessingRulePropertiesArgs {
      */
     conditions?: pulumi.Input<pulumi.Input<ConditionArgs>[]>;
     /**
-     * Description of alert processing rule.
+     * Actions to be applied.Description of alert processing rule.
      */
     description?: pulumi.Input<string>;
     /**
@@ -166,7 +166,7 @@ export interface DailyRecurrenceArgs {
     /**
      * End time for recurrence.
      */
-    endTime: pulumi.Input<string>;
+    endTime?: pulumi.Input<string>;
     /**
      * Specifies when the recurrence should be applied.
      * Expected value is 'Daily'.
@@ -175,7 +175,7 @@ export interface DailyRecurrenceArgs {
     /**
      * Start time for recurrence.
      */
-    startTime: pulumi.Input<string>;
+    startTime?: pulumi.Input<string>;
 }
 
 /**

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-03-01.
  *
- * Other available API versions: 2022-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01-preview, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDeploymentStackAtSubscription(args: GetDeploymentStackAtSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetDeploymentStackAtSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -73,7 +73,7 @@ export interface GetDeploymentStackAtSubscriptionResult {
     /**
      * The error detail.
      */
-    readonly error?: types.outputs.ErrorDetailResponse;
+    readonly error: types.outputs.ErrorDetailResponse;
     /**
      * An array of resources that failed to reach goal state during the most recent update. Each resourceId is accompanied by an error message.
      */
@@ -128,7 +128,7 @@ export interface GetDeploymentStackAtSubscriptionResult {
  *
  * Uses Azure REST API version 2024-03-01.
  *
- * Other available API versions: 2022-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01-preview, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDeploymentStackAtSubscriptionOutput(args: GetDeploymentStackAtSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDeploymentStackAtSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -93,6 +93,16 @@ export interface GuestAgentProfileResponse {
  */
 export interface GuestCredentialResponse {
     /**
+     * Gets or sets username to connect with the guest.
+     */
+    username?: string;
+}
+
+/**
+ * Username / Password Credentials to connect to guest.
+ */
+export interface GuestCredentialResponseV1 {
+    /**
      * Private key used to authenticate to a virtual machine through ssh.
      */
     privateKey?: string;

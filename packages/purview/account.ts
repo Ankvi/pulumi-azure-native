@@ -38,7 +38,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Gets or sets the status of the account.
      */
-    declare public /*out*/ readonly accountStatus: pulumi.Output<types.outputs.AccountPropertiesResponseAccountStatus>;
+    declare public /*out*/ readonly accountStatus: pulumi.Output<types.outputs.AccountPropertiesAccountStatusResponse>;
     /**
      * The Azure API version of the resource.
      */
@@ -66,7 +66,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The URIs that are the public endpoints of the account.
      */
-    declare public /*out*/ readonly endpoints: pulumi.Output<types.outputs.AccountPropertiesResponseEndpoints>;
+    declare public /*out*/ readonly endpoints: pulumi.Output<types.outputs.AccountPropertiesEndpointsResponse>;
     /**
      * Gets or sets the friendly name.
      */
@@ -80,7 +80,7 @@ export class Account extends pulumi.CustomResource {
      */
     declare public readonly ingestionStorage: pulumi.Output<types.outputs.IngestionStorageResponse | undefined>;
     /**
-     * Gets or sets the location.
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string | undefined>;
     /**
@@ -94,7 +94,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Gets the resource identifiers of the managed resources.
      */
-    declare public /*out*/ readonly managedResources: pulumi.Output<types.outputs.AccountPropertiesResponseManagedResources>;
+    declare public /*out*/ readonly managedResources: pulumi.Output<types.outputs.AccountPropertiesManagedResourcesResponse>;
     /**
      * Gets or sets the public network access for managed resources.
      */
@@ -104,7 +104,7 @@ export class Account extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly mergeInfo: pulumi.Output<types.outputs.AccountMergeInfoResponse | undefined>;
     /**
-     * Gets or sets the name.
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -122,13 +122,13 @@ export class Account extends pulumi.CustomResource {
     /**
      * Gets or sets the Sku.
      */
-    declare public readonly sku: pulumi.Output<types.outputs.AccountResponseSku | undefined>;
+    declare public readonly sku: pulumi.Output<types.outputs.AccountSkuResponse | undefined>;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.TrackedResourceResponseSystemData>;
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * Tags on the azure resource.
+     * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -136,7 +136,7 @@ export class Account extends pulumi.CustomResource {
      */
     declare public readonly tenantEndpointState: pulumi.Output<string | undefined>;
     /**
-     * Gets or sets the type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -234,7 +234,7 @@ export interface AccountArgs {
      */
     ingestionStorage?: pulumi.Input<types.inputs.IngestionStorageArgs>;
     /**
-     * Gets or sets the location.
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
@@ -254,7 +254,7 @@ export interface AccountArgs {
      */
     publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
@@ -262,7 +262,7 @@ export interface AccountArgs {
      */
     sku?: pulumi.Input<types.inputs.AccountSkuArgs>;
     /**
-     * Tags on the azure resource.
+     * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

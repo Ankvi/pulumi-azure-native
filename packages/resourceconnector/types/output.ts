@@ -17,7 +17,7 @@ export interface ApplianceCredentialKubeconfigResponse {
 /**
  * Contains infrastructure information about the Appliance
  */
-export interface AppliancePropertiesResponseInfrastructureConfig {
+export interface AppliancePropertiesInfrastructureConfigResponse {
     /**
      * Information about the connected appliance.
      */
@@ -78,6 +78,20 @@ export interface IdentityResponse {
  * Appliance SSHKey definition.
  */
 export interface SSHKeyResponse {
+    /**
+     * User Private Key.
+     */
+    privateKey?: string;
+    /**
+     * User Public Key.
+     */
+    publicKey?: string;
+}
+
+/**
+ * Appliance SSHKey definition.
+ */
+export interface SSHKeyResponseV1 {
     /**
      * Certificate associated with the public key if the key is signed.
      */

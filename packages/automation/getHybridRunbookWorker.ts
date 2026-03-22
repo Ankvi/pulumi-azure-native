@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Retrieve a hybrid runbook worker.
  *
- * Uses Azure REST API version 2023-11-01.
+ * Uses Azure REST API version 2024-10-23.
  *
- * Other available API versions: 2021-06-22, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-06-22, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getHybridRunbookWorker(args: GetHybridRunbookWorkerArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridRunbookWorkerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -46,7 +46,7 @@ export interface GetHybridRunbookWorkerResult {
      */
     readonly azureApiVersion: string;
     /**
-     * Fully qualified resource Id for the resource
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -58,6 +58,10 @@ export interface GetHybridRunbookWorkerResult {
      */
     readonly lastSeenDateTime?: string;
     /**
+     * The geo-location where the resource lives
+     */
+    readonly location: string;
+    /**
      * The name of the resource
      */
     readonly name: string;
@@ -66,11 +70,15 @@ export interface GetHybridRunbookWorkerResult {
      */
     readonly registeredDateTime?: string;
     /**
-     * Resource system metadata.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
-     * The type of the resource.
+     * Resource tags.
+     */
+    readonly tags?: {[key: string]: string};
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**
@@ -89,9 +97,9 @@ export interface GetHybridRunbookWorkerResult {
 /**
  * Retrieve a hybrid runbook worker.
  *
- * Uses Azure REST API version 2023-11-01.
+ * Uses Azure REST API version 2024-10-23.
  *
- * Other available API versions: 2021-06-22, 2022-08-08, 2023-05-15-preview, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-06-22, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getHybridRunbookWorkerOutput(args: GetHybridRunbookWorkerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHybridRunbookWorkerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

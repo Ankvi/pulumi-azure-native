@@ -40,11 +40,11 @@ export class AlertProcessingRuleByName extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string>;
     /**
-     * Azure resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -52,15 +52,15 @@ export class AlertProcessingRuleByName extends pulumi.CustomResource {
      */
     declare public readonly properties: pulumi.Output<types.outputs.AlertProcessingRulePropertiesResponse>;
     /**
-     * Alert processing rule system data.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * Resource tags
+     * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Azure resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -108,11 +108,11 @@ export class AlertProcessingRuleByName extends pulumi.CustomResource {
  */
 export interface AlertProcessingRuleByNameArgs {
     /**
-     * The name of the alert processing rule that needs to be created/updated.
+     * The name of the alert processing rule that needs to be fetched.
      */
     alertProcessingRuleName?: pulumi.Input<string>;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
@@ -120,11 +120,11 @@ export interface AlertProcessingRuleByNameArgs {
      */
     properties?: pulumi.Input<types.inputs.AlertProcessingRulePropertiesArgs>;
     /**
-     * Resource group name where the resource is created.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * Resource tags
+     * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

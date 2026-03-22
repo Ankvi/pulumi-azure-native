@@ -1,0 +1,119 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * Get the details of the specified Cache
+ *
+ * Uses Azure REST API version 2025-09-01-preview.
+ *
+ * Other available API versions: 2025-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ */
+export function getCapacityPoolCache(args: GetCapacityPoolCacheArgs, opts?: pulumi.InvokeOptions): Promise<GetCapacityPoolCacheResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:netapp:getCapacityPoolCache", {
+        "accountName": args.accountName,
+        "cacheName": args.cacheName,
+        "poolName": args.poolName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetCapacityPoolCacheArgs {
+    /**
+     * The name of the NetApp account
+     */
+    accountName: string;
+    /**
+     * The name of the cache resource.
+     */
+    cacheName: string;
+    /**
+     * The name of the capacity pool
+     */
+    poolName: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+}
+
+/**
+ * Cache resource
+ */
+export interface GetCapacityPoolCacheResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
+     */
+    readonly etag: string;
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    readonly id: string;
+    /**
+     * The geo-location where the resource lives
+     */
+    readonly location: string;
+    /**
+     * The name of the resource
+     */
+    readonly name: string;
+    /**
+     * Cache properties
+     */
+    readonly properties: types.outputs.CachePropertiesResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
+     */
+    readonly tags?: {[key: string]: string};
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    readonly type: string;
+    /**
+     * The availability zones.
+     */
+    readonly zones?: string[];
+}
+/**
+ * Get the details of the specified Cache
+ *
+ * Uses Azure REST API version 2025-09-01-preview.
+ *
+ * Other available API versions: 2025-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ */
+export function getCapacityPoolCacheOutput(args: GetCapacityPoolCacheOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCapacityPoolCacheResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:netapp:getCapacityPoolCache", {
+        "accountName": args.accountName,
+        "cacheName": args.cacheName,
+        "poolName": args.poolName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetCapacityPoolCacheOutputArgs {
+    /**
+     * The name of the NetApp account
+     */
+    accountName: pulumi.Input<string>;
+    /**
+     * The name of the cache resource.
+     */
+    cacheName: pulumi.Input<string>;
+    /**
+     * The name of the capacity pool
+     */
+    poolName: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

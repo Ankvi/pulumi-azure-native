@@ -66,6 +66,24 @@ export interface AzureStorageSmbFileShareEndpointPropertiesArgs {
 }
 
 /**
+ * Properties of the Connection resource.
+ */
+export interface ConnectionPropertiesArgs {
+    /**
+     * A description for the Connection.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * List of job definitions associated with this connection.
+     */
+    jobList?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The PrivateLinkServiceId for the connection.
+     */
+    privateLinkServiceId: pulumi.Input<string>;
+}
+
+/**
  * The properties of NFS share endpoint.
  */
 export interface NfsMountEndpointPropertiesArgs {

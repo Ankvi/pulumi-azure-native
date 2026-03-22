@@ -1,0 +1,89 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * Gets a Connection resource.
+ *
+ * Uses Azure REST API version 2025-08-01.
+ */
+export function getConnection(args: GetConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:storagemover:getConnection", {
+        "connectionName": args.connectionName,
+        "resourceGroupName": args.resourceGroupName,
+        "storageMoverName": args.storageMoverName,
+    }, opts);
+}
+
+export interface GetConnectionArgs {
+    /**
+     * The name of the Connection resource.
+     */
+    connectionName: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+    /**
+     * The name of the Storage Mover resource.
+     */
+    storageMoverName: string;
+}
+
+/**
+ * The Connection resource.
+ */
+export interface GetConnectionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     */
+    readonly id: string;
+    /**
+     * The name of the resource
+     */
+    readonly name: string;
+    /**
+     * Connection properties.
+     */
+    readonly properties: types.outputs.ConnectionPropertiesResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    readonly type: string;
+}
+/**
+ * Gets a Connection resource.
+ *
+ * Uses Azure REST API version 2025-08-01.
+ */
+export function getConnectionOutput(args: GetConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectionResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:storagemover:getConnection", {
+        "connectionName": args.connectionName,
+        "resourceGroupName": args.resourceGroupName,
+        "storageMoverName": args.storageMoverName,
+    }, opts);
+}
+
+export interface GetConnectionOutputArgs {
+    /**
+     * The name of the Connection resource.
+     */
+    connectionName: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * The name of the Storage Mover resource.
+     */
+    storageMoverName: pulumi.Input<string>;
+}

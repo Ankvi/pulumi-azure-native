@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Policy fragment contract details.
  *
- * Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+ * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
  *
- * Other available API versions: 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PolicyFragment extends pulumi.CustomResource {
     /**
@@ -52,6 +52,10 @@ export class PolicyFragment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * The provisioning state
+     */
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
+    /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
@@ -88,17 +92,19 @@ export class PolicyFragment extends pulumi.CustomResource {
             resourceInputs["value"] = args?.value;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["format"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20211201preview:PolicyFragment" }, { type: "azure-native:apimanagement/v20220401preview:PolicyFragment" }, { type: "azure-native:apimanagement/v20220801:PolicyFragment" }, { type: "azure-native:apimanagement/v20220901preview:PolicyFragment" }, { type: "azure-native:apimanagement/v20230301preview:PolicyFragment" }, { type: "azure-native:apimanagement/v20230501preview:PolicyFragment" }, { type: "azure-native:apimanagement/v20230901preview:PolicyFragment" }, { type: "azure-native:apimanagement/v20240501:PolicyFragment" }, { type: "azure-native:apimanagement/v20240601preview:PolicyFragment" }, { type: "azure-native:apimanagement/v20241001preview:PolicyFragment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20211201preview:PolicyFragment" }, { type: "azure-native:apimanagement/v20220401preview:PolicyFragment" }, { type: "azure-native:apimanagement/v20220801:PolicyFragment" }, { type: "azure-native:apimanagement/v20220901preview:PolicyFragment" }, { type: "azure-native:apimanagement/v20230301preview:PolicyFragment" }, { type: "azure-native:apimanagement/v20230501preview:PolicyFragment" }, { type: "azure-native:apimanagement/v20230901preview:PolicyFragment" }, { type: "azure-native:apimanagement/v20240501:PolicyFragment" }, { type: "azure-native:apimanagement/v20240601preview:PolicyFragment" }, { type: "azure-native:apimanagement/v20241001preview:PolicyFragment" }, { type: "azure-native:apimanagement/v20250301preview:PolicyFragment" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PolicyFragment.__pulumiType, name, resourceInputs, opts);
     }

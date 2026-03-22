@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
  */
 export interface ApplicableScheduleResponse {
     /**
-     * The identifier of the resource.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     id: string;
     /**
@@ -21,15 +21,19 @@ export interface ApplicableScheduleResponse {
      */
     location?: string;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     name: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
     /**
      * The tags of the resource.
      */
     tags?: {[key: string]: string};
     /**
-     * The type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
 }
@@ -808,15 +812,15 @@ export interface ScheduleResponse {
      */
     hourlyRecurrence?: HourDetailsResponse;
     /**
-     * The identifier of the resource.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     id: string;
     /**
-     * The location of the resource.
+     * The geo-location where the resource lives
      */
     location?: string;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     name: string;
     /**
@@ -832,7 +836,11 @@ export interface ScheduleResponse {
      */
     status?: string;
     /**
-     * The tags of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * Resource tags.
      */
     tags?: {[key: string]: string};
     /**
@@ -848,7 +856,7 @@ export interface ScheduleResponse {
      */
     timeZoneId?: string;
     /**
-     * The type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
     /**
@@ -937,6 +945,36 @@ export interface SubnetSharedPublicIpAddressConfigurationResponse {
      * Backend ports that virtual machines on this subnet are allowed to expose
      */
     allowedPorts?: PortResponse[];
+}
+
+/**
+ * Metadata pertaining to creation and last modification of the resource.
+ */
+export interface SystemDataResponse {
+    /**
+     * The timestamp of resource creation (UTC).
+     */
+    createdAt?: string;
+    /**
+     * The identity that created the resource.
+     */
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
 }
 
 /**

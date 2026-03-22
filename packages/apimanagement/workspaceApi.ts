@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * API details.
  *
- * Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
+ * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WorkspaceApi extends pulumi.CustomResource {
     /**
@@ -108,6 +108,10 @@ export class WorkspaceApi extends pulumi.CustomResource {
      */
     declare public readonly protocols: pulumi.Output<string[] | undefined>;
     /**
+     * The provisioning state
+     */
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
+    /**
      * Absolute URL of the backend service implementing this API. Cannot be more than 2000 characters long.
      */
     declare public readonly serviceUrl: pulumi.Output<string | undefined>;
@@ -187,6 +191,7 @@ export class WorkspaceApi extends pulumi.CustomResource {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["isOnline"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["apiRevision"] = undefined /*out*/;
@@ -207,6 +212,7 @@ export class WorkspaceApi extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["path"] = undefined /*out*/;
             resourceInputs["protocols"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["serviceUrl"] = undefined /*out*/;
             resourceInputs["sourceApiId"] = undefined /*out*/;
             resourceInputs["subscriptionKeyParameterNames"] = undefined /*out*/;
@@ -215,7 +221,7 @@ export class WorkspaceApi extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspaceApi" }, { type: "azure-native:apimanagement/v20230301preview:WorkspaceApi" }, { type: "azure-native:apimanagement/v20230501preview:WorkspaceApi" }, { type: "azure-native:apimanagement/v20230901preview:WorkspaceApi" }, { type: "azure-native:apimanagement/v20240501:WorkspaceApi" }, { type: "azure-native:apimanagement/v20240601preview:WorkspaceApi" }, { type: "azure-native:apimanagement/v20241001preview:WorkspaceApi" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspaceApi" }, { type: "azure-native:apimanagement/v20230301preview:WorkspaceApi" }, { type: "azure-native:apimanagement/v20230501preview:WorkspaceApi" }, { type: "azure-native:apimanagement/v20230901preview:WorkspaceApi" }, { type: "azure-native:apimanagement/v20240501:WorkspaceApi" }, { type: "azure-native:apimanagement/v20240601preview:WorkspaceApi" }, { type: "azure-native:apimanagement/v20241001preview:WorkspaceApi" }, { type: "azure-native:apimanagement/v20250301preview:WorkspaceApi" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkspaceApi.__pulumiType, name, resourceInputs, opts);
     }
@@ -274,7 +280,7 @@ export interface WorkspaceApiArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Format of the Content in which the API is getting imported.
+     * Format of the Content in which the API is getting imported. New formats can be added in the future
      */
     format?: pulumi.Input<string | types.enums.ContentFormat>;
     /**
@@ -310,7 +316,8 @@ export interface WorkspaceApiArgs {
      *  * `http` creates a REST API 
      *  * `soap` creates a SOAP pass-through API  
      *  * `websocket` creates websocket API 
-     *  * `graphql` creates GraphQL API.
+     *  * `graphql` creates GraphQL API. 
+     *  New types can be added in the future.
      */
     soapApiType?: pulumi.Input<string | types.enums.SoapApiType>;
     /**

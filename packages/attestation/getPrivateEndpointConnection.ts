@@ -21,7 +21,7 @@ export interface GetPrivateEndpointConnectionArgs {
      */
     privateEndpointConnectionName: string;
     /**
-     * The name of the attestation provider.
+     * Name of the attestation provider.
      */
     providerName: string;
     /**
@@ -59,6 +59,10 @@ export interface GetPrivateEndpointConnectionResult {
      */
     readonly provisioningState: string;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
@@ -83,7 +87,7 @@ export interface GetPrivateEndpointConnectionOutputArgs {
      */
     privateEndpointConnectionName: pulumi.Input<string>;
     /**
-     * The name of the attestation provider.
+     * Name of the attestation provider.
      */
     providerName: pulumi.Input<string>;
     /**

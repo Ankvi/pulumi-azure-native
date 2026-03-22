@@ -3,9 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the private DNS zone suffix.
  *
- * Uses Azure REST API version 2025-06-01-preview.
+ * Uses Azure REST API version 2025-08-01.
  *
- * Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPrivateDnsZoneSuffix(args?: GetPrivateDnsZoneSuffixArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateDnsZoneSuffixResult> {
     args = args || {};
@@ -26,9 +26,9 @@ export interface GetPrivateDnsZoneSuffixResult {
 /**
  * Gets the private DNS zone suffix.
  *
- * Uses Azure REST API version 2025-06-01-preview.
+ * Uses Azure REST API version 2025-08-01.
  *
- * Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPrivateDnsZoneSuffixOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateDnsZoneSuffixResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

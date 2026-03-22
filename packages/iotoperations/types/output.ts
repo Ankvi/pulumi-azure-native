@@ -714,6 +714,30 @@ export interface AkriConnectorsTagResponse {
 }
 
 /**
+ * AkriService properties.
+ */
+export interface AkriServicePropertiesResponse {
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+    /**
+     * The status for the service.
+     */
+    status: AkriServiceStatusResponse;
+}
+
+/**
+ * AkriService status.
+ */
+export interface AkriServiceStatusResponse {
+    /**
+     * The health state of the AkriService.
+     */
+    healthState: ResourceHealthStatusResponse;
+}
+
+/**
  * Broker AuthorizationConfig properties
  */
 export interface AuthorizationConfigResponse {
@@ -2671,6 +2695,32 @@ export interface RegistryEndpointUserAssignedManagedIdentitySettingsResponse {
      * Tenant ID.
      */
     tenantId: string;
+}
+
+/**
+ * Represents the health state of a resource.
+ */
+export interface ResourceHealthStatusResponse {
+    /**
+     * The timestamp (RFC3339) when the health status last changed.
+     */
+    lastTransitionTime: string;
+    /**
+     * The timestamp (RFC3339) when the health status was last updated, even if the status did not change.
+     */
+    lastUpdateTime: string;
+    /**
+     * A human-readable message describing the last transition.
+     */
+    message: string;
+    /**
+     * Unique, CamelCase reason code describing the cause of the last health state transition.
+     */
+    reasonCode: string;
+    /**
+     * The high-level health status of the resource.
+     */
+    status: string;
 }
 
 /**

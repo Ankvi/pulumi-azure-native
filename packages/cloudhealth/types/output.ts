@@ -251,7 +251,7 @@ export function entityPropertiesResponseProvideDefaults(val: EntityPropertiesRes
  */
 export interface EvaluationRuleResponse {
     /**
-     * Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
+     * Degraded rule with static threshold.
      */
     degradedRule?: ThresholdRuleResponse;
     /**
@@ -259,7 +259,7 @@ export interface EvaluationRuleResponse {
      */
     dynamicDetectionRule?: DynamicDetectionRuleResponse;
     /**
-     * Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
+     * Unhealthy rule with static threshold.
      */
     unhealthyRule?: ThresholdRuleResponse;
 }
@@ -280,6 +280,28 @@ export interface HealthModelPropertiesResponse {
      * The status of the last operation.
      */
     provisioningState: string;
+}
+
+/**
+ * A health state transition record
+ */
+export interface HealthStateTransitionResponse {
+    /**
+     * New health state after the transition
+     */
+    newState: string;
+    /**
+     * Timestamp when the transition occurred
+     */
+    occurredAt: string;
+    /**
+     * Previous health state before the transition
+     */
+    previousState: string;
+    /**
+     * Reason of the transition
+     */
+    reason?: string;
 }
 
 /**
@@ -638,6 +660,28 @@ export function signalGroupResponseProvideDefaults(val: SignalGroupResponse): Si
         ...val,
         dependencies: (val.dependencies ? dependenciesSignalGroupResponseProvideDefaults(val.dependencies) : undefined),
     };
+}
+
+/**
+ * A data point in the signal time series
+ */
+export interface SignalHistoryDataPointResponse {
+    /**
+     * Additional context as provided by the submitter
+     */
+    additionalContext?: string;
+    /**
+     * Health state at this point in time
+     */
+    healthState: string;
+    /**
+     * Timestamp of the data point
+     */
+    occurredAt: string;
+    /**
+     * Signal value at this point in time
+     */
+    value?: number;
 }
 
 /**

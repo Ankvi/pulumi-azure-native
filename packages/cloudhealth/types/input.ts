@@ -215,7 +215,7 @@ export function entityPropertiesArgsProvideDefaults(val: EntityPropertiesArgs): 
  */
 export interface EvaluationRuleArgs {
     /**
-     * Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
+     * Degraded rule with static threshold.
      */
     degradedRule?: pulumi.Input<ThresholdRuleArgs>;
     /**
@@ -223,7 +223,7 @@ export interface EvaluationRuleArgs {
      */
     dynamicDetectionRule?: pulumi.Input<DynamicDetectionRuleArgs>;
     /**
-     * Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
+     * Unhealthy rule with static threshold.
      */
     unhealthyRule?: pulumi.Input<ThresholdRuleArgs>;
 }

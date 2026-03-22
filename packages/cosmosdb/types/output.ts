@@ -498,6 +498,29 @@ export interface ConsistencyPolicyResponse {
  */
 export interface ContainerPartitionKeyResponse {
     /**
+     * Indicates the kind of algorithm used for partitioning
+     */
+    kind?: string;
+    /**
+     * List of paths using which data within the container can be partitioned
+     */
+    paths?: string[];
+}
+/**
+ * containerPartitionKeyResponseProvideDefaults sets the appropriate defaults for ContainerPartitionKeyResponse
+ */
+export function containerPartitionKeyResponseProvideDefaults(val: ContainerPartitionKeyResponse): ContainerPartitionKeyResponse {
+    return {
+        ...val,
+        kind: (val.kind) ?? "Hash",
+    };
+}
+
+/**
+ * The configuration of the partition key to be used for partitioning data into multiple partitions
+ */
+export interface ContainerPartitionKeyResponseV1 {
+    /**
      * Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
      */
     kind?: string;
@@ -515,9 +538,40 @@ export interface ContainerPartitionKeyResponse {
     version?: number;
 }
 /**
- * containerPartitionKeyResponseProvideDefaults sets the appropriate defaults for ContainerPartitionKeyResponse
+ * containerPartitionKeyResponseV1ProvideDefaults sets the appropriate defaults for ContainerPartitionKeyResponseV1
  */
-export function containerPartitionKeyResponseProvideDefaults(val: ContainerPartitionKeyResponse): ContainerPartitionKeyResponse {
+export function containerPartitionKeyResponseV1ProvideDefaults(val: ContainerPartitionKeyResponseV1): ContainerPartitionKeyResponseV1 {
+    return {
+        ...val,
+        kind: (val.kind) ?? "Hash",
+    };
+}
+
+/**
+ * The configuration of the partition key to be used for partitioning data into multiple partitions
+ */
+export interface ContainerPartitionKeyResponseV2 {
+    /**
+     * Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
+     */
+    kind?: string;
+    /**
+     * List of paths using which data within the container can be partitioned
+     */
+    paths?: string[];
+    /**
+     * Indicates if the container is using a system generated partition key
+     */
+    systemKey: boolean;
+    /**
+     * Indicates the version of the partition key definition
+     */
+    version?: number;
+}
+/**
+ * containerPartitionKeyResponseV2ProvideDefaults sets the appropriate defaults for ContainerPartitionKeyResponseV2
+ */
+export function containerPartitionKeyResponseV2ProvideDefaults(val: ContainerPartitionKeyResponseV2): ContainerPartitionKeyResponseV2 {
     return {
         ...val,
         kind: (val.kind) ?? "Hash",
@@ -756,6 +810,46 @@ export interface DatabaseRestoreResourceResponse {
     databaseName?: string;
 }
 
+/**
+ * The resource management error additional info.
+ */
+export interface ErrorAdditionalInfoResponse {
+    /**
+     * The additional info.
+     */
+    info: any;
+    /**
+     * The additional info type.
+     */
+    type: string;
+}
+
+/**
+ * The error detail.
+ */
+export interface ErrorDetailResponse {
+    /**
+     * The error additional info.
+     */
+    additionalInfo: ErrorAdditionalInfoResponse[];
+    /**
+     * The error code.
+     */
+    code: string;
+    /**
+     * The error details.
+     */
+    details: ErrorDetailResponse[];
+    /**
+     * The error message.
+     */
+    message: string;
+    /**
+     * The error target.
+     */
+    target: string;
+}
+
 export interface ExcludedPathResponse {
     /**
      * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
@@ -800,10 +894,6 @@ export interface FleetspaceAccountPropertiesResponseGlobalDatabaseAccountPropert
  */
 export interface FleetspacePropertiesResponseThroughputPoolConfiguration {
     /**
-     * List of data regions assigned to the fleetspace. Eg [westus2]
-     */
-    dataRegions?: string[];
-    /**
      * Maximum throughput for the pool.
      */
     maxThroughput?: number;
@@ -811,10 +901,16 @@ export interface FleetspacePropertiesResponseThroughputPoolConfiguration {
      * Minimum throughput for the pool.
      */
     minThroughput?: number;
+}
+
+/**
+ * Represents the full text index path.
+ */
+export interface FullTextIndexPathResponse {
     /**
-     * Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
+     * The path to the full text field in the document.
      */
-    serviceTier?: string;
+    path: string;
 }
 
 /**
@@ -843,6 +939,67 @@ export interface FullTextPolicyResponse {
      * List of FullText Paths
      */
     fullTextPaths?: FullTextPathResponse[];
+}
+
+export interface GarnetClusterResourceResponseEndPoints {
+    /**
+     * Ipv4 address of the endpoint
+     */
+    ipAddress?: string;
+    /**
+     * Port number
+     */
+    port?: number;
+}
+
+/**
+ * Properties of a Garnet cache cluster.
+ */
+export interface GarnetClusterResourceResponseProperties {
+    /**
+     * Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
+     */
+    allocationState?: string;
+    /**
+     * If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
+     */
+    availabilityZone?: boolean;
+    /**
+     * Type of the cluster. If set to Production, some operations might not be permitted on cluster.
+     */
+    clusterType?: string;
+    /**
+     * endpoints for clients to connect to the cluster.
+     */
+    endPoints: GarnetClusterResourceResponseEndPoints[];
+    /**
+     * Extensions to be added or updated on cluster.
+     */
+    extensions?: string[];
+    /**
+     * Number of nodes
+     */
+    nodeCount?: number;
+    /**
+     * Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+     */
+    nodeSku?: string;
+    /**
+     * Error related to resource provisioning.
+     */
+    provisionError?: ErrorDetailResponse;
+    /**
+     * The status of the resource at the time the operation was called.
+     */
+    provisioningState: string;
+    /**
+     * Number of copies of data maintained by the cluster
+     */
+    replicationFactor?: number;
+    /**
+     * Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
+     */
+    subnetId?: string;
 }
 
 /**
@@ -1011,11 +1168,11 @@ export interface GremlinGraphGetPropertiesResponseResource {
     /**
      * The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
      */
-    indexingPolicy?: IndexingPolicyResponse;
+    indexingPolicy?: IndexingPolicyResponseV1;
     /**
      * The configuration of the partition key to be used for partitioning data into multiple partitions
      */
-    partitionKey?: ContainerPartitionKeyResponse;
+    partitionKey?: ContainerPartitionKeyResponseV1;
     /**
      * Parameters to indicate the information about the restore
      */
@@ -1040,8 +1197,8 @@ export function gremlinGraphGetPropertiesResponseResourceProvideDefaults(val: Gr
     return {
         ...val,
         conflictResolutionPolicy: (val.conflictResolutionPolicy ? conflictResolutionPolicyResponseProvideDefaults(val.conflictResolutionPolicy) : undefined),
-        indexingPolicy: (val.indexingPolicy ? indexingPolicyResponseProvideDefaults(val.indexingPolicy) : undefined),
-        partitionKey: (val.partitionKey ? containerPartitionKeyResponseProvideDefaults(val.partitionKey) : undefined),
+        indexingPolicy: (val.indexingPolicy ? indexingPolicyResponseV1ProvideDefaults(val.indexingPolicy) : undefined),
+        partitionKey: (val.partitionKey ? containerPartitionKeyResponseV1ProvideDefaults(val.partitionKey) : undefined),
     };
 }
 
@@ -1096,6 +1253,37 @@ export interface IndexingPolicyResponse {
      */
     automatic?: boolean;
     /**
+     * List of paths to exclude from indexing
+     */
+    excludedPaths?: ExcludedPathResponse[];
+    /**
+     * List of paths to include in the indexing
+     */
+    includedPaths?: IncludedPathResponse[];
+    /**
+     * Indicates the indexing mode.
+     */
+    indexingMode?: string;
+}
+/**
+ * indexingPolicyResponseProvideDefaults sets the appropriate defaults for IndexingPolicyResponse
+ */
+export function indexingPolicyResponseProvideDefaults(val: IndexingPolicyResponse): IndexingPolicyResponse {
+    return {
+        ...val,
+        indexingMode: (val.indexingMode) ?? "Consistent",
+    };
+}
+
+/**
+ * Cosmos DB indexing policy
+ */
+export interface IndexingPolicyResponseV1 {
+    /**
+     * Indicates if the indexing policy is automatic
+     */
+    automatic?: boolean;
+    /**
      * List of composite path list
      */
     compositeIndexes?: CompositePathResponse[][];
@@ -1103,6 +1291,10 @@ export interface IndexingPolicyResponse {
      * List of paths to exclude from indexing
      */
     excludedPaths?: ExcludedPathResponse[];
+    /**
+     * List of paths to include in the full text indexing
+     */
+    fullTextIndexes?: FullTextIndexPathResponse[];
     /**
      * List of paths to include in the indexing
      */
@@ -1121,9 +1313,56 @@ export interface IndexingPolicyResponse {
     vectorIndexes?: VectorIndexResponse[];
 }
 /**
- * indexingPolicyResponseProvideDefaults sets the appropriate defaults for IndexingPolicyResponse
+ * indexingPolicyResponseV1ProvideDefaults sets the appropriate defaults for IndexingPolicyResponseV1
  */
-export function indexingPolicyResponseProvideDefaults(val: IndexingPolicyResponse): IndexingPolicyResponse {
+export function indexingPolicyResponseV1ProvideDefaults(val: IndexingPolicyResponseV1): IndexingPolicyResponseV1 {
+    return {
+        ...val,
+        indexingMode: (val.indexingMode) ?? "consistent",
+    };
+}
+
+/**
+ * Cosmos DB indexing policy
+ */
+export interface IndexingPolicyResponseV2 {
+    /**
+     * Indicates if the indexing policy is automatic
+     */
+    automatic?: boolean;
+    /**
+     * List of composite path list
+     */
+    compositeIndexes?: CompositePathResponse[][];
+    /**
+     * List of paths to exclude from indexing
+     */
+    excludedPaths?: ExcludedPathResponse[];
+    /**
+     * List of paths to include in the full text indexing
+     */
+    fullTextIndexes?: FullTextIndexPathResponse[];
+    /**
+     * List of paths to include in the indexing
+     */
+    includedPaths?: IncludedPathResponse[];
+    /**
+     * Indicates the indexing mode.
+     */
+    indexingMode?: string;
+    /**
+     * List of spatial specifics
+     */
+    spatialIndexes?: SpatialSpecResponse[];
+    /**
+     * List of paths to include in the vector indexing
+     */
+    vectorIndexes?: VectorIndexResponse[];
+}
+/**
+ * indexingPolicyResponseV2ProvideDefaults sets the appropriate defaults for IndexingPolicyResponseV2
+ */
+export function indexingPolicyResponseV2ProvideDefaults(val: IndexingPolicyResponseV2): IndexingPolicyResponseV2 {
     return {
         ...val,
         indexingMode: (val.indexingMode) ?? "consistent",
@@ -1478,6 +1717,20 @@ export interface PermissionResponse {
 }
 
 /**
+ * The set of data plane operations permitted through this Role Definition.
+ */
+export interface PermissionResponseV1 {
+    /**
+     * An array of data actions that are allowed.
+     */
+    dataActions?: string[];
+    /**
+     * An array of data actions that are denied.
+     */
+    notDataActions?: string[];
+}
+
+/**
  * A private endpoint connection
  */
 export interface PrivateEndpointConnectionResponse {
@@ -1614,6 +1867,10 @@ export interface RestoreParametersResponse {
      */
     restoreWithTtlDisabled?: boolean;
     /**
+     * The source backup location for restore.
+     */
+    sourceBackupLocation?: string;
+    /**
      * List of specific tables available for restore.
      */
     tablesToRestore?: string[];
@@ -1702,11 +1959,11 @@ export interface SqlContainerGetPropertiesResponseResource {
     /**
      * The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the container
      */
-    indexingPolicy?: IndexingPolicyResponse;
+    indexingPolicy?: IndexingPolicyResponseV2;
     /**
      * The configuration of the partition key to be used for partitioning data into multiple partitions
      */
-    partitionKey?: ContainerPartitionKeyResponse;
+    partitionKey?: ContainerPartitionKeyResponseV2;
     /**
      * Parameters to indicate the information about the restore
      */
@@ -1735,8 +1992,8 @@ export function sqlContainerGetPropertiesResponseResourceProvideDefaults(val: Sq
     return {
         ...val,
         conflictResolutionPolicy: (val.conflictResolutionPolicy ? conflictResolutionPolicyResponseProvideDefaults(val.conflictResolutionPolicy) : undefined),
-        indexingPolicy: (val.indexingPolicy ? indexingPolicyResponseProvideDefaults(val.indexingPolicy) : undefined),
-        partitionKey: (val.partitionKey ? containerPartitionKeyResponseProvideDefaults(val.partitionKey) : undefined),
+        indexingPolicy: (val.indexingPolicy ? indexingPolicyResponseV2ProvideDefaults(val.indexingPolicy) : undefined),
+        partitionKey: (val.partitionKey ? containerPartitionKeyResponseV2ProvideDefaults(val.partitionKey) : undefined),
     };
 }
 
@@ -2046,13 +2303,34 @@ export interface VectorEmbeddingResponse {
 
 export interface VectorIndexResponse {
     /**
+     * This is the size of the candidate list of approximate neighbors stored while building the DiskANN index as part of the optimization processes. Large values may improve recall at the expense of latency. This is only applicable for the diskANN vector index type.
+     */
+    indexingSearchListSize?: number;
+    /**
      * The path to the vector field in the document.
      */
     path: string;
     /**
+     * The number of bytes used in product quantization of the vectors. A larger value may result in better recall for vector searches at the expense of latency. This is only applicable for the quantizedFlat and diskANN vector index types.
+     */
+    quantizationByteSize?: number;
+    /**
      * The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported.
      */
     type: string;
+    /**
+     * Array of shard keys for the vector index. This is only applicable for the quantizedFlat and diskANN vector index types.
+     */
+    vectorIndexShardKey?: string[];
+}
+/**
+ * vectorIndexResponseProvideDefaults sets the appropriate defaults for VectorIndexResponse
+ */
+export function vectorIndexResponseProvideDefaults(val: VectorIndexResponse): VectorIndexResponse {
+    return {
+        ...val,
+        indexingSearchListSize: (val.indexingSearchListSize) ?? 100,
+    };
 }
 
 /**

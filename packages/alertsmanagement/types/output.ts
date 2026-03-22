@@ -91,9 +91,9 @@ export interface AlertProcessingRulePropertiesResponse {
     /**
      * Conditions on which alerts will be filtered.
      */
-    conditions?: ConditionResponse[];
+    conditions?: ConditionResponseV1[];
     /**
-     * Description of alert processing rule.
+     * Actions to be applied.Description of alert processing rule.
      */
     description?: string;
     /**
@@ -120,9 +120,23 @@ export function alertProcessingRulePropertiesResponseProvideDefaults(val: AlertP
 }
 
 /**
- * Condition to trigger an alert processing rule.
+ * condition to trigger an action rule
  */
 export interface ConditionResponse {
+    /**
+     * operator for a given condition
+     */
+    operator?: string;
+    /**
+     * list of values to match for a given condition.
+     */
+    values?: string[];
+}
+
+/**
+ * Condition to trigger an alert processing rule.
+ */
+export interface ConditionResponseV1 {
     /**
      * Field for a given condition.
      */
@@ -182,7 +196,7 @@ export interface DailyRecurrenceResponse {
     /**
      * End time for recurrence.
      */
-    endTime: string;
+    endTime?: string;
     /**
      * Specifies when the recurrence should be applied.
      * Expected value is 'Daily'.
@@ -191,7 +205,7 @@ export interface DailyRecurrenceResponse {
     /**
      * Start time for recurrence.
      */
-    startTime: string;
+    startTime?: string;
 }
 
 /**

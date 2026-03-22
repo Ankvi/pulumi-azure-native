@@ -33,6 +33,38 @@ export interface ArcConnectivityPropertiesArgs {
 }
 
 /**
+ * Backend address pool for the load balancer.
+ */
+export interface BackendAddressPoolArgs {
+    /**
+     * name of the backend pool.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * properties for the backend pool
+     */
+    properties: pulumi.Input<BackendAddressPoolPropertiesArgs>;
+}
+
+/**
+ * Backend address pool for the load balancer.
+ */
+export interface BackendAddressPoolPropertiesArgs {
+    /**
+     * List of backend addresses for the backend pool
+     */
+    loadBalancerBackendAddresses?: pulumi.Input<pulumi.Input<LoadBalancerBackendAddressArgs>[]>;
+    /**
+     * Reference to the logical network for this backend pool. Mutually exclusive with virtualNetwork
+     */
+    logicalNetwork?: pulumi.Input<LogicalNetworkArmReferenceArgs>;
+    /**
+     * Reference to the virtual network for this backend pool. Mutually exclusive with logicalNetwork
+     */
+    virtualNetwork?: pulumi.Input<VirtualNetworkArmReferenceArgs>;
+}
+
+/**
  * Desired properties of the cluster.
  */
 export interface ClusterDesiredPropertiesArgs {
@@ -44,6 +76,20 @@ export interface ClusterDesiredPropertiesArgs {
      * Desired state of Windows Server Subscription.
      */
     windowsServerSubscription?: pulumi.Input<string | enums.WindowsServerSubscription>;
+}
+
+/**
+ * Data used when creating a disk or snapshot
+ */
+export interface CreationDataArgs {
+    /**
+     * This enumerates the possible sources of a disk's creation
+     */
+    createOption: pulumi.Input<string | enums.DiskCreateOption>;
+    /**
+     * ARM ID of the source resource used for disk creation. Required when createOption is Copy
+     */
+    sourceResourceId?: pulumi.Input<string>;
 }
 
 /**
@@ -239,6 +285,101 @@ export interface DeviceConfigurationArgs {
 }
 
 /**
+ * Device details.
+ */
+export interface DeviceDetailArgs {
+    /**
+     * Resource Id of the device.
+     */
+    deviceResourceId?: pulumi.Input<string>;
+}
+
+/**
+ * Properties for device pool.
+ */
+export interface DevicePoolPropertiesArgs {
+    /**
+     * Custom Location Name for the pool, default: <DevicePoolName>-CL
+     */
+    customLocationName?: pulumi.Input<string>;
+    /**
+     * List of machines in device pool.
+     */
+    devices?: pulumi.Input<pulumi.Input<DeviceDetailArgs>[]>;
+    /**
+     * Managed resource group name for the pool
+     */
+    managedResourceGroup?: pulumi.Input<string>;
+}
+
+/**
+ * Represents the properties of Download Os job.
+ */
+export interface DownloadOsJobPropertiesArgs {
+    /**
+     * Deployment mode to trigger job.
+     */
+    deploymentMode?: pulumi.Input<string | enums.DeploymentMode>;
+    /**
+     * Download OS request.
+     */
+    downloadRequest: pulumi.Input<DownloadRequestArgs>;
+    /**
+     * Job Type supported.
+     * Expected value is 'DownloadOs'.
+     */
+    jobType: pulumi.Input<"DownloadOs">;
+}
+
+/**
+ * Operating system profile.
+ */
+export interface DownloadOsProfileArgs {
+    /**
+     * GPG Public Key used for package verification
+     */
+    gpgPubKey?: pulumi.Input<string>;
+    /**
+     * Hash of the OS package downloaded
+     */
+    imageHash?: pulumi.Input<string>;
+    /**
+     * Location of the operating system image.
+     */
+    osImageLocation?: pulumi.Input<string>;
+    /**
+     * Name of the operating system.
+     */
+    osName?: pulumi.Input<string>;
+    /**
+     * Type of the operating system.
+     */
+    osType?: pulumi.Input<string>;
+    /**
+     * Version of the operating system.
+     */
+    osVersion?: pulumi.Input<string>;
+    /**
+     * Validated Solution Recipe version to be used for the job
+     */
+    vsrVersion?: pulumi.Input<string>;
+}
+
+/**
+ * Download Request properties
+ */
+export interface DownloadRequestArgs {
+    /**
+     * Operating system profile.
+     */
+    osProfile: pulumi.Input<DownloadOsProfileArgs>;
+    /**
+     * Target operating system to support polymorphic resource.
+     */
+    target: pulumi.Input<string | enums.ProvisioningOsType>;
+}
+
+/**
  * Protected parameters list stored in keyvault.
  */
 export interface EceDeploymentSecretsArgs {
@@ -257,6 +398,99 @@ export interface EceDeploymentSecretsArgs {
 }
 
 /**
+ * Properties for pausing a server in the cluster.
+ */
+export interface EdgeMachineCollectLogJobPropertiesArgs {
+    /**
+     * Deployment mode to trigger job.
+     */
+    deploymentMode?: pulumi.Input<string | enums.DeploymentMode>;
+    /**
+     * From date for log collection.
+     */
+    fromDate: pulumi.Input<string>;
+    /**
+     * Job Type supported.
+     * Expected value is 'CollectLog'.
+     */
+    jobType: pulumi.Input<"CollectLog">;
+    /**
+     * To date for log collection.
+     */
+    toDate: pulumi.Input<string>;
+}
+
+/**
+ * Properties for edge machine.
+ */
+export interface EdgeMachinePropertiesArgs {
+    /**
+     * Link to Arc Gateway ARM resource Id
+     */
+    arcGatewayResourceId?: pulumi.Input<string>;
+    /**
+     * Optional property to create arc machine in custom resource group.
+     */
+    arcMachineResourceGroupId?: pulumi.Input<string>;
+    /**
+     * Arc machine instance resource id.
+     */
+    arcMachineResourceId?: pulumi.Input<string>;
+    /**
+     * Edge Machine type.
+     */
+    edgeMachineKind?: pulumi.Input<string | enums.EdgeMachineKind>;
+    /**
+     * Ownership voucher details for provisioned machine.
+     */
+    ownershipVoucherDetails?: pulumi.Input<OwnershipVoucherDetailsArgs>;
+    /**
+     * Details for device provisioning.
+     */
+    provisioningDetails?: pulumi.Input<ProvisioningDetailsArgs>;
+    /**
+     * Service fetches common configuration from site.
+     */
+    siteDetails?: pulumi.Input<SiteDetailsArgs>;
+}
+/**
+ * edgeMachinePropertiesArgsProvideDefaults sets the appropriate defaults for EdgeMachinePropertiesArgs
+ */
+export function edgeMachinePropertiesArgsProvideDefaults(val: EdgeMachinePropertiesArgs): EdgeMachinePropertiesArgs {
+    return {
+        ...val,
+        provisioningDetails: (val.provisioningDetails ? pulumi.output(val.provisioningDetails).apply(provisioningDetailsArgsProvideDefaults) : undefined),
+    };
+}
+
+/**
+ * Properties for adding a server in the cluster.
+ */
+export interface EdgeMachineRemoteSupportJobPropertiesArgs {
+    /**
+     * Remote support access level.
+     */
+    accessLevel: pulumi.Input<string | enums.RemoteSupportAccessLevel>;
+    /**
+     * Deployment mode to trigger job.
+     */
+    deploymentMode?: pulumi.Input<string | enums.DeploymentMode>;
+    /**
+     * Remote support expiration timestamp.
+     */
+    expirationTimestamp: pulumi.Input<string>;
+    /**
+     * Job Type supported.
+     * Expected value is 'RemoteSupport'.
+     */
+    jobType: pulumi.Input<"RemoteSupport">;
+    /**
+     * Remote support type.
+     */
+    type: pulumi.Input<string | enums.RemoteSupportType>;
+}
+
+/**
  * The complex type of the extended location.
  */
 export interface ExtendedLocationArgs {
@@ -268,6 +502,42 @@ export interface ExtendedLocationArgs {
      * The type of the extended location.
      */
     type?: pulumi.Input<string | enums.ExtendedLocationTypes>;
+}
+
+/**
+ * FrontendIP Configuration object for a load balancer.
+ */
+export interface FrontendIPConfigurationArgs {
+    /**
+     * name for the frontend IP configuration.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * properties for this frontendIPConfiguration
+     */
+    properties: pulumi.Input<FrontendIPConfigurationPropertiesArgs>;
+}
+
+/**
+ * FrontendIP Configuration object for a load balancer.
+ */
+export interface FrontendIPConfigurationPropertiesArgs {
+    /**
+     * Private IP Address that was allocated (dynamic) or is to be allocated (static) from the subnet.
+     */
+    privateIPAddress?: pulumi.Input<string>;
+    /**
+     * privateIPAllocationMethod - set to Static for requesting a specific IP
+     */
+    privateIPAllocationMethod?: pulumi.Input<string | enums.IpAllocationMethodEnum>;
+    /**
+     * Public IP 
+     */
+    publicIPAddress?: pulumi.Input<PublicIPAddressArmReferenceArgs>;
+    /**
+     * subnet - the subnet from which to allocate the private IP
+     */
+    subnet?: pulumi.Input<VirtualNetworkSubnetArmReferenceArgs>;
 }
 
 /**
@@ -333,6 +603,66 @@ export interface HciCollectLogJobPropertiesArgs {
      * To date for log collection.
      */
     toDate: pulumi.Input<string>;
+}
+
+/**
+ * Defines the customer's intent for updating confidential VM properties
+ */
+export interface HciConfigureCvmJobPropertiesArgs {
+    /**
+     * Defines the customer's intent for updating confidential VM properties
+     */
+    confidentialVmIntent: pulumi.Input<string | enums.ConfidentialVmIntent>;
+    /**
+     * Deployment mode to trigger job.
+     */
+    deploymentMode?: pulumi.Input<string | enums.DeploymentMode>;
+    /**
+     * ClusterJob Type supported.
+     * Expected value is 'ConfigureCVM'.
+     */
+    jobType: pulumi.Input<"ConfigureCVM">;
+}
+/**
+ * hciConfigureCvmJobPropertiesArgsProvideDefaults sets the appropriate defaults for HciConfigureCvmJobPropertiesArgs
+ */
+export function hciConfigureCvmJobPropertiesArgsProvideDefaults(val: HciConfigureCvmJobPropertiesArgs): HciConfigureCvmJobPropertiesArgs {
+    return {
+        ...val,
+        deploymentMode: (val.deploymentMode) ?? "Deploy",
+    };
+}
+
+/**
+ * Properties for configuring SDN integration intent for the cluster.
+ */
+export interface HciConfigureSdnIntegrationJobPropertiesArgs {
+    /**
+     * Deployment mode to trigger job.
+     */
+    deploymentMode?: pulumi.Input<string | enums.DeploymentMode>;
+    /**
+     * ClusterJob Type supported.
+     * Expected value is 'ConfigureSdnIntegration'.
+     */
+    jobType: pulumi.Input<"ConfigureSdnIntegration">;
+    /**
+     * Defines the customer's intent for configuring SDN integration
+     */
+    sdnIntegrationIntent: pulumi.Input<string | enums.SdnIntegrationIntent>;
+    /**
+     * A string identifier used to construct the Network Controller (NC) REST resource name. This prefix helps group and distinguish SDN-managed network components and must follow specific formatting rules.
+     */
+    sdnPrefix?: pulumi.Input<string>;
+}
+/**
+ * hciConfigureSdnIntegrationJobPropertiesArgsProvideDefaults sets the appropriate defaults for HciConfigureSdnIntegrationJobPropertiesArgs
+ */
+export function hciConfigureSdnIntegrationJobPropertiesArgsProvideDefaults(val: HciConfigureSdnIntegrationJobPropertiesArgs): HciConfigureSdnIntegrationJobPropertiesArgs {
+    return {
+        ...val,
+        deploymentMode: (val.deploymentMode) ?? "Deploy",
+    };
 }
 
 /**
@@ -441,6 +771,16 @@ export interface IPConfigurationArgs {
 }
 
 /**
+ * The Azure Resource ID of an IPConfiguration resource
+ */
+export interface IPConfigurationArmReferenceArgs {
+    /**
+     * The Azure Resource ID of an IPConfiguration resource
+     */
+    resourceId?: pulumi.Input<string>;
+}
+
+/**
  * InterfaceIPConfigurationPropertiesFormat properties of IP configuration.
  */
 export interface IPConfigurationPropertiesArgs {
@@ -487,13 +827,53 @@ export interface IdentityArgs {
 }
 
 /**
- * The ARM ID for a Gallery Image.
+ * The Azure Resource ID for a Gallery Image.
  */
 export interface ImageArmReferenceArgs {
     /**
-     * The ARM ID for an image resource used by the virtual machine instance.
+     * The Azure Resource ID for an image resource used by the virtual machine instance.
      */
     id?: pulumi.Input<string>;
+}
+
+/**
+ * Inbound nat rule properties
+ */
+export interface InboundNATRuleArgs {
+    /**
+     * name of the inbound nat rule
+     */
+    name: pulumi.Input<string>;
+    /**
+     * properties of the inbound nat rule
+     */
+    properties: pulumi.Input<InboundNATRulePropertiesArgs>;
+}
+
+/**
+ * Inbound nat rule properties
+ */
+export interface InboundNATRulePropertiesArgs {
+    /**
+     * IP configuration for the target backend.
+     */
+    backendIPConfiguration: pulumi.Input<IPConfigurationArmReferenceArgs>;
+    /**
+     * backend Port for the inbound rule
+     */
+    backendPort: pulumi.Input<number>;
+    /**
+     * Frontend Port for the inbound rule
+     */
+    frontendPort: pulumi.Input<number>;
+    /**
+     * Protocol for the NAT rule
+     */
+    protocol: pulumi.Input<string | enums.InboundNATRuleProtocol>;
+    /**
+     * Public IP Address for this NAT rule
+     */
+    publicIPAddress: pulumi.Input<PublicIPAddressArmReferenceArgs>;
 }
 
 /**
@@ -586,6 +966,20 @@ export interface InterfaceDNSSettingsArgs {
 }
 
 /**
+ * IP address range configuration.
+ */
+export interface IpAddressRangeArgs {
+    /**
+     * End IP address.
+     */
+    endIp: pulumi.Input<string>;
+    /**
+     * Start IP address.
+     */
+    startIp: pulumi.Input<string>;
+}
+
+/**
  * The dnsServers of a device.
  */
 export interface IpPoolsArgs {
@@ -600,11 +994,161 @@ export interface IpPoolsArgs {
 }
 
 /**
- * The ARM ID for a Logical Network.
+ * LoadBalancer Backend Address
+ */
+export interface LoadBalancerBackendAddressArgs {
+    /**
+     * name of the backend address
+     */
+    name: pulumi.Input<string>;
+    /**
+     * backend address properties
+     */
+    properties: pulumi.Input<LoadBalancerBackendAddressPropertiesArgs>;
+}
+
+/**
+ * Reference to a LoadBalancer backend address pool reference
+ */
+export interface LoadBalancerBackendAddressPoolReferenceArgs {
+    /**
+     * name of the backend address pool
+     */
+    name: pulumi.Input<string>;
+}
+
+/**
+ * LoadBalancer Backend Address properties
+ */
+export interface LoadBalancerBackendAddressPropertiesArgs {
+    /**
+     * admin state - if set to false, the address is removed from the pool
+     */
+    adminState?: pulumi.Input<string | enums.LoadBalancerBackendAddressAdminState>;
+    /**
+     * Nic Based backend-ip association
+     */
+    networkInterfaceIPConfiguration?: pulumi.Input<IPConfigurationArmReferenceArgs>;
+}
+
+/**
+ * Reference to a LoadBalancer Frontend IPConfiguration
+ */
+export interface LoadBalancerFrontendIPConfigurationReferenceArgs {
+    /**
+     * name of the frontnedIPConfiguration
+     */
+    name: pulumi.Input<string>;
+}
+
+/**
+ * Reference to a LoadBalancer health probe
+ */
+export interface LoadBalancerProbeReferenceArgs {
+    /**
+     * name of the health probe
+     */
+    name: pulumi.Input<string>;
+}
+
+/**
+ * Load Balancer resource properties
+ */
+export interface LoadBalancerPropertiesArgs {
+    /**
+     * backendAddressPools for the loadbalancer
+     */
+    backendAddressPools?: pulumi.Input<pulumi.Input<BackendAddressPoolArgs>[]>;
+    /**
+     * Frontend IPs for the loadbalancer.
+     */
+    frontendIPConfigurations: pulumi.Input<pulumi.Input<FrontendIPConfigurationArgs>[]>;
+    /**
+     * load balancer rules
+     */
+    loadBalancingRules?: pulumi.Input<pulumi.Input<LoadBalancerRuleArgs>[]>;
+    /**
+     * load balancer health probes
+     */
+    probes?: pulumi.Input<pulumi.Input<ProbeArgs>[]>;
+}
+
+/**
+ * LoadBalancer Rules
+ */
+export interface LoadBalancerRuleArgs {
+    /**
+     * name of the load balancer rule
+     */
+    name: pulumi.Input<string>;
+    /**
+     * load balancer rule properties
+     */
+    properties: pulumi.Input<LoadBalancerRulePropertiesArgs>;
+}
+/**
+ * loadBalancerRuleArgsProvideDefaults sets the appropriate defaults for LoadBalancerRuleArgs
+ */
+export function loadBalancerRuleArgsProvideDefaults(val: LoadBalancerRuleArgs): LoadBalancerRuleArgs {
+    return {
+        ...val,
+        properties: pulumi.output(val.properties).apply(loadBalancerRulePropertiesArgsProvideDefaults),
+    };
+}
+
+/**
+ * Properties for LoadBalancerRules
+ */
+export interface LoadBalancerRulePropertiesArgs {
+    /**
+     * arm reference to backend pool being used by ths pool
+     */
+    backendAddressPool: pulumi.Input<LoadBalancerBackendAddressPoolReferenceArgs>;
+    /**
+     * backendPort to forward connections
+     */
+    backendPort: pulumi.Input<number>;
+    /**
+     * arm reference to frontend IP being used by this LB
+     */
+    frontendIPConfiguration: pulumi.Input<LoadBalancerFrontendIPConfigurationReferenceArgs>;
+    /**
+     * Frontend port to accept connections
+     */
+    frontendPort: pulumi.Input<number>;
+    /**
+     * Time for which connections are preserved before being torn down.
+     */
+    idleTimeoutInMinutes?: pulumi.Input<number>;
+    /**
+     * SessionPersistence: Default (5-tuple), SourceIP(2-tuple), sourceIPProtocol(3-tuple)
+     */
+    loadDistribution?: pulumi.Input<string | enums.LoadBalancerRuleSessionPersistenceType>;
+    /**
+     * Reference for the health probe for this connection
+     */
+    probe?: pulumi.Input<LoadBalancerProbeReferenceArgs>;
+    /**
+     * IP Protocol that the rule must load-balance
+     */
+    protocol: pulumi.Input<string | enums.LoadBalancerRuleTransportProtocol>;
+}
+/**
+ * loadBalancerRulePropertiesArgsProvideDefaults sets the appropriate defaults for LoadBalancerRulePropertiesArgs
+ */
+export function loadBalancerRulePropertiesArgsProvideDefaults(val: LoadBalancerRulePropertiesArgs): LoadBalancerRulePropertiesArgs {
+    return {
+        ...val,
+        loadDistribution: (val.loadDistribution) ?? "Default",
+    };
+}
+
+/**
+ * The Azure Resource ID for a Logical Network.
  */
 export interface LogicalNetworkArmReferenceArgs {
     /**
-     * The ARM ID for a Logical Network.
+     * The Azure Resource ID for a Logical Network.
      */
     id?: pulumi.Input<string>;
 }
@@ -634,6 +1178,82 @@ export interface ManagedServiceIdentityArgs {
 }
 
 /**
+ * The ARM ID for a Network Security Group.
+ */
+export interface NatGatewayArmReferenceArgs {
+    /**
+     * The ARM ID for a Network Security Group.
+     */
+    resourceId?: pulumi.Input<string>;
+}
+
+/**
+ * Nat Gateway resource properties
+ */
+export interface NatGatewayPropertiesArgs {
+    /**
+     * List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet
+     */
+    inboundNATRules?: pulumi.Input<pulumi.Input<InboundNATRuleArgs>[]>;
+    /**
+     * List of public ip addresses that the gateway can use for NAT.
+     */
+    publicIPAddresses?: pulumi.Input<pulumi.Input<PublicIPAddressArmReferenceArgs>[]>;
+}
+
+/**
+ * Network adapter configuration.
+ */
+export interface NetworkAdapterArgs {
+    /**
+     * Adapter Name.
+     */
+    adapterName?: pulumi.Input<string>;
+    /**
+     * Array of DNS addresses.
+     */
+    dnsAddressArray?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Gateway id.
+     */
+    gateway?: pulumi.Input<string>;
+    /**
+     * IP address.
+     */
+    ipAddress?: pulumi.Input<string>;
+    /**
+     * IP address range.
+     */
+    ipAddressRange?: pulumi.Input<IpAddressRangeArgs>;
+    /**
+     * Type of IP assignment.
+     */
+    ipAssignmentType: pulumi.Input<string | enums.IpAssignmentType>;
+    /**
+     * MAC address.
+     */
+    macAddress?: pulumi.Input<string>;
+    /**
+     * Subnet mask.
+     */
+    subnetMask?: pulumi.Input<string>;
+    /**
+     * VLAN ID for the network setup.
+     */
+    vlanId?: pulumi.Input<string>;
+}
+
+/**
+ * Network configuration.
+ */
+export interface NetworkConfigurationArgs {
+    /**
+     * List of network adapters.
+     */
+    networkAdapters?: pulumi.Input<pulumi.Input<NetworkAdapterArgs>[]>;
+}
+
+/**
  * network controller config for SDN Integration to deploy AzureStackHCI Cluster.
  */
 export interface NetworkControllerArgs {
@@ -652,21 +1272,21 @@ export interface NetworkControllerArgs {
 }
 
 /**
- * The ARM ID for a Network Interface.
+ * The Azure Resource ID for a Network Interface.
  */
 export interface NetworkInterfaceArmReferenceArgs {
     /**
-     * The ARM ID for a Network Interface.
+     * The Azure Resource ID for a Network Interface.
      */
     id?: pulumi.Input<string>;
 }
 
 /**
- * The ARM ID for a Network Security Group.
+ * The Azure Resource ID for a Network Security Group.
  */
 export interface NetworkSecurityGroupArmReferenceArgs {
     /**
-     * The ARM ID for a Network Security Group.
+     * The Azure Resource ID for a Network Security Group.
      */
     id?: pulumi.Input<string>;
 }
@@ -743,6 +1363,32 @@ export function observabilityArgsProvideDefaults(val: ObservabilityArgs): Observ
 }
 
 /**
+ * Onboarding configuration.
+ */
+export interface OnboardingConfigurationArgs {
+    /**
+     * Azure Arc virtual machine ID.
+     */
+    arcVirtualMachineId?: pulumi.Input<string>;
+    /**
+     * Location of the resource.
+     */
+    location?: pulumi.Input<string>;
+    /**
+     * Resource ID.
+     */
+    resourceId?: pulumi.Input<string>;
+    /**
+     * Tenant ID of the resource.
+     */
+    tenantId?: pulumi.Input<string>;
+    /**
+     * Type of the onboarding resource to support polymorphic resource.
+     */
+    type?: pulumi.Input<string | enums.OnboardingResourceType>;
+}
+
+/**
  * The OptionalServices of AzureStackHCI Cluster.
  */
 export interface OptionalServicesArgs {
@@ -750,6 +1396,67 @@ export interface OptionalServicesArgs {
      * The name of custom location.
      */
     customLocation?: pulumi.Input<string>;
+}
+
+/**
+ * Operating system profile.
+ */
+export interface OsProvisionProfileArgs {
+    /**
+     * GPG Public Key used for package verification
+     */
+    gpgPubKey?: pulumi.Input<string>;
+    /**
+     * Hash of the OS package downloaded
+     */
+    imageHash?: pulumi.Input<string>;
+    /**
+     * Operation sub type of OS Provisioning
+     */
+    operationType?: pulumi.Input<string | enums.OSOperationType>;
+    /**
+     * Location of the operating system image.
+     */
+    osImageLocation?: pulumi.Input<string>;
+    /**
+     * Name of the operating system.
+     */
+    osName?: pulumi.Input<string>;
+    /**
+     * Type of the operating system.
+     */
+    osType?: pulumi.Input<string>;
+    /**
+     * Version of the operating system.
+     */
+    osVersion?: pulumi.Input<string>;
+    /**
+     * Validated Solution Recipe version to be used for the job
+     */
+    vsrVersion?: pulumi.Input<string>;
+}
+/**
+ * osProvisionProfileArgsProvideDefaults sets the appropriate defaults for OsProvisionProfileArgs
+ */
+export function osProvisionProfileArgsProvideDefaults(val: OsProvisionProfileArgs): OsProvisionProfileArgs {
+    return {
+        ...val,
+        operationType: (val.operationType) ?? "Provision",
+    };
+}
+
+/**
+ * Details for ownership voucher.
+ */
+export interface OwnershipVoucherDetailsArgs {
+    /**
+     * Owner key type
+     */
+    ownerKeyType: pulumi.Input<string | enums.OwnerKeyType>;
+    /**
+     * Ownership voucher in base64 encoded format
+     */
+    ownershipVoucher: pulumi.Input<string>;
 }
 
 /**
@@ -764,6 +1471,183 @@ export interface PhysicalNodesArgs {
      * NETBIOS name of each physical server on your Azure Stack HCI cluster.
      */
     name?: pulumi.Input<string>;
+}
+
+/**
+ * Load balancer health probes
+ */
+export interface ProbeArgs {
+    /**
+     * name of the load balancer health probe
+     */
+    name: pulumi.Input<string>;
+    /**
+     * load balancer rule properties
+     */
+    properties: pulumi.Input<ProbePropertiesArgs>;
+}
+/**
+ * probeArgsProvideDefaults sets the appropriate defaults for ProbeArgs
+ */
+export function probeArgsProvideDefaults(val: ProbeArgs): ProbeArgs {
+    return {
+        ...val,
+        properties: pulumi.output(val.properties).apply(probePropertiesArgsProvideDefaults),
+    };
+}
+
+/**
+ * properties for LoadBalancer health probes
+ */
+export interface ProbePropertiesArgs {
+    /**
+     * Probe interval in seconds (5-300) default 15
+     */
+    intervalInSeconds?: pulumi.Input<number>;
+    /**
+     * number of consecutive probe failures before marking unhealthy (1-20) default 2
+     */
+    numberOfProbes?: pulumi.Input<number>;
+    /**
+     * Port on the backend address to probe
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Protocol for this probe: Can be Tcp or Http - Diverges from Azure where Https is also an option
+     */
+    protocol: pulumi.Input<string | enums.LoadBalancerProbeProtocol>;
+    /**
+     * For http probes, specify the request path e.g. /health
+     */
+    requestPath?: pulumi.Input<string>;
+}
+/**
+ * probePropertiesArgsProvideDefaults sets the appropriate defaults for ProbePropertiesArgs
+ */
+export function probePropertiesArgsProvideDefaults(val: ProbePropertiesArgs): ProbePropertiesArgs {
+    return {
+        ...val,
+        intervalInSeconds: (val.intervalInSeconds) ?? 15,
+        numberOfProbes: (val.numberOfProbes) ?? 2,
+    };
+}
+
+/**
+ * Represents the properties of an Azure Linux restricted operating environment Provision Os job.
+ */
+export interface ProvisionOsJobPropertiesArgs {
+    /**
+     * Deployment mode to trigger job.
+     */
+    deploymentMode?: pulumi.Input<string | enums.DeploymentMode>;
+    /**
+     * Job Type supported.
+     * Expected value is 'ProvisionOs'.
+     */
+    jobType: pulumi.Input<"ProvisionOs">;
+    /**
+     * Os Provisioning request.
+     */
+    provisioningRequest: pulumi.Input<ProvisioningRequestArgs>;
+}
+/**
+ * provisionOsJobPropertiesArgsProvideDefaults sets the appropriate defaults for ProvisionOsJobPropertiesArgs
+ */
+export function provisionOsJobPropertiesArgsProvideDefaults(val: ProvisionOsJobPropertiesArgs): ProvisionOsJobPropertiesArgs {
+    return {
+        ...val,
+        provisioningRequest: pulumi.output(val.provisioningRequest).apply(provisioningRequestArgsProvideDefaults),
+    };
+}
+
+/**
+ * Details for device provisioning.
+ */
+export interface ProvisioningDetailsArgs {
+    /**
+     * Operating system profile.
+     */
+    osProfile: pulumi.Input<OsProvisionProfileArgs>;
+    /**
+     * User configuration.
+     */
+    userDetails?: pulumi.Input<pulumi.Input<UserDetailsArgs>[]>;
+}
+/**
+ * provisioningDetailsArgsProvideDefaults sets the appropriate defaults for ProvisioningDetailsArgs
+ */
+export function provisioningDetailsArgsProvideDefaults(val: ProvisioningDetailsArgs): ProvisioningDetailsArgs {
+    return {
+        ...val,
+        osProfile: pulumi.output(val.osProfile).apply(osProvisionProfileArgsProvideDefaults),
+    };
+}
+
+/**
+ * Represents a provisioning request.
+ */
+export interface ProvisioningRequestArgs {
+    /**
+     * Base64 encoded custom configuration for CAPI to use
+     */
+    customConfiguration?: pulumi.Input<string>;
+    /**
+     * Device configuration.
+     */
+    deviceConfiguration?: pulumi.Input<TargetDeviceConfigurationArgs>;
+    /**
+     * Onboarding configuration.
+     */
+    onboardingConfiguration?: pulumi.Input<OnboardingConfigurationArgs>;
+    /**
+     * Operating system profile.
+     */
+    osProfile: pulumi.Input<OsProvisionProfileArgs>;
+    /**
+     * Target operating system to support polymorphic resource.
+     */
+    target: pulumi.Input<string | enums.ProvisioningOsType>;
+    /**
+     * User configuration.
+     */
+    userDetails?: pulumi.Input<pulumi.Input<UserDetailsArgs>[]>;
+}
+/**
+ * provisioningRequestArgsProvideDefaults sets the appropriate defaults for ProvisioningRequestArgs
+ */
+export function provisioningRequestArgsProvideDefaults(val: ProvisioningRequestArgs): ProvisioningRequestArgs {
+    return {
+        ...val,
+        osProfile: pulumi.output(val.osProfile).apply(osProvisionProfileArgsProvideDefaults),
+    };
+}
+
+/**
+ * The Azure Resource ID of a Public IP resource
+ */
+export interface PublicIPAddressArmReferenceArgs {
+    /**
+     * The Azure Resource ID of a Public IP resource
+     */
+    resourceId?: pulumi.Input<string>;
+}
+
+/**
+ * Public IP Properties resource.
+ */
+export interface PublicIPAddressPropertiesArgs {
+    /**
+     * IP Address. This is static. If the user specifies, we allocate that otherwise allocate from logical network address space.
+     */
+    ipAddress?: pulumi.Input<string>;
+    /**
+     * ipAllocationScope: Azure Reference to a particular IP Pool (ALM) or a LogicalNetwork (ALL) for allocating public IP
+     */
+    ipAllocationScope?: pulumi.Input<string>;
+    /**
+     * Whether the public IP is v4 or v6. Defaults to IPv4
+     */
+    publicIPAddressVersion?: pulumi.Input<string | enums.PublicIPAddressType>;
 }
 
 /**
@@ -936,6 +1820,30 @@ export interface ServiceConfigurationArgs {
 }
 
 /**
+ * Site Details consists of common configurations.
+ */
+export interface SiteDetailsArgs {
+    /**
+     * Edge Device configuration received from site common configuration.
+     */
+    deviceConfiguration?: pulumi.Input<TargetDeviceConfigurationArgs>;
+    /**
+     * Site resource Id to be set during Edge Machine resource creation.
+     */
+    siteResourceId: pulumi.Input<string>;
+}
+
+/**
+ * Properties under the snapshot resource
+ */
+export interface SnapshotPropertiesArgs {
+    /**
+     * Data used when creating a snapshot
+     */
+    creationData?: pulumi.Input<CreationDataArgs>;
+}
+
+/**
  * Software Assurance properties of the cluster.
  */
 export interface SoftwareAssurancePropertiesArgs {
@@ -1049,6 +1957,16 @@ export interface StorageAdapterIPInfoArgs {
 }
 
 /**
+ * Storage configuration.
+ */
+export interface StorageConfigurationArgs {
+    /**
+     * Partition size.
+     */
+    partitionSize?: pulumi.Input<string>;
+}
+
+/**
  * The StorageNetworks of a cluster.
  */
 export interface StorageNetworksArgs {
@@ -1113,13 +2031,57 @@ export interface SubnetArgs {
 }
 
 /**
- * The ARM ID for a Network Interface.
+ * The Azure Resource ID for a Network Interface.
  */
 export interface SubnetIpConfigurationReferenceArgs {
     /**
-     * The ARM ID for a Network Interface.
+     * The Azure Resource ID for a Network Interface.
      */
     id?: pulumi.Input<string>;
+}
+
+/**
+ * Device configuration.
+ */
+export interface TargetDeviceConfigurationArgs {
+    /**
+     * Hostname of the device.
+     */
+    hostName?: pulumi.Input<string>;
+    /**
+     * Network configuration.
+     */
+    network?: pulumi.Input<NetworkConfigurationArgs>;
+    /**
+     * Storage configuration.
+     */
+    storage?: pulumi.Input<StorageConfigurationArgs>;
+    /**
+     * Time configuration.
+     */
+    time?: pulumi.Input<TimeConfigurationArgs>;
+    /**
+     * Web proxy configuration.
+     */
+    webProxy?: pulumi.Input<WebProxyConfigurationArgs>;
+}
+
+/**
+ * Time configuration.
+ */
+export interface TimeConfigurationArgs {
+    /**
+     * Primary NTP server.
+     */
+    primaryTimeServer?: pulumi.Input<string>;
+    /**
+     * Secondary NTP server.
+     */
+    secondaryTimeServer?: pulumi.Input<string>;
+    /**
+     * Time zone.
+     */
+    timeZone?: pulumi.Input<string>;
 }
 
 /**
@@ -1141,6 +2103,28 @@ export interface UpdatePrerequisiteArgs {
 }
 
 /**
+ * User configuration.
+ */
+export interface UserDetailsArgs {
+    /**
+     * Location of the secret used for authentication.
+     */
+    secretLocation?: pulumi.Input<string>;
+    /**
+     * Type of the secret used for authentication.
+     */
+    secretType: pulumi.Input<string | enums.SecretType>;
+    /**
+     * SSH Public Key for the user.
+     */
+    sshPubKey?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of the user.
+     */
+    userName: pulumi.Input<string>;
+}
+
+/**
  * Specifies the security profile settings for the managed disk. NOTE: It can only be set for Confidential VMs
  */
 export interface VMDiskSecurityProfileArgs {
@@ -1151,11 +2135,11 @@ export interface VMDiskSecurityProfileArgs {
 }
 
 /**
- * The ARM ID for a Virtual Hard Disk.
+ * The Azure Resource ID for a Virtual Hard Disk.
  */
 export interface VirtualHardDiskArmReferenceArgs {
     /**
-     * The ARM ID for a Virtual Hard Disk.
+     * The Azure Resource ID for a Virtual Hard Disk.
      */
     id?: pulumi.Input<string>;
 }
@@ -1429,7 +2413,7 @@ export interface VirtualMachineInstancePropertiesStorageProfileArgs {
  */
 export interface VirtualMachineInstancePropertiesStorageProfileOsDiskArgs {
     /**
-     * The ARM ID for a Virtual Hard Disk.
+     * The Azure Resource ID for a Virtual Hard Disk.
      */
     id?: pulumi.Input<string>;
     /**
@@ -1689,6 +2673,16 @@ export interface VirtualMachinePropertiesWindowsConfigurationArgs {
 }
 
 /**
+ * The Azure Resource ID for a Virtual Network
+ */
+export interface VirtualNetworkArmReferenceArgs {
+    /**
+     * The Azure Resource ID for a Virtual Network.
+     */
+    resourceId?: pulumi.Input<string>;
+}
+
+/**
  * DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
  */
 export interface VirtualNetworkPropertiesDhcpOptionsArgs {
@@ -1783,6 +2777,38 @@ export interface VirtualNetworkPropertiesSubnetsArgs {
 }
 
 /**
+ * The Azure Resource ID for a Virtual Network subnet
+ */
+export interface VirtualNetworkSubnetArmReferenceArgs {
+    /**
+     * The Azure Resource ID for a Virtual Network subnet.
+     */
+    resourceId?: pulumi.Input<string>;
+}
+
+/**
+ * VirtualNetwork subnet resource
+ */
+export interface VirtualNetworkSubnetPropertiesArgs {
+    /**
+     * Subnet CIDR
+     */
+    addressPrefix: pulumi.Input<string>;
+    /**
+     * Nat Gateway attached to the subnet for non-vnet traffic.
+     */
+    natGateway?: pulumi.Input<NatGatewayArmReferenceArgs>;
+    /**
+     * Network Security Group attached to the subnet.
+     */
+    networkSecurityGroup?: pulumi.Input<NetworkSecurityGroupArmReferenceArgs>;
+    /**
+     * RouteTable defining custom routes for the subnet.
+     */
+    routeTable?: pulumi.Input<RouteTableArgs>;
+}
+
+/**
  * The VirtualSwitchConfigurationOverrides of a cluster.
  */
 export interface VirtualSwitchConfigurationOverridesArgs {
@@ -1797,15 +2823,19 @@ export interface VirtualSwitchConfigurationOverridesArgs {
 }
 
 /**
- * The credentials used to login to the image repository that has access to the specified image
+ * Web proxy configuration.
  */
-export interface VmImageRepositoryCredentialsArgs {
+export interface WebProxyConfigurationArgs {
     /**
-     * Password for accessing image repository
+     * Bypass list for the web proxy.
      */
-    password: pulumi.Input<string>;
+    bypassList?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Username for accessing image repository
+     * Connection URI of the web proxy.
      */
-    username: pulumi.Input<string>;
+    connectionUri?: pulumi.Input<string>;
+    /**
+     * Port of the web proxy.
+     */
+    port?: pulumi.Input<string>;
 }

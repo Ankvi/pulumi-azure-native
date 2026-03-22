@@ -7,6 +7,29 @@ export interface AadConfigurationArgs {
     adminGroupObjectIds: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface AccessBridgeSecurityRuleArgs {
+    /**
+     * The user provided value describing this rule.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The direction of allowed network traffic based on the rule.
+     */
+    direction: pulumi.Input<string | enums.SecurityRuleDirection>;
+    /**
+     * The set of IPv4 addresses permitted as the source or destination of the security rule. For as single address, utilize a /32 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 10.10.10.10-10.10.10.20 or 10.10.10.10/24.
+     */
+    ipv4Addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The set of IPv6 addresses permitted as the source or destination of the security rule. For as single address, utilize a /128 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 2001:db8:abcd::1-2001:db8:abcd::ff or 2001:db8:abcd::1/64.
+     */
+    ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The source or destination port or port range. Example 24562 or 24562-24570.
+     */
+    port: pulumi.Input<string>;
+}
+
 export interface AdministrativeCredentialsArgs {
     /**
      * The password of the administrator of the device used during initialization.

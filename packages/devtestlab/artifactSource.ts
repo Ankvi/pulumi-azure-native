@@ -58,11 +58,11 @@ export class ArtifactSource extends pulumi.CustomResource {
      */
     declare public readonly folderPath: pulumi.Output<string | undefined>;
     /**
-     * The location of the resource.
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string | undefined>;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -82,11 +82,15 @@ export class ArtifactSource extends pulumi.CustomResource {
      */
     declare public readonly status: pulumi.Output<string | undefined>;
     /**
-     * The tags of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -131,6 +135,7 @@ export class ArtifactSource extends pulumi.CustomResource {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdDate"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["uniqueIdentifier"] = undefined /*out*/;
         } else {
@@ -146,6 +151,7 @@ export class ArtifactSource extends pulumi.CustomResource {
             resourceInputs["securityToken"] = undefined /*out*/;
             resourceInputs["sourceType"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["uniqueIdentifier"] = undefined /*out*/;
@@ -183,11 +189,11 @@ export interface ArtifactSourceArgs {
      */
     labName: pulumi.Input<string>;
     /**
-     * The location of the resource.
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
-     * The name of the ArtifactSource
+     * The name of the artifact source.
      */
     name?: pulumi.Input<string>;
     /**
@@ -207,7 +213,7 @@ export interface ArtifactSourceArgs {
      */
     status?: pulumi.Input<string | types.enums.EnableStatus>;
     /**
-     * The tags of the resource.
+     * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
