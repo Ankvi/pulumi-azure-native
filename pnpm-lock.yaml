@@ -776,6 +776,38 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
+  packages/computebulkactions:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
+
+  packages/computelimit:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
+
   packages/computeschedule:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -1524,6 +1556,22 @@ importers:
       typescript:
         specifier: ^5.0.0
         version: 5.2.2
+
+  packages/discovery:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
 
   packages/dns:
     dependencies:
@@ -2485,6 +2533,22 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
+  packages/managedops:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.142.0
+        version: 3.142.0(ts-node@7.0.1)(typescript@5.7.2)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.12.14
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.2
+
   packages/managedservices:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -2612,38 +2676,6 @@ importers:
       typescript:
         specifier: ^5.0.0
         version: 5.7.2
-
-  packages/mixedreality:
-    dependencies:
-      '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:*
-        version: link:../core
-      '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.142.0(ts-node@7.0.1)(typescript@5.2.2)
-    devDependencies:
-      '@types/node':
-        specifier: ^20.0.0
-        version: 20.6.2
-      typescript:
-        specifier: ^5.0.0
-        version: 5.2.2
-
-  packages/mobilenetwork:
-    dependencies:
-      '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:*
-        version: link:../core
-      '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.142.0(ts-node@7.0.1)(typescript@5.2.2)
-    devDependencies:
-      '@types/node':
-        specifier: ^20.0.0
-        version: 20.6.2
-      typescript:
-        specifier: ^5.0.0
-        version: 5.2.2
 
   packages/mongocluster:
     dependencies:
@@ -3862,22 +3894,6 @@ importers:
         version: 5.7.2
 
   packages/verifiedid:
-    dependencies:
-      '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:*
-        version: link:../core
-      '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.142.0(ts-node@7.0.1)(typescript@5.2.2)
-    devDependencies:
-      '@types/node':
-        specifier: ^20.0.0
-        version: 20.6.2
-      typescript:
-        specifier: ^5.0.0
-        version: 5.2.2
-
-  packages/videoanalyzer:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
         specifier: workspace:*

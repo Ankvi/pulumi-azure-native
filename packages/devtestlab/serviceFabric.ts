@@ -50,11 +50,11 @@ export class ServiceFabric extends pulumi.CustomResource {
      */
     declare public readonly externalServiceFabricId: pulumi.Output<string | undefined>;
     /**
-     * The location of the resource.
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string | undefined>;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -62,11 +62,15 @@ export class ServiceFabric extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
-     * The tags of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -105,6 +109,7 @@ export class ServiceFabric extends pulumi.CustomResource {
             resourceInputs["applicableSchedule"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["uniqueIdentifier"] = undefined /*out*/;
         } else {
@@ -115,6 +120,7 @@ export class ServiceFabric extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["uniqueIdentifier"] = undefined /*out*/;
@@ -143,11 +149,11 @@ export interface ServiceFabricArgs {
      */
     labName: pulumi.Input<string>;
     /**
-     * The location of the resource.
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
-     * The name of the ServiceFabric
+     * The name of the service fabric.
      */
     name?: pulumi.Input<string>;
     /**
@@ -155,7 +161,7 @@ export interface ServiceFabricArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The tags of the resource.
+     * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

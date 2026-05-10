@@ -11912,6 +11912,10 @@ export interface HDInsightOnDemandLinkedServiceResponse {
      */
     clusterResourceGroup: any;
     /**
+     * HDInsight On-demand cluster resource group authentication type.
+     */
+    clusterResourceGroupAuthType?: string;
+    /**
      * Number of worker/data nodes in the cluster. Suggestion value: 4. Type: int (or Expression with resultType int).
      */
     clusterSize: any;
@@ -13717,6 +13721,20 @@ export interface IntegrationRuntimeVNetPropertiesResponse {
 }
 
 /**
+ * Interactive authoring capability type properties.
+ */
+export interface InteractiveQueryPropertiesResponse {
+    /**
+     * The allowed idle time for interactive authoring.
+     */
+    autoTerminationMinutes: number;
+    /**
+     * The interactive authoring capability status. Must be one of InteractiveCapabilityStatus. The default value is 'Enabling'.
+     */
+    status: string;
+}
+
+/**
  * Jira Service linked service.
  */
 export interface JiraLinkedServiceResponse {
@@ -13812,7 +13830,11 @@ export interface JiraObjectDatasetResponse {
      */
     structure?: any;
     /**
-     * The table name. Type: string (or Expression with resultType string).
+     * The table name of the Jira, applies only for Jira V2 dataset. Type: string (or Expression with resultType string).
+     */
+    table?: any;
+    /**
+     * This property is only supported in Jira V1 Dataset, please consider upgrading to V2 dataset.
      */
     tableName?: any;
     /**
@@ -14801,6 +14823,10 @@ export interface ManagedIntegrationRuntimeResponse {
      * Integration runtime description.
      */
     description?: string;
+    /**
+     * Interactive authoring capability reference.
+     */
+    interactiveQuery?: InteractiveQueryPropertiesResponse;
     /**
      * Managed Virtual Network reference.
      */
@@ -16366,6 +16392,10 @@ export interface NetezzaLinkedServiceResponse {
      */
     connectionString?: any;
     /**
+     * Database name for connection. Type: string.
+     */
+    database?: any;
+    /**
      * Linked service description.
      */
     description?: string;
@@ -16378,14 +16408,30 @@ export interface NetezzaLinkedServiceResponse {
      */
     parameters?: {[key: string]: ParameterSpecificationResponse};
     /**
+     * The port for the connection. Type: integer.
+     */
+    port?: any;
+    /**
      * The Azure key vault secret reference of password in connection string.
      */
     pwd?: AzureKeyVaultSecretReferenceResponse;
+    /**
+     * Specifies the security level for the driver connection to the data store. PreferredUnSecured : prefer unsecured, allow fallback to secured connection if required. OnlyUnSecured : strictly unsecured, no fallback.
+     */
+    securityLevel?: string;
+    /**
+     * Server name for connection. Type: string.
+     */
+    server?: any;
     /**
      * Type of linked service.
      * Expected value is 'Netezza'.
      */
     type: "Netezza";
+    /**
+     * Username for authentication. Type: string.
+     */
+    uid?: any;
     /**
      * Version of the linked service.
      */

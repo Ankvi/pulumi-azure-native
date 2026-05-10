@@ -340,6 +340,16 @@ export interface IdentityResponseUserAssignedIdentities {
 }
 
 /**
+ * Information about a tenant managing the subscription.
+ */
+export interface ManagedByTenantResponse {
+    /**
+     * The tenant ID of the managing tenant.
+     */
+    tenantId?: string;
+}
+
+/**
  * Lock owner properties.
  */
 export interface ManagementLockOwnerResponse {
@@ -1108,6 +1118,66 @@ export interface SelectorResponse {
      * The list of values to filter out.
      */
     notIn?: string[];
+}
+
+/**
+ * Subscription policies.
+ */
+export interface SubscriptionPoliciesResponse {
+    /**
+     * The subscription location placement ID.
+     */
+    locationPlacementId?: string;
+    /**
+     * The subscription quota ID.
+     */
+    quotaId?: string;
+    /**
+     * The subscription spending limit.
+     */
+    spendingLimit?: string;
+}
+
+/**
+ * Subscription information.
+ */
+export interface SubscriptionResponse {
+    /**
+     * The authorization source of the request.
+     */
+    authorizationSource?: string;
+    /**
+     * The subscription display name.
+     */
+    displayName?: string;
+    /**
+     * The fully qualified ID for the subscription.
+     */
+    id?: string;
+    /**
+     * An array containing the tenants managing the subscription.
+     */
+    managedByTenants?: ManagedByTenantResponse[];
+    /**
+     * The subscription state. Possible values are Enabled, Warned, PastDue, Disabled, and Deleted.
+     */
+    state?: string;
+    /**
+     * The subscription ID.
+     */
+    subscriptionId?: string;
+    /**
+     * The subscription policies.
+     */
+    subscriptionPolicies?: SubscriptionPoliciesResponse;
+    /**
+     * The tags attached to the subscription.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The subscription tenant ID.
+     */
+    tenantId?: string;
 }
 
 /**

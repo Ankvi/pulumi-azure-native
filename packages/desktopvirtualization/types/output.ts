@@ -436,6 +436,42 @@ export interface ScalingScheduleResponse {
 }
 
 /**
+ * Contains details on the failure.
+ */
+export interface SessionHostHealthCheckFailureDetailsResponse {
+    /**
+     * Error code corresponding for the failure.
+     */
+    errorCode: number;
+    /**
+     * The timestamp of the last update.
+     */
+    lastHealthCheckDateTime: string;
+    /**
+     * Failure message: hints on what is wrong and how to recover.
+     */
+    message: string;
+}
+
+/**
+ * The report for session host information.
+ */
+export interface SessionHostHealthCheckReportResponse {
+    /**
+     * Additional detailed information on the failure.
+     */
+    additionalFailureDetails: SessionHostHealthCheckFailureDetailsResponse;
+    /**
+     * Represents the name of the health check operation performed.
+     */
+    healthCheckName: string;
+    /**
+     * Represents the Health state of the health check we performed.
+     */
+    healthCheckResult: string;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {

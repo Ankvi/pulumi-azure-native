@@ -5,17 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
  */
 export interface ActionOnUnmanageArgs {
     /**
-     * Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+     * Specifies an action for a newly unmanaged resource management group.
      */
-    managementGroups?: pulumi.Input<string | enums.DeploymentStacksDeleteDetachEnum>;
+    managementGroups?: pulumi.Input<string | enums.UnmanageActionManagementGroupMode>;
     /**
-     * Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+     * Specifies an action for a newly unmanaged resource group.
      */
-    resourceGroups?: pulumi.Input<string | enums.DeploymentStacksDeleteDetachEnum>;
+    resourceGroups?: pulumi.Input<string | enums.UnmanageActionResourceGroupMode>;
     /**
-     * Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+     * Specifies an action for a newly unmanaged resource.
      */
-    resources: pulumi.Input<string | enums.DeploymentStacksDeleteDetachEnum>;
+    resources: pulumi.Input<string | enums.UnmanageActionResourceMode>;
+    /**
+     * Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+     */
+    resourcesWithoutDeleteSupport?: pulumi.Input<string | enums.ResourcesWithoutDeleteSupportAction>;
 }
 
 /**
@@ -79,9 +83,51 @@ export interface DenySettingsArgs {
 }
 
 /**
+ * The value or how to get a value for an extension config property.
+ */
+export interface DeploymentExtensionConfigItemArgs {
+    /**
+     * The key vault reference of the config item.
+     */
+    keyVaultReference?: pulumi.Input<KeyVaultParameterReferenceArgs>;
+    /**
+     * The value of the config item. The type is determined by the extension config schema.
+     */
+    value?: any;
+}
+
+/**
+ * Deployment external input for parameterization.
+ */
+export interface DeploymentExternalInputArgs {
+    /**
+     * External input value.
+     */
+    value: any;
+}
+
+/**
+ * Deployment external input definition for parameterization.
+ */
+export interface DeploymentExternalInputDefinitionArgs {
+    /**
+     * Configuration for the external input.
+     */
+    config?: any;
+    /**
+     * The kind of external input.
+     */
+    kind: pulumi.Input<string>;
+}
+
+/**
  * Deployment parameter for the template.
  */
 export interface DeploymentParameterArgs {
+    /**
+     * Input expression to the parameter.
+     */
+    expression?: pulumi.Input<string>;
     /**
      * Azure Key Vault parameter reference.
      */
@@ -182,6 +228,72 @@ export interface DeploymentStacksTemplateLinkArgs {
      * The URI of the template to deploy. Use either the uri or id property, but not both.
      */
     uri?: pulumi.Input<string>;
+}
+
+/**
+ * DeploymentStack WhatIfResult Properties
+ */
+export interface DeploymentStacksWhatIfResultPropertiesArgs {
+    /**
+     * Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
+     */
+    actionOnUnmanage: pulumi.Input<ActionOnUnmanageArgs>;
+    /**
+     * The debug setting of the deployment.
+     */
+    debugSetting?: pulumi.Input<DeploymentStacksDebugSettingArgs>;
+    /**
+     * Defines how resources deployed by the stack are locked.
+     */
+    denySettings: pulumi.Input<DenySettingsArgs>;
+    /**
+     * The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
+     */
+    deploymentScope?: pulumi.Input<string>;
+    /**
+     * The deployment stack id to use as the basis for comparison.
+     */
+    deploymentStackResourceId: pulumi.Input<string>;
+    /**
+     * Deployment stack description. Max length of 4096 characters.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template.
+     */
+    extensionConfigs?: pulumi.Input<{[key: string]: pulumi.Input<{[key: string]: pulumi.Input<DeploymentExtensionConfigItemArgs>}>}>;
+    /**
+     * External input definitions, used by external tooling to define expected external input values.
+     */
+    externalInputDefinitions?: pulumi.Input<{[key: string]: pulumi.Input<DeploymentExternalInputDefinitionArgs>}>;
+    /**
+     * External input values, used by external tooling for parameter evaluation.
+     */
+    externalInputs?: pulumi.Input<{[key: string]: pulumi.Input<DeploymentExternalInputArgs>}>;
+    /**
+     * Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
+     */
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<DeploymentParameterArgs>}>;
+    /**
+     * The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
+     */
+    parametersLink?: pulumi.Input<DeploymentStacksParametersLinkArgs>;
+    /**
+     * The interval to persist the deployment stack what-if result in ISO 8601 format.
+     */
+    retentionInterval: pulumi.Input<string>;
+    /**
+     * The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
+     */
+    template?: any;
+    /**
+     * The URI of the template. Use either the templateLink property or the template property, but not both.
+     */
+    templateLink?: pulumi.Input<DeploymentStacksTemplateLinkArgs>;
+    /**
+     * The validation level of the deployment stack
+     */
+    validationLevel?: pulumi.Input<string | enums.ValidationLevel>;
 }
 
 /**

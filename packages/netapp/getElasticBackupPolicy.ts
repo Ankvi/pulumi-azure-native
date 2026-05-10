@@ -1,0 +1,105 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * Get the Elastic Backup Policy
+ *
+ * Uses Azure REST API version 2025-09-01-preview.
+ *
+ * Other available API versions: 2025-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ */
+export function getElasticBackupPolicy(args: GetElasticBackupPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticBackupPolicyResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:netapp:getElasticBackupPolicy", {
+        "accountName": args.accountName,
+        "backupPolicyName": args.backupPolicyName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetElasticBackupPolicyArgs {
+    /**
+     * The name of the ElasticAccount
+     */
+    accountName: string;
+    /**
+     * The name of the ElasticBackupPolicy
+     */
+    backupPolicyName: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+}
+
+/**
+ * NetApp Elastic Backup Policy resource
+ */
+export interface GetElasticBackupPolicyResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
+     */
+    readonly eTag: string;
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    readonly id: string;
+    /**
+     * The geo-location where the resource lives
+     */
+    readonly location: string;
+    /**
+     * The name of the resource
+     */
+    readonly name: string;
+    /**
+     * The resource-specific properties for this resource.
+     */
+    readonly properties: types.outputs.ElasticBackupPolicyPropertiesResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
+     */
+    readonly tags?: {[key: string]: string};
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    readonly type: string;
+}
+/**
+ * Get the Elastic Backup Policy
+ *
+ * Uses Azure REST API version 2025-09-01-preview.
+ *
+ * Other available API versions: 2025-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ */
+export function getElasticBackupPolicyOutput(args: GetElasticBackupPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetElasticBackupPolicyResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:netapp:getElasticBackupPolicy", {
+        "accountName": args.accountName,
+        "backupPolicyName": args.backupPolicyName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetElasticBackupPolicyOutputArgs {
+    /**
+     * The name of the ElasticAccount
+     */
+    accountName: pulumi.Input<string>;
+    /**
+     * The name of the ElasticBackupPolicy
+     */
+    backupPolicyName: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

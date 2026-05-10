@@ -4,6 +4,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Defines an Network Experiment Profile and lists of Experiments
  *
  * Uses Azure REST API version 2019-11-01.
+ *
+ * Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNetworkExperimentProfile(args: GetNetworkExperimentProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkExperimentProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -69,6 +71,8 @@ export interface GetNetworkExperimentProfileResult {
  * Defines an Network Experiment Profile and lists of Experiments
  *
  * Uses Azure REST API version 2019-11-01.
+ *
+ * Other available API versions: 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNetworkExperimentProfileOutput(args: GetNetworkExperimentProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkExperimentProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

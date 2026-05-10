@@ -441,6 +441,28 @@ export interface FleetHubProfileArgs {
 }
 
 /**
+ * The properties of a fleet managed namespace.
+ */
+export interface FleetManagedNamespacePropertiesArgs {
+    /**
+     * Action if the managed namespace with the same name already exists. Default is Never.
+     */
+    adoptionPolicy: pulumi.Input<string | enums.AdoptionPolicy>;
+    /**
+     * Delete options of a fleet managed namespace. Default is Keep.
+     */
+    deletePolicy: pulumi.Input<string | enums.DeletePolicy>;
+    /**
+     * The namespace properties for the fleet managed namespace.
+     */
+    managedNamespaceProperties?: pulumi.Input<ManagedNamespacePropertiesArgs>;
+    /**
+     * The profile of the propagation to create the namespace.
+     */
+    propagationPolicy?: pulumi.Input<PropagationPolicyArgs>;
+}
+
+/**
  * GPU settings for the Agent Pool.
  */
 export interface GPUProfileArgs {
@@ -516,6 +538,18 @@ export interface IstioEgressGatewayArgs {
      * Whether to enable the egress gateway.
      */
     enabled: pulumi.Input<boolean>;
+    /**
+     * Name of the gateway configuration custom resource for the Istio add-on egress gateway. Must be specified when enabling the Istio egress gateway. Must be deployed in the same namespace that the Istio egress gateway will be deployed in.
+     */
+    gatewayConfigurationName?: pulumi.Input<string>;
+    /**
+     * Name of the Istio add-on egress gateway.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Namespace that the Istio add-on egress gateway should be deployed in. If unspecified, the default is aks-istio-egress.
+     */
+    namespace?: pulumi.Input<string>;
 }
 
 /**
@@ -777,6 +811,87 @@ export interface LinuxOSConfigArgs {
 }
 
 /**
+ * Overrides for localDNS profile.
+ */
+export interface LocalDNSOverrideArgs {
+    /**
+     * Cache max TTL in seconds. See [cache plugin](https://coredns.io/plugins/cache) for more information.
+     */
+    cacheDurationInSeconds?: pulumi.Input<number>;
+    /**
+     * Destination server for DNS queries to be forwarded from localDNS.
+     */
+    forwardDestination?: pulumi.Input<string | enums.LocalDNSForwardDestination>;
+    /**
+     * Forward policy for selecting upstream DNS server. See [forward plugin](https://coredns.io/plugins/forward) for more information.
+     */
+    forwardPolicy?: pulumi.Input<string | enums.LocalDNSForwardPolicy>;
+    /**
+     * Maximum number of concurrent queries. See [forward plugin](https://coredns.io/plugins/forward) for more information.
+     */
+    maxConcurrent?: pulumi.Input<number>;
+    /**
+     * Enforce TCP or prefer UDP protocol for connections from localDNS to upstream DNS server.
+     */
+    protocol?: pulumi.Input<string | enums.LocalDNSProtocol>;
+    /**
+     * Log level for DNS queries in localDNS.
+     */
+    queryLogging?: pulumi.Input<string | enums.LocalDNSQueryLogging>;
+    /**
+     * Policy for serving stale data. See [cache plugin](https://coredns.io/plugins/cache) for more information.
+     */
+    serveStale?: pulumi.Input<string | enums.LocalDNSServeStale>;
+    /**
+     * Serve stale duration in seconds. See [cache plugin](https://coredns.io/plugins/cache) for more information.
+     */
+    serveStaleDurationInSeconds?: pulumi.Input<number>;
+}
+/**
+ * localDNSOverrideArgsProvideDefaults sets the appropriate defaults for LocalDNSOverrideArgs
+ */
+export function localDNSOverrideArgsProvideDefaults(val: LocalDNSOverrideArgs): LocalDNSOverrideArgs {
+    return {
+        ...val,
+        cacheDurationInSeconds: (val.cacheDurationInSeconds) ?? 3600,
+        forwardDestination: (val.forwardDestination) ?? "ClusterCoreDNS",
+        forwardPolicy: (val.forwardPolicy) ?? "Sequential",
+        maxConcurrent: (val.maxConcurrent) ?? 1000,
+        protocol: (val.protocol) ?? "PreferUDP",
+        queryLogging: (val.queryLogging) ?? "Error",
+        serveStale: (val.serveStale) ?? "Immediate",
+        serveStaleDurationInSeconds: (val.serveStaleDurationInSeconds) ?? 3600,
+    };
+}
+
+/**
+ * Configures the per-node local DNS, with VnetDNS and KubeDNS overrides. LocalDNS helps improve performance and reliability of DNS resolution in an AKS cluster. For more details see aka.ms/aks/localdns.
+ */
+export interface LocalDNSProfileArgs {
+    /**
+     * KubeDNS overrides apply to DNS traffic from pods with dnsPolicy:ClusterFirst (referred to as KubeDNS traffic).
+     */
+    kubeDNSOverrides?: pulumi.Input<{[key: string]: pulumi.Input<LocalDNSOverrideArgs>}>;
+    /**
+     * Mode of enablement for localDNS.
+     */
+    mode?: pulumi.Input<string | enums.LocalDNSMode>;
+    /**
+     * VnetDNS overrides apply to DNS traffic from pods with dnsPolicy:default or kubelet (referred to as VnetDNS traffic).
+     */
+    vnetDNSOverrides?: pulumi.Input<{[key: string]: pulumi.Input<LocalDNSOverrideArgs>}>;
+}
+/**
+ * localDNSProfileArgsProvideDefaults sets the appropriate defaults for LocalDNSProfileArgs
+ */
+export function localDNSProfileArgsProvideDefaults(val: LocalDNSProfileArgs): LocalDNSProfileArgs {
+    return {
+        ...val,
+        mode: (val.mode) ?? "Preferred",
+    };
+}
+
+/**
  * Maintenance window used to configure scheduled auto-upgrade for a Managed Cluster.
  */
 export interface MaintenanceWindowArgs {
@@ -976,6 +1091,10 @@ export interface ManagedClusterAgentPoolProfileArgs {
      */
     linuxOSConfig?: pulumi.Input<LinuxOSConfigArgs>;
     /**
+     * Configures the per-node local DNS, with VnetDNS and KubeDNS overrides. LocalDNS helps improve performance and reliability of DNS resolution in an AKS cluster. For more details see aka.ms/aks/localdns.
+     */
+    localDNSProfile?: pulumi.Input<LocalDNSProfileArgs>;
+    /**
      * The maximum number of nodes for auto-scaling
      */
     maxCount?: pulumi.Input<number>;
@@ -1115,6 +1234,7 @@ export function managedClusterAgentPoolProfileArgsProvideDefaults(val: ManagedCl
     return {
         ...val,
         gatewayProfile: (val.gatewayProfile ? pulumi.output(val.gatewayProfile).apply(agentPoolGatewayProfileArgsProvideDefaults) : undefined),
+        localDNSProfile: (val.localDNSProfile ? pulumi.output(val.localDNSProfile).apply(localDNSProfileArgsProvideDefaults) : undefined),
     };
 }
 
@@ -1899,6 +2019,28 @@ export function managedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs
 }
 
 /**
+ * The namespace properties for the fleet managed namespace.
+ */
+export interface ManagedNamespacePropertiesArgs {
+    /**
+     * The annotations for the fleet managed namespace.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The default network policy for the fleet managed namespace.
+     */
+    defaultNetworkPolicy?: pulumi.Input<enums.NetworkPolicy>;
+    /**
+     * The default resource quota for the fleet managed namespace.
+     */
+    defaultResourceQuota?: pulumi.Input<ResourceQuotaArgs>;
+    /**
+     * The labels for the fleet managed namespace.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+/**
  * Managed service identity (system assigned and/or user assigned identities)
  */
 export interface ManagedServiceIdentityArgs {
@@ -1924,6 +2066,48 @@ export interface ManualScaleProfileArgs {
      * VM size that AKS will use when creating and scaling e.g. 'Standard_E4s_v3', 'Standard_E16s_v3' or 'Standard_D16s_v5'.
      */
     size?: pulumi.Input<string>;
+}
+
+/**
+ * Mesh membership properties of a managed cluster.
+ */
+export interface MeshMembershipPropertiesArgs {
+    /**
+     * The ARM resource id for the managed mesh member. This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/applinks/{appLinkName}/appLinkMembers/{appLinkMemberName}'. Visit https://aka.ms/applink for more information.
+     */
+    managedMeshID: pulumi.Input<string>;
+}
+
+/**
+ * A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+ */
+export interface MetaV1LabelSelectorArgs {
+    /**
+     * matchExpressions is a list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<MetaV1LabelSelectorRequirementArgs>[]>;
+    /**
+     * matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+     */
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+/**
+ * A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+ */
+export interface MetaV1LabelSelectorRequirementArgs {
+    /**
+     * key is the label key that the selector applies to.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+     */
+    operator: pulumi.Input<string | enums.LabelSelectorOperator>;
+    /**
+     * values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -2043,6 +2227,142 @@ export interface NodeImageSelectionArgs {
 }
 
 /**
+ * The configuration profile for default ClusterResourcePlacement for placement.
+ */
+export interface PlacementProfileArgs {
+    /**
+     * The default ClusterResourcePlacement policy configuration.
+     */
+    defaultClusterResourcePlacement?: pulumi.Input<PlacementV1ClusterResourcePlacementSpecArgs>;
+}
+
+/**
+ * Affinity is a group of cluster affinity scheduling rules. More to be added.
+ */
+export interface PlacementV1AffinityArgs {
+    /**
+     * ClusterAffinity contains cluster affinity scheduling rules for the selected resources.
+     */
+    clusterAffinity?: pulumi.Input<PlacementV1ClusterAffinityArgs>;
+}
+
+/**
+ * ClusterAffinity contains cluster affinity scheduling rules for the selected resources.
+ */
+export interface PlacementV1ClusterAffinityArgs {
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the resource will not be scheduled onto the cluster. If the affinity requirements specified by this field cease to be met at some point after the placement (e.g. due to an update), the system may or may not try to eventually remove the resource from the cluster.
+     */
+    requiredDuringSchedulingIgnoredDuringExecution?: pulumi.Input<PlacementV1ClusterSelectorArgs>;
+}
+
+/**
+ * ClusterResourcePlacementSpec defines the desired state of ClusterResourcePlacement.
+ */
+export interface PlacementV1ClusterResourcePlacementSpecArgs {
+    /**
+     * Policy defines how to select member clusters to place the selected resources. If unspecified, all the joined member clusters are selected.
+     */
+    policy?: pulumi.Input<PlacementV1PlacementPolicyArgs>;
+}
+
+/**
+ * ClusterSelector
+ */
+export interface PlacementV1ClusterSelectorArgs {
+    /**
+     * ClusterSelectorTerms is a list of cluster selector terms. The terms are `ORed`.
+     */
+    clusterSelectorTerms: pulumi.Input<pulumi.Input<PlacementV1ClusterSelectorTermArgs>[]>;
+}
+
+/**
+ * ClusterSelectorTerm
+ */
+export interface PlacementV1ClusterSelectorTermArgs {
+    /**
+     * LabelSelector is a label query over all the joined member clusters. Clusters matching the query are selected. If you specify both label and property selectors in the same term, the results are AND'd.
+     */
+    labelSelector?: pulumi.Input<MetaV1LabelSelectorArgs>;
+    /**
+     * PropertySelector is a property query over all joined member clusters. Clusters matching the query are selected. If you specify both label and property selectors in the same term, the results are AND'd. At this moment, PropertySelector can only be used with `RequiredDuringSchedulingIgnoredDuringExecution` affinity terms. This field is beta-level; it is for the property-based scheduling feature and is only functional when a property provider is enabled in the deployment.
+     */
+    propertySelector?: pulumi.Input<PlacementV1PropertySelectorArgs>;
+}
+
+/**
+ * PlacementPolicy contains the rules to select target member clusters to place the selected resources. Note that only clusters that are both joined and satisfying the rules will be selected. You can only specify at most one of the two fields: ClusterNames and Affinity. If none is specified, all the joined clusters are selected.
+ */
+export interface PlacementV1PlacementPolicyArgs {
+    /**
+     * Affinity contains cluster affinity scheduling rules. Defines which member clusters to place the selected resources. Only valid if the placement type is "PickAll" or "PickN".
+     */
+    affinity?: pulumi.Input<PlacementV1AffinityArgs>;
+    /**
+     * ClusterNames contains a list of names of MemberCluster to place the selected resources. Only valid if the placement type is "PickFixed"
+     */
+    clusterNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Type of placement. Can be "PickAll", "PickN" or "PickFixed". Default is PickAll.
+     */
+    placementType?: pulumi.Input<string | enums.PlacementType>;
+    /**
+     * If specified, the ClusterResourcePlacement's Tolerations. Tolerations cannot be updated or deleted. This field is beta-level and is for the taints and tolerations feature.
+     */
+    tolerations?: pulumi.Input<pulumi.Input<PlacementV1TolerationArgs>[]>;
+}
+
+/**
+ * PropertySelector helps user specify property requirements when picking clusters for resource placement.
+ */
+export interface PlacementV1PropertySelectorArgs {
+    /**
+     * MatchExpressions is an array of PropertySelectorRequirements. The requirements are AND'd.
+     */
+    matchExpressions: pulumi.Input<pulumi.Input<PlacementV1PropertySelectorRequirementArgs>[]>;
+}
+
+/**
+ * PropertySelectorRequirement is a specific property requirement when picking clusters for resource placement.
+ */
+export interface PlacementV1PropertySelectorRequirementArgs {
+    /**
+     * Name is the name of the property; it should be a Kubernetes label name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Operator specifies the relationship between a cluster's observed value of the specified property and the values given in the requirement.
+     */
+    operator: pulumi.Input<string | enums.PropertySelectorOperator>;
+    /**
+     * Values are a list of values of the specified property which Fleet will compare against the observed values of individual member clusters in accordance with the given operator. At this moment, each value should be a Kubernetes quantity. For more information, see https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity. If the operator is Gt (greater than), Ge (greater than or equal to), Lt (less than), or `Le` (less than or equal to), Eq (equal to), or Ne (ne), exactly one value must be specified in the list.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Toleration allows ClusterResourcePlacement to tolerate any taint that matches the triple <key,value,effect> using the matching operator <operator>.
+ */
+export interface PlacementV1TolerationArgs {
+    /**
+     * Effect indicates the taint effect to match. Empty means match all taint effects. When specified, only allowed value is NoSchedule.
+     */
+    effect?: pulumi.Input<string | enums.TaintEffect>;
+    /**
+     * Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a ClusterResourcePlacement can tolerate all taints of a particular category.
+     */
+    operator?: pulumi.Input<string | enums.TolerationOperator>;
+    /**
+     * Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+     */
+    value?: pulumi.Input<string>;
+}
+
+/**
  * The port range.
  */
 export interface PortRangeArgs {
@@ -2118,6 +2438,20 @@ export interface PrivateLinkServiceConnectionStateArgs {
      * The private link service connection status.
      */
     status?: pulumi.Input<string | enums.ConnectionStatus>;
+}
+
+/**
+ * The propagation to be used for provisioning the namespace among the fleet.
+ */
+export interface PropagationPolicyArgs {
+    /**
+     * The profile to be used for propagation via placement.
+     */
+    placementProfile?: pulumi.Input<PlacementProfileArgs>;
+    /**
+     * The type of the policy to be used. Default is Placement.
+     */
+    type: pulumi.Input<string | enums.PropagationType>;
 }
 
 /**

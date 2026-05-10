@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  *
- * Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+ * Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
  *
- * Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Job extends pulumi.CustomResource {
     /**
@@ -40,13 +40,13 @@ export class Job extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
-     * [Required] Additional attributes of the entity.
-     */
-    declare public readonly jobBaseProperties: pulumi.Output<types.outputs.AutoMLJobResponse | types.outputs.CommandJobResponse | types.outputs.PipelineJobResponse | types.outputs.SparkJobResponse | types.outputs.SweepJobResponse>;
-    /**
      * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * [Required] Additional attributes of the entity.
+     */
+    declare public readonly properties: pulumi.Output<types.outputs.AutoMLJobResponse | types.outputs.CommandJobResponse | types.outputs.PipelineJobResponse | types.outputs.SparkJobResponse | types.outputs.SweepJobResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -67,8 +67,8 @@ export class Job extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if (args?.jobBaseProperties === undefined && !opts.urn) {
-                throw new Error("Missing required property 'jobBaseProperties'");
+            if (args?.properties === undefined && !opts.urn) {
+                throw new Error("Missing required property 'properties'");
             }
             if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
@@ -77,7 +77,7 @@ export class Job extends pulumi.CustomResource {
                 throw new Error("Missing required property 'workspaceName'");
             }
             resourceInputs["id"] = args?.id;
-            resourceInputs["jobBaseProperties"] = args?.jobBaseProperties;
+            resourceInputs["properties"] = args?.properties;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -86,13 +86,13 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
-            resourceInputs["jobBaseProperties"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20210301preview:Job" }, { type: "azure-native:machinelearningservices/v20220201preview:Job" }, { type: "azure-native:machinelearningservices/v20220501:Job" }, { type: "azure-native:machinelearningservices/v20220601preview:Job" }, { type: "azure-native:machinelearningservices/v20221001:Job" }, { type: "azure-native:machinelearningservices/v20221001preview:Job" }, { type: "azure-native:machinelearningservices/v20221201preview:Job" }, { type: "azure-native:machinelearningservices/v20230201preview:Job" }, { type: "azure-native:machinelearningservices/v20230401:Job" }, { type: "azure-native:machinelearningservices/v20230401preview:Job" }, { type: "azure-native:machinelearningservices/v20230601preview:Job" }, { type: "azure-native:machinelearningservices/v20230801preview:Job" }, { type: "azure-native:machinelearningservices/v20231001:Job" }, { type: "azure-native:machinelearningservices/v20240101preview:Job" }, { type: "azure-native:machinelearningservices/v20240401:Job" }, { type: "azure-native:machinelearningservices/v20240401preview:Job" }, { type: "azure-native:machinelearningservices/v20240701preview:Job" }, { type: "azure-native:machinelearningservices/v20241001:Job" }, { type: "azure-native:machinelearningservices/v20241001preview:Job" }, { type: "azure-native:machinelearningservices/v20250101preview:Job" }, { type: "azure-native:machinelearningservices/v20250401:Job" }, { type: "azure-native:machinelearningservices/v20250401preview:Job" }, { type: "azure-native:machinelearningservices/v20250601:Job" }, { type: "azure-native:machinelearningservices/v20250701preview:Job" }, { type: "azure-native:machinelearningservices/v20250901:Job" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20210301preview:Job" }, { type: "azure-native:machinelearningservices/v20220201preview:Job" }, { type: "azure-native:machinelearningservices/v20220501:Job" }, { type: "azure-native:machinelearningservices/v20220601preview:Job" }, { type: "azure-native:machinelearningservices/v20221001:Job" }, { type: "azure-native:machinelearningservices/v20221001preview:Job" }, { type: "azure-native:machinelearningservices/v20221201preview:Job" }, { type: "azure-native:machinelearningservices/v20230201preview:Job" }, { type: "azure-native:machinelearningservices/v20230401:Job" }, { type: "azure-native:machinelearningservices/v20230401preview:Job" }, { type: "azure-native:machinelearningservices/v20230601preview:Job" }, { type: "azure-native:machinelearningservices/v20230801preview:Job" }, { type: "azure-native:machinelearningservices/v20231001:Job" }, { type: "azure-native:machinelearningservices/v20240101preview:Job" }, { type: "azure-native:machinelearningservices/v20240401:Job" }, { type: "azure-native:machinelearningservices/v20240401preview:Job" }, { type: "azure-native:machinelearningservices/v20240701preview:Job" }, { type: "azure-native:machinelearningservices/v20241001:Job" }, { type: "azure-native:machinelearningservices/v20241001preview:Job" }, { type: "azure-native:machinelearningservices/v20250101preview:Job" }, { type: "azure-native:machinelearningservices/v20250401:Job" }, { type: "azure-native:machinelearningservices/v20250401preview:Job" }, { type: "azure-native:machinelearningservices/v20250601:Job" }, { type: "azure-native:machinelearningservices/v20250701preview:Job" }, { type: "azure-native:machinelearningservices/v20250901:Job" }, { type: "azure-native:machinelearningservices/v20251001preview:Job" }, { type: "azure-native:machinelearningservices/v20251201:Job" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Job.__pulumiType, name, resourceInputs, opts);
     }
@@ -109,13 +109,13 @@ export interface JobArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    jobBaseProperties: pulumi.Input<types.inputs.AutoMLJobArgs | types.inputs.CommandJobArgs | types.inputs.PipelineJobArgs | types.inputs.SparkJobArgs | types.inputs.SweepJobArgs>;
+    properties: pulumi.Input<types.inputs.AutoMLJobArgs | types.inputs.CommandJobArgs | types.inputs.PipelineJobArgs | types.inputs.SparkJobArgs | types.inputs.SweepJobArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * Name of Azure Machine Learning workspace.
+     * Azure Machine Learning Workspace Name
      */
     workspaceName: pulumi.Input<string>;
 }

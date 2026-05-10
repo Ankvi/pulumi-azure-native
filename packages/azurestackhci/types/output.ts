@@ -7,6 +7,24 @@ export interface AdapterPropertyOverridesResponse {
     /**
      * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
      */
+    jumboPacket?: string;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    networkDirect?: string;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
+     */
+    networkDirectTechnology?: string;
+}
+
+/**
+ * The AdapterPropertyOverrides of a cluster.
+ */
+export interface AdapterPropertyOverridesResponseV1 {
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
     jumboPacket: string;
     /**
      * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
@@ -30,6 +48,38 @@ export interface ArcConnectivityPropertiesResponse {
      * Service configurations associated with the connectivity resource. They are only processed by the server if 'enabled' property is set to 'true'.
      */
     serviceConfigurations?: ServiceConfigurationResponse[];
+}
+
+/**
+ * Backend address pool for the load balancer.
+ */
+export interface BackendAddressPoolPropertiesResponse {
+    /**
+     * List of backend addresses for the backend pool
+     */
+    loadBalancerBackendAddresses?: LoadBalancerBackendAddressResponse[];
+    /**
+     * Reference to the logical network for this backend pool. Mutually exclusive with virtualNetwork
+     */
+    logicalNetwork?: LogicalNetworkArmReferenceResponse;
+    /**
+     * Reference to the virtual network for this backend pool. Mutually exclusive with logicalNetwork
+     */
+    virtualNetwork?: VirtualNetworkArmReferenceResponse;
+}
+
+/**
+ * Backend address pool for the load balancer.
+ */
+export interface BackendAddressPoolResponse {
+    /**
+     * name of the backend pool.
+     */
+    name: string;
+    /**
+     * properties for the backend pool
+     */
+    properties: BackendAddressPoolPropertiesResponse;
 }
 
 /**
@@ -163,6 +213,24 @@ export interface ClusterReportedPropertiesResponse {
 }
 
 /**
+ * Data used when creating a disk or snapshot
+ */
+export interface CreationDataResponse {
+    /**
+     * This enumerates the possible sources of a disk's creation
+     */
+    createOption: string;
+    /**
+     * ARM ID of the source resource used for disk creation. Required when createOption is Copy
+     */
+    sourceResourceId?: string;
+    /**
+     * Unique ID of the source resource used for disk creation. Read-only and not required for disk creation.
+     */
+    sourceUniqueId: string;
+}
+
+/**
  * Properties for a particular default extension category.
  */
 export interface DefaultExtensionDetailsResponse {
@@ -283,6 +351,7 @@ export interface DeploymentDataResponse {
 export function deploymentDataResponseProvideDefaults(val: DeploymentDataResponse): DeploymentDataResponse {
     return {
         ...val,
+        hostNetwork: (val.hostNetwork ? hostNetworkResponseProvideDefaults(val.hostNetwork) : undefined),
         observability: (val.observability ? observabilityResponseProvideDefaults(val.observability) : undefined),
         securitySettings: (val.securitySettings ? deploymentSecuritySettingsResponseProvideDefaults(val.securitySettings) : undefined),
         storage: (val.storage ? storageResponseProvideDefaults(val.storage) : undefined),
@@ -406,6 +475,149 @@ export interface DeviceConfigurationResponse {
 }
 
 /**
+ * Device details.
+ */
+export interface DeviceDetailResponse {
+    /**
+     * Resource Id of group device belongs to.
+     */
+    claimedBy: string;
+    /**
+     * Resource Id of the device.
+     */
+    deviceResourceId?: string;
+}
+
+/**
+ * Properties for device pool.
+ */
+export interface DevicePoolPropertiesResponse {
+    /**
+     * Unique, immutable resource id.
+     */
+    cloudId: string;
+    /**
+     * Custom Location Name for the pool, default: <DevicePoolName>-CL
+     */
+    customLocationName?: string;
+    /**
+     * Custom Location Resource Id for the pool
+     */
+    customLocationResourceId: string;
+    /**
+     * List of machines in device pool.
+     */
+    devices?: DeviceDetailResponse[];
+    /**
+     * Managed resource group name for the pool
+     */
+    managedResourceGroup?: string;
+    /**
+     * operation status details for device pool.
+     */
+    operationDetails: OperationDetailResponse[];
+    /**
+     * The provisioning state of a resource.
+     */
+    provisioningState: string;
+}
+
+/**
+ * Represents the properties of Download Os job.
+ */
+export interface DownloadOsJobPropertiesResponse {
+    /**
+     * Deployment mode to trigger job.
+     */
+    deploymentMode?: string;
+    /**
+     * Download OS request.
+     */
+    downloadRequest: DownloadRequestResponse;
+    /**
+     * The UTC date and time at which the job completed.
+     */
+    endTimeUtc: string;
+    /**
+     * error details.
+     */
+    error: ErrorDetailResponse;
+    /**
+     * Unique, immutable job id.
+     */
+    jobId: string;
+    /**
+     * Job Type supported.
+     * Expected value is 'DownloadOs'.
+     */
+    jobType: "DownloadOs";
+    /**
+     * Job provisioning state
+     */
+    provisioningState: string;
+    /**
+     * Reported Properties for Download Os job
+     */
+    reportedProperties?: ProvisionOsReportedPropertiesResponse;
+    /**
+     * The UTC date and time at which the job started.
+     */
+    startTimeUtc: string;
+    /**
+     * Status of Edge device job.
+     */
+    status: string;
+}
+
+/**
+ * Operating system profile.
+ */
+export interface DownloadOsProfileResponse {
+    /**
+     * GPG Public Key used for package verification
+     */
+    gpgPubKey?: string;
+    /**
+     * Hash of the OS package downloaded
+     */
+    imageHash?: string;
+    /**
+     * Location of the operating system image.
+     */
+    osImageLocation?: string;
+    /**
+     * Name of the operating system.
+     */
+    osName?: string;
+    /**
+     * Type of the operating system.
+     */
+    osType?: string;
+    /**
+     * Version of the operating system.
+     */
+    osVersion?: string;
+    /**
+     * Validated Solution Recipe version to be used for the job
+     */
+    vsrVersion?: string;
+}
+
+/**
+ * Download Request properties
+ */
+export interface DownloadRequestResponse {
+    /**
+     * Operating system profile.
+     */
+    osProfile: DownloadOsProfileResponse;
+    /**
+     * Target operating system to support polymorphic resource.
+     */
+    target: string;
+}
+
+/**
  * The ECE action plan deployment status for AzureStackHCI Cluster.
  */
 export interface EceActionStatusResponse {
@@ -452,6 +664,396 @@ export interface EceReportedPropertiesResponse {
 }
 
 /**
+ * Properties for pausing a server in the cluster.
+ */
+export interface EdgeMachineCollectLogJobPropertiesResponse {
+    /**
+     * Deployment mode to trigger job.
+     */
+    deploymentMode?: string;
+    /**
+     * The UTC date and time at which the job completed.
+     */
+    endTimeUtc: string;
+    /**
+     * error details.
+     */
+    error: ErrorDetailResponse;
+    /**
+     * From date for log collection.
+     */
+    fromDate: string;
+    /**
+     * Unique, immutable job id.
+     */
+    jobId: string;
+    /**
+     * Job Type supported.
+     * Expected value is 'CollectLog'.
+     */
+    jobType: "CollectLog";
+    /**
+     * To date for log collection.
+     */
+    lastLogGenerated: string;
+    /**
+     * Job provisioning state
+     */
+    provisioningState: string;
+    /**
+     * log collection job reported properties.
+     */
+    reportedProperties: EdgeMachineCollectLogJobReportedPropertiesResponse;
+    /**
+     * The UTC date and time at which the job started.
+     */
+    startTimeUtc: string;
+    /**
+     * Status of Edge device job.
+     */
+    status: string;
+    /**
+     * To date for log collection.
+     */
+    toDate: string;
+}
+
+/**
+ * Represents the reported properties of a log collection job.
+ */
+export interface EdgeMachineCollectLogJobReportedPropertiesResponse {
+    /**
+     * Deployment status of job.
+     */
+    deploymentStatus: EceActionStatusResponse;
+    /**
+     * Details of the log collection session.
+     */
+    logCollectionSessionDetails: LogCollectionJobSessionResponse[];
+    /**
+     * The percentage of the job that is complete.
+     */
+    percentComplete: number;
+    /**
+     * Validation status of job.
+     */
+    validationStatus: EceActionStatusResponse;
+}
+
+/**
+ * NetworkProfile of edge machine.
+ */
+export interface EdgeMachineNetworkProfileResponse {
+    /**
+     * List of Network Interface Card (NIC) Details of edge machine.
+     */
+    nicDetails: EdgeMachineNicDetailResponse[];
+    /**
+     * List of switch Details of edge machine.
+     */
+    switchDetails: SwitchDetailResponse[];
+}
+
+/**
+ * Network Interface Card (NIC) Details of edge machine.
+ */
+export interface EdgeMachineNicDetailResponse {
+    /**
+     * Adapter Name of NIC
+     */
+    adapterName: string;
+    /**
+     * Component Id of NIC
+     */
+    componentId: string;
+    /**
+     * Default Gateway of NIC
+     */
+    defaultGateway: string;
+    /**
+     * Default Isolation of Management NIC
+     */
+    defaultIsolationId: string;
+    /**
+     * DNS Servers for NIC
+     */
+    dnsServers: string[];
+    /**
+     * Driver Version of NIC
+     */
+    driverVersion: string;
+    /**
+     * Interface Description of NIC
+     */
+    interfaceDescription: string;
+    /**
+     * Subnet Mask of NIC
+     */
+    ip4Address: string;
+    /**
+     * MAC address information of NIC.
+     */
+    macAddress: string;
+    /**
+     * The status of NIC, up, disconnected.
+     */
+    nicStatus: string;
+    /**
+     * The type of NIC, physical, virtual, management.
+     */
+    nicType: string;
+    /**
+     * Describes the RDMA capability of the network adapter.
+     */
+    rdmaCapability: string;
+    /**
+     * The slot attached to the NIC.
+     */
+    slot: string;
+    /**
+     * Subnet Mask of NIC
+     */
+    subnetMask: string;
+    /**
+     * The switch attached to the NIC, if any.
+     */
+    switchName: string;
+    /**
+     * The VLAN ID of the physical NIC.
+     */
+    vlanId: string;
+}
+/**
+ * edgeMachineNicDetailResponseProvideDefaults sets the appropriate defaults for EdgeMachineNicDetailResponse
+ */
+export function edgeMachineNicDetailResponseProvideDefaults(val: EdgeMachineNicDetailResponse): EdgeMachineNicDetailResponse {
+    return {
+        ...val,
+        rdmaCapability: (val.rdmaCapability) ?? "Disabled",
+    };
+}
+
+/**
+ * Properties for edge machine.
+ */
+export interface EdgeMachinePropertiesResponse {
+    /**
+     * Link to Arc Gateway ARM resource Id
+     */
+    arcGatewayResourceId?: string;
+    /**
+     * Optional property to create arc machine in custom resource group.
+     */
+    arcMachineResourceGroupId?: string;
+    /**
+     * Arc machine instance resource id.
+     */
+    arcMachineResourceId?: string;
+    /**
+     * Tracks the ID of the consuming resource, setting the machine as in-use.
+     */
+    claimedBy: string;
+    /**
+     * Unique, immutable resource id.
+     */
+    cloudId: string;
+    /**
+     * machine connectivity status
+     */
+    connectivityStatus: string;
+    /**
+     * A machine can only be assigned to single device pool
+     */
+    devicePoolResourceId: string;
+    /**
+     * Edge Machine type.
+     */
+    edgeMachineKind?: string;
+    /**
+     * Last time data updated to service.
+     */
+    lastSyncTimestamp: string;
+    /**
+     * OS configuration status details 
+     */
+    machineState: string;
+    /**
+     * operation status details for edge machine.
+     */
+    operationDetails: OperationDetailResponse[];
+    /**
+     * Ownership voucher details for provisioned machine.
+     */
+    ownershipVoucherDetails?: OwnershipVoucherDetailsResponse;
+    /**
+     * Details for device provisioning.
+     */
+    provisioningDetails?: ProvisioningDetailsResponse;
+    /**
+     * The provisioning state of a resource.
+     */
+    provisioningState: string;
+    /**
+     * Reported properties for edge machine.
+     */
+    reportedProperties: EdgeMachineReportedPropertiesResponse;
+    /**
+     * Service fetches common configuration from site.
+     */
+    siteDetails?: SiteDetailsResponse;
+}
+/**
+ * edgeMachinePropertiesResponseProvideDefaults sets the appropriate defaults for EdgeMachinePropertiesResponse
+ */
+export function edgeMachinePropertiesResponseProvideDefaults(val: EdgeMachinePropertiesResponse): EdgeMachinePropertiesResponse {
+    return {
+        ...val,
+        provisioningDetails: (val.provisioningDetails ? provisioningDetailsResponseProvideDefaults(val.provisioningDetails) : undefined),
+    };
+}
+
+/**
+ * Properties for adding a server in the cluster.
+ */
+export interface EdgeMachineRemoteSupportJobPropertiesResponse {
+    /**
+     * Remote support access level.
+     */
+    accessLevel: string;
+    /**
+     * Deployment mode to trigger job.
+     */
+    deploymentMode?: string;
+    /**
+     * The UTC date and time at which the job completed.
+     */
+    endTimeUtc: string;
+    /**
+     * error details.
+     */
+    error: ErrorDetailResponse;
+    /**
+     * Remote support expiration timestamp.
+     */
+    expirationTimestamp: string;
+    /**
+     * Unique, immutable job id.
+     */
+    jobId: string;
+    /**
+     * Job Type supported.
+     * Expected value is 'RemoteSupport'.
+     */
+    jobType: "RemoteSupport";
+    /**
+     * Job provisioning state
+     */
+    provisioningState: string;
+    /**
+     * log collection job reported properties.
+     */
+    reportedProperties: EdgeMachineRemoteSupportJobReportedPropertiesResponse;
+    /**
+     * The UTC date and time at which the job started.
+     */
+    startTimeUtc: string;
+    /**
+     * Status of Edge device job.
+     */
+    status: string;
+    /**
+     * Remote support type.
+     */
+    type: string;
+}
+
+/**
+ * Represents the reported properties of a remote support job.
+ */
+export interface EdgeMachineRemoteSupportJobReportedPropertiesResponse {
+    /**
+     * Deployment status of job.
+     */
+    deploymentStatus: EceActionStatusResponse;
+    /**
+     * Optional settings for configuring the node for remote support.
+     */
+    nodeSettings: EdgeMachineRemoteSupportNodeSettingsResponse;
+    /**
+     * The percentage of the job that is complete.
+     */
+    percentComplete: number;
+    /**
+     * Details of the remote support session.
+     */
+    sessionDetails: RemoteSupportSessionResponse[];
+    /**
+     * Validation status of job.
+     */
+    validationStatus: EceActionStatusResponse;
+}
+
+/**
+ * Represents the settings of a remote support node.
+ */
+export interface EdgeMachineRemoteSupportNodeSettingsResponse {
+    /**
+     * The error message, if any, from the last connection attempt.
+     */
+    connectionErrorMessage: string;
+    /**
+     * The current connection status of the remote support session.
+     */
+    connectionStatus: string;
+    /**
+     * The timestamp when the node settings were created, in UTC.
+     */
+    createdAt: string;
+    /**
+     * The state of the remote support node.
+     */
+    state: string;
+    /**
+     * The timestamp when the node settings were last updated, in UTC.
+     */
+    updatedAt: string;
+}
+
+/**
+ * Reported properties for edge machine.
+ */
+export interface EdgeMachineReportedPropertiesResponse {
+    /**
+     * Extension details for edge machine.
+     */
+    extensionProfile: ExtensionProfileResponseV1;
+    /**
+     * Hardware related information for edge machine.
+     */
+    hardwareProfile: HardwareProfileResponse;
+    /**
+     * Last time data reported.
+     */
+    lastUpdated: string;
+    /**
+     * Network details for edge machine.
+     */
+    networkProfile: EdgeMachineNetworkProfileResponse;
+    /**
+     * OS Properties for edge machine.
+     */
+    osProfile: OsProfileResponse;
+    /**
+     * Solution builder extension (SBE) deployment package information.
+     */
+    sbeDeploymentPackageInfo: SbeDeploymentPackageInfoResponse;
+    /**
+     * Storage related information for edge machine.
+     */
+    storageProfile: StorageProfileResponse;
+}
+
+/**
  * The resource management error additional info.
  */
 export interface ErrorAdditionalInfoResponse {
@@ -482,10 +1084,6 @@ export interface ErrorDetailResponse {
      */
     details: ErrorDetailResponse[];
     /**
-     * Exception details while installing extension.
-     */
-    exception?: string;
-    /**
      * The error message.
      */
     message: string;
@@ -493,6 +1091,16 @@ export interface ErrorDetailResponse {
      * The error target.
      */
     target: string;
+}
+
+/**
+ * details of validation failure
+ */
+export interface ErrorDetailResponseV1 {
+    /**
+     * Exception details while installing extension.
+     */
+    exception: string;
 }
 
 /**
@@ -568,13 +1176,23 @@ export interface ExtensionProfileResponse {
 }
 
 /**
+ * Extensions details for edge device.
+ */
+export interface ExtensionProfileResponseV1 {
+    /**
+     * List of Arc extensions installed on edge device.
+     */
+    extensions: HciEdgeDeviceArcExtensionResponse[];
+}
+
+/**
  * Arc extension installed on edge device.
  */
 export interface ExtensionResponse {
     /**
      * Error details while installing Arc extension.
      */
-    errorDetails: ErrorDetailResponse[];
+    errorDetails: ErrorDetailResponseV1[];
     /**
      * Arc extension name installed on edge device.
      */
@@ -604,6 +1222,42 @@ export function extensionResponseProvideDefaults(val: ExtensionResponse): Extens
         ...val,
         managedBy: (val.managedBy) ?? "Azure",
     };
+}
+
+/**
+ * FrontendIP Configuration object for a load balancer.
+ */
+export interface FrontendIPConfigurationPropertiesResponse {
+    /**
+     * Private IP Address that was allocated (dynamic) or is to be allocated (static) from the subnet.
+     */
+    privateIPAddress?: string;
+    /**
+     * privateIPAllocationMethod - set to Static for requesting a specific IP
+     */
+    privateIPAllocationMethod?: string;
+    /**
+     * Public IP 
+     */
+    publicIPAddress?: PublicIPAddressArmReferenceResponse;
+    /**
+     * subnet - the subnet from which to allocate the private IP
+     */
+    subnet?: VirtualNetworkSubnetArmReferenceResponse;
+}
+
+/**
+ * FrontendIP Configuration object for a load balancer.
+ */
+export interface FrontendIPConfigurationResponse {
+    /**
+     * name for the frontend IP configuration.
+     */
+    name: string;
+    /**
+     * properties for this frontendIPConfiguration
+     */
+    properties: FrontendIPConfigurationPropertiesResponse;
 }
 
 /**
@@ -771,6 +1425,40 @@ export interface GuestCredentialResponse {
 }
 
 /**
+ * Hardware profile for the machine
+ */
+export interface HardwareProfileResponse {
+    /**
+     * Number of cpu cores in the machine
+     */
+    cpuCores: number;
+    /**
+     * Number of cpu sockets in the machine
+     */
+    cpuSockets: number;
+    /**
+     * manufacturer info of the machine
+     */
+    manufacturer: string;
+    /**
+     * Memory capacity of the machine
+     */
+    memoryCapacityInGb: number;
+    /**
+     * Model info of the machine
+     */
+    model: string;
+    /**
+     * Process type of the machine
+     */
+    processorType: string;
+    /**
+     * Serial number of the machine
+     */
+    serialNumber: string;
+}
+
+/**
  * Represents the properties of an HCI Collect Log job.
  */
 export interface HciCollectLogJobPropertiesResponse {
@@ -822,6 +1510,144 @@ export interface HciCollectLogJobPropertiesResponse {
 }
 
 /**
+ * Defines the customer's intent for updating confidential VM properties
+ */
+export interface HciConfigureCvmJobPropertiesResponse {
+    /**
+     * Defines the customer's intent for updating confidential VM properties
+     */
+    confidentialVmIntent: string;
+    /**
+     * Deployment mode to trigger job.
+     */
+    deploymentMode?: string;
+    /**
+     * The UTC date and time at which the job completed.
+     */
+    endTimeUtc: string;
+    /**
+     * Unique, immutable job id.
+     */
+    jobId: string;
+    /**
+     * ClusterJob Type supported.
+     * Expected value is 'ConfigureCVM'.
+     */
+    jobType: "ConfigureCVM";
+    /**
+     * Job provisioning state
+     */
+    provisioningState: string;
+    /**
+     * Reported properties for job
+     */
+    reportedProperties: JobReportedPropertiesResponse;
+    /**
+     * The UTC date and time at which the job started.
+     */
+    startTimeUtc: string;
+    /**
+     * Status of Cluster job.
+     */
+    status: string;
+}
+/**
+ * hciConfigureCvmJobPropertiesResponseProvideDefaults sets the appropriate defaults for HciConfigureCvmJobPropertiesResponse
+ */
+export function hciConfigureCvmJobPropertiesResponseProvideDefaults(val: HciConfigureCvmJobPropertiesResponse): HciConfigureCvmJobPropertiesResponse {
+    return {
+        ...val,
+        deploymentMode: (val.deploymentMode) ?? "Deploy",
+    };
+}
+
+/**
+ * Properties for configuring SDN integration intent for the cluster.
+ */
+export interface HciConfigureSdnIntegrationJobPropertiesResponse {
+    /**
+     * Deployment mode to trigger job.
+     */
+    deploymentMode?: string;
+    /**
+     * The UTC date and time at which the job completed.
+     */
+    endTimeUtc: string;
+    /**
+     * Unique, immutable job id.
+     */
+    jobId: string;
+    /**
+     * ClusterJob Type supported.
+     * Expected value is 'ConfigureSdnIntegration'.
+     */
+    jobType: "ConfigureSdnIntegration";
+    /**
+     * Job provisioning state
+     */
+    provisioningState: string;
+    /**
+     * Reported properties for job
+     */
+    reportedProperties: JobReportedPropertiesResponse;
+    /**
+     * Defines the customer's intent for configuring SDN integration
+     */
+    sdnIntegrationIntent: string;
+    /**
+     * A string identifier used to construct the Network Controller (NC) REST resource name. This prefix helps group and distinguish SDN-managed network components and must follow specific formatting rules.
+     */
+    sdnPrefix?: string;
+    /**
+     * The UTC date and time at which the job started.
+     */
+    startTimeUtc: string;
+    /**
+     * Status of Cluster job.
+     */
+    status: string;
+}
+/**
+ * hciConfigureSdnIntegrationJobPropertiesResponseProvideDefaults sets the appropriate defaults for HciConfigureSdnIntegrationJobPropertiesResponse
+ */
+export function hciConfigureSdnIntegrationJobPropertiesResponseProvideDefaults(val: HciConfigureSdnIntegrationJobPropertiesResponse): HciConfigureSdnIntegrationJobPropertiesResponse {
+    return {
+        ...val,
+        deploymentMode: (val.deploymentMode) ?? "Deploy",
+    };
+}
+
+/**
+ * Arc extension installed on edge device.
+ */
+export interface HciEdgeDeviceArcExtensionResponse {
+    /**
+     * Error details while installing Arc extension.
+     */
+    errorDetails: HciValidationFailureDetailResponse[];
+    /**
+     * Arc extension name installed on edge device.
+     */
+    extensionName: string;
+    /**
+     * Arc Extension Azure resource id.
+     */
+    extensionResourceId: string;
+    /**
+     * Indicates whether the extension is managed by the user or by Azure.
+     */
+    managedBy: string;
+    /**
+     * Arc extension state from arc machine extension.
+     */
+    state: string;
+    /**
+     * Extension version installed.
+     */
+    typeHandlerVersion: string;
+}
+
+/**
  * properties for Arc-enabled edge device with HCI OS.
  */
 export interface HciEdgeDevicePropertiesResponse {
@@ -846,7 +1672,7 @@ export interface HciNetworkProfileResponse {
     /**
      * HostNetwork config to deploy AzureStackHCI Cluster.
      */
-    hostNetwork: HostNetworkResponse;
+    hostNetwork: HostNetworkResponseV1;
     /**
      * List of NIC Details of device.
      */
@@ -1015,9 +1841,51 @@ export interface HciReportedPropertiesResponse {
 }
 
 /**
+ * details of validation failure
+ */
+export interface HciValidationFailureDetailResponse {
+    /**
+     * Exception details while installing extension.
+     */
+    exception: string;
+}
+
+/**
  * The HostNetwork of a cluster.
  */
 export interface HostNetworkResponse {
+    /**
+     * Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
+     */
+    enableStorageAutoIp?: boolean;
+    /**
+     * The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
+     */
+    intents?: IntentsResponse[];
+    /**
+     * Defines how the storage adapters between nodes are connected either switch or switch less..
+     */
+    storageConnectivitySwitchless?: boolean;
+    /**
+     * List of StorageNetworks config to deploy AzureStackHCI Cluster.
+     */
+    storageNetworks?: StorageNetworksResponse[];
+}
+/**
+ * hostNetworkResponseProvideDefaults sets the appropriate defaults for HostNetworkResponse
+ */
+export function hostNetworkResponseProvideDefaults(val: HostNetworkResponse): HostNetworkResponse {
+    return {
+        ...val,
+        enableStorageAutoIp: (val.enableStorageAutoIp) ?? false,
+        storageConnectivitySwitchless: (val.storageConnectivitySwitchless) ?? false,
+    };
+}
+
+/**
+ * The HostNetwork of a cluster.
+ */
+export interface HostNetworkResponseV1 {
     /**
      * Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
      */
@@ -1025,7 +1893,7 @@ export interface HostNetworkResponse {
     /**
      * The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
      */
-    intents: IntentsResponse[];
+    intents: IntentsResponseV1[];
     /**
      * Defines how the storage adapters between nodes are connected either switch or switch less.
      */
@@ -1033,7 +1901,7 @@ export interface HostNetworkResponse {
     /**
      * List of StorageNetworks config to deploy AzureStackHCI Cluster.
      */
-    storageNetworks: StorageNetworksResponse[];
+    storageNetworks: StorageNetworksResponseV1[];
 }
 
 /**
@@ -1056,6 +1924,16 @@ export interface HttpProxyConfigurationResponse {
      * Alternative CA cert to use for connecting to proxy servers.
      */
     trustedCa?: string;
+}
+
+/**
+ * The Azure Resource ID of an IPConfiguration resource
+ */
+export interface IPConfigurationArmReferenceResponse {
+    /**
+     * The Azure Resource ID of an IPConfiguration resource
+     */
+    resourceId?: string;
 }
 
 /**
@@ -1153,13 +2031,53 @@ export interface IdentityResponse {
 }
 
 /**
- * The ARM ID for a Gallery Image.
+ * The Azure Resource ID for a Gallery Image.
  */
 export interface ImageArmReferenceResponse {
     /**
-     * The ARM ID for an image resource used by the virtual machine instance.
+     * The Azure Resource ID for an image resource used by the virtual machine instance.
      */
     id?: string;
+}
+
+/**
+ * Inbound nat rule properties
+ */
+export interface InboundNATRulePropertiesResponse {
+    /**
+     * IP configuration for the target backend.
+     */
+    backendIPConfiguration: IPConfigurationArmReferenceResponse;
+    /**
+     * backend Port for the inbound rule
+     */
+    backendPort: number;
+    /**
+     * Frontend Port for the inbound rule
+     */
+    frontendPort: number;
+    /**
+     * Protocol for the NAT rule
+     */
+    protocol: string;
+    /**
+     * Public IP Address for this NAT rule
+     */
+    publicIPAddress: PublicIPAddressArmReferenceResponse;
+}
+
+/**
+ * Inbound nat rule properties
+ */
+export interface InboundNATRuleResponse {
+    /**
+     * name of the inbound nat rule
+     */
+    name: string;
+    /**
+     * properties of the inbound nat rule
+     */
+    properties: InboundNATRulePropertiesResponse;
 }
 
 /**
@@ -1225,7 +2143,56 @@ export interface IntentsResponse {
     /**
      * Set Adapter PropertyOverrides for cluster.
      */
-    adapterPropertyOverrides: AdapterPropertyOverridesResponse;
+    adapterPropertyOverrides?: AdapterPropertyOverridesResponse;
+    /**
+     * Name of the network intent you wish to create.
+     */
+    name?: string;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    overrideAdapterProperty?: boolean;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    overrideQosPolicy?: boolean;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    overrideVirtualSwitchConfiguration?: boolean;
+    /**
+     * Set QoS PolicyOverrides for cluster.
+     */
+    qosPolicyOverrides?: QosPolicyOverridesResponse;
+    /**
+     * List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
+     */
+    trafficType?: string[];
+    /**
+     * Set virtualSwitch ConfigurationOverrides for cluster.
+     */
+    virtualSwitchConfigurationOverrides?: VirtualSwitchConfigurationOverridesResponse;
+}
+/**
+ * intentsResponseProvideDefaults sets the appropriate defaults for IntentsResponse
+ */
+export function intentsResponseProvideDefaults(val: IntentsResponse): IntentsResponse {
+    return {
+        ...val,
+        overrideAdapterProperty: (val.overrideAdapterProperty) ?? false,
+        overrideQosPolicy: (val.overrideQosPolicy) ?? false,
+        overrideVirtualSwitchConfiguration: (val.overrideVirtualSwitchConfiguration) ?? false,
+    };
+}
+
+/**
+ * The Intents of a cluster.
+ */
+export interface IntentsResponseV1 {
+    /**
+     * Set Adapter PropertyOverrides for cluster.
+     */
+    adapterPropertyOverrides: AdapterPropertyOverridesResponseV1;
     /**
      * Array of adapters used for the network intent.
      */
@@ -1267,10 +2234,6 @@ export interface IntentsResponse {
      */
     isStretchIntentSet: boolean;
     /**
-     * Name of the network intent you wish to create.
-     */
-    name?: string;
-    /**
      * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
      */
     overrideAdapterProperty: boolean;
@@ -1291,13 +2254,9 @@ export interface IntentsResponse {
      */
     scope: number;
     /**
-     * List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
-     */
-    trafficType?: string[];
-    /**
      * Set virtualSwitch ConfigurationOverrides for cluster.
      */
-    virtualSwitchConfigurationOverrides: VirtualSwitchConfigurationOverridesResponse;
+    virtualSwitchConfigurationOverrides: VirtualSwitchConfigurationOverridesResponseV1;
 }
 
 /**
@@ -1308,6 +2267,20 @@ export interface InterfaceDNSSettingsResponse {
      * List of DNS server IP Addresses for the interface
      */
     dnsServers?: string[];
+}
+
+/**
+ * IP address range configuration.
+ */
+export interface IpAddressRangeResponse {
+    /**
+     * End IP address.
+     */
+    endIp: string;
+    /**
+     * Start IP address.
+     */
+    startIp: string;
 }
 
 /**
@@ -1340,6 +2313,230 @@ export interface IsolatedVmAttestationConfigurationResponse {
      * Region specific endpoint for relying party service.
      */
     relyingPartyServiceEndpoint: string;
+}
+
+/**
+ * Reported Properties for job triggered from cloud.
+ */
+export interface JobReportedPropertiesResponse {
+    /**
+     * Deployment status of job.
+     */
+    deploymentStatus: EceActionStatusResponse;
+    /**
+     * The percentage of the job that is complete.
+     */
+    percentComplete: number;
+    /**
+     * Validation status of job.
+     */
+    validationStatus: EceActionStatusResponse;
+}
+
+/**
+ * Reference to a LoadBalancer backend address pool reference
+ */
+export interface LoadBalancerBackendAddressPoolReferenceResponse {
+    /**
+     * name of the backend address pool
+     */
+    name: string;
+}
+
+/**
+ * LoadBalancer Backend Address properties
+ */
+export interface LoadBalancerBackendAddressPropertiesResponse {
+    /**
+     * admin state - if set to false, the address is removed from the pool
+     */
+    adminState?: string;
+    /**
+     * IP address of the backend target. Populated automatically from the referenced IP configuration.
+     */
+    ipAddress: string;
+    /**
+     * Reference to the logical network containing this backend address. Populated automatically from the referenced IP configuration. Mutually exclusive with subnet and virtualNetwork.
+     */
+    logicalNetwork: LogicalNetworkArmReferenceResponse;
+    /**
+     * Nic Based backend-ip association
+     */
+    networkInterfaceIPConfiguration?: IPConfigurationArmReferenceResponse;
+    /**
+     * Reference to the subnet containing the backend address. Populated automatically from the referenced IP configuration. Mutually exclusive with logicalNetwork.
+     */
+    subnet: VirtualNetworkSubnetArmReferenceResponse;
+    /**
+     * Reference to the virtual network containing the backend address. Populated automatically from the referenced IP configuration. Mutually exclusive with logicalNetwork.
+     */
+    virtualNetwork: VirtualNetworkArmReferenceResponse;
+}
+
+/**
+ * LoadBalancer Backend Address
+ */
+export interface LoadBalancerBackendAddressResponse {
+    /**
+     * name of the backend address
+     */
+    name: string;
+    /**
+     * backend address properties
+     */
+    properties: LoadBalancerBackendAddressPropertiesResponse;
+}
+
+/**
+ * Reference to a LoadBalancer Frontend IPConfiguration
+ */
+export interface LoadBalancerFrontendIPConfigurationReferenceResponse {
+    /**
+     * name of the frontnedIPConfiguration
+     */
+    name: string;
+}
+
+/**
+ * Reference to a LoadBalancer health probe
+ */
+export interface LoadBalancerProbeReferenceResponse {
+    /**
+     * name of the health probe
+     */
+    name: string;
+}
+
+/**
+ * Load Balancer resource properties
+ */
+export interface LoadBalancerPropertiesResponse {
+    /**
+     * backendAddressPools for the loadbalancer
+     */
+    backendAddressPools?: BackendAddressPoolResponse[];
+    /**
+     * Frontend IPs for the loadbalancer.
+     */
+    frontendIPConfigurations: FrontendIPConfigurationResponse[];
+    /**
+     * load balancer rules
+     */
+    loadBalancingRules?: LoadBalancerRuleResponse[];
+    /**
+     * load balancer health probes
+     */
+    probes?: ProbeResponse[];
+    /**
+     * Provisioning state of the Load Balancer
+     */
+    provisioningState: string;
+    /**
+     * observed state of the load balancer
+     */
+    status: LoadBalancerStatusResponse;
+}
+
+/**
+ * Properties for LoadBalancerRules
+ */
+export interface LoadBalancerRulePropertiesResponse {
+    /**
+     * arm reference to backend pool being used by ths pool
+     */
+    backendAddressPool: LoadBalancerBackendAddressPoolReferenceResponse;
+    /**
+     * backendPort to forward connections
+     */
+    backendPort: number;
+    /**
+     * arm reference to frontend IP being used by this LB
+     */
+    frontendIPConfiguration: LoadBalancerFrontendIPConfigurationReferenceResponse;
+    /**
+     * Frontend port to accept connections
+     */
+    frontendPort: number;
+    /**
+     * Time for which connections are preserved before being torn down.
+     */
+    idleTimeoutInMinutes?: number;
+    /**
+     * SessionPersistence: Default (5-tuple), SourceIP(2-tuple), sourceIPProtocol(3-tuple)
+     */
+    loadDistribution?: string;
+    /**
+     * Reference for the health probe for this connection
+     */
+    probe?: LoadBalancerProbeReferenceResponse;
+    /**
+     * IP Protocol that the rule must load-balance
+     */
+    protocol: string;
+}
+/**
+ * loadBalancerRulePropertiesResponseProvideDefaults sets the appropriate defaults for LoadBalancerRulePropertiesResponse
+ */
+export function loadBalancerRulePropertiesResponseProvideDefaults(val: LoadBalancerRulePropertiesResponse): LoadBalancerRulePropertiesResponse {
+    return {
+        ...val,
+        loadDistribution: (val.loadDistribution) ?? "Default",
+    };
+}
+
+/**
+ * LoadBalancer Rules
+ */
+export interface LoadBalancerRuleResponse {
+    /**
+     * name of the load balancer rule
+     */
+    name: string;
+    /**
+     * load balancer rule properties
+     */
+    properties: LoadBalancerRulePropertiesResponse;
+}
+/**
+ * loadBalancerRuleResponseProvideDefaults sets the appropriate defaults for LoadBalancerRuleResponse
+ */
+export function loadBalancerRuleResponseProvideDefaults(val: LoadBalancerRuleResponse): LoadBalancerRuleResponse {
+    return {
+        ...val,
+        properties: loadBalancerRulePropertiesResponseProvideDefaults(val.properties),
+    };
+}
+
+/**
+ * Status of load balancer operations
+ */
+export interface LoadBalancerStatusProvisioningStatusResponse {
+    /**
+     * The ID of the operation performed on the load balancer
+     */
+    operationId?: string;
+    /**
+     * The status of the operation performed on the loadbalancer [Succeeded, Failed, InProgress]
+     */
+    status: string;
+}
+
+/**
+ * The observed status of the virtual network
+ */
+export interface LoadBalancerStatusResponse {
+    /**
+     * LoadBalancer provisioning error code
+     */
+    errorCode?: string;
+    /**
+     * Descriptive error message
+     */
+    errorMessage?: string;
+    /**
+     * virtual network provisioning status
+     */
+    provisioningStatus?: LoadBalancerStatusProvisioningStatusResponse;
 }
 
 /**
@@ -1470,11 +2667,11 @@ export interface LogCollectionSessionResponse {
 }
 
 /**
- * The ARM ID for a Logical Network.
+ * The Azure Resource ID for a Logical Network.
  */
 export interface LogicalNetworkArmReferenceResponse {
     /**
-     * The ARM ID for a Logical Network.
+     * The Azure Resource ID for a Logical Network.
      */
     id?: string;
 }
@@ -1642,6 +2839,126 @@ export interface MarketplaceGalleryImageStatusResponse {
 }
 
 /**
+ * The ARM ID for a Network Security Group.
+ */
+export interface NatGatewayArmReferenceResponse {
+    /**
+     * The ARM ID for a Network Security Group.
+     */
+    resourceId?: string;
+}
+
+/**
+ * Nat Gateway resource properties
+ */
+export interface NatGatewayPropertiesResponse {
+    /**
+     * List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet
+     */
+    inboundNATRules?: InboundNATRuleResponse[];
+    /**
+     * Provisioning state of the public IP
+     */
+    provisioningState: string;
+    /**
+     * List of public ip addresses that the gateway can use for NAT.
+     */
+    publicIPAddresses?: PublicIPAddressArmReferenceResponse[];
+    /**
+     * The observed state of Nat Gateway
+     */
+    status: NatGatewayStatusResponse;
+    /**
+     * List of subnets associated with the nat gateway. These can only be vnet subnets and must be from the same vnet
+     */
+    subnets: VirtualNetworkSubnetArmReferenceResponse[];
+}
+
+/**
+ * Provisioning status of Nat Gateway 
+ */
+export interface NatGatewayStatusProvisioningStatusResponse {
+    /**
+     * The ID of the operation performed on the nat gateway
+     */
+    operationId?: string;
+    /**
+     * The status of the operation performed on the nat gateway [Succeeded, Failed, InProgress]
+     */
+    status: string;
+}
+
+/**
+ * Nat Gateway resource status
+ */
+export interface NatGatewayStatusResponse {
+    /**
+     * NatGateway provisioning error code
+     */
+    errorCode?: string;
+    /**
+     * Descriptive error message
+     */
+    errorMessage?: string;
+    /**
+     * NatGateway provisioning status
+     */
+    provisioningStatus?: NatGatewayStatusProvisioningStatusResponse;
+}
+
+/**
+ * Network adapter configuration.
+ */
+export interface NetworkAdapterResponse {
+    /**
+     * Adapter Name.
+     */
+    adapterName?: string;
+    /**
+     * Array of DNS addresses.
+     */
+    dnsAddressArray?: string[];
+    /**
+     * Gateway id.
+     */
+    gateway?: string;
+    /**
+     * IP address.
+     */
+    ipAddress?: string;
+    /**
+     * IP address range.
+     */
+    ipAddressRange?: IpAddressRangeResponse;
+    /**
+     * Type of IP assignment.
+     */
+    ipAssignmentType: string;
+    /**
+     * MAC address.
+     */
+    macAddress?: string;
+    /**
+     * Subnet mask.
+     */
+    subnetMask?: string;
+    /**
+     * VLAN ID for the network setup.
+     */
+    vlanId?: string;
+}
+
+/**
+ * Network configuration.
+ */
+export interface NetworkConfigurationResponse {
+    /**
+     * List of network adapters.
+     */
+    networkAdapters?: NetworkAdapterResponse[];
+}
+
+/**
  * network controller config for SDN Integration to deploy AzureStackHCI Cluster.
  */
 export interface NetworkControllerResponse {
@@ -1660,11 +2977,11 @@ export interface NetworkControllerResponse {
 }
 
 /**
- * The ARM ID for a Network Interface.
+ * The Azure Resource ID for a Network Interface.
  */
 export interface NetworkInterfaceArmReferenceResponse {
     /**
-     * The ARM ID for a Network Interface.
+     * The Azure Resource ID for a Network Interface.
      */
     id?: string;
 }
@@ -1702,11 +3019,11 @@ export interface NetworkInterfaceStatusResponse {
 }
 
 /**
- * The ARM ID for a Network Security Group.
+ * The Azure Resource ID for a Network Security Group.
  */
 export interface NetworkSecurityGroupArmReferenceResponse {
     /**
-     * The ARM ID for a Network Security Group.
+     * The Azure Resource ID for a Network Security Group.
      */
     id?: string;
 }
@@ -1815,6 +3132,66 @@ export function observabilityResponseProvideDefaults(val: ObservabilityResponse)
 }
 
 /**
+ * Onboarding configuration.
+ */
+export interface OnboardingConfigurationResponse {
+    /**
+     * Azure Arc virtual machine ID.
+     */
+    arcVirtualMachineId?: string;
+    /**
+     * Location of the resource.
+     */
+    location?: string;
+    /**
+     * Resource ID.
+     */
+    resourceId?: string;
+    /**
+     * Tenant ID of the resource.
+     */
+    tenantId?: string;
+    /**
+     * Type of the onboarding resource to support polymorphic resource.
+     */
+    type?: string;
+}
+
+/**
+ * operation detail.
+ */
+export interface OperationDetailResponse {
+    /**
+     * operation description.
+     */
+    description: string;
+    /**
+     * error details.
+     */
+    error: ErrorDetailResponse;
+    /**
+     * operation id.
+     */
+    id: string;
+    /**
+     * operation name.
+     */
+    name: string;
+    /**
+     * operation resource id.
+     */
+    resourceId: string;
+    /**
+     * operation status.
+     */
+    status: string;
+    /**
+     * operation type.
+     */
+    type: string;
+}
+
+/**
  * The OptionalServices of AzureStackHCI Cluster.
  */
 export interface OptionalServicesResponse {
@@ -1822,6 +3199,105 @@ export interface OptionalServicesResponse {
      * The name of custom location.
      */
     customLocation?: string;
+}
+
+/**
+ * OS configurations for HCI device.
+ */
+export interface OsProfileResponse {
+    /**
+     * Version of assembly present on device
+     */
+    assemblyVersion: string;
+    /**
+     * OS Base Image Version
+     */
+    baseImageVersion: string;
+    /**
+     * The boot type of the device. e.g. UEFI, Legacy etc
+     */
+    bootType: string;
+    /**
+     * OS Build Number
+     */
+    buildNumber: string;
+    /**
+     * OS Image Version
+     */
+    imageVersion: string;
+    /**
+     * OS SKU (e.g., “ Microsoft Azure Linux ROE“, “Azure Stack HCI", "Microsoft Azure Linux 3.0")
+     */
+    osSku: string;
+    /**
+     * OS type (“windows", “linux”)
+     */
+    osType: string;
+    /**
+     * OS Version
+     */
+    osVersion: string;
+}
+
+/**
+ * Operating system profile.
+ */
+export interface OsProvisionProfileResponse {
+    /**
+     * GPG Public Key used for package verification
+     */
+    gpgPubKey?: string;
+    /**
+     * Hash of the OS package downloaded
+     */
+    imageHash?: string;
+    /**
+     * Operation sub type of OS Provisioning
+     */
+    operationType?: string;
+    /**
+     * Location of the operating system image.
+     */
+    osImageLocation?: string;
+    /**
+     * Name of the operating system.
+     */
+    osName?: string;
+    /**
+     * Type of the operating system.
+     */
+    osType?: string;
+    /**
+     * Version of the operating system.
+     */
+    osVersion?: string;
+    /**
+     * Validated Solution Recipe version to be used for the job
+     */
+    vsrVersion?: string;
+}
+/**
+ * osProvisionProfileResponseProvideDefaults sets the appropriate defaults for OsProvisionProfileResponse
+ */
+export function osProvisionProfileResponseProvideDefaults(val: OsProvisionProfileResponse): OsProvisionProfileResponse {
+    return {
+        ...val,
+        operationType: (val.operationType) ?? "Provision",
+    };
+}
+
+/**
+ * Details for ownership voucher.
+ */
+export interface OwnershipVoucherDetailsResponse {
+    /**
+     * Owner key type
+     */
+    ownerKeyType: string;
+    /**
+     * Ownership voucher in base64 encoded format
+     */
+    ownershipVoucher: string;
 }
 
 /**
@@ -1910,6 +3386,241 @@ export interface PhysicalNodesResponse {
      * NETBIOS name of each physical server on your Azure Stack HCI cluster.
      */
     name?: string;
+}
+
+/**
+ * properties for LoadBalancer health probes
+ */
+export interface ProbePropertiesResponse {
+    /**
+     * Probe interval in seconds (5-300) default 15
+     */
+    intervalInSeconds?: number;
+    /**
+     * number of consecutive probe failures before marking unhealthy (1-20) default 2
+     */
+    numberOfProbes?: number;
+    /**
+     * Port on the backend address to probe
+     */
+    port: number;
+    /**
+     * Protocol for this probe: Can be Tcp or Http - Diverges from Azure where Https is also an option
+     */
+    protocol: string;
+    /**
+     * For http probes, specify the request path e.g. /health
+     */
+    requestPath?: string;
+}
+/**
+ * probePropertiesResponseProvideDefaults sets the appropriate defaults for ProbePropertiesResponse
+ */
+export function probePropertiesResponseProvideDefaults(val: ProbePropertiesResponse): ProbePropertiesResponse {
+    return {
+        ...val,
+        intervalInSeconds: (val.intervalInSeconds) ?? 15,
+        numberOfProbes: (val.numberOfProbes) ?? 2,
+    };
+}
+
+/**
+ * Load balancer health probes
+ */
+export interface ProbeResponse {
+    /**
+     * name of the load balancer health probe
+     */
+    name: string;
+    /**
+     * load balancer rule properties
+     */
+    properties: ProbePropertiesResponse;
+}
+/**
+ * probeResponseProvideDefaults sets the appropriate defaults for ProbeResponse
+ */
+export function probeResponseProvideDefaults(val: ProbeResponse): ProbeResponse {
+    return {
+        ...val,
+        properties: probePropertiesResponseProvideDefaults(val.properties),
+    };
+}
+
+/**
+ * Represents the properties of an Azure Linux restricted operating environment Provision Os job.
+ */
+export interface ProvisionOsJobPropertiesResponse {
+    /**
+     * Deployment mode to trigger job.
+     */
+    deploymentMode?: string;
+    /**
+     * The UTC date and time at which the job completed.
+     */
+    endTimeUtc: string;
+    /**
+     * error details.
+     */
+    error: ErrorDetailResponse;
+    /**
+     * Unique, immutable job id.
+     */
+    jobId: string;
+    /**
+     * Job Type supported.
+     * Expected value is 'ProvisionOs'.
+     */
+    jobType: "ProvisionOs";
+    /**
+     * Os Provisioning request.
+     */
+    provisioningRequest: ProvisioningRequestResponse;
+    /**
+     * Job provisioning state
+     */
+    provisioningState: string;
+    /**
+     * Reported Properties for Provision Os job
+     */
+    reportedProperties?: ProvisionOsReportedPropertiesResponse;
+    /**
+     * The UTC date and time at which the job started.
+     */
+    startTimeUtc: string;
+    /**
+     * Status of Edge device job.
+     */
+    status: string;
+}
+/**
+ * provisionOsJobPropertiesResponseProvideDefaults sets the appropriate defaults for ProvisionOsJobPropertiesResponse
+ */
+export function provisionOsJobPropertiesResponseProvideDefaults(val: ProvisionOsJobPropertiesResponse): ProvisionOsJobPropertiesResponse {
+    return {
+        ...val,
+        provisioningRequest: provisioningRequestResponseProvideDefaults(val.provisioningRequest),
+    };
+}
+
+/**
+ * Reported Properties for Provision Os job
+ */
+export interface ProvisionOsReportedPropertiesResponse {
+    /**
+     * Deployment status of job.
+     */
+    deploymentStatus: EceActionStatusResponse;
+    /**
+     * The percentage of the job that is complete.
+     */
+    percentComplete: number;
+    /**
+     * Validation status of job.
+     */
+    validationStatus: EceActionStatusResponse;
+}
+
+/**
+ * Details for device provisioning.
+ */
+export interface ProvisioningDetailsResponse {
+    /**
+     * Operating system profile.
+     */
+    osProfile: OsProvisionProfileResponse;
+    /**
+     * User configuration.
+     */
+    userDetails?: UserDetailsResponse[];
+}
+/**
+ * provisioningDetailsResponseProvideDefaults sets the appropriate defaults for ProvisioningDetailsResponse
+ */
+export function provisioningDetailsResponseProvideDefaults(val: ProvisioningDetailsResponse): ProvisioningDetailsResponse {
+    return {
+        ...val,
+        osProfile: osProvisionProfileResponseProvideDefaults(val.osProfile),
+    };
+}
+
+/**
+ * Represents a provisioning request.
+ */
+export interface ProvisioningRequestResponse {
+    /**
+     * Base64 encoded custom configuration for CAPI to use
+     */
+    customConfiguration?: string;
+    /**
+     * Device configuration.
+     */
+    deviceConfiguration?: TargetDeviceConfigurationResponse;
+    /**
+     * Onboarding configuration.
+     */
+    onboardingConfiguration?: OnboardingConfigurationResponse;
+    /**
+     * Operating system profile.
+     */
+    osProfile: OsProvisionProfileResponse;
+    /**
+     * Target operating system to support polymorphic resource.
+     */
+    target: string;
+    /**
+     * User configuration.
+     */
+    userDetails?: UserDetailsResponse[];
+}
+/**
+ * provisioningRequestResponseProvideDefaults sets the appropriate defaults for ProvisioningRequestResponse
+ */
+export function provisioningRequestResponseProvideDefaults(val: ProvisioningRequestResponse): ProvisioningRequestResponse {
+    return {
+        ...val,
+        osProfile: osProvisionProfileResponseProvideDefaults(val.osProfile),
+    };
+}
+
+/**
+ * The Azure Resource ID of a Public IP resource
+ */
+export interface PublicIPAddressArmReferenceResponse {
+    /**
+     * The Azure Resource ID of a Public IP resource
+     */
+    resourceId?: string;
+}
+
+/**
+ * Public IP Properties resource.
+ */
+export interface PublicIPAddressPropertiesResponse {
+    /**
+     * IP Address. This is static. If the user specifies, we allocate that otherwise allocate from logical network address space.
+     */
+    ipAddress?: string;
+    /**
+     * ipAllocationScope: Azure Reference to a particular IP Pool (ALM) or a LogicalNetwork (ALL) for allocating public IP
+     */
+    ipAllocationScope?: string;
+    /**
+     * network interface or LoadBalancer frontendIPconfiguration using this public IP
+     */
+    ipConfiguration: IPConfigurationArmReferenceResponse;
+    /**
+     * natGateway using this public IP
+     */
+    natGateway: NatGatewayArmReferenceResponse;
+    /**
+     * Provisioning state of the public IP
+     */
+    provisioningState: string;
+    /**
+     * Whether the public IP is v4 or v6. Defaults to IPv4
+     */
+    publicIPAddressVersion?: string;
 }
 
 /**
@@ -2270,6 +3981,82 @@ export interface ServiceConfigurationResponse {
 }
 
 /**
+ * Site Details consists of common configurations.
+ */
+export interface SiteDetailsResponse {
+    /**
+     * Edge Device configuration received from site common configuration.
+     */
+    deviceConfiguration?: TargetDeviceConfigurationResponse;
+    /**
+     * Site resource Id to be set during Edge Machine resource creation.
+     */
+    siteResourceId: string;
+}
+
+/**
+ * Properties under the snapshot resource
+ */
+export interface SnapshotPropertiesResponse {
+    /**
+     * Data used when creating a snapshot
+     */
+    creationData?: CreationDataResponse;
+    /**
+     * The size of the disk in bytes.
+     */
+    diskSizeBytes: number;
+    /**
+     * Provisioning state of the snapshot.
+     */
+    provisioningState: string;
+    /**
+     * The observed state of snapshots
+     */
+    status: SnapshotStatusResponse;
+    /**
+     * The time when the snapshot was created.
+     */
+    timeCreated: string;
+    /**
+     * Unique identifier for the snapshot.
+     */
+    uniqueId: string;
+}
+
+/**
+ * Snapshot Status provisioning status
+ */
+export interface SnapshotStatusProvisioningStatusResponse {
+    /**
+     * The ID of the operation performed on the snapshot
+     */
+    operationId?: string;
+    /**
+     * The status of the operation performed on the snapshot [Succeeded, Failed, InProgress]
+     */
+    status: string;
+}
+
+/**
+ * The observed state of snapshots
+ */
+export interface SnapshotStatusResponse {
+    /**
+     * Snapshot provisioning error code
+     */
+    errorCode?: string;
+    /**
+     * Descriptive error message
+     */
+    errorMessage?: string;
+    /**
+     * Provisioning status of the snapshot
+     */
+    provisioningStatus?: SnapshotStatusProvisioningStatusResponse;
+}
+
+/**
  * Software Assurance properties of the cluster.
  */
 export interface SoftwareAssurancePropertiesResponse {
@@ -2360,6 +4147,24 @@ export interface StorageAdapterIPInfoResponse {
     /**
      * The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
      */
+    ipv4Address?: string;
+    /**
+     * storage adapter physical node name.
+     */
+    physicalNode?: string;
+    /**
+     * The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
+     */
+    subnetMask?: string;
+}
+
+/**
+ * The StorageAdapter physical nodes of a cluster.
+ */
+export interface StorageAdapterIPInfoResponseV1 {
+    /**
+     * The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
+     */
     ipv4Address: string;
     /**
      * storage adapter physical node name.
@@ -2369,6 +4174,16 @@ export interface StorageAdapterIPInfoResponse {
      * The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
      */
     subnetMask: string;
+}
+
+/**
+ * Storage configuration.
+ */
+export interface StorageConfigurationResponse {
+    /**
+     * Partition size.
+     */
+    partitionSize?: string;
 }
 
 /**
@@ -2418,6 +4233,28 @@ export interface StorageNetworksResponse {
     /**
      * Name of the storage network.
      */
+    name?: string;
+    /**
+     * Name of the storage network adapter.
+     */
+    networkAdapterName?: string;
+    /**
+     * List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
+     */
+    storageAdapterIPInfo?: StorageAdapterIPInfoResponse[];
+    /**
+     * ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic. 
+     */
+    vlanId?: string;
+}
+
+/**
+ * The StorageNetworks of a cluster.
+ */
+export interface StorageNetworksResponseV1 {
+    /**
+     * Name of the storage network.
+     */
     name: string;
     /**
      * Name of the storage network adapter.
@@ -2426,15 +4263,21 @@ export interface StorageNetworksResponse {
     /**
      * List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
      */
-    storageAdapterIPInfo: StorageAdapterIPInfoResponse[];
+    storageAdapterIPInfo: StorageAdapterIPInfoResponseV1[];
     /**
      * ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic. 
      */
     storageVlanId: string;
+}
+
+/**
+ * StorageProfile of edge machine.
+ */
+export interface StorageProfileResponse {
     /**
-     * ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic. 
+     * Number of storage disks in the device with $CanPool as true.
      */
-    vlanId?: string;
+    poolableDisksCount: number;
 }
 
 /**
@@ -2457,11 +4300,11 @@ export function storageResponseProvideDefaults(val: StorageResponse): StorageRes
 }
 
 /**
- * The ARM ID for a Network Interface.
+ * The Azure Resource ID for a Network Interface.
  */
 export interface SubnetIpConfigurationReferenceResponse {
     /**
-     * The ARM ID for a Network Interface.
+     * The Azure Resource ID for a Network Interface.
      */
     id?: string;
 }
@@ -2575,6 +4418,50 @@ export interface SystemDataResponse {
 }
 
 /**
+ * Device configuration.
+ */
+export interface TargetDeviceConfigurationResponse {
+    /**
+     * Hostname of the device.
+     */
+    hostName?: string;
+    /**
+     * Network configuration.
+     */
+    network?: NetworkConfigurationResponse;
+    /**
+     * Storage configuration.
+     */
+    storage?: StorageConfigurationResponse;
+    /**
+     * Time configuration.
+     */
+    time?: TimeConfigurationResponse;
+    /**
+     * Web proxy configuration.
+     */
+    webProxy?: WebProxyConfigurationResponse;
+}
+
+/**
+ * Time configuration.
+ */
+export interface TimeConfigurationResponse {
+    /**
+     * Primary NTP server.
+     */
+    primaryTimeServer?: string;
+    /**
+     * Secondary NTP server.
+     */
+    secondaryTimeServer?: string;
+    /**
+     * Time zone.
+     */
+    timeZone?: string;
+}
+
+/**
  * If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty.
  */
 export interface UpdatePrerequisiteResponse {
@@ -2607,6 +4494,28 @@ export interface UserAssignedIdentityResponse {
 }
 
 /**
+ * User configuration.
+ */
+export interface UserDetailsResponse {
+    /**
+     * Location of the secret used for authentication.
+     */
+    secretLocation?: string;
+    /**
+     * Type of the secret used for authentication.
+     */
+    secretType: string;
+    /**
+     * SSH Public Key for the user.
+     */
+    sshPubKey?: string[];
+    /**
+     * Name of the user.
+     */
+    userName: string;
+}
+
+/**
  * Specifies the security profile settings for the managed disk. NOTE: It can only be set for Confidential VMs
  */
 export interface VMDiskSecurityProfileResponse {
@@ -2617,11 +4526,11 @@ export interface VMDiskSecurityProfileResponse {
 }
 
 /**
- * The ARM ID for a Virtual Hard Disk.
+ * The Azure Resource ID for a Virtual Hard Disk.
  */
 export interface VirtualHardDiskArmReferenceResponse {
     /**
-     * The ARM ID for a Virtual Hard Disk.
+     * The Azure Resource ID for a Virtual Hard Disk.
      */
     id?: string;
 }
@@ -2967,7 +4876,7 @@ export function virtualMachineInstancePropertiesSecurityProfileUefiSettingsRespo
  */
 export interface VirtualMachineInstancePropertiesStorageProfileOsDiskResponse {
     /**
-     * The ARM ID for a Virtual Hard Disk.
+     * The Azure Resource ID for a Virtual Hard Disk.
      */
     id?: string;
     /**
@@ -3321,6 +5230,16 @@ export interface VirtualMachineStatusResponseProvisioningStatus {
 }
 
 /**
+ * The Azure Resource ID for a Virtual Network
+ */
+export interface VirtualNetworkArmReferenceResponse {
+    /**
+     * The Azure Resource ID for a Virtual Network.
+     */
+    resourceId?: string;
+}
+
+/**
  * DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
  */
 export interface VirtualNetworkPropertiesResponseDhcpOptions {
@@ -3441,9 +5360,109 @@ export interface VirtualNetworkStatusResponseProvisioningStatus {
 }
 
 /**
+ * The Azure Resource ID for a Virtual Network subnet
+ */
+export interface VirtualNetworkSubnetArmReferenceResponse {
+    /**
+     * The Azure Resource ID for a Virtual Network subnet.
+     */
+    resourceId?: string;
+}
+
+/**
+ * The Azure Resource ID for a resource consuming IP on a subnet
+ */
+export interface VirtualNetworkSubnetIpConfigurationReferenceResponse {
+    /**
+     * The Azure Resource ID for a Network Interface.
+     */
+    id?: string;
+}
+
+/**
+ * VirtualNetwork subnet resource
+ */
+export interface VirtualNetworkSubnetPropertiesResponse {
+    /**
+     * Subnet CIDR
+     */
+    addressPrefix: string;
+    /**
+     * List of ip configurations for the subnet
+     */
+    ipConfigurations: VirtualNetworkSubnetIpConfigurationReferenceResponse[];
+    /**
+     * Nat Gateway attached to the subnet for non-vnet traffic.
+     */
+    natGateway?: NatGatewayArmReferenceResponse;
+    /**
+     * Network Security Group attached to the subnet.
+     */
+    networkSecurityGroup?: NetworkSecurityGroupArmReferenceResponse;
+    /**
+     * The provisioning state of the virtual network subnet resource.
+     */
+    provisioningState: string;
+    /**
+     * RouteTable defining custom routes for the subnet.
+     */
+    routeTable?: RouteTableResponse;
+    /**
+     * The observed status of the virtual network subnet resource.
+     */
+    status: VirtualNetworkSubnetStatusResponse;
+}
+
+/**
+ * Status of virtual network subnet operations
+ */
+export interface VirtualNetworkSubnetStatusProvisioningStatusResponse {
+    /**
+     * The ID of the operation performed on the virtual network subnet
+     */
+    operationId?: string;
+    /**
+     * The status of the operation performed on the virtual network subnet [Succeeded, Failed, InProgress]
+     */
+    status: string;
+}
+
+/**
+ * Status of virtual network subnet operations
+ */
+export interface VirtualNetworkSubnetStatusResponse {
+    /**
+     * VirtualNetworkSubnet provisioning error code
+     */
+    errorCode?: string;
+    /**
+     * Descriptive error message
+     */
+    errorMessage?: string;
+    /**
+     * Public IP provisioning status
+     */
+    provisioningStatus?: VirtualNetworkSubnetStatusProvisioningStatusResponse;
+}
+
+/**
  * The VirtualSwitchConfigurationOverrides of a cluster.
  */
 export interface VirtualSwitchConfigurationOverridesResponse {
+    /**
+     * Enable IoV for Virtual Switch
+     */
+    enableIov?: string;
+    /**
+     * Load Balancing Algorithm for Virtual Switch
+     */
+    loadBalancingAlgorithm?: string;
+}
+
+/**
+ * The VirtualSwitchConfigurationOverrides of a cluster.
+ */
+export interface VirtualSwitchConfigurationOverridesResponseV1 {
     /**
      * Enable IoV for Virtual Switch
      */
@@ -3455,15 +5474,19 @@ export interface VirtualSwitchConfigurationOverridesResponse {
 }
 
 /**
- * The credentials used to login to the image repository that has access to the specified image
+ * Web proxy configuration.
  */
-export interface VmImageRepositoryCredentialsResponse {
+export interface WebProxyConfigurationResponse {
     /**
-     * Password for accessing image repository
+     * Bypass list for the web proxy.
      */
-    password: string;
+    bypassList?: string[];
     /**
-     * Username for accessing image repository
+     * Connection URI of the web proxy.
      */
-    username: string;
+    connectionUri?: string;
+    /**
+     * Port of the web proxy.
+     */
+    port?: string;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-07-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-15-preview.
  *
- * Other available API versions: 2022-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-15-preview, 2025-09-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualNetwork extends pulumi.CustomResource {
     /**
@@ -133,7 +133,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
             resourceInputs["vmSwitchName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20210701preview:VirtualNetwork" }, { type: "azure-native:azurestackhci/v20210901preview:VirtualNetwork" }, { type: "azure-native:azurestackhci/v20210901preview:VirtualnetworkRetrieve" }, { type: "azure-native:azurestackhci/v20221215preview:VirtualNetwork" }, { type: "azure-native:azurestackhci/v20230701preview:VirtualNetwork" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20210701preview:VirtualNetwork" }, { type: "azure-native:azurestackhci/v20210901preview:VirtualNetwork" }, { type: "azure-native:azurestackhci/v20210901preview:VirtualnetworkRetrieve" }, { type: "azure-native:azurestackhci/v20221215preview:VirtualNetwork" }, { type: "azure-native:azurestackhci/v20230701preview:VirtualNetwork" }, { type: "azure-native:azurestackhci/v20250901preview:VirtualNetwork" }, { type: "azure-native:azurestackhci/v20260201preview:VirtualNetwork" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualNetwork.__pulumiType, name, resourceInputs, opts);
     }

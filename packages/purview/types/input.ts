@@ -1,7 +1,7 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * Gets or sets the Sku.
+ * The Sku
  */
 export interface AccountSkuArgs {
     /**

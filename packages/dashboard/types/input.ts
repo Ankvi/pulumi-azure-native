@@ -11,6 +11,16 @@ export interface AzureMonitorWorkspaceIntegrationArgs {
 }
 
 /**
+ * Properties specific to the dashboard definition.
+ */
+export interface DashboardDefinitionPropertiesArgs {
+    /**
+     * The dashboard definition data in JSON format.
+     */
+    serializedData?: pulumi.Input<string>;
+}
+
+/**
  * Enterprise settings of a Grafana instance
  */
 export interface EnterpriseConfigurationsArgs {

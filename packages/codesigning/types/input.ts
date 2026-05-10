@@ -1,7 +1,7 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * SKU of the trusted signing account.
+ * SKU of the artifact signing account.
  */
 export interface AccountSkuArgs {
     /**

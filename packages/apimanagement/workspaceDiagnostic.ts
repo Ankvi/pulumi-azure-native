@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Diagnostic details.
  *
- * Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
+ * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
  *
- * Other available API versions: 2023-09-01-preview, 2024-05-01, 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WorkspaceDiagnostic extends pulumi.CustomResource {
     /**
@@ -55,10 +55,6 @@ export class WorkspaceDiagnostic extends pulumi.CustomResource {
      * Sets correlation protocol to use for Application Insights diagnostics.
      */
     declare public readonly httpCorrelationProtocol: pulumi.Output<string | undefined>;
-    /**
-     * Large Language Models diagnostic settings
-     */
-    declare public readonly largeLanguageModel: pulumi.Output<types.outputs.LLMDiagnosticSettingsResponse | undefined>;
     /**
      * Log the ClientIP. Default is false.
      */
@@ -120,7 +116,6 @@ export class WorkspaceDiagnostic extends pulumi.CustomResource {
             resourceInputs["diagnosticId"] = args?.diagnosticId;
             resourceInputs["frontend"] = args?.frontend;
             resourceInputs["httpCorrelationProtocol"] = args?.httpCorrelationProtocol;
-            resourceInputs["largeLanguageModel"] = args?.largeLanguageModel;
             resourceInputs["logClientIp"] = args?.logClientIp;
             resourceInputs["loggerId"] = args?.loggerId;
             resourceInputs["metrics"] = args?.metrics;
@@ -139,7 +134,6 @@ export class WorkspaceDiagnostic extends pulumi.CustomResource {
             resourceInputs["backend"] = undefined /*out*/;
             resourceInputs["frontend"] = undefined /*out*/;
             resourceInputs["httpCorrelationProtocol"] = undefined /*out*/;
-            resourceInputs["largeLanguageModel"] = undefined /*out*/;
             resourceInputs["logClientIp"] = undefined /*out*/;
             resourceInputs["loggerId"] = undefined /*out*/;
             resourceInputs["metrics"] = undefined /*out*/;
@@ -150,7 +144,7 @@ export class WorkspaceDiagnostic extends pulumi.CustomResource {
             resourceInputs["verbosity"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:WorkspaceDiagnostic" }, { type: "azure-native:apimanagement/v20240501:WorkspaceDiagnostic" }, { type: "azure-native:apimanagement/v20240601preview:WorkspaceDiagnostic" }, { type: "azure-native:apimanagement/v20241001preview:WorkspaceDiagnostic" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:WorkspaceDiagnostic" }, { type: "azure-native:apimanagement/v20240501:WorkspaceDiagnostic" }, { type: "azure-native:apimanagement/v20240601preview:WorkspaceDiagnostic" }, { type: "azure-native:apimanagement/v20241001preview:WorkspaceDiagnostic" }, { type: "azure-native:apimanagement/v20250301preview:WorkspaceDiagnostic" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkspaceDiagnostic.__pulumiType, name, resourceInputs, opts);
     }
@@ -180,10 +174,6 @@ export interface WorkspaceDiagnosticArgs {
      * Sets correlation protocol to use for Application Insights diagnostics.
      */
     httpCorrelationProtocol?: pulumi.Input<string | types.enums.HttpCorrelationProtocol>;
-    /**
-     * Large Language Models diagnostic settings
-     */
-    largeLanguageModel?: pulumi.Input<types.inputs.LLMDiagnosticSettingsArgs>;
     /**
      * Log the ClientIP. Default is false.
      */

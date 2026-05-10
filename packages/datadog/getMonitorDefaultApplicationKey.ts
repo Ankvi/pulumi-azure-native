@@ -1,0 +1,70 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+/**
+ * Get the default application key.
+ *
+ * Uses Azure REST API version 2025-11-03-preview.
+ *
+ * Other available API versions: 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ */
+export function getMonitorDefaultApplicationKey(args: GetMonitorDefaultApplicationKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitorDefaultApplicationKeyResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:datadog:getMonitorDefaultApplicationKey", {
+        "monitorName": args.monitorName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetMonitorDefaultApplicationKeyArgs {
+    /**
+     * Monitor resource name
+     */
+    monitorName: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+}
+
+/**
+ * Represents a Datadog Application key and its associated properties.
+ */
+export interface GetMonitorDefaultApplicationKeyResult {
+    /**
+     * The user that created the Application key.
+     */
+    readonly createdBy?: string;
+    /**
+     * The value of the Application key.
+     */
+    readonly key: string;
+    /**
+     * The name of the Application key.
+     */
+    readonly name?: string;
+}
+/**
+ * Get the default application key.
+ *
+ * Uses Azure REST API version 2025-11-03-preview.
+ *
+ * Other available API versions: 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ */
+export function getMonitorDefaultApplicationKeyOutput(args: GetMonitorDefaultApplicationKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMonitorDefaultApplicationKeyResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:datadog:getMonitorDefaultApplicationKey", {
+        "monitorName": args.monitorName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetMonitorDefaultApplicationKeyOutputArgs {
+    /**
+     * Monitor resource name
+     */
+    monitorName: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

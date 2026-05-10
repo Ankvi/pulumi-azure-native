@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Pool extends pulumi.CustomResource {
     /**
@@ -35,7 +35,13 @@ export class Pool extends pulumi.CustomResource {
         return obj['__pulumiType'] === Pool.__pulumiType;
     }
 
+    /**
+     * Whether the pool is resizing.
+     */
     declare public /*out*/ readonly allocationState: pulumi.Output<string>;
+    /**
+     * The time at which the pool entered its current allocation state.
+     */
     declare public /*out*/ readonly allocationStateTransitionTime: pulumi.Output<string>;
     /**
      * The list of application licenses must be a subset of available Batch service application licenses. If a license is requested which is not supported, pool creation will fail.
@@ -59,10 +65,25 @@ export class Pool extends pulumi.CustomResource {
      * Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
      */
     declare public readonly certificates: pulumi.Output<types.outputs.CertificateReferenceResponse[] | undefined>;
+    /**
+     * The creation time of the pool.
+     */
     declare public /*out*/ readonly creationTime: pulumi.Output<string>;
+    /**
+     * The number of dedicated compute nodes currently in the pool.
+     */
     declare public /*out*/ readonly currentDedicatedNodes: pulumi.Output<number>;
+    /**
+     * The number of Spot/low-priority compute nodes currently in the pool.
+     */
     declare public /*out*/ readonly currentLowPriorityNodes: pulumi.Output<number>;
+    /**
+     * Determines how a pool communicates with the Batch service.
+     */
     declare public /*out*/ readonly currentNodeCommunicationMode: pulumi.Output<string>;
+    /**
+     * Deployment configuration properties.
+     */
     declare public readonly deploymentConfiguration: pulumi.Output<types.outputs.DeploymentConfigurationResponse | undefined>;
     /**
      * The display name need not be unique and can contain any Unicode characters up to a maximum length of 1024.
@@ -93,14 +114,20 @@ export class Pool extends pulumi.CustomResource {
      */
     declare public readonly mountConfiguration: pulumi.Output<types.outputs.MountConfigurationResponse[] | undefined>;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The network configuration for a pool.
      */
     declare public readonly networkConfiguration: pulumi.Output<types.outputs.NetworkConfigurationResponse | undefined>;
+    /**
+     * The current state of the pool.
+     */
     declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
+    /**
+     * The time at which the pool entered its current state.
+     */
     declare public /*out*/ readonly provisioningStateTransitionTime: pulumi.Output<string>;
     /**
      * Describes either the current operation (if the pool AllocationState is Resizing) or the previously completed operation (if the AllocationState is Steady).
@@ -119,6 +146,10 @@ export class Pool extends pulumi.CustomResource {
      */
     declare public readonly startTask: pulumi.Output<types.outputs.StartTaskResponse | undefined>;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
      * The tags of the resource.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
@@ -135,13 +166,16 @@ export class Pool extends pulumi.CustomResource {
      */
     declare public readonly taskSlotsPerNode: pulumi.Output<number | undefined>;
     /**
-     * The type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Describes an upgrade policy - automatic, manual, or rolling.
      */
     declare public readonly upgradePolicy: pulumi.Output<types.outputs.UpgradePolicyResponse | undefined>;
+    /**
+     * The list of user accounts to be created on each node in the pool.
+     */
     declare public readonly userAccounts: pulumi.Output<types.outputs.UserAccountResponse[] | undefined>;
     /**
      * For information about available VM sizes, see Sizes for Virtual Machines in Azure (https://learn.microsoft.com/azure/virtual-machines/sizes/overview). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
@@ -202,6 +236,7 @@ export class Pool extends pulumi.CustomResource {
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["provisioningStateTransitionTime"] = undefined /*out*/;
             resourceInputs["resizeOperationStatus"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["allocationState"] = undefined /*out*/;
@@ -231,6 +266,7 @@ export class Pool extends pulumi.CustomResource {
             resourceInputs["resourceTags"] = undefined /*out*/;
             resourceInputs["scaleSettings"] = undefined /*out*/;
             resourceInputs["startTask"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["targetNodeCommunicationMode"] = undefined /*out*/;
             resourceInputs["taskSchedulingPolicy"] = undefined /*out*/;
@@ -241,7 +277,7 @@ export class Pool extends pulumi.CustomResource {
             resourceInputs["vmSize"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:batch/v20170901:Pool" }, { type: "azure-native:batch/v20181201:Pool" }, { type: "azure-native:batch/v20190401:Pool" }, { type: "azure-native:batch/v20190801:Pool" }, { type: "azure-native:batch/v20200301:Pool" }, { type: "azure-native:batch/v20200501:Pool" }, { type: "azure-native:batch/v20200901:Pool" }, { type: "azure-native:batch/v20210101:Pool" }, { type: "azure-native:batch/v20210601:Pool" }, { type: "azure-native:batch/v20220101:Pool" }, { type: "azure-native:batch/v20220601:Pool" }, { type: "azure-native:batch/v20221001:Pool" }, { type: "azure-native:batch/v20230501:Pool" }, { type: "azure-native:batch/v20231101:Pool" }, { type: "azure-native:batch/v20240201:Pool" }, { type: "azure-native:batch/v20240701:Pool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:batch/v20170901:Pool" }, { type: "azure-native:batch/v20181201:Pool" }, { type: "azure-native:batch/v20190401:Pool" }, { type: "azure-native:batch/v20190801:Pool" }, { type: "azure-native:batch/v20200301:Pool" }, { type: "azure-native:batch/v20200501:Pool" }, { type: "azure-native:batch/v20200901:Pool" }, { type: "azure-native:batch/v20210101:Pool" }, { type: "azure-native:batch/v20210601:Pool" }, { type: "azure-native:batch/v20220101:Pool" }, { type: "azure-native:batch/v20220601:Pool" }, { type: "azure-native:batch/v20221001:Pool" }, { type: "azure-native:batch/v20230501:Pool" }, { type: "azure-native:batch/v20231101:Pool" }, { type: "azure-native:batch/v20240201:Pool" }, { type: "azure-native:batch/v20240701:Pool" }, { type: "azure-native:batch/v20250601:Pool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Pool.__pulumiType, name, resourceInputs, opts);
     }
@@ -252,7 +288,7 @@ export class Pool extends pulumi.CustomResource {
  */
 export interface PoolArgs {
     /**
-     * The name of the Batch account.
+     * A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
      */
     accountName: pulumi.Input<string>;
     /**
@@ -269,6 +305,9 @@ export interface PoolArgs {
      * Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
      */
     certificates?: pulumi.Input<pulumi.Input<types.inputs.CertificateReferenceArgs>[]>;
+    /**
+     * Deployment configuration properties.
+     */
     deploymentConfiguration?: pulumi.Input<types.inputs.DeploymentConfigurationArgs>;
     /**
      * The display name need not be unique and can contain any Unicode characters up to a maximum length of 1024.
@@ -299,7 +338,7 @@ export interface PoolArgs {
      */
     poolName?: pulumi.Input<string>;
     /**
-     * The name of the resource group that contains the Batch account.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
@@ -334,6 +373,9 @@ export interface PoolArgs {
      * Describes an upgrade policy - automatic, manual, or rolling.
      */
     upgradePolicy?: pulumi.Input<types.inputs.UpgradePolicyArgs>;
+    /**
+     * The list of user accounts to be created on each node in the pool.
+     */
     userAccounts?: pulumi.Input<pulumi.Input<types.inputs.UserAccountArgs>[]>;
     /**
      * For information about available VM sizes, see Sizes for Virtual Machines in Azure (https://learn.microsoft.com/azure/virtual-machines/sizes/overview). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).

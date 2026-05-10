@@ -7,6 +7,48 @@ export interface AadConfigurationResponse {
     adminGroupObjectIds: string[];
 }
 
+export interface AccessBridgeEndpointResponse {
+    /**
+     * The fully qualified domain name used to describe the certificate name for the endpoint.
+     */
+    fqdn: string;
+    /**
+     * The IPv4 address associated with the endpoint.
+     */
+    ipv4Address: string;
+    /**
+     * The IPv6 address associated with the endpoint.
+     */
+    ipv6Address: string;
+    /**
+     * The name that identifies the type of endpoint (for example VIP or host).
+     */
+    name: string;
+}
+
+export interface AccessBridgeSecurityRuleResponse {
+    /**
+     * The user provided value describing this rule.
+     */
+    description?: string;
+    /**
+     * The direction of allowed network traffic based on the rule.
+     */
+    direction: string;
+    /**
+     * The set of IPv4 addresses permitted as the source or destination of the security rule. For as single address, utilize a /32 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 10.10.10.10-10.10.10.20 or 10.10.10.10/24.
+     */
+    ipv4Addresses?: string[];
+    /**
+     * The set of IPv6 addresses permitted as the source or destination of the security rule. For as single address, utilize a /128 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 2001:db8:abcd::1-2001:db8:abcd::ff or 2001:db8:abcd::1/64.
+     */
+    ipv6Addresses?: string[];
+    /**
+     * The source or destination port or port range. Example 24562 or 24562-24570.
+     */
+    port: string;
+}
+
 export interface AdministrativeCredentialsResponse {
     /**
      * The password of the administrator of the device used during initialization.
@@ -675,6 +717,17 @@ export interface KubernetesLabelResponse {
      * The value of the label or taint.
      */
     value: string;
+}
+
+export interface KubernetesVersionValueResponse {
+    /**
+     * Additional description for the Kubernetes version.
+     */
+    description: string;
+    /**
+     * The Kubernetes version identifier.
+     */
+    version: string;
 }
 
 export interface L2NetworkAttachmentConfigurationResponse {

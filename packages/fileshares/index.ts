@@ -6,6 +6,11 @@ export type FileShare = import("./fileShare").FileShare;
 export const FileShare: typeof import("./fileShare").FileShare = null as any;
 utilities.lazyLoad(exports, ["FileShare"], () => require("./fileShare"));
 
+export { FileShareSnapshotArgs } from "./fileShareSnapshot";
+export type FileShareSnapshot = import("./fileShareSnapshot").FileShareSnapshot;
+export const FileShareSnapshot: typeof import("./fileShareSnapshot").FileShareSnapshot = null as any;
+utilities.lazyLoad(exports, ["FileShareSnapshot"], () => require("./fileShareSnapshot"));
+
 export { GetFileShareArgs, GetFileShareResult, GetFileShareOutputArgs } from "./getFileShare";
 export const getFileShare: typeof import("./getFileShare").getFileShare = null as any;
 export const getFileShareOutput: typeof import("./getFileShare").getFileShareOutput = null as any;
@@ -21,10 +26,25 @@ export const getFileShareProvisioningRecommendation: typeof import("./getFileSha
 export const getFileShareProvisioningRecommendationOutput: typeof import("./getFileShareProvisioningRecommendation").getFileShareProvisioningRecommendationOutput = null as any;
 utilities.lazyLoad(exports, ["getFileShareProvisioningRecommendation","getFileShareProvisioningRecommendationOutput"], () => require("./getFileShareProvisioningRecommendation"));
 
+export { GetFileShareSnapshotArgs, GetFileShareSnapshotResult, GetFileShareSnapshotOutputArgs } from "./getFileShareSnapshot";
+export const getFileShareSnapshot: typeof import("./getFileShareSnapshot").getFileShareSnapshot = null as any;
+export const getFileShareSnapshotOutput: typeof import("./getFileShareSnapshot").getFileShareSnapshotOutput = null as any;
+utilities.lazyLoad(exports, ["getFileShareSnapshot","getFileShareSnapshotOutput"], () => require("./getFileShareSnapshot"));
+
 export { GetFileShareUsageDataArgs, GetFileShareUsageDataResult, GetFileShareUsageDataOutputArgs } from "./getFileShareUsageData";
 export const getFileShareUsageData: typeof import("./getFileShareUsageData").getFileShareUsageData = null as any;
 export const getFileShareUsageDataOutput: typeof import("./getFileShareUsageData").getFileShareUsageDataOutput = null as any;
 utilities.lazyLoad(exports, ["getFileShareUsageData","getFileShareUsageDataOutput"], () => require("./getFileShareUsageData"));
+
+export { GetPrivateEndpointConnectionArgs, GetPrivateEndpointConnectionResult, GetPrivateEndpointConnectionOutputArgs } from "./getPrivateEndpointConnection";
+export const getPrivateEndpointConnection: typeof import("./getPrivateEndpointConnection").getPrivateEndpointConnection = null as any;
+export const getPrivateEndpointConnectionOutput: typeof import("./getPrivateEndpointConnection").getPrivateEndpointConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getPrivateEndpointConnection","getPrivateEndpointConnectionOutput"], () => require("./getPrivateEndpointConnection"));
+
+export { PrivateEndpointConnectionArgs } from "./privateEndpointConnection";
+export type PrivateEndpointConnection = import("./privateEndpointConnection").PrivateEndpointConnection;
+export const PrivateEndpointConnection: typeof import("./privateEndpointConnection").PrivateEndpointConnection = null as any;
+utilities.lazyLoad(exports, ["PrivateEndpointConnection"], () => require("./privateEndpointConnection"));
 
 
 // Export enums:
@@ -36,6 +56,10 @@ const _module = {
         switch (type) {
             case "azure-native:fileshares:FileShare":
                 return new FileShare(name, <any>undefined, { urn })
+            case "azure-native:fileshares:FileShareSnapshot":
+                return new FileShareSnapshot(name, <any>undefined, { urn })
+            case "azure-native:fileshares:PrivateEndpointConnection":
+                return new PrivateEndpointConnection(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

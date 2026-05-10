@@ -42,19 +42,23 @@ export class ServiceRunner extends pulumi.CustomResource {
      */
     declare public readonly identity: pulumi.Output<types.outputs.IdentityPropertiesResponse | undefined>;
     /**
-     * The location of the resource.
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string | undefined>;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The tags of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -82,12 +86,14 @@ export class ServiceRunner extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
@@ -111,11 +117,11 @@ export interface ServiceRunnerArgs {
      */
     labName: pulumi.Input<string>;
     /**
-     * The location of the resource.
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
-     * The name of the ServiceRunner
+     * The name of the service runner.
      */
     name?: pulumi.Input<string>;
     /**
@@ -123,7 +129,7 @@ export interface ServiceRunnerArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The tags of the resource.
+     * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

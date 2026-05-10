@@ -1949,6 +1949,20 @@ export interface SkuArgs {
 }
 
 /**
+ * The SKU type for the edge action
+ */
+export interface SkuTypeArgs {
+    /**
+     * The name of the SKU
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The tier of the SKU
+     */
+    tier: pulumi.Input<string>;
+}
+
+/**
  * Defines the parameters for SocketAddress match conditions
  */
 export interface SocketAddrMatchConditionParametersArgs {

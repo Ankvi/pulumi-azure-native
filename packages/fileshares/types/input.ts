@@ -67,6 +67,16 @@ export interface FileShareProvisioningRecommendationInputArgs {
 }
 
 /**
+ * FileShareSnapshot properties
+ */
+export interface FileShareSnapshotPropertiesArgs {
+    /**
+     * The metadata
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+/**
  * Properties specific to the NFS protocol.
  */
 export interface NfsProtocolPropertiesArgs {
@@ -74,6 +84,24 @@ export interface NfsProtocolPropertiesArgs {
      * Root squash defines how root users on clients are mapped to the NFS share.
      */
     rootSquash?: pulumi.Input<string | enums.ShareRootSquash>;
+}
+
+/**
+ * A collection of information about the state of the connection between service consumer and provider.
+ */
+export interface PrivateLinkServiceConnectionStateArgs {
+    /**
+     * A message indicating if changes on the service provider require any updates on the consumer.
+     */
+    actionsRequired?: pulumi.Input<string>;
+    /**
+     * The reason for approval/rejection of the connection.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+     */
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
 }
 
 /**

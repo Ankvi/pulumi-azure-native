@@ -1,6 +1,66 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * The properties of an Arc addon
+ */
+export interface AddonArcPropertiesArgs {
+    /**
+     * Addon type
+     * Expected value is 'Arc'.
+     */
+    addonType: pulumi.Input<"Arc">;
+    /**
+     * The VMware vCenter resource ID
+     */
+    vCenter?: pulumi.Input<string>;
+}
+
+/**
+ * The properties of an HCX addon
+ */
+export interface AddonHcxPropertiesArgs {
+    /**
+     * Addon type
+     * Expected value is 'HCX'.
+     */
+    addonType: pulumi.Input<"HCX">;
+    /**
+     * The HCX offer, example VMware MaaS Cloud Provider (Enterprise)
+     */
+    offer: pulumi.Input<string>;
+}
+
+/**
+ * The properties of a Site Recovery Manager (SRM) addon
+ */
+export interface AddonSrmPropertiesArgs {
+    /**
+     * Addon type
+     * Expected value is 'SRM'.
+     */
+    addonType: pulumi.Input<"SRM">;
+    /**
+     * The Site Recovery Manager (SRM) license
+     */
+    licenseKey?: pulumi.Input<string>;
+}
+
+/**
+ * The properties of a vSphere Replication (VR) addon
+ */
+export interface AddonVrPropertiesArgs {
+    /**
+     * Addon type
+     * Expected value is 'VR'.
+     */
+    addonType: pulumi.Input<"VR">;
+    /**
+     * The vSphere Replication Server (VRS) count
+     */
+    vrsCount: pulumi.Input<number>;
+}
+
+/**
  * The properties describing private cloud availability zone distribution
  */
 export interface AvailabilityPropertiesArgs {
@@ -137,6 +197,20 @@ export interface IdentitySourceArgs {
 }
 
 /**
+ * A key-value pair representing a label.
+ */
+export interface LabelArgs {
+    /**
+     * The key of the label.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value of the label.
+     */
+    value: pulumi.Input<string>;
+}
+
+/**
  * The properties of a management cluster
  */
 export interface ManagementClusterArgs {
@@ -259,6 +333,157 @@ export interface SystemAssignedServiceIdentityArgs {
      * Type of managed service identity (either system assigned, or none).
      */
     type: pulumi.Input<string | enums.SystemAssignedServiceIdentityType>;
+}
+
+/**
+ * VM-Host placement policy properties
+ */
+export interface VmHostPlacementPolicyPropertiesArgs {
+    /**
+     * vm-host placement policy affinity strength (should/must)
+     */
+    affinityStrength?: pulumi.Input<string | enums.AffinityStrength>;
+    /**
+     * placement policy affinity type
+     */
+    affinityType: pulumi.Input<string | enums.AffinityType>;
+    /**
+     * placement policy azure hybrid benefit opt-in type
+     */
+    azureHybridBenefitType?: pulumi.Input<string | enums.AzureHybridBenefitType>;
+    /**
+     * Display name of the placement policy
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Host members list
+     */
+    hostMembers: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the placement policy is enabled or disabled
+     */
+    state?: pulumi.Input<string | enums.PlacementPolicyState>;
+    /**
+     * Placement Policy type
+     * Expected value is 'VmHost'.
+     */
+    type: pulumi.Input<"VmHost">;
+    /**
+     * Virtual machine members list
+     */
+    vmMembers: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * VM-VM placement policy properties
+ */
+export interface VmVmPlacementPolicyPropertiesArgs {
+    /**
+     * placement policy affinity type
+     */
+    affinityType: pulumi.Input<string | enums.AffinityType>;
+    /**
+     * Display name of the placement policy
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Whether the placement policy is enabled or disabled
+     */
+    state?: pulumi.Input<string | enums.PlacementPolicyState>;
+    /**
+     * Placement Policy type
+     * Expected value is 'VmVm'.
+     */
+    type: pulumi.Input<"VmVm">;
+    /**
+     * Virtual machine members list
+     */
+    vmMembers: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * The properties of a VMware Firewall license
+ */
+export interface VmwareFirewallLicensePropertiesArgs {
+    /**
+     * The Broadcom contract number associated with the license.
+     */
+    broadcomContractNumber?: pulumi.Input<string>;
+    /**
+     * The Broadcom site ID associated with the license.
+     */
+    broadcomSiteId?: pulumi.Input<string>;
+    /**
+     * Number of cores included in the license, measured per hour
+     */
+    cores: pulumi.Input<number>;
+    /**
+     * UTC datetime when the license expires
+     */
+    endDate: pulumi.Input<string>;
+    /**
+     * The kind of license.
+     * Expected value is 'VmwareFirewall'.
+     */
+    kind: pulumi.Input<"VmwareFirewall">;
+    /**
+     * Additional labels passed through for license reporting.
+     */
+    labels?: pulumi.Input<pulumi.Input<LabelArgs>[]>;
+    /**
+     * License key
+     */
+    licenseKey?: pulumi.Input<string>;
+}
+
+/**
+ * NSX DHCP Relay
+ */
+export interface WorkloadNetworkDhcpRelayArgs {
+    /**
+     * Type of DHCP: SERVER or RELAY.
+     * Expected value is 'RELAY'.
+     */
+    dhcpType: pulumi.Input<"RELAY">;
+    /**
+     * Display name of the DHCP entity.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * NSX revision number.
+     */
+    revision?: pulumi.Input<number>;
+    /**
+     * DHCP Relay Addresses. Max 3.
+     */
+    serverAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * NSX DHCP Server
+ */
+export interface WorkloadNetworkDhcpServerArgs {
+    /**
+     * Type of DHCP: SERVER or RELAY.
+     * Expected value is 'SERVER'.
+     */
+    dhcpType: pulumi.Input<"SERVER">;
+    /**
+     * Display name of the DHCP entity.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * DHCP Server Lease Time.
+     */
+    leaseTime?: pulumi.Input<number>;
+    /**
+     * NSX revision number.
+     */
+    revision?: pulumi.Input<number>;
+    /**
+     * DHCP Server Address.
+     */
+    serverAddress?: pulumi.Input<string>;
 }
 
 /**

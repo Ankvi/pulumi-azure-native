@@ -21,7 +21,7 @@ export interface ListAccountKeysArgs {
      */
     accountName: string;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
@@ -60,7 +60,7 @@ export interface ListAccountKeysOutputArgs {
      */
     accountName: pulumi.Input<string>;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

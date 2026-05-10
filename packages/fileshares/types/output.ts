@@ -179,6 +179,24 @@ export interface FileShareProvisioningRecommendationOutputResponse {
 }
 
 /**
+ * FileShareSnapshot properties
+ */
+export interface FileShareSnapshotPropertiesResponse {
+    /**
+     * The initiator of the FileShareSnapshot. This is a user-defined value.
+     */
+    initiatorId: string;
+    /**
+     * The metadata
+     */
+    metadata?: {[key: string]: string};
+    /**
+     * The FileShareSnapshot time in UTC in string representation
+     */
+    snapshotTime: string;
+}
+
+/**
  * File shares usage result.
  */
 export interface FileShareUsageDataOutputResponse {

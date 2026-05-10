@@ -1,6 +1,82 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * The properties of an Arc addon
+ */
+export interface AddonArcPropertiesResponse {
+    /**
+     * Addon type
+     * Expected value is 'Arc'.
+     */
+    addonType: "Arc";
+    /**
+     * The state of the addon provisioning
+     */
+    provisioningState: string;
+    /**
+     * The VMware vCenter resource ID
+     */
+    vCenter?: string;
+}
+
+/**
+ * The properties of an HCX addon
+ */
+export interface AddonHcxPropertiesResponse {
+    /**
+     * Addon type
+     * Expected value is 'HCX'.
+     */
+    addonType: "HCX";
+    /**
+     * The HCX offer, example VMware MaaS Cloud Provider (Enterprise)
+     */
+    offer: string;
+    /**
+     * The state of the addon provisioning
+     */
+    provisioningState: string;
+}
+
+/**
+ * The properties of a Site Recovery Manager (SRM) addon
+ */
+export interface AddonSrmPropertiesResponse {
+    /**
+     * Addon type
+     * Expected value is 'SRM'.
+     */
+    addonType: "SRM";
+    /**
+     * The Site Recovery Manager (SRM) license
+     */
+    licenseKey?: string;
+    /**
+     * The state of the addon provisioning
+     */
+    provisioningState: string;
+}
+
+/**
+ * The properties of a vSphere Replication (VR) addon
+ */
+export interface AddonVrPropertiesResponse {
+    /**
+     * Addon type
+     * Expected value is 'VR'.
+     */
+    addonType: "VR";
+    /**
+     * The state of the addon provisioning
+     */
+    provisioningState: string;
+    /**
+     * The vSphere Replication Server (VRS) count
+     */
+    vrsCount: number;
+}
+
+/**
  * The properties describing private cloud availability zone distribution
  */
 export interface AvailabilityPropertiesResponse {
@@ -219,6 +295,20 @@ export interface IdentitySourceResponse {
 }
 
 /**
+ * A key-value pair representing a label.
+ */
+export interface LabelResponse {
+    /**
+     * The key of the label.
+     */
+    key: string;
+    /**
+     * The value of the label.
+     */
+    value: string;
+}
+
+/**
  * The properties of a management cluster
  */
 export interface ManagementClusterResponse {
@@ -387,6 +477,185 @@ export interface SystemDataResponse {
      * The type of identity that last modified the resource.
      */
     lastModifiedByType?: string;
+}
+
+/**
+ * VM-Host placement policy properties
+ */
+export interface VmHostPlacementPolicyPropertiesResponse {
+    /**
+     * vm-host placement policy affinity strength (should/must)
+     */
+    affinityStrength?: string;
+    /**
+     * placement policy affinity type
+     */
+    affinityType: string;
+    /**
+     * placement policy azure hybrid benefit opt-in type
+     */
+    azureHybridBenefitType?: string;
+    /**
+     * Display name of the placement policy
+     */
+    displayName?: string;
+    /**
+     * Host members list
+     */
+    hostMembers: string[];
+    /**
+     * The provisioning state
+     */
+    provisioningState: string;
+    /**
+     * Whether the placement policy is enabled or disabled
+     */
+    state?: string;
+    /**
+     * Placement Policy type
+     * Expected value is 'VmHost'.
+     */
+    type: "VmHost";
+    /**
+     * Virtual machine members list
+     */
+    vmMembers: string[];
+}
+
+/**
+ * VM-VM placement policy properties
+ */
+export interface VmVmPlacementPolicyPropertiesResponse {
+    /**
+     * placement policy affinity type
+     */
+    affinityType: string;
+    /**
+     * Display name of the placement policy
+     */
+    displayName?: string;
+    /**
+     * The provisioning state
+     */
+    provisioningState: string;
+    /**
+     * Whether the placement policy is enabled or disabled
+     */
+    state?: string;
+    /**
+     * Placement Policy type
+     * Expected value is 'VmVm'.
+     */
+    type: "VmVm";
+    /**
+     * Virtual machine members list
+     */
+    vmMembers: string[];
+}
+
+/**
+ * The properties of a VMware Firewall license
+ */
+export interface VmwareFirewallLicensePropertiesResponse {
+    /**
+     * The Broadcom contract number associated with the license.
+     */
+    broadcomContractNumber?: string;
+    /**
+     * The Broadcom site ID associated with the license.
+     */
+    broadcomSiteId?: string;
+    /**
+     * Number of cores included in the license, measured per hour
+     */
+    cores: number;
+    /**
+     * UTC datetime when the license expires
+     */
+    endDate: string;
+    /**
+     * The kind of license.
+     * Expected value is 'VmwareFirewall'.
+     */
+    kind: "VmwareFirewall";
+    /**
+     * Additional labels passed through for license reporting.
+     */
+    labels?: LabelResponse[];
+    /**
+     * License key
+     */
+    licenseKey?: string;
+    /**
+     * The state of the license provisioning
+     */
+    provisioningState: string;
+}
+
+/**
+ * NSX DHCP Relay
+ */
+export interface WorkloadNetworkDhcpRelayResponse {
+    /**
+     * Type of DHCP: SERVER or RELAY.
+     * Expected value is 'RELAY'.
+     */
+    dhcpType: "RELAY";
+    /**
+     * Display name of the DHCP entity.
+     */
+    displayName?: string;
+    /**
+     * The provisioning state
+     */
+    provisioningState: string;
+    /**
+     * NSX revision number.
+     */
+    revision?: number;
+    /**
+     * NSX Segments consuming DHCP.
+     */
+    segments: string[];
+    /**
+     * DHCP Relay Addresses. Max 3.
+     */
+    serverAddresses?: string[];
+}
+
+/**
+ * NSX DHCP Server
+ */
+export interface WorkloadNetworkDhcpServerResponse {
+    /**
+     * Type of DHCP: SERVER or RELAY.
+     * Expected value is 'SERVER'.
+     */
+    dhcpType: "SERVER";
+    /**
+     * Display name of the DHCP entity.
+     */
+    displayName?: string;
+    /**
+     * DHCP Server Lease Time.
+     */
+    leaseTime?: number;
+    /**
+     * The provisioning state
+     */
+    provisioningState: string;
+    /**
+     * NSX revision number.
+     */
+    revision?: number;
+    /**
+     * NSX Segments consuming DHCP.
+     */
+    segments: string[];
+    /**
+     * DHCP Server Address.
+     */
+    serverAddress?: string;
 }
 
 /**

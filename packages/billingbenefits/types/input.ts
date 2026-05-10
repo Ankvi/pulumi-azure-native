@@ -1,11 +1,40 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Optional field to record suppression reason for automatic shortfall.
+ */
+export interface AutomaticShortfallSuppressReasonArgs {
+    /**
+     * Code for the suppression reason.
+     */
+    code?: pulumi.Input<string>;
+    /**
+     * Message for suppression reason.
+     */
+    message?: pulumi.Input<string>;
+}
+
+/**
  * Catalog claim for a discount.
  */
 export interface CatalogClaimsItemArgs {
     catalogClaimsItemType?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
+}
+
+/**
+ * Commitment towards the benefit.
+ */
+export interface CommitmentArgs {
+    amount?: pulumi.Input<number>;
+    /**
+     * The ISO 4217 3-letter currency code for the currency used by this purchase record.
+     */
+    currencyCode?: pulumi.Input<string>;
+    /**
+     * The grain of the commitment.
+     */
+    grain?: pulumi.Input<string | enums.CommitmentGrain>;
 }
 
 /**
@@ -18,6 +47,56 @@ export interface ConditionsItemArgs {
      * These items are open-ended strings.
      */
     value?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Credit breakdown item representing a milestone, line-item, or no-charge service
+ */
+export interface CreditBreakdownItemArgs {
+    /**
+     * Allocation details including currency and amount for this breakdown item
+     */
+    allocation?: pulumi.Input<CommitmentArgs>;
+    /**
+     * Key-value pairs for additional parameters and metadata
+     */
+    dimensions?: pulumi.Input<pulumi.Input<CreditDimensionArgs>[]>;
+    /**
+     * End DateTime in UTC.
+     */
+    endAt?: pulumi.Input<string>;
+    /**
+     * Start DateTime.
+     */
+    startAt?: pulumi.Input<string>;
+}
+
+/**
+ * Key-value pair for additional credit parameters and metadata
+ */
+export interface CreditDimensionArgs {
+    /**
+     * The dimension key (e.g., productFamily, description, creditType)
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The dimension value
+     */
+    value: pulumi.Input<string>;
+}
+
+/**
+ * Credit breakdown item representing a milestone, line-item, or no-charge service
+ */
+export interface CreditPoliciesArgs {
+    /**
+     * Expiration policy of the Credit
+     */
+    expiration?: pulumi.Input<string | enums.CreditExpirationPolicy>;
+    /**
+     * Redemption policy of the Credit
+     */
+    redemption?: pulumi.Input<string | enums.CreditRedemptionPolicy>;
 }
 
 /**
@@ -336,6 +415,40 @@ export interface EntityTypePrimaryDiscountArgs {
 }
 
 /**
+ * MACC milestone represents interim targets within the period of MACC.
+ */
+export interface MaccMilestoneArgs {
+    /**
+     * Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
+     */
+    automaticShortfall?: pulumi.Input<string | enums.EnablementMode>;
+    /**
+     * Optional field to record suppression reason for automatic shortfall.
+     */
+    automaticShortfallSuppressReason?: pulumi.Input<AutomaticShortfallSuppressReasonArgs>;
+    /**
+     * Commitment associated with this milestone.
+     */
+    commitment?: pulumi.Input<PriceArgs>;
+    /**
+     * End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
+     */
+    endAt?: pulumi.Input<string>;
+    /**
+     * Globally unique identifier for the milestone. Format: {guid}
+     */
+    milestoneId?: pulumi.Input<string>;
+    /**
+     * Details of the shortfall associated with this milestone.
+     */
+    shortfall?: pulumi.Input<ShortfallArgs>;
+    /**
+     * Represents the current status of the Milestone.
+     */
+    status?: pulumi.Input<string | enums.MaccMilestoneStatus>;
+}
+
+/**
  * Managed service identity (system assigned and/or user assigned identities)
  */
 export interface ManagedServiceIdentityArgs {
@@ -373,7 +486,7 @@ export interface PlanArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
+     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. 
      */
     product: pulumi.Input<string>;
     /**
@@ -390,6 +503,14 @@ export interface PlanArgs {
     version?: pulumi.Input<string>;
 }
 
+export interface PriceArgs {
+    amount?: pulumi.Input<number>;
+    /**
+     * The ISO 4217 3-letter currency code for the currency used by this purchase record.
+     */
+    currencyCode?: pulumi.Input<string>;
+}
+
 /**
  * Set only in price guarantee scenario.
  */
@@ -402,6 +523,40 @@ export interface PriceGuaranteePropertiesArgs {
      * Supported values: Protected, Locked
      */
     pricingPolicy?: pulumi.Input<string | enums.PricingPolicy>;
+}
+
+/**
+ * MACC shortfall
+ */
+export interface ShortfallArgs {
+    /**
+     * Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+     */
+    balanceVersion?: pulumi.Input<number>;
+    /**
+     * Shortfall amount with grain.
+     */
+    charge?: pulumi.Input<CommitmentArgs>;
+    /**
+     * End DateTime in UTC.
+     */
+    endAt?: pulumi.Input<string>;
+    /**
+     * Represents catalog UPN.
+     */
+    productCode?: pulumi.Input<string>;
+    /**
+     * Fully-qualified resource identifier of the credits associated with the shortfall.
+     */
+    resourceId?: pulumi.Input<string>;
+    /**
+     * Start DateTime.
+     */
+    startAt?: pulumi.Input<string>;
+    /**
+     * This is an identifier of the shortfall which will not change for its lifetime.
+     */
+    systemId?: pulumi.Input<string>;
 }
 
 /**
@@ -421,7 +576,7 @@ export interface SkuArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
      */
     size?: pulumi.Input<string>;
     /**

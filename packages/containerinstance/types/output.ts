@@ -61,6 +61,50 @@ export interface AzureFileVolumeResponse {
 }
 
 /**
+ * The properties of the Azure File volume. Azure File shares are mounted as volumes.
+ */
+export interface AzureFileVolumeResponseV1 {
+    /**
+     * The flag indicating whether the Azure File shared mounted as a volume is read-only.
+     */
+    readOnly?: boolean;
+    /**
+     * The name of the Azure File share to be mounted as a volume.
+     */
+    shareName: string;
+    /**
+     * The storage account access key used to access the Azure File share.
+     */
+    storageAccountKey?: string;
+    /**
+     * The name of the storage account that contains the Azure File share.
+     */
+    storageAccountName: string;
+}
+
+/**
+ * The properties of the Azure File volume. Azure File shares are mounted as volumes.
+ */
+export interface AzureFileVolumeResponseV2 {
+    /**
+     * The flag indicating whether the Azure File shared mounted as a volume is read-only.
+     */
+    readOnly?: boolean;
+    /**
+     * The name of the Azure File share to be mounted as a volume.
+     */
+    shareName: string;
+    /**
+     * The storage account access key used to access the Azure File share.
+     */
+    storageAccountKey?: string;
+    /**
+     * The name of the storage account that contains the Azure File share.
+     */
+    storageAccountName: string;
+}
+
+/**
  * The properties for confidential container group
  */
 export interface ConfidentialComputePropertiesResponse {
@@ -337,6 +381,114 @@ export interface ContainerResponse {
 }
 
 /**
+ * A container instance.
+ */
+export interface ContainerResponseV1 {
+    /**
+     * The commands to execute within the container instance in exec form.
+     */
+    command?: string[];
+    /**
+     * The config map.
+     */
+    configMap?: ConfigMapResponse;
+    /**
+     * The environment variables to set in the container instance.
+     */
+    environmentVariables?: EnvironmentVariableResponseV1[];
+    /**
+     * The name of the image used to create the container instance.
+     */
+    image?: string;
+    /**
+     * The instance view of the container instance. Only valid in response.
+     */
+    instanceView: ContainerPropertiesResponseInstanceView;
+    /**
+     * The liveness probe.
+     */
+    livenessProbe?: ContainerProbeResponse;
+    /**
+     * The user-provided name of the container instance.
+     */
+    name: string;
+    /**
+     * The exposed ports on the container instance.
+     */
+    ports?: ContainerPortResponse[];
+    /**
+     * The readiness probe.
+     */
+    readinessProbe?: ContainerProbeResponse;
+    /**
+     * The resource requirements of the container instance.
+     */
+    resources?: ResourceRequirementsResponse;
+    /**
+     * The container security properties.
+     */
+    securityContext?: SecurityContextDefinitionResponse;
+    /**
+     * The volume mounts available to the container instance.
+     */
+    volumeMounts?: VolumeMountResponse[];
+}
+
+/**
+ * A container instance.
+ */
+export interface ContainerResponseV2 {
+    /**
+     * The commands to execute within the container instance in exec form.
+     */
+    command?: string[];
+    /**
+     * The config map.
+     */
+    configMap?: ConfigMapResponse;
+    /**
+     * The environment variables to set in the container instance.
+     */
+    environmentVariables?: EnvironmentVariableResponseV2[];
+    /**
+     * The name of the image used to create the container instance.
+     */
+    image?: string;
+    /**
+     * The instance view of the container instance. Only valid in response.
+     */
+    instanceView: ContainerPropertiesResponseInstanceView;
+    /**
+     * The liveness probe.
+     */
+    livenessProbe?: ContainerProbeResponse;
+    /**
+     * The user-provided name of the container instance.
+     */
+    name: string;
+    /**
+     * The exposed ports on the container instance.
+     */
+    ports?: ContainerPortResponse[];
+    /**
+     * The readiness probe.
+     */
+    readinessProbe?: ContainerProbeResponse;
+    /**
+     * The resource requirements of the container instance.
+     */
+    resources?: ResourceRequirementsResponse;
+    /**
+     * The container security properties.
+     */
+    securityContext?: SecurityContextDefinitionResponse;
+    /**
+     * The volume mounts available to the container instance.
+     */
+    volumeMounts?: VolumeMountResponse[];
+}
+
+/**
  * The container instance state.
  */
 export interface ContainerStateResponse {
@@ -480,6 +632,42 @@ export interface EnvironmentVariableResponse {
 }
 
 /**
+ * The environment variable to set within the container instance.
+ */
+export interface EnvironmentVariableResponseV1 {
+    /**
+     * The name of the environment variable.
+     */
+    name: string;
+    /**
+     * The value of the secure environment variable.
+     */
+    secureValue?: string;
+    /**
+     * The value of the environment variable.
+     */
+    value?: string;
+}
+
+/**
+ * The environment variable to set within the container instance.
+ */
+export interface EnvironmentVariableResponseV2 {
+    /**
+     * The name of the environment variable.
+     */
+    name: string;
+    /**
+     * The value of the secure environment variable.
+     */
+    secureValue?: string;
+    /**
+     * The value of the environment variable.
+     */
+    value?: string;
+}
+
+/**
  * A container group or container instance event.
  */
 export interface EventResponse {
@@ -614,6 +802,58 @@ export interface ImageRegistryCredentialResponse {
      * The reference for the private registry password.
      */
     passwordReference?: string;
+    /**
+     * The Docker image registry server without a protocol such as "http" and "https".
+     */
+    server: string;
+    /**
+     * The username for the private registry.
+     */
+    username?: string;
+}
+
+/**
+ * Image registry credential.
+ */
+export interface ImageRegistryCredentialResponseV1 {
+    /**
+     * The identity for the private registry.
+     */
+    identity?: string;
+    /**
+     * The identity URL for the private registry.
+     */
+    identityUrl?: string;
+    /**
+     * The password for the private registry.
+     */
+    password?: string;
+    /**
+     * The Docker image registry server without a protocol such as "http" and "https".
+     */
+    server: string;
+    /**
+     * The username for the private registry.
+     */
+    username?: string;
+}
+
+/**
+ * Image registry credential.
+ */
+export interface ImageRegistryCredentialResponseV2 {
+    /**
+     * The identity for the private registry.
+     */
+    identity?: string;
+    /**
+     * The identity URL for the private registry.
+     */
+    identityUrl?: string;
+    /**
+     * The password for the private registry.
+     */
+    password?: string;
     /**
      * The Docker image registry server without a protocol such as "http" and "https".
      */
@@ -1116,4 +1356,56 @@ export interface VolumeResponse {
      * The secret reference volume.
      */
     secretReference?: {[key: string]: string};
+}
+
+/**
+ * The properties of the volume.
+ */
+export interface VolumeResponseV1 {
+    /**
+     * The Azure File volume.
+     */
+    azureFile?: AzureFileVolumeResponseV1;
+    /**
+     * The empty directory volume.
+     */
+    emptyDir?: any;
+    /**
+     * The git repo volume.
+     */
+    gitRepo?: GitRepoVolumeResponse;
+    /**
+     * The name of the volume.
+     */
+    name: string;
+    /**
+     * The secret volume.
+     */
+    secret?: {[key: string]: string};
+}
+
+/**
+ * The properties of the volume.
+ */
+export interface VolumeResponseV2 {
+    /**
+     * The Azure File volume.
+     */
+    azureFile?: AzureFileVolumeResponseV2;
+    /**
+     * The empty directory volume.
+     */
+    emptyDir?: any;
+    /**
+     * The git repo volume.
+     */
+    gitRepo?: GitRepoVolumeResponse;
+    /**
+     * The name of the volume.
+     */
+    name: string;
+    /**
+     * The secret volume.
+     */
+    secret?: {[key: string]: string};
 }

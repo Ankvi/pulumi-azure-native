@@ -133,13 +133,31 @@ export interface CommonExportPropertiesResponse {
  */
 export interface ConnectorCollectionErrorInfoResponse {
     /**
-     * Short error message
+     * Short error code
      */
     errorCode: string;
     /**
      * External Provider error message
      */
-    errorInnerMessage?: string;
+    errorInnerMessage: string;
+    /**
+     * Detailed error message
+     */
+    errorMessage: string;
+    /**
+     * Time the error started occurring (Last time error occurred in lastChecked)
+     */
+    errorStartTime: string;
+}
+
+/**
+ * Details of any error encountered on last collection attempt
+ */
+export interface ConnectorCollectionErrorInfoResponseV1 {
+    /**
+     * Short error message
+     */
+    errorCode: string;
     /**
      * Detailed error message
      */
@@ -161,7 +179,25 @@ export interface ConnectorCollectionInfoResponse {
     /**
      * Last time the data acquisition process initiated connecting to the external provider
      */
-    lastChecked?: string;
+    lastChecked: string;
+    /**
+     * Last time the external data was updated into Azure
+     */
+    lastUpdated: string;
+    /**
+     * Source timestamp of external data currently available in Azure (eg AWS last processed CUR file timestamp)
+     */
+    sourceLastUpdated: string;
+}
+
+/**
+ * Collection and ingestion information
+ */
+export interface ConnectorCollectionInfoResponseV1 {
+    /**
+     * Error information of last collection
+     */
+    error?: ConnectorCollectionErrorInfoResponseV1;
     /**
      * Last time the data acquisition process completed (even if no new data was found)
      */

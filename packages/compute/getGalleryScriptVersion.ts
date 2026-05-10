@@ -1,0 +1,107 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * Custom ArmResourceRead operation template with CloudError as Error
+ *
+ * Uses Azure REST API version 2025-03-03.
+ */
+export function getGalleryScriptVersion(args: GetGalleryScriptVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetGalleryScriptVersionResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:compute:getGalleryScriptVersion", {
+        "galleryName": args.galleryName,
+        "galleryScriptName": args.galleryScriptName,
+        "galleryScriptVersionName": args.galleryScriptVersionName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetGalleryScriptVersionArgs {
+    /**
+     * The name of the Shared Image Gallery.
+     */
+    galleryName: string;
+    /**
+     * The name of the gallery Script Definition to be retrieved.
+     */
+    galleryScriptName: string;
+    /**
+     * The name of the gallery Script Version to be retrieved.
+     */
+    galleryScriptVersionName: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+}
+
+/**
+ * Concrete tracked resource types can be created by aliasing this type using a specific property type.
+ */
+export interface GetGalleryScriptVersionResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     */
+    readonly id: string;
+    /**
+     * The geo-location where the resource lives
+     */
+    readonly location: string;
+    /**
+     * The name of the resource
+     */
+    readonly name: string;
+    /**
+     * Describes the properties of a gallery Script Version.
+     */
+    readonly properties: types.outputs.GalleryScriptVersionPropertiesResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
+     */
+    readonly tags?: {[key: string]: string};
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    readonly type: string;
+}
+/**
+ * Custom ArmResourceRead operation template with CloudError as Error
+ *
+ * Uses Azure REST API version 2025-03-03.
+ */
+export function getGalleryScriptVersionOutput(args: GetGalleryScriptVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGalleryScriptVersionResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:compute:getGalleryScriptVersion", {
+        "galleryName": args.galleryName,
+        "galleryScriptName": args.galleryScriptName,
+        "galleryScriptVersionName": args.galleryScriptVersionName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetGalleryScriptVersionOutputArgs {
+    /**
+     * The name of the Shared Image Gallery.
+     */
+    galleryName: pulumi.Input<string>;
+    /**
+     * The name of the gallery Script Definition to be retrieved.
+     */
+    galleryScriptName: pulumi.Input<string>;
+    /**
+     * The name of the gallery Script Version to be retrieved.
+     */
+    galleryScriptVersionName: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

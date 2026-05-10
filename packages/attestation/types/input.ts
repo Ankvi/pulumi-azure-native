@@ -7,7 +7,7 @@ export interface AttestationServiceCreationSpecificParamsArgs {
     /**
      * JSON Web Key Set defining a set of X.509 Certificates that will represent the parent certificate for the signing certificate used for policy operations
      */
-    policySigningCertificates?: pulumi.Input<JSONWebKeySetArgs>;
+    policySigningCertificates?: pulumi.Input<JsonWebKeySetArgs>;
     /**
      * Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
      */
@@ -17,8 +17,18 @@ export interface AttestationServiceCreationSpecificParamsArgs {
      */
     tpmAttestationAuthentication?: pulumi.Input<string | enums.TpmAttestationAuthenticationType>;
 }
+/**
+ * attestationServiceCreationSpecificParamsArgsProvideDefaults sets the appropriate defaults for AttestationServiceCreationSpecificParamsArgs
+ */
+export function attestationServiceCreationSpecificParamsArgsProvideDefaults(val: AttestationServiceCreationSpecificParamsArgs): AttestationServiceCreationSpecificParamsArgs {
+    return {
+        ...val,
+        publicNetworkAccess: (val.publicNetworkAccess) ?? "Enabled",
+        tpmAttestationAuthentication: (val.tpmAttestationAuthentication) ?? "Enabled",
+    };
+}
 
-export interface JSONWebKeyArgs {
+export interface JsonWebKeyArgs {
     /**
      * The "alg" (algorithm) parameter identifies the algorithm intended for
      * use with the key.  The values used should either be registered in the
@@ -107,14 +117,14 @@ export interface JSONWebKeyArgs {
      * The PKIX certificate containing the key value MUST be the first
      * certificate.
      */
-    x5c?: pulumi.Input<pulumi.Input<string>[]>;
+    x5C?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Y coordinate for the Elliptic Curve point
      */
     y?: pulumi.Input<string>;
 }
 
-export interface JSONWebKeySetArgs {
+export interface JsonWebKeySetArgs {
     /**
      * The value of the "keys" parameter is an array of JWK values.  By
      * default, the order of the JWK values within the array does not imply
@@ -122,7 +132,7 @@ export interface JSONWebKeySetArgs {
      * can choose to assign a meaning to the order for their purposes, if
      * desired.
      */
-    keys?: pulumi.Input<pulumi.Input<JSONWebKeyArgs>[]>;
+    keys?: pulumi.Input<pulumi.Input<JsonWebKeyArgs>[]>;
 }
 
 /**

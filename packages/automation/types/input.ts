@@ -79,15 +79,15 @@ export interface ContentHashArgs {
  */
 export interface ContentLinkArgs {
     /**
-     * Sets the hash.
+     * Gets or sets the hash.
      */
     contentHash?: pulumi.Input<ContentHashArgs>;
     /**
-     * Sets the uri of the content.
+     * Gets or sets the uri of content.
      */
     uri?: pulumi.Input<string>;
     /**
-     * Sets the version of the content.
+     * Gets or sets the version of the content.
      */
     version?: pulumi.Input<string>;
 }

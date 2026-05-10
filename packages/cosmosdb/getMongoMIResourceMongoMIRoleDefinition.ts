@@ -5,6 +5,8 @@ import * as types from "./types";
  * Retrieves the properties of an existing Azure Cosmos DB MongoMI Role Definition with the given Id.
  *
  * Uses Azure REST API version 2025-05-01-preview.
+ *
+ * Other available API versions: 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getMongoMIResourceMongoMIRoleDefinition(args: GetMongoMIResourceMongoMIRoleDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoMIResourceMongoMIRoleDefinitionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -71,6 +73,8 @@ export interface GetMongoMIResourceMongoMIRoleDefinitionResult {
  * Retrieves the properties of an existing Azure Cosmos DB MongoMI Role Definition with the given Id.
  *
  * Uses Azure REST API version 2025-05-01-preview.
+ *
+ * Other available API versions: 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getMongoMIResourceMongoMIRoleDefinitionOutput(args: GetMongoMIResourceMongoMIRoleDefinitionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMongoMIResourceMongoMIRoleDefinitionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

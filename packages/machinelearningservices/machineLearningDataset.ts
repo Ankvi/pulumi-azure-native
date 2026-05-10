@@ -40,7 +40,7 @@ export class MachineLearningDataset extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    declare public /*out*/ readonly identity: pulumi.Output<types.outputs.IdentityResponse | undefined>;
+    declare public /*out*/ readonly identity: pulumi.Output<types.outputs.IdentityResponseV1 | undefined>;
     /**
      * Specifies the location of the resource.
      */
@@ -56,7 +56,7 @@ export class MachineLearningDataset extends pulumi.CustomResource {
     /**
      * The sku of the workspace.
      */
-    declare public /*out*/ readonly sku: pulumi.Output<types.outputs.SkuResponse | undefined>;
+    declare public /*out*/ readonly sku: pulumi.Output<types.outputs.SkuResponseV1 | undefined>;
     /**
      * Contains resource tags defined as key/value pairs.
      */

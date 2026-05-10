@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2022-09-01, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Service extends pulumi.CustomResource {
     /**
@@ -223,7 +223,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["upgradeAvailable"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:search/v20150819:Service" }, { type: "azure-native:search/v20191001preview:Service" }, { type: "azure-native:search/v20200313:Service" }, { type: "azure-native:search/v20200801:Service" }, { type: "azure-native:search/v20200801preview:Service" }, { type: "azure-native:search/v20210401preview:Service" }, { type: "azure-native:search/v20220901:Service" }, { type: "azure-native:search/v20231101:Service" }, { type: "azure-native:search/v20240301preview:Service" }, { type: "azure-native:search/v20240601preview:Service" }, { type: "azure-native:search/v20250201preview:Service" }, { type: "azure-native:search/v20250501:Service" }, { type: "azure-native:search/v20251001preview:Service" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:search/v20150819:Service" }, { type: "azure-native:search/v20191001preview:Service" }, { type: "azure-native:search/v20200313:Service" }, { type: "azure-native:search/v20200801:Service" }, { type: "azure-native:search/v20200801preview:Service" }, { type: "azure-native:search/v20210401preview:Service" }, { type: "azure-native:search/v20220901:Service" }, { type: "azure-native:search/v20231101:Service" }, { type: "azure-native:search/v20240301preview:Service" }, { type: "azure-native:search/v20240601preview:Service" }, { type: "azure-native:search/v20250201preview:Service" }, { type: "azure-native:search/v20250501:Service" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Service.__pulumiType, name, resourceInputs, opts);
     }
@@ -286,11 +286,11 @@ export interface ServiceArgs {
      */
     replicaCount?: pulumi.Input<number>;
     /**
-     * The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The name of the Azure AI Search service to create or update. Search service names must only contain lowercase letters, digits or dashes, cannot use dash as the first two or last one characters, cannot contain consecutive dashes, and must be between 2 and 60 characters in length. Search service names must be unique since they are part of the service URI (https://<name>.search.windows.net). You cannot change the service name after the service is created.
+     * The name of the Azure AI Search service associated with the specified resource group.
      */
     searchServiceName?: pulumi.Input<string>;
     /**

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Container of a site
  *
- * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-12-01.
+ * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-12-01.
  *
- * Other available API versions: 2023-12-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebAppSiteContainerSlot extends pulumi.CustomResource {
     /**
@@ -55,6 +55,10 @@ export class WebAppSiteContainerSlot extends pulumi.CustomResource {
      * Image Name
      */
     declare public readonly image: pulumi.Output<string>;
+    /**
+     * <code>true</code> if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; <code>false</code> otherwise.
+     */
+    declare public readonly inheritAppSettingsAndConnectionStrings: pulumi.Output<boolean | undefined>;
     /**
      * <code>true</code> if the container is the main site container; <code>false</code> otherwise.
      */
@@ -130,6 +134,7 @@ export class WebAppSiteContainerSlot extends pulumi.CustomResource {
             resourceInputs["containerName"] = args?.containerName;
             resourceInputs["environmentVariables"] = args?.environmentVariables;
             resourceInputs["image"] = args?.image;
+            resourceInputs["inheritAppSettingsAndConnectionStrings"] = args?.inheritAppSettingsAndConnectionStrings;
             resourceInputs["isMain"] = args?.isMain;
             resourceInputs["kind"] = args?.kind;
             resourceInputs["name"] = args?.name;
@@ -151,6 +156,7 @@ export class WebAppSiteContainerSlot extends pulumi.CustomResource {
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["environmentVariables"] = undefined /*out*/;
             resourceInputs["image"] = undefined /*out*/;
+            resourceInputs["inheritAppSettingsAndConnectionStrings"] = undefined /*out*/;
             resourceInputs["isMain"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
@@ -164,7 +170,7 @@ export class WebAppSiteContainerSlot extends pulumi.CustomResource {
             resourceInputs["volumeMounts"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20231201:WebAppSiteContainerSlot" }, { type: "azure-native:web/v20240401:WebAppSiteContainerSlot" }, { type: "azure-native:web/v20241101:WebAppSiteContainerSlot" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20231201:WebAppSiteContainerSlot" }, { type: "azure-native:web/v20240401:WebAppSiteContainerSlot" }, { type: "azure-native:web/v20241101:WebAppSiteContainerSlot" }, { type: "azure-native:web/v20250301:WebAppSiteContainerSlot" }, { type: "azure-native:web/v20250501:WebAppSiteContainerSlot" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebAppSiteContainerSlot.__pulumiType, name, resourceInputs, opts);
     }
@@ -190,6 +196,10 @@ export interface WebAppSiteContainerSlotArgs {
      * Image Name
      */
     image: pulumi.Input<string>;
+    /**
+     * <code>true</code> if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; <code>false</code> otherwise.
+     */
+    inheritAppSettingsAndConnectionStrings?: pulumi.Input<boolean>;
     /**
      * <code>true</code> if the container is the main site container; <code>false</code> otherwise.
      */

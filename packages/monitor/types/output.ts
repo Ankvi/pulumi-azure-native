@@ -2545,13 +2545,47 @@ export interface PredictiveAutoscalePolicyResponse {
 }
 
 /**
- * The Private Endpoint Connection resource.
+ * The private endpoint connection resource.
  */
 export interface PrivateEndpointConnectionResponse {
     /**
      * The group ids for the private endpoint resource.
      */
-    groupIds?: string[];
+    groupIds: string[];
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    id: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * The private endpoint resource.
+     */
+    privateEndpoint?: PrivateEndpointResponse;
+    /**
+     * A collection of information about the state of the connection between service consumer and provider.
+     */
+    privateLinkServiceConnectionState: PrivateLinkServiceConnectionStateResponse;
+    /**
+     * The provisioning state of the private endpoint connection resource.
+     */
+    provisioningState: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
+}
+
+/**
+ * The Private Endpoint Connection resource.
+ */
+export interface PrivateEndpointConnectionResponseV1 {
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -2572,10 +2606,6 @@ export interface PrivateEndpointConnectionResponse {
      * The provisioning state of the private endpoint connection resource.
      */
     provisioningState: string;
-    /**
-     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
-     */
-    systemData?: SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -3571,7 +3601,7 @@ export interface WebhookReceiverResponse {
      */
     managedIdentity?: string;
     /**
-     * The name of the webhook receiver. Names must be unique across all receivers within a tenant action group.
+     * The name of the webhook receiver. Names must be unique across all receivers within an action group.
      */
     name: string;
     /**
@@ -3599,6 +3629,50 @@ export interface WebhookReceiverResponse {
  * webhookReceiverResponseProvideDefaults sets the appropriate defaults for WebhookReceiverResponse
  */
 export function webhookReceiverResponseProvideDefaults(val: WebhookReceiverResponse): WebhookReceiverResponse {
+    return {
+        ...val,
+        useAadAuth: (val.useAadAuth) ?? false,
+        useCommonAlertSchema: (val.useCommonAlertSchema) ?? false,
+    };
+}
+
+/**
+ * A webhook receiver.
+ */
+export interface WebhookReceiverResponseV1 {
+    /**
+     * Indicates the identifier uri for aad auth.
+     */
+    identifierUri?: string;
+    /**
+     * The name of the webhook receiver. Names must be unique across all receivers within a tenant action group.
+     */
+    name: string;
+    /**
+     * Indicates the webhook app object Id for aad auth.
+     */
+    objectId?: string;
+    /**
+     * The URI where webhooks should be sent.
+     */
+    serviceUri: string;
+    /**
+     * Indicates the tenant id for aad auth.
+     */
+    tenantId?: string;
+    /**
+     * Indicates whether or not use AAD authentication.
+     */
+    useAadAuth?: boolean;
+    /**
+     * Indicates whether to use common alert schema.
+     */
+    useCommonAlertSchema?: boolean;
+}
+/**
+ * webhookReceiverResponseV1ProvideDefaults sets the appropriate defaults for WebhookReceiverResponseV1
+ */
+export function webhookReceiverResponseV1ProvideDefaults(val: WebhookReceiverResponseV1): WebhookReceiverResponseV1 {
     return {
         ...val,
         useAadAuth: (val.useAadAuth) ?? false,

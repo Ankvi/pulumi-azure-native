@@ -40,7 +40,7 @@ export class TIDataConnector extends pulumi.CustomResource {
     /**
      * The available data types for the connector.
      */
-    declare public readonly dataTypes: pulumi.Output<types.outputs.TIDataConnectorDataTypesResponse | undefined>;
+    declare public readonly dataTypes: pulumi.Output<types.outputs.TIDataConnectorDataTypesResponse>;
     /**
      * Etag of the azure resource
      */
@@ -61,7 +61,7 @@ export class TIDataConnector extends pulumi.CustomResource {
     /**
      * The tenant id to connect to, and get the data from.
      */
-    declare public readonly tenantId: pulumi.Output<string | undefined>;
+    declare public readonly tenantId: pulumi.Output<string>;
     /**
      * The lookback period for the feed to be imported.
      */
@@ -82,11 +82,17 @@ export class TIDataConnector extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if (args?.dataTypes === undefined && !opts.urn) {
+                throw new Error("Missing required property 'dataTypes'");
+            }
             if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
             if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
+            }
+            if (args?.tenantId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'tenantId'");
             }
             if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
@@ -132,7 +138,7 @@ export interface TIDataConnectorArgs {
     /**
      * The available data types for the connector.
      */
-    dataTypes?: pulumi.Input<types.inputs.TIDataConnectorDataTypesArgs>;
+    dataTypes: pulumi.Input<types.inputs.TIDataConnectorDataTypesArgs>;
     /**
      * The kind of the data connector
      * Expected value is 'ThreatIntelligence'.
@@ -145,7 +151,7 @@ export interface TIDataConnectorArgs {
     /**
      * The tenant id to connect to, and get the data from.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId: pulumi.Input<string>;
     /**
      * The lookback period for the feed to be imported.
      */

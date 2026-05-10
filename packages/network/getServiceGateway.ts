@@ -1,0 +1,117 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * Gets the specified service gateway.
+ *
+ * Uses Azure REST API version 2025-05-01.
+ */
+export function getServiceGateway(args: GetServiceGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceGatewayResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:network:getServiceGateway", {
+        "resourceGroupName": args.resourceGroupName,
+        "serviceGatewayName": args.serviceGatewayName,
+    }, opts);
+}
+
+export interface GetServiceGatewayArgs {
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+    /**
+     * The name of the service gateway.
+     */
+    serviceGatewayName: string;
+}
+
+/**
+ * ServiceGateway resource.
+ */
+export interface GetServiceGatewayResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    readonly etag: string;
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    readonly id: string;
+    /**
+     * The geo-location where the resource lives
+     */
+    readonly location: string;
+    /**
+     * The name of the resource
+     */
+    readonly name: string;
+    /**
+     * The provisioning state of the service gateway resource.
+     */
+    readonly provisioningState: string;
+    /**
+     * The resource GUID property of the service gateway resource.
+     */
+    readonly resourceGuid: string;
+    /**
+     * Route Target address of Service gateway
+     */
+    readonly routeTargetAddress?: types.outputs.RouteTargetAddressPropertiesFormatResponse;
+    /**
+     * Route Target address V6 of Service gateway
+     */
+    readonly routeTargetAddressV6?: types.outputs.RouteTargetAddressPropertiesFormatResponse;
+    /**
+     * The service gateway SKU.
+     */
+    readonly sku?: types.outputs.ServiceGatewaySkuResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
+     */
+    readonly tags?: {[key: string]: string};
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    readonly type: string;
+    /**
+     * Reference to an existing virtual network.
+     */
+    readonly virtualNetwork?: types.outputs.VirtualNetworkResponse;
+    /**
+     * A list of availability zones denoting the zone in which service gateway should be deployed. 
+     *
+     * - The zone values must be provided as strings representing numeric identifiers like "1", "2", "3" etc.
+     */
+    readonly zones?: string[];
+}
+/**
+ * Gets the specified service gateway.
+ *
+ * Uses Azure REST API version 2025-05-01.
+ */
+export function getServiceGatewayOutput(args: GetServiceGatewayOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceGatewayResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getServiceGateway", {
+        "resourceGroupName": args.resourceGroupName,
+        "serviceGatewayName": args.serviceGatewayName,
+    }, opts);
+}
+
+export interface GetServiceGatewayOutputArgs {
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * The name of the service gateway.
+     */
+    serviceGatewayName: pulumi.Input<string>;
+}

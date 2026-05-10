@@ -21,7 +21,7 @@ export interface DnsConfigResponse {
 /**
  * Custom header name and value.
  */
-export interface EndpointPropertiesResponseCustomHeaders {
+export interface EndpointPropertiesCustomHeadersItemResponse {
     /**
      * Header name.
      */
@@ -35,7 +35,7 @@ export interface EndpointPropertiesResponseCustomHeaders {
 /**
  * Subnet first address, scope, and/or last address.
  */
-export interface EndpointPropertiesResponseSubnets {
+export interface EndpointPropertiesSubnetsItemResponse {
     /**
      * First address in the subnet.
      */
@@ -61,7 +61,7 @@ export interface EndpointResponse {
     /**
      * List of custom headers.
      */
-    customHeaders?: EndpointPropertiesResponseCustomHeaders[];
+    customHeaders?: EndpointPropertiesCustomHeadersItemResponse[];
     /**
      * Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
      */
@@ -105,7 +105,7 @@ export interface EndpointResponse {
     /**
      * The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
      */
-    subnets?: EndpointPropertiesResponseSubnets[];
+    subnets?: EndpointPropertiesSubnetsItemResponse[];
     /**
      * The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
      */
@@ -125,17 +125,45 @@ export interface EndpointResponse {
 }
 
 /**
+ * Custom header name and value.
+ */
+export interface MonitorConfigCustomHeadersItemResponse {
+    /**
+     * Header name.
+     */
+    name?: string;
+    /**
+     * Header value.
+     */
+    value?: string;
+}
+
+/**
+ * Min and max value of a status code range.
+ */
+export interface MonitorConfigExpectedStatusCodeRangesItemResponse {
+    /**
+     * Max status code.
+     */
+    max?: number;
+    /**
+     * Min status code.
+     */
+    min?: number;
+}
+
+/**
  * Class containing endpoint monitoring settings in a Traffic Manager profile.
  */
 export interface MonitorConfigResponse {
     /**
      * List of custom headers.
      */
-    customHeaders?: MonitorConfigResponseCustomHeaders[];
+    customHeaders?: MonitorConfigCustomHeadersItemResponse[];
     /**
      * List of expected status code ranges.
      */
-    expectedStatusCodeRanges?: MonitorConfigResponseExpectedStatusCodeRanges[];
+    expectedStatusCodeRanges?: MonitorConfigExpectedStatusCodeRangesItemResponse[];
     /**
      * The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile.
      */
@@ -164,32 +192,4 @@ export interface MonitorConfigResponse {
      * The number of consecutive failed health check that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next failed health check.
      */
     toleratedNumberOfFailures?: number;
-}
-
-/**
- * Custom header name and value.
- */
-export interface MonitorConfigResponseCustomHeaders {
-    /**
-     * Header name.
-     */
-    name?: string;
-    /**
-     * Header value.
-     */
-    value?: string;
-}
-
-/**
- * Min and max value of a status code range.
- */
-export interface MonitorConfigResponseExpectedStatusCodeRanges {
-    /**
-     * Max status code.
-     */
-    max?: number;
-    /**
-     * Min status code.
-     */
-    min?: number;
 }

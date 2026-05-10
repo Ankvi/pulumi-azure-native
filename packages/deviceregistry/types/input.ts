@@ -38,6 +38,30 @@ export interface BrokerStateStoreDestinationConfigurationArgs {
 }
 
 /**
+ * The configuration to set up an ICA.
+ */
+export interface CertificateAuthorityConfigurationArgs {
+    /**
+     * Crypto type: ECC.
+     */
+    keyType: pulumi.Input<string | enums.SupportedKeyType>;
+}
+
+/**
+ * The certificate configuration.
+ */
+export interface CertificateConfigurationArgs {
+    /**
+     * The configuration to set up an ICA.
+     */
+    certificateAuthorityConfiguration: pulumi.Input<CertificateAuthorityConfigurationArgs>;
+    /**
+     * The leaf certificate configuration.
+     */
+    leafCertificateConfiguration: pulumi.Input<LeafCertificateConfigurationArgs>;
+}
+
+/**
  * Defines the data point properties.
  */
 export interface DataPointArgs {
@@ -476,6 +500,16 @@ export function inboundEndpointsArgsProvideDefaults(val: InboundEndpointsArgs): 
         ...val,
         authentication: (val.authentication ? pulumi.output(val.authentication).apply(hostAuthenticationArgsProvideDefaults) : undefined),
     };
+}
+
+/**
+ * The leaf certificate configuration.
+ */
+export interface LeafCertificateConfigurationArgs {
+    /**
+     * The validity period in days.
+     */
+    validityPeriodInDays: pulumi.Input<number>;
 }
 
 /**
@@ -1000,6 +1034,16 @@ export interface OutboundEndpointsArgs {
      * Set of most recently removed endpoints.
      */
     unassigned?: pulumi.Input<{[key: string]: pulumi.Input<DeviceMessagingEndpointArgs>}>;
+}
+
+/**
+ * Details of the Credential Policy.
+ */
+export interface PolicyPropertiesArgs {
+    /**
+     * The certificate configuration.
+     */
+    certificate?: pulumi.Input<CertificateConfigurationArgs>;
 }
 
 /**

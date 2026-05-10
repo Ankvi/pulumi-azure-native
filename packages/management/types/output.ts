@@ -37,6 +37,9 @@ export interface EntityInfoResponse {
      * Number of children is the number of Groups and Subscriptions that are exactly one level underneath the current Group.
      */
     numberOfChildren?: number;
+    /**
+     * Number of Descendants
+     */
     numberOfDescendants?: number;
     /**
      * (Optional) The ID of the parent management group.

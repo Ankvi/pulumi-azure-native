@@ -64,13 +64,17 @@ export class Budget extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly forecastSpend: pulumi.Output<types.outputs.ForecastSpendResponse>;
     /**
-     * Resource name.
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Dictionary of notifications associated with the budget. Budget can have up to five notifications.
      */
     declare public readonly notifications: pulumi.Output<{[key: string]: types.outputs.NotificationResponse} | undefined>;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers
      */
@@ -80,7 +84,7 @@ export class Budget extends pulumi.CustomResource {
      */
     declare public readonly timePeriod: pulumi.Output<types.outputs.BudgetTimePeriodResponse>;
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -123,6 +127,7 @@ export class Budget extends pulumi.CustomResource {
             resourceInputs["currentSpend"] = undefined /*out*/;
             resourceInputs["forecastSpend"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["amount"] = undefined /*out*/;
@@ -134,6 +139,7 @@ export class Budget extends pulumi.CustomResource {
             resourceInputs["forecastSpend"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["notifications"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["timeGrain"] = undefined /*out*/;
             resourceInputs["timePeriod"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -174,7 +180,7 @@ export interface BudgetArgs {
      */
     notifications?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.NotificationArgs>}>;
     /**
-     * The scope associated with budget operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     scope: pulumi.Input<string>;
     /**

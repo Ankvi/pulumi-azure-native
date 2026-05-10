@@ -1,0 +1,91 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * Get a Credential
+ *
+ * Uses Azure REST API version 2025-11-01-preview.
+ *
+ * Other available API versions: 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ */
+export function getCredential(args: GetCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetCredentialResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:deviceregistry:getCredential", {
+        "namespaceName": args.namespaceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetCredentialArgs {
+    /**
+     * The name of the namespace.
+     */
+    namespaceName: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+}
+
+/**
+ * A Credential Resource
+ */
+export interface GetCredentialResult {
+    /**
+     * The Azure API version of the resource.
+     */
+    readonly azureApiVersion: string;
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    readonly id: string;
+    /**
+     * The geo-location where the resource lives
+     */
+    readonly location: string;
+    /**
+     * The name of the resource
+     */
+    readonly name: string;
+    /**
+     * The status of the last operation.
+     */
+    readonly provisioningState: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
+     */
+    readonly tags?: {[key: string]: string};
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    readonly type: string;
+}
+/**
+ * Get a Credential
+ *
+ * Uses Azure REST API version 2025-11-01-preview.
+ *
+ * Other available API versions: 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ */
+export function getCredentialOutput(args: GetCredentialOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCredentialResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:deviceregistry:getCredential", {
+        "namespaceName": args.namespaceName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetCredentialOutputArgs {
+    /**
+     * The name of the namespace.
+     */
+    namespaceName: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

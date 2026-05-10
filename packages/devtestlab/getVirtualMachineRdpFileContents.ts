@@ -20,7 +20,7 @@ export interface GetVirtualMachineRdpFileContentsArgs {
      */
     labName: string;
     /**
-     * The name of the LabVirtualMachine
+     * The name of the virtual machine.
      */
     name: string;
     /**
@@ -58,7 +58,7 @@ export interface GetVirtualMachineRdpFileContentsOutputArgs {
      */
     labName: pulumi.Input<string>;
     /**
-     * The name of the LabVirtualMachine
+     * The name of the virtual machine.
      */
     name: pulumi.Input<string>;
     /**

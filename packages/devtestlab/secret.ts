@@ -1,5 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * A secret.
  *
@@ -37,11 +38,11 @@ export class Secret extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
-     * The location of the resource.
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string | undefined>;
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -49,11 +50,15 @@ export class Secret extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
-     * The tags of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -94,6 +99,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["value"] = args?.value;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["uniqueIdentifier"] = undefined /*out*/;
         } else {
@@ -101,6 +107,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["uniqueIdentifier"] = undefined /*out*/;
@@ -122,11 +129,11 @@ export interface SecretArgs {
      */
     labName: pulumi.Input<string>;
     /**
-     * The location of the resource.
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
-     * The name of the Secret
+     * The name of the secret.
      */
     name?: pulumi.Input<string>;
     /**
@@ -134,7 +141,7 @@ export interface SecretArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The tags of the resource.
+     * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

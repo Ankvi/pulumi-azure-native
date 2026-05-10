@@ -1,7 +1,7 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * Authentication configuration properties of a flexible server.
+ * Authentication configuration properties of a server.
  */
 export interface AuthConfigResponse {
     /**
@@ -29,15 +29,15 @@ export function authConfigResponseProvideDefaults(val: AuthConfigResponse): Auth
 }
 
 /**
- * Backup properties of a flexible server.
+ * Backup properties of a server.
  */
 export interface BackupResponse {
     /**
-     * Backup retention days for the flexible server.
+     * Backup retention days for the server.
      */
     backupRetentionDays?: number;
     /**
-     * Earliest restore point time (ISO8601 format) for a flexible server.
+     * Earliest restore point time (ISO8601 format) for a server.
      */
     earliestRestoreDate: string;
     /**
@@ -57,65 +57,66 @@ export function backupResponseProvideDefaults(val: BackupResponse): BackupRespon
 }
 
 /**
- * Data encryption properties of a flexible server.
+ * Cluster properties of a server.
+ */
+export interface ClusterResponse {
+    /**
+     * Number of nodes assigned to the elastic cluster.
+     */
+    clusterSize?: number;
+    /**
+     * Default database name for the elastic cluster.
+     */
+    defaultDatabaseName?: string;
+}
+/**
+ * clusterResponseProvideDefaults sets the appropriate defaults for ClusterResponse
+ */
+export function clusterResponseProvideDefaults(val: ClusterResponse): ClusterResponse {
+    return {
+        ...val,
+        clusterSize: (val.clusterSize) ?? 0,
+    };
+}
+
+/**
+ * Data encryption properties of a server.
  */
 export interface DataEncryptionResponse {
     /**
-     * Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
+     * Status of key used by a server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
      */
-    geoBackupEncryptionKeyStatus?: string;
+    geoBackupEncryptionKeyStatus: string;
     /**
-     * Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
+     * Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
      */
     geoBackupKeyURI?: string;
     /**
-     * Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a flexible server that is configured to support geographically redundant backups.
+     * Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
      */
     geoBackupUserAssignedIdentityId?: string;
     /**
-     * Status of key used by a flexible server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
+     * Status of key used by a server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
      */
-    primaryEncryptionKeyStatus?: string;
+    primaryEncryptionKeyStatus: string;
     /**
-     * URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a flexible server.
+     * URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a server.
      */
     primaryKeyURI?: string;
     /**
-     * Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a flexible server.
+     * Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a server.
      */
     primaryUserAssignedIdentityId?: string;
     /**
-     * Data encryption type used by a flexible server.
+     * Data encryption type used by a server.
      */
     type?: string;
 }
 
 /**
- * Validation status summary for a database.
+ * Migration state of a database.
  */
-export interface DbLevelValidationStatusResponse {
-    /**
-     * Name of database.
-     */
-    databaseName?: string;
-    /**
-     * End time of a database level validation.
-     */
-    endedOn?: string;
-    /**
-     * Start time of a database level validation.
-     */
-    startedOn?: string;
-    /**
-     * Summary of database level validations.
-     */
-    summary?: ValidationSummaryItemResponse[];
-}
-
-/**
- * Migration status of a database.
- */
-export interface DbMigrationStatusResponse {
+export interface DatabaseMigrationStateResponse {
     /**
      * Change Data Capture applied changes counter.
      */
@@ -183,6 +184,28 @@ export interface DbMigrationStatusResponse {
 }
 
 /**
+ * Validation status summary for a database.
+ */
+export interface DbLevelValidationStatusResponse {
+    /**
+     * Name of database.
+     */
+    databaseName?: string;
+    /**
+     * End time of a database level validation.
+     */
+    endedOn?: string;
+    /**
+     * Start time of a database level validation.
+     */
+    startedOn?: string;
+    /**
+     * Summary of database level validations.
+     */
+    summary?: ValidationSummaryItemResponse[];
+}
+
+/**
  * Database server metadata.
  */
 export interface DbServerMetadataResponse {
@@ -205,11 +228,11 @@ export interface DbServerMetadataResponse {
 }
 
 /**
- * High availability properties of a flexible server.
+ * High availability properties of a server.
  */
 export interface HighAvailabilityResponse {
     /**
-     * High availability mode for a flexible server.
+     * High availability mode for a server.
      */
     mode?: string;
     /**
@@ -240,11 +263,11 @@ export interface IdentityPropertiesResponse {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponseV1};
 }
 
 /**
- * Maintenance window properties of a flexible server.
+ * Maintenance window properties of a server.
  */
 export interface MaintenanceWindowResponse {
     /**
@@ -284,7 +307,7 @@ export interface MigrationStatusResponse {
     /**
      * Current migration sub state details.
      */
-    currentSubStateDetails: MigrationSubStateDetailsResponse;
+    currentSubStateDetails: MigrationSubstateDetailsResponse;
     /**
      * Error message, if any, for the migration state.
      */
@@ -298,12 +321,12 @@ export interface MigrationStatusResponse {
 /**
  * Details of migration substate.
  */
-export interface MigrationSubStateDetailsResponse {
+export interface MigrationSubstateDetailsResponse {
     /**
      * Substate of migration.
      */
     currentSubState: string;
-    dbDetails?: {[key: string]: DbMigrationStatusResponse};
+    dbDetails?: {[key: string]: DatabaseMigrationStateResponse};
     /**
      * Details for the validation for migration.
      */
@@ -311,7 +334,7 @@ export interface MigrationSubStateDetailsResponse {
 }
 
 /**
- * Network properties of a flexible server.
+ * Network properties of a server.
  */
 export interface NetworkResponse {
     /**
@@ -323,7 +346,7 @@ export interface NetworkResponse {
      */
     privateDnsZoneArmResourceId?: string;
     /**
-     * Indicates if public network access is enabled or not.
+     * Indicates if public network access is enabled or not. This is only supported for servers that are not integrated into a virtual network which is owned and provided by customer when server is deployed.
      */
     publicNetworkAccess?: string;
 }
@@ -402,15 +425,15 @@ export interface PrivateLinkServiceConnectionStateResponse {
 }
 
 /**
- * Replica properties of a flexible server.
+ * Replica properties of a server.
  */
 export interface ReplicaResponse {
     /**
-     * Maximum number of read replicas allowed for a flexible server.
+     * Maximum number of read replicas allowed for a server.
      */
     capacity: number;
     /**
-     * Indicates the replication state of a read replica. This property is returned only when the target flexible server is a read replica. Possible  values are Active, Broken, Catchup, Provisioning, Reconfiguring, and Updating
+     * Indicates the replication state of a read replica. This property is returned only when the target server is a read replica. Possible  values are Active, Broken, Catchup, Provisioning, Reconfiguring, and Updating
      */
     replicationState: string;
     /**
@@ -544,7 +567,7 @@ export interface ServerPrivateLinkServiceConnectionStatePropertyResponse {
 }
 
 /**
- * Compute information of a flexible server.
+ * Compute information of a server.
  */
 export interface ServerSkuResponse {
     /**
@@ -552,7 +575,7 @@ export interface ServerSkuResponse {
      */
     name?: string;
     /**
-     * Tier of the compute assigned to a flexible server.
+     * Tier of the compute assigned to a server.
      */
     tier?: string;
 }
@@ -618,15 +641,15 @@ export interface SingleServerSkuResponse {
 }
 
 /**
- * Compute information of a flexible server.
+ * Compute information of a server.
  */
 export interface SkuResponse {
     /**
-     * Name by which is known a given compute size assigned to a flexible server.
+     * Name by which is known a given compute size assigned to a server.
      */
     name: string;
     /**
-     * Tier of the compute assigned to a flexible server.
+     * Tier of the compute assigned to a server.
      */
     tier: string;
 }
@@ -654,31 +677,31 @@ export interface StorageProfileResponse {
 }
 
 /**
- * Storage properties of a flexible server.
+ * Storage properties of a server.
  */
 export interface StorageResponse {
     /**
-     * Flag to enable or disable the automatic growth of storage size of a flexible server when available space is nearing zero and conditions allow for automatically growing storage size.
+     * Flag to enable or disable the automatic growth of storage size of a server when available space is nearing zero and conditions allow for automatically growing storage size.
      */
     autoGrow?: string;
     /**
-     * Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS.
+     * Maximum IOPS supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
      */
     iops?: number;
     /**
-     * Size of storage assigned to a flexible server.
+     * Size of storage assigned to a server.
      */
     storageSizeGB?: number;
     /**
-     * Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS.
+     * Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
      */
     throughput?: number;
     /**
-     * Storage tier of a flexible server.
+     * Storage tier of a server.
      */
     tier?: string;
     /**
-     * Type of storage assigned to a flexible server. Allowed values are Premium_LRS or PremiumV2_LRS. If not specified, it defaults to Premium_LRS.
+     * Type of storage assigned to a server. Allowed values are Premium_LRS, PremiumV2_LRS, or UltraSSD_LRS. If not specified, it defaults to Premium_LRS.
      */
     type?: string;
 }
@@ -714,9 +737,31 @@ export interface SystemDataResponse {
 }
 
 /**
- * User assigned identity properties
+ * Identities associated with a server.
  */
 export interface UserAssignedIdentityResponse {
+    /**
+     * Identifier of the object of the service principal associated to the user assigned managed identity.
+     */
+    principalId?: string;
+    /**
+     * Identifier of the tenant of a server.
+     */
+    tenantId: string;
+    /**
+     * Types of identities associated with a server.
+     */
+    type: string;
+    /**
+     * Map of user assigned managed identities.
+     */
+    userAssignedIdentities?: {[key: string]: UserIdentityResponse};
+}
+
+/**
+ * User assigned identity properties
+ */
+export interface UserAssignedIdentityResponseV1 {
     /**
      * The client ID of the assigned identity.
      */
@@ -725,22 +770,10 @@ export interface UserAssignedIdentityResponse {
      * The principal ID of the assigned identity.
      */
     principalId: string;
-    /**
-     * Identifier of the tenant of a flexible server.
-     */
-    tenantId?: string;
-    /**
-     * Types of identities associated with a flexible server.
-     */
-    type?: string;
-    /**
-     * Map of user assigned managed identities.
-     */
-    userAssignedIdentities?: {[key: string]: UserIdentityResponse};
 }
 
 /**
- * User assigned managed identity associated with a flexible server.
+ * User assigned managed identity associated with a server.
  */
 export interface UserIdentityResponse {
     /**

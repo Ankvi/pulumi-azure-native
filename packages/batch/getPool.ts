@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-01.
  *
- * Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPool(args: GetPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -19,7 +19,7 @@ export function getPool(args: GetPoolArgs, opts?: pulumi.InvokeOptions): Promise
 
 export interface GetPoolArgs {
     /**
-     * The name of the Batch account.
+     * A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
      */
     accountName: string;
     /**
@@ -27,7 +27,7 @@ export interface GetPoolArgs {
      */
     poolName: string;
     /**
-     * The name of the resource group that contains the Batch account.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
@@ -36,7 +36,13 @@ export interface GetPoolArgs {
  * Contains information about a pool.
  */
 export interface GetPoolResult {
+    /**
+     * Whether the pool is resizing.
+     */
     readonly allocationState: string;
+    /**
+     * The time at which the pool entered its current allocation state.
+     */
     readonly allocationStateTransitionTime: string;
     /**
      * The list of application licenses must be a subset of available Batch service application licenses. If a license is requested which is not supported, pool creation will fail.
@@ -60,10 +66,25 @@ export interface GetPoolResult {
      * Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
      */
     readonly certificates?: types.outputs.CertificateReferenceResponse[];
+    /**
+     * The creation time of the pool.
+     */
     readonly creationTime: string;
+    /**
+     * The number of dedicated compute nodes currently in the pool.
+     */
     readonly currentDedicatedNodes: number;
+    /**
+     * The number of Spot/low-priority compute nodes currently in the pool.
+     */
     readonly currentLowPriorityNodes: number;
+    /**
+     * Determines how a pool communicates with the Batch service.
+     */
     readonly currentNodeCommunicationMode: string;
+    /**
+     * Deployment configuration properties.
+     */
     readonly deploymentConfiguration?: types.outputs.DeploymentConfigurationResponse;
     /**
      * The display name need not be unique and can contain any Unicode characters up to a maximum length of 1024.
@@ -74,7 +95,7 @@ export interface GetPoolResult {
      */
     readonly etag: string;
     /**
-     * The ID of the resource.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -98,14 +119,20 @@ export interface GetPoolResult {
      */
     readonly mountConfiguration?: types.outputs.MountConfigurationResponse[];
     /**
-     * The name of the resource.
+     * The name of the resource
      */
     readonly name: string;
     /**
      * The network configuration for a pool.
      */
     readonly networkConfiguration?: types.outputs.NetworkConfigurationResponse;
+    /**
+     * The current state of the pool.
+     */
     readonly provisioningState: string;
+    /**
+     * The time at which the pool entered its current state.
+     */
     readonly provisioningStateTransitionTime: string;
     /**
      * Describes either the current operation (if the pool AllocationState is Resizing) or the previously completed operation (if the AllocationState is Steady).
@@ -124,6 +151,10 @@ export interface GetPoolResult {
      */
     readonly startTask?: types.outputs.StartTaskResponse;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
      * The tags of the resource.
      */
     readonly tags?: {[key: string]: string};
@@ -140,13 +171,16 @@ export interface GetPoolResult {
      */
     readonly taskSlotsPerNode?: number;
     /**
-     * The type of the resource.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**
      * Describes an upgrade policy - automatic, manual, or rolling.
      */
     readonly upgradePolicy?: types.outputs.UpgradePolicyResponse;
+    /**
+     * The list of user accounts to be created on each node in the pool.
+     */
     readonly userAccounts?: types.outputs.UserAccountResponse[];
     /**
      * For information about available VM sizes, see Sizes for Virtual Machines in Azure (https://learn.microsoft.com/azure/virtual-machines/sizes/overview). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
@@ -158,7 +192,7 @@ export interface GetPoolResult {
  *
  * Uses Azure REST API version 2024-07-01.
  *
- * Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPoolOutput(args: GetPoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -171,7 +205,7 @@ export function getPoolOutput(args: GetPoolOutputArgs, opts?: pulumi.InvokeOutpu
 
 export interface GetPoolOutputArgs {
     /**
-     * The name of the Batch account.
+     * A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
      */
     accountName: pulumi.Input<string>;
     /**
@@ -179,7 +213,7 @@ export interface GetPoolOutputArgs {
      */
     poolName: pulumi.Input<string>;
     /**
-     * The name of the resource group that contains the Batch account.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

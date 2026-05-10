@@ -11877,6 +11877,10 @@ export interface HDInsightOnDemandLinkedServiceArgs {
      */
     clusterResourceGroup: any;
     /**
+     * HDInsight On-demand cluster resource group authentication type.
+     */
+    clusterResourceGroupAuthType?: pulumi.Input<string | enums.HDInsightOndemandClusterResourceGroupAuthenticationType>;
+    /**
      * Number of worker/data nodes in the cluster. Suggestion value: 4. Type: int (or Expression with resultType int).
      */
     clusterSize: any;
@@ -13777,7 +13781,11 @@ export interface JiraObjectDatasetArgs {
      */
     structure?: any;
     /**
-     * The table name. Type: string (or Expression with resultType string).
+     * The table name of the Jira, applies only for Jira V2 dataset. Type: string (or Expression with resultType string).
+     */
+    table?: any;
+    /**
+     * This property is only supported in Jira V1 Dataset, please consider upgrading to V2 dataset.
      */
     tableName?: any;
     /**
@@ -16180,6 +16188,10 @@ export interface NetezzaLinkedServiceArgs {
      */
     connectionString?: any;
     /**
+     * Database name for connection. Type: string.
+     */
+    database?: any;
+    /**
      * Linked service description.
      */
     description?: pulumi.Input<string>;
@@ -16192,14 +16204,30 @@ export interface NetezzaLinkedServiceArgs {
      */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
     /**
+     * The port for the connection. Type: integer.
+     */
+    port?: any;
+    /**
      * The Azure key vault secret reference of password in connection string.
      */
     pwd?: pulumi.Input<AzureKeyVaultSecretReferenceArgs>;
+    /**
+     * Specifies the security level for the driver connection to the data store. PreferredUnSecured : prefer unsecured, allow fallback to secured connection if required. OnlyUnSecured : strictly unsecured, no fallback.
+     */
+    securityLevel?: pulumi.Input<string | enums.NetezzaSecurityLevelType>;
+    /**
+     * Server name for connection. Type: string.
+     */
+    server?: any;
     /**
      * Type of linked service.
      * Expected value is 'Netezza'.
      */
     type: pulumi.Input<"Netezza">;
+    /**
+     * Username for authentication. Type: string.
+     */
+    uid?: any;
     /**
      * Version of the linked service.
      */

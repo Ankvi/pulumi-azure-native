@@ -71,6 +71,19 @@ export interface PlanResponse {
     stackType: string;
 }
 
+export interface ProductResponse {
+    description?: string;
+    displayName?: string;
+    pricingTypes?: string[];
+    productType?: string;
+    publisherDisplayName?: string;
+    ratingAverage?: number;
+    smallIconUri?: string;
+    storeFronts?: string[];
+    summary?: string;
+    uniqueProductId?: string;
+}
+
 export interface RuleResponse {
     /**
      * Rule type
