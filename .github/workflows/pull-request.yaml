@@ -24,20 +24,20 @@ jobs:
 
       - uses: ./.github/actions/setup-node
 
-  approve-merge:
-    needs: run-checks
-    runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Add release tag
-        run: |
-          TAG=$(jq .version packages/core/package.json -r)
-          git tag "v$TAG"
-          git push --tags
-
-      - name: Merge PR
-        run: |
-          gh pr merge ${{ github.event.pull_request.number }} --delete-branch
+  # approve-merge:
+  #   needs: run-checks
+  #   runs-on: ubuntu-latest
+  #   env:
+  #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #
+  #     - name: Add release tag
+  #       run: |
+  #         TAG=$(jq .version packages/core/package.json -r)
+  #         git tag "v$TAG"
+  #         git push --tags
+  #
+  #     - name: Merge PR
+  #       run: |
+  #         gh pr merge ${{ github.event.pull_request.number }} --delete-branch

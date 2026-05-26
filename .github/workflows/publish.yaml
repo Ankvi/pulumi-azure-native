@@ -2,10 +2,10 @@ name: Publish
 
 on:
   workflow_dispatch:
-  push:
-    tags:
-      - v2.*
-      - v3.*
+  # push:
+  #   tags:
+  #     - v2.*
+  #     - v3.*
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
