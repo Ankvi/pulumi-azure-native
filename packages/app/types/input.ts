@@ -1,6 +1,156 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Configuration for action
+ */
+export interface ActionConfigurationArgs {
+    /**
+     * The access level of the action
+     */
+    accessLevel?: pulumi.Input<string | enums.AgentAccessLevel>;
+    /**
+     * The identity used by the action
+     */
+    identity?: pulumi.Input<string>;
+    /**
+     * The mode of the action
+     */
+    mode?: pulumi.Input<string | enums.AgentMode>;
+}
+
+/**
+ * Agent Connector Properties
+ */
+export interface AgentConnectorPropertiesArgs {
+    /**
+     * The type of the data connector
+     */
+    dataConnectorType?: pulumi.Input<string>;
+    /**
+     * Data source connection string or endpoint
+     */
+    dataSource?: pulumi.Input<string>;
+    /**
+     * Endpoint of the connector
+     */
+    endpoint?: pulumi.Input<string>;
+    /**
+     * Additional properties for the data connector which can be used to store custom key-value pairs
+     */
+    extendedProperties?: any;
+    /**
+     * Identity used to access the data source
+     */
+    identity?: pulumi.Input<string>;
+}
+
+/**
+ * Agent identity configuration
+ */
+export interface AgentIdentityArgs {
+    /**
+     * Initial sponsor group ID (required for agent identity)
+     */
+    initialSponsorGroupId: pulumi.Input<string>;
+}
+
+/**
+ * Properties of the Agent
+ */
+export interface AgentPropertiesArgs {
+    /**
+     * Configuration for action
+     */
+    actionConfiguration?: pulumi.Input<ActionConfigurationArgs>;
+    /**
+     * Agent identity configuration for accessing resources
+     */
+    agentIdentity?: pulumi.Input<AgentIdentityArgs>;
+    /**
+     * The agent space ID referenced by the agent
+     */
+    agentSpaceId?: pulumi.Input<string>;
+    /**
+     * Default AI model configuration for the agent
+     */
+    defaultModel?: pulumi.Input<DefaultModelArgs>;
+    /**
+     * Incident management configurations
+     */
+    incidentManagementConfiguration?: pulumi.Input<IncidentManagementConfigurationArgs>;
+    /**
+     * Knowledge graph configuration for agent
+     */
+    knowledgeGraphConfiguration?: pulumi.Input<KnowledgeGraphConfigurationArgs>;
+    /**
+     * Log configurations
+     */
+    logConfiguration?: pulumi.Input<LogConfigurationArgs>;
+    /**
+     * The upgrade channel of the agent
+     */
+    upgradeChannel?: pulumi.Input<string | enums.UpgradeChannel>;
+}
+
+/**
+ * Agent Space Connector Properties
+ */
+export interface AgentSpaceConnectorPropertiesArgs {
+    /**
+     * The type of the data connector
+     */
+    dataConnectorType?: pulumi.Input<string>;
+    /**
+     * Data source connection string or endpoint
+     */
+    dataSource?: pulumi.Input<string>;
+    /**
+     * Endpoint of the connector
+     */
+    endpoint?: pulumi.Input<string>;
+    /**
+     * Additional properties for the data connector which can be used to store custom key-value pairs
+     */
+    extendedProperties?: any;
+    /**
+     * Identity used to access the data source
+     */
+    identity?: pulumi.Input<string>;
+}
+
+/**
+ * Policy configurations for an Agent Space
+ */
+export interface AgentSpacePoliciesArgs {
+    /**
+     * Configuration for Geneva Actions policy
+     */
+    genevaActionsConfiguration?: pulumi.Input<GenevaActionsPolicyArgs>;
+}
+
+/**
+ * Agent Space specific properties
+ */
+export interface AgentSpacePropertiesArgs {
+    /**
+     * Description of the Agent Space
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Maximum number of agents allowed in the Agent Space
+     */
+    maxAgentCount?: pulumi.Input<number>;
+    /**
+     * Policy configurations for the Agent Space
+     */
+    policies?: pulumi.Input<AgentSpacePoliciesArgs>;
+    /**
+     * Universal unique ID (UUID) of the Service Tree associated with this Agent Space
+     */
+    serviceTreeId?: pulumi.Input<string>;
+}
+
+/**
  * The configuration settings of the Allowed Audiences validation flow.
  */
 export interface AllowedAudiencesValidationArgs {
@@ -92,6 +242,20 @@ export interface AppleRegistrationArgs {
      * The app setting name that contains the client secret.
      */
     clientSecretSettingName?: pulumi.Input<string>;
+}
+
+/**
+ * Application Insights Configuration
+ */
+export interface ApplicationInsightsConfigurationArgs {
+    /**
+     * The Application ID for the Application Insights resource
+     */
+    appId?: pulumi.Input<string>;
+    /**
+     * The connection string for the Application Insights resource
+     */
+    connectionString?: pulumi.Input<string>;
 }
 
 /**
@@ -1104,6 +1268,20 @@ export interface DefaultAuthorizationPolicyArgs {
 }
 
 /**
+ * Default AI model configuration
+ */
+export interface DefaultModelArgs {
+    /**
+     * Model name (e.g., gpt-5, claude-opus-4-5, claude-sonnet-4-5)
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * AI provider name (e.g., MicrosoftFoundry, Anthropic)
+     */
+    provider?: pulumi.Input<string>;
+}
+
+/**
  * Configuration of Open Telemetry destinations
  */
 export interface DestinationsConfigurationArgs {
@@ -1287,6 +1465,72 @@ export interface ForwardProxyArgs {
      * The name of the header containing the scheme of the request.
      */
     customProtoHeaderName?: pulumi.Input<string>;
+}
+
+/**
+ * Configuration for a Geneva action
+ */
+export interface GenevaActionConfigArgs {
+    /**
+     * Name of the Geneva action
+     */
+    actionName?: pulumi.Input<string>;
+    /**
+     * Parameters for the Geneva action
+     */
+    actionParameters?: pulumi.Input<pulumi.Input<GenevaActionParameterArgs>[]>;
+    /**
+     * Indicates whether approval is required for this action
+     */
+    approvalRequired?: pulumi.Input<boolean>;
+    /**
+     * Extension associated with the action
+     */
+    extension?: pulumi.Input<string>;
+}
+
+/**
+ * Parameter for a Geneva action
+ */
+export interface GenevaActionParameterArgs {
+    /**
+     * Name of the parameter
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Type of the parameter
+     */
+    type?: pulumi.Input<string>;
+}
+
+/**
+ * Geneva Actions policy configuration for Agent Space
+ */
+export interface GenevaActionsPolicyArgs {
+    /**
+     * ACIS (Azure Container Instance Service) endpoint URL
+     */
+    acisEndpoint?: pulumi.Input<string>;
+    /**
+     * Collection of allowed Geneva actions
+     */
+    allowedActions?: pulumi.Input<pulumi.Input<GenevaActionConfigArgs>[]>;
+    /**
+     * Authentication mode for Geneva Actions
+     */
+    authenticationMode?: pulumi.Input<string | enums.GenevaActionAuthenticationMode>;
+    /**
+     * Subject name of the certificate used for authentication
+     */
+    certificateSubjectName?: pulumi.Input<string>;
+    /**
+     * Client ID for authentication
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * Name of the Geneva extension
+     */
+    extensionName: pulumi.Input<string>;
 }
 
 /**
@@ -1707,6 +1951,32 @@ export function identitySettingsArgsProvideDefaults(val: IdentitySettingsArgs): 
         ...val,
         lifecycle: (val.lifecycle) ?? "All",
     };
+}
+
+/**
+ * Incident Management Configurations
+ */
+export interface IncidentManagementConfigurationArgs {
+    /**
+     * The key for the connection
+     */
+    connectionKey?: pulumi.Input<string>;
+    /**
+     * The name of the connection
+     */
+    connectionName?: pulumi.Input<string>;
+    /**
+     * The URL of the connection
+     */
+    connectionUrl?: pulumi.Input<string>;
+    /**
+     * The user for the connection
+     */
+    oboUser?: pulumi.Input<string>;
+    /**
+     * The type of incident management system
+     */
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -2151,6 +2421,20 @@ export interface JwtClaimChecksArgs {
 }
 
 /**
+ * Knowledge graph configuration for agent
+ */
+export interface KnowledgeGraphConfigurationArgs {
+    /**
+     * The identity used to access the knowledge graph
+     */
+    identity?: pulumi.Input<string>;
+    /**
+     * The list of resources managed by agent
+     */
+    managedResources?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
  * The lifecycle configuration properties of a session in the dynamic session pool
  */
 export interface LifecycleConfigurationArgs {
@@ -2184,6 +2468,16 @@ export interface LogAnalyticsConfigurationArgs {
      * Log analytics customer key
      */
     sharedKey?: pulumi.Input<string>;
+}
+
+/**
+ * Log Configurations
+ */
+export interface LogConfigurationArgs {
+    /**
+     * Application Insights Configuration
+     */
+    applicationInsightsConfiguration?: pulumi.Input<ApplicationInsightsConfigurationArgs>;
 }
 
 /**

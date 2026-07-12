@@ -1,6 +1,15 @@
 export const ActivityOnInactiveMarkAs = {
+    /**
+     * Succeeded
+     */
     Succeeded: "Succeeded",
+    /**
+     * Failed
+     */
     Failed: "Failed",
+    /**
+     * Skipped
+     */
     Skipped: "Skipped",
 } as const;
 
@@ -10,7 +19,13 @@ export const ActivityOnInactiveMarkAs = {
 export type ActivityOnInactiveMarkAs = (typeof ActivityOnInactiveMarkAs)[keyof typeof ActivityOnInactiveMarkAs];
 
 export const ActivityState = {
+    /**
+     * Active
+     */
     Active: "Active",
+    /**
+     * Inactive
+     */
     Inactive: "Inactive",
 } as const;
 
@@ -20,6 +35,9 @@ export const ActivityState = {
 export type ActivityState = (typeof ActivityState)[keyof typeof ActivityState];
 
 export const AmazonRdsForOracleAuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
 } as const;
 
@@ -29,7 +47,13 @@ export const AmazonRdsForOracleAuthenticationType = {
 export type AmazonRdsForOracleAuthenticationType = (typeof AmazonRdsForOracleAuthenticationType)[keyof typeof AmazonRdsForOracleAuthenticationType];
 
 export const AmazonRdsForSqlAuthenticationType = {
+    /**
+     * SQL
+     */
     SQL: "SQL",
+    /**
+     * Windows
+     */
     Windows: "Windows",
 } as const;
 
@@ -39,12 +63,33 @@ export const AmazonRdsForSqlAuthenticationType = {
 export type AmazonRdsForSqlAuthenticationType = (typeof AmazonRdsForSqlAuthenticationType)[keyof typeof AmazonRdsForSqlAuthenticationType];
 
 export const AzureFunctionActivityMethod = {
+    /**
+     * GET
+     */
     GET: "GET",
+    /**
+     * POST
+     */
     POST: "POST",
+    /**
+     * PUT
+     */
     PUT: "PUT",
+    /**
+     * DELETE
+     */
     DELETE: "DELETE",
+    /**
+     * OPTIONS
+     */
     OPTIONS: "OPTIONS",
+    /**
+     * HEAD
+     */
     HEAD: "HEAD",
+    /**
+     * TRACE
+     */
     TRACE: "TRACE",
 } as const;
 
@@ -54,8 +99,17 @@ export const AzureFunctionActivityMethod = {
 export type AzureFunctionActivityMethod = (typeof AzureFunctionActivityMethod)[keyof typeof AzureFunctionActivityMethod];
 
 export const AzurePostgreSqlWriteMethodEnum = {
+    /**
+     * BulkInsert
+     */
     BulkInsert: "BulkInsert",
+    /**
+     * CopyCommand
+     */
     CopyCommand: "CopyCommand",
+    /**
+     * Upsert
+     */
     Upsert: "Upsert",
 } as const;
 
@@ -65,7 +119,13 @@ export const AzurePostgreSqlWriteMethodEnum = {
 export type AzurePostgreSqlWriteMethodEnum = (typeof AzurePostgreSqlWriteMethodEnum)[keyof typeof AzurePostgreSqlWriteMethodEnum];
 
 export const AzureSearchIndexWriteBehaviorType = {
+    /**
+     * Merge
+     */
     Merge: "Merge",
+    /**
+     * Upload
+     */
     Upload: "Upload",
 } as const;
 
@@ -75,9 +135,21 @@ export const AzureSearchIndexWriteBehaviorType = {
 export type AzureSearchIndexWriteBehaviorType = (typeof AzureSearchIndexWriteBehaviorType)[keyof typeof AzureSearchIndexWriteBehaviorType];
 
 export const AzureSqlDWAuthenticationType = {
+    /**
+     * SQL
+     */
     SQL: "SQL",
+    /**
+     * ServicePrincipal
+     */
     ServicePrincipal: "ServicePrincipal",
+    /**
+     * SystemAssignedManagedIdentity
+     */
     SystemAssignedManagedIdentity: "SystemAssignedManagedIdentity",
+    /**
+     * UserAssignedManagedIdentity
+     */
     UserAssignedManagedIdentity: "UserAssignedManagedIdentity",
 } as const;
 
@@ -87,9 +159,21 @@ export const AzureSqlDWAuthenticationType = {
 export type AzureSqlDWAuthenticationType = (typeof AzureSqlDWAuthenticationType)[keyof typeof AzureSqlDWAuthenticationType];
 
 export const AzureSqlDatabaseAuthenticationType = {
+    /**
+     * SQL
+     */
     SQL: "SQL",
+    /**
+     * ServicePrincipal
+     */
     ServicePrincipal: "ServicePrincipal",
+    /**
+     * SystemAssignedManagedIdentity
+     */
     SystemAssignedManagedIdentity: "SystemAssignedManagedIdentity",
+    /**
+     * UserAssignedManagedIdentity
+     */
     UserAssignedManagedIdentity: "UserAssignedManagedIdentity",
 } as const;
 
@@ -99,9 +183,21 @@ export const AzureSqlDatabaseAuthenticationType = {
 export type AzureSqlDatabaseAuthenticationType = (typeof AzureSqlDatabaseAuthenticationType)[keyof typeof AzureSqlDatabaseAuthenticationType];
 
 export const AzureSqlMIAuthenticationType = {
+    /**
+     * SQL
+     */
     SQL: "SQL",
+    /**
+     * ServicePrincipal
+     */
     ServicePrincipal: "ServicePrincipal",
+    /**
+     * SystemAssignedManagedIdentity
+     */
     SystemAssignedManagedIdentity: "SystemAssignedManagedIdentity",
+    /**
+     * UserAssignedManagedIdentity
+     */
     UserAssignedManagedIdentity: "UserAssignedManagedIdentity",
 } as const;
 
@@ -111,10 +207,25 @@ export const AzureSqlMIAuthenticationType = {
 export type AzureSqlMIAuthenticationType = (typeof AzureSqlMIAuthenticationType)[keyof typeof AzureSqlMIAuthenticationType];
 
 export const AzureStorageAuthenticationType = {
+    /**
+     * Anonymous
+     */
     Anonymous: "Anonymous",
+    /**
+     * AccountKey
+     */
     AccountKey: "AccountKey",
+    /**
+     * SasUri
+     */
     SasUri: "SasUri",
+    /**
+     * ServicePrincipal
+     */
     ServicePrincipal: "ServicePrincipal",
+    /**
+     * Msi
+     */
     Msi: "Msi",
 } as const;
 
@@ -124,6 +235,9 @@ export const AzureStorageAuthenticationType = {
 export type AzureStorageAuthenticationType = (typeof AzureStorageAuthenticationType)[keyof typeof AzureStorageAuthenticationType];
 
 export const BigDataPoolReferenceType = {
+    /**
+     * BigDataPoolReference
+     */
     BigDataPoolReference: "BigDataPoolReference",
 } as const;
 
@@ -133,22 +247,58 @@ export const BigDataPoolReferenceType = {
 export type BigDataPoolReferenceType = (typeof BigDataPoolReferenceType)[keyof typeof BigDataPoolReferenceType];
 
 export const BlobEventTypes = {
+    /**
+     * Microsoft.Storage.BlobCreated
+     */
     Microsoft_Storage_BlobCreated: "Microsoft.Storage.BlobCreated",
+    /**
+     * Microsoft.Storage.BlobDeleted
+     */
     Microsoft_Storage_BlobDeleted: "Microsoft.Storage.BlobDeleted",
 } as const;
 
 export type BlobEventTypes = (typeof BlobEventTypes)[keyof typeof BlobEventTypes];
 
 export const CassandraSourceReadConsistencyLevels = {
+    /**
+     * ALL
+     */
     ALL: "ALL",
+    /**
+     * EACH_QUORUM
+     */
     EACH_QUORUM: "EACH_QUORUM",
+    /**
+     * QUORUM
+     */
     QUORUM: "QUORUM",
+    /**
+     * LOCAL_QUORUM
+     */
     LOCAL_QUORUM: "LOCAL_QUORUM",
+    /**
+     * ONE
+     */
     ONE: "ONE",
+    /**
+     * TWO
+     */
     TWO: "TWO",
+    /**
+     * THREE
+     */
     THREE: "THREE",
+    /**
+     * LOCAL_ONE
+     */
     LOCAL_ONE: "LOCAL_ONE",
+    /**
+     * SERIAL
+     */
     SERIAL: "SERIAL",
+    /**
+     * LOCAL_SERIAL
+     */
     LOCAL_SERIAL: "LOCAL_SERIAL",
 } as const;
 
@@ -158,8 +308,17 @@ export const CassandraSourceReadConsistencyLevels = {
 export type CassandraSourceReadConsistencyLevels = (typeof CassandraSourceReadConsistencyLevels)[keyof typeof CassandraSourceReadConsistencyLevels];
 
 export const ConfigurationType = {
+    /**
+     * Default
+     */
     Default: "Default",
+    /**
+     * Customized
+     */
     Customized: "Customized",
+    /**
+     * Artifact
+     */
     Artifact: "Artifact",
 } as const;
 
@@ -169,6 +328,9 @@ export const ConfigurationType = {
 export type ConfigurationType = (typeof ConfigurationType)[keyof typeof ConfigurationType];
 
 export const ConnectionType = {
+    /**
+     * linkedservicetype
+     */
     Linkedservicetype: "linkedservicetype",
 } as const;
 
@@ -178,7 +340,13 @@ export const ConnectionType = {
 export type ConnectionType = (typeof ConnectionType)[keyof typeof ConnectionType];
 
 export const CosmosDbConnectionMode = {
+    /**
+     * Gateway
+     */
     Gateway: "Gateway",
+    /**
+     * Direct
+     */
     Direct: "Direct",
 } as const;
 
@@ -188,6 +356,9 @@ export const CosmosDbConnectionMode = {
 export type CosmosDbConnectionMode = (typeof CosmosDbConnectionMode)[keyof typeof CosmosDbConnectionMode];
 
 export const CredentialReferenceType = {
+    /**
+     * CredentialReference
+     */
     CredentialReference: "CredentialReference",
 } as const;
 
@@ -197,8 +368,17 @@ export const CredentialReferenceType = {
 export type CredentialReferenceType = (typeof CredentialReferenceType)[keyof typeof CredentialReferenceType];
 
 export const DataFlowComputeType = {
+    /**
+     * General
+     */
     General: "General",
+    /**
+     * MemoryOptimized
+     */
     MemoryOptimized: "MemoryOptimized",
+    /**
+     * ComputeOptimized
+     */
     ComputeOptimized: "ComputeOptimized",
 } as const;
 
@@ -208,6 +388,9 @@ export const DataFlowComputeType = {
 export type DataFlowComputeType = (typeof DataFlowComputeType)[keyof typeof DataFlowComputeType];
 
 export const DataFlowReferenceType = {
+    /**
+     * DataFlowReference
+     */
     DataFlowReference: "DataFlowReference",
 } as const;
 
@@ -216,13 +399,46 @@ export const DataFlowReferenceType = {
  */
 export type DataFlowReferenceType = (typeof DataFlowReferenceType)[keyof typeof DataFlowReferenceType];
 
+export const DatasetReferenceType = {
+    /**
+     * DatasetReference
+     */
+    DatasetReference: "DatasetReference",
+} as const;
+
+/**
+ * Dataset reference type.
+ */
+export type DatasetReferenceType = (typeof DatasetReferenceType)[keyof typeof DatasetReferenceType];
+
 export const DayOfWeek = {
+    /**
+     * Sunday
+     */
     Sunday: "Sunday",
+    /**
+     * Monday
+     */
     Monday: "Monday",
+    /**
+     * Tuesday
+     */
     Tuesday: "Tuesday",
+    /**
+     * Wednesday
+     */
     Wednesday: "Wednesday",
+    /**
+     * Thursday
+     */
     Thursday: "Thursday",
+    /**
+     * Friday
+     */
     Friday: "Friday",
+    /**
+     * Saturday
+     */
     Saturday: "Saturday",
 } as const;
 
@@ -232,18 +448,42 @@ export const DayOfWeek = {
 export type DayOfWeek = (typeof DayOfWeek)[keyof typeof DayOfWeek];
 
 export const DaysOfWeek = {
+    /**
+     * Sunday
+     */
     Sunday: "Sunday",
+    /**
+     * Monday
+     */
     Monday: "Monday",
+    /**
+     * Tuesday
+     */
     Tuesday: "Tuesday",
+    /**
+     * Wednesday
+     */
     Wednesday: "Wednesday",
+    /**
+     * Thursday
+     */
     Thursday: "Thursday",
+    /**
+     * Friday
+     */
     Friday: "Friday",
+    /**
+     * Saturday
+     */
     Saturday: "Saturday",
 } as const;
 
 export type DaysOfWeek = (typeof DaysOfWeek)[keyof typeof DaysOfWeek];
 
 export const Db2AuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
 } as const;
 
@@ -253,15 +493,30 @@ export const Db2AuthenticationType = {
 export type Db2AuthenticationType = (typeof Db2AuthenticationType)[keyof typeof Db2AuthenticationType];
 
 export const DependencyCondition = {
+    /**
+     * Succeeded
+     */
     Succeeded: "Succeeded",
+    /**
+     * Failed
+     */
     Failed: "Failed",
+    /**
+     * Skipped
+     */
     Skipped: "Skipped",
+    /**
+     * Completed
+     */
     Completed: "Completed",
 } as const;
 
 export type DependencyCondition = (typeof DependencyCondition)[keyof typeof DependencyCondition];
 
 export const DynamicsSinkWriteBehavior = {
+    /**
+     * Upsert
+     */
     Upsert: "Upsert",
 } as const;
 
@@ -270,11 +525,38 @@ export const DynamicsSinkWriteBehavior = {
  */
 export type DynamicsSinkWriteBehavior = (typeof DynamicsSinkWriteBehavior)[keyof typeof DynamicsSinkWriteBehavior];
 
+export const ExpressionType = {
+    /**
+     * Expression
+     */
+    Expression: "Expression",
+} as const;
+
+/**
+ * Expression type.
+ */
+export type ExpressionType = (typeof ExpressionType)[keyof typeof ExpressionType];
+
 export const ExpressionV2Type = {
+    /**
+     * Constant
+     */
     Constant: "Constant",
+    /**
+     * Field
+     */
     Field: "Field",
+    /**
+     * Unary
+     */
     Unary: "Unary",
+    /**
+     * Binary
+     */
     Binary: "Binary",
+    /**
+     * NAry
+     */
     NAry: "NAry",
 } as const;
 
@@ -284,8 +566,17 @@ export const ExpressionV2Type = {
 export type ExpressionV2Type = (typeof ExpressionV2Type)[keyof typeof ExpressionV2Type];
 
 export const FactoryIdentityType = {
+    /**
+     * SystemAssigned
+     */
     SystemAssigned: "SystemAssigned",
+    /**
+     * UserAssigned
+     */
     UserAssigned: "UserAssigned",
+    /**
+     * SystemAssigned,UserAssigned
+     */
     SystemAssigned_UserAssigned: "SystemAssigned,UserAssigned",
 } as const;
 
@@ -295,8 +586,17 @@ export const FactoryIdentityType = {
 export type FactoryIdentityType = (typeof FactoryIdentityType)[keyof typeof FactoryIdentityType];
 
 export const FrequencyType = {
+    /**
+     * Hour
+     */
     Hour: "Hour",
+    /**
+     * Minute
+     */
     Minute: "Minute",
+    /**
+     * Second
+     */
     Second: "Second",
 } as const;
 
@@ -306,7 +606,13 @@ export const FrequencyType = {
 export type FrequencyType = (typeof FrequencyType)[keyof typeof FrequencyType];
 
 export const FtpAuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
+    /**
+     * Anonymous
+     */
     Anonymous: "Anonymous",
 } as const;
 
@@ -316,11 +622,29 @@ export const FtpAuthenticationType = {
 export type FtpAuthenticationType = (typeof FtpAuthenticationType)[keyof typeof FtpAuthenticationType];
 
 export const GlobalParameterType = {
+    /**
+     * Object
+     */
     Object: "Object",
+    /**
+     * String
+     */
     String: "String",
+    /**
+     * Int
+     */
     Int: "Int",
+    /**
+     * Float
+     */
     Float: "Float",
+    /**
+     * Bool
+     */
     Bool: "Bool",
+    /**
+     * Array
+     */
     Array: "Array",
 } as const;
 
@@ -330,7 +654,13 @@ export const GlobalParameterType = {
 export type GlobalParameterType = (typeof GlobalParameterType)[keyof typeof GlobalParameterType];
 
 export const GoogleAdWordsAuthenticationType = {
+    /**
+     * ServiceAuthentication
+     */
     ServiceAuthentication: "ServiceAuthentication",
+    /**
+     * UserAuthentication
+     */
     UserAuthentication: "UserAuthentication",
 } as const;
 
@@ -340,7 +670,13 @@ export const GoogleAdWordsAuthenticationType = {
 export type GoogleAdWordsAuthenticationType = (typeof GoogleAdWordsAuthenticationType)[keyof typeof GoogleAdWordsAuthenticationType];
 
 export const GoogleBigQueryAuthenticationType = {
+    /**
+     * ServiceAuthentication
+     */
     ServiceAuthentication: "ServiceAuthentication",
+    /**
+     * UserAuthentication
+     */
     UserAuthentication: "UserAuthentication",
 } as const;
 
@@ -350,7 +686,13 @@ export const GoogleBigQueryAuthenticationType = {
 export type GoogleBigQueryAuthenticationType = (typeof GoogleBigQueryAuthenticationType)[keyof typeof GoogleBigQueryAuthenticationType];
 
 export const GoogleBigQueryV2AuthenticationType = {
+    /**
+     * ServiceAuthentication
+     */
     ServiceAuthentication: "ServiceAuthentication",
+    /**
+     * UserAuthentication
+     */
     UserAuthentication: "UserAuthentication",
 } as const;
 
@@ -360,6 +702,9 @@ export const GoogleBigQueryV2AuthenticationType = {
 export type GoogleBigQueryV2AuthenticationType = (typeof GoogleBigQueryV2AuthenticationType)[keyof typeof GoogleBigQueryV2AuthenticationType];
 
 export const GreenplumAuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
 } as const;
 
@@ -369,7 +714,13 @@ export const GreenplumAuthenticationType = {
 export type GreenplumAuthenticationType = (typeof GreenplumAuthenticationType)[keyof typeof GreenplumAuthenticationType];
 
 export const HBaseAuthenticationType = {
+    /**
+     * Anonymous
+     */
     Anonymous: "Anonymous",
+    /**
+     * Basic
+     */
     Basic: "Basic",
 } as const;
 
@@ -379,8 +730,17 @@ export const HBaseAuthenticationType = {
 export type HBaseAuthenticationType = (typeof HBaseAuthenticationType)[keyof typeof HBaseAuthenticationType];
 
 export const HDInsightActivityDebugInfoOption = {
+    /**
+     * None
+     */
     None: "None",
+    /**
+     * Always
+     */
     Always: "Always",
+    /**
+     * Failure
+     */
     Failure: "Failure",
 } as const;
 
@@ -390,8 +750,17 @@ export const HDInsightActivityDebugInfoOption = {
 export type HDInsightActivityDebugInfoOption = (typeof HDInsightActivityDebugInfoOption)[keyof typeof HDInsightActivityDebugInfoOption];
 
 export const HDInsightClusterAuthenticationType = {
+    /**
+     * BasicAuth
+     */
     BasicAuth: "BasicAuth",
+    /**
+     * SystemAssignedManagedIdentity
+     */
     SystemAssignedManagedIdentity: "SystemAssignedManagedIdentity",
+    /**
+     * UserAssignedManagedIdentity
+     */
     UserAssignedManagedIdentity: "UserAssignedManagedIdentity",
 } as const;
 
@@ -401,8 +770,17 @@ export const HDInsightClusterAuthenticationType = {
 export type HDInsightClusterAuthenticationType = (typeof HDInsightClusterAuthenticationType)[keyof typeof HDInsightClusterAuthenticationType];
 
 export const HDInsightOndemandClusterResourceGroupAuthenticationType = {
+    /**
+     * ServicePrincipalKey
+     */
     ServicePrincipalKey: "ServicePrincipalKey",
+    /**
+     * SystemAssignedManagedIdentity
+     */
     SystemAssignedManagedIdentity: "SystemAssignedManagedIdentity",
+    /**
+     * UserAssignedManagedIdentity
+     */
     UserAssignedManagedIdentity: "UserAssignedManagedIdentity",
 } as const;
 
@@ -412,9 +790,21 @@ export const HDInsightOndemandClusterResourceGroupAuthenticationType = {
 export type HDInsightOndemandClusterResourceGroupAuthenticationType = (typeof HDInsightOndemandClusterResourceGroupAuthenticationType)[keyof typeof HDInsightOndemandClusterResourceGroupAuthenticationType];
 
 export const HiveAuthenticationType = {
+    /**
+     * Anonymous
+     */
     Anonymous: "Anonymous",
+    /**
+     * Username
+     */
     Username: "Username",
+    /**
+     * UsernameAndPassword
+     */
     UsernameAndPassword: "UsernameAndPassword",
+    /**
+     * WindowsAzureHDInsightService
+     */
     WindowsAzureHDInsightService: "WindowsAzureHDInsightService",
 } as const;
 
@@ -424,8 +814,17 @@ export const HiveAuthenticationType = {
 export type HiveAuthenticationType = (typeof HiveAuthenticationType)[keyof typeof HiveAuthenticationType];
 
 export const HiveServerType = {
+    /**
+     * HiveServer1
+     */
     HiveServer1: "HiveServer1",
+    /**
+     * HiveServer2
+     */
     HiveServer2: "HiveServer2",
+    /**
+     * HiveThriftServer
+     */
     HiveThriftServer: "HiveThriftServer",
 } as const;
 
@@ -435,8 +834,17 @@ export const HiveServerType = {
 export type HiveServerType = (typeof HiveServerType)[keyof typeof HiveServerType];
 
 export const HiveThriftTransportProtocol = {
+    /**
+     * Binary
+     */
     Binary: "Binary",
+    /**
+     * SASL
+     */
     SASL: "SASL",
+    /**
+     * HTTP
+     */
     HTTP_: "HTTP ",
 } as const;
 
@@ -446,10 +854,25 @@ export const HiveThriftTransportProtocol = {
 export type HiveThriftTransportProtocol = (typeof HiveThriftTransportProtocol)[keyof typeof HiveThriftTransportProtocol];
 
 export const HttpAuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
+    /**
+     * Anonymous
+     */
     Anonymous: "Anonymous",
+    /**
+     * Digest
+     */
     Digest: "Digest",
+    /**
+     * Windows
+     */
     Windows: "Windows",
+    /**
+     * ClientCertificate
+     */
     ClientCertificate: "ClientCertificate",
 } as const;
 
@@ -459,8 +882,17 @@ export const HttpAuthenticationType = {
 export type HttpAuthenticationType = (typeof HttpAuthenticationType)[keyof typeof HttpAuthenticationType];
 
 export const ImpalaAuthenticationType = {
+    /**
+     * Anonymous
+     */
     Anonymous: "Anonymous",
+    /**
+     * SASLUsername
+     */
     SASLUsername: "SASLUsername",
+    /**
+     * UsernameAndPassword
+     */
     UsernameAndPassword: "UsernameAndPassword",
 } as const;
 
@@ -470,7 +902,13 @@ export const ImpalaAuthenticationType = {
 export type ImpalaAuthenticationType = (typeof ImpalaAuthenticationType)[keyof typeof ImpalaAuthenticationType];
 
 export const ImpalaThriftTransportProtocol = {
+    /**
+     * Binary
+     */
     Binary: "Binary",
+    /**
+     * HTTP
+     */
     HTTP: "HTTP",
 } as const;
 
@@ -480,7 +918,13 @@ export const ImpalaThriftTransportProtocol = {
 export type ImpalaThriftTransportProtocol = (typeof ImpalaThriftTransportProtocol)[keyof typeof ImpalaThriftTransportProtocol];
 
 export const IntegrationRuntimeEdition = {
+    /**
+     * Standard
+     */
     Standard: "Standard",
+    /**
+     * Enterprise
+     */
     Enterprise: "Enterprise",
 } as const;
 
@@ -490,7 +934,13 @@ export const IntegrationRuntimeEdition = {
 export type IntegrationRuntimeEdition = (typeof IntegrationRuntimeEdition)[keyof typeof IntegrationRuntimeEdition];
 
 export const IntegrationRuntimeEntityReferenceType = {
+    /**
+     * IntegrationRuntimeReference
+     */
     IntegrationRuntimeReference: "IntegrationRuntimeReference",
+    /**
+     * LinkedServiceReference
+     */
     LinkedServiceReference: "LinkedServiceReference",
 } as const;
 
@@ -500,7 +950,13 @@ export const IntegrationRuntimeEntityReferenceType = {
 export type IntegrationRuntimeEntityReferenceType = (typeof IntegrationRuntimeEntityReferenceType)[keyof typeof IntegrationRuntimeEntityReferenceType];
 
 export const IntegrationRuntimeLicenseType = {
+    /**
+     * BasePrice
+     */
     BasePrice: "BasePrice",
+    /**
+     * LicenseIncluded
+     */
     LicenseIncluded: "LicenseIncluded",
 } as const;
 
@@ -509,10 +965,34 @@ export const IntegrationRuntimeLicenseType = {
  */
 export type IntegrationRuntimeLicenseType = (typeof IntegrationRuntimeLicenseType)[keyof typeof IntegrationRuntimeLicenseType];
 
+export const IntegrationRuntimeReferenceType = {
+    /**
+     * IntegrationRuntimeReference
+     */
+    IntegrationRuntimeReference: "IntegrationRuntimeReference",
+} as const;
+
+/**
+ * Type of integration runtime.
+ */
+export type IntegrationRuntimeReferenceType = (typeof IntegrationRuntimeReferenceType)[keyof typeof IntegrationRuntimeReferenceType];
+
 export const IntegrationRuntimeSsisCatalogPricingTier = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
+    /**
+     * Standard
+     */
     Standard: "Standard",
+    /**
+     * Premium
+     */
     Premium: "Premium",
+    /**
+     * PremiumRS
+     */
     PremiumRS: "PremiumRS",
 } as const;
 
@@ -522,7 +1002,13 @@ export const IntegrationRuntimeSsisCatalogPricingTier = {
 export type IntegrationRuntimeSsisCatalogPricingTier = (typeof IntegrationRuntimeSsisCatalogPricingTier)[keyof typeof IntegrationRuntimeSsisCatalogPricingTier];
 
 export const IntegrationRuntimeType = {
+    /**
+     * Managed
+     */
     Managed: "Managed",
+    /**
+     * SelfHosted
+     */
     SelfHosted: "SelfHosted",
 } as const;
 
@@ -532,8 +1018,17 @@ export const IntegrationRuntimeType = {
 export type IntegrationRuntimeType = (typeof IntegrationRuntimeType)[keyof typeof IntegrationRuntimeType];
 
 export const LakehouseAuthenticationType = {
+    /**
+     * ServicePrincipal
+     */
     ServicePrincipal: "ServicePrincipal",
+    /**
+     * SystemAssignedManagedIdentity
+     */
     SystemAssignedManagedIdentity: "SystemAssignedManagedIdentity",
+    /**
+     * UserAssignedManagedIdentity
+     */
     UserAssignedManagedIdentity: "UserAssignedManagedIdentity",
 } as const;
 
@@ -543,6 +1038,9 @@ export const LakehouseAuthenticationType = {
 export type LakehouseAuthenticationType = (typeof LakehouseAuthenticationType)[keyof typeof LakehouseAuthenticationType];
 
 export const ManagedVirtualNetworkReferenceType = {
+    /**
+     * ManagedVirtualNetworkReference
+     */
     ManagedVirtualNetworkReference: "ManagedVirtualNetworkReference",
 } as const;
 
@@ -552,8 +1050,17 @@ export const ManagedVirtualNetworkReferenceType = {
 export type ManagedVirtualNetworkReferenceType = (typeof ManagedVirtualNetworkReferenceType)[keyof typeof ManagedVirtualNetworkReferenceType];
 
 export const MappingType = {
+    /**
+     * Direct
+     */
     Direct: "Direct",
+    /**
+     * Derived
+     */
     Derived: "Derived",
+    /**
+     * Aggregate
+     */
     Aggregate: "Aggregate",
 } as const;
 
@@ -563,7 +1070,13 @@ export const MappingType = {
 export type MappingType = (typeof MappingType)[keyof typeof MappingType];
 
 export const MongoDbAuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
+    /**
+     * Anonymous
+     */
     Anonymous: "Anonymous",
 } as const;
 
@@ -573,7 +1086,13 @@ export const MongoDbAuthenticationType = {
 export type MongoDbAuthenticationType = (typeof MongoDbAuthenticationType)[keyof typeof MongoDbAuthenticationType];
 
 export const NetezzaSecurityLevelType = {
+    /**
+     * PreferredUnSecured
+     */
     PreferredUnSecured: "PreferredUnSecured",
+    /**
+     * OnlyUnSecured
+     */
     OnlyUnSecured: "OnlyUnSecured",
 } as const;
 
@@ -583,9 +1102,21 @@ export const NetezzaSecurityLevelType = {
 export type NetezzaSecurityLevelType = (typeof NetezzaSecurityLevelType)[keyof typeof NetezzaSecurityLevelType];
 
 export const NotebookParameterType = {
+    /**
+     * string
+     */
     String: "string",
+    /**
+     * int
+     */
     Int: "int",
+    /**
+     * float
+     */
     Float: "float",
+    /**
+     * bool
+     */
     Bool: "bool",
 } as const;
 
@@ -595,6 +1126,9 @@ export const NotebookParameterType = {
 export type NotebookParameterType = (typeof NotebookParameterType)[keyof typeof NotebookParameterType];
 
 export const NotebookReferenceType = {
+    /**
+     * NotebookReference
+     */
     NotebookReference: "NotebookReference",
 } as const;
 
@@ -604,7 +1138,13 @@ export const NotebookReferenceType = {
 export type NotebookReferenceType = (typeof NotebookReferenceType)[keyof typeof NotebookReferenceType];
 
 export const ODataAadServicePrincipalCredentialType = {
+    /**
+     * ServicePrincipalKey
+     */
     ServicePrincipalKey: "ServicePrincipalKey",
+    /**
+     * ServicePrincipalCert
+     */
     ServicePrincipalCert: "ServicePrincipalCert",
 } as const;
 
@@ -614,10 +1154,25 @@ export const ODataAadServicePrincipalCredentialType = {
 export type ODataAadServicePrincipalCredentialType = (typeof ODataAadServicePrincipalCredentialType)[keyof typeof ODataAadServicePrincipalCredentialType];
 
 export const ODataAuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
+    /**
+     * Anonymous
+     */
     Anonymous: "Anonymous",
+    /**
+     * Windows
+     */
     Windows: "Windows",
+    /**
+     * AadServicePrincipal
+     */
     AadServicePrincipal: "AadServicePrincipal",
+    /**
+     * ManagedServiceIdentity
+     */
     ManagedServiceIdentity: "ManagedServiceIdentity",
 } as const;
 
@@ -627,6 +1182,9 @@ export const ODataAuthenticationType = {
 export type ODataAuthenticationType = (typeof ODataAuthenticationType)[keyof typeof ODataAuthenticationType];
 
 export const OracleAuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
 } as const;
 
@@ -636,12 +1194,33 @@ export const OracleAuthenticationType = {
 export type OracleAuthenticationType = (typeof OracleAuthenticationType)[keyof typeof OracleAuthenticationType];
 
 export const ParameterType = {
+    /**
+     * Object
+     */
     Object: "Object",
+    /**
+     * String
+     */
     String: "String",
+    /**
+     * Int
+     */
     Int: "Int",
+    /**
+     * Float
+     */
     Float: "Float",
+    /**
+     * Bool
+     */
     Bool: "Bool",
+    /**
+     * Array
+     */
     Array: "Array",
+    /**
+     * SecureString
+     */
     SecureString: "SecureString",
 } as const;
 
@@ -651,8 +1230,17 @@ export const ParameterType = {
 export type ParameterType = (typeof ParameterType)[keyof typeof ParameterType];
 
 export const PhoenixAuthenticationType = {
+    /**
+     * Anonymous
+     */
     Anonymous: "Anonymous",
+    /**
+     * UsernameAndPassword
+     */
     UsernameAndPassword: "UsernameAndPassword",
+    /**
+     * WindowsAzureHDInsightService
+     */
     WindowsAzureHDInsightService: "WindowsAzureHDInsightService",
 } as const;
 
@@ -661,8 +1249,26 @@ export const PhoenixAuthenticationType = {
  */
 export type PhoenixAuthenticationType = (typeof PhoenixAuthenticationType)[keyof typeof PhoenixAuthenticationType];
 
+export const PipelineReferenceType = {
+    /**
+     * PipelineReference
+     */
+    PipelineReference: "PipelineReference",
+} as const;
+
+/**
+ * Pipeline reference type.
+ */
+export type PipelineReferenceType = (typeof PipelineReferenceType)[keyof typeof PipelineReferenceType];
+
 export const PolybaseSettingsRejectType = {
+    /**
+     * value
+     */
     Value: "value",
+    /**
+     * percentage
+     */
     Percentage: "percentage",
 } as const;
 
@@ -672,7 +1278,13 @@ export const PolybaseSettingsRejectType = {
 export type PolybaseSettingsRejectType = (typeof PolybaseSettingsRejectType)[keyof typeof PolybaseSettingsRejectType];
 
 export const PrestoAuthenticationType = {
+    /**
+     * Anonymous
+     */
     Anonymous: "Anonymous",
+    /**
+     * LDAP
+     */
     LDAP: "LDAP",
 } as const;
 
@@ -682,7 +1294,13 @@ export const PrestoAuthenticationType = {
 export type PrestoAuthenticationType = (typeof PrestoAuthenticationType)[keyof typeof PrestoAuthenticationType];
 
 export const PublicNetworkAccess = {
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
 } as const;
 
@@ -692,12 +1310,33 @@ export const PublicNetworkAccess = {
 export type PublicNetworkAccess = (typeof PublicNetworkAccess)[keyof typeof PublicNetworkAccess];
 
 export const RecurrenceFrequency = {
+    /**
+     * NotSpecified
+     */
     NotSpecified: "NotSpecified",
+    /**
+     * Minute
+     */
     Minute: "Minute",
+    /**
+     * Hour
+     */
     Hour: "Hour",
+    /**
+     * Day
+     */
     Day: "Day",
+    /**
+     * Week
+     */
     Week: "Week",
+    /**
+     * Month
+     */
     Month: "Month",
+    /**
+     * Year
+     */
     Year: "Year",
 } as const;
 
@@ -707,10 +1346,25 @@ export const RecurrenceFrequency = {
 export type RecurrenceFrequency = (typeof RecurrenceFrequency)[keyof typeof RecurrenceFrequency];
 
 export const RestServiceAuthenticationType = {
+    /**
+     * Anonymous
+     */
     Anonymous: "Anonymous",
+    /**
+     * Basic
+     */
     Basic: "Basic",
+    /**
+     * AadServicePrincipal
+     */
     AadServicePrincipal: "AadServicePrincipal",
+    /**
+     * ManagedServiceIdentity
+     */
     ManagedServiceIdentity: "ManagedServiceIdentity",
+    /**
+     * OAuth2ClientCredential
+     */
     OAuth2ClientCredential: "OAuth2ClientCredential",
 } as const;
 
@@ -720,7 +1374,13 @@ export const RestServiceAuthenticationType = {
 export type RestServiceAuthenticationType = (typeof RestServiceAuthenticationType)[keyof typeof RestServiceAuthenticationType];
 
 export const SalesforceSinkWriteBehavior = {
+    /**
+     * Insert
+     */
     Insert: "Insert",
+    /**
+     * Upsert
+     */
     Upsert: "Upsert",
 } as const;
 
@@ -730,7 +1390,13 @@ export const SalesforceSinkWriteBehavior = {
 export type SalesforceSinkWriteBehavior = (typeof SalesforceSinkWriteBehavior)[keyof typeof SalesforceSinkWriteBehavior];
 
 export const SalesforceV2SinkWriteBehavior = {
+    /**
+     * Insert
+     */
     Insert: "Insert",
+    /**
+     * Upsert
+     */
     Upsert: "Upsert",
 } as const;
 
@@ -740,7 +1406,13 @@ export const SalesforceV2SinkWriteBehavior = {
 export type SalesforceV2SinkWriteBehavior = (typeof SalesforceV2SinkWriteBehavior)[keyof typeof SalesforceV2SinkWriteBehavior];
 
 export const SapCloudForCustomerSinkWriteBehavior = {
+    /**
+     * Insert
+     */
     Insert: "Insert",
+    /**
+     * Update
+     */
     Update: "Update",
 } as const;
 
@@ -750,7 +1422,13 @@ export const SapCloudForCustomerSinkWriteBehavior = {
 export type SapCloudForCustomerSinkWriteBehavior = (typeof SapCloudForCustomerSinkWriteBehavior)[keyof typeof SapCloudForCustomerSinkWriteBehavior];
 
 export const SapHanaAuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
+    /**
+     * Windows
+     */
     Windows: "Windows",
 } as const;
 
@@ -760,7 +1438,13 @@ export const SapHanaAuthenticationType = {
 export type SapHanaAuthenticationType = (typeof SapHanaAuthenticationType)[keyof typeof SapHanaAuthenticationType];
 
 export const ScriptActivityLogDestination = {
+    /**
+     * ActivityOutput
+     */
     ActivityOutput: "ActivityOutput",
+    /**
+     * ExternalStore
+     */
     ExternalStore: "ExternalStore",
 } as const;
 
@@ -770,8 +1454,17 @@ export const ScriptActivityLogDestination = {
 export type ScriptActivityLogDestination = (typeof ScriptActivityLogDestination)[keyof typeof ScriptActivityLogDestination];
 
 export const ScriptActivityParameterDirection = {
+    /**
+     * Input
+     */
     ValueInput: "Input",
+    /**
+     * Output
+     */
     ValueOutput: "Output",
+    /**
+     * InputOutput
+     */
     ValueInputOutput: "InputOutput",
 } as const;
 
@@ -781,17 +1474,53 @@ export const ScriptActivityParameterDirection = {
 export type ScriptActivityParameterDirection = (typeof ScriptActivityParameterDirection)[keyof typeof ScriptActivityParameterDirection];
 
 export const ScriptActivityParameterType = {
+    /**
+     * Boolean
+     */
     Boolean: "Boolean",
+    /**
+     * DateTime
+     */
     DateTime: "DateTime",
+    /**
+     * DateTimeOffset
+     */
     DateTimeOffset: "DateTimeOffset",
+    /**
+     * Decimal
+     */
     Decimal: "Decimal",
+    /**
+     * Double
+     */
     Double: "Double",
+    /**
+     * Guid
+     */
     Guid: "Guid",
+    /**
+     * Int16
+     */
     Int16: "Int16",
+    /**
+     * Int32
+     */
     Int32: "Int32",
+    /**
+     * Int64
+     */
     Int64: "Int64",
+    /**
+     * Single
+     */
     Single: "Single",
+    /**
+     * String
+     */
     String: "String",
+    /**
+     * Timespan
+     */
     Timespan: "Timespan",
 } as const;
 
@@ -801,7 +1530,13 @@ export const ScriptActivityParameterType = {
 export type ScriptActivityParameterType = (typeof ScriptActivityParameterType)[keyof typeof ScriptActivityParameterType];
 
 export const ServiceNowAuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
+    /**
+     * OAuth2
+     */
     OAuth2: "OAuth2",
 } as const;
 
@@ -811,7 +1546,13 @@ export const ServiceNowAuthenticationType = {
 export type ServiceNowAuthenticationType = (typeof ServiceNowAuthenticationType)[keyof typeof ServiceNowAuthenticationType];
 
 export const ServiceNowV2AuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
+    /**
+     * OAuth2
+     */
     OAuth2: "OAuth2",
 } as const;
 
@@ -821,8 +1562,17 @@ export const ServiceNowV2AuthenticationType = {
 export type ServiceNowV2AuthenticationType = (typeof ServiceNowV2AuthenticationType)[keyof typeof ServiceNowV2AuthenticationType];
 
 export const SftpAuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
+    /**
+     * SshPublicKey
+     */
     SshPublicKey: "SshPublicKey",
+    /**
+     * MultiFactor
+     */
     MultiFactor: "MultiFactor",
 } as const;
 
@@ -832,8 +1582,17 @@ export const SftpAuthenticationType = {
 export type SftpAuthenticationType = (typeof SftpAuthenticationType)[keyof typeof SftpAuthenticationType];
 
 export const SnowflakeAuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
+    /**
+     * KeyPair
+     */
     KeyPair: "KeyPair",
+    /**
+     * AADServicePrincipal
+     */
     AADServicePrincipal: "AADServicePrincipal",
 } as const;
 
@@ -843,9 +1602,21 @@ export const SnowflakeAuthenticationType = {
 export type SnowflakeAuthenticationType = (typeof SnowflakeAuthenticationType)[keyof typeof SnowflakeAuthenticationType];
 
 export const SparkAuthenticationType = {
+    /**
+     * Anonymous
+     */
     Anonymous: "Anonymous",
+    /**
+     * Username
+     */
     Username: "Username",
+    /**
+     * UsernameAndPassword
+     */
     UsernameAndPassword: "UsernameAndPassword",
+    /**
+     * WindowsAzureHDInsightService
+     */
     WindowsAzureHDInsightService: "WindowsAzureHDInsightService",
 } as const;
 
@@ -855,6 +1626,9 @@ export const SparkAuthenticationType = {
 export type SparkAuthenticationType = (typeof SparkAuthenticationType)[keyof typeof SparkAuthenticationType];
 
 export const SparkConfigurationReferenceType = {
+    /**
+     * SparkConfigurationReference
+     */
     SparkConfigurationReference: "SparkConfigurationReference",
 } as const;
 
@@ -864,6 +1638,9 @@ export const SparkConfigurationReferenceType = {
 export type SparkConfigurationReferenceType = (typeof SparkConfigurationReferenceType)[keyof typeof SparkConfigurationReferenceType];
 
 export const SparkJobReferenceType = {
+    /**
+     * SparkJobDefinitionReference
+     */
     SparkJobDefinitionReference: "SparkJobDefinitionReference",
 } as const;
 
@@ -873,8 +1650,17 @@ export const SparkJobReferenceType = {
 export type SparkJobReferenceType = (typeof SparkJobReferenceType)[keyof typeof SparkJobReferenceType];
 
 export const SparkServerType = {
+    /**
+     * SharkServer
+     */
     SharkServer: "SharkServer",
+    /**
+     * SharkServer2
+     */
     SharkServer2: "SharkServer2",
+    /**
+     * SparkThriftServer
+     */
     SparkThriftServer: "SparkThriftServer",
 } as const;
 
@@ -884,8 +1670,17 @@ export const SparkServerType = {
 export type SparkServerType = (typeof SparkServerType)[keyof typeof SparkServerType];
 
 export const SparkThriftTransportProtocol = {
+    /**
+     * Binary
+     */
     Binary: "Binary",
+    /**
+     * SASL
+     */
     SASL: "SASL",
+    /**
+     * HTTP
+     */
     HTTP_: "HTTP ",
 } as const;
 
@@ -895,8 +1690,17 @@ export const SparkThriftTransportProtocol = {
 export type SparkThriftTransportProtocol = (typeof SparkThriftTransportProtocol)[keyof typeof SparkThriftTransportProtocol];
 
 export const SqlAlwaysEncryptedAkvAuthType = {
+    /**
+     * ServicePrincipal
+     */
     ServicePrincipal: "ServicePrincipal",
+    /**
+     * ManagedIdentity
+     */
     ManagedIdentity: "ManagedIdentity",
+    /**
+     * UserAssignedManagedIdentity
+     */
     UserAssignedManagedIdentity: "UserAssignedManagedIdentity",
 } as const;
 
@@ -906,8 +1710,17 @@ export const SqlAlwaysEncryptedAkvAuthType = {
 export type SqlAlwaysEncryptedAkvAuthType = (typeof SqlAlwaysEncryptedAkvAuthType)[keyof typeof SqlAlwaysEncryptedAkvAuthType];
 
 export const SqlServerAuthenticationType = {
+    /**
+     * SQL
+     */
     SQL: "SQL",
+    /**
+     * Windows
+     */
     Windows: "Windows",
+    /**
+     * UserAssignedManagedIdentity
+     */
     UserAssignedManagedIdentity: "UserAssignedManagedIdentity",
 } as const;
 
@@ -917,6 +1730,9 @@ export const SqlServerAuthenticationType = {
 export type SqlServerAuthenticationType = (typeof SqlServerAuthenticationType)[keyof typeof SqlServerAuthenticationType];
 
 export const SsisLogLocationType = {
+    /**
+     * File
+     */
     File: "File",
 } as const;
 
@@ -926,9 +1742,21 @@ export const SsisLogLocationType = {
 export type SsisLogLocationType = (typeof SsisLogLocationType)[keyof typeof SsisLogLocationType];
 
 export const SsisPackageLocationType = {
+    /**
+     * SSISDB
+     */
     SSISDB: "SSISDB",
+    /**
+     * File
+     */
     File: "File",
+    /**
+     * InlinePackage
+     */
     InlinePackage: "InlinePackage",
+    /**
+     * PackageStore
+     */
     PackageStore: "PackageStore",
 } as const;
 
@@ -938,7 +1766,13 @@ export const SsisPackageLocationType = {
 export type SsisPackageLocationType = (typeof SsisPackageLocationType)[keyof typeof SsisPackageLocationType];
 
 export const SybaseAuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
+    /**
+     * Windows
+     */
     Windows: "Windows",
 } as const;
 
@@ -948,7 +1782,13 @@ export const SybaseAuthenticationType = {
 export type SybaseAuthenticationType = (typeof SybaseAuthenticationType)[keyof typeof SybaseAuthenticationType];
 
 export const TeamDeskAuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
+    /**
+     * Token
+     */
     Token: "Token",
 } as const;
 
@@ -958,7 +1798,13 @@ export const TeamDeskAuthenticationType = {
 export type TeamDeskAuthenticationType = (typeof TeamDeskAuthenticationType)[keyof typeof TeamDeskAuthenticationType];
 
 export const TeradataAuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
+    /**
+     * Windows
+     */
     Windows: "Windows",
 } as const;
 
@@ -968,6 +1814,9 @@ export const TeradataAuthenticationType = {
 export type TeradataAuthenticationType = (typeof TeradataAuthenticationType)[keyof typeof TeradataAuthenticationType];
 
 export const TriggerReferenceType = {
+    /**
+     * TriggerReference
+     */
     TriggerReference: "TriggerReference",
 } as const;
 
@@ -977,8 +1826,17 @@ export const TriggerReferenceType = {
 export type TriggerReferenceType = (typeof TriggerReferenceType)[keyof typeof TriggerReferenceType];
 
 export const TumblingWindowFrequency = {
+    /**
+     * Minute
+     */
     Minute: "Minute",
+    /**
+     * Hour
+     */
     Hour: "Hour",
+    /**
+     * Month
+     */
     Month: "Month",
 } as const;
 
@@ -988,6 +1846,9 @@ export const TumblingWindowFrequency = {
 export type TumblingWindowFrequency = (typeof TumblingWindowFrequency)[keyof typeof TumblingWindowFrequency];
 
 export const Type = {
+    /**
+     * LinkedServiceReference
+     */
     LinkedServiceReference: "LinkedServiceReference",
 } as const;
 
@@ -997,7 +1858,13 @@ export const Type = {
 export type Type = (typeof Type)[keyof typeof Type];
 
 export const ValueType = {
+    /**
+     * actual
+     */
     Actual: "actual",
+    /**
+     * display
+     */
     Display: "display",
 } as const;
 
@@ -1007,8 +1874,17 @@ export const ValueType = {
 export type ValueType = (typeof ValueType)[keyof typeof ValueType];
 
 export const VariableType = {
+    /**
+     * String
+     */
     String: "String",
+    /**
+     * Bool
+     */
     Bool: "Bool",
+    /**
+     * Array
+     */
     Array: "Array",
 } as const;
 
@@ -1018,8 +1894,17 @@ export const VariableType = {
 export type VariableType = (typeof VariableType)[keyof typeof VariableType];
 
 export const WarehouseAuthenticationType = {
+    /**
+     * ServicePrincipal
+     */
     ServicePrincipal: "ServicePrincipal",
+    /**
+     * SystemAssignedManagedIdentity
+     */
     SystemAssignedManagedIdentity: "SystemAssignedManagedIdentity",
+    /**
+     * UserAssignedManagedIdentity
+     */
     UserAssignedManagedIdentity: "UserAssignedManagedIdentity",
 } as const;
 
@@ -1029,9 +1914,21 @@ export const WarehouseAuthenticationType = {
 export type WarehouseAuthenticationType = (typeof WarehouseAuthenticationType)[keyof typeof WarehouseAuthenticationType];
 
 export const WebActivityMethod = {
+    /**
+     * GET
+     */
     GET: "GET",
+    /**
+     * POST
+     */
     POST: "POST",
+    /**
+     * PUT
+     */
     PUT: "PUT",
+    /**
+     * DELETE
+     */
     DELETE: "DELETE",
 } as const;
 
@@ -1041,8 +1938,17 @@ export const WebActivityMethod = {
 export type WebActivityMethod = (typeof WebActivityMethod)[keyof typeof WebActivityMethod];
 
 export const WebAuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
+    /**
+     * Anonymous
+     */
     Anonymous: "Anonymous",
+    /**
+     * ClientCertificate
+     */
     ClientCertificate: "ClientCertificate",
 } as const;
 
@@ -1052,6 +1958,9 @@ export const WebAuthenticationType = {
 export type WebAuthenticationType = (typeof WebAuthenticationType)[keyof typeof WebAuthenticationType];
 
 export const WebHookActivityMethod = {
+    /**
+     * POST
+     */
     POST: "POST",
 } as const;
 
@@ -1061,7 +1970,13 @@ export const WebHookActivityMethod = {
 export type WebHookActivityMethod = (typeof WebHookActivityMethod)[keyof typeof WebHookActivityMethod];
 
 export const ZendeskAuthenticationType = {
+    /**
+     * Basic
+     */
     Basic: "Basic",
+    /**
+     * Token
+     */
     Token: "Token",
 } as const;
 

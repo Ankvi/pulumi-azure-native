@@ -662,24 +662,6 @@ export interface CustomKeysConnectionPropertiesArgs {
 }
 
 /**
- * Gets or sets the source to which filter applies.
- */
-export interface CustomTopicConfigArgs {
-    /**
-     * If blocking would occur.
-     */
-    blocking?: pulumi.Input<boolean>;
-    /**
-     * Content source to apply the Content Filters.
-     */
-    source?: pulumi.Input<string | enums.RaiPolicyContentSource>;
-    /**
-     * Name of RAI topic.
-     */
-    topicName?: pulumi.Input<string>;
-}
-
-/**
  * Internal use only.
  */
 export interface DeploymentCapacitySettingsArgs {
@@ -1012,6 +994,49 @@ export interface ManagedIdentityAuthTypeConnectionPropertiesArgs {
 }
 
 /**
+ * Status of the Provisioning for the managed network of a cognitive services account.
+ */
+export interface ManagedNetworkProvisionStatusArgs {
+    /**
+     * Status for the managed network of a cognitive services account.
+     */
+    status?: pulumi.Input<string | enums.ManagedNetworkStatus>;
+}
+
+export interface ManagedNetworkSettingsExArgs {
+    /**
+     * Firewall Sku used for FQDN Rules
+     */
+    firewallSku?: pulumi.Input<string | enums.FirewallSku>;
+    /**
+     * Isolation mode for the managed network of a cognitive services account.
+     */
+    isolationMode?: pulumi.Input<string | enums.IsolationMode>;
+    /**
+     * The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
+     */
+    managedNetworkKind?: pulumi.Input<string | enums.ManagedNetworkKind>;
+    /**
+     * Dictionary of <OutboundRule>
+     */
+    outboundRules?: pulumi.Input<{[key: string]: pulumi.Input<FqdnOutboundRuleArgs | PrivateEndpointOutboundRuleArgs | ServiceTagOutboundRuleArgs>}>;
+    /**
+     * Status of the Provisioning for the managed network of a cognitive services account.
+     */
+    status?: pulumi.Input<ManagedNetworkProvisionStatusArgs>;
+}
+
+/**
+ * The properties of the managed network settings of a cognitive services account.
+ */
+export interface ManagedNetworkSettingsPropertiesArgs {
+    /**
+     * Managed Network settings for a cognitive services account.
+     */
+    managedNetwork?: pulumi.Input<ManagedNetworkSettingsExArgs>;
+}
+
+/**
  * The multiregion settings Cognitive Services account.
  */
 export interface MultiRegionSettingsArgs {
@@ -1202,6 +1227,47 @@ export interface PrivateEndpointConnectionPropertiesArgs {
 }
 
 /**
+ * Private Endpoint outbound rule for the managed network of a cognitive services account.
+ */
+export interface PrivateEndpointOutboundRuleArgs {
+    /**
+     * Category of a managed network Outbound Rule of a cognitive services account.
+     */
+    category?: pulumi.Input<string | enums.RuleCategory>;
+    /**
+     * Private Endpoint destination.
+     */
+    destination?: pulumi.Input<PrivateEndpointOutboundRuleDestinationArgs>;
+    /**
+     * List of FQDNs associated with the private endpoint outbound rule.
+     */
+    fqdns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Type of a managed network Outbound Rule of a cognitive services account.
+     */
+    status?: pulumi.Input<string | enums.RuleStatus>;
+    /**
+     * Type of a managed network Outbound Rule of a cognitive services account.
+     * Expected value is 'PrivateEndpoint'.
+     */
+    type: pulumi.Input<"PrivateEndpoint">;
+}
+
+/**
+ * Private Endpoint destination for an outbound rule.
+ */
+export interface PrivateEndpointOutboundRuleDestinationArgs {
+    /**
+     * The Azure resource ID of the target private endpoint service.
+     */
+    serviceResourceId?: pulumi.Input<string>;
+    /**
+     * The subresource of the target service to connect to.
+     */
+    subresourceTarget?: pulumi.Input<string>;
+}
+
+/**
  * A collection of information about the state of the connection between service consumer and provider.
  */
 export interface PrivateLinkServiceConnectionStateArgs {
@@ -1371,10 +1437,6 @@ export interface RaiPolicyPropertiesArgs {
      */
     customBlocklists?: pulumi.Input<pulumi.Input<CustomBlocklistConfigArgs>[]>;
     /**
-     * The list of custom rai topics.
-     */
-    customTopics?: pulumi.Input<pulumi.Input<CustomTopicConfigArgs>[]>;
-    /**
      * Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
      */
     mode?: pulumi.Input<string | enums.RaiPolicyMode>;
@@ -1395,7 +1457,7 @@ export interface RaiToolLabelPropertiesArgs {
     /**
      * List of project-level tool label definitions.
      */
-    projectScopes?: pulumi.Input<pulumi.Input<RaiToolLabelPropertiesProjectScopesArgs>[]>;
+    projectScopes?: pulumi.Input<pulumi.Input<RaiToolLabelPropertiesProjectScopesItemArgs>[]>;
     /**
      * The unique tool connection name, e.g., 'Web_Search'.
      */
@@ -1412,7 +1474,7 @@ export interface RaiToolLabelPropertiesAccountScopeArgs {
     labelValues?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
-export interface RaiToolLabelPropertiesProjectScopesArgs {
+export interface RaiToolLabelPropertiesProjectScopesItemArgs {
     /**
      * Dictionary of label key-value pairs for the project scope.
      */
@@ -1580,6 +1642,55 @@ export interface ServicePrincipalAuthTypeConnectionPropertiesArgs {
      */
     target?: pulumi.Input<string>;
     useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+}
+
+/**
+ * Service Tag outbound rule for the managed network of a cognitive services account.
+ */
+export interface ServiceTagOutboundRuleArgs {
+    /**
+     * Category of a managed network Outbound Rule of a cognitive services account.
+     */
+    category?: pulumi.Input<string | enums.RuleCategory>;
+    /**
+     * Service Tag destination.
+     */
+    destination?: pulumi.Input<ServiceTagOutboundRuleDestinationArgs>;
+    /**
+     * Type of a managed network Outbound Rule of a cognitive services account.
+     */
+    status?: pulumi.Input<string | enums.RuleStatus>;
+    /**
+     * Type of a managed network Outbound Rule of a cognitive services account.
+     * Expected value is 'ServiceTag'.
+     */
+    type: pulumi.Input<"ServiceTag">;
+}
+
+/**
+ * Service Tag destination for an outbound rule.
+ */
+export interface ServiceTagOutboundRuleDestinationArgs {
+    /**
+     * The action for the service tag outbound rule.
+     */
+    action?: pulumi.Input<string | enums.RuleAction>;
+    /**
+     * Optional address prefixes. If provided, the serviceTag property will be ignored.
+     */
+    addressPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Destination port ranges.
+     */
+    portRanges?: pulumi.Input<string>;
+    /**
+     * Network protocol used by the service tag rule.
+     */
+    protocol?: pulumi.Input<string>;
+    /**
+     * Name of the Azure service tag to target.
+     */
+    serviceTag?: pulumi.Input<string>;
 }
 
 /**

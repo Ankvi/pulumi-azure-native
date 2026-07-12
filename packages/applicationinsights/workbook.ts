@@ -58,7 +58,7 @@ export class Workbook extends pulumi.CustomResource {
     /**
      * Identity used for BYOS
      */
-    declare public readonly identity: pulumi.Output<types.outputs.WorkbookResourceResponseIdentity | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.WorkbookResourceIdentityResponse | undefined>;
     /**
      * The kind of workbook. Only valid value is shared.
      */
@@ -88,7 +88,7 @@ export class Workbook extends pulumi.CustomResource {
      */
     declare public readonly storageUri: pulumi.Output<string | undefined>;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**

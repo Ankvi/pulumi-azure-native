@@ -63,11 +63,11 @@ export interface AccessReviewInstanceResponse {
      */
     endDateTime?: string;
     /**
-     * The access review instance id.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     id: string;
     /**
-     * The access review instance name.
+     * The name of the resource
      */
     name: string;
     /**
@@ -87,7 +87,11 @@ export interface AccessReviewInstanceResponse {
      */
     status: string;
     /**
-     * The resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
 }
@@ -231,6 +235,50 @@ export interface ApprovalStageResponse {
 }
 
 /**
+ * Deny assignment permissions.
+ */
+export interface DenyAssignmentPermissionResponse {
+    /**
+     * Actions to which the deny assignment does not grant access.
+     */
+    actions?: string[];
+    /**
+     * The conditions on the Deny assignment permission. This limits the resources it applies to.
+     */
+    condition?: string;
+    /**
+     * Version of the condition.
+     */
+    conditionVersion?: string;
+    /**
+     * Data actions to which the deny assignment does not grant access.
+     */
+    dataActions?: string[];
+    /**
+     * Actions to exclude from that the deny assignment does not grant access.
+     */
+    notActions?: string[];
+    /**
+     * Data actions to exclude from that the deny assignment does not grant access.
+     */
+    notDataActions?: string[];
+}
+
+/**
+ * Deny assignment principal.
+ */
+export interface DenyAssignmentPrincipalResponse {
+    /**
+     * The object ID of the principal.
+     */
+    id?: string;
+    /**
+     * The type of the principal such as user, group, servicePrincipal, etc.
+     */
+    type?: string;
+}
+
+/**
  * Expanded info of resource, role and principal
  */
 export interface ExpandedPropertiesResponse {
@@ -357,6 +405,28 @@ export interface ManagementLockOwnerResponse {
      * The application ID of the lock owner.
      */
     applicationId?: string;
+}
+
+/**
+ * The name of the entity last modified it
+ */
+export interface MicrosoftCommonPrincipalResponse {
+    /**
+     * The name of the principal made changes
+     */
+    displayName?: string;
+    /**
+     * Email of principal
+     */
+    email?: string;
+    /**
+     * The id of the principal made changes
+     */
+    id?: string;
+    /**
+     * Type of principal such as user , group etc
+     */
+    type?: string;
 }
 
 /**
@@ -498,27 +568,9 @@ export interface PermissionResponse {
 }
 
 /**
- * Expanded info of resource scope, role definition and policy
- */
-export interface PolicyAssignmentPropertiesResponse {
-    /**
-     * Details of the policy
-     */
-    policy?: PolicyAssignmentPropertiesResponsePolicy;
-    /**
-     * Details of role definition
-     */
-    roleDefinition?: PolicyAssignmentPropertiesResponseRoleDefinition;
-    /**
-     * Details of the resource scope
-     */
-    scope?: PolicyAssignmentPropertiesResponseScope;
-}
-
-/**
  * Details of the policy
  */
-export interface PolicyAssignmentPropertiesResponsePolicy {
+export interface PolicyAssignmentPropertiesPolicyResponse {
     /**
      * Id of the policy
      */
@@ -526,7 +578,7 @@ export interface PolicyAssignmentPropertiesResponsePolicy {
     /**
      * The name of the entity last modified it
      */
-    lastModifiedBy: PrincipalResponse;
+    lastModifiedBy: MicrosoftCommonPrincipalResponse;
     /**
      * The last modified date time.
      */
@@ -534,9 +586,27 @@ export interface PolicyAssignmentPropertiesResponsePolicy {
 }
 
 /**
+ * Expanded info of resource scope, role definition and policy
+ */
+export interface PolicyAssignmentPropertiesResponse {
+    /**
+     * Details of the policy
+     */
+    policy?: PolicyAssignmentPropertiesPolicyResponse;
+    /**
+     * Details of role definition
+     */
+    roleDefinition?: PolicyAssignmentPropertiesRoleDefinitionResponse;
+    /**
+     * Details of the resource scope
+     */
+    scope?: PolicyAssignmentPropertiesScopeResponse;
+}
+
+/**
  * Details of role definition
  */
-export interface PolicyAssignmentPropertiesResponseRoleDefinition {
+export interface PolicyAssignmentPropertiesRoleDefinitionResponse {
     /**
      * Display name of the role definition
      */
@@ -554,7 +624,7 @@ export interface PolicyAssignmentPropertiesResponseRoleDefinition {
 /**
  * Details of the resource scope
  */
-export interface PolicyAssignmentPropertiesResponseScope {
+export interface PolicyAssignmentPropertiesScopeResponse {
     /**
      * Display name of the resource
      */
@@ -699,13 +769,13 @@ export interface PolicyPropertiesResponse {
     /**
      * Details of the resource scope
      */
-    scope: PolicyPropertiesResponseScope;
+    scope: PolicyPropertiesScopeResponse;
 }
 
 /**
  * Details of the resource scope
  */
-export interface PolicyPropertiesResponseScope {
+export interface PolicyPropertiesScopeResponse {
     /**
      * Display name of the resource
      */
@@ -796,28 +866,6 @@ export interface PolicyVariableValueColumnValueResponse {
      * Column value for the variable value; this can be an integer, double, boolean, null or a string.
      */
     columnValue: any;
-}
-
-/**
- * The name of the entity last modified it
- */
-export interface PrincipalResponse {
-    /**
-     * The name of the principal made changes
-     */
-    displayName?: string;
-    /**
-     * Email of principal
-     */
-    email?: string;
-    /**
-     * The id of the principal made changes
-     */
-    id?: string;
-    /**
-     * Type of principal such as user , group etc
-     */
-    type?: string;
 }
 
 /**

@@ -941,13 +941,16 @@ export interface FullTextPolicyResponse {
     fullTextPaths?: FullTextPathResponse[];
 }
 
-export interface GarnetClusterResourceResponseEndPoints {
+/**
+ * Endpoint for clients to connect to the cluster.
+ */
+export interface GarnetClusterResourcePropertiesEndPointsItemResponse {
     /**
-     * Ipv4 address of the endpoint
+     * Ipv4 address of the endpoint.
      */
     ipAddress?: string;
     /**
-     * Port number
+     * Port number.
      */
     port?: number;
 }
@@ -955,7 +958,7 @@ export interface GarnetClusterResourceResponseEndPoints {
 /**
  * Properties of a Garnet cache cluster.
  */
-export interface GarnetClusterResourceResponseProperties {
+export interface GarnetClusterResourcePropertiesResponse {
     /**
      * Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
      */
@@ -969,19 +972,19 @@ export interface GarnetClusterResourceResponseProperties {
      */
     clusterType?: string;
     /**
-     * endpoints for clients to connect to the cluster.
+     * Endpoints for clients to connect to the cluster.
      */
-    endPoints: GarnetClusterResourceResponseEndPoints[];
+    endPoints: GarnetClusterResourcePropertiesEndPointsItemResponse[];
     /**
      * Extensions to be added or updated on cluster.
      */
     extensions?: string[];
     /**
-     * Number of nodes
+     * Number of nodes.
      */
     nodeCount?: number;
     /**
-     * Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+     * Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2.
      */
     nodeSku?: string;
     /**
@@ -989,11 +992,11 @@ export interface GarnetClusterResourceResponseProperties {
      */
     provisionError?: ErrorDetailResponse;
     /**
-     * The status of the resource at the time the operation was called.
+     * The provisioning state of the resource.
      */
     provisioningState: string;
     /**
-     * Number of copies of data maintained by the cluster
+     * Number of copies of data maintained by the cluster.
      */
     replicationFactor?: number;
     /**

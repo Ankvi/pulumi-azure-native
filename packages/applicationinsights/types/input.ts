@@ -115,24 +115,6 @@ export interface WebTestPropertiesConfigurationArgs {
 }
 
 /**
- * The collection of content validation properties
- */
-export interface WebTestPropertiesContentValidationArgs {
-    /**
-     * Content to look for in the return of the WebTest.  Must not be null or empty.
-     */
-    contentMatch?: pulumi.Input<string>;
-    /**
-     * When set, this value makes the ContentMatch validation case insensitive.
-     */
-    ignoreCase?: pulumi.Input<boolean>;
-    /**
-     * When true, validation will pass if there is a match for the ContentMatch string.  If false, validation will fail if there is a match
-     */
-    passIfTextFound?: pulumi.Input<boolean>;
-}
-
-/**
  * The collection of request properties
  */
 export interface WebTestPropertiesRequestArgs {
@@ -169,7 +151,7 @@ export interface WebTestPropertiesValidationRulesArgs {
     /**
      * The collection of content validation properties
      */
-    contentValidation?: pulumi.Input<WebTestPropertiesContentValidationArgs>;
+    contentValidation?: pulumi.Input<WebTestPropertiesValidationRulesContentValidationArgs>;
     /**
      * Validate that the WebTest returns the http status code provided.
      */
@@ -186,6 +168,24 @@ export interface WebTestPropertiesValidationRulesArgs {
      * Checks to see if the SSL cert is still valid.
      */
     sSLCheck?: pulumi.Input<boolean>;
+}
+
+/**
+ * The collection of content validation properties
+ */
+export interface WebTestPropertiesValidationRulesContentValidationArgs {
+    /**
+     * Content to look for in the return of the WebTest.  Must not be null or empty.
+     */
+    contentMatch?: pulumi.Input<string>;
+    /**
+     * When set, this value makes the ContentMatch validation case insensitive.
+     */
+    ignoreCase?: pulumi.Input<boolean>;
+    /**
+     * When true, validation will pass if there is a match for the ContentMatch string.  If false, validation will fail if there is a match
+     */
+    passIfTextFound?: pulumi.Input<boolean>;
 }
 
 /**

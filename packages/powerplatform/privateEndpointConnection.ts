@@ -54,7 +54,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -113,7 +113,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
  */
 export interface PrivateEndpointConnectionArgs {
     /**
-     * EnterprisePolicy for the Microsoft Azure subscription.
+     * The EnterprisePolicy name.
      */
     enterprisePolicyName: pulumi.Input<string>;
     /**

@@ -487,10 +487,6 @@ export interface OfferDetailArgs {
      */
     publisherId: pulumi.Input<string>;
     /**
-     * SaaS Offer Status
-     */
-    status?: pulumi.Input<string | enums.SaaSOfferStatus>;
-    /**
      * Offer Plan Term Id
      */
     termId?: pulumi.Input<string>;

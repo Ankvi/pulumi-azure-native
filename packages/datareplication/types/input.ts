@@ -46,32 +46,6 @@ export interface AzStackHCIFabricModelCustomPropertiesArgs {
 }
 
 /**
- * Private endpoint connection details at member level.
- */
-export interface ConnectionDetailsArgs {
-    /**
-     * Gets or sets group id.
-     */
-    groupId?: pulumi.Input<string>;
-    /**
-     * Gets or sets id.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Gets or sets link identifier.
-     */
-    linkIdentifier?: pulumi.Input<string>;
-    /**
-     * Gets or sets member name.
-     */
-    memberName?: pulumi.Input<string>;
-    /**
-     * Gets or sets private IP address.
-     */
-    privateIpAddress?: pulumi.Input<string>;
-}
-
-/**
  * Dra model properties.
  */
 export interface DraModelPropertiesArgs {
@@ -131,36 +105,6 @@ export interface FabricModelPropertiesArgs {
      * Fabric model custom properties.
      */
     customProperties: pulumi.Input<AzStackHCIFabricModelCustomPropertiesArgs | HyperVMigrateFabricModelCustomPropertiesArgs | VMwareMigrateFabricModelCustomPropertiesArgs>;
-}
-
-/**
- * Represents of a connection's group information.
- */
-export interface GroupConnectivityInformationArgs {
-    /**
-     * Gets or sets customer visible FQDNs.
-     */
-    customerVisibleFqdns?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Gets or sets group id.
-     */
-    groupId?: pulumi.Input<string>;
-    /**
-     * Gets or sets Internal Fqdn.
-     */
-    internalFqdn?: pulumi.Input<string>;
-    /**
-     * Gets or sets member name.
-     */
-    memberName?: pulumi.Input<string>;
-    /**
-     * Gets or sets the private link service arm region.
-     */
-    privateLinkServiceArmRegion?: pulumi.Input<string>;
-    /**
-     * Gets or sets the redirect map id.
-     */
-    redirectMapId?: pulumi.Input<string>;
 }
 
 /**
@@ -420,16 +364,6 @@ export interface PrivateEndpointArgs {
 }
 
 /**
- * Represents private endpoint connection proxy request.
- */
-export interface PrivateEndpointConnectionProxyPropertiesArgs {
-    /**
-     * Represent remote private endpoint information for the private endpoint connection proxy.
-     */
-    remotePrivateEndpoint?: pulumi.Input<RemotePrivateEndpointArgs>;
-}
-
-/**
  * Represents Private endpoint connection response properties.
  */
 export interface PrivateEndpointConnectionResponsePropertiesArgs {
@@ -441,24 +375,6 @@ export interface PrivateEndpointConnectionResponsePropertiesArgs {
      * Represents Private link service connection state.
      */
     privateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs>;
-}
-
-/**
- * Represents of an NRP private link service connection.
- */
-export interface PrivateLinkServiceConnectionArgs {
-    /**
-     * Gets or sets group ids.
-     */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Gets or sets private link service connection name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Gets or sets the request message for the private link service connection.
-     */
-    requestMessage?: pulumi.Input<string>;
 }
 
 /**
@@ -477,28 +393,6 @@ export interface PrivateLinkServiceConnectionStateArgs {
      * Gets or sets the status.
      */
     status?: pulumi.Input<string | enums.PrivateEndpointConnectionStatus>;
-}
-
-/**
- * Represents NRP private link service proxy.
- */
-export interface PrivateLinkServiceProxyArgs {
-    /**
-     * Gets or sets group connectivity information.
-     */
-    groupConnectivityInformation?: pulumi.Input<pulumi.Input<GroupConnectivityInformationArgs>[]>;
-    /**
-     * Gets or sets private link service proxy id.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Represent remote private endpoint connection.
-     */
-    remotePrivateEndpointConnection?: pulumi.Input<RemotePrivateEndpointConnectionArgs>;
-    /**
-     * Represents Private link service connection state.
-     */
-    remotePrivateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs>;
 }
 
 /**
@@ -535,42 +429,6 @@ export interface ProtectedItemModelPropertiesArgs {
      * Gets or sets the replication extension name.
      */
     replicationExtensionName: pulumi.Input<string>;
-}
-
-/**
- * Represent remote private endpoint information for the private endpoint connection proxy.
- */
-export interface RemotePrivateEndpointArgs {
-    /**
-     * Gets or sets the list of Connection Details. This is the connection details for private endpoint.
-     */
-    connectionDetails?: pulumi.Input<pulumi.Input<ConnectionDetailsArgs>[]>;
-    /**
-     * Gets or sets private link service proxy id.
-     */
-    id: pulumi.Input<string>;
-    /**
-     * Gets or sets the list of Manual Private Link Service Connections and gets populated for Manual approval flow.
-     */
-    manualPrivateLinkServiceConnections?: pulumi.Input<pulumi.Input<PrivateLinkServiceConnectionArgs>[]>;
-    /**
-     * Gets or sets the list of Private Link Service Connections and gets populated for Auto approval flow.
-     */
-    privateLinkServiceConnections?: pulumi.Input<pulumi.Input<PrivateLinkServiceConnectionArgs>[]>;
-    /**
-     * Gets or sets the list of private link service proxies.
-     */
-    privateLinkServiceProxies?: pulumi.Input<pulumi.Input<PrivateLinkServiceProxyArgs>[]>;
-}
-
-/**
- * Represent remote private endpoint connection.
- */
-export interface RemotePrivateEndpointConnectionArgs {
-    /**
-     * Gets or sets the remote private endpoint connection id.
-     */
-    id?: pulumi.Input<string>;
 }
 
 /**

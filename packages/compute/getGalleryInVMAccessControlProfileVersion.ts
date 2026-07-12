@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-03-03.
  *
- * Other available API versions: 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getGalleryInVMAccessControlProfileVersion(args: GetGalleryInVMAccessControlProfileVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetGalleryInVMAccessControlProfileVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -107,7 +107,7 @@ export interface GetGalleryInVMAccessControlProfileVersionResult {
  *
  * Uses Azure REST API version 2024-03-03.
  *
- * Other available API versions: 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getGalleryInVMAccessControlProfileVersionOutput(args: GetGalleryInVMAccessControlProfileVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGalleryInVMAccessControlProfileVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -2,1368 +2,1089 @@
 
 ### Does the PR have any schema changes?
 
-Found 2072 breaking changes:
+Found 854 breaking changes:
 
 #### Resources
-- "azure-native:aad:DomainService":
+- "azure-native:applicationinsights:WebTest":
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:aad:SystemDataResponse"
-- "azure-native:aad:OuContainer":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:aad:SystemDataResponse"
-- "azure-native:advisor:Assessment":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv4:SystemDataResponse" to "#/types/azure-native:advisor:SystemDataResponse"
-- "azure-native:advisor:Suppression":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv4:SystemDataResponse" to "#/types/azure-native:advisor:SystemDataResponse"
-- "azure-native:agfoodplatform:DataConnector":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv4:SystemDataResponse" to "#/types/azure-native:agfoodplatform:SystemDataResponse"
-- "azure-native:agfoodplatform:DataManagerForAgricultureResource":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv4:Identity" to "#/types/azure-native:agfoodplatform:Identity"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv4:IdentityResponse" to "#/types/azure-native:agfoodplatform:IdentityResponse"
-        - `🟡` "privateEndpointConnections" type changed from "#/types/azure-native:commontypesv4:PrivateEndpointConnectionResponse" to "#/types/azure-native:agfoodplatform:PrivateEndpointConnectionResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv4:SystemDataResponse" to "#/types/azure-native:agfoodplatform:SystemDataResponse"
-- "azure-native:agfoodplatform:Extension":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv4:SystemDataResponse" to "#/types/azure-native:agfoodplatform:SystemDataResponse"
-- "azure-native:agfoodplatform:PrivateEndpointConnection":
-    - inputs:
-        - `🟡` "privateLinkServiceConnectionState" type changed from "#/types/azure-native:commontypesv4:PrivateLinkServiceConnectionState" to "#/types/azure-native:agfoodplatform:PrivateLinkServiceConnectionState"
-    - properties:
-        - `🟡` "privateEndpoint" type changed from "#/types/azure-native:commontypesv4:PrivateEndpointResponse" to "#/types/azure-native:agfoodplatform:PrivateEndpointResponse"
-        - `🟡` "privateLinkServiceConnectionState" type changed from "#/types/azure-native:commontypesv4:PrivateLinkServiceConnectionStateResponse" to "#/types/azure-native:agfoodplatform:PrivateLinkServiceConnectionStateResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv4:SystemDataResponse" to "#/types/azure-native:agfoodplatform:SystemDataResponse"
-- "azure-native:agfoodplatform:Solution":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv4:SystemDataResponse" to "#/types/azure-native:agfoodplatform:SystemDataResponse"
-- "azure-native:agricultureplatform:AgriService":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentity" to "#/types/azure-native:agricultureplatform:ManagedServiceIdentity"
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv5:Sku" to "#/types/azure-native:agricultureplatform:Sku"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentityResponse" to "#/types/azure-native:agricultureplatform:ManagedServiceIdentityResponse"
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv5:SkuResponse" to "#/types/azure-native:agricultureplatform:SkuResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:agricultureplatform:SystemDataResponse"
-- "azure-native:alertsmanagement:AlertProcessingRuleByName":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:alertsmanagement:SystemDataResponse"
-- "azure-native:alertsmanagement:Issue":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:alertsmanagement:SystemDataResponse"
-- "azure-native:alertsmanagement:PrometheusRuleGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:alertsmanagement:SystemDataResponse"
-- "azure-native:apicenter:Api":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:apicenter:SystemDataResponse"
-- "azure-native:apicenter:ApiDefinition":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:apicenter:SystemDataResponse"
-- "azure-native:apicenter:ApiSource":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:apicenter:SystemDataResponse"
-- "azure-native:apicenter:ApiVersion":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:apicenter:SystemDataResponse"
-- "azure-native:apicenter:Deployment":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:apicenter:SystemDataResponse"
-- "azure-native:apicenter:Environment":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:apicenter:SystemDataResponse"
-- "azure-native:apicenter:MetadataSchema":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:apicenter:SystemDataResponse"
-- "azure-native:apicenter:Service":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentity" to "#/types/azure-native:apicenter:ManagedServiceIdentity"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentityResponse" to "#/types/azure-native:apicenter:ManagedServiceIdentityResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:apicenter:SystemDataResponse"
-- "azure-native:apicenter:Workspace":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:apicenter:SystemDataResponse"
-- "azure-native:apimanagement:ApiGateway":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:apimanagement:SystemDataResponse"
-- "azure-native:apimanagement:ApiGatewayHostnameBinding":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:apimanagement:SystemDataResponse"
-- "azure-native:apimanagement:ApiManagementService":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:apimanagement:SystemDataResponse"
-- "azure-native:apimanagement:ApiTool":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:apimanagement:SystemDataResponse"
-- "azure-native:apimanagement:PrivateEndpointConnectionByName":
-    - properties:
-        - `🟡` "privateEndpoint" type changed from "#/types/azure-native:commontypesv2:PrivateEndpointResponse" to "#/types/azure-native:apimanagement:PrivateEndpointResponse"
-        - `🟡` "privateLinkServiceConnectionState" type changed from "#/types/azure-native:commontypesv2:PrivateLinkServiceConnectionStateResponse" to "#/types/azure-native:apimanagement:PrivateLinkServiceConnectionStateResponse"
-- "azure-native:app:AppResiliency":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:Build":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:Builder":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentity" to "#/types/azure-native:app:ManagedServiceIdentity"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentityResponse" to "#/types/azure-native:app:ManagedServiceIdentityResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:Certificate":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:ConnectedEnvironment":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:ConnectedEnvironmentsCertificate":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:ConnectedEnvironmentsDaprComponent":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:ConnectedEnvironmentsStorage":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:ContainerApp":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentity" to "#/types/azure-native:app:ManagedServiceIdentity"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentityResponse" to "#/types/azure-native:app:ManagedServiceIdentityResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:ContainerAppsAuthConfig":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:ContainerAppsSessionPool":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentity" to "#/types/azure-native:app:ManagedServiceIdentity"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentityResponse" to "#/types/azure-native:app:ManagedServiceIdentityResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:ContainerAppsSourceControl":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:DaprComponent":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:DaprComponentResiliencyPolicy":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:DaprSubscription":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:DotNetComponent":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:HttpRouteConfig":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:JavaComponent":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:Job":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentity" to "#/types/azure-native:app:ManagedServiceIdentity"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentityResponse" to "#/types/azure-native:app:ManagedServiceIdentityResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:LogicApp":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:MaintenanceConfiguration":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:ManagedCertificate":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:ManagedEnvironment":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentity" to "#/types/azure-native:app:ManagedServiceIdentity"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentityResponse" to "#/types/azure-native:app:ManagedServiceIdentityResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:ManagedEnvironmentPrivateEndpointConnection":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:app:ManagedEnvironmentsStorage":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:app:SystemDataResponse"
-- "azure-native:appcomplianceautomation:Evidence":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:appcomplianceautomation:SystemDataResponse"
-- "azure-native:appcomplianceautomation:Report":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:appcomplianceautomation:SystemDataResponse"
-- "azure-native:appcomplianceautomation:ScopingConfiguration":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:appcomplianceautomation:SystemDataResponse"
-- "azure-native:appcomplianceautomation:Webhook":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:appcomplianceautomation:SystemDataResponse"
-- "azure-native:appconfiguration:ConfigurationStore":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:appconfiguration:SystemDataResponse"
-- "azure-native:appconfiguration:Replica":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:appconfiguration:SystemDataResponse"
-- "azure-native:applicationinsights:MyWorkbook":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:applicationinsights:SystemDataResponse"
+        - `🟡` "configuration" type changed from "#/types/azure-native:applicationinsights:WebTestPropertiesResponseConfiguration" to "#/types/azure-native:applicationinsights:WebTestPropertiesConfigurationResponse"
+        - `🟡` "request" type changed from "#/types/azure-native:applicationinsights:WebTestPropertiesResponseRequest" to "#/types/azure-native:applicationinsights:WebTestPropertiesRequestResponse"
+        - `🟡` "validationRules" type changed from "#/types/azure-native:applicationinsights:WebTestPropertiesResponseValidationRules" to "#/types/azure-native:applicationinsights:WebTestPropertiesValidationRulesResponse"
 - "azure-native:applicationinsights:Workbook":
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv1:SystemDataResponse" to "#/types/azure-native:applicationinsights:SystemDataResponse"
-- "azure-native:attestation:AttestationProvider":
+        - `🟡` "identity" type changed from "#/types/azure-native:applicationinsights:WorkbookResourceResponseIdentity" to "#/types/azure-native:applicationinsights:WorkbookResourceIdentityResponse"
+- "azure-native:authorization:RoleManagementPolicy":
     - properties:
-        - `🟡` "privateEndpointConnections" type changed from "#/types/azure-native:commontypesv3:PrivateEndpointConnectionResponse" to "#/types/azure-native:attestation:PrivateEndpointConnectionResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:attestation:SystemDataResponse"
-- "azure-native:attestation:PrivateEndpointConnection":
+        - `🟡` "lastModifiedBy" type changed from "#/types/azure-native:authorization:PrincipalResponse" to "#/types/azure-native:authorization:MicrosoftCommonPrincipalResponse"
+- "azure-native:automation:SoftwareUpdateConfigurationByName":
     - inputs:
-        - `🟡` "privateLinkServiceConnectionState" type changed from "#/types/azure-native:commontypesv3:PrivateLinkServiceConnectionState" to "#/types/azure-native:attestation:PrivateLinkServiceConnectionState"
+        - `🟡` "error" type changed from "#/types/azure-native:automation:ErrorResponse" to "#/types/azure-native:automation:AutomationErrorResponse"
     - properties:
-        - `🟡` "privateEndpoint" type changed from "#/types/azure-native:commontypesv3:PrivateEndpointResponse" to "#/types/azure-native:attestation:PrivateEndpointResponse"
-        - `🟡` "privateLinkServiceConnectionState" type changed from "#/types/azure-native:commontypesv3:PrivateLinkServiceConnectionStateResponse" to "#/types/azure-native:attestation:PrivateLinkServiceConnectionStateResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:attestation:SystemDataResponse"
-- "azure-native:authorization:ManagementLockAtResourceGroupLevel":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:ManagementLockAtResourceLevel":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:ManagementLockAtSubscriptionLevel":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:ManagementLockByScope":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:PolicyAssignment":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:PolicyDefinition":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:PolicyDefinitionAtManagementGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:PolicyDefinitionVersion":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:PolicyDefinitionVersionAtManagementGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:PolicyExemption":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:PolicySetDefinition":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:PolicySetDefinitionAtManagementGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:PolicySetDefinitionVersion":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:PolicySetDefinitionVersionAtManagementGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:Variable":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:VariableAtManagementGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:VariableValue":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:authorization:VariableValueAtManagementGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:authorization:SystemDataResponse"
-- "azure-native:automanage:ConfigurationProfile":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:automanage:SystemDataResponse"
-- "azure-native:automanage:ConfigurationProfileAssignment":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:automanage:SystemDataResponse"
-- "azure-native:automanage:ConfigurationProfileHCIAssignment":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:automanage:SystemDataResponse"
-- "azure-native:automanage:ConfigurationProfileHCRPAssignment":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:automanage:SystemDataResponse"
-- "azure-native:automanage:ConfigurationProfilesVersion":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:automanage:SystemDataResponse"
-- "azure-native:automation:AutomationAccount":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:Certificate":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:Connection":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:Credential":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:DscConfiguration":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:DscNodeConfiguration":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:HybridRunbookWorker":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:HybridRunbookWorkerGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:Module":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:Package":
-    - inputs:
-        - `🟡` "allOf" type changed from "#/types/azure-native:commontypesv5:TrackedResource" to "#/types/azure-native:automation:TrackedResource"
-    - properties:
-        - `🟡` "allOf" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:PrivateEndpointConnection":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:Python2Package":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:Python3Package":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:Runbook":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:RuntimeEnvironment":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:Schedule":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:SourceControl":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:Variable":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:Watcher":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:automation:Webhook":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:automation:SystemDataResponse"
-- "azure-native:avs:Addon":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:Authorization":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:CloudLink":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:Cluster":
-    - inputs:
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv5:Sku" to "#/types/azure-native:avs:Sku"
-    - properties:
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv5:SkuResponse" to "#/types/azure-native:avs:SkuResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:Datastore":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:GlobalReachConnection":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:HcxEnterpriseSite":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:IscsiPath":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:License":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:PlacementPolicy":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:PrivateCloud":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:SystemAssignedServiceIdentity" to "#/types/azure-native:avs:SystemAssignedServiceIdentity"
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv5:Sku" to "#/types/azure-native:avs:Sku"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:SystemAssignedServiceIdentityResponse" to "#/types/azure-native:avs:SystemAssignedServiceIdentityResponse"
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv5:SkuResponse" to "#/types/azure-native:avs:SkuResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:PureStoragePolicy":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:ScriptExecution":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:WorkloadNetworkDhcp":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:WorkloadNetworkDnsService":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:WorkloadNetworkDnsZone":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:WorkloadNetworkPortMirroring":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:WorkloadNetworkPublicIP":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:WorkloadNetworkSegment":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:avs:WorkloadNetworkVMGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:avs:SystemDataResponse"
-- "azure-native:awsconnector:AccessAnalyzerAnalyzer":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:AcmCertificateSummary":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:ApiGatewayRestApi":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:ApiGatewayStage":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:AppSyncGraphqlApi":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:AutoScalingAutoScalingGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:CloudFormationStack":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:CloudFormationStackSet":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:CloudFrontDistribution":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:CloudTrailTrail":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:CloudWatchAlarm":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:CodeBuildProject":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:CodeBuildSourceCredentialsInfo":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:ConfigServiceConfigurationRecorder":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:ConfigServiceConfigurationRecorderStatus":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:ConfigServiceDeliveryChannel":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:DatabaseMigrationServiceReplicationInstance":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:DaxCluster":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:DynamoDbContinuousBackupsDescription":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:DynamoDbTable":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2AccountAttribute":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2Address":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2FlowLog":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2Image":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2Instance":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2InstanceStatus":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2Ipam":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2KeyPair":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2NetworkAcl":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2NetworkInterface":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2RouteTable":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2SecurityGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2Snapshot":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2Subnet":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2Volume":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2Vpc":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2VpcEndpoint":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Ec2VpcPeeringConnection":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:EcrImageDetail":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:EcrRepository":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:EcsCluster":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:EcsService":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:EcsTaskDefinition":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:EfsFileSystem":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:EfsMountTarget":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:EksCluster":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:EksNodegroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:ElasticBeanstalkApplication":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:ElasticBeanstalkConfigurationTemplate":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:ElasticBeanstalkEnvironment":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:ElasticLoadBalancingV2Listener":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:ElasticLoadBalancingV2LoadBalancer":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:ElasticLoadBalancingV2TargetGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:ElasticLoadBalancingv2TargetHealthDescription":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:EmrCluster":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:GuardDutyDetector":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:IamAccessKeyLastUsed":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:IamAccessKeyMetadataInfo":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:IamGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:IamInstanceProfile":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:IamMfaDevice":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:IamPasswordPolicy":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:IamPolicyVersion":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:IamRole":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:IamServerCertificate":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:IamVirtualMfaDevice":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:KmsAlias":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:KmsKey":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:LambdaFunction":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:LambdaFunctionCodeLocation":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:LightsailBucket":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:LightsailInstance":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:LogsLogGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:LogsLogStream":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:LogsMetricFilter":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:LogsSubscriptionFilter":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Macie2JobSummary":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:MacieAllowList":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:NetworkFirewallFirewall":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:NetworkFirewallFirewallPolicy":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:NetworkFirewallRuleGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:OpenSearchDomainStatus":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:OrganizationsAccount":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:OrganizationsOrganization":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:RdsDbCluster":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:RdsDbInstance":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:RdsDbSnapshot":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:RdsDbSnapshotAttributesResult":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:RdsEventSubscription":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:RdsExportTask":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:RedshiftCluster":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:RedshiftClusterParameterGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Route53DomainsDomainSummary":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Route53HostedZone":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Route53ResourceRecordSet":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:S3AccessControlPolicy":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:S3AccessPoint":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:S3Bucket":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:S3BucketPolicy":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:S3ControlMultiRegionAccessPointPolicyDocument":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:SageMakerApp":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:SageMakerNotebookInstanceSummary":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:SecretsManagerResourcePolicy":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:SecretsManagerSecret":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:SnsSubscription":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:SnsTopic":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:SqsQueue":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:SsmInstanceInformation":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:SsmParameter":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:SsmResourceComplianceSummaryItem":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:WafWebAclSummary":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:awsconnector:Wafv2LoggingConfiguration":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:awsconnector:SystemDataResponse"
-- "azure-native:azureactivedirectory:B2CTenant":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:azureactivedirectory:SystemDataResponse"
-- "azure-native:azureactivedirectory:CIAMTenant":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azureactivedirectory:SystemDataResponse"
-- "azure-native:azureactivedirectory:GuestUsage":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:azureactivedirectory:SystemDataResponse"
-- "azure-native:azurearcdata:ActiveDirectoryConnector":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurearcdata:SystemDataResponse"
-- "azure-native:azurearcdata:DataController":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurearcdata:SystemDataResponse"
-- "azure-native:azurearcdata:FailoverGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurearcdata:SystemDataResponse"
-- "azure-native:azurearcdata:PostgresInstance":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurearcdata:SystemDataResponse"
-- "azure-native:azurearcdata:SqlManagedInstance":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurearcdata:SystemDataResponse"
-- "azure-native:azurearcdata:SqlServerAvailabilityGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurearcdata:SystemDataResponse"
-- "azure-native:azurearcdata:SqlServerDatabase":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurearcdata:SystemDataResponse"
-- "azure-native:azurearcdata:SqlServerEsuLicense":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurearcdata:SystemDataResponse"
-- "azure-native:azurearcdata:SqlServerInstance":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurearcdata:SystemDataResponse"
-- "azure-native:azurearcdata:SqlServerLicense":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurearcdata:SystemDataResponse"
-- "azure-native:azuredatatransfer:Connection":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azuredatatransfer:SystemDataResponse"
-- "azure-native:azuredatatransfer:Flow":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv3:ManagedServiceIdentity" to "#/types/azure-native:azuredatatransfer:ManagedServiceIdentity"
-        - `🟡` "plan" type changed from "#/types/azure-native:commontypesv5:Plan" to "#/types/azure-native:azuredatatransfer:Plan"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv3:ManagedServiceIdentityResponse" to "#/types/azure-native:azuredatatransfer:ManagedServiceIdentityResponse"
-        - `🟡` "plan" type changed from "#/types/azure-native:commontypesv5:PlanResponse" to "#/types/azure-native:azuredatatransfer:PlanResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azuredatatransfer:SystemDataResponse"
-- "azure-native:azuredatatransfer:FlowProfile":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentity" to "#/types/azure-native:azuredatatransfer:ManagedServiceIdentity"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentityResponse" to "#/types/azure-native:azuredatatransfer:ManagedServiceIdentityResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azuredatatransfer:SystemDataResponse"
-- "azure-native:azuredatatransfer:Pipeline":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azuredatatransfer:SystemDataResponse"
-- "azure-native:azurefleet:Fleet":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentity" to "#/types/azure-native:azurefleet:ManagedServiceIdentity"
-        - `🟡` "plan" type changed from "#/types/azure-native:commontypesv5:Plan" to "#/types/azure-native:azurefleet:Plan"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentityResponse" to "#/types/azure-native:azurefleet:ManagedServiceIdentityResponse"
-        - `🟡` "plan" type changed from "#/types/azure-native:commontypesv5:PlanResponse" to "#/types/azure-native:azurefleet:PlanResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurefleet:SystemDataResponse"
-- "azure-native:azurelargeinstance:AzureLargeInstance":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurelargeinstance:SystemDataResponse"
-- "azure-native:azurelargeinstance:AzureLargeStorageInstance":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentity" to "#/types/azure-native:azurelargeinstance:ManagedServiceIdentity"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentityResponse" to "#/types/azure-native:azurelargeinstance:ManagedServiceIdentityResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurelargeinstance:SystemDataResponse"
-- "azure-native:azureplaywrightservice:Account":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azureplaywrightservice:SystemDataResponse"
-- "azure-native:azuresphere:Catalog":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azuresphere:SystemDataResponse"
-- "azure-native:azuresphere:Deployment":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azuresphere:SystemDataResponse"
-- "azure-native:azuresphere:Device":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azuresphere:SystemDataResponse"
-- "azure-native:azuresphere:DeviceGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azuresphere:SystemDataResponse"
-- "azure-native:azuresphere:Image":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azuresphere:SystemDataResponse"
-- "azure-native:azuresphere:Product":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azuresphere:SystemDataResponse"
-- "azure-native:azurestack:LinkedSubscription":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:azurestack:SystemDataResponse"
-- "azure-native:azurestackhci:ArcSetting":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:Cluster":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-        - `🟡` "userAssignedIdentities" type changed from "#/types/azure-native:commontypesv4:UserAssignedIdentityResponse" to "#/types/azure-native:azurestackhci:UserAssignedIdentityResponse"
-- "azure-native:azurestackhci:ClusterJob":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:DeploymentSetting":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:DevicePool":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentity" to "#/types/azure-native:azurestackhci:ManagedServiceIdentity"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentityResponse" to "#/types/azure-native:azurestackhci:ManagedServiceIdentityResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:EdgeMachine":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentity" to "#/types/azure-native:azurestackhci:ManagedServiceIdentity"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentityResponse" to "#/types/azure-native:azurestackhci:ManagedServiceIdentityResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:EdgeMachineJob":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:Extension":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:GalleryImage":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:GuestAgent":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:HciEdgeDevice":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:HciEdgeDeviceJob":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:HybridIdentityMetadatum":
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv3:IdentityResponse" to "#/types/azure-native:azurestackhci:IdentityResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:LoadBalancer":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:LogicalNetwork":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:MachineExtension":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:MarketplaceGalleryImage":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:NatGateway":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:NetworkInterface":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:NetworkSecurityGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:PublicIPAddress":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:SecurityRule":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:SecuritySetting":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:Snapshot":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:StorageContainer":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:Update":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:UpdateRun":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:UpdateSummary":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:VirtualHardDisk":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:VirtualMachine":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv3:Identity" to "#/types/azure-native:azurestackhci:Identity"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv3:IdentityResponse" to "#/types/azure-native:azurestackhci:IdentityResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:VirtualMachineInstance":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentity" to "#/types/azure-native:azurestackhci:ManagedServiceIdentity"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentityResponse" to "#/types/azure-native:azurestackhci:ManagedServiceIdentityResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:VirtualNetwork":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:azurestackhci:VirtualNetworkSubnet":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:azurestackhci:SystemDataResponse"
-- "azure-native:baremetalinfrastructure:AzureBareMetalInstance":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:baremetalinfrastructure:SystemDataResponse"
-- "azure-native:baremetalinfrastructure:AzureBareMetalStorageInstance":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:baremetalinfrastructure:SystemDataResponse"
-- "azure-native:batch:Application":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:batch:SystemDataResponse"
-- "azure-native:batch:ApplicationPackage":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:batch:SystemDataResponse"
-- "azure-native:batch:BatchAccount":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:batch:SystemDataResponse"
-- "azure-native:batch:Pool":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:batch:SystemDataResponse"
-- "azure-native:billing:AssociatedTenant":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:billing:SystemDataResponse"
-- "azure-native:billing:BillingProfile":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:billing:SystemDataResponse"
-- "azure-native:billing:BillingRoleAssignmentByBillingAccount":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:billing:SystemDataResponse"
-- "azure-native:billing:BillingRoleAssignmentByDepartment":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:billing:SystemDataResponse"
-- "azure-native:billing:BillingRoleAssignmentByEnrollmentAccount":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:billing:SystemDataResponse"
-- "azure-native:billing:InvoiceSection":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:billing:SystemDataResponse"
+        - `🟡` "error" type changed from "#/types/azure-native:automation:ErrorResponseResponse" to "#/types/azure-native:automation:AutomationErrorResponseResponse"
 - "azure-native:billingbenefits:ConditionalCredit":
     - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentity" to "#/types/azure-native:billingbenefits:ManagedServiceIdentity"
-        - `🟡` "plan" type changed from "#/types/azure-native:commontypesv6:Plan" to "#/types/azure-native:billingbenefits:Plan"
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv6:Sku" to "#/types/azure-native:billingbenefits:Sku"
+        - `🟡` "billingAccountResourceId" missing
+        - `🟡` "displayName" missing
+        - `🟡` "endAt" missing
+        - `🟡` "entityType" missing
+        - `🟡` "productCode" missing
+        - `🟡` "resourceId" missing
+        - `🟡` "startAt" missing
+        - `🟡` "status" missing
     - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentityResponse" to "#/types/azure-native:billingbenefits:ManagedServiceIdentityResponse"
-        - `🟡` "plan" type changed from "#/types/azure-native:commontypesv6:PlanResponse" to "#/types/azure-native:billingbenefits:PlanResponse"
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv6:SkuResponse" to "#/types/azure-native:billingbenefits:SkuResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:billingbenefits:SystemDataResponse"
-- "azure-native:billingbenefits:Credit":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentity" to "#/types/azure-native:billingbenefits:ManagedServiceIdentity"
-        - `🟡` "plan" type changed from "#/types/azure-native:commontypesv6:Plan" to "#/types/azure-native:billingbenefits:Plan"
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv6:Sku" to "#/types/azure-native:billingbenefits:Sku"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentityResponse" to "#/types/azure-native:billingbenefits:ManagedServiceIdentityResponse"
-        - `🟡` "plan" type changed from "#/types/azure-native:commontypesv6:PlanResponse" to "#/types/azure-native:billingbenefits:PlanResponse"
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv6:SkuResponse" to "#/types/azure-native:billingbenefits:SkuResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:billingbenefits:SystemDataResponse"
-- "azure-native:billingbenefits:Discount":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:billingbenefits:SystemDataResponse"
-- "azure-native:billingbenefits:FreeService":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentity" to "#/types/azure-native:billingbenefits:ManagedServiceIdentity"
-        - `🟡` "plan" type changed from "#/types/azure-native:commontypesv6:Plan" to "#/types/azure-native:billingbenefits:Plan"
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv6:Sku" to "#/types/azure-native:billingbenefits:Sku"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentityResponse" to "#/types/azure-native:billingbenefits:ManagedServiceIdentityResponse"
-        - `🟡` "plan" type changed from "#/types/azure-native:commontypesv6:PlanResponse" to "#/types/azure-native:billingbenefits:PlanResponse"
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv6:SkuResponse" to "#/types/azure-native:billingbenefits:SkuResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:billingbenefits:SystemDataResponse"
-- "azure-native:billingbenefits:Macc":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentity" to "#/types/azure-native:billingbenefits:ManagedServiceIdentity"
-        - `🟡` "plan" type changed from "#/types/azure-native:commontypesv6:Plan" to "#/types/azure-native:billingbenefits:Plan"
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv6:Sku" to "#/types/azure-native:billingbenefits:Sku"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentityResponse" to "#/types/azure-native:billingbenefits:ManagedServiceIdentityResponse"
-        - `🟡` "plan" type changed from "#/types/azure-native:commontypesv6:PlanResponse" to "#/types/azure-native:billingbenefits:PlanResponse"
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv6:SkuResponse" to "#/types/azure-native:billingbenefits:SkuResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:billingbenefits:SystemDataResponse"
-- "azure-native:billingbenefits:Source":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentity" to "#/types/azure-native:billingbenefits:ManagedServiceIdentity"
-        - `🟡` "plan" type changed from "#/types/azure-native:commontypesv6:Plan" to "#/types/azure-native:billingbenefits:Plan"
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv6:Sku" to "#/types/azure-native:billingbenefits:Sku"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentityResponse" to "#/types/azure-native:billingbenefits:ManagedServiceIdentityResponse"
-        - `🟡` "plan" type changed from "#/types/azure-native:commontypesv6:PlanResponse" to "#/types/azure-native:billingbenefits:PlanResponse"
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv6:SkuResponse" to "#/types/azure-native:billingbenefits:SkuResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:billingbenefits:SystemDataResponse"
-- "azure-native:botservice:Bot":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:botservice:SystemDataResponse"
-- "azure-native:botservice:BotConnection":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:botservice:SystemDataResponse"
-- "azure-native:botservice:Channel":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:botservice:SystemDataResponse"
-- "azure-native:botservice:PrivateEndpointConnection":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:botservice:SystemDataResponse"
-- "azure-native:cdn:AFDCustomDomain":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:AFDEndpoint":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:AFDOrigin":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:AFDOriginGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:CustomDomain":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:EdgeAction":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:EdgeActionExecutionFilter":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:EdgeActionVersion":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:Endpoint":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:KnowledgeSource":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:Origin":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:OriginGroup":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:Policy":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:Profile":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentity" to "#/types/azure-native:cdn:ManagedServiceIdentity"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentityResponse" to "#/types/azure-native:cdn:ManagedServiceIdentityResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:ProfileAgent":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:Route":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:Rule":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:RuleSet":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:Secret":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:SecurityPolicy":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:cdn:WebAgent":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cdn:SystemDataResponse"
-- "azure-native:chaos:Capability":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:chaos:SystemDataResponse"
-- "azure-native:chaos:Experiment":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:chaos:SystemDataResponse"
-- "azure-native:chaos:PrivateAccess":
-    - properties:
-        - `🟡` "privateEndpointConnections" type changed from "#/types/azure-native:commontypesv6:PrivateEndpointConnectionResponse" to "#/types/azure-native:chaos:PrivateEndpointConnectionResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:chaos:SystemDataResponse"
-- "azure-native:chaos:Target":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:chaos:SystemDataResponse"
-- "azure-native:cloudhealth:AuthenticationSetting":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cloudhealth:SystemDataResponse"
-- "azure-native:cloudhealth:DiscoveryRule":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cloudhealth:SystemDataResponse"
-- "azure-native:cloudhealth:Entity":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cloudhealth:SystemDataResponse"
-- "azure-native:cloudhealth:HealthModel":
-    - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentity" to "#/types/azure-native:cloudhealth:ManagedServiceIdentity"
-    - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv6:ManagedServiceIdentityResponse" to "#/types/azure-native:cloudhealth:ManagedServiceIdentityResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cloudhealth:SystemDataResponse"
-- "azure-native:cloudhealth:Relationship":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cloudhealth:SystemDataResponse"
-- "azure-native:cloudhealth:SignalDefinition":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv6:SystemDataResponse" to "#/types/azure-native:cloudhealth:SystemDataResponse"
-- "azure-native:cloudngfw:CertificateObjectGlobalRulestack":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cloudngfw:SystemDataResponse"
-- "azure-native:cloudngfw:CertificateObjectLocalRulestack":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cloudngfw:SystemDataResponse"
-- "azure-native:cloudngfw:Firewall":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cloudngfw:SystemDataResponse"
-- "azure-native:cloudngfw:FqdnListGlobalRulestack":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cloudngfw:SystemDataResponse"
-- "azure-native:cloudngfw:FqdnListLocalRulestack":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cloudngfw:SystemDataResponse"
-- "azure-native:cloudngfw:GlobalRulestack":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cloudngfw:SystemDataResponse"
-- "azure-native:cloudngfw:LocalRule":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cloudngfw:SystemDataResponse"
-- "azure-native:cloudngfw:LocalRulestack":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cloudngfw:SystemDataResponse"
-- "azure-native:cloudngfw:PostRule":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cloudngfw:SystemDataResponse"
-- "azure-native:cloudngfw:PreRule":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cloudngfw:SystemDataResponse"
-- "azure-native:cloudngfw:PrefixListGlobalRulestack":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cloudngfw:SystemDataResponse"
-- "azure-native:cloudngfw:PrefixListLocalRulestack":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cloudngfw:SystemDataResponse"
-- "azure-native:codesigning:CertificateProfile":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:codesigning:SystemDataResponse"
-- "azure-native:codesigning:CodeSigningAccount":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:codesigning:SystemDataResponse"
-- "azure-native:cognitiveservices:Account":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
-- "azure-native:cognitiveservices:AgentApplication":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
-- "azure-native:cognitiveservices:AgentDeployment":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
-- "azure-native:cognitiveservices:CommitmentPlan":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
-- "azure-native:cognitiveservices:CommitmentPlanAssociation":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
-- "azure-native:cognitiveservices:Deployment":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
-- "azure-native:cognitiveservices:EncryptionScope":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
+        - `🟡` missing output "benefitResourceId"
+        - `🟡` missing output "billingAccountResourceId"
+        - `🟡` missing output "displayName"
+        - `🟡` missing output "endAt"
+        - `🟡` missing output "entityType"
+        - `🟡` missing output "productCode"
+        - `🟡` missing output "provisioningState"
+        - `🟡` missing output "resourceId"
+        - `🟡` missing output "startAt"
+        - `🟡` missing output "status"
+- `🔴` "azure-native:changeanalysis:ConfigurationProfile" missing
 - "azure-native:cognitiveservices:OutboundRule":
+    - inputs:
+        - `🟡` type changed from "#/types/azure-native:cognitiveservices:FqdnOutboundRule" to ""
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
-- "azure-native:cognitiveservices:PrivateEndpointConnection":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
-- "azure-native:cognitiveservices:Project":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
-- "azure-native:cognitiveservices:RaiBlocklist":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
-- "azure-native:cognitiveservices:RaiBlocklistItem":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
+        - `🟡` type changed from "#/types/azure-native:cognitiveservices:FqdnOutboundRuleResponse" to ""
 - "azure-native:cognitiveservices:RaiExternalSafetyProvider":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
-- "azure-native:cognitiveservices:RaiPolicy":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
-- "azure-native:cognitiveservices:RaiToolLabel":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
-- "azure-native:cognitiveservices:RaiTopic":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
-- "azure-native:cognitiveservices:SharedCommitmentPlan":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv2:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
-- "azure-native:cognitiveservices:SubscriptionRaiPolicy":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:cognitiveservices:SystemDataResponse"
-- "azure-native:communication:CommunicationService":
     - inputs:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentity" to "#/types/azure-native:communication:ManagedServiceIdentity"
+        - `🟡` "tags" missing
+- `🔴` "azure-native:compute:CloudService" missing
+- `🔴` "azure-native:containerservice:NodeCustomization" missing
+- "azure-native:cosmosdb:GarnetCluster":
     - properties:
-        - `🟡` "identity" type changed from "#/types/azure-native:commontypesv5:ManagedServiceIdentityResponse" to "#/types/azure-native:communication:ManagedServiceIdentityResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:communication:SystemDataResponse"
-- "azure-native:communication:Domain":
+        - `🟡` type changed from "#/types/azure-native:cosmosdb:GarnetClusterResourceResponseProperties" to "#/types/azure-native:cosmosdb:GarnetClusterResourcePropertiesResponse"
+- "azure-native:datafactory:ChangeDataCapture":
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:communication:SystemDataResponse"
-- "azure-native:communication:EmailService":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:communication:SystemDataResponse"
-- "azure-native:communication:SenderUsername":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:communication:SystemDataResponse"
-- "azure-native:communication:SmtpUsername":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:communication:SystemDataResponse"
-- "azure-native:communication:SuppressionList":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:communication:SystemDataResponse"
-- "azure-native:communication:SuppressionListAddress":
-    - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv5:SystemDataResponse" to "#/types/azure-native:communication:SystemDataResponse"
-- "azure-native:community:CommunityTraining":
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:ChangeDataCaptureResponseFolder" to "#/types/azure-native:datafactory:ChangeDataCaptureFolderResponse"
+- "azure-native:datafactory:Pipeline":
     - inputs:
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv3:Sku" to "#/types/azure-native:community:Sku"
+        - `🟡` "runDimensions" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "runDimensions" had "pulumi.json#/Any" but now has no type
     - properties:
-        - `🟡` "sku" type changed from "#/types/azure-native:commontypesv3:SkuResponse" to "#/types/azure-native:community:SkuResponse"
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:community:SystemDataResponse"
-- "azure-native:compute:AvailabilitySet":
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:PipelineResponseFolder" to "#/types/azure-native:datafactory:PipelineFolderResponse"
+        - `🟡` "runDimensions" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "runDimensions" had "pulumi.json#/Any" but now has no type
+- `🔴` "azure-native:datareplication:PrivateEndpointConnectionProxy" missing
+- "azure-native:extendedlocation:CustomLocation":
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:compute:SystemDataResponse"
-- "azure-native:compute:CapacityReservation":
+        - `🟡` "authentication" type changed from "#/types/azure-native:extendedlocation:CustomLocationPropertiesResponseAuthentication" to "#/types/azure-native:extendedlocation:CustomLocationPropertiesAuthenticationResponse"
+- "azure-native:extendedlocation:ResourceSyncRule":
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:compute:SystemDataResponse"
-- "azure-native:compute:CapacityReservationGroup":
+        - `🟡` "selector" type changed from "#/types/azure-native:extendedlocation:ResourceSyncRulePropertiesResponseSelector" to "#/types/azure-native:extendedlocation:ResourceSyncRulePropertiesSelectorResponse"
+- "azure-native:frontdoor:NetworkExperimentProfile":
+    - inputs:
+        - `🟡` "name" missing
+- `🔴` "azure-native:hybridcontainerservice:AgentPool" missing
+- `🔴` "azure-native:hybridcontainerservice:HybridIdentityMetadatum" missing
+- `🔴` "azure-native:hybridcontainerservice:KubernetesVersions" missing
+- `🔴` "azure-native:hybridcontainerservice:ProvisionedCluster" missing
+- `🔴` "azure-native:hybridcontainerservice:StorageSpaceRetrieve" missing
+- `🔴` "azure-native:hybridcontainerservice:VMSkus" missing
+- "azure-native:hybridcontainerservice:VirtualNetworkRetrieve":
+    - inputs:
+        - `🟡` "extendedLocation" type changed from "#/types/azure-native:hybridcontainerservice:VirtualNetworksExtendedLocation" to "#/types/azure-native:hybridcontainerservice:VirtualNetworkExtendedLocation"
+        - `🟡` "virtualNetworksName" missing
+        - `🟡` type changed from "#/types/azure-native:hybridcontainerservice:VirtualNetworksProperties" to "#/types/azure-native:hybridcontainerservice:VirtualNetworkProperties"
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:compute:SystemDataResponse"
-- "azure-native:compute:CloudService":
+        - `🟡` "extendedLocation" type changed from "#/types/azure-native:hybridcontainerservice:VirtualNetworksResponseExtendedLocation" to "#/types/azure-native:hybridcontainerservice:VirtualNetworkResponseExtendedLocation"
+        - `🟡` type changed from "#/types/azure-native:hybridcontainerservice:VirtualNetworksPropertiesResponse" to "#/types/azure-native:hybridcontainerservice:VirtualNetworkPropertiesResponse"
+- "azure-native:managednetworkfabric:NetworkMonitor":
+    - inputs:
+        - `🟡` missing
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:compute:SystemDataResponse" to "#/types/azure-native:compute:SystemDataResponseV1"
-- "azure-native:compute:DedicatedHost":
+        - `🟡` missing output "properties"
+- "azure-native:monitor:ScheduledQueryRule":
+    - inputs:
+        - `🟡` "identity" type changed from "#/types/azure-native:monitor:Identity" to "#/types/azure-native:monitor:MicrosoftCommonIdentity"
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:compute:SystemDataResponse"
-- "azure-native:compute:DedicatedHostGroup":
+        - `🟡` "identity" type changed from "#/types/azure-native:monitor:IdentityResponse" to "#/types/azure-native:monitor:MicrosoftCommonIdentityResponse"
+- "azure-native:network:ExpressRouteConnection":
+    - inputs:
+        - `🟡` "routingConfiguration" type changed from "#/types/azure-native:network:RoutingConfiguration" to "#/types/azure-native:network:RoutingConfigurationV1"
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:compute:SystemDataResponse"
-- "azure-native:compute:Disk":
+        - `🟡` "routingConfiguration" type changed from "#/types/azure-native:network:RoutingConfigurationResponse" to "#/types/azure-native:network:RoutingConfigurationResponseV1"
+- "azure-native:network:HubVirtualNetworkConnection":
+    - inputs:
+        - `🟡` "routingConfiguration" type changed from "#/types/azure-native:network:RoutingConfiguration" to "#/types/azure-native:network:RoutingConfigurationV3"
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:compute:SystemDataResponse"
-- "azure-native:compute:DiskAccess":
+        - `🟡` "routingConfiguration" type changed from "#/types/azure-native:network:RoutingConfigurationResponse" to "#/types/azure-native:network:RoutingConfigurationResponseV3"
+- "azure-native:network:ServiceGateway":
+    - inputs:
+        - `🟡` "virtualNetwork" type changed from "#/types/azure-native:network:VirtualNetwork" to "#/types/azure-native:network:CommonVirtualNetwork"
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:compute:SystemDataResponse"
-- "azure-native:compute:DiskAccessAPrivateEndpointConnection":
+        - `🟡` "virtualNetwork" type changed from "#/types/azure-native:network:VirtualNetworkResponse" to "#/types/azure-native:network:CommonVirtualNetworkResponse"
+- "azure-native:network:VirtualNetworkAppliance":
+    - inputs:
+        - `🟡` "subnet" type changed from "#/types/azure-native:network:Subnet" to "#/types/azure-native:network:CommonSubnet"
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:compute:SystemDataResponse"
-- "azure-native:compute:DiskEncryptionSet":
+        - `🟡` "subnet" type changed from "#/types/azure-native:network:SubnetResponseV3" to "#/types/azure-native:network:CommonSubnetResponse"
+- "azure-native:network:VpnConnection":
+    - inputs:
+        - `🟡` "routingConfiguration" type changed from "#/types/azure-native:network:RoutingConfiguration" to "#/types/azure-native:network:RoutingConfigurationV6"
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:compute:SystemDataResponse"
-- "azure-native:compute:Gallery":
+        - `🟡` "routingConfiguration" type changed from "#/types/azure-native:network:RoutingConfigurationResponse" to "#/types/azure-native:network:RoutingConfigurationResponseV6"
+- "azure-native:networkcloud:AccessBridge":
+    - inputs:
+        - `🟡` "extendedLocation" type changed from "#/types/azure-native:networkcloud:ExtendedLocation" to "#/types/azure-native:networkcloud:AzureResourceManagerCommonTypesExtendedLocation"
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:compute:SystemDataResponse"
-- "azure-native:compute:GalleryApplication":
+        - `🟡` "extendedLocation" type changed from "#/types/azure-native:networkcloud:ExtendedLocationResponse" to "#/types/azure-native:networkcloud:AzureResourceManagerCommonTypesExtendedLocationResponse"
+- "azure-native:networkcloud:KubernetesVersion":
+    - inputs:
+        - `🟡` "extendedLocation" type changed from "#/types/azure-native:networkcloud:ExtendedLocation" to "#/types/azure-native:networkcloud:AzureResourceManagerCommonTypesExtendedLocation"
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:compute:SystemDataResponse"
-- "azure-native:compute:GalleryApplicationVersion":
+        - `🟡` "extendedLocation" type changed from "#/types/azure-native:networkcloud:ExtendedLocationResponse" to "#/types/azure-native:networkcloud:AzureResourceManagerCommonTypesExtendedLocationResponse"
+- "azure-native:policyinsights:RemediationAtManagementGroup":
     - properties:
-        - `🟡` "systemData" type changed from "#/types/azure-native:commontypesv3:SystemDataResponse" to "#/types/azure-native:compute:SystemDataResponse"
-Showing 500 of 2072 breaking changes.
-No new resources/functions.
+        - `🟡` "failureThreshold" type changed from "#/types/azure-native:policyinsights:RemediationPropertiesResponseFailureThreshold" to "#/types/azure-native:policyinsights:RemediationPropertiesFailureThresholdResponse"
+- "azure-native:policyinsights:RemediationAtResource":
+    - properties:
+        - `🟡` "failureThreshold" type changed from "#/types/azure-native:policyinsights:RemediationPropertiesResponseFailureThreshold" to "#/types/azure-native:policyinsights:RemediationPropertiesFailureThresholdResponse"
+- "azure-native:policyinsights:RemediationAtResourceGroup":
+    - properties:
+        - `🟡` "failureThreshold" type changed from "#/types/azure-native:policyinsights:RemediationPropertiesResponseFailureThreshold" to "#/types/azure-native:policyinsights:RemediationPropertiesFailureThresholdResponse"
+- "azure-native:policyinsights:RemediationAtSubscription":
+    - properties:
+        - `🟡` "failureThreshold" type changed from "#/types/azure-native:policyinsights:RemediationPropertiesResponseFailureThreshold" to "#/types/azure-native:policyinsights:RemediationPropertiesFailureThresholdResponse"
+- "azure-native:powerplatform:EnterprisePolicy":
+    - properties:
+        - `🟡` "encryption" type changed from "#/types/azure-native:powerplatform:PropertiesResponseEncryption" to "#/types/azure-native:powerplatform:PropertiesEncryptionResponse"
+        - `🟡` "lockbox" type changed from "#/types/azure-native:powerplatform:PropertiesResponseLockbox" to "#/types/azure-native:powerplatform:PropertiesLockboxResponse"
+        - `🟡` "networkInjection" type changed from "#/types/azure-native:powerplatform:PropertiesResponseNetworkInjection" to "#/types/azure-native:powerplatform:PropertiesNetworkInjectionResponse"
+- "azure-native:redisenterprise:RedisEnterprise":
+    - required inputs:
+        - `🔴` "publicNetworkAccess" input has changed to Required
+- "azure-native:resources:AzureCliScript":
+    - properties:
+        - `🟡` type changed from "object" to "pulumi.json#/Any"
+        - `🟡` had "pulumi.json#/Any" but now has no type
+- "azure-native:resources:AzurePowerShellScript":
+    - properties:
+        - `🟡` type changed from "object" to "pulumi.json#/Any"
+        - `🟡` had "pulumi.json#/Any" but now has no type
+- "azure-native:security:AlertsSuppressionRule":
+    - inputs:
+        - `🟡` "state" type changed from "" to "#/types/azure-native:security:RuleState"
+- "azure-native:security:Application":
+    - required inputs:
+        - `🔴` "conditionSets" input has changed to Required
+- "azure-native:security:Assignment":
+    - inputs:
+        - `🟡` "assignedStandard" type changed from "#/types/azure-native:security:AssignedStandardItem" to "#/types/azure-native:security:CommonAssignedStandardItem"
+    - properties:
+        - `🟡` "additionalData" type changed from "#/types/azure-native:security:AssignmentPropertiesResponseAdditionalData" to "#/types/azure-native:security:AssignmentPropertiesAdditionalDataResponse"
+        - `🟡` "assignedStandard" type changed from "#/types/azure-native:security:AssignedStandardItemResponse" to "#/types/azure-native:security:CommonAssignedStandardItemResponse"
+- "azure-native:security:GovernanceRule":
+    - required inputs:
+        - `🔴` "conditionSets" input has changed to Required
+- "azure-native:security:SecurityConnectorApplication":
+    - required inputs:
+        - `🔴` "conditionSets" input has changed to Required
+- "azure-native:security:SecurityContact":
+    - properties:
+        - `🟡` "notificationsByRole" type changed from "#/types/azure-native:security:SecurityContactPropertiesResponseNotificationsByRole" to "#/types/azure-native:security:SecurityContactPropertiesNotificationsByRoleResponse"
+- "azure-native:security:StandardAssignment":
+    - inputs:
+        - `🟡` "assignedStandard" type changed from "#/types/azure-native:security:AssignedStandardItem" to "#/types/azure-native:security:CommonAssignedStandardItem"
+    - properties:
+        - `🟡` "assignedStandard" type changed from "#/types/azure-native:security:AssignedStandardItemResponse" to "#/types/azure-native:security:CommonAssignedStandardItemResponse"
+        - `🟡` "attestationData" type changed from "#/types/azure-native:security:StandardAssignmentPropertiesResponseAttestationData" to "#/types/azure-native:security:StandardAssignmentPropertiesAttestationDataResponse"
+        - `🟡` "exemptionData" type changed from "#/types/azure-native:security:StandardAssignmentPropertiesResponseExemptionData" to "#/types/azure-native:security:StandardAssignmentPropertiesExemptionDataResponse"
+- "azure-native:securityinsights:SourceControl":
+    - inputs:
+        - `🟡` "id" missing
+        - `🟡` "lastDeploymentInfo" missing
+        - `🟡` "version" missing
+- `🔴` "azure-native:voiceservices:CommunicationsGateway" missing
+- `🔴` "azure-native:voiceservices:Contact" missing
+- `🔴` "azure-native:voiceservices:TestLine" missing
 
-<!-- Release notes generated using configuration in .github/release.yml at v3.18.0 -->
+#### Functions
+- `🔴` "azure-native:changeanalysis:getConfigurationProfile" missing
+- `🔴` "azure-native:compute:getCloudService" missing
+- `🔴` "azure-native:containerservice:getNodeCustomization" missing
+- `🔴` "azure-native:datareplication:getPrivateEndpointConnectionProxy" missing
+- `🔴` "azure-native:hybridcontainerservice:getAgentPool" missing
+- `🔴` "azure-native:hybridcontainerservice:getHybridIdentityMetadatum" missing
+- `🔴` "azure-native:hybridcontainerservice:getKubernetesVersions" missing
+- `🔴` "azure-native:hybridcontainerservice:getProvisionedCluster" missing
+- `🔴` "azure-native:hybridcontainerservice:getStorageSpaceRetrieve" missing
+- `🔴` "azure-native:hybridcontainerservice:getVMSkus" missing
+- "azure-native:hybridcontainerservice:getVirtualNetworkRetrieve":
+    - inputs:
+        - `🟡` missing input "virtualNetworksName"
+        - `🔴` "virtualNetworkName" input has changed to Required
+- `🔴` "azure-native:voiceservices:getCommunicationsGateway" missing
+- `🔴` "azure-native:voiceservices:getContact" missing
+- `🔴` "azure-native:voiceservices:getTestLine" missing
+
+#### Types
+- `🔴` "azure-native:applicationinsights:WebTestPropertiesContentValidation" missing
+- `🔴` "azure-native:applicationinsights:WebTestPropertiesResponseConfiguration" missing
+- `🔴` "azure-native:applicationinsights:WebTestPropertiesResponseContentValidation" missing
+- `🔴` "azure-native:applicationinsights:WebTestPropertiesResponseRequest" missing
+- `🔴` "azure-native:applicationinsights:WebTestPropertiesResponseValidationRules" missing
+- "azure-native:applicationinsights:WebTestPropertiesValidationRules":
+    - properties:
+        - `🟡` "contentValidation" type changed from "#/types/azure-native:applicationinsights:WebTestPropertiesContentValidation" to "#/types/azure-native:applicationinsights:WebTestPropertiesValidationRulesContentValidation"
+- `🔴` "azure-native:applicationinsights:WorkbookResourceResponseIdentity" missing
+- "azure-native:authorization:AccessReviewInstanceResponse":
+    - required:
+        - `🟡` "systemData" property has changed to Required
+- "azure-native:authorization:PolicyAssignmentPropertiesResponse":
+    - properties:
+        - `🟡` "policy" type changed from "#/types/azure-native:authorization:PolicyAssignmentPropertiesResponsePolicy" to "#/types/azure-native:authorization:PolicyAssignmentPropertiesPolicyResponse"
+        - `🟡` "roleDefinition" type changed from "#/types/azure-native:authorization:PolicyAssignmentPropertiesResponseRoleDefinition" to "#/types/azure-native:authorization:PolicyAssignmentPropertiesRoleDefinitionResponse"
+        - `🟡` "scope" type changed from "#/types/azure-native:authorization:PolicyAssignmentPropertiesResponseScope" to "#/types/azure-native:authorization:PolicyAssignmentPropertiesScopeResponse"
+- `🔴` "azure-native:authorization:PolicyAssignmentPropertiesResponsePolicy" missing
+- `🔴` "azure-native:authorization:PolicyAssignmentPropertiesResponseRoleDefinition" missing
+- `🔴` "azure-native:authorization:PolicyAssignmentPropertiesResponseScope" missing
+- "azure-native:authorization:PolicyPropertiesResponse":
+    - properties:
+        - `🟡` "scope" type changed from "#/types/azure-native:authorization:PolicyPropertiesResponseScope" to "#/types/azure-native:authorization:PolicyPropertiesScopeResponse"
+- `🔴` "azure-native:authorization:PolicyPropertiesResponseScope" missing
+- `🔴` "azure-native:authorization:PrincipalResponse" missing
+- "azure-native:automation:EncryptionPropertiesResponse":
+    - properties:
+        - `🟡` "identity" type changed from "#/types/azure-native:automation:EncryptionPropertiesResponseIdentity" to "#/types/azure-native:automation:EncryptionPropertiesIdentityResponse"
+- `🔴` "azure-native:automation:EncryptionPropertiesResponseIdentity" missing
+- `🔴` "azure-native:automation:ErrorResponse" missing
+- `🔴` "azure-native:automation:ErrorResponseResponse" missing
+- "azure-native:billing:BillingProfilePropertiesResponse":
+    - properties:
+        - `🟡` "billTo" type changed from "#/types/azure-native:billing:BillingProfilePropertiesResponseBillTo" to "#/types/azure-native:billing:BillingProfilePropertiesBillToResponse"
+        - `🟡` "currentPaymentTerm" type changed from "#/types/azure-native:billing:BillingProfilePropertiesResponseCurrentPaymentTerm" to "#/types/azure-native:billing:BillingProfilePropertiesCurrentPaymentTermResponse"
+        - `🟡` "indirectRelationshipInfo" type changed from "#/types/azure-native:billing:BillingProfilePropertiesResponseIndirectRelationshipInfo" to "#/types/azure-native:billing:BillingProfilePropertiesIndirectRelationshipInfoResponse"
+        - `🟡` "shipTo" type changed from "#/types/azure-native:billing:BillingProfilePropertiesResponseShipTo" to "#/types/azure-native:billing:BillingProfilePropertiesShipToResponse"
+        - `🟡` "soldTo" type changed from "#/types/azure-native:billing:BillingProfilePropertiesResponseSoldTo" to "#/types/azure-native:billing:BillingProfilePropertiesSoldToResponse"
+- `🔴` "azure-native:billing:BillingProfilePropertiesResponseBillTo" missing
+- `🔴` "azure-native:billing:BillingProfilePropertiesResponseCurrentPaymentTerm" missing
+- `🔴` "azure-native:billing:BillingProfilePropertiesResponseIndirectRelationshipInfo" missing
+- `🔴` "azure-native:billing:BillingProfilePropertiesResponseShipTo" missing
+- `🔴` "azure-native:billing:BillingProfilePropertiesResponseSoldTo" missing
+- "azure-native:billingbenefits:CreditReasonResponse":
+    - properties:
+        - `🟡` "code" type changed from "number" to "string"
+- `🔴` "azure-native:changeanalysis:AzureMonitorWorkspaceProperties" missing
+- `🔴` "azure-native:changeanalysis:AzureMonitorWorkspacePropertiesResponse" missing
+- `🔴` "azure-native:changeanalysis:ChangeDetailsMode" missing
+- `🔴` "azure-native:changeanalysis:ConfigurationProfileResourceProperties" missing
+- `🔴` "azure-native:changeanalysis:ConfigurationProfileResourcePropertiesResponse" missing
+- `🔴` "azure-native:changeanalysis:ManagedIdentityTypes" missing
+- `🔴` "azure-native:changeanalysis:NotificationSettings" missing
+- `🔴` "azure-native:changeanalysis:NotificationSettingsResponse" missing
+- `🔴` "azure-native:changeanalysis:NotificationsState" missing
+- `🔴` "azure-native:changeanalysis:ResourceIdentity" missing
+- `🔴` "azure-native:changeanalysis:ResourceIdentityResponse" missing
+- `🔴` "azure-native:changeanalysis:SystemDataResponse" missing
+- `🔴` "azure-native:cognitiveservices:CustomTopicConfig" missing
+- `🔴` "azure-native:cognitiveservices:CustomTopicConfigResponse" missing
+- "azure-native:cognitiveservices:RaiPolicyProperties":
+    - properties:
+        - `🟡` "customTopics" missing
+- "azure-native:cognitiveservices:RaiPolicyPropertiesResponseV1":
+    - properties:
+        - `🟡` "customTopics" missing
+- "azure-native:cognitiveservices:RaiToolLabelProperties":
+    - properties:
+        - `🟡` "projectScopes" type changed from "#/types/azure-native:cognitiveservices:RaiToolLabelPropertiesProjectScopes" to "#/types/azure-native:cognitiveservices:RaiToolLabelPropertiesProjectScopesItem"
+- `🔴` "azure-native:cognitiveservices:RaiToolLabelPropertiesProjectScopes" missing
+- "azure-native:cognitiveservices:RaiToolLabelPropertiesResponse":
+    - properties:
+        - `🟡` "accountScope" type changed from "#/types/azure-native:cognitiveservices:RaiToolLabelPropertiesResponseAccountScope" to "#/types/azure-native:cognitiveservices:RaiToolLabelPropertiesAccountScopeResponse"
+        - `🟡` "projectScopes" type changed from "#/types/azure-native:cognitiveservices:RaiToolLabelPropertiesResponseProjectScopes" to "#/types/azure-native:cognitiveservices:RaiToolLabelPropertiesProjectScopesItemResponse"
+- `🔴` "azure-native:cognitiveservices:RaiToolLabelPropertiesResponseAccountScope" missing
+- `🔴` "azure-native:cognitiveservices:RaiToolLabelPropertiesResponseProjectScopes" missing
+- `🔴` "azure-native:compute:CloudServiceExtensionProfile" missing
+- `🔴` "azure-native:compute:CloudServiceExtensionProfileResponse" missing
+- `🔴` "azure-native:compute:CloudServiceExtensionProperties" missing
+- `🔴` "azure-native:compute:CloudServiceExtensionPropertiesResponse" missing
+- `🔴` "azure-native:compute:CloudServiceNetworkProfile" missing
+- `🔴` "azure-native:compute:CloudServiceNetworkProfileResponse" missing
+- `🔴` "azure-native:compute:CloudServiceOsProfile" missing
+- `🔴` "azure-native:compute:CloudServiceOsProfileResponse" missing
+- `🔴` "azure-native:compute:CloudServiceProperties" missing
+- `🔴` "azure-native:compute:CloudServicePropertiesResponse" missing
+- `🔴` "azure-native:compute:CloudServiceRoleProfile" missing
+- `🔴` "azure-native:compute:CloudServiceRoleProfileProperties" missing
+- `🔴` "azure-native:compute:CloudServiceRoleProfilePropertiesResponse" missing
+- `🔴` "azure-native:compute:CloudServiceRoleProfileResponse" missing
+- `🔴` "azure-native:compute:CloudServiceRoleSku" missing
+- `🔴` "azure-native:compute:CloudServiceRoleSkuResponse" missing
+- `🔴` "azure-native:compute:CloudServiceSlotType" missing
+- `🔴` "azure-native:compute:CloudServiceUpgradeMode" missing
+- `🔴` "azure-native:compute:CloudServiceVaultAndSecretReference" missing
+- `🔴` "azure-native:compute:CloudServiceVaultAndSecretReferenceResponse" missing
+- `🔴` "azure-native:compute:CloudServiceVaultCertificate" missing
+- `🔴` "azure-native:compute:CloudServiceVaultCertificateResponse" missing
+- `🔴` "azure-native:compute:CloudServiceVaultSecretGroup" missing
+- `🔴` "azure-native:compute:CloudServiceVaultSecretGroupResponse" missing
+- "azure-native:compute:EncryptionSetIdentityResponse":
+    - properties:
+        - `🟡` "userAssignedIdentities" type changed from "#/types/azure-native:compute:UserAssignedIdentitiesValueResponse" to "#/types/azure-native:compute:CommonUserAssignedIdentitiesValueResponse"
+- `🔴` "azure-native:compute:Extension" missing
+- `🔴` "azure-native:compute:ExtensionResponse" missing
+- "azure-native:compute:GalleryIdentityResponse":
+    - properties:
+        - `🟡` "userAssignedIdentities" type changed from "#/types/azure-native:compute:UserAssignedIdentitiesValueResponse" to "#/types/azure-native:compute:CommonUserAssignedIdentitiesValueResponse"
+- `🔴` "azure-native:compute:LoadBalancerConfiguration" missing
+- `🔴` "azure-native:compute:LoadBalancerConfigurationProperties" missing
+- `🔴` "azure-native:compute:LoadBalancerConfigurationPropertiesResponse" missing
+- `🔴` "azure-native:compute:LoadBalancerConfigurationResponse" missing
+- `🔴` "azure-native:compute:LoadBalancerFrontendIpConfiguration" missing
+- `🔴` "azure-native:compute:LoadBalancerFrontendIpConfigurationProperties" missing
+- `🔴` "azure-native:compute:LoadBalancerFrontendIpConfigurationPropertiesResponse" missing
+- `🔴` "azure-native:compute:LoadBalancerFrontendIpConfigurationResponse" missing
+- `🔴` "azure-native:compute:SystemDataResponseV1" missing
+- `🔴` "azure-native:compute:UserAssignedIdentitiesValueResponse" missing
+- "azure-native:compute:VirtualMachineIdentityResponse":
+    - properties:
+        - `🟡` "userAssignedIdentities" type changed from "#/types/azure-native:compute:UserAssignedIdentitiesValueResponse" to "#/types/azure-native:compute:CommonUserAssignedIdentitiesValueResponse"
+- "azure-native:compute:VirtualMachineScaleSetIdentityResponse":
+    - properties:
+        - `🟡` "userAssignedIdentities" type changed from "#/types/azure-native:compute:UserAssignedIdentitiesValueResponse" to "#/types/azure-native:compute:CommonUserAssignedIdentitiesValueResponse"
+- "azure-native:confluent:OfferDetail":
+    - properties:
+        - `🟡` "status" missing
+- "azure-native:confluent:OfferDetailResponse":
+    - required:
+        - `🟡` "status" property has changed to Required
+- `🔴` "azure-native:confluent:SaaSOfferStatus" missing
+- "azure-native:containerinstance:ElasticProfileContainerGroupNamingPolicy":
+    - properties:
+        - `🟡` "guidNamingPolicy" type changed from "#/types/azure-native:containerinstance:ElasticProfileGuidNamingPolicy" to "#/types/azure-native:containerinstance:ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy"
+- `🔴` "azure-native:containerinstance:ElasticProfileGuidNamingPolicy" missing
+- "azure-native:containerinstance:ElasticProfileResponse":
+    - properties:
+        - `🟡` "containerGroupNamingPolicy" type changed from "#/types/azure-native:containerinstance:ElasticProfileResponseContainerGroupNamingPolicy" to "#/types/azure-native:containerinstance:ElasticProfileContainerGroupNamingPolicyResponse"
+- `🔴` "azure-native:containerinstance:ElasticProfileResponseContainerGroupNamingPolicy" missing
+- `🔴` "azure-native:containerinstance:ElasticProfileResponseGuidNamingPolicy" missing
+- "azure-native:containerinstance:FileShareResponse":
+    - properties:
+        - `🟡` type changed from "#/types/azure-native:containerinstance:FileShareResponseProperties" to "#/types/azure-native:containerinstance:FileSharePropertiesResponse"
+- `🔴` "azure-native:containerinstance:FileShareResponseProperties" missing
+- "azure-native:containerinstance:NGroupCGPropertyContainerResponse":
+    - properties:
+        - `🟡` type changed from "#/types/azure-native:containerinstance:NGroupCGPropertyContainerResponseProperties" to "#/types/azure-native:containerinstance:NGroupCGPropertyContainerPropertiesResponse"
+- `🔴` "azure-native:containerinstance:NGroupCGPropertyContainerResponseProperties" missing
+- "azure-native:containerinstance:UpdateProfileResponse":
+    - properties:
+        - `🟡` "rollingUpdateProfile" type changed from "#/types/azure-native:containerinstance:UpdateProfileResponseRollingUpdateProfile" to "#/types/azure-native:containerinstance:UpdateProfileRollingUpdateProfileResponse"
+- `🔴` "azure-native:containerinstance:UpdateProfileResponseRollingUpdateProfile" missing
+- `🔴` "azure-native:containerservice:ExecutionPoint" missing
+- `🔴` "azure-native:containerservice:NodeCustomizationProperties" missing
+- `🔴` "azure-native:containerservice:NodeCustomizationPropertiesResponse" missing
+- `🔴` "azure-native:containerservice:NodeCustomizationScript" missing
+- `🔴` "azure-native:containerservice:NodeCustomizationScriptResponse" missing
+- `🔴` "azure-native:containerservice:ScriptType" missing
+- `🔴` "azure-native:cosmosdb:GarnetClusterResourceResponseEndPoints" missing
+- `🔴` "azure-native:cosmosdb:GarnetClusterResourceResponseProperties" missing
+- `🔴` "azure-native:cosmosdb:StorageLocationType" missing
+- "azure-native:datafactory:AmazonMWSObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AmazonRdsForOraclePartitionSettings":
+    - properties:
+        - `🟡` "partitionNames" type changed from "array<pulumi.json#/Any>" to "pulumi.json#/Any"
+- "azure-native:datafactory:AmazonRdsForOraclePartitionSettingsResponse":
+    - properties:
+        - `🟡` "partitionNames" type changed from "array<pulumi.json#/Any>" to "pulumi.json#/Any"
+- "azure-native:datafactory:AmazonRdsForOracleTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AmazonRdsForSqlServerTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AmazonRedshiftTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AmazonS3DatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AvroDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AzureBlobDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AzureBlobFSDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AzureDataExplorerTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AzureDataLakeStoreDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AzureDatabricksDeltaLakeDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AzureDatabricksLinkedService":
+    - properties:
+        - `🟡` "newClusterCustomTags" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "newClusterCustomTags" had "pulumi.json#/Any" but now has no type
+        - `🟡` "newClusterSparkConf" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "newClusterSparkConf" had "pulumi.json#/Any" but now has no type
+        - `🟡` "newClusterSparkEnvVars" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "newClusterSparkEnvVars" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:AzureDatabricksLinkedServiceResponse":
+    - properties:
+        - `🟡` "newClusterCustomTags" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "newClusterCustomTags" had "pulumi.json#/Any" but now has no type
+        - `🟡` "newClusterSparkConf" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "newClusterSparkConf" had "pulumi.json#/Any" but now has no type
+        - `🟡` "newClusterSparkEnvVars" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "newClusterSparkEnvVars" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:AzureFunctionActivity":
+    - properties:
+        - `🟡` "headers" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "headers" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:AzureFunctionActivityResponse":
+    - properties:
+        - `🟡` "headers" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "headers" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:AzureMLBatchExecutionActivity":
+    - properties:
+        - `🟡` "globalParameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "globalParameters" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:AzureMLBatchExecutionActivityResponse":
+    - properties:
+        - `🟡` "globalParameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "globalParameters" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:AzureMariaDBTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AzureMySqlTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AzurePostgreSqlSinkResponse":
+    - properties:
+        - `🟡` "upsertSettings" type changed from "#/types/azure-native:datafactory:AzurePostgreSqlSinkResponseUpsertSettings" to "#/types/azure-native:datafactory:AzurePostgreSqlSinkUpsertSettingsResponse"
+- `🔴` "azure-native:datafactory:AzurePostgreSqlSinkResponseUpsertSettings" missing
+- "azure-native:datafactory:AzurePostgreSqlTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AzureSearchIndexDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AzureSqlDWTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AzureSqlMITableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AzureSqlTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:AzureTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:BinaryDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:CassandraTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- `🔴` "azure-native:datafactory:ChangeDataCaptureResponseFolder" missing
+- "azure-native:datafactory:CommonDataServiceForAppsEntityDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:ConcurObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:CosmosDbMongoDbApiCollectionDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:CosmosDbSqlApiCollectionDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:CouchbaseTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:CustomActivity":
+    - properties:
+        - `🟡` "extendedProperties" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "extendedProperties" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:CustomActivityResponse":
+    - properties:
+        - `🟡` "extendedProperties" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "extendedProperties" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:CustomDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:DataFlowReference":
+    - properties:
+        - `🟡` "parameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "parameters" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:DataFlowReferenceResponse":
+    - properties:
+        - `🟡` "parameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "parameters" had "pulumi.json#/Any" but now has no type
+- `🔴` "azure-native:datafactory:DataFlowResponseFolder" missing
+- "azure-native:datafactory:DataLakeAnalyticsUSQLActivity":
+    - properties:
+        - `🟡` "parameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "parameters" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:DataLakeAnalyticsUSQLActivityResponse":
+    - properties:
+        - `🟡` "parameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "parameters" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:DatabricksJobActivity":
+    - properties:
+        - `🟡` "jobParameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "jobParameters" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:DatabricksJobActivityResponse":
+    - properties:
+        - `🟡` "jobParameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "jobParameters" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:DatabricksNotebookActivity":
+    - properties:
+        - `🟡` "baseParameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "baseParameters" had "pulumi.json#/Any" but now has no type
+        - `🟡` "libraries" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "libraries" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:DatabricksNotebookActivityResponse":
+    - properties:
+        - `🟡` "baseParameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "baseParameters" had "pulumi.json#/Any" but now has no type
+        - `🟡` "libraries" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "libraries" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:DatabricksSparkJarActivity":
+    - properties:
+        - `🟡` "libraries" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "libraries" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:DatabricksSparkJarActivityResponse":
+    - properties:
+        - `🟡` "libraries" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "libraries" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:DatabricksSparkPythonActivity":
+    - properties:
+        - `🟡` "libraries" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "libraries" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:DatabricksSparkPythonActivityResponse":
+    - properties:
+        - `🟡` "libraries" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "libraries" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:DatasetReference":
+    - properties:
+        - `🟡` "parameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "parameters" had "pulumi.json#/Any" but now has no type
+        - `🟡` "type" type changed from "string" to ""
+- "azure-native:datafactory:DatasetReferenceResponse":
+    - properties:
+        - `🟡` "parameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "parameters" had "pulumi.json#/Any" but now has no type
+- `🔴` "azure-native:datafactory:DatasetResponseFolder" missing
+- "azure-native:datafactory:Db2TableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:DelimitedTextDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:DocumentDbCollectionDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:DrillTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:DynamicsAXResourceDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:DynamicsCrmEntityDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:DynamicsEntityDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:EloquaObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:ExcelDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:ExecuteDataFlowActivityResponse":
+    - properties:
+        - `🟡` "compute" type changed from "#/types/azure-native:datafactory:ExecuteDataFlowActivityTypePropertiesResponseCompute" to "#/types/azure-native:datafactory:ExecuteDataFlowActivityTypePropertiesComputeResponse"
+- `🔴` "azure-native:datafactory:ExecuteDataFlowActivityTypePropertiesResponseCompute" missing
+- "azure-native:datafactory:ExecutePipelineActivity":
+    - properties:
+        - `🟡` "parameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "parameters" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:ExecutePipelineActivityResponse":
+    - properties:
+        - `🟡` "parameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "parameters" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:ExecuteWranglingDataflowActivityResponse":
+    - properties:
+        - `🟡` "compute" type changed from "#/types/azure-native:datafactory:ExecuteDataFlowActivityTypePropertiesResponseCompute" to "#/types/azure-native:datafactory:ExecuteDataFlowActivityTypePropertiesComputeResponse"
+- "azure-native:datafactory:Expression":
+    - properties:
+        - `🟡` "type" type changed from "string" to ""
+- "azure-native:datafactory:FactoryIdentity":
+    - properties:
+        - `🟡` "userAssignedIdentities" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "userAssignedIdentities" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:FactoryIdentityResponse":
+    - properties:
+        - `🟡` "userAssignedIdentities" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "userAssignedIdentities" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:FileShareDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:FlowletResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DataFlowResponseFolder" to "#/types/azure-native:datafactory:DataFlowFolderResponse"
+- "azure-native:datafactory:GoogleAdWordsObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:GoogleBigQueryObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:GoogleBigQueryV2ObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:GreenplumTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:HBaseObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:HDInsightHiveActivity":
+    - properties:
+        - `🟡` "defines" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "defines" had "pulumi.json#/Any" but now has no type
+        - `🟡` "variables" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "variables" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:HDInsightHiveActivityResponse":
+    - properties:
+        - `🟡` "defines" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "defines" had "pulumi.json#/Any" but now has no type
+        - `🟡` "variables" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "variables" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:HDInsightMapReduceActivity":
+    - properties:
+        - `🟡` "defines" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "defines" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:HDInsightMapReduceActivityResponse":
+    - properties:
+        - `🟡` "defines" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "defines" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:HDInsightPigActivity":
+    - properties:
+        - `🟡` "defines" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "defines" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:HDInsightPigActivityResponse":
+    - properties:
+        - `🟡` "defines" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "defines" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:HDInsightSparkActivity":
+    - properties:
+        - `🟡` "sparkConfig" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "sparkConfig" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:HDInsightSparkActivityResponse":
+    - properties:
+        - `🟡` "sparkConfig" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "sparkConfig" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:HDInsightStreamingActivity":
+    - properties:
+        - `🟡` "defines" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "defines" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:HDInsightStreamingActivityResponse":
+    - properties:
+        - `🟡` "defines" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "defines" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:HiveObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:HttpDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:HubspotObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:IcebergDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:ImpalaLinkedService":
+    - properties:
+        - `🟡` "thriftTransportProtocol" type changed from "" to "#/types/azure-native:datafactory:ImpalaThriftTransportProtocol"
+- "azure-native:datafactory:ImpalaObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:InformixTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:IntegrationRuntimeDataFlowProperties":
+    - properties:
+        - `🟡` "customProperties" type changed from "#/types/azure-native:datafactory:IntegrationRuntimeDataFlowPropertiesCustomProperties" to "#/types/azure-native:datafactory:IntegrationRuntimeDataFlowPropertiesCustomPropertiesItem"
+- `🔴` "azure-native:datafactory:IntegrationRuntimeDataFlowPropertiesCustomProperties" missing
+- "azure-native:datafactory:IntegrationRuntimeDataFlowPropertiesResponse":
+    - properties:
+        - `🟡` "customProperties" type changed from "#/types/azure-native:datafactory:IntegrationRuntimeDataFlowPropertiesResponseCustomProperties" to "#/types/azure-native:datafactory:IntegrationRuntimeDataFlowPropertiesCustomPropertiesItemResponse"
+- `🔴` "azure-native:datafactory:IntegrationRuntimeDataFlowPropertiesResponseCustomProperties" missing
+- "azure-native:datafactory:IntegrationRuntimeReference":
+    - properties:
+        - `🟡` "parameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "parameters" had "pulumi.json#/Any" but now has no type
+        - `🟡` "type" type changed from "string" to ""
+- "azure-native:datafactory:IntegrationRuntimeReferenceResponse":
+    - properties:
+        - `🟡` "parameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "parameters" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:JiraObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:JsonDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:LakeHouseTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:LinkedServiceReference":
+    - properties:
+        - `🟡` "parameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "parameters" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:LinkedServiceReferenceResponse":
+    - properties:
+        - `🟡` "parameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "parameters" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:MagentoObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:MappingDataFlowResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DataFlowResponseFolder" to "#/types/azure-native:datafactory:DataFlowFolderResponse"
+- "azure-native:datafactory:MariaDBTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:MarketoObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:MicrosoftAccessTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:MongoDbAtlasCollectionDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:MongoDbCollectionDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:MongoDbV2CollectionDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:MySqlTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:NetezzaTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:ODataResourceDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:OdbcTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:Office365DatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:OraclePartitionSettings":
+    - properties:
+        - `🟡` "partitionNames" type changed from "array<pulumi.json#/Any>" to "pulumi.json#/Any"
+- "azure-native:datafactory:OraclePartitionSettingsResponse":
+    - properties:
+        - `🟡` "partitionNames" type changed from "array<pulumi.json#/Any>" to "pulumi.json#/Any"
+- "azure-native:datafactory:OracleServiceCloudObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:OracleTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:OrcDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:ParquetDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:PaypalObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:PhoenixObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:PipelineReference":
+    - properties:
+        - `🟡` "type" type changed from "string" to ""
+- `🔴` "azure-native:datafactory:PipelineResponseFolder" missing
+- "azure-native:datafactory:PostgreSqlTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:PostgreSqlV2TableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:PrestoObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:QuickBooksObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:RelationalTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:ResponsysObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:RestResourceDataset":
+    - properties:
+        - `🟡` "additionalHeaders" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "additionalHeaders" had "pulumi.json#/Any" but now has no type
+        - `🟡` "paginationRules" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "paginationRules" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:RestResourceDatasetResponse":
+    - properties:
+        - `🟡` "additionalHeaders" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "additionalHeaders" had "pulumi.json#/Any" but now has no type
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+        - `🟡` "paginationRules" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "paginationRules" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:SalesforceMarketingCloudObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SalesforceObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SalesforceServiceCloudObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SalesforceServiceCloudV2ObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SalesforceV2ObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SapBwCubeDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SapCloudForCustomerResourceDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SapEccResourceDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SapHanaTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SapOdpResourceDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SapOpenHubTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SapTableResourceDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:ScriptActivityResponse":
+    - properties:
+        - `🟡` "logSettings" type changed from "#/types/azure-native:datafactory:ScriptActivityTypePropertiesResponseLogSettings" to "#/types/azure-native:datafactory:ScriptActivityTypePropertiesLogSettingsResponse"
+- `🔴` "azure-native:datafactory:ScriptActivityTypePropertiesResponseLogSettings" missing
+- "azure-native:datafactory:ServiceNowObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:ServiceNowV2ObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SharePointOnlineListResourceDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:ShopifyObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SnowflakeDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SnowflakeExportCopyCommand":
+    - properties:
+        - `🟡` "additionalCopyOptions" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "additionalCopyOptions" had "pulumi.json#/Any" but now has no type
+        - `🟡` "additionalFormatOptions" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "additionalFormatOptions" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:SnowflakeExportCopyCommandResponse":
+    - properties:
+        - `🟡` "additionalCopyOptions" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "additionalCopyOptions" had "pulumi.json#/Any" but now has no type
+        - `🟡` "additionalFormatOptions" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "additionalFormatOptions" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:SnowflakeImportCopyCommand":
+    - properties:
+        - `🟡` "additionalCopyOptions" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "additionalCopyOptions" had "pulumi.json#/Any" but now has no type
+        - `🟡` "additionalFormatOptions" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "additionalFormatOptions" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:SnowflakeImportCopyCommandResponse":
+    - properties:
+        - `🟡` "additionalCopyOptions" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "additionalCopyOptions" had "pulumi.json#/Any" but now has no type
+        - `🟡` "additionalFormatOptions" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "additionalFormatOptions" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:SnowflakeV2DatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SparkObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SqlServerTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SquareObjectDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SybaseTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:SynapseNotebookActivity":
+    - properties:
+        - `🟡` "sparkConfig" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "sparkConfig" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:SynapseNotebookActivityResponse":
+    - properties:
+        - `🟡` "sparkConfig" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "sparkConfig" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:SynapseSparkJobDefinitionActivity":
+    - properties:
+        - `🟡` "sparkConfig" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "sparkConfig" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:SynapseSparkJobDefinitionActivityResponse":
+    - properties:
+        - `🟡` "sparkConfig" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "sparkConfig" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:TeradataTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:TriggerPipelineReference":
+    - properties:
+        - `🟡` "parameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "parameters" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:TriggerPipelineReferenceResponse":
+    - properties:
+        - `🟡` "parameters" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "parameters" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:VerticaTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:WarehouseTableDatasetResponse":
+    - properties:
+        - `🟡` "folder" type changed from "#/types/azure-native:datafactory:DatasetResponseFolder" to "#/types/azure-native:datafactory:DatasetFolderResponse"
+- "azure-native:datafactory:WebActivity":
+    - properties:
+        - `🟡` "headers" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "headers" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:WebActivityResponse":
+    - properties:
+        - `🟡` "headers" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "headers" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:WebHookActivity":
+    - properties:
+        - `🟡` "headers" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "headers" had "pulumi.json#/Any" but now has no type
+- "azure-native:datafactory:WebHookActivityResponse":
+    - properties:
+        - `🟡` "headers" type changed from "object" to "pulumi.json#/Any"
+        - `🟡` "headers" had "pulumi.json#/Any" but now has no type
+Showing 500 of 854 breaking changes.
+
+#### New resources:
+
+- `app.Agent`
+- `app.AgentSpace`
+- `app.AgentSpacesConnector`
+- `app.AgentsConnector`
+- `applink.AppLink`
+- `applink.AppLinkMember`
+- `authorization.DenyAssignment`
+- `azureresiliencemanagement.Drill`
+- `azureresiliencemanagement.Enrollment`
+- `azureresiliencemanagement.GoalAssignment`
+- `azureresiliencemanagement.GoalTemplate`
+- `azureresiliencemanagement.RecoveryPlan`
+- `azureresiliencemanagement.UsagePlan`
+- `azurestackhci.InboundRule`
+- `billingtrust.Assessment`
+- `cognitiveservices.ManagedNetworkSetting`
+- `edge.ExecutionV2`
+- `edge.WorkflowV2`
+- `edge.WorkflowVersionV2`
+- `horizondb.HorizonDbCluster`
+- `horizondb.HorizonDbFirewallRule`
+- `horizondb.HorizonDbParameterGroup`
+- `horizondb.HorizonDbReplica`
+- `managednetworkfabric.NetworkBootstrapDevice`
+- `managednetworkfabric.NetworkBootstrapInterface`
+- `mission.DedicatedHub`
+- `monitor.Sli`
+- `network.Commit`
+- `network.ConnectionPolicy`
+- `network.InterconnectGroup`
+- `programenrollment.EduEnrollment`
+- `storage.Connector`
+- `storage.DataShare`
+- `web.AiGateway`
+
+#### New functions:
+
+- `app.getAgent`
+- `app.getAgentSpace`
+- `app.getAgentSpacesConnector`
+- `app.getAgentsConnector`
+- `app.listAgentSpacesConnectorAllSecrets`
+- `app.listAgentSpacesConnectorSecrets`
+- `app.listAgentsConnectorSecrets`
+- `app.listAgentsConnectorWithSecretsByAgent`
+- `applink.getAppLink`
+- `applink.getAppLinkMember`
+- `authorization.getDenyAssignment`
+- `azureresiliencemanagement.getDrill`
+- `azureresiliencemanagement.getEnrollment`
+- `azureresiliencemanagement.getGoalAssignment`
+- `azureresiliencemanagement.getGoalTemplate`
+- `azureresiliencemanagement.getRecoveryPlan`
+- `azureresiliencemanagement.getUsagePlan`
+- `azurestackhci.getInboundRule`
+- `billingtrust.getAssessment`
+- `billingtrust.listAssessmentUploadToken`
+- `cognitiveservices.getManagedNetworkSetting`
+- `edge.getExecutionV2`
+- `edge.getWorkflowV2`
+- `edge.getWorkflowVersionV2`
+- `horizondb.getHorizonDbCluster`
+- `horizondb.getHorizonDbFirewallRule`
+- `horizondb.getHorizonDbParameterGroup`
+- `horizondb.getHorizonDbReplica`
+- `impact.getUploadServiceUploadToken`
+- `managednetworkfabric.getNetworkBootstrapDevice`
+- `managednetworkfabric.getNetworkBootstrapInterface`
+- `mission.getDedicatedHub`
+- `monitor.getSli`
+- `network.getCommit`
+- `network.getConnectionPolicy`
+- `network.getExpressRouteGatewayResiliencyInformation`
+- `network.getExpressRouteGatewayRoutesInformation`
+- `network.getInterconnectGroup`
+- `programenrollment.getEduEnrollment`
+- `storage.getConnector`
+- `storage.getDataShare`
+- `web.getAiGateway`
+
+<!-- Release notes generated using configuration in .github/release.yml at v3.20.0 -->
 
 ## What's Changed
-* Update vulnerable dependencies [SECURITY] by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4684
-* Fix empty body on POST/PUT/PATCH requests by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4689
-* Customize TagAtScope resource to use merge semantics when dealing with default tags by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4690
-* Retry TransientError failures when deleting `cognitiveservices:ProjectConnection` by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4696
-* Fix API version used in Read immediately after Create by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4692
-* Fix the default state used when deleting `servicebus.NamespaceNetworkRuleSet` resources by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4691
-* Update pulumi/actions action to v7 by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4694
-* ci: reduce Test Provider parallelism from 16 to 8 by @iwahbe in https://github.com/pulumi/pulumi-azure-native/pull/4705
-* Update module github.com/microsoft/kiota-http-go to v1.5.5 [SECURITY] by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4706
-* Update first-party Pulumi dependencies by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4681
-* Update first-party Pulumi dependencies to v3.236.0 by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4707
-* Update first-party Pulumi dependencies by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4709
-* Forward query parameters on GET-shaped invokes by @guineveresaenger in https://github.com/pulumi/pulumi-azure-native/pull/4708
-* Restore v3.16.0 source-compatible type-token layout by @pgavlin in https://github.com/pulumi/pulumi-azure-native/pull/4711
-* Update first-party Pulumi dependencies by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4712
+* Send x-ms-authorization-auxiliary header when auxiliaryTenantIds is configured by @guineveresaenger in https://github.com/pulumi/pulumi-azure-native/pull/4732
+* Update vulnerable dependencies [SECURITY] by @pulumi-renovate[bot] in https://github.com/pulumi/pulumi-azure-native/pull/4737
+* Update RedisEnterprise default API version to 2025-07-01 by @guineveresaenger in https://github.com/pulumi/pulumi-azure-native/pull/4747
+* fix(provider): resolve legacy config prefix from provider name for parameterized providers by @pierskarsenbarg in https://github.com/pulumi/pulumi-azure-native/pull/4755
+* Update FrontDoor API version from 2024-02-01 to 2025-10-01 by @Zaid-Ajaj in https://github.com/pulumi/pulumi-azure-native/pull/4754
 
+## New Contributors
+* @pierskarsenbarg made their first contribution in https://github.com/pulumi/pulumi-azure-native/pull/4755
 
-**Full Changelog**: https://github.com/pulumi/pulumi-azure-native/compare/v3.17.0...v3.18.0
+**Full Changelog**: https://github.com/pulumi/pulumi-azure-native/compare/v3.19.0...v3.20.0

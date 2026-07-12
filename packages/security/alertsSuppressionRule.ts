@@ -54,7 +54,7 @@ export class AlertsSuppressionRule extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly lastModifiedUtc: pulumi.Output<string>;
     /**
-     * Resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -70,7 +70,11 @@ export class AlertsSuppressionRule extends pulumi.CustomResource {
      */
     declare public readonly suppressionAlertsScope: pulumi.Output<types.outputs.SuppressionAlertsScopeResponse | undefined>;
     /**
-     * Resource type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -104,6 +108,7 @@ export class AlertsSuppressionRule extends pulumi.CustomResource {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["lastModifiedUtc"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["alertType"] = undefined /*out*/;
@@ -115,6 +120,7 @@ export class AlertsSuppressionRule extends pulumi.CustomResource {
             resourceInputs["reason"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["suppressionAlertsScope"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -151,7 +157,7 @@ export interface AlertsSuppressionRuleArgs {
     /**
      * Possible states of the rule
      */
-    state: pulumi.Input<string | types.enums.RuleState>;
+    state: pulumi.Input<types.enums.RuleState>;
     /**
      * The suppression conditions
      */

@@ -1049,11 +1049,11 @@ export function managedResourceReferenceResponseProvideDefaults(val: ManagedReso
 }
 
 /**
- * Managed identity generic object.
+ * Describes the managed identities for an Azure resource.
  */
 export interface ManagedServiceIdentityResponse {
     /**
-     * ID of the Azure Active Directory.
+     * The tenant id of the managed identity.
      */
     tenantId: string;
     /**
@@ -1264,7 +1264,7 @@ export interface ScriptStatusResponse {
     /**
      * Error that is relayed from the script execution.
      */
-    error?: ErrorResponseResponse;
+    error?: ErrorDetailResponse;
     /**
      * Time the deployment script resource will expire.
      */

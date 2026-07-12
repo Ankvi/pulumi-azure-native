@@ -71,6 +71,10 @@ export interface FileShareProvisioningRecommendationInputArgs {
  */
 export interface FileShareSnapshotPropertiesArgs {
     /**
+     * The initiator of the FileShareSnapshot. This is a user-defined value.
+     */
+    initiatorId?: pulumi.Input<string>;
+    /**
      * The metadata
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;

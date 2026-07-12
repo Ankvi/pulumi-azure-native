@@ -44,7 +44,7 @@ export class JobSchedule extends pulumi.CustomResource {
      */
     declare public readonly jobScheduleId: pulumi.Output<string | undefined>;
     /**
-     * Gets the name of the variable.
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -64,7 +64,11 @@ export class JobSchedule extends pulumi.CustomResource {
      */
     declare public readonly schedule: pulumi.Output<types.outputs.ScheduleAssociationPropertyResponse | undefined>;
     /**
-     * Resource type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -100,6 +104,7 @@ export class JobSchedule extends pulumi.CustomResource {
             resourceInputs["schedule"] = args?.schedule;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -109,6 +114,7 @@ export class JobSchedule extends pulumi.CustomResource {
             resourceInputs["runOn"] = undefined /*out*/;
             resourceInputs["runbook"] = undefined /*out*/;
             resourceInputs["schedule"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -135,7 +141,7 @@ export interface JobScheduleArgs {
      */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

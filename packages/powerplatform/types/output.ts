@@ -77,7 +77,7 @@ export interface PrivateLinkServiceConnectionStateResponse {
 /**
  * The encryption settings for a configuration store.
  */
-export interface PropertiesResponseEncryption {
+export interface PropertiesEncryptionResponse {
     /**
      * Key vault properties.
      */
@@ -91,7 +91,7 @@ export interface PropertiesResponseEncryption {
 /**
  * Settings concerning lockbox.
  */
-export interface PropertiesResponseLockbox {
+export interface PropertiesLockboxResponse {
     /**
      * lockbox configuration
      */
@@ -101,7 +101,7 @@ export interface PropertiesResponseLockbox {
 /**
  * Settings concerning network injection.
  */
-export interface PropertiesResponseNetworkInjection {
+export interface PropertiesNetworkInjectionResponse {
     /**
      * Network injection configuration
      */

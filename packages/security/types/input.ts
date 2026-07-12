@@ -118,16 +118,6 @@ export interface AssignedComponentItemArgs {
 }
 
 /**
- * Describe the properties of a of a standard assignments object reference
- */
-export interface AssignedStandardItemArgs {
-    /**
-     * Full resourceId of the Microsoft.Security/standard object
-     */
-    id?: pulumi.Input<string>;
-}
-
-/**
  * Additional data about the assignment
  */
 export interface AssignmentPropertiesAdditionalDataArgs {
@@ -168,7 +158,7 @@ export interface AuthorizationArgs {
  */
 export interface AutomationActionEventHubArgs {
     /**
-     * The type of the action that will be triggered by the Automation
+     * Enum. Indicates the action type.
      * Expected value is 'EventHub'.
      */
     actionType: pulumi.Input<"EventHub">;
@@ -191,7 +181,7 @@ export interface AutomationActionEventHubArgs {
  */
 export interface AutomationActionLogicAppArgs {
     /**
-     * The type of the action that will be triggered by the Automation
+     * Enum. Indicates the action type.
      * Expected value is 'LogicApp'.
      */
     actionType: pulumi.Input<"LogicApp">;
@@ -210,7 +200,7 @@ export interface AutomationActionLogicAppArgs {
  */
 export interface AutomationActionWorkspaceArgs {
     /**
-     * The type of the action that will be triggered by the Automation
+     * Enum. Indicates the action type.
      * Expected value is 'Workspace'.
      */
     actionType: pulumi.Input<"Workspace">;
@@ -221,7 +211,7 @@ export interface AutomationActionWorkspaceArgs {
 }
 
 /**
- * A rule set which evaluates all its rules upon an event interception. Only when all the included rules in the rule set will be evaluated as 'true', will the event trigger the defined actions. 
+ * A rule set which evaluates all its rules upon an event interception. Only when all the included rules in the rule set will be evaluated as 'true', will the event trigger the defined actions.
  */
 export interface AutomationRuleSetArgs {
     rules?: pulumi.Input<pulumi.Input<AutomationTriggeringRuleArgs>[]>;
@@ -357,6 +347,16 @@ export interface AzureResourceDetailsArgs {
 }
 
 /**
+ * Describe the properties of a of a standard assignments object reference
+ */
+export interface CommonAssignedStandardItemArgs {
+    /**
+     * Full resourceId of the Microsoft.Security/standard object
+     */
+    id?: pulumi.Input<string>;
+}
+
+/**
  * The CSPM monitoring for AWS offering
  */
 export interface CspmMonitorAwsOfferingArgs {
@@ -484,7 +484,7 @@ export interface DefenderCspmAwsOfferingArgs {
     /**
      * The Microsoft Defender container agentless discovery K8s configuration
      */
-    mdcContainersAgentlessDiscoveryK8s?: pulumi.Input<DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs>;
+    mdcContainersAgentlessDiscoveryK8S?: pulumi.Input<DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8SArgs>;
     /**
      * The Microsoft Defender container image assessment configuration
      */
@@ -507,17 +507,17 @@ export interface DefenderCspmAwsOfferingCiemArgs {
     /**
      * Defender CSPM Permissions Management discovery configuration
      */
-    ciemDiscovery?: pulumi.Input<DefenderCspmAwsOfferingCiemDiscoveryArgs>;
+    ciemDiscovery?: pulumi.Input<DefenderCspmAwsOfferingCiemCiemDiscoveryArgs>;
     /**
      * AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
      */
-    ciemOidc?: pulumi.Input<DefenderCspmAwsOfferingCiemOidcArgs>;
+    ciemOidc?: pulumi.Input<DefenderCspmAwsOfferingCiemCiemOidcArgs>;
 }
 
 /**
  * Defender CSPM Permissions Management discovery configuration
  */
-export interface DefenderCspmAwsOfferingCiemDiscoveryArgs {
+export interface DefenderCspmAwsOfferingCiemCiemDiscoveryArgs {
     /**
      * The cloud role ARN in AWS for Permissions Management discovery
      */
@@ -527,7 +527,7 @@ export interface DefenderCspmAwsOfferingCiemDiscoveryArgs {
 /**
  * AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
  */
-export interface DefenderCspmAwsOfferingCiemOidcArgs {
+export interface DefenderCspmAwsOfferingCiemCiemOidcArgs {
     /**
      * the azure active directory app name used of authenticating against AWS
      */
@@ -569,7 +569,7 @@ export interface DefenderCspmAwsOfferingDatabasesDspmArgs {
 /**
  * The Microsoft Defender container agentless discovery K8s configuration
  */
-export interface DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs {
+export interface DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8SArgs {
     /**
      * The cloud role ARN in AWS for this feature
      */
@@ -638,7 +638,7 @@ export interface DefenderCspmGcpOfferingArgs {
     /**
      * The Microsoft Defender Container agentless discovery configuration
      */
-    mdcContainersAgentlessDiscoveryK8s?: pulumi.Input<DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs>;
+    mdcContainersAgentlessDiscoveryK8S?: pulumi.Input<DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8SArgs>;
     /**
      * The Microsoft Defender Container image assessment configuration
      */
@@ -693,7 +693,7 @@ export interface DefenderCspmGcpOfferingDataSensitivityDiscoveryArgs {
 /**
  * The Microsoft Defender Container agentless discovery configuration
  */
-export interface DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs {
+export interface DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8SArgs {
     /**
      * Is Microsoft Defender container agentless discovery enabled
      */
@@ -877,7 +877,7 @@ export interface DefenderForContainersAwsOfferingArgs {
     /**
      * The Microsoft Defender container agentless discovery K8s configuration
      */
-    mdcContainersAgentlessDiscoveryK8s?: pulumi.Input<DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs>;
+    mdcContainersAgentlessDiscoveryK8S?: pulumi.Input<DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8SArgs>;
     /**
      * The Microsoft Defender container image assessment configuration
      */
@@ -936,7 +936,7 @@ export interface DefenderForContainersAwsOfferingKubernetesServiceArgs {
 /**
  * The Microsoft Defender container agentless discovery K8s configuration
  */
-export interface DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs {
+export interface DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8SArgs {
     /**
      * The cloud role ARN in AWS for this feature
      */
@@ -1013,7 +1013,7 @@ export interface DefenderForContainersGcpOfferingArgs {
     /**
      * The Microsoft Defender Container agentless discovery configuration
      */
-    mdcContainersAgentlessDiscoveryK8s?: pulumi.Input<DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs>;
+    mdcContainersAgentlessDiscoveryK8S?: pulumi.Input<DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8SArgs>;
     /**
      * The Microsoft Defender Container image assessment configuration
      */
@@ -1050,7 +1050,7 @@ export interface DefenderForContainersGcpOfferingDataPipelineNativeCloudConnecti
 /**
  * The Microsoft Defender Container agentless discovery configuration
  */
-export interface DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs {
+export interface DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8SArgs {
     /**
      * Is Microsoft Defender container agentless discovery enabled
      */
@@ -1223,16 +1223,6 @@ export interface DefenderForServersAwsOfferingArcAutoProvisioningArgs {
 }
 
 /**
- * configuration for Vulnerability Assessment autoprovisioning
- */
-export interface DefenderForServersAwsOfferingConfigurationArgs {
-    /**
-     * The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-     */
-    type?: pulumi.Input<string | enums.Type>;
-}
-
-/**
  * The Defender for servers connection configuration
  */
 export interface DefenderForServersAwsOfferingDefenderForServersArgs {
@@ -1273,11 +1263,21 @@ export interface DefenderForServersAwsOfferingVaAutoProvisioningArgs {
     /**
      * configuration for Vulnerability Assessment autoprovisioning
      */
-    configuration?: pulumi.Input<DefenderForServersAwsOfferingConfigurationArgs>;
+    configuration?: pulumi.Input<DefenderForServersAwsOfferingVaAutoProvisioningConfigurationArgs>;
     /**
      * Is Vulnerability Assessment auto provisioning enabled
      */
     enabled?: pulumi.Input<boolean>;
+}
+
+/**
+ * configuration for Vulnerability Assessment autoprovisioning
+ */
+export interface DefenderForServersAwsOfferingVaAutoProvisioningConfigurationArgs {
+    /**
+     * The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+     */
+    type?: pulumi.Input<string | enums.Type>;
 }
 
 /**
@@ -1348,16 +1348,6 @@ export interface DefenderForServersGcpOfferingArcAutoProvisioningArgs {
 }
 
 /**
- * configuration for Vulnerability Assessment autoprovisioning
- */
-export interface DefenderForServersGcpOfferingConfigurationArgs {
-    /**
-     * The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-     */
-    type?: pulumi.Input<string | enums.Type>;
-}
-
-/**
  * The Defender for servers connection configuration
  */
 export interface DefenderForServersGcpOfferingDefenderForServersArgs {
@@ -1402,11 +1392,21 @@ export interface DefenderForServersGcpOfferingVaAutoProvisioningArgs {
     /**
      * configuration for Vulnerability Assessment autoprovisioning
      */
-    configuration?: pulumi.Input<DefenderForServersGcpOfferingConfigurationArgs>;
+    configuration?: pulumi.Input<DefenderForServersGcpOfferingVaAutoProvisioningConfigurationArgs>;
     /**
      * Is Vulnerability Assessment auto provisioning enabled
      */
     enabled?: pulumi.Input<boolean>;
+}
+
+/**
+ * configuration for Vulnerability Assessment autoprovisioning
+ */
+export interface DefenderForServersGcpOfferingVaAutoProvisioningConfigurationArgs {
+    /**
+     * The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+     */
+    type?: pulumi.Input<string | enums.Type>;
 }
 
 /**
@@ -1527,7 +1527,7 @@ export interface ExtensionArgs {
      */
     isEnabled: pulumi.Input<string | enums.IsEnabled>;
     /**
-     * The extension name. Supported values are: <br><br>**AgentlessDiscoveryForKubernetes** - Provides zero footprint, API-based discovery of Kubernetes clusters, their configurations and deployments. The collected data is used to create a contextualized security graph for Kubernetes clusters, provide risk hunting capabilities, and visualize risks and threats to  Kubernetes environments and workloads.<br>Available for CloudPosture plan and Containers plan.<br><br>**OnUploadMalwareScanning** - Limits the GB to be scanned per month for each storage account within the subscription. Once this limit reached on a given storage account, Blobs won't be scanned during current calendar month.<br>Available for StorageAccounts plan (DefenderForStorageV2 sub plans).<br><br>**SensitiveDataDiscovery** - Sensitive data discovery identifies Blob storage container with sensitive data such as credentials, credit cards, and more, to help prioritize and investigate security events.<br>Available for StorageAccounts plan (DefenderForStorageV2 sub plan) and CloudPosture plan.<br><br>**ContainerRegistriesVulnerabilityAssessments** - Provides vulnerability management for images stored in your container registries.<br>Available for CloudPosture plan and Containers plan.<br><br>**MdeDesignatedSubscription** - Direct onboarding is a seamless integration between Defender for Endpoint and Defender for Cloud that doesn’t require extra software deployment on your servers. The onboarded resources will be presented under a designated Azure Subscription you configure<br>Available for VirtualMachines plan (P1 and P2 sub plans).<br><br>**AgentlessVmScanning** - Scans your machines for installed software, vulnerabilities, malware and secret scanning without relying on agents or impacting machine performance. Learn more here https://learn.microsoft.com/en-us/azure/defender-for-cloud/concept-agentless-data-collection.<br>Available for CloudPosture plan, VirtualMachines plan (P2 sub plan) and Containers plan.<br><br>**EntraPermissionsManagement** - Permissions Management provides Cloud Infrastructure Entitlement Management (CIEM) capabilities that helps organizations to manage and control user access and entitlements in their cloud infrastructure - important attack vector for cloud environments.<br>Permissions Management analyzes all permissions and active usage, and suggests recommendations to reduce permissions to enforce the principle of least privilege. Learn more here https://learn.microsoft.com/en-us/azure/defender-for-cloud/permissions-management.<br>Available for CloudPosture plan. <br><br>**FileIntegrityMonitoring** - File integrity monitoring (FIM), examines operating system files.<br>Windows registries, Linux system files, in real time, for changes that might indicate an attack.<br>Available for VirtualMachines plan (P2 sub plan). <br><br>**ContainerSensor** - The sensor is based on IG and provides a rich threat detection suite for Kubernetes clusters, nodes, and workloads, powered by Microsoft leading threat intelligence, provides mapping to MITRE ATT&CK framework.<br>Available for Containers plan. <br><br>**AIPromptEvidence** - Exposes the prompts passed between the user and the AI model as alert evidence. This helps classify and triage the alerts with relevant user context. The prompt snippets will include only segments of the user prompt or model response that were deemed suspicious and relevant for security classifications. The prompt evidence will be available through Defender portal as part of each alert.<br>Available for AI plan. <br><br>
+     * The extension name. Supported values are: <br><br>**AgentlessDiscoveryForKubernetes** - Provides zero footprint, API-based discovery of Kubernetes clusters, their configurations and deployments. The collected data is used to create a contextualized security graph for Kubernetes clusters, provide risk hunting capabilities, and visualize risks and threats to  Kubernetes environments and workloads.<br>Available for CloudPosture plan and Containers plan.<br><br>**OnUploadMalwareScanning** - Limits the GB to be scanned per month for each storage account within the subscription. Once this limit reached on a given storage account, Blobs won't be scanned during current calendar month.<br>Available for StorageAccounts plan (DefenderForStorageV2 sub plans).<br><br>**SensitiveDataDiscovery** - Sensitive data discovery identifies Blob storage container with sensitive data such as credentials, credit cards, and more, to help prioritize and investigate security events.<br>Available for StorageAccounts plan (DefenderForStorageV2 sub plan) and CloudPosture plan.<br><br>**ContainerRegistriesVulnerabilityAssessments** - Provides vulnerability management for images stored in your container registries.<br>Available for CloudPosture plan and Containers plan.<br><br>**MdeDesignatedSubscription** - Direct onboarding is a seamless integration between Defender for Endpoint and Defender for Cloud that doesn't require extra software deployment on your servers. The onboarded resources will be presented under a designated Azure Subscription you configure<br>Available for VirtualMachines plan (P1 and P2 sub plans).<br><br>**AgentlessVmScanning** - Scans your machines for installed software, vulnerabilities, malware and secret scanning without relying on agents or impacting machine performance. Learn more here https://learn.microsoft.com/en-us/azure/defender-for-cloud/concept-agentless-data-collection.<br>Available for CloudPosture plan, VirtualMachines plan (P2 sub plan) and Containers plan.<br><br>**EntraPermissionsManagement** - Permissions Management provides Cloud Infrastructure Entitlement Management (CIEM) capabilities that helps organizations to manage and control user access and entitlements in their cloud infrastructure - important attack vector for cloud environments.<br>Permissions Management analyzes all permissions and active usage, and suggests recommendations to reduce permissions to enforce the principle of least privilege. Learn more here https://learn.microsoft.com/en-us/azure/defender-for-cloud/permissions-management.<br>Available for CloudPosture plan. <br><br>**FileIntegrityMonitoring** - File integrity monitoring (FIM), examines operating system files.<br>Windows registries, Linux system files, in real time, for changes that might indicate an attack.<br>Available for VirtualMachines plan (P2 sub plan). <br><br>**ContainerSensor** - The sensor is based on IG and provides a rich threat detection suite for Kubernetes clusters, nodes, and workloads, powered by Microsoft leading threat intelligence, provides mapping to MITRE ATT&CK framework.<br>Available for Containers plan. <br><br>**AIPromptEvidence** - Exposes the prompts passed between the user and the AI model as alert evidence. This helps classify and triage the alerts with relevant user context. The prompt snippets will include only segments of the user prompt or model response that were deemed suspicious and relevant for security classifications. The prompt evidence will be available through Defender portal as part of each alert.<br>Available for AI plan. <br><br>
      */
     name: pulumi.Input<string>;
 }
@@ -2076,7 +2076,7 @@ export interface SecurityAssessmentPartnerDataArgs {
  */
 export interface SecurityContactPropertiesNotificationsByRoleArgs {
     /**
-     * Defines which RBAC roles will get email notifications from Microsoft Defender for Cloud. List of allowed RBAC roles: 
+     * Defines which RBAC roles will get email notifications from Microsoft Defender for Cloud. List of allowed RBAC roles:
      */
     roles?: pulumi.Input<pulumi.Input<string | enums.SecurityContactRole>[]>;
     /**

@@ -5,6 +5,8 @@ import * as types from "./types";
  * Implements NetworkMonitor GET method.
  *
  * Uses Azure REST API version 2024-06-15-preview.
+ *
+ * Other available API versions: 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNetworkMonitor(args: GetNetworkMonitorArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkMonitorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,13 +32,33 @@ export interface GetNetworkMonitorArgs {
  */
 export interface GetNetworkMonitorResult {
     /**
+     * Administrative state of the resource.
+     */
+    readonly administrativeState: string;
+    /**
+     * Switch configuration description.
+     */
+    readonly annotation?: string;
+    /**
      * The Azure API version of the resource.
      */
     readonly azureApiVersion: string;
     /**
+     * BMP Configurations for the Network Fabric.
+     */
+    readonly bmpConfiguration?: types.outputs.BmpConfigurationPropertiesResponse;
+    /**
+     * Configuration state of the resource.
+     */
+    readonly configurationState: string;
+    /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
+    /**
+     * Details of the last operation performed on the resource
+     */
+    readonly lastOperation: types.outputs.LastOperationPropertiesResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -46,9 +68,9 @@ export interface GetNetworkMonitorResult {
      */
     readonly name: string;
     /**
-     * The NetworkFabric Properties
+     * Provides you the latest status of the NetworkMonitor resource
      */
-    readonly properties: types.outputs.NetworkMonitorPropertiesResponse;
+    readonly provisioningState: string;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -66,6 +88,8 @@ export interface GetNetworkMonitorResult {
  * Implements NetworkMonitor GET method.
  *
  * Uses Azure REST API version 2024-06-15-preview.
+ *
+ * Other available API versions: 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNetworkMonitorOutput(args: GetNetworkMonitorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkMonitorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

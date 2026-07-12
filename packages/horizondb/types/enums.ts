@@ -1,0 +1,51 @@
+export const CreateModeCluster = {
+    /**
+     * Create a new cluster
+     */
+    Create: "Create",
+    /**
+     * Update an existing cluster
+     */
+    Update: "Update",
+    /**
+     * Create cluster from point-in-time restore
+     */
+    PointInTimeRestore: "PointInTimeRestore",
+} as const;
+
+/**
+ * The mode to create a new HorizonDB cluster.
+ */
+export type CreateModeCluster = (typeof CreateModeCluster)[keyof typeof CreateModeCluster];
+
+export const ReplicaRole = {
+    /**
+     * Read-only replica
+     */
+    Read: "Read",
+    /**
+     * ReadWrite replica
+     */
+    ReadWrite: "ReadWrite",
+} as const;
+
+/**
+ * Role of the replica.
+ */
+export type ReplicaRole = (typeof ReplicaRole)[keyof typeof ReplicaRole];
+
+export const ZonePlacementPolicy = {
+    /**
+     * Enforce zonal redundancy
+     */
+    Strict: "Strict",
+    /**
+     * Best-effort placement (default)
+     */
+    BestEffort: "BestEffort",
+} as const;
+
+/**
+ * Defines how replicas are placed across availability zones.
+ */
+export type ZonePlacementPolicy = (typeof ZonePlacementPolicy)[keyof typeof ZonePlacementPolicy];
