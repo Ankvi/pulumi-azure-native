@@ -622,20 +622,6 @@ export interface ConnectorDefinitionsResourceProviderResponse {
 }
 
 /**
- * The mapping of content type to a repo path.
- */
-export interface ContentPathMapResponse {
-    /**
-     * Content type.
-     */
-    contentType?: string;
-    /**
-     * The path to the content.
-     */
-    path?: string;
-}
-
-/**
  * The Custom permissions required for the connector.
  */
 export interface CustomPermissionDetailsResponse {
@@ -1829,6 +1815,20 @@ export interface PropertyConditionPropertiesResponse {
 }
 
 /**
+ * Information regarding pull request for protected branches.
+ */
+export interface PullRequestResponse {
+    /**
+     * State of the pull request
+     */
+    state: string;
+    /**
+     * URL of pull request
+     */
+    url: string;
+}
+
+/**
  * Represents a repository.
  */
 export interface RepoResponse {
@@ -1857,11 +1857,11 @@ export interface RepositoryResourceInfoResponse {
     /**
      * Resources created in Azure DevOps for this source-control.
      */
-    azureDevOpsResourceInfo?: AzureDevOpsResourceInfoResponse;
+    azureDevOpsResourceInfo: AzureDevOpsResourceInfoResponse;
     /**
      * Resources created in GitHub for this source-control.
      */
-    gitHubResourceInfo?: GitHubResourceInfoResponse;
+    gitHubResourceInfo: GitHubResourceInfoResponse;
     /**
      * The webhook object created for the source-control.
      */
@@ -1875,23 +1875,19 @@ export interface RepositoryResponse {
     /**
      * Branch name of repository.
      */
-    branch?: string;
+    branch: string;
     /**
      * Url to access repository action logs.
      */
-    deploymentLogsUrl?: string;
+    deploymentLogsUrl: string;
     /**
      * Display url of repository.
      */
     displayUrl?: string;
     /**
-     * Dictionary of source control content type and path mapping.
-     */
-    pathMapping?: ContentPathMapResponse[];
-    /**
      * Url of repository.
      */
-    url?: string;
+    url: string;
 }
 
 /**
@@ -2072,6 +2068,28 @@ export interface SecurityMLAnalyticsSettingsDataSourceResponse {
      * The data types used by the security ml analytics settings
      */
     dataTypes?: string[];
+}
+
+/**
+ * Service principal metadata.
+ */
+export interface ServicePrincipalResponse {
+    /**
+     * App id of service principal.
+     */
+    appId: string;
+    /**
+     * Expiration time of service principal credentials.
+     */
+    credentialsExpireOn?: string;
+    /**
+     * Id of service principal.
+     */
+    id: string;
+    /**
+     * Tenant id of service principal.
+     */
+    tenantId: string;
 }
 
 /**
@@ -2392,13 +2410,39 @@ export interface WebhookResponse {
     /**
      * Unique identifier for the webhook.
      */
-    webhookId?: string;
+    webhookId: string;
     /**
      * Time when the webhook secret was updated.
      */
-    webhookSecretUpdateTime?: string;
+    webhookSecretUpdateTime: string;
     /**
      * URL that gets invoked by the webhook.
      */
-    webhookUrl?: string;
+    webhookUrl: string;
+}
+
+/**
+ * Workload Identity Federation metadata.
+ */
+export interface WorkloadIdentityFederationResponse {
+    /**
+     * App id of Workload Identity Federation.
+     */
+    appId: string;
+    /**
+     * Id of Workload Identity Federation.
+     */
+    id: string;
+    /**
+     * Issuer of Workload Identity Federation.
+     */
+    issuer: string;
+    /**
+     * Subject of Workload Identity Federation.
+     */
+    subject: string;
+    /**
+     * Tenant id of Workload Identity Federation.
+     */
+    tenantId: string;
 }

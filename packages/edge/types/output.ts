@@ -33,7 +33,7 @@ export interface AzureResourceManagerCommonTypesExtendedLocationResponse {
 }
 
 /**
- * Capability, to match in Solution Templates and Targets
+ * Capability, to match in Solution Templates & Targets
  */
 export interface CapabilityResponse {
     /**
@@ -323,6 +323,50 @@ export interface ExecutionPropertiesResponse {
  * Execution Status
  */
 export interface ExecutionStatusResponse {
+    /**
+     * target resource statuses
+     */
+    stageHistory?: StageStatusResponse[];
+    /**
+     * Deployment status
+     */
+    status?: number;
+    /**
+     * status details
+     */
+    statusMessage?: string;
+    /**
+     * The lastModified timestamp of the Status
+     */
+    updateTime?: string;
+}
+
+/**
+ * ExecutionV2 Properties
+ */
+export interface ExecutionV2PropertiesResponse {
+    /**
+     * Provisioning state of resource
+     */
+    provisioningState: string;
+    /**
+     * ExecutionV2 specification
+     */
+    specification?: any;
+    /**
+     * Status of ExecutionV2
+     */
+    status: ExecutionV2StatusResponse;
+    /**
+     * Workflow version of ExecutionV2
+     */
+    workflowVersionId?: string;
+}
+
+/**
+ * ExecutionV2 Status
+ */
+export interface ExecutionV2StatusResponse {
     /**
      * target resource statuses
      */
@@ -905,9 +949,57 @@ export interface WorkflowPropertiesResponse {
 }
 
 /**
+ * Workflow Properties
+ */
+export interface WorkflowV2PropertiesResponse {
+    /**
+     * Provisioning state of resource
+     */
+    provisioningState: string;
+    /**
+     * Workflow template Id
+     */
+    workflowTemplateId: string;
+}
+
+/**
  * Workflow Version Properties
  */
 export interface WorkflowVersionPropertiesResponse {
+    /**
+     * Resolved configuration values
+     */
+    configuration: string;
+    /**
+     * Provisioning state of resource
+     */
+    provisioningState: string;
+    /**
+     * Review id of resolved config for this workflow version
+     */
+    reviewId: string;
+    /**
+     * Revision number of resolved config for this workflow version
+     */
+    revision: number;
+    /**
+     * Execution specification
+     */
+    specification?: any;
+    /**
+     * A list of stage specs
+     */
+    stageSpec: StageSpecResponse[];
+    /**
+     * State of workflow version
+     */
+    state: string;
+}
+
+/**
+ * Workflow Version Properties
+ */
+export interface WorkflowVersionV2PropertiesResponse {
     /**
      * Resolved configuration values
      */

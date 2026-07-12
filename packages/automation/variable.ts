@@ -143,7 +143,7 @@ export interface VariableArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
@@ -151,7 +151,7 @@ export interface VariableArgs {
      */
     value?: pulumi.Input<string>;
     /**
-     * The variable name.
+     * The name of variable.
      */
     variableName?: pulumi.Input<string>;
 }

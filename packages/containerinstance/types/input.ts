@@ -183,7 +183,7 @@ export interface ContainerGroupProfileReferenceDefinitionArgs {
  */
 export interface ContainerGroupProfileStubArgs {
     /**
-     *  Container Group properties which can be set while creating or updating the NGroups.
+     * Container Group properties which can be set while creating or updating the NGroups.
      */
     containerGroupProperties?: pulumi.Input<NGroupContainerGroupPropertiesArgs>;
     /**
@@ -351,10 +351,10 @@ export interface ElasticProfileArgs {
  * Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
  */
 export interface ElasticProfileContainerGroupNamingPolicyArgs {
-    guidNamingPolicy?: pulumi.Input<ElasticProfileGuidNamingPolicyArgs>;
+    guidNamingPolicy?: pulumi.Input<ElasticProfileContainerGroupNamingPolicyGuidNamingPolicyArgs>;
 }
 
-export interface ElasticProfileGuidNamingPolicyArgs {
+export interface ElasticProfileContainerGroupNamingPolicyGuidNamingPolicyArgs {
     /**
      * The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
      */
@@ -430,7 +430,7 @@ export interface FileSharePropertiesArgs {
      */
     shareAccessTier?: pulumi.Input<enums.AzureFileShareAccessTier>;
     /**
-     *  Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
+     * Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
      */
     shareAccessType?: pulumi.Input<enums.AzureFileShareAccessType>;
 }

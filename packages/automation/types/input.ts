@@ -33,6 +33,20 @@ export interface AdvancedScheduleMonthlyOccurrenceArgs {
 }
 
 /**
+ * Error response of an operation failure
+ */
+export interface AutomationErrorResponseArgs {
+    /**
+     * Error code
+     */
+    code?: pulumi.Input<string>;
+    /**
+     * Error message indicating why the operation failed.
+     */
+    message?: pulumi.Input<string>;
+}
+
+/**
  * Azure query for the update configuration.
  */
 export interface AzureQueryPropertiesArgs {
@@ -172,20 +186,6 @@ export interface EncryptionPropertiesIdentityArgs {
      * The user identity used for CMK. It will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
     userAssignedIdentity?: any;
-}
-
-/**
- * Error response of an operation failure
- */
-export interface ErrorResponseArgs {
-    /**
-     * Error code
-     */
-    code?: pulumi.Input<string>;
-    /**
-     * Error message indicating why the operation failed.
-     */
-    message?: pulumi.Input<string>;
 }
 
 /**
@@ -423,15 +423,6 @@ export interface SUCSchedulePropertiesArgs {
      * Gets or sets the time zone of the schedule.
      */
     timeZone?: pulumi.Input<string>;
-}
-/**
- * sucschedulePropertiesArgsProvideDefaults sets the appropriate defaults for SUCSchedulePropertiesArgs
- */
-export function sucschedulePropertiesArgsProvideDefaults(val: SUCSchedulePropertiesArgs): SUCSchedulePropertiesArgs {
-    return {
-        ...val,
-        isEnabled: (val.isEnabled) ?? false,
-    };
 }
 
 /**

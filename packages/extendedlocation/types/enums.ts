@@ -1,4 +1,7 @@
 export const HostType = {
+    /**
+     * Kubernetes
+     */
     Kubernetes: "Kubernetes",
 } as const;
 
@@ -8,7 +11,13 @@ export const HostType = {
 export type HostType = (typeof HostType)[keyof typeof HostType];
 
 export const ResourceIdentityType = {
+    /**
+     * SystemAssigned
+     */
     SystemAssigned: "SystemAssigned",
+    /**
+     * None
+     */
     None: "None",
 } as const;
 

@@ -164,7 +164,7 @@ export interface CustomHttpsConfigurationResponse {
     /**
      * The Key Vault containing the SSL certificate
      */
-    vault?: KeyVaultCertificateSourceParametersResponseVault;
+    vault?: KeyVaultCertificateSourceParametersVaultResponse;
 }
 
 /**
@@ -317,13 +317,13 @@ export interface FrontendEndpointResponse {
     /**
      * Defines the Web Application Firewall policy for each host (if applicable)
      */
-    webApplicationFirewallPolicyLink?: FrontendEndpointUpdateParametersResponseWebApplicationFirewallPolicyLink;
+    webApplicationFirewallPolicyLink?: FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLinkResponse;
 }
 
 /**
  * Defines the Web Application Firewall policy for each host (if applicable)
  */
-export interface FrontendEndpointUpdateParametersResponseWebApplicationFirewallPolicyLink {
+export interface FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLinkResponse {
     /**
      * Resource ID.
      */
@@ -412,7 +412,7 @@ export function healthProbeSettingsModelResponseProvideDefaults(val: HealthProbe
 /**
  * The Key Vault containing the SSL certificate
  */
-export interface KeyVaultCertificateSourceParametersResponseVault {
+export interface KeyVaultCertificateSourceParametersVaultResponse {
     /**
      * Resource ID.
      */
@@ -509,12 +509,63 @@ export interface ManagedRuleOverrideResponse {
      * Identifier for the managed rule.
      */
     ruleId: string;
+    /**
+     * Describes the override sensitivity to be applied when rule matches.
+     */
+    sensitivity?: string;
+}
+
+/**
+ * Defines the list of exceptions for the managed rule sets.
+ */
+export interface ManagedRuleSetExceptionListResponse {
+    /**
+     * List of exceptions.
+     */
+    exceptions?: ManagedRuleSetExceptionResponse[];
+}
+
+/**
+ * Excludes whole requests from managed rule evaluation according to match conditions.
+ */
+export interface ManagedRuleSetExceptionResponse {
+    /**
+     * List of values to be matched with.
+     */
+    matchValues: string[];
+    /**
+     * The variable to be evaluated for excluding the request.
+     */
+    matchVariable: string;
+    /**
+     * Scope(s) of the exception.
+     */
+    scopes: ManagedRuleSetScopeResponse[];
+    /**
+     * When matchVariable is a collection, operator used to specify which elements
+     * in the collection this exception applies to.
+     * Currently supported only for RequestHeaderNames.
+     */
+    selector?: string;
+    /**
+     * Comparison operator to apply to the selector when specifying which elements
+     * in the collection this exception applies to.
+     */
+    selectorMatchOperator?: string;
+    /**
+     * Comparison operator to apply to the value to be matched.
+     */
+    valueMatchOperator: string;
 }
 
 /**
  * Defines the list of managed rule sets for the policy.
  */
 export interface ManagedRuleSetListResponse {
+    /**
+     * List of exceptions applied on the managed rule sets.
+     */
+    exceptionsList?: ManagedRuleSetExceptionListResponse;
     /**
      * List of rule sets.
      */
@@ -543,6 +594,26 @@ export interface ManagedRuleSetResponse {
     ruleSetType: string;
     /**
      * Defines the version of the rule set to use.
+     */
+    ruleSetVersion: string;
+}
+
+/**
+ * Defines the scope of the managed rules.
+ */
+export interface ManagedRuleSetScopeResponse {
+    /**
+     * List of rule group scopes.
+     */
+    ruleGroupScopes?: RuleGroupScopeResponse[];
+    /**
+     * Defines the rule set type.
+     * Examples: DefaultRuleSet, Microsoft_DefaultRuleSet,
+     * Microsoft_BotManagerRuleSet, Microsoft_HTTPDDoSRuleSet, BotProtection
+     */
+    ruleSetType: string;
+    /**
+     * Defines the version of the rule set.
      */
     ruleSetVersion: string;
 }
@@ -581,6 +652,10 @@ export interface MatchConditionResponse {
  * Defines top-level WebApplicationFirewallPolicy configuration settings.
  */
 export interface PolicySettingsResponse {
+    /**
+     * Defines the Captcha cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
+     */
+    captchaExpirationInMinutes?: number;
     /**
      * If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
      */
@@ -711,17 +786,41 @@ export interface RoutingRuleResponse {
     /**
      * Defines the Web Application Firewall policy for each routing rule (if applicable)
      */
-    webApplicationFirewallPolicyLink?: RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink;
+    webApplicationFirewallPolicyLink?: RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkResponse;
 }
 
 /**
  * Defines the Web Application Firewall policy for each routing rule (if applicable)
  */
-export interface RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink {
+export interface RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkResponse {
     /**
      * Resource ID.
      */
     id?: string;
+}
+
+/**
+ * Defines the scope of the rule group.
+ */
+export interface RuleGroupScopeResponse {
+    /**
+     * Defines the rule group name.
+     */
+    ruleGroupName: string;
+    /**
+     * List of rule scopes.
+     */
+    ruleScopes?: RuleScopeResponse[];
+}
+
+/**
+ * Defines the scope of the rule.
+ */
+export interface RuleScopeResponse {
+    /**
+     * Defines the rule id.
+     */
+    ruleId: string;
 }
 
 /**
@@ -819,7 +918,7 @@ export interface RulesEngineRuleResponse {
      */
     name: string;
     /**
-     * A priority assigned to this rule. 
+     * A priority assigned to this rule.
      */
     priority: number;
 }

@@ -407,6 +407,10 @@ export interface ManagedRuleOverrideArgs {
      * Identifier for the managed rule.
      */
     ruleId: pulumi.Input<string>;
+    /**
+     * Describes the override sensitivity to be applied when rule matches.
+     */
+    sensitivity?: pulumi.Input<string | enums.SensitivityType>;
 }
 
 /**
@@ -436,13 +440,80 @@ export interface ManagedRuleSetArgs {
 }
 
 /**
+ * Excludes whole requests from managed rule evaluation according to match conditions.
+ */
+export interface ManagedRuleSetExceptionArgs {
+    /**
+     * List of values to be matched with.
+     */
+    matchValues: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The variable to be evaluated for excluding the request.
+     */
+    matchVariable: pulumi.Input<string | enums.ExceptionMatchVariable>;
+    /**
+     * Scope(s) of the exception.
+     */
+    scopes: pulumi.Input<pulumi.Input<ManagedRuleSetScopeArgs>[]>;
+    /**
+     * When matchVariable is a collection, operator used to specify which elements
+     * in the collection this exception applies to.
+     * Currently supported only for RequestHeaderNames.
+     */
+    selector?: pulumi.Input<string>;
+    /**
+     * Comparison operator to apply to the selector when specifying which elements
+     * in the collection this exception applies to.
+     */
+    selectorMatchOperator?: pulumi.Input<string | enums.ExceptionSelectorMatchOperator>;
+    /**
+     * Comparison operator to apply to the value to be matched.
+     */
+    valueMatchOperator: pulumi.Input<string | enums.ExceptionValueMatchOperator>;
+}
+
+/**
+ * Defines the list of exceptions for the managed rule sets.
+ */
+export interface ManagedRuleSetExceptionListArgs {
+    /**
+     * List of exceptions.
+     */
+    exceptions?: pulumi.Input<pulumi.Input<ManagedRuleSetExceptionArgs>[]>;
+}
+
+/**
  * Defines the list of managed rule sets for the policy.
  */
 export interface ManagedRuleSetListArgs {
     /**
+     * List of exceptions applied on the managed rule sets.
+     */
+    exceptionsList?: pulumi.Input<ManagedRuleSetExceptionListArgs>;
+    /**
      * List of rule sets.
      */
     managedRuleSets?: pulumi.Input<pulumi.Input<ManagedRuleSetArgs>[]>;
+}
+
+/**
+ * Defines the scope of the managed rules.
+ */
+export interface ManagedRuleSetScopeArgs {
+    /**
+     * List of rule group scopes.
+     */
+    ruleGroupScopes?: pulumi.Input<pulumi.Input<RuleGroupScopeArgs>[]>;
+    /**
+     * Defines the rule set type.
+     * Examples: DefaultRuleSet, Microsoft_DefaultRuleSet,
+     * Microsoft_BotManagerRuleSet, Microsoft_HTTPDDoSRuleSet, BotProtection
+     */
+    ruleSetType: pulumi.Input<string>;
+    /**
+     * Defines the version of the rule set.
+     */
+    ruleSetVersion: pulumi.Input<string>;
 }
 
 /**
@@ -479,6 +550,10 @@ export interface MatchConditionArgs {
  * Defines top-level WebApplicationFirewallPolicy configuration settings.
  */
 export interface PolicySettingsArgs {
+    /**
+     * Defines the Captcha cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
+     */
+    captchaExpirationInMinutes?: pulumi.Input<number>;
     /**
      * If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
      */
@@ -605,6 +680,30 @@ export interface RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs
 }
 
 /**
+ * Defines the scope of the rule group.
+ */
+export interface RuleGroupScopeArgs {
+    /**
+     * Defines the rule group name.
+     */
+    ruleGroupName: pulumi.Input<string>;
+    /**
+     * List of rule scopes.
+     */
+    ruleScopes?: pulumi.Input<pulumi.Input<RuleScopeArgs>[]>;
+}
+
+/**
+ * Defines the scope of the rule.
+ */
+export interface RuleScopeArgs {
+    /**
+     * Defines the rule id.
+     */
+    ruleId: pulumi.Input<string>;
+}
+
+/**
  * One or more actions that will execute, modifying the request and/or response.
  */
 export interface RulesEngineActionArgs {
@@ -673,7 +772,7 @@ export interface RulesEngineRuleArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * A priority assigned to this rule. 
+     * A priority assigned to this rule.
      */
     priority: pulumi.Input<number>;
 }

@@ -395,7 +395,7 @@ export interface LinkedTemplateArtifactArgs {
 }
 
 /**
- * Managed identity generic object.
+ * Describes the managed identities for an Azure resource.
  */
 export interface ManagedServiceIdentityArgs {
     /**

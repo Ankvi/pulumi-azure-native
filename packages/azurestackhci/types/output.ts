@@ -2081,6 +2081,72 @@ export interface InboundNATRuleResponse {
 }
 
 /**
+ * Inbound rule properties - extends InboundNATRuleProperties with additional status tracking
+ */
+export interface InboundRulePropertiesResponse {
+    /**
+     * IP configuration for the target backend.
+     */
+    backendIPConfiguration: IPConfigurationArmReferenceResponse;
+    /**
+     * backend Port for the inbound rule
+     */
+    backendPort: number;
+    /**
+     * Frontend Port for the inbound rule
+     */
+    frontendPort: number;
+    /**
+     * Protocol for the NAT rule
+     */
+    protocol: string;
+    /**
+     * Provisioning state of the inbound rule
+     */
+    provisioningState: string;
+    /**
+     * Public IP Address for this NAT rule
+     */
+    publicIPAddress: PublicIPAddressArmReferenceResponse;
+    /**
+     * The observed state of Inbound Rule
+     */
+    status: InboundRuleStatusResponse;
+}
+
+/**
+ * Provisioning status of Inbound Rule
+ */
+export interface InboundRuleStatusProvisioningStatusResponse {
+    /**
+     * The ID of the operation performed on the inbound rule
+     */
+    operationId?: string;
+    /**
+     * The status of the operation performed on the inbound rule [Succeeded, Failed, InProgress]
+     */
+    status: string;
+}
+
+/**
+ * The observed state of inbound rule
+ */
+export interface InboundRuleStatusResponse {
+    /**
+     * InboundRule provisioning error code
+     */
+    errorCode?: string;
+    /**
+     * Descriptive error message
+     */
+    errorMessage?: string;
+    /**
+     * InboundRule provisioning status
+     */
+    provisioningStatus?: InboundRuleStatusProvisioningStatusResponse;
+}
+
+/**
  * The InfrastructureNetwork of a AzureStackHCI Cluster.
  */
 export interface InfrastructureNetworkResponse {
@@ -2853,7 +2919,7 @@ export interface NatGatewayArmReferenceResponse {
  */
 export interface NatGatewayPropertiesResponse {
     /**
-     * List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet
+     * List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet. Removed in 2026-04-01-preview; use InboundRule Child resource instead.
      */
     inboundNATRules?: InboundNATRuleResponse[];
     /**

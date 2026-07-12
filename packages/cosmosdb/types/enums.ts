@@ -1,5 +1,11 @@
 export const AllocationState = {
+    /**
+     * Active implies the virtual machines of the cluster are allocated.
+     */
     Active: "Active",
+    /**
+     * Deallocated implies virtual machines and resources are deallocated.
+     */
     Deallocated: "Deallocated",
 } as const;
 
@@ -208,6 +214,16 @@ export const DistanceFunction = {
  * The distance function to use for distance calculation in between vectors.
  */
 export type DistanceFunction = (typeof DistanceFunction)[keyof typeof DistanceFunction];
+
+export const FleetAnalyticsPropertiesStorageLocationType = {
+    StorageAccount: "StorageAccount",
+    FabricLakehouse: "FabricLakehouse",
+} as const;
+
+/**
+ * The type of the fleet analytics resource.
+ */
+export type FleetAnalyticsPropertiesStorageLocationType = (typeof FleetAnalyticsPropertiesStorageLocationType)[keyof typeof FleetAnalyticsPropertiesStorageLocationType];
 
 export const FleetspaceApiKind = {
     NoSQL: "NoSQL",
@@ -426,16 +442,6 @@ export const SpatialType = {
  * Indicates the spatial type of index.
  */
 export type SpatialType = (typeof SpatialType)[keyof typeof SpatialType];
-
-export const StorageLocationType = {
-    StorageAccount: "StorageAccount",
-    FabricLakehouse: "FabricLakehouse",
-} as const;
-
-/**
- * The type of the fleet analytics resource.
- */
-export type StorageLocationType = (typeof StorageLocationType)[keyof typeof StorageLocationType];
 
 export const TriggerOperation = {
     All: "All",

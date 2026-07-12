@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2026-03-01-preview.
  *
- * Other available API versions: 2026-02-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2026-02-15-preview, 2026-04-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ClusterJob extends pulumi.CustomResource {
     /**
@@ -89,7 +89,7 @@ export class ClusterJob extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20260215preview:ClusterJob" }, { type: "azure-native:azurestackhci/v20260301preview:ClusterJob" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20260215preview:ClusterJob" }, { type: "azure-native:azurestackhci/v20260301preview:ClusterJob" }, { type: "azure-native:azurestackhci/v20260401preview:ClusterJob" }, { type: "azure-native:azurestackhci/v20260501preview:ClusterJob" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ClusterJob.__pulumiType, name, resourceInputs, opts);
     }

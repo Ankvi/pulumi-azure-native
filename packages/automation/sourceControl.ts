@@ -177,7 +177,7 @@ export interface SourceControlArgs {
      */
     repoUrl?: pulumi.Input<string>;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
@@ -185,7 +185,7 @@ export interface SourceControlArgs {
      */
     securityToken?: pulumi.Input<types.inputs.SourceControlSecurityTokenPropertiesArgs>;
     /**
-     * The source control name.
+     * The name of source control.
      */
     sourceControlName?: pulumi.Input<string>;
     /**

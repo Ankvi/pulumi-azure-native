@@ -877,6 +877,32 @@ export interface InboundNATRulePropertiesArgs {
 }
 
 /**
+ * Inbound rule properties - extends InboundNATRuleProperties with additional status tracking
+ */
+export interface InboundRulePropertiesArgs {
+    /**
+     * IP configuration for the target backend.
+     */
+    backendIPConfiguration: pulumi.Input<IPConfigurationArmReferenceArgs>;
+    /**
+     * backend Port for the inbound rule
+     */
+    backendPort: pulumi.Input<number>;
+    /**
+     * Frontend Port for the inbound rule
+     */
+    frontendPort: pulumi.Input<number>;
+    /**
+     * Protocol for the NAT rule
+     */
+    protocol: pulumi.Input<string | enums.InboundNATRuleProtocol>;
+    /**
+     * Public IP Address for this NAT rule
+     */
+    publicIPAddress: pulumi.Input<PublicIPAddressArmReferenceArgs>;
+}
+
+/**
  * The InfrastructureNetwork of a AzureStackHCI Cluster.
  */
 export interface InfrastructureNetworkArgs {
@@ -1192,7 +1218,7 @@ export interface NatGatewayArmReferenceArgs {
  */
 export interface NatGatewayPropertiesArgs {
     /**
-     * List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet
+     * List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet. Removed in 2026-04-01-preview; use InboundRule Child resource instead.
      */
     inboundNATRules?: pulumi.Input<pulumi.Input<InboundNATRuleArgs>[]>;
     /**

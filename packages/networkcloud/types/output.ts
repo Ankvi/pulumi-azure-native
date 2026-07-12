@@ -7,6 +7,9 @@ export interface AadConfigurationResponse {
     adminGroupObjectIds: string[];
 }
 
+/**
+ * AccessBridgeEndpoint describes a single advertised service endpoint.
+ */
 export interface AccessBridgeEndpointResponse {
     /**
      * The fully qualified domain name used to describe the certificate name for the endpoint.
@@ -26,6 +29,9 @@ export interface AccessBridgeEndpointResponse {
     name: string;
 }
 
+/**
+ * AccessBridgeSecurityRule captures an individual access rule enforced by the bridge.
+ */
 export interface AccessBridgeSecurityRuleResponse {
     /**
      * The user provided value describing this rule.
@@ -141,6 +147,20 @@ export interface AvailableUpgradeResponse {
      * The version available for upgrading.
      */
     version: string;
+}
+
+/**
+ * The complex type of the extended location.
+ */
+export interface AzureResourceManagerCommonTypesExtendedLocationResponse {
+    /**
+     * The name of the extended location.
+     */
+    name: string;
+    /**
+     * The type of the extended location.
+     */
+    type: string;
 }
 
 export interface BareMetalMachineConfigurationDataResponse {
@@ -719,6 +739,9 @@ export interface KubernetesLabelResponse {
     value: string;
 }
 
+/**
+ * KubernetesVersionValue describes a specific Kubernetes version that can be deployed.
+ */
 export interface KubernetesVersionValueResponse {
     /**
      * Additional description for the Kubernetes version.

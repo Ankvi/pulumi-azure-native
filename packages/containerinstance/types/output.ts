@@ -185,7 +185,7 @@ export interface ContainerGroupProfileReferenceDefinitionResponse {
  */
 export interface ContainerGroupProfileStubResponse {
     /**
-     *  Container Group properties which can be set while creating or updating the NGroups.
+     * Container Group properties which can be set while creating or updating the NGroups.
      */
     containerGroupProperties?: NGroupContainerGroupPropertiesResponse;
     /**
@@ -558,6 +558,20 @@ export interface DnsConfigurationResponse {
     searchDomains?: string;
 }
 
+export interface ElasticProfileContainerGroupNamingPolicyGuidNamingPolicyResponse {
+    /**
+     * The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
+     */
+    prefix?: string;
+}
+
+/**
+ * Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
+ */
+export interface ElasticProfileContainerGroupNamingPolicyResponse {
+    guidNamingPolicy?: ElasticProfileContainerGroupNamingPolicyGuidNamingPolicyResponse;
+}
+
 /**
  * Describes the elastic profile of the NGroup
  */
@@ -565,26 +579,12 @@ export interface ElasticProfileResponse {
     /**
      * Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
      */
-    containerGroupNamingPolicy?: ElasticProfileResponseContainerGroupNamingPolicy;
+    containerGroupNamingPolicy?: ElasticProfileContainerGroupNamingPolicyResponse;
     desiredCount?: number;
     /**
      * Flag that indicates whether desiredCount should be maintained when customer deletes SPECIFIC container groups (CGs) from the NGroups. In this case, new CGs will be created by NGroup to compensate for the specific deleted ones.
      */
     maintainDesiredCount?: boolean;
-}
-
-/**
- * Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
- */
-export interface ElasticProfileResponseContainerGroupNamingPolicy {
-    guidNamingPolicy?: ElasticProfileResponseGuidNamingPolicy;
-}
-
-export interface ElasticProfileResponseGuidNamingPolicy {
-    /**
-     * The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
-     */
-    prefix?: string;
 }
 
 /**
@@ -697,12 +697,32 @@ export interface EventResponse {
     type: string;
 }
 
+export interface FileSharePropertiesResponse {
+    /**
+     * Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
+     */
+    shareAccessTier?: string;
+    /**
+     * Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
+     */
+    shareAccessType?: string;
+}
+/**
+ * fileSharePropertiesResponseProvideDefaults sets the appropriate defaults for FileSharePropertiesResponse
+ */
+export function fileSharePropertiesResponseProvideDefaults(val: FileSharePropertiesResponse): FileSharePropertiesResponse {
+    return {
+        ...val,
+        shareAccessTier: (val.shareAccessTier) ?? "TransactionOptimized",
+    };
+}
+
 /**
  * File shares that can be mounted on container groups.
  */
 export interface FileShareResponse {
     name?: string;
-    properties?: FileShareResponseProperties;
+    properties?: FileSharePropertiesResponse;
     resourceGroupName?: string;
     storageAccountName?: string;
 }
@@ -712,27 +732,7 @@ export interface FileShareResponse {
 export function fileShareResponseProvideDefaults(val: FileShareResponse): FileShareResponse {
     return {
         ...val,
-        properties: (val.properties ? fileShareResponsePropertiesProvideDefaults(val.properties) : undefined),
-    };
-}
-
-export interface FileShareResponseProperties {
-    /**
-     * Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
-     */
-    shareAccessTier?: string;
-    /**
-     *  Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
-     */
-    shareAccessType?: string;
-}
-/**
- * fileShareResponsePropertiesProvideDefaults sets the appropriate defaults for FileShareResponseProperties
- */
-export function fileShareResponsePropertiesProvideDefaults(val: FileShareResponseProperties): FileShareResponseProperties {
-    return {
-        ...val,
-        shareAccessTier: (val.shareAccessTier) ?? "TransactionOptimized",
+        properties: (val.properties ? fileSharePropertiesResponseProvideDefaults(val.properties) : undefined),
     };
 }
 
@@ -1006,6 +1006,13 @@ export interface LogAnalyticsResponse {
 }
 
 /**
+ * container properties
+ */
+export interface NGroupCGPropertyContainerPropertiesResponse {
+    volumeMounts?: VolumeMountResponse[];
+}
+
+/**
  * Container properties that can be provided with NGroups object.
  */
 export interface NGroupCGPropertyContainerResponse {
@@ -1016,14 +1023,7 @@ export interface NGroupCGPropertyContainerResponse {
     /**
      * container properties
      */
-    properties?: NGroupCGPropertyContainerResponseProperties;
-}
-
-/**
- * container properties
- */
-export interface NGroupCGPropertyContainerResponseProperties {
-    volumeMounts?: VolumeMountResponse[];
+    properties?: NGroupCGPropertyContainerPropertiesResponse;
 }
 
 /**
@@ -1270,14 +1270,14 @@ export interface UpdateProfileResponse {
     /**
      * This profile allows the customers to customize the rolling update.
      */
-    rollingUpdateProfile?: UpdateProfileResponseRollingUpdateProfile;
+    rollingUpdateProfile?: UpdateProfileRollingUpdateProfileResponse;
     updateMode?: string;
 }
 
 /**
  * This profile allows the customers to customize the rolling update.
  */
-export interface UpdateProfileResponseRollingUpdateProfile {
+export interface UpdateProfileRollingUpdateProfileResponse {
     /**
      * Default is false. If set to true, the CGs will be updated in-place instead of creating new CG and deleting old ones.
      */

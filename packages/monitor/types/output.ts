@@ -156,6 +156,20 @@ export interface AlertRuleLeafConditionResponse {
 }
 
 /**
+ * Represents an Azure Monitor Workspace (AMW) account used for emitting metrics.
+ */
+export interface AmwAccountResponse {
+    /**
+     * The ARM resource ID of the managed identity with access to the source account.
+     */
+    identity: string;
+    /**
+     * The ARM resource ID of the account where metrics are emitted.
+     */
+    resourceId: string;
+}
+
+/**
  * Discovery rule properties for an Application Insights topology query
  */
 export interface ApplicationInsightsTopologyDiscoveryRulePropertiesResponse {
@@ -242,7 +256,7 @@ export interface AutomationRunbookReceiverResponse {
      */
     isGlobalRunbook: boolean;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
     managedIdentity?: string;
     /**
@@ -403,7 +417,7 @@ export interface AzureFunctionReceiverResponse {
      */
     httpTriggerUrl: string;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
     managedIdentity?: string;
     /**
@@ -553,6 +567,34 @@ export interface AzureResourceSignalGroupResponse {
 }
 
 /**
+ * Defines the properties of a baseline.
+ */
+export interface BaselinePropertiesResponse {
+    /**
+     * Defines the baseline target, which is compared against the SLI value to determine compliance.
+     */
+    baseline: BaselineResponse;
+}
+
+/**
+ * Defines the target parameters for a Slo baseline.
+ */
+export interface BaselineResponse {
+    /**
+     * Specifies how evaluation is calculated, either based on calendar days or a rolling window.
+     */
+    evaluationCalculationType: string;
+    /**
+     * The time frame (in days) used for SLI evaluation.
+     */
+    evaluationPeriodDays: number;
+    /**
+     * The user-defined or Azure-defined target value used for comparison against the SLI value.
+     */
+    value: number;
+}
+
+/**
  * Batch processor.
  */
 export interface BatchProcessorResponse {
@@ -629,6 +671,30 @@ export function concurrencyConfigurationResponseProvideDefaults(val: Concurrency
 }
 
 /**
+ * The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
+ */
+export interface ConditionFailingPeriodsResponse {
+    /**
+     * The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
+     */
+    minFailingPeriodsToAlert?: number;
+    /**
+     * The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
+     */
+    numberOfEvaluationPeriods?: number;
+}
+/**
+ * conditionFailingPeriodsResponseProvideDefaults sets the appropriate defaults for ConditionFailingPeriodsResponse
+ */
+export function conditionFailingPeriodsResponseProvideDefaults(val: ConditionFailingPeriodsResponse): ConditionFailingPeriodsResponse {
+    return {
+        ...val,
+        minFailingPeriodsToAlert: (val.minFailingPeriodsToAlert) ?? 1,
+        numberOfEvaluationPeriods: (val.numberOfEvaluationPeriods) ?? 1,
+    };
+}
+
+/**
  * A condition of the scheduled query rule.
  */
 export interface ConditionResponse {
@@ -647,7 +713,7 @@ export interface ConditionResponse {
     /**
      * The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
      */
-    failingPeriods?: ConditionResponseFailingPeriods;
+    failingPeriods?: ConditionFailingPeriodsResponse;
     /**
      * Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format). Relevant only for dynamic threshold rules of the kind LogAlert.
      */
@@ -691,32 +757,34 @@ export interface ConditionResponse {
 export function conditionResponseProvideDefaults(val: ConditionResponse): ConditionResponse {
     return {
         ...val,
-        failingPeriods: (val.failingPeriods ? conditionResponseFailingPeriodsProvideDefaults(val.failingPeriods) : undefined),
+        failingPeriods: (val.failingPeriods ? conditionFailingPeriodsResponseProvideDefaults(val.failingPeriods) : undefined),
     };
 }
 
 /**
- * The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
+ * Represents a filtering condition.
  */
-export interface ConditionResponseFailingPeriods {
+export interface ConditionResponseV1 {
     /**
-     * The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
+     * Dimension name used in filtering.
      */
-    minFailingPeriodsToAlert?: number;
+    dimensionName?: string;
     /**
-     * The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
+     * Operator used in the filtering condition.
      */
-    numberOfEvaluationPeriods?: number;
-}
-/**
- * conditionResponseFailingPeriodsProvideDefaults sets the appropriate defaults for ConditionResponseFailingPeriods
- */
-export function conditionResponseFailingPeriodsProvideDefaults(val: ConditionResponseFailingPeriods): ConditionResponseFailingPeriods {
-    return {
-        ...val,
-        minFailingPeriodsToAlert: (val.minFailingPeriodsToAlert) ?? 1,
-        numberOfEvaluationPeriods: (val.numberOfEvaluationPeriods) ?? 1,
-    };
+    operator: string;
+    /**
+     * Defines the sampling type.
+     */
+    samplingType?: string;
+    /**
+     * Scalar function applied for filtering.
+     */
+    scalarFunction?: string;
+    /**
+     * Value used in filtering. For most operators (eq, ne, lt, lte, gt, gte, startswith, notstartswith, contains, notcontains) this is a single value (for example "GetContosoUsers"). For the `in` and `notin` operators, multiple values must be joined by the delimiter `^^` (for example "east^^west^^north").
+     */
+    value: string;
 }
 
 /**
@@ -1487,7 +1555,7 @@ export interface EventHubReceiverResponse {
      */
     eventHubNameSpace: string;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
     managedIdentity?: string;
     /**
@@ -1515,6 +1583,20 @@ export function eventHubReceiverResponseProvideDefaults(val: EventHubReceiverRes
         ...val,
         useCommonAlertSchema: (val.useCommonAlertSchema) ?? false,
     };
+}
+
+/**
+ * Represents the current execution state of an SLI.
+ */
+export interface ExecutionStateResponse {
+    /**
+     * A descriptive message related to the execution state.
+     */
+    message?: string;
+    /**
+     * The execution state value.
+     */
+    state: string;
 }
 
 /**
@@ -1607,28 +1689,6 @@ export interface IconDefinitionResponse {
      * Name of the built-in icon, or 'Custom' to use customData
      */
     iconName: string;
-}
-
-/**
- * Identity for the resource.
- */
-export interface IdentityResponse {
-    /**
-     * The principal ID of resource identity.
-     */
-    principalId: string;
-    /**
-     * The tenant ID of resource.
-     */
-    tenantId: string;
-    /**
-     * Type of managed service identity.
-     */
-    type: string;
-    /**
-     * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-     */
-    userAssignedIdentities?: {[key: string]: UserIdentityPropertiesResponse};
 }
 
 /**
@@ -2047,7 +2107,7 @@ export interface LogicAppReceiverResponse {
      */
     callbackUrl: string;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
     managedIdentity?: string;
     /**
@@ -2242,6 +2302,20 @@ export interface MetricDimensionResponse {
 }
 
 /**
+ * Defines a metric in the destination AMW account.
+ */
+export interface MetricResponse {
+    /**
+     * The name of the metric.
+     */
+    metricName: string;
+    /**
+     * The namespace of the metric.
+     */
+    metricNamespace: string;
+}
+
+/**
  * Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
  */
 export interface MetricSettingsResponse {
@@ -2315,6 +2389,42 @@ export interface MetricTriggerResponse {
      * the range of time in which instance data is collected. This value must be greater than the delay in metric collection, which can vary from resource-to-resource. Must be between 12 hours and 5 minutes.
      */
     timeWindow: string;
+}
+
+/**
+ * Identity for the resource.
+ */
+export interface MicrosoftCommonIdentityResponse {
+    /**
+     * The principal ID of resource identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of resource.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity.
+     */
+    type: string;
+    /**
+     * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     */
+    userAssignedIdentities?: {[key: string]: MicrosoftCommonUserIdentityPropertiesResponse};
+}
+
+/**
+ * Properties of the user assigned identity.
+ */
+export interface MicrosoftCommonUserIdentityPropertiesResponse {
+    /**
+     * The client ID of resource identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of resource identity.
+     */
+    principalId: string;
 }
 
 /**
@@ -2606,6 +2716,10 @@ export interface PrivateEndpointConnectionResponseV1 {
      * The provisioning state of the private endpoint connection resource.
      */
     provisioningState: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -3294,6 +3408,134 @@ export function signalGroupResponseProvideDefaults(val: SignalGroupResponse): Si
 }
 
 /**
+ * Represents a signal model used in SLI calculations.
+ */
+export interface SignalResponse {
+    /**
+     * Mathematical formula used to combine multiple metrics.
+     */
+    signalFormula: string;
+    /**
+     * Sources of metrics used for SLIs.
+     */
+    signalSources: SignalSourceResponse[];
+}
+
+/**
+ * Represents a signal source used in SLIs.
+ */
+export interface SignalSourceResponse {
+    /**
+     * Filters applied to modify signal values.
+     */
+    filters: ConditionResponseV1[];
+    /**
+     * Name of the metric.
+     */
+    metricName: string;
+    /**
+     * Namespace of the metric.
+     */
+    metricNamespace: string;
+    /**
+     * Unique identifier for the signal source.
+     */
+    signalSourceId: string;
+    /**
+     * Managed identity for authenticating the signal source.
+     */
+    sourceAmwAccountManagedIdentity: string;
+    /**
+     * Resource ID of the source AMW account.
+     */
+    sourceAmwAccountResourceId: string;
+    /**
+     * Defines how measurements are aggregated across multiple time series.
+     */
+    spatialAggregation: SpatialAggregationResponse;
+    /**
+     * Defines how measurements are aggregated over a specific time window within the same time series.
+     */
+    temporalAggregation: TemporalAggregationResponse;
+}
+
+/**
+ * Defines the properties of an SLI.
+ */
+export interface SliPropertiesResponse {
+    /**
+     * Represents good signals used in request-based SLI calculations.
+     */
+    goodSignals?: SignalResponse;
+    /**
+     * Signals used for window-based SLI calculations.
+     */
+    signals?: SignalResponse;
+    /**
+     * Represents total signals used in request-based SLI calculations.
+     */
+    totalSignals?: SignalResponse;
+    /**
+     * Defines the uptime criteria for window-based SLIs.
+     */
+    windowUptimeCriteria?: WindowUptimeCriteriaResponse;
+}
+
+/**
+ * Defines the root level properties of an SLI resource.
+ */
+export interface SliResourceResponse {
+    /**
+     * Defines the SLO baseline associated with the SLI.
+     */
+    baselineProperties: BaselinePropertiesResponse;
+    /**
+     * Specifies the category of the SLI, used to classify signals such as Availability and Latency.
+     */
+    category: string;
+    /**
+     * A user-provided description of the SLI, with a maximum length of 1000 characters.
+     */
+    description: string;
+    /**
+     * Destination AMW accounts.
+     */
+    destinationAmwAccounts: AmwAccountResponse[];
+    /**
+     * The destination Azure Monitor Workspace (AMW) accounts where the SLI emits metrics.
+     */
+    destinationMetrics: MetricResponse[];
+    /**
+     * A flag to determine whether alert is enabled.
+     */
+    enableAlert: boolean;
+    /**
+     * Determines how the SLI is evaluated—either based on request counts or time windows.
+     */
+    evaluationType: string;
+    /**
+     * Indicates the current execution status of the SLI resource in ARM responses.
+     */
+    executionState: ExecutionStateResponse;
+    /**
+     * Indicates the provisioning status of the last operation.
+     */
+    provisioningState: any;
+    /**
+     * Defines the SLI properties associated with the SLI.
+     */
+    sliProperties: SliPropertiesResponse;
+    /**
+     * The streaming rule Id associated with the Sli resource.
+     */
+    streamingRuleId: string;
+    /**
+     * The streaming rule last updated timestamp associated with the Sli resource.
+     */
+    streamingRuleLastUpdatedTimestamp: string;
+}
+
+/**
  * An SMS receiver.
  */
 export interface SmsReceiverResponse {
@@ -3313,6 +3555,20 @@ export interface SmsReceiverResponse {
      * The status of the receiver.
      */
     status: string;
+}
+
+/**
+ * Represents the spatial aggregation model.
+ */
+export interface SpatialAggregationResponse {
+    /**
+     * Dimensions considered for spatial aggregation.
+     */
+    dimensions: string[];
+    /**
+     * Type of spatial aggregation.
+     */
+    type: string;
 }
 
 export interface StorageBlobDestinationResponse {
@@ -3464,6 +3720,20 @@ export interface TcpExporterResponse {
 }
 
 /**
+ * Represents temporal aggregation settings.
+ */
+export interface TemporalAggregationResponse {
+    /**
+     * Type of temporal aggregation.
+     */
+    type: string;
+    /**
+     * Time window size for aggregation, in minutes.
+     */
+    windowSizeMinutes?: number;
+}
+
+/**
  * Threshold-based evaluation rule for a signal definition
  */
 export interface ThresholdRuleResponse {
@@ -3543,20 +3813,6 @@ export interface UserAssignedIdentityResponse {
 }
 
 /**
- * User assigned identity properties.
- */
-export interface UserIdentityPropertiesResponse {
-    /**
-     * The client id of user assigned identity.
-     */
-    clientId: string;
-    /**
-     * The principal id of user assigned identity.
-     */
-    principalId: string;
-}
-
-/**
  * A voice receiver.
  */
 export interface VoiceReceiverResponse {
@@ -3597,7 +3853,7 @@ export interface WebhookReceiverResponse {
      */
     identifierUri?: string;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
     managedIdentity?: string;
     /**
@@ -3701,6 +3957,20 @@ export interface WebtestLocationAvailabilityCriteriaResponse {
      * The Application Insights web test Id.
      */
     webTestId: string;
+}
+
+/**
+ * Represents criteria for determining uptime in window-based SLIs.
+ */
+export interface WindowUptimeCriteriaResponse {
+    /**
+     * Comparison operator used for uptime evaluation.
+     */
+    comparator: string;
+    /**
+     * Threshold value used to determine uptime.
+     */
+    target: number;
 }
 
 /**

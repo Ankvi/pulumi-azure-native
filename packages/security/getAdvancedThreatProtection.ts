@@ -1,5 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * Gets the Advanced Threat Protection settings for the specified resource.
  *
@@ -17,7 +18,7 @@ export function getAdvancedThreatProtection(args: GetAdvancedThreatProtectionArg
 
 export interface GetAdvancedThreatProtectionArgs {
     /**
-     * The identifier of the resource.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     resourceId: string;
     /**
@@ -35,7 +36,7 @@ export interface GetAdvancedThreatProtectionResult {
      */
     readonly azureApiVersion: string;
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -43,11 +44,15 @@ export interface GetAdvancedThreatProtectionResult {
      */
     readonly isEnabled?: boolean;
     /**
-     * Resource name
+     * The name of the resource
      */
     readonly name: string;
     /**
-     * Resource type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -68,7 +73,7 @@ export function getAdvancedThreatProtectionOutput(args: GetAdvancedThreatProtect
 
 export interface GetAdvancedThreatProtectionOutputArgs {
     /**
-     * The identifier of the resource.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     resourceId: pulumi.Input<string>;
     /**
