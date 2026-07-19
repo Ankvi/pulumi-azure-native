@@ -86,7 +86,7 @@ export class ScopeAccessReviewScheduleDefinitionById extends pulumi.CustomResour
      */
     declare public readonly mailNotificationsEnabled: pulumi.Output<boolean | undefined>;
     /**
-     * The access review schedule definition unique id.
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -134,7 +134,11 @@ export class ScopeAccessReviewScheduleDefinitionById extends pulumi.CustomResour
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * The resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -189,6 +193,7 @@ export class ScopeAccessReviewScheduleDefinitionById extends pulumi.CustomResour
             resourceInputs["principalType"] = undefined /*out*/;
             resourceInputs["reviewersType"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["userPrincipalName"] = undefined /*out*/;
         } else {
             resourceInputs["autoApplyDecisionsEnabled"] = undefined /*out*/;
@@ -216,6 +221,7 @@ export class ScopeAccessReviewScheduleDefinitionById extends pulumi.CustomResour
             resourceInputs["reviewersType"] = undefined /*out*/;
             resourceInputs["scope"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["userPrincipalName"] = undefined /*out*/;
         }

@@ -20,7 +20,7 @@ export interface GetGovernanceRuleArgs {
      */
     ruleId: string;
     /**
-     * The scope of the Governance rules. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     scope: string;
 }
@@ -33,6 +33,10 @@ export interface GetGovernanceRuleResult {
      * The Azure API version of the resource.
      */
     readonly azureApiVersion: string;
+    /**
+     * The governance rule conditionSets - see examples
+     */
+    readonly conditionSets: any[];
     /**
      * Description of the governance rule
      */
@@ -50,7 +54,7 @@ export interface GetGovernanceRuleResult {
      */
     readonly governanceEmailNotification?: types.outputs.GovernanceRuleEmailNotificationResponse;
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -70,7 +74,7 @@ export interface GetGovernanceRuleResult {
      */
     readonly metadata?: types.outputs.GovernanceRuleMetadataResponse;
     /**
-     * Resource name
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -94,11 +98,15 @@ export interface GetGovernanceRuleResult {
      */
     readonly sourceResourceType: string;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
      * The tenantId (GUID)
      */
     readonly tenantId: string;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -121,7 +129,7 @@ export interface GetGovernanceRuleOutputArgs {
      */
     ruleId: pulumi.Input<string>;
     /**
-     * The scope of the Governance rules. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     scope: pulumi.Input<string>;
 }

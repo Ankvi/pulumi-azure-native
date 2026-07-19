@@ -5,6 +5,8 @@ import * as types from "./types";
  * Gets the specified private endpoint connection associated with the bookshelf.
  *
  * Uses Azure REST API version 2026-02-01-preview.
+ *
+ * Other available API versions: 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native discovery [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getBookshelfPrivateEndpointConnection(args: GetBookshelfPrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetBookshelfPrivateEndpointConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -63,6 +65,8 @@ export interface GetBookshelfPrivateEndpointConnectionResult {
  * Gets the specified private endpoint connection associated with the bookshelf.
  *
  * Uses Azure REST API version 2026-02-01-preview.
+ *
+ * Other available API versions: 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native discovery [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getBookshelfPrivateEndpointConnectionOutput(args: GetBookshelfPrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBookshelfPrivateEndpointConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -22,7 +22,7 @@ export interface GetRoleManagementPolicyAssignmentArgs {
      */
     roleManagementPolicyAssignmentName: string;
     /**
-     * The scope of the role management policy.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     scope: string;
 }
@@ -40,11 +40,11 @@ export interface GetRoleManagementPolicyAssignmentResult {
      */
     readonly effectiveRules: (types.outputs.RoleManagementPolicyApprovalRuleResponse | types.outputs.RoleManagementPolicyAuthenticationContextRuleResponse | types.outputs.RoleManagementPolicyEnablementRuleResponse | types.outputs.RoleManagementPolicyExpirationRuleResponse | types.outputs.RoleManagementPolicyNotificationRuleResponse | types.outputs.RoleManagementPolicyPimOnlyModeRuleResponse)[];
     /**
-     * The role management policy Id.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
-     * The role management policy name.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -64,7 +64,11 @@ export interface GetRoleManagementPolicyAssignmentResult {
      */
     readonly scope?: string;
     /**
-     * The role management policy type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -89,7 +93,7 @@ export interface GetRoleManagementPolicyAssignmentOutputArgs {
      */
     roleManagementPolicyAssignmentName: pulumi.Input<string>;
     /**
-     * The scope of the role management policy.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     scope: pulumi.Input<string>;
 }

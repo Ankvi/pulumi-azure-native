@@ -60,7 +60,7 @@ export class AccessReviewHistoryDefinitionById extends pulumi.CustomResource {
      */
     declare public readonly interval: pulumi.Output<number | undefined>;
     /**
-     * The access review history definition unique id.
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -96,7 +96,11 @@ export class AccessReviewHistoryDefinitionById extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * The resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -132,6 +136,7 @@ export class AccessReviewHistoryDefinitionById extends pulumi.CustomResource {
             resourceInputs["reviewHistoryPeriodEndDateTime"] = undefined /*out*/;
             resourceInputs["reviewHistoryPeriodStartDateTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["userPrincipalName"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -149,6 +154,7 @@ export class AccessReviewHistoryDefinitionById extends pulumi.CustomResource {
             resourceInputs["reviewHistoryPeriodStartDateTime"] = undefined /*out*/;
             resourceInputs["scopes"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["userPrincipalName"] = undefined /*out*/;
         }

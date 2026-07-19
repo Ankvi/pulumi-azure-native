@@ -2610,63 +2610,6 @@ export interface NetworkProfileForSnapshotResponse {
 }
 
 /**
- * The properties of the Node Customization resource.
- */
-export interface NodeCustomizationPropertiesResponse {
-    /**
-     * The list of container images to cache on nodes. See https://kubernetes.io/docs/concepts/containers/images/#image-names
-     */
-    containerImages?: string[];
-    /**
-     * The scripts to customize the node before or after image capture.
-     */
-    customizationScripts?: NodeCustomizationScriptResponse[];
-    /**
-     * The identity used to execute node customization tasks during image build time and provisioning time. 
-     * If not specified the default agentpool identity will be used.
-     * This does not affect provisioned nodes.
-     */
-    identityProfile?: UserAssignedIdentityResponse;
-    /**
-     * The provisioning state of the node customization.
-     */
-    provisioningState: string;
-    /**
-     * An auto-generated value that changes when the other fields of the image customization are changed.
-     */
-    version: string;
-}
-
-/**
- * Node customization script
- */
-export interface NodeCustomizationScriptResponse {
-    /**
-     * The stage at which the script is executed.
-     * Specifying `NodeImageBuildTime` will ensure changes are persisted into the node image.
-     */
-    executionPoint: string;
-    /**
-     * The name for the customization script. 
-     * Must be unique within the node customization resource.
-     * Can only contain lowercase alphanumeric,'-' or '.' characters.
-     */
-    name: string;
-    /**
-     * Whether the node should reboot after successful script execution.
-     */
-    rebootAfter?: boolean;
-    /**
-     * The script content to be executed in plain text. Do not include secrets.
-     */
-    script?: string;
-    /**
-     * The runtime environment for the script (e.g. Bash).
-     */
-    scriptType: string;
-}
-
-/**
  * The node image upgrade to be applied to the target nodes in update run.
  */
 export interface NodeImageSelectionResponse {

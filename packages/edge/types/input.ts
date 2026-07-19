@@ -15,7 +15,7 @@ export interface AzureResourceManagerCommonTypesExtendedLocationArgs {
 }
 
 /**
- * Capability, to match in Solution Templates and Targets
+ * Capability, to match in Solution Templates & Targets
  */
 export interface CapabilityArgs {
     /**
@@ -121,6 +121,20 @@ export interface ExecutionPropertiesArgs {
      * Workflow version of execution
      */
     workflowVersionId: pulumi.Input<string>;
+}
+
+/**
+ * ExecutionV2 Properties
+ */
+export interface ExecutionV2PropertiesArgs {
+    /**
+     * ExecutionV2 specification
+     */
+    specification?: any;
+    /**
+     * Workflow version of ExecutionV2
+     */
+    workflowVersionId?: pulumi.Input<string>;
 }
 
 /**
@@ -410,6 +424,20 @@ export interface TaskSpecArgs {
  * Workflow Version Properties
  */
 export interface WorkflowVersionPropertiesArgs {
+    /**
+     * Execution specification
+     */
+    specification?: any;
+    /**
+     * A list of stage specs
+     */
+    stageSpec: pulumi.Input<pulumi.Input<StageSpecArgs>[]>;
+}
+
+/**
+ * Workflow Version Properties
+ */
+export interface WorkflowVersionV2PropertiesArgs {
     /**
      * Execution specification
      */

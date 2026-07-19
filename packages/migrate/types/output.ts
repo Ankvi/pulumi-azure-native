@@ -2308,7 +2308,7 @@ export interface MachineAssessmentSettingsResponse {
      * Gets or sets the duration for which the VMs are up in the on-premises
      * environment.
      */
-    vmUptime?: VmUptimeResponseV2;
+    vmUptime?: VmUptimeResponseV1;
 }
 
 /**
@@ -4390,20 +4390,6 @@ export interface VmUptimeResponse {
  * Details on the total up-time for the VM.
  */
 export interface VmUptimeResponseV1 {
-    /**
-     * Number of days in a month for VM uptime.
-     */
-    daysPerMonth?: number;
-    /**
-     * Number of hours per day for VM uptime.
-     */
-    hoursPerDay?: number;
-}
-
-/**
- * Details on the total up-time for the VM.
- */
-export interface VmUptimeResponseV2 {
     /**
      * Number of days in a month for VM uptime.
      */

@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Configuration settings for the Azure App Service Authentication / Authorization feature.
  *
- * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+ * Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebAppAuthSettings extends pulumi.CustomResource {
     /**
@@ -45,7 +45,7 @@ export class WebAppAuthSettings extends pulumi.CustomResource {
      */
     declare public readonly additionalLoginParams: pulumi.Output<string[] | undefined>;
     /**
-     * Allowed audience values to consider when validating JSON Web Tokens issued by 
+     * Allowed audience values to consider when validating JSON Web Tokens issued by
      * Azure Active Directory. Note that the <code>ClientID</code> value is always considered an
      * allowed audience, regardless of this setting.
      */
@@ -67,7 +67,7 @@ export class WebAppAuthSettings extends pulumi.CustomResource {
     declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
      * The Client ID of this relying party application, known as the client_id.
-     * This setting is required for enabling OpenID Connection authentication with Azure Active Directory or 
+     * This setting is required for enabling OpenID Connection authentication with Azure Active Directory or
      * other 3rd party OpenID Connect providers.
      * More information on OpenID Connect: http://openid.net/specs/openid-connect-core-1_0.html
      */
@@ -158,7 +158,7 @@ export class WebAppAuthSettings extends pulumi.CustomResource {
      */
     declare public readonly googleClientSecret: pulumi.Output<string | undefined>;
     /**
-     * The app setting name that contains the client secret associated with 
+     * The app setting name that contains the client secret associated with
      * the Google web application.
      */
     declare public readonly googleClientSecretSettingName: pulumi.Output<string | undefined>;
@@ -223,7 +223,7 @@ export class WebAppAuthSettings extends pulumi.CustomResource {
     declare public readonly tokenRefreshExtensionHours: pulumi.Output<number | undefined>;
     /**
      * <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
-     *  The default is <code>false</code>.
+     * The default is <code>false</code>.
      */
     declare public readonly tokenStoreEnabled: pulumi.Output<boolean | undefined>;
     /**
@@ -361,7 +361,7 @@ export class WebAppAuthSettings extends pulumi.CustomResource {
             resourceInputs["validateIssuer"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20150801:WebAppAuthSettings" }, { type: "azure-native:web/v20160801:WebAppAuthSettings" }, { type: "azure-native:web/v20180201:WebAppAuthSettings" }, { type: "azure-native:web/v20181101:WebAppAuthSettings" }, { type: "azure-native:web/v20190801:WebAppAuthSettings" }, { type: "azure-native:web/v20200601:WebAppAuthSettings" }, { type: "azure-native:web/v20200901:WebAppAuthSettings" }, { type: "azure-native:web/v20201001:WebAppAuthSettings" }, { type: "azure-native:web/v20201201:WebAppAuthSettings" }, { type: "azure-native:web/v20210101:WebAppAuthSettings" }, { type: "azure-native:web/v20210115:WebAppAuthSettings" }, { type: "azure-native:web/v20210201:WebAppAuthSettings" }, { type: "azure-native:web/v20210301:WebAppAuthSettings" }, { type: "azure-native:web/v20220301:WebAppAuthSettings" }, { type: "azure-native:web/v20220901:WebAppAuthSettings" }, { type: "azure-native:web/v20230101:WebAppAuthSettings" }, { type: "azure-native:web/v20231201:WebAppAuthSettings" }, { type: "azure-native:web/v20240401:WebAppAuthSettings" }, { type: "azure-native:web/v20241101:WebAppAuthSettings" }, { type: "azure-native:web/v20250301:WebAppAuthSettings" }, { type: "azure-native:web/v20250501:WebAppAuthSettings" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20150801:WebAppAuthSettings" }, { type: "azure-native:web/v20160801:WebAppAuthSettings" }, { type: "azure-native:web/v20180201:WebAppAuthSettings" }, { type: "azure-native:web/v20181101:WebAppAuthSettings" }, { type: "azure-native:web/v20190801:WebAppAuthSettings" }, { type: "azure-native:web/v20200601:WebAppAuthSettings" }, { type: "azure-native:web/v20200901:WebAppAuthSettings" }, { type: "azure-native:web/v20201001:WebAppAuthSettings" }, { type: "azure-native:web/v20201201:WebAppAuthSettings" }, { type: "azure-native:web/v20210101:WebAppAuthSettings" }, { type: "azure-native:web/v20210115:WebAppAuthSettings" }, { type: "azure-native:web/v20210201:WebAppAuthSettings" }, { type: "azure-native:web/v20210301:WebAppAuthSettings" }, { type: "azure-native:web/v20220301:WebAppAuthSettings" }, { type: "azure-native:web/v20220901:WebAppAuthSettings" }, { type: "azure-native:web/v20230101:WebAppAuthSettings" }, { type: "azure-native:web/v20231201:WebAppAuthSettings" }, { type: "azure-native:web/v20240401:WebAppAuthSettings" }, { type: "azure-native:web/v20241101:WebAppAuthSettings" }, { type: "azure-native:web/v20250301:WebAppAuthSettings" }, { type: "azure-native:web/v20250501:WebAppAuthSettings" }, { type: "azure-native:web/v20260301preview:WebAppAuthSettings" }, { type: "azure-native:web/v20260315:WebAppAuthSettings" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebAppAuthSettings.__pulumiType, name, resourceInputs, opts);
     }
@@ -381,7 +381,7 @@ export interface WebAppAuthSettingsArgs {
      */
     additionalLoginParams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allowed audience values to consider when validating JSON Web Tokens issued by 
+     * Allowed audience values to consider when validating JSON Web Tokens issued by
      * Azure Active Directory. Note that the <code>ClientID</code> value is always considered an
      * allowed audience, regardless of this setting.
      */
@@ -399,7 +399,7 @@ export interface WebAppAuthSettingsArgs {
     authFilePath?: pulumi.Input<string>;
     /**
      * The Client ID of this relying party application, known as the client_id.
-     * This setting is required for enabling OpenID Connection authentication with Azure Active Directory or 
+     * This setting is required for enabling OpenID Connection authentication with Azure Active Directory or
      * other 3rd party OpenID Connect providers.
      * More information on OpenID Connect: http://openid.net/specs/openid-connect-core-1_0.html
      */
@@ -490,7 +490,7 @@ export interface WebAppAuthSettingsArgs {
      */
     googleClientSecret?: pulumi.Input<string>;
     /**
-     * The app setting name that contains the client secret associated with 
+     * The app setting name that contains the client secret associated with
      * the Google web application.
      */
     googleClientSecretSettingName?: pulumi.Input<string>;
@@ -540,11 +540,11 @@ export interface WebAppAuthSettingsArgs {
      */
     microsoftAccountOAuthScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Name of web app.
+     * Name of the app.
      */
     name: pulumi.Input<string>;
     /**
-     * Name of the resource group to which the resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
@@ -559,7 +559,7 @@ export interface WebAppAuthSettingsArgs {
     tokenRefreshExtensionHours?: pulumi.Input<number>;
     /**
      * <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
-     *  The default is <code>false</code>.
+     * The default is <code>false</code>.
      */
     tokenStoreEnabled?: pulumi.Input<boolean>;
     /**

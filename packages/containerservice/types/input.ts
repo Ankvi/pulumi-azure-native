@@ -2174,49 +2174,6 @@ export function networkPoliciesArgsProvideDefaults(val: NetworkPoliciesArgs): Ne
 }
 
 /**
- * The properties of the Node Customization resource.
- */
-export interface NodeCustomizationPropertiesArgs {
-    /**
-     * The list of container images to cache on nodes. See https://kubernetes.io/docs/concepts/containers/images/#image-names
-     */
-    containerImages?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The scripts to customize the node before or after image capture.
-     */
-    customizationScripts?: pulumi.Input<pulumi.Input<NodeCustomizationScriptArgs>[]>;
-}
-
-/**
- * Node customization script
- */
-export interface NodeCustomizationScriptArgs {
-    /**
-     * The stage at which the script is executed.
-     * Specifying `NodeImageBuildTime` will ensure changes are persisted into the node image.
-     */
-    executionPoint: pulumi.Input<string | enums.ExecutionPoint>;
-    /**
-     * The name for the customization script. 
-     * Must be unique within the node customization resource.
-     * Can only contain lowercase alphanumeric,'-' or '.' characters.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * Whether the node should reboot after successful script execution.
-     */
-    rebootAfter?: pulumi.Input<boolean>;
-    /**
-     * The script content to be executed in plain text. Do not include secrets.
-     */
-    script?: pulumi.Input<string>;
-    /**
-     * The runtime environment for the script (e.g. Bash).
-     */
-    scriptType: pulumi.Input<string | enums.ScriptType>;
-}
-
-/**
  * The node image upgrade to be applied to the target nodes in update run.
  */
 export interface NodeImageSelectionArgs {

@@ -42,7 +42,7 @@ export class Factory extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Etag identifies change in the resource.
+     * If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
      */
     declare public /*out*/ readonly eTag: pulumi.Output<string>;
     /**
@@ -62,7 +62,7 @@ export class Factory extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string | undefined>;
     /**
-     * The resource name.
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -82,11 +82,15 @@ export class Factory extends pulumi.CustomResource {
      */
     declare public readonly repoConfiguration: pulumi.Output<types.outputs.FactoryGitHubConfigurationResponse | types.outputs.FactoryVSTSConfigurationResponse | undefined>;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
      * The resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -123,6 +127,7 @@ export class Factory extends pulumi.CustomResource {
             resourceInputs["eTag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         } else {
@@ -138,6 +143,7 @@ export class Factory extends pulumi.CustomResource {
             resourceInputs["publicNetworkAccess"] = undefined /*out*/;
             resourceInputs["purviewConfiguration"] = undefined /*out*/;
             resourceInputs["repoConfiguration"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
@@ -186,7 +192,7 @@ export interface FactoryArgs {
      */
     repoConfiguration?: pulumi.Input<types.inputs.FactoryGitHubConfigurationArgs | types.inputs.FactoryVSTSConfigurationArgs>;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

@@ -215,16 +215,6 @@ export interface ActionDefinitionResponse {
 }
 
 /**
- * Definition of ActionDefinition
- */
-export interface ActionDefinitionResponseV1 {
-    /**
-     * Property publishMetricAction
-     */
-    publishMetricAction?: PublishMetricActionResponseV1;
-}
-
-/**
  * Definition of Action
  */
 export interface ActionResponse {
@@ -9596,20 +9586,6 @@ export interface CustomActionResponse {
 }
 
 /**
- * Definition of CustomAction
- */
-export interface CustomActionResponseV1 {
-    /**
-     * Property actionDefinition
-     */
-    actionDefinition?: ActionDefinitionResponseV1;
-    /**
-     * Property actionName
-     */
-    actionName?: string;
-}
-
-/**
  * Definition of CustomErrorResponse
  */
 export interface CustomErrorResponseResponse {
@@ -10214,16 +10190,6 @@ export interface DimensionResponseV1 {
  * Definition of Dimension
  */
 export interface DimensionResponseV2 {
-    /**
-     * Property value
-     */
-    value?: string;
-}
-
-/**
- * Definition of Dimension
- */
-export interface DimensionResponseV3 {
     /**
      * Property value
      */
@@ -18179,16 +18145,6 @@ export interface PublishMetricActionResponse {
 }
 
 /**
- * Definition of PublishMetricAction
- */
-export interface PublishMetricActionResponseV1 {
-    /**
-     * Property dimensions
-     */
-    dimensions?: DimensionResponseV3[];
-}
-
-/**
  * Definition of QueryLoggingConfig
  */
 export interface QueryLoggingConfigResponse {
@@ -21171,7 +21127,7 @@ export interface StatelessRulesAndCustomActionsResponse {
     /**
      * Property customActions
      */
-    customActions?: CustomActionResponseV1[];
+    customActions?: CustomActionResponse[];
     /**
      * Property statelessRules
      */

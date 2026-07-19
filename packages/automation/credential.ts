@@ -132,7 +132,7 @@ export interface CredentialArgs {
      */
     automationAccountName: pulumi.Input<string>;
     /**
-     * The parameters supplied to the create or update credential operation.
+     * The name of credential.
      */
     credentialName?: pulumi.Input<string>;
     /**
@@ -148,7 +148,7 @@ export interface CredentialArgs {
      */
     password: pulumi.Input<string>;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

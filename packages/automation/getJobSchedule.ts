@@ -27,7 +27,7 @@ export interface GetJobScheduleArgs {
      */
     jobScheduleId: string;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
@@ -41,7 +41,7 @@ export interface GetJobScheduleResult {
      */
     readonly azureApiVersion: string;
     /**
-     * Gets the id of the resource.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -49,7 +49,7 @@ export interface GetJobScheduleResult {
      */
     readonly jobScheduleId?: string;
     /**
-     * Gets the name of the variable.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -69,7 +69,11 @@ export interface GetJobScheduleResult {
      */
     readonly schedule?: types.outputs.ScheduleAssociationPropertyResponse;
     /**
-     * Resource type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -99,7 +103,7 @@ export interface GetJobScheduleOutputArgs {
      */
     jobScheduleId: pulumi.Input<string>;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }
