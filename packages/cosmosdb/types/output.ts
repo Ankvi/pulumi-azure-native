@@ -548,37 +548,6 @@ export function containerPartitionKeyResponseV1ProvideDefaults(val: ContainerPar
 }
 
 /**
- * The configuration of the partition key to be used for partitioning data into multiple partitions
- */
-export interface ContainerPartitionKeyResponseV2 {
-    /**
-     * Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
-     */
-    kind?: string;
-    /**
-     * List of paths using which data within the container can be partitioned
-     */
-    paths?: string[];
-    /**
-     * Indicates if the container is using a system generated partition key
-     */
-    systemKey: boolean;
-    /**
-     * Indicates the version of the partition key definition
-     */
-    version?: number;
-}
-/**
- * containerPartitionKeyResponseV2ProvideDefaults sets the appropriate defaults for ContainerPartitionKeyResponseV2
- */
-export function containerPartitionKeyResponseV2ProvideDefaults(val: ContainerPartitionKeyResponseV2): ContainerPartitionKeyResponseV2 {
-    return {
-        ...val,
-        kind: (val.kind) ?? "Hash",
-    };
-}
-
-/**
  * The object representing continuous mode backup policy.
  */
 export interface ContinuousModeBackupPolicyResponse {
@@ -941,13 +910,16 @@ export interface FullTextPolicyResponse {
     fullTextPaths?: FullTextPathResponse[];
 }
 
-export interface GarnetClusterResourceResponseEndPoints {
+/**
+ * Endpoint for clients to connect to the cluster.
+ */
+export interface GarnetClusterResourcePropertiesEndPointsItemResponse {
     /**
-     * Ipv4 address of the endpoint
+     * Ipv4 address of the endpoint.
      */
     ipAddress?: string;
     /**
-     * Port number
+     * Port number.
      */
     port?: number;
 }
@@ -955,7 +927,7 @@ export interface GarnetClusterResourceResponseEndPoints {
 /**
  * Properties of a Garnet cache cluster.
  */
-export interface GarnetClusterResourceResponseProperties {
+export interface GarnetClusterResourcePropertiesResponse {
     /**
      * Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
      */
@@ -969,19 +941,19 @@ export interface GarnetClusterResourceResponseProperties {
      */
     clusterType?: string;
     /**
-     * endpoints for clients to connect to the cluster.
+     * Endpoints for clients to connect to the cluster.
      */
-    endPoints: GarnetClusterResourceResponseEndPoints[];
+    endPoints: GarnetClusterResourcePropertiesEndPointsItemResponse[];
     /**
      * Extensions to be added or updated on cluster.
      */
     extensions?: string[];
     /**
-     * Number of nodes
+     * Number of nodes.
      */
     nodeCount?: number;
     /**
-     * Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+     * Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2.
      */
     nodeSku?: string;
     /**
@@ -989,11 +961,11 @@ export interface GarnetClusterResourceResponseProperties {
      */
     provisionError?: ErrorDetailResponse;
     /**
-     * The status of the resource at the time the operation was called.
+     * The provisioning state of the resource.
      */
     provisioningState: string;
     /**
-     * Number of copies of data maintained by the cluster
+     * Number of copies of data maintained by the cluster.
      */
     replicationFactor?: number;
     /**
@@ -1316,53 +1288,6 @@ export interface IndexingPolicyResponseV1 {
  * indexingPolicyResponseV1ProvideDefaults sets the appropriate defaults for IndexingPolicyResponseV1
  */
 export function indexingPolicyResponseV1ProvideDefaults(val: IndexingPolicyResponseV1): IndexingPolicyResponseV1 {
-    return {
-        ...val,
-        indexingMode: (val.indexingMode) ?? "consistent",
-    };
-}
-
-/**
- * Cosmos DB indexing policy
- */
-export interface IndexingPolicyResponseV2 {
-    /**
-     * Indicates if the indexing policy is automatic
-     */
-    automatic?: boolean;
-    /**
-     * List of composite path list
-     */
-    compositeIndexes?: CompositePathResponse[][];
-    /**
-     * List of paths to exclude from indexing
-     */
-    excludedPaths?: ExcludedPathResponse[];
-    /**
-     * List of paths to include in the full text indexing
-     */
-    fullTextIndexes?: FullTextIndexPathResponse[];
-    /**
-     * List of paths to include in the indexing
-     */
-    includedPaths?: IncludedPathResponse[];
-    /**
-     * Indicates the indexing mode.
-     */
-    indexingMode?: string;
-    /**
-     * List of spatial specifics
-     */
-    spatialIndexes?: SpatialSpecResponse[];
-    /**
-     * List of paths to include in the vector indexing
-     */
-    vectorIndexes?: VectorIndexResponse[];
-}
-/**
- * indexingPolicyResponseV2ProvideDefaults sets the appropriate defaults for IndexingPolicyResponseV2
- */
-export function indexingPolicyResponseV2ProvideDefaults(val: IndexingPolicyResponseV2): IndexingPolicyResponseV2 {
     return {
         ...val,
         indexingMode: (val.indexingMode) ?? "consistent",
@@ -1959,11 +1884,11 @@ export interface SqlContainerGetPropertiesResponseResource {
     /**
      * The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the container
      */
-    indexingPolicy?: IndexingPolicyResponseV2;
+    indexingPolicy?: IndexingPolicyResponseV1;
     /**
      * The configuration of the partition key to be used for partitioning data into multiple partitions
      */
-    partitionKey?: ContainerPartitionKeyResponseV2;
+    partitionKey?: ContainerPartitionKeyResponseV1;
     /**
      * Parameters to indicate the information about the restore
      */
@@ -1992,8 +1917,8 @@ export function sqlContainerGetPropertiesResponseResourceProvideDefaults(val: Sq
     return {
         ...val,
         conflictResolutionPolicy: (val.conflictResolutionPolicy ? conflictResolutionPolicyResponseProvideDefaults(val.conflictResolutionPolicy) : undefined),
-        indexingPolicy: (val.indexingPolicy ? indexingPolicyResponseV2ProvideDefaults(val.indexingPolicy) : undefined),
-        partitionKey: (val.partitionKey ? containerPartitionKeyResponseV2ProvideDefaults(val.partitionKey) : undefined),
+        indexingPolicy: (val.indexingPolicy ? indexingPolicyResponseV1ProvideDefaults(val.indexingPolicy) : undefined),
+        partitionKey: (val.partitionKey ? containerPartitionKeyResponseV1ProvideDefaults(val.partitionKey) : undefined),
     };
 }
 

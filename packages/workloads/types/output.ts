@@ -757,50 +757,6 @@ export interface ErrorDefinitionResponseV1 {
 }
 
 /**
- * Error definition.
- */
-export interface ErrorDefinitionResponseV2 {
-    /**
-     * Service specific error code which serves as the substatus for the HTTP error code.
-     */
-    code: string;
-    /**
-     * Internal error details.
-     */
-    details: ErrorDefinitionResponse[];
-    /**
-     * Description of the error.
-     */
-    message: string;
-    /**
-     * Description of the recommendation.
-     */
-    recommendation: string;
-}
-
-/**
- * Error definition.
- */
-export interface ErrorDefinitionResponseV3 {
-    /**
-     * Service specific error code which serves as the substatus for the HTTP error code.
-     */
-    code: string;
-    /**
-     * Internal error details.
-     */
-    details: ErrorDefinitionResponse[];
-    /**
-     * Description of the error.
-     */
-    message: string;
-    /**
-     * Description of the recommendation.
-     */
-    recommendation: string;
-}
-
-/**
  * The error detail.
  */
 export interface ErrorDetailResponse {
@@ -1644,50 +1600,6 @@ export interface SAPMigrateErrorResponse {
      * Internal error details.
      */
     details: ErrorDefinitionResponseV1[];
-    /**
-     * Description of the error.
-     */
-    message: string;
-    /**
-     * Description of the recommendation.
-     */
-    recommendation: string;
-}
-
-/**
- * An error response from the SAP migrate resources.
- */
-export interface SAPMigrateErrorResponseV1 {
-    /**
-     * Service specific error code which serves as the substatus for the HTTP error code.
-     */
-    code: string;
-    /**
-     * Internal error details.
-     */
-    details: ErrorDefinitionResponseV2[];
-    /**
-     * Description of the error.
-     */
-    message: string;
-    /**
-     * Description of the recommendation.
-     */
-    recommendation: string;
-}
-
-/**
- * An error response from the SAP migrate resources.
- */
-export interface SAPMigrateErrorResponseV2 {
-    /**
-     * Service specific error code which serves as the substatus for the HTTP error code.
-     */
-    code: string;
-    /**
-     * Internal error details.
-     */
-    details: ErrorDefinitionResponseV3[];
     /**
      * Description of the error.
      */

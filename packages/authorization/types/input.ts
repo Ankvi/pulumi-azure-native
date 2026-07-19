@@ -171,6 +171,50 @@ export interface ApprovalStageArgs {
 }
 
 /**
+ * Deny assignment permissions.
+ */
+export interface DenyAssignmentPermissionArgs {
+    /**
+     * Actions to which the deny assignment does not grant access.
+     */
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The conditions on the Deny assignment permission. This limits the resources it applies to.
+     */
+    condition?: pulumi.Input<string>;
+    /**
+     * Version of the condition.
+     */
+    conditionVersion?: pulumi.Input<string>;
+    /**
+     * Data actions to which the deny assignment does not grant access.
+     */
+    dataActions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Actions to exclude from that the deny assignment does not grant access.
+     */
+    notActions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Data actions to exclude from that the deny assignment does not grant access.
+     */
+    notDataActions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Deny assignment principal.
+ */
+export interface DenyAssignmentPrincipalArgs {
+    /**
+     * The object ID of the principal.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The type of the principal such as user, group, servicePrincipal, etc.
+     */
+    type?: pulumi.Input<string>;
+}
+
+/**
  * Identity for the resource.  Policy assignments support a maximum of one identity.  That is either a system assigned identity or a single user assigned identity.
  */
 export interface IdentityArgs {
@@ -719,5 +763,5 @@ export interface UsersOrServicePrincipalSetArgs {
     /**
      * The type of user.
      */
-    type?: pulumi.Input<string | enums.UserType>;
+    type?: pulumi.Input<string | enums.UsersOrServicePrincipalSetUserType>;
 }

@@ -2,11 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Workflow properties definition.
+ * Lists logic app's connections for web site, or a deployment slot.
  *
- * Uses Azure REST API version 2024-11-01.
+ * Uses Azure REST API version 2025-05-01.
  *
- * Other available API versions: 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listWebAppWorkflowsConnections(args: ListWebAppWorkflowsConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppWorkflowsConnectionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -18,11 +18,11 @@ export function listWebAppWorkflowsConnections(args: ListWebAppWorkflowsConnecti
 
 export interface ListWebAppWorkflowsConnectionsArgs {
     /**
-     * Site name.
+     * Name of the app.
      */
     name: string;
     /**
-     * Name of the resource group to which the resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
@@ -32,7 +32,7 @@ export interface ListWebAppWorkflowsConnectionsArgs {
  */
 export interface ListWebAppWorkflowsConnectionsResult {
     /**
-     * The resource id.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -44,24 +44,28 @@ export interface ListWebAppWorkflowsConnectionsResult {
      */
     readonly location?: string;
     /**
-     * Gets the resource name.
+     * The name of the resource
      */
     readonly name: string;
     /**
      * Additional workflow properties.
      */
-    readonly properties: types.outputs.WorkflowEnvelopeResponseProperties;
+    readonly properties: types.outputs.WorkflowEnvelopePropertiesResponse;
     /**
-     * Gets the resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
 /**
- * Workflow properties definition.
+ * Lists logic app's connections for web site, or a deployment slot.
  *
- * Uses Azure REST API version 2024-11-01.
+ * Uses Azure REST API version 2025-05-01.
  *
- * Other available API versions: 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listWebAppWorkflowsConnectionsOutput(args: ListWebAppWorkflowsConnectionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListWebAppWorkflowsConnectionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -73,11 +77,11 @@ export function listWebAppWorkflowsConnectionsOutput(args: ListWebAppWorkflowsCo
 
 export interface ListWebAppWorkflowsConnectionsOutputArgs {
     /**
-     * Site name.
+     * Name of the app.
      */
     name: pulumi.Input<string>;
     /**
-     * Name of the resource group to which the resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

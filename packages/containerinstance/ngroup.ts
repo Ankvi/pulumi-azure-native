@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2024-09-01-preview.
  *
- * Other available API versions: 2024-09-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-09-01-preview, 2024-11-01-preview, 2026-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NGroup extends pulumi.CustomResource {
     /**
@@ -52,11 +52,11 @@ export class NGroup extends pulumi.CustomResource {
      */
     declare public readonly identity: pulumi.Output<types.outputs.NGroupIdentityResponse | undefined>;
     /**
-     * The resource location.
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string | undefined>;
     /**
-     * The resource name.
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -68,15 +68,15 @@ export class NGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * The resource tags.
+     * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -84,7 +84,7 @@ export class NGroup extends pulumi.CustomResource {
      */
     declare public readonly updateProfile: pulumi.Output<types.outputs.UpdateProfileResponse | undefined>;
     /**
-     * The zones for the container group.
+     * The availability zones.
      */
     declare public readonly zones: pulumi.Output<string[] | undefined>;
 
@@ -133,7 +133,7 @@ export class NGroup extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerinstance/v20240901preview:NGroup" }, { type: "azure-native:containerinstance/v20241101preview:NGroup" }, { type: "azure-native:containerinstance/v20250901:NGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerinstance/v20240901preview:NGroup" }, { type: "azure-native:containerinstance/v20241101preview:NGroup" }, { type: "azure-native:containerinstance/v20250901:NGroup" }, { type: "azure-native:containerinstance/v20260601preview:NGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NGroup.__pulumiType, name, resourceInputs, opts);
     }
@@ -156,7 +156,7 @@ export interface NGroupArgs {
      */
     identity?: pulumi.Input<types.inputs.NGroupIdentityArgs>;
     /**
-     * The resource location.
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
@@ -172,7 +172,7 @@ export interface NGroupArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The resource tags.
+     * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -180,7 +180,7 @@ export interface NGroupArgs {
      */
     updateProfile?: pulumi.Input<types.inputs.UpdateProfileArgs>;
     /**
-     * The zones for the container group.
+     * The availability zones.
      */
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

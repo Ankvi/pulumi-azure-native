@@ -264,6 +264,40 @@ export interface CustomDomainArgs {
 }
 
 /**
+ * The connection details for Data Share source
+ */
+export interface DataShareConnectionArgs {
+    /**
+     * The URI of the backing DataShare. Must be in the format: azds://<region>:<DataShareName>:<DataShareIdentifier>
+     */
+    dataShareUri: pulumi.Input<string>;
+    /**
+     * The connection type for bucket connection in storage connector.
+     * Expected value is 'DataShare'.
+     */
+    type: pulumi.Input<"DataShare">;
+}
+
+/**
+ * The properties of data share source
+ */
+export interface DataShareSourceArgs {
+    /**
+     * Details for how to authenticate to the backing data store.
+     */
+    authProperties: pulumi.Input<ManagedIdentityAuthPropertiesArgs>;
+    /**
+     * Details for how to connect to the backing data store.
+     */
+    connection: pulumi.Input<DataShareConnectionArgs>;
+    /**
+     * The type of the backing data source for storage connector
+     * Expected value is 'DataShare'.
+     */
+    type: pulumi.Input<"DataShare">;
+}
+
+/**
  * Object to define snapshot and version action conditions.
  */
 export interface DateAfterCreationArgs {
@@ -581,6 +615,21 @@ export interface LastAccessTimeTrackingPolicyArgs {
      * The field specifies blob object tracking granularity in days, typically how often the blob object should be tracked.This field is currently read only with value as 1
      */
     trackingGranularityInDays?: pulumi.Input<number>;
+}
+
+/**
+ * The managed identity auth properties for dataShare connection.
+ */
+export interface ManagedIdentityAuthPropertiesArgs {
+    /**
+     * ARM ResourceId of the managed identity that should be used to authenticate to the backing data source.
+     */
+    identityResourceId?: pulumi.Input<string>;
+    /**
+     * The auth type supported for bucket connection in storage connector.
+     * Expected value is 'ManagedIdentity'.
+     */
+    type: pulumi.Input<"ManagedIdentity">;
 }
 
 /**
@@ -1007,6 +1056,100 @@ export interface SshPublicKeyArgs {
      * Ssh public key base64 encoded. The format should be: '<keyType> <keyData>', e.g. ssh-rsa AAAABBBB
      */
     key?: pulumi.Input<string>;
+}
+
+/**
+ * The storage connector properties
+ */
+export interface StorageConnectorPropertiesArgs {
+    /**
+     * The type of backing data source for this Storage Connector.
+     */
+    dataSourceType: pulumi.Input<string | enums.StorageConnectorDataSourceType>;
+    /**
+     * Arbitrary description of this Storage Connector. Max 250 characters.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Information about how to communicate with and authenticate to the backing data store.
+     */
+    source: pulumi.Input<DataShareSourceArgs>;
+    /**
+     * State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active)
+     * (While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise.
+     */
+    state?: pulumi.Input<string | enums.StorageConnectorState>;
+    /**
+     * Test connection to backing data source before creating the storage connector.
+     */
+    testConnection?: pulumi.Input<boolean>;
+}
+/**
+ * storageConnectorPropertiesArgsProvideDefaults sets the appropriate defaults for StorageConnectorPropertiesArgs
+ */
+export function storageConnectorPropertiesArgsProvideDefaults(val: StorageConnectorPropertiesArgs): StorageConnectorPropertiesArgs {
+    return {
+        ...val,
+        state: (val.state) ?? "Active",
+        testConnection: (val.testConnection) ?? false,
+    };
+}
+
+/**
+ * Policy that specify the permission allowed to a managed identity
+ */
+export interface StorageDataShareAccessPolicyArgs {
+    /**
+     * Allowed permissions. Currently, only supported value is Read.
+     */
+    permission: pulumi.Input<string | enums.StorageDataShareAccessPolicyPermission>;
+    /**
+     * The AAD principal ID of the Managed Identity.
+     */
+    principalId: pulumi.Input<string>;
+    /**
+     * The AAD tenant ID of the Managed Identity.
+     */
+    tenantId: pulumi.Input<string>;
+}
+
+/**
+ * Properties of a shared resource.
+ */
+export interface StorageDataShareAssetArgs {
+    /**
+     * Source Path to be shared. It can be a folder or a blob.
+     * The asset path should contain container name followed by path within the container, e.g. /container1/logs/external.
+     */
+    assetPath: pulumi.Input<string>;
+    /**
+     * Consumer visible name of the original path.
+     */
+    displayName: pulumi.Input<string>;
+}
+
+/**
+ * The storage datashare properties
+ */
+export interface StorageDataSharePropertiesArgs {
+    /**
+     * List of access policies that specify the permission allowed to a managed identity.
+     * For Create - This property is required and cannot be null. If no access policies are provided at creation time, specify an empty array.
+     * For Update - This property is optional. If set to null or not passed, the existing access policies are left unchanged.
+     * If provided with a non-null value, the existing access policies are replaced with the specified list.
+     */
+    accessPolicies: pulumi.Input<pulumi.Input<StorageDataShareAccessPolicyArgs>[]>;
+    /**
+     * List of assets that specify the properties of the shared resources.
+     * For Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array.
+     * For Update - This property is optional. If set to null or not passed, the existing assets are left unchanged.
+     * If provided with a non-null value, the existing assets are replaced with the specified list.
+     */
+    assets: pulumi.Input<pulumi.Input<StorageDataShareAssetArgs>[]>;
+    /**
+     * Arbitrary description of this Data Share. Max 250 characters.
+     */
+    description?: pulumi.Input<string>;
 }
 
 /**

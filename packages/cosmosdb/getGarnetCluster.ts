@@ -5,6 +5,8 @@ import * as types from "./types";
  * Get the properties of a Garnet cache cluster.
  *
  * Uses Azure REST API version 2025-11-01-preview.
+ *
+ * Other available API versions: 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getGarnetCluster(args: GetGarnetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetGarnetClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -16,7 +18,7 @@ export function getGarnetCluster(args: GetGarnetClusterArgs, opts?: pulumi.Invok
 
 export interface GetGarnetClusterArgs {
     /**
-     * Garnet cache cluster name.
+     * The name of the GarnetClusterResource
      */
     clusterName: string;
     /**
@@ -38,6 +40,10 @@ export interface GetGarnetClusterResult {
      */
     readonly id: string;
     /**
+     * Identity for the resource.
+     */
+    readonly identity?: types.outputs.ManagedCassandraManagedServiceIdentityResponse;
+    /**
      * The geo-location where the resource lives
      */
     readonly location: string;
@@ -46,9 +52,9 @@ export interface GetGarnetClusterResult {
      */
     readonly name: string;
     /**
-     * Properties of a Garnet cache cluster.
+     * The resource-specific properties for this resource.
      */
-    readonly properties: types.outputs.GarnetClusterResourceResponseProperties;
+    readonly properties: types.outputs.GarnetClusterResourcePropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -66,6 +72,8 @@ export interface GetGarnetClusterResult {
  * Get the properties of a Garnet cache cluster.
  *
  * Uses Azure REST API version 2025-11-01-preview.
+ *
+ * Other available API versions: 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getGarnetClusterOutput(args: GetGarnetClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGarnetClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -77,7 +85,7 @@ export function getGarnetClusterOutput(args: GetGarnetClusterOutputArgs, opts?: 
 
 export interface GetGarnetClusterOutputArgs {
     /**
-     * Garnet cache cluster name.
+     * The name of the GarnetClusterResource
      */
     clusterName: pulumi.Input<string>;
     /**

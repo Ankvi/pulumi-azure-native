@@ -44,7 +44,7 @@ export class ContainerGroupProfile extends pulumi.CustomResource {
     /**
      * The containers within the container group.
      */
-    declare public readonly containers: pulumi.Output<types.outputs.ContainerResponseV2[]>;
+    declare public readonly containers: pulumi.Output<types.outputs.ContainerResponseV1[]>;
     /**
      * The diagnostic information for a container group.
      */
@@ -60,7 +60,7 @@ export class ContainerGroupProfile extends pulumi.CustomResource {
     /**
      * The image registry credentials by which the container group is created from.
      */
-    declare public readonly imageRegistryCredentials: pulumi.Output<types.outputs.ImageRegistryCredentialResponseV2[] | undefined>;
+    declare public readonly imageRegistryCredentials: pulumi.Output<types.outputs.ImageRegistryCredentialResponseV1[] | undefined>;
     /**
      * The init containers for a container group.
      */
@@ -111,7 +111,7 @@ export class ContainerGroupProfile extends pulumi.CustomResource {
     /**
      * The list of volumes that can be mounted by containers in this container group.
      */
-    declare public readonly volumes: pulumi.Output<types.outputs.VolumeResponseV2[] | undefined>;
+    declare public readonly volumes: pulumi.Output<types.outputs.VolumeResponseV1[] | undefined>;
     /**
      * The zones for the container group.
      */
@@ -182,7 +182,7 @@ export class ContainerGroupProfile extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerinstance/v20240501preview:ContainerGroupProfile" }, { type: "azure-native:containerinstance/v20241101preview:CGProfile" }, { type: "azure-native:containerinstance/v20241101preview:ContainerGroupProfile" }, { type: "azure-native:containerinstance/v20250901:ContainerGroupProfile" }, { type: "azure-native:containerinstance:CGProfile" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerinstance/v20240501preview:ContainerGroupProfile" }, { type: "azure-native:containerinstance/v20241101preview:CGProfile" }, { type: "azure-native:containerinstance/v20241101preview:ContainerGroupProfile" }, { type: "azure-native:containerinstance/v20250901:ContainerGroupProfile" }, { type: "azure-native:containerinstance/v20260601preview:ContainerGroupProfile" }, { type: "azure-native:containerinstance:CGProfile" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ContainerGroupProfile.__pulumiType, name, resourceInputs, opts);
     }

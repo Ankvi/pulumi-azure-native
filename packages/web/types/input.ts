@@ -466,7 +466,7 @@ export interface AzureActiveDirectoryLoginArgs {
 export interface AzureActiveDirectoryRegistrationArgs {
     /**
      * The Client ID of this relying party application, known as the client_id.
-     * This setting is required for enabling OpenID Connection authentication with Azure Active Directory or 
+     * This setting is required for enabling OpenID Connection authentication with Azure Active Directory or
      * other 3rd party OpenID Connect providers.
      * More information on OpenID Connect: http://openid.net/specs/openid-connect-core-1_0.html
      */
@@ -748,7 +748,7 @@ export interface ClientRegistrationArgs {
  */
 export interface CloningInfoArgs {
     /**
-     * Application setting overrides for cloned app. If specified, these settings override the settings cloned 
+     * Application setting overrides for cloned app. If specified, these settings override the settings cloned
      * from source app. Otherwise, application settings from source app are retained.
      */
     appSettingsOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -778,8 +778,8 @@ export interface CloningInfoArgs {
      */
     overwrite?: pulumi.Input<boolean>;
     /**
-     * ARM resource ID of the source app. App resource ID is of the form 
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and 
+     * ARM resource ID of the source app. App resource ID is of the form
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
      */
     sourceWebAppId: pulumi.Input<string>;
@@ -788,7 +788,7 @@ export interface CloningInfoArgs {
      */
     sourceWebAppLocation?: pulumi.Input<string>;
     /**
-     * ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form 
+     * ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form
      * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
      */
     trafficManagerProfileId?: pulumi.Input<string>;
@@ -1036,7 +1036,7 @@ export interface CorsSettingsArgs {
      */
     allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Gets or sets whether CORS requests with credentials are allowed. See 
+     * Gets or sets whether CORS requests with credentials are allowed. See
      * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
      * for more details.
      */
@@ -1138,6 +1138,24 @@ export interface CustomOpenIdConnectProviderArgs {
 }
 
 /**
+ * The configuration settings of the custom Open ID Connect provider.
+ */
+export interface CustomOpenIdConnectProviderV1Args {
+    /**
+     * <code>false</code> if the custom Open ID provider provider should not be enabled; otherwise, <code>true</code>.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The configuration settings of the login flow of the custom Open ID Connect provider.
+     */
+    login?: pulumi.Input<OpenIdConnectLoginArgs>;
+    /**
+     * The configuration settings of the app registration for the custom Open ID Connect provider.
+     */
+    registration?: pulumi.Input<OpenIdConnectRegistrationV1Args>;
+}
+
+/**
  * App Dapr configuration.
  */
 export interface DaprConfigArgs {
@@ -1232,6 +1250,14 @@ export interface DefaultAuthorizationPolicyArgs {
      * The configuration settings of the Azure Active Directory allowed principals.
      */
     allowedPrincipals?: pulumi.Input<AllowedPrincipalsArgs>;
+}
+
+export interface DefaultIdentityArgs {
+    /**
+     * Type of managed service identity.
+     */
+    identityType?: pulumi.Input<enums.ManagedServiceIdentityType>;
+    userAssignedIdentityResourceId?: pulumi.Input<string>;
 }
 
 /**
@@ -1386,6 +1412,10 @@ export interface FunctionAppConfigArgs {
      * Function app scale and concurrency settings.
      */
     scaleAndConcurrency?: pulumi.Input<FunctionsScaleAndConcurrencyArgs>;
+    /**
+     * Function app site update strategy configuration.
+     */
+    siteUpdateStrategy?: pulumi.Input<FunctionsSiteUpdateStrategyArgs>;
 }
 
 /**
@@ -1413,9 +1443,27 @@ export interface FunctionsDeploymentArgs {
 }
 
 /**
+ * Storage for deployed package used by the function app.
+ */
+export interface FunctionsDeploymentStorageArgs {
+    /**
+     * Authentication method to access the storage account for deployment.
+     */
+    authentication?: pulumi.Input<FunctionsDeploymentStorageAuthenticationArgs>;
+    /**
+     * Property to select Azure Storage type. Available options: blobContainer.
+     */
+    type?: pulumi.Input<string | enums.FunctionsDeploymentStorageType>;
+    /**
+     * Property to set the URL for the selected Azure Storage type. Example: For blobContainer, the value could be https://<storageAccountName>.blob.core.windows.net/<containerName>.
+     */
+    value?: pulumi.Input<string>;
+}
+
+/**
  * Authentication method to access the storage account for deployment.
  */
-export interface FunctionsDeploymentAuthenticationArgs {
+export interface FunctionsDeploymentStorageAuthenticationArgs {
     /**
      * Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.
      */
@@ -1428,24 +1476,6 @@ export interface FunctionsDeploymentAuthenticationArgs {
      * Use this property for UserAssignedIdentity. Set the resource ID of the identity. Do not set a value for this property when using other authentication type.
      */
     userAssignedIdentityResourceId?: pulumi.Input<string>;
-}
-
-/**
- * Storage for deployed package used by the function app.
- */
-export interface FunctionsDeploymentStorageArgs {
-    /**
-     * Authentication method to access the storage account for deployment.
-     */
-    authentication?: pulumi.Input<FunctionsDeploymentAuthenticationArgs>;
-    /**
-     * Property to select Azure Storage type. Available options: blobContainer.
-     */
-    type?: pulumi.Input<string | enums.FunctionsDeploymentStorageType>;
-    /**
-     * Property to set the URL for the selected Azure Storage type. Example: For blobContainer, the value could be https://<storageAccountName>.blob.core.windows.net/<containerName>.
-     */
-    value?: pulumi.Input<string>;
 }
 
 /**
@@ -1485,9 +1515,19 @@ export interface FunctionsScaleAndConcurrencyArgs {
 }
 
 /**
+ * Scale and concurrency settings for the function app triggers.
+ */
+export interface FunctionsScaleAndConcurrencyTriggersArgs {
+    /**
+     * Scale and concurrency settings for the HTTP trigger.
+     */
+    http?: pulumi.Input<FunctionsScaleAndConcurrencyTriggersHttpArgs>;
+}
+
+/**
  * Scale and concurrency settings for the HTTP trigger.
  */
-export interface FunctionsScaleAndConcurrencyHttpArgs {
+export interface FunctionsScaleAndConcurrencyTriggersHttpArgs {
     /**
      * The maximum number of concurrent HTTP trigger invocations per instance.
      */
@@ -1495,13 +1535,13 @@ export interface FunctionsScaleAndConcurrencyHttpArgs {
 }
 
 /**
- * Scale and concurrency settings for the function app triggers.
+ * Function app site update strategy configuration for deployments and site config updates.
  */
-export interface FunctionsScaleAndConcurrencyTriggersArgs {
+export interface FunctionsSiteUpdateStrategyArgs {
     /**
-     * Scale and concurrency settings for the HTTP trigger.
+     * Function app site update strategy type. Available options: Recreate, RollingUpdate
      */
-    http?: pulumi.Input<FunctionsScaleAndConcurrencyHttpArgs>;
+    type?: pulumi.Input<string | enums.SiteUpdateStrategyType>;
 }
 
 /**
@@ -1627,7 +1667,7 @@ export interface GoogleArgs {
 }
 
 /**
- * The IIS handler mappings used to define which handler processes HTTP requests with certain extension. 
+ * The IIS handler mappings used to define which handler processes HTTP requests with certain extension.
  * For example, it is used to configure php-cgi.exe process to handle all HTTP requests with *.php extension.
  */
 export interface HandlerMappingArgs {
@@ -1771,6 +1811,77 @@ export interface IdentityProvidersArgs {
 }
 
 /**
+ * The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
+ */
+export interface IdentityProvidersV1Args {
+    /**
+     * The configuration settings of the Apple provider.
+     */
+    apple?: pulumi.Input<AppleArgs>;
+    /**
+     * The configuration settings of the Azure Active directory provider.
+     */
+    azureActiveDirectory?: pulumi.Input<AzureActiveDirectoryArgs>;
+    /**
+     * The configuration settings of the Azure Static Web Apps provider.
+     */
+    azureStaticWebApps?: pulumi.Input<AzureStaticWebAppsArgs>;
+    /**
+     * The map of the name of the alias of each custom Open ID Connect provider to the
+     * configuration settings of the custom Open ID Connect provider.
+     */
+    customOpenIdConnectProviders?: pulumi.Input<{[key: string]: pulumi.Input<CustomOpenIdConnectProviderV1Args>}>;
+    /**
+     * The configuration settings of the Facebook provider.
+     */
+    facebook?: pulumi.Input<FacebookArgs>;
+    /**
+     * The configuration settings of the GitHub provider.
+     */
+    gitHub?: pulumi.Input<GitHubArgs>;
+    /**
+     * The configuration settings of the Google provider.
+     */
+    google?: pulumi.Input<GoogleArgs>;
+    /**
+     * The configuration settings of the legacy Microsoft Account provider.
+     */
+    legacyMicrosoftAccount?: pulumi.Input<LegacyMicrosoftAccountArgs>;
+    /**
+     * The configuration settings of the Twitter provider.
+     */
+    twitter?: pulumi.Input<TwitterArgs>;
+}
+
+/**
+ * Server farm install script configuration.
+ */
+export interface InstallScriptArgs {
+    /**
+     * Name of the install script.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Source of the install script.
+     */
+    source?: pulumi.Input<InstallScriptSourceArgs>;
+}
+
+/**
+ * Object to hold install script reference.
+ */
+export interface InstallScriptSourceArgs {
+    /**
+     * Install script source URI where the install script file will be fetched from.
+     */
+    sourceUri?: pulumi.Input<string>;
+    /**
+     * Type of the install script.
+     */
+    type?: pulumi.Input<string | enums.InstallScriptType>;
+}
+
+/**
  * IP security restriction on an app.
  */
 export interface IpSecurityRestrictionArgs {
@@ -1784,12 +1895,12 @@ export interface IpSecurityRestrictionArgs {
     description?: pulumi.Input<string>;
     /**
      * IP restriction rule headers.
-     * X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples). 
+     * X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).
      * The matching logic is ..
      * - If the property is null or empty (default), all hosts(or lack of) are allowed.
      * - A value is compared using ordinal-ignore-case (excluding port number).
      * - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com
-     *  but not the root domain contoso.com or multi-level foo.bar.contoso.com
+     * but not the root domain contoso.com or multi-level foo.bar.contoso.com
      * - Unicode host names are allowed but are converted to Punycode for matching.
      *
      * X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).
@@ -1850,6 +1961,20 @@ export interface JwtClaimChecksArgs {
      * The list of the allowed groups.
      */
     allowedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Object to hold key vault reference and the resolution status
+ */
+export interface KeyVaultReferenceWithStatusArgs {
+    /**
+     * Reference status of the key vault secret.
+     */
+    referenceStatus?: pulumi.Input<string>;
+    /**
+     * Key vault secret URI.
+     */
+    secretUri?: pulumi.Input<string>;
 }
 
 /**
@@ -1998,6 +2123,20 @@ export interface OpenIdConnectClientCredentialArgs {
 }
 
 /**
+ * The authentication client credentials of the custom Open ID Connect provider.
+ */
+export interface OpenIdConnectClientCredentialV1Args {
+    /**
+     * The app setting that contains the client secret for the custom Open ID Connect provider.
+     */
+    clientSecretSettingName?: pulumi.Input<string>;
+    /**
+     * The method that should be used to authenticate the user.
+     */
+    method?: pulumi.Input<enums.Method>;
+}
+
+/**
  * The configuration settings of the endpoints used for the custom Open ID Connect provider.
  */
 export interface OpenIdConnectConfigArgs {
@@ -2045,6 +2184,24 @@ export interface OpenIdConnectRegistrationArgs {
      * The authentication credentials of the custom Open ID Connect provider.
      */
     clientCredential?: pulumi.Input<OpenIdConnectClientCredentialArgs>;
+    /**
+     * The client id of the custom Open ID Connect provider.
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * The configuration settings of the endpoints used for the custom Open ID Connect provider.
+     */
+    openIdConnectConfiguration?: pulumi.Input<OpenIdConnectConfigArgs>;
+}
+
+/**
+ * The configuration settings of the app registration for the custom Open ID Connect provider.
+ */
+export interface OpenIdConnectRegistrationV1Args {
+    /**
+     * The authentication credentials of the custom Open ID Connect provider.
+     */
+    clientCredential?: pulumi.Input<OpenIdConnectClientCredentialV1Args>;
     /**
      * The client id of the custom Open ID Connect provider.
      */
@@ -2145,8 +2302,8 @@ export interface RampUpRuleArgs {
      */
     changeIntervalInMinutes?: pulumi.Input<number>;
     /**
-     * In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or 
-     * <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm 
+     * In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or
+     * <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm
      * can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
      */
     changeStep?: pulumi.Input<number>;
@@ -2166,6 +2323,24 @@ export interface RampUpRuleArgs {
      * Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
      */
     reroutePercentage?: pulumi.Input<number>;
+}
+
+/**
+ * Server farm registry adapter configuration.
+ */
+export interface RegistryAdapterArgs {
+    /**
+     * Key vault reference to the value that will be placed in the registry location
+     */
+    keyVaultSecretReference?: pulumi.Input<KeyVaultReferenceWithStatusArgs>;
+    /**
+     * Registry key for the adapter.
+     */
+    registryKey?: pulumi.Input<string>;
+    /**
+     * Type of the registry adapter.
+     */
+    type?: pulumi.Input<string | enums.RegistryAdapterType>;
 }
 
 /**
@@ -2194,6 +2369,16 @@ export interface ResourceConfigArgs {
      * Required memory, e.g. "1Gi"
      */
     memory?: pulumi.Input<string>;
+}
+
+/**
+ * Network settings for an app service plan.
+ */
+export interface ServerFarmNetworkSettingsArgs {
+    /**
+     * Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration. This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
+     */
+    virtualNetworkSubnetId?: pulumi.Input<string>;
 }
 
 /**
@@ -2749,6 +2934,32 @@ export interface StatusCodesRangeBasedTriggerArgs {
 }
 
 /**
+ * Server farm storage mount configuration.
+ */
+export interface StorageMountArgs {
+    /**
+     * KV reference to the credentials to connect to the share.
+     */
+    credentialsKeyVaultReference?: pulumi.Input<KeyVaultReferenceWithStatusArgs>;
+    /**
+     * Path on worker where storage will be mounted.
+     */
+    destinationPath?: pulumi.Input<string>;
+    /**
+     * Name of the storage mount.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Source of the fileshare/storage.
+     */
+    source?: pulumi.Input<string>;
+    /**
+     * Type of the storage mount.
+     */
+    type?: pulumi.Input<string | enums.StorageMountType>;
+}
+
+/**
  * The configuration settings of the token store.
  */
 export interface TokenStoreArgs {
@@ -2758,7 +2969,7 @@ export interface TokenStoreArgs {
     azureBlobStorage?: pulumi.Input<BlobStorageTokenStoreArgs>;
     /**
      * <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
-     *  The default is <code>false</code>.
+     * The default is <code>false</code>.
      */
     enabled?: pulumi.Input<boolean>;
     /**

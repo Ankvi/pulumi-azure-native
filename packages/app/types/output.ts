@@ -1,6 +1,290 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Configuration for action
+ */
+export interface ActionConfigurationResponse {
+    /**
+     * The access level of the action
+     */
+    accessLevel?: string;
+    /**
+     * The identity used by the action
+     */
+    identity?: string;
+    /**
+     * The mode of the action
+     */
+    mode?: string;
+}
+
+/**
+ * Agent Connector Properties
+ */
+export interface AgentConnectorPropertiesResponse {
+    /**
+     * The type of the data connector
+     */
+    dataConnectorType?: string;
+    /**
+     * Data source connection string or endpoint
+     */
+    dataSource?: string;
+    /**
+     * Deployment error message if provisioning failed
+     */
+    deploymentError: string;
+    /**
+     * Endpoint of the connector
+     */
+    endpoint?: string;
+    /**
+     * Additional properties for the data connector which can be used to store custom key-value pairs
+     */
+    extendedProperties?: any;
+    /**
+     * Identity used to access the data source
+     */
+    identity?: string;
+    /**
+     * Provisioning state of the connector
+     */
+    provisioningState: string;
+    /**
+     * Source of the data connector - "Agent" when directly stored in agent, "AgentSpace" when inherited
+     */
+    source: string;
+}
+
+/**
+ * Agent Connector used to connect to data sources
+ */
+export interface AgentConnectorResponse {
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    id: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * The resource-specific properties for this resource.
+     */
+    properties?: AgentConnectorPropertiesResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
+}
+
+/**
+ * Agent identity configuration
+ */
+export interface AgentIdentityResponse {
+    /**
+     * Client ID (GUID) for the agent identity
+     */
+    clientId: string;
+    /**
+     * Indicates whether the agent identity is enabled
+     */
+    enabled: boolean;
+    /**
+     * Initial sponsor group ID (required for agent identity)
+     */
+    initialSponsorGroupId: string;
+}
+
+/**
+ * Properties of the Agent
+ */
+export interface AgentPropertiesResponse {
+    /**
+     * Configuration for action
+     */
+    actionConfiguration?: ActionConfigurationResponse;
+    /**
+     * The endpoint of the Agent
+     */
+    agentEndpoint: string;
+    /**
+     * Agent identity configuration for accessing resources
+     */
+    agentIdentity?: AgentIdentityResponse;
+    /**
+     * The agent space ID referenced by the agent
+     */
+    agentSpaceId?: string;
+    /**
+     * Default AI model configuration for the agent
+     */
+    defaultModel?: DefaultModelResponse;
+    /**
+     * Incident management configurations
+     */
+    incidentManagementConfiguration?: IncidentManagementConfigurationResponse;
+    /**
+     * Knowledge graph configuration for agent
+     */
+    knowledgeGraphConfiguration?: KnowledgeGraphConfigurationResponse;
+    /**
+     * Log configurations
+     */
+    logConfiguration?: LogConfigurationResponse;
+    /**
+     * The power state of the Agent
+     */
+    powerState: string;
+    /**
+     * Provisioning state of the Agent
+     */
+    provisioningState: string;
+    /**
+     * The running state of the Agent
+     */
+    runningState: string;
+    /**
+     * The upgrade channel of the agent
+     */
+    upgradeChannel?: string;
+}
+
+/**
+ * Compliance status of the Agent Space
+ */
+export interface AgentSpaceComplianceStatusResponse {
+    /**
+     * List of compliance issues found in the Agent Space
+     */
+    complianceIssues: string[];
+    /**
+     * Indicates whether the Agent Space is compliant
+     */
+    isCompliant: boolean;
+    /**
+     * Timestamp of the last compliance check
+     */
+    lastComplianceCheck: string;
+}
+
+/**
+ * Agent Space Connector Properties
+ */
+export interface AgentSpaceConnectorPropertiesResponse {
+    /**
+     * The type of the data connector
+     */
+    dataConnectorType?: string;
+    /**
+     * Data source connection string or endpoint
+     */
+    dataSource?: string;
+    /**
+     * Deployment error message if provisioning failed
+     */
+    deploymentError: string;
+    /**
+     * Endpoint of the connector
+     */
+    endpoint?: string;
+    /**
+     * Additional properties for the data connector which can be used to store custom key-value pairs
+     */
+    extendedProperties?: any;
+    /**
+     * Identity used to access the data source
+     */
+    identity?: string;
+    /**
+     * Provisioning state of the connector
+     */
+    provisioningState: string;
+}
+
+/**
+ * Agent Space Connector used to connect to data sources
+ */
+export interface AgentSpaceConnectorResponse {
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    id: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * The resource-specific properties for this resource.
+     */
+    properties?: AgentSpaceConnectorPropertiesResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
+}
+
+/**
+ * Policy configurations for an Agent Space
+ */
+export interface AgentSpacePoliciesResponse {
+    /**
+     * Configuration for Geneva Actions policy
+     */
+    genevaActionsConfiguration?: GenevaActionsPolicyResponse;
+}
+
+/**
+ * Agent Space specific properties
+ */
+export interface AgentSpacePropertiesResponse {
+    /**
+     * Compliance status of the Agent Space
+     */
+    complianceStatus: AgentSpaceComplianceStatusResponse;
+    /**
+     * Current number of agents in the Agent Space
+     */
+    currentAgentCount: number;
+    /**
+     * Description of the Agent Space
+     */
+    description?: string;
+    /**
+     * Timestamp of the last policy propagation to agents in this Agent Space
+     */
+    lastPolicyPropagation: string;
+    /**
+     * Maximum number of agents allowed in the Agent Space
+     */
+    maxAgentCount?: number;
+    /**
+     * List of agents referencing the Agent Space
+     */
+    memberAgents: string[];
+    /**
+     * Policy configurations for the Agent Space
+     */
+    policies?: AgentSpacePoliciesResponse;
+    /**
+     * Provisioning state of the Agent Space
+     */
+    provisioningState: string;
+    /**
+     * Universal unique ID (UUID) of the Service Tree associated with this Agent Space
+     */
+    serviceTreeId?: string;
+}
+
+/**
  * The configuration settings of the Allowed Audiences validation flow.
  */
 export interface AllowedAudiencesValidationResponse {
@@ -92,6 +376,20 @@ export interface AppleResponse {
      * The configuration settings of the Apple registration.
      */
     registration?: AppleRegistrationResponse;
+}
+
+/**
+ * Application Insights Configuration
+ */
+export interface ApplicationInsightsConfigurationResponse {
+    /**
+     * The Application ID for the Application Insights resource
+     */
+    appId?: string;
+    /**
+     * The connection string for the Application Insights resource
+     */
+    connectionString?: string;
 }
 
 /**
@@ -1234,6 +1532,20 @@ export interface DefaultAuthorizationPolicyResponse {
 }
 
 /**
+ * Default AI model configuration
+ */
+export interface DefaultModelResponse {
+    /**
+     * Model name (e.g., gpt-5, claude-opus-4-5, claude-sonnet-4-5)
+     */
+    name?: string;
+    /**
+     * AI provider name (e.g., MicrosoftFoundry, Anthropic)
+     */
+    provider?: string;
+}
+
+/**
  * Configuration of Open Telemetry destinations
  */
 export interface DestinationsConfigurationResponse {
@@ -1455,6 +1767,76 @@ export interface ForwardProxyResponse {
      * The name of the header containing the scheme of the request.
      */
     customProtoHeaderName?: string;
+}
+
+/**
+ * Configuration for a Geneva action
+ */
+export interface GenevaActionConfigResponse {
+    /**
+     * Name of the Geneva action
+     */
+    actionName?: string;
+    /**
+     * Parameters for the Geneva action
+     */
+    actionParameters?: GenevaActionParameterResponse[];
+    /**
+     * Indicates whether approval is required for this action
+     */
+    approvalRequired?: boolean;
+    /**
+     * Extension associated with the action
+     */
+    extension?: string;
+}
+
+/**
+ * Parameter for a Geneva action
+ */
+export interface GenevaActionParameterResponse {
+    /**
+     * Name of the parameter
+     */
+    name?: string;
+    /**
+     * Type of the parameter
+     */
+    type?: string;
+}
+
+/**
+ * Geneva Actions policy configuration for Agent Space
+ */
+export interface GenevaActionsPolicyResponse {
+    /**
+     * ACIS (Azure Container Instance Service) endpoint URL
+     */
+    acisEndpoint?: string;
+    /**
+     * Collection of allowed Geneva actions
+     */
+    allowedActions?: GenevaActionConfigResponse[];
+    /**
+     * Authentication mode for Geneva Actions
+     */
+    authenticationMode?: string;
+    /**
+     * Subject alternative name of the certificate used for authentication
+     */
+    certificateSubjectAlternativeName: string;
+    /**
+     * Subject name of the certificate used for authentication
+     */
+    certificateSubjectName?: string;
+    /**
+     * Client ID for authentication
+     */
+    clientId?: string;
+    /**
+     * Name of the Geneva extension
+     */
+    extensionName: string;
 }
 
 /**
@@ -1897,6 +2279,32 @@ export function identitySettingsResponseProvideDefaults(val: IdentitySettingsRes
         ...val,
         lifecycle: (val.lifecycle) ?? "All",
     };
+}
+
+/**
+ * Incident Management Configurations
+ */
+export interface IncidentManagementConfigurationResponse {
+    /**
+     * The key for the connection
+     */
+    connectionKey?: string;
+    /**
+     * The name of the connection
+     */
+    connectionName?: string;
+    /**
+     * The URL of the connection
+     */
+    connectionUrl?: string;
+    /**
+     * The user for the connection
+     */
+    oboUser?: string;
+    /**
+     * The type of incident management system
+     */
+    type?: string;
 }
 
 /**
@@ -2365,6 +2773,20 @@ export interface KedaConfigurationResponse {
 }
 
 /**
+ * Knowledge graph configuration for agent
+ */
+export interface KnowledgeGraphConfigurationResponse {
+    /**
+     * The identity used to access the knowledge graph
+     */
+    identity?: string;
+    /**
+     * The list of resources managed by agent
+     */
+    managedResources?: string[];
+}
+
+/**
  * The lifecycle configuration properties of a session in the dynamic session pool
  */
 export interface LifecycleConfigurationResponse {
@@ -2394,6 +2816,16 @@ export interface LogAnalyticsConfigurationResponse {
      * Boolean indicating whether to parse json string log into dynamic json columns
      */
     dynamicJsonColumns?: boolean;
+}
+
+/**
+ * Log Configurations
+ */
+export interface LogConfigurationResponse {
+    /**
+     * Application Insights Configuration
+     */
+    applicationInsightsConfiguration?: ApplicationInsightsConfigurationResponse;
 }
 
 /**

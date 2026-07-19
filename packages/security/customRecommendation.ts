@@ -54,7 +54,7 @@ export class CustomRecommendation extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
-     * Resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -78,7 +78,7 @@ export class CustomRecommendation extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -103,8 +103,8 @@ export class CustomRecommendation extends pulumi.CustomResource {
             resourceInputs["query"] = args?.query;
             resourceInputs["remediationDescription"] = args?.remediationDescription;
             resourceInputs["scope"] = args?.scope;
-            resourceInputs["securityIssue"] = args?.securityIssue;
-            resourceInputs["severity"] = args?.severity;
+            resourceInputs["securityIssue"] = (args?.securityIssue) ?? "BestPractices";
+            resourceInputs["severity"] = (args?.severity) ?? "Low";
             resourceInputs["assessmentKey"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -160,7 +160,7 @@ export interface CustomRecommendationArgs {
      */
     remediationDescription?: pulumi.Input<string>;
     /**
-     * The scope of the custom recommendation. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     scope: pulumi.Input<string>;
     /**

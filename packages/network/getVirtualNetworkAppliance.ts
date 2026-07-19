@@ -5,6 +5,8 @@ import * as types from "./types";
  * Gets information about the specified virtual network appliance.
  *
  * Uses Azure REST API version 2025-05-01.
+ *
+ * Other available API versions: 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getVirtualNetworkAppliance(args: GetVirtualNetworkApplianceArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualNetworkApplianceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -16,7 +18,7 @@ export function getVirtualNetworkAppliance(args: GetVirtualNetworkApplianceArgs,
 
 export interface GetVirtualNetworkApplianceArgs {
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
@@ -68,7 +70,7 @@ export interface GetVirtualNetworkApplianceResult {
     /**
      * The reference to the subnet resource.
      */
-    readonly subnet?: types.outputs.SubnetResponse;
+    readonly subnet?: types.outputs.CommonSubnetResponse;
     /**
      * Resource tags.
      */
@@ -82,6 +84,8 @@ export interface GetVirtualNetworkApplianceResult {
  * Gets information about the specified virtual network appliance.
  *
  * Uses Azure REST API version 2025-05-01.
+ *
+ * Other available API versions: 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getVirtualNetworkApplianceOutput(args: GetVirtualNetworkApplianceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVirtualNetworkApplianceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -93,7 +97,7 @@ export function getVirtualNetworkApplianceOutput(args: GetVirtualNetworkApplianc
 
 export interface GetVirtualNetworkApplianceOutputArgs {
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

@@ -1092,88 +1092,6 @@ export function exportPolicyRuleResponseV1ProvideDefaults(val: ExportPolicyRuleR
 }
 
 /**
- * Volume Export Policy Rule
- */
-export interface ExportPolicyRuleResponseV2 {
-    /**
-     * Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
-     */
-    allowedClients?: string;
-    /**
-     * This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own.
-     */
-    chownMode?: string;
-    /**
-     * Allows CIFS protocol
-     */
-    cifs?: boolean;
-    /**
-     * Has root access to volume
-     */
-    hasRootAccess?: boolean;
-    /**
-     * Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
-     */
-    kerberos5ReadOnly?: boolean;
-    /**
-     * Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
-     */
-    kerberos5ReadWrite?: boolean;
-    /**
-     * Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
-     */
-    kerberos5iReadOnly?: boolean;
-    /**
-     * Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
-     */
-    kerberos5iReadWrite?: boolean;
-    /**
-     * Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
-     */
-    kerberos5pReadOnly?: boolean;
-    /**
-     * Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
-     */
-    kerberos5pReadWrite?: boolean;
-    /**
-     * Allows NFSv3 protocol. Enable only for NFSv3 type volumes
-     */
-    nfsv3?: boolean;
-    /**
-     * Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
-     */
-    nfsv41?: boolean;
-    /**
-     * Order index
-     */
-    ruleIndex?: number;
-    /**
-     * Read only access
-     */
-    unixReadOnly?: boolean;
-    /**
-     * Read and write access
-     */
-    unixReadWrite?: boolean;
-}
-/**
- * exportPolicyRuleResponseV2ProvideDefaults sets the appropriate defaults for ExportPolicyRuleResponseV2
- */
-export function exportPolicyRuleResponseV2ProvideDefaults(val: ExportPolicyRuleResponseV2): ExportPolicyRuleResponseV2 {
-    return {
-        ...val,
-        chownMode: (val.chownMode) ?? "Restricted",
-        hasRootAccess: (val.hasRootAccess) ?? true,
-        kerberos5ReadOnly: (val.kerberos5ReadOnly) ?? false,
-        kerberos5ReadWrite: (val.kerberos5ReadWrite) ?? false,
-        kerberos5iReadOnly: (val.kerberos5iReadOnly) ?? false,
-        kerberos5iReadWrite: (val.kerberos5iReadWrite) ?? false,
-        kerberos5pReadOnly: (val.kerberos5pReadOnly) ?? false,
-        kerberos5pReadWrite: (val.kerberos5pReadWrite) ?? false,
-    };
-}
-
-/**
  * File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
  */
 export interface FileSystemUserResponse {
@@ -1747,7 +1665,7 @@ export interface VolumeGroupVolumePropertiesResponse {
     /**
      * Set of export policy rules
      */
-    exportPolicy?: VolumePropertiesResponseExportPolicyV1;
+    exportPolicy?: VolumePropertiesResponseExportPolicy;
     /**
      * Flag indicating whether file access logs are enabled for the volume, based on active diagnostic settings present on the volume.
      */
@@ -1961,16 +1879,6 @@ export interface VolumePropertiesResponseExportPolicy {
      * Export policy rule
      */
     rules?: ExportPolicyRuleResponseV1[];
-}
-
-/**
- * Set of export policy rules
- */
-export interface VolumePropertiesResponseExportPolicyV1 {
-    /**
-     * Export policy rule
-     */
-    rules?: ExportPolicyRuleResponseV2[];
 }
 
 /**

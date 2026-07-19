@@ -260,20 +260,6 @@ export interface AwsCloudTrailDataConnectorDataTypesLogsArgs {
 }
 
 /**
- * Resources created in Azure DevOps repository.
- */
-export interface AzureDevOpsResourceInfoArgs {
-    /**
-     * Id of the pipeline created for the source-control.
-     */
-    pipelineId?: pulumi.Input<string>;
-    /**
-     * Id of the service-connection created for the source-control.
-     */
-    serviceConnectionId?: pulumi.Input<string>;
-}
-
-/**
  * Model for API authentication with basic flow - user name + password.
  */
 export interface BasicAuthModelArgs {
@@ -485,20 +471,6 @@ export interface ConnectorDefinitionsResourceProviderArgs {
 }
 
 /**
- * The mapping of content type to a repo path.
- */
-export interface ContentPathMapArgs {
-    /**
-     * Content type.
-     */
-    contentType?: pulumi.Input<string | enums.ContentType>;
-    /**
-     * The path to the content.
-     */
-    path?: pulumi.Input<string>;
-}
-
-/**
  * The Custom permissions required for the connector.
  */
 export interface CustomPermissionDetailsArgs {
@@ -607,50 +579,6 @@ export interface DataConnectorDataTypeCommonArgs {
      * Describe whether this data type connection is enabled or not.
      */
     state: pulumi.Input<string | enums.DataTypeState>;
-}
-
-/**
- * Description about a deployment.
- */
-export interface DeploymentArgs {
-    /**
-     * Deployment identifier.
-     */
-    deploymentId?: pulumi.Input<string>;
-    /**
-     * Url to access repository action logs.
-     */
-    deploymentLogsUrl?: pulumi.Input<string>;
-    /**
-     * The outcome of the deployment.
-     */
-    deploymentResult?: pulumi.Input<string | enums.DeploymentResult>;
-    /**
-     * Current status of the deployment.
-     */
-    deploymentState?: pulumi.Input<string | enums.DeploymentState>;
-    /**
-     * The time when the deployment finished.
-     */
-    deploymentTime?: pulumi.Input<string>;
-}
-
-/**
- * Information regarding a deployment.
- */
-export interface DeploymentInfoArgs {
-    /**
-     * Deployment information.
-     */
-    deployment?: pulumi.Input<DeploymentArgs>;
-    /**
-     * Status while fetching the last deployment.
-     */
-    deploymentFetchStatus?: pulumi.Input<string | enums.DeploymentFetchStatus>;
-    /**
-     * Additional details about the deployment that can be shown to the user.
-     */
-    message?: pulumi.Input<string>;
 }
 
 /**
@@ -764,16 +692,6 @@ export interface GitHubAuthModelArgs {
      * Expected value is 'GitHub'.
      */
     type: pulumi.Input<"GitHub">;
-}
-
-/**
- * Resources created in GitHub repository.
- */
-export interface GitHubResourceInfoArgs {
-    /**
-     * GitHub application installation id.
-     */
-    appInstallationId?: pulumi.Input<string>;
 }
 
 /**
@@ -1443,37 +1361,51 @@ export interface RepositoryArgs {
     /**
      * Branch name of repository.
      */
-    branch?: pulumi.Input<string>;
-    /**
-     * Url to access repository action logs.
-     */
-    deploymentLogsUrl?: pulumi.Input<string>;
+    branch: pulumi.Input<string>;
     /**
      * Display url of repository.
      */
     displayUrl?: pulumi.Input<string>;
     /**
-     * Dictionary of source control content type and path mapping.
-     */
-    pathMapping?: pulumi.Input<pulumi.Input<ContentPathMapArgs>[]>;
-    /**
      * Url of repository.
      */
-    url?: pulumi.Input<string>;
+    url: pulumi.Input<string>;
+}
+
+/**
+ * Credentials to access repository.
+ */
+export interface RepositoryAccessArgs {
+    /**
+     * OAuth ClientId. Required when `kind` is `OAuth`
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * OAuth Code. Required when `kind` is `OAuth`
+     */
+    code?: pulumi.Input<string>;
+    /**
+     * Application installation ID. Required when `kind` is `App`. Supported by `GitHub` only.
+     */
+    installationId?: pulumi.Input<string>;
+    /**
+     * The kind of repository access credentials
+     */
+    kind: pulumi.Input<string | enums.RepositoryAccessKind>;
+    /**
+     * OAuth State. Required when `kind` is `OAuth`
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * Personal Access Token. Required when `kind` is `PAT`
+     */
+    token?: pulumi.Input<string>;
 }
 
 /**
  * Resources created in user's repository for the source-control.
  */
 export interface RepositoryResourceInfoArgs {
-    /**
-     * Resources created in Azure DevOps for this source-control.
-     */
-    azureDevOpsResourceInfo?: pulumi.Input<AzureDevOpsResourceInfoArgs>;
-    /**
-     * Resources created in GitHub for this source-control.
-     */
-    gitHubResourceInfo?: pulumi.Input<GitHubResourceInfoArgs>;
     /**
      * The webhook object created for the source-control.
      */
@@ -1603,6 +1535,16 @@ export interface SecurityMLAnalyticsSettingsDataSourceArgs {
      * The data types used by the security ml analytics settings
      */
     dataTypes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Service principal metadata.
+ */
+export interface ServicePrincipalArgs {
+    /**
+     * Expiration time of service principal credentials.
+     */
+    credentialsExpireOn?: pulumi.Input<string>;
 }
 
 /**
@@ -1782,16 +1724,4 @@ export interface WebhookArgs {
      * A flag to instruct the backend service to rotate webhook secret.
      */
     rotateWebhookSecret?: pulumi.Input<boolean>;
-    /**
-     * Unique identifier for the webhook.
-     */
-    webhookId?: pulumi.Input<string>;
-    /**
-     * Time when the webhook secret was updated.
-     */
-    webhookSecretUpdateTime?: pulumi.Input<string>;
-    /**
-     * URL that gets invoked by the webhook.
-     */
-    webhookUrl?: pulumi.Input<string>;
 }

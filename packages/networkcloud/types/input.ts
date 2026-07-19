@@ -7,6 +7,9 @@ export interface AadConfigurationArgs {
     adminGroupObjectIds: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+/**
+ * AccessBridgeSecurityRule captures an individual access rule enforced by the bridge.
+ */
 export interface AccessBridgeSecurityRuleArgs {
     /**
      * The user provided value describing this rule.
@@ -111,6 +114,20 @@ export interface AttachedNetworkConfigurationArgs {
      * The list of Trunked Networks and related configuration for attachment.
      */
     trunkedNetworks?: pulumi.Input<pulumi.Input<TrunkedNetworkAttachmentConfigurationArgs>[]>;
+}
+
+/**
+ * The complex type of the extended location.
+ */
+export interface AzureResourceManagerCommonTypesExtendedLocationArgs {
+    /**
+     * The name of the extended location.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The type of the extended location.
+     */
+    type: pulumi.Input<string | enums.ExtendedLocationType>;
 }
 
 export interface BareMetalMachineConfigurationDataArgs {
