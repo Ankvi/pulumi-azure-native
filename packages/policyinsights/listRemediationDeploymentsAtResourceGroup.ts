@@ -23,7 +23,7 @@ export interface ListRemediationDeploymentsAtResourceGroupArgs {
      */
     remediationName: string;
     /**
-     * Resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
@@ -37,11 +37,11 @@ export interface ListRemediationDeploymentsAtResourceGroupArgs {
  */
 export interface ListRemediationDeploymentsAtResourceGroupResult {
     /**
-     * The URL to get the next set of results.
+     * The link to the next page of items
      */
-    readonly nextLink: string;
+    readonly nextLink?: string;
     /**
-     * Array of deployments for the remediation.
+     * The RemediationDeployment items on this page
      */
     readonly value: types.outputs.RemediationDeploymentResponse[];
 }
@@ -67,7 +67,7 @@ export interface ListRemediationDeploymentsAtResourceGroupOutputArgs {
      */
     remediationName: pulumi.Input<string>;
     /**
-     * Resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

@@ -42,7 +42,7 @@ export class VMInstanceGuestAgent extends pulumi.CustomResource {
     /**
      * Username / Password Credentials to provision guest agent.
      */
-    declare public readonly credentials: pulumi.Output<types.outputs.GuestCredentialResponseV1 | undefined>;
+    declare public readonly credentials: pulumi.Output<types.outputs.GuestCredentialVMInstanceGuestAgentResponse | undefined>;
     /**
      * Gets the name of the corresponding resource in Kubernetes.
      */

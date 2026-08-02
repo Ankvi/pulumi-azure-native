@@ -22,7 +22,7 @@ export interface GetDeviceSecurityGroupArgs {
      */
     deviceSecurityGroupName: string;
     /**
-     * The identifier of the resource.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     resourceId: string;
 }
@@ -44,13 +44,17 @@ export interface GetDeviceSecurityGroupResult {
      */
     readonly denylistRules?: types.outputs.DenylistCustomAlertRuleResponse[];
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
-     * Resource name
+     * The name of the resource
      */
     readonly name: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The list of custom alert threshold rules.
      */
@@ -60,7 +64,7 @@ export interface GetDeviceSecurityGroupResult {
      */
     readonly timeWindowRules?: types.outputs.TimeWindowCustomAlertRuleResponse[];
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -85,7 +89,7 @@ export interface GetDeviceSecurityGroupOutputArgs {
      */
     deviceSecurityGroupName: pulumi.Input<string>;
     /**
-     * The identifier of the resource.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     resourceId: pulumi.Input<string>;
 }

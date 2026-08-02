@@ -240,7 +240,7 @@ export interface GetAssessmentsOperationResult {
      * Gets or sets the duration for which the VMs are up in the on-premises
      * environment.
      */
-    readonly vmUptime?: types.outputs.VmUptimeResponse;
+    readonly vmUptime?: types.outputs.VmUptimeAssessmentsOperationResponse;
 }
 /**
  * Get a Assessment

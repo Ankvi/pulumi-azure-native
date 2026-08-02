@@ -38,7 +38,7 @@ export class CustomLocation extends pulumi.CustomResource {
     /**
      * This is optional input that contains the authentication that should be used to generate the namespace.
      */
-    declare public readonly authentication: pulumi.Output<types.outputs.CustomLocationPropertiesResponseAuthentication | undefined>;
+    declare public readonly authentication: pulumi.Output<types.outputs.CustomLocationPropertiesAuthenticationResponse | undefined>;
     /**
      * The Azure API version of the resource.
      */
@@ -80,7 +80,7 @@ export class CustomLocation extends pulumi.CustomResource {
      */
     declare public readonly provisioningState: pulumi.Output<string | undefined>;
     /**
-     * Metadata pertaining to creation and last modification of the resource
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**

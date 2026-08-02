@@ -145,7 +145,7 @@ export interface CertificateArgs {
      */
     base64Value: pulumi.Input<string>;
     /**
-     * The parameters supplied to the create or update certificate operation.
+     * The name of certificate.
      */
     certificateName?: pulumi.Input<string>;
     /**
@@ -161,7 +161,7 @@ export interface CertificateArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

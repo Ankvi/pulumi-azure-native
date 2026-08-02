@@ -46,7 +46,7 @@ export class SitesByServiceGroup extends pulumi.CustomResource {
     /**
      * The resource-specific properties for this resource.
      */
-    declare public readonly properties: pulumi.Output<types.outputs.SitePropertiesResponseV1>;
+    declare public readonly properties: pulumi.Output<types.outputs.SitePropertiesSitesByServiceGroupResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */

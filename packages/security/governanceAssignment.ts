@@ -50,7 +50,7 @@ export class GovernanceAssignment extends pulumi.CustomResource {
      */
     declare public readonly isGracePeriod: pulumi.Output<boolean | undefined>;
     /**
-     * Resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -66,7 +66,11 @@ export class GovernanceAssignment extends pulumi.CustomResource {
      */
     declare public readonly remediationEta: pulumi.Output<types.outputs.RemediationEtaResponse | undefined>;
     /**
-     * Resource type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -101,6 +105,7 @@ export class GovernanceAssignment extends pulumi.CustomResource {
             resourceInputs["scope"] = args?.scope;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["additionalData"] = undefined /*out*/;
@@ -111,6 +116,7 @@ export class GovernanceAssignment extends pulumi.CustomResource {
             resourceInputs["owner"] = undefined /*out*/;
             resourceInputs["remediationDueDate"] = undefined /*out*/;
             resourceInputs["remediationEta"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -129,11 +135,11 @@ export interface GovernanceAssignmentArgs {
      */
     additionalData?: pulumi.Input<types.inputs.GovernanceAssignmentAdditionalDataArgs>;
     /**
-     * The Assessment Key - A unique key for the assessment type
+     * The assessment key of the governance assignment.
      */
     assessmentName: pulumi.Input<string>;
     /**
-     * The governance assignment key - the assessment key of the required governance assignment
+     * The governance assignment key.
      */
     assignmentKey?: pulumi.Input<string>;
     /**
@@ -157,7 +163,7 @@ export interface GovernanceAssignmentArgs {
      */
     remediationEta?: pulumi.Input<types.inputs.RemediationEtaArgs>;
     /**
-     * The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+     * The scope of the governance assignment.
      */
     scope: pulumi.Input<string>;
 }

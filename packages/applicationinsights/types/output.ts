@@ -221,7 +221,7 @@ export interface WebTestGeolocationResponse {
 /**
  * An XML configuration specification for a WebTest.
  */
-export interface WebTestPropertiesResponseConfiguration {
+export interface WebTestPropertiesConfigurationResponse {
     /**
      * The XML specification of a WebTest to run against an application.
      */
@@ -229,27 +229,9 @@ export interface WebTestPropertiesResponseConfiguration {
 }
 
 /**
- * The collection of content validation properties
- */
-export interface WebTestPropertiesResponseContentValidation {
-    /**
-     * Content to look for in the return of the WebTest.  Must not be null or empty.
-     */
-    contentMatch?: string;
-    /**
-     * When set, this value makes the ContentMatch validation case insensitive.
-     */
-    ignoreCase?: boolean;
-    /**
-     * When true, validation will pass if there is a match for the ContentMatch string.  If false, validation will fail if there is a match
-     */
-    passIfTextFound?: boolean;
-}
-
-/**
  * The collection of request properties
  */
-export interface WebTestPropertiesResponseRequest {
+export interface WebTestPropertiesRequestResponse {
     /**
      * Follow redirects for this web test.
      */
@@ -277,13 +259,31 @@ export interface WebTestPropertiesResponseRequest {
 }
 
 /**
+ * The collection of content validation properties
+ */
+export interface WebTestPropertiesValidationRulesContentValidationResponse {
+    /**
+     * Content to look for in the return of the WebTest.  Must not be null or empty.
+     */
+    contentMatch?: string;
+    /**
+     * When set, this value makes the ContentMatch validation case insensitive.
+     */
+    ignoreCase?: boolean;
+    /**
+     * When true, validation will pass if there is a match for the ContentMatch string.  If false, validation will fail if there is a match
+     */
+    passIfTextFound?: boolean;
+}
+
+/**
  * The collection of validation rule properties
  */
-export interface WebTestPropertiesResponseValidationRules {
+export interface WebTestPropertiesValidationRulesResponse {
     /**
      * The collection of content validation properties
      */
-    contentValidation?: WebTestPropertiesResponseContentValidation;
+    contentValidation?: WebTestPropertiesValidationRulesContentValidationResponse;
     /**
      * Validate that the WebTest returns the http status code provided.
      */
@@ -305,7 +305,7 @@ export interface WebTestPropertiesResponseValidationRules {
 /**
  * Identity used for BYOS
  */
-export interface WorkbookResourceResponseIdentity {
+export interface WorkbookResourceIdentityResponse {
     /**
      * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
      */

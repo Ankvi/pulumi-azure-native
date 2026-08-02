@@ -930,6 +930,88 @@ export interface EncryptionIdentityResponse {
 /**
  * Volume Export Policy Rule
  */
+export interface ExportPolicyRuleCapacityPoolVolumeResponse {
+    /**
+     * Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
+     */
+    allowedClients?: string;
+    /**
+     * This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own.
+     */
+    chownMode?: string;
+    /**
+     * Allows CIFS protocol
+     */
+    cifs?: boolean;
+    /**
+     * Has root access to volume
+     */
+    hasRootAccess?: boolean;
+    /**
+     * Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5ReadOnly?: boolean;
+    /**
+     * Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5ReadWrite?: boolean;
+    /**
+     * Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5iReadOnly?: boolean;
+    /**
+     * Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5iReadWrite?: boolean;
+    /**
+     * Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5pReadOnly?: boolean;
+    /**
+     * Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+     */
+    kerberos5pReadWrite?: boolean;
+    /**
+     * Allows NFSv3 protocol. Enable only for NFSv3 type volumes
+     */
+    nfsv3?: boolean;
+    /**
+     * Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
+     */
+    nfsv41?: boolean;
+    /**
+     * Order index
+     */
+    ruleIndex?: number;
+    /**
+     * Read only access
+     */
+    unixReadOnly?: boolean;
+    /**
+     * Read and write access
+     */
+    unixReadWrite?: boolean;
+}
+/**
+ * exportPolicyRuleCapacityPoolVolumeResponseProvideDefaults sets the appropriate defaults for ExportPolicyRuleCapacityPoolVolumeResponse
+ */
+export function exportPolicyRuleCapacityPoolVolumeResponseProvideDefaults(val: ExportPolicyRuleCapacityPoolVolumeResponse): ExportPolicyRuleCapacityPoolVolumeResponse {
+    return {
+        ...val,
+        chownMode: (val.chownMode) ?? "Restricted",
+        hasRootAccess: (val.hasRootAccess) ?? true,
+        kerberos5ReadOnly: (val.kerberos5ReadOnly) ?? false,
+        kerberos5ReadWrite: (val.kerberos5ReadWrite) ?? false,
+        kerberos5iReadOnly: (val.kerberos5iReadOnly) ?? false,
+        kerberos5iReadWrite: (val.kerberos5iReadWrite) ?? false,
+        kerberos5pReadOnly: (val.kerberos5pReadOnly) ?? false,
+        kerberos5pReadWrite: (val.kerberos5pReadWrite) ?? false,
+    };
+}
+
+/**
+ * Volume Export Policy Rule
+ */
 export interface ExportPolicyRuleResponse {
     /**
      * Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
@@ -1012,7 +1094,7 @@ export function exportPolicyRuleResponseProvideDefaults(val: ExportPolicyRuleRes
 /**
  * Volume Export Policy Rule
  */
-export interface ExportPolicyRuleResponseV1 {
+export interface ExportPolicyRuleVolumeGroupResponse {
     /**
      * Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
      */
@@ -1075,91 +1157,9 @@ export interface ExportPolicyRuleResponseV1 {
     unixReadWrite?: boolean;
 }
 /**
- * exportPolicyRuleResponseV1ProvideDefaults sets the appropriate defaults for ExportPolicyRuleResponseV1
+ * exportPolicyRuleVolumeGroupResponseProvideDefaults sets the appropriate defaults for ExportPolicyRuleVolumeGroupResponse
  */
-export function exportPolicyRuleResponseV1ProvideDefaults(val: ExportPolicyRuleResponseV1): ExportPolicyRuleResponseV1 {
-    return {
-        ...val,
-        chownMode: (val.chownMode) ?? "Restricted",
-        hasRootAccess: (val.hasRootAccess) ?? true,
-        kerberos5ReadOnly: (val.kerberos5ReadOnly) ?? false,
-        kerberos5ReadWrite: (val.kerberos5ReadWrite) ?? false,
-        kerberos5iReadOnly: (val.kerberos5iReadOnly) ?? false,
-        kerberos5iReadWrite: (val.kerberos5iReadWrite) ?? false,
-        kerberos5pReadOnly: (val.kerberos5pReadOnly) ?? false,
-        kerberos5pReadWrite: (val.kerberos5pReadWrite) ?? false,
-    };
-}
-
-/**
- * Volume Export Policy Rule
- */
-export interface ExportPolicyRuleResponseV2 {
-    /**
-     * Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
-     */
-    allowedClients?: string;
-    /**
-     * This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own.
-     */
-    chownMode?: string;
-    /**
-     * Allows CIFS protocol
-     */
-    cifs?: boolean;
-    /**
-     * Has root access to volume
-     */
-    hasRootAccess?: boolean;
-    /**
-     * Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
-     */
-    kerberos5ReadOnly?: boolean;
-    /**
-     * Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
-     */
-    kerberos5ReadWrite?: boolean;
-    /**
-     * Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
-     */
-    kerberos5iReadOnly?: boolean;
-    /**
-     * Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
-     */
-    kerberos5iReadWrite?: boolean;
-    /**
-     * Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
-     */
-    kerberos5pReadOnly?: boolean;
-    /**
-     * Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
-     */
-    kerberos5pReadWrite?: boolean;
-    /**
-     * Allows NFSv3 protocol. Enable only for NFSv3 type volumes
-     */
-    nfsv3?: boolean;
-    /**
-     * Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
-     */
-    nfsv41?: boolean;
-    /**
-     * Order index
-     */
-    ruleIndex?: number;
-    /**
-     * Read only access
-     */
-    unixReadOnly?: boolean;
-    /**
-     * Read and write access
-     */
-    unixReadWrite?: boolean;
-}
-/**
- * exportPolicyRuleResponseV2ProvideDefaults sets the appropriate defaults for ExportPolicyRuleResponseV2
- */
-export function exportPolicyRuleResponseV2ProvideDefaults(val: ExportPolicyRuleResponseV2): ExportPolicyRuleResponseV2 {
+export function exportPolicyRuleVolumeGroupResponseProvideDefaults(val: ExportPolicyRuleVolumeGroupResponse): ExportPolicyRuleVolumeGroupResponse {
     return {
         ...val,
         chownMode: (val.chownMode) ?? "Restricted",
@@ -1960,7 +1960,7 @@ export interface VolumePropertiesResponseExportPolicy {
     /**
      * Export policy rule
      */
-    rules?: ExportPolicyRuleResponseV1[];
+    rules?: ExportPolicyRuleCapacityPoolVolumeResponse[];
 }
 
 /**
@@ -1970,7 +1970,7 @@ export interface VolumePropertiesResponseExportPolicyV1 {
     /**
      * Export policy rule
      */
-    rules?: ExportPolicyRuleResponseV2[];
+    rules?: ExportPolicyRuleVolumeGroupResponse[];
 }
 
 /**

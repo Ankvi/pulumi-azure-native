@@ -46,7 +46,7 @@ export class TagRule extends pulumi.CustomResource {
     /**
      * Properties of the monitoring tag rules.
      */
-    declare public readonly properties: pulumi.Output<types.outputs.MonitoringTagRulesPropertiesResponseV1>;
+    declare public readonly properties: pulumi.Output<types.outputs.MonitoringTagRulesPropertiesTagRuleResponse>;
     /**
      * The system metadata relating to this resource
      */

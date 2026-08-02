@@ -72,7 +72,7 @@ export class ActionGroup extends pulumi.CustomResource {
      */
     declare public readonly groupShortName: pulumi.Output<string>;
     /**
-     * Managed service identity (system assigned and/or user assigned identities)
+     * The managed service identities assigned to this resource.
      */
     declare public readonly identity: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
@@ -84,7 +84,7 @@ export class ActionGroup extends pulumi.CustomResource {
      */
     declare public readonly itsmReceivers: pulumi.Output<types.outputs.ItsmReceiverResponse[] | undefined>;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string>;
     /**
@@ -92,7 +92,7 @@ export class ActionGroup extends pulumi.CustomResource {
      */
     declare public readonly logicAppReceivers: pulumi.Output<types.outputs.LogicAppReceiverResponse[] | undefined>;
     /**
-     * Azure resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -100,11 +100,15 @@ export class ActionGroup extends pulumi.CustomResource {
      */
     declare public readonly smsReceivers: pulumi.Output<types.outputs.SmsReceiverResponse[] | undefined>;
     /**
-     * Resource tags
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Azure resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -157,6 +161,7 @@ export class ActionGroup extends pulumi.CustomResource {
             resourceInputs["webhookReceivers"] = args?.webhookReceivers;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["armRoleReceivers"] = undefined /*out*/;
@@ -175,6 +180,7 @@ export class ActionGroup extends pulumi.CustomResource {
             resourceInputs["logicAppReceivers"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["smsReceivers"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["voiceReceivers"] = undefined /*out*/;
@@ -228,7 +234,7 @@ export interface ActionGroupArgs {
      */
     groupShortName: pulumi.Input<string>;
     /**
-     * Managed service identity (system assigned and/or user assigned identities)
+     * The managed service identities assigned to this resource.
      */
     identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
@@ -240,7 +246,7 @@ export interface ActionGroupArgs {
      */
     itsmReceivers?: pulumi.Input<pulumi.Input<types.inputs.ItsmReceiverArgs>[]>;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
     /**
@@ -256,7 +262,7 @@ export interface ActionGroupArgs {
      */
     smsReceivers?: pulumi.Input<pulumi.Input<types.inputs.SmsReceiverArgs>[]>;
     /**
-     * Resource tags
+     * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

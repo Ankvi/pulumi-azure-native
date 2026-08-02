@@ -80,7 +80,7 @@ export class TenantActionGroup extends pulumi.CustomResource {
     /**
      * The list of webhook receivers that are part of this tenant action group.
      */
-    declare public readonly webhookReceivers: pulumi.Output<types.outputs.WebhookReceiverResponseV1[] | undefined>;
+    declare public readonly webhookReceivers: pulumi.Output<types.outputs.WebhookReceiverTenantActionGroupResponse[] | undefined>;
 
     /**
      * Create a TenantActionGroup resource with the given unique name, arguments, and options.

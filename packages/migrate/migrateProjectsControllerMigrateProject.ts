@@ -54,7 +54,7 @@ export class MigrateProjectsControllerMigrateProject extends pulumi.CustomResour
     /**
      * Properties of a migrate project.
      */
-    declare public readonly properties: pulumi.Output<types.outputs.MigrateProjectPropertiesResponseV1>;
+    declare public readonly properties: pulumi.Output<types.outputs.MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */

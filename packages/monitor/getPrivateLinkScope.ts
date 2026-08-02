@@ -54,13 +54,13 @@ export interface GetPrivateLinkScopeResult {
     /**
      * List of private endpoint connections.
      */
-    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionPrivateLinkScopeResponse[];
     /**
      * Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it.
      */
     readonly provisioningState: string;
     /**
-     * System data
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**

@@ -2,7 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
+ * KubernetesVersion represents the available Kubernetes versions for a cluster.
+ *
  * Uses Azure REST API version 2026-01-01-preview.
+ *
+ * Other available API versions: 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class KubernetesVersion extends pulumi.CustomResource {
     /**
@@ -36,11 +40,11 @@ export class KubernetesVersion extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
-     * Resource ETag.
+     * "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
-     * The extended location of the cluster associated with the resource.
+     * The extended location of the resource. This property is required when creating the resource.
      */
     declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
@@ -114,7 +118,7 @@ export class KubernetesVersion extends pulumi.CustomResource {
             resourceInputs["values"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20260101preview:KubernetesVersion" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20260101preview:KubernetesVersion" }, { type: "azure-native:networkcloud/v20260501preview:KubernetesVersion" }, { type: "azure-native:networkcloud/v20260701:KubernetesVersion" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(KubernetesVersion.__pulumiType, name, resourceInputs, opts);
     }
@@ -125,9 +129,9 @@ export class KubernetesVersion extends pulumi.CustomResource {
  */
 export interface KubernetesVersionArgs {
     /**
-     * The extended location of the cluster associated with the resource.
+     * The extended location of the resource. This property is required when creating the resource.
      */
-    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs>;
     /**
      * The name of the Kubernetes version resource.
      */

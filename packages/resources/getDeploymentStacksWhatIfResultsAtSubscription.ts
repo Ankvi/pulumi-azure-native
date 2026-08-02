@@ -43,7 +43,7 @@ export interface GetDeploymentStacksWhatIfResultsAtSubscriptionResult {
     /**
      * The resource-specific properties for this resource.
      */
-    readonly properties: types.outputs.DeploymentStacksWhatIfResultPropertiesResponse;
+    readonly properties: types.outputs.DeploymentStacksWhatIfResultPropertiesDeploymentStacksWhatIfResultsAtSubscriptionResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */

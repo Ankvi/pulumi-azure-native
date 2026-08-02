@@ -29,7 +29,7 @@ export interface ComplianceSecurityProfileDefinitionArgs {
 }
 
 /**
- * These properties lets user specify default catalog properties during workspace creation.
+ * These properties lets user specify default catalog properties during workspace creation. Not allowed in Serverless ComputeMode workspace.
  */
 export interface DefaultCatalogPropertiesArgs {
     /**
@@ -87,11 +87,11 @@ export function encryptionArgsProvideDefaults(val: EncryptionArgs): EncryptionAr
  */
 export interface EncryptionEntitiesDefinitionArgs {
     /**
-     * Encryption properties for the databricks managed disks.
+     * Encryption properties for the databricks managed disks. Not allowed in Serverless ComputeMode workspace.
      */
     managedDisk?: pulumi.Input<ManagedDiskEncryptionArgs>;
     /**
-     * Encryption properties for the databricks managed services.
+     * Encryption properties for the databricks managed services. Supported in both Serverless and Hybrid ComputeMode.
      */
     managedServices?: pulumi.Input<EncryptionV2Args>;
 }
@@ -158,7 +158,7 @@ export interface EnhancedSecurityMonitoringDefinitionArgs {
  */
 export interface ManagedDiskEncryptionArgs {
     /**
-     * The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+     * The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace.
      */
     keySource: pulumi.Input<string | enums.EncryptionKeySource>;
     /**
@@ -204,7 +204,7 @@ export interface ManagedServiceIdentityArgs {
 }
 
 /**
- * The properties of a private endpoint connection
+ * The properties of a private endpoint connection.
  */
 export interface PrivateEndpointConnectionPropertiesArgs {
     /**
@@ -218,7 +218,7 @@ export interface PrivateEndpointConnectionPropertiesArgs {
 }
 
 /**
- * The current state of a private endpoint connection
+ * The current state of a private endpoint connection.
  */
 export interface PrivateLinkServiceConnectionStateArgs {
     /**
@@ -250,7 +250,7 @@ export interface SkuArgs {
 }
 
 /**
- *  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+ * The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
  */
 export interface VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkArgs {
     /**
@@ -260,7 +260,7 @@ export interface VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkAr
 }
 
 /**
- *  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+ * The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
  */
 export interface VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkArgs {
     /**
@@ -274,73 +274,77 @@ export interface VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkArgs {
  */
 export interface WorkspaceCustomBooleanParameterArgs {
     /**
+     * The type of variable that this is
+     */
+    type?: pulumi.Input<string | enums.CustomParameterType>;
+    /**
      * The value which should be used for this field.
      */
     value: pulumi.Input<boolean>;
 }
 
 /**
- * Custom Parameters used for Cluster Creation.
+ * Custom Parameters used for Workspace Creation. Not allowed in Serverless ComputeMode workspace.
  */
 export interface WorkspaceCustomParametersArgs {
     /**
-     * The ID of a Azure Machine Learning workspace to link with Databricks workspace
+     * The ID of a Azure Machine Learning workspace to link with Databricks workspace. Not allowed in Serverless ComputeMode workspace.
      */
     amlWorkspaceId?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
     /**
-     * The name of the Private Subnet within the Virtual Network
+     * The name of the Private Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
      */
     customPrivateSubnetName?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
     /**
-     * The name of a Public Subnet within the Virtual Network
+     * The name of a Public Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
      */
     customPublicSubnetName?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
     /**
-     * The ID of a Virtual Network where this Databricks Cluster should be created
+     * The ID of a Virtual Network where this Databricks Cluster should be created. Not allowed in Serverless ComputeMode workspace.
      */
     customVirtualNetworkId?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
     /**
-     * Boolean indicating whether the public IP should be disabled. Default value is true
+     * Boolean indicating whether the public IP should be disabled. Default value is true. Not allowed in Serverless ComputeMode workspace.
      */
     enableNoPublicIp?: pulumi.Input<WorkspaceNoPublicIPBooleanParameterArgs>;
     /**
-     * Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.
+     * Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.Not allowed in Serverless ComputeMode workspace.
      */
     encryption?: pulumi.Input<WorkspaceEncryptionParameterArgs>;
     /**
-     * Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP).
+     * Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP). Not allowed in Serverless ComputeMode workspace.
      */
     loadBalancerBackendPoolName?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
     /**
-     * Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace.
+     * Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace. Not allowed in Serverless ComputeMode workspace.
      */
     loadBalancerId?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
     /**
-     * Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets.
+     * Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets. Not allowed in Serverless ComputeMode workspace.
      */
     natGatewayName?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
     /**
-     * Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.
+     * Prepare the workspace for encryption. Enables the Managed Identity for managed storage account. Not allowed in Serverless ComputeMode workspace.
      */
     prepareEncryption?: pulumi.Input<WorkspaceCustomBooleanParameterArgs>;
     /**
-     * Name of the Public IP for No Public IP workspace with managed vNet.
+     * Name of the Public IP for No Public IP workspace with managed vNet. Not allowed in Serverless ComputeMode workspace.
      */
     publicIpName?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
     /**
-     * A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest.
+     * A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest. Not allowed in Serverless ComputeMode workspace.
      */
     requireInfrastructureEncryption?: pulumi.Input<WorkspaceCustomBooleanParameterArgs>;
     /**
-     * Default DBFS storage account name.
+     * Default DBFS storage account name. Not allowed in Serverless ComputeMode workspace.
      */
     storageAccountName?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
     /**
-     * Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs.
+     * Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs. Not allowed in Serverless ComputeMode workspace.
      */
     storageAccountSkuName?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
     /**
-     * Address prefix for Managed virtual network. Default value for this input is 10.139.
+     * Address prefix for Managed virtual network. Default value for this input is 10.139. Not allowed in Serverless ComputeMode workspace.
      */
     vnetAddressPrefix?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
 }
@@ -359,6 +363,10 @@ export function workspaceCustomParametersArgsProvideDefaults(val: WorkspaceCusto
  */
 export interface WorkspaceCustomStringParameterArgs {
     /**
+     * The type of variable that this is
+     */
+    type?: pulumi.Input<string | enums.CustomParameterType>;
+    /**
      * The value which should be used for this field.
      */
     value: pulumi.Input<string>;
@@ -368,6 +376,10 @@ export interface WorkspaceCustomStringParameterArgs {
  * The object that contains details of encryption used on the workspace.
  */
 export interface WorkspaceEncryptionParameterArgs {
+    /**
+     * The type of variable that this is
+     */
+    type?: pulumi.Input<string | enums.CustomParameterType>;
     /**
      * The value which should be used for this field.
      */
@@ -388,13 +400,17 @@ export function workspaceEncryptionParameterArgsProvideDefaults(val: WorkspaceEn
  */
 export interface WorkspaceNoPublicIPBooleanParameterArgs {
     /**
+     * The type of variable that this is
+     */
+    type?: pulumi.Input<string | enums.CustomParameterType>;
+    /**
      * The value which should be used for this field.
      */
     value: pulumi.Input<boolean>;
 }
 
 /**
- * Access Connector Resource that is going to be associated with Databricks Workspace
+ * Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace.
  */
 export interface WorkspacePropertiesAccessConnectorArgs {
     /**
@@ -412,7 +428,7 @@ export interface WorkspacePropertiesAccessConnectorArgs {
 }
 
 /**
- * Encryption properties for databricks workspace
+ * Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace.
  */
 export interface WorkspacePropertiesEncryptionArgs {
     /**

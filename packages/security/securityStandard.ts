@@ -58,7 +58,7 @@ export class SecurityStandard extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly metadata: pulumi.Output<types.outputs.StandardMetadataResponse | undefined>;
     /**
-     * Resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -70,7 +70,11 @@ export class SecurityStandard extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly standardType: pulumi.Output<string>;
     /**
-     * Resource type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -99,6 +103,7 @@ export class SecurityStandard extends pulumi.CustomResource {
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["standardType"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["assessments"] = undefined /*out*/;
@@ -110,6 +115,7 @@ export class SecurityStandard extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["policySetDefinitionId"] = undefined /*out*/;
             resourceInputs["standardType"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -144,7 +150,7 @@ export interface SecurityStandardArgs {
      */
     policySetDefinitionId?: pulumi.Input<string>;
     /**
-     * The scope of the security standard. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     scope: pulumi.Input<string>;
     /**

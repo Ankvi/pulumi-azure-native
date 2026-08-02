@@ -15,6 +15,28 @@ export interface AutomaticShortfallSuppressReasonArgs {
 }
 
 /**
+ * Award details for milestone completion
+ */
+export interface AwardArgs {
+    /**
+     * Credit amount to be awarded
+     */
+    credit?: pulumi.Input<CommitmentArgs>;
+    /**
+     * Duration for which the benefit is active. Will be in format P{int}M or P{int}Y. Any values representing up to 12 years are valid. Upper limit examples: P144M, P12Y.
+     */
+    duration?: pulumi.Input<string>;
+    /**
+     * End date when the credit expires
+     */
+    endAt?: pulumi.Input<string>;
+    /**
+     * Start date when the credit becomes effective
+     */
+    startAt?: pulumi.Input<string>;
+}
+
+/**
  * Catalog claim for a discount.
  */
 export interface CatalogClaimsItemArgs {
@@ -38,6 +60,36 @@ export interface CommitmentArgs {
 }
 
 /**
+ * Milestone definition within a conditional credit
+ */
+export interface ConditionalCreditMilestoneArgs {
+    /**
+     * Award details for this milestone (only present for primary conditional credits)
+     */
+    award?: pulumi.Input<AwardArgs>;
+    /**
+     * End date for this milestone
+     */
+    endAt?: pulumi.Input<string>;
+    /**
+     * Unique identifier for the milestone
+     */
+    milestoneId?: pulumi.Input<string>;
+    /**
+     * Display name for the milestone
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Spend target for this milestone
+     */
+    spendTarget?: pulumi.Input<PriceArgs>;
+    /**
+     * Current status of the milestone
+     */
+    status?: pulumi.Input<string | enums.MilestoneStatus>;
+}
+
+/**
  * Condition for a discount.
  */
 export interface ConditionsItemArgs {
@@ -47,6 +99,57 @@ export interface ConditionsItemArgs {
      * These items are open-ended strings.
      */
     value?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Properties for contributor conditional credit.
+ */
+export interface ContributorConditionalCreditPropertiesArgs {
+    /**
+     * The billing account resource ID
+     */
+    billingAccountResourceId?: pulumi.Input<string>;
+    /**
+     * Display name for the conditional credit
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * End date of the conditional credit (derived from last milestone)
+     */
+    endAt?: pulumi.Input<string>;
+    /**
+     * Type of conditional credit entity
+     * Expected value is 'Contributor'.
+     */
+    entityType: pulumi.Input<"Contributor">;
+    /**
+     * Fully-qualified billing account resource identifier of the primary CACO. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}.
+     */
+    primaryBillingAccountResourceId?: pulumi.Input<string>;
+    /**
+     * Resource ID of the primary conditional credit (required for contributors)
+     */
+    primaryResourceId?: pulumi.Input<string>;
+    /**
+     * Product code for the conditional credit
+     */
+    productCode?: pulumi.Input<string>;
+    /**
+     * Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
+     */
+    resourceId?: pulumi.Input<string>;
+    /**
+     * Start date of the conditional credit
+     */
+    startAt?: pulumi.Input<string>;
+    /**
+     * The status of the conditional credit
+     */
+    status?: pulumi.Input<string | enums.ConditionalCreditStatus>;
+    /**
+     * System identifier shared between primary and contributor conditional credits representing the same conditional credit program
+     */
+    systemId?: pulumi.Input<string>;
 }
 
 /**
@@ -97,6 +200,20 @@ export interface CreditPoliciesArgs {
      * Redemption policy of the Credit
      */
     redemption?: pulumi.Input<string | enums.CreditRedemptionPolicy>;
+}
+
+/**
+ * The reason for the credit. Not required if not applicable.
+ */
+export interface CreditReasonArgs {
+    /**
+     * The reason code for credit.
+     */
+    code?: pulumi.Input<string>;
+    /**
+     * The free string description of the credit.
+     */
+    description?: pulumi.Input<string>;
 }
 
 /**
@@ -486,7 +603,7 @@ export interface PlanArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. 
+     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
      */
     product: pulumi.Input<string>;
     /**
@@ -523,6 +640,57 @@ export interface PriceGuaranteePropertiesArgs {
      * Supported values: Protected, Locked
      */
     pricingPolicy?: pulumi.Input<string | enums.PricingPolicy>;
+}
+
+/**
+ * Properties for primary conditional credit.
+ */
+export interface PrimaryConditionalCreditPropertiesArgs {
+    /**
+     * Whether this conditional credit allows contributor billing accounts
+     */
+    allowContributors?: pulumi.Input<string | enums.EnablementMode>;
+    /**
+     * The billing account resource ID
+     */
+    billingAccountResourceId?: pulumi.Input<string>;
+    /**
+     * Display name for the conditional credit
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * End date of the conditional credit (derived from last milestone)
+     */
+    endAt?: pulumi.Input<string>;
+    /**
+     * Type of conditional credit entity
+     * Expected value is 'Primary'.
+     */
+    entityType: pulumi.Input<"Primary">;
+    /**
+     * List of milestones for this conditional credit (must include awards)
+     */
+    milestones?: pulumi.Input<pulumi.Input<ConditionalCreditMilestoneArgs>[]>;
+    /**
+     * Product code for the conditional credit
+     */
+    productCode?: pulumi.Input<string>;
+    /**
+     * Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
+     */
+    resourceId?: pulumi.Input<string>;
+    /**
+     * Start date of the conditional credit
+     */
+    startAt?: pulumi.Input<string>;
+    /**
+     * The status of the conditional credit
+     */
+    status?: pulumi.Input<string | enums.ConditionalCreditStatus>;
+    /**
+     * System identifier shared between primary and contributor conditional credits representing the same conditional credit program
+     */
+    systemId?: pulumi.Input<string>;
 }
 
 /**
@@ -576,7 +744,7 @@ export interface SkuArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
      */
     size?: pulumi.Input<string>;
     /**

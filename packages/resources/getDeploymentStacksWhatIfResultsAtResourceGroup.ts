@@ -48,7 +48,7 @@ export interface GetDeploymentStacksWhatIfResultsAtResourceGroupResult {
     /**
      * The resource-specific properties for this resource.
      */
-    readonly properties: types.outputs.DeploymentStacksWhatIfResultPropertiesResponse;
+    readonly properties: types.outputs.DeploymentStacksWhatIfResultPropertiesDeploymentStacksWhatIfResultsAtResourceGroupResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */

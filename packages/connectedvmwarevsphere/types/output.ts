@@ -101,7 +101,7 @@ export interface GuestCredentialResponse {
 /**
  * Username / Password Credentials to connect to guest.
  */
-export interface GuestCredentialResponseV1 {
+export interface GuestCredentialVMInstanceGuestAgentResponse {
     /**
      * Private key used to authenticate to a virtual machine through ssh.
      */

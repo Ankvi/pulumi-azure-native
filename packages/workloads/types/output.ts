@@ -737,7 +737,7 @@ export interface ErrorDefinitionResponse {
 /**
  * Error definition.
  */
-export interface ErrorDefinitionResponseV1 {
+export interface ErrorDefinitionSapDiscoverySiteResponse {
     /**
      * Service specific error code which serves as the substatus for the HTTP error code.
      */
@@ -759,7 +759,7 @@ export interface ErrorDefinitionResponseV1 {
 /**
  * Error definition.
  */
-export interface ErrorDefinitionResponseV2 {
+export interface ErrorDefinitionSapInstanceResponse {
     /**
      * Service specific error code which serves as the substatus for the HTTP error code.
      */
@@ -781,7 +781,7 @@ export interface ErrorDefinitionResponseV2 {
 /**
  * Error definition.
  */
-export interface ErrorDefinitionResponseV3 {
+export interface ErrorDefinitionServerInstanceResponse {
     /**
      * Service specific error code which serves as the substatus for the HTTP error code.
      */
@@ -1643,7 +1643,7 @@ export interface SAPMigrateErrorResponse {
     /**
      * Internal error details.
      */
-    details: ErrorDefinitionResponseV1[];
+    details: ErrorDefinitionSapDiscoverySiteResponse[];
     /**
      * Description of the error.
      */
@@ -1657,7 +1657,7 @@ export interface SAPMigrateErrorResponse {
 /**
  * An error response from the SAP migrate resources.
  */
-export interface SAPMigrateErrorResponseV1 {
+export interface SAPMigrateErrorSapInstanceResponse {
     /**
      * Service specific error code which serves as the substatus for the HTTP error code.
      */
@@ -1665,7 +1665,7 @@ export interface SAPMigrateErrorResponseV1 {
     /**
      * Internal error details.
      */
-    details: ErrorDefinitionResponseV2[];
+    details: ErrorDefinitionSapInstanceResponse[];
     /**
      * Description of the error.
      */
@@ -1679,7 +1679,7 @@ export interface SAPMigrateErrorResponseV1 {
 /**
  * An error response from the SAP migrate resources.
  */
-export interface SAPMigrateErrorResponseV2 {
+export interface SAPMigrateErrorServerInstanceResponse {
     /**
      * Service specific error code which serves as the substatus for the HTTP error code.
      */
@@ -1687,7 +1687,7 @@ export interface SAPMigrateErrorResponseV2 {
     /**
      * Internal error details.
      */
-    details: ErrorDefinitionResponseV3[];
+    details: ErrorDefinitionServerInstanceResponse[];
     /**
      * Description of the error.
      */

@@ -57,7 +57,7 @@ export interface GetNamespaceResult {
     /**
      * Properties of a namespace.
      */
-    readonly properties: types.outputs.NamespacePropertiesResponse;
+    readonly properties: types.outputs.NamespacePropertiesNamespaceResponse;
     /**
      * The system metadata relating to this resource.
      */

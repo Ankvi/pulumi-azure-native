@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-10-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-03-02-preview.
  *
- * Other available API versions: 2024-03-02-preview, 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview, 2024-07-02-preview, 2024-09-02-preview, 2025-01-02-preview, 2025-02-02-preview, 2025-03-02-preview, 2025-04-02-preview, 2025-05-02-preview, 2025-06-02-preview, 2025-07-02-preview, 2025-08-02-preview, 2025-09-02-preview, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-03-02-preview, 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview, 2024-07-02-preview, 2024-09-02-preview, 2025-01-02-preview, 2025-02-02-preview, 2025-03-02-preview, 2025-04-02-preview, 2025-05-02-preview, 2025-06-02-preview, 2025-07-02-preview, 2025-08-02-preview, 2025-09-02-preview, 2025-10-02-preview, 2026-01-02-preview, 2026-02-02-preview, 2026-03-02-preview, 2026-04-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**
@@ -50,7 +50,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * Nodes that match this selector will be possible members of this load balancer.
      */
-    declare public readonly nodeSelector: pulumi.Output<types.outputs.LabelSelectorResponse | undefined>;
+    declare public readonly nodeSelector: pulumi.Output<types.outputs.LabelSelectorLoadBalancerResponse | undefined>;
     /**
      * Required field. A string value that must specify the ID of an existing agent pool. All nodes in the given pool will always be added to this load balancer. This agent pool must have at least one node and minCount>=1 for autoscaling operations. An agent pool can only be the primary pool for a single load balancer.
      */
@@ -62,11 +62,11 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * Only services that must match this selector can be placed on this load balancer.
      */
-    declare public readonly serviceLabelSelector: pulumi.Output<types.outputs.LabelSelectorResponse | undefined>;
+    declare public readonly serviceLabelSelector: pulumi.Output<types.outputs.LabelSelectorLoadBalancerResponse | undefined>;
     /**
      * Services created in namespaces that match the selector can be placed on this load balancer.
      */
-    declare public readonly serviceNamespaceSelector: pulumi.Output<types.outputs.LabelSelectorResponse | undefined>;
+    declare public readonly serviceNamespaceSelector: pulumi.Output<types.outputs.LabelSelectorLoadBalancerResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -125,7 +125,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20240302preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240402preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240502preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240602preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240702preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240902preview:LoadBalancer" }, { type: "azure-native:containerservice/v20241002preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250102preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250202preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250302preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250402preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250502preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250602preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250702preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250802preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250902preview:LoadBalancer" }, { type: "azure-native:containerservice/v20251002preview:LoadBalancer" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20240302preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240402preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240502preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240602preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240702preview:LoadBalancer" }, { type: "azure-native:containerservice/v20240902preview:LoadBalancer" }, { type: "azure-native:containerservice/v20241002preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250102preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250202preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250302preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250402preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250502preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250602preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250702preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250802preview:LoadBalancer" }, { type: "azure-native:containerservice/v20250902preview:LoadBalancer" }, { type: "azure-native:containerservice/v20251002preview:LoadBalancer" }, { type: "azure-native:containerservice/v20260102preview:LoadBalancer" }, { type: "azure-native:containerservice/v20260202preview:LoadBalancer" }, { type: "azure-native:containerservice/v20260302preview:LoadBalancer" }, { type: "azure-native:containerservice/v20260402preview:LoadBalancer" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LoadBalancer.__pulumiType, name, resourceInputs, opts);
     }

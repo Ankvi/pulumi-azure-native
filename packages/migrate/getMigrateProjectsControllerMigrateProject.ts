@@ -54,7 +54,7 @@ export interface GetMigrateProjectsControllerMigrateProjectResult {
     /**
      * Properties of a migrate project.
      */
-    readonly properties: types.outputs.MigrateProjectPropertiesResponse;
+    readonly properties: types.outputs.MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */

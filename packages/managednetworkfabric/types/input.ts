@@ -741,6 +741,20 @@ export interface ManagedResourceGroupConfigurationArgs {
 }
 
 /**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityArgs {
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: pulumi.Input<string | enums.ManagedServiceIdentityType>;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
  * Configuration to be used to setup the management network.
  */
 export interface ManagementNetworkConfigurationPropertiesArgs {
@@ -786,29 +800,6 @@ export interface NeighborGroupDestinationArgs {
      * Array of IPv6 Addresses.
      */
     ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-/**
- * Network Monitor Properties defines the properties of the resource.
- */
-export interface NetworkMonitorPropertiesArgs {
-    /**
-     * Switch configuration description.
-     */
-    annotation?: pulumi.Input<string>;
-    /**
-     * BMP Configurations for the Network Fabric.
-     */
-    bmpConfiguration?: pulumi.Input<BmpConfigurationPropertiesArgs>;
-}
-/**
- * networkMonitorPropertiesArgsProvideDefaults sets the appropriate defaults for NetworkMonitorPropertiesArgs
- */
-export function networkMonitorPropertiesArgsProvideDefaults(val: NetworkMonitorPropertiesArgs): NetworkMonitorPropertiesArgs {
-    return {
-        ...val,
-        bmpConfiguration: (val.bmpConfiguration ? pulumi.output(val.bmpConfiguration).apply(bmpConfigurationPropertiesArgsProvideDefaults) : undefined),
-    };
 }
 
 /**

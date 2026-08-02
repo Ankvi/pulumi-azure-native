@@ -40,7 +40,7 @@ export interface GetFactoryGitHubAccessTokenArgs {
      */
     gitHubClientSecret?: types.inputs.GitHubClientSecret;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
@@ -93,7 +93,7 @@ export interface GetFactoryGitHubAccessTokenOutputArgs {
      */
     gitHubClientSecret?: pulumi.Input<types.inputs.GitHubClientSecretArgs>;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }
