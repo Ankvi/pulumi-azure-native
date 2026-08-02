@@ -134,7 +134,7 @@ export interface ConnectionArgs {
      */
     automationAccountName: pulumi.Input<string>;
     /**
-     * The parameters supplied to the create or update connection operation.
+     * The name of connection.
      */
     connectionName?: pulumi.Input<string>;
     /**
@@ -154,7 +154,7 @@ export interface ConnectionArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

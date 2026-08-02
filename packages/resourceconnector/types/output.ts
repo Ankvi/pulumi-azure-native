@@ -91,7 +91,7 @@ export interface SSHKeyResponse {
 /**
  * Appliance SSHKey definition.
  */
-export interface SSHKeyResponseV1 {
+export interface SSHKeylistApplianceKeysResponse {
     /**
      * Certificate associated with the public key if the key is signed.
      */

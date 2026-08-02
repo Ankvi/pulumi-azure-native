@@ -40,7 +40,7 @@ export interface GetContainerGroupProfileResult {
     /**
      * The containers within the container group.
      */
-    readonly containers: types.outputs.ContainerResponse[];
+    readonly containers: types.outputs.ContainerContainerGroupProfileResponse[];
     /**
      * The diagnostic information for a container group.
      */
@@ -60,11 +60,11 @@ export interface GetContainerGroupProfileResult {
     /**
      * The image registry credentials by which the container group is created from.
      */
-    readonly imageRegistryCredentials?: types.outputs.ImageRegistryCredentialResponse[];
+    readonly imageRegistryCredentials?: types.outputs.ImageRegistryCredentialContainerGroupProfileResponse[];
     /**
      * The init containers for a container group.
      */
-    readonly initContainers?: types.outputs.InitContainerDefinitionResponse[];
+    readonly initContainers?: types.outputs.InitContainerDefinitionContainerGroupProfileResponse[];
     /**
      * The IP address type of the container group.
      */
@@ -111,7 +111,7 @@ export interface GetContainerGroupProfileResult {
     /**
      * The list of volumes that can be mounted by containers in this container group.
      */
-    readonly volumes?: types.outputs.VolumeResponse[];
+    readonly volumes?: types.outputs.VolumeContainerGroupProfileResponse[];
     /**
      * The zones for the container group.
      */

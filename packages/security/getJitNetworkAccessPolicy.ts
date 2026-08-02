@@ -25,18 +25,21 @@ export interface GetJitNetworkAccessPolicyArgs {
      */
     jitNetworkAccessPolicyName: string;
     /**
-     * The name of the resource group within the user's subscription. The name is case insensitive.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
 
+/**
+ * Concrete proxy resource types can be created by aliasing this type using a specific property type.
+ */
 export interface GetJitNetworkAccessPolicyResult {
     /**
      * The Azure API version of the resource.
      */
     readonly azureApiVersion: string;
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -48,7 +51,7 @@ export interface GetJitNetworkAccessPolicyResult {
      */
     readonly location: string;
     /**
-     * Resource name
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -57,7 +60,11 @@ export interface GetJitNetworkAccessPolicyResult {
     readonly provisioningState: string;
     readonly requests?: types.outputs.JitNetworkAccessRequestResponse[];
     /**
-     * Resource type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**
@@ -89,7 +96,7 @@ export interface GetJitNetworkAccessPolicyOutputArgs {
      */
     jitNetworkAccessPolicyName: pulumi.Input<string>;
     /**
-     * The name of the resource group within the user's subscription. The name is case insensitive.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

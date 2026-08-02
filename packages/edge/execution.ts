@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-06-01.
  *
- * Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Execution extends pulumi.CustomResource {
     /**
@@ -46,7 +46,7 @@ export class Execution extends pulumi.CustomResource {
     /**
      * The complex type of the extended location.
      */
-    declare public readonly extendedLocation: pulumi.Output<types.outputs.AzureResourceManagerCommonTypesExtendedLocationResponse | undefined>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -109,7 +109,7 @@ export class Execution extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:edge/v20250601:Execution" }, { type: "azure-native:edge/v20250801:Execution" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:edge/v20250601:Execution" }, { type: "azure-native:edge/v20250801:Execution" }, { type: "azure-native:edge/v20250815preview:Execution" }, { type: "azure-native:edge/v20260301:Execution" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Execution.__pulumiType, name, resourceInputs, opts);
     }

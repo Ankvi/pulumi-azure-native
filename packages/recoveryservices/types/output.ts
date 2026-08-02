@@ -7678,7 +7678,7 @@ export interface PrivateEndpointResponse {
 /**
  * The Private Endpoint network resource that is linked to the Private Endpoint connection.
  */
-export interface PrivateEndpointResponseV1 {
+export interface PrivateEndpointVaultResponse {
     /**
      * Gets or sets id.
      */
@@ -10045,7 +10045,7 @@ export interface VaultPrivateEndpointConnectionResponse {
     /**
      * The Private Endpoint network resource that is linked to the Private Endpoint connection.
      */
-    privateEndpoint: PrivateEndpointResponseV1;
+    privateEndpoint: PrivateEndpointVaultResponse;
     /**
      * Gets or sets private link service connection state.
      */

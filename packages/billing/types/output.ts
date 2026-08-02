@@ -49,107 +49,9 @@ export interface AzurePlanResponse {
 }
 
 /**
- * A billing profile.
- */
-export interface BillingProfilePropertiesResponse {
-    /**
-     * Billing address.
-     */
-    billTo?: BillingProfilePropertiesResponseBillTo;
-    /**
-     * Identifies the billing relationship represented by the billing profile. The billing relationship may be between Microsoft, the customer, and/or a third-party.
-     */
-    billingRelationshipType: string;
-    /**
-     * The currency in which the charges for the billing profile are billed.
-     */
-    currency: string;
-    /**
-     * The current payment term of the billing profile.
-     */
-    currentPaymentTerm?: BillingProfilePropertiesResponseCurrentPaymentTerm;
-    /**
-     * The name of the billing profile.
-     */
-    displayName?: string;
-    /**
-     * Information about the enabled azure plans.
-     */
-    enabledAzurePlans?: AzurePlanResponse[];
-    /**
-     * Indicates whether user has read access to the billing profile.
-     */
-    hasReadAccess: boolean;
-    /**
-     * Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
-     */
-    indirectRelationshipInfo?: BillingProfilePropertiesResponseIndirectRelationshipInfo;
-    /**
-     * The day of the month when the invoice for the billing profile is generated.
-     */
-    invoiceDay: number;
-    /**
-     * Flag controlling whether the invoices for the billing profile are sent through email.
-     */
-    invoiceEmailOptIn?: boolean;
-    /**
-     * The list of email addresses to receive invoices by email for the billing profile.
-     */
-    invoiceRecipients?: string[];
-    /**
-     * The other payment terms of the billing profile.
-     */
-    otherPaymentTerms: PaymentTermResponse[];
-    /**
-     * The default purchase order number that will appear on the invoices generated for the billing profile.
-     */
-    poNumber?: string;
-    /**
-     * The provisioning state of the resource during a long-running operation.
-     */
-    provisioningState: string;
-    /**
-     * The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
-     */
-    shipTo?: BillingProfilePropertiesResponseShipTo;
-    /**
-     * The address of the individual or organization that is responsible for the billing account.
-     */
-    soldTo?: BillingProfilePropertiesResponseSoldTo;
-    /**
-     * The billing profile spending limit.
-     */
-    spendingLimit: string;
-    /**
-     * The details of billing profile spending limit.
-     */
-    spendingLimitDetails: SpendingLimitDetailsResponse[];
-    /**
-     * The status of the billing profile.
-     */
-    status: string;
-    /**
-     * Reason for the specified billing profile status.
-     */
-    statusReasonCode: string;
-    /**
-     * The system generated unique identifier for a billing profile.
-     */
-    systemId: string;
-    /**
-     * Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
-     */
-    tags?: {[key: string]: string};
-    /**
-     * Identifies the cloud environments that are associated with a billing profile. This is a system managed optional field and gets updated as the billing profile gets associated with accounts in various clouds.
-     */
-    targetClouds: string[];
-}
-
-/**
  * Billing address.
  */
-export interface BillingProfilePropertiesResponseBillTo {
+export interface BillingProfilePropertiesBillToResponse {
     /**
      * Address line 1.
      */
@@ -215,7 +117,7 @@ export interface BillingProfilePropertiesResponseBillTo {
 /**
  * The current payment term of the billing profile.
  */
-export interface BillingProfilePropertiesResponseCurrentPaymentTerm {
+export interface BillingProfilePropertiesCurrentPaymentTermResponse {
     /**
      * The date on when the defined 'Payment Term' will end and is always in UTC.
      */
@@ -237,7 +139,7 @@ export interface BillingProfilePropertiesResponseCurrentPaymentTerm {
 /**
  * Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
  */
-export interface BillingProfilePropertiesResponseIndirectRelationshipInfo {
+export interface BillingProfilePropertiesIndirectRelationshipInfoResponse {
     /**
      * The billing account name of the partner or the customer for an indirect motion.
      */
@@ -253,9 +155,107 @@ export interface BillingProfilePropertiesResponseIndirectRelationshipInfo {
 }
 
 /**
+ * A billing profile.
+ */
+export interface BillingProfilePropertiesResponse {
+    /**
+     * Billing address.
+     */
+    billTo?: BillingProfilePropertiesBillToResponse;
+    /**
+     * Identifies the billing relationship represented by the billing profile. The billing relationship may be between Microsoft, the customer, and/or a third-party.
+     */
+    billingRelationshipType: string;
+    /**
+     * The currency in which the charges for the billing profile are billed.
+     */
+    currency: string;
+    /**
+     * The current payment term of the billing profile.
+     */
+    currentPaymentTerm?: BillingProfilePropertiesCurrentPaymentTermResponse;
+    /**
+     * The name of the billing profile.
+     */
+    displayName?: string;
+    /**
+     * Information about the enabled azure plans.
+     */
+    enabledAzurePlans?: AzurePlanResponse[];
+    /**
+     * Indicates whether user has read access to the billing profile.
+     */
+    hasReadAccess: boolean;
+    /**
+     * Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
+     */
+    indirectRelationshipInfo?: BillingProfilePropertiesIndirectRelationshipInfoResponse;
+    /**
+     * The day of the month when the invoice for the billing profile is generated.
+     */
+    invoiceDay: number;
+    /**
+     * Flag controlling whether the invoices for the billing profile are sent through email.
+     */
+    invoiceEmailOptIn?: boolean;
+    /**
+     * The list of email addresses to receive invoices by email for the billing profile.
+     */
+    invoiceRecipients?: string[];
+    /**
+     * The other payment terms of the billing profile.
+     */
+    otherPaymentTerms: PaymentTermResponse[];
+    /**
+     * The default purchase order number that will appear on the invoices generated for the billing profile.
+     */
+    poNumber?: string;
+    /**
+     * The provisioning state of the resource during a long-running operation.
+     */
+    provisioningState: string;
+    /**
+     * The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
+     */
+    shipTo?: BillingProfilePropertiesShipToResponse;
+    /**
+     * The address of the individual or organization that is responsible for the billing account.
+     */
+    soldTo?: BillingProfilePropertiesSoldToResponse;
+    /**
+     * The billing profile spending limit.
+     */
+    spendingLimit: string;
+    /**
+     * The details of billing profile spending limit.
+     */
+    spendingLimitDetails: SpendingLimitDetailsResponse[];
+    /**
+     * The status of the billing profile.
+     */
+    status: string;
+    /**
+     * Reason for the specified billing profile status.
+     */
+    statusReasonCode: string;
+    /**
+     * The system generated unique identifier for a billing profile.
+     */
+    systemId: string;
+    /**
+     * Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Identifies the cloud environments that are associated with a billing profile. This is a system managed optional field and gets updated as the billing profile gets associated with accounts in various clouds.
+     */
+    targetClouds: string[];
+}
+
+/**
  * The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
  */
-export interface BillingProfilePropertiesResponseShipTo {
+export interface BillingProfilePropertiesShipToResponse {
     /**
      * Address line 1.
      */
@@ -321,7 +321,7 @@ export interface BillingProfilePropertiesResponseShipTo {
 /**
  * The address of the individual or organization that is responsible for the billing account.
  */
-export interface BillingProfilePropertiesResponseSoldTo {
+export interface BillingProfilePropertiesSoldToResponse {
     /**
      * Address line 1.
      */

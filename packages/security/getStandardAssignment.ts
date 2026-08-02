@@ -16,7 +16,7 @@ export function getStandardAssignment(args: GetStandardAssignmentArgs, opts?: pu
 
 export interface GetStandardAssignmentArgs {
     /**
-     * The identifier of the resource.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     resourceId: string;
     /**
@@ -36,7 +36,7 @@ export interface GetStandardAssignmentResult {
     /**
      * Additional data about assignment that has Attest effect
      */
-    readonly attestationData?: types.outputs.StandardAssignmentPropertiesResponseAttestationData;
+    readonly attestationData?: types.outputs.StandardAssignmentPropertiesAttestationDataResponse;
     /**
      * The Azure API version of the resource.
      */
@@ -60,13 +60,13 @@ export interface GetStandardAssignmentResult {
     /**
      * Additional data about assignment that has Exempt effect
      */
-    readonly exemptionData?: types.outputs.StandardAssignmentPropertiesResponseExemptionData;
+    readonly exemptionData?: types.outputs.StandardAssignmentPropertiesExemptionDataResponse;
     /**
      * Expiration date of this assignment as a full ISO date
      */
     readonly expiresOn?: string;
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -74,11 +74,15 @@ export interface GetStandardAssignmentResult {
      */
     readonly metadata?: types.outputs.StandardAssignmentMetadataResponse;
     /**
-     * Resource name
+     * The name of the resource
      */
     readonly name: string;
     /**
-     * Resource type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -97,7 +101,7 @@ export function getStandardAssignmentOutput(args: GetStandardAssignmentOutputArg
 
 export interface GetStandardAssignmentOutputArgs {
     /**
-     * The identifier of the resource.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     resourceId: pulumi.Input<string>;
     /**

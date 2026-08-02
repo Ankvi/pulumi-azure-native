@@ -54,7 +54,7 @@ export class RemediationAtResourceGroup extends pulumi.CustomResource {
     /**
      * The remediation failure threshold settings
      */
-    declare public readonly failureThreshold: pulumi.Output<types.outputs.RemediationPropertiesResponseFailureThreshold | undefined>;
+    declare public readonly failureThreshold: pulumi.Output<types.outputs.RemediationPropertiesFailureThresholdResponse | undefined>;
     /**
      * The filters that will be applied to determine which resources to remediate.
      */
@@ -64,7 +64,7 @@ export class RemediationAtResourceGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly lastUpdatedOn: pulumi.Output<string>;
     /**
-     * The name of the remediation.
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -100,7 +100,7 @@ export class RemediationAtResourceGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * The type of the remediation.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -200,7 +200,7 @@ export interface RemediationAtResourceGroupArgs {
      */
     resourceDiscoveryMode?: pulumi.Input<string | types.enums.ResourceDiscoveryMode>;
     /**
-     * Resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

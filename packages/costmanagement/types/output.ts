@@ -131,6 +131,24 @@ export interface CommonExportPropertiesResponse {
 /**
  * Details of any error encountered on last collection attempt
  */
+export interface ConnectorCollectionErrorInfoConnectorResponse {
+    /**
+     * Short error message
+     */
+    errorCode: string;
+    /**
+     * Detailed error message
+     */
+    errorMessage: string;
+    /**
+     * Time the error started occurring (Last time error occurred in lastRun)
+     */
+    errorStartTime: string;
+}
+
+/**
+ * Details of any error encountered on last collection attempt
+ */
 export interface ConnectorCollectionErrorInfoResponse {
     /**
      * Short error code
@@ -151,21 +169,25 @@ export interface ConnectorCollectionErrorInfoResponse {
 }
 
 /**
- * Details of any error encountered on last collection attempt
+ * Collection and ingestion information
  */
-export interface ConnectorCollectionErrorInfoResponseV1 {
+export interface ConnectorCollectionInfoConnectorResponse {
     /**
-     * Short error message
+     * Error information of last collection
      */
-    errorCode: string;
+    error?: ConnectorCollectionErrorInfoConnectorResponse;
     /**
-     * Detailed error message
+     * Last time the data acquisition process completed (even if no new data was found)
      */
-    errorMessage: string;
+    lastRun: string;
     /**
-     * Time the error started occurring (Last time error occurred in lastRun)
+     * Last time the external data was updated into Azure
      */
-    errorStartTime: string;
+    lastUpdated: string;
+    /**
+     * Source timestamp of external data currently available in Azure (eg AWS last processed CUR file timestamp)
+     */
+    sourceLastUpdated: string;
 }
 
 /**
@@ -180,28 +202,6 @@ export interface ConnectorCollectionInfoResponse {
      * Last time the data acquisition process initiated connecting to the external provider
      */
     lastChecked: string;
-    /**
-     * Last time the external data was updated into Azure
-     */
-    lastUpdated: string;
-    /**
-     * Source timestamp of external data currently available in Azure (eg AWS last processed CUR file timestamp)
-     */
-    sourceLastUpdated: string;
-}
-
-/**
- * Collection and ingestion information
- */
-export interface ConnectorCollectionInfoResponseV1 {
-    /**
-     * Error information of last collection
-     */
-    error?: ConnectorCollectionErrorInfoResponseV1;
-    /**
-     * Last time the data acquisition process completed (even if no new data was found)
-     */
-    lastRun: string;
     /**
      * Last time the external data was updated into Azure
      */

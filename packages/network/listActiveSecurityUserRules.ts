@@ -48,7 +48,7 @@ export interface ListActiveSecurityUserRulesResult {
     /**
      * Gets a page of active security user rules.
      */
-    readonly value?: (types.outputs.ActiveDefaultSecurityUserRuleResponseV1 | types.outputs.ActiveSecurityUserRuleResponseV1)[];
+    readonly value?: (types.outputs.ActiveDefaultSecurityUserRulelistActiveSecurityUserRulesResponse | types.outputs.ActiveSecurityUserRulelistActiveSecurityUserRulesResponse)[];
 }
 /**
  * Lists Active Security User Rules in a network manager.

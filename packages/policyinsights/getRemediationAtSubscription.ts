@@ -45,13 +45,13 @@ export interface GetRemediationAtSubscriptionResult {
     /**
      * The remediation failure threshold settings
      */
-    readonly failureThreshold?: types.outputs.RemediationPropertiesResponseFailureThreshold;
+    readonly failureThreshold?: types.outputs.RemediationPropertiesFailureThresholdResponse;
     /**
      * The filters that will be applied to determine which resources to remediate.
      */
     readonly filters?: types.outputs.RemediationFiltersResponse;
     /**
-     * The ID of the remediation.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
@@ -59,7 +59,7 @@ export interface GetRemediationAtSubscriptionResult {
      */
     readonly lastUpdatedOn: string;
     /**
-     * The name of the remediation.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -95,7 +95,7 @@ export interface GetRemediationAtSubscriptionResult {
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
-     * The type of the remediation.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }

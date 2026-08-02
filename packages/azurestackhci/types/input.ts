@@ -877,6 +877,32 @@ export interface InboundNATRulePropertiesArgs {
 }
 
 /**
+ * Inbound rule properties - extends InboundNATRuleProperties with additional status tracking
+ */
+export interface InboundRulePropertiesArgs {
+    /**
+     * IP configuration for the target backend.
+     */
+    backendIPConfiguration: pulumi.Input<IPConfigurationArmReferenceArgs>;
+    /**
+     * backend Port for the inbound rule
+     */
+    backendPort: pulumi.Input<number>;
+    /**
+     * Frontend Port for the inbound rule
+     */
+    frontendPort: pulumi.Input<number>;
+    /**
+     * Protocol for the NAT rule
+     */
+    protocol: pulumi.Input<string | enums.InboundNATRuleProtocol>;
+    /**
+     * Public IP Address for this NAT rule
+     */
+    publicIPAddress: pulumi.Input<PublicIPAddressArmReferenceArgs>;
+}
+
+/**
  * The InfrastructureNetwork of a AzureStackHCI Cluster.
  */
 export interface InfrastructureNetworkArgs {
@@ -1192,7 +1218,7 @@ export interface NatGatewayArmReferenceArgs {
  */
 export interface NatGatewayPropertiesArgs {
     /**
-     * List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet
+     * List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet. Removed in 2026-04-01-preview; use InboundRule Child resource instead.
      */
     inboundNATRules?: pulumi.Input<pulumi.Input<InboundNATRuleArgs>[]>;
     /**
@@ -2563,17 +2589,6 @@ export interface VirtualMachinePropertiesPublicKeysArgs {
     path?: pulumi.Input<string>;
 }
 
-export interface VirtualMachinePropertiesPublicKeysPublicKeysArgs {
-    /**
-     * KeyData - SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Li      nux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-     */
-    keyData?: pulumi.Input<string>;
-    /**
-     * Path - Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
-     */
-    path?: pulumi.Input<string>;
-}
-
 /**
  * SecurityProfile - Specifies the security settings for the virtual machine.
  */
@@ -2600,16 +2615,6 @@ export interface VirtualMachinePropertiesSshArgs {
      * PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
      */
     publicKeys?: pulumi.Input<pulumi.Input<VirtualMachinePropertiesPublicKeysArgs>[]>;
-}
-
-/**
- * SSH Configuration
- */
-export interface VirtualMachinePropertiesSshSshArgs {
-    /**
-     * PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
-     */
-    publicKeys?: pulumi.Input<pulumi.Input<VirtualMachinePropertiesPublicKeysPublicKeysArgs>[]>;
 }
 
 /**
@@ -2665,7 +2670,7 @@ export interface VirtualMachinePropertiesWindowsConfigurationArgs {
     /**
      * SSH Configuration
      */
-    ssh?: pulumi.Input<VirtualMachinePropertiesSshSshArgs>;
+    ssh?: pulumi.Input<VirtualMachinePropertiesSshArgs>;
     /**
      * TimeZone for the virtual machine
      */

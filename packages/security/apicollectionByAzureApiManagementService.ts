@@ -1,5 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * An API collection as represented by Microsoft Defender for APIs.
  *
@@ -49,7 +50,7 @@ export class APICollectionByAzureApiManagementService extends pulumi.CustomResou
      */
     declare public /*out*/ readonly displayName: pulumi.Output<string>;
     /**
-     * Resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -81,7 +82,11 @@ export class APICollectionByAzureApiManagementService extends pulumi.CustomResou
      */
     declare public /*out*/ readonly sensitivityLabel: pulumi.Output<string>;
     /**
-     * Resource type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -117,6 +122,7 @@ export class APICollectionByAzureApiManagementService extends pulumi.CustomResou
             resourceInputs["numberOfUnauthenticatedApiEndpoints"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["sensitivityLabel"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -131,6 +137,7 @@ export class APICollectionByAzureApiManagementService extends pulumi.CustomResou
             resourceInputs["numberOfUnauthenticatedApiEndpoints"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["sensitivityLabel"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

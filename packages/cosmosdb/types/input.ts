@@ -694,15 +694,15 @@ export interface GarnetClusterResourcePropertiesArgs {
      */
     extensions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Number of nodes
+     * Number of nodes.
      */
     nodeCount?: pulumi.Input<number>;
     /**
-     * Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+     * Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2.
      */
     nodeSku?: pulumi.Input<string>;
     /**
-     * Number of copies of data maintained by the cluster
+     * Number of copies of data maintained by the cluster.
      */
     replicationFactor?: pulumi.Input<number>;
     /**

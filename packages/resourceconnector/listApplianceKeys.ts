@@ -47,7 +47,7 @@ export interface ListApplianceKeysResult {
     /**
      * Map of Customer User Public, Private SSH Keys and Certificate when available.
      */
-    readonly sshKeys: {[key: string]: types.outputs.SSHKeyResponseV1};
+    readonly sshKeys: {[key: string]: types.outputs.SSHKeylistApplianceKeysResponse};
 }
 /**
  * Returns the cluster customer credentials for the dedicated appliance.

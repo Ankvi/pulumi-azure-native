@@ -40,7 +40,7 @@ export class StandardAssignment extends pulumi.CustomResource {
     /**
      * Additional data about assignment that has Attest effect
      */
-    declare public readonly attestationData: pulumi.Output<types.outputs.StandardAssignmentPropertiesResponseAttestationData | undefined>;
+    declare public readonly attestationData: pulumi.Output<types.outputs.StandardAssignmentPropertiesAttestationDataResponse | undefined>;
     /**
      * The Azure API version of the resource.
      */
@@ -64,7 +64,7 @@ export class StandardAssignment extends pulumi.CustomResource {
     /**
      * Additional data about assignment that has Exempt effect
      */
-    declare public readonly exemptionData: pulumi.Output<types.outputs.StandardAssignmentPropertiesResponseExemptionData | undefined>;
+    declare public readonly exemptionData: pulumi.Output<types.outputs.StandardAssignmentPropertiesExemptionDataResponse | undefined>;
     /**
      * Expiration date of this assignment as a full ISO date
      */
@@ -74,11 +74,15 @@ export class StandardAssignment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly metadata: pulumi.Output<types.outputs.StandardAssignmentMetadataResponse | undefined>;
     /**
-     * Resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * Resource type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -109,6 +113,7 @@ export class StandardAssignment extends pulumi.CustomResource {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["assignedStandard"] = undefined /*out*/;
@@ -122,6 +127,7 @@ export class StandardAssignment extends pulumi.CustomResource {
             resourceInputs["expiresOn"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -138,7 +144,7 @@ export interface StandardAssignmentArgs {
     /**
      * Standard item with key as applied to this standard assignment over the given scope
      */
-    assignedStandard?: pulumi.Input<types.inputs.AssignedStandardItemArgs>;
+    assignedStandard?: pulumi.Input<types.inputs.CommonAssignedStandardItemArgs>;
     /**
      * Additional data about assignment that has Attest effect
      */
@@ -168,7 +174,7 @@ export interface StandardAssignmentArgs {
      */
     expiresOn?: pulumi.Input<string>;
     /**
-     * The identifier of the resource.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     resourceId: pulumi.Input<string>;
     /**

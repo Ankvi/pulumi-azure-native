@@ -36,7 +36,7 @@ export interface GetEnterprisePolicyResult {
     /**
      * The encryption settings for a configuration store.
      */
-    readonly encryption?: types.outputs.PropertiesResponseEncryption;
+    readonly encryption?: types.outputs.PropertiesEncryptionResponse;
     /**
      * The health status of the resource.
      */
@@ -60,7 +60,7 @@ export interface GetEnterprisePolicyResult {
     /**
      * Settings concerning lockbox.
      */
-    readonly lockbox?: types.outputs.PropertiesResponseLockbox;
+    readonly lockbox?: types.outputs.PropertiesLockboxResponse;
     /**
      * The name of the resource
      */
@@ -68,9 +68,9 @@ export interface GetEnterprisePolicyResult {
     /**
      * Settings concerning network injection.
      */
-    readonly networkInjection?: types.outputs.PropertiesResponseNetworkInjection;
+    readonly networkInjection?: types.outputs.PropertiesNetworkInjectionResponse;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**

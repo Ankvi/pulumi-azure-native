@@ -19742,13 +19742,17 @@ export interface SnapStartArgs {
 }
 
 /**
- * Definition of SnapStart
+ * Definition of SnapStartResponse
  */
 export interface SnapStartResponseArgs {
     /**
-     * Set ``ApplyOn`` to ``PublishedVersions`` to create a snapshot of the initialized execution environment when you publish a function version.
+     * When set to ``PublishedVersions``, Lambda creates a snapshot of the execution environment when you publish a function version.
      */
-    applyOn?: pulumi.Input<string>;
+    applyOn?: pulumi.Input<string | enums.SnapStartResponseApplyOn>;
+    /**
+     * When you provide a [qualified Amazon Resource Name (ARN)](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html#versioning-versions-using), this response element indicates whether SnapStart is activated for the specified function version.
+     */
+    optimizationStatus?: pulumi.Input<string | enums.SnapStartResponseOptimizationStatus>;
 }
 
 /**

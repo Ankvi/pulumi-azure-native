@@ -305,9 +305,9 @@ export interface AmazonRdsForOraclePartitionSettingsArgs {
      */
     partitionLowerBound?: any;
     /**
-     * Names of the physical partitions of AmazonRdsForOracle table. 
+     * Names of the physical partitions of AmazonRdsForOracle table.
      */
-    partitionNames?: pulumi.Input<any[]>;
+    partitionNames?: any;
     /**
      * The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
      */
@@ -2990,7 +2990,7 @@ export interface AzureDatabricksLinkedServiceArgs {
     /**
      * Additional tags for cluster resources. This property is ignored in instance pool configurations.
      */
-    newClusterCustomTags?: pulumi.Input<{[key: string]: any}>;
+    newClusterCustomTags?: any;
     /**
      * The driver node type for the new job cluster. This property is ignored in instance pool configurations. Type: string (or Expression with resultType string).
      */
@@ -3018,11 +3018,11 @@ export interface AzureDatabricksLinkedServiceArgs {
     /**
      * A set of optional, user-specified Spark configuration key-value pairs.
      */
-    newClusterSparkConf?: pulumi.Input<{[key: string]: any}>;
+    newClusterSparkConf?: any;
     /**
      * A set of optional, user-specified Spark environment variables key-value pairs.
      */
-    newClusterSparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    newClusterSparkEnvVars?: any;
     /**
      * If not using an existing interactive cluster, this specifies the Spark version of a new job cluster or instance pool nodes created for each run of this activity. Required if instancePoolId is specified. Type: string (or Expression with resultType string).
      */
@@ -3257,7 +3257,7 @@ export interface AzureFunctionActivityArgs {
     /**
      * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
      */
-    headers?: pulumi.Input<{[key: string]: any}>;
+    headers?: any;
     /**
      * Linked service reference.
      */
@@ -3425,7 +3425,7 @@ export interface AzureMLBatchExecutionActivityArgs {
     /**
      * Key,Value pairs to be passed to the Azure ML Batch Execution Service endpoint. Keys must match the names of web service parameters defined in the published Azure ML web service. Values will be passed in the GlobalParameters property of the Azure ML batch execution request.
      */
-    globalParameters?: pulumi.Input<{[key: string]: any}>;
+    globalParameters?: any;
     /**
      * Linked service reference.
      */
@@ -7143,7 +7143,7 @@ export interface CustomActivityArgs {
     /**
      * User defined property bag. There is no restriction on the keys or values that can be used. The user specified custom activity has the full responsibility to consume and interpret the content defined.
      */
-    extendedProperties?: pulumi.Input<{[key: string]: any}>;
+    extendedProperties?: any;
     /**
      * Folder path for resource files Type: string (or Expression with resultType string).
      */
@@ -7363,7 +7363,7 @@ export interface DataFlowReferenceArgs {
     /**
      * Data flow parameters
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: any;
     /**
      * Reference data flow name.
      */
@@ -7487,7 +7487,7 @@ export interface DataLakeAnalyticsUSQLActivityArgs {
     /**
      * Parameters for U-SQL job request.
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: any;
     /**
      * Activity policy.
      */
@@ -7568,7 +7568,7 @@ export interface DatabricksJobActivityArgs {
     /**
      * Job parameters to be used for each run of this job. If the job takes a parameter that is not specified, the default value from the job will be used.
      */
-    jobParameters?: pulumi.Input<{[key: string]: any}>;
+    jobParameters?: any;
     /**
      * Linked service reference.
      */
@@ -7607,7 +7607,7 @@ export interface DatabricksNotebookActivityArgs {
     /**
      * Base parameters to be used for each run of this job.If the notebook takes a parameter that is not specified, the default value from the notebook will be used.
      */
-    baseParameters?: pulumi.Input<{[key: string]: any}>;
+    baseParameters?: any;
     /**
      * Activity depends on condition.
      */
@@ -7619,7 +7619,7 @@ export interface DatabricksNotebookActivityArgs {
     /**
      * A list of libraries to be installed on the cluster that will execute the job.
      */
-    libraries?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+    libraries?: pulumi.Input<any[]>;
     /**
      * Linked service reference.
      */
@@ -7670,7 +7670,7 @@ export interface DatabricksSparkJarActivityArgs {
     /**
      * A list of libraries to be installed on the cluster that will execute the job.
      */
-    libraries?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+    libraries?: pulumi.Input<any[]>;
     /**
      * Linked service reference.
      */
@@ -7725,7 +7725,7 @@ export interface DatabricksSparkPythonActivityArgs {
     /**
      * A list of libraries to be installed on the cluster that will execute the job.
      */
-    libraries?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+    libraries?: pulumi.Input<any[]>;
     /**
      * Linked service reference.
      */
@@ -7796,7 +7796,7 @@ export interface DatasetReferenceArgs {
     /**
      * Arguments for dataset.
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: any;
     /**
      * Reference dataset name.
      */
@@ -7804,7 +7804,7 @@ export interface DatasetReferenceArgs {
     /**
      * Dataset reference type.
      */
-    type: pulumi.Input<string>;
+    type: pulumi.Input<string | enums.DatasetReferenceType>;
 }
 
 /**
@@ -9544,7 +9544,7 @@ export interface ExecutePipelineActivityArgs {
     /**
      * Pipeline parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: any;
     /**
      * Pipeline reference.
      */
@@ -9806,7 +9806,7 @@ export interface ExpressionArgs {
     /**
      * Expression type.
      */
-    type: pulumi.Input<string>;
+    type: pulumi.Input<string | enums.ExpressionType>;
     /**
      * Expression value.
      */
@@ -9893,7 +9893,7 @@ export interface FactoryIdentityArgs {
     /**
      * List of user assigned identities for the factory.
      */
-    userAssignedIdentities?: pulumi.Input<{[key: string]: any}>;
+    userAssignedIdentities?: any;
 }
 
 /**
@@ -11642,7 +11642,7 @@ export interface HDInsightHiveActivityArgs {
     /**
      * Allows user to specify defines for Hive job request.
      */
-    defines?: pulumi.Input<{[key: string]: any}>;
+    defines?: any;
     /**
      * Activity depends on condition.
      */
@@ -11703,7 +11703,7 @@ export interface HDInsightHiveActivityArgs {
     /**
      * User specified arguments under hivevar namespace.
      */
-    variables?: pulumi.Input<{[key: string]: any}>;
+    variables?: any;
 }
 
 /**
@@ -11792,7 +11792,7 @@ export interface HDInsightMapReduceActivityArgs {
     /**
      * Allows user to specify defines for the MapReduce job request.
      */
-    defines?: pulumi.Input<{[key: string]: any}>;
+    defines?: any;
     /**
      * Activity depends on condition.
      */
@@ -12030,7 +12030,7 @@ export interface HDInsightPigActivityArgs {
     /**
      * Allows user to specify defines for Pig job request.
      */
-    defines?: pulumi.Input<{[key: string]: any}>;
+    defines?: any;
     /**
      * Activity depends on condition.
      */
@@ -12141,7 +12141,7 @@ export interface HDInsightSparkActivityArgs {
     /**
      * Spark configuration property.
      */
-    sparkConfig?: pulumi.Input<{[key: string]: any}>;
+    sparkConfig?: any;
     /**
      * The storage linked service for uploading the entry file and dependencies, and for receiving logs.
      */
@@ -12180,7 +12180,7 @@ export interface HDInsightStreamingActivityArgs {
     /**
      * Allows user to specify defines for streaming job request.
      */
-    defines?: pulumi.Input<{[key: string]: any}>;
+    defines?: any;
     /**
      * Activity depends on condition.
      */
@@ -13178,7 +13178,7 @@ export interface ImpalaLinkedServiceArgs {
     /**
      * The transport protocol to use in the Thrift layer (for V2 only). Default value is Binary.
      */
-    thriftTransportProtocol?: pulumi.Input<string | enums.ImpalaThriftTransportProtocol>;
+    thriftTransportProtocol?: pulumi.Input<enums.ImpalaThriftTransportProtocol>;
     /**
      * The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
      */
@@ -13545,14 +13545,14 @@ export interface IntegrationRuntimeDataFlowPropertiesArgs {
     /**
      * Custom properties are used to tune the data flow runtime performance.
      */
-    customProperties?: pulumi.Input<pulumi.Input<IntegrationRuntimeDataFlowPropertiesCustomPropertiesArgs>[]>;
+    customProperties?: pulumi.Input<pulumi.Input<IntegrationRuntimeDataFlowPropertiesCustomPropertiesItemArgs>[]>;
     /**
      * Time to live (in minutes) setting of the cluster which will execute data flow job.
      */
     timeToLive?: pulumi.Input<number>;
 }
 
-export interface IntegrationRuntimeDataFlowPropertiesCustomPropertiesArgs {
+export interface IntegrationRuntimeDataFlowPropertiesCustomPropertiesItemArgs {
     /**
      * Name of custom property.
      */
@@ -13588,7 +13588,7 @@ export interface IntegrationRuntimeReferenceArgs {
     /**
      * Arguments for integration runtime.
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: any;
     /**
      * Reference integration runtime name.
      */
@@ -13596,7 +13596,7 @@ export interface IntegrationRuntimeReferenceArgs {
     /**
      * Type of integration runtime.
      */
-    type: pulumi.Input<string>;
+    type: pulumi.Input<string | enums.IntegrationRuntimeReferenceType>;
 }
 
 /**
@@ -14378,7 +14378,7 @@ export interface LinkedServiceReferenceArgs {
     /**
      * Arguments for LinkedService.
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: any;
     /**
      * Reference LinkedService name.
      */
@@ -17111,9 +17111,9 @@ export interface OraclePartitionSettingsArgs {
      */
     partitionLowerBound?: any;
     /**
-     * Names of the physical partitions of Oracle table. 
+     * Names of the physical partitions of Oracle table.
      */
-    partitionNames?: pulumi.Input<any[]>;
+    partitionNames?: any;
     /**
      * The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
      */
@@ -18144,7 +18144,7 @@ export interface PipelineReferenceArgs {
     /**
      * Pipeline reference type.
      */
-    type: pulumi.Input<string>;
+    type: pulumi.Input<string | enums.PipelineReferenceType>;
 }
 
 /**
@@ -19331,7 +19331,7 @@ export interface RestResourceDatasetArgs {
     /**
      * The additional HTTP headers in the request to the RESTful API.
      */
-    additionalHeaders?: pulumi.Input<{[key: string]: any}>;
+    additionalHeaders?: any;
     /**
      * List of tags that can be used for describing the Dataset.
      */
@@ -19351,7 +19351,7 @@ export interface RestResourceDatasetArgs {
     /**
      * The pagination rules to compose next page requests.
      */
-    paginationRules?: pulumi.Input<{[key: string]: any}>;
+    paginationRules?: any;
     /**
      * Parameters for dataset.
      */
@@ -19523,7 +19523,7 @@ export interface RestSinkArgs {
      */
     maxConcurrentConnections?: any;
     /**
-     * The time to await before sending next request, in milliseconds 
+     * The time to await before sending next request, in milliseconds
      */
     requestInterval?: any;
     /**
@@ -19586,7 +19586,7 @@ export interface RestSourceArgs {
      */
     requestBody?: any;
     /**
-     * The time to await before sending next page request. 
+     * The time to await before sending next page request.
      */
     requestInterval?: any;
     /**
@@ -21213,7 +21213,7 @@ export interface SapHanaSourceArgs {
      */
     packetSize?: any;
     /**
-     * The partition mechanism that will be used for SAP HANA read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "SapHanaDynamicRange". 
+     * The partition mechanism that will be used for SAP HANA read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "SapHanaDynamicRange".
      */
     partitionOption?: any;
     /**
@@ -21989,7 +21989,7 @@ export interface ScriptActivityArgs {
     /**
      * Linked service reference.
      */
-    linkedServiceName: pulumi.Input<LinkedServiceReferenceArgs>;
+    linkedServiceName?: pulumi.Input<LinkedServiceReferenceArgs>;
     /**
      * Log settings of script activity.
      */
@@ -22633,7 +22633,7 @@ export interface SftpReadSettingsArgs {
 }
 
 /**
- * A linked service for an SSH File Transfer Protocol (SFTP) server. 
+ * A linked service for an SSH File Transfer Protocol (SFTP) server.
  */
 export interface SftpServerLinkedServiceArgs {
     /**
@@ -23123,11 +23123,11 @@ export interface SnowflakeExportCopyCommandArgs {
     /**
      * Additional copy options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalCopyOptions": { "DATE_FORMAT": "MM/DD/YYYY", "TIME_FORMAT": "'HH24:MI:SS.FF'" }
      */
-    additionalCopyOptions?: pulumi.Input<{[key: string]: any}>;
+    additionalCopyOptions?: any;
     /**
      * Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "OVERWRITE": "TRUE", "MAX_FILE_SIZE": "'FALSE'" }
      */
-    additionalFormatOptions?: pulumi.Input<{[key: string]: any}>;
+    additionalFormatOptions?: any;
     /**
      * The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
      */
@@ -23146,11 +23146,11 @@ export interface SnowflakeImportCopyCommandArgs {
     /**
      * Additional copy options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalCopyOptions": { "DATE_FORMAT": "MM/DD/YYYY", "TIME_FORMAT": "'HH24:MI:SS.FF'" }
      */
-    additionalCopyOptions?: pulumi.Input<{[key: string]: any}>;
+    additionalCopyOptions?: any;
     /**
      * Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "FORCE": "TRUE", "LOAD_UNCERTAIN_FILES": "'FALSE'" }
      */
-    additionalFormatOptions?: pulumi.Input<{[key: string]: any}>;
+    additionalFormatOptions?: any;
     /**
      * The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
      */
@@ -24305,7 +24305,7 @@ export interface SqlServerStoredProcedureActivityArgs {
     /**
      * Linked service reference.
      */
-    linkedServiceName: pulumi.Input<LinkedServiceReferenceArgs>;
+    linkedServiceName?: pulumi.Input<LinkedServiceReferenceArgs>;
     /**
      * Activity name.
      */
@@ -24964,7 +24964,7 @@ export interface SynapseNotebookActivityArgs {
     /**
      * Spark configuration property.
      */
-    sparkConfig?: pulumi.Input<{[key: string]: any}>;
+    sparkConfig?: any;
     /**
      * The name of the big data pool which will be used to execute the notebook.
      */
@@ -25081,7 +25081,7 @@ export interface SynapseSparkJobDefinitionActivityArgs {
     /**
      * Spark configuration property.
      */
-    sparkConfig?: pulumi.Input<{[key: string]: any}>;
+    sparkConfig?: any;
     /**
      * Synapse spark job reference.
      */
@@ -25591,7 +25591,7 @@ export interface TriggerPipelineReferenceArgs {
     /**
      * Pipeline parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: any;
     /**
      * Pipeline reference.
      */
@@ -26310,7 +26310,7 @@ export interface WebActivityArgs {
     /**
      * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
      */
-    headers?: pulumi.Input<{[key: string]: any}>;
+    headers?: any;
     /**
      * Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
      */
@@ -26480,7 +26480,7 @@ export interface WebHookActivityArgs {
     /**
      * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
      */
-    headers?: pulumi.Input<{[key: string]: any}>;
+    headers?: any;
     /**
      * Rest API method for target endpoint.
      */

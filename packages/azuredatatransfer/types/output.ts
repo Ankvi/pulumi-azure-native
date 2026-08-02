@@ -394,7 +394,7 @@ export interface FlowPropertiesResponse {
 /**
  * Properties of flow
  */
-export interface FlowPropertiesResponseV1 {
+export interface FlowPropertieslistListFlowsByPipelineResponse {
     /**
      * The API Flow configuration options for Azure Data Transfer API Flow type.
      */
@@ -540,7 +540,7 @@ export interface FlowResponse {
     /**
      * Properties of flow
      */
-    properties?: FlowPropertiesResponseV1;
+    properties?: FlowPropertieslistListFlowsByPipelineResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */

@@ -156,6 +156,20 @@ export interface AlertRuleLeafConditionArgs {
 }
 
 /**
+ * Represents an Azure Monitor Workspace (AMW) account used for emitting metrics.
+ */
+export interface AmwAccountArgs {
+    /**
+     * The ARM resource ID of the managed identity with access to the source account.
+     */
+    identity: pulumi.Input<string>;
+    /**
+     * The ARM resource ID of the account where metrics are emitted.
+     */
+    resourceId: pulumi.Input<string>;
+}
+
+/**
  * Discovery rule properties for an Application Insights topology query
  */
 export interface ApplicationInsightsTopologyDiscoveryRulePropertiesArgs {
@@ -226,7 +240,7 @@ export interface AutomationRunbookReceiverArgs {
      */
     isGlobalRunbook: pulumi.Input<boolean>;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
     managedIdentity?: pulumi.Input<string>;
     /**
@@ -344,7 +358,7 @@ export interface AzureFunctionReceiverArgs {
      */
     httpTriggerUrl: pulumi.Input<string>;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
     managedIdentity?: pulumi.Input<string>;
     /**
@@ -463,6 +477,34 @@ export interface AzureResourceSignalGroupArgs {
      * Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
      */
     signalAssignments?: pulumi.Input<pulumi.Input<SignalAssignmentArgs>[]>;
+}
+
+/**
+ * Defines the target parameters for a Slo baseline.
+ */
+export interface BaselineArgs {
+    /**
+     * Specifies how evaluation is calculated, either based on calendar days or a rolling window.
+     */
+    evaluationCalculationType: pulumi.Input<string | enums.EvaluationCalculationType>;
+    /**
+     * The time frame (in days) used for SLI evaluation.
+     */
+    evaluationPeriodDays: pulumi.Input<number>;
+    /**
+     * The user-defined or Azure-defined target value used for comparison against the SLI value.
+     */
+    value: pulumi.Input<number>;
+}
+
+/**
+ * Defines the properties of a baseline.
+ */
+export interface BaselinePropertiesArgs {
+    /**
+     * Defines the baseline target, which is compared against the SLI value to determine compliance.
+     */
+    baseline: pulumi.Input<BaselineArgs>;
 }
 
 /**
@@ -630,6 +672,32 @@ export function conditionFailingPeriodsArgsProvideDefaults(val: ConditionFailing
         minFailingPeriodsToAlert: (val.minFailingPeriodsToAlert) ?? 1,
         numberOfEvaluationPeriods: (val.numberOfEvaluationPeriods) ?? 1,
     };
+}
+
+/**
+ * Represents a filtering condition.
+ */
+export interface ConditionV1Args {
+    /**
+     * Dimension name used in filtering.
+     */
+    dimensionName?: pulumi.Input<string>;
+    /**
+     * Operator used in the filtering condition.
+     */
+    operator: pulumi.Input<string | enums.ConditionOperator>;
+    /**
+     * Defines the sampling type.
+     */
+    samplingType?: pulumi.Input<string | enums.SamplingType>;
+    /**
+     * Scalar function applied for filtering.
+     */
+    scalarFunction?: pulumi.Input<string | enums.ScalarFunction>;
+    /**
+     * Value used in filtering. For most operators (eq, ne, lt, lte, gt, gte, startswith, notstartswith, contains, notcontains) this is a single value (for example "GetContosoUsers"). For the `in` and `notin` operators, multiple values must be joined by the delimiter `^^` (for example "east^^west^^north").
+     */
+    value: pulumi.Input<string>;
 }
 
 /**
@@ -1144,7 +1212,7 @@ export interface EventHubReceiverArgs {
      */
     eventHubNameSpace: pulumi.Input<string>;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
     managedIdentity?: pulumi.Input<string>;
     /**
@@ -1256,20 +1324,6 @@ export interface IconDefinitionArgs {
      * Name of the built-in icon, or 'Custom' to use customData
      */
     iconName: pulumi.Input<string>;
-}
-
-/**
- * Identity for the resource.
- */
-export interface IdentityArgs {
-    /**
-     * Type of managed service identity.
-     */
-    type: pulumi.Input<enums.IdentityType>;
-    /**
-     * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-     */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -1599,7 +1653,7 @@ export interface LogicAppReceiverArgs {
      */
     callbackUrl: pulumi.Input<string>;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
     managedIdentity?: pulumi.Input<string>;
     /**
@@ -1855,6 +1909,20 @@ export interface MetricTriggerArgs {
      * the range of time in which instance data is collected. This value must be greater than the delay in metric collection, which can vary from resource-to-resource. Must be between 12 hours and 5 minutes.
      */
     timeWindow: pulumi.Input<string>;
+}
+
+/**
+ * Identity for the resource.
+ */
+export interface MicrosoftCommonIdentityArgs {
+    /**
+     * Type of managed service identity.
+     */
+    type: pulumi.Input<enums.IdentityType>;
+    /**
+     * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -2568,6 +2636,20 @@ export interface ServiceArgs {
 }
 
 /**
+ * Represents a signal model used in SLI calculations.
+ */
+export interface SignalArgs {
+    /**
+     * Mathematical formula used to combine multiple metrics.
+     */
+    signalFormula: pulumi.Input<string>;
+    /**
+     * Sources of metrics used for SLIs.
+     */
+    signalSources: pulumi.Input<pulumi.Input<SignalSourceArgs>[]>;
+}
+
+/**
  * Group of signal definition assignments
  */
 export interface SignalAssignmentArgs {
@@ -2609,6 +2691,100 @@ export function signalGroupArgsProvideDefaults(val: SignalGroupArgs): SignalGrou
 }
 
 /**
+ * Represents a signal source used in SLIs.
+ */
+export interface SignalSourceArgs {
+    /**
+     * Filters applied to modify signal values.
+     */
+    filters: pulumi.Input<pulumi.Input<ConditionV1Args>[]>;
+    /**
+     * Name of the metric.
+     */
+    metricName: pulumi.Input<string>;
+    /**
+     * Namespace of the metric.
+     */
+    metricNamespace: pulumi.Input<string>;
+    /**
+     * Unique identifier for the signal source.
+     */
+    signalSourceId: pulumi.Input<string>;
+    /**
+     * Managed identity for authenticating the signal source.
+     */
+    sourceAmwAccountManagedIdentity: pulumi.Input<string>;
+    /**
+     * Resource ID of the source AMW account.
+     */
+    sourceAmwAccountResourceId: pulumi.Input<string>;
+    /**
+     * Defines how measurements are aggregated across multiple time series.
+     */
+    spatialAggregation: pulumi.Input<SpatialAggregationArgs>;
+    /**
+     * Defines how measurements are aggregated over a specific time window within the same time series.
+     */
+    temporalAggregation: pulumi.Input<TemporalAggregationArgs>;
+}
+
+/**
+ * Defines the properties of an SLI.
+ */
+export interface SliPropertiesArgs {
+    /**
+     * Represents good signals used in request-based SLI calculations.
+     */
+    goodSignals?: pulumi.Input<SignalArgs>;
+    /**
+     * Signals used for window-based SLI calculations.
+     */
+    signals?: pulumi.Input<SignalArgs>;
+    /**
+     * Represents total signals used in request-based SLI calculations.
+     */
+    totalSignals?: pulumi.Input<SignalArgs>;
+    /**
+     * Defines the uptime criteria for window-based SLIs.
+     */
+    windowUptimeCriteria?: pulumi.Input<WindowUptimeCriteriaArgs>;
+}
+
+/**
+ * Defines the root level properties of an SLI resource.
+ */
+export interface SliResourceArgs {
+    /**
+     * Defines the SLO baseline associated with the SLI.
+     */
+    baselineProperties: pulumi.Input<BaselinePropertiesArgs>;
+    /**
+     * Specifies the category of the SLI, used to classify signals such as Availability and Latency.
+     */
+    category: pulumi.Input<string | enums.Category>;
+    /**
+     * A user-provided description of the SLI, with a maximum length of 1000 characters.
+     */
+    description: pulumi.Input<string>;
+    /**
+     * Destination AMW accounts.
+     */
+    destinationAmwAccounts: pulumi.Input<pulumi.Input<AmwAccountArgs>[]>;
+    /**
+     * A flag to determine whether alert is enabled.
+     */
+    enableAlert: pulumi.Input<boolean>;
+    /**
+     * Determines how the SLI is evaluated—either based on request counts or time windows.
+     */
+    evaluationType: pulumi.Input<string | enums.EvaluationType>;
+    /**
+     * Defines the SLI properties associated with the SLI.
+     */
+    sliProperties: pulumi.Input<SliPropertiesArgs>;
+}
+
+/**
  * An SMS receiver.
  */
 export interface SmsReceiverArgs {
@@ -2624,6 +2800,20 @@ export interface SmsReceiverArgs {
      * The phone number of the SMS receiver.
      */
     phoneNumber: pulumi.Input<string>;
+}
+
+/**
+ * Represents the spatial aggregation model.
+ */
+export interface SpatialAggregationArgs {
+    /**
+     * Dimensions considered for spatial aggregation.
+     */
+    dimensions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Type of spatial aggregation.
+     */
+    type: pulumi.Input<string | enums.SpatialAggregationType>;
 }
 
 export interface StorageBlobDestinationArgs {
@@ -2745,6 +2935,20 @@ export interface TcpExporterArgs {
 }
 
 /**
+ * Represents temporal aggregation settings.
+ */
+export interface TemporalAggregationArgs {
+    /**
+     * Type of temporal aggregation.
+     */
+    type: pulumi.Input<string | enums.TemporalAggregationType>;
+    /**
+     * Time window size for aggregation, in minutes.
+     */
+    windowSizeMinutes?: pulumi.Input<number>;
+}
+
+/**
  * Threshold-based evaluation rule for a signal definition
  */
 export interface ThresholdRuleArgs {
@@ -2850,7 +3054,7 @@ export interface WebhookReceiverArgs {
      */
     identifierUri?: pulumi.Input<string>;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
     managedIdentity?: pulumi.Input<string>;
     /**
@@ -2910,6 +3114,20 @@ export interface WebtestLocationAvailabilityCriteriaArgs {
      * The Application Insights web test Id.
      */
     webTestId: pulumi.Input<string>;
+}
+
+/**
+ * Represents criteria for determining uptime in window-based SLIs.
+ */
+export interface WindowUptimeCriteriaArgs {
+    /**
+     * Comparison operator used for uptime evaluation.
+     */
+    comparator: pulumi.Input<string | enums.WindowUptimeCriteriaComparator>;
+    /**
+     * Threshold value used to determine uptime.
+     */
+    target: pulumi.Input<number>;
 }
 
 /**
